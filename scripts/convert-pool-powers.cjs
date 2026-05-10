@@ -27,6 +27,7 @@ const {
   RAW_DATA_PATH,
   BIN_BOOST_MAP,
   EFFECT_AREA_MAP,
+  TARGET_TYPE_MAP,
 } = require('./convert-powerset.cjs');
 
 // HC bin export writes pool powers under `<RAW_DATA_PATH>/pool/`. The legacy
@@ -131,6 +132,15 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   }
   power.icon = normalizeIconPath(rawJson.icon || '');
   power.powerType = rawJson.type || 'Click';
+
+  // Target type — map bin format ("Friend", "DeadOrAliveLeaguemate") to the
+  // planner's normalized labels ("Ally (Alive)", "Teammate"). Required for
+  // the dashboard's ally-only filter to skip ally-buff toggles like Grant
+  // Invisibility — without this they bleed into caster totals.
+  if (rawJson.target_type) {
+    const mapped = TARGET_TYPE_MAP[rawJson.target_type];
+    if (mapped) power.targetType = mapped;
+  }
 
   // Requires
   if (rawJson.requires && rawJson.requires !== '') {

@@ -559,9 +559,21 @@ interface PowerWithToggle {
   stats?: { endurance?: number; activatePeriod?: number; [key: string]: unknown };
 }
 
-/** targetType values where the power cannot be cast on self — the buff goes to allies only
- *  (e.g. Speed Boost, Fortitude). Skipped when applying buffs to caster totals. */
-const ALLY_ONLY_TARGET_TYPES = new Set(['ally', 'ally (alive)']);
+/** targetType values where the power cannot be cast on self — the buff goes
+ *  to allies only and must not contribute to the caster's totals. Covers
+ *  every ally-target string we've seen in HC and Rebirth bin exports plus
+ *  the legacy "Ally"/"Ally (Alive)"/"Teammate" labels Mids data uses.
+ *  Powers that auto-apply to the caster (Recovery Aura, Regeneration Aura,
+ *  Farsight, etc.) are tagged Self and are unaffected. */
+const ALLY_ONLY_TARGET_TYPES = new Set([
+  'ally',
+  'ally (alive)',
+  'teammate',
+  'dead teammate',
+  'friend',
+  'deadplayerfriend',
+  'deadoraliveleaguemate',
+]);
 
 /**
  * Apply bonuses from active toggle powers
@@ -2553,53 +2565,48 @@ function convertToCharacterStats(global: GlobalBonuses): CharacterStats {
 function collectAllPowers(build: Build): PowerWithToggle[] {
   const powers: PowerWithToggle[] = [];
 
-  // Primary powers — enrich with current definition effects
-  // Stored powers may have stale/missing effects if power data was updated after they were saved
+  // Stored powers carry only the user's selections (slots, isActive, etc.).
+  // Enrich with the current powerset definition so downstream filters can
+  // see targetType/powerType/effectArea — without these the ally-only
+  // filter in applyActivePowerBonuses sees undefined targetType and lets
+  // ally buffs (Speed Boost, Fortitude, Grant Invisibility, etc.) bleed
+  // into the caster's totals.
+  const enrich = (
+    power: { internalName?: string; isActive?: boolean; slots?: unknown },
+    def?: { targetType?: string; powerType?: string; effectArea?: string; effects?: unknown },
+  ): PowerWithToggle => {
+    if (!def) return power as unknown as PowerWithToggle;
+    return {
+      ...power,
+      // Definition wins for static metadata — stored copy may be missing or stale.
+      targetType: def.targetType,
+      powerType: def.powerType,
+      effectArea: def.effectArea,
+      effects: def.effects ?? (power as { effects?: unknown }).effects,
+    } as unknown as PowerWithToggle;
+  };
+
   const primaryDef = build.primary.id ? getPowerset(build.primary.id) : undefined;
   for (const power of build.primary.powers) {
-    const currentDef = primaryDef?.powers.find((p) => p.internalName === power.internalName);
-    if (currentDef?.effects) {
-      powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
-    } else {
-      powers.push(power as unknown as PowerWithToggle);
-    }
+    powers.push(enrich(power, primaryDef?.powers.find((p) => p.internalName === power.internalName)));
   }
 
-  // Secondary powers — enrich with current definition effects
   const secondaryDef = build.secondary.id ? getPowerset(build.secondary.id) : undefined;
   for (const power of build.secondary.powers) {
-    const currentDef = secondaryDef?.powers.find((p) => p.internalName === power.internalName);
-    if (currentDef?.effects) {
-      powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
-    } else {
-      powers.push(power as unknown as PowerWithToggle);
-    }
+    powers.push(enrich(power, secondaryDef?.powers.find((p) => p.internalName === power.internalName)));
   }
 
-  // Pool powers — enrich with current definition effects
-  // Stored powers may have stale effects if pool data was updated after they were saved
   for (const pool of build.pools) {
     const poolDef = getPowerPool(pool.id);
     for (const power of pool.powers) {
-      const currentDef = poolDef?.powers.find((p) => p.internalName === power.internalName);
-      if (currentDef?.effects) {
-        powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
-      } else {
-        powers.push(power as unknown as PowerWithToggle);
-      }
+      powers.push(enrich(power, poolDef?.powers.find((p) => p.internalName === power.internalName)));
     }
   }
 
-  // Epic pool — enrich with current definition effects
   if (build.epicPool) {
     const epicDef = getEpicPool(build.epicPool.id);
     for (const power of build.epicPool.powers) {
-      const currentDef = epicDef?.powers.find((p) => p.internalName === power.internalName);
-      if (currentDef?.effects) {
-        powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
-      } else {
-        powers.push(power as unknown as PowerWithToggle);
-      }
+      powers.push(enrich(power, epicDef?.powers.find((p) => p.internalName === power.internalName)));
     }
   }
 

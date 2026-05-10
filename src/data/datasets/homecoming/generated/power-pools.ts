@@ -30,6 +30,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Melee Ranged, Ally +Regeneration, +Recovery, +Res(Status)",
         "icon": "experimentation_experimentalinjection.png",
         "powerType": "Click",
+        "targetType": "Ally (Alive)",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -111,6 +112,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Light DMG(Lethal), High(Toxic)",
         "icon": "experimentation_toxicdart.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -150,56 +152,6 @@ export const POWER_POOLS_RAW = {
               "table": "Ranged_PvPDamage",
               "duration": 4.6,
               "tickRate": 0.5
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.309,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.309,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.309,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.309,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.309,
-              "table": "Ranged_PvPDamage"
             }
           ]
         }
@@ -213,6 +165,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Speed, (Special)",
         "icon": "experimentation_speedofsound.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -250,6 +203,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), High DoT(Toxic), -Defense",
         "icon": "experimentation_corrosivevial.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Pool.Experimentation.Experimental_Injection Pool.Experimentation.Toxic_Dart && Pool.Experimentation.Experimental_Injection Pool.Experimentation.Speed_of_Sound && || Pool.Experimentation.Toxic_Dart Pool.Experimentation.Speed_of_Sound && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -291,6 +245,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, +To Hit, +Recharge, +Damage, +Special",
         "icon": "experimentation_adrenalbooster.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Experimentation.Experimental_Injection Pool.Experimentation.Toxic_Dart && Pool.Experimentation.Experimental_Injection Pool.Experimentation.Speed_of_Sound && || Pool.Experimentation.Toxic_Dart Pool.Experimentation.Speed_of_Sound && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -394,9 +349,14 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Click, Self Teleport",
         "icon": "experimentation_jaunt.png",
         "powerType": "Click",
+        "targetType": "Dead Teammate",
         "requires": "Pool.Experimentation.Speed_of_Sound",
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "range": 200,
@@ -429,6 +389,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Smash), Fighting Synergy, Foe Stun",
         "icon": "fighting_boxing.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -460,75 +421,13 @@ export const POWER_POOLS_RAW = {
               "type": "Smashing",
               "scale": 1.249,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.76,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.76,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.76,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.76,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.76,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.249,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.6245,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.249,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.249,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.249,
-              "table": "Melee_PvPDamage"
             }
           ],
           "stun": {
             "mag": 3,
             "scale": 4,
             "table": "Melee_Stun"
-          },
-          "enduranceDrain": {
-            "scale": 0.02,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 0.05,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "buffDuration": 4
+          }
         }
       },
       {
@@ -540,6 +439,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Smash), Synergy, Foe Knockdown",
         "icon": "fighting_kick.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -571,74 +471,12 @@ export const POWER_POOLS_RAW = {
               "type": "Smashing",
               "scale": 1.801,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.801,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.9005,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.801,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.801,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.801,
-              "table": "Melee_PvPDamage"
             }
           ],
           "knockback": {
             "scale": 2.68,
             "table": "Melee_Ones"
-          },
-          "enduranceDrain": {
-            "scale": 0.03,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 0.05,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "buffDuration": 4
+          }
         }
       },
       {
@@ -650,6 +488,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash/Lethal)",
         "icon": "fighting_tough.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -684,140 +523,15 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
-        "name": "Cross Punch",
-        "fullName": "Pool.Fighting.Cross_Punch",
-        "rank": 4,
-        "available": 13,
-        "description": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. This attack causes moderate smashing damage and has a chance to both knock down and stun foes.<br><br>If you have also trained Boxing, this power's damage is increased by 15% and will improve your recharge and accuracy briefly.<br><br>If you have also trained Kick, this power's damage is increased by 15% and will improve your recharge and accuracy briefly.<br><br>The synergy with Boxing and Kick stacks.<br><br>You must be at least level 14 and have two other Fighting Powers before selecting Cross Punch.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
-        "shortHelp": "Melee (Cone), DMG(Smash), Fighting Synergy, Foe Knockdown, Stun",
-        "icon": "fighting_crosspunch.png",
-        "powerType": "Click",
-        "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick && Pool.Fighting.Boxing Pool.Fighting.Tough && || Pool.Fighting.Boxing Pool.Fighting.Weave && || Pool.Fighting.Kick Pool.Fighting.Tough && || Pool.Fighting.Kick Pool.Fighting.Weave && || Pool.Fighting.Tough Pool.Fighting.Weave && ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Melee AoE Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 8,
-          "endurance": 8.528,
-          "activationTime": 1.67,
-          "effectArea": "Cone",
-          "radius": 7,
-          "arc": 0.8726646304130554,
-          "maxTargets": 5,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1.27,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.4628,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.4262,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.27,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.27,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.27,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.27,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.27,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.4628,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.4628,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.4628,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.4628,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.4628,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "mag": 3,
-            "scale": 6,
-            "table": "Melee_Ones"
-          },
-          "rechargeBuff": {
-            "scale": 0.05,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "rechargeBuff": 6,
-            "tohitBuff": 6
-          },
-          "tohitBuff": {
-            "scale": 0.05,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 6
-        }
-      },
-      {
         "name": "Weave",
         "fullName": "Pool.Fighting.Weave",
-        "rank": 5,
+        "rank": 4,
         "available": 13,
         "description": "While active, you bob and weave, increasing your Defense to all attacks, as well as your resistance to Immobilize.<br><br>You must be at least level 14 and have two other Fighting Powers before selecting Weave.<br><br><color #fcfc95>Recharge: Moderate.</color>",
         "shortHelp": "Toggle: Self +DEF(All), Res(Immobilize)",
         "icon": "fighting_weave.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick && Pool.Fighting.Boxing Pool.Fighting.Tough && || Pool.Fighting.Kick Pool.Fighting.Tough && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -893,6 +607,83 @@ export const POWER_POOLS_RAW = {
           },
           "buffDuration": 0.75
         }
+      },
+      {
+        "name": "Cross Punch",
+        "fullName": "Pool.Fighting.Cross_Punch",
+        "rank": 5,
+        "available": 13,
+        "description": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. This attack causes moderate smashing damage and has a chance to both knock down and stun foes.<br><br>If you have also trained Boxing, this power's damage is increased by 15% and will improve your recharge and accuracy briefly.<br><br>If you have also trained Kick, this power's damage is increased by 15% and will improve your recharge and accuracy briefly.<br><br>The synergy with Boxing and Kick stacks.<br><br>You must be at least level 14 and have two other Fighting Powers before selecting Cross Punch.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+        "shortHelp": "Melee (Cone), DMG(Smash), Fighting Synergy, Foe Knockdown, Stun",
+        "icon": "fighting_crosspunch.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick && Pool.Fighting.Boxing Pool.Fighting.Tough && || Pool.Fighting.Boxing Pool.Fighting.Weave && || Pool.Fighting.Kick Pool.Fighting.Tough && || Pool.Fighting.Kick Pool.Fighting.Weave && || Pool.Fighting.Tough Pool.Fighting.Weave && ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Melee AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 8,
+          "endurance": 8.528,
+          "activationTime": 1.67,
+          "effectArea": "Cone",
+          "radius": 7,
+          "arc": 0.8726646304130554,
+          "maxTargets": 5,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1.27,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 1.4628,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 0.4262,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 1.34,
+            "table": "Melee_Ones"
+          },
+          "stun": {
+            "mag": 3,
+            "scale": 6,
+            "table": "Melee_Ones"
+          },
+          "rechargeBuff": {
+            "scale": 0.05,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "rechargeBuff": 6,
+            "tohitBuff": 6
+          },
+          "tohitBuff": {
+            "scale": 0.05,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 6
+        }
       }
     ]
   },
@@ -905,53 +696,25 @@ export const POWER_POOLS_RAW = {
     "requires": "",
     "powers": [
       {
-        "name": "Hurdle",
-        "fullName": "Pool.Fitness.Hurdle",
-        "rank": 1,
-        "available": 5,
-        "description": "You can naturally jump higher than normal.<br><br>This ability is always on and does not cost any Endurance.",
-        "shortHelp": "Auto: Self +Leap",
-        "icon": "fitness_hurdle.png",
-        "powerType": "Auto",
-        "requires": "Inherent.Fitness.Hurdle !",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Jump"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "activatePeriod": 10,
-          "effectArea": "SingleTarget",
-          "movement": {
-            "jumpHeight": {
-              "scale": 0.06,
-              "table": "Melee_Leap"
-            },
-            "jumpSpeed": {
-              "scale": 0.5,
-              "table": "Melee_SpeedJumping"
-            }
-          },
-          "durations": {
-            "movement": 10.25
-          },
-          "buffDuration": 10.25
-        }
-      },
-      {
         "name": "Swift",
         "fullName": "Pool.Fitness.Quick",
-        "rank": 2,
+        "rank": 1,
         "available": 5,
         "description": "You can naturally run slightly faster than normal.<br><br>This ability is always on and does not cost any Endurance.",
         "shortHelp": "Auto: Self +SPD",
         "icon": "fitness_quick.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Inherent.Fitness.Swift !",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Fly",
           "Run Speed"
+        ],
+        "allowedSetCategories": [
+          "Flight",
+          "Running",
+          "Universal Travel"
         ],
         "effects": {
           "accuracy": 1,
@@ -974,6 +737,45 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
+        "name": "Hurdle",
+        "fullName": "Pool.Fitness.Hurdle",
+        "rank": 2,
+        "available": 5,
+        "description": "You can naturally jump higher than normal.<br><br>This ability is always on and does not cost any Endurance.",
+        "shortHelp": "Auto: Self +Leap",
+        "icon": "fitness_hurdle.png",
+        "powerType": "Auto",
+        "targetType": "Self",
+        "requires": "Inherent.Fitness.Hurdle !",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Jump"
+        ],
+        "allowedSetCategories": [
+          "Leaping",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "activatePeriod": 10,
+          "effectArea": "SingleTarget",
+          "movement": {
+            "jumpHeight": {
+              "scale": 0.06,
+              "table": "Melee_Leap"
+            },
+            "jumpSpeed": {
+              "scale": 0.5,
+              "table": "Melee_SpeedJumping"
+            }
+          },
+          "durations": {
+            "movement": 10.25
+          },
+          "buffDuration": 10.25
+        }
+      },
+      {
         "name": "Health",
         "fullName": "Pool.Fitness.Health",
         "rank": 3,
@@ -982,6 +784,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Auto: Self +Regeneration, Res(Sleep)",
         "icon": "fitness_health.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Inherent.Fitness.Health ! Pool.Fitness.Quick Pool.Fitness.Hurdle || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1020,6 +823,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Auto: Self +Recovery",
         "icon": "fitness_stamina.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Inherent.Fitness.Stamina ! Pool.Fitness.Quick Pool.Fitness.Hurdle && Pool.Fitness.Quick Pool.Fitness.Health && || Pool.Fitness.Hurdle Pool.Fitness.Health && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1053,110 +857,15 @@ export const POWER_POOLS_RAW = {
     "requires": "",
     "powers": [
       {
-        "name": "Air Superiority",
-        "fullName": "Pool.Flight.Air_Superiority",
-        "rank": 1,
-        "available": 0,
-        "description": "This two-handed overhead melee attack can knock a flying target to the ground.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
-        "shortHelp": "Melee, Light DMG(Smash), Foe -Fly",
-        "icon": "flight_arialassault.png",
-        "powerType": "Click",
-        "requires": "",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Melee Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 4,
-          "endurance": 5.2,
-          "activationTime": 1.5,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.61,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.61,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.805,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.61,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.61,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.61,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockup": {
-            "scale": 1.5,
-            "table": "Melee_Ones"
-          }
-        }
-      },
-      {
         "name": "Hover",
         "fullName": "Pool.Flight.Combat_Flight",
-        "rank": 2,
+        "rank": 1,
         "available": 0,
         "description": "For hovering and aerial combat. This power is much slower than Fly, but provides some Defense to all attacks, offers good air control, costs little Endurance, and has none of the penalties associated with Fly. Switch to this mode when fighting other flying foes.<br><br>Hover can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
         "shortHelp": "Toggle: Self Fly, +DEF(All)",
         "icon": "flight_combatflight.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1246,6 +955,53 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
+        "name": "Air Superiority",
+        "fullName": "Pool.Flight.Air_Superiority",
+        "rank": 2,
+        "available": 0,
+        "description": "This two-handed overhead melee attack can knock a flying target to the ground.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
+        "shortHelp": "Melee, Light DMG(Smash), Foe -Fly",
+        "icon": "flight_arialassault.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Melee Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 4,
+          "endurance": 5.2,
+          "activationTime": 1.5,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 1.61,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockup": {
+            "scale": 1.5,
+            "table": "Melee_Ones"
+          }
+        }
+      },
+      {
         "name": "Fly",
         "fullName": "Pool.Flight.Fly",
         "rank": 3,
@@ -1254,6 +1010,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Fly",
         "icon": "flight_travelflight.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1294,14 +1051,55 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
+        "name": "Group Fly",
+        "fullName": "Pool.Flight.Group_Fly",
+        "rank": 4,
+        "available": 13,
+        "description": "You can endow your nearby teammates with Flight. Be mindful! Your friends will fall if you run out of Endurance or if they travel too far away from you. Group Fly travel speed is slower than Fly.<br><br>You must be at least level 14 and have two other Flight Powers before selecting Group Fly.",
+        "shortHelp": "Toggle: Team Fly",
+        "icon": "flight_groupfly.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Fly"
+        ],
+        "allowedSetCategories": [
+          "Flight",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "endurance": 1.3,
+          "activationTime": 2.03,
+          "activatePeriod": 2,
+          "effectArea": "AoE",
+          "radius": 60,
+          "maxTargets": 255,
+          "movement": {
+            "fly": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "movement": 2.25
+          },
+          "buffDuration": 2.25
+        }
+      },
+      {
         "name": "Evasive Maneuvers",
         "fullName": "Pool.Flight.Afterburner",
-        "rank": 4,
+        "rank": 5,
         "available": 13,
         "description": "While Fly, Hover or Group Fly are active, Evasive Maneuvers increases fly speed and movement control. It will also grant resistance against knockback and protection against -Fly and Immobilization.<br><br>Evasive Maneuvers' flight speed buff stacks with other flight powers, and isn't suppressed by combat.<br><br><color #fcfc95>Notes: Evasive Maneuvers provides a moderate amount of Defense even while on the ground, but this defense is lost if you attack, buff allies, give an order to pets or interact with a mission objective.<br><br>You must be at least level 14 and have two other Flight Powers before selecting Evasive Maneuvers.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
         "shortHelp": "Toggle: Self +FlySpeed, Res(-Fly, Immobilize, Knockback), +Def(Special), +Flight Control",
         "icon": "flight_evasivemaneuvers.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1373,45 +1171,6 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
-        "name": "Group Fly",
-        "fullName": "Pool.Flight.Group_Fly",
-        "rank": 5,
-        "available": 13,
-        "description": "You can endow your nearby teammates with Flight. Be mindful! Your friends will fall if you run out of Endurance or if they travel too far away from you. Group Fly travel speed is slower than Fly.<br><br>You must be at least level 14 and have two other Flight Powers before selecting Group Fly.",
-        "shortHelp": "Toggle: Team Fly",
-        "icon": "flight_groupfly.png",
-        "powerType": "Toggle",
-        "requires": "Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Fly"
-        ],
-        "allowedSetCategories": [
-          "Flight",
-          "Universal Travel"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "endurance": 1.3,
-          "activationTime": 2.03,
-          "activatePeriod": 2,
-          "effectArea": "AoE",
-          "radius": 60,
-          "maxTargets": 255,
-          "movement": {
-            "fly": {
-              "scale": 0.1,
-              "table": "Melee_Ones"
-            }
-          },
-          "durations": {
-            "movement": 2.25
-          },
-          "buffDuration": 2.25
-        }
-      },
-      {
         "name": "Afterburner",
         "fullName": "Pool.Flight.Fly_Boost",
         "rank": 6,
@@ -1420,9 +1179,11 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self +FlySpeed (Special)",
         "icon": "flight_afterburner.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Flight.Fly",
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 60,
@@ -1452,113 +1213,15 @@ export const POWER_POOLS_RAW = {
     "requires": "",
     "powers": [
       {
-        "name": "Project Will",
-        "fullName": "Pool.Force_of_Will.Project_Will",
-        "rank": 1,
-        "available": 0,
-        "description": "You manifest your willpower into a blast and project it toward a distant foe, causing moderate psionic and smashing damage. Project Will has a fair chance to knock the target down.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
-        "shortHelp": "Ranged, Light DMG(Psionic), Foe Knockdown",
-        "icon": "forceofwill_projectwill.png",
-        "powerType": "Click",
-        "requires": "",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 5,
-          "endurance": 7.54,
-          "activationTime": 2.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Psionic",
-              "scale": 1.16,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.16,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.16,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.16,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.16,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.16,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 2.049,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 2.0491,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 2.0491,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 2.0489,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 2.0491,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 2.0489,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Ranged_Ones"
-          }
-        }
-      },
-      {
         "name": "Weaken Resolve",
         "fullName": "Pool.Force_of_Will.Weaken_Resolve",
-        "rank": 2,
+        "rank": 1,
         "available": 0,
         "description": "You overwhelm your foe with sheer strength of will, reducing their defense, damage resistance, and chance to hit!<br><br><color #fcfc95>Recharge: Slow.</color>",
         "shortHelp": "Ranged, Foe -Resist, -Defense, -To Hit",
         "icon": "forceofwill_weakenresolve.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1628,6 +1291,56 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
+        "name": "Project Will",
+        "fullName": "Pool.Force_of_Will.Project_Will",
+        "rank": 2,
+        "available": 0,
+        "description": "You manifest your willpower into a blast and project it toward a distant foe, causing moderate psionic and smashing damage. Project Will has a fair chance to knock the target down.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
+        "shortHelp": "Ranged, Light DMG(Psionic), Foe Knockdown",
+        "icon": "forceofwill_projectwill.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 5,
+          "endurance": 7.54,
+          "activationTime": 2.07,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Psionic",
+              "scale": 1.16,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 2.049,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 1.34,
+            "table": "Ranged_Ones"
+          }
+        }
+      },
+      {
         "name": "Mighty Leap",
         "fullName": "Pool.Force_of_Will.Mighty_Leap",
         "rank": 3,
@@ -1636,6 +1349,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Long Jump, (Special)",
         "icon": "forceofwill_mightyleap.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1685,6 +1399,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged Cone, Minor DMG(Psionic/Smashing), Foe Knockdown",
         "icon": "forceofwill_wallofforce.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Pool.Force_of_Will.Weaken_Resolve Pool.Force_of_Will.Project_Will + Pool.Force_of_Will.Mighty_Leap + Pool.Force_of_Will.Wall_of_Force + Pool.Force_of_Will.Unleash_Potential + 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1722,31 +1437,6 @@ export const POWER_POOLS_RAW = {
               "table": "Ranged_Damage"
             },
             {
-              "type": "Psionic",
-              "scale": 0.6447,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.6447,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.6447,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.6447,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.6447,
-              "table": "Ranged_InherentDamage"
-            },
-            {
               "type": "Smashing",
               "scale": 0.4194,
               "table": "Ranged_PvPDamage"
@@ -1754,31 +1444,6 @@ export const POWER_POOLS_RAW = {
             {
               "type": "Psionic",
               "scale": 0.4194,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.8388,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.8388,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.8388,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.8388,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.8388,
               "table": "Ranged_PvPDamage"
             }
           ],
@@ -1797,6 +1462,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, +Regen, +Recovery, +Defense",
         "icon": "forceofwill_unleashpotential.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Force_of_Will.Weaken_Resolve Pool.Force_of_Will.Project_Will + Pool.Force_of_Will.Mighty_Leap + Pool.Force_of_Will.Wall_of_Force + Pool.Force_of_Will.Unleash_Potential + 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1888,9 +1554,11 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "PBAoE Melee, Self +Jump, Foe Knockdown",
         "icon": "forceofwill_stomp.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Force_of_Will.Mighty_Leap",
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 120,
@@ -1916,14 +1584,92 @@ export const POWER_POOLS_RAW = {
     "requires": "",
     "powers": [
       {
+        "name": "Stealth",
+        "fullName": "Pool.Invisibility.Stealth",
+        "rank": 1,
+        "available": 0,
+        "description": "You can bend light around yourself to become Invisible. While this power is active, you are almost impossible to detect. If, however, you attack while using this power, you will be discovered and will lose your Stealth and some of your Defense bonus.<br><br>Sending commands to pets, buffing or healing allies will also lower the defense and stealth granted by this power.",
+        "shortHelp": "Toggle: Self Stealth, +DEF(All)",
+        "icon": "invisibility_stealth.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "endurance": 0.1625,
+          "activationTime": 0.73,
+          "activatePeriod": 0.5,
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "toxic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Grant Invisibility",
         "fullName": "Pool.Invisibility.Grant_Invisibility",
-        "rank": 1,
+        "rank": 2,
         "available": 0,
         "description": "Grants a targeted teammate or leaguemate Invisibility. The Invisibility lasts about 2 minutes. While your ally is Invisible, he probably will not be detected unless he attacks a target. If he attacks, he is still hard to see and maintains some bonus to Defense to all attacks.<br><br>This power works with other Concealment related powers.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
         "shortHelp": "Ranged, Teammate Stealth, +DEF(All)",
         "icon": "invisibility_groupinvisibility.png",
         "powerType": "Click",
+        "targetType": "Teammate",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2054,145 +1800,6 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
-        "name": "Stealth",
-        "fullName": "Pool.Invisibility.Stealth",
-        "rank": 2,
-        "available": 0,
-        "description": "You can bend light around yourself to become Invisible. While this power is active, you are almost impossible to detect. If, however, you attack while using this power, you will be discovered and will lose your Stealth and some of your Defense bonus.<br><br>Sending commands to pets, buffing or healing allies will also lower the defense and stealth granted by this power.",
-        "shortHelp": "Toggle: Self Stealth, +DEF(All)",
-        "icon": "invisibility_stealth.png",
-        "powerType": "Toggle",
-        "requires": "",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "endurance": 0.1625,
-          "activationTime": 0.73,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "stealth": {
-            "stealthPvE": {
-              "scale": 55,
-              "table": "Melee_Ones"
-            },
-            "stealthPvP": {
-              "scale": 611,
-              "table": "Melee_Ones"
-            }
-          },
-          "durations": {
-            "stealth": 0.75,
-            "threatDebuff": 0.75,
-            "defenseBuffSuppressible": 0.75,
-            "defenseBuff": 0.75
-          },
-          "threatDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "defenseBuffSuppressible": {
-            "ranged": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "aoe": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "toxic": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "defenseBuff": {
-            "ranged": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "aoe": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "toxic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Infiltration",
         "fullName": "Pool.Invisibility.Invisibility",
         "rank": 3,
@@ -2201,6 +1808,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self, +Jump, +Run Speed, Self Stealth, +DEF(All)",
         "icon": "invisibility_infiltration.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2221,89 +1829,50 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "endurance": 0.2275,
           "activatePeriod": 0.5,
+          "effectArea": "SingleTarget"
+        }
+      },
+      {
+        "name": "Phase Shift",
+        "fullName": "Pool.Invisibility.Phase_Shift",
+        "rank": 4,
+        "available": 13,
+        "description": "You can Phase Shift to become out of sync with normal space. Although you do not become completely Invisible, you are translucent and hard to see. You are intangible, and cannot affect or be affected by those in normal space. Although this power is a toggle, you cannot remain Phase Shifted for more than 30 seconds, even if you still have Endurance.<br><br>You must be at least level 14 and have two other Concealment Powers before selecting Phase Shift.<br><br><color #fcfc95>Notes: This power cannot be used with Rest.</color><br><br><color #fcfc95>Recharge: Long.</color>",
+        "shortHelp": "Toggle: Self Intangible",
+        "icon": "invisibility_phaseshift.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility && Pool.Invisibility.Stealth Pool.Invisibility.Invisibility && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Invisibility && ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 180,
+          "endurance": 0.325,
+          "activationTime": 0.5,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "movement": {
-            "jumpHeight": {
-              "scale": 0.275,
-              "table": "Melee_Leap"
+          "stealth": {
+            "stealthPvE": {
+              "scale": 20,
+              "table": "Ranged_Ones"
             },
-            "jumpSpeed": {
-              "scale": 0.605,
-              "table": "Melee_SpeedJumping"
-            },
-            "movementControl": {
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "movementFriction": {
-              "scale": 2,
-              "table": "Melee_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.44,
-              "table": "Melee_SpeedRunning"
+            "stealthPvP": {
+              "scale": 222,
+              "table": "Ranged_Ones"
             }
           },
           "durations": {
-            "movement": 0.75,
             "stealth": 0.75,
-            "defenseBuffSuppressible": 0.75
+            "threatDebuff": 0.75
           },
-          "stealth": {
-            "stealthPvE": {
-              "scale": 36,
-              "table": "Melee_Ones"
-            },
-            "stealthPvP": {
-              "scale": 389,
-              "table": "Melee_Ones"
-            }
-          },
-          "defenseBuffSuppressible": {
-            "ranged": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "aoe": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "toxic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            }
+          "threatDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
           },
           "buffDuration": 0.75
         }
@@ -2311,12 +1880,13 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Misdirection",
         "fullName": "Pool.Invisibility.Misdirection",
-        "rank": 4,
+        "rank": 5,
         "available": 13,
         "description": "You redirect the anger of enemies around you, placating them. This causes them to break off their attacks. The momentary lack of awareness this causes also leads to reduced resistance to damage for a short time.<br><br>You must be at least level 14 and have trained any two other Concealment powers before you can train this power.<br><br><color #fcfc95>Recharge: Long.</color>",
         "shortHelp": "PBAoE, Foe Placate, -Res(All)",
         "icon": "invisibility_placate.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility && Pool.Invisibility.Stealth Pool.Invisibility.Invisibility && || Pool.Invisibility.Stealth Pool.Invisibility.Phase_Shift && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Invisibility && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Phase_Shift && || Pool.Invisibility.Invisibility Pool.Invisibility.Phase_Shift && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2379,49 +1949,6 @@ export const POWER_POOLS_RAW = {
           },
           "buffDuration": 15
         }
-      },
-      {
-        "name": "Phase Shift",
-        "fullName": "Pool.Invisibility.Phase_Shift",
-        "rank": 5,
-        "available": 13,
-        "description": "You can Phase Shift to become out of sync with normal space. Although you do not become completely Invisible, you are translucent and hard to see. You are intangible, and cannot affect or be affected by those in normal space. Although this power is a toggle, you cannot remain Phase Shifted for more than 30 seconds, even if you still have Endurance.<br><br>You must be at least level 14 and have two other Concealment Powers before selecting Phase Shift.<br><br><color #fcfc95>Notes: This power cannot be used with Rest.</color><br><br><color #fcfc95>Recharge: Long.</color>",
-        "shortHelp": "Toggle: Self Intangible",
-        "icon": "invisibility_phaseshift.png",
-        "powerType": "Toggle",
-        "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility && Pool.Invisibility.Stealth Pool.Invisibility.Invisibility && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Invisibility && ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 180,
-          "endurance": 0.325,
-          "activationTime": 0.5,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "stealth": {
-            "stealthPvE": {
-              "scale": 20,
-              "table": "Ranged_Ones"
-            },
-            "stealthPvP": {
-              "scale": 222,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "stealth": 0.75,
-            "threatDebuff": 0.75
-          },
-          "threatDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 0.75
-        }
       }
     ]
   },
@@ -2434,59 +1961,15 @@ export const POWER_POOLS_RAW = {
     "requires": "",
     "powers": [
       {
-        "name": "Assault",
-        "fullName": "Pool.Leadership.Assault",
-        "rank": 1,
-        "available": 0,
-        "description": "While this power is active, you and your nearby teammates deal more damage and are resistant to Taunt and Placate.<br><br><color #fcfc95>Recharge: Slow.</color>",
-        "shortHelp": "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
-        "icon": "leadership_assault.png",
-        "powerType": "Toggle",
-        "requires": "",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 15,
-          "endurance": 0.78,
-          "activationTime": 1.5,
-          "activatePeriod": 2,
-          "effectArea": "AoE",
-          "radius": 60,
-          "maxTargets": 255,
-          "damageBuff": {
-            "scale": 1.5,
-            "table": "Ranged_Buff_Dmg"
-          },
-          "durations": {
-            "damageBuff": 2.25,
-            "mezResistance": 2.25
-          },
-          "mezResistance": {
-            "taunt": {
-              "scale": 1.75,
-              "table": "Ranged_Res_Boolean"
-            },
-            "placate": {
-              "scale": 1.75,
-              "table": "Ranged_Res_Boolean"
-            }
-          },
-          "buffDuration": 2.25
-        }
-      },
-      {
         "name": "Maneuvers",
         "fullName": "Pool.Leadership.Defense",
-        "rank": 2,
+        "rank": 1,
         "available": 0,
         "description": "A good leader knows how to protect his team. While active, this power increases the Defense of yourself and all nearby teammates to all attacks.<br><br><color #fcfc95>Recharge: Slow.</color>",
         "shortHelp": "Toggle: PBAoE, Team +DEF(All)",
         "icon": "leadership_defense.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2559,6 +2042,53 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
+        "name": "Assault",
+        "fullName": "Pool.Leadership.Assault",
+        "rank": 2,
+        "available": 0,
+        "description": "While this power is active, you and your nearby teammates deal more damage and are resistant to Taunt and Placate.<br><br><color #fcfc95>Recharge: Slow.</color>",
+        "shortHelp": "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
+        "icon": "leadership_assault.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 15,
+          "endurance": 0.78,
+          "activationTime": 1.5,
+          "activatePeriod": 2,
+          "effectArea": "AoE",
+          "radius": 60,
+          "maxTargets": 255,
+          "damageBuff": {
+            "scale": 1.5,
+            "table": "Ranged_Buff_Dmg"
+          },
+          "durations": {
+            "damageBuff": 2.25,
+            "mezResistance": 2.25
+          },
+          "mezResistance": {
+            "taunt": {
+              "scale": 1.75,
+              "table": "Ranged_Res_Boolean"
+            },
+            "placate": {
+              "scale": 1.75,
+              "table": "Ranged_Res_Boolean"
+            }
+          },
+          "buffDuration": 2.25
+        }
+      },
+      {
         "name": "Tactics",
         "fullName": "Pool.Leadership.Tactics",
         "rank": 3,
@@ -2567,6 +2097,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
         "icon": "leadership_tactics.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Leadership.Defense Pool.Leadership.Assault ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2635,6 +2166,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)",
         "icon": "leadership_vengence.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Tactics && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2789,6 +2321,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Team +Recovery, -End Cost",
         "icon": "leadership_victoryrush.png",
         "powerType": "Click",
+        "targetType": "DeadFoe",
         "requires": "Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Defense Pool.Leadership.Vengeance && || Pool.Leadership.Assault Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Vengeance && || Pool.Leadership.Tactics Pool.Leadership.Vengeance && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2819,14 +2352,64 @@ export const POWER_POOLS_RAW = {
     "requires": "",
     "powers": [
       {
+        "name": "Jump Kick",
+        "fullName": "Pool.Leaping.Jump_Kick",
+        "rank": 1,
+        "available": 0,
+        "description": "A good jumping kick attack that may knock foes down. Good if you are looking for another attack power.",
+        "shortHelp": "Melee, DMG(Smash), Foe Knockdown",
+        "icon": "jump_jumpkick.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Melee Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 2.8,
+          "endurance": 4.202,
+          "activationTime": 1.5,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 1.562,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockup": {
+            "scale": 4,
+            "table": "Melee_Knockback"
+          }
+        }
+      },
+      {
         "name": "Combat Jumping",
         "fullName": "Pool.Leaping.Combat_Jumping",
-        "rank": 1,
+        "rank": 2,
         "available": 0,
         "description": "While active, Combat Jumping increases your Defense to all attacks, and adds resistance to Immobilization. Moderately increases your jump height and distance while providing good air control.<br><br>Combat Jumping can be active at the same time as other jumping toggles, but only the strongest jump buff will apply.",
         "shortHelp": "Toggle: Self +Jump, +DEF(All), Res(Immobilization)",
         "icon": "jump_combatjump.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2924,104 +2507,6 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
-        "name": "Jump Kick",
-        "fullName": "Pool.Leaping.Jump_Kick",
-        "rank": 2,
-        "available": 0,
-        "description": "A good jumping kick attack that may knock foes down. Good if you are looking for another attack power.",
-        "shortHelp": "Melee, DMG(Smash), Foe Knockdown",
-        "icon": "jump_jumpkick.png",
-        "powerType": "Click",
-        "requires": "",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Melee Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 2.8,
-          "endurance": 4.202,
-          "activationTime": 1.5,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.562,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.562,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.781,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.562,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.562,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.562,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockup": {
-            "scale": 4,
-            "table": "Melee_Knockback"
-          }
-        }
-      },
-      {
         "name": "Super Jump",
         "fullName": "Pool.Leaping.Long_Jump",
         "rank": 3,
@@ -3030,6 +2515,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Long Jump",
         "icon": "jump_longjump.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3079,12 +2565,16 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Knockback, Hold)",
         "icon": "jump_acrobatics.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Leaping.Jump_Kick Pool.Leaping.Combat_Jumping && Pool.Leaping.Jump_Kick Pool.Leaping.Long_Jump && || Pool.Leaping.Combat_Jumping Pool.Leaping.Long_Jump && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
           "Knockback",
           "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback"
         ],
         "effects": {
           "accuracy": 1,
@@ -3131,6 +2621,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "PBAoE DMG(Smash), Foe Knockdown; Self Teleport",
         "icon": "jump_springattack.png",
         "powerType": "Click",
+        "targetType": "Dead Teammate",
         "requires": "Pool.Leaping.Jump_Kick Pool.Leaping.Combat_Jumping && Pool.Leaping.Jump_Kick Pool.Leaping.Long_Jump && || Pool.Leaping.Combat_Jumping Pool.Leaping.Long_Jump && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3168,9 +2659,11 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Special",
         "icon": "jump_highjump.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Leaping.Long_Jump",
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 30,
@@ -3198,6 +2691,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Placate (Foe)",
         "icon": "manipulation_placate.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3232,6 +2726,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Targeted AoE, Taunt (Foe)",
         "icon": "manipulation_provoke.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3266,6 +2761,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Fear (Foe)",
         "icon": "manipulation_intimidate.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3301,6 +2797,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "PBAoE, Fear (Foe)",
         "icon": "manipulation_invokepanic.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke && Pool.Manipulation.Challenge Pool.Manipulation.Intimidate && || Pool.Manipulation.Provoke Pool.Manipulation.Intimidate && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3336,6 +2833,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, Heal over Time, +DMG(All), +Rech, +Rec, Self Resurrect (Special)",
         "icon": "manipulation_unrelenting.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke && Pool.Manipulation.Challenge Pool.Manipulation.Intimidate && || Pool.Manipulation.Challenge Pool.Manipulation.Invoke_Panic && || Pool.Manipulation.Provoke Pool.Manipulation.Intimidate && || Pool.Manipulation.Provoke Pool.Manipulation.Invoke_Panic && || Pool.Manipulation.Intimidate Pool.Manipulation.Invoke_Panic && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3352,22 +2850,13 @@ export const POWER_POOLS_RAW = {
           "recharge": 600,
           "activationTime": 1.97,
           "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Heal",
-              "scale": 0.02,
-              "table": "Melee_Ones",
-              "duration": 30,
-              "tickRate": 1
-            },
-            {
-              "type": "Heal",
-              "scale": 0.5,
-              "table": "Melee_Ones",
-              "duration": 0.5,
-              "tickRate": 2
-            }
-          ],
+          "damage": {
+            "type": "Heal",
+            "scale": 0.02,
+            "table": "Melee_Ones",
+            "duration": 30,
+            "tickRate": 1
+          },
           "rechargeBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
@@ -3407,6 +2896,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Close, Heal(Ally)",
         "icon": "medicine_aid.png",
         "powerType": "Click",
+        "targetType": "Ally (Alive)",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3436,6 +2926,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, +Status Protection(Ally, PvE), +Status Resistance(Ally, PvP) OR -DMG(Foe, All), -Rech(Foe), -ToHit(Foe)",
         "icon": "medicine_injection.png",
         "powerType": "Click",
+        "targetType": "Any",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3456,47 +2947,7 @@ export const POWER_POOLS_RAW = {
           "recharge": 12,
           "endurance": 13,
           "activationTime": 2.93,
-          "effectArea": "SingleTarget",
-          "confuse": {
-            "mag": 1,
-            "scale": 30,
-            "table": "Ranged_Res_Boolean"
-          },
-          "effectDuration": 45,
-          "durations": {
-            "confuse": 45,
-            "fear": 45,
-            "hold": 45,
-            "immobilize": 45,
-            "stun": 45,
-            "sleep": 45
-          },
-          "fear": {
-            "mag": 1,
-            "scale": 30,
-            "table": "Ranged_Res_Boolean"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 30,
-            "table": "Ranged_Res_Boolean"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 30,
-            "table": "Ranged_Res_Boolean"
-          },
-          "stun": {
-            "mag": 1,
-            "scale": 30,
-            "table": "Ranged_Res_Boolean"
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 30,
-            "table": "Ranged_Res_Boolean"
-          },
-          "buffDuration": 45
+          "effectArea": "SingleTarget"
         }
       },
       {
@@ -3508,6 +2959,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, Heal, +Res(Stun), +EndGain(Synergy)",
         "icon": "medicine_selfadministration.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3537,63 +2989,21 @@ export const POWER_POOLS_RAW = {
             }
           },
           "durations": {
-            "mezResistance": 45,
-            "enduranceGain": 8.1
-          },
-          "enduranceGain": {
-            "scale": 0.05,
-            "table": "Melee_Ones"
+            "mezResistance": 45
           },
           "buffDuration": 45
         }
       },
       {
-        "name": "Field Medic",
-        "fullName": "Pool.Medicine.Field_Medic",
-        "rank": 4,
-        "available": 13,
-        "description": "Your skill as a Field Medic is unparalleled. In addition to permanently removing the interrupt time Aid Other and adding Endurance recovery to Aid Self, using this power will grant a powerful boost in the effectiveness of your healing powers and reduce your resistance to healing debuffs.<br><br>You must be at least level 14 and have trained any two other Medicine powers before you can train as a Field Medic.<br><br><color #fcfc95>Recharge: Very Long.</color>",
-        "shortHelp": "Self, +Heal, -Res(Heal), Special",
-        "icon": "medicine_fieldmedic.png",
-        "powerType": "Click",
-        "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Aid_Other Pool.Medicine.Resuscitate && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Resuscitate && || Pool.Medicine.Aid_Self Pool.Medicine.Resuscitate && ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 300,
-          "endurance": 19.5,
-          "activationTime": 3.33,
-          "effectArea": "SingleTarget",
-          "damageBuff": {
-            "scale": 0.25,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "damageBuff": 60,
-            "resistanceDebuff": 60
-          },
-          "resistanceDebuff": {
-            "heal": {
-              "scale": 0.25,
-              "table": "Melee_Ones"
-            }
-          },
-          "buffDuration": 60
-        }
-      },
-      {
         "name": "Resuscitate",
         "fullName": "Pool.Medicine.Resuscitate",
-        "rank": 5,
+        "rank": 4,
         "available": 13,
         "description": "You revive a fallen ally, restoring health, but not endurance, completely. The target will also be protected from incurring any XP Debt for 15 seconds. This power is interruptible.<br><br>You must be at least level 14 and have two other Medicine Powers before selecting Resuscitate.<br><br><color #fcfc95>Recharge: Long.</color>",
         "shortHelp": "Close, Resurrect(Ally)",
         "icon": "medicine_smellingsalts.png",
         "powerType": "Click",
+        "targetType": "Dead Teammate",
         "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3620,6 +3030,46 @@ export const POWER_POOLS_RAW = {
             "tickRate": 1
           }
         }
+      },
+      {
+        "name": "Field Medic",
+        "fullName": "Pool.Medicine.Field_Medic",
+        "rank": 5,
+        "available": 13,
+        "description": "Your skill as a Field Medic is unparalleled. In addition to permanently removing the interrupt time Aid Other and adding Endurance recovery to Aid Self, using this power will grant a powerful boost in the effectiveness of your healing powers and reduce your resistance to healing debuffs.<br><br>You must be at least level 14 and have trained any two other Medicine powers before you can train as a Field Medic.<br><br><color #fcfc95>Recharge: Very Long.</color>",
+        "shortHelp": "Self, +Heal, -Res(Heal), Special",
+        "icon": "medicine_fieldmedic.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Aid_Other Pool.Medicine.Resuscitate && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Resuscitate && || Pool.Medicine.Aid_Self Pool.Medicine.Resuscitate && ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 300,
+          "endurance": 19.5,
+          "activationTime": 3.33,
+          "effectArea": "SingleTarget",
+          "damageBuff": {
+            "scale": 0.25,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "damageBuff": 60,
+            "resistanceDebuff": 60
+          },
+          "resistanceDebuff": {
+            "heal": {
+              "scale": 0.25,
+              "table": "Melee_Ones"
+            }
+          },
+          "buffDuration": 60
+        }
       }
     ]
   },
@@ -3632,113 +3082,15 @@ export const POWER_POOLS_RAW = {
     "requires": "",
     "powers": [
       {
-        "name": "Arcane Bolt",
-        "fullName": "Pool.Sorcery.Arcane_Bolt",
-        "rank": 1,
-        "available": 0,
-        "description": "You channel arcane energies into a concentrated blast and release them upon your target dealing Moderate energy damage and possibly knocking them down. <br><br>When you acquire this power, any power you activate will have a chance to grant you Arcane Power. When empowered with Arcane Power, Arcane Bolt will be recharged and using it will inflict bonus damage.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
-        "shortHelp": "Ranged, Moderate DMG(Energy), Foe Knockdown",
-        "icon": "sorcerypool_arcanebolt.png",
-        "powerType": "Click",
-        "requires": "",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 7,
-          "endurance": 9.62,
-          "activationTime": 1.73,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1.48,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.48,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.48,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.48,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.48,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.48,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.891,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.9455,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.891,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.891,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.891,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.891,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Ranged_Ones"
-          }
-        }
-      },
-      {
         "name": "Spirit Ward",
         "fullName": "Pool.Sorcery.Spirit_Ward",
-        "rank": 2,
+        "rank": 1,
         "available": 0,
         "description": "You encompass an ally in a mystical Spirit Ward, which causes them to gain a moderate amount of damage absorption instantly, in addition to a small amount of damage absorption every few seconds while the power is active.<br><br><color #fcfc95>Recharge: Slow.</color>",
         "shortHelp": "Toggle: Ally, +Absorb over time",
         "icon": "sorcerypool_spiritward.png",
         "powerType": "Toggle",
+        "targetType": "Ally (Alive)",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3770,6 +3122,56 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
+        "name": "Arcane Bolt",
+        "fullName": "Pool.Sorcery.Arcane_Bolt",
+        "rank": 2,
+        "available": 0,
+        "description": "You channel arcane energies into a concentrated blast and release them upon your target dealing Moderate energy damage and possibly knocking them down. <br><br>When you acquire this power, any power you activate will have a chance to grant you Arcane Power. When empowered with Arcane Power, Arcane Bolt will be recharged and using it will inflict bonus damage.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Moderate.</color>",
+        "shortHelp": "Ranged, Moderate DMG(Energy), Foe Knockdown",
+        "icon": "sorcerypool_arcanebolt.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 7,
+          "endurance": 9.62,
+          "activationTime": 1.73,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1.48,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.891,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 1.34,
+            "table": "Ranged_Ones"
+          }
+        }
+      },
+      {
         "name": "Mystic Flight",
         "fullName": "Pool.Sorcery.Mystic_Flight",
         "rank": 3,
@@ -3778,6 +3180,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Fly, (Special)",
         "icon": "sorcerypool_mysticflight.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3826,6 +3229,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged Friend/Foe, Special",
         "icon": "sorcerypool_enflame.png",
         "powerType": "Toggle",
+        "targetType": "Any",
         "requires": "Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt + Pool.Sorcery.Mystic_Flight + 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3864,6 +3268,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, +Res(All Dmg, Hold, Sleep, Immobilize, Knockdown, Disorient)",
         "icon": "sorcerypool_runeofprotection.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt + Pool.Sorcery.Mystic_Flight + 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3974,9 +3379,11 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Special",
         "icon": "sorcerypool_arcanebolt.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Pool.Sorcery.Arcane_Bolt",
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "range": 80,
@@ -3993,9 +3400,14 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Click, Self Teleport",
         "icon": "sorcerypool_translocation.png",
         "powerType": "Click",
+        "targetType": "Dead Teammate",
         "requires": "Pool.Sorcery.Mystic_Flight",
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
         "effects": {
           "accuracy": 1,
           "range": 350,
@@ -4027,6 +3439,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Melee, Light DMG(Smash), Foe Disorient",
         "icon": "superspeed_flurry.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4062,60 +3475,6 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 1.8,
               "tickRate": 0.25
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.144,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.144,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.144,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.144,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.143,
-              "table": "Melee_InherentDamage",
-              "duration": 1.8,
-              "tickRate": 0.25
-            },
-            {
-              "type": "Smashing",
-              "scale": 2.669,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.1668,
-              "table": "Melee_PvPDamage",
-              "duration": 1.8,
-              "tickRate": 0.25
-            },
-            {
-              "type": "Smashing",
-              "scale": 2.669,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 2.669,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 2.669,
-              "table": "Melee_PvPDamage"
             }
           ],
           "stun": {
@@ -4134,11 +3493,13 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self +Recharge",
         "icon": "superspeed_acceleratedcombat.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
           "Recharge"
         ],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "recharge": 450,
@@ -4167,6 +3528,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Speed",
         "icon": "superspeed_superspeed.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4199,9 +3561,7 @@ export const POWER_POOLS_RAW = {
           },
           "durations": {
             "movement": 0.75,
-            "slow": 0.75,
-            "stealth": 0.75,
-            "threatDebuff": 0.75
+            "slow": 0.75
           },
           "slow": {
             "movementControl": {
@@ -4214,59 +3574,19 @@ export const POWER_POOLS_RAW = {
             }
           },
           "selfPenalty": true,
-          "stealth": {
-            "stealthPvE": {
-              "scale": 35,
-              "table": "Melee_Ones"
-            }
-          },
-          "threatDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
           "buffDuration": 0.75
-        }
-      },
-      {
-        "name": "Burnout",
-        "fullName": "Pool.Speed.Burnout",
-        "rank": 4,
-        "available": 13,
-        "description": "Burnout allows you to instantly recharge all of your Primary and Secondary powers. Burnout is very expensive in terms of endurance, and reduces your maximum endurance slightly for 60 seconds after use.<br><br>You must be at least level 14 and have two other Speed Powers before selecting Burnout.<br><br><color #fcfc95>Recharge: Extremely Long.</color>",
-        "shortHelp": "Self +Recharge",
-        "icon": "superspeed_burnout.png",
-        "powerType": "Click",
-        "requires": "Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 1800,
-          "endurance": 48.75,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "maxEndBuff": {
-            "scale": 25,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "maxEndBuff": 60
-          },
-          "buffDuration": 60
         }
       },
       {
         "name": "Whirlwind",
         "fullName": "Pool.Speed.Whirlwind",
-        "rank": 5,
+        "rank": 4,
         "available": 13,
         "description": "You spin around at an amazing speed to create a Whirlwind around yourself. Any foes that enter this Whirlwind will be tossed into the air.<br><br>You must be at least level 14 and have two other Speed Powers before selecting Whirlwind.<br><br><color #fcfc95>Recharge: Slow.</color>",
         "shortHelp": "Toggle: PBAoE, Foe Knockback",
         "icon": "superspeed_whirlwind.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4312,6 +3632,39 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
+        "name": "Burnout",
+        "fullName": "Pool.Speed.Burnout",
+        "rank": 5,
+        "available": 13,
+        "description": "Burnout allows you to instantly recharge all of your Primary and Secondary powers. Burnout is very expensive in terms of endurance, and reduces your maximum endurance slightly for 60 seconds after use.<br><br>You must be at least level 14 and have two other Speed Powers before selecting Burnout.<br><br><color #fcfc95>Recharge: Extremely Long.</color>",
+        "shortHelp": "Self +Recharge",
+        "icon": "superspeed_burnout.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 1800,
+          "endurance": 48.75,
+          "activationTime": 1,
+          "effectArea": "SingleTarget",
+          "maxEndBuff": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "maxEndBuff": 60
+          },
+          "buffDuration": 60
+        }
+      },
+      {
         "name": "Speed Phase",
         "fullName": "Pool.Speed.SpeedPhase",
         "rank": 6,
@@ -4320,9 +3673,11 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self Phase (Special)",
         "icon": "superspeed_speedphase.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Speed.Super_Speed",
         "maxSlots": 6,
         "allowedEnhancements": [],
+        "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
           "endurance": 0.3333,
@@ -4358,6 +3713,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Teleport Teammate or Foe",
         "icon": "teleportation_teleportfoe.png",
         "powerType": "Click",
+        "targetType": "Any",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4389,6 +3745,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged (Location), Self Teleport, +ToHit",
         "icon": "combat_teleport.png",
         "powerType": "Click",
+        "targetType": "Dead Teammate",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4432,6 +3789,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged (Location), Self Teleport",
         "icon": "teleportation_teleport.png",
         "powerType": "Click",
+        "targetType": "Dead Teammate",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4451,54 +3809,15 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
-        "name": "Fold Space",
-        "fullName": "Pool.Teleportation.Long_Range_Teleport",
-        "rank": 4,
-        "available": 13,
-        "description": "Fold Space teleports enemies from up to 100ft away into melee range of the caster.<br><br>You must be at least level 14 and have two other Teleportation Powers before selecting Fold Space.<br><br><color #fcfc95>Recharge: Long.</color>",
-        "shortHelp": "Melee (PBAoE), Foe Teleport",
-        "icon": "pool_fold_space.png",
-        "powerType": "Click",
-        "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 13.52,
-          "activationTime": 1.67,
-          "effectArea": "AoE",
-          "radius": 100,
-          "maxTargets": 16,
-          "teleport": {
-            "scale": 4.1,
-            "table": "Ranged_Ones"
-          },
-          "mezResistance": {
-            "teleport": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
-        }
-      },
-      {
         "name": "Team Teleport",
         "fullName": "Pool.Teleportation.Team_Teleport",
-        "rank": 5,
+        "rank": 4,
         "available": 13,
         "description": "You can Teleport yourself and your nearby teammates to a targeted location. Teammates must be in close proximity to you. Team Teleport costs slightly more Endurance than Teleport, but you can Teleport your entire team for no additional cost.<br><br>You must be at least level 14 and have two other Teleportation Powers before selecting Team Teleport.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
         "shortHelp": "Ranged (Location), Team Teleport",
         "icon": "teleportation_groupteleport.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4523,6 +3842,51 @@ export const POWER_POOLS_RAW = {
             "scale": 3.1,
             "table": "Ranged_Ones"
           }
+        }
+      },
+      {
+        "name": "Fold Space",
+        "fullName": "Pool.Teleportation.Long_Range_Teleport",
+        "rank": 5,
+        "available": 13,
+        "description": "Fold Space teleports enemies from up to 100ft away into melee range of the caster.<br><br>You must be at least level 14 and have two other Teleportation Powers before selecting Fold Space.<br><br><color #fcfc95>Recharge: Long.</color>",
+        "shortHelp": "Melee (PBAoE), Foe Teleport",
+        "icon": "pool_fold_space.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 120,
+          "endurance": 13.52,
+          "activationTime": 1.67,
+          "effectArea": "AoE",
+          "radius": 100,
+          "maxTargets": 16,
+          "teleport": {
+            "scale": 4.1,
+            "table": "Ranged_Ones"
+          },
+          "mezResistance": {
+            "teleport": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
         }
       }
     ]

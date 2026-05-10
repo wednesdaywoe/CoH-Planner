@@ -32,6 +32,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge",
         "icon": "arcticmastery_chillblains.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -112,6 +113,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge",
         "icon": "arcticmastery_blockofice.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -188,6 +190,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
         "icon": "iceblast_iceblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Arctic_Mastery.Chilblain Epic.Arctic_Mastery.Block_of_Ice ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -239,6 +242,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
         "icon": "arcticmastery_shiver.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Arctic_Mastery.Chilblain Epic.Arctic_Mastery.Block_of_Ice ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -278,6 +282,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Recharge, -SPD",
         "icon": "iceblast_freezingrain.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic.Arctic_Mastery.Chilblain Epic.Arctic_Mastery.Block_of_Ice && Epic.Arctic_Mastery.Chilblain Epic.Arctic_Mastery.Ice_Blast && || Epic.Arctic_Mastery.Block_of_Ice Epic.Arctic_Mastery.Ice_Blast && || Epic.Arctic_Mastery.Chilblain Epic.Arctic_Mastery.Shiver && || Epic.Arctic_Mastery.Block_of_Ice Epic.Arctic_Mastery.Shiver && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -323,6 +328,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE) Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -361,6 +367,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -413,6 +420,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Blaster_Mace_Mastery.Web_Envelope Epic.Blaster_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -465,6 +473,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Spiderlings: Ranged Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Blaster_Mace_Mastery.Web_Envelope Epic.Blaster_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -501,6 +510,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Blaster_Mace_Mastery.Web_Envelope Epic.Blaster_Mace_Mastery.Scorpion_Shield && Epic.Blaster_Mace_Mastery.Web_Envelope Epic.Blaster_Mace_Mastery.Mace_Beam_Volley && || Epic.Blaster_Mace_Mastery.Web_Envelope Epic.Blaster_Mace_Mastery.Power_Boost && || Epic.Blaster_Mace_Mastery.Scorpion_Shield Epic.Blaster_Mace_Mastery.Mace_Beam_Volley && || Epic.Blaster_Mace_Mastery.Scorpion_Shield Epic.Blaster_Mace_Mastery.Power_Boost && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -551,6 +561,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -608,6 +619,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -653,6 +665,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Adept: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Blaster_Mu_Mastery.Static_Discharge Epic.Blaster_Mu_Mastery.Charged_Armor || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -689,6 +702,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Minor DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Blaster_Mu_Mastery.Static_Discharge Epic.Blaster_Mu_Mastery.Charged_Armor || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -772,6 +786,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Blaster_Mu_Mastery.Static_Discharge Epic.Blaster_Mu_Mastery.Charged_Armor && Epic.Blaster_Mu_Mastery.Static_Discharge Epic.Blaster_Mu_Mastery.Thunder_Strike && || Epic.Blaster_Mu_Mastery.Static_Discharge Epic.Blaster_Mu_Mastery.Electrifying_Fences && || Epic.Blaster_Mu_Mastery.Charged_Armor Epic.Blaster_Mu_Mastery.Thunder_Strike && || Epic.Blaster_Mu_Mastery.Charged_Armor Epic.Blaster_Mu_Mastery.Electrifying_Fences && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -847,6 +862,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Fire), Foe Immobilize",
         "icon": "pyremastery_ringoffire.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -916,6 +932,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -961,6 +978,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Fire)",
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Blaze_Mastery.Ring_of_Fire Epic.Blaze_Mastery.Char ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1006,6 +1024,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Blaze_Mastery.Ring_of_Fire Epic.Blaze_Mastery.Char ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1083,6 +1102,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Blaze_Mastery.Ring_of_Fire Epic.Blaze_Mastery.Char && Epic.Blaze_Mastery.Ring_of_Fire Epic.Blaze_Mastery.Fire_Blast && || Epic.Blaze_Mastery.Char Epic.Blaze_Mastery.Fire_Blast && || Epic.Blaze_Mastery.Ring_of_Fire Epic.Blaze_Mastery.Char && || Epic.Blaze_Mastery.Ring_of_Fire Epic.Blaze_Mastery.Melt_Armor && || Epic.Blaze_Mastery.Char Epic.Blaze_Mastery.Melt_Armor && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1147,6 +1167,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount",
         "icon": "bodymastery_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1179,6 +1200,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "gadgets_targetingdrone.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1230,6 +1252,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
         "icon": "bodymastery_laserbeameyes.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Body_Mastery.Conserve_Power Epic.Body_Mastery.Focused_Accuracy ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1278,6 +1301,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic.Body_Mastery.Conserve_Power Epic.Body_Mastery.Focused_Accuracy ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1315,6 +1339,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Minor DMG(Energy/Smash), Foe Knockback",
         "icon": "bodymastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Body_Mastery.Conserve_Power Epic.Body_Mastery.Focused_Accuracy && Epic.Body_Mastery.Conserve_Power Epic.Body_Mastery.Laser_Beam_Eyes && || Epic.Body_Mastery.Conserve_Power Epic.Body_Mastery.Physical_Perfection && || Epic.Body_Mastery.Focused_Accuracy Epic.Body_Mastery.Physical_Perfection && || Epic.Body_Mastery.Focused_Accuracy Epic.Body_Mastery.Laser_Beam_Eyes && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1379,6 +1404,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Endurance",
         "icon": "bodymastery_conservepower.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1410,6 +1436,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "gadgets_targetingdrone.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1461,6 +1488,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
         "icon": "bodymastery_laserbeameyes.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Body_Mastery_Stalker.Conserve_Power Epic.Body_Mastery_Stalker.Focused_Accuracy ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1509,6 +1537,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic.Body_Mastery_Stalker.Conserve_Power Epic.Body_Mastery_Stalker.Focused_Accuracy ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1546,6 +1575,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Minor DMG(Energy/Smash), Foe Knockback",
         "icon": "bodymastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Body_Mastery_Stalker.Conserve_Power Epic.Body_Mastery_Stalker.Focused_Accuracy && Epic.Body_Mastery_Stalker.Conserve_Power Epic.Body_Mastery_Stalker.Laser_Beam_Eyes && || Epic.Body_Mastery_Stalker.Conserve_Power Epic.Body_Mastery_Stalker.Physical_Perfection && || Epic.Body_Mastery_Stalker.Focused_Accuracy Epic.Body_Mastery_Stalker.Physical_Perfection && || Epic.Body_Mastery_Stalker.Focused_Accuracy Epic.Body_Mastery_Stalker.Laser_Beam_Eyes && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1610,6 +1640,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Heavy DoT(Lethal), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1677,6 +1708,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1748,6 +1780,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Leviathan_Mastery.Spirit_Shark Epic.Brute_Leviathan_Mastery.School_of_Sharks || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1812,6 +1845,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
         "icon": "arachnos_patron_coneslow.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Leviathan_Mastery.Spirit_Shark Epic.Brute_Leviathan_Mastery.School_of_Sharks || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1930,6 +1964,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Sentinel: Ranged Moderate DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Leviathan_Mastery.Spirit_Shark Epic.Brute_Leviathan_Mastery.School_of_Sharks && Epic.Brute_Leviathan_Mastery.Spirit_Shark Epic.Brute_Leviathan_Mastery.Chum_Spray && || Epic.Brute_Leviathan_Mastery.Spirit_Shark Epic.Brute_Leviathan_Mastery.Arctic_Breath && || Epic.Brute_Leviathan_Mastery.School_of_Sharks Epic.Brute_Leviathan_Mastery.Chum_Spray && || Epic.Brute_Leviathan_Mastery.School_of_Sharks Epic.Brute_Leviathan_Mastery.Arctic_Breath && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1978,6 +2013,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Heavy DMG(Energy/Smash), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2036,6 +2072,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE) Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2083,6 +2120,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Mace_Mastery.Mace_Blast Epic.Brute_Mace_Mastery.Web_Envelope || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2134,6 +2172,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Mace_Mastery.Mace_Blast Epic.Brute_Mace_Mastery.Web_Envelope || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2194,6 +2233,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Arachnobot: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Mace_Mastery.Mace_Blast Epic.Brute_Mace_Mastery.Web_Envelope && Epic.Brute_Mace_Mastery.Mace_Blast Epic.Brute_Mace_Mastery.Focused_Accuracy && || Epic.Brute_Mace_Mastery.Mace_Blast Epic.Brute_Mace_Mastery.Disruptor_Blast && || Epic.Brute_Mace_Mastery.Web_Envelope Epic.Brute_Mace_Mastery.Focused_Accuracy && || Epic.Brute_Mace_Mastery.Web_Envelope Epic.Brute_Mace_Mastery.Disruptor_Blast && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2241,6 +2281,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, High DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2306,6 +2347,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Minor DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2402,6 +2444,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Mu_Mastery.Mu_Lightning Epic.Brute_Mu_Mastery.Electrifying_Fences || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2479,6 +2522,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Mu_Mastery.Mu_Lightning Epic.Brute_Mu_Mastery.Electrifying_Fences || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2547,6 +2591,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Strike: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Mu_Mastery.Mu_Lightning Epic.Brute_Mu_Mastery.Electrifying_Fences && Epic.Brute_Mu_Mastery.Mu_Lightning Epic.Brute_Mu_Mastery.Ball_Lightning && || Epic.Brute_Mu_Mastery.Mu_Lightning Epic.Brute_Mu_Mastery.Static_Discharge && || Epic.Brute_Mu_Mastery.Electrifying_Fences Epic.Brute_Mu_Mastery.Ball_Lightning && || Epic.Brute_Mu_Mastery.Electrifying_Fences Epic.Brute_Mu_Mastery.Static_Discharge && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2594,6 +2639,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, High DoT(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2649,6 +2695,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2715,6 +2762,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "arachnos_patron_aoedamagedebuff.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Soul_Mastery.Gloom Epic.Brute_Soul_Mastery.Soul_Tentacles || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2747,6 +2795,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Soul_Mastery.Gloom Epic.Brute_Soul_Mastery.Soul_Tentacles || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2800,6 +2849,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Blood Widow: Melee Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Soul_Mastery.Gloom Epic.Brute_Soul_Mastery.Soul_Tentacles && Epic.Brute_Soul_Mastery.Gloom Epic.Brute_Soul_Mastery.Darkest_Night && || Epic.Brute_Soul_Mastery.Gloom Epic.Brute_Soul_Mastery.Dark_Obliteration && || Epic.Brute_Soul_Mastery.Soul_Tentacles Epic.Brute_Soul_Mastery.Darkest_Night && || Epic.Brute_Soul_Mastery.Soul_Tentacles Epic.Brute_Soul_Mastery.Dark_Obliteration && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2846,6 +2896,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "electrical_mastery_static_discharge.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2891,6 +2942,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "chargemastery_electricshackles.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2954,6 +3006,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "chargemastery_thunderstrike.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Electric_Shackles ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3024,6 +3077,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(Special)",
         "icon": "electrical_mastery_powersurge.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Electric_Shackles ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3101,6 +3155,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
         "icon": "electrical_mastery_em_pulse.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Electric_Shackles && Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Thunder_Strike && || Epic.Charge_Mastery.Electric_Shackles Epic.Charge_Mastery.Thunder_Strike && || Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Electric_Shackles && || Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Surge_of_Power && || Epic.Charge_Mastery.Electric_Shackles Epic.Charge_Mastery.Surge_of_Power && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3167,6 +3222,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
         "icon": "icemastery_iceblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3213,6 +3269,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Minor DMG(Cold/Lethal), Foe Sleep",
         "icon": "coldmastery_flashfreeze.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3265,6 +3322,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "icearmor_hoarfrost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Chill_Mastery.Ice_Blast Epic.Chill_Mastery.Flash_Freeze ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3314,6 +3372,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "icearmor_icearmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Chill_Mastery.Ice_Blast Epic.Chill_Mastery.Flash_Freeze ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3368,6 +3427,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "icearmor_hybernate.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Chill_Mastery.Ice_Blast Epic.Chill_Mastery.Flash_Freeze && Epic.Chill_Mastery.Ice_Blast Epic.Chill_Mastery.Hoarfrost && || Epic.Chill_Mastery.Ice_Blast Epic.Chill_Mastery.Snow_Storm && || Epic.Chill_Mastery.Flash_Freeze Epic.Chill_Mastery.Snow_Storm && || Epic.Chill_Mastery.Flash_Freeze Epic.Chill_Mastery.Hoarfrost && || Epic.Chill_Mastery.Hoarfrost Epic.Chill_Mastery.Snow_storm && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3456,6 +3516,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge",
         "icon": "coldmastery_snowstorm.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3487,6 +3548,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Minor DMG(Cold/Lethal), Foe Sleep",
         "icon": "coldmastery_flashfreeze.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3539,6 +3601,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "icearmor_hoarfrost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Flash_Freeze ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3588,6 +3651,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "icearmor_icearmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Flash_Freeze ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3642,6 +3706,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "icearmor_hybernate.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Flash_Freeze && Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Hoarfrost && || Epic.Cold_Mastery.Flash_Freeze Epic.Cold_Mastery.Hoarfrost && || Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Flash_Freeze && || Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Frozen_Armor && || Epic.Cold_Mastery.Flash_Freeze Epic.Cold_Mastery.Frozen_Armor && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3730,6 +3795,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3822,6 +3888,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Controller == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3874,6 +3941,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Controller_Mace_Mastery.Poisonous_Ray Epic.Controller_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3925,6 +3993,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Controller_Mace_Mastery.Poisonous_Ray Epic.Controller_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3976,6 +4045,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Tarantula: Ranged Moderate DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Controller_Mace_Mastery.Poisonous_Ray Epic.Controller_Mace_Mastery.Scorpion_Shield && Epic.Controller_Mace_Mastery.Poisonous_Ray Epic.Controller_Mace_Mastery.Disruptor_Blast && || Epic.Controller_Mace_Mastery.Poisonous_Ray Epic.Controller_Mace_Mastery.Personal_Force_Field && || Epic.Controller_Mace_Mastery.Scorpion_Shield Epic.Controller_Mace_Mastery.Disruptor_Blast && || Epic.Controller_Mace_Mastery.Scorpion_Shield Epic.Controller_Mace_Mastery.Personal_Force_Field && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4024,6 +4094,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4079,6 +4150,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4124,6 +4196,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Shark_Skin || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4200,6 +4273,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Shark_Skin || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4252,6 +4326,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Hybrid: Ranged Moderate DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Shark_Skin && Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Hibernate && || Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Spirit_Shark_Jaws && || Epic.Corruptor_Leviathan_Mastery.Shark_Skin Epic.Corruptor_Leviathan_Mastery.Hibernate && || Epic.Corruptor_Leviathan_Mastery.Shark_Skin Epic.Corruptor_Leviathan_Mastery.Spirit_Shark_Jaws && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4303,6 +4378,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE) Immobilize, -Recharge, -Fly",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4341,6 +4417,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4393,6 +4470,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mace_Mastery.Web_Envelope Epic.Corruptor_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4444,6 +4522,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mace_Mastery.Web_Envelope Epic.Corruptor_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4482,6 +4561,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Arachnobot: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mace_Mastery.Web_Envelope Epic.Corruptor_Mace_Mastery.Scorpion_Shield && Epic.Corruptor_Mace_Mastery.Web_Envelope Epic.Corruptor_Mace_Mastery.Focused_Accuracy && || Epic.Corruptor_Mace_Mastery.Web_Envelope Epic.Corruptor_Mace_Mastery.Web_Cocoon && || Epic.Corruptor_Mace_Mastery.Scorpion_Shield Epic.Corruptor_Mace_Mastery.Focused_Accuracy && || Epic.Corruptor_Mace_Mastery.Scorpion_Shield Epic.Corruptor_Mace_Mastery.Web_Cocoon && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4529,6 +4609,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4575,6 +4656,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4620,6 +4702,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mu_Mastery.Power_Sink Epic.Corruptor_Mu_Mastery.Charged_Armor || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4683,6 +4766,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount",
         "icon": "arachnos_patron_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mu_Mastery.Power_Sink Epic.Corruptor_Mu_Mastery.Charged_Armor || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4715,6 +4799,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Adept: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mu_Mastery.Power_Sink Epic.Corruptor_Mu_Mastery.Charged_Armor && Epic.Corruptor_Mu_Mastery.Power_Sink Epic.Corruptor_Mu_Mastery.Electric_Shackles && || Epic.Corruptor_Mu_Mastery.Power_Sink Epic.Corruptor_Mu_Mastery.Conserve_Power && || Epic.Corruptor_Mu_Mastery.Charged_Armor Epic.Corruptor_Mu_Mastery.Electric_Shackles && || Epic.Corruptor_Mu_Mastery.Charged_Armor Epic.Corruptor_Mu_Mastery.Conserve_Power && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4763,6 +4848,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
         "icon": "arachnos_patron_pbaoebuffdamage.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4814,6 +4900,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4863,6 +4950,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Special",
         "icon": "arachnos_patron_powerboost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Soul_Mastery.Soul_Drain Epic.Corruptor_Soul_Mastery.Dark_Embrace || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4975,6 +5063,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Soul_Mastery.Soul_Drain Epic.Corruptor_Soul_Mastery.Dark_Embrace || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5020,6 +5109,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Fortunata Mistress: Ranged Moderate DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Soul_Mastery.Soul_Drain Epic.Corruptor_Soul_Mastery.Dark_Embrace && Epic.Corruptor_Soul_Mastery.Soul_Drain Epic.Corruptor_Soul_Mastery.Power_Boost && || Epic.Corruptor_Soul_Mastery.Soul_Drain Epic.Corruptor_Soul_Mastery.Soul_Storm && || Epic.Corruptor_Soul_Mastery.Dark_Embrace Epic.Corruptor_Soul_Mastery.Power_Boost && || Epic.Corruptor_Soul_Mastery.Dark_Embrace Epic.Corruptor_Soul_Mastery.Soul_Storm && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5069,6 +5159,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
         "icon": "darkmastery_oppressivegloom.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5109,6 +5200,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +End",
         "icon": "shadowfighting_darkconsumption.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5150,6 +5242,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "darkmastery_darkembrace.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Dark_Mastery.Oppressive_Gloom Epic.Dark_Mastery.Dark_Consumption ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5199,6 +5292,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "darkmastery_soultransfer.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Dark_Mastery.Oppressive_Gloom Epic.Dark_Mastery.Dark_Consumption ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5280,6 +5374,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
         "icon": "shadowfighting_stealpower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Dark_Mastery.Oppressive_Gloom Epic.Dark_Mastery.Dark_Consumption && Epic.Dark_Mastery.Oppressive_Gloom Epic.Dark_Mastery.Dark_Embrace && || Epic.Dark_Mastery.Oppressive_Gloom Epic.Dark_Mastery.Soul_Transfer && || Epic.Dark_Mastery.Dark_Consumption Epic.Dark_Mastery.Soul_Transfer && || Epic.Dark_Mastery.Dark_Consumption Epic.Dark_Mastery.Dark_Embrace && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5343,6 +5438,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Minor DMG(Smashing), Foe -To Hit, Knockback",
         "icon": "darkcast_torrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5392,6 +5488,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged Hold",
         "icon": "darknessmastery_petrifyinggaze.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5427,6 +5524,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Negative), Foe -ACC",
         "icon": "darkcast_darkblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Darkness_Mastery.Torrent Epic.Darkness_Mastery.Petrifying_Gaze ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5467,6 +5565,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe -To Hit",
         "icon": "darkcast_nightfall.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Darkness_Mastery.Torrent Epic.Darkness_Mastery.Petrifying_Gaze ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5512,6 +5611,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative/Smash), Foe Immobilize, -ACC",
         "icon": "darkcast_tenebroustentacles.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Darkness_Mastery.Torrent Epic.Darkness_Mastery.Petrifying_Gaze && Epic.Darkness_Mastery.Torrent Epic.Darkness_Mastery.Dark_Blast && || Epic.Darkness_Mastery.Torrent Epic.Darkness_Mastery.Night_Fall && || Epic.Darkness_Mastery.Petrifying_Gaze Epic.Darkness_Mastery.Night_Fall && || Epic.Darkness_Mastery.Petrifying_Gaze Epic.Darkness_Mastery.Dark_Blast && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5583,6 +5683,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Water Spout: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
         "icon": "arachnos_patron_dropknockback.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5620,6 +5721,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5668,6 +5770,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Leviathan_Mastery.Water_Spout Epic.Dominator_Leviathan_Mastery.Chum_Spray || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5744,6 +5847,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Leviathan_Mastery.Water_Spout Epic.Dominator_Leviathan_Mastery.Chum_Spray || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5789,6 +5893,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Hybrid: Ranged Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Leviathan_Mastery.Water_Spout Epic.Dominator_Leviathan_Mastery.Chum_Spray && Epic.Dominator_Leviathan_Mastery.Water_Spout Epic.Dominator_Leviathan_Mastery.Hibernate && || Epic.Dominator_Leviathan_Mastery.Water_Spout Epic.Dominator_Leviathan_Mastery.Shark_Skin && || Epic.Dominator_Leviathan_Mastery.Chum_Spray Epic.Dominator_Leviathan_Mastery.Hibernate && || Epic.Dominator_Leviathan_Mastery.Chum_Spray Epic.Dominator_Leviathan_Mastery.Shark_Skin && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5837,6 +5942,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Dominator == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5929,6 +6035,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5981,6 +6088,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Mace_Mastery.Poisonous_Ray Epic.Dominator_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6032,6 +6140,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def, Res(All except Toxic)",
         "icon": "arachnos_patron_megabuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Mace_Mastery.Poisonous_Ray Epic.Dominator_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6102,6 +6211,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Tarantula: Ranged Moderate DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Mace_Mastery.Poisonous_Ray Epic.Dominator_Mace_Mastery.Scorpion_Shield && Epic.Dominator_Mace_Mastery.Poisonous_Ray Epic.Dominator_Mace_Mastery.Disruptor_Blast && || Epic.Dominator_Mace_Mastery.Poisonous_Ray Epic.Dominator_Mace_Mastery.Personal_Force_Field && || Epic.Dominator_Mace_Mastery.Scorpion_Shield Epic.Dominator_Mace_Mastery.Disruptor_Blast && || Epic.Dominator_Mace_Mastery.Scorpion_Shield Epic.Dominator_Mace_Mastery.Personal_Force_Field && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6150,6 +6260,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6196,6 +6307,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6241,6 +6353,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Mu_Mastery.Power_Sink Epic.Dominator_Mu_Mastery.Charged_Armor || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6302,6 +6415,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(Special)",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Mu_Mastery.Power_Sink Epic.Dominator_Mu_Mastery.Charged_Armor || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6379,6 +6493,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Guardian: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Mu_Mastery.Power_Sink Epic.Dominator_Mu_Mastery.Charged_Armor && Epic.Dominator_Mu_Mastery.Power_Sink Epic.Dominator_Mu_Mastery.Ball_Lightning && || Epic.Dominator_Mu_Mastery.Power_Sink Epic.Dominator_Mu_Mastery.Surge_of_Power && || Epic.Dominator_Mu_Mastery.Charged_Armor Epic.Dominator_Mu_Mastery.Ball_Lightning && || Epic.Dominator_Mu_Mastery.Charged_Armor Epic.Dominator_Mu_Mastery.Surge_of_Power && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6426,6 +6541,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +End",
         "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6468,6 +6584,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6517,6 +6634,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Dark_Embrace || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6559,6 +6677,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
         "icon": "arachnos_patron_pbaoebuffdamage.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Dark_Embrace || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6610,6 +6729,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Fortunata Seer: Ranged Moderate DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Dark_Embrace && Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Dark_Obliteration && || Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Soul_Drain && || Epic.Dominator_Soul_Mastery.Dark_Embrace Epic.Dominator_Soul_Mastery.Dark_Obliteration && || Epic.Dominator_Soul_Mastery.Dark_Embrace Epic.Dominator_Soul_Mastery.Soul_Drain && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6655,6 +6775,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Smash), Foe Immobilize, -DEF, -Fly",
         "icon": "earthgrasp_stoneprison.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6738,6 +6859,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Foe Sleep, -DEF",
         "icon": "earthgrasp_saltpillars.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6781,6 +6903,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Smash), Foe Hold, -DEF",
         "icon": "earthgrasp_fossilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Salt_Crystals ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6839,6 +6962,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Foe Attract, -Speed, -Jump, -Fly, -DEF",
         "icon": "earthgrasp_quicksand.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Salt_Crystals ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6869,6 +6993,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal), Foe -DEF, Minor Disorient",
         "icon": "earthgrasp_stalagmites.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Salt_Crystals && Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Fossilize && || Epic.Earth_Mastery.Salt_Crystals Epic.Earth_Mastery.Fossilize && || Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Quick_Sand && || Epic.Earth_Mastery.Salt_Crystals Epic.Earth_Mastery.Quick_Sand && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6941,6 +7066,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "electrical_mastery_static_discharge.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6986,6 +7112,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DoT(Energy), Foe Hold, -END",
         "icon": "electrical_mastery_shocking_bolt.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7045,6 +7172,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "electrical_mastery_charged_armor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Shocking_Bolt ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7090,6 +7218,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(Special)",
         "icon": "electrical_mastery_powersurge.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Shocking_Bolt ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7167,6 +7296,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
         "icon": "electrical_mastery_em_pulse.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Shocking_Bolt && Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Charged_Armor && || Epic.Electrical_Mastery.Shocking_Bolt Epic.Electrical_Mastery.Charged_Armor && || Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Shocking_Bolt && || Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Surge_of_Power && || Epic.Electrical_Mastery.Shocking_Bolt Epic.Electrical_Mastery.Surge_of_Power && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7233,6 +7363,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Energy), Foe Immobilize, -End",
         "icon": "electricitymanipulation_electricfence.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7314,6 +7445,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback",
         "icon": "electricitymanipulation_thunderstrike.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7379,6 +7511,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "electricitymastery_chargedarmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Thunder_Strike ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7424,6 +7557,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DoT(Energy), Foe Hold, -END",
         "icon": "electricitymastery_shockingbolt.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Thunder_Strike ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7484,6 +7618,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "electricitymanipulation_powersink.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Thunder_Strike && Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Charged_Armor && || Epic.Electricity_Mastery.Thunder_Strike Epic.Electricity_Mastery.Charged_Armor && || Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Thunder_Strike && || Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Shocking_Bolt && || Epic.Electricity_Mastery.Thunder_Strike Epic.Electricity_Mastery.Shocking_Bolt && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7541,6 +7676,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount",
         "icon": "energymastery_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Tanker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7573,6 +7709,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "energymastery_focusedaccuracy.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Tanker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7624,6 +7761,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
         "icon": "energymastery_laserbeameyes.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Energy_Mastery.Conserve_Power Epic.Energy_Mastery.Focused_Accuracy ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7679,6 +7817,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "energymastery_physicalperfection.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic.Energy_Mastery.Conserve_Power Epic.Energy_Mastery.Focused_Accuracy ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7716,6 +7855,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Minor DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Energy_Mastery.Conserve_Power Epic.Energy_Mastery.Focused_Accuracy && Epic.Energy_Mastery.Conserve_Power Epic.Energy_Mastery.Laser_Beam_Eyes && || Epic.Energy_Mastery.Conserve_Power Epic.Energy_Mastery.Physical_Perfection && || Epic.Energy_Mastery.Focused_Accuracy Epic.Energy_Mastery.Physical_Perfection && || Epic.Energy_Mastery.Focused_Accuracy Epic.Energy_Mastery.Laser_Beam_Eyes && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7785,6 +7925,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Endurance",
         "icon": "energymastery_conservepower.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "$archetype @Class_Brute ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7816,6 +7957,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "energymastery_focusedaccuracy.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Brute ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7867,6 +8009,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
         "icon": "energymastery_laserbeameyes.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Energy_Mastery_Brute.Conserve_Power Epic.Energy_Mastery_Brute.Focused_Accuracy ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7922,6 +8065,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "energymastery_physicalperfection.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic.Energy_Mastery_Brute.Conserve_Power Epic.Energy_Mastery_Brute.Focused_Accuracy ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7959,6 +8103,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Minor DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Energy_Mastery_Brute.Conserve_Power Epic.Energy_Mastery_Brute.Focused_Accuracy && Epic.Energy_Mastery_Brute.Conserve_Power Epic.Energy_Mastery_Brute.Laser_Beam_Eyes && || Epic.Energy_Mastery_Brute.Conserve_Power Epic.Energy_Mastery_Brute.Physical_Perfection && || Epic.Energy_Mastery_Brute.Focused_Accuracy Epic.Energy_Mastery_Brute.Physical_Perfection && || Epic.Energy_Mastery_Brute.Focused_Accuracy Epic.Energy_Mastery_Brute.Laser_Beam_Eyes && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8028,6 +8173,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "fieldmastery_tempinvulnerability.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8069,6 +8215,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_powerblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8118,6 +8265,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Field_Mastery.Personal_Force_Field Epic.Field_Mastery.Power_Blast ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8170,6 +8318,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe Knockback",
         "icon": "powerblast_explosion.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Field_Mastery.Personal_Force_Field Epic.Field_Mastery.Power_Blast ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8221,6 +8370,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "fieldmastery_forceofnature.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Field_Mastery.Personal_Force_Field Epic.Field_Mastery.Power_Blast && Epic.Field_Mastery.Personal_Force_Field Epic.Field_Mastery.Energy_Torrent && || Epic.Field_Mastery.Personal_Force_Field Epic.Field_Mastery.Repulsion_Bomb && || Epic.Field_Mastery.Power_Blast Epic.Field_Mastery.Energy_Torrent && || Epic.Field_Mastery.Power_Blast Epic.Field_Mastery.Repulsion_Bomb && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8310,6 +8460,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Fire)",
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8355,6 +8506,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8407,6 +8559,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "firemastery_flamingshield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Fire_Ball ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8456,6 +8609,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "firemastery_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Fire_Ball ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8517,6 +8671,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Minor DMG(Fire), Self +End",
         "icon": "firemastery_consume.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Fire_Ball && Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Fire_Shield && || Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Rise_of_the_Phoenix && || Epic.Fire_Mastery.Fire_Ball Epic.Fire_Mastery.Fire_Shield && || Epic.Fire_Mastery.Fire_Ball Epic.Fire_Mastery.Rise_of_the_Phoenix && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8581,6 +8736,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DoT(Fire), -SPD",
         "icon": "fireblast_rainoffire.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8612,6 +8768,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8664,6 +8821,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "firemastery_flamingshield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Fire_Mastery_Dominator.Fire_Blast Epic.Fire_Mastery_Dominator.Fire_Ball ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8713,6 +8871,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "firemastery_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Fire_Mastery_Dominator.Fire_Blast Epic.Fire_Mastery_Dominator.Fire_Ball ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8774,6 +8933,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Fire_Mastery_Dominator.Fire_Blast Epic.Fire_Mastery_Dominator.Fire_Ball && Epic.Fire_Mastery_Dominator.Fire_Blast Epic.Fire_Mastery_Dominator.Fire_Shield && || Epic.Fire_Mastery_Dominator.Fire_Blast Epic.Fire_Mastery_Dominator.Rise_of_the_Phoenix && || Epic.Fire_Mastery_Dominator.Fire_Ball Epic.Fire_Mastery_Dominator.Fire_Shield && || Epic.Fire_Mastery_Dominator.Fire_Ball Epic.Fire_Mastery_Dominator.Rise_of_the_Phoenix && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8863,6 +9023,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
         "icon": "flamemastery_bonfire.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8895,6 +9056,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Fire), Foe Hold",
         "icon": "flamemastery_soot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8940,6 +9102,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "flamingshield_flamingshield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Flame_Mastery.Bonfire Epic.Flame_Mastery.Char ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8989,6 +9152,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "flamemastery_meltarmor.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Flame_Mastery.Bonfire Epic.Flame_Mastery.Char ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9071,6 +9235,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Flame_Mastery.Bonfire Epic.Flame_Mastery.Char && Epic.Flame_Mastery.Bonfire Epic.Flame_Mastery.Fire_Shield && || Epic.Flame_Mastery.Bonfire Epic.Flame_Mastery.Melt_Armor && || Epic.Flame_Mastery.Char Epic.Flame_Mastery.Fire_Shield && || Epic.Flame_Mastery.Char Epic.Flame_Mastery.Melt_Armor && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9144,6 +9309,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def, Res(All except Toxic)",
         "icon": "forcefield_personalforcefield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9214,6 +9380,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE Knockback",
         "icon": "forcefield_repulsionfield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9254,6 +9421,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "forcemastery_temporaryinvulnerabilty.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Force_Mastery.Personal_Force_Field Epic.Force_Mastery.Repulsion_Field ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9295,6 +9463,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash), Foe Knockdown, Disorient",
         "icon": "forcefield_repulsionbomb.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Force_Mastery.Personal_Force_Field Epic.Force_Mastery.Repulsion_Field ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9354,6 +9523,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "forcemastery_unstoppable.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Force_Mastery.Personal_Force_Field Epic.Force_Mastery.Repulsion_Field && Epic.Force_Mastery.Personal_Force_Field Epic.Force_Mastery.Temp_Invulnerability && || Epic.Force_Mastery.Personal_Force_Field Epic.Force_Mastery.Repulsion_Bomb && || Epic.Force_Mastery.Repulsion_Field Epic.Force_Mastery.Temp_Invulnerability && || Epic.Force_Mastery.Repulsion_Field Epic.Force_Mastery.Repulsion_Bomb && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9443,6 +9613,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Cold), Foe Hold, -SPD, -Recharge",
         "icon": "frostmastery_blockofice.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9513,6 +9684,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Minor DoT(Cold), Foe Immobilize, -SPD, -Recharge",
         "icon": "frostmastery_frostbite.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9587,6 +9759,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "icearmor_hoarfrost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Frost_Mastery.Block_of_Ice Epic.Frost_Mastery.Frostbite ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9636,6 +9809,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "icearmor_icearmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Frost_Mastery.Block_of_Ice Epic.Frost_Mastery.Frostbite ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9690,6 +9864,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "icearmor_hybernate.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Frost_Mastery.Block_of_Ice Epic.Frost_Mastery.Frostbite && Epic.Frost_Mastery.Block_of_Ice Epic.Frost_Mastery.Hoarfrost && || Epic.Frost_Mastery.Frostbite Epic.Frost_Mastery.Hoarfrost && || Epic.Frost_Mastery.Block_of_Ice Epic.Frost_Mastery.Frozen_Armor && || Epic.Frost_Mastery.Frostbite Epic.Frost_Mastery.Frozen_Armor && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9778,6 +9953,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Fire), Foe Immobilize",
         "icon": "pyremastery_ringoffire.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9848,6 +10024,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9901,6 +10078,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Guardian_Fire_Mastery.Ring_of_Fire Epic.Guardian_Fire_Mastery.Fire_Ball ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9947,6 +10125,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DoT(Fire), -SPD",
         "icon": "fireblast_rainoffire.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic.Guardian_Fire_Mastery.Ring_of_Fire Epic.Guardian_Fire_Mastery.Fire_Ball ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9979,6 +10158,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Superior DMG(Fire/Lethal)",
         "icon": "epicguardian_greaterfiresword.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Guardian_Fire_Mastery.Ring_of_Fire Epic.Guardian_Fire_Mastery.Fire_Ball && Epic.Guardian_Fire_Mastery.Ring_of_Fire Epic.Guardian_Fire_Mastery.Char && || Epic.Guardian_Fire_Mastery.Ring_of_Fire Epic.Guardian_Fire_Mastery.Rain_of_Fire && || Epic.Guardian_Fire_Mastery.Fire_Ball Epic.Guardian_Fire_Mastery.Rain_of_Fire && || Epic.Guardian_Fire_Mastery.Fire_Ball Epic.Guardian_Fire_Mastery.Char && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10041,6 +10221,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge",
         "icon": "arcticmastery_chillblains.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10113,6 +10294,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Moderate DMG(Cold), Foe Sleep",
         "icon": "epicguardian_frozenaura.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Guardian ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10157,6 +10339,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, High DoT(Cold), Foe Hold",
         "icon": "epicguardian_freezingtouch.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Guardian_Ice_Mastery.Chilblain Epic.Guardian_Ice_Mastery.Frozen_Aura ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10227,6 +10410,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Recharge, -SPD",
         "icon": "epicguardian_icestorm.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic.Guardian_Ice_Mastery.Chilblain Epic.Guardian_Ice_Mastery.Frozen_Aura ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10262,6 +10446,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
         "icon": "arcticmastery_shiver.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Guardian_Ice_Mastery.Chilblain Epic.Guardian_Ice_Mastery.Frozen_Aura && Epic.Guardian_Ice_Mastery.Chilblain Epic.Guardian_Ice_Mastery.Freezing_Touch && || Epic.Guardian_Ice_Mastery.Chilblain Epic.Guardian_Ice_Mastery.Ice_Storm && || Epic.Guardian_Ice_Mastery.Frozen_Aura Epic.Guardian_Ice_Mastery.Ice_Storm && || Epic.Guardian_Ice_Mastery.Frozen_Aura Epic.Guardian_Ice_Mastery.Freezing_Touch && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10308,6 +10493,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10361,6 +10547,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
         "icon": "arachnos_patron_coneslow.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10464,6 +10651,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Leviathan_Mastery.Spirit_Shark_Jaws Epic.Guardian_Leviathan_Mastery.Arctic_Breath || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10513,6 +10701,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Water Spout: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
         "icon": "arachnos_patron_dropknockback.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Leviathan_Mastery.Spirit_Shark_Jaws Epic.Guardian_Leviathan_Mastery.Arctic_Breath || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10551,6 +10740,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Hybrid: Ranged Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Leviathan_Mastery.Spirit_Shark_Jaws Epic.Guardian_Leviathan_Mastery.Arctic_Breath && Epic.Guardian_Leviathan_Mastery.Spirit_Shark_Jaws Epic.Guardian_Leviathan_Mastery.Bile_Spray && || Epic.Guardian_Leviathan_Mastery.Spirit_Shark_Jaws Epic.Guardian_Leviathan_Mastery.Water_Spout && || Epic.Guardian_Leviathan_Mastery.Arctic_Breath Epic.Guardian_Leviathan_Mastery.Water_Spout && || Epic.Guardian_Leviathan_Mastery.Arctic_Breath Epic.Guardian_Leviathan_Mastery.Bile_Spray && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10600,6 +10790,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Superior DMG(Smash), Foe -Res",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10674,6 +10865,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10712,6 +10904,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Mace_Mastery.Shatter_Armor Epic.Guardian_Mace_Mastery.Web_Cocoon || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10764,6 +10957,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Mace_Mastery.Shatter_Armor Epic.Guardian_Mace_Mastery.Web_Cocoon || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10815,6 +11009,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Tarantula: Ranged Moderate DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Mace_Mastery.Shatter_Armor Epic.Guardian_Mace_Mastery.Web_Cocoon && Epic.Guardian_Mace_Mastery.Shatter_Armor Epic.Guardian_Mace_Mastery.Disruptor_Blast && || Epic.Guardian_Mace_Mastery.Shatter_Armor Epic.Guardian_Mace_Mastery.Focused_Accuracy && || Epic.Guardian_Mace_Mastery.Web_Cocoon Epic.Guardian_Mace_Mastery.Focused_Accuracy && || Epic.Guardian_Mace_Mastery.Web_Cocoon Epic.Guardian_Mace_Mastery.Disruptor_Blast && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10864,6 +11059,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10928,6 +11124,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10990,6 +11187,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "arachnos_patron_meleetargetedaoe.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Mu_Mastery.Electric_Shackles Epic.Guardian_Mu_Mastery.Ball_Lightning || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11062,6 +11260,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount",
         "icon": "arachnos_patron_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Mu_Mastery.Electric_Shackles Epic.Guardian_Mu_Mastery.Ball_Lightning || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11094,6 +11293,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Guardian: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Mu_Mastery.Electric_Shackles Epic.Guardian_Mu_Mastery.Ball_Lightning && Epic.Guardian_Mu_Mastery.Electric_Shackles Epic.Guardian_Mu_Mastery.Thunder_Strike && || Epic.Guardian_Mu_Mastery.Electric_Shackles Epic.Guardian_Mu_Mastery.Conserve_Power && || Epic.Guardian_Mu_Mastery.Ball_Lightning Epic.Guardian_Mu_Mastery.Conserve_Power && || Epic.Guardian_Mu_Mastery.Ball_Lightning Epic.Guardian_Mu_Mastery.Thunder_Strike && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11142,6 +11342,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, High DMG (Energy), Foe Disorient",
         "icon": "guardianmunitionsmastery_taserjolt.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11184,6 +11385,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG (Lethal/Smash OR Lethal), Knockback, Special",
         "icon": "guardianmunitionsmastery_attackmunitions.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11235,6 +11437,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Endurance",
         "icon": "guardianmunitionsmastery_superiorconditioning.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic.Guardian_Munitions_Mastery.Taser_Jolt Epic.Guardian_Munitions_Mastery.Attack_Munitions ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11266,6 +11469,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "guardianmunitionsmastery_targetingdrone.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Guardian_Munitions_Mastery.Taser_Jolt Epic.Guardian_Munitions_Mastery.Attack_Munitions ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11317,6 +11521,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged Foe -DEF, -RES (All)",
         "icon": "guardianmunitionsmastery_surveillance.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Guardian_Munitions_Mastery.Attack_Munitions Epic.Guardian_Munitions_Mastery.Taser_Jolt && Epic.Guardian_Munitions_Mastery.Attack_Munitions Epic.Guardian_Munitions_Mastery.Targeting_Drone && || Epic.Guardian_Munitions_Mastery.Attack_Munitions Epic.Guardian_Munitions_Mastery.Superior_Conditioning && || Epic.Guardian_Munitions_Mastery.Taser_Jolt Epic.Guardian_Munitions_Mastery.Superior_Conditioning && || Epic.Guardian_Munitions_Mastery.Taser_Jolt Epic.Guardian_Munitions_Mastery.Targeting_Drone && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11403,6 +11608,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient, Self -HP",
         "icon": "primalforcesmasterydominator_energytransfer.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11458,6 +11664,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe Knockback",
         "icon": "primalforcesmasterydominator_explosiveblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11510,6 +11717,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11563,6 +11771,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "energymastery_focusedaccuracy.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11614,6 +11823,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "energymastery_physicalperfection.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast && Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Energy_Torrent && || Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Focused_Accuracy && || Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast Epic.Guardian_Primal_Forces_Mastery.Focused_Accuracy && || Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast Epic.Guardian_Primal_Forces_Mastery.Energy_Torrent && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11663,6 +11873,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Short Ranged, Target Confuse",
         "icon": "psionicmelee_boggle.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11698,6 +11909,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Superior DMG(Psionic/Lethal), Foe -Rech, Hold",
         "icon": "psionicmelee_greaterpsiblade.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11748,6 +11960,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
         "icon": "epicguardian_psionictornado.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Guardian_Psionic_Mastery.Boggle Epic.Guardian_Psionic_Mastery.Greater_Psi_Blade ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11795,6 +12008,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, High DMG(Smash), Foe Knock Up",
         "icon": "psionicmelee_masslevitate.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Guardian_Psionic_Mastery.Boggle Epic.Guardian_Psionic_Mastery.Greater_Psi_Blade ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11838,6 +12052,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
         "icon": "epicguardian_masshypnosis.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Guardian_Psionic_Mastery.Boggle Epic.Guardian_Psionic_Mastery.Greater_Psi_Blade && Epic.Guardian_Psionic_Mastery.Boggle Epic.Guardian_Psionic_Mastery.Psionic_Tornado && || Epic.Guardian_Psionic_Mastery.Boggle Epic.Guardian_Psionic_Mastery.Mass_Levitate && || Epic.Guardian_Psionic_Mastery.Greater_Psi_Blade Epic.Guardian_Psionic_Mastery.Mass_Levitate && || Epic.Guardian_Psionic_Mastery.Greater_Psi_Blade Epic.Guardian_Psionic_Mastery.Psionic_Tornado && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11887,6 +12102,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11933,6 +12149,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Guardian == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11976,6 +12193,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
         "icon": "arachnos_patron_pbaoebuffdamage.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Soul_Mastery.Soul_Storm Epic.Guardian_Soul_Mastery.Dark_Obliteration || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12028,6 +12246,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +End",
         "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Soul_Mastery.Soul_Storm Epic.Guardian_Soul_Mastery.Dark_Obliteration || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12070,6 +12289,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Blood Widow: Melee Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Soul_Mastery.Soul_Storm Epic.Guardian_Soul_Mastery.Dark_Obliteration && Epic.Guardian_Soul_Mastery.Soul_Storm Epic.Guardian_Soul_Mastery.Soul_Drain && || Epic.Guardian_Soul_Mastery.Soul_Storm Epic.Guardian_Soul_Mastery.Dark_Consumption && || Epic.Guardian_Soul_Mastery.Dark_Obliteration Epic.Guardian_Soul_Mastery.Dark_Consumption && || Epic.Guardian_Soul_Mastery.Dark_Obliteration Epic.Guardian_Soul_Mastery.Soul_Drain && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12117,6 +12337,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
         "icon": "flamemastery_bonfire.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12149,6 +12370,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Fire)",
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12194,6 +12416,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Heat_Mastery_Stalker.Bonfire Epic.Heat_Mastery_Stalker.Fire_Blast ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12246,6 +12469,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Heat_Mastery_Stalker.Bonfire Epic.Heat_Mastery_Stalker.Fire_Blast ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12300,6 +12524,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Heat_Mastery_Stalker.Bonfire Epic.Heat_Mastery_Stalker.Fire_Blast && Epic.Heat_Mastery_Stalker.Bonfire Epic.Heat_Mastery_Stalker.Fire_Ball && || Epic.Heat_Mastery_Stalker.Bonfire Epic.Heat_Mastery_Stalker.Melt_Armor && || Epic.Heat_Mastery_Stalker.Fire_Blast Epic.Heat_Mastery_Stalker.Fire_Ball && || Epic.Heat_Mastery_Stalker.Fire_Blast Epic.Heat_Mastery_Stalker.Melt_Armor && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12365,6 +12590,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
         "icon": "icemastery_iceblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12411,6 +12637,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "icearmor_hybernate.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12487,6 +12714,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "icearmor_icearmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Hibernate ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12541,6 +12769,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Close (Cone), Moderate DoT(Cold), Foe -Recharge, -SPD",
         "icon": "icemastery_frostbreath.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Hibernate ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12585,6 +12814,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Recharge, -SPD",
         "icon": "icemastery_freezingrain.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Hibernate && Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Frozen_Armor && || Epic.Ice_Mastery.Hibernate Epic.Ice_Mastery.Frozen_Armor && || Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Hibernate && || Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Frost_Breath && || Epic.Ice_Mastery.Hibernate Epic.Ice_Mastery.Frost_Breath && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12630,6 +12860,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
         "icon": "colddomination_sleet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12667,6 +12898,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "icearmor_hybernate.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12743,6 +12975,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "icearmor_icearmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Ice_Mastery_Dominator.Ice_Blast Epic.Ice_Mastery_Dominator.Hibernate ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12797,6 +13030,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "icearmor_hoarfrost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Ice_Mastery_Dominator.Ice_Blast Epic.Ice_Mastery_Dominator.Hibernate ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12846,6 +13080,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Recharge, -SPD",
         "icon": "icemastery_freezingrain.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic.Ice_Mastery_Dominator.Ice_Blast Epic.Ice_Mastery_Dominator.Hibernate && Epic.Ice_Mastery_Dominator.Ice_Blast Epic.Ice_Mastery_Dominator.Frozen_Armor && || Epic.Ice_Mastery_Dominator.Hibernate Epic.Ice_Mastery_Dominator.Frozen_Armor && || Epic.Ice_Mastery_Dominator.Ice_Blast Epic.Ice_Mastery_Dominator.Hibernate && || Epic.Ice_Mastery_Dominator.Ice_Blast Epic.Ice_Mastery_Dominator.Frost_Breath && || Epic.Ice_Mastery_Dominator.Hibernate Epic.Ice_Mastery_Dominator.Frost_Breath && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12891,6 +13126,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Fire), Foe Hold",
         "icon": "flamemastery_soot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12936,6 +13172,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Minor DMG(Fire), Self +End",
         "icon": "infernomastery_consume.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12988,6 +13225,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "flamingshield_flamingshield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Inferno_Mastery.Consume Epic.Inferno_Mastery.Char ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13037,6 +13275,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
         "icon": "flamemastery_bonfire.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic.Inferno_Mastery.Consume Epic.Inferno_Mastery.Char ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13069,6 +13308,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Inferno_Mastery.Char Epic.Inferno_Mastery.Consume && Epic.Inferno_Mastery.Char Epic.Inferno_Mastery.Fire_Shield && || Epic.Inferno_Mastery.Consume Epic.Inferno_Mastery.Fire_Shield && || Epic.Inferno_Mastery.Char Epic.Inferno_Mastery.Bonfire && || Epic.Inferno_Mastery.Consume Epic.Inferno_Mastery.Bonfire && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13142,6 +13382,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged Foe -DEF, -RES (All)",
         "icon": "martialmastery_warriorsmark.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13216,6 +13457,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Target Immobilize, -Fly, Slow",
         "icon": "martialmastery_entanglingarrow.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13276,6 +13518,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Lethal)",
         "icon": "martialmastery_aimedshot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Martial_Mastery.Warriors_Mark Epic.Martial_Mastery.Entangling_Arrow ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13312,6 +13555,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Stealth, +DMG, Self Teleport",
         "icon": "martialmastery_shukuchi.png",
         "powerType": "Click",
+        "targetType": "Teleport",
         "requires": "Epic.Martial_Mastery.Warriors_Mark Epic.Martial_Mastery.Entangling_Arrow ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13364,6 +13608,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Regen, +Recovery",
         "icon": "martialmastery_gatherchi.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Martial_Mastery.Aimed_Shot Epic.Martial_Mastery.Entangling_Arrow && Epic.Martial_Mastery.Aimed_Shot Epic.Martial_Mastery.Warriors_Mark && || Epic.Martial_Mastery.Entangling_Arrow Epic.Martial_Mastery.Warriors_Mark && || Epic.Martial_Mastery.Shukuchi Epic.Martial_Mastery.Warriors_Mark && || Epic.Martial_Mastery.Aimed_Shot Epic.Martial_Mastery.Shukuchi && || Epic.Martial_Mastery.Entangling_Arrow Epic.Martial_Mastery.Shukuchi && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13418,6 +13663,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged Immobilize, Minor DOT(Lethal), -Regen",
         "icon": "martialmastery_throwingdagger.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13480,6 +13726,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: +Max HP, +Max End",
         "icon": "martialmastery_battlehardened.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "$archetype @Class_Brute ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13517,6 +13764,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, High DMG(Lethal), -Def (All), -Res(All)",
         "icon": "martialmastery_bodkinbolt.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Martial_Mastery_Brute.Throwing_Dagger Epic.Martial_Mastery_Brute.Battle_Hardened ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13606,6 +13854,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Fury",
         "icon": "martialmastery_recklessabandon.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Martial_Mastery_Brute.Throwing_Dagger Epic.Martial_Mastery_Brute.Battle_Hardened ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13635,6 +13884,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regen; Ally +Regen, +Res (Fear, Confuse)",
         "icon": "martialmastery_valiance.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Martial_Mastery_Brute.Bodkin_Bolt Epic.Martial_Mastery_Brute.Throwing_Dagger && Epic.Martial_Mastery_Brute.Bodkin_Bolt Epic.Martial_Mastery_Brute.Battle_Hardened && || Epic.Martial_Mastery_Brute.Throwing_Dagger Epic.Martial_Mastery_Brute.Battle_Hardened && || Epic.Martial_Mastery_Brute.Reckless_Abandon Epic.Martial_Mastery_Brute.Battle_Hardened && || Epic.Martial_Mastery_Brute.Bodkin_Bolt Epic.Martial_Mastery_Brute.Reckless_Abandon && || Epic.Martial_Mastery_Brute.Throwing_Dagger Epic.Martial_Mastery_Brute.Reckless_Abandon && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13695,6 +13945,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged Foe -DEF, -RES (All)",
         "icon": "martialmastery_warriorsmark.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13769,6 +14020,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Target Immobilize, -Fly, Slow",
         "icon": "martialmastery_entanglingarrow.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13829,6 +14081,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Lethal)",
         "icon": "martialmastery_aimedshot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Martial_Mastery_Stalker.Warriors_Mark Epic.Martial_Mastery_Stalker.Entangling_Arrow ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13879,6 +14132,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE -To Hit, -DMG, Chance of Terrorize",
         "icon": "martialmastery_warcry.dds",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Martial_Mastery_Stalker.Warriors_Mark Epic.Martial_Mastery_Stalker.Entangling_Arrow ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13920,6 +14174,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Regen, +Recovery",
         "icon": "martialmastery_gatherchi.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Martial_Mastery_Stalker.Aimed_Shot Epic.Martial_Mastery_Stalker.Entangling_Arrow && Epic.Martial_Mastery_Stalker.Aimed_Shot Epic.Martial_Mastery_Stalker.Warriors_Mark && || Epic.Martial_Mastery_Stalker.Entangling_Arrow Epic.Martial_Mastery_Stalker.Warriors_Mark && || Epic.Martial_Mastery_Stalker.War_Cry Epic.Martial_Mastery_Stalker.Warriors_Mark && || Epic.Martial_Mastery_Stalker.Aimed_Shot Epic.Martial_Mastery_Stalker.War_Cry && || Epic.Martial_Mastery_Stalker.Entangling_Arrow Epic.Martial_Mastery_Stalker.War_Cry && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13974,6 +14229,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Global Chance of +DMG (all), +End Discount",
         "icon": "martialmastery_artofwarpower.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Battle_Hardened ||",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -13992,6 +14248,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged Immobilize, Minor DOT(Lethal), -Regen",
         "icon": "martialmastery_throwingdagger.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Tanker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14054,6 +14311,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: +Max HP, +Max End",
         "icon": "martialmastery_battlehardened.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "$archetype @Class_Tanker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14091,6 +14349,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, High DMG(Lethal), -Def (All), -Res(All)",
         "icon": "martialmastery_bodkinbolt.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Battle_Hardened ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14180,6 +14439,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regen; Ally +Regen, +Res (Fear, Confuse)",
         "icon": "martialmastery_valiance.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Martial_Mastery_Tanker.Bodkin_Bolt Epic.Martial_Mastery_Tanker.Throwing_Dagger && Epic.Martial_Mastery_Tanker.Bodkin_Bolt Epic.Martial_Mastery_Tanker.Battle_Hardened && || Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Battle_Hardened && || Epic.Martial_Mastery_Tanker.Art_Of_War Epic.Martial_Mastery_Tanker.Battle_Hardened && || Epic.Martial_Mastery_Tanker.Bodkin_Bolt Epic.Martial_Mastery_Tanker.Art_Of_War && || Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Art_Of_War && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14240,6 +14500,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14295,6 +14556,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14343,6 +14605,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Extreme DMG(Smash), Foe Hold",
         "icon": "arachnos_patron_koblow.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Leviathan_Mastery.School_Of_Sharks Epic.Mastermind_Leviathan_Mastery.Chum_Spray || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14391,6 +14654,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Leviathan_Mastery.School_Of_Sharks Epic.Mastermind_Leviathan_Mastery.Chum_Spray || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14436,6 +14700,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Leviathan_Mastery.School_of_Sharks Epic.Mastermind_Leviathan_Mastery.Chum_Spray && Epic.Mastermind_Leviathan_Mastery.School_of_Sharks Epic.Mastermind_Leviathan_Mastery.Knockout_Blow && || Epic.Mastermind_Leviathan_Mastery.School_of_Sharks Epic.Mastermind_Leviathan_Mastery.Shark_Skin && || Epic.Mastermind_Leviathan_Mastery.Chum_Spray Epic.Mastermind_Leviathan_Mastery.Knockout_Blow && || Epic.Mastermind_Leviathan_Mastery.Chum_Spray Epic.Mastermind_Leviathan_Mastery.Shark_Skin && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14500,6 +14765,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE) Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14538,6 +14804,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14590,6 +14857,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Mace_Mastery.Web_Envelope Epic.Mastermind_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14642,6 +14910,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Special",
         "icon": "arachnos_patron_powerboost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Mace_Mastery.Web_Envelope Epic.Mastermind_Mace_Mastery.Scorpion_Shield || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14754,6 +15023,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Mace_Mastery.Web_Envelope Epic.Mastermind_Mace_Mastery.Scorpion_Shield && Epic.Mastermind_Mace_Mastery.Web_Envelope Epic.Mastermind_Mace_Mastery.Mace_Beam_Volley && || Epic.Mastermind_Mace_Mastery.Web_Envelope Epic.Mastermind_Mace_Mastery.Power_Boost && || Epic.Mastermind_Mace_Mastery.Scorpion_Shield Epic.Mastermind_Mace_Mastery.Mace_Beam_Volley && || Epic.Mastermind_Mace_Mastery.Scorpion_Shield Epic.Mastermind_Mace_Mastery.Power_Boost && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14804,6 +15074,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14861,6 +15132,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14906,6 +15178,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "arachnos_patron_meleetargetedaoe.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Mu_Mastery.Static_Discharge Epic.Mastermind_Mu_Mastery.Charged_Armor || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14976,6 +15249,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Minor DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Mu_Mastery.Static_Discharge Epic.Mastermind_Mu_Mastery.Charged_Armor || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15059,6 +15333,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Mu_Mastery.Static_Discharge Epic.Mastermind_Mu_Mastery.Charged_Armor && Epic.Mastermind_Mu_Mastery.Static_Discharge Epic.Mastermind_Mu_Mastery.Thunder_Strike && || Epic.Mastermind_Mu_Mastery.Static_Discharge Epic.Mastermind_Mu_Mastery.Electrifying_Fences && || Epic.Mastermind_Mu_Mastery.Charged_Armor Epic.Mastermind_Mu_Mastery.Thunder_Strike && || Epic.Mastermind_Mu_Mastery.Charged_Armor Epic.Mastermind_Mu_Mastery.Electrifying_Fences && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15134,6 +15409,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_conedot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15179,6 +15455,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15228,6 +15505,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
         "icon": "arachnos_patron_pbaoestun.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Soul_Mastery.Night_Fall Epic.Mastermind_Soul_Mastery.Dark_Embrace || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15268,6 +15546,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Soul_Mastery.Night_Fall Epic.Mastermind_Soul_Mastery.Dark_Embrace || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15323,6 +15602,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Soul_Mastery.Night_Fall Epic.Mastermind_Soul_Mastery.Dark_Embrace && Epic.Mastermind_Soul_Mastery.Night_Fall Epic.Mastermind_Soul_Mastery.Oppressive_Gloom && || Epic.Mastermind_Soul_Mastery.Night_Fall Epic.Mastermind_Soul_Mastery.Soul_Tentacles && || Epic.Mastermind_Soul_Mastery.Dark_Embrace Epic.Mastermind_Soul_Mastery.Oppressive_Gloom && || Epic.Mastermind_Soul_Mastery.Dark_Embrace Epic.Mastermind_Soul_Mastery.Soul_Tentacles && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15380,6 +15660,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self +Res (Smash, Lethal)",
         "icon": "munitionsmastery_bodyarmor.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15416,6 +15697,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Cold), Foe Hold",
         "icon": "munitionsmastery_cryofreezeray.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15483,6 +15765,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Minor DMG(Smash), Foe Sleep",
         "icon": "munitionsmastery_sleepgrenade.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Munitions_Mastery.Body_Armor Epic.Munitions_Mastery.Cryo_Freeze_Ray ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15528,6 +15811,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged Foe -DEF, -RES (All)",
         "icon": "munitionsmastery_surveillance.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Munitions_Mastery.Body_Armor Epic.Munitions_Mastery.Cryo_Freeze_Ray ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15602,6 +15886,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Interruptible (Targeted AoE), Superior DMG(Lethal/Smash), Foe Knockback",
         "icon": "munitionsmastery_lrmrocket.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Munitions_Mastery.Body_Armor Epic.Munitions_Mastery.Cryo_Freeze_Ray && Epic.Munitions_Mastery.Body_Armor Epic.Munitions_Mastery.Sleep_Grenade && || Epic.Munitions_Mastery.Cryo_Freeze_Ray Epic.Munitions_Mastery.Sleep_Grenade && || Epic.Munitions_Mastery.Body_Armor Epic.Munitions_Mastery.Cryo_Freeze_Ray && || Epic.Munitions_Mastery.Body_Armor Epic.Munitions_Mastery.Surveillance && || Epic.Munitions_Mastery.Cryo_Freeze_Ray Epic.Munitions_Mastery.Surveillance && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15666,6 +15951,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount",
         "icon": "energymanipulation_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15698,6 +15984,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +DMG, +ACC, +Special",
         "icon": "powermastery_powerbuildup.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15813,6 +16100,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "powermastery_tempinvulnerability.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Power_Mastery.Conserve_Power Epic.Power_Mastery.Power_Build_Up ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15854,6 +16142,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "powermastery_forceofnature.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Power_Mastery.Conserve_Power Epic.Power_Mastery.Power_Build_Up ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15931,6 +16220,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient",
         "icon": "energymanipulation_totalfocus.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Power_Mastery.Conserve_Power Epic.Power_Mastery.Power_Build_Up && Epic.Power_Mastery.Conserve_Power Epic.Power_Mastery.Temp_Invulnerability && || Epic.Power_Mastery.Conserve_Power Epic.Power_Mastery.Force_of_Nature && || Epic.Power_Mastery.Power_Build_Up Epic.Power_Mastery.Force_of_Nature && || Epic.Power_Mastery.Power_Build_Up Epic.Power_Mastery.Temp_Invulnerability && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15992,6 +16282,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_powerblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16041,6 +16332,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount",
         "icon": "primalforcesmastery_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16073,6 +16365,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Conserve_Power ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16114,6 +16407,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Conserve_Power ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16166,6 +16460,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Special",
         "icon": "primalforcesmastery_powerboost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Conserve_Power && Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Temp_Invulnerability && || Epic.Primal_Forces_Mastery.Conserve_Power Epic.Primal_Forces_Mastery.Temp_Invulnerability && || Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Conserve_Power && || Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Energy_Torrent && || Epic.Primal_Forces_Mastery.Conserve_Power Epic.Primal_Forces_Mastery.Energy_Torrent && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16290,6 +16585,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient, Self -HP",
         "icon": "primalforcesmasterydominator_energytransfer.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16345,6 +16641,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount",
         "icon": "primalforcesmastery_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16377,6 +16674,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Conserve_Power ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16418,6 +16716,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Conserve_Power ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16470,6 +16769,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe Knockback",
         "icon": "primalforcesmasterydominator_explosiveblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Conserve_Power && Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Temp_Invulnerability && || Epic.primal_forces_mastery_Dominator.Conserve_Power Epic.primal_forces_mastery_Dominator.Temp_Invulnerability && || Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Conserve_Power && || Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Energy_Torrent && || Epic.primal_forces_mastery_Dominator.Conserve_Power Epic.primal_forces_mastery_Dominator.Energy_Torrent && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16533,6 +16833,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Psionic), Target -Recharge",
         "icon": "psychicblast_mentalblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16569,6 +16870,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Res( Disorient, Hold, Sleep, Fear). DEF(Psionics)",
         "icon": "psionicmastery_indomitablewill.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16637,6 +16939,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psionicmastery_mindoverbody.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Psionic_Mastery.Mental_Blast Epic.Psionic_Mastery.Indomitable_Will ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16682,6 +16985,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse",
         "icon": "psionicmastery_worldofconfusion.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Psionic_Mastery.Mental_Blast Epic.Psionic_Mastery.Indomitable_Will ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16721,6 +17025,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
         "icon": "psychicblast_psionictornado.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Psionic_Mastery.Mental_Blast Epic.Psionic_Mastery.Indomitable_Will && Epic.Psionic_Mastery.Mental_Blast Epic.Psionic_Mastery.Mind_Over_Body && || Epic.Psionic_Mastery.Mental_Blast Epic.Psionic_Mastery.World_of_Confusion && || Epic.Psionic_Mastery.Indomitable_Will Epic.Psionic_Mastery.Mind_Over_Body && || Epic.Psionic_Mastery.Indomitable_Will Epic.Psionic_Mastery.World_of_Confusion && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16779,6 +17084,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
         "icon": "widowteamwork_mindlink.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16866,6 +17172,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Res( Disorient, Hold, Sleep, Fear). DEF(Psionics)",
         "icon": "psionicmastery_indomitablewill.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16934,6 +17241,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psionicmastery_mindoverbody.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Psionic_Mastery_Domingator.Link_Minds Epic.Psionic_Mastery_Domingator.Indomitable_Will ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16979,6 +17287,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse",
         "icon": "psionicmastery_worldofconfusion.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Psionic_Mastery_Domingator.Link_Minds Epic.Psionic_Mastery_Domingator.Indomitable_Will ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17018,6 +17327,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
         "icon": "psychicblast_psionictornado.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Psionic_Mastery_Domingator.Link_Minds Epic.Psionic_Mastery_Domingator.Indomitable_Will && Epic.Psionic_Mastery_Domingator.Link_Minds Epic.Psionic_Mastery_Domingator.Mind_Over_Body && || Epic.Psionic_Mastery_Domingator.Link_Minds Epic.Psionic_Mastery_Domingator.World_of_Confusion && || Epic.Psionic_Mastery_Domingator.Indomitable_Will Epic.Psionic_Mastery_Domingator.Mind_Over_Body && || Epic.Psionic_Mastery_Domingator.Indomitable_Will Epic.Psionic_Mastery_Domingator.World_of_Confusion && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17076,6 +17386,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Hold",
         "icon": "mentalcontrol_command.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17119,6 +17430,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
         "icon": "mentalcontrol_masshypnosis.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17156,6 +17468,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psychicmastery_mindoverbody.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Psychic_Mastery.Dominate Epic.Psychic_Mastery.Mass_Hypnosis ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17201,6 +17514,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse",
         "icon": "psychicmastery_worldofconfusion.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Psychic_Mastery.Dominate Epic.Psychic_Mastery.Mass_Hypnosis ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17240,6 +17554,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe Hold, Repel",
         "icon": "mentalcontrol_telekinesis.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "Epic.Psychic_Mastery.Dominate Epic.Psychic_Mastery.Mass_Hypnosis && Epic.Psychic_Mastery.Dominate Epic.Psychic_Mastery.Mind_Over_Body && || Epic.Psychic_Mastery.Mass_Hypnosis Epic.Psychic_Mastery.Mind_Over_Body && || Epic.Psychic_Mastery.Dominate Epic.Psychic_Mastery.Mass_Hypnosis && || Epic.Psychic_Mastery.Dominate Epic.Psychic_Mastery.World_of_Confusion && || Epic.Psychic_Mastery.Mass_Hypnosis Epic.Psychic_Mastery.World_of_Confusion && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17293,6 +17608,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Fire), Foe Immobilize",
         "icon": "pyremastery_ringoffire.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17371,6 +17687,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17425,6 +17742,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Fire)",
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Pyre_Mastery.Ring_of_Fire Epic.Pyre_Mastery.Char ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17482,6 +17800,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Pyre_Mastery.Ring_of_Fire Epic.Pyre_Mastery.Char ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17564,6 +17883,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Pyre_Mastery.Ring_of_Fire Epic.Pyre_Mastery.Char && Epic.Pyre_Mastery.Ring_of_Fire Epic.Pyre_Mastery.Fire_Blast && || Epic.Pyre_Mastery.Char Epic.Pyre_Mastery.Fire_Blast && || Epic.Pyre_Mastery.Ring_of_Fire Epic.Pyre_Mastery.Char && || Epic.Pyre_Mastery.Ring_of_Fire Epic.Pyre_Mastery.Melt_Armor && || Epic.Pyre_Mastery.Char Epic.Pyre_Mastery.Melt_Armor && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17640,6 +17960,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Lethal), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17691,6 +18012,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Water Spout: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
         "icon": "arachnos_patron_dropknockback.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17728,6 +18050,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Leviathan_Mastery.Spirit_Shark Epic.Stalker_Leviathan_Mastery.Water_Spout || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17804,6 +18127,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Leviathan_Mastery.Spirit_Shark Epic.Stalker_Leviathan_Mastery.Water_Spout || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17856,6 +18180,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Warder: Ranged Moderate DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Leviathan_Mastery.Spirit_Shark Epic.Stalker_Leviathan_Mastery.Water_Spout && Epic.Stalker_Leviathan_Mastery.Spirit_Shark Epic.Stalker_Leviathan_Mastery.Hibernate && || Epic.Stalker_Leviathan_Mastery.Spirit_Shark Epic.Stalker_Leviathan_Mastery.Spirit_Shark_Jaws && || Epic.Stalker_Leviathan_Mastery.Water_Spout Epic.Stalker_Leviathan_Mastery.Hibernate && || Epic.Stalker_Leviathan_Mastery.Water_Spout Epic.Stalker_Leviathan_Mastery.Spirit_Shark_Jaws && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17904,6 +18229,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17953,6 +18279,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Sniper, Superior DMG(Energy/Smash), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18004,6 +18331,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Mace_Mastery.Mace_Blast Epic.Stalker_Mace_Mastery.Mace_Beam || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18055,6 +18383,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Mace_Mastery.Mace_Blast Epic.Stalker_Mace_Mastery.Mace_Beam || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18093,6 +18422,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Spiderlings: Ranged Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Mace_Mastery.Mace_Blast Epic.Stalker_Mace_Mastery.Mace_Beam && Epic.Stalker_Mace_Mastery.Mace_Blast Epic.Stalker_Mace_Mastery.Disruptor_Blast && || Epic.Stalker_Mace_Mastery.Mace_Blast Epic.Stalker_Mace_Mastery.Web_Cocoon && || Epic.Stalker_Mace_Mastery.Mace_Beam Epic.Stalker_Mace_Mastery.Disruptor_Blast && || Epic.Stalker_Mace_Mastery.Mace_Beam Epic.Stalker_Mace_Mastery.Web_Cocoon && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18141,6 +18471,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18195,6 +18526,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Sniper, Extreme DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18251,6 +18583,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Mu_Mastery.Mu_Bolts Epic.Stalker_Mu_Mastery.Zapp || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18312,6 +18645,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Mu_Mastery.Mu_Bolts Epic.Stalker_Mu_Mastery.Zapp || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18375,6 +18709,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Adept: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Mu_Mastery.Mu_Bolts Epic.Stalker_Mu_Mastery.Zapp && Epic.Stalker_Mu_Mastery.Mu_Bolts Epic.Stalker_Mu_Mastery.Ball_Lightning && || Epic.Stalker_Mu_Mastery.Mu_Bolts Epic.Stalker_Mu_Mastery.Electric_Shackles && || Epic.Stalker_Mu_Mastery.Zapp Epic.Stalker_Mu_Mastery.Ball_Lightning && || Epic.Stalker_Mu_Mastery.Zapp Epic.Stalker_Mu_Mastery.Electric_Shackles && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18423,6 +18758,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18463,6 +18799,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Sniper, Superior DMG(Negative), Target -ACC",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18505,6 +18842,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self: +Def(All)",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Soul_Mastery.Dark_Blast Epic.Stalker_Soul_Mastery.Moonbeam || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18578,6 +18916,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Soul_Mastery.Dark_Blast Epic.Stalker_Soul_Mastery.Moonbeam || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18623,6 +18962,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Night Widow: Melee Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Soul_Mastery.Dark_Blast Epic.Stalker_Soul_Mastery.Moonbeam && Epic.Stalker_Soul_Mastery.Dark_Blast Epic.Stalker_Soul_Mastery.Shadow_Meld && || Epic.Stalker_Soul_Mastery.Dark_Blast Epic.Stalker_Soul_Mastery.Soul_Storm && || Epic.Stalker_Soul_Mastery.Moonbeam Epic.Stalker_Soul_Mastery.Shadow_Meld && || Epic.Stalker_Soul_Mastery.Moonbeam Epic.Stalker_Soul_Mastery.Soul_Storm && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18671,6 +19011,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, High DMG(Smash), Foe Knockback",
         "icon": "stonemastery_hurlboulder.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18713,6 +19054,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Close (Targeted AoE), Moderate DMG(Lethal/Smash), Foe Knockback, Disorient",
         "icon": "stonemastery_fissure.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18764,6 +19106,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +DEF(Lethal, Smashing)",
         "icon": "stonearmor_stonearmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Fissure ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18805,6 +19148,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Extreme DMG(Smash), Foe Hold",
         "icon": "stonemastery_seismicsmash.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Fissure ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18847,6 +19191,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +HP",
         "icon": "stonearmor_earthsembrace.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Fissure && Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Stone_Armor && || Epic.Stone_Mastery.Fissure Epic.Stone_Mastery.Stone_Armor && || Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Fissure && || Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Seismic_Smash && || Epic.Stone_Mastery.Fissure Epic.Stone_Mastery.Seismic_Smash && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18908,6 +19253,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Heavy DoT(Lethal), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18959,6 +19305,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19014,6 +19361,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Leviathan_Mastery.Spirit_Shark Epic.VEAT_Leviathan_Mastery.School_of_Sharks || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19062,6 +19410,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
         "icon": "arachnos_patron_coneslow.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Leviathan_Mastery.Spirit_Shark Epic.VEAT_Leviathan_Mastery.School_of_Sharks || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19164,6 +19513,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Sentinel: Ranged Moderate DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Leviathan_Mastery.Spirit_Shark Epic.VEAT_Leviathan_Mastery.School_of_Sharks && Epic.VEAT_Leviathan_Mastery.Spirit_Shark Epic.VEAT_Leviathan_Mastery.Chum_Spray && || Epic.VEAT_Leviathan_Mastery.Spirit_Shark Epic.VEAT_Leviathan_Mastery.Arctic_Breath && || Epic.VEAT_Leviathan_Mastery.School_of_Sharks Epic.VEAT_Leviathan_Mastery.Chum_Spray && || Epic.VEAT_Leviathan_Mastery.School_of_Sharks Epic.VEAT_Leviathan_Mastery.Arctic_Breath && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19212,6 +19562,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Heavy DMG(Energy/Smash), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19261,6 +19612,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE) Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19301,6 +19653,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Mace_Mastery.Mace_Blast Epic.VEAT_Mace_Mastery.Web_Envelope || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19352,6 +19705,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Superior DMG(Smash), Foe -Res",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Mace_Mastery.Mace_Blast Epic.VEAT_Mace_Mastery.Web_Envelope || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19425,6 +19779,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Arachnobot: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Mace_Mastery.Mace_Blast Epic.VEAT_Mace_Mastery.Web_Envelope && Epic.VEAT_Mace_Mastery.Mace_Blast Epic.VEAT_Mace_Mastery.Focused_Accuracy && || Epic.VEAT_Mace_Mastery.Mace_Blast Epic.VEAT_Mace_Mastery.Disruptor_Blast && || Epic.VEAT_Mace_Mastery.Web_Envelope Epic.VEAT_Mace_Mastery.Focused_Accuracy && || Epic.VEAT_Mace_Mastery.Web_Envelope Epic.VEAT_Mace_Mastery.Disruptor_Blast && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19472,6 +19827,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, High DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19526,6 +19882,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Minor DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19609,6 +19966,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Mu_Mastery.Mu_Lightning Epic.VEAT_Mu_Mastery.Electrifying_Fences || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19670,6 +20028,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Mu_Mastery.Mu_Lightning Epic.VEAT_Mu_Mastery.Electrifying_Fences || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19727,6 +20086,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Strike: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Mu_Mastery.Mu_Lightning Epic.VEAT_Mu_Mastery.Electrifying_Fences && Epic.VEAT_Mu_Mastery.Mu_Lightning Epic.VEAT_Mu_Mastery.Ball_Lightning && || Epic.VEAT_Mu_Mastery.Mu_Lightning Epic.VEAT_Mu_Mastery.Static_Discharge && || Epic.VEAT_Mu_Mastery.Electrifying_Fences Epic.VEAT_Mu_Mastery.Ball_Lightning && || Epic.VEAT_Mu_Mastery.Electrifying_Fences Epic.VEAT_Mu_Mastery.Static_Discharge && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19774,6 +20134,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, High DoT(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19816,6 +20177,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19871,6 +20233,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Soul_Tentacles || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19913,6 +20276,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "arachnos_patron_aoedamagedebuff.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Soul_Tentacles || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19945,6 +20309,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Blood Widow: Melee Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Soul_Tentacles && Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Darkest_Night && || Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Dark_Obliteration && || Epic.VEAT_Soul_Mastery.Soul_Tentacles Epic.VEAT_Soul_Mastery.Darkest_Night && || Epic.VEAT_Soul_Mastery.Soul_Tentacles Epic.VEAT_Soul_Mastery.Dark_Obliteration && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19989,6 +20354,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
         "icon": "gadgets_webgrenade.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20051,6 +20417,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
         "icon": "gadgets_caltrops.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20084,6 +20451,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Lethal)",
         "icon": "weaponmastery_shuriken.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Weapon_Mastery.Web_Grenade Epic.Weapon_Mastery.Caltrops ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20120,6 +20488,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "weaponmastery_targetingdrone.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Weapon_Mastery.Web_Grenade Epic.Weapon_Mastery.Caltrops ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20171,6 +20540,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal)",
         "icon": "weaponmastery_explodingshuriken.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Weapon_Mastery.Web_Grenade Epic.Weapon_Mastery.Caltrops && Epic.Weapon_Mastery.Web_Grenade Epic.Weapon_Mastery.Shuriken && || Epic.Weapon_Mastery.Caltrops Epic.Weapon_Mastery.Shuriken && || Epic.Weapon_Mastery.Web_Grenade Epic.Weapon_Mastery.Caltrops && || Epic.Weapon_Mastery.Web_Grenade Epic.Weapon_Mastery.Targeting_Drone && || Epic.Weapon_Mastery.Caltrops Epic.Weapon_Mastery.Targeting_Drone && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20221,6 +20591,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
         "icon": "gadgets_webgrenade.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20283,6 +20654,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20320,6 +20692,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Lethal)",
         "icon": "weaponmastery_shuriken.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Weapon_Mastery_Stalker.Web_Grenade Epic.Weapon_Mastery_Stalker.Caltrops ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20356,6 +20729,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "weaponmastery_targetingdrone.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic.Weapon_Mastery_Stalker.Web_Grenade Epic.Weapon_Mastery_Stalker.Caltrops ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20407,6 +20781,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal)",
         "icon": "weaponmastery_explodingshuriken.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Weapon_Mastery_Stalker.Web_Grenade Epic.Weapon_Mastery_Stalker.Caltrops && Epic.Weapon_Mastery_Stalker.Web_Grenade Epic.Weapon_Mastery_Stalker.Shuriken && || Epic.Weapon_Mastery_Stalker.Caltrops Epic.Weapon_Mastery_Stalker.Shuriken && || Epic.Weapon_Mastery_Stalker.Web_Grenade Epic.Weapon_Mastery_Stalker.Caltrops && || Epic.Weapon_Mastery_Stalker.Web_Grenade Epic.Weapon_Mastery_Stalker.Targeting_Drone && || Epic.Weapon_Mastery_Stalker.Caltrops Epic.Weapon_Mastery_Stalker.Targeting_Drone && ||",
         "maxSlots": 6,
         "allowedEnhancements": [

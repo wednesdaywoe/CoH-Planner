@@ -24,14 +24,86 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Chilblain",
+        "fullName": "Epic.Arctic_Mastery.Chilblain",
+        "rank": 1,
+        "available": 34,
+        "description": "Immobilizes your target in an icy trap. Deals some damage over time and slightly Slows the target's attack and movement speed. Useful for keeping villains at bay.",
+        "shortHelp": "Ranged, DoT(Cold), Foe Immobilize, -SPD, -Recharge",
+        "icon": "ice_mastery_chillblain.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Immobilize",
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 8,
+          "endurance": 7.8,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 0.1724,
+              "table": "Ranged_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Cold",
+              "scale": 0.3078,
+              "table": "Melee_PvPDamage",
+              "duration": 9.2,
+              "tickRate": 2
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
         "name": "Block of Ice",
         "fullName": "Epic.Arctic_Mastery.Block_of_Ice",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "You can freeze a single foe in a Block of Ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be held, but all affected targets will be Slowed.",
         "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge",
         "icon": "ice_mastery_blockofice.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -100,76 +172,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Chilblain",
-        "fullName": "Epic.Arctic_Mastery.Chilblain",
-        "rank": 2,
-        "available": 34,
-        "description": "Immobilizes your target in an icy trap. Deals some damage over time and slightly Slows the target's attack and movement speed. Useful for keeping villains at bay.",
-        "shortHelp": "Ranged, DoT(Cold), Foe Immobilize, -SPD, -Recharge",
-        "icon": "ice_mastery_chillblain.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Immobilize",
-          "Ranged Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 8,
-          "endurance": 7.8,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 0.1724,
-              "table": "Ranged_Damage",
-              "duration": 9.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Cold",
-              "scale": 0.3078,
-              "table": "Melee_PvPDamage",
-              "duration": 9.2,
-              "tickRate": 2
-            }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
-        }
-      },
-      {
         "name": "Ice Blast",
         "fullName": "Epic.Arctic_Mastery.Ice_Blast",
         "rank": 3,
@@ -178,6 +180,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_iceblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -223,6 +226,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
         "icon": "ice_mastery_shiver.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -256,6 +260,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), DoT(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_icestorm.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -297,55 +302,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Fearsome Stare",
-        "fullName": "Epic.Blaster_Dark_Mastery.Fearsome_Stare",
-        "rank": 1,
-        "available": 34,
-        "description": "Instills tremendous Fear within a cone area in front of you, causing all affected targets to tremble in Terror uncontrollably.",
-        "shortHelp": "Ranged (Cone), Foe Fear, -To Hit",
-        "icon": "dark_mastery_fearsomestare.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Blaster ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceReduction",
-          "Fear",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Fear",
-          "To Hit Debuff"
-        ],
-        "effects": {
-          "accuracy": 0.8,
-          "range": 50,
-          "recharge": 100,
-          "endurance": 8.528,
-          "activationTime": 2.03,
-          "effectArea": "Cone",
-          "radius": 50,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "fear": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Fear"
-          }
-        }
-      },
-      {
         "name": "Murky Cloud",
         "fullName": "Epic.Blaster_Dark_Mastery.Murky_Cloud",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
         "icon": "dark_mastery_murkycloud.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -387,6 +352,48 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Fearsome Stare",
+        "fullName": "Epic.Blaster_Dark_Mastery.Fearsome_Stare",
+        "rank": 2,
+        "available": 34,
+        "description": "Instills tremendous Fear within a cone area in front of you, causing all affected targets to tremble in Terror uncontrollably.",
+        "shortHelp": "Ranged (Cone), Foe Fear, -To Hit",
+        "icon": "dark_mastery_fearsomestare.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Blaster ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Fear",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Fear",
+          "To Hit Debuff"
+        ],
+        "effects": {
+          "accuracy": 0.8,
+          "range": 50,
+          "recharge": 100,
+          "endurance": 8.528,
+          "activationTime": 2.03,
+          "effectArea": "Cone",
+          "radius": 50,
+          "arc": 0.7853981852531433,
+          "maxTargets": 10,
+          "fear": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Fear"
+          }
+        }
+      },
+      {
         "name": "Possess",
         "fullName": "Epic.Blaster_Dark_Mastery.Possess",
         "rank": 3,
@@ -395,6 +402,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Target Confuse, -ToHit, -Damage, -Healing, -Special",
         "icon": "dark_mastery_possess.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -480,6 +488,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe Intangible",
         "icon": "dark_mastery_blackhole.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -534,6 +543,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
         "icon": "dark_mastery_soulconsumption.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -595,66 +605,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Scorpion Shield",
-        "fullName": "Epic.Blaster_Mace_Mastery.Scorpion_Shield",
-        "rank": 1,
-        "available": 34,
-        "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
-        "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
-        "icon": "arachnos_patron_defensebuff.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Web Envelope",
         "fullName": "Epic.Blaster_Mace_Mastery.Web_Envelope",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "The Nullifier Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -719,6 +678,59 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Scorpion Shield",
+        "fullName": "Epic.Blaster_Mace_Mastery.Scorpion_Shield",
+        "rank": 2,
+        "available": 34,
+        "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
+        "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
+        "icon": "arachnos_patron_defensebuff.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Mace Beam Volley",
         "fullName": "Epic.Blaster_Mace_Mastery.Mace_Beam_Volley",
         "rank": 3,
@@ -727,6 +739,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -779,6 +792,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Spiderlings: Ranged DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -791,7 +805,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -818,6 +833,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -878,59 +894,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Charged Armor",
-        "fullName": "Epic.Blaster_Mu_Mastery.Charged_Armor",
-        "rank": 1,
-        "available": 34,
-        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
-        "icon": "arachnos_patron_resistbuff.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Static Discharge",
         "fullName": "Epic.Blaster_Mu_Mastery.Static_Discharge",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -987,6 +959,52 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Charged Armor",
+        "fullName": "Epic.Blaster_Mu_Mastery.Charged_Armor",
+        "rank": 2,
+        "available": 34,
+        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
+        "icon": "arachnos_patron_resistbuff.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Blaster == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Summon Adept",
         "fullName": "Epic.Blaster_Mu_Mastery.Thunder_Strike",
         "rank": 3,
@@ -995,6 +1013,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1010,7 +1029,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Sleep",
           "Stuns",
           "Universal Damage Sets"
@@ -1038,6 +1058,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1120,6 +1141,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1196,103 +1218,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Char",
-        "fullName": "Epic.Blaze_Mastery.Char",
-        "rank": 1,
-        "available": 34,
-        "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial.",
-        "shortHelp": "Ranged, DoT(Fire), Foe Hold",
-        "icon": "pyremastery_soot.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 1.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.4218,
-              "table": "Melee_PvPDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.5,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.5,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 2.109,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.5,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.5,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 2.109,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 2.109,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Ring of Fire",
         "fullName": "Epic.Blaze_Mastery.Ring_of_Fire",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.",
         "shortHelp": "Ranged, DoT(Fire), Foe Immobilize",
         "icon": "pyremastery_ringoffire.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1329,41 +1263,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 9.2,
               "tickRate": 2
-            },
-            {
-              "type": "Fire",
-              "scale": 0.9483,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.9483,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1.539,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.8621,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.8621,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1.539,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1.539,
-              "table": "Melee_PvPDamage"
             }
           ],
           "immobilize": {
@@ -1388,6 +1287,61 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Char",
+        "fullName": "Epic.Blaze_Mastery.Char",
+        "rank": 2,
+        "available": 34,
+        "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial.",
+        "shortHelp": "Ranged, DoT(Fire), Foe Hold",
+        "icon": "pyremastery_soot.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 1.07,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 4.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.4218,
+              "table": "Melee_PvPDamage",
+              "duration": 4.2,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Immobilize"
+          }
+        }
+      },
+      {
         "name": "Fire Blast",
         "fullName": "Epic.Blaze_Mastery.Fire_Blast",
         "rank": 3,
@@ -1396,6 +1350,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Fire)",
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1433,46 +1388,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Fire",
               "scale": 1.4266,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1.809,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1.809,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1.809,
-              "table": "Melee_PvPDamage"
             }
           ]
         }
@@ -1486,6 +1401,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1562,6 +1478,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1618,41 +1535,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 2.1,
               "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.8985,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.8985,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.7323,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.8985,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.8985,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.7323,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.7323,
-              "table": "Melee_PvPDamage"
             }
           ]
         }
@@ -1678,6 +1560,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount",
         "icon": "bodymastery_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1710,6 +1593,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "gadgets_targetingdrone.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1761,6 +1645,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
         "icon": "bodymastery_laserbeameyes.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1804,21 +1689,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 1.889,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.889,
-              "table": "Melee_PvPDamage"
             }
           ],
           "defenseDebuff": {
@@ -1840,6 +1710,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1877,6 +1748,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
         "icon": "bodymastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1922,41 +1794,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.6203,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8861,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8861,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8861,
-              "table": "Melee_PvPDamage"
             }
           ],
           "knockback": {
@@ -1986,6 +1823,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Endurance",
         "icon": "bodymastery_conservepower.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2017,6 +1855,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "gadgets_targetingdrone.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2068,6 +1907,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
         "icon": "bodymastery_laserbeameyes.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2092,26 +1932,6 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.889,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.889,
-              "table": "Melee_PvPDamage"
-            },
             {
               "type": "Energy",
               "scale": 1,
@@ -2152,6 +1972,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2189,6 +2010,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
         "icon": "bodymastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2234,26 +2056,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.6203,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8861,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8861,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Melee_InherentDamage"
             }
           ],
           "knockback": {
@@ -2275,14 +2077,65 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Spirit Shark",
+        "fullName": "Epic.Brute_Leviathan_Mastery.Spirit_Shark",
+        "rank": 1,
+        "available": 34,
+        "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
+        "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
+        "icon": "arachnos_patron_targetedrangedhighdmg.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 13,
+          "endurance": 7.28,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.84,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 1.392,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 1.4,
+            "table": "Ranged_Knockback"
+          }
+        }
+      },
+      {
         "name": "School of Sharks",
         "fullName": "Epic.Brute_Leviathan_Mastery.School_of_Sharks",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2356,76 +2209,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Spirit Shark",
-        "fullName": "Epic.Brute_Leviathan_Mastery.Spirit_Shark",
-        "rank": 2,
-        "available": 34,
-        "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
-        "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
-        "icon": "arachnos_patron_targetedrangedhighdmg.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 13,
-          "endurance": 7.28,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.84,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.14,
-              "table": "Ranged_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.14,
-              "table": "Ranged_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.392,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.232,
-              "table": "Ranged_PvPDamage",
-              "duration": 3.2,
-              "tickRate": 1
-            }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Ranged_Knockback"
-          }
-        }
-      },
-      {
         "name": "Bile Spray",
         "fullName": "Epic.Brute_Leviathan_Mastery.Chum_Spray",
         "rank": 3,
@@ -2434,6 +2217,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2494,6 +2278,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
         "icon": "arachnos_patron_coneslow.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2607,6 +2392,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Sentinel: Ranged DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2622,7 +2408,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Stuns",
           "Universal Damage Sets"
@@ -2662,6 +2449,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2711,6 +2499,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2783,6 +2572,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2834,6 +2624,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2885,6 +2676,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2899,7 +2691,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -2930,14 +2723,77 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Mu Lightning",
+        "fullName": "Epic.Brute_Mu_Mastery.Mu_Lightning",
+        "rank": 1,
+        "available": 34,
+        "description": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you.",
+        "shortHelp": "Ranged, DMG(Energy), Foe -End",
+        "icon": "arachnos_patron_targetedrangedhighdmg.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 12,
+          "endurance": 6.864,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1.32,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.579,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 2,
+            "table": "Ranged_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 3,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
+        }
+      },
+      {
         "name": "Electrifying Fences",
         "fullName": "Epic.Brute_Mu_Mastery.Electrifying_Fences",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3012,67 +2868,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Mu Lightning",
-        "fullName": "Epic.Brute_Mu_Mastery.Mu_Lightning",
-        "rank": 2,
-        "available": 34,
-        "description": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you.",
-        "shortHelp": "Ranged, DMG(Energy), Foe -End",
-        "icon": "arachnos_patron_targetedrangedhighdmg.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 6.864,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.579,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 2,
-            "table": "Ranged_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 3,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 4
-        }
-      },
-      {
         "name": "Ball Lightning",
         "fullName": "Epic.Brute_Mu_Mastery.Ball_Lightning",
         "rank": 3,
@@ -3081,6 +2876,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3154,6 +2950,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3218,6 +3015,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Strike: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3231,7 +3029,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -3269,6 +3068,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3319,6 +3119,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3400,6 +3201,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "arachnos_patron_aoedamagedebuff.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3431,6 +3233,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3479,6 +3282,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Blood Widow: Melee DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3489,7 +3293,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -3519,14 +3324,68 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Static Discharge",
+        "fullName": "Epic.Charge_Mastery.Static_Discharge",
+        "rank": 1,
+        "available": 34,
+        "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.",
+        "shortHelp": "Ranged (Cone), DMG(Energy), -END",
+        "icon": "electrical_mastery_static_discharge.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Mastermind ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 40,
+          "recharge": 24,
+          "endurance": 15.184,
+          "activationTime": 2.17,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.958,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.008,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 6.25,
+            "table": "Ranged_EndDrain"
+          }
+        }
+      },
+      {
         "name": "Electric Shackles",
         "fullName": "Epic.Charge_Mastery.Electric_Shackles",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you.",
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "electrical_mastery_shocking_bolt.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3591,58 +3450,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Static Discharge",
-        "fullName": "Epic.Charge_Mastery.Static_Discharge",
-        "rank": 2,
-        "available": 34,
-        "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.",
-        "shortHelp": "Ranged (Cone), DMG(Energy), -END",
-        "icon": "electrical_mastery_static_discharge.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Mastermind ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 24,
-          "endurance": 15.184,
-          "activationTime": 2.17,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.008,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 6.25,
-            "table": "Ranged_EndDrain"
-          }
-        }
-      },
-      {
         "name": "Thunder Strike",
         "fullName": "Epic.Charge_Mastery.Thunder_Strike",
         "rank": 3,
@@ -3651,6 +3458,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "chargemastery_thunderstrike.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3730,6 +3538,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(Special)",
         "icon": "electrical_mastery_powersurge.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3807,6 +3616,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
         "icon": "electrical_mastery_em_pulse.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3828,11 +3638,6 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 10,
-          "damage": {
-            "type": "Energy",
-            "scale": 1.64,
-            "table": "Ranged_Damage"
-          },
           "stun": {
             "mag": 3,
             "scale": 8,
@@ -3865,71 +3670,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Flash Freeze",
-        "fullName": "Epic.Chill_Mastery.Flash_Freeze",
-        "rank": 1,
-        "available": 34,
-        "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Cold/Lethal), Foe Sleep",
-        "icon": "ice_mastery_flashfreeze.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Mastermind ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Sleep"
-        ],
-        "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Sleep",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 90,
-          "endurance": 15.6,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 0.2,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 0.2,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.1914,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "sleep": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Sleep"
-          }
-        }
-      },
-      {
         "name": "Ice Blast",
         "fullName": "Epic.Chill_Mastery.Ice_Blast",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
         "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_iceblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3967,6 +3716,59 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Flash Freeze",
+        "fullName": "Epic.Chill_Mastery.Flash_Freeze",
+        "rank": 2,
+        "available": 34,
+        "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Cold/Lethal), Foe Sleep",
+        "icon": "ice_mastery_flashfreeze.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Mastermind ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Sleep"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Sleep",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 90,
+          "endurance": 15.6,
+          "activationTime": 2.37,
+          "effectArea": "AoE",
+          "radius": 25,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 0.2,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1.1914,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "sleep": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Sleep"
+          }
+        }
+      },
+      {
         "name": "Hoarfrost",
         "fullName": "Epic.Chill_Mastery.Hoarfrost",
         "rank": 3,
@@ -3975,6 +3777,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "ice_mastery_hoarfrost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4024,6 +3827,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "ice_mastery_frozenarmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4078,6 +3882,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "ice_mastery_hibernate.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4166,14 +3971,46 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Snow Storm",
+        "fullName": "Epic.Cold_Mastery.Snow_Storm",
+        "rank": 1,
+        "available": 34,
+        "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes.",
+        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge",
+        "icon": "ice_mastery_snowstorm.png",
+        "powerType": "Toggle",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Blaster ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Slow Movement"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 20,
+          "endurance": 0.26,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 25,
+          "maxTargets": 10
+        }
+      },
+      {
         "name": "Flash Freeze",
         "fullName": "Epic.Cold_Mastery.Flash_Freeze",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
         "shortHelp": "Ranged (Targeted AoE), DMG(Cold/Lethal), Foe Sleep",
         "icon": "ice_mastery_flashfreeze.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4211,16 +4048,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Lethal",
-              "scale": 0.1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 0.1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Lethal",
               "scale": 0.5957,
               "table": "Ranged_PvPDamage"
             },
@@ -4238,36 +4065,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Snow Storm",
-        "fullName": "Epic.Cold_Mastery.Snow_Storm",
-        "rank": 2,
-        "available": 34,
-        "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes.",
-        "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge",
-        "icon": "ice_mastery_snowstorm.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Blaster ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Slow Movement"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 20,
-          "endurance": 0.26,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 10
-        }
-      },
-      {
         "name": "Hoarfrost",
         "fullName": "Epic.Cold_Mastery.Hoarfrost",
         "rank": 3,
@@ -4276,6 +4073,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "ice_mastery_hoarfrost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4325,6 +4123,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "ice_mastery_frozenarmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4379,6 +4178,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "ice_mastery_hibernate.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4467,70 +4267,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Dark Blast",
-        "fullName": "Epic.Controller_Dark_Mastery.Dark_Blast",
-        "rank": 1,
-        "available": 34,
-        "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy.",
-        "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
-        "icon": "dark_mastery_darkblast.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Controller ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Ranged Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
         "name": "Murky Cloud",
         "fullName": "Epic.Controller_Dark_Mastery.Murky_Cloud",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks.",
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
         "icon": "dark_mastery_murkycloud.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4572,6 +4317,53 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Dark Blast",
+        "fullName": "Epic.Controller_Dark_Mastery.Dark_Blast",
+        "rank": 2,
+        "available": 34,
+        "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy.",
+        "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
+        "icon": "dark_mastery_darkblast.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Controller ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Ranged Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 1.42,
+              "table": "Melee_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
         "name": "Umbral Torrent",
         "fullName": "Epic.Controller_Dark_Mastery.Torrent",
         "rank": 3,
@@ -4580,6 +4372,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
         "icon": "dark_mastery_umbraltorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4616,16 +4409,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
               "scale": 0.8471,
               "table": "Melee_PvPDamage"
             }
@@ -4645,6 +4428,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
         "icon": "dark_mastery_midnightgrasp.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4677,16 +4461,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Negative",
-              "scale": 2.21,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.0793,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
               "scale": 2.0793,
               "table": "Melee_PvPDamage"
             },
@@ -4694,13 +4468,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.11,
               "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 0.75
-            },
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Melee_InherentDamage",
               "duration": 3.1,
               "tickRate": 0.75
             }
@@ -4721,6 +4488,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
         "icon": "dark_mastery_soulconsumption.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4790,6 +4558,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4837,16 +4606,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_PvPDamage",
               "duration": 9.3,
               "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.76,
-              "table": "Ranged_PvPDamage"
             }
           ],
           "defenseDebuff": {
@@ -4903,6 +4662,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Controller == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4955,6 +4715,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4987,16 +4748,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Energy",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.9477,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
               "scale": 0.9477,
               "table": "Ranged_PvPDamage"
             }
@@ -5016,6 +4767,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5067,6 +4819,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Tarantula: Ranged DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5082,7 +4835,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Immobilize",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -5113,14 +4867,66 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Consume",
+        "fullName": "Epic.Corruptor_Fire_Mastery.Consume",
+        "rank": 1,
+        "available": 34,
+        "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage",
+        "shortHelp": "PBAoE, DMG(Fire), Self +End",
+        "icon": "flamingshield_consume.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Corruptor ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Melee AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 360,
+          "endurance": 0.52,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 20,
+          "maxTargets": 10,
+          "damage": {
+            "type": "Fire",
+            "scale": 0.4,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 20,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 0.05,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
         "name": "Char",
         "fullName": "Epic.Corruptor_Fire_Mastery.Char",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot.",
         "shortHelp": "Ranged, DoT (Fire), Foe Hold",
         "icon": "flamemastery_soot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Corruptor ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5153,20 +4959,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Fire",
-              "scale": 0.22,
-              "table": "Ranged_InherentDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.4218,
-              "table": "Ranged_PvPDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
               "scale": 0.4218,
               "table": "Ranged_PvPDamage",
               "duration": 4.2,
@@ -5181,63 +4973,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Consume",
-        "fullName": "Epic.Corruptor_Fire_Mastery.Consume",
-        "rank": 2,
-        "available": 34,
-        "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage",
-        "shortHelp": "PBAoE, DMG(Fire), Self +End",
-        "icon": "flamingshield_consume.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Corruptor ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Melee AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 360,
-          "endurance": 0.52,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.4,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.4,
-              "table": "Melee_InherentDamage"
-            }
-          ],
-          "enduranceGain": {
-            "scale": 20,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 0.05,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryBuff": 15
-          },
-          "buffDuration": 15
-        }
-      },
-      {
         "name": "Fire Shield",
         "fullName": "Epic.Corruptor_Fire_Mastery.Fire_Shield",
         "rank": 3,
@@ -5246,6 +4981,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "flamingshield_flamingshield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5295,6 +5031,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5305,10 +5042,9 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -5353,6 +5089,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Fire)",
         "icon": "firemastery_greaterfiresword.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5377,16 +5114,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Fire",
               "scale": 2.44,
               "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 2.44,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 2.319,
-              "table": "Melee_PvPDamage"
             },
             {
               "type": "Fire",
@@ -5424,6 +5151,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5473,16 +5201,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_PvPDamage",
               "duration": 7.1,
               "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8367,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.1016,
-              "table": "Ranged_PvPDamage"
             }
           ],
           "immobilize": {
@@ -5515,6 +5233,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5560,6 +5279,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5644,6 +5364,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5690,16 +5411,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_PvPDamage",
               "duration": 7.1,
               "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 2.669,
-              "table": "Ranged_PvPDamage"
             }
           ],
           "hold": {
@@ -5718,6 +5429,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Hybrid: Ranged DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5732,8 +5444,11 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
+          "Slow Movement",
           "Stuns",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -5763,14 +5478,88 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Web Envelope",
+        "fullName": "Epic.Corruptor_Mace_Mastery.Web_Envelope",
+        "rank": 1,
+        "available": 34,
+        "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
+        "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
+        "icon": "arachnos_patron_rangedaoeimmobilize.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Immobilize",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 50,
+          "recharge": 16,
+          "endurance": 8.6008,
+          "activationTime": 2,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.0837,
+              "table": "Ranged_Damage",
+              "duration": 5.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.2503,
+              "table": "Ranged_PvPDamage",
+              "duration": 5.2,
+              "tickRate": 2
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          },
+          "mezResistance": {
+            "knockup": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            },
+            "knockback": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "mezResistance": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
         "name": "Scorpion Shield",
         "fullName": "Epic.Corruptor_Mace_Mastery.Scorpion_Shield",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5815,92 +5604,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Web Envelope",
-        "fullName": "Epic.Corruptor_Mace_Mastery.Web_Envelope",
-        "rank": 2,
-        "available": 34,
-        "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
-        "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
-        "icon": "arachnos_patron_rangedaoeimmobilize.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Immobilize",
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 50,
-          "recharge": 16,
-          "endurance": 8.6008,
-          "activationTime": 2,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.0837,
-              "table": "Ranged_Damage",
-              "duration": 5.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.0837,
-              "table": "Ranged_InherentDamage",
-              "duration": 5.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.2503,
-              "table": "Ranged_PvPDamage",
-              "duration": 5.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.2503,
-              "table": "Ranged_PvPDamage",
-              "duration": 5.2,
-              "tickRate": 2
-            }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
-        }
-      },
-      {
         "name": "Focused Accuracy",
         "fullName": "Epic.Corruptor_Mace_Mastery.Focused_Accuracy",
         "rank": 3,
@@ -5909,6 +5612,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5960,6 +5664,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -5998,20 +5703,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 7.1,
               "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1169,
-              "table": "Melee_InherentDamage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.345,
-              "table": "Melee_PvPDamage",
-              "duration": 7.1,
-              "tickRate": 1
             }
           ],
           "hold": {
@@ -6030,6 +5721,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6046,7 +5738,8 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Immobilize",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -6077,59 +5770,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Charged Armor",
-        "fullName": "Epic.Corruptor_Mu_Mastery.Charged_Armor",
-        "rank": 1,
-        "available": 34,
-        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
-        "icon": "arachnos_patron_resistbuff.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Power Sink",
         "fullName": "Epic.Corruptor_Mu_Mastery.Power_Sink",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.",
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6167,6 +5816,52 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Charged Armor",
+        "fullName": "Epic.Corruptor_Mu_Mastery.Charged_Armor",
+        "rank": 2,
+        "available": 34,
+        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
+        "icon": "arachnos_patron_resistbuff.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Electric Shackles",
         "fullName": "Epic.Corruptor_Mu_Mastery.Electric_Shackles",
         "rank": 3,
@@ -6175,6 +5870,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6204,20 +5900,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.15,
               "table": "Ranged_Damage",
-              "duration": 6.3,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.4113,
-              "table": "Ranged_PvPDamage",
-              "duration": 6.3,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.15,
-              "table": "Ranged_InherentDamage",
               "duration": 6.3,
               "tickRate": 1
             },
@@ -6261,6 +5943,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount, Heal, +Regen",
         "icon": "arachnos_patron_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6306,6 +5989,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6321,7 +6005,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Sleep",
           "Stuns",
           "Universal Damage Sets"
@@ -6353,14 +6038,70 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Soul Storm",
+        "fullName": "Epic.Corruptor_Soul_Mastery.Soul_Storm",
+        "rank": 1,
+        "available": 34,
+        "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 41 and have Soul Drain or Dark Embrace before selecting this power.",
+        "shortHelp": "Ranged, DoT(Negative), Foe Hold",
+        "icon": "arachnos_patron_targetedhold.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 2.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 0.11,
+              "table": "Ranged_Damage",
+              "duration": 10,
+              "tickRate": 1
+            },
+            {
+              "type": "Negative",
+              "scale": 0.2879,
+              "table": "Ranged_PvPDamage",
+              "duration": 10,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
+        }
+      },
+      {
         "name": "Dark Embrace",
         "fullName": "Epic.Corruptor_Soul_Mastery.Dark_Embrace",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage.",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6402,74 +6143,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Soul Storm",
-        "fullName": "Epic.Corruptor_Soul_Mastery.Soul_Storm",
-        "rank": 2,
-        "available": 34,
-        "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding. Soul Storm enraptures a single target Holding them while their life-force is drained from their body. You must be level 41 and have Soul Drain or Dark Embrace before selecting this power.",
-        "shortHelp": "Ranged, DoT(Negative), Foe Hold",
-        "icon": "arachnos_patron_targetedhold.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Ranged_Damage",
-              "duration": 10,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.2879,
-              "table": "Ranged_PvPDamage",
-              "duration": 10,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Ranged_InherentDamage",
-              "duration": 10,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.2879,
-              "table": "Ranged_PvPDamage",
-              "duration": 10,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Power Boost",
         "fullName": "Epic.Corruptor_Soul_Mastery.Power_Boost",
         "rank": 3,
@@ -6478,6 +6151,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Special",
         "icon": "arachnos_patron_powerboost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6578,6 +6252,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE DMG(Negative), Self +DMG, +ACC",
         "icon": "arachnos_patron_pbaoebuffdamage.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6600,23 +6275,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.6408,
-              "table": "Melee_PvPDamage"
-            }
-          ],
+          "damage": {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
           "tohitBuff": {
             "scale": 1,
             "table": "Melee_Buff_ToHit"
@@ -6641,6 +6304,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Fortunata Mistress: Ranged DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6657,7 +6321,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Sleep",
           "Stuns",
           "Universal Damage Sets"
@@ -6689,63 +6354,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Dark Consumption",
-        "fullName": "Epic.Dark_Mastery.Dark_Consumption",
-        "rank": 1,
-        "available": 34,
-        "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance.",
-        "shortHelp": "PBAoE DMG(Negative), Self +End",
-        "icon": "dark_mastery_darkconsumption.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Melee AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 360,
-          "endurance": 0.52,
-          "activationTime": 1.03,
-          "effectArea": "AoE",
-          "radius": 8,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.8,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8,
-              "table": "Melee_InherentDamage"
-            }
-          ],
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones"
-          }
-        }
-      },
-      {
         "name": "Oppressive Gloom",
         "fullName": "Epic.Dark_Mastery.Oppressive_Gloom",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use.",
         "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
         "icon": "dark_mastery_oppressivegloom.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6779,6 +6396,49 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Dark Consumption",
+        "fullName": "Epic.Dark_Mastery.Dark_Consumption",
+        "rank": 2,
+        "available": 34,
+        "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance.",
+        "shortHelp": "PBAoE DMG(Negative), Self +End",
+        "icon": "dark_mastery_darkconsumption.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Melee AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 360,
+          "endurance": 0.52,
+          "activationTime": 1.03,
+          "effectArea": "AoE",
+          "radius": 8,
+          "maxTargets": 10,
+          "damage": {
+            "type": "Negative",
+            "scale": 0.8,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          }
+        }
+      },
+      {
         "name": "Dark Embrace",
         "fullName": "Epic.Dark_Mastery.Dark_Embrace",
         "rank": 3,
@@ -6787,6 +6447,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "dark_mastery_darkembrace.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6836,6 +6497,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "dark_mastery_soultransfer.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6846,7 +6508,6 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
@@ -6899,6 +6560,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Damged AoE, DMG(Negative), Self +DMG, +ACC",
         "icon": "dark_mastery_spiritdrain.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -6923,23 +6585,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 5,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.4,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.4,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.29,
-              "table": "Melee_PvPDamage"
-            }
-          ],
+          "damage": {
+            "type": "Negative",
+            "scale": 0.4,
+            "table": "Melee_Damage"
+          },
           "tohitBuff": {
             "scale": 1,
             "table": "Melee_Buff_ToHit"
@@ -6968,99 +6618,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Petrifying Gaze",
-        "fullName": "Epic.Darkness_Mastery.Petrifying_Gaze",
-        "rank": 1,
-        "available": 34,
-        "description": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless.",
-        "shortHelp": "Ranged, DMG(Negative), Foe Hold",
-        "icon": "darknessmastery_petrifyinggaze.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.529,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.529,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.529,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.529,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Umbral Torrent",
         "fullName": "Epic.Darkness_Mastery.Torrent",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit.",
         "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
         "icon": "darkcast_torrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7099,46 +6665,62 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.8471,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8471,
-              "table": "Melee_PvPDamage"
             }
           ],
           "knockback": {
             "scale": 10,
             "table": "Melee_Knockback"
+          }
+        }
+      },
+      {
+        "name": "Petrifying Gaze",
+        "fullName": "Epic.Darkness_Mastery.Petrifying_Gaze",
+        "rank": 2,
+        "available": 34,
+        "description": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless.",
+        "shortHelp": "Ranged, DMG(Negative), Foe Hold",
+        "icon": "darknessmastery_petrifyinggaze.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 2.529,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
           }
         }
       },
@@ -7151,6 +6733,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
         "icon": "darkcast_darkblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7184,41 +6767,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 1.42,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
             }
           ]
         }
@@ -7232,6 +6780,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe -To Hit",
         "icon": "darkcast_nightfall.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7272,41 +6821,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 2.8,
               "tickRate": 0.30000001192092896
-            },
-            {
-              "type": "Negative",
-              "scale": 1.1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.0317,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.0317,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.0317,
-              "table": "Melee_PvPDamage"
             }
           ]
         }
@@ -7320,6 +6834,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize, -ACC",
         "icon": "darkcast_tenebroustentacles.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7372,41 +6887,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.1524,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.7823,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.7823,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.0542,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.7823,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.7823,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.0542,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.0542,
-              "table": "Melee_PvPDamage"
             }
           ],
           "immobilize": {
@@ -7443,14 +6923,66 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Consume",
+        "fullName": "Epic.Defender_Fire_Mastery.Consume",
+        "rank": 1,
+        "available": 34,
+        "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.",
+        "shortHelp": "PBAoE, DMG(Fire), Self +End",
+        "icon": "flamingshield_consume.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Defender ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Melee AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 360,
+          "endurance": 0.52,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 20,
+          "maxTargets": 10,
+          "damage": {
+            "type": "Fire",
+            "scale": 0.4,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 20,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 0.05,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
         "name": "Char",
         "fullName": "Epic.Defender_Fire_Mastery.Char",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot.",
         "shortHelp": "Ranged, DoT (Fire), Foe Hold",
         "icon": "flamemastery_soot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7497,56 +7029,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Consume",
-        "fullName": "Epic.Defender_Fire_Mastery.Consume",
-        "rank": 2,
-        "available": 34,
-        "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.",
-        "shortHelp": "PBAoE, DMG(Fire), Self +End",
-        "icon": "flamingshield_consume.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Defender ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Melee AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 360,
-          "endurance": 0.52,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Fire",
-            "scale": 0.4,
-            "table": "Melee_Damage"
-          },
-          "enduranceGain": {
-            "scale": 20,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 0.05,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryBuff": 15
-          },
-          "buffDuration": 15
-        }
-      },
-      {
         "name": "Fire Shield",
         "fullName": "Epic.Defender_Fire_Mastery.Fire_Shield",
         "rank": 3,
@@ -7555,6 +7037,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "flamingshield_flamingshield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7604,6 +7087,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7614,10 +7098,9 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -7662,6 +7145,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Fire)",
         "icon": "firemastery_greaterfiresword.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7715,66 +7199,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Flash Freeze",
-        "fullName": "Epic.Defender_Ice_Mastery.Flash_Freeze",
-        "rank": 1,
-        "available": 34,
-        "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
-        "shortHelp": "Ranged (Targeted AoE), DMG(Cold), Foe Sleep",
-        "icon": "ice_mastery_flashfreeze.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Sleep"
-        ],
-        "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Sleep",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 90,
-          "endurance": 15.6,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 0.2,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 0.2,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "sleep": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
-          }
-        }
-      },
-      {
         "name": "Frozen Armor",
         "fullName": "Epic.Defender_Ice_Mastery.Frozen_Armor",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage.",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "ice_mastery_frozenarmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7821,6 +7254,52 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Flash Freeze",
+        "fullName": "Epic.Defender_Ice_Mastery.Flash_Freeze",
+        "rank": 2,
+        "available": 34,
+        "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected.<br><br><color #fcfc95>Notes:<br>The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
+        "shortHelp": "Ranged (Targeted AoE), DMG(Cold), Foe Sleep",
+        "icon": "ice_mastery_flashfreeze.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Sleep"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Sleep",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 90,
+          "endurance": 15.6,
+          "activationTime": 2.37,
+          "effectArea": "AoE",
+          "radius": 25,
+          "maxTargets": 16,
+          "damage": {
+            "type": "Cold",
+            "scale": 0.2,
+            "table": "Ranged_Damage"
+          },
+          "sleep": {
+            "mag": 4,
+            "scale": 1,
+            "table": "Ranged_PvPMez"
+          }
+        }
+      },
+      {
         "name": "Hoarfrost",
         "fullName": "Epic.Defender_Ice_Mastery.Hoarfrost",
         "rank": 3,
@@ -7829,6 +7308,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "ice_mastery_hoarfrost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7878,6 +7358,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +DMG, +To Hit",
         "icon": "ice_mastery_buildup.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7918,6 +7399,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Ice Elemental: Melee DMG(Lethal/Cold)",
         "icon": "ice_mastery_iceelemental.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -7931,7 +7413,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -7970,6 +7453,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
         "icon": "dark_mastery_murkycloud.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8019,6 +7503,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Target -Speed, -Res, -Fly",
         "icon": "dark_mastery_tarpatch.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8058,6 +7543,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "dark_mastery_darkestnight.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8089,6 +7575,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback",
         "icon": "dark_mastery_umbraltorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8144,6 +7631,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
         "icon": "dark_mastery_soulconsumption.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8205,14 +7693,57 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Water Spout",
+        "fullName": "Epic.Dominator_Leviathan_Mastery.Water_Spout",
+        "rank": 1,
+        "available": 34,
+        "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes.",
+        "shortHelp": "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet",
+        "icon": "arachnos_patron_dropknockback.png",
+        "powerType": "Click",
+        "targetType": "Location",
+        "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Damage",
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Defense Debuff",
+          "Knockback",
+          "Ranged AoE Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.3,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 20.8,
+          "activationTime": 1.17,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Water_Spout",
+            "duration": 30
+          }
+        }
+      },
+      {
         "name": "Bile Spray",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Chum_Spray",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time.",
         "shortHelp": "Ranged (Cone), DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8260,60 +7791,8 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_PvPDamage",
               "duration": 4.25,
               "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 1.2,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 1.0219,
-              "table": "Ranged_PvPDamage"
             }
           ]
-        }
-      },
-      {
-        "name": "Water Spout",
-        "fullName": "Epic.Dominator_Leviathan_Mastery.Water_Spout",
-        "rank": 2,
-        "available": 34,
-        "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes.",
-        "shortHelp": "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet",
-        "icon": "arachnos_patron_dropknockback.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Damage",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Knockback",
-          "Ranged AoE Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.3,
-          "range": 60,
-          "recharge": 180,
-          "endurance": 20.8,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Water_Spout",
-            "duration": 30
-          }
         }
       },
       {
@@ -8325,6 +7804,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8409,6 +7889,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8454,6 +7935,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Hybrid: Ranged DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8464,7 +7946,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Knockback",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -8503,6 +7987,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Dominator == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8541,11 +8026,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Energy",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
               "scale": 1.38,
               "table": "Ranged_PvPDamage"
             },
@@ -8555,11 +8035,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_PvPDamage",
               "duration": 9.3,
               "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 2.76,
-              "table": "Ranged_PvPDamage"
             }
           ],
           "defenseDebuff": {
@@ -8616,6 +8091,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8668,6 +8144,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8700,16 +8177,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Energy",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.9477,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
               "scale": 0.9477,
               "table": "Ranged_PvPDamage"
             }
@@ -8729,6 +8196,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def, Res(All)",
         "icon": "arachnos_patron_megabuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8845,6 +8313,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Tarantula: Ranged DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8860,7 +8329,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Immobilize",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -8891,59 +8361,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Charged Armor",
-        "fullName": "Epic.Dominator_Mu_Mastery.Charged_Armor",
-        "rank": 1,
-        "available": 34,
-        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
-        "icon": "arachnos_patron_resistbuff.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Power Sink",
         "fullName": "Epic.Dominator_Mu_Mastery.Power_Sink",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.",
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -8981,6 +8407,52 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Charged Armor",
+        "fullName": "Epic.Dominator_Mu_Mastery.Charged_Armor",
+        "rank": 2,
+        "available": 34,
+        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
+        "icon": "arachnos_patron_resistbuff.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Ball Lightning",
         "fullName": "Epic.Dominator_Mu_Mastery.Ball_Lightning",
         "rank": 3,
@@ -8989,6 +8461,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9037,16 +8510,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_PvPDamage",
               "duration": 3.1,
               "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 1.02,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.7474,
-              "table": "Ranged_PvPDamage"
             }
           ],
           "enduranceDrain": {
@@ -9072,6 +8535,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(Special)",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9149,6 +8613,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Guardian: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9161,8 +8626,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Healing",
           "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -9200,6 +8667,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE DMG(Negative), Self +End",
         "icon": "arachnos_patron_pbaoedrain.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9221,23 +8689,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 8,
           "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.8,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.9553,
-              "table": "Melee_PvPDamage"
-            }
-          ],
+          "damage": {
+            "type": "Negative",
+            "scale": 0.8,
+            "table": "Melee_Damage"
+          },
           "enduranceGain": {
             "scale": 25,
             "table": "Melee_Ones"
@@ -9253,6 +8709,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator == $archetype @Class_Controller == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9302,6 +8759,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9337,16 +8795,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.5299,
               "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.9,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.5299,
-              "table": "Ranged_PvPDamage"
             }
           ]
         }
@@ -9360,6 +8808,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE DMG(Negative), Self +DMG, +ACC",
         "icon": "arachnos_patron_pbaoebuffdamage.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9382,23 +8831,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.5192,
-              "table": "Melee_PvPDamage"
-            }
-          ],
+          "damage": {
+            "type": "Negative",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
           "tohitBuff": {
             "scale": 1,
             "table": "Melee_Buff_ToHit"
@@ -9423,6 +8860,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Fortunata Seer: Ranged DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9435,7 +8873,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -9465,57 +8904,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Salt Crystals",
-        "fullName": "Epic.Earth_Mastery.Salt_Crystals",
-        "rank": 1,
-        "available": 34,
-        "description": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
-        "shortHelp": "PBAoE, Foe Sleep, -DEF",
-        "icon": "earth_mastery_saltcrystals.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "EnduranceReduction",
-          "Recharge",
-          "Sleep"
-        ],
-        "allowedSetCategories": [
-          "Sleep"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 90,
-          "endurance": 15.6,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 30,
-          "maxTargets": 10,
-          "sleep": {
-            "mag": 3,
-            "scale": 20,
-            "table": "Ranged_Sleep"
-          },
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 15
-          },
-          "buffDuration": 15
-        }
-      },
-      {
         "name": "Stone Prison",
         "fullName": "Epic.Earth_Mastery.Stone_Prison",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Immobilizes a single target within an earthy formation and deals some Smashing damage over time. Some more resilient foes may require multiple attacks to Immobilize. Stone Prison can also reduce a target's Defense.",
         "shortHelp": "Ranged, DoT(Smash), Foe Immobilize, -DEF, -Fly",
         "icon": "earth_mastery_stoneprison.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9581,6 +8978,50 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Salt Crystals",
+        "fullName": "Epic.Earth_Mastery.Salt_Crystals",
+        "rank": 2,
+        "available": 34,
+        "description": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
+        "shortHelp": "PBAoE, Foe Sleep, -DEF",
+        "icon": "earth_mastery_saltcrystals.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Recharge",
+          "Sleep"
+        ],
+        "allowedSetCategories": [
+          "Sleep"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 90,
+          "endurance": 15.6,
+          "activationTime": 1.07,
+          "effectArea": "AoE",
+          "radius": 30,
+          "maxTargets": 10,
+          "sleep": {
+            "mag": 3,
+            "scale": 20,
+            "table": "Ranged_Sleep"
+          },
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
         "name": "Fossilize",
         "fullName": "Epic.Earth_Mastery.Fossilize",
         "rank": 3,
@@ -9589,6 +9030,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Smash), Foe Hold, -DEF",
         "icon": "earth_mastery_fossilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9647,6 +9089,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Foe -Speed, -Jump, -Fly, -DEF",
         "icon": "earth_mastery_quicksand.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9681,6 +9124,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Lethal), Foe -DEF, Minor Disorient",
         "icon": "earth_mastery_rangedaoe.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9745,14 +9189,68 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Static Discharge",
+        "fullName": "Epic.Electrical_Mastery.Static_Discharge",
+        "rank": 1,
+        "available": 34,
+        "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.",
+        "shortHelp": "Ranged (Cone), DMG(Energy), -END",
+        "icon": "electrical_mastery_static_discharge.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Blaster ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 40,
+          "recharge": 24,
+          "endurance": 15.184,
+          "activationTime": 2.17,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 0.7853981852531433,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 0.958,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.008,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 6.25,
+            "table": "Ranged_EndDrain"
+          }
+        }
+      },
+      {
         "name": "Shocking Bolt",
         "fullName": "Epic.Electrical_Mastery.Shocking_Bolt",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "Holds a distant foe by shocking him with electricity. The seized target is left writhing in agony and is unable to defend himself. Shocking Bolt also drains some Endurance from the target over time. A portion of drained Endurance may be returned to you.",
         "shortHelp": "Ranged, DoT(Energy), Foe Hold, -END",
         "icon": "electrical_mastery_shocking_bolt.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9813,58 +9311,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Static Discharge",
-        "fullName": "Epic.Electrical_Mastery.Static_Discharge",
-        "rank": 2,
-        "available": 34,
-        "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.",
-        "shortHelp": "Ranged (Cone), DMG(Energy), -END",
-        "icon": "electrical_mastery_static_discharge.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Blaster ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 24,
-          "endurance": 15.184,
-          "activationTime": 2.17,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.008,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 6.25,
-            "table": "Ranged_EndDrain"
-          }
-        }
-      },
-      {
         "name": "Charged Armor",
         "fullName": "Epic.Electrical_Mastery.Charged_Armor",
         "rank": 3,
@@ -9873,6 +9319,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "electrical_mastery_charged_armor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9918,6 +9365,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(Special)",
         "icon": "electrical_mastery_powersurge.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -9995,6 +9443,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
         "icon": "electrical_mastery_em_pulse.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10016,11 +9465,6 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 40,
           "maxTargets": 16,
-          "damage": {
-            "type": "Energy",
-            "scale": 1.64,
-            "table": "Ranged_Damage"
-          },
           "stun": {
             "mag": 3,
             "scale": 15,
@@ -10066,6 +9510,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Energy), Foe Immobilize, -End",
         "icon": "electricitymanipulation_electricfence.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10095,20 +9540,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.1724,
               "table": "Ranged_Damage",
-              "duration": 8.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Energy",
-              "scale": 0.3778,
-              "table": "Ranged_PvPDamage",
-              "duration": 8.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Energy",
-              "scale": 0.1724,
-              "table": "Ranged_InherentDamage",
               "duration": 8.2,
               "tickRate": 2
             },
@@ -10160,6 +9591,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback",
         "icon": "electricitymanipulation_thunderstrike.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10193,32 +9625,12 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Energy",
-              "scale": 2.98,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
               "scale": 0.42,
               "table": "Melee_Damage"
             },
             {
               "type": "Energy",
-              "scale": 0.42,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
               "scale": 2.971,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.971,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.3506,
               "table": "Melee_PvPDamage"
             },
             {
@@ -10259,6 +9671,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "electricitymastery_chargedarmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10304,6 +9717,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Energy), Foe Hold, -END",
         "icon": "electricitymastery_shockingbolt.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10333,20 +9747,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.1,
               "table": "Ranged_Damage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.552,
-              "table": "Ranged_PvPDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 0.1,
-              "table": "Ranged_InherentDamage",
               "duration": 4.2,
               "tickRate": 1
             },
@@ -10386,6 +9786,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "electricitymanipulation_powersink.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10443,6 +9844,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount",
         "icon": "energymastery_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Tanker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10475,6 +9877,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "energymastery_focusedaccuracy.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Tanker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10526,6 +9929,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Light DMG(Energy), Foe -DEF",
         "icon": "energymastery_laserbeameyes.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10590,6 +9994,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "energymastery_physicalperfection.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10627,6 +10032,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Light DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10701,6 +10107,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Endurance",
         "icon": "energymastery_conservepower.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "$archetype @Class_Brute ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10732,6 +10139,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "energymastery_focusedaccuracy.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Brute ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10783,6 +10191,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
         "icon": "energymastery_laserbeameyes.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10847,6 +10256,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "energymastery_physicalperfection.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10884,6 +10294,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10958,6 +10369,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "fieldmastery_tempinvulnerability.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -10999,6 +10411,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_powerblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11058,6 +10471,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11120,6 +10534,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
         "icon": "powerblast_explosion.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11181,6 +10596,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "fieldmastery_forceofnature.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11262,14 +10678,66 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Fire Blast",
+        "fullName": "Epic.Fire_Mastery.Fire_Blast",
+        "rank": 1,
+        "available": 34,
+        "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.",
+        "shortHelp": "Ranged, DMG(Fire)",
+        "icon": "fireblast_fireblast.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Controller ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 1.1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 1.889,
+              "table": "Ranged_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
         "name": "Fire Ball",
         "fullName": "Epic.Fire_Mastery.Fire_Ball",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11315,85 +10783,10 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Fire",
-              "scale": 1.05,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.0732,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.6591,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Fire",
               "scale": 0.1,
               "table": "Ranged_Damage",
               "duration": 2.1,
               "tickRate": 1
-            }
-          ]
-        }
-      },
-      {
-        "name": "Fire Blast",
-        "fullName": "Epic.Fire_Mastery.Fire_Blast",
-        "rank": 2,
-        "available": 34,
-        "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.",
-        "shortHelp": "Ranged, DMG(Fire)",
-        "icon": "fireblast_fireblast.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Controller ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 1.1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 1.889,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1.1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1.889,
-              "table": "Ranged_PvPDamage"
             }
           ]
         }
@@ -11407,6 +10800,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "firemastery_flamingshield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11456,6 +10850,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "firemastery_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11466,10 +10861,9 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -11514,6 +10908,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, DMG(Fire), Self +End",
         "icon": "firemastery_consume.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11536,23 +10931,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 20,
           "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.4,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.4,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.4,
-              "table": "Melee_PvPDamage"
-            }
-          ],
+          "damage": {
+            "type": "Fire",
+            "scale": 0.4,
+            "table": "Melee_Damage"
+          },
           "enduranceGain": {
             "scale": 20,
             "table": "Melee_Ones"
@@ -11580,14 +10963,52 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Rain of Fire",
+        "fullName": "Epic.Fire_Mastery_Dominator.Fire_Blast",
+        "rank": 1,
+        "available": 34,
+        "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area.",
+        "shortHelp": "Ranged (Location AoE), DoT(Fire), -SPD",
+        "icon": "fireblast_rainoffire.png",
+        "powerType": "Click",
+        "targetType": "Location",
+        "requires": "$archetype @Class_Dominator ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 120,
+          "endurance": 26,
+          "activationTime": 2.03,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "P1985334123",
+            "duration": 15
+          }
+        }
+      },
+      {
         "name": "Fire Ball",
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Ball",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze.",
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11633,63 +11054,12 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Fire",
-              "scale": 1.05,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.0732,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.6591,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Fire",
               "scale": 0.1,
               "table": "Ranged_Damage",
               "duration": 2.1,
               "tickRate": 1
             }
           ]
-        }
-      },
-      {
-        "name": "Rain of Fire",
-        "fullName": "Epic.Fire_Mastery_Dominator.Fire_Blast",
-        "rank": 2,
-        "available": 34,
-        "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area.",
-        "shortHelp": "Ranged (Location AoE), DoT(Fire), -SPD",
-        "icon": "fireblast_rainoffire.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Dominator ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 120,
-          "endurance": 26,
-          "activationTime": 2.03,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "P1985334123",
-            "duration": 15
-          }
         }
       },
       {
@@ -11701,6 +11071,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "firemastery_flamingshield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11750,6 +11121,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "firemastery_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11760,10 +11132,9 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -11808,6 +11179,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11896,6 +11268,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), DMG(Fire), Foe Knockback",
         "icon": "flamemastery_bonfire.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11937,6 +11310,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Fire), Foe Hold",
         "icon": "flamemastery_soot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -11991,6 +11365,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "flamingshield_flamingshield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12040,6 +11415,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "flamemastery_meltarmor.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12116,6 +11492,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12126,10 +11503,9 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -12186,6 +11562,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def, Res(All)",
         "icon": "forcefield_personalforcefield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12302,6 +11679,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE Knockback",
         "icon": "forcefield_repulsionfield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12339,6 +11717,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "forcemastery_temporaryinvulnerabilty.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12380,6 +11759,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Smash), Foe -Res, Knockdown, Disorient",
         "icon": "forcefield_repulsionbomb.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12469,6 +11849,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "forcemastery_unstoppable.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12558,6 +11939,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), DMG(Fire), Foe Knockback",
         "icon": "heatmastery_bonfire.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12599,6 +11981,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Fire)",
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12649,6 +12032,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12711,6 +12095,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12765,6 +12150,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Rez, Special",
         "icon": "heatmastery_riseofthephoenix.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12775,10 +12161,9 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Healing",
           "Endurance Modification",
           "Healing",
-          "Ranged AoE Damage",
+          "Melee AoE Damage",
           "Stuns",
           "Universal Damage Sets"
         ],
@@ -12827,14 +12212,61 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Ice Blast",
+        "fullName": "Epic.Ice_Mastery.Ice_Blast",
+        "rank": 1,
+        "available": 34,
+        "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
+        "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
+        "icon": "ice_mastery_iceblast.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Controller ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Cold",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Cold",
+              "scale": 1.889,
+              "table": "Ranged_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
         "name": "Hibernate",
         "fullName": "Epic.Ice_Mastery.Hibernate",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "ice_mastery_hibernate.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -12911,61 +12343,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Ice Blast",
-        "fullName": "Epic.Ice_Mastery.Ice_Blast",
-        "rank": 2,
-        "available": 34,
-        "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
-        "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
-        "icon": "ice_mastery_iceblast.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Controller ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Ranged Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.889,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.889,
-              "table": "Ranged_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
         "name": "Frozen Armor",
         "fullName": "Epic.Ice_Mastery.Frozen_Armor",
         "rank": 3,
@@ -12974,6 +12351,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "ice_mastery_frozenarmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13028,6 +12406,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_frostbreath.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13063,20 +12442,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Cold",
-              "scale": 0.7,
-              "table": "Ranged_InherentDamage",
-              "duration": 0.6,
-              "tickRate": 0.5
-            },
-            {
-              "type": "Cold",
-              "scale": 0.5477,
-              "table": "Ranged_PvPDamage",
-              "duration": 0.6,
-              "tickRate": 0.5
-            },
-            {
-              "type": "Cold",
               "scale": 0.5477,
               "table": "Ranged_PvPDamage",
               "duration": 0.6,
@@ -13094,6 +12459,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), DoT(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_icestorm.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13135,14 +12501,61 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Sleet",
+        "fullName": "Epic.Ice_Mastery_Dominator.Ice_Blast",
+        "rank": 1,
+        "available": 34,
+        "description": "Summons a Sleet Storm at a targeted location. Sleet deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm.",
+        "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
+        "icon": "ice_mastery_sleet.png",
+        "powerType": "Click",
+        "targetType": "Location",
+        "requires": "$archetype @Class_Dominator ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "Defense Debuff",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Accurate Defense Debuff",
+          "Defense Debuff",
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 120,
+          "endurance": 18.1272,
+          "activationTime": 2.03,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "P3955584513",
+            "powers": [
+              "Pets.Sleet_Epic.Sleet",
+              "Pets.Sleet_Epic.Avoid"
+            ],
+            "duration": 15
+          }
+        }
+      },
+      {
         "name": "Hibernate",
         "fullName": "Epic.Ice_Mastery_Dominator.Hibernate",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power, but you cannot Hibernate for more than 30 seconds. If you activate this power while in the air, you will fall.",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "ice_mastery_hibernate.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13219,51 +12632,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Sleet",
-        "fullName": "Epic.Ice_Mastery_Dominator.Ice_Blast",
-        "rank": 2,
-        "available": 34,
-        "description": "Summons a Sleet Storm at a targeted location. Sleet deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm.",
-        "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
-        "icon": "ice_mastery_sleet.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Dominator ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "Defense Debuff",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 120,
-          "endurance": 18.1272,
-          "activationTime": 2.03,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "P3955584513",
-            "powers": [
-              "Pets.Sleet_Epic.Sleet",
-              "Pets.Sleet_Epic.Avoid"
-            ],
-            "duration": 15
-          }
-        }
-      },
-      {
         "name": "Frozen Armor",
         "fullName": "Epic.Ice_Mastery_Dominator.Frozen_Armor",
         "rank": 3,
@@ -13272,6 +12640,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "ice_mastery_frozenarmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13326,6 +12695,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "ice_mastery_hoarfrost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13375,6 +12745,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), DoT(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_icestorm.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13424,6 +12795,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
         "icon": "dark_mastery_murkycloud.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13473,6 +12845,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DoT(Negative), Foe Immobilize, -To Hit, -Fly",
         "icon": "dark_mastery_penumbralgrasp.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13544,6 +12917,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe Disorient",
         "icon": "dark_mastery_darkpit.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13581,6 +12955,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Target Confuse, -ToHit, -Damage, -Healing, -Special",
         "icon": "dark_mastery_possess.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic.Mastermind_Dark_Mastery.Murky_Cloud Epic.Mastermind_Dark_Mastery.Shadowy_Binds + 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13666,6 +13041,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
         "icon": "dark_mastery_soulconsumption.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13727,74 +13103,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Bile Spray",
-        "fullName": "Epic.Mastermind_Leviathan_Mastery.Chum_Spray",
-        "rank": 1,
-        "available": 34,
-        "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time.",
-        "shortHelp": "Ranged (Cone), DoT(Toxic)",
-        "icon": "arachnos_patron_rangedconemoderatedmg.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 32,
-          "endurance": 15.184,
-          "activationTime": 1.6,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.7,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.6132,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.0682,
-              "table": "Ranged_PvPDamage",
-              "duration": 4.25,
-              "tickRate": 1
-            }
-          ]
-        }
-      },
-      {
         "name": "School of Sharks",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.School_of_Sharks",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13868,6 +13185,67 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Bile Spray",
+        "fullName": "Epic.Mastermind_Leviathan_Mastery.Chum_Spray",
+        "rank": 2,
+        "available": 34,
+        "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time.",
+        "shortHelp": "Ranged (Cone), DoT(Toxic)",
+        "icon": "arachnos_patron_rangedconemoderatedmg.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 32,
+          "endurance": 15.184,
+          "activationTime": 1.6,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 0.5235987901687622,
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Toxic",
+              "scale": 0.7,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 4.25,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.6132,
+              "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.0682,
+              "table": "Ranged_PvPDamage",
+              "duration": 4.25,
+              "tickRate": 1
+            }
+          ]
+        }
+      },
+      {
         "name": "Knockout Blow",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.Knockout_Blow",
         "rank": 3,
@@ -13876,6 +13254,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Smash), Foe Hold",
         "icon": "arachnos_patron_koblow.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13931,6 +13310,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold)",
         "icon": "arachnos_patron_resistbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -13976,6 +13356,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14044,66 +13425,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Scorpion Shield",
-        "fullName": "Epic.Mastermind_Mace_Mastery.Scorpion_Shield",
-        "rank": 1,
-        "available": 34,
-        "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
-        "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
-        "icon": "arachnos_patron_defensebuff.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Web Envelope",
         "fullName": "Epic.Mastermind_Mace_Mastery.Web_Envelope",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "The Nullifier Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14168,6 +13498,59 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Scorpion Shield",
+        "fullName": "Epic.Mastermind_Mace_Mastery.Scorpion_Shield",
+        "rank": 2,
+        "available": 34,
+        "description": "Black Scorpion's technologies are impressive indeed. This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage.",
+        "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
+        "icon": "arachnos_patron_defensebuff.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "resistance": 0.75
+          },
+          "resistance": {
+            "toxic": {
+              "scale": 1.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Mace Beam Volley",
         "fullName": "Epic.Mastermind_Mace_Mastery.Mace_Beam_Volley",
         "rank": 3,
@@ -14176,6 +13559,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14228,6 +13612,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Special",
         "icon": "arachnos_patron_powerboost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14328,6 +13713,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14388,59 +13774,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Charged Armor",
-        "fullName": "Epic.Mastermind_Mu_Mastery.Charged_Armor",
-        "rank": 1,
-        "available": 34,
-        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
-        "icon": "arachnos_patron_resistbuff.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Static Discharge",
         "fullName": "Epic.Mastermind_Mu_Mastery.Static_Discharge",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area.",
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14497,6 +13839,52 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Charged Armor",
+        "fullName": "Epic.Mastermind_Mu_Mastery.Charged_Armor",
+        "rank": 2,
+        "available": 34,
+        "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage.",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
+        "icon": "arachnos_patron_resistbuff.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.13,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Thunder Strike",
         "fullName": "Epic.Mastermind_Mu_Mastery.Thunder_Strike",
         "rank": 3,
@@ -14505,6 +13893,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "arachnos_patron_meleetargetedaoe.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14586,6 +13975,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14668,6 +14058,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14744,63 +14135,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Dark Embrace",
-        "fullName": "Epic.Mastermind_Soul_Mastery.Dark_Embrace",
-        "rank": 1,
-        "available": 34,
-        "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
-        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
-        "icon": "arachnos_patron_resistbuff.png",
-        "powerType": "Toggle",
-        "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge",
-          "Resistance"
-        ],
-        "allowedSetCategories": [
-          "Resist Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.104,
-          "activationTime": 0.67,
-          "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
-        }
-      },
-      {
         "name": "Night Fall",
         "fullName": "Epic.Mastermind_Soul_Mastery.Night_Fall",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced Accuracy.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_conedot.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14846,6 +14189,56 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Dark Embrace",
+        "fullName": "Epic.Mastermind_Soul_Mastery.Dark_Embrace",
+        "rank": 2,
+        "available": 34,
+        "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
+        "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
+        "icon": "arachnos_patron_resistbuff.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Mastermind == $archetype @Class_Blaster == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 8,
+          "endurance": 0.104,
+          "activationTime": 0.67,
+          "effectArea": "SingleTarget",
+          "resistance": {
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
         "name": "Oppressive Gloom",
         "fullName": "Epic.Mastermind_Soul_Mastery.Oppressive_Gloom",
         "rank": 3,
@@ -14854,6 +14247,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
         "icon": "arachnos_patron_pbaoestun.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14894,6 +14288,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -14975,6 +14370,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15041,6 +14437,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
         "icon": "psionic_mastery_mentalblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15071,41 +14468,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Psionic",
               "scale": 1.889,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.889,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.889,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.889,
-              "table": "Melee_PvPDamage"
             }
           ]
         }
@@ -15119,6 +14481,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Sniper, DMG(Psionic), Target -Recharge",
         "icon": "psionic_mastery_psioniclance.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15152,6 +14515,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Psionic), Foe -Recharge",
         "icon": "psionic_mastery_psychicscream.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15185,41 +14549,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Psionic",
               "scale": 0.9741,
               "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.0401,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.0401,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.9741,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.0401,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.0401,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.9741,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.9741,
-              "table": "Melee_PvPDamage"
             }
           ]
         }
@@ -15233,6 +14562,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Recovery, Endurance Discount",
         "icon": "psionic_mastery_harmonicmind.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15268,6 +14598,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Psionic Nexus: Ranged DMG(Psionic)",
         "icon": "psionic_mastery_psionicnexus.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15284,7 +14615,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Sleep",
           "Stuns",
           "Universal Damage Sets"
@@ -15319,6 +14651,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self +Res (All but Psionic)",
         "icon": "munitionsmastery_bodyarmor.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15375,6 +14708,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge",
         "icon": "munitionsmastery_cryofreezeray.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Blaster ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15441,6 +14775,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Minor DMG(Smash), Foe Sleep",
         "icon": "munitionsmastery_sleepgrenade.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15486,6 +14821,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged Foe -DEF, -RES (All)",
         "icon": "munitionsmastery_surveillance.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15559,6 +14895,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Interruptible (Targeted AoE), DMG(Lethal/Smash), Foe Knockback",
         "icon": "munitionsmastery_lrmrocket.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15607,6 +14944,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self Endurance Discount",
         "icon": "energymanipulation_conservepower.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15639,6 +14977,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +DMG, +ACC, +Special",
         "icon": "powermastery_powerbuildup.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15742,6 +15081,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "powermastery_tempinvulnerability.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15783,6 +15123,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "powermastery_forceofnature.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15860,6 +15201,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient",
         "icon": "energymanipulation_totalfocus.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -15901,16 +15243,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 2.7151,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 3.771,
-              "table": "Melee_PvPDamage"
             }
           ],
           "stun": {
@@ -15933,46 +15265,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Conserve Power",
-        "fullName": "Epic.Primal_Forces_Mastery.Conserve_Power",
-        "rank": 1,
-        "available": 34,
-        "description": "You can focus for a moment to conserve your Endurance. After activating this power, you expend less Endurance on all other powers for a while.",
-        "shortHelp": "Self Endurance Discount",
-        "icon": "primalforcesmastery_conservepower.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Controller ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 600,
-          "endurance": 7.8,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "enduranceDiscount": {
-            "scale": 1,
-            "table": "Melee_Stun"
-          },
-          "durations": {
-            "enduranceDiscount": 90
-          },
-          "buffDuration": 90
-        }
-      },
-      {
         "name": "Power Blast",
         "fullName": "Epic.Primal_Forces_Mastery.Power_Blast",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock him back.",
         "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_powerblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16015,22 +15316,45 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 1.5112,
               "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.889,
-              "table": "Ranged_PvPDamage"
             }
           ],
           "knockback": {
             "scale": 2,
             "table": "Ranged_Knockback"
           }
+        }
+      },
+      {
+        "name": "Conserve Power",
+        "fullName": "Epic.Primal_Forces_Mastery.Conserve_Power",
+        "rank": 2,
+        "available": 34,
+        "description": "You can focus for a moment to conserve your Endurance. After activating this power, you expend less Endurance on all other powers for a while.",
+        "shortHelp": "Self Endurance Discount",
+        "icon": "primalforcesmastery_conservepower.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Controller ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 600,
+          "endurance": 7.8,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          },
+          "durations": {
+            "enduranceDiscount": 90
+          },
+          "buffDuration": 90
         }
       },
       {
@@ -16042,6 +15366,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16083,6 +15408,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16128,16 +15454,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.6203,
               "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.96,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8861,
-              "table": "Ranged_PvPDamage"
             }
           ],
           "knockback": {
@@ -16155,6 +15471,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +Special",
         "icon": "primalforcesmastery_powerboost.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16259,46 +15576,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Conserve Power",
-        "fullName": "Epic.Primal_Forces_Mastery_Dominator.Conserve_Power",
-        "rank": 1,
-        "available": 34,
-        "description": "You can focus for a moment to conserve your Endurance. After activating this power, you expend less Endurance on all other powers for a while.",
-        "shortHelp": "Self Endurance Discount",
-        "icon": "primalforcesmastery_conservepower.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Dominator ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 600,
-          "endurance": 7.8,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "enduranceDiscount": {
-            "scale": 1,
-            "table": "Melee_Stun"
-          },
-          "durations": {
-            "enduranceDiscount": 90
-          },
-          "buffDuration": 90
-        }
-      },
-      {
         "name": "Energy Transfer",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Energy_Transfer",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target.",
         "shortHelp": "Melee, DMG(Energy/Smash), Foe Disorient, Self -HP",
         "icon": "primalforcesmasterydominator_energytransfer.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16355,6 +15641,39 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Conserve Power",
+        "fullName": "Epic.Primal_Forces_Mastery_Dominator.Conserve_Power",
+        "rank": 2,
+        "available": 34,
+        "description": "You can focus for a moment to conserve your Endurance. After activating this power, you expend less Endurance on all other powers for a while.",
+        "shortHelp": "Self Endurance Discount",
+        "icon": "primalforcesmastery_conservepower.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Dominator ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 600,
+          "endurance": 7.8,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          },
+          "durations": {
+            "enduranceDiscount": 90
+          },
+          "buffDuration": 90
+        }
+      },
+      {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Temp_Invulnerability",
         "rank": 3,
@@ -16363,6 +15682,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16404,6 +15724,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Light DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16449,16 +15770,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.6203,
               "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.958,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.8861,
-              "table": "Ranged_PvPDamage"
             }
           ],
           "knockback": {
@@ -16476,6 +15787,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
         "icon": "primalforcesmasterydominator_explosiveblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16536,14 +15848,59 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Mental Blast",
+        "fullName": "Epic.Psionic_Mastery.Mental_Blast",
+        "rank": 1,
+        "available": 34,
+        "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed.",
+        "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
+        "icon": "psychicblast_mentalblast.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Controller ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 100,
+          "recharge": 8,
+          "endurance": 5.2,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Psionic",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 1.889,
+              "table": "Ranged_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
         "name": "Indomitable Will",
         "fullName": "Epic.Psionic_Mastery.Indomitable_Will",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "Activating this power greatly boosts your resistance to Sleep, Disorient, Fear and Hold effects for 90 seconds. Indomitable Will also grants a high defense to Psionic based attacks.",
         "shortHelp": "Self Res(Disorient, Hold, Sleep, Fear). DEF(Psionics)",
         "icon": "psionicmastery_indomitablewill.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16604,59 +15961,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Mental Blast",
-        "fullName": "Epic.Psionic_Mastery.Mental_Blast",
-        "rank": 2,
-        "available": 34,
-        "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed.",
-        "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
-        "icon": "psychicblast_mentalblast.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Controller ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 100,
-          "recharge": 8,
-          "endurance": 5.2,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Psionic",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.889,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.889,
-              "table": "Ranged_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
         "name": "Mind Over Body",
         "fullName": "Epic.Psionic_Mastery.Mind_Over_Body",
         "rank": 3,
@@ -16665,6 +15969,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psionicmastery_mindoverbody.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16710,6 +16015,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
         "icon": "psionicmastery_worldofconfusion.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16737,11 +16043,6 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.12,
             "table": "Ranged_Damage",
             "tickRate": 2
-          },
-          "confuse": {
-            "mag": 2,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
           }
         }
       },
@@ -16754,6 +16055,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
         "icon": "psychicblast_psionictornado.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16786,16 +16088,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Psionic",
-              "scale": 1.1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 0.8409,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
               "scale": 0.8409,
               "table": "Ranged_PvPDamage"
             }
@@ -16819,82 +16111,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Indomitable Will",
-        "fullName": "Epic.Psionic_Mastery_Domingator.Indomitable_Will",
-        "rank": 1,
-        "available": 34,
-        "description": "Activating this power greatly boosts your resistance to Sleep, Disorient, Fear and Hold effects for 90 seconds. Indomitable Will also grants a high defense to Psionic based attacks.",
-        "shortHelp": "Self Res( Disorient, Hold, Sleep, Fear). DEF(Psionics)",
-        "icon": "psionicmastery_indomitablewill.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Dominator ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 360,
-          "endurance": 15.6,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "confuse": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "effectDuration": 90,
-          "durations": {
-            "confuse": 90,
-            "fear": 90,
-            "hold": 90,
-            "stun": 90,
-            "sleep": 90,
-            "defenseBuff": 90
-          },
-          "fear": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "defenseBuff": {
-            "psionic": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "buffDuration": 90
-        }
-      },
-      {
         "name": "Link Minds",
         "fullName": "Epic.Psionic_Mastery_Domingator.Link_Minds",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Your Mind Link Power will enable you to link the minds of all your teammates who are near you for the next 90 seconds. This shared link improves your team's chance to hit foes, your defensive abilities and dramatically reduces psionic damage.",
         "shortHelp": "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
         "icon": "psionicmastery_linkminds.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "$archetype @Class_Dominator ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -16978,6 +16203,75 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Indomitable Will",
+        "fullName": "Epic.Psionic_Mastery_Domingator.Indomitable_Will",
+        "rank": 2,
+        "available": 34,
+        "description": "Activating this power greatly boosts your resistance to Sleep, Disorient, Fear and Hold effects for 90 seconds. Indomitable Will also grants a high defense to Psionic based attacks.",
+        "shortHelp": "Self Res( Disorient, Hold, Sleep, Fear). DEF(Psionics)",
+        "icon": "psionicmastery_indomitablewill.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Dominator ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 360,
+          "endurance": 15.6,
+          "activationTime": 0.73,
+          "effectArea": "SingleTarget",
+          "confuse": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 90,
+          "durations": {
+            "confuse": 90,
+            "fear": 90,
+            "hold": 90,
+            "stun": 90,
+            "sleep": 90,
+            "defenseBuff": 90
+          },
+          "fear": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "hold": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "stun": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "defenseBuff": {
+            "psionic": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "buffDuration": 90
+        }
+      },
+      {
         "name": "Mind Over Body",
         "fullName": "Epic.Psionic_Mastery_Domingator.Mind_Over_Body",
         "rank": 3,
@@ -16986,6 +16280,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psionicmastery_mindoverbody.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17031,6 +16326,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
         "icon": "psionicmastery_worldofconfusion.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17058,11 +16354,6 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.12,
             "table": "Ranged_Damage",
             "tickRate": 2
-          },
-          "confuse": {
-            "mag": 2,
-            "scale": 1.5,
-            "table": "Ranged_Ones"
           }
         }
       },
@@ -17075,6 +16366,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
         "icon": "psychicblast_psionictornado.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17138,6 +16430,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Psionic), Foe Hold",
         "icon": "mentalcontrol_command.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17170,16 +16463,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Psionic",
               "scale": 2.13,
               "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 2.13,
-              "table": "Ranged_PvPDamage"
             }
           ],
           "hold": {
@@ -17198,6 +16481,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
         "icon": "mentalcontrol_masshypnosis.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Defender == $archetype @Class_Corruptor == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17235,6 +16519,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psychicmastery_mindoverbody.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17280,6 +16565,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, DoT(Psionic), Foe Confuse",
         "icon": "psychicmastery_worldofconfusion.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17307,11 +16593,6 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.12,
             "table": "Ranged_Damage",
             "tickRate": 2
-          },
-          "confuse": {
-            "mag": 2,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
           }
         }
       },
@@ -17324,6 +16605,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe Immobilize, Repel",
         "icon": "mentalcontrol_telekinesis.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17360,7 +16642,7 @@ export const EPIC_POOLS_RAW = {
             "repel": 0.5
           },
           "repel": {
-            "scale": 3,
+            "scale": 1,
             "table": "Melee_Ones"
           },
           "immobilize": {
@@ -17384,68 +16666,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Char",
-        "fullName": "Epic.Pyre_Mastery.Char",
-        "rank": 1,
-        "available": 34,
-        "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial.",
-        "shortHelp": "Ranged, DoT(Fire), Foe Hold",
-        "icon": "pyremastery_soot.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 8.528,
-          "activationTime": 1.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.4218,
-              "table": "Melee_PvPDamage",
-              "duration": 4.2,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Ring of Fire",
         "fullName": "Epic.Pyre_Mastery.Ring_of_Fire",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.",
         "shortHelp": "Ranged, DoT(Fire), Foe Immobilize",
         "icon": "pyremastery_ringoffire.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17506,6 +16735,61 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Char",
+        "fullName": "Epic.Pyre_Mastery.Char",
+        "rank": 2,
+        "available": 34,
+        "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial.",
+        "shortHelp": "Ranged, DoT(Fire), Foe Hold",
+        "icon": "pyremastery_soot.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 8.528,
+          "activationTime": 1.07,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 4.2,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.4218,
+              "table": "Melee_PvPDamage",
+              "duration": 4.2,
+              "tickRate": 1
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
+          }
+        }
+      },
+      {
         "name": "Fire Blast",
         "fullName": "Epic.Pyre_Mastery.Fire_Blast",
         "rank": 3,
@@ -17514,6 +16798,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Fire)",
         "icon": "fireblast_fireblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17564,6 +16849,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17640,6 +16926,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17713,51 +17000,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Frozen Spear",
-        "fullName": "Epic.Scrapper_Ice_Mastery.Frozen_Spear",
-        "rank": 1,
-        "available": 34,
-        "description": "A focused spear of ice that can travel great distances with high Accuracy. Frozen Spear slows its target and has a high chance of encasing them in a frail block of ice, but can break free if disturbed. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
-        "shortHelp": "Sniper, DMG(Cold), Foe Sleep, -Recharge, -SPD",
-        "icon": "ice_mastery_frozenspear.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Interrupt",
-          "Range",
-          "Recharge",
-          "Sleep",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Ranged Damage",
-          "Sleep",
-          "Slow Movement",
-          "Sniper Attacks",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 150,
-          "recharge": 24,
-          "endurance": 14.352,
-          "activationTime": 1.33,
-          "effectArea": "SingleTarget"
-        }
-      },
-      {
         "name": "Ice Bolt",
         "fullName": "Epic.Scrapper_Ice_Mastery.Ice_Bolt",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Ice Bolt quickly pelts an enemy with small icy daggers; their chill Slows a foe's attacks and movement for a time. Fast, but little damage.",
         "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_icebolt.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17790,43 +17041,46 @@ export const EPIC_POOLS_RAW = {
               "type": "Cold",
               "scale": 1.2602,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.42,
-              "table": "Melee_PvPDamage"
             }
           ]
+        }
+      },
+      {
+        "name": "Frozen Spear",
+        "fullName": "Epic.Scrapper_Ice_Mastery.Frozen_Spear",
+        "rank": 2,
+        "available": 34,
+        "description": "A focused spear of ice that can travel great distances with high Accuracy. Frozen Spear slows its target and has a high chance of encasing them in a frail block of ice, but can break free if disturbed. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast.",
+        "shortHelp": "Sniper, DMG(Cold), Foe Sleep, -Recharge, -SPD",
+        "icon": "ice_mastery_frozenspear.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Interrupt",
+          "Range",
+          "Recharge",
+          "Sleep",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Sleep",
+          "Slow Movement",
+          "Sniper Attacks",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 150,
+          "recharge": 24,
+          "endurance": 14.352,
+          "activationTime": 1.33,
+          "effectArea": "SingleTarget"
         }
       },
       {
@@ -17838,6 +17092,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
         "icon": "ice_mastery_shiver.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17871,6 +17126,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
         "icon": "ice_mastery_frigidwind.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17910,41 +17166,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 3.2,
               "tickRate": 0.5
-            },
-            {
-              "type": "Cold",
-              "scale": 1.5,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.5,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.3704,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.5,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.5,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.3704,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.3704,
-              "table": "Melee_PvPDamage"
             }
           ]
         }
@@ -17958,6 +17179,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Ice Elemental: Melee DMG(Lethal/Cold)",
         "icon": "ice_mastery_iceelemental.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -17971,7 +17193,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -18010,6 +17233,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize, -To Hit, -Fly",
         "icon": "darknesscontrol_livingshadows.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18098,6 +17322,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Smash/Negative), Foe -To Hit",
         "icon": "darknesscontrol_punch.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18173,6 +17398,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Negative), Foe Hold, -To Hit",
         "icon": "darknesscontrol_darkgrasp.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18236,6 +17462,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, DMG(Negative), Foe -To Hit, DoT(Negative)",
         "icon": "darknesscontrol_pbaoe.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18306,6 +17533,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "darknesscontrol_debuff.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18349,6 +17577,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged AoE, DMG(Energy), Foe Immobilize, -End, -Fly",
         "icon": "electriccontrol_chainfences.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18440,6 +17669,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Smash/Energy), Foe Sleep, -End, Knock back",
         "icon": "electriccontrol_havokpunch.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18529,6 +17759,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe Stun, -End",
         "icon": "electriccontrol_teslacage.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18603,6 +17834,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, DoT(Energy), Foe -End",
         "icon": "electriccontrol_lightningfield.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18670,6 +17902,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Chain, Team +Heal",
         "icon": "electriccontrol_heal.png",
         "powerType": "Click",
+        "targetType": "Ally (Alive)",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18709,80 +17942,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Cremate",
-        "fullName": "Epic.Sentinel_Fire_Mastery.Cremate",
-        "rank": 1,
-        "available": 34,
-        "description": "A slow but devastating attack. Cremate clobbers your foes with a massive 2 handed fiery smash that leaves your foe set on fire.",
-        "shortHelp": "Melee, DMG(Smash/Fire)",
-        "icon": "firetrap_punch.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Sentinel ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Melee Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 16,
-          "endurance": 8.528,
-          "activationTime": 1.5,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 1.64,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 1.64,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.164,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.164,
-              "table": "Melee_InherentDamage",
-              "duration": 3.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 2.09,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Fire",
-              "scale": 2.09,
-              "table": "Melee_PvPDamage"
-            }
-          ]
-        }
-      },
-      {
         "name": "Fire Cages",
         "fullName": "Epic.Sentinel_Fire_Mastery.Fire_Cages",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Immobilizes a group of foes in Fire Cages, dealing Fire damage over time. More resilient foes may require multiple Fire Cages to Immobilize. Fire Cages is slower and less damaging than Ring of Fire, but can capture multiple targets.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Fire), Foe Immobilize",
         "icon": "firetrap_firecage.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18859,6 +18027,73 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Cremate",
+        "fullName": "Epic.Sentinel_Fire_Mastery.Cremate",
+        "rank": 2,
+        "available": 34,
+        "description": "A slow but devastating attack. Cremate clobbers your foes with a massive 2 handed fiery smash that leaves your foe set on fire.",
+        "shortHelp": "Melee, DMG(Smash/Fire)",
+        "icon": "firetrap_punch.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Sentinel ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Melee Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 16,
+          "endurance": 8.528,
+          "activationTime": 1.5,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Fire",
+              "scale": 1.64,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 1.64,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.164,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.164,
+              "table": "Melee_InherentDamage",
+              "duration": 3.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 2.09,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 2.09,
+              "table": "Melee_PvPDamage"
+            }
+          ]
+        }
+      },
+      {
         "name": "Char",
         "fullName": "Epic.Sentinel_Fire_Mastery.Char",
         "rank": 3,
@@ -18867,6 +18102,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Fire), Foe Hold",
         "icon": "firetrap_hold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -18935,6 +18171,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Melee, DMG(Fire/Lethal)",
         "icon": "firetrap_pbaoe.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19002,6 +18239,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Team +Heal",
         "icon": "firetrap_heal.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19048,6 +18286,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Cold), Foe Immobilize, -SPD, -Recharge",
         "icon": "ice_mastery_frostbite.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19134,6 +18373,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
         "icon": "ice_mastery_icesword.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19198,6 +18438,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge",
         "icon": "ice_mastery_blockofice.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19284,6 +18525,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, DMG(Cold), Foe Sleep",
         "icon": "ice_mastery_frozenaura.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19326,16 +18568,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Cold",
               "scale": 1.424,
               "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.424,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.424,
-              "table": "Melee_InherentDamage"
             }
           ],
           "sleep": {
@@ -19354,6 +18586,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly",
         "icon": "ice_mastery_snowstorm.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19388,79 +18621,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Knockout Blow",
-        "fullName": "Epic.Sentinel_Leviathan_Mastery.Knockout_Blow",
-        "rank": 1,
-        "available": 34,
-        "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target.",
-        "shortHelp": "Melee, DMG(Smash), Foe Hold",
-        "icon": "arachnos_patron_koblow.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Hold",
-          "Knockback",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Holds",
-          "Knockback",
-          "Melee Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 13.199999809265137,
-          "recharge": 40,
-          "endurance": 18.512,
-          "activationTime": 2.23,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 3.56,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 3.56,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 3.561,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 3.561,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "hold": {
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Stun"
-          },
-          "knockup": {
-            "scale": 6,
-            "table": "Melee_Knockback"
-          }
-        }
-      },
-      {
         "name": "School of Sharks",
         "fullName": "Epic.Sentinel_Leviathan_Mastery.School_of_Sharks",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19558,6 +18727,72 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Knockout Blow",
+        "fullName": "Epic.Sentinel_Leviathan_Mastery.Knockout_Blow",
+        "rank": 2,
+        "available": 34,
+        "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target.",
+        "shortHelp": "Melee, DMG(Smash), Foe Hold",
+        "icon": "arachnos_patron_koblow.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Hold",
+          "Knockback",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Holds",
+          "Knockback",
+          "Melee Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.2,
+          "range": 13.199999809265137,
+          "recharge": 40,
+          "endurance": 18.512,
+          "activationTime": 2.23,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 3.56,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 3.56,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 3.561,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 3.561,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "hold": {
+            "mag": 3,
+            "scale": 10,
+            "table": "Melee_Stun"
+          },
+          "knockup": {
+            "scale": 6,
+            "table": "Melee_Knockback"
+          }
+        }
+      },
+      {
         "name": "Spirit Shark Jaws",
         "fullName": "Epic.Sentinel_Leviathan_Mastery.Spirit_Shark_Jaws",
         "rank": 3,
@@ -19566,6 +18801,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19654,6 +18890,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF, knock down",
         "icon": "arachnos_patron_coneslow.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19791,6 +19028,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Hybrid: Ranged DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19801,7 +19039,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -19832,87 +19071,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Pulverize",
-        "fullName": "Epic.Sentinel_Mace_Mastery.Pulverize",
-        "rank": 1,
-        "available": 34,
-        "description": "You are capable of Pulverizing a foe with your Nullifier Mace dealing high damage, causing toxic damage over time. Pulverize will occasionally disorient foes as well.",
-        "shortHelp": "Melee, High DMG(Smash), Minor DoT(Toxic), Foe Disorient",
-        "icon": "arachnos_patron_pulverize.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Melee Damage",
-          "Stuns",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 7,
-          "recharge": 16,
-          "endurance": 8.528,
-          "activationTime": 1.5,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1.64,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.64,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 4.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1,
-              "table": "Melee_InherentDamage",
-              "duration": 4.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Smashing",
-              "scale": 2.09,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 2.09,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "stun": {
-            "mag": 2,
-            "scale": 5,
-            "table": "Melee_Stun"
-          }
-        }
-      },
-      {
         "name": "Web Envelope",
         "fullName": "Epic.Sentinel_Mace_Mastery.Web_Envelope",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "The Executioner's Mace can lob a modified Web Grenade. Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This device deals toxic damage over time and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -19991,6 +19158,80 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Pulverize",
+        "fullName": "Epic.Sentinel_Mace_Mastery.Pulverize",
+        "rank": 2,
+        "available": 34,
+        "description": "You are capable of Pulverizing a foe with your Nullifier Mace dealing high damage, causing toxic damage over time. Pulverize will occasionally disorient foes as well.",
+        "shortHelp": "Melee, High DMG(Smash), Minor DoT(Toxic), Foe Disorient",
+        "icon": "arachnos_patron_pulverize.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Melee Damage",
+          "Stuns",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 7,
+          "recharge": 16,
+          "endurance": 8.528,
+          "activationTime": 1.5,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1.64,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 1.64,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 4.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Melee_InherentDamage",
+              "duration": 4.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Smashing",
+              "scale": 2.09,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 2.09,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "stun": {
+            "mag": 2,
+            "scale": 5,
+            "table": "Melee_Stun"
+          }
+        }
+      },
+      {
         "name": "Web Cocoon",
         "fullName": "Epic.Sentinel_Mace_Mastery.Web_Cocoon",
         "rank": 3,
@@ -19999,6 +19240,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20069,6 +19311,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Team +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_teamtohitbuff.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20122,6 +19365,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Tarantula: Ranged Moderate DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20137,7 +19381,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Immobilize",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -20176,6 +19421,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20272,6 +19518,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "arachnos_patron_thunderstrike.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20373,6 +19620,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20459,6 +19707,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20533,6 +19782,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20547,8 +19797,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Healing",
           "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Sleep",
           "Stuns",
           "Universal Damage Sets"
@@ -20588,6 +19840,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), DoT(Lethal), Foe -Speed",
         "icon": "ninjatools_slow.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20599,6 +19852,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Ranged AoE Damage",
+          "Sentinel Archetype Sets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -20625,6 +19879,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Lethal), Foe -Def",
         "icon": "ninjatools_katanalight.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20638,6 +19893,7 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Melee Damage",
+          "Sentinel Archetype Sets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -20688,6 +19944,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Toxic), Foe Hold",
         "icon": "ninjatools_hold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20701,6 +19958,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Sentinel Archetype Sets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -20756,6 +20014,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Melee, DMG(Lethal), Foe -Def",
         "icon": "ninjatools_katanaaoe.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20769,6 +20028,7 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Melee AoE Damage",
+          "Sentinel Archetype Sets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -20834,6 +20094,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, Foe Placate -DMG -To Hit",
         "icon": "ninjatools_placate.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20884,6 +20145,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
         "icon": "mentalcontrol_masshypnosis.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20921,6 +20183,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Psionic), Target -Recharge",
         "icon": "mentalcontrol_mindprobe.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -20973,6 +20236,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Psionic), Foe Hold",
         "icon": "mentalcontrol_command.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21033,6 +20297,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE, DMG(Psionic), Foe Disorient -Recharge",
         "icon": "mentalcontrol_psionicshockwave.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21093,6 +20358,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
         "icon": "mentalcontrol_mindlink.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21188,90 +20454,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Midnight Grasp",
-        "fullName": "Epic.Sentinel_Soul_Mastery.Midnight_Grasp",
-        "rank": 1,
-        "available": 34,
-        "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.",
-        "shortHelp": "Melee, DMG(Negative), Foe Immobilize, -To Hit",
-        "icon": "arachnos_patron_midnightgrasp.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Immobilize",
-          "Recharge",
-          "ToHit Debuff"
-        ],
-        "allowedSetCategories": [
-          "Accurate To-Hit Debuff",
-          "Immobilize",
-          "Melee Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 30,
-          "endurance": 11.96,
-          "activationTime": 2.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 2.21,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.21,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 0.75
-            },
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Melee_InherentDamage",
-              "duration": 3.1,
-              "tickRate": 0.75
-            },
-            {
-              "type": "Negative",
-              "scale": 2.499,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.499,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          }
-        }
-      },
-      {
         "name": "Soul Tentacles",
         "fullName": "Epic.Sentinel_Soul_Mastery.Soul_Tentacles",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life.",
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21369,6 +20560,83 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Midnight Grasp",
+        "fullName": "Epic.Sentinel_Soul_Mastery.Midnight_Grasp",
+        "rank": 2,
+        "available": 34,
+        "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.",
+        "shortHelp": "Melee, DMG(Negative), Foe Immobilize, -To Hit",
+        "icon": "arachnos_patron_midnightgrasp.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Immobilize",
+          "Melee Damage",
+          "To Hit Debuff",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 30,
+          "endurance": 11.96,
+          "activationTime": 2.07,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Negative",
+              "scale": 2.21,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Negative",
+              "scale": 2.21,
+              "table": "Melee_InherentDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 0.11,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 0.75
+            },
+            {
+              "type": "Negative",
+              "scale": 0.11,
+              "table": "Melee_InherentDamage",
+              "duration": 3.1,
+              "tickRate": 0.75
+            },
+            {
+              "type": "Negative",
+              "scale": 2.499,
+              "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Negative",
+              "scale": 2.499,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          }
+        }
+      },
+      {
         "name": "Soul Storm",
         "fullName": "Epic.Sentinel_Soul_Mastery.Soul_Storm",
         "rank": 3,
@@ -21377,6 +20645,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21445,6 +20714,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "arachnos_patron_aoedamagedebuff.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21476,6 +20746,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Fortunata Mistress: Ranged DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21492,7 +20763,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Sleep",
           "Stuns",
           "Universal Damage Sets"
@@ -21532,6 +20804,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21557,69 +20830,13 @@ export const EPIC_POOLS_RAW = {
           "damage": [
             {
               "type": "Lethal",
-              "scale": 1.4,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.4,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 2.32,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.4,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.4,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 2.32,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 2.32,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
               "scale": 0.84,
               "table": "Melee_Damage"
             },
             {
               "type": "Lethal",
-              "scale": 0.14,
-              "table": "Melee_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.14,
-              "table": "Melee_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
               "scale": 1.0694,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.1782,
-              "table": "Melee_PvPDamage",
-              "duration": 3.2,
-              "tickRate": 1
             }
           ],
           "knockback": {
@@ -21637,6 +20854,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet",
         "icon": "arachnos_patron_dropknockback.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21649,7 +20867,6 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Accurate Defense Debuff",
           "Defense Debuff",
           "Knockback",
           "Ranged AoE Damage",
@@ -21679,6 +20896,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21763,6 +20981,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21809,41 +21028,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 7.1,
               "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 2.669,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 2.669,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 2.669,
-              "table": "Melee_PvPDamage"
             }
           ],
           "hold": {
@@ -21862,6 +21046,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Warder: Ranged DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21877,7 +21062,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Stuns",
           "Universal Damage Sets"
@@ -21909,49 +21095,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Mace Beam",
-        "fullName": "Epic.Stalker_Mace_Mastery.Mace_Beam",
-        "rank": 1,
-        "available": 34,
-        "description": "Fires an extremely long range and accurate beam of kinetic Energy from the Bane Mace that deals tremendous damage and knocks the target back.This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
-        "shortHelp": "Sniper, DMG(Energy), Foe Knockback",
-        "icon": "arachnos_patron_targetedrangedsnipe.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Interrupt",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Sniper Attacks",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 150,
-          "recharge": 24,
-          "endurance": 14.352,
-          "activationTime": 2,
-          "effectArea": "SingleTarget"
-        }
-      },
-      {
         "name": "Mace Blast",
         "fullName": "Epic.Stalker_Mace_Mastery.Mace_Blast",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "The Bane Mace is capable of firing a bolt of kinetic energy. The blast is powerful enough that it may knockback some foes. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term.",
         "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -21984,47 +21136,48 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 2.16,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.28,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.28,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.28,
-              "table": "Melee_PvPDamage"
             }
           ],
           "knockback": {
             "scale": 1.4,
             "table": "Melee_Ones"
           }
+        }
+      },
+      {
+        "name": "Mace Beam",
+        "fullName": "Epic.Stalker_Mace_Mastery.Mace_Beam",
+        "rank": 2,
+        "available": 34,
+        "description": "Fires an extremely long range and accurate beam of kinetic Energy from the Bane Mace that deals tremendous damage and knocks the target back.This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
+        "shortHelp": "Sniper, DMG(Energy), Foe Knockback",
+        "icon": "arachnos_patron_targetedrangedsnipe.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Interrupt",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Sniper Attacks",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 150,
+          "recharge": 24,
+          "endurance": 14.352,
+          "activationTime": 2,
+          "effectArea": "SingleTarget"
         }
       },
       {
@@ -22036,6 +21189,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22070,41 +21224,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.9477,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.9477,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.9477,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.9477,
-              "table": "Melee_PvPDamage"
             }
           ],
           "knockback": {
@@ -22122,6 +21241,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22160,41 +21280,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 7.1,
               "tickRate": 1
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.935,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.935,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 2.76,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.935,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.935,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 2.76,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 2.76,
-              "table": "Melee_PvPDamage"
             }
           ],
           "hold": {
@@ -22213,6 +21298,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Spiderlings: Ranged DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22225,7 +21311,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -22264,6 +21351,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22291,41 +21379,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 1,
               "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.459,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.459,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.459,
-              "table": "Melee_PvPDamage"
             },
             {
               "type": "Energy",
@@ -22360,6 +21413,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Sniper, DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22395,6 +21449,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22443,41 +21498,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 3.1,
               "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 1.02,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.02,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.7474,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.02,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.02,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.7474,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.7474,
-              "table": "Melee_PvPDamage"
             }
           ],
           "enduranceDrain": {
@@ -22503,6 +21523,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22541,41 +21562,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 6.3,
               "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 1.05,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.05,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.879,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.05,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.05,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.879,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.879,
-              "table": "Ranged_PvPDamage"
             }
           ],
           "hold": {
@@ -22610,6 +21596,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Adept: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22625,7 +21612,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Sleep",
           "Stuns",
           "Universal Damage Sets"
@@ -22665,6 +21653,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22698,41 +21687,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.8575,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8575,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8575,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.8575,
-              "table": "Melee_PvPDamage"
             }
           ]
         }
@@ -22746,6 +21700,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Sniper, DMG(Negative), Target -ACC",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22782,6 +21737,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self: +Def(All)",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22859,6 +21815,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22895,41 +21852,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 10,
               "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 1.1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.879,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1.1,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.879,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.879,
-              "table": "Melee_PvPDamage"
             }
           ],
           "hold": {
@@ -22948,6 +21870,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Night Widow: Melee DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -22960,7 +21883,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
@@ -22991,14 +21915,65 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Hurl Boulder",
+        "fullName": "Epic.Stone_Mastery.Hurl_Boulder",
+        "rank": 1,
+        "available": 34,
+        "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack is close ranged, deals high damage, and can knock foes back.",
+        "shortHelp": "Ranged, DMG(Smash), Foe Knockback",
+        "icon": "earth_mastery_hurlboulder.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Controller ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 16,
+          "endurance": 8.528,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1.64,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 2.44,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 6,
+            "table": "Melee_Knockback"
+          }
+        }
+      },
+      {
         "name": "Fissure",
         "fullName": "Epic.Stone_Mastery.Fissure",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "This powerful stomp can cause a seismic disturbance. This will crack the Earth itself and send a Fault towards a targeted foe. Affected targets take moderate damage and may be thrown in the air and possibly Disoriented.",
         "shortHelp": "Close (Targeted AoE), DMG(Lethal/Smash), Foe Knockback, Disorient",
         "icon": "earth_mastery_fissure.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Controller ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23033,16 +22008,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Smashing",
-              "scale": 0.9,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.8215,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
               "scale": 0.8215,
               "table": "Melee_PvPDamage"
             }
@@ -23059,65 +22024,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Hurl Boulder",
-        "fullName": "Epic.Stone_Mastery.Hurl_Boulder",
-        "rank": 2,
-        "available": 34,
-        "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack is close ranged, deals high damage, and can knock foes back.",
-        "shortHelp": "Ranged, DMG(Smash), Foe Knockback",
-        "icon": "earth_mastery_hurlboulder.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Controller ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 8.528,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1.64,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.64,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 2.44,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 2.44,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "knockback": {
-            "scale": 6,
-            "table": "Melee_Knockback"
-          }
-        }
-      },
-      {
         "name": "Rock Armor",
         "fullName": "Epic.Stone_Mastery.Stone_Armor",
         "rank": 3,
@@ -23126,6 +22032,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +DEF(Lethal, Smashing)",
         "icon": "earth_mastery_rockarmor.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23167,6 +22074,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Smash), Foe Hold",
         "icon": "earth_mastery_seismicsmash.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23196,16 +22104,6 @@ export const EPIC_POOLS_RAW = {
             },
             {
               "type": "Smashing",
-              "scale": 2.6,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 2.57,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
               "scale": 2.57,
               "table": "Melee_PvPDamage"
             }
@@ -23226,6 +22124,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Self +HP",
         "icon": "earth_mastery_earthsembrace.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23287,6 +22186,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DOT(Negative), Foe Immobilize, -To Hit",
         "icon": "dark_mastery_penumbralgrasp.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Tanker == $archetype @Class_Brute == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23358,6 +22258,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Negative), Foe Hold",
         "icon": "dark_mastery_petrifyinggaze.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Tanker == $archetype @Class_Brute == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23408,6 +22309,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Negative), Foe -ACC",
         "icon": "dark_mastery_darkblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23454,6 +22356,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe -To Hit",
         "icon": "dark_mastery_nightfall.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23507,6 +22410,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Location AoE), Target -Speed, -Res, -Fly",
         "icon": "dark_mastery_tarpatch.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23550,14 +22454,66 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Mesmerize",
+        "fullName": "Epic.Tank_Psionic_Mastery.Mesmerize",
+        "rank": 1,
+        "available": 34,
+        "description": "Mesmerize painfully assails a target with psychic energy, rendering them unconscious. The target will remain asleep for some time, but will awaken if attacked.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
+        "shortHelp": "Ranged, DMG(Psionic), Foe Sleep",
+        "icon": "psionic_mastery_mesmerize.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Sleep"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Sleep",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1.1,
+          "range": 100,
+          "recharge": 12,
+          "endurance": 5.2,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Psionic",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Psionic",
+              "scale": 1.809,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "sleep": {
+            "mag": 4,
+            "scale": 1,
+            "table": "Ranged_PvPMez"
+          }
+        }
+      },
+      {
         "name": "Dominate",
         "fullName": "Epic.Tank_Psionic_Mastery.Dominate",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in their own mind and unable to defend themselves.",
         "shortHelp": "Ranged, DMG(Psionic), Foe Hold",
         "icon": "psionic_mastery_dominate.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23600,61 +22556,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Mesmerize",
-        "fullName": "Epic.Tank_Psionic_Mastery.Mesmerize",
-        "rank": 2,
-        "available": 34,
-        "description": "Mesmerize painfully assails a target with psychic energy, rendering them unconscious. The target will remain asleep for some time, but will awaken if attacked.<br><br><color #fcfc95>Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.</color>",
-        "shortHelp": "Ranged, DMG(Psionic), Foe Sleep",
-        "icon": "psionic_mastery_mesmerize.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Brute == $archetype @Class_Tanker == ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Sleep"
-        ],
-        "allowedSetCategories": [
-          "Ranged Damage",
-          "Sleep",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1.1,
-          "range": 100,
-          "recharge": 12,
-          "endurance": 5.2,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Psionic",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Psionic",
-              "scale": 1.809,
-              "table": "Ranged_PvPDamage"
-            }
-          ],
-          "sleep": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
-          }
-        }
-      },
-      {
         "name": "Harmonic Mind",
         "fullName": "Epic.Tank_Psionic_Mastery.Harmonic_Mind",
         "rank": 3,
@@ -23663,6 +22564,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Auto: Self, +Recovery, Endurance Discount",
         "icon": "psionic_mastery_harmonicmind.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23698,6 +22600,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",
         "icon": "psionic_mastery_mentalblast.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23741,6 +22644,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
         "icon": "psionic_mastery_psionictornado.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23797,14 +22701,65 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Spirit Shark",
+        "fullName": "Epic.VEAT_Leviathan_Mastery.Spirit_Shark",
+        "rank": 1,
+        "available": 34,
+        "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
+        "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
+        "icon": "arachnos_patron_targetedrangedhighdmg.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 13,
+          "endurance": 7.28,
+          "activationTime": 2,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.84,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 1.0694,
+              "table": "Ranged_PvPDamage"
+            }
+          ],
+          "knockback": {
+            "scale": 1.4,
+            "table": "Ranged_Knockback"
+          }
+        }
+      },
+      {
         "name": "School of Sharks",
         "fullName": "Epic.VEAT_Leviathan_Mastery.School_of_Sharks",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate.",
         "shortHelp": "Ranged (Cone), DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -23878,76 +22833,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Spirit Shark",
-        "fullName": "Epic.VEAT_Leviathan_Mastery.Spirit_Shark",
-        "rank": 2,
-        "available": 34,
-        "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. The damage over time increases the more hunger stacks you have. All hunger Leviathan Hunger stacks are consumed when you successfully hit an enemy with this power. When you own this power, most actions that cost endurance will have a chance of granting a Leviathan Hunger stack.",
-        "shortHelp": "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
-        "icon": "arachnos_patron_targetedrangedhighdmg.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 13,
-          "endurance": 7.28,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.84,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.14,
-              "table": "Ranged_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.14,
-              "table": "Ranged_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.0694,
-              "table": "Ranged_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.1782,
-              "table": "Ranged_PvPDamage",
-              "duration": 3.2,
-              "tickRate": 1
-            }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Ranged_Knockback"
-          }
-        }
-      },
-      {
         "name": "Bile Spray",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Chum_Spray",
         "rank": 3,
@@ -23956,6 +22841,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24016,6 +22902,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
         "icon": "arachnos_patron_coneslow.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24129,6 +23016,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Sentinel: Ranged Moderate DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24144,7 +23032,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Stuns",
           "Universal Damage Sets"
@@ -24184,6 +23073,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24233,6 +23123,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24305,6 +23196,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24356,6 +23248,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Melee, DMG(Smash), Foe -Res",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24436,6 +23329,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Arachnobot: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24450,7 +23344,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Knockback",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Slow Movement",
           "Universal Damage Sets"
         ],
@@ -24481,14 +23376,77 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
+        "name": "Mu Lightning",
+        "fullName": "Epic.VEAT_Mu_Mastery.Mu_Lightning",
+        "rank": 1,
+        "available": 34,
+        "description": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you.",
+        "shortHelp": "Ranged, DMG(Energy), Foe -End",
+        "icon": "arachnos_patron_targetedrangedhighdmg.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 12,
+          "endurance": 6.864,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Energy",
+              "scale": 1.32,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Energy",
+              "scale": 1.579,
+              "table": "Melee_PvPDamage"
+            }
+          ],
+          "enduranceDrain": {
+            "scale": 2,
+            "table": "Melee_EndDrain"
+          },
+          "recoveryDebuff": {
+            "scale": 3,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
+        }
+      },
+      {
         "name": "Electrifying Fences",
         "fullName": "Epic.VEAT_Mu_Mastery.Electrifying_Fences",
-        "rank": 1,
+        "rank": 2,
         "available": 34,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance.",
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24563,67 +23521,6 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
-        "name": "Mu Lightning",
-        "fullName": "Epic.VEAT_Mu_Mastery.Mu_Lightning",
-        "rank": 2,
-        "available": 34,
-        "description": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you.",
-        "shortHelp": "Ranged, DMG(Energy), Foe -End",
-        "icon": "arachnos_patron_targetedrangedhighdmg.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceModification",
-          "EnduranceReduction",
-          "Range",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Ranged Damage",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 6.864,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.579,
-              "table": "Melee_PvPDamage"
-            }
-          ],
-          "enduranceDrain": {
-            "scale": 2,
-            "table": "Melee_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 3,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 4
-        }
-      },
-      {
         "name": "Ball Lightning",
         "fullName": "Epic.VEAT_Mu_Mastery.Ball_Lightning",
         "rank": 3,
@@ -24632,6 +23529,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24705,6 +23603,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24769,6 +23668,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Mu Strike: Ranged DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24782,7 +23682,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -24820,6 +23721,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DoT(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24870,6 +23772,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Arachnos_Soldier == $archetype @Class_Arachnos_Widow == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24951,6 +23854,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -24999,6 +23903,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
         "icon": "arachnos_patron_aoedamagedebuff.png",
         "powerType": "Toggle",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25030,6 +23935,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Summon Blood Widow: Melee DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
         "powerType": "Click",
+        "targetType": "Location",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25040,7 +23946,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Ranged AoE Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -25070,51 +23977,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Caltrops",
-        "fullName": "Epic.Weapon_Mastery.Caltrops",
-        "rank": 1,
-        "available": 34,
-        "description": "You toss a handful of Caltrops at a targeted location and spread the tiny metal spikes over a large area. Any villains that pass over the Caltrops will be forced to move at a slower rate. They will also take some trivial Lethal damage over time.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Slow.</color>",
-        "shortHelp": "Ranged (Location AoE), DoT(Lethal), Foe -Speed",
-        "icon": "gadgets_caltrops.png",
-        "powerType": "Click",
-        "requires": "$archetype @Class_Scrapper ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Damage",
-          "EnduranceReduction",
-          "Range",
-          "Recharge",
-          "Slow"
-        ],
-        "allowedSetCategories": [
-          "Ranged AoE Damage",
-          "Slow Movement",
-          "Universal Damage Sets"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 25,
-          "recharge": 45,
-          "endurance": 7.8,
-          "activationTime": 1.07,
-          "effectArea": "Location",
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Caltrops",
-            "duration": 45
-          }
-        }
-      },
-      {
         "name": "Web Grenade",
         "fullName": "Epic.Weapon_Mastery.Web_Grenade",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
         "icon": "gadgets_webgrenade.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Scrapper ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25149,21 +24020,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Smashing",
               "scale": 1.679,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.8621,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.8621,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1.679,
-              "table": "Melee_PvPDamage"
             }
           ],
           "immobilize": {
@@ -25188,6 +24044,44 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Caltrops",
+        "fullName": "Epic.Weapon_Mastery.Caltrops",
+        "rank": 2,
+        "available": 34,
+        "description": "You toss a handful of Caltrops at a targeted location and spread the tiny metal spikes over a large area. Any villains that pass over the Caltrops will be forced to move at a slower rate. They will also take some trivial Lethal damage over time.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Slow.</color>",
+        "shortHelp": "Ranged (Location AoE), DoT(Lethal), Foe -Speed",
+        "icon": "gadgets_caltrops.png",
+        "powerType": "Click",
+        "targetType": "Location",
+        "requires": "$archetype @Class_Scrapper ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Slow Movement",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 25,
+          "recharge": 45,
+          "endurance": 7.8,
+          "activationTime": 1.07,
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Caltrops",
+            "duration": 45
+          }
+        }
+      },
+      {
         "name": "Shuriken",
         "fullName": "Epic.Weapon_Mastery.Shuriken",
         "rank": 3,
@@ -25196,6 +24090,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Lethal)",
         "icon": "weaponmastery_shuriken.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25226,21 +24121,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Lethal",
               "scale": 1.389,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.389,
-              "table": "Melee_PvPDamage"
             }
           ]
         }
@@ -25254,6 +24134,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "weaponmastery_targetingdrone.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25305,6 +24186,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Lethal)",
         "icon": "weaponmastery_explodingshuriken.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25337,21 +24219,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Lethal",
               "scale": 0.7323,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.9,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.9,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.7323,
-              "table": "Melee_PvPDamage"
             }
           ]
         }
@@ -25369,51 +24236,15 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Physical Perfection",
-        "fullName": "Epic.Weapon_Mastery_Stalker.Caltrops",
-        "rank": 1,
-        "available": 34,
-        "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance.",
-        "shortHelp": "Auto: Self, +Regeneration, +Recovery",
-        "icon": "bodymastery_physicalperfection.png",
-        "powerType": "Auto",
-        "requires": "$archetype @Class_Stalker ==",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "EnduranceModification",
-          "Healing"
-        ],
-        "allowedSetCategories": [
-          "Endurance Modification",
-          "Healing"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "regenBuff": 10.25,
-            "recoveryBuff": 10.25
-          },
-          "recoveryBuff": {
-            "scale": 0.125,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 10.25
-        }
-      },
-      {
         "name": "Web Grenade",
         "fullName": "Epic.Weapon_Mastery_Stalker.Web_Grenade",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
         "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
         "icon": "gadgets_webgrenade.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "$archetype @Class_Stalker ==",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25448,26 +24279,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Smashing",
               "scale": 1.679,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.8621,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.8621,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.679,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.679,
-              "table": "Melee_PvPDamage"
             }
           ],
           "immobilize": {
@@ -25492,6 +24303,44 @@ export const EPIC_POOLS_RAW = {
         }
       },
       {
+        "name": "Physical Perfection",
+        "fullName": "Epic.Weapon_Mastery_Stalker.Caltrops",
+        "rank": 2,
+        "available": 34,
+        "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal. This power is always active and consumes no endurance.",
+        "shortHelp": "Auto: Self, +Regeneration, +Recovery",
+        "icon": "bodymastery_physicalperfection.png",
+        "powerType": "Auto",
+        "targetType": "Self",
+        "requires": "$archetype @Class_Stalker ==",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "Healing"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25,
+            "recoveryBuff": 10.25
+          },
+          "recoveryBuff": {
+            "scale": 0.125,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 10.25
+        }
+      },
+      {
         "name": "Shuriken",
         "fullName": "Epic.Weapon_Mastery_Stalker.Shuriken",
         "rank": 3,
@@ -25500,6 +24349,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged, DMG(Lethal)",
         "icon": "weaponmastery_shuriken.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25530,26 +24380,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Lethal",
               "scale": 1.389,
               "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.389,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1.389,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.84,
-              "table": "Melee_InherentDamage"
             }
           ]
         }
@@ -25563,6 +24393,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "weaponmastery_targetingdrone.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Epic ownPowerNum? 0 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25614,6 +24445,7 @@ export const EPIC_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), DMG(Lethal)",
         "icon": "weaponmastery_explodingshuriken.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Epic ownPowerNum? 1 >",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -25641,26 +24473,6 @@ export const EPIC_POOLS_RAW = {
               "type": "Lethal",
               "scale": 0.9,
               "table": "Melee_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.7323,
-              "table": "Melee_PvPDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.9,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.9,
-              "table": "Melee_InherentDamage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.7323,
-              "table": "Melee_PvPDamage"
             },
             {
               "type": "Lethal",

@@ -30,6 +30,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Short Ranged, Ally +Regeneration, +Recovery, +Res(Status)",
         "icon": "experimentation_experimentalinjection.png",
         "powerType": "Click",
+        "targetType": "Ally (Alive)",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -111,6 +112,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Lethal), High DMG(Toxic)",
         "icon": "experimentation_toxicdart.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -156,6 +158,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Speed, (Special)",
         "icon": "experimentation_speedofsound.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -204,6 +207,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), High DoT(Toxic), -Defense",
         "icon": "experimentation_corrosivevial.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Pool.Experimentation.Experimental_Injection Pool.Experimentation.Toxic_Dart && Pool.Experimentation.Experimental_Injection Pool.Experimentation.Speed_of_Sound && || Pool.Experimentation.Toxic_Dart Pool.Experimentation.Speed_of_Sound && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -237,6 +241,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, +To Hit, +Recharge, +Damage, +SPD, +Special",
         "icon": "experimentation_adrenalbooster.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Experimentation.Experimental_Injection Pool.Experimentation.Toxic_Dart && Pool.Experimentation.Experimental_Injection Pool.Experimentation.Speed_of_Sound && || Pool.Experimentation.Toxic_Dart Pool.Experimentation.Speed_of_Sound && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -292,6 +297,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Click, Self Teleport",
         "icon": "experimentation_jaunt.png",
         "powerType": "Click",
+        "targetType": "Teleport",
         "requires": "Pool.Experimentation.Speed_of_Sound",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -331,6 +337,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Melee, Light DMG(Smashing), Fighting Synergy, Foe Stun",
         "icon": "fighting_boxing.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -373,6 +380,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Melee, Moderate DMG(Smashing), Synergy, Foe Knockdown",
         "icon": "fighting_kick.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -414,6 +422,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Res(Smash/Lethal)",
         "icon": "fighting_tough.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -456,6 +465,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +DEF(All), Res(Immobilize)",
         "icon": "fighting_weave.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick && Pool.Fighting.Boxing Pool.Fighting.Tough && || Pool.Fighting.Kick Pool.Fighting.Tough && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -542,6 +552,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Melee (Cone), Moderate DMG (Smashing), Fighting Synergy, Foe Knockdown, Stun",
         "icon": "fighting_crosspunch.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick && Pool.Fighting.Boxing Pool.Fighting.Tough && || Pool.Fighting.Boxing Pool.Fighting.Weave && || Pool.Fighting.Kick Pool.Fighting.Tough && || Pool.Fighting.Kick Pool.Fighting.Weave && || Pool.Fighting.Tough Pool.Fighting.Weave && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -616,6 +627,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Auto: Self +SPD",
         "icon": "fitness_quick.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Inherent.Fitness.Swift !",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -656,6 +668,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Auto: Self +Leap",
         "icon": "fitness_hurdle.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Inherent.Fitness.Hurdle !",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -694,6 +707,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Auto: Self +Regeneration, Res(Sleep)",
         "icon": "fitness_health.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Inherent.Fitness.Health ! Pool.Fitness.Quick Pool.Fitness.Hurdle || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -732,6 +746,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Auto: Self +Recovery",
         "icon": "fitness_stamina.png",
         "powerType": "Auto",
+        "targetType": "Self",
         "requires": "Inherent.Fitness.Stamina ! Pool.Fitness.Quick Pool.Fitness.Hurdle && Pool.Fitness.Quick Pool.Fitness.Health && || Pool.Fitness.Hurdle Pool.Fitness.Health && || &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -773,6 +788,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Fly, +DEF(All)",
         "icon": "flight_combatflight.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -874,6 +890,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Melee, High DMG(Smash), Foe -Fly",
         "icon": "flight_arialassault.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -913,6 +930,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Fly",
         "icon": "flight_travelflight.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -969,6 +987,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +FlySpeed, Res(-Fly), +Def(All), +Flight Control",
         "icon": "flight_aerobatics.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1079,6 +1098,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "PBAoE High DMG(Smashing), Foe Knockdown; Self Teleport, +Jump",
         "icon": "flight_diveattack.png",
         "powerType": "Click",
+        "targetType": "Teleport",
         "requires": "Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && || Pool.Speed.Whirlwind ! Pool.Teleportation.Team_Teleport ! && Pool.Leaping.Spring_Attack ! && Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration ! && Warshade_Offensive.Umbral_Blast.Starless_Step ! && &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1116,6 +1136,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Team Fly",
         "icon": "flight_groupfly.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Flight.Group_Fly",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -1139,6 +1160,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +FlySpeed",
         "icon": "flight_afterburner.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Flight.Afterburner",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -1192,6 +1214,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Foe -Resist, -Defense, Self +To Hit",
         "icon": "forceofwill_weakenresolve.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1273,6 +1296,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Psionic/Smash), Foe Knockdown",
         "icon": "forceofwill_projectwill.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1322,6 +1346,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Long Jump, (Special)",
         "icon": "forceofwill_mightyleap.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1370,6 +1395,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged Cone, Moderate DMG(Psionic/Smash), Foe Knockdown",
         "icon": "forceofwill_wallofforce.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Pool.Force_of_Will.Weaken_Resolve Pool.Force_of_Will.Project_Will && Pool.Force_of_Will.Weaken_Resolve Pool.Force_of_Will.Mighty_Leap && || Pool.Force_of_Will.Project_Will Pool.Force_of_Will.Mighty_Leap && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1422,6 +1448,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, +Regen, +Recovery, +Recharge, +Defense",
         "icon": "forceofwill_unleashpotential.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Force_of_Will.Weaken_Resolve Pool.Force_of_Will.Project_Will && Pool.Force_of_Will.Weaken_Resolve Pool.Force_of_Will.Mighty_Leap && || Pool.Force_of_Will.Project_Will Pool.Force_of_Will.Mighty_Leap && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1523,6 +1550,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "PBAoE Melee, Foe Knockdown",
         "icon": "forceofwill_stomp.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Force_of_Will.Mighty_Leap",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -1560,6 +1588,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Stealth, +DEF(All)",
         "icon": "invisibility_stealth.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1662,6 +1691,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Teammate Stealth, +DEF(All)",
         "icon": "invisibility_groupinvisibility.png",
         "powerType": "Click",
+        "targetType": "Teammate",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1749,6 +1779,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Stealth, +DEF(All except Psionic)",
         "icon": "invisibility_invisibility.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1839,6 +1870,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Intangible",
         "icon": "invisibility_phaseshift.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility && Pool.Invisibility.Stealth Pool.Invisibility.Invisibility && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Invisibility && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1883,6 +1915,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "PBAoE, Foe Placate, -Res(All)",
         "icon": "invisibility_placate.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility && Pool.Invisibility.Stealth Pool.Invisibility.Invisibility && || Pool.Invisibility.Stealth Pool.Invisibility.Phase_Shift && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Invisibility && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Phase_Shift && || Pool.Invisibility.Invisibility Pool.Invisibility.Phase_Shift && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -1962,6 +1995,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Team +DEF(All)",
         "icon": "leadership_defense.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2038,6 +2072,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
         "icon": "leadership_assault.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2084,6 +2119,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
         "icon": "leadership_tactics.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Leadership.Defense Pool.Leadership.Assault ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2302,6 +2338,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Team +Recovery, -End Cost",
         "icon": "leadership_victoryrush.png",
         "powerType": "Click",
+        "targetType": "DeadFoe",
         "requires": "Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Defense Pool.Leadership.Vengeance && || Pool.Leadership.Assault Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Vengeance && || Pool.Leadership.Tactics Pool.Leadership.Vengeance && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2341,6 +2378,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Melee, High DMG(Smash), Foe Knockdown, Stun, Self Teleport",
         "icon": "jump_jumpkick.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2389,6 +2427,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Jump, +DEF(All), Res(Immobilization)",
         "icon": "jump_combatjump.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2501,6 +2540,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Long Jump",
         "icon": "jump_longjump.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2549,6 +2589,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Jump, +DEF(All), +Res(Knockback, Hold)",
         "icon": "jump_acrobatics.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Leaping.Jump_Kick Pool.Leaping.Combat_Jumping && Pool.Leaping.Jump_Kick Pool.Leaping.Long_Jump && || Pool.Leaping.Combat_Jumping Pool.Leaping.Long_Jump && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2682,6 +2723,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "PBAoE High DMG(Smashing), Foe Knockdown; Self Teleport, +Jump",
         "icon": "jump_springattack.png",
         "powerType": "Click",
+        "targetType": "Teleport",
         "requires": "Pool.Leaping.Jump_Kick Pool.Leaping.Combat_Jumping && Pool.Leaping.Jump_Kick Pool.Leaping.Long_Jump && || Pool.Leaping.Combat_Jumping Pool.Leaping.Long_Jump && || Pool.Speed.Whirlwind ! Pool.Teleportation.Team_Teleport ! && Pool.Flight.Afterburner ! && Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration ! && Warshade_Offensive.Umbral_Blast.Starless_Step ! && &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2746,6 +2788,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Placate (Foe)",
         "icon": "manipulation_placate.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2777,6 +2820,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Targeted AoE, Taunt (Foe)",
         "icon": "manipulation_provoke.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2811,6 +2855,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Fear (Foe)",
         "icon": "manipulation_intimidate.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2846,6 +2891,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "PBAoE, Fear (Foe)",
         "icon": "manipulation_invokepanic.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke && Pool.Manipulation.Challenge Pool.Manipulation.Intimidate && || Pool.Manipulation.Provoke Pool.Manipulation.Intimidate && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2881,6 +2927,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, Heal over Time, +DMG(All), +Rech, +Rec, Self Resurrect (Special)",
         "icon": "manipulation_unrelenting.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke && Pool.Manipulation.Challenge Pool.Manipulation.Intimidate && || Pool.Manipulation.Challenge Pool.Manipulation.Invoke_Panic && || Pool.Manipulation.Provoke Pool.Manipulation.Intimidate && || Pool.Manipulation.Provoke Pool.Manipulation.Invoke_Panic && || Pool.Manipulation.Intimidate Pool.Manipulation.Invoke_Panic && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2937,6 +2984,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Close, Heal(Ally)",
         "icon": "medicine_aid.png",
         "powerType": "Click",
+        "targetType": "Ally (Alive)",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -2971,6 +3019,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, +Status Protection(Ally, PvE), +Status Resistance(Ally, PvP) OR -DMG(Foe, All), -Rech(Foe), -ToHit(Foe)",
         "icon": "medicine_injection.png",
         "powerType": "Click",
+        "targetType": "Any",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3004,6 +3053,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, Heal, +Res(Stun), +EndGain(Synergy)",
         "icon": "medicine_selfadministration.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3047,6 +3097,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Close, Resurrect(Ally)",
         "icon": "medicine_smellingsalts.png",
         "powerType": "Click",
+        "targetType": "Dead Teammate",
         "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3084,6 +3135,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, +Heal, -Res(Heal), Special",
         "icon": "medicine_fieldmedic.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Aid_Other Pool.Medicine.Resuscitate && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Resuscitate && || Pool.Medicine.Aid_Self Pool.Medicine.Resuscitate && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3133,6 +3185,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ally, +Absorb over time",
         "icon": "sorcerypool_spiritward.png",
         "powerType": "Click",
+        "targetType": "Ally (Alive)",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3169,6 +3222,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Moderate DMG(Energy), Foe Knockdown",
         "icon": "sorcerypool_arcanebolt.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3211,6 +3265,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self Fly, (Special)",
         "icon": "sorcerypool_mysticflight.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3267,6 +3322,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged Friend/Foe, Special",
         "icon": "sorcerypool_enflame.png",
         "powerType": "Click",
+        "targetType": "Any",
         "requires": "Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt && Pool.Sorcery.Spirit_Ward Pool.Sorcery.Mystic_Flight && || Pool.Sorcery.Arcane_Bolt Pool.Sorcery.Mystic_Flight && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3298,6 +3354,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self, +Res(All Dmg, Hold, Sleep, Immobilize, Knockdown, Disorient)",
         "icon": "sorcerypool_runeofprotection.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt && Pool.Sorcery.Spirit_Ward Pool.Sorcery.Mystic_Flight && || Pool.Sorcery.Arcane_Bolt Pool.Sorcery.Mystic_Flight && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3418,6 +3475,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Click, Self Teleport",
         "icon": "sorcerypool_translocation.png",
         "powerType": "Click",
+        "targetType": "Teleport",
         "requires": "Pool.Sorcery.Mystic_Flight",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -3456,6 +3514,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Melee (Cone), High DoT(Smash), Self +Def(Melee, Lethal), Special",
         "icon": "superspeed_flurrycone.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3512,6 +3571,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self +Recharge, +SPD",
         "icon": "superspeed_acceleratedcombat.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3557,6 +3617,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: Self +Speed",
         "icon": "superspeed_superspeed.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3605,6 +3666,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Toggle: PBAoE, Moderate DMG(Smash/Energy), Foe Attract, Knockback, Stun, (Special)",
         "icon": "superspeed_whirlwind.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && || Pool.Leaping.Spring_Attack ! Pool.Teleportation.Team_Teleport ! && Pool.Flight.Afterburner ! && Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration ! && Warshade_Offensive.Umbral_Blast.Starless_Step ! && &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3674,6 +3736,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Self +Recharge, +SPD, Res (Slow), +DEF(All), Special",
         "icon": "superspeed_burnout.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3821,6 +3884,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged, Minor DMG(Smash), Self Teleport, +DEF(All but Psionics)",
         "icon": "teleportation_instantteleport.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3907,6 +3971,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged (Location), Self Teleport",
         "icon": "teleportation_teleport.png",
         "powerType": "Click",
+        "targetType": "Teleport",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -3964,6 +4029,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "PBAoE High DMG(Smashing); Self Teleport, +DEF(All but Psionics)",
         "icon": "teleportation_blitzteleport.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && || Pool.Speed.Whirlwind ! Pool.Leaping.Spring_Attack ! && Pool.Flight.Afterburner ! && Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration ! && Warshade_Offensive.Umbral_Blast.Starless_Step ! && &&",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4052,6 +4118,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged (Targeted AoE), Foe Teleport",
         "icon": "teleportation_foldspace.png",
         "powerType": "Click",
+        "targetType": "Foe",
         "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && ||",
         "maxSlots": 6,
         "allowedEnhancements": [
@@ -4099,6 +4166,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Long Range Teleport",
         "icon": "teleportation_longrangeteleport.png",
         "powerType": "Click",
+        "targetType": "Self",
         "requires": "Pool.Teleportation.Long_Range_Teleport",
         "maxSlots": 6,
         "allowedEnhancements": [],
@@ -4127,6 +4195,7 @@ export const POWER_POOLS_RAW = {
         "shortHelp": "Ranged (Location), Team Teleport",
         "icon": "teleportation_groupteleport.png",
         "powerType": "Toggle",
+        "targetType": "Self",
         "requires": "Pool.Teleportation.Team_Teleport Pool.Teleportation.Teleport &&",
         "maxSlots": 6,
         "allowedEnhancements": [],

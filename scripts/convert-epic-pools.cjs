@@ -28,6 +28,7 @@ const {
   BIN_BOOST_MAP,
   inferAllowedSetCategories,
   normalizeIconPath,
+  TARGET_TYPE_MAP,
 } = require('./convert-powerset.cjs');
 
 // Bin export writes epic pool powers under `<RAW_DATA_PATH>/epic/`.
@@ -116,6 +117,14 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   power.icon = normalizeIconPath(rawJson.icon || '');
   // Map bin's "GlobalBoost" to the planner's "Global Enhancement" type.
   power.powerType = rawJson.type === 'GlobalBoost' ? 'Global Enhancement' : (rawJson.type || 'Click');
+
+  // Target type — same normalization powerset converter applies. Required
+  // by the dashboard's ally-only filter so ally-buff toggles in epic pools
+  // (e.g. patron pet-buff utilities) don't apply to the caster's totals.
+  if (rawJson.target_type) {
+    const mapped = TARGET_TYPE_MAP[rawJson.target_type];
+    if (mapped) power.targetType = mapped;
+  }
 
   // Requires
   if (rawJson.requires && rawJson.requires !== '') {
