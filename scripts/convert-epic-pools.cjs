@@ -74,6 +74,27 @@ function loadExistingPools() {
   return {};
 }
 
+// Cross-dataset metadata fallback. Rebirth's epic-pool IDs lack archetype
+// prefixes for hero ancillary pools (e.g. `arctic_mastery` instead of
+// `tanker_arctic_mastery`), which leaves `inferArchetypeFromPoolId` returning
+// "" — and once that empty value is written to the generated file, subsequent
+// runs preserve it. HC's generated data has all 81 pools correctly tagged
+// (tanker for arctic_mastery, blaster for cold_mastery, etc.) and the same
+// pool IDs are used in both datasets. Use HC as a seed when the active
+// dataset's existing pool either doesn't exist or has no archetype.
+function loadFallbackPoolMetadata() {
+  if (datasetId === 'homecoming') return {};
+  try {
+    const hcPath = datasetPath('homecoming', 'generated', 'epic-pools.ts');
+    const content = fs.readFileSync(hcPath, 'utf-8');
+    const match = content.match(/export\s+const\s+EPIC_POOLS_RAW\s*=\s*(\{[\s\S]*\})\s*(?:as\s+const)?\s*;?\s*$/);
+    if (match) return new Function('return ' + match[1])();
+  } catch (_) { /* HC file missing; nothing to fall back to */ }
+  return {};
+}
+
+const FALLBACK_POOLS = loadFallbackPoolMetadata();
+
 // ============================================
 // CONVERT A SINGLE EPIC POWER
 // ============================================
@@ -194,6 +215,8 @@ const ARCHETYPE_PREFIXES = [
   'arachnos_soldier', 'arachnos_widow', 'peacebringer', 'warshade',
   'blaster', 'brute', 'controller', 'corruptor', 'defender', 'dominator',
   'mastermind', 'scrapper', 'sentinel', 'stalker', 'tanker',
+  // Rebirth-only AT
+  'guardian',
 ];
 
 function inferArchetypeFromPoolId(poolId) {
@@ -202,6 +225,56 @@ function inferArchetypeFromPoolId(poolId) {
     if (poolId.startsWith(at + '_')) return at;
   }
   return ''; // unknown — needs override
+}
+
+// Last-resort archetype detection for Rebirth-only pools that have no
+// archetype prefix and no entry in HC's data (frost_mastery, martial_mastery,
+// inferno_mastery, etc.). Reads the pool's power JSONs and looks for
+// `@Class_<Name>` markers in `requires` — these are how the game gates a
+// power to a specific archetype. When several classes appear (a defender/
+// corruptor shared pool like frost_mastery), use the canonical hero side
+// for consistency with HC's tagging convention.
+const CLASS_NAME_TO_ARCHETYPE = {
+  'Blaster': 'blaster', 'Brute': 'brute', 'Controller': 'controller',
+  'Corruptor': 'corruptor', 'Defender': 'defender', 'Dominator': 'dominator',
+  'Mastermind': 'mastermind', 'Scrapper': 'scrapper', 'Sentinel': 'sentinel',
+  'Stalker': 'stalker', 'Tanker': 'tanker', 'Peacebringer': 'peacebringer',
+  'Warshade': 'warshade', 'Arachnos_Soldier': 'arachnos_soldier',
+  'Arachnos_Widow': 'arachnos_widow', 'Guardian': 'guardian',
+};
+const CLASS_PREFERENCE = [
+  // When a pool is shared across alignments, prefer the hero-side AT — matches
+  // HC's canonical tagging (cold_mastery → blaster, not corruptor).
+  'defender', 'tanker', 'scrapper', 'controller', 'blaster',
+  'corruptor', 'brute', 'stalker', 'dominator', 'mastermind',
+  'sentinel', 'peacebringer', 'warshade',
+  'arachnos_soldier', 'arachnos_widow', 'guardian',
+];
+
+function inferArchetypeFromPoolPowers(poolPath) {
+  let files;
+  try {
+    files = fs.readdirSync(poolPath).filter(f => f.endsWith('.json') && f !== 'index.json');
+  } catch (_) { return ''; }
+  const found = new Set();
+  for (const f of files) {
+    let data;
+    try { data = JSON.parse(fs.readFileSync(path.join(poolPath, f), 'utf-8')); }
+    catch (_) { continue; }
+    for (const field of ['requires', 'activate_requires', 'target_requires']) {
+      const req = data[field] || '';
+      const re = /@Class_([A-Za-z_]+)/g;
+      let m;
+      while ((m = re.exec(req)) !== null) {
+        const at = CLASS_NAME_TO_ARCHETYPE[m[1]];
+        if (at) found.add(at);
+      }
+    }
+  }
+  for (const at of CLASS_PREFERENCE) {
+    if (found.has(at)) return at;
+  }
+  return '';
 }
 
 // ============================================
@@ -232,13 +305,24 @@ function convertEpicPool(poolId, existingPool) {
   if (!poolIndex.display_short_help && poolIndex.short_help) poolIndex.display_short_help = poolIndex.short_help;
 
   // Build pool metadata — preserve archetype/minLevel from existing data,
-  // use raw data for display info. When existing data is absent (fresh
-  // discovery), infer archetype from the pool ID prefix.
+  // use raw data for display info. Fallback chain when archetype is empty:
+  //   1. Existing pool's tag (HC was hand-curated long ago).
+  //   2. Pool ID prefix (e.g. `blaster_dark_mastery` → blaster).
+  //   3. HC's generated data — same pool IDs, hand-curated tags
+  //      (covers `arctic_mastery`, `cold_mastery`, etc. for Rebirth).
+  //   4. Scan the pool's power requires for @Class_X — covers
+  //      Rebirth-only pools without HC counterparts (frost_mastery,
+  //      martial_mastery, inferno_mastery).
+  const fallbackArchetype = (existingPool && existingPool.archetype)
+    || inferArchetypeFromPoolId(poolId)
+    || (FALLBACK_POOLS[poolId] && FALLBACK_POOLS[poolId].archetype)
+    || inferArchetypeFromPoolPowers(poolPath)
+    || '';
   const pool = {
     id: poolId,
     name: poolIndex.display_name || (existingPool ? existingPool.name : poolId),
     displayName: poolIndex.display_name || (existingPool ? existingPool.displayName : poolId),
-    archetype: existingPool ? existingPool.archetype : inferArchetypeFromPoolId(poolId),
+    archetype: fallbackArchetype,
     description: poolIndex.display_help || (existingPool ? existingPool.description : ''),
     icon: poolIndex.icon || (existingPool ? existingPool.icon : ''),
     requires: poolIndex.requires || '',
@@ -344,7 +428,10 @@ function main() {
     poolIds = [poolFilter];
   } else if (archFilter) {
     poolIds = allKnownIds.filter(id => {
-      const at = existingPools[id]?.archetype || inferArchetypeFromPoolId(id);
+      const at = existingPools[id]?.archetype
+        || inferArchetypeFromPoolId(id)
+        || (FALLBACK_POOLS[id] && FALLBACK_POOLS[id].archetype)
+        || '';
       return at === archFilter;
     });
     console.log(`Filtering to archetype "${archFilter}": ${poolIds.length} pools\n`);
