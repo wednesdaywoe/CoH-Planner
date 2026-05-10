@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-05-09',
     items: [
+      { message: 'Fixes for a whole mess of HC-related issues', type: 'fix' },
       { message: 'Fix for missing epic pools in the Rebirth dataset', type: 'fix' },
       { message: 'Fixed an issue with Rebirth/Fitness/Tough missing some boostSetTypes', type: 'fix' },
       { message: 'Added per-proc chance breakdown to the info panel. Expand for details and calculations on each slotted proc', type: 'feat' },
