@@ -119,6 +119,21 @@ interface BuildActions {
    */
   setVaultId: (id: string | null) => void;
 
+  /**
+   * Walk every slotted enhancement and bump it to its "finalized" form:
+   *   - Hamidon / Titan / Hydra / D-Sync / prestige (`type: 'special'`)
+   *     get their level set to `specialLevel` (default 53 — the L53 HO/
+   *     Yin/Hydra cap most CoH builds aim for).
+   *   - Generic IO and Set IO pieces (`type: 'io-set'`, `'io-generic'`)
+   *     at level 50 or attuned get their boost set to `boostLevel`
+   *     (default 5 — Enhancement Catalyst max). Sub-50 IOs are skipped
+   *     because boosters only apply to L50+ in-game.
+   * Origin enhancements (TO/DO/SO) are untouched — they don't have a
+   * boost mechanic. Any slot already at the target level/boost is left
+   * alone so the operation idempotent and the breakdown stays clean.
+   */
+  maximizeEnhancementLevels: (options?: { specialLevel?: number; boostLevel?: number }) => void;
+
   // Accolades
   addAccolade: (accolade: Accolade) => void;
   removeAccolade: (accoladeId: string) => void;
@@ -1651,6 +1666,74 @@ export const useBuildStore = create<BuildStore>()(
           if (state.build.vaultId === next) return state;
           return { build: { ...state.build, vaultId: next } };
         });
+      },
+
+      maximizeEnhancementLevels: (options) => {
+        const specialLevel = options?.specialLevel ?? 53;
+        const boostLevel = options?.boostLevel ?? 5;
+        // Map a single slot to its maxed form. Returns the same object
+        // when nothing changes so the React equality check downstream can
+        // bail without a rerender.
+        const maxSlot = (slot: Enhancement | null): Enhancement | null => {
+          if (!slot) return slot;
+          if (slot.type === 'special') {
+            if (slot.level === specialLevel) return slot;
+            return { ...slot, level: specialLevel };
+          }
+          if (slot.type === 'io-set' || slot.type === 'io-generic') {
+            // Boost only meaningfully applies to L50+ IOs in-game. Attuned
+            // IOs scale with character level and accept boosts when
+            // catalyzed, so include them too.
+            const eligible = slot.attuned === true || (slot.level ?? 50) >= 50;
+            if (!eligible) return slot;
+            if ((slot.boost ?? 0) === boostLevel) return slot;
+            return { ...slot, boost: boostLevel };
+          }
+          return slot;
+        };
+        // Apply across every power list (primary/secondary/pools/epic/
+        // inherents). Walk in a single set() so undo treats it as one
+        // operation.
+        let anyChanged = false;
+        const remap = (powers: SelectedPower[]): SelectedPower[] => {
+          let powerChanged = false;
+          const out = powers.map((p) => {
+            if (!p.slots || p.slots.length === 0) return p;
+            let slotChanged = false;
+            const nextSlots = p.slots.map((s) => {
+              const next = maxSlot(s);
+              if (next !== s) slotChanged = true;
+              return next;
+            });
+            if (!slotChanged) return p;
+            powerChanged = true;
+            return { ...p, slots: nextSlots };
+          });
+          if (powerChanged) anyChanged = true;
+          return powerChanged ? out : powers;
+        };
+        // Run the dry remap once to see whether anything would change —
+        // skip the historyCheckpoint/set when the build is already maxed
+        // so re-running the action is a true no-op.
+        const before = get().build;
+        const dryPrimary = remap(before.primary.powers);
+        const drySecondary = remap(before.secondary.powers);
+        const dryPools = before.pools.map((pool) => ({ ...pool, powers: remap(pool.powers) }));
+        const dryEpic = before.epicPool ? { ...before.epicPool, powers: remap(before.epicPool.powers) } : null;
+        const dryInherents = remap(before.inherents);
+        if (!anyChanged) return;
+
+        historyCheckpoint();
+        set((state) => ({
+          build: {
+            ...state.build,
+            primary: { ...state.build.primary, powers: dryPrimary },
+            secondary: { ...state.build.secondary, powers: drySecondary },
+            pools: dryPools,
+            epicPool: dryEpic,
+            inherents: dryInherents,
+          },
+        }));
       },
 
       setOrigin: (origin) => {

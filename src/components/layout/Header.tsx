@@ -95,6 +95,7 @@ export function Header() {
   const build = useBuildStore((s) => s.build);
   const resetBuild = useBuildStore((s) => s.resetBuild);
   const clearPowers = useBuildStore((s) => s.clearPowers);
+  const maximizeEnhancementLevels = useBuildStore((s) => s.maximizeEnhancementLevels);
   const resetForNewBuild = useUIStore((s) => s.resetForNewBuild);
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
   const includeProcDamageInDPS = useUIStore((s) => s.includeProcDamageInDPS);
@@ -107,7 +108,7 @@ export function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const isOnBuildsPage = location.pathname.startsWith('/builds');
-  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | null>(null);
+  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | 'maximize' | null>(null);
 
   const archetypeId = build.archetype.id;
 
@@ -143,6 +144,7 @@ export function Header() {
             onOpenModal={openExportImportModal}
             onNew={() => setConfirmAction('new')}
             onClear={() => setConfirmAction('clear')}
+            onMaximize={() => setConfirmAction('maximize')}
             onAbout={openAboutModal}
           />
         </div>
@@ -249,6 +251,14 @@ export function Header() {
         message="Clear all powers and enhancements? Archetype and powerset selections will be kept."
         confirmLabel="Clear"
         onConfirm={() => { clearPowers(); setConfirmAction(null); }}
+        onCancel={() => setConfirmAction(null)}
+      />
+      <ConfirmModal
+        isOpen={confirmAction === 'maximize'}
+        title="Maximize Enhancement Levels"
+        message="Set every Hamidon / Titan / Hydra / D-Sync to level 53 and apply +5 boost to every level-50 (or attuned) IO. SO/DO/TO and lower-level IOs are left alone. Use Undo to revert."
+        confirmLabel="Maximize"
+        onConfirm={() => { maximizeEnhancementLevels(); setConfirmAction(null); }}
         onCancel={() => setConfirmAction(null)}
       />
     </header>
@@ -735,11 +745,13 @@ function ActionMenu({
   onOpenModal,
   onNew,
   onClear,
+  onMaximize,
   onAbout,
 }: {
   onOpenModal: (tab?: 'save' | 'load-import' | 'share-export') => void;
   onNew: () => void;
   onClear: () => void;
+  onMaximize: () => void;
   onAbout: () => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -846,6 +858,14 @@ function ActionMenu({
           <button onClick={() => { onClear(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
             <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
             Clear Powers
+          </button>
+          <button
+            onClick={() => { onMaximize(); setOpen(false); }}
+            className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2"
+            title="Set HOs/Titans/Hydras/D-Syncs to L53 and apply +5 boost to every L50 (or attuned) IO."
+          >
+            <svg className="w-4 h-4 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+            Maximize Enhancements
           </button>
           {supabase && !loading && (
             <>

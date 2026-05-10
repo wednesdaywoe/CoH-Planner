@@ -53,8 +53,9 @@ export function MobileBottomNav() {
   // children on close, which would tear down any state-driven modal inside it).
   const resetBuild = useBuildStore((s) => s.resetBuild);
   const clearPowers = useBuildStore((s) => s.clearPowers);
+  const maximizeEnhancementLevels = useBuildStore((s) => s.maximizeEnhancementLevels);
   const resetForNewBuild = useUIStore((s) => s.resetForNewBuild);
-  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | null>(null);
+  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | 'maximize' | null>(null);
 
   const requestNewBuild = () => {
     closeMobileSheet();
@@ -63,6 +64,10 @@ export function MobileBottomNav() {
   const requestClearPowers = () => {
     closeMobileSheet();
     setConfirmAction('clear');
+  };
+  const requestMaximize = () => {
+    closeMobileSheet();
+    setConfirmAction('maximize');
   };
 
   // Picking any non-Incarnate tab should close the Incarnate modal so tab
@@ -101,6 +106,7 @@ export function MobileBottomNav() {
             onDone={closeMobileSheet}
             onRequestNewBuild={requestNewBuild}
             onRequestClearPowers={requestClearPowers}
+            onRequestMaximize={requestMaximize}
           />
         </MobileSheet>
       )}
@@ -164,6 +170,14 @@ export function MobileBottomNav() {
         message="Clear all powers and enhancements? Archetype and powerset selections will be kept."
         confirmLabel="Clear"
         onConfirm={() => { clearPowers(); setConfirmAction(null); }}
+        onCancel={() => setConfirmAction(null)}
+      />
+      <ConfirmModal
+        isOpen={confirmAction === 'maximize'}
+        title="Maximize Enhancement Levels"
+        message="Set every Hamidon / Titan / Hydra / D-Sync to level 53 and apply +5 boost to every level-50 (or attuned) IO. SO/DO/TO and lower-level IOs are left alone. Use Undo to revert."
+        confirmLabel="Maximize"
+        onConfirm={() => { maximizeEnhancementLevels(); setConfirmAction(null); }}
         onCancel={() => setConfirmAction(null)}
       />
     </>
@@ -250,10 +264,12 @@ function MobileMenuContent({
   onDone,
   onRequestNewBuild,
   onRequestClearPowers,
+  onRequestMaximize,
 }: {
   onDone: () => void;
   onRequestNewBuild: () => void;
   onRequestClearPowers: () => void;
+  onRequestMaximize: () => void;
 }) {
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
@@ -317,6 +333,7 @@ function MobileMenuContent({
         {item('Share / Export', () => openExportImportModal('share-export'))}
         {itemNoClose('New build', onRequestNewBuild)}
         {itemNoClose('Clear powers', onRequestClearPowers, true)}
+        {itemNoClose('Maximize enhancements', onRequestMaximize)}
       </Section>
       <Section label="Info">
         {item('Help', openHelpModal)}
