@@ -248,17 +248,19 @@ export function EnhancementPicker() {
     });
   };
 
-  // Auto-select primary category when modal opens; clear shift-selection
+  // Auto-select primary category when modal opens; clear shift-selection.
+  // Note: the IO level intentionally does NOT reset to character level —
+  // `globalIOLevel` persists across picker opens (and across page reloads
+  // via the UI store) so the user's most recent choice sticks instead of
+  // snapping back every time the modal reopens.
   const prevIsOpen = useRef(false);
   useEffect(() => {
     if (picker.isOpen && !prevIsOpen.current) {
       if (primaryCategory) setSidebarFilter(primaryCategory);
       setShiftSelected(new Map());
-      // Default IO level to character level when picker opens
-      setGlobalIOLevel(Math.max(10, build.level));
     }
     prevIsOpen.current = picker.isOpen;
-  }, [picker.isOpen, primaryCategory, build.level, setGlobalIOLevel]);
+  }, [picker.isOpen, primaryCategory]);
 
   // Helper to create IO set enhancement via registry factory
   const makeIOSetEnhancement = (set: IOSet, piece: IOSetPiece, pieceIndex: number) => {
