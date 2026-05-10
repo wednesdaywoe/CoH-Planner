@@ -529,10 +529,10 @@ export const HELP_TOPICS: HelpTopic[] = [
   },
   {
     id: 'ie-vault',
-    title: 'Vault: Save Builds to Your Account',
+    title: 'Build Library: Save Builds to Your Account',
     category: 'import-export',
-    description: 'Log in (Discord / SimpleLogin OAuth) to save builds privately to your vault. Vaulted builds sync across devices and persist independently of browser storage. Use Save to Vault on the Save tab and Load from Vault on the Load / Import tab.',
-    keywords: ['vault', 'login', 'account', 'cloud', 'sync', 'simplelogin', 'oauth', 'discord', 'private'],
+    description: 'Log in (Discord / SimpleLogin OAuth) to save builds privately to your build library. Library builds sync across devices and persist independently of browser storage. Use Save to Library on the Save tab and Load from Library on the Load / Import tab.',
+    keywords: ['library', 'build library', 'vault', 'login', 'account', 'cloud', 'sync', 'simplelogin', 'oauth', 'discord', 'private'],
   },
   {
     id: 'ie-mids-export',

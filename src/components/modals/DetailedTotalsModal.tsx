@@ -548,7 +548,7 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
     setLoadError(null);
     const parsedBuild = parseSharedBuild(shared);
     if (!parsedBuild) {
-      setLoadError('Could not parse vault build');
+      setLoadError('Could not parse library build');
       return;
     }
 
@@ -643,9 +643,9 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
                   ? 'text-purple-400 bg-slate-800'
                   : 'text-slate-500 hover:text-purple-400 hover:bg-slate-800'
               }`}
-              title={user ? 'Load a build from your vault' : 'Load a build you own'}
+              title={user ? 'Load a build from your library' : 'Load a build you own'}
             >
-              + From Vault
+              + From Library
             </button>
           )}
           <input
@@ -661,10 +661,10 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
         {showVaultPicker && (
           <div className="mb-3 border border-slate-700 rounded-lg bg-slate-800/50 max-h-48 overflow-y-auto">
             {vaultLoading ? (
-              <div className="p-3 text-xs text-slate-400 text-center">Loading vault builds...</div>
+              <div className="p-3 text-xs text-slate-400 text-center">Loading library builds...</div>
             ) : !vaultBuilds || vaultBuilds.length === 0 ? (
               <div className="p-3 text-xs text-slate-500 text-center">
-                {user ? 'No builds in your vault' : 'No owned builds found. Share a build to add it to your vault.'}
+                {user ? 'No builds in your library' : 'No owned builds found. Share a build to add it to your library.'}
               </div>
             ) : (
               <div className="divide-y divide-slate-700/50">

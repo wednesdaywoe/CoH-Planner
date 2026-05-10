@@ -173,12 +173,16 @@ export interface Build {
   kheldianForm?: 'human' | 'nova' | 'dwarf';
 
   /**
-   * If this build was loaded from the user's Vault, the source build's id.
-   * Used by the Save → Vault flow to update the existing entry rather than
-   * creating a duplicate. Cleared when the user starts a new build or
-   * imports an unrelated one. The presence of an owner token (separate,
-   * stored per-id by sharedBuilds.ts) is what actually authorizes the
-   * update; this field is just the link.
+   * If this build was loaded from the user's Build Library, the source
+   * build's id. Used by the Save → Library flow to update the existing
+   * entry rather than creating a duplicate. Cleared when the user starts
+   * a new build or imports an unrelated one. The presence of an owner
+   * token (separate, stored per-id by sharedBuilds.ts) is what actually
+   * authorizes the update; this field is just the link. Field name kept
+   * as `vaultId` (and the matching action `setVaultId`) since the backend
+   * + ownership tokens still use that internal name; user-facing copy
+   * says "library" — see the rename rationale in the corresponding feat
+   * commit.
    */
   vaultId?: string;
 }

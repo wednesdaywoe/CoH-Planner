@@ -115,7 +115,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     }
   }, [isOpen, user]);
 
-  // Whether the in-memory build is linked to a Vault entry the user can
+  // Whether the in-memory build is linked to a library entry the user can
   // update. Requires both a vaultId on the build (set when loaded from
   // BuildDetailPage as the owner) AND the owner token still being present
   // — without the token the backend rejects the update. Stale links (the
@@ -125,7 +125,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const canUpdateVault = !!(linkedVaultId && (getOwnerToken(linkedVaultId) || user));
 
   // Pre-populate the alias input with the build's name when the modal
-  // opens against a vault-linked build, so users can see (and adjust)
+  // opens against a library-linked build, so users can see (and adjust)
   // the name that will overwrite their saved entry.
   useEffect(() => {
     if (isOpen && canUpdateVault && !buildAlias.trim() && build.name) {
@@ -211,7 +211,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
       if (result?.id) setVaultId(result.id);
       setVaultSaveSuccess(true);
     } catch (e) {
-      setVaultSaveError(e instanceof Error ? e.message : 'Failed to save to vault');
+      setVaultSaveError(e instanceof Error ? e.message : 'Failed to save to library');
     } finally {
       setVaultSaveLoading(false);
     }
@@ -814,7 +814,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                 <div className="w-full border-t border-gray-600"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-gray-900 text-gray-500">VAULT</span>
+                <span className="px-2 bg-gray-900 text-gray-500">BUILD LIBRARY</span>
               </div>
             </div>
 
@@ -825,7 +825,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   {vaultSaveSuccess ? (
                     <div className="bg-indigo-900/20 border border-indigo-700/50 rounded p-4 text-sm text-indigo-300">
                       <p className="font-semibold">
-                        {canUpdateVault ? 'Build updated in your vault!' : 'Build saved to your vault!'}
+                        {canUpdateVault ? 'Build updated in your library!' : 'Build saved to your library!'}
                       </p>
                       <p className="text-xs text-indigo-400 mt-1">
                         This build is private and only visible to you in My Builds.
@@ -835,7 +835,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                     <>
                       {canUpdateVault && (
                         <p className="text-xs text-indigo-400">
-                          This build is linked to a Vault entry. Saving will overwrite the existing entry; choose "Save as new" to fork it instead.
+                          This build is linked to a saved entry in your library. Saving will overwrite the existing entry; choose "Save as new" to fork it instead.
                         </p>
                       )}
                       <Button
@@ -845,7 +845,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                         disabled={vaultSaveLoading || !build.archetype.id}
                         className="w-full !bg-indigo-600 hover:!bg-indigo-700"
                       >
-                        {canUpdateVault ? 'Update Saved Build' : 'Save to Vault (Private)'}
+                        {canUpdateVault ? 'Update Saved Build' : 'Save to Library (Private)'}
                       </Button>
                       {canUpdateVault && (
                         <Button
@@ -868,7 +868,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                 </>
               ) : (
                 <div className="text-center py-3">
-                  <p className="text-sm text-gray-500">Log in to save builds to your vault</p>
+                  <p className="text-sm text-gray-500">Log in to save builds to your library</p>
                 </div>
               )}
             </div>

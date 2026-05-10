@@ -110,11 +110,12 @@ interface BuildActions {
   setKheldianForm: (form: 'human' | 'nova' | 'dwarf') => void;
 
   /**
-   * Link the current in-memory build to a Vault entry by id, so the
-   * next "Save to Vault" updates that entry rather than creating a
-   * duplicate. Pass `null` to clear (e.g. when starting fresh or
+   * Link the current in-memory build to a Build Library entry by id, so
+   * the next "Save to Library" updates that entry rather than creating
+   * a duplicate. Pass `null` to clear (e.g. when starting fresh or
    * forking). Called after loading a build from BuildDetailPage and
-   * cleared automatically on import / reset.
+   * cleared automatically on import / reset. Action name kept as
+   * `setVaultId` for backend continuity — see Build.vaultId.
    */
   setVaultId: (id: string | null) => void;
 
@@ -1644,7 +1645,7 @@ export const useBuildStore = create<BuildStore>()(
       setVaultId: (id) => {
         // Note: not history-checkpointed. This is metadata about *where* the
         // build came from, not part of the user's editable state — undoing a
-        // "loaded from Vault" event would surprise the user.
+        // "loaded from Library" event would surprise the user.
         set((state) => {
           const next = id ?? undefined;
           if (state.build.vaultId === next) return state;

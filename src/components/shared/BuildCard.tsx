@@ -114,7 +114,7 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
                 className={`p-0.5 transition-colors rounded ${visibilityLoading ? 'opacity-50' : ''} ${
                   isPublic ? 'text-gray-500 hover:text-indigo-400' : 'text-indigo-400 hover:text-indigo-300'
                 }`}
-                title={isPublic ? 'Make private (save to vault)' : 'Make public'}
+                title={isPublic ? 'Make private (save to library)' : 'Make public'}
               >
                 {isPublic ? (
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
