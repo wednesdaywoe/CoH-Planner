@@ -2829,9 +2829,19 @@ export function calculateCharacterTotals(
   // Step 10: Convert to character stats format
   const stats = convertToCharacterStats(globalBonuses);
 
-  // Apply endurance discount (e.g., Conserve Power) to toggle costs
+  // Apply endurance discount (e.g., Conserve Power, set bonuses, Cardiac
+  // Alpha) to toggle costs. Scale every per-toggle breakdown source by the
+  // same factor so the breakdown rows match the displayed total — without
+  // this, sources show the slot-enhanced cost ("Enhanced" tier) while the
+  // top-line total uses the post-discount cost ("Final" tier), and Hot
+  // Feet etc. appear to over-contribute.
   if (globalBonuses.enduranceDiscount > 0) {
-    globalBonuses.toggleEndCost *= (1 - globalBonuses.enduranceDiscount / 100);
+    const discountFactor = 1 - globalBonuses.enduranceDiscount / 100;
+    globalBonuses.toggleEndCost *= discountFactor;
+    const tec = breakdown.get('toggleEndCost');
+    if (tec) {
+      tec.sources.forEach((s) => { s.value *= discountFactor; });
+    }
   }
 
   // Compute net endurance per second (recovery minus toggle costs)
