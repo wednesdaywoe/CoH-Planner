@@ -10,67 +10,7 @@ import { resolvePath } from '@/utils/paths';
 import { PowerSlot } from './PowerSlot';
 import { PermaRing } from './PermaRing';
 import { Tooltip } from '@/components/ui';
-
-/**
- * Check if a power has a Heal-type damage entry (one-shot heals/drains).
- * Powers like Dark Regeneration, Dull Pain, Life Drain have these.
- */
-function hasHealingDamage(power: SelectedPower): boolean {
-  if (!power.damage) return false;
-  if (Array.isArray(power.damage)) {
-    return power.damage.some((d) => d.type === 'Heal');
-  }
-  return (power.damage as { type?: string }).type === 'Heal';
-}
-
-/** Known buff effect keys that indicate persistent toggleable effects */
-const BUFF_EFFECT_KEYS = [
-  'rechargeBuff', 'recoveryBuff', 'damageBuff', 'defenseBuff',
-  'resistanceBuff', 'tohitBuff', 'enduranceGain', 'speedBuff',
-];
-
-/**
- * Check if a power has persistent buff effects (e.g. Chrono Shift's +Recharge, +Recovery).
- * Powers with these should still get a toggle even if they also have healing damage.
- */
-function hasPersistentBuffEffects(power: SelectedPower): boolean {
-  if (!power.effects) return false;
-  return BUFF_EFFECT_KEYS.some(key => key in power.effects!);
-}
-
-/**
- * Determine if a power should show a toggle switch for stat calculations.
- * This includes:
- * - Toggle powers (always toggleable)
- * - Click powers that buff self (targetType: Self), excluding one-shot heals
- *   unless they also have persistent buff effects (Chrono Shift)
- * - Click powers that are PBAoE and affect allies (buffs teammates AND user)
- */
-function shouldShowToggle(power: SelectedPower): boolean {
-  const powerType = power.powerType?.toLowerCase();
-  const targetType = power.targetType?.toLowerCase();
-  const effectArea = power.effectArea?.toLowerCase();
-
-  // Toggle powers always show toggle
-  if (powerType === 'toggle') {
-    return true;
-  }
-
-  // Click powers that target self (self-buffs like Build Up, Aim)
-  // Exclude one-shot heals/drains (Dark Regeneration, Dull Pain, etc.)
-  // but allow heals with persistent buff effects (Chrono Shift)
-  if (powerType === 'click' && targetType === 'self') {
-    return !hasHealingDamage(power) || hasPersistentBuffEffects(power);
-  }
-
-  // Click powers that are PBAoE and target allies (like Accelerate Metabolism)
-  // These buff the user as well as nearby allies
-  if (powerType === 'click' && effectArea === 'pbaoe' && targetType === 'ally') {
-    return true;
-  }
-
-  return false;
-}
+import { shouldShowToggle } from './power-row-utils';
 
 interface PowerCardProps {
   power: SelectedPower;

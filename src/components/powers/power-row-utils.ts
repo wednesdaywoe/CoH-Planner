@@ -44,12 +44,31 @@ const CASTER_BUFF_KEYS = [
 /** targetType values where the power cannot be cast on self — buffs go to allies only. */
 const ALLY_ONLY_TARGETS = new Set(['ally', 'ally (alive)']);
 
-function hasPersistentBuffEffects(power: { effects?: object }): boolean {
+function isDamagingAttack(power: { damage?: unknown }): boolean {
+  // True when the power directly deals damage to enemies. The shared check
+  // below uses this to skip the per-cast `damageBuff` field on attack
+  // powers — that field encodes Defiance / Containment / Combo-Mastery
+  // procs, not a persistent self-buff worth tracking via a toggle. Heal-
+  // type damage entries (Dull Pain, Dark Regeneration) don't count as
+  // attacks here.
+  if (!power.damage) return false;
+  const entries = Array.isArray(power.damage) ? power.damage : [power.damage];
+  return entries.some((d) => {
+    const entry = d as { type?: string; scale?: number };
+    return entry?.type !== 'Heal' && (entry?.scale ?? 0) > 0;
+  });
+}
+
+function hasPersistentBuffEffects(power: { effects?: object; damage?: unknown }): boolean {
   if (!power.effects) return false;
   const effects = power.effects as Record<string, unknown>;
   // selfPenalty flag means debuff fields (e.g., Granite Armor's -damage) are real self-effects
   if (effects.selfPenalty) return true;
-  return CASTER_BUFF_KEYS.some(key => key in effects);
+  // Damage attacks: damageBuff is a per-cast Defiance proc, not a persistent
+  // buff. Real persistent self-buffs (resistance, defense, mez resistance,
+  // etc.) on the same power still trigger the toggle.
+  const skip = isDamagingAttack(power) ? new Set(['damageBuff']) : null;
+  return CASTER_BUFF_KEYS.some(key => key in effects && !skip?.has(key));
 }
 
 function affectsCaster(power: { targetType?: string }): boolean {

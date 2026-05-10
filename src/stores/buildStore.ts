@@ -173,12 +173,19 @@ function syncBuildDefinitions(build: Build): void {
   // Track old→new internalName changes for slotOrder migration
   const internalNameMigrations = new Map<string, string>();
 
-  // Helper: sync power effects + icons from a powerset definition
-  const syncPowers = (powers: SelectedPower[], defPowers: readonly Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon'>[]): SelectedPower[] => {
+  // Helper: sync power metadata (effects, icon, classification flags) from
+  // the current powerset definition. The slim serializer drops all of these
+  // — stored powers only persist user-editable fields like slots/isActive —
+  // so on rehydrate we have to re-attach the static metadata for the UI
+  // (shouldShowToggle, info panels) and dashboard (ally-only filter,
+  // toggle-vs-click branching) to function. Without powerType/targetType/
+  // effectArea sync, click-power toggles like Healing Flames lose their
+  // toggle UI and ally-buff guards see undefined and pass everything.
+  type DefShape = Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon' | 'powerType' | 'targetType' | 'effectArea'>;
+  const syncPowers = (powers: SelectedPower[], defPowers: readonly DefShape[]): SelectedPower[] => {
     let anyChanged = false;
     const synced = powers.map((power) => {
       let currentDef = defPowers.find((p) => p.internalName === power.internalName);
-      // Fallback: match by display name if internalName was renamed
       if (!currentDef) {
         currentDef = defPowers.find((p) => p.name === power.name);
       }
@@ -186,7 +193,10 @@ function syncBuildDefinitions(build: Build): void {
       const needsInternalName = currentDef.internalName !== power.internalName;
       const needsEffects = currentDef.effects && currentDef.effects !== power.effects;
       const needsIcon = currentDef.icon && currentDef.icon !== power.icon;
-      if (needsInternalName || needsEffects || needsIcon) {
+      const needsPowerType = currentDef.powerType && currentDef.powerType !== power.powerType;
+      const needsTargetType = currentDef.targetType !== undefined && currentDef.targetType !== power.targetType;
+      const needsEffectArea = currentDef.effectArea !== undefined && currentDef.effectArea !== power.effectArea;
+      if (needsInternalName || needsEffects || needsIcon || needsPowerType || needsTargetType || needsEffectArea) {
         anyChanged = true;
         if (needsInternalName) {
           internalNameMigrations.set(power.internalName, currentDef.internalName);
@@ -196,6 +206,9 @@ function syncBuildDefinitions(build: Build): void {
           ...(needsInternalName ? { internalName: currentDef.internalName } : {}),
           ...(needsEffects ? { effects: currentDef.effects } : {}),
           ...(needsIcon ? { icon: currentDef.icon } : {}),
+          ...(needsPowerType ? { powerType: currentDef.powerType } : {}),
+          ...(needsTargetType ? { targetType: currentDef.targetType } : {}),
+          ...(needsEffectArea ? { effectArea: currentDef.effectArea } : {}),
         };
       }
       return power;
@@ -261,9 +274,9 @@ function syncBuildDefinitions(build: Build): void {
     });
     return anyChanged ? fixed : powers;
   };
-  const getBranchPowers = (role: 'primary' | 'secondary'): readonly Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon'>[] => {
+  const getBranchPowers = (role: 'primary' | 'secondary'): readonly DefShape[] => {
     if (!archetype?.branches) return [];
-    const powers: Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon'>[] = [];
+    const powers: DefShape[] = [];
     for (const branch of Object.values(archetype.branches)) {
       if (!branch) continue;
       const branchSetId = role === 'primary' ? branch.primarySet : branch.secondarySet;
