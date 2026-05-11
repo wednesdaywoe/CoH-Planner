@@ -57,6 +57,11 @@ export const FireSword: Power = {
     },
     {
       "type": "Fire",
+      "scale": 0.594,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
       "scale": 1.571,
       "table": "Melee_PvPDamage"
     },

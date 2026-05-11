@@ -529,7 +529,15 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
 
   for (const effect of effects) {
     if (effect.is_pvp === 'PVP_ONLY') continue;
-    if (effect.chance === 0 || effect.chance === 0.0) continue;
+    // Skip chance=0 ONLY when the effect carries nothing real — those
+    // are proc placeholders the binary leaves around. Effects with
+    // chance=0 plus actual templates or child_effects are Tag-gated
+    // (e.g. Evasive Maneuvers' "FlightActive" outer Effect, Hypersonic-
+    // style conditionals) and would otherwise drop their entire payload
+    // — Fly speed / movement control / knockback protection / etc.
+    if ((effect.chance === 0 || effect.chance === 0.0)
+        && (!effect.templates || effect.templates.length === 0)
+        && (!effect.child_effects || effect.child_effects.length === 0)) continue;
     if (effect.tags && effect.tags.includes('Containment')) continue;
     // Skip conditional effects that represent archetype inherent mechanics
     // (these are handled separately by the planner's toggle system)
@@ -1657,8 +1665,13 @@ function collectAllTemplates(effects, parentCombatGated = false) {
     // Skip PVP-only effects
     if (effect.is_pvp === 'PVP_ONLY') continue;
 
-    // Skip effects with chance=0 (conditional procs that don't normally fire)
-    if (effect.chance === 0 || effect.chance === 0.0) continue;
+    // Skip chance=0 ONLY when the effect is empty (proc placeholder).
+    // Effects with chance=0 plus templates or child_effects are Tag-gated
+    // (Evasive Maneuvers' FlightActive outer Effect carries Fly speed,
+    // movement control, and nested KB-protection children at chance=0).
+    if ((effect.chance === 0 || effect.chance === 0.0)
+        && (!effect.templates || effect.templates.length === 0)
+        && (!effect.child_effects || effect.child_effects.length === 0)) continue;
 
     // Skip effects tagged as Containment (Controller inherent conditional damage).
     // Containment damage is handled separately via the containment toggle in the UI.
@@ -2053,10 +2066,26 @@ function extractEffects(templates, powerName) {
       if (KNOCKBACK_TYPES[attrib]) {
         const kbType = KNOCKBACK_TYPES[attrib];
         if (aspect === 'resistance') {
-          // KB/KU resistance (reduces duration/magnitude of KB applied to you)
-          if (!effects.mezResistance) effects.mezResistance = {};
-          effects.mezResistance[kbType] = makeEffect();
-          recordDuration('mezResistance');
+          // KB/KU at aspect=Resistance is two different things depending on
+          // the table: `Melee_Res_Boolean` (or any res_boolean variant) is
+          // KB protection — a magnitude threshold against incoming KB,
+          // exactly like Acrobatics. A non-boolean table is true KB
+          // resistance — a percentage reduction. Route protection to the
+          // top-level field so the dashboard's isKbSelfProt logic picks
+          // it up; route resistance to mezResistance.
+          const isResBoolean = (table || '').toLowerCase().includes('res_boolean');
+          if (isResBoolean) {
+            if (effects[kbType] && effects[kbType].table === table) {
+              effects[kbType].scale += Math.abs(scale);
+            } else {
+              effects[kbType] = makeEffect();
+            }
+            recordDuration(kbType);
+          } else {
+            if (!effects.mezResistance) effects.mezResistance = {};
+            effects.mezResistance[kbType] = makeEffect();
+            recordDuration('mezResistance');
+          }
         } else {
           // KB/KU protection (magnitude threshold) — accumulate if same table
           if (effects[kbType] && effects[kbType].table === table) {

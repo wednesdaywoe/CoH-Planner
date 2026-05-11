@@ -49,6 +49,18 @@ export const Cremate: Power = {
     },
     {
       "type": "Fire",
+      "scale": 0.738,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.045,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
       "scale": 1.77,
       "table": "Melee_PvPDamage"
     },

@@ -57,12 +57,86 @@ export const ExecutionersShot: Power = {
       "table": "Ranged_InherentDamage"
     },
     {
+      "type": "Fire",
+      "scale": 2.12,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 2.12,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.169,
+      "table": "Ranged_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 2.12,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 2.12,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 2.12,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 2.12,
+      "table": "Ranged_InherentDamage"
+    },
+    {
       "type": "Lethal",
       "scale": 1.969,
       "table": "Ranged_PvPDamage"
     },
     {
       "type": "Lethal",
+      "scale": 1.969,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.969,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.969,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1375,
+      "table": "Ranged_PvPDamage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 1.969,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.969,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 1.969,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Toxic",
       "scale": 1.969,
       "table": "Ranged_PvPDamage"
     }

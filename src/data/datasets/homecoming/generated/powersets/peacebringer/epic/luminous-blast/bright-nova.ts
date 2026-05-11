@@ -40,7 +40,7 @@ export const BrightNova: Power = {
   "effects": {
     "movement": {
       "fly": {
-        "scale": 4,
+        "scale": 2,
         "table": "Melee_Ones"
       },
       "flySpeed": {

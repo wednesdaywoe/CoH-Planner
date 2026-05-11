@@ -41,7 +41,7 @@ export const DarkNova: Power = {
   "effects": {
     "movement": {
       "fly": {
-        "scale": 4,
+        "scale": 2,
         "table": "Melee_Ones"
       },
       "flySpeed": {

@@ -48,7 +48,51 @@ export const Pistols: Power = {
       "table": "Ranged_Damage"
     },
     {
+      "type": "Fire",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.113,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
       "type": "Lethal",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0919,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 1.26,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Toxic",
       "scale": 1.26,
       "table": "Ranged_PvPDamage"
     }

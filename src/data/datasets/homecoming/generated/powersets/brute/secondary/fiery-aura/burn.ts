@@ -40,11 +40,18 @@ export const Burn: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 1.44,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 1.44,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.648,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 1,
@@ -63,7 +70,8 @@ export const Burn: Power = {
         "Pets.ResistAll.ResistAll",
         "Redirects.Fiery_Aura.Burn"
       ],
-      "duration": 10
+      "duration": 10,
+      "entityCount": 2
     },
     "buffDuration": 100
   }

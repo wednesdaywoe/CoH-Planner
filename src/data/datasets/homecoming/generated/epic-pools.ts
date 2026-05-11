@@ -71,6 +71,13 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 9.2,
               "tickRate": 2
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0776,
+              "table": "Ranged_Damage",
+              "duration": 9.2,
+              "tickRate": 2
             }
           ],
           "immobilize": {
@@ -138,6 +145,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Cold",
               "scale": 2.669,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Ranged_Damage"
             }
           ],
           "hold": {
@@ -213,6 +225,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Cold",
               "scale": 1.889,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.5357,
+              "table": "Ranged_Damage"
             }
           ]
         }
@@ -284,8 +301,17 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Location",
           "summon": {
             "isPseudoPet": false,
-            "entity": "Pets_IceStorm",
-            "duration": 15
+            "duration": 15,
+            "entities": [
+              {
+                "entity": "Pets_IceStorm",
+                "count": 1
+              },
+              {
+                "entity": "Pets_Embraced_IceStorm",
+                "count": 1
+              }
+            ]
           }
         }
       }
@@ -1689,6 +1715,16 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 1.889,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
             }
           ],
           "defenseDebuff": {
@@ -1794,6 +1830,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.6203,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.432,
+              "table": "Melee_Damage"
             }
           ],
           "knockback": {
@@ -2118,6 +2159,18 @@ export const EPIC_POOLS_RAW = {
               "type": "Lethal",
               "scale": 1.392,
               "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.378,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.063,
+              "table": "Ranged_Damage",
+              "duration": 3.2,
+              "tickRate": 1
             }
           ],
           "knockback": {
@@ -2185,6 +2238,18 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.1102,
               "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0753,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0377,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
             }
           ],
           "immobilize": {
@@ -2265,6 +2330,18 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_PvPDamage",
               "duration": 4.25,
               "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.315,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Ranged_Damage",
+              "duration": 4.25,
+              "tickRate": 1
             }
           ]
         }
@@ -2329,6 +2406,18 @@ export const EPIC_POOLS_RAW = {
               "type": "Cold",
               "scale": 0.1813,
               "table": "Ranged_PvPDamage",
+              "duration": 4.25,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.225,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Ranged_Damage",
               "duration": 4.25,
               "tickRate": 1
             }
@@ -2479,6 +2568,11 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage"
             },
             {
+              "type": "Fire",
+              "scale": 0.594,
+              "table": "Ranged_Damage"
+            },
+            {
               "type": "Energy",
               "scale": 2.16,
               "table": "Melee_PvPDamage"
@@ -2530,6 +2624,13 @@ export const EPIC_POOLS_RAW = {
             {
               "type": "Toxic",
               "scale": 0.0837,
+              "table": "Ranged_Damage",
+              "duration": 5.2,
+              "tickRate": 2
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.0377,
               "table": "Ranged_Damage",
               "duration": 5.2,
               "tickRate": 2
@@ -2656,6 +2757,11 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage"
             },
             {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Ranged_Damage"
+            },
+            {
               "type": "Energy",
               "scale": 0.9477,
               "table": "Melee_PvPDamage"
@@ -2764,6 +2870,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 1.579,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.594,
+              "table": "Ranged_Damage"
             }
           ],
           "enduranceDrain": {
@@ -2832,6 +2943,13 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.0929,
               "table": "Melee_PvPDamage",
+              "duration": 7.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0377,
+              "table": "Ranged_Damage",
               "duration": 7.1,
               "tickRate": 1
             }
@@ -2925,6 +3043,18 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 3.1,
               "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.135,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.081,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
             }
           ],
           "enduranceDrain": {
@@ -2986,6 +3116,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 1.1803,
               "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.432,
+              "table": "Ranged_Damage"
             }
           ],
           "enduranceDrain": {
@@ -3106,6 +3241,13 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 3.6,
               "tickRate": 0.5
+            },
+            {
+              "type": "Fire",
+              "scale": 0.099,
+              "table": "Ranged_Damage",
+              "duration": 3.6,
+              "tickRate": 0.5
             }
           ]
         }
@@ -3169,6 +3311,13 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.1703,
               "table": "Ranged_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Ranged_Damage",
+              "duration": 7.1,
+              "tickRate": 1
             }
           ],
           "immobilize": {
@@ -3269,6 +3418,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.7323,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.405,
+              "table": "Ranged_Damage"
             }
           ]
         }
@@ -6665,6 +6819,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.8471,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.4533,
+              "table": "Melee_Damage"
             }
           ],
           "knockback": {
@@ -6767,6 +6926,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 1.42,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.5357,
+              "table": "Melee_Damage"
             }
           ]
         }
@@ -6819,6 +6983,13 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.0938,
               "table": "Melee_PvPDamage",
+              "duration": 2.8,
+              "tickRate": 0.30000001192092896
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0495,
+              "table": "Melee_Damage",
               "duration": 2.8,
               "tickRate": 0.30000001192092896
             }
@@ -6887,6 +7058,18 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 0.1524,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0171,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0368,
+              "table": "Melee_Damage",
+              "duration": 7.1,
+              "tickRate": 1
             }
           ],
           "immobilize": {
@@ -8944,6 +9127,13 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 2
             },
             {
+              "type": "Fire",
+              "scale": 0.0776,
+              "table": "Ranged_Damage",
+              "duration": 9.2,
+              "tickRate": 2
+            },
+            {
               "type": "Smashing",
               "scale": 0.3162,
               "table": "Melee_PvPDamage",
@@ -9060,6 +9250,11 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage"
             },
             {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Ranged_Damage"
+            },
+            {
               "type": "Smashing",
               "scale": 2.809,
               "table": "Melee_PvPDamage"
@@ -9158,6 +9353,11 @@ export const EPIC_POOLS_RAW = {
             {
               "type": "Lethal",
               "scale": 0.8985,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.405,
               "table": "Ranged_Damage"
             }
           ],
@@ -9965,6 +10165,16 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             },
             {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            },
+            {
               "type": "Energy",
               "scale": 1.889,
               "table": "Melee_PvPDamage"
@@ -10078,6 +10288,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.6203,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.432,
+              "table": "Melee_Damage"
             }
           ],
           "knockback": {
@@ -10235,6 +10450,16 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 1.889,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Melee_Damage"
             }
           ],
           "defenseDebuff": {
@@ -10340,6 +10565,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Energy",
               "scale": 0.6203,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.432,
+              "table": "Melee_Damage"
             }
           ],
           "knockback": {
@@ -16711,6 +16941,13 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 9.2,
               "tickRate": 2
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0853,
+              "table": "Ranged_Damage",
+              "duration": 9.2,
+              "tickRate": 2
             }
           ],
           "immobilize": {
@@ -16780,6 +17017,13 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 4.2,
               "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Ranged_Damage",
+              "duration": 4.2,
+              "tickRate": 1
             }
           ],
           "hold": {
@@ -16836,6 +17080,18 @@ export const EPIC_POOLS_RAW = {
               "type": "Fire",
               "scale": 1.809,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
             }
           ]
         }
@@ -16983,6 +17239,18 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 2.1,
               "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.045,
+              "table": "Ranged_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.405,
+              "table": "Ranged_Damage"
             }
           ]
         }
@@ -21852,6 +22120,13 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "duration": 10,
               "tickRate": 1
+            },
+            {
+              "type": "Fire",
+              "scale": 0.0495,
+              "table": "Melee_Damage",
+              "duration": 10,
+              "tickRate": 1
             }
           ],
           "hold": {
@@ -22343,6 +22618,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Negative",
               "scale": 1.42,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.5357,
+              "table": "Melee_Damage"
             }
           ]
         }
@@ -22543,6 +22823,11 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage"
             },
             {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Ranged_Damage"
+            },
+            {
               "type": "Psionic",
               "scale": 2.13,
               "table": "Melee_PvPDamage"
@@ -22628,6 +22913,11 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage"
             },
             {
+              "type": "Fire",
+              "scale": 0.45,
+              "table": "Ranged_Damage"
+            },
+            {
               "type": "Psionic",
               "scale": 1.889,
               "table": "Melee_PvPDamage"
@@ -22673,6 +22963,11 @@ export const EPIC_POOLS_RAW = {
             {
               "type": "Psionic",
               "scale": 1.1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.495,
               "table": "Ranged_Damage"
             },
             {
@@ -24121,6 +24416,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Lethal",
               "scale": 1.389,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.378,
+              "table": "Melee_Damage"
             }
           ]
         }
@@ -24219,6 +24519,11 @@ export const EPIC_POOLS_RAW = {
               "type": "Lethal",
               "scale": 0.7323,
               "table": "Melee_PvPDamage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.405,
+              "table": "Melee_Damage"
             }
           ]
         }

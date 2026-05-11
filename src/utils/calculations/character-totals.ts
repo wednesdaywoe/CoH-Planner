@@ -519,6 +519,7 @@ interface ActivePowerEffect {
   confuse?: number | MezScaled;
   fear?: number | MezScaled;
   knockback?: number | MezScaled;
+  knockup?: number | MezScaled;
   // Additional status effects
   repel?: ScalarOrScaled;
   teleport?: ScalarOrScaled;
@@ -1126,6 +1127,11 @@ function applyActivePowerBonuses(
       { field: 'confuse', key: 'protConfuse' },
       { field: 'fear', key: 'protFear' },
       { field: 'knockback', key: 'protKnockback' },
+      // Knockup is mechanically the same as knockback for protection purposes
+      // — powers like Evasive Maneuvers list `kKnockup kKnockback` together in
+      // the .powers source and the bin emits separate `knockup`/`knockback`
+      // templates with the same scale. Both feed the same protKnockback stat.
+      { field: 'knockup', key: 'protKnockback' },
     ];
 
     for (const { field, key } of mezProtTypes) {
@@ -1139,7 +1145,7 @@ function applyActivePowerBonuses(
       // (e.g., Acrobatics uses Melee_Ones table for KB protection, Practiced Brawler is a Click)
       // AoE toggles like Repulsion Field and Hurricane are offensive KB, not protection
       const powerTypeLower = power.powerType?.toLowerCase();
-      const isKbSelfProt = field === 'knockback' &&
+      const isKbSelfProt = (field === 'knockback' || field === 'knockup') &&
         (effects.effectArea === 'SingleTarget' || power.effectArea === 'SingleTarget') &&
         (powerTypeLower === 'toggle' || powerTypeLower === 'auto' || powerTypeLower === 'click');
       if (isResBoolean || isKbSelfProt) {

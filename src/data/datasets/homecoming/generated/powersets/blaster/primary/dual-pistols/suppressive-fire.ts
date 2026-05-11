@@ -54,6 +54,36 @@ export const SuppressiveFire: Power = {
       "table": "Ranged_InherentDamage"
     },
     {
+      "type": "Fire",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.64,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.64,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.64,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.87,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.87,
+      "table": "Ranged_InherentDamage"
+    },
+    {
       "type": "Lethal",
       "scale": 0.0666,
       "table": "Ranged_PvPDamage"
@@ -62,12 +92,47 @@ export const SuppressiveFire: Power = {
       "type": "Lethal",
       "scale": 0.0666,
       "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.77,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.77,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.77,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1.77,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.9381,
+      "table": "Ranged_PvPDamage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.9381,
+      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "stun": {
       "mag": 3,
       "scale": 3.2,
+      "table": "Ranged_Sleep"
+    },
+    "hold": {
+      "mag": 4,
+      "scale": 4,
       "table": "Ranged_Sleep"
     }
   }

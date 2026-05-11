@@ -35,7 +35,7 @@ export const EnergyFlight: Power = {
   "effects": {
     "movement": {
       "fly": {
-        "scale": 0.01,
+        "scale": 2,
         "table": "Melee_Ones"
       },
       "movementControl": {

@@ -37,7 +37,7 @@ export const CombatFlight: Power = {
   "effects": {
     "movement": {
       "fly": {
-        "scale": 0.1,
+        "scale": 2,
         "table": "Melee_Ones"
       },
       "flySpeed": {

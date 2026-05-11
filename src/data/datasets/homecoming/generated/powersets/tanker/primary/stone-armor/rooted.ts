@@ -59,7 +59,9 @@ export const Rooted: Power = {
       "immobilize": 0.75,
       "stun": 0.75,
       "sleep": 0.75,
-      "regenBuff": 0.75
+      "regenBuff": 0.75,
+      "movement": 0.75,
+      "slow": 0.75
     },
     "mezResistance": {
       "knockup": {
@@ -112,6 +114,23 @@ export const Rooted: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
+    "movement": {
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.9,
+        "table": "Melee_Ones"
+      },
+      "fly": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
+    },
+    "selfPenalty": true,
     "buffDuration": 0.75
   }
 };

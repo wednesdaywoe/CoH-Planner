@@ -60,6 +60,20 @@ export const BreathofFire: Power = {
     },
     {
       "type": "Fire",
+      "scale": 0.2173,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.032,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
       "scale": 1.3732,
       "table": "Melee_PvPDamage"
     },

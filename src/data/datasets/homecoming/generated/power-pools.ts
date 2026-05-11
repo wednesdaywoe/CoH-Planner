@@ -885,7 +885,7 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "movement": {
             "fly": {
-              "scale": 0.1,
+              "scale": 2,
               "table": "Melee_Ones"
             },
             "flySpeed": {
@@ -1028,7 +1028,7 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "movement": {
             "fly": {
-              "scale": 0.1,
+              "scale": 2,
               "table": "Melee_Ones"
             },
             "movementControl": {
@@ -1118,6 +1118,45 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.052,
           "activatePeriod": 0.2,
           "effectArea": "SingleTarget",
+          "movement": {
+            "fly": {
+              "scale": 2,
+              "table": "Melee_Ones"
+            },
+            "movementControl": {
+              "scale": 15,
+              "table": "Melee_Control"
+            },
+            "movementFriction": {
+              "scale": 15,
+              "table": "Melee_Friction"
+            },
+            "flySpeed": {
+              "scale": 0.4,
+              "table": "Melee_SpeedFlying"
+            }
+          },
+          "durations": {
+            "movement": 0.25,
+            "immobilize": 0.25,
+            "knockup": 0.25,
+            "knockback": 0.25,
+            "defenseBuffSuppressible": 0.25
+          },
+          "immobilize": {
+            "mag": 1,
+            "scale": 30,
+            "table": "Melee_Res_Boolean"
+          },
+          "effectDuration": 0.25,
+          "knockup": {
+            "scale": 1.75,
+            "table": "Melee_Res_Boolean"
+          },
+          "knockback": {
+            "scale": 1.75,
+            "table": "Melee_Res_Boolean"
+          },
           "defenseBuffSuppressible": {
             "ranged": {
               "scale": 1.5,
@@ -1163,9 +1202,6 @@ export const POWER_POOLS_RAW = {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
-          },
-          "durations": {
-            "defenseBuffSuppressible": 0.25
           },
           "buffDuration": 0.25
         }
@@ -3322,7 +3358,7 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "movement": {
             "fly": {
-              "scale": 0.1,
+              "scale": 2,
               "table": "Melee_Ones"
             },
             "movementControl": {

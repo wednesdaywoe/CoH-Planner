@@ -64,6 +64,55 @@ export const EmptyClips: Power = {
       "tickRate": 0.5
     },
     {
+      "type": "Fire",
+      "scale": 0.26,
+      "table": "Ranged_Damage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.26,
+      "table": "Ranged_InherentDamage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.113,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 0.26,
+      "table": "Ranged_Damage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Cold",
+      "scale": 0.26,
+      "table": "Ranged_InherentDamage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.26,
+      "table": "Ranged_Damage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.26,
+      "table": "Ranged_InherentDamage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
       "type": "Lethal",
       "scale": 0.2612,
       "table": "Ranged_PvPDamage",
@@ -72,6 +121,55 @@ export const EmptyClips: Power = {
     },
     {
       "type": "Lethal",
+      "scale": 0.2612,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2612,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2612,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0919,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 0.2612,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Cold",
+      "scale": 0.2612,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.2612,
+      "table": "Ranged_PvPDamage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Toxic",
       "scale": 0.2612,
       "table": "Ranged_PvPDamage",
       "duration": 1.6,

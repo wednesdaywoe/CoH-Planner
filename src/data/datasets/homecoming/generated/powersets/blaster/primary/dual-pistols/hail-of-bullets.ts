@@ -72,6 +72,20 @@ export const HailofBullets: Power = {
       "tickRate": 1
     },
     {
+      "type": "Cold",
+      "scale": 0.1362,
+      "table": "Ranged_Damage",
+      "duration": 2.3,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1362,
+      "table": "Ranged_Damage",
+      "duration": 2.3,
+      "tickRate": 0.20000000298023224
+    },
+    {
       "type": "Lethal",
       "scale": 0.1335,
       "table": "Ranged_PvPDamage",
@@ -98,6 +112,20 @@ export const HailofBullets: Power = {
       "table": "Ranged_PvPDamage",
       "duration": 4.1,
       "tickRate": 1
+    },
+    {
+      "type": "Cold",
+      "scale": 0.0568,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.3,
+      "tickRate": 0.20000000298023224
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.0568,
+      "table": "Ranged_PvPDamage",
+      "duration": 2.3,
+      "tickRate": 0.20000000298023224
     }
   ],
   "effects": {

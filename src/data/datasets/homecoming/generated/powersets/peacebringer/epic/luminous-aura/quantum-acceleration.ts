@@ -83,7 +83,43 @@ export const QuantumManeuvers: Power = {
       }
     },
     "durations": {
-      "defenseBuffSuppressible": 0.2
+      "defenseBuffSuppressible": 0.2,
+      "movement": 0.2,
+      "immobilize": 0.2,
+      "knockup": 0.2,
+      "knockback": 0.2
+    },
+    "movement": {
+      "fly": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      },
+      "movementControl": {
+        "scale": 15,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 15,
+        "table": "Melee_Friction"
+      },
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Melee_SpeedFlying"
+      }
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 0.2,
+    "knockup": {
+      "scale": 1.75,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 1.75,
+      "table": "Melee_Res_Boolean"
     },
     "buffDuration": 0.2
   }
