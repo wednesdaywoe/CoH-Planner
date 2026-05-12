@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-05-10',
+    date: '2026-05-11',
     items: [
+      { message: 'Fix for active effects stacking incorrectly; fix for KB Protection being mis-routed', type: 'fix' },
       { message: 'Added "Maximize Enhancements" action to the File menu — sets all Hamidon/Titan/Hydra/D-Sync enhancements to L53 and applies +5 boost to every L50 (or attuned) IO. Use Undo to revert.', type: 'feat' },
       { message: 'Saving to your Build Library now updates the existing entry when you load + edit a build you own (instead of always creating a new copy). Use "Save as new copy" to fork.', type: 'feat' },
       { message: 'Renamed "Vault" to "Build Library" for reasons', type: 'update' },
