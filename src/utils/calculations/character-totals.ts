@@ -450,23 +450,38 @@ type ScalarOrScaled = number | { scale: number; table?: string };
 type MezScaled = { mag?: number; scale: number; table: string };
 
 /**
- * Adjust a scaled effect for per-target stacking.
- * If the effect has a perTarget field and targetsHit > 1, adjusts the scale.
- * Returns the original value for non-per-target effects.
+ * Adjust a scaled effect for per-target stacking. The `scale` field on a
+ * perTarget-flagged effect stores the value at N=1 (base + 1 × per-target
+ * contribution); each additional target adds `perTarget` to it.
+ *
+ * Semantics with respect to the targets-hit slider:
+ *   - N undefined → no slider yet; return the original (1-target value).
+ *   - N = 0       → power whiffed; the buff doesn't fire. Return scale 0.
+ *   - N = 1       → original value.
+ *   - N ≥ 2       → scale + perTarget × (N − 1).
+ *
+ * Effects without `perTarget` metadata (always-on buffs) are unaffected
+ * by the slider regardless of N.
  */
 function adjustForPerTarget(value: ScalarOrScaled, targetsHit?: number): ScalarOrScaled {
-  if (!targetsHit || targetsHit <= 1) return value;
   if (typeof value !== 'object' || value === null) return value;
   const obj = value as { scale: number; table?: string; perTarget?: number };
   if (!obj.perTarget) return value;
+  if (targetsHit === undefined) return value;
+  if (targetsHit <= 0) return { ...value, scale: 0 };
+  if (targetsHit === 1) return value;
   return { ...value, scale: value.scale + obj.perTarget * (targetsHit - 1) };
 }
 
 /**
- * Combined stacking adjustment: applies perTarget AoE math (existing behavior)
- * and, when the effect key is listed in `effects.stacksLinear`, multiplies
- * scale by stack count for linear self-stacking powers (e.g. Psychokinetic
- * Barrier's debuff resistance). Effects not in stacksLinear are unaffected.
+ * Combined stacking adjustment: applies perTarget AoE math (existing
+ * behavior) OR `stacksLinear` self-stack multiplication for powers like
+ * Psychokinetic Barrier's debuff resistance — never both.
+ *
+ * Soul Drain et al. carry both `perTarget` (from AoE per-target detection)
+ * AND a `stacksLinear` entry (from self-stack detection, since each per-
+ * target tick applies to Self with a stack_limit). They're two views of
+ * the same mechanic; running both produced N² scaling.
  */
 function adjustForStacking(
   value: ScalarOrScaled,
@@ -474,12 +489,16 @@ function adjustForStacking(
   stacksLinear: readonly string[] | undefined,
   effectKey: string,
 ): ScalarOrScaled {
-  const adjusted = adjustForPerTarget(value, targetsHit);
-  if (!targetsHit || targetsHit <= 1) return adjusted;
-  if (!stacksLinear || !stacksLinear.includes(effectKey)) return adjusted;
-  if (typeof adjusted !== 'object' || adjusted === null) return adjusted;
-  const obj = adjusted as { scale: number };
-  return { ...adjusted, scale: obj.scale * targetsHit };
+  const hasPerTarget = typeof value === 'object' && value !== null && 'perTarget' in value && !!(value as { perTarget?: number }).perTarget;
+  if (hasPerTarget) {
+    // perTarget already drives the scaling; do not also multiply by N.
+    return adjustForPerTarget(value, targetsHit);
+  }
+  if (!targetsHit || targetsHit <= 1) return value;
+  if (!stacksLinear || !stacksLinear.includes(effectKey)) return value;
+  if (typeof value !== 'object' || value === null) return value;
+  const obj = value as { scale: number };
+  return { ...value, scale: obj.scale * targetsHit };
 }
 
 interface ActivePowerEffect {
