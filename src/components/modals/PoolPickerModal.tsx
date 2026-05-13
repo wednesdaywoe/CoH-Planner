@@ -136,13 +136,18 @@ export function PoolPickerModal({
   const handleLockToggle = (poolId: string, power: Power) => {
     if (isPowerLocked(power.internalName)) {
       unlockInfoPanel();
-    } else {
-      lockInfoPanel({
-        type: 'power',
-        powerName: power.internalName,
-        powerSet: poolId,
-      });
+      return;
     }
+    lockInfoPanel({
+      type: 'power',
+      powerName: power.internalName,
+      powerSet: poolId,
+    });
+    // In the picker modal the side InfoPanel is occluded by the modal
+    // overlay, so just locking it would feel like nothing happened.
+    // Also pop the dedicated Power Info modal — same as the (i) info
+    // button on mobile — so right-click actually surfaces the info.
+    openPowerInfoModal();
   };
 
   const handleShowInfo = (poolId: string, power: Power, e?: React.MouseEvent) => {
