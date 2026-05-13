@@ -21,19 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-05-11',
+    date: '2026-05-13',
     items: [
-      { message: 'Fix for active effects stacking incorrectly; fix for KB Protection being mis-routed', type: 'fix' },
-      { message: 'Added "Maximize Enhancements" action to the File menu — sets all Hamidon/Titan/Hydra/D-Sync enhancements to L53 and applies +5 boost to every L50 (or attuned) IO. Use Undo to revert.', type: 'feat' },
-      { message: 'Saving to your Build Library now updates the existing entry when you load + edit a build you own (instead of always creating a new copy). Use "Save as new copy" to fork.', type: 'feat' },
-      { message: 'Renamed "Vault" to "Build Library" for reasons', type: 'update' },
-      { message: 'Stealth defense suppression should now match in-game behavior', type: 'fix' },
-      { message: 'Fixes for a whole mess of HC-related issues', type: 'fix' },
-      { message: 'Fix for missing epic pools in the Rebirth dataset', type: 'fix' },
-      { message: 'Fixed an issue with Rebirth/Fitness/Tough missing some boostSetTypes', type: 'fix' },
-      { message: 'Added per-proc chance breakdown to the info panel. Expand for details and calculations on each slotted proc', type: 'feat' },
-      { message: 'Added per-server inherent power rules and auto-granted slot handling', type: 'fix' },
-      { message: 'Added a message to point out the searchable help system. You can disable this in settings. Also added a highlight to the Archetype/Powerset menu to help new users figure out how to get started', type: 'feat' },
+      { message: 'Removed a bunch of phantom caster effects (KB protection, mez resistance, +range buffs) from attack powers that were never supposed to grant them', type: 'fix' },
     ] 
   },
 
