@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { getSharedBuild, incrementViews, isOwnedBuild, deleteBuild, reclaimBuild, updateBuildVisibility } from '@/services/sharedBuilds';
 import { useBuildStore } from '@/stores/buildStore';
 import { useAuthStore } from '@/stores/authStore';
+import { getActiveDataset } from '@/data/dataset';
 import type { SharedBuild } from '@/types/shared';
 
 export function BuildDetailPage() {
@@ -81,6 +82,23 @@ export function BuildDetailPage() {
       // we surface a "Save as new" instead). For non-owners, treat the
       // load as a fresh fork.
       setVaultId(owned ? build.id : null);
+
+      // If the loaded build belongs to a different dataset than the one
+      // currently active, a TanStack client-side navigation to `/` keeps
+      // the wrong dataset live — every power lookup then reads the wrong
+      // server's data. Force a full reload via `?serverId=` so main.tsx
+      // boots the matching dataset. localStorage already holds the
+      // imported build (Zustand persist wrote it synchronously above), so
+      // rehydration on the new page picks it up.
+      const loadedServerId = useBuildStore.getState().build.serverId;
+      try {
+        if (loadedServerId !== getActiveDataset().id) {
+          window.location.assign(`/?serverId=${loadedServerId}`);
+          return;
+        }
+      } catch {
+        // No active dataset (shouldn't happen post-boot) — fall through.
+      }
       navigate({ to: '/' });
     }
   };
