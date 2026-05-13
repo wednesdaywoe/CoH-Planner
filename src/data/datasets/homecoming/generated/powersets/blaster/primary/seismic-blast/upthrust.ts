@@ -70,10 +70,6 @@ export const Upthrust: Power = {
     "durations": {
       "defenseDebuff": 16
     },
-    "knockback": {
-      "scale": 0.66,
-      "table": "Ranged_Ones"
-    },
     "buffDuration": 16
   },
   "specialEffects": [

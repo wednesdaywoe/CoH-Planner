@@ -101,10 +101,6 @@ export const EmptyClips: Power = {
       "defenseDebuff": 8,
       "damageBuff": 9.17
     },
-    "knockback": {
-      "scale": 0.4,
-      "table": "Ranged_Knockback"
-    },
     "damageBuff": {
       "scale": 0.051,
       "table": "Ranged_Ones"

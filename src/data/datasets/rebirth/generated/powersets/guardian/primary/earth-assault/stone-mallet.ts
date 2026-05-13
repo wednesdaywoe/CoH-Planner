@@ -44,12 +44,6 @@ export const StoneMallet: Power = {
     "scale": 1.64,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

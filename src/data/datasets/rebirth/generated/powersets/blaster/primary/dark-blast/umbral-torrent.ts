@@ -52,10 +52,6 @@ export const UmbralTorrent: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 5,
-      "table": "Ranged_Knockback"
-    },
     "damageBuff": {
       "scale": 0.02,
       "table": "Ranged_Ones"

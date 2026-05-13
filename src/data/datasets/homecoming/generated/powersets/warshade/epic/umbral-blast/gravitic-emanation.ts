@@ -60,10 +60,6 @@ export const GraviticEmanation: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    },
     "stun": {
       "mag": 3,
       "scale": 10,

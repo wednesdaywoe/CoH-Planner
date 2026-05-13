@@ -43,11 +43,5 @@ export const Levitate: Power = {
     "type": "Smashing",
     "scale": 1.32,
     "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockup": {
-      "scale": 6,
-      "table": "Ranged_Knockback"
-    }
   }
 };

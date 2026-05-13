@@ -53,11 +53,5 @@ export const Quasar: Power = {
       "scale": 1.7474,
       "table": "Ranged_PvPDamage"
     }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 20,
-      "table": "Ranged_Knockback"
-    }
-  }
+  ]
 };

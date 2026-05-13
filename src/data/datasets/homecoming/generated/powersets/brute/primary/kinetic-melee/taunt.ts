@@ -40,14 +40,6 @@ export const Taunt: Power = {
     "taunt": {
       "scale": 5,
       "table": "Melee_Taunt"
-    },
-    "rangeBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rangeBuff": 12
-    },
-    "buffDuration": 12
+    }
   }
 };

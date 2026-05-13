@@ -61,21 +61,7 @@ export const RingofFire: Power = {
       "mag": 5,
       "scale": 1,
       "table": "Ranged_PvPMez"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15
-    },
-    "buffDuration": 15
+    }
   },
   "specialEffects": [
     {

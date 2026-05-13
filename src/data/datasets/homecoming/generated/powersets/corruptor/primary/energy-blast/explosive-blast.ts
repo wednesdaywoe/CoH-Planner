@@ -64,12 +64,6 @@ export const ExplosiveBlast: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 4,
-      "table": "Ranged_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -54,20 +54,6 @@ export const AxeCyclone: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
-  "effects": {
-    "repel": {
-      "scale": 3,
-      "table": "Ones"
-    },
-    "durations": {
-      "repel": 0.35
-    },
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.35
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -89,10 +89,6 @@ export const BulletRain: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    },
     "damageBuff": {
       "scale": 0.034,
       "table": "Ranged_Ones"

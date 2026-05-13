@@ -35,21 +35,16 @@ export const BlackHole: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "repel": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "repel": 0.75,
-      "immobilize": 4,
-      "threatDebuff": 4
-    },
     "immobilize": {
       "mag": 1,
       "scale": 3,
       "table": "Ranged_Ones"
     },
     "effectDuration": 4,
+    "durations": {
+      "immobilize": 4,
+      "threatDebuff": 4
+    },
     "threatDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"

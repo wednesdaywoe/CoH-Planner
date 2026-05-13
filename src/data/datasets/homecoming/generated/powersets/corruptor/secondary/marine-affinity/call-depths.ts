@@ -45,8 +45,7 @@ export const PoweroftheDepths: Power = {
     "durations": {
       "maxHPBuff": 60,
       "maxEndBuff": 60,
-      "regenBuff": 60,
-      "rangeBuff": 60
+      "regenBuff": 60
     },
     "maxEndBuff": {
       "scale": 20,
@@ -55,10 +54,6 @@ export const PoweroftheDepths: Power = {
     "regenBuff": {
       "scale": 4,
       "table": "Ranged_Ones"
-    },
-    "rangeBuff": {
-      "scale": 0.375,
-      "table": "Melee_Stun"
     },
     "buffDuration": 60
   }

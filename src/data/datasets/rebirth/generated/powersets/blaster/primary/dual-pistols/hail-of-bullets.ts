@@ -86,15 +86,6 @@ export const HailofBullets: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.8,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "knockback": 3.5,
-      "defenseBuff": 5,
-      "damageBuff": 7.5
-    },
     "defenseBuff": {
       "melee": {
         "scale": 1.5,
@@ -108,6 +99,10 @@ export const HailofBullets: Power = {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       }
+    },
+    "durations": {
+      "defenseBuff": 5,
+      "damageBuff": 7.5
     },
     "damageBuff": {
       "scale": 0.058,

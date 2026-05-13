@@ -37,17 +37,9 @@ export const WarriorsProvocation: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rangeBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rangeBuff": 20
-    },
     "taunt": {
       "scale": 5,
       "table": "Melee_Taunt"
-    },
-    "buffDuration": 20
+    }
   }
 };

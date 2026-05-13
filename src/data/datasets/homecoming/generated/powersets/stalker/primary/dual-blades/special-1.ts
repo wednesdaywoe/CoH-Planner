@@ -81,12 +81,6 @@ export const VengefulSlice: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "dd_bonusdotmode_2",

@@ -53,10 +53,6 @@ export const DragonsTail: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    },
     "damageBuff": {
       "scale": 0.045,
       "table": "Melee_Ones"

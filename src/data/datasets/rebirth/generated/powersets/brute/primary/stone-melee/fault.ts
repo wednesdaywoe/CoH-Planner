@@ -43,10 +43,6 @@ export const Fault: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
     "stun": {
       "mag": 2,
       "scale": 8,

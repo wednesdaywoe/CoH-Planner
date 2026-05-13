@@ -61,12 +61,6 @@ export const PowerPush: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 16,
-      "table": "Ranged_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "grant",

@@ -53,35 +53,14 @@ export const RingofFire: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15,
-      "knockback": 15,
-      "knockup": 15,
-      "damageBuff": 8.67
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
     "damageBuff": {
       "scale": 0.077,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
+    "durations": {
+      "damageBuff": 8.67
+    },
+    "buffDuration": 8.67,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -82,12 +82,6 @@ export const FocusedPowerBolt: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.4,
-      "table": "Ranged_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

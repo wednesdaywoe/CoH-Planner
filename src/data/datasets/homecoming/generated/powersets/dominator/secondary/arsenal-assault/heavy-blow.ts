@@ -49,11 +49,5 @@ export const ElbowStrike: Power = {
       "scale": 1.629,
       "table": "Melee_PvPDamage"
     }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 3.34,
-      "table": "Melee_Ones"
-    }
-  }
+  ]
 };

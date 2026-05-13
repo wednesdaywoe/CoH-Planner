@@ -69,11 +69,5 @@ export const FragGrenade: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.5,
-      "table": "Ranged_Knockback"
-    }
-  },
   "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Frag_Grenade !"
 };

@@ -52,10 +52,6 @@ export const Wormhole: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 7,
-      "table": "Ranged_Knockback"
     }
   },
   "conditionalEffects": [

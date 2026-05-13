@@ -72,12 +72,6 @@ export const RepulsingTorrent: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

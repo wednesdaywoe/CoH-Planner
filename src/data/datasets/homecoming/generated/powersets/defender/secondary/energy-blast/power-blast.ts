@@ -62,12 +62,6 @@ export const PowerBlast: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

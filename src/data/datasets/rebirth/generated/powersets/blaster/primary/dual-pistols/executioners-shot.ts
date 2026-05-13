@@ -88,10 +88,6 @@ export const ExecutionersShot: Power = {
       "defenseDebuff": 8,
       "damageBuff": 9.17
     },
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"

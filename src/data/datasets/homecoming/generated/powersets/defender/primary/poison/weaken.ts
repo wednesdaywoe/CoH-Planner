@@ -52,9 +52,6 @@ export const Weaken: Power = {
       "immobilize": 30,
       "stun": 30,
       "sleep": 30,
-      "knockup": 30,
-      "knockback": 30,
-      "repel": 30,
       "defenseDebuff": 30
     },
     "confuse": {
@@ -86,18 +83,6 @@ export const Weaken: Power = {
     "sleep": {
       "mag": 1,
       "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "knockup": {
-      "scale": 0.75,
-      "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Stun"
-    },
-    "repel": {
-      "scale": 0.75,
       "table": "Ranged_Stun"
     },
     "defenseDebuff": {

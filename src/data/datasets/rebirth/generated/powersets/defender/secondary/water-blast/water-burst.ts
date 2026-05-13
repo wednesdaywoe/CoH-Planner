@@ -68,12 +68,6 @@ export const WaterBurst: Power = {
         "scale": 0.045,
         "table": "Ranged_Damage"
       },
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Ranged_Ones"
-        }
-      },
       "group": "tidal_power-stacks",
       "mode": "replace"
     },
@@ -87,12 +81,6 @@ export const WaterBurst: Power = {
         "scale": 0.108,
         "table": "Ranged_Damage"
       },
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Ranged_Ones"
-        }
-      },
       "group": "tidal_power-stacks",
       "mode": "replace"
     },
@@ -105,26 +93,6 @@ export const WaterBurst: Power = {
         "type": "Cold",
         "scale": 0.225,
         "table": "Ranged_Damage"
-      },
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Ranged_Ones"
-        }
-      },
-      "group": "tidal_power-stacks",
-      "mode": "replace"
-    },
-    {
-      "id": "tidal_power-0",
-      "label": "Tidal Power (0 stacks)",
-      "scope": "global",
-      "defaultActive": false,
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Ranged_Ones"
-        }
       },
       "group": "tidal_power-stacks",
       "mode": "replace"

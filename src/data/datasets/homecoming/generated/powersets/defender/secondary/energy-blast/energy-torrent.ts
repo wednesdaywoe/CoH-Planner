@@ -65,12 +65,6 @@ export const EnergyTorrent: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 6,
-      "table": "Ranged_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

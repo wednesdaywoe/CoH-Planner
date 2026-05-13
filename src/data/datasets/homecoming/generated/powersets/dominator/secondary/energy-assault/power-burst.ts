@@ -61,12 +61,6 @@ export const PowerBurst: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 4,
-      "table": "Ranged_Knockback"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "energy_store_assault",

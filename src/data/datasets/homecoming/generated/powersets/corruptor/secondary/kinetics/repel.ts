@@ -37,17 +37,9 @@ export const Repel: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockback": {
-      "scale": 6,
-      "table": "Ranged_Knockback"
-    },
     "enduranceDrain": {
       "scale": 2,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "knockback": 0.5
-    },
-    "buffDuration": 0.5
+    }
   }
 };

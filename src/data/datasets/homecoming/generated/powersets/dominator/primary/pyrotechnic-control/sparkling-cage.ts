@@ -76,24 +76,6 @@ export const SparklingCage: Power = {
       "scale": 1,
       "table": "Ranged_PvPMez"
     },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15,
-      "resistanceDebuff": 5
-    },
-    "knockback": {
-      "scale": 20,
-      "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 1.2,
@@ -128,7 +110,10 @@ export const SparklingCage: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "buffDuration": 15
+    "durations": {
+      "resistanceDebuff": 5
+    },
+    "buffDuration": 5
   },
   "specialEffects": [
     {

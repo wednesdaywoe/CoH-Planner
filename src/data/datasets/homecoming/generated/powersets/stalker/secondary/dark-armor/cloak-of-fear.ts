@@ -53,11 +53,11 @@ export const CloakofFear: Power = {
       "knockback": 5
     },
     "knockup": {
-      "scale": 1.25,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 1.25,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "buffDuration": 5

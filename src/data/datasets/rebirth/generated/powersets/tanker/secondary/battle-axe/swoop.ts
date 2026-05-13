@@ -49,10 +49,6 @@ export const Swoop: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "knockup": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"

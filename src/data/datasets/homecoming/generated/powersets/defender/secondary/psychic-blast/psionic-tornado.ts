@@ -54,12 +54,6 @@ export const PsionicTornado: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockup": {
-      "scale": 2.8,
-      "table": "Ranged_Ones"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

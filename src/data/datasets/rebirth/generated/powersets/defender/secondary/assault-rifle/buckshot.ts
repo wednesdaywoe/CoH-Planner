@@ -48,12 +48,6 @@ export const Buckshot: Power = {
     "scale": 0.91,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

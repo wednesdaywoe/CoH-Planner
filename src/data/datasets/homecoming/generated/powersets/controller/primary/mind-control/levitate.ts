@@ -50,11 +50,5 @@ export const Levitate: Power = {
       "scale": 1.9491,
       "table": "Ranged_PvPDamage"
     }
-  ],
-  "effects": {
-    "knockup": {
-      "scale": 12,
-      "table": "Ranged_Knockback"
-    }
-  }
+  ]
 };

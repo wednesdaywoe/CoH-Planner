@@ -58,30 +58,6 @@ export const FreezingTouch: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
-    },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 6,
-      "knockback": 6,
-      "knockup": 6
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 6
+    }
   }
 };

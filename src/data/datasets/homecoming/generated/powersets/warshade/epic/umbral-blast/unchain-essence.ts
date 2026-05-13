@@ -56,10 +56,6 @@ export const UnchainEssence: Power = {
       "mag": 3,
       "scale": 5,
       "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
     }
   },
   "specialEffects": [

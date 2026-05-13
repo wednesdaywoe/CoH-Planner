@@ -57,12 +57,6 @@ export const CallHawk: Power = {
       "tickRate": 0.30000001192092896
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Ranged_Ones"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

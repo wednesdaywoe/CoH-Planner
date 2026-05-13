@@ -40,22 +40,6 @@ export const Telekinesis: Power = {
     "Immobilize"
   ],
   "maxSlots": 6,
-  "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 1.5
-    },
-    "buffDuration": 1.5
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

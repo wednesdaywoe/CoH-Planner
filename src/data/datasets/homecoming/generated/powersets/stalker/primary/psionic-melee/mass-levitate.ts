@@ -52,12 +52,6 @@ export const MassLevitate: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
-  "effects": {
-    "knockup": {
-      "scale": 4,
-      "table": "Melee_Knockback"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "psionic_melee_insight",

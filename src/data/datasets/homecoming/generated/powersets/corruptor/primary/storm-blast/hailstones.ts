@@ -54,27 +54,6 @@ export const Hailstones: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
-  },
-  "conditionalEffects": [
-    {
-      "id": "stormblast_instormcell",
-      "label": "StormBlast InStormCell",
-      "scope": "per-power",
-      "defaultActive": false,
-      "mode": "replace",
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Ranged_Ones"
-        }
-      }
-    }
-  ],
   "specialEffects": [
     {
       "kind": "effect-proc",
@@ -84,7 +63,7 @@ export const Hailstones: Power = {
     {
       "kind": "grant",
       "chance": 0.25,
-      "label": "StormBlast InStormCell"
+      "label": "state"
     },
     {
       "kind": "effect-proc",
@@ -94,7 +73,7 @@ export const Hailstones: Power = {
     {
       "kind": "grant",
       "chance": 0.5,
-      "label": "StormBlast InStormCell"
+      "label": "state"
     }
   ]
 };

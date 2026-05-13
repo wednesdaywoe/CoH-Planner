@@ -54,12 +54,6 @@ export const Deluge: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "water_control_drowning",

@@ -89,12 +89,6 @@ export const BulletRain: Power = {
       "tickRate": 0.5
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

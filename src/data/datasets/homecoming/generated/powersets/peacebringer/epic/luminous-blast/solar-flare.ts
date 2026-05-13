@@ -56,10 +56,6 @@ export const SolarFlare: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 4,
-      "table": "Melee_Knockback"
-    },
     "defenseDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Def"

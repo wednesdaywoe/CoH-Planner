@@ -117,10 +117,6 @@ export const SweepingCross: Power = {
           "mag": 3,
           "scale": 6,
           "table": "Melee_Stun"
-        },
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
         }
       },
       "group": "combo-levels"

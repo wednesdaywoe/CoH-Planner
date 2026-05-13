@@ -52,11 +52,5 @@ export const Propel: Power = {
       "scale": 0.769,
       "table": "Ranged_PvPDamage"
     }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
-  }
+  ]
 };

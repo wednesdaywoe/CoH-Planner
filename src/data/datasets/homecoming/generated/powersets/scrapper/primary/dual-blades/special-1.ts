@@ -91,12 +91,6 @@ export const VengefulSlice: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -72,12 +72,6 @@ export const PsionicTornado: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "knockup": {
-      "scale": 2.8,
-      "table": "Ranged_Ones"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

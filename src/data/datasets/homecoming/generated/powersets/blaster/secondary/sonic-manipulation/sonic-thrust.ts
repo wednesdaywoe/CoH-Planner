@@ -60,19 +60,5 @@ export const SonicThrust: Power = {
       "scale": 0.4061,
       "table": "Melee_PvPDamage"
     }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 16,
-      "table": "Melee_Knockback"
-    },
-    "repel": {
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "repel": 2
-    },
-    "buffDuration": 2
-  }
+  ]
 };

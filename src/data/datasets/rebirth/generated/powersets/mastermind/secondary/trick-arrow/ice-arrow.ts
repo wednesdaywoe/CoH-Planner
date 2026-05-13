@@ -44,30 +44,6 @@ export const IceArrow: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 10,
-      "knockback": 10,
-      "knockup": 10
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
+    }
   }
 };

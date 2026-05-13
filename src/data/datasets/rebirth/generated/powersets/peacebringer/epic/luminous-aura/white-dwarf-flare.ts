@@ -50,10 +50,6 @@ export const WhiteDwarfFlare: Power = {
     "table": "Melee_SSDamage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
     "defenseDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Def"

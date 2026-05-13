@@ -43,11 +43,5 @@ export const PhoenixRising: Power = {
     "type": "Fire",
     "scale": 4,
     "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 4.1,
-      "table": "Melee_Knockback"
-    }
   }
 };

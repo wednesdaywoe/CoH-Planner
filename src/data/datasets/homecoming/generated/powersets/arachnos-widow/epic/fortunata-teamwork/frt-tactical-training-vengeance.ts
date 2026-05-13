@@ -94,9 +94,6 @@ export const TacticalTrainingVengeance: Power = {
       "defenseBuff": 120,
       "tohitBuff": 120,
       "mezResistance": 120,
-      "knockup": 120,
-      "knockback": 120,
-      "repel": 120,
       "damageBuff": 120,
       "fear": 120
     },
@@ -137,18 +134,6 @@ export const TacticalTrainingVengeance: Power = {
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
     },
     "damageBuff": {
       "scale": 3.5,

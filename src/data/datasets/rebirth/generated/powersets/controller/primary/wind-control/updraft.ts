@@ -44,11 +44,5 @@ export const Updraft: Power = {
     "type": "Smashing",
     "scale": 1,
     "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockup": {
-      "scale": 6,
-      "table": "Ranged_Knockback"
-    }
   }
 };

@@ -53,12 +53,6 @@ export const SpinningKick: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.32,
-      "table": "Melee_Ones"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

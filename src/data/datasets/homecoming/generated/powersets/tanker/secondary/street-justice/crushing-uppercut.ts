@@ -58,10 +58,6 @@ export const CrushingUppercut: Power = {
     }
   ],
   "effects": {
-    "knockup": {
-      "scale": 6,
-      "table": "Melee_Knockback"
-    },
     "stun": {
       "mag": 3,
       "scale": 7.5,

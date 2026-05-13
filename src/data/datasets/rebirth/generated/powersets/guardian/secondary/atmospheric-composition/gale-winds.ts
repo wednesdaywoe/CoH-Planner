@@ -51,10 +51,6 @@ export const GaleWinds: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    },
     "stun": {
       "mag": 2,
       "scale": 10,

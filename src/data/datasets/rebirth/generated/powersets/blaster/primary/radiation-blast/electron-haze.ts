@@ -60,10 +60,6 @@ export const ElectronHaze: Power = {
       "defenseDebuff": 8,
       "damageBuff": 9.87
     },
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
     "damageBuff": {
       "scale": 0.072,
       "table": "Ranged_Ones"

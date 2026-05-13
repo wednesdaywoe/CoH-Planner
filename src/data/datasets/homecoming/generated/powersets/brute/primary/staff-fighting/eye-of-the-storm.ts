@@ -58,12 +58,6 @@ export const EyeoftheStorm: Power = {
       "tickRate": 0.4000000059604645
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "perfection_of_body_level_3",

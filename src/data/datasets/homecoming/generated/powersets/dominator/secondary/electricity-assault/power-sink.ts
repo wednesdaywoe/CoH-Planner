@@ -76,10 +76,6 @@ export const ThunderStrike: Power = {
     "durations": {
       "recoveryDebuff": 4
     },
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    },
     "buffDuration": 4
   },
   "specialEffects": [

@@ -84,21 +84,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -156,31 +142,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 10,
-            "knockup": 10,
-            "knockback": 10
-          },
-          "knockup": {
-            "scale": 100,
-            "table": "Ranged_Ones"
-          },
-          "knockback": {
-            "scale": 100,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -533,21 +495,16 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 20,
           "maxTargets": 10,
-          "repel": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "repel": 0.75,
-            "immobilize": 4,
-            "threatDebuff": 4
-          },
           "immobilize": {
             "mag": 1,
             "scale": 3,
             "table": "Ranged_Ones"
           },
           "effectDuration": 4,
+          "durations": {
+            "immobilize": 4,
+            "threatDebuff": 4
+          },
           "threatDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
@@ -686,21 +643,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -802,11 +745,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.2118,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -1138,24 +1077,13 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "enduranceDrain": 6.2,
-            "mezResistance": 15,
             "recoveryDebuff": 2
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 15
+          "buffDuration": 6.2
         }
       },
       {
@@ -1295,21 +1223,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -1836,11 +1750,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.432,
               "table": "Melee_Damage"
             }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Melee_Ones"
-          }
+          ]
         }
       }
     ]
@@ -2098,11 +2008,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6203,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Melee_Ones"
-          }
+          ]
         }
       }
     ]
@@ -2172,11 +2078,7 @@ export const EPIC_POOLS_RAW = {
               "duration": 3.2,
               "tickRate": 1
             }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -2256,21 +2158,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -2422,15 +2310,6 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
-          "knockback": {
-            "scale": 0.2,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "knockback": 10,
-            "resistanceDebuff": 10,
-            "defenseDebuff": 10
-          },
           "resistanceDebuff": {
             "smashing": {
               "scale": 1.5,
@@ -2464,6 +2343,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             }
+          },
+          "durations": {
+            "resistanceDebuff": 10,
+            "defenseDebuff": 10
           },
           "defenseDebuff": {
             "scale": 1.5,
@@ -2577,11 +2460,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.16,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Ranged_Ones"
-          }
+          ]
         }
       },
       {
@@ -2647,21 +2526,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -2766,11 +2631,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.9477,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -2965,24 +2826,13 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "enduranceDrain": 6.2,
-            "mezResistance": 15,
             "recoveryDebuff": 2
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 15
+          "buffDuration": 6.2
         }
       },
       {
@@ -3324,21 +3174,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -3675,10 +3511,6 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 5,
             "table": "Melee_Stun"
-          },
-          "knockback": {
-            "scale": 1.28,
-            "table": "Melee_Ones"
           },
           "buffDuration": 4
         }
@@ -4566,11 +4398,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.8471,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Knockback"
-          }
+          ]
         }
       },
       {
@@ -4905,11 +4733,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.9477,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -5361,21 +5185,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -5687,21 +5497,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -6825,11 +6621,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.4533,
               "table": "Melee_Damage"
             }
-          ],
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Knockback"
-          }
+          ]
         }
       },
       {
@@ -7076,21 +6868,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       }
     ]
@@ -7798,11 +7576,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.8471,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Knockback"
-          }
+          ]
         }
       },
       {
@@ -8363,11 +8137,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.9477,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -9146,23 +8916,12 @@ export const EPIC_POOLS_RAW = {
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15,
-            "defenseDebuff": 15
-          },
           "defenseDebuff": {
             "scale": 2,
             "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 15
           },
           "buffDuration": 15
         }
@@ -9762,24 +9521,13 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "enduranceDrain": 6.2,
-            "mezResistance": 15,
             "recoveryDebuff": 2
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 15
+          "buffDuration": 6.2
         }
       },
       {
@@ -9854,10 +9602,6 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 5,
             "table": "Melee_Stun"
-          },
-          "knockback": {
-            "scale": 1.28,
-            "table": "Melee_Ones"
           },
           "buffDuration": 4
         }
@@ -10294,11 +10038,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.432,
               "table": "Melee_Damage"
             }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Melee_Ones"
-          }
+          ]
         }
       }
     ]
@@ -10571,11 +10311,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.432,
               "table": "Melee_Damage"
             }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Melee_Ones"
-          }
+          ]
         }
       }
     ]
@@ -10685,11 +10421,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.3778,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -10748,11 +10480,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6203,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 0.6,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -10806,10 +10534,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_PvPDamage"
             }
           ],
-          "knockback": {
-            "scale": 4,
-            "table": "Ranged_Knockback"
-          },
           "stun": {
             "mag": 2,
             "scale": 1,
@@ -11927,15 +11651,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 9,
-          "maxTargets": 10,
-          "knockback": {
-            "scale": 6,
-            "table": "Ranged_Knockback"
-          },
-          "durations": {
-            "knockback": 0.5
-          },
-          "buffDuration": 0.5
+          "maxTargets": 10
         }
       },
       {
@@ -12020,10 +11736,6 @@ export const EPIC_POOLS_RAW = {
             "type": "Smashing",
             "scale": 0.7818,
             "table": "Ranged_Damage"
-          },
-          "knockback": {
-            "scale": 9.67,
-            "table": "Ranged_Ones"
           },
           "stun": {
             "mag": 2,
@@ -13121,21 +12833,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 5,
             "scale": 1,
             "table": "Ranged_PvPMez"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -13397,21 +13095,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -13524,10 +13208,6 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 10,
             "table": "Melee_Stun"
-          },
-          "knockup": {
-            "scale": 6,
-            "table": "Melee_Knockback"
           }
         }
       },
@@ -13710,21 +13390,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -13826,11 +13492,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.2118,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -14189,10 +13851,6 @@ export const EPIC_POOLS_RAW = {
             "scale": 5,
             "table": "Melee_Stun"
           },
-          "knockback": {
-            "scale": 1.28,
-            "table": "Melee_Ones"
-          },
           "buffDuration": 4
         }
       },
@@ -14259,24 +13917,13 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "enduranceDrain": 6.2,
-            "mezResistance": 15,
             "recoveryDebuff": 2
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 15
+          "buffDuration": 6.2
         }
       },
       {
@@ -14574,21 +14221,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -14979,21 +14612,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 12
-          },
-          "buffDuration": 12
+          }
         }
       },
       {
@@ -15547,11 +15166,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.5112,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -15685,11 +15300,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6203,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 0.6,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -16001,11 +15612,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6203,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 0.6,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -16058,11 +15665,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6797,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 4,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       }
     ]
@@ -16321,11 +15924,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.8409,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockup": {
-            "scale": 2.8,
-            "table": "Ranged_Ones"
-          }
+          ]
         }
       }
     ]
@@ -16632,11 +16231,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.8409,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockup": {
-            "scale": 1.34,
-            "table": "Ranged_Ones"
-          }
+          ]
         }
       }
     ]
@@ -16857,30 +16452,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 0.75,
-            "repel": 0.5
-          },
-          "repel": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
           "immobilize": {
             "mag": 4,
             "scale": 5,
             "table": "Ranged_Immobilize"
-          },
-          "buffDuration": 0.75
+          }
         }
       }
     ]
@@ -16954,21 +16530,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -17564,21 +17126,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -17908,24 +17456,13 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Ones"
           },
           "durations": {
-            "recoveryDebuff": 6,
-            "mezResistance": 15
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
+            "recoveryDebuff": 6
           },
           "enduranceGain": {
             "scale": 3,
             "table": "Ranged_EndDrain"
           },
-          "buffDuration": 15
+          "buffDuration": 6
         }
       },
       {
@@ -18003,10 +17540,6 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Melee_Sleep"
-          },
-          "knockback": {
-            "scale": 1.5,
-            "table": "Melee_Knockback"
           },
           "recoveryDebuff": {
             "scale": 1,
@@ -18277,21 +17810,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 5,
             "scale": 1,
             "table": "Ranged_PvPMez"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 12
-          },
-          "buffDuration": 12
+          }
         }
       },
       {
@@ -18615,21 +18134,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 5,
             "scale": 1,
             "table": "Ranged_PvPMez"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 12
-          },
-          "buffDuration": 12
+          }
         }
       },
       {
@@ -18757,31 +18262,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 10,
-            "knockup": 10,
-            "knockback": 10
-          },
-          "knockup": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "knockback": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -18977,21 +18458,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -19053,10 +18520,6 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 10,
             "table": "Melee_Stun"
-          },
-          "knockup": {
-            "scale": 6,
-            "table": "Melee_Knockback"
           }
         }
       },
@@ -19237,15 +18700,6 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
-          "knockback": {
-            "scale": 0.2,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "knockback": 10,
-            "resistanceDebuff": 10,
-            "defenseDebuff": 10
-          },
           "resistanceDebuff": {
             "smashing": {
               "scale": 1.5,
@@ -19279,6 +18733,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.5,
               "table": "Melee_Debuff_Res_Dmg"
             }
+          },
+          "durations": {
+            "resistanceDebuff": 10,
+            "defenseDebuff": 10
           },
           "defenseDebuff": {
             "scale": 1,
@@ -19408,21 +18866,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -19757,24 +19201,13 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "enduranceDrain": 6.2,
-            "mezResistance": 15,
             "recoveryDebuff": 2
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 15
+          "buffDuration": 6.2
         }
       },
       {
@@ -19871,10 +19304,6 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 5,
             "table": "Melee_Stun"
-          },
-          "knockback": {
-            "scale": 1.28,
-            "table": "Melee_Ones"
           },
           "buffDuration": 4
         }
@@ -20810,21 +20239,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -21106,11 +20521,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.0694,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Melee_Knockback"
-          }
+          ]
         }
       },
       {
@@ -21405,11 +20816,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.16,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Melee_Ones"
-          }
+          ]
         }
       },
       {
@@ -21493,11 +20900,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.9477,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Melee_Knockback"
-          }
+          ]
         }
       },
       {
@@ -22232,11 +21635,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.44,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 6,
-            "table": "Melee_Knockback"
-          }
+          ]
         }
       },
       {
@@ -22287,10 +21686,6 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage"
             }
           ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Melee_Ones"
-          },
           "stun": {
             "mag": 2,
             "scale": 8,
@@ -22507,21 +21902,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -22976,11 +22357,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_PvPDamage",
               "tickRate": 1
             }
-          ],
-          "knockup": {
-            "scale": 1.34,
-            "table": "Ranged_Ones"
-          }
+          ]
         }
       }
     ]
@@ -23038,11 +22415,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.0694,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Ranged_Knockback"
-          }
+          ]
         }
       },
       {
@@ -23110,21 +22483,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -23252,15 +22611,6 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
-          "knockback": {
-            "scale": 0.2,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "knockback": 10,
-            "resistanceDebuff": 10,
-            "defenseDebuff": 10
-          },
           "resistanceDebuff": {
             "smashing": {
               "scale": 1.5,
@@ -23294,6 +22644,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.5,
               "table": "Ranged_Debuff_Res_Dmg"
             }
+          },
+          "durations": {
+            "resistanceDebuff": 10,
+            "defenseDebuff": 10
           },
           "defenseDebuff": {
             "scale": 1.5,
@@ -23402,11 +22756,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.16,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 1.4,
-            "table": "Ranged_Ones"
-          }
+          ]
         }
       },
       {
@@ -23465,21 +22815,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -23527,11 +22863,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.9477,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Melee_Knockback"
-          }
+          ]
         }
       },
       {
@@ -23795,24 +23127,13 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "enduranceDrain": 6.2,
-            "mezResistance": 15,
             "recoveryDebuff": 2
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Melee_Ones"
-            }
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "buffDuration": 15
+          "buffDuration": 6.2
         }
       },
       {
@@ -24123,21 +23444,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -24321,21 +23628,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -24590,21 +23883,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          },
-          "mezResistance": {
-            "knockup": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            },
-            "knockback": {
-              "scale": 100,
-              "table": "Ranged_Ones"
-            }
-          },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {

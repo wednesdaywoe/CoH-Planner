@@ -53,12 +53,6 @@ export const SpinningStrike: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "combo_level_1",
@@ -78,12 +72,6 @@ export const SpinningStrike: Power = {
           "table": "Melee_Damage"
         }
       ],
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        }
-      },
       "group": "combo-levels"
     },
     {
@@ -104,12 +92,6 @@ export const SpinningStrike: Power = {
           "table": "Melee_Damage"
         }
       ],
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        }
-      },
       "group": "combo-levels"
     },
     {
@@ -131,10 +113,6 @@ export const SpinningStrike: Power = {
         }
       ],
       "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        },
         "fear": {
           "mag": 3,
           "scale": 6,

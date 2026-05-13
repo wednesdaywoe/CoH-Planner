@@ -46,10 +46,6 @@ export const SoundCannon: Power = {
       "mag": 3,
       "scale": 1,
       "table": "Melee_PvPMez"
-    },
-    "knockback": {
-      "scale": 1.3,
-      "table": "Melee_Ones"
     }
   }
 };

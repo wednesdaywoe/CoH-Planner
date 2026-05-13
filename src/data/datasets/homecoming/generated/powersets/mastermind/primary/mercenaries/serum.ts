@@ -76,9 +76,6 @@ export const Serum: Power = {
       "immobilize": 60,
       "stun": 60,
       "sleep": 60,
-      "knockup": 60,
-      "knockback": 60,
-      "repel": 60,
       "damageBuff": 60,
       "tohitBuff": 60,
       "recoveryBuff": 60
@@ -101,18 +98,6 @@ export const Serum: Power = {
     },
     "sleep": {
       "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "knockup": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "knockback": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "repel": {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },

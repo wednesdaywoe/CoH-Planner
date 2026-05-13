@@ -47,31 +47,7 @@ export const GravityDistortionField: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockup": {
-        "scale": 1,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 8,
-      "knockback": 8,
-      "knockup": 8
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 8
+    }
   },
   "conditionalEffects": [
     {

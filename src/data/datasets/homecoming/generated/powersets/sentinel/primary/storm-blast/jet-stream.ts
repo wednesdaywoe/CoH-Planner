@@ -54,30 +54,5 @@ export const JetStream: Power = {
       "scale": 0.8,
       "table": "Ranged_InherentDamage"
     }
-  ],
-  "effects": {
-    "repel": {
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "repel": 2
-    },
-    "buffDuration": 2
-  },
-  "conditionalEffects": [
-    {
-      "id": "stormblast_instormcell",
-      "label": "StormBlast InStormCell",
-      "scope": "per-power",
-      "defaultActive": false,
-      "mode": "replace",
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Ranged_Ones"
-        }
-      }
-    }
   ]
 };

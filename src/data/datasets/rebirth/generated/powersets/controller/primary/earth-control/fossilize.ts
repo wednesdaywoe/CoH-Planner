@@ -56,28 +56,7 @@ export const Fossilize: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 12,
-      "mezResistance": 12,
-      "knockback": 12,
-      "knockup": 12
-    },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+      "defenseDebuff": 12
     },
     "buffDuration": 12
   },

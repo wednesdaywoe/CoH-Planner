@@ -45,10 +45,6 @@ export const RepulsionBolt: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 18,
-      "table": "Ranged_Knockback"
-    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 2,

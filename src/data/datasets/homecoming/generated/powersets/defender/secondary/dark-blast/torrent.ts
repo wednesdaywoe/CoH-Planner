@@ -57,11 +57,5 @@ export const Torrent: Power = {
       "scale": 0.5183,
       "table": "Ranged_PvPDamage"
     }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    }
-  }
+  ]
 };

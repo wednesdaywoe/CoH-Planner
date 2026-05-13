@@ -37,17 +37,9 @@ export const DragonsRoar: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rangeBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rangeBuff": 12
-    },
     "taunt": {
       "scale": 5,
       "table": "Melee_Taunt"
-    },
-    "buffDuration": 12
+    }
   }
 };

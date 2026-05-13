@@ -50,10 +50,6 @@ export const GleamingBlast: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"

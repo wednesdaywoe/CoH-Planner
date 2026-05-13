@@ -89,23 +89,14 @@ export const BlazingBlast: Power = {
     }
   ],
   "effects": {
-    "repel": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "repel": 0.6,
-      "hold": 0.6
-    },
     "hold": {
       "mag": 1,
       "scale": 4,
       "table": "Ranged_Ones"
     },
     "effectDuration": 0.6,
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
+    "durations": {
+      "hold": 0.6
     },
     "buffDuration": 0.6
   }

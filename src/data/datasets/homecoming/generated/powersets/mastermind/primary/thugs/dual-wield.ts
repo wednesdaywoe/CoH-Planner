@@ -56,12 +56,6 @@ export const DualWield: Power = {
       "tickRate": 0.25
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.28,
-      "table": "Ranged_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

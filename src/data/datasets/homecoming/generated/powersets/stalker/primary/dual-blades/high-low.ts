@@ -73,12 +73,6 @@ export const OneThousandCuts: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "dd_debuffmode_2",

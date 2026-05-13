@@ -39,14 +39,6 @@ export const IncendiaryAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockback": {
-      "scale": 20,
-      "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 1.2,

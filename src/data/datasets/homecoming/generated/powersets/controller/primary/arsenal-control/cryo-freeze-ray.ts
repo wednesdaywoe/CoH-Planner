@@ -59,21 +59,7 @@ export const CryoFreezeRay: Power = {
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 12
-    },
-    "buffDuration": 12
+    }
   },
   "specialEffects": [
     {

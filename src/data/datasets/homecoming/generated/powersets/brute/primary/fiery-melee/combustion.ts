@@ -71,11 +71,5 @@ export const Cremate: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
-  ],
-  "effects": {
-    "knockup": {
-      "scale": 1.5,
-      "table": "Melee_Ones"
-    }
-  }
+  ]
 };

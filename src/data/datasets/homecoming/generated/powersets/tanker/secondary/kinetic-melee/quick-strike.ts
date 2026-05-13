@@ -63,12 +63,6 @@ export const QuickStrike: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.8934,
-      "table": "Melee_Ones"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

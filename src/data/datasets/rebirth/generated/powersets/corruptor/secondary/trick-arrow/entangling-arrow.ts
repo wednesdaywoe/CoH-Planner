@@ -44,30 +44,6 @@ export const EntanglingArrow: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15,
-      "knockback": 15,
-      "knockup": 15
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 15
+    }
   }
 };

@@ -48,12 +48,6 @@ export const Quasar: Power = {
     "scale": 4,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "warshade_blaster_mode",

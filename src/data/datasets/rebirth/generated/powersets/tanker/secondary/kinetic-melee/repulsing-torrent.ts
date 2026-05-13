@@ -58,10 +58,6 @@ export const RepulsingTorrent: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"

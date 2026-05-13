@@ -61,11 +61,5 @@ export const Nova: Power = {
       "scale": 1.1707,
       "table": "Ranged_PvPDamage"
     }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 20,
-      "table": "Ranged_Knockback"
-    }
-  }
+  ]
 };

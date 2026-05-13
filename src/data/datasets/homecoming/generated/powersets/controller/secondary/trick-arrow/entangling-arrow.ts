@@ -40,20 +40,6 @@ export const EntanglingArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15,
-      "resistanceDebuff": 30
-    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 2,
@@ -87,6 +73,9 @@ export const EntanglingArrow: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistanceDebuff": 30
     },
     "immobilize": {
       "mag": 3,

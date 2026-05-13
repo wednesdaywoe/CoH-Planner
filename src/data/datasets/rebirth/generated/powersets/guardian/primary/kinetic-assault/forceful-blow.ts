@@ -51,12 +51,6 @@ export const ForcefulBlow: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "knockup": {
-      "scale": 0.75,
-      "table": "Melee_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

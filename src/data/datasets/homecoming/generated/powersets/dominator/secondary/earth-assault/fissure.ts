@@ -57,10 +57,6 @@ export const Fissure: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Ranged_Ones"
-    },
     "stun": {
       "mag": 2,
       "scale": 8,

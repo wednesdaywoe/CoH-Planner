@@ -59,10 +59,6 @@ export const Geyser: Power = {
     }
   ],
   "effects": {
-    "knockup": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    },
     "damageBuff": {
       "scale": 0.041,
       "table": "Ranged_Ones"

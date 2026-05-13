@@ -64,10 +64,6 @@ export const TidalWave: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Ones"
     }
   },
   "conditionalEffects": [

@@ -61,11 +61,5 @@ export const Shockwave: Power = {
       "scale": 1.0135,
       "table": "Melee_PvPDamage"
     }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 1.4,
-      "table": "Melee_Knockback"
-    }
-  }
+  ]
 };

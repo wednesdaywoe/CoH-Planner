@@ -39,18 +39,16 @@ export const IceArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    },
+    "absorb": {
+      "scale": 0.45,
+      "table": "Ranged_Special"
     },
     "durations": {
-      "mezResistance": 10,
       "absorb": 60,
       "enduranceDrain": 10,
       "confuse": 10,
@@ -60,15 +58,6 @@ export const IceArrow: Power = {
       "stun": 10,
       "sleep": 10,
       "defenseDebuff": 10
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "absorb": {
-      "scale": 0.45,
-      "table": "Ranged_Special"
     },
     "enduranceDrain": {
       "scale": 0.9,

@@ -54,10 +54,6 @@ export const StormKick: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
     "damageBuff": {
       "scale": 0.071,
       "table": "Melee_Ones"

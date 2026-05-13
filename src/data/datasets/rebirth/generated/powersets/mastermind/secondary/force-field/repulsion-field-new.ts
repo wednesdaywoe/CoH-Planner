@@ -29,18 +29,10 @@ export const RepulsionField: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    },
-    "durations": {
-      "knockback": 0.75
-    },
     "enduranceDrain": {
       "scale": 1.25,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 0.75
+    }
   },
   "requires": "Mastermind_Buff.Force_Field.Force_Bubble"
 };

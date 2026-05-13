@@ -62,10 +62,6 @@ export const CrackWhip: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1.28,
-      "table": "Ranged_Ones"
-    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 1.25,

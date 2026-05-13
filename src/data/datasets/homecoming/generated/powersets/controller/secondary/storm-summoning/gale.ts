@@ -46,11 +46,5 @@ export const Gale: Power = {
     "type": "Smashing",
     "scale": 0.1,
     "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 20,
-      "table": "Ranged_Knockback"
-    }
   }
 };

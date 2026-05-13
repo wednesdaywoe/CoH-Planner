@@ -60,10 +60,6 @@ export const CallHawk: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Ranged_Ones"
-    },
     "maxHPBuff": {
       "scale": 0.4,
       "table": "Melee_HealSelf"

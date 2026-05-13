@@ -60,10 +60,6 @@ export const PulseRifleBurst: Power = {
     "durations": {
       "regenDebuff": 30
     },
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    },
     "buffDuration": 30
   },
   "specialEffects": [

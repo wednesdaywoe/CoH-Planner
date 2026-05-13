@@ -40,14 +40,6 @@ export const DragonsRoar: Power = {
     "taunt": {
       "scale": 5,
       "table": "Melee_Taunt"
-    },
-    "rangeBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rangeBuff": 20
-    },
-    "buffDuration": 20
+    }
   }
 };

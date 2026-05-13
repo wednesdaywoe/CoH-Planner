@@ -84,10 +84,6 @@ export const Lash: Power = {
     "durations": {
       "resistanceDebuff": 6
     },
-    "knockback": {
-      "scale": 0.64,
-      "table": "Ranged_Ones"
-    },
     "buffDuration": 6
   },
   "specialEffects": [

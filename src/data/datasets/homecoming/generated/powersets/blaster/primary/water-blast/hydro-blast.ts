@@ -64,12 +64,6 @@ export const HydroBlast: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Ranged_Ones"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

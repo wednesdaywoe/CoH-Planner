@@ -54,31 +54,7 @@ export const FireCages: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 12,
-      "knockback": 12,
-      "knockup": 12
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 12
+    }
   },
   "specialEffects": [
     {

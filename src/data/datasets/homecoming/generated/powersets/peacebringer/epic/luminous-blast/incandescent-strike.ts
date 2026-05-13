@@ -72,10 +72,6 @@ export const IncandescentStrike: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     },
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"

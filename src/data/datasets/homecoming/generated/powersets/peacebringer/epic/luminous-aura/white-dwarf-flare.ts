@@ -56,10 +56,6 @@ export const WhiteDwarfFlare: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"

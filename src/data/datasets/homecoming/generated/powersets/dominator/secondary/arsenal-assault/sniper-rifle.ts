@@ -53,12 +53,6 @@ export const SniperRifle: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.4,
-      "table": "Ranged_Knockback"
-    }
-  },
   "quickSnipe": {
     "stats": {
       "castTime": 1.17,

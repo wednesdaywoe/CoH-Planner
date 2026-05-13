@@ -53,10 +53,6 @@ export const PowerBlast: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"

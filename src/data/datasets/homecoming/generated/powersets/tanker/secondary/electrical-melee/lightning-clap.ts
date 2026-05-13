@@ -62,10 +62,6 @@ export const LightningClap: Power = {
       "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
     }
   },
   "specialEffects": [

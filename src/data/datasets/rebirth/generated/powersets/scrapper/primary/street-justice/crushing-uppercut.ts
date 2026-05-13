@@ -53,10 +53,6 @@ export const CrushingUppercut: Power = {
       "mag": 3,
       "scale": 7.5,
       "table": "Melee_Stun"
-    },
-    "knockup": {
-      "scale": 3,
-      "table": "Melee_Knockback"
     }
   },
   "conditionalEffects": [

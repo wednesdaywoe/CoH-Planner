@@ -60,10 +60,6 @@ export const KnockoutBlow: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Stun"
-    },
-    "knockup": {
-      "scale": 6,
-      "table": "Melee_Knockback"
     }
   }
 };

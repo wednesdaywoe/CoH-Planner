@@ -47,12 +47,6 @@ export const PenetratingRay: Power = {
     "scale": 2.76,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "beam_rifle_debuff",

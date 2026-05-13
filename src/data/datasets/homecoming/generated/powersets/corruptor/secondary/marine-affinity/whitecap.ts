@@ -91,10 +91,6 @@ export const Whitecap: Power = {
     "durations": {
       "resistanceDebuff": 30
     },
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    },
     "teleport": {
       "scale": 1,
       "table": "Melee_Ones"

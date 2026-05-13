@@ -46,9 +46,6 @@ export const Benumb: Power = {
       "immobilize": 30,
       "stun": 30,
       "sleep": 30,
-      "knockup": 30,
-      "knockback": 30,
-      "repel": 30,
       "defenseDebuff": 30,
       "regenDebuff": 30
     },
@@ -74,18 +71,6 @@ export const Benumb: Power = {
     },
     "sleep": {
       "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "knockup": {
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "repel": {
       "scale": 0.5,
       "table": "Ranged_Stun"
     },

@@ -58,12 +58,6 @@ export const HellfireSmash: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.64,
-      "table": "Melee_Ones"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

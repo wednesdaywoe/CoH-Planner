@@ -65,10 +65,6 @@ export const Chop: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"

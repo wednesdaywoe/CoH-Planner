@@ -55,10 +55,6 @@ export const PenetratingRay: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1.4,
-      "table": "Ranged_Knockback"
-    },
     "rangeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"

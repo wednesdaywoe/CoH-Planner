@@ -52,30 +52,21 @@ export const KiPush: Power = {
     }
   ],
   "effects": {
-    "repel": {
-      "scale": 6,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "repel": 2,
-      "hold": 2,
-      "damageBuff": 8.33
-    },
     "hold": {
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
     },
     "effectDuration": 2,
-    "knockback": {
-      "scale": 8,
-      "table": "Melee_Knockback"
+    "durations": {
+      "hold": 2,
+      "damageBuff": 8.33
     },
     "damageBuff": {
       "scale": 0.055,
       "table": "Melee_Ones"
     },
-    "buffDuration": 2,
+    "buffDuration": 8.33,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

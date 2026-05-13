@@ -58,8 +58,7 @@ export const IceArrow: Power = {
       "immobilize": 10,
       "stun": 10,
       "sleep": 10,
-      "defenseDebuff": 10,
-      "mezResistance": 10
+      "defenseDebuff": 10
     },
     "enduranceDrain": {
       "scale": 0.9,
@@ -94,16 +93,6 @@ export const IceArrow: Power = {
     "defenseDebuff": {
       "scale": 0.45,
       "table": "Ranged_Special"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
     },
     "buffDuration": 10
   }

@@ -59,10 +59,6 @@ export const Lash: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1.28,
-      "table": "Ranged_Knockback"
-    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 1.25,

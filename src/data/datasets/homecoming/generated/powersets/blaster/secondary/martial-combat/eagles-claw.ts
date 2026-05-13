@@ -64,17 +64,12 @@ export const EaglesClaw: Power = {
       "scale": 4,
       "table": "Melee_Stun"
     },
-    "rangeBuff": {
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10,
-      "damageBuff": 10.03
-    },
     "damageBuff": {
       "scale": 0.167,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.03
     },
     "buffDuration": 10.03,
     "maxStacks": 2,

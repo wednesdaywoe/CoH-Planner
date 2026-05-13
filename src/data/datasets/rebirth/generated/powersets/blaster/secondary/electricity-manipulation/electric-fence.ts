@@ -61,29 +61,8 @@ export const ElectricFence: Power = {
     },
     "durations": {
       "enduranceDrain": 6.2,
-      "mezResistance": 15,
-      "knockback": 15,
-      "knockup": 15,
       "recoveryDebuff": 2,
       "damageBuff": 8.67
-    },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -93,7 +72,7 @@ export const ElectricFence: Power = {
       "scale": 0.077,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
+    "buffDuration": 8.67,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

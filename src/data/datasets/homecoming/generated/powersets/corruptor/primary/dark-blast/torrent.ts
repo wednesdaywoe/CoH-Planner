@@ -50,11 +50,5 @@ export const Torrent: Power = {
     "type": "Negative",
     "scale": 0.4,
     "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    }
   }
 };

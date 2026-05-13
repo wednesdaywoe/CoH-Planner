@@ -48,10 +48,6 @@ export const ForceofThunder: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     },
-    "knockback": {
-      "scale": 1,
-      "table": "Melee_Knockback"
-    },
     "damageBuff": {
       "scale": 0.025,
       "table": "Melee_Ones"

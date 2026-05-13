@@ -74,12 +74,6 @@ export const SpinningStrike: Power = {
       "tickRate": 0.4000000059604645
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

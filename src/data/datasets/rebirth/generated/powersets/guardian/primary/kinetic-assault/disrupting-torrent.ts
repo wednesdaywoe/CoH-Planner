@@ -56,10 +56,6 @@ export const DisruptingTorrent: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
     "regenBuff": {
       "scale": 1,
       "table": "Ranged_Ones"

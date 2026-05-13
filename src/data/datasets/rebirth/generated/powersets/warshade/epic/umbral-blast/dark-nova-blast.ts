@@ -48,12 +48,6 @@ export const DarkNovaBlast: Power = {
     "scale": 1.64,
     "table": "Ranged_SSDamage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    }
-  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -39,14 +39,6 @@ export const Telekinesis: Power = {
       "mag": 3,
       "scale": 0.75,
       "table": "Melee_Immobilize"
-    },
-    "repel": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "repel": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

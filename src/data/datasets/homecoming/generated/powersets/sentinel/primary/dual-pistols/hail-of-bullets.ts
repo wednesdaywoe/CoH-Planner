@@ -214,12 +214,7 @@ export const HailofBullets: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 5,
-      "knockback": 2.3
-    },
-    "knockback": {
-      "scale": 1.6,
-      "table": "Ranged_Ones"
+      "defenseBuff": 5
     },
     "buffDuration": 5
   }

@@ -65,24 +65,13 @@ export const StonePrison: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15,
-      "defenseDebuff": 10
-    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 15
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

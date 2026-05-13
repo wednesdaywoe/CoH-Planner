@@ -53,10 +53,6 @@ export const SerpentsReach: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
     }
   },
   "specialEffects": [

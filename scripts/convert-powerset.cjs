@@ -2061,9 +2061,13 @@ function extractEffects(templates, powerName) {
       }
 
       // ========== KNOCKBACK/KNOCKUP/REPEL ==========
-      // For KB/KU: aspect "current" means protection (magnitude applied against incoming KB)
-      // Multiple templates accumulate (e.g., Acrobatics has unenhanceable base + enhanceable portion)
+      // KB-family attribs are caster-side stats only when the AttribMod
+      // targets Self. Foe-targeted KB templates (Freezing Touch wipes
+      // KB from a held target, AoE knockdowns clear knock effects on
+      // affected enemies, etc.) are debuffs applied to the target and
+      // must not surface as caster KB protection / resistance.
       if (KNOCKBACK_TYPES[attrib]) {
+        if (!isSelfTargeting) continue;
         const kbType = KNOCKBACK_TYPES[attrib];
         if (aspect === 'resistance') {
           // KB/KU at aspect=Resistance is two different things depending on
@@ -2234,10 +2238,22 @@ function extractEffects(templates, powerName) {
             if (!effects.debuffResistance) effects.debuffResistance = {};
             effects.debuffResistance.range = makeEffect();
             recordDuration('debuffResistance');
-          } else {
+          } else if (isDebuff || scale < 0) {
+            // Negative-scale Range/Strength on a foe target is a range
+            // debuff applied to the enemy (e.g. Taunt's -75% Range that
+            // forces foes to walk closer). Do NOT route to rangeBuff —
+            // that displays as +Range on the caster.
+            if (isSelfTargeting) {
+              effects.rangeDebuff = makeEffect();
+              effects.selfPenalty = true;
+              recordDuration('rangeDebuff');
+            }
+            // else: foe-side debuff, dropped for caster-stat purposes
+          } else if (isSelfTargeting) {
             effects.rangeBuff = makeEffect();
             recordDuration('rangeBuff');
           }
+          // else: positive Range on a foe target — unusual, skip.
         } else if (modType === 'enduranceDiscount') {
           effects.enduranceDiscount = makeEffect();
           recordDuration('enduranceDiscount');

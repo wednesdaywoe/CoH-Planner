@@ -45,12 +45,6 @@ export const ChargedShot: Power = {
     "scale": 1.64,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "beam_rifle_debuff",

@@ -472,11 +472,7 @@ export const POWER_POOLS_RAW = {
               "scale": 1.801,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 2.68,
-            "table": "Melee_Ones"
-          }
+          ]
         }
       },
       {
@@ -661,10 +657,6 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_PvPDamage"
             }
           ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Melee_Ones"
-          },
           "stun": {
             "mag": 3,
             "scale": 6,
@@ -994,11 +986,7 @@ export const POWER_POOLS_RAW = {
               "scale": 1.61,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockup": {
-            "scale": 1.5,
-            "table": "Melee_Ones"
-          }
+          ]
         }
       },
       {
@@ -1369,11 +1357,7 @@ export const POWER_POOLS_RAW = {
               "scale": 2.049,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Ranged_Ones"
-          }
+          ]
         }
       },
       {
@@ -1482,11 +1466,7 @@ export const POWER_POOLS_RAW = {
               "scale": 0.4194,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Ranged_Ones"
-          }
+          ]
         }
       },
       {
@@ -1602,11 +1582,7 @@ export const POWER_POOLS_RAW = {
           "activationTime": 2.1,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10,
-          "knockback": {
-            "scale": 1.34,
-            "table": "Melee_Ones"
-          }
+          "maxTargets": 10
         }
       }
     ]
@@ -2404,9 +2380,6 @@ export const POWER_POOLS_RAW = {
             "tohitBuff": 120,
             "fear": 120,
             "mezResistance": 120,
-            "knockup": 120,
-            "knockback": 120,
-            "repel": 120,
             "damageBuff": 120
           },
           "tohitBuff": {
@@ -2452,18 +2425,6 @@ export const POWER_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Boolean"
             }
-          },
-          "knockup": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "knockback": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "repel": {
-            "scale": 10,
-            "table": "Melee_Ones"
           },
           "damageBuff": {
             "scale": 3.5,
@@ -2553,11 +2514,7 @@ export const POWER_POOLS_RAW = {
               "scale": 1.562,
               "table": "Melee_PvPDamage"
             }
-          ],
-          "knockup": {
-            "scale": 4,
-            "table": "Melee_Knockback"
-          }
+          ]
         }
       },
       {
@@ -3324,11 +3281,7 @@ export const POWER_POOLS_RAW = {
               "scale": 1.891,
               "table": "Ranged_PvPDamage"
             }
-          ],
-          "knockback": {
-            "scale": 1.34,
-            "table": "Ranged_Ones"
-          }
+          ]
         }
       },
       {
@@ -3791,10 +3744,6 @@ export const POWER_POOLS_RAW = {
           "selfPenalty": true,
           "durations": {
             "slow": 3
-          },
-          "knockback": {
-            "scale": 3,
-            "table": "Melee_Knockback"
           },
           "enduranceDrain": {
             "scale": 3,

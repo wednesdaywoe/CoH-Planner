@@ -67,11 +67,5 @@ export const UmbralTorrent: Power = {
       "scale": 0.7968,
       "table": "Ranged_PvPDamage"
     }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    }
-  }
+  ]
 };

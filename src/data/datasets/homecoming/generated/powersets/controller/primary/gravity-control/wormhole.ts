@@ -62,10 +62,6 @@ export const Wormhole: Power = {
       "scale": 1,
       "table": "Ranged_PvPMez"
     },
-    "knockback": {
-      "scale": 14,
-      "table": "Ranged_Knockback"
-    },
     "buffDuration": 15
   },
   "specialEffects": [

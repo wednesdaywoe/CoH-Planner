@@ -54,10 +54,6 @@ export const TelekineticBlow: Power = {
     }
   ],
   "effects": {
-    "knockup": {
-      "scale": 1,
-      "table": "Melee_Knockback"
-    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"

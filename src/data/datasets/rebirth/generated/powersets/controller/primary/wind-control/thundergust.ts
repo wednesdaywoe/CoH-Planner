@@ -48,11 +48,5 @@ export const Thundergust: Power = {
     "type": "Smashing",
     "scale": 0.24,
     "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
   }
 };

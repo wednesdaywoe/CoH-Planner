@@ -59,12 +59,6 @@ export const Geyser: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "knockup": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "conditionalEffects": [
     {
       "id": "tidal_power-1",

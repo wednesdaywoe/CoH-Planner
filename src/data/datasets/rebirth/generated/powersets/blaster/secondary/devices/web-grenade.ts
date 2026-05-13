@@ -45,35 +45,14 @@ export const WebGrenade: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15,
-      "knockback": 15,
-      "knockup": 15,
-      "damageBuff": 8.87
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
     "damageBuff": {
       "scale": 0.09,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
+    "durations": {
+      "damageBuff": 8.87
+    },
+    "buffDuration": 8.87,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

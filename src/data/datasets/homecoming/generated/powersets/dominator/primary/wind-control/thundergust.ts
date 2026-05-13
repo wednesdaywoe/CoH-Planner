@@ -55,11 +55,5 @@ export const Thundergust: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Ranged_Ones"
-    }
-  },
   "requires": "accesslevel char> 0 >="
 };

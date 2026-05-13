@@ -53,10 +53,6 @@ export const Nova: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    },
     "damageBuff": {
       "scale": 0.042,
       "table": "Ranged_Ones"

@@ -50,11 +50,5 @@ export const Lift: Power = {
       "scale": 1.361,
       "table": "Ranged_PvPDamage"
     }
-  ],
-  "effects": {
-    "knockup": {
-      "scale": 12,
-      "table": "Ranged_Knockback"
-    }
-  }
+  ]
 };
