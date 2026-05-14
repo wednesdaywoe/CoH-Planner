@@ -6,6 +6,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Header } from './Header';
 import { StatsDashboard } from './StatsDashboard';
 import { UpdateBanner } from './UpdateBanner';
+import { StatusBanner } from './StatusBanner';
 import { MobileBottomNav } from './MobileBottomNav';
 import { EnhancementPicker } from '@/components/enhancements/EnhancementPicker';
 import { PowerInfoTooltip } from '@/components/info';
@@ -18,6 +19,7 @@ import { ToastContainer } from '@/components/ui/Toast';
 import { useUIStore, useAuthStore } from '@/stores';
 import { useHelpDiscoveryToast } from '@/hooks/useHelpDiscoveryToast';
 import { useUpdateChecker } from '@/hooks/useUpdateChecker';
+import { useStatusCheck } from '@/hooks/useStatusCheck';
 import { useUndoRedoKeyboard } from '@/hooks/useUndoRedoKeyboard';
 import { useTooltipHotkey } from '@/hooks/useTooltipHotkey';
 import { useDashboardCollapseHotkey } from '@/hooks/useDashboardCollapseHotkey';
@@ -41,6 +43,7 @@ export function MainLayout({ children }: MainLayoutProps) {
   const openHelpModal = useUIStore((s) => s.openHelpModal);
   const uiScale = useUIStore((s) => s.uiScale);
   const { updateAvailable } = useUpdateChecker();
+  const activeStatus = useStatusCheck();
   useUndoRedoKeyboard();
   useTooltipHotkey();
   useDashboardCollapseHotkey();
@@ -74,6 +77,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       className="min-h-screen bg-gray-950 text-gray-100 flex flex-col"
       style={applyZoom ? { zoom: uiScale, overflowX: 'clip' as const } : undefined}
     >
+      <StatusBanner active={activeStatus} />
       <UpdateBanner visible={updateAvailable} />
       <Header />
       {/* StatsDashboard is accessible on mobile via the bottom nav's Dashboard tab */}

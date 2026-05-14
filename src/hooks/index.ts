@@ -35,3 +35,5 @@ export { useSwipeToRemove } from './useSwipeToRemove';
 export { useActivePowerBuffs } from './useActivePowerBuffs';
 export { useSlotLevels } from './useSlotLevels';
 export { useIsTouchDevice, isTouchDevice } from './useIsTouchDevice';
+export { useStatusCheck } from './useStatusCheck';
+export type { ActiveStatus } from './useStatusCheck';
