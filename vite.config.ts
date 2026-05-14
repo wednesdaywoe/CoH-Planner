@@ -1,6 +1,7 @@
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { sentryVitePlugin } from '@sentry/vite-plugin'
 import path from 'path'
 import fs from 'fs'
 import { execSync } from 'child_process'
@@ -63,7 +64,21 @@ function versionFilePlugin(): Plugin {
 export default defineConfig({
   // Base path — '/' for custom domain (coh-sidekick.com)
   base: '/',
-  plugins: [react(), tailwindcss(), versionFilePlugin()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    versionFilePlugin(),
+    // Sentry source map upload — only loaded when SENTRY_AUTH_TOKEN is set
+    // (i.e. CI builds). Skipping it locally avoids needing the token and
+    // sidesteps any network activity from the plugin during dev builds.
+    ...(process.env.SENTRY_AUTH_TOKEN
+      ? [sentryVitePlugin({
+          org: 'wednesdaywoe',
+          project: 'coh-sidekick',
+          authToken: process.env.SENTRY_AUTH_TOKEN,
+        })]
+      : []),
+  ],
   define: {
     __BUILD_TIME__: JSON.stringify(BUILD_TIME),
     __CHANGELOG_DATA__: CHANGELOG_DATA,
@@ -80,6 +95,10 @@ export default defineConfig({
   publicDir: 'public',
   build: {
     outDir: 'dist',
+    // 'hidden' generates source maps for Sentry upload without exposing a
+    // sourceMappingURL comment in the deployed JS (so browsers won't fetch
+    // the maps from the public site).
+    sourcemap: 'hidden',
   },
   server: {
     port: 3000,

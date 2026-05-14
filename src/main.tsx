@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import * as Sentry from '@sentry/react'
 import './index.css'
 import App from './App'
 import { loadDataset } from '@/data/dataset'
@@ -7,6 +8,35 @@ import { loadDataset } from '@/data/dataset'
 // Register window.cohDebug for calculation debug logging + fallback warnings
 import '@/utils/calc-debug'
 import '@/utils/fallback-warnings'
+
+// Sentry — production only. DSN is injected at build time; if it's missing
+// the init is a no-op so dev/local builds stay silent.
+if (import.meta.env.PROD && import.meta.env.VITE_SENTRY_DSN) {
+  Sentry.init({
+    dsn: import.meta.env.VITE_SENTRY_DSN,
+  })
+}
+
+function ErrorFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-950 p-6">
+      <div className="max-w-md text-center space-y-4">
+        <h1 className="text-xl font-semibold text-slate-100">Something went wrong</h1>
+        <p className="text-sm text-slate-400">
+          Sidekick hit an unexpected error and couldn't render. The issue has been reported.
+          Try reloading the page — if it keeps happening, you can clear local storage from
+          Settings or send feedback.
+        </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 rounded bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium"
+        >
+          Reload
+        </button>
+      </div>
+    </div>
+  )
+}
 
 // Handle .skif files opened via PWA file association
 if ('launchQueue' in window) {
@@ -50,7 +80,9 @@ function bootServerId(): 'homecoming' | 'rebirth' {
 loadDataset(bootServerId()).then(() => {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
-      <App />
+      <Sentry.ErrorBoundary fallback={<ErrorFallback />}>
+        <App />
+      </Sentry.ErrorBoundary>
     </StrictMode>,
   )
 })
