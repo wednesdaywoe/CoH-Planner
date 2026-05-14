@@ -926,8 +926,24 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
     };
   }
 
-  // Look up the IO set
-  let ioSet = getIOSet(parsed.setId);
+  // For Superior_Attuned_ UIDs where the set name doesn't already include
+  // "superior_", prefer the superior variant (e.g., "blistering_cold" →
+  // "superior_blistering_cold"). Game UIDs use "Superior_Attuned_Blistering_Cold"
+  // for winter sets but our data stores the superior version as
+  // "superior_blistering_cold". For ATOs like Brutes Fury the UID itself
+  // embeds "Superior_" in the set name, so parsed.setId is already correct.
+  let ioSet;
+  if (parsed.superior && !parsed.setId.startsWith('superior_')) {
+    const superiorId = `superior_${parsed.setId}`;
+    const superiorSet = getIOSet(superiorId);
+    if (superiorSet) {
+      ioSet = superiorSet;
+      parsed.setId = superiorId;
+    }
+  }
+  if (!ioSet) {
+    ioSet = getIOSet(parsed.setId);
+  }
 
   // Fallback: name-based lookup
   if (!ioSet) {
@@ -979,6 +995,8 @@ interface ParsedIOSetUid {
   setId: string;
   pieceNum: number;
   attuned: boolean;
+  /** True when the UID had a `Superior_Attuned_` prefix — caller should prefer the `superior_` variant. */
+  superior: boolean;
 }
 
 /**
@@ -988,11 +1006,13 @@ interface ParsedIOSetUid {
 function parseIOSetUid(uid: string): ParsedIOSetUid | null {
   let remaining = uid;
   let attuned = false;
+  let superior = false;
 
   // Strip prefixes
   if (remaining.startsWith('Superior_Attuned_')) {
     remaining = remaining.slice('Superior_Attuned_'.length);
     attuned = true;
+    superior = true;
   } else if (remaining.startsWith('Attuned_')) {
     remaining = remaining.slice('Attuned_'.length);
     attuned = true;
@@ -1011,7 +1031,7 @@ function parseIOSetUid(uid: string): ParsedIOSetUid | null {
   // Lowercase to match app's IO set IDs
   const setId = setName.toLowerCase();
 
-  return { setId, pieceNum, attuned };
+  return { setId, pieceNum, attuned, superior };
 }
 
 // ============================================
