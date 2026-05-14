@@ -20695,7 +20695,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "EO_Avalanche.png",
+    "icon": "SEO_Avalanche.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Avalanche",
@@ -22220,7 +22220,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "EO_Entomb.png",
+    "icon": "SEO_Entomb.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Entomb",
@@ -25241,7 +25241,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "event",
-    "icon": "EO_WintersBite.png",
+    "icon": "SEO_WintersBite.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Winter's Bite",

@@ -20927,7 +20927,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "totalAspects": 4
       }
     ],
-    "icon": "EO_Avalanche.png"
+    "icon": "SEO_Avalanche.png"
   },
   "superior_blasters_wrath": {
     "name": "Superior Blaster's Wrath",
@@ -22303,7 +22303,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "totalAspects": 4
       }
     ],
-    "icon": "EO_Entomb.png"
+    "icon": "SEO_Entomb.png"
   },
   "superior_essence_transfer": {
     "name": "Superior Essence Transfer",
@@ -24852,7 +24852,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "totalAspects": 4
       }
     ],
-    "icon": "EO_WintersBite.png"
+    "icon": "SEO_WintersBite.png"
   },
   "synapses_shock": {
     "name": "Synapse's Shock",
