@@ -633,7 +633,7 @@ export function AvailablePowers({
           {/* Level 1 instruction */}
           {bothPowersetsSelected && isLevel1 && !hasPickedPowerThisCategory && !otherCategoryHasPower && (
             <div className="text-xs text-emerald-500/70 italic py-1 mb-1">
-              Pick 1 power from the first two
+              Pick 1 of the level 1 powers
             </div>
           )}
           {bothPowersetsSelected && isLevel1 && !hasPickedPowerThisCategory && otherCategoryHasPower && (
@@ -654,14 +654,14 @@ export function AvailablePowers({
             </div>
           ) : (
             <div className="space-y-0.5">
-              {allPowers.map((power, index) => {
+              {allPowers.map((power) => {
                 const isSelected = selectedSet.has(power.name);
                 // available is 0-indexed: available=0 means level 1, available=1 means level 2
                 // Level 1 special restrictions:
-                // - Only first 2 powers can be selected (index 0 or 1)
+                // - Only level-1-available powers can be selected (some powersets have 3, e.g. Ice Armor's Hoarfrost/Rime mutex)
                 // - Can only pick 1 power total from this category
                 // - If first pick was from this category, block until other category picks
-                const isLevel1Restricted = isLevel1 && (index > 1 || hasPickedPowerThisCategory || isLevel1BlockedForSecondPick);
+                const isLevel1Restricted = isLevel1 && (power.available > 0 || hasPickedPowerThisCategory || isLevel1BlockedForSecondPick);
 
                 // Grey out powers that aren't available yet OR are blocked by level 1 enforcement
                 const isAvailable = power.available < build.level && !isLevel1Restricted;
