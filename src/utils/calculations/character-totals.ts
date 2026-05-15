@@ -35,11 +35,12 @@ import {
   type CharacterStats,
 } from './stats';
 import {
-  calculatePowerEnhancementBonuses,
+  combineWithAlphaED,
   BASE_RECOVERY_RATE,
   BASE_REGEN_RATE,
   type EnhancementBonuses,
 } from './enhancement-values';
+import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
 import {
   isCalcDebugEnabled,
@@ -607,6 +608,7 @@ function applyActivePowerBonuses(
   buildLevel: number,
   archetypeId: string,
   alphaBonuses: EnhancementBonuses = {},
+  alphaEdBypassRatio: number = 0,
   targetsHitValues: Record<string, number> = {},
   exemplarLevel?: number,
   combatMode?: boolean
@@ -620,23 +622,26 @@ function applyActivePowerBonuses(
     // (e.g. Speed Boost, Fortitude — "you cannot use this power on yourself")
     if (power.targetType && ALLY_ONLY_TARGET_TYPES.has(power.targetType.toLowerCase())) continue;
 
-    // Calculate enhancement bonuses for this power from slotted enhancements
-    let enhBonuses: EnhancementBonuses = {};
+    // Calculate enhancement bonuses for this power. The Alpha slot's
+    // tier-specific ED-bypass mechanic only meaningfully changes the result
+    // when both slotted IOs *and* alpha buff the same aspect — in that case
+    // a naive post-ED add overstates enhancement (the slotted portion is
+    // already at the ED cap, and alpha's full value lands on top instead
+    // of being partially diminished). combineWithAlphaED splits alpha into
+    // an ED-subject portion that joins the raw IO total before ED and a
+    // bypass portion that lands after.
+    let enhBonuses: EnhancementBonuses;
     if (power.slots && power.slots.length > 0) {
-      enhBonuses = calculatePowerEnhancementBonuses(
+      enhBonuses = combineWithAlphaED(
         { name: power.name, slots: power.slots },
         buildLevel,
         getIOSet,
+        alphaBonuses,
+        alphaEdBypassRatio,
         exemplarLevel
       );
-    }
-
-    // Add Alpha incarnate enhancement bonuses (these apply universally to all powers)
-    // Alpha bonuses are additive with slotted enhancement bonuses
-    for (const [aspect, value] of Object.entries(alphaBonuses)) {
-      if (value !== undefined) {
-        enhBonuses[aspect] = (enhBonuses[aspect] || 0) + value;
-      }
+    } else {
+      enhBonuses = { ...alphaBonuses };
     }
 
     // Track toggle endurance cost for active toggle powers.
@@ -1460,6 +1465,7 @@ function applyFitnessPowerBonuses(
   breakdown: Map<string, DashboardStatBreakdown>,
   globalIOLevel: number,
   alphaBonuses: EnhancementBonuses = {},
+  alphaEdBypassRatio: number = 0,
   exemplarLevel?: number
 ): void {
   const fitnessPowers = (build.inherents || []).filter(
@@ -1470,20 +1476,16 @@ function applyFitnessPowerBonuses(
     const effects = FITNESS_POWER_EFFECTS[power.internalName];
     if (!effects) continue;
 
-    // Calculate enhancement bonus for this power
-    const enhBonuses = calculatePowerEnhancementBonuses(
+    // Calculate enhancement bonus for this power (see comment on
+    // applyActivePowerBonuses for why we use combineWithAlphaED here).
+    const enhBonuses = combineWithAlphaED(
       power,
       globalIOLevel,
       getIOSet,
+      alphaBonuses,
+      alphaEdBypassRatio,
       exemplarLevel
     );
-
-    // Add Alpha incarnate enhancement bonuses (apply universally, bypass ED)
-    for (const [aspect, value] of Object.entries(alphaBonuses)) {
-      if (value !== undefined) {
-        enhBonuses[aspect] = (enhBonuses[aspect] || 0) + value;
-      }
-    }
 
     const _fitnessDebugEffects: { stat: string; base: number; enhanced: number; enhBonus: number }[] = [];
     for (const effect of effects) {
@@ -2770,16 +2772,21 @@ export function calculateCharacterTotals(
 
   // Step 5: Get Alpha incarnate enhancement bonuses (apply to all powers including fitness)
   const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
+  // Alpha tier dictates how much of the boost bypasses ED (Common 1/6 …
+  // Very Rare 2/3). Passed alongside alphaBonuses so combineWithAlphaED
+  // splits the buff correctly against the per-power IO ED total.
+  const alphaTier = build.incarnates?.alpha?.tier;
+  const alphaEdBypassRatio = alphaTier ? INCARNATE_TIER_REGISTRY[alphaTier].edBypassRatio : 0;
   if (_debug) debugAlphaBonuses(alphaBonuses);
 
   // Step 6: Apply inherent power bonuses (Fitness powers, with Alpha bonuses)
   if (_debug) debugGroup('Step 6: Fitness Powers');
-  applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel, alphaBonuses, exemplarLevel);
+  applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel, alphaBonuses, alphaEdBypassRatio, exemplarLevel);
   if (_debug) debugGroupEnd();
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
   if (_debug) debugGroup('Step 7: Active Power Bonuses');
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode);
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode);
   if (_debug) debugGroupEnd();
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
