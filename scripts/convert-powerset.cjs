@@ -2176,6 +2176,18 @@ function extractEffects(templates, powerName) {
             recordDuration('debuffResistance');
           } else if (isDebuff || scale < 0) {
             addOrAccumulate('regenDebuff');
+          } else if (template.flags?.includes('StackByAttribAndKey')) {
+            // Per-stack regen procs (Reactive Regeneration's hit-driven
+            // stacks) are stack-keyed and already captured downstream by
+            // the perTarget scaling pipeline on `regenBuff`. Adding them
+            // here would double-count the stacking contribution.
+          } else if (template.flags?.includes('IgnoreStrength')) {
+            // AttribMod-level IgnoreStrength means Heal enhancements (and
+            // global +Heal) don't apply to this portion of the regen buff.
+            // Integration's small "ride-along" 0.5-scale regen is the
+            // textbook case — game shows it as a separate non-enhanced
+            // breakdown entry next to the enhanceable 1.0-scale portion.
+            addOrAccumulate('regenBuffUnenhanced');
           } else {
             addOrAccumulate('regenBuff');
           }
@@ -2942,20 +2954,29 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
 
   // Also collect templates from activation_effects. Two distinct patterns share
   // this slot:
-  //   1. Continuous self-targeted toggle/auto buffs (Dynamo +regen/+recovery,
+  //   1. Continuous self-targeted toggle/auto buffs (Integration +regen,
   //      Reaction Time +recovery) — keep target=Self only, skip IgnoreStrength
   //      duplicates (the enhanceable copy is the unflagged one).
   //   2. Click powers whose effects live entirely behind an ActivationEffect
   //      Execute_Power redirect (Ground Zero → Ground_Zero_Ally + Foe; the
   //      redirect targets emit AnyAffected damage/heal templates). Those need
   //      to bypass the Self filter — the redirect target dictates the target.
+  //
+  // Regeneration is an exception to the IgnoreStrength filter. Integration's
+  // small unenhanceable "ride-along" 0.5-scale regen is a legitimate buff
+  // portion that the game lists as a separate Combat Attributes breakdown
+  // entry; dropping it makes SK overstate the enhanceable portion by
+  // applying Heal enhancement to the unenhanceable scale. Let those through
+  // so extractEffects can route them to regenBuffUnenhanced.
+  const isDropForActivationEffects = (t) => {
+    if (!(t.flags || []).some(f => f.startsWith('IgnoreStrength'))) return false;
+    const hasRegen = (t.attribs || []).some(a => a?.toLowerCase() === 'regeneration');
+    return !hasRegen;
+  };
   if (powerJson.activation_effects?.length) {
     // Direct templates from activation_effects (no redirect traversal).
     const directBuffs = collectAllTemplates(powerJson.activation_effects)
-      .filter(t =>
-        t.target === 'Self' &&
-        !(t.flags || []).some(f => f.startsWith('IgnoreStrength'))
-      );
+      .filter(t => t.target === 'Self' && !isDropForActivationEffects(t));
     if (directBuffs.length > 0) {
       allTemplates = allTemplates.concat(directBuffs);
     }
@@ -2964,10 +2985,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     // directBuffs pass (matched on identity since both pulls share array refs).
     const directSet = new Set(directBuffs);
     const redirected = collectTemplatesDeep(powerJson.activation_effects)
-      .filter(t =>
-        !directSet.has(t) &&
-        !(t.flags || []).some(f => f.startsWith('IgnoreStrength'))
-      );
+      .filter(t => !directSet.has(t) && !isDropForActivationEffects(t));
     if (redirected.length > 0) {
       allTemplates = allTemplates.concat(redirected);
     }

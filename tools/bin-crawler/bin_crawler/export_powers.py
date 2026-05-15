@@ -212,10 +212,10 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
                 tmpl_dict['cancel_events'] = t.cancel_events
             if t.suppress_events:
                 tmpl_dict['suppress_events'] = t.suppress_events
-            # Raw values from the AttribMod tail. Bit meanings of `flags_raw`
-            # not yet decoded but the bitmask is consistent enough that
-            # downstream code can pattern-match (0x420 = IgnoreResistance,
-            # 0x430 = IgnoreStrength + IgnoreResistance, etc.).
+            # Decoded flag names (e.g. ["IgnoreStrength", "IgnoreResistance"])
+            # plus the raw bitmask for any bits we haven't named yet.
+            if t.flags:
+                tmpl_dict['flags'] = t.flags
             if t.flags_raw:
                 tmpl_dict['flags_raw'] = t.flags_raw
             if t.boost_mod_allowed_id:

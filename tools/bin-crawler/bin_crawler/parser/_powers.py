@@ -27,6 +27,37 @@ from ._enums import (
 )
 
 
+# AttribMod flag bit assignments. Empirically derived by cross-referencing
+# .powers source `Flags` keywords against the u4 stored after BoostModAllowed
+# (~13k AttribMod templates across all HC categories). Bits 0x100 / 0x200 /
+# 0x400 / 0x800 are NOT flags — they appear as 0x500 or 0xa00 doublets in
+# templates with no Flags line, almost certainly some other packed field
+# (likely Resist{Magnitude,Duration} mode). Bit 0x800 *is* DeepSleep though,
+# so we accept the overlap and decode it. Bits with too few samples to be
+# confident (Boost, ResistDuration, ResistMagnitude, AdjustTimer, etc.) are
+# omitted — they can be added later as more data appears.
+_FLAG_BITS: tuple[tuple[int, str], ...] = (
+    (0x000001, "NoFloaters"),
+    (0x000004, "CancelOnMiss"),
+    (0x000008, "NearGround"),
+    (0x000010, "IgnoreStrength"),
+    (0x000020, "IgnoreResistance"),
+    (0x000040, "IgnoreCombatMods"),
+    (0x000080, "IgnoreEfficiency"),
+    (0x000800, "DeepSleep"),
+    (0x002000, "HideZero"),
+    (0x004000, "KeepThroughDeath"),
+    (0x010000, "NoHitDelay"),
+    (0x020000, "NoProjectileDelay"),
+    (0x040000, "StackByAttribAndKey"),
+    (0x100000, "IgnoreSuppressErrors"),
+)
+
+
+def _decode_flags(flags_raw: int) -> list[str]:
+    return [name for bit, name in _FLAG_BITS if flags_raw & bit]
+
+
 def _detect_format(r: BinReader) -> tuple[bool, bool]:
     """Detect whether the Parse7 powers.bin has field 45b and/or field 41b.
 
@@ -449,7 +480,7 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     # via the simple int → str conversion (won't conflict with any consumer
     # since it's never been populated before).
     boost_mod_allowed = str(boost_mod_allowed_id) if boost_mod_allowed_id else ""
-    flags: list[str] = []
+    flags: list[str] = _decode_flags(flags_raw)
     mode_name = None
 
     tail_bytes = bytes(r._data[r._pos:r._end])
@@ -524,13 +555,20 @@ def _parse_effect_group(r: BinReader) -> EffectGroup:
     flags_val = r.read_u4()
     eval_flags = r.read_u4()
 
-    # Determine PvP flag from flags_val
-    is_pvp = PVP_FLAG.get(flags_val, "EITHER")
+    # flags_val is a bitmask, not a single enum value. Bit 0 = PvEOnly,
+    # bit 1 = PvPOnly; higher bits encode other Effect-level flags from
+    # the .powers source (MainTargetOnly, Fallback, HideFromInfo, etc.)
+    # that aren't yet decoded. The earlier exact-match lookup mis-classified
+    # any combined value (e.g. PvEOnly+MainTargetOnly = 5) as EITHER.
     flags = []
-    if flags_val == 1:
-        flags = ["PVEOnly"]
-    elif flags_val == 2:
-        flags = ["PVPOnly"]
+    if flags_val & 1:
+        flags.append("PVEOnly")
+        is_pvp = "PVE_ONLY"
+    elif flags_val & 2:
+        flags.append("PVPOnly")
+        is_pvp = "PVP_ONLY"
+    else:
+        is_pvp = "EITHER"
 
     # Templates struct_array
     templates = []

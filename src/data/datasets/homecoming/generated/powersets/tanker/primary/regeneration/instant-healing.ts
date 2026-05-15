@@ -36,12 +36,12 @@ export const ReactiveRegeneration: Power = {
   "maxSlots": 6,
   "effects": {
     "regenBuff": {
-      "scale": 2.25,
+      "scale": 2,
       "table": "Melee_Ones",
       "perTarget": 0.25
     },
     "durations": {
-      "regenBuff": 20,
+      "regenBuff": 2.25,
       "debuffResistance": 20
     },
     "debuffResistance": {

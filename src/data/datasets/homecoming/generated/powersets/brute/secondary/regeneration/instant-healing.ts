@@ -34,12 +34,17 @@ export const InstantHealing: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 8,
+    "regenBuffUnenhanced": {
+      "scale": 6,
       "table": "Melee_Ones"
     },
     "durations": {
+      "regenBuffUnenhanced": 90,
       "regenBuff": 90
+    },
+    "regenBuff": {
+      "scale": 2,
+      "table": "Melee_Ones"
     },
     "buffDuration": 90
   },
