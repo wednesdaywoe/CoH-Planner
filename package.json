@@ -9,7 +9,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "tsc --noEmit",
-    "import-mids": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/bulk-import-mids.ts"
+    "import-mids": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/bulk-import-mids.ts",
+    "delete-user-builds": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/delete-user-shared-builds.ts"
   },
   "repository": {
     "type": "git",

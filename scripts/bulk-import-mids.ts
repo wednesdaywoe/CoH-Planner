@@ -27,8 +27,24 @@ import { nanoid } from 'nanoid';
 
 import { importMidsBuild } from '@/utils/mids-import';
 import { slimBuild } from '@/utils/build-serialization';
+import { loadDataset, type DatasetId } from '@/data/dataset';
 import type { MidsImportWarning } from '@/utils/mids-import/types';
 import type { Build } from '@/types';
+
+const MBD_DATABASE_TO_DATASET: Record<string, DatasetId> = {
+  Homecoming: 'homecoming',
+  Rebirth: 'rebirth',
+};
+
+function detectDatasetFromJson(json: string): DatasetId {
+  try {
+    const parsed = JSON.parse(json) as { BuiltWith?: { Database?: string } };
+    const db = parsed.BuiltWith?.Database;
+    return (db && MBD_DATABASE_TO_DATASET[db]) || 'homecoming';
+  } catch {
+    return 'homecoming';
+  }
+}
 
 // ============================================================================
 // CLI parsing
@@ -448,6 +464,7 @@ async function runImport(opts: {
       continue;
     }
 
+    await loadDataset(detectDatasetFromJson(json));
     const result = importMidsBuild(json);
 
     if (result.warnings.length > 0) {
