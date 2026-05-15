@@ -5,8 +5,8 @@
  * strikethrough indicators on the dashboard tiles, so this surfaces it
  * up-front the first time a build crosses the rule.
  *
- * Controlled by the `ruleOf5AlertEnabled` setting (Settings → Rule of 5
- * alert). The X button dismisses for the current session; turning the
+ * Controlled by the `ruleOf5AlertEnabled` setting (header toolbar → Bonus
+ * Cap Alert). The X button dismisses for the current session; turning the
  * setting off suppresses it permanently.
  */
 
@@ -65,9 +65,11 @@ export function RuleOf5Banner() {
     >
       <span className="font-medium">Rule of 5:</span>
       <span>
-        {cappedCount} {label} over the cap and not counting. They show up
-        with <span className="line-through">strikethrough orange</span> in
-        the stat tooltips, and affected stats have an orange ring.
+        {cappedCount} {label} over the cap and not counting. Powers
+        contributing the offending bonus are ringed in orange, and the
+        rejected entries show up with{' '}
+        <span className="line-through">strikethrough orange</span> in the
+        stat tooltips.
       </span>
       <button
         type="button"

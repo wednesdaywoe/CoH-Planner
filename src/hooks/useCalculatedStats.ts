@@ -459,3 +459,47 @@ export function useBonusTracking(): BonusTracking {
   const result = useCharacterCalculation();
   return result.bonusTracking;
 }
+
+/**
+ * Set of `power.name` values that contribute to *any* (stat, value) bucket
+ * that's hit the Rule of 5 — including the 5 accepted sources, not just the
+ * rejected 6th+. Highlighting only the rejected source would imply that
+ * removing that specific power is the fix, but the 6 powers are
+ * interchangeable: any of them being unslotted resolves the cap. Returns an
+ * empty set when Bonus Cap Alert is disabled so callers can ungate without
+ * an extra branch.
+ */
+export function useOffendingPowerNames(): Set<string> {
+  const enabled = useUIStore((s) => s.ruleOf5AlertEnabled);
+  const { breakdown } = useCharacterCalculation();
+
+  return useMemo(() => {
+    const offending = new Set<string>();
+    if (!enabled) return offending;
+    for (const stat of breakdown.values()) {
+      // Group this stat's sources by value (the Rule of 5 fires per
+      // (stat, value) bucket). If any source in a bucket is capped, every
+      // power in that bucket is part of the issue.
+      const byValue = new Map<string, { capped: boolean; powerNames: string[] }>();
+      for (const source of stat.sources) {
+        if (!source.powerName) continue;
+        const key = source.value.toFixed(2);
+        const entry = byValue.get(key);
+        if (entry) {
+          entry.powerNames.push(source.powerName);
+          if (source.capped) entry.capped = true;
+        } else {
+          byValue.set(key, {
+            capped: !!source.capped,
+            powerNames: [source.powerName],
+          });
+        }
+      }
+      for (const entry of byValue.values()) {
+        if (!entry.capped) continue;
+        for (const name of entry.powerNames) offending.add(name);
+      }
+    }
+    return offending;
+  }, [breakdown, enabled]);
+}

@@ -168,6 +168,8 @@ export interface StatSource {
   setId?: string;
   pieces?: number;
   capped?: boolean; // True if this instance hit the Rule of 5 cap
+  /** Display name of the power that supplied this source (set bonus / proc), used to highlight powers contributing capped bonuses. */
+  powerName?: string;
 }
 
 /**
@@ -412,22 +414,24 @@ function buildStatBreakdown(
 
   for (const item of breakdownItems) {
     // Counted sources (first 5) — these are active and NOT capped
-    for (const sourceName of item.sources) {
+    for (const tracked of item.sources) {
       sources.push({
-        name: sourceName,
+        name: tracked.name,
         value: item.value,
         type: 'set-bonus',
         capped: false,
+        powerName: tracked.powerName,
       });
     }
 
     // Rejected sources (6th+) — these exceeded the Rule of 5 and are NOT counted
-    for (const sourceName of item.rejectedSources) {
+    for (const tracked of item.rejectedSources) {
       sources.push({
-        name: sourceName,
+        name: tracked.name,
         value: item.value,
         type: 'set-bonus',
         capped: true,
+        powerName: tracked.powerName,
       });
       cappedCount++;
     }
@@ -1616,7 +1620,8 @@ function applySingleProcEffect(
   effectType: string | undefined,
   sourceName: string,
   global: GlobalBonuses,
-  breakdown: Map<string, DashboardStatBreakdown>
+  breakdown: Map<string, DashboardStatBreakdown>,
+  powerName?: string
 ): void {
   if (value === undefined) return;
   if (isCalcDebugEnabled()) {
@@ -1630,6 +1635,7 @@ function applySingleProcEffect(
         name: sourceName,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1639,6 +1645,7 @@ function applySingleProcEffect(
         name: sourceName,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1652,6 +1659,7 @@ function applySingleProcEffect(
         name: `${sourceName} (+End)`,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1663,6 +1671,7 @@ function applySingleProcEffect(
         name: `${sourceName} (+HP)`,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1672,6 +1681,7 @@ function applySingleProcEffect(
         name: sourceName,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1689,6 +1699,7 @@ function applySingleProcEffect(
             name: sourceName,
             value,
             type: 'proc',
+            powerName,
           });
         }
       }
@@ -1707,6 +1718,7 @@ function applySingleProcEffect(
             name: sourceName,
             value,
             type: 'proc',
+            powerName,
           });
         }
       } else {
@@ -1724,6 +1736,7 @@ function applySingleProcEffect(
             name: sourceName,
             value,
             type: 'proc',
+            powerName,
           });
         }
       }
@@ -1736,6 +1749,7 @@ function applySingleProcEffect(
         name: sourceName,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1745,6 +1759,7 @@ function applySingleProcEffect(
         name: sourceName,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1754,6 +1769,7 @@ function applySingleProcEffect(
         name: sourceName,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1763,6 +1779,7 @@ function applySingleProcEffect(
         name: sourceName,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1772,6 +1789,7 @@ function applySingleProcEffect(
         name: sourceName,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1781,6 +1799,7 @@ function applySingleProcEffect(
         name: sourceName,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1790,6 +1809,7 @@ function applySingleProcEffect(
         name: sourceName,
         value,
         type: 'proc',
+        powerName,
       });
       break;
 
@@ -1872,7 +1892,7 @@ function applyProcBonuses(
         ? true  // No stat mapping: not subject to Rule of 5 (e.g., KB protection)
         : stat === null
           ? false // Explicitly excluded
-          : trackBonus(tracking, stat, effect.value, sourceName);
+          : trackBonus(tracking, stat, effect.value, sourceName, proc.powerName);
 
       if (allowed) {
         applySingleProcEffect(
@@ -1881,7 +1901,8 @@ function applyProcBonuses(
           effect.effectType,
           sourceName,
           global,
-          breakdown
+          breakdown,
+          proc.powerName
         );
       } else if (stat) {
         // Rule of 5 rejected — add a capped entry so it appears in the tooltip
@@ -1890,6 +1911,7 @@ function applyProcBonuses(
           value: effect.value,
           type: 'proc',
           capped: true,
+          powerName: proc.powerName,
         });
       }
     }
@@ -1901,7 +1923,7 @@ function applyProcBonuses(
         ? true
         : stat === null
           ? false
-          : trackBonus(tracking, stat, effect.secondaryValue, sourceName);
+          : trackBonus(tracking, stat, effect.secondaryValue, sourceName, proc.powerName);
 
       if (allowed) {
         applySingleProcEffect(
@@ -1910,7 +1932,8 @@ function applyProcBonuses(
           effect.secondaryEffectType,
           sourceName,
           global,
-          breakdown
+          breakdown,
+          proc.powerName
         );
       } else if (stat) {
         // Rule of 5 rejected — add a capped entry so it appears in the tooltip
@@ -1919,6 +1942,7 @@ function applyProcBonuses(
           value: effect.secondaryValue,
           type: 'proc',
           capped: true,
+          powerName: proc.powerName,
         });
       }
     }

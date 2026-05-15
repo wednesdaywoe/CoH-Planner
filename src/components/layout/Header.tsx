@@ -103,6 +103,8 @@ export function Header() {
   const combatMode = useUIStore((s) => s.combatMode);
   const toggleCombatMode = useUIStore((s) => s.toggleCombatMode);
   const openProcSettingsModal = useUIStore((s) => s.openProcSettingsModal);
+  const ruleOf5AlertEnabled = useUIStore((s) => s.ruleOf5AlertEnabled);
+  const toggleRuleOf5AlertEnabled = useUIStore((s) => s.toggleRuleOf5AlertEnabled);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
 
   const navigate = useNavigate();
@@ -230,6 +232,19 @@ export function Header() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </button>
+        </div>
+
+        <div className="flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
+          <Toggle
+            id="bonus-cap-alert-toggle"
+            name="bonusCapAlert"
+            checked={ruleOf5AlertEnabled}
+            onChange={toggleRuleOf5AlertEnabled}
+            label="Bonus Cap Alert"
+            title="Show a banner above the dashboard and ring offending powers in orange when the build has any set bonus that exceeds the Rule of 5 cap."
+            className="!gap-2"
+            variant="orange"
+          />
         </div>
 
         {archetypeId && <ATMechanics archetypeId={archetypeId} />}
@@ -961,8 +976,6 @@ function SettingsPopover() {
   const resetOnboarding = useOnboardingStore((s) => s.reset);
   const helpToastEnabled = useUIStore((s) => s.helpToastEnabled);
   const toggleHelpToastEnabled = useUIStore((s) => s.toggleHelpToastEnabled);
-  const ruleOf5AlertEnabled = useUIStore((s) => s.ruleOf5AlertEnabled);
-  const toggleRuleOf5AlertEnabled = useUIStore((s) => s.toggleRuleOf5AlertEnabled);
 
   const [calcDebugOn, setCalcDebugOn] = useState(isCalcDebugEnabled);
   const handleToggleCalcDebug = () => {
@@ -1226,19 +1239,6 @@ function SettingsPopover() {
                 checked={helpToastEnabled}
                 onChange={toggleHelpToastEnabled}
                 label="Help hint on launch"
-              />
-            </Tooltip>
-          </div>
-
-          {/* Rule of 5 alert banner */}
-          <div className="flex items-center justify-between">
-            <Tooltip content="Show a banner above the dashboard whenever the current build has any set bonus that exceeds the Rule of 5 cap (shown crossed-out in stat tooltips)">
-              <Toggle
-                id="rule-of-5-alert-toggle"
-                name="ruleOf5Alert"
-                checked={ruleOf5AlertEnabled}
-                onChange={toggleRuleOf5AlertEnabled}
-                label="Rule of 5 alert"
               />
             </Tooltip>
           </div>
