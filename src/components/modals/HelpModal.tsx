@@ -16,23 +16,42 @@ import {
 interface HelpModalProps {
   isOpen: boolean;
   onClose: () => void;
+  /** If provided when the modal opens, expand this topic and scroll it into view. */
+  initialTopicId?: string | null;
 }
 
-export function HelpModal({ isOpen, onClose }: HelpModalProps) {
+export function HelpModal({ isOpen, onClose, initialTopicId }: HelpModalProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<HelpCategory | 'all'>('all');
   const [expandedTopic, setExpandedTopic] = useState<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const topicRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   useEffect(() => {
     if (isOpen) {
+      // When opened with an initial topic, jump to its category, expand the
+      // topic, and scroll to it — skip auto-focusing the search input so the
+      // viewport doesn't snap back to the top.
+      if (initialTopicId) {
+        const topic = HELP_TOPICS.find((t) => t.id === initialTopicId);
+        if (topic) {
+          setActiveCategory(topic.category);
+          setExpandedTopic(initialTopicId);
+          // Wait for the topic list to render after the category change.
+          const scrollTimer = setTimeout(() => {
+            const el = topicRefs.current.get(initialTopicId);
+            el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+          return () => clearTimeout(scrollTimer);
+        }
+      }
       const timer = setTimeout(() => searchInputRef.current?.focus(), 100);
       return () => clearTimeout(timer);
     }
     setSearchQuery('');
     setActiveCategory('all');
     setExpandedTopic(null);
-  }, [isOpen]);
+  }, [isOpen, initialTopicId]);
 
   const filteredTopics = useMemo(() => {
     let topics: HelpTopic[];
@@ -171,6 +190,10 @@ export function HelpModal({ isOpen, onClose }: HelpModalProps) {
                       expanded={expandedTopic === topic.id}
                       onToggle={() => setExpandedTopic(expandedTopic === topic.id ? null : topic.id)}
                       highlightMatch={highlightMatch}
+                      onRef={(el) => {
+                        if (el) topicRefs.current.set(topic.id, el);
+                        else topicRefs.current.delete(topic.id);
+                      }}
                     />
                   ))}
                 </div>
@@ -222,16 +245,18 @@ function HelpTopicItem({
   expanded,
   onToggle,
   highlightMatch,
+  onRef,
 }: {
   topic: HelpTopic;
   expanded: boolean;
   onToggle: () => void;
   highlightMatch: (text: string) => ReactNode;
+  onRef?: (el: HTMLDivElement | null) => void;
 }) {
   const DemoComponent = topic.demoComponent;
 
   return (
-    <div className="bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden">
+    <div ref={onRef} className="bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden">
       <button
         onClick={onToggle}
         className="w-full text-left px-3 py-2 flex items-center gap-2 hover:bg-gray-800 transition-colors"

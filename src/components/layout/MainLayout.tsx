@@ -7,6 +7,7 @@ import { Header } from './Header';
 import { StatsDashboard } from './StatsDashboard';
 import { UpdateBanner } from './UpdateBanner';
 import { StatusBanner } from './StatusBanner';
+import { RuleOf5Banner } from './RuleOf5Banner';
 import { MobileBottomNav } from './MobileBottomNav';
 import { EnhancementPicker } from '@/components/enhancements/EnhancementPicker';
 import { PowerInfoTooltip } from '@/components/info';
@@ -84,6 +85,10 @@ export function MainLayout({ children }: MainLayoutProps) {
       <div className="hidden lg:block">
         <StatsDashboard />
       </div>
+      {/* Educational banner — placed below the dashboard so it sits in an
+       *  unexpected spot relative to the top-anchored update/status banners.
+       *  Top-of-page banner blindness was causing users to miss it. */}
+      <RuleOf5Banner />
       <main className="flex-1 overflow-hidden relative">
         {children}
       </main>
@@ -103,7 +108,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       {/* Floating buttons — hidden on mobile (those actions live in the bottom nav's Menu sheet) */}
       <div className="hidden lg:flex fixed bottom-4 right-4 z-40 items-center gap-2">
         <button
-          onClick={openHelpModal}
+          onClick={() => openHelpModal()}
           className="flex items-center justify-center w-9 h-9 bg-blue-600 hover:bg-blue-500 text-white rounded-full shadow-lg transition-colors border border-blue-400"
           title="Help"
           aria-label="Open help"

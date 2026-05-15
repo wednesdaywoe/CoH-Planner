@@ -308,6 +308,11 @@ interface UIState {
 
   /** Whether the "discover the help system" hint toast appears on each load. */
   helpToastEnabled: boolean;
+
+  /** Whether to show the educational banner when a build has any capped
+   *  (Rule-of-5-rejected) set bonus. Default on so first-time users learn
+   *  what the strikethrough/orange-ring indicators mean. */
+  ruleOf5AlertEnabled: boolean;
 }
 
 export interface ToastAction {
@@ -433,7 +438,10 @@ interface UIActions {
   closeControlsModal: () => void;
 
   // Help Modal
-  openHelpModal: () => void;
+  /** Optional topic id to expand + scroll to when the help modal opens.
+   *  Cleared on close so subsequent opens start fresh. */
+  helpModalInitialTopic: string | null;
+  openHelpModal: (initialTopicId?: string) => void;
   closeHelpModal: () => void;
 
   // Detailed Totals Modal
@@ -564,6 +572,8 @@ interface UIActions {
   clearToasts: () => void;
   setHelpToastEnabled: (enabled: boolean) => void;
   toggleHelpToastEnabled: () => void;
+  setRuleOf5AlertEnabled: (enabled: boolean) => void;
+  toggleRuleOf5AlertEnabled: () => void;
 
   // Hard reset of build-specific UI state (for New Build)
   resetForNewBuild: () => void;
@@ -655,6 +665,7 @@ export const useUIStore = create<UIStore>()(
       enhancementListModalOpen: false,
       controlsModalOpen: false,
       helpModalOpen: false,
+      helpModalInitialTopic: null,
       detailedTotalsModalOpen: false,
       powersetCompareModalOpen: false,
       setBonusLookupModalOpen: false,
@@ -709,6 +720,7 @@ export const useUIStore = create<UIStore>()(
       mobileSheet: null,
       toasts: [],
       helpToastEnabled: true,
+      ruleOf5AlertEnabled: true,
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex, overrideSelect, virtualSlots, powerCategory) =>
@@ -1158,11 +1170,11 @@ export const useUIStore = create<UIStore>()(
         set({ controlsModalOpen: false }),
 
       // Help Modal
-      openHelpModal: () =>
-        set({ helpModalOpen: true }),
+      openHelpModal: (initialTopicId) =>
+        set({ helpModalOpen: true, helpModalInitialTopic: initialTopicId ?? null }),
 
       closeHelpModal: () =>
-        set({ helpModalOpen: false }),
+        set({ helpModalOpen: false, helpModalInitialTopic: null }),
 
       // Detailed Totals Modal
       openDetailedTotalsModal: () =>
@@ -1434,6 +1446,9 @@ export const useUIStore = create<UIStore>()(
       setHelpToastEnabled: (enabled) => set({ helpToastEnabled: enabled }),
       toggleHelpToastEnabled: () =>
         set((state) => ({ helpToastEnabled: !state.helpToastEnabled })),
+      setRuleOf5AlertEnabled: (enabled) => set({ ruleOf5AlertEnabled: enabled }),
+      toggleRuleOf5AlertEnabled: () =>
+        set((state) => ({ ruleOf5AlertEnabled: !state.ruleOf5AlertEnabled })),
 
       resetForNewBuild: () =>
         set({
@@ -1519,6 +1534,7 @@ export const useUIStore = create<UIStore>()(
         mechanicAdjusters: state.mechanicAdjusters,
         globalAdjusters: state.globalAdjusters,
         helpToastEnabled: state.helpToastEnabled,
+        ruleOf5AlertEnabled: state.ruleOf5AlertEnabled,
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };

@@ -961,6 +961,8 @@ function SettingsPopover() {
   const resetOnboarding = useOnboardingStore((s) => s.reset);
   const helpToastEnabled = useUIStore((s) => s.helpToastEnabled);
   const toggleHelpToastEnabled = useUIStore((s) => s.toggleHelpToastEnabled);
+  const ruleOf5AlertEnabled = useUIStore((s) => s.ruleOf5AlertEnabled);
+  const toggleRuleOf5AlertEnabled = useUIStore((s) => s.toggleRuleOf5AlertEnabled);
 
   const [calcDebugOn, setCalcDebugOn] = useState(isCalcDebugEnabled);
   const handleToggleCalcDebug = () => {
@@ -1224,6 +1226,19 @@ function SettingsPopover() {
                 checked={helpToastEnabled}
                 onChange={toggleHelpToastEnabled}
                 label="Help hint on launch"
+              />
+            </Tooltip>
+          </div>
+
+          {/* Rule of 5 alert banner */}
+          <div className="flex items-center justify-between">
+            <Tooltip content="Show a banner above the dashboard whenever the current build has any set bonus that exceeds the Rule of 5 cap (shown crossed-out in stat tooltips)">
+              <Toggle
+                id="rule-of-5-alert-toggle"
+                name="ruleOf5Alert"
+                checked={ruleOf5AlertEnabled}
+                onChange={toggleRuleOf5AlertEnabled}
+                label="Rule of 5 alert"
               />
             </Tooltip>
           </div>

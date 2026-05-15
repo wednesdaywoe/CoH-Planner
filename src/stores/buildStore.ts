@@ -47,6 +47,7 @@ import {
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
+import { findNextAvailableGrantLevel, backfillSlotOrderLevels } from '@/utils/slot-levels';
 import { useHistoryStore } from './historyStore';
 import { useUIStore } from './uiStore';
 
@@ -1484,13 +1485,25 @@ export const useBuildStore = create<BuildStore>()(
 
         historyCheckpoint();
         const newSlotIndex = power.slots.length; // index of the slot being added
+        // Resolve the assigned grant level *before* the slot exists on the power,
+        // so the helper sees the same slotOrder it will see in compute. The new
+        // entry consumes the lowest free grant >= the power's pick level, which
+        // is exactly the grant freed by a recent removeSlot if one matches.
+        const pickLevel = category === 'inherent' ? 1 : power.level;
+        const assignedLevel = findNextAvailableGrantLevel(state.build, pickLevel);
         set((s) => {
           const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
               p.internalName === powerName ? { ...p, slots: [...p.slots, null] } : p
             )
           );
-          newBuild.slotOrder = [...newBuild.slotOrder, { powerName, slotIndex: newSlotIndex, category }];
+          const newEntry: Build['slotOrder'][number] = {
+            powerName,
+            slotIndex: newSlotIndex,
+            category,
+            ...(assignedLevel !== null ? { level: assignedLevel } : {}),
+          };
+          newBuild.slotOrder = [...newBuild.slotOrder, newEntry];
           return { build: newBuild };
         });
 
@@ -2059,6 +2072,10 @@ export const useBuildStore = create<BuildStore>()(
           // Normalize VEAT branch powersets to base powersets
           normalizeBranchPowersets(build);
 
+          // Back-fill grant levels on slotOrder entries from pre-fix exports
+          // so removing slots behaves like Mids from the first interaction.
+          backfillSlotOrderLevels(build);
+
           // Auto-detect branch for VEAT builds (so branch powers appear in the picker)
           const branch = detectBranch(build);
           if (branch) {
@@ -2078,6 +2095,7 @@ export const useBuildStore = create<BuildStore>()(
         if (!build.slotOrder) {
           build.slotOrder = [];
         }
+        backfillSlotOrderLevels(build);
         set({ build });
       },
 
@@ -2314,6 +2332,12 @@ export const useBuildStore = create<BuildStore>()(
               }
             }
           }
+
+          // Migration: Back-fill `level` on slotOrder entries placed before the
+          // Mids-style remove/replace fix. Without this, the first removeSlot
+          // on a legacy build still cascades subsequent slots — backfill makes
+          // every entry stable from the next interaction onward.
+          backfillSlotOrderLevels(state.build);
 
           // Auto-detect branch for VEAT builds on rehydration
           const branch = detectBranch(state.build);

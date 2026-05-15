@@ -160,8 +160,12 @@ export interface Build {
    *  Each entry = one extra slot added (slot index 1+ on a power).
    *  Empty = respec mode (slot levels computed by power-pick order).
    *  `category` disambiguates powers with the same internalName across categories
-   *  (e.g., "Conserve_Power" in both secondary and epic). Optional for backward compat. */
-  slotOrder: { powerName: string; slotIndex: number; category?: string }[];
+   *  (e.g., "Conserve_Power" in both secondary and epic). Optional for backward compat.
+   *  `level` is the grant-pool level this slot was assigned at the time it was placed.
+   *  Storing it lets removeSlot + re-add behave like Mids: the freed level returns
+   *  to a pool rather than cascading subsequent slots downward. Optional for legacy
+   *  builds; missing values are back-filled greedily on load. */
+  slotOrder: { powerName: string; slotIndex: number; category?: string; level?: number }[];
 
   /**
    * Active form for Kheldian (Peacebringer / Warshade) builds. Used by

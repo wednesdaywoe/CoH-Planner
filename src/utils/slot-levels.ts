@@ -186,9 +186,14 @@ function computeSlotLevelsRespec(build: Build): Map<string, number[]> {
 }
 
 /**
- * Leveling mode: assign slot levels in the chronological order they were added.
- * Each slotOrder entry consumes the next available grant at or after its
- * power's pick level.
+ * Leveling mode: assign slot levels honoring each entry's stored `level`
+ * when valid. Entries without a stored level (legacy / first-time placements)
+ * fall back to greedy assignment in chronological order.
+ *
+ * Storing the assigned level per entry is what makes removing a slot behave
+ * like Mids: peers keep the level they were placed at instead of cascading
+ * down to fill the gap. The freed grant is naturally available for the next
+ * slot placement.
  */
 function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
   const allPowers = collectAllPowers(build);
@@ -217,7 +222,18 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
     }
   }
 
-  // Process slotOrder entries chronologically
+  interface PendingEntry {
+    entry: Build['slotOrder'][number];
+    key: string;
+    pickLevel: number;
+    levels: number[];
+  }
+
+  // Pass 1: honor entries with a valid stored grant level.
+  // A stored level is valid when it's >= the power's pick level and an
+  // unused grant at that exact level still exists in the pool. (Pool only
+  // contains levels <= build.level, so out-of-range levels naturally fail.)
+  const needsAssign: PendingEntry[] = [];
   for (const entry of build.slotOrder) {
     const cat = resolveSlotCategory(build, entry.powerName, entry.category);
     if (!cat) continue;
@@ -226,11 +242,24 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
     const levels = result.get(key);
     const pickLevel = pickLevelMap.get(key);
     if (!levels || pickLevel === undefined || entry.slotIndex >= levels.length) continue;
-    // Don't let slotOrder overwrite Rebirth's auto-granted inherent slot levels
     const skipUntil = inherentSkipIndex.get(key) ?? 1;
     if (entry.slotIndex < skipUntil) continue;
 
-    // Find the first unused grant at or after this power's pick level
+    const stored = entry.level;
+    if (stored !== undefined && stored >= pickLevel) {
+      const gi = findUnusedGrantAtLevel(grantPool, stored, usedGrants);
+      if (gi !== -1) {
+        levels[entry.slotIndex] = stored;
+        usedGrants.add(gi);
+        continue;
+      }
+    }
+    needsAssign.push({ entry, key, pickLevel, levels });
+  }
+
+  // Pass 2: greedy assignment for entries without a usable stored level
+  // (legacy entries, or stored levels invalidated by a level/pick-level change).
+  for (const { entry, pickLevel, levels } of needsAssign) {
     let assigned = false;
     for (let gi = 0; gi < grantPool.length; gi++) {
       if (usedGrants.has(gi)) continue;
@@ -240,7 +269,6 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
       assigned = true;
       break;
     }
-
     if (!assigned) {
       // No grants left — use pick level as fallback
       levels[entry.slotIndex] = pickLevel;
@@ -249,6 +277,92 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
 
   addAutoGrantedPowers(build, result);
   return result;
+}
+
+/** Find the index of an unused grant whose level exactly matches `target`. */
+function findUnusedGrantAtLevel(
+  grantPool: number[],
+  target: number,
+  used: Set<number>
+): number {
+  for (let gi = 0; gi < grantPool.length; gi++) {
+    if (grantPool[gi] !== target) continue;
+    if (used.has(gi)) continue;
+    return gi;
+  }
+  return -1;
+}
+
+/**
+ * Find the next available grant level for a new slot placement on a power
+ * with `pickLevel`. Honors stored levels on existing slotOrder entries so
+ * removed slots' levels return to the pool first (Mids-style behavior).
+ *
+ * Returns null when no grant >= pickLevel is free at the current build level.
+ */
+export function findNextAvailableGrantLevel(
+  build: Build,
+  pickLevel: number
+): number | null {
+  const grantPool = buildGrantPool(build.level);
+  const usedGrants = new Set<number>();
+
+  // Replay existing slotOrder, honoring stored levels first, greedy fallback after.
+  const pendingPickLevels: number[] = [];
+  for (const entry of build.slotOrder) {
+    const cat = resolveSlotCategory(build, entry.powerName, entry.category);
+    if (!cat) continue;
+    const entryPickLevel = cat === 'inherent' ? 1 : pickLevelForEntry(build, cat, entry.powerName);
+    if (entryPickLevel === null) continue;
+
+    const stored = entry.level;
+    if (stored !== undefined && stored >= entryPickLevel) {
+      const gi = findUnusedGrantAtLevel(grantPool, stored, usedGrants);
+      if (gi !== -1) {
+        usedGrants.add(gi);
+        continue;
+      }
+    }
+    pendingPickLevels.push(entryPickLevel);
+  }
+  for (const pl of pendingPickLevels) {
+    for (let gi = 0; gi < grantPool.length; gi++) {
+      if (usedGrants.has(gi)) continue;
+      if (grantPool[gi] < pl) continue;
+      usedGrants.add(gi);
+      break;
+    }
+  }
+
+  for (let gi = 0; gi < grantPool.length; gi++) {
+    if (usedGrants.has(gi)) continue;
+    if (grantPool[gi] < pickLevel) continue;
+    return grantPool[gi];
+  }
+  return null;
+}
+
+function pickLevelForEntry(
+  build: Build,
+  category: PowerCategory,
+  powerName: string
+): number | null {
+  const findIn = (powers: readonly SelectedPower[]) =>
+    powers.find((p) => p.internalName === powerName);
+  let p: SelectedPower | undefined;
+  switch (category) {
+    case 'primary': p = findIn(build.primary.powers); break;
+    case 'secondary': p = findIn(build.secondary.powers); break;
+    case 'pool':
+      for (const pool of build.pools) {
+        p = findIn(pool.powers);
+        if (p) break;
+      }
+      break;
+    case 'epic': p = build.epicPool ? findIn(build.epicPool.powers) : undefined; break;
+    case 'inherent': return 1;
+  }
+  return p ? p.level : null;
 }
 
 /**
@@ -266,4 +380,30 @@ export function computeAllSlotLevels(build: Build): Map<string, number[]> {
     return computeSlotLevelsLeveling(build);
   }
   return computeSlotLevelsRespec(build);
+}
+
+/**
+ * Back-fill `level` on slotOrder entries that don't have one yet. Mutates
+ * the build in place. Safe to run repeatedly. Used as a migration when
+ * loading legacy builds so the Mids-style remove/replace behavior kicks in
+ * immediately without waiting for the user to re-place every slot.
+ */
+export function backfillSlotOrderLevels(build: Build): boolean {
+  if (build.slotOrder.length === 0) return false;
+  const needsBackfill = build.slotOrder.some((e) => e.level === undefined);
+  if (!needsBackfill) return false;
+
+  const levels = computeSlotLevelsLeveling(build);
+  let changed = false;
+  for (const entry of build.slotOrder) {
+    if (entry.level !== undefined) continue;
+    const cat = resolveSlotCategory(build, entry.powerName, entry.category);
+    if (!cat) continue;
+    const key = powerKey(cat, entry.powerName);
+    const powerLevels = levels.get(key);
+    if (!powerLevels || entry.slotIndex >= powerLevels.length) continue;
+    entry.level = powerLevels[entry.slotIndex];
+    changed = true;
+  }
+  return changed;
 }

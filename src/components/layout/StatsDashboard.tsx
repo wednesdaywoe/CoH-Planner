@@ -166,6 +166,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const closeControlsModal = useUIStore((s) => s.closeControlsModal);
   const helpModalOpen = useUIStore((s) => s.helpModalOpen);
   const closeHelpModal = useUIStore((s) => s.closeHelpModal);
+  const helpModalInitialTopic = useUIStore((s) => s.helpModalInitialTopic);
   const detailedTotalsModalOpen = useUIStore((s) => s.detailedTotalsModalOpen);
   const openDetailedTotalsModal = useUIStore((s) => s.openDetailedTotalsModal);
   const closeDetailedTotalsModal = useUIStore((s) => s.closeDetailedTotalsModal);
@@ -618,6 +619,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
       <HelpModal
         isOpen={helpModalOpen}
         onClose={closeHelpModal}
+        initialTopicId={helpModalInitialTopic}
       />
 
       {/* Detailed Totals Modal */}
