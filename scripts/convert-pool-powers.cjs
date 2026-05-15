@@ -92,6 +92,20 @@ const POOL_DISPLAY_NAMES = {
   teleportation: 'Teleportation',
 };
 
+// Pools that exist only in specific datasets. Gadgetry and Utility Belt have
+// binary data in HC's `bin.pigg` but are unreleased/unselectable in-game;
+// only Rebirth ships them as playable pools.
+const DATASET_EXTRA_POOLS = {
+  rebirth: {
+    gadgetry: { dir: 'gadgetry', displayName: 'Gadgetry' },
+  },
+};
+
+for (const [poolId, info] of Object.entries(DATASET_EXTRA_POOLS[datasetId] || {})) {
+  POOL_DIR_MAP[poolId] = info.dir;
+  POOL_DISPLAY_NAMES[poolId] = info.displayName;
+}
+
 // ============================================
 // LOAD EXISTING DATA (for preserving metadata)
 // ============================================
@@ -249,7 +263,9 @@ function convertPool(poolId) {
 
   const poolPath = path.join(RAW_POWERS_PATH, rawDir);
   if (!fs.existsSync(poolPath)) {
-    console.error(`Raw pool directory not found: ${poolPath}`);
+    // Pool absent from this dataset's raw export (e.g. Gadgetry exists in
+    // Rebirth but not HC). Skip silently — POOL_DIR_MAP is the union across
+    // all datasets.
     return null;
   }
 

@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-05-15',
     items: [
+      { message: 'Gadgetry power pool should now be selectable in Rebirth dataset', type: 'fix' },
       { message: 'Added an educational banner for Rule of 5 set bonus cap', type: 'fix' },
       { message: 'Fix for dataset handle mismatch on build load to ensure correct data retrieval', type: 'fix' },
       { message: 'Removed a bunch of phantom caster effects (KB protection, mez resistance, +range buffs) from attack powers that were never supposed to grant them', type: 'fix' },
