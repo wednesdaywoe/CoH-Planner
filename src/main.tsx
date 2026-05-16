@@ -8,6 +8,12 @@ import { loadDataset } from '@/data/dataset'
 // Register window.cohDebug for calculation debug logging + fallback warnings
 import '@/utils/calc-debug'
 import '@/utils/fallback-warnings'
+import { installChunkErrorReload } from '@/utils/chunk-error-reload'
+
+// Install before any dynamic imports run so chunk-load failures during boot
+// (e.g. the dataset import below) are caught and recovered from rather than
+// leaving the user staring at a blank screen after a fresh deploy.
+installChunkErrorReload()
 
 // Sentry — production only. DSN is injected at build time; if it's missing
 // the init is a no-op so dev/local builds stay silent.

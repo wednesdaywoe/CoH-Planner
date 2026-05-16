@@ -8,11 +8,12 @@ import { Tooltip, Badge } from '@/components/ui';
 import type { SetBonus } from '@/types';
 import type { BonusTracking } from '@/utils/calculations';
 
-/** Format a number to at most 2 decimal places, removing trailing zeros */
+/** Format a number to at most 3 decimal places, removing trailing zeros.
+ *  3 decimals so values like 1.125% (Luck of the Gambler 3pc +MaxHP) display
+ *  exactly rather than being rounded to 1.13%, which sends users down a
+ *  math-checking rabbit hole. */
 function formatBonusValue(value: number): string {
-  // Round to 2 decimal places to avoid floating point issues
-  const rounded = Math.round(value * 100) / 100;
-  // Convert to string, which automatically removes trailing zeros
+  const rounded = Math.round(value * 1000) / 1000;
   return rounded.toString();
 }
 

@@ -927,7 +927,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {accoladeSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-300 ml-2 whitespace-nowrap">+{source.value.toFixed(2)}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className="text-amber-300 ml-2 whitespace-nowrap">+{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
