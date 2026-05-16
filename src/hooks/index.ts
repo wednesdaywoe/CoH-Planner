@@ -20,6 +20,7 @@ export {
   usePowersPerLevel,
   useActiveSetBonuses,
   useBonusTracking,
+  useOffendingPowerNames,
   convertToLegacyStats,
 } from './useCalculatedStats';
 

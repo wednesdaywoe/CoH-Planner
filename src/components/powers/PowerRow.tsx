@@ -8,7 +8,7 @@
 import { useState, useCallback } from 'react';
 import type { Enhancement, SelectedPower } from '@/types';
 import { resolvePath } from '@/utils/paths';
-import { useIsTouchDevice } from '@/hooks';
+import { useIsTouchDevice, useOffendingPowerNames } from '@/hooks';
 import { Tooltip } from '@/components/ui';
 import { TouchableSlot } from './TouchableSlot';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
@@ -113,6 +113,11 @@ export function PowerRow({
   // On touch devices, suppress hover-triggered info panel — use the info button instead
   const hoverHandler = isTouch ? undefined : onHover;
   const leaveHandler = isTouch ? undefined : onLeave;
+  // Bonus Cap Alert: powers contributing a Rule-of-5-rejected bonus get an
+  // orange ring so users can see *which* powers to retune. Empty set when the
+  // alert is disabled, so this is a no-op then.
+  const offendingPowers = useOffendingPowerNames();
+  const isOverCap = offendingPowers.has(name);
   const slotSize = SLOT_SIZE_MAP[size];
   const ghostSize = GHOST_SIZE_MAP[size];
   const iconClass = ICON_CLASS_MAP[size];
@@ -203,6 +208,12 @@ export function PowerRow({
     : categoryBorder
       ? `${categoryBorder} border-slate-700 hover:border-slate-600`
       : 'border-slate-700 hover:border-slate-600';
+  // Layered after borderClass so the orange ring wins regardless of locked /
+  // category-tinted variants. ring-inset keeps it from interfering with the
+  // existing border on adjacent rows.
+  const overCapClass = isOverCap
+    ? 'ring-2 ring-inset ring-orange-500'
+    : '';
 
   // Indent spacer for inline layout row 2
   const getIndentWidth = () => {
@@ -344,7 +355,7 @@ export function PowerRow({
     // Stacked layout: Level+Icon left column, Name+Slots right column
     return (
       <div
-        className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass}`}
+        className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass} ${overCapClass}`}
         onMouseEnter={hoverHandler}
         onMouseLeave={leaveHandler}
         data-info-hover="power"
@@ -375,7 +386,7 @@ export function PowerRow({
   // Inline layout: Row 1 = Level Icon Name X, Row 2 = indent Slots Toggle
   return (
     <div
-      className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass}`}
+      className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass} ${overCapClass}`}
       onMouseEnter={hoverHandler}
       onMouseLeave={leaveHandler}
       data-info-hover="power"

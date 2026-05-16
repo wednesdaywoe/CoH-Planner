@@ -4,13 +4,27 @@
 
 import { forwardRef, type InputHTMLAttributes } from 'react';
 
+type ToggleVariant = 'blue' | 'orange';
+
 interface ToggleProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label?: string;
   description?: string;
+  variant?: ToggleVariant;
 }
 
+// Tailwind needs full class names present in source for JIT to pick them up,
+// so per-variant classes are spelled out rather than templated.
+const TRACK_CHECKED: Record<ToggleVariant, string> = {
+  blue: 'peer-checked:bg-blue-600',
+  orange: 'peer-checked:bg-orange-500',
+};
+const FOCUS_RING: Record<ToggleVariant, string> = {
+  blue: 'peer-focus:ring-blue-500',
+  orange: 'peer-focus:ring-orange-500',
+};
+
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
-  ({ label, description, className = '', checked, disabled, title, ...props }, ref) => {
+  ({ label, description, className = '', checked, disabled, title, variant = 'blue', ...props }, ref) => {
     return (
       <label
         title={title}
@@ -33,8 +47,8 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             className={`
               w-10 h-5 rounded-full
               bg-gray-600
-              peer-checked:bg-blue-600
-              peer-focus:ring-2 peer-focus:ring-blue-500 peer-focus:ring-offset-2 peer-focus:ring-offset-gray-900
+              ${TRACK_CHECKED[variant]}
+              peer-focus:ring-2 ${FOCUS_RING[variant]} peer-focus:ring-offset-2 peer-focus:ring-offset-gray-900
               transition-colors duration-200
             `}
           />

@@ -25,10 +25,21 @@ export interface BonusSource {
   powerName: string;
 }
 
+/**
+ * A single source contribution recorded against the Rule of 5. `powerName` is
+ * carried alongside the display name so consumers (e.g. the offending-power
+ * highlight) can identify which power supplied a capped bonus without parsing
+ * the source string.
+ */
+export interface TrackedSource {
+  name: string;
+  powerName?: string;
+}
+
 export interface ValueTracking {
   count: number;
-  sources: string[];
-  rejectedSources: string[];
+  sources: TrackedSource[];
+  rejectedSources: TrackedSource[];
   capped: boolean;
   value: number;
 }
@@ -46,8 +57,8 @@ export interface AggregatedBonuses {
 export interface StatBreakdownItem {
   value: number;
   count: number;
-  sources: string[];
-  rejectedSources: string[];
+  sources: TrackedSource[];
+  rejectedSources: TrackedSource[];
   capped: boolean;
   total: number;
 }
@@ -274,7 +285,8 @@ export function trackBonus(
   tracking: BonusTracking,
   stat: string,
   value: number,
-  source: string
+  source: string,
+  powerName?: string
 ): boolean {
   const valueKey = value.toFixed(2);
 
@@ -295,15 +307,16 @@ export function trackBonus(
   }
 
   const valueTracking = tracking[stat][valueKey];
+  const tracked: TrackedSource = { name: source, powerName };
 
   // Only count if under cap
   if (valueTracking.count < 5) {
     valueTracking.count++;
-    valueTracking.sources.push(source);
+    valueTracking.sources.push(tracked);
     return true;
   } else {
     valueTracking.capped = true;
-    valueTracking.rejectedSources.push(source);
+    valueTracking.rejectedSources.push(tracked);
     return false;
   }
 }
@@ -531,7 +544,7 @@ export function calculateSetBonuses(
 
   // Track each bonus with Rule of 5
   allBonuses.forEach((bonus) => {
-    trackBonus(tracking, bonus.stat, bonus.value, bonus.source);
+    trackBonus(tracking, bonus.stat, bonus.value, bonus.source, bonus.powerName);
   });
 
   // Get aggregated totals
@@ -609,7 +622,7 @@ export function getActiveSetBonusesList(
         bonuses.push({
           stat,
           value: vt.value,
-          source,
+          source: source.name,
         });
       });
     });
