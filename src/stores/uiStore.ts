@@ -155,6 +155,15 @@ interface UIState {
   /** IO set sort preference in enhancement picker */
   ioSetSortBy: 'name' | 'level';
 
+  /**
+   * Per-power memory of the last enhancement-picker filter the user
+   * landed on (typeFilter + sidebarFilter). Keyed by the power's
+   * `internalName`. Restored when the picker reopens for the same
+   * power so e.g. slotting an ATO once makes the next slot on the
+   * same power default to the ATO category.
+   */
+  lastPickerFilterByPower: Record<string, { typeFilter: string; sidebarFilter: string }>;
+
   /** Exemplar mode - when ON, respects build level for set bonus suppression */
   exemplarMode: boolean;
 
@@ -354,6 +363,7 @@ interface UIActions {
   toggleAttunement: () => void;
   setGlobalBoostLevel: (level: number) => void;
   setIOSetSortBy: (sort: 'name' | 'level') => void;
+  setLastPickerFilter: (powerName: string, typeFilter: string, sidebarFilter: string) => void;
   toggleExemplarMode: () => void;
   setExemplarLevel: (level: number) => void;
   setTargetLevelOffset: (offset: number) => void;
@@ -674,6 +684,7 @@ export const useUIStore = create<UIStore>()(
       attunementEnabled: false,
       globalBoostLevel: 0,
       ioSetSortBy: 'name' as const,
+      lastPickerFilterByPower: {},
       exemplarMode: false,
       exemplarLevel: 50,
       targetLevelOffset: 0,
@@ -832,6 +843,14 @@ export const useUIStore = create<UIStore>()(
 
       setIOSetSortBy: (sort) =>
         set({ ioSetSortBy: sort }),
+
+      setLastPickerFilter: (powerName, typeFilter, sidebarFilter) =>
+        set((state) => ({
+          lastPickerFilterByPower: {
+            ...state.lastPickerFilterByPower,
+            [powerName]: { typeFilter, sidebarFilter },
+          },
+        })),
 
       toggleExemplarMode: () =>
         set((state) => ({
@@ -1502,6 +1521,7 @@ export const useUIStore = create<UIStore>()(
         attunementEnabled: state.attunementEnabled,
         globalBoostLevel: state.globalBoostLevel,
         ioSetSortBy: state.ioSetSortBy,
+        lastPickerFilterByPower: state.lastPickerFilterByPower,
         exemplarMode: state.exemplarMode,
         exemplarLevel: state.exemplarLevel,
         targetLevelOffset: state.targetLevelOffset,

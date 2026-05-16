@@ -50,6 +50,8 @@ export function EnhancementPicker() {
   const setGlobalBoostLevel = useUIStore((s) => s.setGlobalBoostLevel);
   const ioSortBy = useUIStore((s) => s.ioSetSortBy);
   const setIOSortBy = useUIStore((s) => s.setIOSetSortBy);
+  const lastPickerFilterByPower = useUIStore((s) => s.lastPickerFilterByPower);
+  const setLastPickerFilter = useUIStore((s) => s.setLastPickerFilter);
   const closeEnhancementPicker = useUIStore((s) => s.closeEnhancementPicker);
   const setEnhancement = useBuildStore((s) => s.setEnhancement);
   const buildOrigin = useBuildStore((s) => s.build.settings.origin);
@@ -68,6 +70,37 @@ export function EnhancementPicker() {
   // Multi-select state: setId → Set of piece indices. Populated by shift+click (desktop)
   // or tap in selectMode. Shared UI model: sticky bottom bar commits, "Cancel" clears.
   const [shiftSelected, setShiftSelected] = useState<Map<string, Set<number>>>(new Map());
+
+  // Stack-select state for the generic / special / origin tabs. Set pieces
+  // are inherently unique-per-power so they use a Set; common IOs / HOs /
+  // origins are stackable, so we keep an explicit count per tile id along
+  // with a thunk that builds the resulting Enhancement at commit time
+  // (lazy so global IO level / boost / origin reflect the current value
+  // when the user clicks Slot, not when they first added the tile).
+  type StackedEntry = { count: number; build: () => Enhancement; label: string };
+  const [stackedSelected, setStackedSelected] = useState<Map<string, StackedEntry>>(new Map());
+
+  const incStacked = (id: string, build: () => Enhancement, label: string) => {
+    setStackedSelected((prev) => {
+      const next = new Map(prev);
+      const existing = next.get(id);
+      next.set(id, { count: (existing?.count ?? 0) + 1, build, label });
+      return next;
+    });
+  };
+
+  const decStacked = (id: string) => {
+    setStackedSelected((prev) => {
+      const next = new Map(prev);
+      const existing = next.get(id);
+      if (!existing) return prev;
+      if (existing.count <= 1) next.delete(id);
+      else next.set(id, { ...existing, count: existing.count - 1 });
+      return next;
+    });
+  };
+
+  const stackedCountFor = (id: string) => stackedSelected.get(id)?.count ?? 0;
 
   // Explicit select-mode toggle (visible on both desktop and mobile) — makes every
   // click/tap toggle selection instead of slotting immediately.
@@ -248,7 +281,12 @@ export function EnhancementPicker() {
     });
   };
 
-  // Auto-select primary category when modal opens; clear shift-selection.
+  // Auto-select category when modal opens; clear shift-selection.
+  // Restore the per-power last-used filter (typeFilter + sidebarFilter)
+  // if there is one for this power, otherwise fall back to the power's
+  // primary set category. This makes repeat slotting on the same power
+  // land on the user's most recent choice (e.g. ATOs after slotting an
+  // ATO once into Footstomp).
   // Note: the IO level intentionally does NOT reset to character level —
   // `globalIOLevel` persists across picker opens (and across page reloads
   // via the UI store) so the user's most recent choice sticks instead of
@@ -256,11 +294,30 @@ export function EnhancementPicker() {
   const prevIsOpen = useRef(false);
   useEffect(() => {
     if (picker.isOpen && !prevIsOpen.current) {
-      if (primaryCategory) setSidebarFilter(primaryCategory);
+      const remembered = picker.currentPowerName
+        ? lastPickerFilterByPower[picker.currentPowerName]
+        : undefined;
+      if (remembered) {
+        setTypeFilter(remembered.typeFilter as EnhancementTypeFilter);
+        setSidebarFilter(remembered.sidebarFilter as SidebarFilter);
+      } else if (primaryCategory) {
+        setTypeFilter('io-sets');
+        setSidebarFilter(primaryCategory);
+      }
       setShiftSelected(new Map());
+      setStackedSelected(new Map());
     }
     prevIsOpen.current = picker.isOpen;
-  }, [picker.isOpen, primaryCategory]);
+  }, [picker.isOpen, picker.currentPowerName, primaryCategory, lastPickerFilterByPower]);
+
+  // Persist the filter the user lands on for this power so the next open
+  // defaults to it. Runs whenever the active filter changes while open.
+  useEffect(() => {
+    if (!picker.isOpen || !picker.currentPowerName) return;
+    const prev = lastPickerFilterByPower[picker.currentPowerName];
+    if (prev?.typeFilter === typeFilter && prev?.sidebarFilter === sidebarFilter) return;
+    setLastPickerFilter(picker.currentPowerName, typeFilter, sidebarFilter);
+  }, [picker.isOpen, picker.currentPowerName, typeFilter, sidebarFilter, lastPickerFilterByPower, setLastPickerFilter]);
 
   // Helper to create IO set enhancement via registry factory
   const makeIOSetEnhancement = (set: IOSet, piece: IOSetPiece, pieceIndex: number) => {
@@ -300,10 +357,20 @@ export function EnhancementPicker() {
       }
     }
 
-    if (allPieces.length === 0) return;
+    // Append stacked generic / special / origin selections after IO-set pieces.
+    // Each stacked entry expands into `count` enhancements built lazily.
+    const stackedEnhancements: Enhancement[] = [];
+    for (const entry of stackedSelected.values()) {
+      for (let i = 0; i < entry.count; i++) {
+        stackedEnhancements.push(entry.build());
+      }
+    }
 
-    // Fill empty slots with selected pieces
-    const slotsToFill = emptySlotIndices.slice(0, allPieces.length);
+    const totalToFill = allPieces.length + stackedEnhancements.length;
+    if (totalToFill === 0) return;
+
+    // Fill empty slots: IO-set pieces first, then stacked items.
+    const slotsToFill = emptySlotIndices.slice(0, totalToFill);
     allPieces.forEach(({ set, piece, pieceIndex }, idx) => {
       if (idx < slotsToFill.length) {
         placeEnhancement(
@@ -313,8 +380,15 @@ export function EnhancementPicker() {
         );
       }
     });
+    stackedEnhancements.forEach((enh, idx) => {
+      const slotIdx = allPieces.length + idx;
+      if (slotIdx < slotsToFill.length) {
+        placeEnhancement(picker.currentPowerName!, slotsToFill[slotIdx], enh);
+      }
+    });
 
     setShiftSelected(new Map());
+    setStackedSelected(new Map());
     closeEnhancementPicker();
   };
 
@@ -336,15 +410,17 @@ export function EnhancementPicker() {
     });
   };
 
-  // Check if any pieces are shift-selected
-  const hasShiftSelection = shiftSelected.size > 0;
+  // Check if any pieces or stacked tiles are queued for multi-slot
+  const hasShiftSelection = shiftSelected.size > 0 || stackedSelected.size > 0;
 
-  // Total count of pieces queued across all sets (used by the sticky action bar)
+  // Total count of pieces queued across set pieces + stacked tiles (used by
+  // the sticky action bar and slot-cap warning).
   const totalSelectedPieces = useMemo(() => {
     let n = 0;
     for (const indices of shiftSelected.values()) n += indices.size;
+    for (const entry of stackedSelected.values()) n += entry.count;
     return n;
-  }, [shiftSelected]);
+  }, [shiftSelected, stackedSelected]);
 
   // Check if a piece is shift-selected
   const isShiftSelected = (set: IOSet, pieceIndex: number) => {
@@ -452,6 +528,7 @@ export function EnhancementPicker() {
   // Cancel multi-select — clear selected pieces and exit selectMode
   const handleCancelSelection = () => {
     setShiftSelected(new Map());
+    setStackedSelected(new Map());
     setSelectMode(false);
   };
 
@@ -475,23 +552,55 @@ export function EnhancementPicker() {
     };
   }, [isDragging]);
 
+  // Whether a click on a stackable tile (generic / special / origin) should
+  // queue into the multi-select stack instead of slotting immediately.
+  // Triggered by the explicit Select-multiple toggle, by holding shift on
+  // desktop, or by an existing in-progress multi-selection (so adding a
+  // common IO on top of already-queued set pieces "just works").
+  const isStackingClick = (e?: { shiftKey?: boolean }) =>
+    selectMode || !!e?.shiftKey || hasShiftSelection;
+
   // Handle selecting a generic IO
-  const handleSelectGenericIO = (stat: EnhancementStatType) => {
+  const handleSelectGenericIO = (stat: EnhancementStatType, e?: React.MouseEvent) => {
     if (!picker.currentPowerName) return;
+    if (isStackingClick(e)) {
+      incStacked(
+        `generic:${stat}`,
+        () => createGenericIOEnhancement(stat, globalIOLevel, globalBoostLevel),
+        `${stat} IO`,
+      );
+      return;
+    }
     placeEnhancement(picker.currentPowerName, picker.currentSlotIndex, createGenericIOEnhancement(stat, globalIOLevel, globalBoostLevel));
     closeEnhancementPicker();
   };
 
   // Handle selecting an origin enhancement
-  const handleSelectOrigin = (stat: EnhancementStatType, tier: 'TO' | 'DO' | 'SO') => {
+  const handleSelectOrigin = (stat: EnhancementStatType, tier: 'TO' | 'DO' | 'SO', e?: React.MouseEvent) => {
     if (!picker.currentPowerName) return;
+    if (isStackingClick(e)) {
+      incStacked(
+        `origin:${tier}:${stat}`,
+        () => createOriginEnhancement(stat, tier, buildOrigin, globalBoostLevel),
+        `${stat} ${tier}`,
+      );
+      return;
+    }
     placeEnhancement(picker.currentPowerName, picker.currentSlotIndex, createOriginEnhancement(stat, tier, buildOrigin, globalBoostLevel));
     closeEnhancementPicker();
   };
 
   // Handle selecting a special enhancement (Hamidon, Titan, Hydra, D-Sync)
-  const handleSelectSpecial = (id: string, def: SpecialEnhancementDef, category: SpecialEnhancement['category']) => {
+  const handleSelectSpecial = (id: string, def: SpecialEnhancementDef, category: SpecialEnhancement['category'], e?: React.MouseEvent) => {
     if (!picker.currentPowerName) return;
+    if (isStackingClick(e)) {
+      incStacked(
+        `special:${category}:${id}`,
+        () => createSpecialEnhancement(id, def, category, globalBoostLevel),
+        def.name,
+      );
+      return;
+    }
     placeEnhancement(picker.currentPowerName, picker.currentSlotIndex, createSpecialEnhancement(id, def, category, globalBoostLevel));
     closeEnhancementPicker();
   };
@@ -783,20 +892,19 @@ export function EnhancementPicker() {
             className="flex-1 overflow-y-auto p-2 pr-4 sm:p-3"
             onContextMenu={(e) => { if (e.shiftKey) e.preventDefault(); }}
           >
-            {typeFilter === 'io-sets' && (
-              <div className="flex items-center justify-end gap-1 mb-2">
-                <button
-                  onClick={() => setSelectMode((m) => !m)}
-                  title="When on, taps/clicks toggle piece selection instead of slotting immediately. Use the action bar at the bottom to slot the selected pieces."
-                  className={`text-xs px-2 py-0.5 rounded mr-1 transition-colors ${
-                    selectMode
-                      ? 'bg-green-600 text-white hover:bg-green-500'
-                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
-                  }`}
-                >
-                  {selectMode ? 'Select: On' : 'Select multiple'}
-                </button>
-                {sidebarFilter !== 'procs' && (
+            <div className="flex items-center justify-end gap-1 mb-2">
+              <button
+                onClick={() => setSelectMode((m) => !m)}
+                title="When on, taps/clicks queue selections instead of slotting immediately. For common IOs / HOs / Origins, each tap adds another copy. Use the action bar at the bottom to slot all queued enhancements at once."
+                className={`text-xs px-2 py-0.5 rounded mr-1 transition-colors ${
+                  selectMode
+                    ? 'bg-green-600 text-white hover:bg-green-500'
+                    : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
+                }`}
+              >
+                {selectMode ? 'Select: On' : 'Select multiple'}
+              </button>
+              {typeFilter === 'io-sets' && sidebarFilter !== 'procs' && (
                   <>
                     <span className="text-xs text-gray-500 mr-1">Sort:</span>
                     <button
@@ -813,8 +921,7 @@ export function EnhancementPicker() {
                     </button>
                   </>
                 )}
-              </div>
-            )}
+            </div>
             {typeFilter === 'io-sets' && sidebarFilter === 'procs' && (
               <ProcsContent
                 pieces={procPieces}
@@ -855,6 +962,8 @@ export function EnhancementPicker() {
                 ioValue={ioValue}
                 globalIOLevel={globalIOLevel}
                 onSelect={handleSelectGenericIO}
+                stackedCountFor={(stat) => stackedCountFor(`generic:${stat}`)}
+                onDecrement={(stat) => decStacked(`generic:${stat}`)}
               />
             )}
 
@@ -866,6 +975,8 @@ export function EnhancementPicker() {
                 availableDSyncs={availableDSyncs}
                 availablePrestige={availablePrestige}
                 onSelect={handleSelectSpecial}
+                stackedCountFor={(category, id) => stackedCountFor(`special:${category}:${id}`)}
+                onDecrement={(category, id) => decStacked(`special:${category}:${id}`)}
               />
             )}
 
@@ -873,6 +984,8 @@ export function EnhancementPicker() {
               <OriginContent
                 availableTypes={availableGenericIOs}
                 onSelect={handleSelectOrigin}
+                stackedCountFor={(stat, tier) => stackedCountFor(`origin:${tier}:${stat}`)}
+                onDecrement={(stat, tier) => decStacked(`origin:${tier}:${stat}`)}
               />
             )}
 
@@ -1460,6 +1573,32 @@ function IOSetRow({
 }
 
 // ============================================
+// SHARED: STACKED-SELECTION COUNT BADGE
+// ============================================
+
+/**
+ * Badge that overlays a tile to show how many copies of that enhancement
+ * are queued for multi-slot. Clicking the badge decrements the count
+ * (the only decrement affordance — works on both desktop and mobile and
+ * keeps the tile itself a pure +1 target).
+ */
+function StackedCountBadge({ count, onDecrement }: { count: number; onDecrement: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={(e) => {
+        e.stopPropagation();
+        onDecrement();
+      }}
+      title="Click to remove one"
+      className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-green-600 hover:bg-red-600 text-white text-[10px] font-bold leading-none flex items-center justify-center shadow ring-1 ring-gray-900 transition-colors"
+    >
+      ×{count}
+    </button>
+  );
+}
+
+// ============================================
 // GENERIC IO CONTENT
 // ============================================
 
@@ -1467,10 +1606,12 @@ interface GenericIOContentProps {
   availableIOs: EnhancementStatType[];
   ioValue: number;
   globalIOLevel: number;
-  onSelect: (stat: EnhancementStatType) => void;
+  onSelect: (stat: EnhancementStatType, e?: React.MouseEvent) => void;
+  stackedCountFor: (stat: EnhancementStatType) => number;
+  onDecrement: (stat: EnhancementStatType) => void;
 }
 
-function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect }: GenericIOContentProps) {
+function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect, stackedCountFor, onDecrement }: GenericIOContentProps) {
   if (availableIOs.length === 0) {
     return <div className="text-center text-gray-500 py-8">No generic IOs available for this power</div>;
   }
@@ -1484,17 +1625,23 @@ function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect }: Ge
         </span>
       </div>
       <div className="flex flex-wrap gap-1">
-        {availableIOs.map((stat) => (
-          <Tooltip key={stat} content={`${stat} IO (+${ioValue.toFixed(1)}%)`}>
-            <button
-              onClick={() => onSelect(stat)}
-              className="rounded border border-gray-600 hover:border-blue-400 hover:scale-110 transition-all bg-gray-900/50 flex flex-col items-center w-[46px] py-0.5"
-            >
-              <GenericIOIcon stat={stat} size={30} alt={stat} />
-              <span className="text-[8px] text-gray-400 leading-tight truncate w-full text-center">{stat}</span>
-            </button>
-          </Tooltip>
-        ))}
+        {availableIOs.map((stat) => {
+          const count = stackedCountFor(stat);
+          return (
+            <Tooltip key={stat} content={`${stat} IO (+${ioValue.toFixed(1)}%)`}>
+              <div className="relative">
+                <button
+                  onClick={(e) => onSelect(stat, e)}
+                  className="rounded border border-gray-600 hover:border-blue-400 hover:scale-110 transition-all bg-gray-900/50 flex flex-col items-center w-[46px] py-0.5"
+                >
+                  <GenericIOIcon stat={stat} size={30} alt={stat} />
+                  <span className="text-[8px] text-gray-400 leading-tight truncate w-full text-center">{stat}</span>
+                </button>
+                {count > 0 && <StackedCountBadge count={count} onDecrement={() => onDecrement(stat)} />}
+              </div>
+            </Tooltip>
+          );
+        })}
       </div>
     </div>
   );
@@ -1510,7 +1657,9 @@ interface SpecialContentProps {
   availableHydras: [string, SpecialEnhancementDef][];
   availableDSyncs: [string, SpecialEnhancementDef][];
   availablePrestige: [string, SpecialEnhancementDef][];
-  onSelect: (id: string, def: SpecialEnhancementDef, category: SpecialEnhancement['category']) => void;
+  onSelect: (id: string, def: SpecialEnhancementDef, category: SpecialEnhancement['category'], e?: React.MouseEvent) => void;
+  stackedCountFor: (category: SpecialEnhancement['category'], id: string) => number;
+  onDecrement: (category: SpecialEnhancement['category'], id: string) => void;
 }
 
 /** Overrides for compound-word IDs whose simple capitalize doesn't match the icon filename */
@@ -1539,7 +1688,7 @@ const SPECIAL_SECTIONS: Array<{
 ];
 
 function SpecialContent(props: SpecialContentProps) {
-  const { onSelect } = props;
+  const { onSelect, stackedCountFor, onDecrement } = props;
   const totalAvailable = props.availableHamidons.length + props.availableTitans.length + props.availableHydras.length + props.availableDSyncs.length + props.availablePrestige.length;
 
   if (totalAvailable === 0) {
@@ -1562,14 +1711,18 @@ function SpecialContent(props: SpecialContentProps) {
                 const iconName = section.category === 'd-sync'
                   ? 'DSO_all.png'
                   : `${section.iconPrefix}${SPECIAL_ICON_OVERRIDES[id] ?? (id.charAt(0).toUpperCase() + id.slice(1))}.png`;
+                const count = stackedCountFor(section.category, id);
                 return (
                   <Tooltip key={id} content={`${def.name}: ${def.aspects.map(a => `${a.stat} +${a.value}%`).join(', ')}`}>
-                    <button
-                      onClick={() => onSelect(id, def, section.category)}
-                      className={`rounded border ${section.borderColor} hover:scale-110 transition-all bg-gray-900/50`}
-                    >
-                      <SpecialEnhancementIcon icon={iconName} size={30} alt={def.name} />
-                    </button>
+                    <div className="relative">
+                      <button
+                        onClick={(e) => onSelect(id, def, section.category, e)}
+                        className={`rounded border ${section.borderColor} hover:scale-110 transition-all bg-gray-900/50`}
+                      >
+                        <SpecialEnhancementIcon icon={iconName} size={30} alt={def.name} />
+                      </button>
+                      {count > 0 && <StackedCountBadge count={count} onDecrement={() => onDecrement(section.category, id)} />}
+                    </div>
                   </Tooltip>
                 );
               })}
@@ -1587,10 +1740,12 @@ function SpecialContent(props: SpecialContentProps) {
 
 interface OriginContentProps {
   availableTypes: EnhancementStatType[];
-  onSelect: (stat: EnhancementStatType, tier: 'TO' | 'DO' | 'SO') => void;
+  onSelect: (stat: EnhancementStatType, tier: 'TO' | 'DO' | 'SO', e?: React.MouseEvent) => void;
+  stackedCountFor: (stat: EnhancementStatType, tier: 'TO' | 'DO' | 'SO') => number;
+  onDecrement: (stat: EnhancementStatType, tier: 'TO' | 'DO' | 'SO') => void;
 }
 
-function OriginContent({ availableTypes, onSelect }: OriginContentProps) {
+function OriginContent({ availableTypes, onSelect, stackedCountFor, onDecrement }: OriginContentProps) {
   const buildOrigin = useBuildStore((s) => s.build.settings.origin);
 
   if (availableTypes.length === 0) {
@@ -1608,23 +1763,30 @@ function OriginContent({ availableTypes, onSelect }: OriginContentProps) {
             <span className="text-xs text-gray-500">+{tier.value.toFixed(1)}%</span>
           </div>
           <div className="flex flex-wrap gap-1">
-            {availableTypes.map((stat) => (
-              <Tooltip key={stat} content={`${stat} ${tier.short} (+${tier.value.toFixed(1)}%)`}>
-                <button
-                  onClick={() => onSelect(stat, tier.short as 'TO' | 'DO' | 'SO')}
-                  className={`rounded border hover:scale-110 transition-all bg-gray-900/50 flex flex-col items-center w-[46px] py-0.5 ${getTierBorderColor(tier.short)}`}
-                >
-                  <OriginEnhancementIcon
-                    stat={stat}
-                    tier={tier.short as 'TO' | 'DO' | 'SO'}
-                    origin={buildOrigin}
-                    size={30}
-                    alt={`${stat} ${tier.short}`}
-                  />
-                  <span className="text-[8px] text-gray-400 leading-tight truncate w-full text-center">{stat}</span>
-                </button>
-              </Tooltip>
-            ))}
+            {availableTypes.map((stat) => {
+              const tierShort = tier.short as 'TO' | 'DO' | 'SO';
+              const count = stackedCountFor(stat, tierShort);
+              return (
+                <Tooltip key={stat} content={`${stat} ${tier.short} (+${tier.value.toFixed(1)}%)`}>
+                  <div className="relative">
+                    <button
+                      onClick={(e) => onSelect(stat, tierShort, e)}
+                      className={`rounded border hover:scale-110 transition-all bg-gray-900/50 flex flex-col items-center w-[46px] py-0.5 ${getTierBorderColor(tier.short)}`}
+                    >
+                      <OriginEnhancementIcon
+                        stat={stat}
+                        tier={tierShort}
+                        origin={buildOrigin}
+                        size={30}
+                        alt={`${stat} ${tier.short}`}
+                      />
+                      <span className="text-[8px] text-gray-400 leading-tight truncate w-full text-center">{stat}</span>
+                    </button>
+                    {count > 0 && <StackedCountBadge count={count} onDecrement={() => onDecrement(stat, tierShort)} />}
+                  </div>
+                </Tooltip>
+              );
+            })}
           </div>
         </div>
       ))}

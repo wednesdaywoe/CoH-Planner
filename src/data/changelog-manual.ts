@@ -23,6 +23,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-05-16',
     items: [
+      { message: 'Added a new Select Multiple button to the enhancement picker, allowing users to select and slot multiple copies of common IOs, TO/DO/SO, and Hamidon/Hydras at once', type: 'feat' },
+      { message: 'Made the enhancement picker remember the last used category when slotting individual enhancements in the same power', type: 'feat' },
       { message: 'Fixed a bug causing the converter to launder negative-scale -MaxHP debuffs into caster +MaxHP buffs', type: 'fix' },
       { message: 'Gadgetry power pool should now be selectable in Rebirth dataset', type: 'fix' },
       { message: 'Added an educational banner for Rule of 5 set bonus cap', type: 'fix' },
