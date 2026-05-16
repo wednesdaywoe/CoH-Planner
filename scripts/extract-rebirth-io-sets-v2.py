@@ -157,6 +157,13 @@ PIECE_OVERRIDES = {
     'superior_absolute_resolution': _ato_pieces('RechargeTime/Chance for Energy Damage Bonus'),
 }
 
+# Rebirth renamed individual proc pieces from HC's naming. Applied after
+# the shared-HC override so the Rebirth-specific label wins.
+# Format: set_id → {piece_num: new_name}
+REBIRTH_PIECE_RENAMES = {
+    'ragnarok': {6: 'Chance for Knockdown'},
+}
+
 # ---------------------------------------------------------------------
 # Rarity → planner category
 # ---------------------------------------------------------------------
@@ -478,6 +485,16 @@ def main() -> int:
         if set_id in out_sets:
             out_sets[set_id]['pieces'] = pieces
             pieces_overridden += 1
+
+    # Apply Rebirth-specific piece renames (post HC-override so they win).
+    for set_id, renames in REBIRTH_PIECE_RENAMES.items():
+        entry = out_sets.get(set_id)
+        if not entry:
+            continue
+        for p in entry.get('pieces', []):
+            new_name = renames.get(p.get('num'))
+            if new_name:
+                p['name'] = new_name
 
     print(f'\nExtracted {len(out_sets)} sets ({len(skipped)} skipped)')
     print(f'  {shared_overridden} shared sets overridden with HC data')

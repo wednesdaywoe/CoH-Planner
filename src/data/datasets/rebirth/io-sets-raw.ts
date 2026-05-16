@@ -16538,7 +16538,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Chance for Knockback",
+        "name": "Chance for Knockdown",
         "num": 6,
         "proc": true,
         "unique": true

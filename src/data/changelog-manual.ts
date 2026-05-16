@@ -21,7 +21,7 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-05-15',
+    date: '2026-05-16',
     items: [
       { message: 'Gadgetry power pool should now be selectable in Rebirth dataset', type: 'fix' },
       { message: 'Added an educational banner for Rule of 5 set bonus cap', type: 'fix' },
