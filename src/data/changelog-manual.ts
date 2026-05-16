@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-05-16',
     items: [
+      { message: 'Fixed a bug causing the converter to launder negative-scale -MaxHP debuffs into caster +MaxHP buffs', type: 'fix' },
       { message: 'Gadgetry power pool should now be selectable in Rebirth dataset', type: 'fix' },
       { message: 'Added an educational banner for Rule of 5 set bonus cap', type: 'fix' },
       { message: 'Fix for dataset handle mismatch on build load to ensure correct data retrieval', type: 'fix' },

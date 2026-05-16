@@ -2143,6 +2143,13 @@ function extractEffects(templates, powerName) {
 
         if (resType === 'hitPoints') {
           if (aspect === 'maximum') {
+            // -MaxHP target debuffs (e.g. Brine, foe -MaxHP) must not
+            // become a caster +MaxHP buff. The downstream calc treats
+            // maxHPBuff as a self-applied %HP gain regardless of target,
+            // and addOrAccumulate strips the sign, so a negative-scale
+            // foe template would otherwise read as a self buff. Target
+            // -MaxHP isn't currently modeled on the build side.
+            if (isDebuff) continue;
             addOrAccumulate('maxHPBuff');
           } else {
             addOrAccumulate('healing');
