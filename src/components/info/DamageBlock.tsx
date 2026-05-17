@@ -352,8 +352,19 @@ function DamageMetrics({
       // Interpolate damage at the enhancement's effective level
       const enhLevel = ioEnh.attuned ? buildLevel : (ioEnh.level ?? buildLevel);
       const dmgAtLevel = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, enhLevel);
-      // Proc chance uses base recharge and raw cast time (not ArcanaTime)
-      const procChance = calculateProcChance(procData.ppm, effects.recharge ?? 0, rawCastTime, radius, arcDegrees);
+      // Proc chance uses base recharge + slotted Recharge bonus (which is
+      // what determines firing frequency in-game) and raw cast time (not
+      // ArcanaTime). Without the enhancement bonus, slotting Recharge IOs
+      // shows a lower proc % in the tooltip but the damage contribution
+      // here would remain pegged to the unslotted chance.
+      const procChance = calculateProcChance(
+        procData.ppm,
+        effects.recharge ?? 0,
+        rawCastTime,
+        radius,
+        arcDegrees,
+        enhancementBonuses.recharge ?? 0,
+      );
       procDamagePerActivation += dmgAtLevel * procChance;
     }
   }

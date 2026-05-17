@@ -8,6 +8,7 @@ import { StatsDashboard } from './StatsDashboard';
 import { UpdateBanner } from './UpdateBanner';
 import { StatusBanner } from './StatusBanner';
 import { RuleOf5Banner } from './RuleOf5Banner';
+import { ExemplarModeBanner } from './ExemplarModeBanner';
 import { MobileBottomNav } from './MobileBottomNav';
 import { EnhancementPicker } from '@/components/enhancements/EnhancementPicker';
 import { PowerInfoTooltip } from '@/components/info';
@@ -89,6 +90,7 @@ export function MainLayout({ children }: MainLayoutProps) {
        *  unexpected spot relative to the top-anchored update/status banners.
        *  Top-of-page banner blindness was causing users to miss it. */}
       <RuleOf5Banner />
+      <ExemplarModeBanner />
       <main className="flex-1 overflow-hidden relative">
         {children}
       </main>

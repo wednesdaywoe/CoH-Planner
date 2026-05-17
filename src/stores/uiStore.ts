@@ -1531,8 +1531,10 @@ export const useUIStore = create<UIStore>()(
         globalBoostLevel: state.globalBoostLevel,
         ioSetSortBy: state.ioSetSortBy,
         lastPickerFilterByPower: state.lastPickerFilterByPower,
-        exemplarMode: state.exemplarMode,
-        exemplarLevel: state.exemplarLevel,
+        // exemplarMode / exemplarLevel intentionally NOT persisted. Leaving
+        // exemplar on across sessions silently changes every recharge /
+        // damage / defense number on reload, which is hard to debug when
+        // the user forgets the toggle is on.
         targetLevelOffset: state.targetLevelOffset,
         procSettings: state.procSettings,
         combatMode: state.combatMode,

@@ -2125,14 +2125,31 @@ export function parseProcEffect(mechanics: string): ParsedProcEffect {
   // SINGLE EFFECTS
   // ============================================
 
-  // Damage procs
-  const damageMatch = mechanics.match(/Damage\s*\(\s*(\w+(?:\s+\w+)?)\s+(\d+)\s*-\s*(\d+)\s*\)/i);
-  if (damageMatch) {
+  // Damage procs — ranged form: "Damage (Negative 56 - 89)"
+  const damageRangeMatch = mechanics.match(/Damage\s*\(\s*(\w+(?:\s+\w+)?)\s+(\d+)\s*-\s*(\d+)\s*\)/i);
+  if (damageRangeMatch) {
     return {
       category: 'Damage',
-      effectType: damageMatch[1],
-      value: parseInt(damageMatch[2], 10),
-      valueMax: parseInt(damageMatch[3], 10),
+      effectType: damageRangeMatch[1],
+      value: parseInt(damageRangeMatch[2], 10),
+      valueMax: parseInt(damageRangeMatch[3], 10),
+      isBuff: false,
+      description: mechanics,
+    };
+  }
+  // Damage procs — single-value form: "Damage (Negative 107)" used by the
+  // Superior ATO 5ppm procs (Sup Malice of the Corruptor, Sup Will of the
+  // Controller, Sup Frozen Blast, etc.) where the IO is level-50-only so
+  // there's no min/max range. Without this branch the proc parses to an
+  // undefined `value` and the damage-contribution loop skips it entirely.
+  const damageFixedMatch = mechanics.match(/Damage\s*\(\s*(\w+(?:\s+\w+)?)\s+(\d+)\s*\)/i);
+  if (damageFixedMatch) {
+    const v = parseInt(damageFixedMatch[2], 10);
+    return {
+      category: 'Damage',
+      effectType: damageFixedMatch[1],
+      value: v,
+      valueMax: v,
       isBuff: false,
       description: mechanics,
     };
