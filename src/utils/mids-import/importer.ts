@@ -322,6 +322,11 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   const epicPowers: SelectedPower[] = [];
   const inherentSlotData: SelectedPower[] = []; // Slot data from Inherent.* entries
   const incarnateResults: Partial<Record<IncarnateSlotId, SelectedIncarnatePower>> = {};
+  // Capture Mids' per-power slider (VariableValue) for things like Siphon
+  // Speed stacks or Domination duration. Keyed by power internalName so the
+  // caller can write directly to uiStore.targetsHitValues after applying
+  // the build.
+  const targetsHitValues: Record<string, number> = {};
 
   for (const poolId of poolIds) {
     poolPowersMap[poolId] = [];
@@ -374,6 +379,13 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     );
 
     if (!result) continue;
+
+    // Capture the slider value Mids exports for this power (stacks /
+    // targets hit). Only record non-zero so we don't clutter the UI
+    // store with default values.
+    if (entry.VariableValue && result.power.internalName) {
+      targetsHitValues[result.power.internalName] = entry.VariableValue;
+    }
 
     // Deduplicate: skip if a power with the same internalName already exists
     // in the target list. Mids .mbd files can contain duplicate entries for the
@@ -541,6 +553,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     warnings,
     summary,
     detectedBranch,
+    targetsHit: Object.keys(targetsHitValues).length > 0 ? targetsHitValues : undefined,
   };
 }
 
@@ -917,18 +930,18 @@ function buildSelectedPower(
     slots.push(null);
   }
 
-  // Set isActive for Toggle/Auto powers, and also for Click powers with long
-  // buff durations (60s+) that provide self-buff effects (e.g., Hasten 120s,
-  // Practiced Brawler 120s). Short clicks like Build Up (10s) are left unset.
-  const powerType = powerDef.powerType?.toLowerCase();
-  const buffDuration = (powerDef.effects as Record<string, unknown> | undefined)?.buffDuration;
-  const isLongSelfBuff = powerType === 'click'
-    && typeof buffDuration === 'number' && buffDuration >= 60
-    && (powerDef.targetType?.toLowerCase() === 'self'
-      || (powerDef.shortHelp?.toLowerCase().startsWith('self ') ?? false));
-  const effectiveIsActive = (powerType === 'toggle' || powerType === 'auto' || isLongSelfBuff)
-    ? isActive
-    : undefined;
+  // Apply Mids' `StatInclude` directly to `isActive` for every power. Mids
+  // treats StatInclude as "this power is currently contributing to my
+  // totals" — Toggle/Auto powers, long self-buff Clicks like Hasten, and
+  // also short self-buff Clicks (Build Up, Soul Drain) and click +Rech
+  // self-buffs (Siphon Speed) all carry it. Mirroring Mids 1:1 here means a
+  // fresh .mbd import reproduces Mids' default totals without the user
+  // hunting for which powers to manually toggle on.
+  //
+  // Stored as `undefined` (rather than `false`) for powers Mids didn't
+  // include, so the JSON stays minimal and the calc layer's
+  // `isAuto || power.isActive` gate behaves identically.
+  const effectiveIsActive = isActive ? true : undefined;
 
   return {
     ...powerDef,

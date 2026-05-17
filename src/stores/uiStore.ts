@@ -541,6 +541,10 @@ interface UIActions {
 
   // Per-target slider
   setTargetsHit: (powerName: string, value: number) => void;
+  /** Bulk-replace the targets-hit map. Used after a Mids import to copy
+   *  the .mbd file's per-power `VariableValue` sliders in one shot so the
+   *  dashboard reproduces Mids' totals without per-power toggling. */
+  setTargetsHitBulk: (values: Record<string, number>) => void;
 
   // Mechanic Adjuster toggle (per-power conditional effect)
   setMechanicAdjuster: (powerName: string, adjusterId: string, active: boolean) => void;
@@ -1381,6 +1385,11 @@ export const useUIStore = create<UIStore>()(
       setTargetsHit: (powerName, value) =>
         set((state) => ({
           targetsHitValues: { ...state.targetsHitValues, [powerName]: value },
+        })),
+
+      setTargetsHitBulk: (values) =>
+        set((state) => ({
+          targetsHitValues: { ...state.targetsHitValues, ...values },
         })),
 
       // Mechanic Adjuster toggles

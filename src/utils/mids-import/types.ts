@@ -81,4 +81,9 @@ export interface MidsImportResult {
   summary: MidsImportSummary;
   /** For VEATs: the detected branch (e.g., 'crab-spider') so the UI can auto-set selectedBranch */
   detectedBranch?: string | null;
+  /** Per-power stack / targets-hit slider values from Mids' `VariableValue`
+   *  field, keyed by `internalName`. The caller applies these to the UI
+   *  store after `applyMidsBuild` so the dashboard reproduces Mids' totals
+   *  (e.g. Siphon Speed VariableValue=2 → 2 stacks of +Recharge). */
+  targetsHit?: Record<string, number>;
 }

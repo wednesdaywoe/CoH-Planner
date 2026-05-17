@@ -407,6 +407,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     if (midsResult.detectedBranch) {
       useUIStore.getState().setSelectedBranch(midsResult.detectedBranch as ArchetypeBranchId);
     }
+    // Copy Mids' per-power slider values (Siphon Speed stacks, etc.) so the
+    // dashboard reproduces Mids' default totals after import.
+    if (midsResult.targetsHit) {
+      useUIStore.getState().setTargetsHitBulk(midsResult.targetsHit);
+    }
     handleClose();
   };
 
