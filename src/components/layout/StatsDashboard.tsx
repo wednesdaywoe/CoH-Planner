@@ -8,6 +8,7 @@ import { useEffect, useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
+import { formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
@@ -887,7 +888,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
                   {source.name}
                 </span>
                 <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-orange-400 line-through' : 'text-green-400'}`}>
-                  +{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}
+                  +{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}
                 </span>
               </div>
             ))}
@@ -901,7 +902,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {activePowerSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-400 ml-2 whitespace-nowrap">+{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className="text-amber-400 ml-2 whitespace-nowrap">+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -914,7 +915,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {inherentSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-blue-400 ml-2 whitespace-nowrap">+{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className="text-blue-400 ml-2 whitespace-nowrap">+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -927,7 +928,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {accoladeSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-300 ml-2 whitespace-nowrap">+{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className="text-amber-300 ml-2 whitespace-nowrap">+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -940,7 +941,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {procSources.map((source, i) => (
               <div key={i} className={`flex justify-between text-[10px] ${source.capped ? 'opacity-70' : ''}`}>
                 <span className={`${source.capped ? 'text-orange-400 line-through' : 'text-slate-300'} truncate max-w-[200px]`}>{source.name}</span>
-                <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-orange-400 line-through' : 'text-cyan-400'}`}>+{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-orange-400 line-through' : 'text-cyan-400'}`}>+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -953,7 +954,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {incarnateSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300 truncate max-w-[200px]">{source.name}</span>
-                <span className="text-purple-400 ml-2 whitespace-nowrap">+{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className="text-purple-400 ml-2 whitespace-nowrap">+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -962,7 +963,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
         {/* Total */}
         <div className="border-t border-slate-600 pt-1 flex justify-between text-[11px] font-medium">
           <span className="text-slate-300">Total</span>
-          <span className={color}>+{breakdown.total.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400"> ({(rawValue as CompoundStatValue).perSec.toFixed(2)}/s)</span>}</span>
+          <span className={color}>+{formatBonusValue(breakdown.total)}{breakdownUnit}{isRegen && <span className="text-slate-400"> ({(rawValue as CompoundStatValue).perSec.toFixed(2)}/s)</span>}</span>
         </div>
 
         {/* HP Cap */}

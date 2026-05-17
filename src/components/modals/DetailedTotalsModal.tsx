@@ -9,6 +9,7 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { convertToLegacyStats } from '@/hooks/useCalculatedStats';
 import { useBuildStore, useAuthStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
+import { formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data/archetypes';
 import type { ArchetypeId } from '@/types';
 import { calculateCharacterTotals } from '@/utils/calculations/character-totals';
@@ -304,7 +305,7 @@ function BreakdownPanel({
                     source.capped ? 'text-orange-400 line-through' : srcColor
                   }`}
                 >
-                  +{source.value.toFixed(2)}{unit}
+                  +{formatBonusValue(source.value)}{unit}
                 </span>
               </div>
             ))}
@@ -315,7 +316,7 @@ function BreakdownPanel({
       {/* Total */}
       <div className="border-t border-slate-600/50 pt-0.5 flex justify-between text-[11px] font-medium">
         <span className="text-slate-300">Total</span>
-        <span className={color}>+{breakdown.total.toFixed(2)}{unit}</span>
+        <span className={color}>+{formatBonusValue(breakdown.total)}{unit}</span>
       </div>
     </div>
   );
