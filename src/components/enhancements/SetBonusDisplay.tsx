@@ -5,17 +5,9 @@
 import { useActiveSetBonuses, useBonusTracking } from '@/hooks';
 import { normalizeStatName, getTotalBonusCount, isBonusCapped } from '@/utils/calculations';
 import { Tooltip, Badge } from '@/components/ui';
+import { formatBonusValue } from '@/utils/set-bonus-format';
 import type { SetBonus } from '@/types';
 import type { BonusTracking } from '@/utils/calculations';
-
-/** Format a number to at most 3 decimal places, removing trailing zeros.
- *  3 decimals so values like 1.125% (Luck of the Gambler 3pc +MaxHP) display
- *  exactly rather than being rounded to 1.13%, which sends users down a
- *  math-checking rabbit hole. */
-function formatBonusValue(value: number): string {
-  const rounded = Math.round(value * 1000) / 1000;
-  return rounded.toString();
-}
 
 export function SetBonusDisplay() {
   const activeBonuses = useActiveSetBonuses();

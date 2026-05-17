@@ -19,6 +19,7 @@ import {
   findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
 import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getTotalBonusCount, isBonusCapped, getSetRarityMultiplier, getEffectiveAspectCount, getMultiAspectModifier, BOOST_MULTIPLIER_PER_LEVEL } from '@/utils/calculations';
+import { formatBonusDesc } from '@/utils/set-bonus-format';
 import { getPairedStat } from '@/utils/calculations/set-bonuses';
 import { useBonusTracking } from '@/hooks';
 import { Modal, ModalBody } from '@/components/modals';
@@ -2074,8 +2075,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                       const totalCount = (isActive && normalized) ? getTotalBonusCount(bonusTracking, normalized, eff.value) : 0;
                       const capped = (isActive && normalized) ? isBonusCapped(bonusTracking, normalized, eff.value) : false;
                       // Use eff.value for accurate display instead of pre-rounded eff.desc
-                      const displayValue = parseFloat(eff.value.toFixed(2));
-                      const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${displayValue}%`);
+                      const formatted = formatBonusDesc(eff.desc, eff.stat, eff.value);
                       return (
                         <span key={i} className={capped ? 'text-orange-400 font-semibold' : isTracked ? 'text-blue-300 font-semibold' : ''}>
                           {i > 0 && ', '}
@@ -2110,8 +2110,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                           {bonus.pieces}pc:
                         </span>{' '}
                         {pvpEffects.map((eff, i) => {
-                          const displayValue = parseFloat(eff.value.toFixed(2));
-                          const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${displayValue}%`);
+                          const formatted = formatBonusDesc(eff.desc, eff.stat, eff.value);
                           return (
                             <span key={i}>
                               {i > 0 && ', '}

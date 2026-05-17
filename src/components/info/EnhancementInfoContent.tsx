@@ -18,6 +18,7 @@ import {
   getEffectiveAspectCount,
   getSetRarityMultiplier,
 } from '@/utils/calculations';
+import { formatBonusDesc } from '@/utils/set-bonus-format';
 import {
   IOSetIcon,
   GenericIOIcon,
@@ -591,8 +592,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                         const normalized = isActive ? normalizeStatName(eff.stat) : null;
                         const totalCount = normalized ? getTotalBonusCount(bonusTracking, normalized, eff.value) : 0;
                         const capped = normalized ? isBonusCapped(bonusTracking, normalized, eff.value) : false;
-                        const displayValue = parseFloat(eff.value.toFixed(2));
-                        const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${displayValue}%`);
+                        const formatted = formatBonusDesc(eff.desc, eff.stat, eff.value);
                         return (
                           <span key={i} className={capped ? 'text-orange-400' : ''}>
                             {i > 0 && ', '}

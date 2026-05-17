@@ -8,6 +8,7 @@ import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
 import { getIOSet } from '@/data';
 import { useBonusTracking } from '@/hooks';
 import { normalizeStatName, getTotalBonusCount, isBonusCapped } from '@/utils/calculations';
+import { formatBonusDesc } from '@/utils/set-bonus-format';
 
 interface PowerSlotProps {
   enhancement: Enhancement | null;
@@ -82,12 +83,6 @@ interface EnhancementTooltipProps {
   slots?: (Enhancement | null)[];
 }
 
-/** Format a number to at most 2 decimal places, removing trailing zeros */
-function formatBonusValue(value: number): string {
-  const rounded = Math.round(value * 100) / 100;
-  return rounded.toString();
-}
-
 const ENHANCEMENT_TYPE_LABEL: Record<Enhancement['type'], { label: string; color: string }> = {
   'io-set': { label: 'IO Set (yellow border)', color: 'text-yellow-400' },
   'io-generic': { label: 'Generic IO (gray border)', color: 'text-gray-300' },
@@ -157,7 +152,7 @@ function EnhancementTooltip({ enhancement, slots }: EnhancementTooltipProps) {
                     return (
                       <span key={i} className={capped ? 'text-orange-400 font-semibold' : ''}>
                         {i > 0 && ', '}
-                        {e.desc || `${e.stat} +${formatBonusValue(e.value)}%`}
+                        {formatBonusDesc(e.desc, e.stat, e.value)}
                         {isActive && totalCount > 0 && (
                           <span className={`ml-0.5 text-[9px] ${capped ? 'text-orange-400' : 'text-slate-500'}`}>
                             ({totalCount}/5)
