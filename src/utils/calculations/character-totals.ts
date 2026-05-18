@@ -1023,7 +1023,12 @@ function applyActivePowerBonuses(
     }
 
     // Regeneration buff
-    // Enhanced by Healing enhancements
+    // Enhanced by Healing enhancements (slotted) AND by +Healing Strength
+    // set bonuses (Numina 4pc, Panacea 6pc, Miracle 4pc, etc.). HC's
+    // heal-strength buffs increase the heal_enh multiplier applied to
+    // regen-producing powers, post-ED. The `global.healOther` accumulator
+    // is populated by set-bonuses.ts from `healing_strength` bonuses; we
+    // read it here so it actually contributes to per-power regen.
     // Skip Res_Boolean tables — those are regen debuff resistance, not regen buffs
     if (effects.regenBuff !== undefined) {
       const regenVal = effects.regenBuff as ScalarOrScaled;
@@ -1031,7 +1036,7 @@ function applyActivePowerBonuses(
         ? (regenVal as { table?: string }).table ?? ''
         : '';
       if (!regenTable.toLowerCase().includes('res_boolean')) {
-        const enhMultiplier = 1 + (enhBonuses.heal || 0);
+        const enhMultiplier = 1 + (enhBonuses.heal || 0) + ((global.healOther || 0) / 100);
         const adjustedRegen = adjustForStacking(regenVal, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuff', effects.maxStacks);
         const value = resolveScaledEffect(adjustedRegen, archetypeId, buildLevel) * 100 * enhMultiplier;
         // If the power also has an unenhanced portion, combine into one breakdown entry
