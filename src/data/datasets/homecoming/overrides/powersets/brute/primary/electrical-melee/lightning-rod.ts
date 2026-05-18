@@ -1,9 +1,29 @@
 /**
  * Lightning Rod — OVERRIDES LAYER
  *
- * Empty: the generated extraction matches the previously-committed composed
- * form; no hand-written deltas to preserve.
+ * Two corrections to the binary-extracted shape:
+ *
+ * 1. `targetType`: the binary reports "Dead Teammate" because the underlying
+ *    mechanic is a teleport-then-summon (the teleport target is "any
+ *    location"). For UI purposes the power is a Foe-targeted AoE attack.
+ *
+ * 2. `summon.entity`: the binary spawns `PL_StaticObject` (a positional
+ *    anchor) and then casts `Pets.Lightning_Rod_Universal.Lightning_Rod`
+ *    on it — the static object itself has no damage table. The actual
+ *    damage source is the AT-specific pet entity. Without this remap the
+ *    damage panel shows nothing because `PL_StaticObject` isn't in
+ *    `pet-entities.ts`.
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {};
+export const overrides: Partial<Power> = {
+  targetType: 'Foe',
+  effects: {
+    summon: {
+      isPseudoPet: false,
+      entity: 'Pets_Lightning_Rod_Brute',
+      displayName: 'Lightning Rod',
+      duration: 1,
+    },
+  },
+};

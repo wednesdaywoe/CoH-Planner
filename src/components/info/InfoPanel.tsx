@@ -35,6 +35,7 @@ import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma'
 import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
+import { getActiveIncarnateDamageProcs, computeIncarnateProcContributions } from '@/data/incarnate-procs';
 import { resolvePath } from '@/utils/paths';
 import { resolveKheldianRedirect } from '@/data/datasets/rebirth/kheldian-redirects';
 import { KHELDIAN_FORM_VARIANT_POWERS } from '@/data/datasets/rebirth/kheldian-form-variants';
@@ -470,7 +471,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const pseudoPetDamage = useMemo(() => {
     if (calculatedDamage) return null;
     const summon = effectivePower?.effects?.summon;
-    if (!summon || !summon.isPseudoPet) return null;
+    if (!summon) return null;
 
     const entityList = summon.entities && summon.entities.length > 0
       ? summon.entities.map(e => ({ entityName: e.entity, count: e.count }))
@@ -479,9 +480,28 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         : [];
     if (entityList.length === 0) return null;
 
+    // Skip commanded pets (MM henchmen, Lore incarnates, Phantom Army, etc.)
+    // — the SummonsBlock is the better UI for those: they have multiple
+    // abilities, long lifetimes, and the player commands them. Synthesizing
+    // a per-cast damage number for "you summon a Phantom Army" doesn't
+    // match how the player thinks about the power.
+    for (const { entityName } of entityList) {
+      const entity = PET_ENTITIES[entityName];
+      if (entity?.commandable) return null;
+    }
+
     const enhBonus = enhancementBonuses.damage || 0;
-    const globalBonus = (globalBonusesForCalc.damage || 0) / 100;
+    // globalBonusesForCalc.damage is already a decimal (convertGlobalBonusesToAspects
+    // divides by 100). Passing it as-is to calculatePetDamage; previously this
+    // line did `/ 100` again, which silently nuked Fury / Musculature / Build
+    // Up contributions on every pseudo-pet display.
+    const globalBonus = globalBonusesForCalc.damage || 0;
     let base = 0, enhanced = 0, final = 0;
+    // Effective damage scale — sum of all ability damage scales × fires.
+    // Feeds the cap-relative DamageBar so it can render the meter; without
+    // a scale the bar is hidden. This mirrors how `scale` works for direct
+    // damage powers (base / scale = AT damage at scale 1.0).
+    let totalScale = 0;
     const damageTypes = new Set<string>();
     for (const { entityName, count } of entityList) {
       const applyEnh = shouldApplyEnhancements(entityName, summon.copyBoosts);
@@ -489,16 +509,37 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         entityName, build.level, count, summon.duration,
         applyEnh ? enhBonus : 0, applyEnh, globalBonus, 0,
       );
-      if (!result || result.aggregateDpsBase <= 0) continue;
-      // Lifetime damage = DPS × duration. Permanent pets fall back to a
-      // single cycle window — `damage` for them is conceptually DPS-driven
-      // and would otherwise overflow.
-      const window = summon.duration ?? 0;
-      if (window <= 0) continue;
-      base += result.aggregateDpsBase * window;
-      enhanced += result.aggregateDpsEnhanced * window;
-      final += result.aggregateDpsFinal * window;
+      if (!result) continue;
+
+      // Compute total per-cast damage by counting actual fires during the
+      // summon window. The previous formula (`aggregateDps × duration`)
+      // works for true continuous pseudo-pets (Blizzard, Tar Patch) but
+      // collapses for one-shot attack-summons like Lightning Rod and
+      // Shield Charge where `activatePeriod` is a 100s marker and the
+      // pet despawns after 1-4s — the pet fires exactly once at spawn.
+      const duration = summon.duration ?? 0;
+      if (duration <= 0) continue;
       for (const ab of result.abilities) {
+        const isAuto = ab.ability.type === 'Auto';
+        const period = ab.ability.activatePeriod ?? 0;
+        let firesPerSpawn: number;
+        if (isAuto && period > 0) {
+          // Auto abilities fire immediately on spawn, then every `period`
+          // seconds. +1 to count the initial tick at t=0.
+          firesPerSpawn = Math.max(1, Math.floor(duration / period) + 1);
+        } else if (ab.cycleTime > 0) {
+          firesPerSpawn = Math.max(1, Math.floor(duration / ab.cycleTime) + 1);
+        } else {
+          firesPerSpawn = 1;
+        }
+        base += ab.damagePerHit * firesPerSpawn * count;
+        enhanced += ab.damagePerHitEnhanced * firesPerSpawn * count;
+        final += ab.damagePerHitFinal * firesPerSpawn * count;
+        // Sum the ability's raw damage scales (per entry, can be multiple
+        // damage types) so the cap-relative meter has a reference value.
+        for (const dmgEntry of ab.ability.damage) {
+          totalScale += Math.abs(dmgEntry.scale) * firesPerSpawn * count;
+        }
         for (const dmg of ab.damageByType) damageTypes.add(dmg.type);
       }
     }
@@ -513,6 +554,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       enhanced,
       final,
       type: typeLabel,
+      scale: totalScale > 0 ? totalScale : undefined,
     } as PowerDamageResult;
   }, [calculatedDamage, effectivePower, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage]);
 
@@ -596,8 +638,24 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       if (effect.category !== 'Damage' || effect.value == null || effect.valueMax == null) continue;
 
       const slotLevel = ioSlot.level ?? build.level;
+      // Proc damage is FLAT in CoH — it is NOT modified by damage IOs
+      // slotted in this power, nor by damage-strength buffs (Fury, Build
+      // Up, Aim, Musculature). Procs fire at their fixed scale-table
+      // value. Only AT-specific multipliers (Containment, Critical Hits,
+      // Scourge) can multiply a proc's damage, and those are applied at
+      // hit time by the game, not surfaced in the planner's averages.
       const avgDamage = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, slotLevel);
-      const chance = calculateProcChance(procData.ppm, baseRecharge, castTime, radius, arcDegrees);
+      // Proc chance includes slotted Recharge enhancement on this power;
+      // a slotted Recharge IO lowers the firing window which lowers PPM
+      // chance (the in-game formula uses the post-enhancement recharge).
+      const chance = calculateProcChance(
+        procData.ppm,
+        baseRecharge,
+        castTime,
+        radius,
+        arcDegrees,
+        enhancementBonuses.recharge || 0,
+      );
       const perActivation = chance * avgDamage;
       const cycleTime = (baseRecharge + castTime) || 1;
       const dps = perActivation / cycleTime;
@@ -611,8 +669,83 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         dps,
       });
     }
+    // Append incarnate damage procs (Hybrid Assault doublehit, Interface
+    // DoTs) — they fire on every outgoing attack when their slot is
+    // active, regardless of slotted enhancements. Their entries show up
+    // alongside the IO-proc rows so the user sees the full proc landscape
+    // for the cast.
+    if (archetypeId) {
+      const incProcs = getActiveIncarnateDamageProcs(build.incarnates, {
+        hybrid: !!incarnateActive?.hybrid,
+        interface: !!incarnateActive?.interface,
+      });
+      // Mids multiplies incarnate-proc damage by the attack's maxTargets
+      // for AoEs (and 1 for STs). Mirroring that so SK's "Energy 240ish"
+      // line for Shield Charge matches Mids' "Energy 221ish" instead of
+      // the per-target 15. Slotted IO procs keep their single-target
+      // convention because Mids does too.
+      const maxTargets = effectivePower?.stats?.maxTargets ?? 1;
+      const expectedTargets = radius > 0 ? Math.max(1, maxTargets) : 1;
+      const incContribs = computeIncarnateProcContributions(
+        incProcs,
+        archetypeId,
+        build.level,
+        baseRecharge,
+        castTime,
+        radius,
+        arcDegrees,
+        enhancementBonuses.recharge || 0,
+        expectedTargets,
+      );
+      for (const c of incContribs) {
+        entries.push({
+          name: c.name,
+          setName: 'Incarnate',
+          type: c.damageType,
+          chance: c.chance,
+          avgDamage: c.damagePerActivation,
+          perActivation: c.avgDamage,
+          dps: c.dps,
+        });
+      }
+    }
+
     return entries.length > 0 ? entries : null;
-  }, [calculatedDamage, selectedPower, effectivePower, build.level]);
+  }, [calculatedDamage, selectedPower, effectivePower, build.level, build.incarnates, archetypeId, incarnateActive?.hybrid, incarnateActive?.interface, enhancementBonuses.recharge, globalBonusesForCalc.damage]);
+
+  // Average incarnate-proc damage per cast for THIS attack. Fed to
+  // DamageBlock so its "+X proc" annotation includes Hybrid/Interface
+  // proc contributions in addition to slotted IO procs. Independent of
+  // procDamageEntries (which gates on calculatedDamage being null);
+  // direct-damage attacks need this number too.
+  const incarnateProcDamage = useMemo(() => {
+    if (!archetypeId || !effectivePower) return 0;
+    const baseRecharge = effectivePower.stats?.recharge ?? effectivePower.effects?.recharge ?? 0;
+    const castTime = effectivePower.stats?.castTime ?? effectivePower.effects?.castTime ?? 0;
+    const radius = effectivePower.stats?.radius ?? effectivePower.effects?.radius ?? 0;
+    const rawArc = effectivePower.stats?.arc ?? effectivePower.effects?.arc;
+    const arcDegrees = radius > 0 ? (arcToDegrees(rawArc) || 360) : 360;
+    if (!baseRecharge && !castTime) return 0;
+    const procs = getActiveIncarnateDamageProcs(build.incarnates, {
+      hybrid: !!incarnateActive?.hybrid,
+      interface: !!incarnateActive?.interface,
+    });
+    if (procs.length === 0) return 0;
+    const maxTargets = effectivePower.stats?.maxTargets ?? 1;
+    const expectedTargets = radius > 0 ? Math.max(1, maxTargets) : 1;
+    const contribs = computeIncarnateProcContributions(
+      procs,
+      archetypeId,
+      build.level,
+      baseRecharge,
+      castTime,
+      radius,
+      arcDegrees,
+      enhancementBonuses.recharge || 0,
+      expectedTargets,
+    );
+    return contribs.reduce((sum, c) => sum + c.avgDamage, 0);
+  }, [effectivePower, archetypeId, build.level, build.incarnates, incarnateActive?.hybrid, incarnateActive?.interface, enhancementBonuses.recharge]);
 
   // Per-target buff scaling (stored in UI store so it persists across power switches)
   const stackingInfo = useMemo(() => power ? getStackingInfo(power) : null, [power]);
@@ -854,6 +987,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           includeProcDamage={includeProcDamageToggle}
           enhancementBonuses={enhancementBonuses}
           globalBonusesForCalc={globalBonusesForCalc}
+          incarnateProcDamage={incarnateProcDamage}
         />
       )}
 

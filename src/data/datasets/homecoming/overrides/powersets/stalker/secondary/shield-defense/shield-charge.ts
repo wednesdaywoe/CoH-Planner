@@ -1,9 +1,12 @@
 /**
  * Shield Charge — OVERRIDES LAYER
  *
- * Empty: the generated extraction matches the previously-committed composed
- * form; no hand-written deltas to preserve.
+ * Binary extraction reports `targetType: "Dead Teammate"` because the
+ * underlying mechanic is a teleport-then-summon. For UI purposes the
+ * power is a Foe-targeted AoE attack.
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {};
+export const overrides: Partial<Power> = {
+  targetType: 'Foe',
+};

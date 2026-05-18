@@ -59,6 +59,11 @@ export interface DamageBlockProps {
   enhancementBonuses: Record<string, number | undefined>;
   /** Aspect-keyed global bonuses (used for recharge three-tier) */
   globalBonusesForCalc: Record<string, number | undefined>;
+  /** Extra proc-style damage from active Hybrid/Interface incarnate
+   *  slots (already chance-multiplied — i.e., already an average per cast).
+   *  Added to the "+X proc" annotation alongside slotted IO procs so the
+   *  power's average-damage total reflects all proc sources. */
+  incarnateProcDamage?: number;
 }
 
 export function DamageBlock(props: DamageBlockProps) {
@@ -318,6 +323,7 @@ function DamageMetrics({
   enhancementBonuses,
   globalBonusesForCalc,
   buildLevel,
+  incarnateProcDamage,
 }: DamageBlockProps) {
   // Calculate enhanced recharge time
   const rechargeStats = calcThreeTierUtil('recharge', effects.recharge ?? 0, enhancementBonuses, globalBonusesForCalc);
@@ -336,8 +342,11 @@ function DamageMetrics({
   const dotTotalBase = dot ? dot.base * dot.ticks : 0;
   const dotTotalFinal = dot ? dot.final * dot.ticks : 0;
 
-  // Calculate proc damage per activation if toggle is enabled
-  let procDamagePerActivation = 0;
+  // Calculate proc damage per activation if toggle is enabled.
+  // Seeds from active Hybrid/Interface incarnate procs (already an
+  // average per cast — chance × per-activation damage); slotted IO procs
+  // accumulate on top below.
+  let procDamagePerActivation = includeProcDamage ? (incarnateProcDamage ?? 0) : 0;
   if (includeProcDamage && selectedPower?.slots) {
     const radius = effects.radius ?? 0;
     const arcDegrees = radius > 0 ? (arcToDegrees(effects.arc) || 360) : 360;
@@ -351,7 +360,11 @@ function DamageMetrics({
       if (effect.category !== 'Damage' || effect.value === undefined || effect.valueMax === undefined) continue;
       // Interpolate damage at the enhancement's effective level
       const enhLevel = ioEnh.attuned ? buildLevel : (ioEnh.level ?? buildLevel);
-      const dmgAtLevel = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, enhLevel);
+      // Proc damage is FLAT — no damage-strength buff multipliers and no
+      // damage IO enhancement. Procs fire at their fixed scale-table
+      // value; only AT-specific multipliers (Containment, Crit, Scourge)
+      // multiply them, and those happen at hit time, not in the average.
+      const procDmg = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, enhLevel);
       // Proc chance uses base recharge + slotted Recharge bonus (which is
       // what determines firing frequency in-game) and raw cast time (not
       // ArcanaTime). Without the enhancement bonus, slotting Recharge IOs
@@ -365,7 +378,7 @@ function DamageMetrics({
         arcDegrees,
         enhancementBonuses.recharge ?? 0,
       );
-      procDamagePerActivation += dmgAtLevel * procChance;
+      procDamagePerActivation += procDmg * procChance;
     }
   }
 

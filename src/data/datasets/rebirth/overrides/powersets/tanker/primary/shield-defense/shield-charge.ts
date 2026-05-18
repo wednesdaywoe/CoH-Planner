@@ -1,12 +1,12 @@
 /**
  * Shield Charge — OVERRIDES LAYER
  *
- * Hand-written deltas applied on top of the generated power object via
- * `withOverrides()` in the composed file. Survives regeneration.
- * Empty `{}` means no overrides — the generated extraction is accepted
- * as-is. Add fields here when convert-powerset produces the wrong value
- * or is missing a planner-only field (maxStacks, stacksLinear, etc.).
+ * Binary extraction reports `targetType: "Dead Teammate"` because the
+ * underlying mechanic is a teleport-then-summon. The power is a
+ * Foe-targeted AoE attack.
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {};
+export const overrides: Partial<Power> = {
+  targetType: 'Foe',
+};
