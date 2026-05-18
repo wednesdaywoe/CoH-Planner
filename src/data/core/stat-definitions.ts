@@ -44,6 +44,14 @@ export interface StatDefinition {
   showWhenZero?: boolean;
   breakdownKey?: string; // Key to look up breakdown from calculation result
   breakdownUnit?: string; // Unit for breakdown values (default: '%'). Use 'Mag' for mez protection.
+  /** Constant added to the total when displayed (not to individual source
+   *  rows). Used by Recharge to follow the CoH speed-multiplier
+   *  convention Mids calls "Haste" — base recharge is 100%, bonuses add
+   *  on top. Each source row stays as its own bonus value (e.g.
+   *  "Hasten +70%"), but the headline and tooltip total render as
+   *  "100% + sum of bonuses". This is purely a display convention; the
+   *  underlying decimal value used by every formula is unchanged. */
+  totalBaseOffset?: number;
 }
 
 // ============================================
@@ -129,11 +137,16 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'recharge',
     label: 'Rech',
     getValue: (stats) => stats.globalRecharge,
-    format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${pct2(n)}%`; },
+    // Mids-style speed-multiplier display: base recharge is 100%, bonuses
+    // add on top. So +70% Hasten → 170%; +191% build → 291%. Matches
+    // Mids' "Haste" column directly so users comparing the two tools see
+    // the same number.
+    format: (v) => `${pct2(100 + Number(v))}%`,
     color: STAT_COLORS.recharge,
-    tooltip: 'Global recharge from set bonuses',
+    tooltip: 'Recharge speed (100% base + global bonuses, matches Mids "Haste").',
     showWhenZero: true,
     breakdownKey: 'recharge',
+    totalBaseOffset: 100,
   },
 
   // Defense

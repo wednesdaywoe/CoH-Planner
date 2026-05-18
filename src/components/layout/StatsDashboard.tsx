@@ -280,7 +280,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
           tooltip = `${sign}${pct.toFixed(2)}% fly speed buff. Effective cap ${cap.toFixed(2)} mph. Base mph requires an active fly power.`;
         }
 
-        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip, format };
+        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, totalBaseOffset: def.totalBaseOffset, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip, format };
       })
       .filter((stat) => {
         if (stat.showWhenZero) return true;
@@ -424,6 +424,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
                       tooltip={stat.tooltip}
                       breakdown={stat.breakdown}
                       breakdownUnit={stat.breakdownUnit}
+                      totalBaseOffset={stat.totalBaseOffset}
                       rawValue={stat.value}
                       tracked={stat.breakdownKey ? trackedStats.includes(stat.breakdownKey) : false}
                       onTrack={stat.breakdownKey ? () => toggleTrackedStat(stat.breakdownKey!) : undefined}
@@ -796,6 +797,10 @@ interface StatItemProps {
   tooltip?: string;
   breakdown?: DashboardStatBreakdown;
   breakdownUnit?: string;
+  /** Constant added to the displayed total (and only the total) — used by
+   *  Recharge to follow Mids' speed-multiplier "Haste" convention where
+   *  100% base is added to the sum of bonuses. */
+  totalBaseOffset?: number;
   rawValue?: StatValue;
   className?: string;
   tracked?: boolean;
@@ -806,7 +811,7 @@ interface StatItemProps {
   cap?: number;
 }
 
-function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', rawValue, className = '', tracked, onTrack, hpCap, cap }: StatItemProps) {
+function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', totalBaseOffset = 0, rawValue, className = '', tracked, onTrack, hpCap, cap }: StatItemProps) {
   const hasCapped = breakdown?.sources.some(s => s.capped) ?? false;
   const numericValue = typeof rawValue === 'number' ? rawValue : undefined;
   const isAtCap = cap !== undefined && numericValue !== undefined && numericValue >= cap;
@@ -960,10 +965,18 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
           </div>
         )}
 
-        {/* Total */}
+        {/* Total — adds the optional base offset for stats that use the
+            Mids speed-multiplier convention (e.g. Recharge: 100% base +
+            global bonuses). Sources above still render as their raw
+            bonus contribution; only the displayed total shifts. */}
         <div className="border-t border-slate-600 pt-1 flex justify-between text-[11px] font-medium">
-          <span className="text-slate-300">Total</span>
-          <span className={color}>+{formatBonusValue(breakdown.total)}{breakdownUnit}{isRegen && <span className="text-slate-400"> ({(rawValue as CompoundStatValue).perSec.toFixed(2)}/s)</span>}</span>
+          <span className="text-slate-300">{totalBaseOffset ? `Total (100% base + bonuses)` : 'Total'}</span>
+          <span className={color}>
+            {totalBaseOffset
+              ? `${formatBonusValue(totalBaseOffset + breakdown.total)}${breakdownUnit}`
+              : <>+{formatBonusValue(breakdown.total)}{breakdownUnit}</>}
+            {isRegen && <span className="text-slate-400"> ({(rawValue as CompoundStatValue).perSec.toFixed(2)}/s)</span>}
+          </span>
         </div>
 
         {/* HP Cap */}
@@ -975,7 +988,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
         )}
       </div>
     );
-  }, [breakdown, tooltip, label, color, breakdownUnit, rawValue]);
+  }, [breakdown, tooltip, label, color, breakdownUnit, totalBaseOffset, rawValue]);
 
   return <Tooltip content={tooltipContent}>{content}</Tooltip>;
 }

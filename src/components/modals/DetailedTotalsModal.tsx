@@ -123,6 +123,9 @@ interface StatRow {
   breakdown?: DashboardStatBreakdown;
   breakdownKey?: string;
   breakdownUnit?: string;
+  /** Constant added to the displayed total (Recharge → 100% base + bonuses,
+   *  matching Mids' speed-multiplier "Haste" convention). */
+  totalBaseOffset?: number;
   /** Cap value as a percentage (e.g. 90 for 90%). Present for defense/resistance stats. */
   cap?: number;
 }
@@ -275,10 +278,14 @@ function BreakdownPanel({
   breakdown,
   unit,
   color,
+  totalBaseOffset = 0,
 }: {
   breakdown: DashboardStatBreakdown;
   unit: string;
   color: string;
+  /** Constant added to the displayed total — used for Recharge to match
+   *  Mids' speed-multiplier "Haste" convention (100% base + bonuses). */
+  totalBaseOffset?: number;
 }) {
   return (
     <div className="ml-4 mr-1 mb-1 mt-0.5 pl-2 border-l border-slate-600/50 space-y-1.5">
@@ -313,10 +320,15 @@ function BreakdownPanel({
         );
       })}
 
-      {/* Total */}
+      {/* Total — adds the optional base offset for stats using the Mids
+          speed-multiplier convention (Recharge: 100% base + bonuses). */}
       <div className="border-t border-slate-600/50 pt-0.5 flex justify-between text-[11px] font-medium">
-        <span className="text-slate-300">Total</span>
-        <span className={color}>+{formatBonusValue(breakdown.total)}{unit}</span>
+        <span className="text-slate-300">{totalBaseOffset ? 'Total (100% base + bonuses)' : 'Total'}</span>
+        <span className={color}>
+          {totalBaseOffset
+            ? `${formatBonusValue(totalBaseOffset + breakdown.total)}${unit}`
+            : `+${formatBonusValue(breakdown.total)}${unit}`}
+        </span>
       </div>
     </div>
   );
@@ -423,6 +435,7 @@ function StatGrid({
                       breakdown={stat.breakdown}
                       unit={stat.breakdownUnit ?? '%'}
                       color={stat.color}
+                      totalBaseOffset={stat.totalBaseOffset}
                     />
                   )}
                 </div>
