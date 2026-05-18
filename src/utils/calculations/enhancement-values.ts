@@ -539,11 +539,11 @@ export function calculatePowerEnhancementBonuses(
       const isAttuned = set.maxLevel <= 1 || slot.attuned === true;
       let ioLevel: number;
       if (isAttuned) {
-        // Attuned: use exemplar level if exemplaring, otherwise globalIOLevel (typically 50)
-        const baseLevel = exemplarLevel ?? globalIOLevel;
-        // Catalyzed non-ATO/non-event sets still cap at their maxLevel
-        // (ATOs/event IOs have maxLevel <= 1 and scale freely)
-        ioLevel = set.maxLevel > 1 ? Math.min(baseLevel, set.maxLevel) : baseLevel;
+        // Attuned IOs scale with character level, uncapped by set.maxLevel.
+        // E.g., attuned Triage (set maxLevel 30) in an L50 character behaves
+        // as an L50 IO (Heal dual = 26.5%, not the L30-capped 21.75%).
+        // Verified 2026-05-18 against the in-game enhancement tooltip.
+        ioLevel = exemplarLevel ?? globalIOLevel;
       } else {
         // Non-attuned: capped by set's max level
         ioLevel = Math.min(globalIOLevel, set.maxLevel);
@@ -658,8 +658,9 @@ export function combineWithAlphaED(
       const isAttuned = set.maxLevel <= 1 || slot.attuned === true;
       let ioLevel: number;
       if (isAttuned) {
-        const baseLevel = exemplarLevel ?? globalIOLevel;
-        ioLevel = set.maxLevel > 1 ? Math.min(baseLevel, set.maxLevel) : baseLevel;
+        // Attuned IOs scale with character level, uncapped by set.maxLevel
+        // (see longer comment at the sibling site in this file).
+        ioLevel = exemplarLevel ?? globalIOLevel;
       } else {
         ioLevel = Math.min(globalIOLevel, set.maxLevel);
       }
