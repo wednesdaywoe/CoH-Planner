@@ -1563,7 +1563,11 @@ interface PowerForProcScan {
   powerType?: string;
   isActive?: boolean;
   slots?: (Enhancement | null)[];
+  // Primary/secondary powers carry execution stats under `stats`; pool/epic
+  // powers carry them under `effects` (transformPoolPower never builds a
+  // `stats` object). Both fields are read with stats winning when present.
   stats?: { recharge?: number; castTime?: number; radius?: number; arc?: number };
+  effects?: { recharge?: number; castTime?: number; radius?: number; arc?: number };
 }
 
 /**
@@ -2102,10 +2106,15 @@ function applyBuildUpProcBonuses(
     if (powerType === 'auto' || powerType === 'toggle') return;
     if (!power.isActive) return;
 
-    const baseRecharge = power.stats?.recharge || 4;
-    const castTime = power.stats?.castTime || 1;
-    const radius = power.stats?.radius || 0;
-    const arcDegrees = radius > 0 ? (arcToDegrees(power.stats?.arc) || 360) : 360;
+    // Fall back to `effects` so pool/epic click powers (Wall of Force,
+    // Spring Attack, etc.) contribute Build Up proc averages instead of
+    // silently using the radius=0 / recharge=4 defaults. arcToDegrees
+    // handles the radians-stored arc from both sources.
+    const baseRecharge = power.stats?.recharge ?? power.effects?.recharge ?? 4;
+    const castTime = power.stats?.castTime ?? power.effects?.castTime ?? 1;
+    const radius = power.stats?.radius ?? power.effects?.radius ?? 0;
+    const rawArc = power.stats?.arc ?? power.effects?.arc;
+    const arcDegrees = radius > 0 ? (arcToDegrees(rawArc) || 360) : 360;
 
     for (const slot of power.slots) {
       if (!slot || slot.type !== 'io-set') continue;

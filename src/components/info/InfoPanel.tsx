@@ -778,6 +778,16 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Use effective stats (quickSnipe-aware) for display
   const effectiveStats = effectivePower.stats;
 
+  // Normalize arc to degrees once, regardless of source. Primary/secondary
+  // powers carry arc on `power.stats` and pool/epic powers carry it on
+  // `power.effects` (because `transformPoolPower` never builds a `stats`
+  // object) — both store the raw binary value in radians. The downstream
+  // contract (GeneralStatsBlock → ProcChanceRow) requires degrees; without
+  // this, cone pool powers like Wall of Force end up feeding ~1.57 into a
+  // formula that expects 90 and the displayed proc chance is wildly off.
+  const rawArc = effectiveStats?.arc ?? baseEffects?.arc;
+  const arcInDegrees = rawArc != null ? arcToDegrees(rawArc) : undefined;
+
   // Merge power.stats into effects for registry-driven display
   // Map stats field names to registry-expected names
   const effects = {
@@ -790,7 +800,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     ...(effectiveStats?.castTime && { castTime: effectiveStats.castTime }),
     // AoE stats
     ...(effectiveStats?.radius && { radius: effectiveStats.radius }),
-    ...(effectiveStats?.arc && { arc: effectiveStats.arc <= 2 * Math.PI ? effectiveStats.arc * (180 / Math.PI) : effectiveStats.arc }),
+    ...(arcInDegrees != null && { arc: arcInDegrees }),
     ...(effectiveStats?.maxTargets && { maxTargets: effectiveStats.maxTargets }),
     // Healing from damage array
     ...(healFromDamage && { healing: healFromDamage }),

@@ -40,6 +40,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Lightning Rod and Shield Charge no longer say "Target type: Dead Teammate". That was the teleport mechanic\'s positional target leaking through to the UI.', type: 'fix' },
       { message: 'Lightning Rod and Shield Charge now display per-cast damage in the main Damage block (with the cap-relative meter, three-tier numbers, DPA/DPS/DPE modes) instead of hiding the actual damage behind a collapsed Pet DPS row. Lightning Rod\'s damage now appears at all. Previously the summon entity pointed at a positional anchor with no damage data, so the panel was empty', type: 'update' },
       { message: 'Incarnate proc damage (Hybrid Assault doublehit, Interface DoT procs) is now included in the per-attack damage breakdown. Hybrid Assault Radial Embodiment\'s Energy doublehit and all six Interface Flawless DoTs (Reactive / Cognitive / Spectral / Degenerative / Preemptive × Core/Radial) appear as rows in "Damage from Procs". AoE attacks apply the proc to all targets hit to match what Mids\'', type: 'feat' },
+      { message: 'Fixed proc averager calc for power pools and chance for Build Ups', type: 'fix' },
     ]
   },
 
