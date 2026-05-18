@@ -33,7 +33,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Auto-reload on stale-tab failures. After a deploy, browsers still holding the old shell will reload themselves instead of showing a blank page on the next chunk import', type: 'feat' },
       { message: 'Mids .mbd import should now correctly set power activations. The importer now reads StatInclude (→ active) and VariableValue (→ stack/targets slider) for every power. Fresh imports reproduce Mids\' default totals without manual toggling', type: 'feat' },
       { message: 'Targets-hit / stack slider is now capped at each power\'s declared maxStacks', type: 'fix' },
-      { message: 'Recharge totals now use Mids\' Haste convention — the dashboard shows 100% base + bonuses so the number lines up with what Mids displays (Rech 271% instead of +171%)', type: 'update' },
+      { message: 'Recharge totals now use Mids\' Haste convention. The dashboard shows 100% base + bonuses so the number lines up with what Mids displays (Rech 271% instead of +171%)', type: 'update' },
       { message: 'Exemplar Mode no longer persists across page reloads, and a subtle banner reminds you when it\'s on (silently scaling every recharge / damage / defense number was hard to debug when the toggle was forgotten)', type: 'update' },
       { message: 'Proc damage chance now factors in slotted Recharge enhancement. Slotting a Recharge IO will lower a proc\'s chance per cast', type: 'fix' },
       { message: 'Superior ATO 5ppm damage procs now parse and contribute', type: 'fix' },
