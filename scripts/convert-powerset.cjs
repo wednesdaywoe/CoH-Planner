@@ -306,6 +306,19 @@ const CONTROL_ATO_BY_AT = {
   controller: 'Controller Archetype Sets',
   dominator:  'Dominator Archetype Sets',
 };
+
+// Union of every archetype-specific ATO category name. Used to filter out
+// wrong-AT ATOs that the binary's per-power allowed_set_categories list
+// can erroneously include (notably Rebirth's boostsets.bin shows Blaster
+// ATOs on VEAT primary attacks). We retain only the AT's own ATO.
+const ALL_AT_ATO_CATEGORIES = new Set([
+  ...Object.values(DAMAGE_ATO_BY_AT),
+  ...Object.values(CONTROL_ATO_BY_AT),
+  // Guardian is Rebirth-only; its ATO category if/when it exists. Listing
+  // here defensively so a binary-leak from a Guardian set into a non-
+  // Guardian power gets filtered the same way.
+  'Guardian Archetype Sets',
+]);
 const MEZ_BOOSTS = new Set(['Hold', 'Stun', 'Confuse', 'Sleep', 'Fear', 'Immobilize']);
 
 function inferAllowedSetCategories(boosts, archetypeId, powerType, effectArea, range, powersetHint, hasTeleportAttrib) {
@@ -2891,7 +2904,28 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // predating the boostsets parser).
   if (Array.isArray(powerJson.allowed_set_categories)) {
     if (powerJson.allowed_set_categories.length > 0) {
-      power.allowedSetCategories = [...powerJson.allowed_set_categories].sort();
+      // Strip wrong-archetype ATO categories. The binary in some HC patches
+      // and on Rebirth includes the wrong AT's ATO category in the
+      // per-power `allowed_set_categories` (e.g. Arachnos Soldier attack
+      // powers list "Blaster Archetype Sets" alongside "Soldiers of
+      // Arachnos Archetype Sets"). The game doesn't actually let you slot
+      // Blaster ATOs into a Crab Spider's gun — boostsets.bin's per-set
+      // power list is the truer source for the picker. Filter here so the
+      // planner UI matches in-game slottability.
+      //
+      // An AT can have multiple "own" ATO categories (Controllers and
+      // Dominators each have a control-ATO category; some ATs have a
+      // damage-ATO category; VEATs share a single "Soldiers of Arachnos"
+      // category). Build the set of own categories from both maps so we
+      // keep them and strip everything else.
+      const ownAtos = new Set();
+      if (DAMAGE_ATO_BY_AT[archetypeId]) ownAtos.add(DAMAGE_ATO_BY_AT[archetypeId]);
+      if (CONTROL_ATO_BY_AT[archetypeId]) ownAtos.add(CONTROL_ATO_BY_AT[archetypeId]);
+      const filtered = powerJson.allowed_set_categories.filter(cat => {
+        if (!ALL_AT_ATO_CATEGORIES.has(cat)) return true; // not an AT ATO at all — keep
+        return ownAtos.has(cat); // keep only own AT's ATOs
+      });
+      power.allowedSetCategories = filtered.sort();
     }
     // else: leave allowedSetCategories unset — no IO sets slot here.
   } else {

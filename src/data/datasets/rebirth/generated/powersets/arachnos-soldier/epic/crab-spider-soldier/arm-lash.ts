@@ -37,7 +37,6 @@ export const ArmLash: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",
     "Soldiers of Arachnos Archetype Sets",

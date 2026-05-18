@@ -34,7 +34,6 @@ export const WebCocoon: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Holds",
     "Slow Movement"
   ],

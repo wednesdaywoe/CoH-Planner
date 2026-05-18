@@ -36,7 +36,6 @@ export const WideAreaWebGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Immobilize",
     "Slow Movement"
   ],

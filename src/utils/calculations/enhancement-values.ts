@@ -545,8 +545,15 @@ export function calculatePowerEnhancementBonuses(
         // Verified 2026-05-18 against the in-game enhancement tooltip.
         ioLevel = exemplarLevel ?? globalIOLevel;
       } else {
-        // Non-attuned: capped by set's max level
-        ioLevel = Math.min(globalIOLevel, set.maxLevel);
+        // Non-attuned: use the slot's stored level (the level the IO was
+        // crafted at), then cap by the set's max level. Fall back to
+        // globalIOLevel when the slot has no explicit level (legacy
+        // builds, picker default). Previously this ignored `slot.level`
+        // entirely and used globalIOLevel — which meant a Gaussian's
+        // dual slotted at L27 was being computed as an L50 IO (33% recharge
+        // pre-ED vs the 20.7% the user actually has).
+        const desiredLevel = (slot as { level?: number }).level ?? globalIOLevel;
+        ioLevel = Math.min(desiredLevel, set.maxLevel);
       }
       // Purple and Superior sets get 25% higher enhancement values
       const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);

@@ -33,7 +33,6 @@ export const SmokeGrenade: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,
