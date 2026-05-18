@@ -152,6 +152,7 @@ export interface Dataset {
   purplePatch: {
     getBaseToHit: (levelDiff: number) => number;
     getCombatModifier: (levelDiff: number) => number;
+    getDefenseSoftcap: (levelDiff: number) => number;
   };
 
   // Granted powers — parent → auto-granted children mappings (e.g.

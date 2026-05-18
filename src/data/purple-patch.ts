@@ -21,3 +21,7 @@ export function getBaseToHit(levelDiff: number): number {
 export function getCombatModifier(levelDiff: number): number {
   return getActiveDataset().purplePatch.getCombatModifier(levelDiff);
 }
+
+export function getDefenseSoftcap(levelDiff: number): number {
+  return getActiveDataset().purplePatch.getDefenseSoftcap(levelDiff);
+}

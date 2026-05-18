@@ -6,4 +6,4 @@
  * ever tunes these values, replace the re-export with concrete tables.
  */
 
-export { getBaseToHit, getCombatModifier } from '../homecoming/purple-patch';
+export { getBaseToHit, getCombatModifier, getDefenseSoftcap } from '../homecoming/purple-patch';

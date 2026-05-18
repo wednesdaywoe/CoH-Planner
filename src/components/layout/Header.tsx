@@ -1100,7 +1100,7 @@ function SettingsPopover() {
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => setTargetLevelOffset(targetLevelOffset - 1)}
-                    disabled={targetLevelOffset <= -5}
+                    disabled={targetLevelOffset <= -7}
                     className="text-slate-400 hover:text-cyan-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
                   >
                     &minus;
@@ -1110,7 +1110,7 @@ function SettingsPopover() {
                   </span>
                   <button
                     onClick={() => setTargetLevelOffset(targetLevelOffset + 1)}
-                    disabled={targetLevelOffset >= 5}
+                    disabled={targetLevelOffset >= 7}
                     className="text-slate-400 hover:text-cyan-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
                   >
                     +

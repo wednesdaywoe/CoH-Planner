@@ -8,8 +8,9 @@ import { useEffect, useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
-import { formatBonusValue } from '@/utils/set-bonus-format';
+import { formatBonusValue2 as formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data';
+import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
@@ -194,7 +195,12 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const baseHP = health.baseHealth;
   const maxHPCap = health.maxHealth;
   const at = build.archetype?.id ? getArchetype(build.archetype.id) : null;
-  const defenseCap = (at?.stats.defenseCap ?? 0.45) * 100;
+  // Defense cap follows the practical softcap relative to the target enemy
+  // level. Standard 45% at +0, scaling up to 80% at +7 (HC hard mode).
+  // Resistance cap is the AT's flat hard cap (75% for most ATs, 90% for
+  // tanker/brute/warshade) — enemy level doesn't change that.
+  const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
+  const defenseCap = getDefenseSoftcap(targetLevelOffset);
   const resistanceCap = (at?.stats.resistanceCap ?? 0.75) * 100;
   const breakdowns = calcResult.breakdown;
   const globalBonuses = calcResult.globalBonuses;
@@ -816,7 +822,11 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
   const numericValue = typeof rawValue === 'number' ? rawValue : undefined;
   const isAtCap = cap !== undefined && numericValue !== undefined && numericValue >= cap;
   const overCap = isAtCap ? numericValue - cap : 0;
-  const displayColor = isAtCap ? 'text-orange-400' : color;
+  // When a stat hits its AT cap (Defense / Resistance / etc.), keep its
+  // native color (defense purple, resistance orange) and signal "capped"
+  // by underlining the value rather than recoloring to orange. The
+  // overflow amount moves into the tooltip so the headline stays compact.
+  const displayColor = color;
 
   // Split a trailing parenthetical (e.g. "10.49/s (+90%)") into main and
   // secondary parts. The secondary renders smaller and dimmer so it stays
@@ -837,13 +847,10 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
       onClick={onTrack}
     >
       <span className="text-xs text-gray-500 uppercase tracking-wide shrink-0">{label}</span>
-      <span className={`text-sm font-medium tabular-nums text-right truncate ${displayColor}`}>
+      <span className={`text-sm font-medium tabular-nums text-right truncate ${displayColor} ${isAtCap ? 'underline decoration-current decoration-dotted underline-offset-2' : ''}`}>
         {mainText}
         {secondaryText && (
           <span className="text-[10px] text-gray-500 ml-1">{secondaryText}</span>
-        )}
-        {overCap > 0 && (
-          <span className="text-[9px] text-orange-400/70 ml-0.5">(+{overCap.toFixed(1)})</span>
         )}
       </span>
     </div>
@@ -877,9 +884,9 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
       <div className="space-y-2 max-w-[300px]">
         <div className="font-semibold text-slate-200">{label}</div>
         {tooltip && <div className="text-slate-400 text-[10px]">{tooltip}</div>}
-        {isAtCap && (
+        {isAtCap && numericValue !== undefined && (
           <div className="text-orange-400 text-[10px]">
-            Capped at {cap}% (over by {overCap.toFixed(2)}%)
+            Capped at {cap}% — actual total {numericValue.toFixed(2)}% (over by {overCap.toFixed(2)}%)
           </div>
         )}
 

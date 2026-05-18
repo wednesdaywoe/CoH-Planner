@@ -448,7 +448,7 @@ function MobileSettingsContent() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setTargetLevelOffset(targetLevelOffset - 1)}
-            disabled={targetLevelOffset <= -5}
+            disabled={targetLevelOffset <= -7}
             className="w-8 h-8 rounded bg-slate-800 text-slate-300 disabled:opacity-30 font-bold"
           >−</button>
           <span className="text-base font-bold text-cyan-400 w-10 text-center">
@@ -456,7 +456,7 @@ function MobileSettingsContent() {
           </span>
           <button
             onClick={() => setTargetLevelOffset(targetLevelOffset + 1)}
-            disabled={targetLevelOffset >= 5}
+            disabled={targetLevelOffset >= 7}
             className="w-8 h-8 rounded bg-slate-800 text-slate-300 disabled:opacity-30 font-bold"
           >+</button>
         </div>

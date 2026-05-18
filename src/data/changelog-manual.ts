@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-05-18',
     items: [
+      { message: 'Extended enemy level to +7 for HC datasets. Also, Defense softcaps should change depending on the target level you set', type: 'feat' },
       { message: 'Just an absolute dumptruck of changes, QOL features, and bug fixes...', type: 'update' },
       { message: 'Ragnarok piece 6 on Rebirth correctly labeled "Chance for Knockdown" (was "Chance for Knockback"); Rebirth extractor now carries a rename map', type: 'fix' },
       { message: 'Brine no longer gives the caster +MaxHP. Foe -MaxHP debuffs are no longer laundered into a self buff by the powerset converter. Marine Affinity regenerated across all 4 ATs.', type: 'fix' },

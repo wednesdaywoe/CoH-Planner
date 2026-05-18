@@ -9,7 +9,7 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { convertToLegacyStats } from '@/hooks/useCalculatedStats';
 import { useBuildStore, useAuthStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
-import { formatBonusValue } from '@/utils/set-bonus-format';
+import { formatBonusValue2 as formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data/archetypes';
 import type { ArchetypeId } from '@/types';
 import { calculateCharacterTotals } from '@/utils/calculations/character-totals';

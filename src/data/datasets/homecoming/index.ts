@@ -23,7 +23,7 @@ import {
   calculateIncarnateDamage,
   getPetTableValue,
 } from './at-tables';
-import { getBaseToHit, getCombatModifier } from './purple-patch';
+import { getBaseToHit, getCombatModifier, getDefenseSoftcap } from './purple-patch';
 import { GRANTED_POWER_GROUPS } from './granted-powers';
 import { PET_ENTITIES } from './pet-entities';
 
@@ -45,6 +45,7 @@ const dataset: Dataset = {
   purplePatch: {
     getBaseToHit,
     getCombatModifier,
+    getDefenseSoftcap,
   },
 
   grantedPowerGroups: GRANTED_POWER_GROUPS,

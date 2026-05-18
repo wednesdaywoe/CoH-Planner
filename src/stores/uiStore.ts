@@ -868,7 +868,12 @@ export const useUIStore = create<UIStore>()(
 
       setTargetLevelOffset: (offset) =>
         set({
-          targetLevelOffset: Math.max(-5, Math.min(5, offset)),
+          // HC supports enemy levels up to +7 above the player (incarnate
+          // trial bosses, +4-shifted AVs in late-Story arcs, +7 in some
+          // hard mode content). The defense softcap shifts +5% per
+          // enemy level above, so the offset range needs to cover the
+          // full span for the dashboard cap to reflect reality.
+          targetLevelOffset: Math.max(-7, Math.min(7, offset)),
         }),
 
       toggleProcCategory: (category: ProcSettingsKey) =>

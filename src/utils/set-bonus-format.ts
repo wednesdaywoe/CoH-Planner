@@ -19,6 +19,16 @@ export function formatBonusValue(value: number): string {
   return rounded.toString();
 }
 
+/** Round to at most 2 decimals, strip trailing zeros. Used for the
+ *  dashboard breakdown rows where 2-decimal precision keeps the per-row
+ *  numbers compact and consistent with the main stat tile's own format.
+ *  The 3-decimal `formatBonusValue` stays in place for the set-bonus
+ *  tooltips where 1.125% needs to be visible exactly. */
+export function formatBonusValue2(value: number): string {
+  const rounded = Math.round(value * 100) / 100;
+  return rounded.toString();
+}
+
 /** Splice the precise value back into the leading "+X.X%" portion of a
  *  pre-rendered desc. If `desc` is empty/missing, fall back to "<stat>
  *  +<value>%". */

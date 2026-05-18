@@ -98,3 +98,44 @@ export function getCombatModifier(levelDiff: number): number {
   const index = Math.min(levelDiff, COMBAT_MOD_BELOW.length - 1);
   return COMBAT_MOD_BELOW[index];
 }
+
+// ============================================
+// DEFENSE SOFTCAP BY ENEMY LEVEL
+// ============================================
+
+/**
+ * Defense softcap = the defense % at which an enemy's hit chance bottoms
+ * out at the 5% floor. CoH's hit formula is:
+ *   hitChance = clamp(0.05, 0.95, accuracy × (toHitBase + toHitBuff) - defense)
+ * Enemies at level N above the player gain a +5% ToHit per level (and a
+ * proportional accuracy multiplier). Working through the math for a
+ * standard 50% base ToHit enemy, the defense needed to floor hit chance:
+ *
+ *   level diff | softcap
+ *   -----------+--------
+ *      +0      |  45%   (standard / "even-con")
+ *      +1      |  50%
+ *      +2      |  55%
+ *      +3      |  ~59%  ┐ Incarnate trial / +4 AV range
+ *      +4      |  ~64%  ┘ (often quoted together as 59-65%)
+ *      +5      |  ~70%
+ *      +6      |  ~75%
+ *      +7      |  ~80%  (HC hard-mode upper end)
+ *
+ * Below-level enemies don't lower the softcap you'd plan around, so we
+ * keep the standard 45% floor for negative offsets.
+ */
+const DEFENSE_SOFTCAP_BY_LEVEL_DIFF: number[] = [
+  45, 50, 55, 59, 64, 70, 75, 80,
+];
+
+/**
+ * Get the practical defense softcap for the given enemy-level offset.
+ * @param levelDiff Positive = enemy is above player; negative or 0 uses
+ *   the standard 45% softcap.
+ */
+export function getDefenseSoftcap(levelDiff: number): number {
+  if (levelDiff <= 0) return DEFENSE_SOFTCAP_BY_LEVEL_DIFF[0];
+  const clamped = Math.min(levelDiff, DEFENSE_SOFTCAP_BY_LEVEL_DIFF.length - 1);
+  return DEFENSE_SOFTCAP_BY_LEVEL_DIFF[clamped];
+}
