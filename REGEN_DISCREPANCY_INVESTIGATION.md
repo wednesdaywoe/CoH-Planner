@@ -73,26 +73,52 @@ User asked whether procs like Power Transfer might be erroneously running throug
 
 So procs are neither double-counted nor enhanced. Ruled out.
 
-## Most plausible remaining hypotheses
+## Root cause identified: attuned IO scaling
 
-The 3.27 pp gap *must* come from a global modifier the planner doesn't apply. Candidates in priority order:
+The user's in-game screenshot of an attuned Triage `Heal/Abs/End` IO at level 50 character shows the enhancement value at **26.5%**, which is the standard Schedule A L50 dual-aspect value (`0.424 × 0.625`). The wiki table's L30 value of `21.8%` (`0.348 × 0.625`) is for IOs at level 30 *or* for non-attuned Triage capped by the set's natural max level.
 
-1. **A `+heal_strength` source we're not extracting from the HC binary.** The planner has the field plumbing — `globalBonuses.healOther` is populated from `healing_strength` set bonuses (Panacea 6pc, Numina 4pc, Triage 4pc) — but `healOther` is never *consumed* in any regen or heal calculation; it's dead code. Even if we wired it up, none of those set-bonus thresholds fire for this build, so wiring it alone won't explain this case. But a *different* source of `+heal_strength` (a proc, a passive, an Alpha sub-mod we're missing) would land here.
+**Translation: HC's attuned IOs scale with character level, ignoring the set's `maxLevel` cap.** Our planner caps attuned IOs at `set.maxLevel` ([enhancement-values.ts:546](src/utils/calculations/enhancement-values.ts#L546) and [enhancement-values.ts:662](src/utils/calculations/enhancement-values.ts#L662)):
 
-2. **The Numina #6 piece has a hidden `+heal_strength` bonus in HC.** The piece is marked `aspects: []` in our data (proc-only), so the converter wouldn't see any attached strength bonus. Worth checking the binary's `Numinas_Convalesence_Regeneration_Recovery.json` for an extra AttribMod we're dropping. The user slotted this in Ailment Resistance, so if it grants a global heal-strength aura, it would apply to all regen.
+```ts
+ioLevel = set.maxLevel > 1 ? Math.min(baseLevel, set.maxLevel) : baseLevel;
+```
 
-3. **The Regeneration powerset has an undocumented global heal-strength bonus** (passive intrinsic, hidden auto-power) that boosts heal-enhancement on all powers slotted with heal IOs in that powerset. This would explain why Fast Healing matches but Integration/RR don't — except Fast Healing IS in Regeneration too, so this would have to be selectively applied to *toggle* regen powers only. Less likely.
+For this build's Triage #1 (Heal/Abs/End, dual aspect, attuned, in a L50 character):
+- Our planner: `0.348 × 0.625 = 21.75%` (capped at Triage's maxLevel 30)
+- HC actual: `0.424 × 0.625 = 26.50%` (scales to character level)
+- Diff: **+4.75 pp pre-ED**
 
-4. **HC's "Heal" enhancement display includes Absorb enhancement summed into the same number.** The user confirmed that Healing and Absorb are always bundled in HC — every IO that enhances Healing also enhances Absorb at the same value. If the in-game tooltip's `+141% Heal` line is actually summing the two stats (Heal + Absorb), and our planner only tracks Heal, we'd be off. But this would imply a doubling of the displayed enhancement value (not a +3% offset), so it doesn't fit the magnitude.
+Re-running the heal-enhancement math with the corrected Triage value:
+
+| | Planner (old) | Planner (with fix) | In-game | Δ remaining |
+|---|---|---|---|---|
+| Raw IO pre-ED | 170.15% | **174.90%** | (implied 192%) | -17.1 pp |
+| Heal enh, no Alpha | 105.52% | **106.23%** | 108.8% | -2.57 pp |
+| Heal enh, with Alpha T4 | 137.77% | **138.48%** | 141.0% | -2.52 pp |
+
+The Triage attuned-scaling fix closes **~70% of the gap** (3.3 pp → 2.5 pp). Residual ~2.5 pp pp remains.
+
+## Residual ~2.5 pp gap — possible sources
+
+The Triage fix alone is high-confidence based on direct empirical evidence. The remaining ~2.5 pp is still unexplained:
+
+1. **Hidden +5 boosts on attuned IOs.** HC allows catalyzing attuned IOs with boosters. The build file doesn't track boost levels on attuned IOs (only `boost: 5` on the explicit generic IO). If the user has booster catalysts applied to one or more attuned IOs that the export/import doesn't capture, our planner would systematically undercount.
+2. **An unmodeled `+heal_strength` source.** As before — a proc, intrinsic passive, or Alpha sub-mod contributing +heal_strength globally that bypasses ED. Wiring up `globalBonuses.healOther` consumption (currently dead) is a separate latent fix that won't resolve this build's gap but should land regardless.
+3. **Alpha bypass ratio.** Our planner uses `2/3` bypass for very-rare Alphas. If HC actually applies `3/4` or splits Alpha across multiple AttribMods with different ED behavior, the Alpha contribution would land slightly differently. Worth checking the binary AttribMod layout for `vigor_core_paragon`.
 
 ## Recommendation
 
-Do **not** patch any calc-pipeline constants. The math is provably correct against the published rules; an empirical numeric tweak risks regressing dozens of other builds for the sake of one 0.7% mismatch.
+**Status: pending in-game verification before any code change.** The user has flagged this as a likely HC bug — attuned IOs from `maxLevel < 50` sets (Triage confirmed) appear to be bumped up to character-level scaling, which may or may not be intentional HC behavior. Need to verify against other `maxLevel < 50` sets in-game before patching the planner.
 
-The productive next step is targeted HC binary investigation:
-- Dump the `Numinas_Convalesence_Regeneration_Recovery.json` AttribMod list and check for an extra `Healing_Strength` mod the converter is dropping.
-- Cross-check whether the Regeneration powerset has a hidden global passive that grants `+Heal_Strength`.
-- Wire up `globalBonuses.healOther` consumption in `applyActivePowerBonuses`'s regen branch as a separate latent-bug fix — it won't move this specific build's number (no `healing_strength` set bonuses are active), but it's a real gap that will bite builds with Panacea 6pc / Numina 4pc / Triage 4pc.
+If verification confirms HC universally scales attuned IOs to character level (regardless of `set.maxLevel`), the fix is:
+
+- [enhancement-values.ts:541-546](src/utils/calculations/enhancement-values.ts#L541-L546) and [enhancement-values.ts:657-662](src/utils/calculations/enhancement-values.ts#L657-L662) — drop the `Math.min(baseLevel, set.maxLevel)` for attuned IOs; use `baseLevel` directly.
+
+This is a load-bearing change — it shifts enhancement values for every build slotting attuned IOs from sets with `maxLevel < 50` (Triage, Steadfast Protection, Doctored Wounds, Regenerative Tissue, Numina's pre-rework, low-level damage sets, etc.). Want full verification before flipping it.
+
+Separately (no verification dependency):
+- Wire up `globalBonuses.healOther` consumption in `applyActivePowerBonuses`'s regen branch — a real latent gap for builds with Panacea 6pc / Numina 4pc / Triage 4pc that this build doesn't trigger.
+- Check the HC binary for the `Numinas_Convalesence_Regeneration_Recovery.json` AttribMod list to see if the +Recovery/+Regen proc carries an extra `Healing_Strength` mod the converter is dropping.
 
 ## Related findings (out of scope for this gap, but surfaced during investigation)
 
@@ -103,3 +129,10 @@ The productive next step is targeted HC binary investigation:
 
 Build file: `Giggelles_2026-05-18.json` (Scrapper EM/Regen L50)
 User-supplied data: in-game Combat Attributes regen breakdown, Integration enhancement tooltip (heal +137.77% planner / +141% in-game), Numina/Triage IO effectiveness tables, Triage piece names with Absorb aspect bundling.
+
+What to test in-game (suggesting order of most likely to confirm/deny the HC-bug hypothesis):
+
+Other maxLevel ≤ 30 sets: Steadfast Protection, Regenerative Tissue, Tempered Readiness — slot attuned at L50, check if enhancement % > the wiki's L30 value. If yes → systemic. If no → Triage-specific.
+Mid-range maxLevel sets: Doctored Wounds (40), Performance Shifter (50) — Performance Shifter as a control since maxLevel = 50 should show no scaling difference.
+Boosted attuned IOs: Take an attuned Triage, apply +1 booster, and see if the displayed value goes up by the standard 5% — confirms whether the catalyst path is interacting weirdly.
+Ping me with what you find and I'll scope the fix accordingly.
