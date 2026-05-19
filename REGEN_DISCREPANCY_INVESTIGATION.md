@@ -31,11 +31,126 @@ ioLevel = exemplarLevel ?? globalIOLevel;
 
 ## Unresolved
 
-A residual **~2.5 pp post-ED heal-enhancement gap** remains after the fix (planner 138.48% vs in-game 141.0%), equivalent to ~0.3 hp/s on this build. Three plausible sources, in decreasing likelihood:
+A residual **~2.5 pp post-ED heal-enhancement gap** remains after the fix (planner 138.48% vs in-game 141.0%), equivalent to ~0.3 hp/s on this build.
 
-1. **Hidden +5 boosters on attuned IOs.** HC allows catalyzing attuned IOs with boosters. The build file's `boost` field is only set on the explicit generic IO (`boost: 5`); attuned IO slots show no boost level. If the in-game character has booster catalysts applied to attuned IOs that the export/import doesn't capture, the planner will systematically undercount.
-2. **An unmodeled `+heal_strength` source.** A proc, intrinsic passive, or Alpha sub-mod contributing `+heal_strength` globally that bypasses ED. The planner already has `globalBonuses.healOther` populated from `healing_strength` set bonuses but never *consumes* it — wiring that up is a separate latent fix (see follow-ups). For this build, no `healing_strength` set bonuses fire, so the missing source would be something else.
-3. **Alpha bypass ratio.** The planner uses `2/3` ED-bypass for very-rare Alphas. If HC applies `3/4`, or splits Alpha across multiple AttribMods with different ED behavior, the Alpha contribution would land slightly differently. Empirically the Alpha contribution we compute (32.25 pp) matches in-game (32.20 pp) to within 0.05 pp, so this is the least likely.
+### Status of original hypotheses
+
+1. **~~Hidden +5 boosters on attuned IOs~~ — ruled out.** Attuned IOs cannot be boosted; the user inspected the in-game build and confirmed no boosted enhancements exist where we suspected.
+2. **An unmodeled `+heal_strength` / `+regen_strength` source.** Still open. See "Binary aspect-split finding" below.
+3. **~~Alpha bypass ratio~~ — ruled out.** Alpha contribution (32.25 pp) matches in-game (32.20 pp) within 0.05 pp.
+
+### Binary aspect-split finding (2026-05-18)
+
+Inspection of HC's compiled `.bin` files shows that **Heal-strength and Regeneration-strength are separate enhancement aspects**, not a single combined "Heal" bucket:
+
+- **Numina's Convalescence #1 (`Endurance/Heal`)** — three independent Strength AttribMod groups, each scale 0.625:
+  - `[Heal_Dmg, Absorb]`
+  - `[HitPoints, Regeneration]`
+  - `[EnduranceDiscount]`
+- **Triage Interface #1** — identical three-group structure.
+- **Vigor Alpha T4 (`Heal_Plus_Very_Rare`)** — four Strength templates: `[Heal_Dmg]` × {0.15, 0.30} and `[HitPoints, Regeneration]` × {0.15, 0.30}. The 0.15/0.30 split confirms the community "1/3 ED-subject + 2/3 ED-bypass" Alpha model.
+- **Numina #6 (`+Recovery/+Regeneration` proc)** — no hidden Strength template. Only `[Regeneration]` scale 0.2 and `[Recovery]` scale 0.1, both unenhanceable.
+
+**Implication.** For *this* build the Heal-bucket and Regen-bucket totals should be identical — every Heal IO and Vigor Alpha contributes the same scale to both. So the aspect split alone doesn't create the gap. The gap requires an **asymmetric source** that feeds one bucket but not the other.
+
+**Candidates verified, all symmetric or absent (2026-05-18):**
+
+| Power / source | Strength templates targeting Heal/HP/Regen |
+|---|---|
+| Numina #1, Triage #1 (binary) | `[Heal_Dmg, Absorb]` 0.625 **and** `[HitPoints, Regeneration]` 0.625 — symmetric |
+| Numina #6 (unique +Regen/+Rec) | None — Current-aspect only |
+| Vigor Core Paragon T4 (`Heal_Plus_Very_Rare`) | `[Heal_Dmg]` 0.15+0.30 **and** `[HitPoints, Regeneration]` 0.15+0.30 — symmetric |
+| Integration, Fast Healing, Quick Recovery, Resilience, Health, Stamina | None — Current-aspect only |
+| Hybrid Melee Radial (`melee_genome_9`) and its auto-granted `Melee_Boost_Very_Rare` passive | None — Current-aspect only (already in SK's `incarnate-effects.ts` as `passive: regeneration 0.3` + `perTarget: regeneration 0.45`) |
+| Scrapper inherents (full binary scan) | None with Strength on Heal/HP/Regen |
+
+**Conclusion of binary phase.** No asymmetric Strength source exists in any power in this build. The Heal/Regen aspect split is real in HC's binary as a structural fact, but every Strength template in this build contributes equally to both buckets. SK is already aggregating the right sources and `global.healOther` is zero for this build (no `healing_strength` set bonuses fire).
+
+### ED math verified end-to-end (2026-05-18)
+
+Controlled test on test-server character: Scrapper Regeneration, Integration 6-slotted with **plain generic Level 50 single-aspect Heal IOs**. No sets, no attuned IOs, no procs, no Alpha, no Hybrid.
+
+- Pre-ED raw: 6 × 42.4% = **254.4%**
+- In-game tooltip: **218.14% (118.1%)** — base 100% regen + 118.1% enhancement
+- SK's ED formula `applyED(2.544, 'A')` = **118.16%**
+- **Δ = -0.06 pp** (float rounding)
+
+Conclusions:
+- ED breakpoints **70/90/100** are correct (NOT 70/90/95 — that mistaken guess earlier in this doc is wrong)
+- ED tail multiplier **0.15** is correct
+- Generic L50 single-aspect Heal IO = **42.4%** is correct
+- Heal aspect routes through Schedule A correctly
+
+This eliminates the bulk of the original hypothesis space. **The 3.27 pp gap on Giggelles is not a systemic ED bug** — it must come from something build-specific that we missed when decomposing the slotting. Refocus the search on:
+- The actual build file's slot list (Heal IOs we might not have counted)
+- Set bonus aggregation (Panacea 5pc vs 6pc threshold — confirm count)
+- A re-read of the in-game tooltip now that the user is set up on test server
+
+### Alpha tier sweep — all five readings verified (2026-05-18)
+
+Same baseline (Integration 6× generic L50 Heal IOs), then layered Alpha tiers from the binary:
+
+| Configuration | SK calc | In-game | Δ |
+|---|---|---|---|
+| No Alpha | 118.16% | 118.10% | -0.06 pp |
+| T1 Vigor Boost | 127.78% | 127.80% | +0.02 pp |
+| T2 Vigor Core Boost | 132.46% | 132.50% | +0.04 pp |
+| T3 Vigor Total Core Revamp | 144.03% | 144.00% | -0.03 pp |
+| T4 Vigor Core Paragon | 150.41% | 150.40% | -0.01 pp |
+
+All within 0.06pp. The whole heal-enhancement pipeline — raw IO total → ED → Alpha ED-subject add → ED-bypass add — is bit-perfect.
+
+Notable corrections to community lore validated by this sweep: the Vigor totals from the binary are **T1=0.33, T2=0.33, T3 partial=0.33, T3 total=0.45, T4 radial=0.33, T4 core=0.45** — not the "T1=0.20, T2=0.33, T3=0.45, T4=0.45" that gets repeated on wikis. SK already had these binary-correct values; the test just confirmed it.
+
+### Triage piece data — fixed (2026-05-18)
+
+A second test sweep on the same character revealed a real data bug: SK's Triage piece definitions were missing the Absorb aspect on pieces #1/#3/#4. Test reading of **4× attuned Triage = 60.9% post-ED** only reconciles if those pieces are treated as triple/triple/quad aspect (not dual/dual/triple). Math: 0.424 × (0.5 + 0.5 + 0.4375) = 60.95% pre-ED, no ED triggered (under 70%).
+
+Fix applied to both `src/data/datasets/{homecoming,rebirth}/io-sets-raw.ts`:
+- #1 `Endurance/Heal` (dual, 26.5%) → **`Heal/Absorb/Endurance`** (triple, 21.2%)
+- #3 `Heal/Recharge` (dual, 26.5%) → **`Heal/Absorb/Recharge`** (triple, 21.2%)
+- #4 `Endurance/Heal/Recharge` (triple, 21.2%) → **`Heal/Absorb/Endurance/Recharge`** (quad, 18.55%)
+
+The earlier "Absorb is bundled with Heal — cosmetic only" note in this doc was wrong. Absorb is a real aspect for the multi-aspect-modifier formula. Adding `Absorb` to the `aspects` arrays (alongside the name change) also correctly feeds the `absorb` enhancement bucket when slotted on absorb-buffing powers — a side benefit, not the goal.
+
+Note: this fix WIDENS Giggelles' computed gap (Triage in Integration now contributes 21.2% not 26.5%, lowering SK's heal_enh further). So the Giggelles 3.27pp gap is not explained by this — it's a separate puzzle, and the Triage fix is correct on its own merits regardless.
+
+### Closing test — Giggelles slotting recreated in isolation (2026-05-18)
+
+Recreated the exact Integration slotting from the Giggelles build (3 Numina #1/#3/#5 + 2 Triage #1/#2 + 1 Generic L50+5 Heal, all attuned) on a fresh test character. No other heal powers slotted, no Alpha, no Hybrid.
+
+| | SK prediction | In-game | Δ |
+|---|---|---|---|
+| Heal enhancement (no Alpha) | 105.44% | **105.5%** | -0.06 pp |
+
+Match within float rounding. Set bonuses on the screenshot match expectations (Numina 3pc +12% Regen + 1.88% MaxHP, Triage 2pc +4% Regen). No `healing_strength` bonuses firing.
+
+**The original 108.8% / 141.0% Giggelles readings were measurement artifacts** (likely cross-power contamination of the global tooltip, or a misread). SK's heal-enhancement math is correct end-to-end with the Triage fix applied today.
+
+### Verdict on the Giggelles gap
+
+The 3.27 pp gap on Giggelles is **not** in any of the math we just verified. It must be build-specific:
+- A piece-count miscount in the original decomposition (set-bonus thresholds, missing IO),
+- A `boost` field on an attuned IO that wasn't captured (despite earlier ruling-out, worth re-checking the build JSON),
+- Or a measurement artifact in the original tooltip read.
+
+Recommended next step: **rebuild the exact Giggelles Integration slotting** (3 Numina + 2 Triage + 1 Generic L50+5 Heal, all attuned, no other powers slotted) on the test server character and re-read the tooltip. If it reads near SK's predicted 106.24%, the gap was a measurement issue. If it reads 108.8%, we have a focused puzzle worth chasing.
+
+### Next step: in-game tier-sweep
+
+Stop guessing and verify experimentally. Ask the user to read the heal_enh tooltip at four Alpha settings (other variables unchanged):
+
+| Alpha | Expected post-ED contribution | Tooltip should read |
+|---|---|---|
+| None | 0 pp | 108.8% (matches the no-Alpha row above) |
+| T1 (`Heal_Plus`/Boost) | ~20 pp | ~128.8% |
+| T2/T3 | ~33–45 pp | ~141–153% |
+| T4 (`Vigor Core Paragon`) | ~45 pp (with 1/3 ED-subject, 2/3 bypass) | 141% (confirmed) |
+
+- If the gap is **constant 3.27 pp at every tier**, the missing source isn't Alpha-related — it lives in slotted IOs or in ED's high-end tail. Next step would be to print SK's pre-ED raw heal total and post-ED stepwise breakdown next to in-game's, and find the discrepancy bracket.
+- If the gap **grows with tier**, it's an Alpha-modeling issue (e.g. ED-bypass ratio or level-shift effect on Alpha's contribution).
+
+A second cheap check: the user reading "Healing" in Combat Attributes (which displays Heal Strength) and comparing that against the per-power regen value — would tell us whether the 141.0% reading is the Heal_Dmg bucket or the Regeneration bucket. If they're different in-game values, the aspect split is operationally observable and we'd need to track them separately in SK.
 
 ## Follow-ups (independent of the residual)
 

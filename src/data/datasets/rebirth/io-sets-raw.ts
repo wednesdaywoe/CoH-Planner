@@ -27000,10 +27000,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "pieces": [
       {
         "aspects": [
-          "Endurance",
-          "Heal"
+          "Heal",
+          "Absorb",
+          "Endurance"
         ],
-        "name": "Endurance/Heal",
+        "name": "Heal/Absorb/Endurance",
         "num": 1,
         "proc": false,
         "unique": false
@@ -27021,20 +27022,22 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Heal",
+          "Absorb",
           "Recharge"
         ],
-        "name": "Heal/Recharge",
+        "name": "Heal/Absorb/Recharge",
         "num": 3,
         "proc": false,
         "unique": false
       },
       {
         "aspects": [
-          "Endurance",
           "Heal",
+          "Absorb",
+          "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Heal/Recharge",
+        "name": "Heal/Absorb/Endurance/Recharge",
         "num": 4,
         "proc": false,
         "unique": false

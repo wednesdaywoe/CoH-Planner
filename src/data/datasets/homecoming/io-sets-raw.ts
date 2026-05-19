@@ -26297,10 +26297,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "pieces": [
       {
         "num": 1,
-        "name": "Endurance/Heal",
+        "name": "Heal/Absorb/Endurance",
         "aspects": [
-          "Endurance",
-          "Heal"
+          "Heal",
+          "Absorb",
+          "Endurance"
         ],
         "proc": false,
         "unique": false
@@ -26317,9 +26318,10 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "num": 3,
-        "name": "Heal/Recharge",
+        "name": "Heal/Absorb/Recharge",
         "aspects": [
           "Heal",
+          "Absorb",
           "Recharge"
         ],
         "proc": false,
@@ -26327,10 +26329,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "num": 4,
-        "name": "Endurance/Heal/Recharge",
+        "name": "Heal/Absorb/Endurance/Recharge",
         "aspects": [
-          "Endurance",
           "Heal",
+          "Absorb",
+          "Endurance",
           "Recharge"
         ],
         "proc": false,
