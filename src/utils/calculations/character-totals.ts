@@ -2810,15 +2810,24 @@ export function calculateCharacterTotals(
       const built = buildStatBreakdown(statBreakdownItems);
       // Normalize stat key to match breakdownKey casing (e.g. 'maxhp' → 'maxHP')
       const normalizedStat = stat.toLowerCase().replace(/[^a-z]/g, '');
-      const breakdownStat = STAT_TO_GLOBAL[normalizedStat] || stat;
-      // Merge into existing breakdown if there are other sources
-      const existing = breakdown.get(breakdownStat);
-      if (existing) {
-        existing.sources.push(...built.sources);
-        existing.total += built.total;
-        existing.cappedSources += built.cappedSources;
-      } else {
-        breakdown.set(breakdownStat, built);
+      // Mirror PAIRED_STATS expansion from applySetBonusesToGlobal so the
+      // breakdown shows up under both halves of a paired bonus (e.g.
+      // Ice Mistral's Torment's +Res(Recharge Debuff) also grants Slow Res
+      // — the source must surface under both stats, not just Recharge).
+      const targetStats = PAIRED_STATS[normalizedStat] ?? [STAT_TO_GLOBAL[normalizedStat] || stat];
+      for (const breakdownStat of targetStats) {
+        const existing = breakdown.get(breakdownStat);
+        if (existing) {
+          existing.sources.push(...built.sources);
+          existing.total += built.total;
+          existing.cappedSources += built.cappedSources;
+        } else {
+          // Clone so paired stats don't share mutable source arrays.
+          breakdown.set(breakdownStat, {
+            ...built,
+            sources: [...built.sources],
+          });
+        }
       }
     }
   }

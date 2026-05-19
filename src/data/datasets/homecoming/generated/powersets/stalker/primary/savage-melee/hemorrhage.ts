@@ -49,6 +49,44 @@ export const Hemorrhage: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
+  "conditionalEffects": [
+    {
+      "id": "savage_melee_blood_frenzy_stalker",
+      "label": "Blood Frenzy Stalker",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Lethal",
+          "scale": 0.343,
+          "table": "Melee_Damage",
+          "duration": 5.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.326,
+          "table": "Melee_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.3113,
+          "table": "Melee_PvPDamage",
+          "duration": 5.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.2959,
+          "table": "Melee_PvPDamage",
+          "duration": 4.1,
+          "tickRate": 1
+        }
+      ]
+    }
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

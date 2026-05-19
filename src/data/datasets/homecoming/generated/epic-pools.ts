@@ -569,7 +569,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "maxHPBuff": {
-            "scale": 0.8,
+            "scale": 0.4,
             "table": "Melee_HealSelf"
           },
           "buffDuration": 60
@@ -4513,7 +4513,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "maxHPBuff": {
-            "scale": 0.8,
+            "scale": 0.4,
             "table": "Melee_HealSelf"
           },
           "buffDuration": 60
@@ -7631,7 +7631,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "maxHPBuff": {
-            "scale": 0.8,
+            "scale": 0.4,
             "table": "Melee_HealSelf"
           },
           "buffDuration": 60
@@ -13012,7 +13012,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "maxHPBuff": {
-            "scale": 0.8,
+            "scale": 0.4,
             "table": "Melee_HealSelf"
           },
           "buffDuration": 60

@@ -1850,6 +1850,22 @@ function extractEffects(templates, powerName) {
     // Skip deactivation-only effects (temporary bursts on toggle off, e.g., Reaction Time speed burst)
     if (template.application_type === 'OnDeactivate') continue;
 
+    // Skip AttackType-tagging metadata templates. The binary stores a marker
+    // template on every attack power listing all damage types the attack can
+    // apply (used by AI / proc gating), with aspect=Strength scale=0 mag=0
+    // across 7+ damage attribs. It is NOT a damage buff — exposing it as one
+    // creates a phantom `damageBuff: { scale: 0 }` plus stacking metadata on
+    // every direct damage power.
+    if (
+      template.attribs.length >= 7 &&
+      template.attribs.every(a => isDamageTypeAttrib(a?.toLowerCase())) &&
+      template.aspect?.toLowerCase() === 'strength' &&
+      (template.scale || 0) === 0 &&
+      (template.magnitude || 0) === 0
+    ) {
+      continue;
+    }
+
     // Combat-suppressed defense: route to defenseBuffSuppressible so the
     // In-Combat toggle can suppress it. Two sources mark a template as
     // combat-suppressed:
@@ -2425,6 +2441,20 @@ function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
   // because pseudo-pet Sphere AoEs centered on the caster are functionally
   // caster self-buffs (Fulcrum Shift's KineticTransferBuffSelf, etc.).
   if (template.target !== 'Self' && !(treatAsCaster && template.target === 'AnyAffected')) return [];
+
+  // Skip AttackType-tagging metadata templates (see extractEffects for full
+  // rationale). They target=Self with aspect=Strength scale=0 mag=0 across
+  // all damage types, but they are not real damage buffs and shouldn't
+  // contribute to stacking metadata.
+  if (
+    template.attribs.length >= 7 &&
+    template.attribs.every(a => DAMAGE_TYPES[a?.toLowerCase()]) &&
+    template.aspect?.toLowerCase() === 'strength' &&
+    (template.scale || 0) === 0 &&
+    (template.magnitude || 0) === 0
+  ) {
+    return [];
+  }
 
   const aspect = template.aspect?.toLowerCase();
   const scale = template.scale || 0;

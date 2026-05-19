@@ -43,5 +43,12 @@ export const PhoenixRising: Power = {
     "type": "Fire",
     "scale": 4,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 4,
+      "scale": 10,
+      "table": "Melee_Stun"
+    }
   }
 };

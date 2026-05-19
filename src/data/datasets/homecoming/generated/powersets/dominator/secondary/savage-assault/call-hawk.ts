@@ -57,6 +57,30 @@ export const CallHawk: Power = {
       "tickRate": 0.30000001192092896
     }
   ],
+  "conditionalEffects": [
+    {
+      "id": "savage_melee_blood_frenzy_stalker",
+      "label": "Savage Melee Blood Frenzy Stalker",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Lethal",
+          "scale": 0.2429,
+          "table": "Ranged_Damage",
+          "duration": 4.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Lethal",
+          "scale": 0.2543,
+          "table": "Ranged_Damage",
+          "duration": 5.1,
+          "tickRate": 1
+        }
+      ]
+    }
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -58,6 +58,13 @@ export const Dehydrate: Power = {
       "table": "Ranged_Damage"
     },
     {
+      "type": "Cold",
+      "scale": 0.1488,
+      "table": "Ranged_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    },
+    {
       "type": "Smashing",
       "scale": 0.5072,
       "table": "Ranged_PvPDamage"

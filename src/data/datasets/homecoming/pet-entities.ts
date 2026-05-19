@@ -5879,7 +5879,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
             name: "Flamethrower",
             displayName: "Flamethrower",
             type: "Click",
-            damage: [{"damageType":"Fire","scale":0.242,"table":"Ranged_Damage"}],
+            damage: [{"damageType":"Fire","scale":0.242,"table":"Ranged_Damage"},{"damageType":"Fire","scale":0.242,"table":"Ranged_Damage"}],
             recharge: 20,
             castTime: 2.3,
             effectArea: "Cone",

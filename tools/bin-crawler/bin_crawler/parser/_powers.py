@@ -370,25 +370,30 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     scale = r.read_f4()
     duration = r.read_f4()
     magnitude = r.read_f4()
-    delay = r.read_f4()
 
-    # The Ghidra AttribMod field descriptor (table at 0x1408ed5a0, type code
-    # 0x500009) says DurationExpr and MagnitudeExpr are always string_arrays.
-    # But treating them that way universally breaks ~430 powers — those
-    # templates have a legit non-zero single-string offset in this slot that
-    # a string_array read misinterprets as a huge count and overruns the
-    # template buffer. So the binary file layout has a version/flag the
-    # in-memory descriptor doesn't capture. Conservative rule that matches
-    # the evidence: only read as string_arrays when _typ_raw says kExpression
-    # (the only known case where these slots carry a compiled token stream).
-    # Covers ~100+ templates on HC live; remaining 29 stack-mismatches are
-    # Create_Entity templates whose discriminator is still unidentified.
+    # kExpression templates (typ_raw == 3) reorder the next fields: the binary
+    # layout is dur_expr_tokens, mag_expr_tokens, delay — NOT delay first then
+    # the expressions. Confirmed against Savage_Leap_AoE (Scale 0.845, Delay
+    # 0.1, 12-token MagnitudeExpr) and Rending_Flurry_Normal (Scale 1.182,
+    # no Delay, 8-token MagnitudeExpr) — both now produce values that match
+    # the .powers source.
+    #
+    # The old layout read `delay` at this position and then `mag_expr_tokens,
+    # dur_expr_tokens`. That happened to work for kExpression templates with
+    # no Delay AND no DurationExpr (delay-slot bytes were 0 = empty u4_array
+    # count, and the trailing u4 that should have been delay coincided with
+    # tick_chance=1.0 by accident). The moment a kExpression template had a
+    # real `Delay` value (Savage_Leap_AoE T[0]: 0.1), the bytes after
+    # mag_expr_tokens read as a huge u4_array count and overran the record,
+    # silently dropping the template (376 templates / 1080 EGs across HC).
     if _typ_raw == 3:
+        r.read_u4_array()  # dur_expr_tokens (almost always empty)
         r.read_u4_array()  # mag_expr_tokens
-        r.read_u4_array()  # dur_expr_tokens
+        delay = r.read_f4()
         dur_expr = ''
         mag_expr = ''
     else:
+        delay = r.read_f4()
         dur_expr = r.read_string()
         mag_expr = r.read_string()
 

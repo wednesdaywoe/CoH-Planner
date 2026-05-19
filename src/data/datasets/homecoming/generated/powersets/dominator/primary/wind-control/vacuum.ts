@@ -46,6 +46,11 @@ export const Vacuum: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "P2375591925",
+      "duration": 8
+    },
     "hold": {
       "mag": 4,
       "scale": 4,
