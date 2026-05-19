@@ -8433,12 +8433,67 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+180.0% Maxendurance",
-            "stat": "maxendurance",
-            "value": 180.0
+            "desc": "+1.8% Max Endurance",
+            "stat": "max_endurance",
+            "value": 1.8
           }
         ],
         "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 6
+          },
+          {
+            "desc": "+6% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 6
+          },
+          {
+            "desc": "+3.3% Fear Duration",
+            "stat": "fear_duration",
+            "value": 3.3
+          },
+          {
+            "desc": "+3% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 3
+          },
+          {
+            "desc": "+3% Hold Duration",
+            "stat": "hold_duration",
+            "value": 3
+          },
+          {
+            "desc": "+3% Stun Duration",
+            "stat": "stun_duration",
+            "value": 3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+11% Accuracy",
+            "stat": "accuracy",
+            "value": 11
+          }
+        ],
+        "pieces": 5
       },
       {
         "effects": [
@@ -8454,7 +8509,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "category": "event",
     "icon": "ForcedIndoctrination.png",
     "maxLevel": 50,
-    "minLevel": 1,
+    "minLevel": 10,
     "name": "Forced Indoctrination",
     "pieces": [
       {
@@ -8467,23 +8522,23 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Stun",
           "Fear"
         ],
-        "name": "Damage/Confuse/Hold/Immobilize/Sleep/Stun/Fear",
+        "name": "Control Duration/Damage",
         "num": 1,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Confuse",
           "Hold",
           "Immobilize",
           "Sleep",
           "Stun",
-          "Fear",
-          "Endurance"
+          "Fear"
         ],
-        "name": "Damage/Confuse/Hold/Immobilize/Sleep/Stun/Fear/Endurance",
+        "name": "Accuracy/Control Duration/Damage",
         "num": 2,
         "proc": false,
         "unique": true
@@ -8499,26 +8554,27 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Stun",
           "Fear"
         ],
-        "name": "Damage/Confuse/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Control Duration/Damage/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Recharge/Endurance",
         "num": 4,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Confuse",
-          "Endurance",
           "Hold",
           "Immobilize",
           "Recharge",
@@ -8526,20 +8582,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Stun",
           "Fear"
         ],
-        "name": "Damage/Confuse/Endurance/Hold/Immobilize/Recharge/Sleep/Stun/Fear",
+        "name": "Accuracy/Control Duration/Damage/Recharge",
         "num": 5,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Psionic Damage",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Resist Damage"
   },
   "fortunata_hypnosis": {
     "bonuses": [
