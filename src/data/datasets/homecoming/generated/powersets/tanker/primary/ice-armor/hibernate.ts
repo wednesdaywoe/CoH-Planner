@@ -39,11 +39,11 @@ export const IcyBastion: Power = {
   "maxSlots": 6,
   "effects": {
     "regenBuff": {
-      "scale": 10,
+      "scale": 6,
       "table": "Melee_Ones"
     },
     "durations": {
-      "regenBuff": 30,
+      "regenBuff": 0.75,
       "recoveryBuff": 30,
       "resistance": 30,
       "knockup": 30,

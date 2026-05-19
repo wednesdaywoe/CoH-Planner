@@ -37,7 +37,6 @@ export const Vacuum: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Holds",
     "Ranged AoE Damage",

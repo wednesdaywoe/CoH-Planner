@@ -38,7 +38,6 @@ export const TidalWave: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",

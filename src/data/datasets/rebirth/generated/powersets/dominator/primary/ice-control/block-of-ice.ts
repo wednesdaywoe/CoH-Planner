@@ -35,7 +35,6 @@ export const BlockofIce: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Holds",
     "Ranged Damage",

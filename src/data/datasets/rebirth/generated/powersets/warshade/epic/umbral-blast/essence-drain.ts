@@ -36,7 +36,6 @@ export const EssenceDrain: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
-    "Blaster Archetype Sets",
     "Healing",
     "Kheldian Archetype Sets",
     "Melee Damage",

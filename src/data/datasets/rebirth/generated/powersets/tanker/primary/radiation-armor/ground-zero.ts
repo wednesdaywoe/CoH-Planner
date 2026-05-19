@@ -37,7 +37,6 @@ export const GroundZero: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Healing",
     "Melee AoE Damage",

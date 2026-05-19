@@ -37,7 +37,6 @@ export const Frost: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
     "Stalker Archetype Sets",

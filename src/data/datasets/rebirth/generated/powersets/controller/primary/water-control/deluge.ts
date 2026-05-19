@@ -35,7 +35,6 @@ export const Deluge: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Knockback",
     "Ranged Damage",
     "Slow Movement",

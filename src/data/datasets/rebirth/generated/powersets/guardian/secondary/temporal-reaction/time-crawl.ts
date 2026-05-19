@@ -33,7 +33,6 @@ export const TimeCrawl: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6,

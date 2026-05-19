@@ -34,7 +34,6 @@ export const SoulAbsorption: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Endurance Modification",
     "Healing",
     "To Hit Debuff"

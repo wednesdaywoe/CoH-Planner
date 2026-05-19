@@ -30,11 +30,6 @@ export const OnewiththeShield: Power = {
     "EnduranceReduction",
     "Healing"
   ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing",
-    "Resist Damage"
-  ],
   "maxSlots": 6,
   "effects": {
     "resistance": {

@@ -36,7 +36,6 @@ export const UmbraBeast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Fear",
     "Pet Damage",
     "Recharge Intensive Pets",

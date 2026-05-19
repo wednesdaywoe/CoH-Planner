@@ -33,8 +33,6 @@ export const IceSword: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Guardian Archetype Sets",
     "Melee Damage",
     "Slow Movement",
     "Universal Damage Sets"

@@ -33,7 +33,6 @@ export const Pulverize: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Melee Damage",
     "Stuns",
     "Universal Damage Sets"

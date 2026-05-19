@@ -36,7 +36,6 @@ export const Weaken: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

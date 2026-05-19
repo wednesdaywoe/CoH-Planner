@@ -34,7 +34,6 @@ export const ShadowPunch: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "To Hit Debuff",

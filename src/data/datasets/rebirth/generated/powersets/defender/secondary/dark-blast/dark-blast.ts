@@ -35,7 +35,6 @@ export const DarkBlast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Ranged Damage",
     "To Hit Debuff",

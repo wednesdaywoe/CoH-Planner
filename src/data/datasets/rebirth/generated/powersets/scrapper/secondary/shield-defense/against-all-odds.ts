@@ -32,9 +32,6 @@ export const AgainstAllOdds: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "allowedSetCategories": [
-    "Threat Duration"
-  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {

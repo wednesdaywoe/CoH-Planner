@@ -29,7 +29,6 @@ export const Revive: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing"
   ],

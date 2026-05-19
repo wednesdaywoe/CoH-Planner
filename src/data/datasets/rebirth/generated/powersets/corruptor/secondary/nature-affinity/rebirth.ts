@@ -33,7 +33,6 @@ export const Rebirth: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing"
   ],

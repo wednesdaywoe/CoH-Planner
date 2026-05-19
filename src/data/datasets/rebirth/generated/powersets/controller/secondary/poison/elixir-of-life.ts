@@ -33,7 +33,6 @@ export const ElixirofLife: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Brute Archetype Sets",
     "Endurance Modification",
     "Resist Damage"
   ],

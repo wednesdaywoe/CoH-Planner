@@ -34,7 +34,6 @@ export const WaterJet: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Ranged Damage",
     "Slow Movement",

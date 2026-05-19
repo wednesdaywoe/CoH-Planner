@@ -34,7 +34,6 @@ export const Glacier: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Holds",
     "Slow Movement"

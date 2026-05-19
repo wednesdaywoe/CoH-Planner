@@ -36,7 +36,6 @@ export const FlyTrap: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Pet Damage",
     "Recharge Intensive Pets",

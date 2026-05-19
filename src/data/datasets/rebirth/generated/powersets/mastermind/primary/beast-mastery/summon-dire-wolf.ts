@@ -38,7 +38,6 @@ export const SummonDireWolf: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Fear",
     "Healing",

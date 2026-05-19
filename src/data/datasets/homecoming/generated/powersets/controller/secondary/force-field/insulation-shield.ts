@@ -66,13 +66,7 @@ export const InsulationShield: Power = {
     },
     "durations": {
       "defenseBuff": 240,
-      "debuffResistance": 240,
-      "confuse": 90,
-      "fear": 90,
-      "hold": 90,
-      "immobilize": 90,
-      "stun": 90,
-      "sleep": 90
+      "debuffResistance": 240
     },
     "debuffResistance": {
       "endurance": {
@@ -84,37 +78,6 @@ export const InsulationShield: Power = {
         "table": "Ranged_Res_Boolean"
       }
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 90,
-    "fear": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Ranged_Res_Boolean"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Ranged_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Ranged_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 90
+    "buffDuration": 240
   }
 };

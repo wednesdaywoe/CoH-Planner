@@ -49,6 +49,7 @@ export const EagleEye: Power = {
       "debuffResistance": 0.75,
       "perceptionBuff": 0.75,
       "regenBuff": 0.75,
+      "regenBuffUnenhanced": 0.75,
       "recoveryBuff": 0.75
     },
     "perceptionBuff": {
@@ -56,7 +57,11 @@ export const EagleEye: Power = {
       "table": "Melee_Ones"
     },
     "regenBuff": {
-      "scale": 2.25,
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
+      "scale": 1.125,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {

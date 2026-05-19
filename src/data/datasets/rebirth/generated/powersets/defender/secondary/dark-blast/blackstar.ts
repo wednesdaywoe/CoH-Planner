@@ -35,7 +35,6 @@ export const Blackstar: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Melee AoE Damage",
     "To Hit Debuff",

@@ -38,7 +38,6 @@ export const Geyser: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",

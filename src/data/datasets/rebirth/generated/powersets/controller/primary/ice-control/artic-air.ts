@@ -34,7 +34,6 @@ export const ArcticAir: Power = {
     "Confuse"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Confuse",
     "Controller Archetype Sets",
     "Slow Movement"

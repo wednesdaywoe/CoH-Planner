@@ -37,7 +37,6 @@ export const ThrowSpines: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Ranged AoE Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",

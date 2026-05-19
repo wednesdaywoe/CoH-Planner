@@ -36,7 +36,6 @@ export const ShadowyBinds: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Immobilize",
     "Ranged Damage",

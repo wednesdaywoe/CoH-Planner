@@ -179,12 +179,12 @@ export const SkySplitter: Power = {
         }
       ],
       "effects": {
-        "regenBuff": {
+        "regenBuffUnenhanced": {
           "scale": 2.5,
           "table": "Melee_Ones"
         },
         "durations": {
-          "regenBuff": 15,
+          "regenBuffUnenhanced": 15,
           "recoveryBuff": 15
         },
         "recoveryBuff": {

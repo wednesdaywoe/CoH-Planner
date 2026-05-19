@@ -37,7 +37,6 @@ export const CrushingField: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Immobilize",
     "Ranged AoE Damage",

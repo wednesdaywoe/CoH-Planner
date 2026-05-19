@@ -36,7 +36,6 @@ export const CallHawk: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Knockback",
     "Ranged Damage",
     "To Hit Debuff",

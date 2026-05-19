@@ -39,7 +39,6 @@ export const Terrify: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Fear",
     "Ranged AoE Damage",

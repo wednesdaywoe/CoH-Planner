@@ -33,7 +33,6 @@ export const Mutation: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Brute Archetype Sets",
     "Endurance Modification",
     "To Hit Buff"
   ],

@@ -33,7 +33,6 @@ export const Resurrect: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Brute Archetype Sets",
     "Defense Sets",
     "To Hit Buff"
   ],

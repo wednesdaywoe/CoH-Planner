@@ -37,7 +37,6 @@ export const DarkServant: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Healing",
     "Holds",
     "Immobilize",

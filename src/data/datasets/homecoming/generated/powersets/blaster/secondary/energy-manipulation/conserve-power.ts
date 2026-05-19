@@ -45,11 +45,16 @@ export const Energize: Power = {
     },
     "durations": {
       "enduranceDiscount": 60,
+      "regenBuffUnenhanced": 60,
       "regenBuff": 60,
       "stun": 60
     },
+    "regenBuffUnenhanced": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    },
     "regenBuff": {
-      "scale": 2.25,
+      "scale": 1.125,
       "table": "Melee_Ones"
     },
     "stun": {

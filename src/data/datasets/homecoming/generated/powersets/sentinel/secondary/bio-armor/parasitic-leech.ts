@@ -105,9 +105,9 @@ export const ParasiticLeech: Power = {
         },
         "durations": {
           "recoveryBuff": 45,
-          "regenBuff": 45
+          "regenBuffUnenhanced": 45
         },
-        "regenBuff": {
+        "regenBuffUnenhanced": {
           "scale": 0.214,
           "table": "Melee_Ones"
         },

@@ -34,7 +34,6 @@ export const Hurricane: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Knockback",
     "To Hit Debuff"
   ],

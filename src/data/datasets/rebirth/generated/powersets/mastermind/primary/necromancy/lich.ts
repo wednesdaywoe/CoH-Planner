@@ -40,7 +40,6 @@ export const Lich: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",

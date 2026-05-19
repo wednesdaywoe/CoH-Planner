@@ -38,7 +38,6 @@ export const FlashingSteel: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Brute Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",

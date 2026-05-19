@@ -35,7 +35,6 @@ export const ExplosiveShuriken: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

@@ -34,7 +34,6 @@ export const BlackDwarfMire: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
     "Melee AoE Damage",
     "Slow Movement",

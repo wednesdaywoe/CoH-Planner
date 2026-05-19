@@ -34,8 +34,6 @@ export const ShadowBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Guardian Archetype Sets",
     "Ranged Damage",
     "Slow Movement",
     "Universal Damage Sets"

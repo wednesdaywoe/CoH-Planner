@@ -38,7 +38,6 @@ export const Dehydrate: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate Healing",
-    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Defense Debuff",
     "Healing",

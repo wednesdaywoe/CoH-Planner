@@ -83,9 +83,9 @@ export const ParasiticAura: Power = {
         },
         "durations": {
           "recoveryBuff": 45,
-          "regenBuff": 45
+          "regenBuffUnenhanced": 45
         },
-        "regenBuff": {
+        "regenBuffUnenhanced": {
           "scale": 0.15,
           "table": "Melee_Ones"
         },

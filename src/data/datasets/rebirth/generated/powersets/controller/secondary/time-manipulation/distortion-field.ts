@@ -33,7 +33,6 @@ export const DistortionField: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Holds",
     "Slow Movement"

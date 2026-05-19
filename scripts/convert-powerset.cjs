@@ -2893,17 +2893,22 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // from the exporter, which reverses boostsets.bin's per-set power lists
   // into the authoritative per-power answer the game itself uses.
   //
-  // Strict mode: if the field is present in the JSON (even as an empty
-  // array) we trust it — the game's engine says "no IO sets slot here" for
-  // powers like SR Quickness, Lightning Reflexes, and Mental Training that
-  // only carry SpeedRunning/SpeedFlying. Those still accept single Run
-  // Speed / Fly IOs via `allowedEnhancements`; they just don't accept any
-  // IO set pieces. Verified against in-game slotting.
+  // Strict mode: if the field is present in the JSON (whether as `null`,
+  // an empty array, or a non-empty array) we trust it. The game's engine
+  // says "no IO sets slot here" for powers like SR Quickness, Lightning
+  // Reflexes, and Mental Training that only carry SpeedRunning /
+  // SpeedFlying — those still accept single Run Speed / Fly IOs via
+  // `allowedEnhancements`, they just don't accept any IO set pieces.
+  // Verified against in-game slotting.
   //
-  // Inference fallback only fires when the field is absent (old exports
-  // predating the boostsets parser).
-  if (Array.isArray(powerJson.allowed_set_categories)) {
-    if (powerJson.allowed_set_categories.length > 0) {
+  // The exporter emits `null` when no boost set's `allowed_powers` list
+  // includes this power, and an array (possibly empty) otherwise. Both
+  // null and empty array mean the same thing here: leave
+  // `allowedSetCategories` unset on the output. Only fall through to
+  // legacy inference when the field is truly `undefined` (old exports
+  // predating the boostsets.bin integration).
+  if (powerJson.allowed_set_categories !== undefined) {
+    if (Array.isArray(powerJson.allowed_set_categories) && powerJson.allowed_set_categories.length > 0) {
       // Strip wrong-archetype ATO categories. The binary in some HC patches
       // and on Rebirth includes the wrong AT's ATO category in the
       // per-power `allowed_set_categories` (e.g. Arachnos Soldier attack

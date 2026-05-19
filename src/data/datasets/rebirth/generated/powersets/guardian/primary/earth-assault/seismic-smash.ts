@@ -33,7 +33,6 @@ export const SeismicSmash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Holds",
     "Melee Damage",
     "Universal Damage Sets"

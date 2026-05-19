@@ -72,18 +72,6 @@ export const IncreaseDensity: Power = {
       "table": "Ranged_Res_Boolean"
     },
     "mezResistance": {
-      "hold": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "scale": 3,
-        "table": "Ranged_Res_Boolean"
-      },
       "teleport": {
         "scale": 1,
         "table": "Ranged_Ones"

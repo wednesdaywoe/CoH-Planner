@@ -35,7 +35,6 @@ export const StaticField: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Sleep",
     "Slow Movement"

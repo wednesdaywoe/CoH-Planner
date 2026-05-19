@@ -35,7 +35,6 @@ export const ChargedBolts: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Guardian Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

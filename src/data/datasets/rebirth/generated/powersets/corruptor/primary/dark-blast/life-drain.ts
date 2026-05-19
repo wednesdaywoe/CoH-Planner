@@ -37,7 +37,6 @@ export const LifeDrain: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Healing",
     "Ranged Damage",

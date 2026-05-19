@@ -34,7 +34,6 @@ export const IceStorm: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",

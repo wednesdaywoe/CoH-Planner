@@ -37,7 +37,6 @@ export const BlindingPowder: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Confuse",
     "To Hit Debuff"
   ],

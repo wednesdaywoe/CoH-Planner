@@ -37,49 +37,5 @@ export const GangWar: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "duration": 60,
-      "entities": [
-        {
-          "entity": "Pets_Thug_Pose_01",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Thug_Pose_02",
-          "count": 2
-        },
-        {
-          "entity": "Pets_Thug_Pose_03",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Thug_Pose_04",
-          "count": 2
-        },
-        {
-          "entity": "Pets_Thug_Pose_05",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Thug_Pose_06",
-          "count": 2
-        },
-        {
-          "entity": "Pets_Thug_Pose_07",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Thug_Pose_08",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Thug_Pose_09",
-          "count": 2
-        }
-      ]
-    }
-  }
+  "maxSlots": 6
 };

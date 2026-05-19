@@ -37,9 +37,7 @@ export const XRayBeam: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
-    "Guardian Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

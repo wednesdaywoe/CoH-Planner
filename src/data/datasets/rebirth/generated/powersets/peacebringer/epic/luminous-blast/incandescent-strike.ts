@@ -37,7 +37,6 @@ export const IncandescentStrike: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Holds",
     "Kheldian Archetype Sets",

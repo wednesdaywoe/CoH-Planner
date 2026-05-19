@@ -34,7 +34,6 @@ export const GamblersCut: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
     "Universal Damage Sets"

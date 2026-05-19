@@ -34,7 +34,6 @@ export const SnowStorm: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6

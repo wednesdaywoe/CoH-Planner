@@ -34,7 +34,6 @@ export const PowerPush: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Knockback",
     "Ranged Damage",
     "Universal Damage Sets"

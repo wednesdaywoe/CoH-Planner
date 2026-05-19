@@ -34,7 +34,6 @@ export const AnguishingCry: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff"
   ],
   "maxSlots": 6,

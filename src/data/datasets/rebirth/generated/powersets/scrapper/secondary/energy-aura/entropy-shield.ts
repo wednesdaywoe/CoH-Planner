@@ -31,10 +31,6 @@ export const EntropicAura: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "allowedSetCategories": [
-    "Teleport",
-    "Universal Travel"
-  ],
   "maxSlots": 6,
   "effects": {
     "mezResistance": {

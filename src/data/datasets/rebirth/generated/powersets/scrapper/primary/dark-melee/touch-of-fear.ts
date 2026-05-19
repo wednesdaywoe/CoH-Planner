@@ -34,7 +34,6 @@ export const TouchofFear: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Fear",
     "To Hit Debuff"
   ],

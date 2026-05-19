@@ -35,8 +35,6 @@ export const Gloom: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Guardian Archetype Sets",
     "Ranged Damage",
     "To Hit Debuff",
     "Universal Damage Sets"

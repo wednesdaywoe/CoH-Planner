@@ -39,14 +39,19 @@ export const KujiInToh: Power = {
   "maxSlots": 6,
   "effects": {
     "regenBuff": {
-      "scale": 2.25,
+      "scale": 1.125,
       "table": "Melee_Ones"
     },
     "durations": {
       "regenBuff": 210,
+      "regenBuffUnenhanced": 210,
       "recoveryBuff": 210,
       "resistance": 210,
       "fear": 210
+    },
+    "regenBuffUnenhanced": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
     },
     "recoveryBuff": {
       "scale": 0.5,

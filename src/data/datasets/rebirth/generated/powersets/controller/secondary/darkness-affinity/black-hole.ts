@@ -33,9 +33,5 @@ export const BlackHole: Power = {
     "Immobilize",
     "Accuracy"
   ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Immobilize"
-  ],
   "maxSlots": 6
 };

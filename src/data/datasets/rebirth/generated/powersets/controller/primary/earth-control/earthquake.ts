@@ -34,7 +34,6 @@ export const Earthquake: Power = {
     "Defense Debuff"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Knockback",
     "To Hit Debuff"

@@ -33,7 +33,6 @@ export const Combustion: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],

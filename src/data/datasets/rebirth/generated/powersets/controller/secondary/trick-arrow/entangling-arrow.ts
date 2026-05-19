@@ -34,7 +34,6 @@ export const EntanglingArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Immobilize",
     "Slow Movement"

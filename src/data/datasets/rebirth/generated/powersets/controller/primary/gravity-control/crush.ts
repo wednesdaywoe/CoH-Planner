@@ -35,7 +35,6 @@ export const Crush: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Immobilize",
     "Ranged Damage",

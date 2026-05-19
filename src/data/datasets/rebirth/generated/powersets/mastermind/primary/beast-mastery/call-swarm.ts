@@ -36,7 +36,6 @@ export const CallSwarm: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged Damage",
     "Slow Movement",

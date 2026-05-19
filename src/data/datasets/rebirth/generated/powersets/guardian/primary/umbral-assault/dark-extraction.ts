@@ -34,7 +34,6 @@ export const DarkExtraction: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

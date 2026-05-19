@@ -34,7 +34,6 @@ export const BlackDwarfStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
     "Knockback",
     "Melee Damage",

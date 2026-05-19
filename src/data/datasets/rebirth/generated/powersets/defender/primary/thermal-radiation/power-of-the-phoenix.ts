@@ -34,7 +34,6 @@ export const PowerofthePhoenix: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
     "Ranged AoE Damage",

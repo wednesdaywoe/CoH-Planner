@@ -52,19 +52,6 @@ export const Burn: Power = {
         "Redirects.Fiery_Aura.Burn"
       ],
       "duration": 10
-    },
-    "damageBuff": {
-      "scale": 0.061,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.53
-    },
-    "immobilize": {
-      "mag": 15,
-      "scale": 15,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 9.53
+    }
   }
 };

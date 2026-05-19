@@ -35,7 +35,6 @@ export const LingeringRadiation: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6,

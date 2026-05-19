@@ -34,7 +34,6 @@ export const OilSlickArrow: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
     "Slow Movement",

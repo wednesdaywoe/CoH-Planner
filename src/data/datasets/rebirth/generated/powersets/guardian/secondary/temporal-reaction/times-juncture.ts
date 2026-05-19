@@ -34,7 +34,6 @@ export const TimesJuncture: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Slow Movement",
     "To Hit Debuff"
   ],

@@ -35,7 +35,6 @@ export const HydroBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Knockback",
     "Ranged Damage",

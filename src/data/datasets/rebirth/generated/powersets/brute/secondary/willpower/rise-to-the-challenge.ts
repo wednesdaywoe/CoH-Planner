@@ -35,7 +35,6 @@ export const RisetotheChallenge: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Healing",
     "To Hit Debuff"
   ],

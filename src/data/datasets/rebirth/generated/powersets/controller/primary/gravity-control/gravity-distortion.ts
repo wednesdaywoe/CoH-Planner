@@ -35,7 +35,6 @@ export const GravityDistortion: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Holds",
     "Ranged Damage",

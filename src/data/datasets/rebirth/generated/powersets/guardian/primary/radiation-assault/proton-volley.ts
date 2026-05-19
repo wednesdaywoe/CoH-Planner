@@ -38,9 +38,7 @@ export const ProtonVolley: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
-    "Guardian Archetype Sets",
     "Ranged Damage",
     "Sniper Attacks",
     "Universal Damage Sets"

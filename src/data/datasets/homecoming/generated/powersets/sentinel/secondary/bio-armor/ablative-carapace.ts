@@ -73,12 +73,12 @@ export const AblativeCarapace: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "regenBuff": {
+        "regenBuffUnenhanced": {
           "scale": 0.3,
           "table": "Melee_Ones"
         },
         "durations": {
-          "regenBuff": 30
+          "regenBuffUnenhanced": 30
         },
         "buffDuration": 30
       },

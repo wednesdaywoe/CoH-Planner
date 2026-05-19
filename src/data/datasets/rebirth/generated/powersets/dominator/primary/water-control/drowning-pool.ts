@@ -37,7 +37,6 @@ export const DrowningPool: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Dominator Archetype Sets",
     "Holds"

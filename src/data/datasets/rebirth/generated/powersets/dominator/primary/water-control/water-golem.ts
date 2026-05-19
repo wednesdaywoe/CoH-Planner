@@ -35,7 +35,6 @@ export const WaterGolem: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Knockback",
     "Pet Damage",
     "Recharge Intensive Pets",

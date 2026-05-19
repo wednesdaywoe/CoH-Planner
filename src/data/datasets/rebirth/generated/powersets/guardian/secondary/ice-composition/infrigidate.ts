@@ -35,7 +35,6 @@ export const Infrigidate: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Slow Movement"
   ],

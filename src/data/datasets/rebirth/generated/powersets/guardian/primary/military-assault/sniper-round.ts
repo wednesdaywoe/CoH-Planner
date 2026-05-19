@@ -35,7 +35,6 @@ export const SniperRound: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Knockback",
     "Ranged Damage",
     "Sniper Attacks",

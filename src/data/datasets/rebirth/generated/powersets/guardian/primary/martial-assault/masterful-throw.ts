@@ -34,7 +34,6 @@ export const MasterfulThrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Ranged Damage",
     "Sniper Attacks",
     "Universal Damage Sets"

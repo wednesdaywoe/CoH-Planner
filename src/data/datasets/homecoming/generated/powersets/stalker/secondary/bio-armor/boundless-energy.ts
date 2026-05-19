@@ -91,12 +91,12 @@ export const BoundlessEnergy: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "regenBuff": {
+        "regenBuffUnenhanced": {
           "scale": 0.195,
           "table": "Melee_Ones"
         },
         "durations": {
-          "regenBuff": 5.25,
+          "regenBuffUnenhanced": 5.25,
           "recoveryBuff": 5.25
         },
         "recoveryBuff": {

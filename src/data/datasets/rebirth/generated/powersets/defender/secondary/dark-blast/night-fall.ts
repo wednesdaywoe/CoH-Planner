@@ -38,7 +38,6 @@ export const NightFall: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Debuff",

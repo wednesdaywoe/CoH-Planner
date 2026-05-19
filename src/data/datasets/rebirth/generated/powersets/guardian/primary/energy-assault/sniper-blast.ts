@@ -35,7 +35,6 @@ export const SniperBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Knockback",
     "Ranged Damage",
     "Sniper Attacks",

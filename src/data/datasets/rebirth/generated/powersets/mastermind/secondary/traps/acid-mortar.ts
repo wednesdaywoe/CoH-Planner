@@ -33,7 +33,6 @@ export const AcidMortar: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
     "Universal Damage Sets"

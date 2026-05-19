@@ -56,12 +56,5 @@ export const Gloom: Power = {
       "duration": 3.6,
       "tickRate": 0.5
     }
-  ],
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Enslaved_Specter2",
-      "duration": 30
-    }
-  }
+  ]
 };

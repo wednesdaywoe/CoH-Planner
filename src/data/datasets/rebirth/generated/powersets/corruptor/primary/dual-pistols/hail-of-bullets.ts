@@ -34,7 +34,6 @@ export const HailofBullets: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Knockback",
     "Melee AoE Damage",

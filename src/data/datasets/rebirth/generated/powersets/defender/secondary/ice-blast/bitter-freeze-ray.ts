@@ -35,7 +35,6 @@ export const BitterFreezeRay: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Holds",
     "Ranged Damage",

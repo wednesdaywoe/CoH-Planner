@@ -36,7 +36,6 @@ export const Hypothermia: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Dominator Archetype Sets",
     "Sleep",
     "Slow Movement"

@@ -25,10 +25,6 @@ export const ShadowSlip: Power = {
     "castTime": 12
   },
   "allowedEnhancements": [],
-  "allowedSetCategories": [
-    "Teleport",
-    "Universal Travel"
-  ],
   "maxSlots": 0,
   "effects": {
     "teleport": {

@@ -38,7 +38,6 @@ export const ShadowMaul: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Brute Archetype Sets",
     "Melee AoE Damage",
     "Threat Duration",

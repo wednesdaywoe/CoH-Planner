@@ -33,7 +33,6 @@ export const SuppressionField: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Holds",
     "Slow Movement"
   ],

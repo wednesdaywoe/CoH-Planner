@@ -34,7 +34,6 @@ export const HeatLoss: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Endurance Modification",
     "Slow Movement"
   ],

@@ -36,7 +36,6 @@ export const DarkGrasp: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Holds",
     "Ranged Damage",

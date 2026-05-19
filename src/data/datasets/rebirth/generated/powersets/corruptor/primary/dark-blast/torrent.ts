@@ -39,7 +39,6 @@ export const Torrent: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",

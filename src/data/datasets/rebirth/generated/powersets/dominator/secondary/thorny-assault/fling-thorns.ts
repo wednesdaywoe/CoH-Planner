@@ -38,7 +38,6 @@ export const FlingThorns: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
     "Universal Damage Sets"

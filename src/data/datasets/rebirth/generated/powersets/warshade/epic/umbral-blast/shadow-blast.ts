@@ -35,7 +35,6 @@ export const ShadowBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
     "Knockback",
     "Ranged Damage",

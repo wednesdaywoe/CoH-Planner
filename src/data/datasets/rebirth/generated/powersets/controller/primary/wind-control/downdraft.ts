@@ -35,7 +35,6 @@ export const Downdraft: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Holds",
     "Ranged Damage",

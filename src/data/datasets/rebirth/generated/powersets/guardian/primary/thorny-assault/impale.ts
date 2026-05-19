@@ -37,9 +37,7 @@ export const Impale: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
-    "Guardian Archetype Sets",
     "Immobilize",
     "Ranged Damage",
     "Slow Movement",

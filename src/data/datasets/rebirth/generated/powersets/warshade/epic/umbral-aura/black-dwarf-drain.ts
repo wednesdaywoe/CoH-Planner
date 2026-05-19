@@ -35,7 +35,6 @@ export const BlackDwarfDrain: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
-    "Blaster Archetype Sets",
     "Healing",
     "Kheldian Archetype Sets",
     "Melee Damage",

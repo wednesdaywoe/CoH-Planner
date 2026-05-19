@@ -33,8 +33,6 @@ export const PhoenixAwakening: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Guardian Archetype Sets",
     "Healing",
     "Melee AoE Damage",
     "Stuns",

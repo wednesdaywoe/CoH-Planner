@@ -33,7 +33,6 @@ export const IceSlash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Melee Damage",
     "Slow Movement",
     "Universal Damage Sets"

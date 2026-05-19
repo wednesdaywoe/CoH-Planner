@@ -32,7 +32,6 @@ export const GlueArrow: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6

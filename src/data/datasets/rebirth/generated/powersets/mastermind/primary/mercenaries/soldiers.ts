@@ -33,7 +33,6 @@ export const Soldiers: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Mastermind Archetype Sets",
     "Pet Damage",

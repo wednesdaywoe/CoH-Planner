@@ -37,7 +37,6 @@ export const Fissure: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Stuns",

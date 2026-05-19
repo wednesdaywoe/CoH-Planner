@@ -37,7 +37,6 @@ export const DarkNovaEmanation: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",

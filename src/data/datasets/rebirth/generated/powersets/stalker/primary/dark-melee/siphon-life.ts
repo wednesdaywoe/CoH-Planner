@@ -36,7 +36,6 @@ export const SiphonLife: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Healing",
     "Melee Damage",
     "Stalker Archetype Sets",

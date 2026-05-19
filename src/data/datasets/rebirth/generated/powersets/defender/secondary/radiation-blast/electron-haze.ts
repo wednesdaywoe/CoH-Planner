@@ -39,7 +39,6 @@ export const ElectronHaze: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Defense Debuff",
     "Knockback",

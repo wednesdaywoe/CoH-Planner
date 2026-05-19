@@ -36,8 +36,6 @@ export const HowlingTwilight: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Brute Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",

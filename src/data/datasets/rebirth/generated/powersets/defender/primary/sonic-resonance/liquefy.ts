@@ -38,7 +38,6 @@ export const Liquefy: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Defense Debuff",
     "Holds",

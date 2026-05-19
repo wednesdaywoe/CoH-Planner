@@ -34,7 +34,6 @@ export const IceBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Ranged Damage",
     "Slow Movement",

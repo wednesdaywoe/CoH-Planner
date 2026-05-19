@@ -35,7 +35,6 @@ export const ThornyDarts: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged Damage",
     "Universal Damage Sets"

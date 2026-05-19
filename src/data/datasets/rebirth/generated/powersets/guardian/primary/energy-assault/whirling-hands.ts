@@ -34,7 +34,6 @@ export const WhirlingHands: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Melee AoE Damage",
     "Stuns",
     "Universal Damage Sets"

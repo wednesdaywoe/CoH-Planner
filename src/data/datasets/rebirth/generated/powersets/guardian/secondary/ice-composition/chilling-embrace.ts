@@ -33,7 +33,6 @@ export const ChillingEmbrace: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6

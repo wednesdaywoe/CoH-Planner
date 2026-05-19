@@ -36,9 +36,7 @@ export const SolarFlare: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
-    "Guardian Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
     "Universal Damage Sets"

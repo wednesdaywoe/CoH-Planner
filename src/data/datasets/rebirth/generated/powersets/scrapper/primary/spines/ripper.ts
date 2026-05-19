@@ -37,7 +37,6 @@ export const Ripper: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",

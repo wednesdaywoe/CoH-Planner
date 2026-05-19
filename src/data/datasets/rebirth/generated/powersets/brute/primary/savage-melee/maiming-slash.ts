@@ -34,7 +34,6 @@ export const MaimingSlash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Brute Archetype Sets",
     "Melee Damage",
     "Slow Movement",

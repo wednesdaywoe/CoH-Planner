@@ -39,7 +39,6 @@ export const CripplingAxeKick: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Immobilize",
     "Melee Damage",

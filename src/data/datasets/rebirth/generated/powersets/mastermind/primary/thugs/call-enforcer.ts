@@ -34,7 +34,6 @@ export const CallEnforcer: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Mastermind Archetype Sets",
     "Pet Damage",

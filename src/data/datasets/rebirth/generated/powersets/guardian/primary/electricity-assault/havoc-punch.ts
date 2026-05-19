@@ -36,7 +36,6 @@ export const HavocPunch: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Guardian Archetype Sets",
     "Knockback",
     "Melee Damage",
     "Sleep",

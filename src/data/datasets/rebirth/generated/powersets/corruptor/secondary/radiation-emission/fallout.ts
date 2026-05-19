@@ -36,7 +36,6 @@ export const Fallout: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
     "To Hit Debuff",

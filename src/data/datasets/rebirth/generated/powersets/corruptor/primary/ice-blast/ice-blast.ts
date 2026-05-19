@@ -34,7 +34,6 @@ export const IceBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Ranged Damage",
     "Slow Movement",

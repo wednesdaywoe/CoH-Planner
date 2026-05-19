@@ -36,7 +36,6 @@ export const CarrionCreepers: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Immobilize",
     "Knockback",

@@ -35,7 +35,6 @@ export const DarkestNight: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6

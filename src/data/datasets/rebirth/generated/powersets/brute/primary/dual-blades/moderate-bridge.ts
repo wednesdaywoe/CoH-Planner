@@ -35,7 +35,6 @@ export const AblatingStrike: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Brute Archetype Sets",
     "Defense Debuff",
     "Melee Damage",

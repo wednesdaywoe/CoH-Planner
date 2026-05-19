@@ -31,7 +31,6 @@ export const Resurgence: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
     "To Hit Buff"

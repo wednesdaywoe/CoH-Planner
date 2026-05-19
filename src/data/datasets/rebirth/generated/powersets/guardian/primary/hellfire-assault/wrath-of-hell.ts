@@ -34,7 +34,6 @@ export const WrathofHell: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Holds",
     "Ranged Damage",
     "Universal Damage Sets"

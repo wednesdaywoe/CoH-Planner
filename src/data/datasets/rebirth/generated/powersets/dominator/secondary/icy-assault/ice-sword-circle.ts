@@ -34,7 +34,6 @@ export const IceSwordCircle: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Melee AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

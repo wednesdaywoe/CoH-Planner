@@ -35,7 +35,6 @@ export const ArcticAir: Power = {
     "Confuse"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Confuse",
     "Dominator Archetype Sets",
     "Fear",

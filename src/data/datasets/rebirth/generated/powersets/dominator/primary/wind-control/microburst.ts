@@ -39,7 +39,6 @@ export const Microburst: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Dominator Archetype Sets",
     "Ranged AoE Damage",

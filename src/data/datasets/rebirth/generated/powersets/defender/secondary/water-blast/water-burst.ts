@@ -37,7 +37,6 @@ export const WaterBurst: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defender Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",

@@ -36,7 +36,6 @@ export const InertialSiphon: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Flight",
     "Leaping & Sprints",
     "Running & Sprints",

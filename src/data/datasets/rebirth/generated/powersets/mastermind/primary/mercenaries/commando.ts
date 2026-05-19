@@ -33,7 +33,6 @@ export const Commando: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Knockback",
     "Mastermind Archetype Sets",

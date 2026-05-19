@@ -36,7 +36,6 @@ export const Suffocate: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Controller Archetype Sets",
     "Defense Debuff",
     "Holds",

@@ -34,7 +34,6 @@ export const Smoke: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

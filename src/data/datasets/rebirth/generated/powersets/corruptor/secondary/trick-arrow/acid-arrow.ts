@@ -37,7 +37,6 @@ export const AcidArrow: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",

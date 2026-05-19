@@ -35,7 +35,6 @@ export const BlackDwarfSmite: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
     "Knockback",
     "Melee Damage",

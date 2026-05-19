@@ -34,7 +34,6 @@ export const DarkNovaBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
     "Ranged Damage",
     "Slow Movement",

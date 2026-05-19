@@ -35,7 +35,6 @@ export const Impale: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Immobilize",
     "Ranged Damage",
     "Scrapper Archetype Sets",

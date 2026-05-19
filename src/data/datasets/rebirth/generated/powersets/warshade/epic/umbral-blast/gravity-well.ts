@@ -36,7 +36,6 @@ export const GravityWell: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Holds",
     "Kheldian Archetype Sets",
     "Melee Damage",

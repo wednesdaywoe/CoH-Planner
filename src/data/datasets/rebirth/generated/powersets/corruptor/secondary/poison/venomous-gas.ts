@@ -35,7 +35,6 @@ export const VenomousGas: Power = {
     "Defense Debuff"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "To Hit Debuff"
   ],

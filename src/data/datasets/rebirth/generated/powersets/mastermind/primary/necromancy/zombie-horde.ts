@@ -33,7 +33,6 @@ export const ZombieHorde: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",

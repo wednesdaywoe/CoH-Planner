@@ -36,7 +36,6 @@ export const BrightNovaBlast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Knockback",

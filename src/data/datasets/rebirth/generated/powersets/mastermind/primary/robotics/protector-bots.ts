@@ -37,7 +37,6 @@ export const ProtectorBots: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Defense Sets",
     "Healing",
     "Knockback",

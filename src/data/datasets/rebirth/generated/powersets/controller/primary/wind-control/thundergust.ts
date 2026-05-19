@@ -37,7 +37,6 @@ export const Thundergust: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "To Hit Debuff",

@@ -35,7 +35,6 @@ export const DarkNovaBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Kheldian Archetype Sets",
     "Knockback",
     "Ranged Damage",

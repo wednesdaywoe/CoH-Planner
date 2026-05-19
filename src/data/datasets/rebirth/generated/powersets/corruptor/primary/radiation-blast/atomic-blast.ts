@@ -35,7 +35,6 @@ export const AtomicBlast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",

@@ -36,7 +36,6 @@ export const MaceBeamBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

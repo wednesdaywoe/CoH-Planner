@@ -36,7 +36,6 @@ export const Tornado: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "Knockback",
     "Mastermind Archetype Sets",

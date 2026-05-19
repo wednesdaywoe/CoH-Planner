@@ -42,14 +42,6 @@ export const EntropicAura: Power = {
         "scale": 1,
         "table": "Melee_Ones"
       },
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
       "repel": {
         "scale": 100,
         "table": "Melee_Ones"
@@ -57,7 +49,6 @@ export const EntropicAura: Power = {
     },
     "durations": {
       "mezResistance": 2.25,
-      "debuffResistance": 2.25,
       "knockup": 2.25,
       "knockback": 2.25,
       "repel": 2.25,
@@ -65,12 +56,6 @@ export const EntropicAura: Power = {
       "stun": 2.25,
       "sleep": 2.25,
       "immobilize": 2.25
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
     },
     "knockup": {
       "scale": 10,

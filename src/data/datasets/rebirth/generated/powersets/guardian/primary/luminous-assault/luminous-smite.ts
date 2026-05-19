@@ -36,9 +36,7 @@ export const LuminousSmite: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
-    "Guardian Archetype Sets",
     "Knockback",
     "Melee Damage",
     "Stuns",

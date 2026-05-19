@@ -53,15 +53,6 @@ export const Burn: Power = {
     }
   ],
   "effects": {
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 100,
-    "durations": {
-      "immobilize": 100
-    },
     "summon": {
       "isPseudoPet": false,
       "entity": "PL_StaticObject",
@@ -72,7 +63,6 @@ export const Burn: Power = {
       ],
       "duration": 10,
       "entityCount": 2
-    },
-    "buffDuration": 100
+    }
   }
 };

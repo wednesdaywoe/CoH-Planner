@@ -58,13 +58,18 @@ export const Dynamo: Power = {
       "scale": 1,
       "table": "Melee_EndDrain"
     },
-    "regenBuff": {
-      "scale": 2.25,
+    "regenBuffUnenhanced": {
+      "scale": 1.125,
       "table": "Melee_Ones"
     },
     "durations": {
+      "regenBuffUnenhanced": 2.25,
       "regenBuff": 2.25,
       "recoveryBuff": 2.25
+    },
+    "regenBuff": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
     },
     "recoveryBuff": {
       "scale": 0.5,

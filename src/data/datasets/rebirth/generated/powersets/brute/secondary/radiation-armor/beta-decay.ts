@@ -37,7 +37,6 @@ export const BetaDecay: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "To Hit Debuff"
   ],

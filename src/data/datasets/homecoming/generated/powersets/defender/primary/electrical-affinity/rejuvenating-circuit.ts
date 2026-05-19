@@ -37,16 +37,9 @@ export const RejuvenatingCircuit: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Heal",
-      "scale": 1.55,
-      "table": "Ranged_Heal"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.41,
-      "table": "Ranged_Heal"
-    }
-  ]
+  "damage": {
+    "type": "Heal",
+    "scale": 1.55,
+    "table": "Ranged_Heal"
+  }
 };

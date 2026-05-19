@@ -33,7 +33,6 @@ export const BoneSmasher: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Melee Damage",
     "Stuns",
     "Universal Damage Sets"

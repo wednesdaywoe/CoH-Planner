@@ -52,12 +52,5 @@ export const DarkBlast: Power = {
       "scale": 1.26,
       "table": "Ranged_PvPDamage"
     }
-  ],
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Enslaved_Specter",
-      "duration": 30
-    }
-  }
+  ]
 };

@@ -36,7 +36,6 @@ export const RadiationInfection: Power = {
     "Defense Debuff"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Defense Debuff",
     "To Hit Debuff"
   ],

@@ -35,7 +35,6 @@ export const KineticShockwave: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Guardian Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
     "Stuns",

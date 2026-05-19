@@ -36,7 +36,6 @@ export const BitterIceBlast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Corruptor Archetype Sets",
     "Ranged Damage",
     "Slow Movement",

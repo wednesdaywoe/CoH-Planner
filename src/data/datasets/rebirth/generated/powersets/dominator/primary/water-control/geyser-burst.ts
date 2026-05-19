@@ -34,7 +34,6 @@ export const GeyserBurst: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Slow Movement",

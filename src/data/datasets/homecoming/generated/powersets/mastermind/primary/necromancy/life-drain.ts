@@ -60,12 +60,5 @@ export const LifeDrain: Power = {
       "scale": 1,
       "table": "Ranged_HealSelf"
     }
-  ],
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Enslaved_Specter3",
-      "duration": 30
-    }
-  }
+  ]
 };

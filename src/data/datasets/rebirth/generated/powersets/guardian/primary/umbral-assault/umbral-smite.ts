@@ -35,8 +35,6 @@ export const UmbralSmite: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Guardian Archetype Sets",
     "Knockback",
     "Melee Damage",
     "Slow Movement",

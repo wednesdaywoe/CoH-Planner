@@ -43,7 +43,7 @@ export const TemperatureProtection: Power = {
     "durations": {
       "resistance": 10,
       "debuffResistance": 10,
-      "regenBuff": 10,
+      "regenBuffUnenhanced": 10,
       "knockback": 10.25,
       "knockup": 10.25
     },
@@ -57,7 +57,7 @@ export const TemperatureProtection: Power = {
         "table": "Melee_Ones"
       }
     },
-    "regenBuff": {
+    "regenBuffUnenhanced": {
       "scale": 1,
       "table": "Melee_Ones"
     },
