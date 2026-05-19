@@ -21,9 +21,11 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-05-18',
+    date: '2026-05-19',
     items: [
-      { message: 'Extended enemy level to +7 for HC datasets. Also, Defense softcaps should change depending on the target level you set', type: 'feat' },
+      { message: 'Improved build management options: menu items are now New Build, Clear Powers, Clear Slots, Clear Enhancements, and Maximize Enhancements', type: 'feat' },
+      { message: 'Added some UI helpers for Firefox users', type: 'fix' },
+      { message: 'Extended enemy level to +7 for HC datasets. Defense softcaps should change depending on target level and a new content mode toggle', type: 'feat' },
       { message: 'Just an absolute dumptruck of changes, QOL features, and bug fixes...', type: 'update' },
       { message: 'Ragnarok piece 6 on Rebirth correctly labeled "Chance for Knockdown" (was "Chance for Knockback"); Rebirth extractor now carries a rename map', type: 'fix' },
       { message: 'Brine no longer gives the caster +MaxHP. Foe -MaxHP debuffs are no longer laundered into a self buff by the powerset converter. Marine Affinity regenerated across all 4 ATs.', type: 'fix' },

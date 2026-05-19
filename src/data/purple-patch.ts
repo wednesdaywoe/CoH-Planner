@@ -22,6 +22,9 @@ export function getCombatModifier(levelDiff: number): number {
   return getActiveDataset().purplePatch.getCombatModifier(levelDiff);
 }
 
-export function getDefenseSoftcap(levelDiff: number): number {
-  return getActiveDataset().purplePatch.getDefenseSoftcap(levelDiff);
+export function getDefenseSoftcap(
+  levelDiff: number,
+  contentMode: 'standard' | 'incarnate' = 'standard',
+): number {
+  return getActiveDataset().purplePatch.getDefenseSoftcap(levelDiff, contentMode);
 }

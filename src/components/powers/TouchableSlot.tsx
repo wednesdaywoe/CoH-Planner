@@ -103,8 +103,8 @@ export function TouchableSlot({
     return () => {
       const drag = rightDragRef.current;
       if (drag.moveHandler) document.removeEventListener('mousemove', drag.moveHandler);
-      if (drag.upHandler) document.removeEventListener('mouseup', drag.upHandler);
-      if (drag.contextHandler) document.removeEventListener('contextmenu', drag.contextHandler);
+      if (drag.upHandler) document.removeEventListener('mouseup', drag.upHandler, true);
+      if (drag.contextHandler) document.removeEventListener('contextmenu', drag.contextHandler, true);
     };
   }, []);
 
@@ -129,6 +129,10 @@ export function TouchableSlot({
     const maxCount = mode === 'enhancements' ? filledSlotCount : removableSlotCount;
     const callback = mode === 'enhancements' ? onClearEnhancements : onRemoveSlots;
     if (!callback || maxCount <= 0) return;
+
+    // Inhibit Firefox's default right-mousedown behavior (selection start, etc.)
+    // which can interact poorly with our drag tracking.
+    e.preventDefault();
 
     setDragMode(mode);
 
@@ -157,34 +161,52 @@ export function TouchableSlot({
       }
     };
 
-    const handleUp = () => {
-      // Cleanup happens here; contextmenu fires after mouseup
-      document.removeEventListener('mousemove', handleMove);
-      document.removeEventListener('mouseup', handleUp);
-      // Remove contextmenu blocker after a tick (so it catches the one that fires with this mouseup)
-      setTimeout(() => {
-        if (drag.contextHandler) {
-          document.removeEventListener('contextmenu', drag.contextHandler);
-          drag.contextHandler = null;
-        }
-      }, 0);
-      setDragRemoveCount(0);
-      setDragMode(null);
-      onDragStateChange?.(null);
-    };
-
-    // Block browser context menu globally during drag
+    // Block the browser context menu during and just after the drag. Capture
+    // phase so we beat any bubble-phase listener that forgets to preventDefault.
+    // Only preventDefault — don't stopPropagation, because React's bubble-phase
+    // handleContextMenu still needs to fire for the no-drag right-click path
+    // (it checks drag.hasMoved and bails appropriately).
     const preventContext = (ev: Event) => {
       ev.preventDefault();
-      ev.stopImmediatePropagation();
-      // If drag completed, execute the removal/clear
-      if (drag.active && drag.hasMoved && drag.slotsToRemove > 0) {
+    };
+
+    const handleUp = (ev: MouseEvent) => {
+      // Only respond to right-button release; ignore stray left/middle mouseups
+      if (ev.button !== 2) return;
+
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('mouseup', handleUp, true);
+
+      // Execute the callback HERE on mouseup. mouseup fires reliably in every
+      // browser; contextmenu can be reordered, suppressed, or skipped (Firefox
+      // is especially inconsistent during right-mouse drags). Doing the work
+      // in mouseup removes that race entirely.
+      const shouldExecute = drag.active && drag.hasMoved && drag.slotsToRemove > 0;
+      if (shouldExecute) {
         callback(drag.slotsToRemove);
       }
       drag.active = false;
       drag.slotsToRemove = 0;
-      // Keep hasMoved true briefly so handleContextMenu (React synthetic) also skips
-      setTimeout(() => { drag.hasMoved = false; }, 0);
+
+      // Keep blocking the contextmenu event for a window after release so the
+      // browser menu doesn't pop up. 150ms is enough to cover the slowest
+      // contextmenu dispatch we've seen in Firefox without leaking blocker
+      // listeners into the next interaction. Capture `preventContext` locally
+      // so a second right-click that overwrites `drag.contextHandler` doesn't
+      // cause this cleanup to remove the wrong listener.
+      window.setTimeout(() => {
+        document.removeEventListener('contextmenu', preventContext, true);
+        if (drag.contextHandler === preventContext) {
+          drag.contextHandler = null;
+        }
+        // Clear hasMoved after the contextmenu has had a chance to fire so the
+        // React-synthetic handleContextMenu also bails on this drag.
+        drag.hasMoved = false;
+      }, 150);
+
+      setDragRemoveCount(0);
+      setDragMode(null);
+      onDragStateChange?.(null);
     };
 
     drag.moveHandler = handleMove;
@@ -192,8 +214,8 @@ export function TouchableSlot({
     drag.contextHandler = preventContext;
 
     document.addEventListener('mousemove', handleMove);
-    document.addEventListener('mouseup', handleUp);
-    document.addEventListener('contextmenu', preventContext, { once: true });
+    document.addEventListener('mouseup', handleUp, true);
+    document.addEventListener('contextmenu', preventContext, true);
   };
 
   const handleContextMenu = (e: React.MouseEvent) => {

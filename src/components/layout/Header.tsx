@@ -95,6 +95,8 @@ export function Header() {
   const build = useBuildStore((s) => s.build);
   const resetBuild = useBuildStore((s) => s.resetBuild);
   const clearPowers = useBuildStore((s) => s.clearPowers);
+  const clearAllEnhancementsGlobal = useBuildStore((s) => s.clearAllEnhancementsGlobal);
+  const clearAllExtraSlots = useBuildStore((s) => s.clearAllExtraSlots);
   const maximizeEnhancementLevels = useBuildStore((s) => s.maximizeEnhancementLevels);
   const resetForNewBuild = useUIStore((s) => s.resetForNewBuild);
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
@@ -110,7 +112,7 @@ export function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const isOnBuildsPage = location.pathname.startsWith('/builds');
-  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | 'maximize' | null>(null);
+  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | 'clear-slots' | 'clear-enhancements' | 'maximize' | null>(null);
 
   const archetypeId = build.archetype.id;
 
@@ -146,6 +148,8 @@ export function Header() {
             onOpenModal={openExportImportModal}
             onNew={() => setConfirmAction('new')}
             onClear={() => setConfirmAction('clear')}
+            onClearSlots={() => setConfirmAction('clear-slots')}
+            onClearEnhancements={() => setConfirmAction('clear-enhancements')}
             onMaximize={() => setConfirmAction('maximize')}
             onAbout={openAboutModal}
           />
@@ -266,6 +270,22 @@ export function Header() {
         message="Clear all powers and enhancements? Archetype and powerset selections will be kept."
         confirmLabel="Clear"
         onConfirm={() => { clearPowers(); setConfirmAction(null); }}
+        onCancel={() => setConfirmAction(null)}
+      />
+      <ConfirmModal
+        isOpen={confirmAction === 'clear-slots'}
+        title="Clear Slots"
+        message="Remove every added slot from every power, leaving only the base slot? All slotted enhancements will also be cleared. Powers themselves are kept."
+        confirmLabel="Clear Slots"
+        onConfirm={() => { clearAllExtraSlots(); setConfirmAction(null); }}
+        onCancel={() => setConfirmAction(null)}
+      />
+      <ConfirmModal
+        isOpen={confirmAction === 'clear-enhancements'}
+        title="Clear Enhancements"
+        message="Remove every slotted enhancement across the build? Powers and slot allocations are kept."
+        confirmLabel="Clear Enhancements"
+        onConfirm={() => { clearAllEnhancementsGlobal(); setConfirmAction(null); }}
         onCancel={() => setConfirmAction(null)}
       />
       <ConfirmModal
@@ -760,12 +780,16 @@ function ActionMenu({
   onOpenModal,
   onNew,
   onClear,
+  onClearSlots,
+  onClearEnhancements,
   onMaximize,
   onAbout,
 }: {
   onOpenModal: (tab?: 'save' | 'load-import' | 'share-export') => void;
   onNew: () => void;
   onClear: () => void;
+  onClearSlots: () => void;
+  onClearEnhancements: () => void;
   onMaximize: () => void;
   onAbout: () => void;
 }) {
@@ -866,13 +890,21 @@ function ActionMenu({
             Share / Export
           </button>
           <hr className="border-gray-700 my-1" />
-          <button onClick={() => { onNew(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+          <button onClick={() => { onNew(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Reset everything, including archetype and powerset choices.">
             <svg className="w-4 h-4 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
-            New Build
+            New Build (full reset)
           </button>
-          <button onClick={() => { onClear(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+          <button onClick={() => { onClear(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Remove all picked powers; keep archetype and powerset selections.">
             <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
             Clear Powers
+          </button>
+          <button onClick={() => { onClearSlots(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Remove every added slot from every power, leaving only the base slot. All enhancements are also cleared.">
+            <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" transform="rotate(180 12 12)" /><circle cx="6" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="18" cy="12" r="1.5" fill="currentColor"/></svg>
+            Clear Slots
+          </button>
+          <button onClick={() => { onClearEnhancements(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Remove every slotted enhancement across the build; keep powers and slots.">
+            <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 9a2 2 0 01-2 2H11a2 2 0 01-2-2L8 4z" /></svg>
+            Clear Enhancements
           </button>
           <button
             onClick={() => { onMaximize(); setOpen(false); }}
@@ -960,6 +992,8 @@ function SettingsPopover() {
   const setLevel = useBuildStore((s) => s.setLevel);
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const setTargetLevelOffset = useUIStore((s) => s.setTargetLevelOffset);
+  const contentMode = useUIStore((s) => s.contentMode);
+  const setContentMode = useUIStore((s) => s.setContentMode);
   const showSlotLevels = useUIStore((s) => s.showSlotLevels);
   const toggleShowSlotLevels = useUIStore((s) => s.toggleShowSlotLevels);
   const exemplarMode = useUIStore((s) => s.exemplarMode);
@@ -1114,6 +1148,37 @@ function SettingsPopover() {
                     className="text-slate-400 hover:text-cyan-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
                   >
                     +
+                  </button>
+                </div>
+              </div>
+            </Tooltip>
+          </div>
+
+          {/* Content Mode */}
+          <div className="space-y-1">
+            <Tooltip content="Standard: defense softcap 45% (base hit 50%, no extra enemy ToHit). Incarnate: softcap 59% — iTrial encounters layer ~+14% ToHit on enemies on top of any level difference.">
+              <div className="flex items-center justify-between">
+                <label className="text-xs text-gray-400">Content</label>
+                <div className="flex items-center gap-0.5 bg-slate-800 rounded p-0.5">
+                  <button
+                    onClick={() => setContentMode('standard')}
+                    className={`text-xs px-2 py-0.5 rounded transition-colors ${
+                      contentMode === 'standard'
+                        ? 'bg-cyan-600 text-white'
+                        : 'text-slate-400 hover:text-cyan-400'
+                    }`}
+                  >
+                    Standard
+                  </button>
+                  <button
+                    onClick={() => setContentMode('incarnate')}
+                    className={`text-xs px-2 py-0.5 rounded transition-colors ${
+                      contentMode === 'incarnate'
+                        ? 'bg-purple-600 text-white'
+                        : 'text-slate-400 hover:text-purple-400'
+                    }`}
+                  >
+                    Incarnate
                   </button>
                 </div>
               </div>

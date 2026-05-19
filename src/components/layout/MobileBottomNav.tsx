@@ -53,9 +53,11 @@ export function MobileBottomNav() {
   // children on close, which would tear down any state-driven modal inside it).
   const resetBuild = useBuildStore((s) => s.resetBuild);
   const clearPowers = useBuildStore((s) => s.clearPowers);
+  const clearAllEnhancementsGlobal = useBuildStore((s) => s.clearAllEnhancementsGlobal);
+  const clearAllExtraSlots = useBuildStore((s) => s.clearAllExtraSlots);
   const maximizeEnhancementLevels = useBuildStore((s) => s.maximizeEnhancementLevels);
   const resetForNewBuild = useUIStore((s) => s.resetForNewBuild);
-  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | 'maximize' | null>(null);
+  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | 'clear-slots' | 'clear-enhancements' | 'maximize' | null>(null);
 
   const requestNewBuild = () => {
     closeMobileSheet();
@@ -64,6 +66,14 @@ export function MobileBottomNav() {
   const requestClearPowers = () => {
     closeMobileSheet();
     setConfirmAction('clear');
+  };
+  const requestClearSlots = () => {
+    closeMobileSheet();
+    setConfirmAction('clear-slots');
+  };
+  const requestClearEnhancements = () => {
+    closeMobileSheet();
+    setConfirmAction('clear-enhancements');
   };
   const requestMaximize = () => {
     closeMobileSheet();
@@ -106,6 +116,8 @@ export function MobileBottomNav() {
             onDone={closeMobileSheet}
             onRequestNewBuild={requestNewBuild}
             onRequestClearPowers={requestClearPowers}
+            onRequestClearSlots={requestClearSlots}
+            onRequestClearEnhancements={requestClearEnhancements}
             onRequestMaximize={requestMaximize}
           />
         </MobileSheet>
@@ -170,6 +182,22 @@ export function MobileBottomNav() {
         message="Clear all powers and enhancements? Archetype and powerset selections will be kept."
         confirmLabel="Clear"
         onConfirm={() => { clearPowers(); setConfirmAction(null); }}
+        onCancel={() => setConfirmAction(null)}
+      />
+      <ConfirmModal
+        isOpen={confirmAction === 'clear-slots'}
+        title="Clear Slots"
+        message="Remove every added slot from every power, leaving only the base slot? All slotted enhancements will also be cleared. Powers themselves are kept."
+        confirmLabel="Clear Slots"
+        onConfirm={() => { clearAllExtraSlots(); setConfirmAction(null); }}
+        onCancel={() => setConfirmAction(null)}
+      />
+      <ConfirmModal
+        isOpen={confirmAction === 'clear-enhancements'}
+        title="Clear Enhancements"
+        message="Remove every slotted enhancement across the build? Powers and slot allocations are kept."
+        confirmLabel="Clear Enhancements"
+        onConfirm={() => { clearAllEnhancementsGlobal(); setConfirmAction(null); }}
         onCancel={() => setConfirmAction(null)}
       />
       <ConfirmModal
@@ -264,11 +292,15 @@ function MobileMenuContent({
   onDone,
   onRequestNewBuild,
   onRequestClearPowers,
+  onRequestClearSlots,
+  onRequestClearEnhancements,
   onRequestMaximize,
 }: {
   onDone: () => void;
   onRequestNewBuild: () => void;
   onRequestClearPowers: () => void;
+  onRequestClearSlots: () => void;
+  onRequestClearEnhancements: () => void;
   onRequestMaximize: () => void;
 }) {
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
@@ -331,8 +363,10 @@ function MobileMenuContent({
         {item('Save build', () => openExportImportModal('save'))}
         {item('Load / Import', () => openExportImportModal('load-import'))}
         {item('Share / Export', () => openExportImportModal('share-export'))}
-        {itemNoClose('New build', onRequestNewBuild)}
+        {itemNoClose('New build (full reset)', onRequestNewBuild)}
         {itemNoClose('Clear powers', onRequestClearPowers, true)}
+        {itemNoClose('Clear slots', onRequestClearSlots, true)}
+        {itemNoClose('Clear enhancements', onRequestClearEnhancements, true)}
         {itemNoClose('Maximize enhancements', onRequestMaximize)}
       </Section>
       <Section label="Info">
@@ -396,6 +430,8 @@ function MobileSettingsContent() {
   const toggleShowSlotLevels = useUIStore((s) => s.toggleShowSlotLevels);
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const setTargetLevelOffset = useUIStore((s) => s.setTargetLevelOffset);
+  const contentMode = useUIStore((s) => s.contentMode);
+  const setContentMode = useUIStore((s) => s.setContentMode);
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const toggleExemplarMode = useUIStore((s) => s.toggleExemplarMode);
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
@@ -459,6 +495,27 @@ function MobileSettingsContent() {
             disabled={targetLevelOffset >= 7}
             className="w-8 h-8 rounded bg-slate-800 text-slate-300 disabled:opacity-30 font-bold"
           >+</button>
+        </div>
+      </Field>
+
+      <Field label="Content">
+        <div className="flex items-center gap-0.5 bg-slate-800 rounded p-0.5">
+          <button
+            onClick={() => setContentMode('standard')}
+            className={`text-sm px-3 py-1 rounded transition-colors ${
+              contentMode === 'standard' ? 'bg-cyan-600 text-white' : 'text-slate-400'
+            }`}
+          >
+            Standard
+          </button>
+          <button
+            onClick={() => setContentMode('incarnate')}
+            className={`text-sm px-3 py-1 rounded transition-colors ${
+              contentMode === 'incarnate' ? 'bg-purple-600 text-white' : 'text-slate-400'
+            }`}
+          >
+            Incarnate
+          </button>
         </div>
       </Field>
 

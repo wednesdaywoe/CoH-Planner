@@ -195,12 +195,16 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const baseHP = health.baseHealth;
   const maxHPCap = health.maxHealth;
   const at = build.archetype?.id ? getArchetype(build.archetype.id) : null;
-  // Defense cap follows the practical softcap relative to the target enemy
-  // level. Standard 45% at +0, scaling up to 80% at +7 (HC hard mode).
+  // Defense cap follows the practical softcap. The level-diff table only
+  // adds enemy ToHit at +6 and above (+0..+5 are all 45%), so increasing
+  // `targetLevelOffset` doesn't bump the cap until you hit +6. Incarnate
+  // mode adds an empirical +14% ToHit buff (iTrial encounters), pushing
+  // even-level softcap from 45% → 59%.
   // Resistance cap is the AT's flat hard cap (75% for most ATs, 90% for
-  // tanker/brute/warshade) — enemy level doesn't change that.
+  // tanker/brute/warshade) — enemy level / content mode don't change that.
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
-  const defenseCap = getDefenseSoftcap(targetLevelOffset);
+  const contentMode = useUIStore((s) => s.contentMode);
+  const defenseCap = getDefenseSoftcap(targetLevelOffset, contentMode);
   const resistanceCap = (at?.stats.resistanceCap ?? 0.75) * 100;
   const breakdowns = calcResult.breakdown;
   const globalBonuses = calcResult.globalBonuses;

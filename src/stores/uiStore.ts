@@ -170,8 +170,16 @@ interface UIState {
   /** Exemplar level - the level to exemplar down to (1-50, default: 50) */
   exemplarLevel: number;
 
-  /** Target enemy level offset for hit chance calculation (-5 to +5, 0 = even level) */
+  /** Target enemy level offset for hit chance calculation (-7 to +7, 0 = even level) */
   targetLevelOffset: number;
+
+  /**
+   * Content-mode toggle for defense-softcap math. Incarnate trial encounters
+   * carry an empirical extra ToHit buff on enemies (~+14%), pushing the
+   * softcap from 45 → 59 on even-level enemies. Stored separately from
+   * `targetLevelOffset` so the two compose cleanly.
+   */
+  contentMode: 'standard' | 'incarnate';
 
   /** Per-category proc settings for dashboard stat calculations */
   procSettings: ProcSettings;
@@ -367,6 +375,7 @@ interface UIActions {
   toggleExemplarMode: () => void;
   setExemplarLevel: (level: number) => void;
   setTargetLevelOffset: (offset: number) => void;
+  setContentMode: (mode: 'standard' | 'incarnate') => void;
   toggleProcCategory: (category: ProcSettingsKey) => void;
   setProcSettings: (settings: ProcSettings) => void;
   openProcSettingsModal: () => void;
@@ -692,6 +701,7 @@ export const useUIStore = create<UIStore>()(
       exemplarMode: false,
       exemplarLevel: 50,
       targetLevelOffset: 0,
+      contentMode: 'standard' as const,
       procSettings: { ...DEFAULT_PROC_SETTINGS },
       procSettingsModalOpen: false,
       includeProcDamageInDPS: true,
@@ -875,6 +885,8 @@ export const useUIStore = create<UIStore>()(
           // full span for the dashboard cap to reflect reality.
           targetLevelOffset: Math.max(-7, Math.min(7, offset)),
         }),
+
+      setContentMode: (mode) => set({ contentMode: mode }),
 
       toggleProcCategory: (category: ProcSettingsKey) =>
         set((state) => ({
@@ -1541,6 +1553,7 @@ export const useUIStore = create<UIStore>()(
         // damage / defense number on reload, which is hard to debug when
         // the user forgets the toggle is on.
         targetLevelOffset: state.targetLevelOffset,
+        contentMode: state.contentMode,
         procSettings: state.procSettings,
         combatMode: state.combatMode,
         hintsEnabled: state.hintsEnabled,

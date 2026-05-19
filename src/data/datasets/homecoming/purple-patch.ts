@@ -104,38 +104,60 @@ export function getCombatModifier(levelDiff: number): number {
 // ============================================
 
 /**
- * Defense softcap = the defense % at which an enemy's hit chance bottoms
- * out at the 5% floor. CoH's hit formula is:
- *   hitChance = clamp(0.05, 0.95, accuracy × (toHitBase + toHitBuff) - defense)
- * Enemies at level N above the player gain a +5% ToHit per level (and a
- * proportional accuracy multiplier). Working through the math for a
- * standard 50% base ToHit enemy, the defense needed to floor hit chance:
+ * Defense softcap = the defense % at which an enemy's hit chance reaches
+ * the inner-clamp 5% floor of:
+ *   HitChance = Clamp(AccMods × Clamp(BaseHit + ToHitMods − DefMods))
  *
- *   level diff | softcap
- *   -----------+--------
- *      +0      |  45%   (standard / "even-con")
- *      +1      |  50%
- *      +2      |  55%
- *      +3      |  ~59%  ┐ Incarnate trial / +4 AV range
- *      +4      |  ~64%  ┘ (often quoted together as 59-65%)
- *      +5      |  ~70%
- *      +6      |  ~75%
- *      +7      |  ~80%  (HC hard-mode upper end)
+ * The level-difference table for *critters attacking players* (wiki:
+ * Attack_Mechanics) only adds positive ToHit at +6 and above; +0 through
+ * +5 all have ToHit mod 0, so 45% floors them. AccMods scales hit chance
+ * proportionally but can't push it below the inner 5% floor, so AccMods
+ * alone never raises the softcap — only positive ToHit modifiers do.
+ *
+ * Per-level-offset table (50% BaseHit, normal ToHit mod):
+ *
+ *   level diff | ToHit mod | softcap
+ *   -----------+-----------+--------
+ *      +0..+5  |   0%      |  45%
+ *      +6      |  +5%      |  50%
+ *      +7      |  +10%     |  55%
+ *      +8      |  +15%     |  60%
+ *
+ * Incarnate trial encounters layer an additional empirical ToHit buff
+ * onto enemies (~+14%) on top of the level-diff value — applied via the
+ * `incarnateBuff` argument so the level-offset math composes cleanly.
  *
  * Below-level enemies don't lower the softcap you'd plan around, so we
- * keep the standard 45% floor for negative offsets.
+ * keep the 45% floor for negative offsets.
  */
 const DEFENSE_SOFTCAP_BY_LEVEL_DIFF: number[] = [
-  45, 50, 55, 59, 64, 70, 75, 80,
+  45, // +0
+  45, // +1
+  45, // +2
+  45, // +3
+  45, // +4
+  45, // +5
+  50, // +6
+  55, // +7
+  60, // +8
 ];
 
+/** Empirical ToHit buff layered onto enemies in Incarnate trial content. */
+const INCARNATE_TOHIT_BUFF_PCT = 14;
+
 /**
- * Get the practical defense softcap for the given enemy-level offset.
- * @param levelDiff Positive = enemy is above player; negative or 0 uses
- *   the standard 45% softcap.
+ * Get the practical defense softcap for the given enemy-level offset and
+ * content mode.
+ * @param levelDiff Positive = enemy is above player; negative or 0 floors
+ *   to +0 row (45% softcap).
+ * @param contentMode `'standard'` for normal content (default) or
+ *   `'incarnate'` for iTrial / incarnate encounters (adds ~14% to softcap).
  */
-export function getDefenseSoftcap(levelDiff: number): number {
-  if (levelDiff <= 0) return DEFENSE_SOFTCAP_BY_LEVEL_DIFF[0];
-  const clamped = Math.min(levelDiff, DEFENSE_SOFTCAP_BY_LEVEL_DIFF.length - 1);
-  return DEFENSE_SOFTCAP_BY_LEVEL_DIFF[clamped];
+export function getDefenseSoftcap(
+  levelDiff: number,
+  contentMode: 'standard' | 'incarnate' = 'standard',
+): number {
+  const baseIndex = Math.max(0, Math.min(levelDiff, DEFENSE_SOFTCAP_BY_LEVEL_DIFF.length - 1));
+  const base = DEFENSE_SOFTCAP_BY_LEVEL_DIFF[baseIndex];
+  return contentMode === 'incarnate' ? base + INCARNATE_TOHIT_BUFF_PCT : base;
 }

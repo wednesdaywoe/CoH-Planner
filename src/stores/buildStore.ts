@@ -176,6 +176,10 @@ interface BuildActions {
   importMidsBuild: (build: Build) => void;
   resetBuild: () => void;
   clearPowers: () => void;
+  /** Wipe every slotted enhancement across the whole build; keep slot structure intact. */
+  clearAllEnhancementsGlobal: () => void;
+  /** Reduce every power's slot list back to just its base slot (plus any auto-granted inherent slots), and wipe all enhancements. Slot allocations are reset. */
+  clearAllExtraSlots: () => void;
 
   // Hydration
   setHasHydrated: (value: boolean) => void;
@@ -2102,6 +2106,49 @@ export const useBuildStore = create<BuildStore>()(
       resetBuild: () => {
         historyCheckpoint();
         set({ build: createEmptyBuild() });
+      },
+
+      // Wipe every slotted enhancement across the whole build, keeping the
+      // slot structure (number and placement of slots) intact. Slot order
+      // and set tracking are reset because no enhancements remain to count.
+      clearAllEnhancementsGlobal: () => {
+        historyCheckpoint();
+        set((state) => {
+          const wipe = (powers: SelectedPower[]) =>
+            powers.map((p) => ({ ...p, slots: p.slots.map(() => null) }));
+          const newBuild: Build = {
+            ...applyToAllPowers(state.build, wipe),
+            inherents: wipe(state.build.inherents),
+            sets: {},
+          };
+          return { build: newBuild };
+        });
+      },
+
+      // Reduce every power's slots back to just its base slot (plus any
+      // auto-granted inherent slots from the active dataset). Slot order
+      // is cleared, all enhancements removed, set tracking reset.
+      clearAllExtraSlots: () => {
+        historyCheckpoint();
+        set((state) => {
+          const stripExtras = (powers: SelectedPower[]) =>
+            powers.map((p) => {
+              // Archetype inherents have maxSlots === 0 → no slots at all
+              if (p.maxSlots === 0) return { ...p, slots: [] };
+              // Inherent powers may have auto-granted slots (e.g. Rebirth
+              // Health/Stamina) on top of the base slot — preserve those.
+              const autoSlots = p.inherentSlotCount ?? 0;
+              const total = 1 + autoSlots;
+              return { ...p, slots: Array(total).fill(null) };
+            });
+          const newBuild: Build = {
+            ...applyToAllPowers(state.build, stripExtras),
+            inherents: stripExtras(state.build.inherents),
+            slotOrder: [],
+            sets: {},
+          };
+          return { build: newBuild };
+        });
       },
 
       clearPowers: () => {
