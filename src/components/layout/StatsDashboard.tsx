@@ -36,6 +36,13 @@ const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
   prot_teleport: 'protTeleport',
   mezres_taunt: 'mezResistTaunt',
   mezres_placate: 'mezResistPlacate',
+  mezres_hold: 'mezResistHold',
+  mezres_stun: 'mezResistStun',
+  mezres_immob: 'mezResistImmobilize',
+  mezres_sleep: 'mezResistSleep',
+  mezres_confuse: 'mezResistConfuse',
+  mezres_fear: 'mezResistFear',
+  mezres_kb: 'mezResistKnockback',
   level_shift: 'levelShift',
   endcost: 'toggleEndCost',
   netend: 'netEndPerSec',
@@ -350,7 +357,11 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
     },
     {
       name: 'Status Resistance',
-      stats: ['mezres_taunt', 'mezres_placate'],
+      stats: [
+        'mezres_hold', 'mezres_stun', 'mezres_immob', 'mezres_sleep',
+        'mezres_confuse', 'mezres_fear', 'mezres_kb',
+        'mezres_taunt', 'mezres_placate',
+      ],
     },
     {
       name: 'Debuff Resistance',

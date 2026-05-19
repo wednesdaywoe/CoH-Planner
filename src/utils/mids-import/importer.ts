@@ -127,6 +127,7 @@ function resolveSlotEnhancement(enh: {
 }
 import type { PoolPowerMatch, EpicPowerMatch } from './mappers';
 import { warnFallback } from '@/utils/fallback-warnings';
+import { ensureSlotOrderPopulated } from '@/utils/slot-levels';
 
 // ============================================
 // MAIN IMPORT FUNCTION
@@ -546,6 +547,13 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
 
   // 13. Recompute set tracking
   build.sets = computeSetTracking(build);
+
+  // 14. Populate slotOrder with one entry per non-base slot, anchored at the
+  // respec-computed level. Without this, the first add/remove slot
+  // interaction flips slot-level computation into leveling mode with only
+  // the touched entry recorded — every other slot collapses to its power's
+  // pick level. See `ensureSlotOrderPopulated` for the full diagnosis.
+  ensureSlotOrderPopulated(build);
 
   return {
     success: true,

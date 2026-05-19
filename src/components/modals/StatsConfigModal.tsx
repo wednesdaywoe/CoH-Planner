@@ -225,6 +225,13 @@ const STAT_CATEGORIES: {
     name: 'Status Resistance',
     colorKey: 'mez',
     stats: [
+      { stat: 'mezres_hold', label: 'Hold' },
+      { stat: 'mezres_stun', label: 'Stun' },
+      { stat: 'mezres_immob', label: 'Immob' },
+      { stat: 'mezres_sleep', label: 'Sleep' },
+      { stat: 'mezres_confuse', label: 'Confuse' },
+      { stat: 'mezres_fear', label: 'Fear' },
+      { stat: 'mezres_kb', label: 'KB' },
       { stat: 'mezres_taunt', label: 'Taunt' },
       { stat: 'mezres_placate', label: 'Placate' },
     ],

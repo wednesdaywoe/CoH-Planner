@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-05-19',
     items: [
+      { message: 'Added a helper to computeAllSlotLevels once and write one slotOrder to capture the respec-mode level as the stored level', type: 'feat' },
       { message: 'Improved build management options: menu items are now New Build, Clear Powers, Clear Slots, Clear Enhancements, and Maximize Enhancements', type: 'feat' },
       { message: 'Added some UI helpers for Firefox users', type: 'fix' },
       { message: 'Extended enemy level to +7 for HC datasets. Defense softcaps should change depending on target level and a new content mode toggle', type: 'feat' },

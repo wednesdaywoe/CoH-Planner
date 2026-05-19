@@ -84,18 +84,10 @@ function formatPairedPercent(v: StatValue): string {
   return `${pct2(Number(v))}%`;
 }
 
-/** Format mez stat showing protection (Mag) and resistance (%).
- *  The trailing "Res" suffix is omitted — the panel header (Status Protection)
- *  and the parenthesized "% " are enough to disambiguate the value. */
-function formatMezStat(v: StatValue): string {
-  if (typeof v === 'object' && v !== null && 'protection' in v) {
-    const mez = v as MezStatValue;
-    const prot = mez.protection > 0 ? mez.protection.toFixed(1) : '0';
-    if (mez.resistance > 0) return `${prot} (${mez.resistance.toFixed(1)}%)`;
-    return prot;
-  }
-  return String(v);
-}
+// (Previously had a formatMezStat helper that combined protection + resistance
+// into one "X (Y%)" cell. Removed when the dashboard split into separate
+// Status Protection and Status Resistance sections — mez_* now show
+// protection-only, mezres_* show resistance-only.)
 
 // ============================================
 // STAT DEFINITIONS
@@ -283,14 +275,16 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     breakdownKey: 'resToxic',
   },
 
-  // Mez Protection & Resistance
+  // Mez Protection — magnitude points. Resistance for these types lives
+  // in the parallel mezres_* defs below so each can be its own dashboard
+  // section.
   mez_hold: {
     id: 'mez_hold',
     label: 'Hold',
-    getValue: (stats) => ({ protection: stats.mezProtection.hold, resistance: stats.mezResistance.hold }),
-    format: formatMezStat,
+    getValue: (stats) => stats.mezProtection.hold,
+    format: (v) => `${Number(v).toFixed(1)} Mag`,
     color: STAT_COLORS.hold,
-    tooltip: 'Hold protection (Mag) and resistance (%)',
+    tooltip: 'Hold protection (Mag)',
     showWhenZero: true,
     breakdownKey: 'protHold',
     breakdownUnit: 'Mag',
@@ -298,10 +292,10 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   mez_stun: {
     id: 'mez_stun',
     label: 'Stun',
-    getValue: (stats) => ({ protection: stats.mezProtection.stun, resistance: stats.mezResistance.stun }),
-    format: formatMezStat,
+    getValue: (stats) => stats.mezProtection.stun,
+    format: (v) => `${Number(v).toFixed(1)} Mag`,
     color: STAT_COLORS.stun,
-    tooltip: 'Stun protection (Mag) and resistance (%)',
+    tooltip: 'Stun protection (Mag)',
     showWhenZero: true,
     breakdownKey: 'protStun',
     breakdownUnit: 'Mag',
@@ -309,10 +303,10 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   mez_immob: {
     id: 'mez_immob',
     label: 'Immob',
-    getValue: (stats) => ({ protection: stats.mezProtection.immobilize, resistance: stats.mezResistance.immobilize }),
-    format: formatMezStat,
+    getValue: (stats) => stats.mezProtection.immobilize,
+    format: (v) => `${Number(v).toFixed(1)} Mag`,
     color: STAT_COLORS.immobilize,
-    tooltip: 'Immobilize protection (Mag) and resistance (%)',
+    tooltip: 'Immobilize protection (Mag)',
     showWhenZero: true,
     breakdownKey: 'protImmobilize',
     breakdownUnit: 'Mag',
@@ -320,10 +314,10 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   mez_sleep: {
     id: 'mez_sleep',
     label: 'Sleep',
-    getValue: (stats) => ({ protection: stats.mezProtection.sleep, resistance: stats.mezResistance.sleep }),
-    format: formatMezStat,
+    getValue: (stats) => stats.mezProtection.sleep,
+    format: (v) => `${Number(v).toFixed(1)} Mag`,
     color: STAT_COLORS.sleep,
-    tooltip: 'Sleep protection (Mag) and resistance (%)',
+    tooltip: 'Sleep protection (Mag)',
     showWhenZero: true,
     breakdownKey: 'protSleep',
     breakdownUnit: 'Mag',
@@ -331,10 +325,10 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   mez_confuse: {
     id: 'mez_confuse',
     label: 'Confuse',
-    getValue: (stats) => ({ protection: stats.mezProtection.confuse, resistance: stats.mezResistance.confuse }),
-    format: formatMezStat,
+    getValue: (stats) => stats.mezProtection.confuse,
+    format: (v) => `${Number(v).toFixed(1)} Mag`,
     color: STAT_COLORS.confuse,
-    tooltip: 'Confuse protection (Mag) and resistance (%)',
+    tooltip: 'Confuse protection (Mag)',
     showWhenZero: true,
     breakdownKey: 'protConfuse',
     breakdownUnit: 'Mag',
@@ -342,10 +336,10 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   mez_fear: {
     id: 'mez_fear',
     label: 'Fear',
-    getValue: (stats) => ({ protection: stats.mezProtection.fear, resistance: stats.mezResistance.fear }),
-    format: formatMezStat,
+    getValue: (stats) => stats.mezProtection.fear,
+    format: (v) => `${Number(v).toFixed(1)} Mag`,
     color: STAT_COLORS.fear,
-    tooltip: 'Fear protection (Mag) and resistance (%)',
+    tooltip: 'Fear protection (Mag)',
     showWhenZero: true,
     breakdownKey: 'protFear',
     breakdownUnit: 'Mag',
@@ -353,14 +347,18 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   mez_kb: {
     id: 'mez_kb',
     label: 'KB',
-    getValue: (stats) => ({ protection: stats.mezProtection.knockback, resistance: stats.mezResistance.knockback }),
-    format: formatMezStat,
+    getValue: (stats) => stats.mezProtection.knockback,
+    format: (v) => `${Number(v).toFixed(1)} Mag`,
     color: STAT_COLORS.knockback,
-    tooltip: 'Knockback protection (Mag) and resistance (%)',
+    tooltip: 'Knockback protection (Mag)',
     showWhenZero: true,
     breakdownKey: 'protKnockback',
     breakdownUnit: 'Mag',
   },
+
+  // (Mez resistance % defs live further down in the SEPARATE MEZ
+  // RESISTANCE block as mezres_hold, mezres_stun, … — used in the
+  // dashboard's Status Resistance category.)
 
   // Endurance
   maxend: {
@@ -863,8 +861,9 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     getValue: (stats) => stats.mezResistance.hold,
     format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.hold,
-    tooltip: 'Hold resistance',
-    breakdownKey: 'mezResist',
+    tooltip: 'Hold resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'mezResistHold',
   },
   mezres_stun: {
     id: 'mezres_stun',
@@ -872,17 +871,19 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     getValue: (stats) => stats.mezResistance.stun,
     format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.stun,
-    tooltip: 'Stun resistance',
-    breakdownKey: 'mezResist',
+    tooltip: 'Stun resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'mezResistStun',
   },
   mezres_immob: {
     id: 'mezres_immob',
-    label: 'Immobilize',
+    label: 'Immob',
     getValue: (stats) => stats.mezResistance.immobilize,
     format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.immobilize,
-    tooltip: 'Immobilize resistance',
-    breakdownKey: 'mezResist',
+    tooltip: 'Immobilize resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'mezResistImmobilize',
   },
   mezres_sleep: {
     id: 'mezres_sleep',
@@ -890,8 +891,9 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     getValue: (stats) => stats.mezResistance.sleep,
     format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.sleep,
-    tooltip: 'Sleep resistance',
-    breakdownKey: 'mezResist',
+    tooltip: 'Sleep resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'mezResistSleep',
   },
   mezres_confuse: {
     id: 'mezres_confuse',
@@ -899,8 +901,9 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     getValue: (stats) => stats.mezResistance.confuse,
     format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.confuse,
-    tooltip: 'Confuse resistance',
-    breakdownKey: 'mezResist',
+    tooltip: 'Confuse resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'mezResistConfuse',
   },
   mezres_fear: {
     id: 'mezres_fear',
@@ -908,17 +911,19 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     getValue: (stats) => stats.mezResistance.fear,
     format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.fear,
-    tooltip: 'Fear/Terrorize resistance',
-    breakdownKey: 'mezResist',
+    tooltip: 'Fear/Terrorize resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'mezResistFear',
   },
   mezres_kb: {
     id: 'mezres_kb',
-    label: 'Knockback',
+    label: 'KB',
     getValue: (stats) => stats.mezResistance.knockback,
     format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.knockback,
-    tooltip: 'Knockback resistance',
-    breakdownKey: 'mezResist',
+    tooltip: 'Knockback resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'mezResistKnockback',
   },
 
   // ============================================

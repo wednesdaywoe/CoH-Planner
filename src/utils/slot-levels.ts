@@ -383,6 +383,62 @@ export function computeAllSlotLevels(build: Build): Map<string, number[]> {
 }
 
 /**
+ * Ensure every non-base, non-inherent-auto slot on every power has a
+ * matching `slotOrder` entry with a stored `level`. Mutates the build in
+ * place. Safe to run repeatedly.
+ *
+ * Why this exists: builds imported from Mids (and some legacy paths) leave
+ * `slotOrder` empty even though the powers carry many extra slots. That's
+ * fine for *initial* display — `computeAllSlotLevels` falls into respec
+ * mode and assigns levels from the grant pool by pick order. But as soon
+ * as the user adds OR removes a single slot, `slotOrder` becomes
+ * non-empty, which flips computation into leveling mode. Leveling mode
+ * only sets levels for slots with a matching `slotOrder` entry; every
+ * other slot collapses to its power's pick level. The visual symptom is
+ * "all my slot levels suddenly mirror their power's pick level".
+ *
+ * Running this once on import / rehydration captures the respec-mode
+ * levels and locks them in as stored levels, so subsequent
+ * add/remove interactions preserve every other slot's position.
+ */
+export function ensureSlotOrderPopulated(build: Build): boolean {
+  const allPowers = collectAllPowers(build);
+
+  // Build a set of (category, powerName, slotIndex) keys for existing entries
+  const existing = new Set<string>();
+  for (const e of build.slotOrder) {
+    const cat = resolveSlotCategory(build, e.powerName, e.category);
+    if (!cat) continue;
+    existing.add(`${cat}|${e.powerName}|${e.slotIndex}`);
+  }
+
+  const computed = computeAllSlotLevels(build);
+  const newEntries: Build['slotOrder'][number][] = [];
+
+  for (const { power, category } of allPowers) {
+    const key = powerKey(category, power.internalName);
+    const levels = computed.get(key);
+    if (!levels) continue;
+    // Skip slot 0 (free with the power) and any auto-granted inherent slots
+    // (those sit at fixed levels and aren't user-allocated).
+    const skipUntil = category === 'inherent' ? 1 + inherentCount(power) : 1;
+    for (let s = skipUntil; s < power.slots.length; s++) {
+      if (existing.has(`${category}|${power.internalName}|${s}`)) continue;
+      newEntries.push({
+        powerName: power.internalName,
+        slotIndex: s,
+        category,
+        level: levels[s],
+      });
+    }
+  }
+
+  if (newEntries.length === 0) return false;
+  build.slotOrder = [...build.slotOrder, ...newEntries];
+  return true;
+}
+
+/**
  * Back-fill `level` on slotOrder entries that don't have one yet. Mutates
  * the build in place. Safe to run repeatedly. Used as a migration when
  * loading legacy builds so the Mids-style remove/replace behavior kicks in

@@ -47,7 +47,7 @@ import {
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
-import { findNextAvailableGrantLevel, backfillSlotOrderLevels } from '@/utils/slot-levels';
+import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated } from '@/utils/slot-levels';
 import { useHistoryStore } from './historyStore';
 import { useUIStore } from './uiStore';
 
@@ -2079,6 +2079,10 @@ export const useBuildStore = create<BuildStore>()(
           // Back-fill grant levels on slotOrder entries from pre-fix exports
           // so removing slots behaves like Mids from the first interaction.
           backfillSlotOrderLevels(build);
+          // Populate missing slotOrder entries so untouched slots stay at
+          // their assigned levels when add/remove slot kicks computation
+          // into leveling mode.
+          ensureSlotOrderPopulated(build);
 
           // Auto-detect branch for VEAT builds (so branch powers appear in the picker)
           const branch = detectBranch(build);
@@ -2100,6 +2104,10 @@ export const useBuildStore = create<BuildStore>()(
           build.slotOrder = [];
         }
         backfillSlotOrderLevels(build);
+        // Mids imports come in with slotOrder empty (or partial). Lock in
+        // respec-mode levels as stored entries so the first add/remove
+        // slot interaction doesn't collapse untouched slots' levels.
+        ensureSlotOrderPopulated(build);
         set({ build });
       },
 
@@ -2385,6 +2393,12 @@ export const useBuildStore = create<BuildStore>()(
           // on a legacy build still cascades subsequent slots — backfill makes
           // every entry stable from the next interaction onward.
           backfillSlotOrderLevels(state.build);
+
+          // Migration: Populate any missing slotOrder entries so add/remove
+          // slot interactions don't collapse untouched powers' slot levels
+          // to their pick level (the symptom of Mids-imported / legacy
+          // builds that left slotOrder empty or partial).
+          ensureSlotOrderPopulated(state.build);
 
           // Auto-detect branch for VEAT builds on rehydration
           const branch = detectBranch(state.build);
