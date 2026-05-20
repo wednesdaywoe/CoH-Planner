@@ -37,7 +37,14 @@ export const IrradiatedGround: Power = {
     "Defense Debuff",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet"
+    }
+  }
 };

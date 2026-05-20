@@ -39,5 +39,13 @@ export const Gremlins: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Gremlin",
+      "duration": 99999,
+      "entityCount": 2
+    }
+  }
 };

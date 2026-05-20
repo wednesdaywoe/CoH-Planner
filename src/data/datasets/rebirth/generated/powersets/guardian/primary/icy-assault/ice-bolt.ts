@@ -36,6 +36,7 @@ export const IceBolt: Power = {
   "allowedSetCategories": [
     "Ranged Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

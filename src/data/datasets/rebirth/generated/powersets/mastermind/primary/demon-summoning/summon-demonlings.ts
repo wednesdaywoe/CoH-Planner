@@ -36,7 +36,15 @@ export const SummonDemonlings: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MastermindPets_Fiery_Demonling",
+      "duration": 99999
+    }
+  }
 };

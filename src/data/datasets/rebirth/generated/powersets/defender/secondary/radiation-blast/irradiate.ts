@@ -38,6 +38,7 @@ export const Irradiate: Power = {
     "Defender Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

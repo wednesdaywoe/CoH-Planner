@@ -42,6 +42,11 @@ export const VoltaicSentinel: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_VoltaicSentinel",
+      "duration": 60
+    },
     "damageBuff": {
       "scale": 0.205,
       "table": "Ranged_Ones"

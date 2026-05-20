@@ -39,5 +39,21 @@ export const VolcanicGasses: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 60,
+      "entities": [
+        {
+          "entity": "Pets_Volcanicgas",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Volcanicgeyser",
+          "count": 6
+        }
+      ]
+    }
+  }
 };

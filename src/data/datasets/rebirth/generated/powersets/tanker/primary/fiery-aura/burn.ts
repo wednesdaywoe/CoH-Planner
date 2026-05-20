@@ -51,6 +51,11 @@ export const Burn: Power = {
     }
   ],
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Burn",
+      "duration": 10
+    },
     "immobilize": {
       "mag": 1,
       "scale": 30,

@@ -6494,11 +6494,26 @@ export const EPIC_POOLS_RAW = {
             "scale": 4,
             "table": "Melee_Ones"
           },
+          "untouchable": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "untouchable": 15,
+            "stealth": 15
+          },
+          "stealth": {
+            "stealthPvE": {
+              "scale": 300,
+              "table": "Melee_Ones"
+            }
+          },
           "stun": {
             "mag": 30,
             "scale": 8,
             "table": "Melee_Stun"
-          }
+          },
+          "buffDuration": 15
         }
       },
       {

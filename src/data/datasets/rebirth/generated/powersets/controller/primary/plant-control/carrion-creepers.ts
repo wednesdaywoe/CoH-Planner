@@ -41,7 +41,15 @@ export const CarrionCreepers: Power = {
     "Knockback",
     "Ranged AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Creeper_Patch",
+      "duration": 120
+    }
+  }
 };

@@ -33,10 +33,10 @@ export const ReactionTime: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Endurance Modification",
     "Healing",
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

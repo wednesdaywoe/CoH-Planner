@@ -36,7 +36,15 @@ export const AcidMortar: Power = {
     "Corruptor Archetype Sets",
     "Defense Debuff",
     "Ranged Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Traps_Acid_Mortar",
+      "duration": 60
+    }
+  }
 };

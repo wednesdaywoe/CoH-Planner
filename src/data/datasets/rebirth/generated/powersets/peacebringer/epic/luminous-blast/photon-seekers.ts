@@ -38,5 +38,25 @@ export const PhotonSeekers: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 60,
+      "entities": [
+        {
+          "entity": "Pets_LightDrone1",
+          "count": 1
+        },
+        {
+          "entity": "Pets_LightDrone2",
+          "count": 1
+        },
+        {
+          "entity": "Pets_LightDrone3",
+          "count": 1
+        }
+      ]
+    }
+  }
 };

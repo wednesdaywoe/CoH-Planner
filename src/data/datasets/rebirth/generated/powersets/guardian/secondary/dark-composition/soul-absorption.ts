@@ -38,5 +38,12 @@ export const SoulAbsorption: Power = {
     "Healing",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_SoulAbsorptionBuff",
+      "duration": 1
+    }
+  }
 };

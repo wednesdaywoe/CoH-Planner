@@ -40,6 +40,7 @@ export const NeutronBomb: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

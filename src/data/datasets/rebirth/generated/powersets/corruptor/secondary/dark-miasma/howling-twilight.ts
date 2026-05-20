@@ -39,6 +39,7 @@ export const HowlingTwilight: Power = {
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
@@ -64,6 +65,11 @@ export const HowlingTwilight: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Ones"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_HowlingVillain",
+      "duration": 1
     },
     "buffDuration": 30
   }

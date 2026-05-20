@@ -36,6 +36,7 @@ export const GamblersCut: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

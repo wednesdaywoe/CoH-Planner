@@ -41,6 +41,7 @@ export const RadiationSiphon: Power = {
     "Defense Debuff",
     "Healing",
     "Melee Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -167,6 +167,11 @@ export const GraniteArmor: Power = {
         "table": "Melee_Ones"
       }
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "ROCKSUIT",
+      "duration": 0.75
+    },
     "debuffResistance": {
       "defense": {
         "scale": 1,

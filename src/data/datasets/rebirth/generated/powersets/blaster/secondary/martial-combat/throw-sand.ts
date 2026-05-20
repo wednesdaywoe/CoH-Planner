@@ -38,7 +38,6 @@ export const ThrowSand: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
     "Stuns",
     "To Hit Debuff"
   ],

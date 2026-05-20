@@ -40,7 +40,15 @@ export const SummonDemonPrince: Power = {
     "Recharge Intensive Pets",
     "Sleep",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MastermindPets_Demon_Prince",
+      "duration": 99999
+    }
+  }
 };

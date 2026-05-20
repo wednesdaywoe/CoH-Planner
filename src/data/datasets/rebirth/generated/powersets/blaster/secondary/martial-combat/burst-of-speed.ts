@@ -45,6 +45,11 @@ export const BurstofSpeed: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Burst_of_Speed",
+      "duration": 2
+    },
     "damageBuff": {
       "scale": 0.026,
       "table": "Ranged_Ones"

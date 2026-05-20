@@ -44,6 +44,11 @@ export const Burn: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Burn",
+      "duration": 10
+    },
     "immobilize": {
       "mag": -15,
       "scale": 100,

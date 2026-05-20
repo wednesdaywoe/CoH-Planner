@@ -53,6 +53,11 @@ export const StarlessGateway: Power = {
     "durations": {
       "mezResistance": 15
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_TPFoeTauntWide",
+      "duration": 1
+    },
     "buffDuration": 15
   }
 };

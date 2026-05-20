@@ -40,7 +40,15 @@ export const InertialSiphon: Power = {
     "Leaping & Sprints",
     "Running & Sprints",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Guardian_InertialSiphonBuff",
+      "duration": 1
+    }
+  }
 };

@@ -39,6 +39,7 @@ export const MudPots: Power = {
     "Melee AoE Damage",
     "Slow Movement",
     "Tanker Archetype Sets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

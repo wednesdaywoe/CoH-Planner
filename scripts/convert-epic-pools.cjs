@@ -22,7 +22,7 @@ const {
   SET_CATEGORY_MAP,
   extractEffects,
   extractDamage,
-  collectAllTemplates,
+  collectTemplatesDeep,
   RAW_DATA_PATH,
   EFFECT_AREA_MAP,
   BIN_BOOST_MAP,
@@ -192,7 +192,7 @@ function convertEpicPower(rawJson, rank, availableLevel) {
 
   // Extract effects from raw JSON using recursive template collection
   if (rawJson.effects && rawJson.effects.length > 0) {
-    const allTemplates = collectAllTemplates(rawJson.effects);
+    const allTemplates = collectTemplatesDeep(rawJson.effects);
 
     // Damage
     const damage = extractDamage(allTemplates);

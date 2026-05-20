@@ -42,5 +42,12 @@ export const Eruption: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Guardian_StoneComposition_Eruption",
+      "duration": 15
+    }
+  }
 };

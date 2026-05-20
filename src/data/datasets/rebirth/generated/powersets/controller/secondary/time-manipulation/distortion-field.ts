@@ -35,7 +35,15 @@ export const DistortionField: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Holds",
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_DistortionField_Controller",
+      "duration": 45
+    }
+  }
 };

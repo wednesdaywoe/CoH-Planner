@@ -38,11 +38,19 @@ export const FireImps: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_FireImp",
+      "duration": 99999,
+      "entityCount": 3
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",
       "chance": 0.6000000238418579,
-      "label": "Unknown(116)"
+      "label": "Create_Entity"
     }
   ]
 };

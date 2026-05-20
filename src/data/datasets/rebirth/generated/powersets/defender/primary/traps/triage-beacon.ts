@@ -32,5 +32,12 @@ export const TriageBeacon: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Traps_Triage_Beacon",
+      "duration": 90
+    }
+  }
 };

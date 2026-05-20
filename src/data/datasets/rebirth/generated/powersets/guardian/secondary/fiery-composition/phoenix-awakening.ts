@@ -40,6 +40,20 @@ export const PhoenixAwakening: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 5,
+      "entities": [
+        {
+          "entity": "Pets_Phoenix",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Guardian_FieryComposition_PhoenixAwakening",
+          "count": 1
+        }
+      ]
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "enduranceGain"

@@ -41,6 +41,7 @@ export const Frostbite: Power = {
     "Immobilize",
     "Ranged AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

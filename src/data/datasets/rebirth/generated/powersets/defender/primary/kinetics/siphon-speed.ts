@@ -33,7 +33,8 @@ export const SiphonSpeed: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

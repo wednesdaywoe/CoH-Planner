@@ -44,6 +44,7 @@ export const Microburst: Power = {
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

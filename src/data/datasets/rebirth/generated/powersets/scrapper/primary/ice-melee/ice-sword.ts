@@ -36,6 +36,7 @@ export const IceSword: Power = {
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

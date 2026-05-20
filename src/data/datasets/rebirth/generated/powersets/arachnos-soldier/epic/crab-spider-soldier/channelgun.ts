@@ -38,6 +38,7 @@ export const Channelgun: Power = {
     "Defense Debuff",
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -37,6 +37,7 @@ export const Pistols: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Ranged Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -38,6 +38,7 @@ export const BlackDwarfStrike: Power = {
     "Knockback",
     "Melee Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -40,6 +40,7 @@ export const Suffocate: Power = {
     "Defense Debuff",
     "Holds",
     "Ranged Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

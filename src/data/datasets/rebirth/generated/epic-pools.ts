@@ -154,9 +154,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Ranged Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -205,8 +205,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -245,9 +245,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -256,7 +256,21 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 19.5,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "duration": 15,
+            "entities": [
+              {
+                "entity": "Pets_IceStorm",
+                "count": 1
+              },
+              {
+                "entity": "Pets_Embraced_IceStorm",
+                "count": 1
+              }
+            ]
+          }
         }
       }
     ]
@@ -434,10 +448,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Pet Damage",
           "Recharge Intensive Pets",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -446,7 +460,13 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+            "duration": 240,
+            "entityCount": 3
+          }
         }
       },
       {
@@ -470,9 +490,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Holds",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -638,7 +658,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Adept",
+            "duration": 240
+          }
         }
       },
       {
@@ -939,8 +964,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
-          "Defense Debuff"
+          "Defense Debuff",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -1168,9 +1193,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -1400,9 +1425,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -1750,10 +1775,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -1875,7 +1900,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
+            "duration": 240
+          }
         }
       }
     ]
@@ -2135,7 +2165,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Blaster",
+            "duration": 240
+          }
         }
       }
     ]
@@ -2472,7 +2507,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Striker",
+            "duration": 240
+          }
         }
       }
     ]
@@ -2509,7 +2549,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -2629,7 +2668,6 @@ export const EPIC_POOLS_RAW = {
           "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "To Hit Debuff"
         ],
         "effects": {
@@ -2665,7 +2703,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -2717,7 +2754,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff",
@@ -2729,7 +2765,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Blood_Widow",
+            "duration": 240
+          }
         }
       }
     ]
@@ -3087,9 +3128,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Ranged Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -3378,8 +3419,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -3661,9 +3702,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -3907,10 +3948,10 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Pet Damage",
           "Recharge Intensive Pets",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -3919,7 +3960,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
+            "duration": 240
+          }
         }
       }
     ]
@@ -4190,7 +4236,6 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Knockback",
           "Pet Damage",
           "Recharge Intensive Pets",
@@ -4203,7 +4248,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Red_Corolax",
+            "duration": 240
+          }
         }
       }
     ]
@@ -4383,9 +4433,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Holds",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -4434,7 +4484,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
+            "duration": 240
+          }
         }
       }
     ]
@@ -4673,7 +4728,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Adept",
+            "duration": 240
+          }
         }
       }
     ]
@@ -4984,7 +5044,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Fortunata_Mistress",
+            "duration": 240
+          }
         }
       }
     ]
@@ -5301,7 +5366,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Knockback",
           "Ranged AoE Damage",
           "To Hit Debuff",
@@ -5382,7 +5446,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -5423,7 +5486,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -5470,7 +5532,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Immobilize",
           "Ranged AoE Damage",
           "To Hit Debuff",
@@ -5541,11 +5602,11 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Knockback",
           "Ranged AoE Damage",
           "Stuns",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -5554,7 +5615,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 180,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Water_Spout",
+            "duration": 30
+          }
         }
       },
       {
@@ -5750,11 +5816,11 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Knockback",
           "Pet Damage",
           "Recharge Intensive Pets",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -5763,7 +5829,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Blue_Corolax",
+            "duration": 240
+          }
         }
       }
     ]
@@ -5800,9 +5871,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -6065,10 +6136,10 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Pet Damage",
           "Recharge Intensive Pets",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -6077,7 +6148,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
+            "duration": 240
+          }
         }
       }
     ]
@@ -6358,7 +6434,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Guardian",
+            "duration": 240
+          }
         }
       }
     ]
@@ -6488,7 +6569,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -6592,7 +6672,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Fortunata_Seer",
+            "duration": 240
+          }
         }
       }
     ]
@@ -6792,8 +6877,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -6801,7 +6886,21 @@ export const EPIC_POOLS_RAW = {
           "recharge": 30,
           "endurance": 7.8,
           "activationTime": 3.1,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "duration": 45,
+            "entities": [
+              {
+                "entity": "Pets_Epic_Quicksand",
+                "count": 1
+              },
+              {
+                "entity": "Pets_Embraced_Quicksand",
+                "count": 1
+              }
+            ]
+          }
         }
       },
       {
@@ -7569,9 +7668,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -7813,9 +7912,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged Damage",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -8414,6 +8513,11 @@ export const EPIC_POOLS_RAW = {
             "duration": 0.5,
             "tickRate": 1
           },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Phoenix",
+            "duration": 5
+          },
           "untouchable": {
             "scale": 15,
             "table": "Melee_Ones"
@@ -8531,7 +8635,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 60,
           "endurance": 32.5,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_RainofFire",
+            "duration": 15
+          }
         }
       },
       {
@@ -8676,6 +8785,11 @@ export const EPIC_POOLS_RAW = {
             "duration": 0.5,
             "tickRate": 1
           },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Phoenix",
+            "duration": 5
+          },
           "untouchable": {
             "scale": 15,
             "table": "Melee_Ones"
@@ -8720,8 +8834,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
-          "Defense Debuff"
+          "Defense Debuff",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -8819,7 +8933,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 16.25,
           "activationTime": 3.07,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Bonfire",
+            "duration": 45
+          }
         }
       },
       {
@@ -8939,8 +9058,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
-          "Defense Debuff"
+          "Defense Debuff",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -9039,6 +9158,11 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_HealSelf",
             "duration": 0.5,
             "tickRate": 1
+          },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Phoenix",
+            "duration": 5
           },
           "untouchable": {
             "scale": 15,
@@ -9389,10 +9513,10 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Holds",
           "Ranged Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -9436,10 +9560,10 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Immobilize",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -9837,7 +9961,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 60,
           "endurance": 32.5,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_RainofFire",
+            "duration": 15
+          }
         }
       },
       {
@@ -10065,10 +10194,10 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10077,7 +10206,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 60,
           "endurance": 19.5,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Epic_IceStorm",
+            "duration": 15
+          }
         }
       },
       {
@@ -10100,8 +10234,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -10204,11 +10338,11 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10352,12 +10486,12 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Guardian Archetype Sets",
           "Knockback",
           "Ranged AoE Damage",
           "Stuns",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10366,7 +10500,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 180,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Water_Spout",
+            "duration": 30
+          }
         }
       },
       {
@@ -10390,12 +10529,12 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Guardian Archetype Sets",
           "Knockback",
           "Pet Damage",
           "Recharge Intensive Pets",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10404,7 +10543,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Blue_Corolax",
+            "duration": 240
+          }
         }
       }
     ]
@@ -10515,9 +10659,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Holds",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -10656,11 +10800,11 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Guardian Archetype Sets",
           "Pet Damage",
           "Recharge Intensive Pets",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10669,7 +10813,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
+            "duration": 240
+          }
         }
       }
     ]
@@ -10948,7 +11097,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Guardian",
+            "duration": 240
+          }
         }
       }
     ]
@@ -11158,8 +11312,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
-          "Defense Debuff"
+          "Defense Debuff",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -11772,7 +11926,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
@@ -11910,7 +12063,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Guardian Archetype Sets",
           "Pet Damage",
           "Recharge Intensive Pets",
@@ -11923,7 +12075,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Blood_Widow",
+            "duration": 240
+          }
         }
       }
     ]
@@ -11968,7 +12125,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 16.25,
           "activationTime": 3.07,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Bonfire",
+            "duration": 45
+          }
         }
       },
       {
@@ -12164,6 +12326,11 @@ export const EPIC_POOLS_RAW = {
             "duration": 0.5,
             "tickRate": 1
           },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Phoenix",
+            "duration": 5
+          },
           "untouchable": {
             "scale": 15,
             "table": "Melee_Ones"
@@ -12212,9 +12379,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Ranged Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -12391,9 +12558,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -12435,9 +12602,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -12446,7 +12613,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 19.5,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Epic_IceStorm",
+            "duration": 15
+          }
         }
       }
     ]
@@ -12484,10 +12656,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -12496,7 +12668,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 90,
           "endurance": 22.75,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Sleet_Defender",
+            "duration": 15
+          }
         }
       },
       {
@@ -12701,9 +12878,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -12712,7 +12889,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 19.5,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Epic_IceStorm",
+            "duration": 15
+          }
         }
       }
     ]
@@ -12906,7 +13088,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 16.25,
           "activationTime": 3.07,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Bonfire",
+            "duration": 45
+          }
         }
       },
       {
@@ -12947,6 +13134,11 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_HealSelf",
             "duration": 0.5,
             "tickRate": 1
+          },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Phoenix",
+            "duration": 5
           },
           "untouchable": {
             "scale": 15,
@@ -13003,8 +13195,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
-          "Defense Debuff"
+          "Defense Debuff",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -13542,8 +13734,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
-          "Defense Debuff"
+          "Defense Debuff",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -13704,7 +13896,6 @@ export const EPIC_POOLS_RAW = {
           "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "To Hit Debuff"
         ],
         "effects": {
@@ -14589,9 +14780,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Holds",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -14951,7 +15142,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -15327,8 +15517,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
-          "Defense Debuff"
+          "Defense Debuff",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -17257,8 +17447,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
-          "Defense Debuff"
+          "Defense Debuff",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -17466,11 +17656,11 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Knockback",
           "Ranged AoE Damage",
           "Stuns",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -17646,7 +17836,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Coral_Guardian_Warder",
+            "duration": 240
+          }
         }
       }
     ]
@@ -17824,9 +18019,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Holds",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -17864,10 +18059,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Pet Damage",
           "Recharge Intensive Pets",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -17876,7 +18071,13 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+            "duration": 240,
+            "entityCount": 3
+          }
         }
       }
     ]
@@ -18163,7 +18364,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Adept",
+            "duration": 240
+          }
         }
       }
     ]
@@ -18200,7 +18406,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -18242,7 +18447,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Ranged Damage",
           "Sniper Attacks",
           "To Hit Debuff",
@@ -18404,7 +18608,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff",
@@ -18416,7 +18619,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Night_Widow",
+            "duration": 240
+          }
         }
       }
     ]
@@ -18841,10 +19049,10 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -18950,7 +19158,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
+            "duration": 240
+          }
         }
       }
     ]
@@ -19032,9 +19245,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Immobilize",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -19207,7 +19420,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Blaster",
+            "duration": 240
+          }
         }
       }
     ]
@@ -19493,7 +19711,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Striker",
+            "duration": 240
+          }
         }
       }
     ]
@@ -19530,7 +19753,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Ranged Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -19629,7 +19851,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Damage Sets"
@@ -19669,7 +19890,6 @@ export const EPIC_POOLS_RAW = {
           "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "To Hit Debuff"
         ],
         "effects": {
@@ -19713,7 +19933,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Blood_Widow",
+            "duration": 240
+          }
         }
       }
     ]
@@ -19749,9 +19974,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Immobilize",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -19787,9 +20012,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -19798,7 +20023,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 45,
           "endurance": 9.75,
           "activationTime": 1.07,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Caltrops",
+            "duration": 45
+          }
         }
       },
       {
@@ -19962,9 +20192,9 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
           "Immobilize",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,

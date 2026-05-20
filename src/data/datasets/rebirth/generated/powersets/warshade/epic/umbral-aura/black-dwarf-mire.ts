@@ -37,6 +37,7 @@ export const BlackDwarfMire: Power = {
     "Kheldian Archetype Sets",
     "Melee AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

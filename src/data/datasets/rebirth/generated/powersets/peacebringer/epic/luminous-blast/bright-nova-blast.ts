@@ -40,6 +40,7 @@ export const BrightNovaBlast: Power = {
     "Kheldian Archetype Sets",
     "Knockback",
     "Ranged Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

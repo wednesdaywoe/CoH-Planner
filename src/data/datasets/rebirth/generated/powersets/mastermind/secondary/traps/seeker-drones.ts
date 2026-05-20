@@ -41,5 +41,21 @@ export const SeekerDrones: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 240,
+      "entities": [
+        {
+          "entity": "Pets_Traps_Seeker1",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Traps_Seeker2",
+          "count": 1
+        }
+      ]
+    }
+  }
 };

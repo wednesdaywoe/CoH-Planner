@@ -36,5 +36,21 @@ export const DimensionShift: Power = {
     "Controller Archetype Sets",
     "Immobilize"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 20,
+      "entities": [
+        {
+          "entity": "Pets_Dimension_Shift",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Dimension_Shift_Phased",
+          "count": 1
+        }
+      ]
+    }
+  }
 };

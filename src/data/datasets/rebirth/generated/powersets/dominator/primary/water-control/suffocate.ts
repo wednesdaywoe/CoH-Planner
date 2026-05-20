@@ -40,6 +40,7 @@ export const Suffocate: Power = {
     "Dominator Archetype Sets",
     "Holds",
     "Ranged Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -37,6 +37,7 @@ export const HotFeet: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

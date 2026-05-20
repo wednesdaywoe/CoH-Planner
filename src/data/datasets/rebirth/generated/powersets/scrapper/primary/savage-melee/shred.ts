@@ -40,6 +40,7 @@ export const Shred: Power = {
     "Defense Debuff",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

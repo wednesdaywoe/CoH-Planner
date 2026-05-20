@@ -41,6 +41,7 @@ export const ProtonScatter: Power = {
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Ranged AoE Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

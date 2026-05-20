@@ -39,5 +39,11 @@ export const DarkExtraction: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Warshade_Extraction"
+    }
+  }
 };

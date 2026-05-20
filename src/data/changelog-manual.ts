@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-05-19',
     items: [
+      { message: 'Rebirth powersets + Rebirth pool/epic pools + Rebirth pet-entities + Rebirth incarnates all regenerated with corrected wiring for summons and redirects, some missing icons located', type: 'fix' },
       { message: 'Added a helper to computeAllSlotLevels once and write one slotOrder to capture the respec-mode level as the stored level', type: 'feat' },
       { message: 'Improved build management options: menu items are now New Build, Clear Powers, Clear Slots, Clear Enhancements, and Maximize Enhancements', type: 'feat' },
       { message: 'Added some UI helpers for Firefox users', type: 'fix' },

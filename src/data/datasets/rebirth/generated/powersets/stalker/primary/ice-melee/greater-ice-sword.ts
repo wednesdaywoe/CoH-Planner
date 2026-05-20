@@ -36,6 +36,7 @@ export const GreaterIceSword: Power = {
     "Melee Damage",
     "Slow Movement",
     "Stalker Archetype Sets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

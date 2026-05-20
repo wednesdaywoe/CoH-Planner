@@ -43,6 +43,7 @@ export const AtomSmasher: Power = {
     "Stuns",
     "Tanker Archetype Sets",
     "Threat Duration",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

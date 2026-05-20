@@ -50,5 +50,12 @@ export const SummonWolves: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MastermindPets_Howler_Wolf",
+      "duration": 99999
+    }
+  }
 };

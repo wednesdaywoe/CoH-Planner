@@ -38,7 +38,8 @@ export const Hypothermia: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Sleep",
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

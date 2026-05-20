@@ -44,6 +44,11 @@ export const ShieldCharge: Power = {
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Shield_Charge_Scrapper",
+      "duration": 4
     }
   }
 };

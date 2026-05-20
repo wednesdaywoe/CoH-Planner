@@ -40,6 +40,7 @@ export const LuminousSmite: Power = {
     "Knockback",
     "Melee Damage",
     "Stuns",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

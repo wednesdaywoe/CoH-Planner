@@ -43,6 +43,7 @@ export const RadioactiveSmash: Power = {
     "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

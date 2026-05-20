@@ -59,6 +59,13 @@ export const PenetratingRay: Power = {
         "table": "Ranged_Damage",
         "duration": 3.1,
         "tickRate": 1.5
+      },
+      "effects": {
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_DisintegrateSpread",
+          "duration": 6
+        }
       }
     }
   ],

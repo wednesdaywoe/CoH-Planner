@@ -37,7 +37,15 @@ export const StaticField: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Sleep",
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Static_Field_Controller",
+      "duration": 25
+    }
+  }
 };

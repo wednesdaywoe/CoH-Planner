@@ -39,6 +39,7 @@ export const GleamingBlast: Power = {
     "Defense Debuff",
     "Knockback",
     "Ranged Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

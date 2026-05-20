@@ -33,7 +33,8 @@ export const ChillingEmbrace: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6
 };

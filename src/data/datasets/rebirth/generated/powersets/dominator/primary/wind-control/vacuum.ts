@@ -46,6 +46,11 @@ export const Vacuum: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_WindControl_Vacuum_Dominator",
+      "duration": 8
+    },
     "hold": {
       "mag": 3,
       "scale": 8,

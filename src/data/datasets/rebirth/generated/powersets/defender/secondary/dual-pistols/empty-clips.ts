@@ -45,6 +45,7 @@ export const EmptyClips: Power = {
     "Knockback",
     "Ranged AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

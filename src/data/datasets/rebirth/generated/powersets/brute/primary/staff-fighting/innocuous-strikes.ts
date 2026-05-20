@@ -43,6 +43,7 @@ export const InnocuousStrikes: Power = {
     "Melee AoE Damage",
     "Slow Movement",
     "Threat Duration",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

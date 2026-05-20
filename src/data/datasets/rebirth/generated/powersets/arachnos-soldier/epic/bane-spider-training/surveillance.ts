@@ -33,7 +33,8 @@ export const Surveillance: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Defense Debuff"
+    "Defense Debuff",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

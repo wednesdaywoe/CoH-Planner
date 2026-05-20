@@ -163,6 +163,11 @@ export const WhiteDwarf: Power = {
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "KHELDIAN_DWARF_PEACEBRINGER",
+      "duration": 2
+    },
     "buffDuration": 2.03
   }
 };

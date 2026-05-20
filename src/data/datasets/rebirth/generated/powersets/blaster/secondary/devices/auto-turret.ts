@@ -38,6 +38,11 @@ export const GunDrone: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Turret",
+      "duration": 90
+    },
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"

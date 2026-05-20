@@ -43,6 +43,11 @@ export const LightningRod: Power = {
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Lightning_Rod_Brute",
+      "duration": 4
     }
   }
 };

@@ -34,5 +34,12 @@ export const ContainmentShell: Power = {
   "allowedSetCategories": [
     "Immobilize"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_ForceField_ContainmentShell",
+      "duration": 45
+    }
+  }
 };

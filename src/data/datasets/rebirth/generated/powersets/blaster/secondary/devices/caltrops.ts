@@ -36,10 +36,16 @@ export const Caltrops: Power = {
     "Blaster Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Caltrops",
+      "duration": 45
+    },
     "damageBuff": {
       "scale": 0.071,
       "table": "Ranged_Ones"

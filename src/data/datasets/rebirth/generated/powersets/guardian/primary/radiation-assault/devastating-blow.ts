@@ -40,6 +40,7 @@ export const DevastatingBlow: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Stuns",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

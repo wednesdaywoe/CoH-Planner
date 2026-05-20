@@ -35,7 +35,8 @@ export const WebCocoon: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

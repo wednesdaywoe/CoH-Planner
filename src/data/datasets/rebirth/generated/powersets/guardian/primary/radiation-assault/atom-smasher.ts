@@ -40,6 +40,7 @@ export const AtomSmasher: Power = {
     "Defense Debuff",
     "Melee AoE Damage",
     "Stuns",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -40,6 +40,7 @@ export const RadioactiveSmash: Power = {
     "Defense Debuff",
     "Knockback",
     "Melee Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -40,6 +40,7 @@ export const GroundZero: Power = {
     "Defense Debuff",
     "Healing",
     "Melee AoE Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

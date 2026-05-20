@@ -35,5 +35,12 @@ export const ContainmentShell: Power = {
     "Controller Archetype Sets",
     "Immobilize"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_ForceField_ContainmentShell",
+      "duration": 45
+    }
+  }
 };

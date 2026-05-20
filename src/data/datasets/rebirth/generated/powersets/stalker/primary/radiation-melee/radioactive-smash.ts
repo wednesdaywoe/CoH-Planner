@@ -41,6 +41,7 @@ export const RadioactiveSmash: Power = {
     "Knockback",
     "Melee Damage",
     "Stalker Archetype Sets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

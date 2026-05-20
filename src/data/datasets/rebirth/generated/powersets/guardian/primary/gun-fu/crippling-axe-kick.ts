@@ -40,6 +40,7 @@ export const CripplingAxeKick: Power = {
     "Immobilize",
     "Melee Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

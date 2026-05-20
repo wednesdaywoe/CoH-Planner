@@ -39,6 +39,7 @@ export const Crush: Power = {
     "Immobilize",
     "Ranged Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

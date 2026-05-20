@@ -37,7 +37,15 @@ export const GeyserBurst: Power = {
     "Knockback",
     "Ranged AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Water_Control_Geyser_Burst",
+      "duration": 45
+    }
+  }
 };

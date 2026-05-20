@@ -37,5 +37,12 @@ export const TimeBomb: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Bomb",
+      "duration": 21
+    }
+  }
 };

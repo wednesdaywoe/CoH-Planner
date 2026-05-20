@@ -47,6 +47,11 @@ export const RiseofthePhoenix: Power = {
     "tickRate": 1
   },
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Phoenix",
+      "duration": 5
+    },
     "untouchable": {
       "scale": 15,
       "table": "Melee_Ones"

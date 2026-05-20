@@ -30,5 +30,12 @@ export const DisruptionArrow: Power = {
     "Range",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_SonicDebuffArrow_Controller",
+      "duration": 30
+    }
+  }
 };

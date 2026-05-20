@@ -74,6 +74,13 @@ export const LancerShot: Power = {
         "type": "Energy",
         "scale": 0.424,
         "table": "Ranged_Damage"
+      },
+      "effects": {
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_DisintegrateSpread",
+          "duration": 6
+        }
       }
     }
   ],
@@ -81,7 +88,7 @@ export const LancerShot: Power = {
     {
       "kind": "effect-proc",
       "chance": 0.5199999809265137,
-      "label": "Unknown(116)"
+      "label": "Create_Entity"
     }
   ]
 };

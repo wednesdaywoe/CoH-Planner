@@ -41,6 +41,11 @@ export const TwilightGrasp: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Twilight",
+      "duration": 1
+    },
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"

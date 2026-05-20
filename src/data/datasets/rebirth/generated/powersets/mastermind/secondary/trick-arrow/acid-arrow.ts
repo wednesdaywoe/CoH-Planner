@@ -39,6 +39,7 @@ export const AcidArrow: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Ranged AoE Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

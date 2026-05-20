@@ -41,6 +41,7 @@ export const Ripper: Power = {
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

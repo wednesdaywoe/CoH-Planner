@@ -40,6 +40,11 @@ export const Transfusion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Transfusion",
+      "duration": 1
+    },
     "enduranceDrain": {
       "scale": 0.12,
       "table": "Ranged_Ones"

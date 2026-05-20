@@ -37,5 +37,12 @@ export const LifegivingSpores: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Lifegiving_Spores_Corruptor",
+      "duration": 99999
+    }
+  }
 };

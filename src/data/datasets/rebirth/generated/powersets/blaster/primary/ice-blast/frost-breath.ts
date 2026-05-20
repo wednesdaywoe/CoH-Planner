@@ -40,6 +40,7 @@ export const FrostBreath: Power = {
     "Blaster Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

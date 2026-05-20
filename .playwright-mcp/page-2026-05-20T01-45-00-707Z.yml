@@ -1,0 +1,274 @@
+- generic [ref=e1]:
+  - img "Sidekick Banner" [ref=e3]
+  - generic [ref=e26]:
+    - banner [ref=e27]:
+      - generic [ref=e28]:
+        - button "File" [ref=e31]:
+          - img [ref=e32]
+          - generic [ref=e34]: File
+        - button "Settings" [ref=e37]:
+          - img [ref=e38]
+          - generic [ref=e41]: Settings
+        - generic [ref=e42]:
+          - button "Untitled Build · Blaster" [active] [ref=e451]:
+            - img [ref=e44]
+            - generic [ref=e46]: Untitled Build · Blaster
+            - img [ref=e47]
+          - generic [ref=e438]:
+            - heading "Build Identity" [level=3] [ref=e439]
+            - generic [ref=e440]:
+              - text: Build Name
+              - textbox "Build Name" [ref=e441]: Untitled Build
+            - generic [ref=e442]:
+              - text: Server
+              - combobox [ref=e444]:
+                - option "Homecoming"
+                - option "Rebirth" [selected]
+                - option "Thunderspy (Coming Soon)" [disabled]
+            - generic [ref=e445]:
+              - text: Archetype
+              - combobox [ref=e446]:
+                - option "Select Archetype..."
+                - option "Blaster" [selected]
+                - option "Controller"
+                - option "Defender"
+                - option "Scrapper"
+                - option "Tanker"
+                - option "Guardian"
+                - option "Brute"
+                - option "Corruptor"
+                - option "Dominator"
+                - option "Mastermind"
+                - option "Stalker"
+                - option "Peacebringer"
+                - option "Warshade"
+                - option "Arachnos Soldier"
+                - option "Arachnos Widow"
+            - generic [ref=e447]:
+              - text: Primary
+              - combobox [ref=e448]:
+                - option "Select Primary..." [selected]
+                - option "Archery"
+                - option "Assault Rifle"
+                - option "Beam Rifle"
+                - option "Dark Blast"
+                - option "Dual Pistols"
+                - option "Electrical Blast"
+                - option "Energy Blast"
+                - option "Fire Blast"
+                - option "Ice Blast"
+                - option "Psychic Blast"
+                - option "Radiation Blast"
+                - option "Sonic Attack"
+                - option "Water Blast"
+            - generic [ref=e449]:
+              - text: Secondary
+              - combobox [ref=e450]:
+                - option "Select Secondary..." [selected]
+                - option "Darkness Manipulation"
+                - option "Devices"
+                - option "Electricity Manipulation"
+                - option "Energy Manipulation"
+                - option "Fire Manipulation"
+                - option "Ice Manipulation"
+                - option "Martial Combat"
+                - option "Mental Manipulation"
+        - generic [ref=e50]: Rebirth
+        - generic [ref=e51]:
+          - generic [ref=e52]: Lvl
+          - button "−" [disabled] [ref=e53]
+          - generic [ref=e54]: "1"
+          - button "+" [ref=e55]
+          - slider [ref=e57] [cursor=pointer]: "1"
+        - button "Level Up" [ref=e58]:
+          - img [ref=e59]
+          - generic [ref=e61]: Level Up
+        - generic [ref=e62]:
+          - button "Undo (Ctrl+Z)" [ref=e63]:
+            - img [ref=e64]
+          - button "Redo (Ctrl+Shift+Z)" [disabled] [ref=e66]:
+            - img [ref=e67]
+      - generic [ref=e69]:
+        - button "Shared Builds" [ref=e70]:
+          - generic [ref=e71]: Shared Builds
+        - generic "Show stats as they would be in active combat — includes always-on toggles and proc averages." [ref=e73] [cursor=pointer]:
+          - checkbox "In-Combat" [ref=e75]
+          - generic [ref=e79]: In-Combat
+        - generic [ref=e80]:
+          - generic "Include proc damage in DPS calculations (averaged based on activation rate). Click the gear to configure proc behavior." [ref=e81] [cursor=pointer]:
+            - checkbox "Procs" [checked] [ref=e83]
+            - generic [ref=e87]: Procs
+          - button "Proc Settings — configure how procs are averaged into DPS" [ref=e88]:
+            - img [ref=e89]
+        - generic "Show a banner above the dashboard and ring offending powers in orange when the build has any set bonus that exceeds the Rule of 5 cap." [ref=e93] [cursor=pointer]:
+          - checkbox "Bonus Cap Alert" [checked] [ref=e95]
+          - generic [ref=e99]: Bonus Cap Alert
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - generic [ref=e105]:
+              - generic [ref=e106]: General
+              - button "Configure dashboard stats" [ref=e107]:
+                - img [ref=e108]
+            - generic [ref=e111]:
+              - generic [ref=e113] [cursor=pointer]:
+                - generic [ref=e114]: Dmg
+                - generic [ref=e115]: +0%
+              - generic [ref=e117] [cursor=pointer]:
+                - generic [ref=e118]: Acc
+                - generic [ref=e119]: +0%
+              - generic [ref=e121] [cursor=pointer]:
+                - generic [ref=e122]: ToHit
+                - generic [ref=e123]: 75%
+              - generic [ref=e125] [cursor=pointer]:
+                - generic [ref=e126]: Rech
+                - generic [ref=e127]: 100%
+          - generic [ref=e128]:
+            - generic [ref=e129]:
+              - generic [ref=e130]: Health & Endurance
+              - button "Configure dashboard stats" [ref=e131]:
+                - img [ref=e132]
+            - generic [ref=e135]:
+              - generic [ref=e137] [cursor=pointer]:
+                - generic [ref=e138]: HP
+                - generic [ref=e139]: "102"
+              - generic [ref=e141] [cursor=pointer]:
+                - generic [ref=e142]: Regn
+                - generic [ref=e143]: 0.43/s+0%
+              - generic [ref=e145] [cursor=pointer]:
+                - generic [ref=e146]: Rec
+                - generic [ref=e147]: 1.67/s+0%
+              - generic [ref=e149] [cursor=pointer]:
+                - generic [ref=e150]: End Cost
+                - generic [ref=e151]: 0.00/s
+              - generic [ref=e153]:
+                - generic [ref=e154]: Net End
+                - generic [ref=e155]: +1.67/s
+              - generic [ref=e157] [cursor=pointer]:
+                - generic [ref=e158]: Level Shift
+                - generic [ref=e159]: "0"
+          - generic [ref=e160]:
+            - generic [ref=e161]:
+              - generic [ref=e162]: Defense
+              - button "Configure dashboard stats" [ref=e163]:
+                - img [ref=e164]
+            - generic [ref=e167]:
+              - generic [ref=e169] [cursor=pointer]:
+                - generic [ref=e170]: Melee
+                - generic [ref=e171]: 0%
+              - generic [ref=e173] [cursor=pointer]:
+                - generic [ref=e174]: Ranged
+                - generic [ref=e175]: 0%
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - generic [ref=e178]: Resistance
+              - button "Configure dashboard stats" [ref=e179]:
+                - img [ref=e180]
+            - generic [ref=e185] [cursor=pointer]:
+              - generic [ref=e186]: Smashing
+              - generic [ref=e187]: 0%
+        - generic [ref=e188]:
+          - generic [ref=e189]:
+            - generic [ref=e190]: Incarnate
+            - generic [ref=e191]: Lv50
+          - generic [ref=e192]:
+            - button "A" [disabled] [ref=e194]:
+              - generic [ref=e195]: A
+            - button "J" [disabled] [ref=e197]:
+              - generic [ref=e198]: J
+            - button "I" [disabled] [ref=e200]:
+              - generic [ref=e201]: I
+            - button "D" [disabled] [ref=e203]:
+              - generic [ref=e204]: D
+            - button "L" [disabled] [ref=e206]:
+              - generic [ref=e207]: L
+            - button "H" [disabled] [ref=e209]:
+              - generic [ref=e210]: H
+      - generic [ref=e212]:
+        - generic [ref=e214]: Lvl 1
+        - generic [ref=e216]: Pwr 24/24
+        - generic [ref=e218]: Slot 67/67
+        - button "Accolades" [ref=e220]:
+          - img [ref=e221]
+          - generic [ref=e223]: Accolades
+        - button "Set Bonus Finder" [ref=e224]:
+          - img [ref=e225]
+          - generic [ref=e227]: Set Bonus Finder
+        - button "Totals" [ref=e228]:
+          - img [ref=e229]
+          - generic [ref=e231]: Totals
+        - button "Compare Sets" [ref=e232]:
+          - img [ref=e233]
+          - generic [ref=e235]: Compare Sets
+        - button "Compare Slotting" [ref=e236]:
+          - img [ref=e237]
+          - generic [ref=e239]: Compare Slotting
+        - button "Enhancement List" [ref=e240]:
+          - img [ref=e241]
+          - generic [ref=e243]: Enhancement List
+        - button "Configure" [ref=e244]:
+          - img [ref=e245]
+          - generic [ref=e248]: Configure
+        - button "Controls" [ref=e249]:
+          - img [ref=e250]
+          - generic [ref=e252]: Controls
+    - main [ref=e253]:
+      - generic [ref=e255]: Press D to toggle the dashboard. Press T to toggle the responsive info panel. While info panel is open, hold shift to make it persist.
+      - generic [ref=e256]:
+        - generic [ref=e257]:
+          - generic [ref=e258]:
+            - heading "Available Powers" [level=2] [ref=e259]
+            - radiogroup "Power view mode" [ref=e260]:
+              - radio "Category view - powers grouped by type" [checked] [ref=e261]:
+                - img [ref=e262]
+              - radio "Chronological view - powers by level taken (Mids style)" [ref=e264]:
+                - img [ref=e265]
+          - generic [ref=e267]:
+            - generic [ref=e268]:
+              - button "▼ Primary & Secondary" [ref=e269] [cursor=pointer]:
+                - generic [ref=e270]: ▼
+                - text: Primary & Secondary
+              - generic [ref=e271]:
+                - generic [ref=e273]:
+                  - generic [ref=e274]: Primary
+                  - generic [ref=e275]: Select a primary powerset
+                - generic [ref=e277]:
+                  - generic [ref=e278]: Secondary
+                  - generic [ref=e279]: Select a secondary powerset
+            - generic [ref=e280]:
+              - button "▼ Power Pools & Epic" [ref=e281] [cursor=pointer]:
+                - generic [ref=e282]: ▼
+                - text: Power Pools & Epic
+              - generic [ref=e284]: Power Pools unlock at level 4
+        - generic [ref=e285]:
+          - heading "Primary Powers" [level=2] [ref=e287]
+          - generic [ref=e289]: Select a powerset first
+        - generic [ref=e290]:
+          - heading "Secondary Powers" [level=2] [ref=e292]
+          - generic [ref=e294]: Select a powerset first
+        - generic [ref=e295]:
+          - heading "Pool Powers" [level=2] [ref=e297]
+          - generic [ref=e299]: No pool powers or inherents yet
+        - generic [ref=e300]:
+          - generic [ref=e301]:
+            - heading "Power Info" [level=2] [ref=e302]
+            - generic [ref=e303]:
+              - generic "Enable power info tooltip on hover" [ref=e304] [cursor=pointer]:
+                - checkbox "Tooltips" [ref=e306]
+                - generic [ref=e310]: Tooltips
+              - button "Pop out info panel into separate window" [ref=e311]:
+                - img [ref=e312]
+          - generic [ref=e315]: Hover over a power to see details
+    - generic [ref=e316]:
+      - button "Open help" [ref=e317]:
+        - img [ref=e318]
+      - button "Changelog" [ref=e320]:
+        - img [ref=e321]
+      - button "Send feedback or report a bug" [ref=e323]:
+        - img [ref=e324]
+      - button "Buy me a coffee" [ref=e326]:
+        - img [ref=e327]
+        - text: Buy me a coffee
+  - generic:
+    - iframe

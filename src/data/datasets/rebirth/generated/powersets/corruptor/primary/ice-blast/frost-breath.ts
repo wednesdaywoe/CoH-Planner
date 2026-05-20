@@ -40,6 +40,7 @@ export const FrostBreath: Power = {
     "Corruptor Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

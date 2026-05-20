@@ -43,6 +43,7 @@ export const ElectronHaze: Power = {
     "Defense Debuff",
     "Knockback",
     "Ranged AoE Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

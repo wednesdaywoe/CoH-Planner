@@ -36,5 +36,21 @@ export const BlackHole: Power = {
   "allowedSetCategories": [
     "Immobilize"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 30,
+      "entities": [
+        {
+          "entity": "Pets_Black_Hole",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Black_Hole_Phased",
+          "count": 1
+        }
+      ]
+    }
+  }
 };

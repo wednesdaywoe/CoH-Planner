@@ -47,6 +47,11 @@ export const FlashArrow: Power = {
     "durations": {
       "perceptionDebuff": 60
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_OilSlickLighter",
+      "duration": 5
+    },
     "buffDuration": 60
   }
 };

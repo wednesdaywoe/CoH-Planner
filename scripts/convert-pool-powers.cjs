@@ -23,7 +23,7 @@ const {
   extractDamage,
   inferAllowedSetCategories,
   normalizeIconPath,
-  collectAllTemplates,
+  collectTemplatesDeep,
   RAW_DATA_PATH,
   BIN_BOOST_MAP,
   EFFECT_AREA_MAP,
@@ -227,7 +227,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
 
   // Extract effects from raw JSON using recursive template collection
   if (rawJson.effects && rawJson.effects.length > 0) {
-    const allTemplates = collectAllTemplates(rawJson.effects);
+    const allTemplates = collectTemplatesDeep(rawJson.effects);
 
     // Damage
     const damage = extractDamage(allTemplates);

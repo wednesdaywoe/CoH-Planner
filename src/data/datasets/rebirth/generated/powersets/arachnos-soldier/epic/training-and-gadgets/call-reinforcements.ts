@@ -38,5 +38,13 @@ export const CallReinforcements: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
+      "duration": 240,
+      "entityCount": 2
+    }
+  }
 };

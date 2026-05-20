@@ -218,9 +218,9 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
           "Defense Debuff",
           "Ranged AoE Damage",
+          "To Hit Debuff",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -229,7 +229,12 @@ export const POWER_POOLS_RAW = {
           "recharge": 60,
           "endurance": 20.8,
           "activationTime": 1.37,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Experimentation_Corrosive_Vial",
+            "duration": 14
+          }
         }
       },
       {
@@ -1112,6 +1117,11 @@ export const POWER_POOLS_RAW = {
           "teleport": {
             "scale": 1,
             "table": "Ranged_Ones"
+          },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Dive_Attack",
+            "duration": 4
           }
         }
       },
@@ -1215,8 +1225,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Blaster Archetype Sets",
-          "Defense Debuff"
+          "Defense Debuff",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -2723,6 +2733,11 @@ export const POWER_POOLS_RAW = {
           "durations": {
             "movement": 30
           },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Spring_Attack",
+            "duration": 4
+          },
           "buffDuration": 30
         }
       }
@@ -2988,7 +3003,6 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Blaster Archetype Sets",
           "Slow Movement",
           "To Hit Debuff"
         ],
@@ -3295,7 +3309,13 @@ export const POWER_POOLS_RAW = {
           "recharge": 90,
           "endurance": 5.2,
           "activationTime": 2.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Enflame_Pet",
+            "duration": 5,
+            "entityCount": 6
+          }
         }
       },
       {
@@ -3650,6 +3670,11 @@ export const POWER_POOLS_RAW = {
             "scale": 0.15,
             "table": "Ranged_Damage"
           },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Whirlwind_Lightning_Jump1",
+            "duration": 1
+          },
           "stun": {
             "mag": 2,
             "scale": 2,
@@ -3818,6 +3843,11 @@ export const POWER_POOLS_RAW = {
           "endurance": 15,
           "activationTime": 5.93,
           "effectArea": "SingleTarget",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_TPFoeTaunt",
+            "duration": 1
+          },
           "teleport": {
             "scale": 1,
             "table": "Ranged_Ones"
@@ -3907,6 +3937,11 @@ export const POWER_POOLS_RAW = {
           },
           "durations": {
             "defenseBuff": 10
+          },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_TPFoeTaunt",
+            "duration": 1
           },
           "buffDuration": 10
         }
@@ -4103,6 +4138,11 @@ export const POWER_POOLS_RAW = {
           "durations": {
             "mezResistance": 15
           },
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_TPFoeTauntWide",
+            "duration": 1
+          },
           "buffDuration": 15
         }
       },
@@ -4190,8 +4230,8 @@ export const POWER_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Blaster Archetype Sets",
-          "Slow Movement"
+          "Slow Movement",
+          "To Hit Debuff"
         ],
         "effects": {
           "accuracy": 1,

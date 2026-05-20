@@ -85,6 +85,11 @@ export const BrightNova: Power = {
         "table": "Melee_Ones"
       }
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "KHELDIAN_NOVA_PEACEBRINGER",
+      "duration": 2
+    },
     "buffDuration": 2
   }
 };

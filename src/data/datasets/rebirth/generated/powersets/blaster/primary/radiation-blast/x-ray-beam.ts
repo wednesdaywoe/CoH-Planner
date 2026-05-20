@@ -38,6 +38,7 @@ export const XRayBeam: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

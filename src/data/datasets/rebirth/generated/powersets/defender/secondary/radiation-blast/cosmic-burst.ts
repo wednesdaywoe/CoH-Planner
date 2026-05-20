@@ -40,6 +40,7 @@ export const CosmicBurst: Power = {
     "Defense Debuff",
     "Ranged Damage",
     "Stuns",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

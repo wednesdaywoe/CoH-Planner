@@ -39,6 +39,7 @@ export const WhiteDwarfStrike: Power = {
     "Kheldian Archetype Sets",
     "Knockback",
     "Melee Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

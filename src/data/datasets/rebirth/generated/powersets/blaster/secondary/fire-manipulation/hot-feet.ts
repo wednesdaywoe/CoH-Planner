@@ -38,6 +38,7 @@ export const HotFeet: Power = {
     "Blaster Archetype Sets",
     "Melee AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -42,6 +42,7 @@ export const Overcharge: Power = {
     "Defense Debuff",
     "Ranged AoE Damage",
     "Stuns",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -39,7 +39,15 @@ export const CallEnforcer: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "To Hit Buff",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MastermindPets_Thug_Lt",
+      "duration": 99999
+    }
+  }
 };

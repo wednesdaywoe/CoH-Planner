@@ -36,7 +36,8 @@ export const EntanglingArrow: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Immobilize",
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

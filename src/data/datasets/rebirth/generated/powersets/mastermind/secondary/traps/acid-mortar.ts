@@ -35,7 +35,15 @@ export const AcidMortar: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Ranged AoE Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Traps_Acid_Mortar",
+      "duration": 60
+    }
+  }
 };

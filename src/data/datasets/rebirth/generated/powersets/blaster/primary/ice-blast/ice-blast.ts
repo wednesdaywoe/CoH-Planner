@@ -37,6 +37,7 @@ export const IceBlast: Power = {
     "Blaster Archetype Sets",
     "Ranged Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

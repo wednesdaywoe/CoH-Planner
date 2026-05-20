@@ -39,7 +39,15 @@ export const FlyTrap: Power = {
     "Defense Debuff",
     "Pet Damage",
     "Recharge Intensive Pets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Fly_Trap",
+      "duration": 99999
+    }
+  }
 };

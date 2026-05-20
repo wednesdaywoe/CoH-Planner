@@ -151,6 +151,11 @@ export const PowerSurge: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Power_Surge",
+      "duration": 4
+    },
     "buffDuration": 90
   }
 };

@@ -37,6 +37,7 @@ export const Slice: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Soldiers of Arachnos Archetype Sets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

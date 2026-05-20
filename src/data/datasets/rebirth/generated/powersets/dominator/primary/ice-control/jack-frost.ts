@@ -39,5 +39,12 @@ export const JackFrost: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_JackFrost",
+      "duration": 99999
+    }
+  }
 };

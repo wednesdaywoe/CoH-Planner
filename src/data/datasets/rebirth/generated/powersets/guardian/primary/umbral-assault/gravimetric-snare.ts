@@ -38,6 +38,7 @@ export const GravimetricSnare: Power = {
     "Immobilize",
     "Ranged Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

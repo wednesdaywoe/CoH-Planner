@@ -38,6 +38,7 @@ export const Pistols: Power = {
     "Defender Archetype Sets",
     "Defense Debuff",
     "Ranged Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -38,5 +38,12 @@ export const Earthquake: Power = {
     "Knockback",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Earthquake",
+      "duration": 30
+    }
+  }
 };

@@ -39,7 +39,8 @@ export const DrowningPool: Power = {
     "Accurate Defense Debuff",
     "Controller Archetype Sets",
     "Defense Debuff",
-    "Holds"
+    "Holds",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

@@ -40,6 +40,7 @@ export const ThrowSpines: Power = {
     "Ranged AoE Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -85,6 +85,11 @@ export const DarkNova: Power = {
         "table": "Melee_Ones"
       }
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "PFX2",
+      "duration": 2
+    },
     "buffDuration": 2
   }
 };

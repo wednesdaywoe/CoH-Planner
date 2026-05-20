@@ -94,6 +94,11 @@ export const LightForm: Power = {
       "scale": 0.3,
       "table": "Melee_Ones"
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "KHELDIAN_PEACEBRINGER_LIGHT_FORM",
+      "duration": 90
+    },
     "mezResistance": {
       "knockback": {
         "scale": 10,

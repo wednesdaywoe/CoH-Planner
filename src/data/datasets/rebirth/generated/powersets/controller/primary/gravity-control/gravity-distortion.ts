@@ -39,6 +39,7 @@ export const GravityDistortion: Power = {
     "Holds",
     "Ranged Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

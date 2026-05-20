@@ -39,6 +39,7 @@ export const Impale: Power = {
     "Ranged Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -52,6 +52,11 @@ export const Blind: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Immobilize"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Blind",
+      "duration": 1
     }
   },
   "specialEffects": [

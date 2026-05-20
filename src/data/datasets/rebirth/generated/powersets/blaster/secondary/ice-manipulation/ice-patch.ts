@@ -30,6 +30,11 @@ export const IcePatch: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_IcePatch",
+      "duration": 30
+    },
     "damageBuff": {
       "scale": 0.229,
       "table": "Melee_Ones"

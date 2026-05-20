@@ -62,6 +62,11 @@ export const EMPArrow: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_OilSlickLighter",
+      "duration": 5
+    },
     "buffDuration": 15
   },
   "conditionalEffects": [

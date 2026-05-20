@@ -39,6 +39,20 @@ export const RainofArrows: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 3,
+      "entities": [
+        {
+          "entity": "Pets_RainofArrows_Visual",
+          "count": 1
+        },
+        {
+          "entity": "Pets_RainofArrows",
+          "count": 1
+        }
+      ]
+    },
     "damageBuff": {
       "scale": 0.056,
       "table": "Ranged_Ones"

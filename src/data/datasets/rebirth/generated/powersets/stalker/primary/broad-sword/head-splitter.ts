@@ -42,6 +42,7 @@ export const HeadSplitter: Power = {
     "Knockback",
     "Melee AoE Damage",
     "Stalker Archetype Sets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -42,6 +42,7 @@ export const RadiationSiphon: Power = {
     "Healing",
     "Melee Damage",
     "Stalker Archetype Sets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

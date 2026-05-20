@@ -20,7 +20,7 @@ from pathlib import Path
 from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import PowerRecord, EffectGroup, EffectTemplate
 from ._enums import (
-    BOOST_TYPE, BOOST_TYPE_REBIRTH, TARGET_TYPE, ATTRIB_NAME, EVENT_NAME,
+    BOOST_TYPE, BOOST_TYPE_REBIRTH, TARGET_TYPE, ATTRIB_NAME, ATTRIB_NAME_REBIRTH, EVENT_NAME,
     ATTRIB_MOD_TYPE, ATTRIB_MOD_ASPECT, ATTRIB_MOD_APPLICATION,
     ATTRIB_MOD_TARGET, ATTRIB_MOD_STACK, ATTRIB_MOD_CASTER_STACK,
     PVP_FLAG,
@@ -294,8 +294,12 @@ def _extract_params_parse6(tail_bytes: bytes, attribs: list[str]) -> dict | None
     `{'type': 'Power', 'power_names': [...]}` when at least one match
     found; None otherwise.
 
-    Entity-create (Pets, summons) handling could follow the same shape
-    but isn't currently surfaced from Parse6 — added later if needed.
+    Also handles Create_Entity (pet/summon) templates: when the attrib is
+    create_entity, the same string scan picks up the `Pets_X` entity def
+    that the binary stores in the Params block. Without this, Rebirth's
+    pool attack powers (Dive Attack, Blink Blitz) and pet-summoning
+    archetype powers couldn't be linked to their `Pets_X` entity for
+    downstream damage extraction.
     """
     if not attribs or not tail_bytes:
         return None
@@ -306,7 +310,8 @@ def _extract_params_parse6(tail_bytes: bytes, attribs: list[str]) -> dict | None
     # power separately from the attribs list — see audit notes in
     # MULTI_DATASET_PLAN.md → "Vacuum-style pet conditional gates").
     is_power_attrib = bool(attrib_lc & _POWER_PARAM_ATTRIBS) or 'null' in attrib_lc
-    if not is_power_attrib:
+    is_create_entity = 'create_entity' in attrib_lc
+    if not is_power_attrib and not is_create_entity:
         return None
 
     # Inline-pascal scan: walk the tail looking for plausible string
@@ -333,6 +338,30 @@ def _extract_params_parse6(tail_bytes: bytes, attribs: list[str]) -> dict | None
                 pos += (4 - (pos % 4)) % 4
                 continue
         pos += 1
+
+    if is_create_entity:
+        entity_def = next((s for s in found if _looks_like_entity_def(s)), None)
+        if not entity_def:
+            return None
+        result: dict = {'type': 'EntCreate', 'entity_def': entity_def}
+        power_names = [s for s in found if _looks_like_power_name(s)]
+        display_name = next(
+            (s for s in found
+             if s != entity_def and not _looks_like_power_name(s)
+             and ' ' in s and len(s) < 80),
+            None,
+        )
+        priority_list = next(
+            (s for s in found
+             if s != entity_def and s != display_name
+             and '.' not in s and len(s) < 40
+             and all(c.isalnum() or c == '_' for c in s)),
+            None,
+        )
+        if display_name: result['display_name'] = display_name
+        if power_names: result['redirects'] = power_names
+        if priority_list: result['priority_list'] = priority_list
+        return result
 
     power_names = [s for s in found if _looks_like_power_name(s)]
     if not power_names:
@@ -1051,8 +1080,12 @@ def _parse_effect_template_parse6(r: BinReader) -> EffectTemplate:
     # Display flags + core attrib/aspect/target enums
     _show_floaters = r.read_bool()
     attrib_raw = r.read_u4()
-    # Parse6 stores Attrib as a single u4 = index*4 (same scaling as HC).
-    attribs = [ATTRIB_NAME.get(attrib_raw // 4, f"Unknown({attrib_raw // 4})")]
+    # Parse6 stores Attrib as a single u4 = index*4 (same scaling as HC), but
+    # the index space diverges in the meta/scripting block (Rebirth puts
+    # Create_Entity at 116, HC at 117). Use the Rebirth-specific map so
+    # entity-spawn templates resolve and their `params.entity_def` gets
+    # populated for the downstream summon wiring.
+    attribs = [ATTRIB_NAME_REBIRTH.get(attrib_raw // 4, f"Unknown({attrib_raw // 4})")]
     aspect_raw = r.read_u4()
     # Parse6 uses value*4 encoding (4-byte aspect-table entries) vs HC's
     # value*8. Distribution across 21,559 Rebirth records: top values

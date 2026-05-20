@@ -40,6 +40,7 @@ export const GravimetricSnare: Power = {
     "Melee Damage",
     "Ranged Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

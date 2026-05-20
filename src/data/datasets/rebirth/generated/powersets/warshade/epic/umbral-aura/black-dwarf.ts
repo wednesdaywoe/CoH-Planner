@@ -163,6 +163,11 @@ export const BlackDwarf: Power = {
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "KHELDIAN_DWARF_WARSHADE",
+      "duration": 2
+    },
     "buffDuration": 2.03
   }
 };

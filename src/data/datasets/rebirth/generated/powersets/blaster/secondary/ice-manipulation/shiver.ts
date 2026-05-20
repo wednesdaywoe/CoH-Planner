@@ -36,8 +36,8 @@ export const Shiver: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

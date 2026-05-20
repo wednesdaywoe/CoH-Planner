@@ -36,7 +36,8 @@ export const ArcticAir: Power = {
   "allowedSetCategories": [
     "Confuse",
     "Controller Archetype Sets",
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

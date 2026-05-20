@@ -34,7 +34,8 @@ export const WebGrenade: Power = {
   ],
   "allowedSetCategories": [
     "Immobilize",
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

@@ -39,6 +39,7 @@ export const FrostBreath: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

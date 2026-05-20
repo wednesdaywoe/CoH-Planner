@@ -40,6 +40,7 @@ export const BlackDwarfSmite: Power = {
     "Melee Damage",
     "Slow Movement",
     "Stuns",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

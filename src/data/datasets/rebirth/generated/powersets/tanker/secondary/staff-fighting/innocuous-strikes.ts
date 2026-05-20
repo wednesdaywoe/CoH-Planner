@@ -43,6 +43,7 @@ export const InnocuousStrikes: Power = {
     "Slow Movement",
     "Tanker Archetype Sets",
     "Threat Duration",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

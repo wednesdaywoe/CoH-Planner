@@ -35,7 +35,24 @@ export const HeatLoss: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 2,
+      "entities": [
+        {
+          "entity": "Pets_HeatLossDebuff_Defender",
+          "count": 1
+        },
+        {
+          "entity": "Pets_HeatLossBuff_Defender",
+          "count": 1
+        }
+      ]
+    }
+  }
 };

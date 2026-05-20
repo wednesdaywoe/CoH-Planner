@@ -39,6 +39,7 @@ export const ContaminatedStrike: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Stalker Archetype Sets",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

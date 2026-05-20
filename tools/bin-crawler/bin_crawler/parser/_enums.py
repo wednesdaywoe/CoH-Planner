@@ -276,6 +276,26 @@ ATTRIB_NAME: dict[int, str] = {
     128: "Execute_Power",
 }
 
+
+# Rebirth (Parse6) keeps a slightly different attrib index layout. Empirically,
+# the only divergence that affects player-visible data is the meta/scripting
+# block being shifted -1 relative to HC: Rebirth puts Create_Entity at 116 vs
+# HC's 117. Confirmed by matching template shape against HC Create_Entity
+# (scale=-1, duration ~3-5s, aspect=Current, large entity-spawn powers like
+# Omega_Maneuver, Dive_Attack pet-spawners). Without this map, Rebirth pool
+# attack powers (Dive Attack, Blink Blitz) and pet summons surface as
+# `Unknown(116)` and lose their `Pets_X` summon wiring downstream.
+#
+# A handful of other Rebirth indices (85, 88, 91) also report as Unknown but
+# don't correspond to a clean HC-shifted neighbour — they're separate enum
+# divergences. Leaving them unmapped is fine until a player-visible bug
+# surfaces, since the unknown name reaches the converter as-is and is
+# filtered out by attrib-type detection rather than producing wrong data.
+ATTRIB_NAME_REBIRTH: dict[int, str] = {
+    **ATTRIB_NAME,
+    116: "Create_Entity",
+}
+
 ATTRIB_MOD_TYPE: dict[int, str] = {
     # Verified via Ghidra keyword table at 0x1408eb958 in cityofheroes.exe —
     # values 0/1 were swapped in the old parser (the .ksy spec had them backwards),

@@ -45,5 +45,21 @@ export const Liquefy: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 30,
+      "entities": [
+        {
+          "entity": "Pets_Liquefy_MM",
+          "count": 1
+        },
+        {
+          "entity": "Pets_ShockMM",
+          "count": 1
+        }
+      ]
+    }
+  }
 };

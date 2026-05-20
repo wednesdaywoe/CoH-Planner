@@ -69,6 +69,13 @@ export const ChargedShot: Power = {
         "type": "Energy",
         "scale": 0.246,
         "table": "Ranged_Damage"
+      },
+      "effects": {
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_DisintegrateSpread",
+          "duration": 6
+        }
       }
     }
   ],
@@ -81,7 +88,7 @@ export const ChargedShot: Power = {
     {
       "kind": "effect-proc",
       "chance": 0.38999998569488525,
-      "label": "Unknown(116)"
+      "label": "Create_Entity"
     }
   ]
 };

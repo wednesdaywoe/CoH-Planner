@@ -40,10 +40,16 @@ export const Whirlpool: Power = {
     "Defense Debuff",
     "Ranged AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Whirlpool_Blaster",
+      "duration": 15
+    },
     "damageBuff": {
       "scale": 0.033,
       "table": "Ranged_Ones"

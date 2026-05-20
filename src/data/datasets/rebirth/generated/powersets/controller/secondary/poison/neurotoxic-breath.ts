@@ -36,7 +36,8 @@ export const NeurotoxicBreath: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Slow Movement"
+    "Slow Movement",
+    "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {

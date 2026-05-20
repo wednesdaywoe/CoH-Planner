@@ -39,6 +39,7 @@ export const Hack: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Threat Duration",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

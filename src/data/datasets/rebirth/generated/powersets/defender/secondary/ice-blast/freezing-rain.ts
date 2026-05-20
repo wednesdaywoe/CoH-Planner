@@ -37,7 +37,15 @@ export const IceStorm: Power = {
     "Defender Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_IceStorm_Defender",
+      "duration": 15
+    }
+  }
 };

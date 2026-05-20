@@ -46,6 +46,20 @@ export const LightningRod: Power = {
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 4,
+      "entities": [
+        {
+          "entity": "Pets_Lightning_Rod_Tanker",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Embraced_Lightning_Rod_Tanker",
+          "count": 1
+        }
+      ]
     }
   }
 };

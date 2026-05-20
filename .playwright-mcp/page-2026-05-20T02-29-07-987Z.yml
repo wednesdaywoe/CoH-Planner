@@ -1,0 +1,672 @@
+- generic [active] [ref=e1]:
+  - img "Sidekick Banner" [ref=e3]
+  - generic [ref=e26]:
+    - banner [ref=e27]:
+      - generic [ref=e28]:
+        - button "File" [ref=e31]:
+          - img [ref=e32]
+          - generic [ref=e34]: File
+        - button "Settings" [ref=e37]:
+          - img [ref=e38]
+          - generic [ref=e41]: Settings
+        - button "Untitled Build · Blaster · Archery · Devices" [ref=e43]:
+          - img [ref=e44]
+          - generic [ref=e46]: Untitled Build · Blaster · Archery · Devices
+          - img [ref=e47]
+        - generic [ref=e50]: Rebirth
+        - generic [ref=e51]:
+          - generic [ref=e52]: Lvl
+          - button "−" [ref=e53]
+          - generic [ref=e54]: "50"
+          - button "+" [disabled] [ref=e55]
+          - slider [ref=e57] [cursor=pointer]: "50"
+        - button "Level Up" [ref=e58]:
+          - img [ref=e59]
+          - generic [ref=e61]: Level Up
+        - generic [ref=e62]:
+          - button "Undo (Ctrl+Z)" [disabled] [ref=e63]:
+            - img [ref=e64]
+          - button "Redo (Ctrl+Shift+Z)" [disabled] [ref=e66]:
+            - img [ref=e67]
+      - generic [ref=e69]:
+        - button "Shared Builds" [ref=e70]:
+          - generic [ref=e71]: Shared Builds
+        - generic "Show stats as they would be in active combat — includes always-on toggles and proc averages." [ref=e73] [cursor=pointer]:
+          - checkbox "In-Combat" [ref=e75]
+          - generic [ref=e79]: In-Combat
+        - generic [ref=e80]:
+          - generic "Include proc damage in DPS calculations (averaged based on activation rate). Click the gear to configure proc behavior." [ref=e81] [cursor=pointer]:
+            - checkbox "Procs" [checked] [ref=e83]
+            - generic [ref=e87]: Procs
+          - button "Proc Settings — configure how procs are averaged into DPS" [ref=e88]:
+            - img [ref=e89]
+        - generic "Show a banner above the dashboard and ring offending powers in orange when the build has any set bonus that exceeds the Rule of 5 cap." [ref=e93] [cursor=pointer]:
+          - checkbox "Bonus Cap Alert" [checked] [ref=e95]
+          - generic [ref=e99]: Bonus Cap Alert
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - generic [ref=e105]:
+              - generic [ref=e106]: General
+              - button "Configure dashboard stats" [ref=e107]:
+                - img [ref=e108]
+            - generic [ref=e111]:
+              - generic [ref=e113] [cursor=pointer]:
+                - generic [ref=e114]: Dmg
+                - generic [ref=e115]: +0%
+              - generic [ref=e117] [cursor=pointer]:
+                - generic [ref=e118]: Acc
+                - generic [ref=e119]: +0%
+              - generic [ref=e121] [cursor=pointer]:
+                - generic [ref=e122]: ToHit
+                - generic [ref=e123]: 75%
+              - generic [ref=e125] [cursor=pointer]:
+                - generic [ref=e126]: Rech
+                - generic [ref=e127]: 100%
+          - generic [ref=e128]:
+            - generic [ref=e129]:
+              - generic [ref=e130]: Health & Endurance
+              - button "Configure dashboard stats" [ref=e131]:
+                - img [ref=e132]
+            - generic [ref=e135]:
+              - generic [ref=e137] [cursor=pointer]:
+                - generic [ref=e138]: HP
+                - generic [ref=e139]: "1204"
+              - generic [ref=e141] [cursor=pointer]:
+                - generic [ref=e142]: Regn
+                - generic [ref=e143]: 7.03/s+40%
+              - generic [ref=e145] [cursor=pointer]:
+                - generic [ref=e146]: Rec
+                - generic [ref=e147]: 2.08/s+25%
+              - generic [ref=e149] [cursor=pointer]:
+                - generic [ref=e150]: End Cost
+                - generic [ref=e151]: 0.00/s
+              - generic [ref=e153]:
+                - generic [ref=e154]: Net End
+                - generic [ref=e155]: +2.08/s
+              - generic [ref=e157] [cursor=pointer]:
+                - generic [ref=e158]: Level Shift
+                - generic [ref=e159]: "0"
+          - generic [ref=e160]:
+            - generic [ref=e161]:
+              - generic [ref=e162]: Defense
+              - button "Configure dashboard stats" [ref=e163]:
+                - img [ref=e164]
+            - generic [ref=e167]:
+              - generic [ref=e169] [cursor=pointer]:
+                - generic [ref=e170]: Melee
+                - generic [ref=e171]: 0%
+              - generic [ref=e173] [cursor=pointer]:
+                - generic [ref=e174]: Ranged
+                - generic [ref=e175]: 0%
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - generic [ref=e178]: Resistance
+              - button "Configure dashboard stats" [ref=e179]:
+                - img [ref=e180]
+            - generic [ref=e185] [cursor=pointer]:
+              - generic [ref=e186]: Smashing
+              - generic [ref=e187]: 0%
+        - generic [ref=e188]:
+          - generic [ref=e189]:
+            - generic [ref=e190]: Incarnate
+            - button "Crafting" [ref=e191]
+          - generic [ref=e192]:
+            - button "A" [ref=e194] [cursor=pointer]:
+              - generic [ref=e195]: A
+            - button "J" [ref=e197] [cursor=pointer]:
+              - generic [ref=e198]: J
+            - button "I" [ref=e200] [cursor=pointer]:
+              - generic [ref=e201]: I
+            - button "D" [ref=e203] [cursor=pointer]:
+              - generic [ref=e204]: D
+            - button "L" [ref=e206] [cursor=pointer]:
+              - generic [ref=e207]: L
+            - button "H" [ref=e209] [cursor=pointer]:
+              - generic [ref=e210]: H
+      - generic [ref=e212]:
+        - generic [ref=e214]: Lvl 50
+        - generic [ref=e216]: Pwr 20/24
+        - generic [ref=e218]: Slot 63/67
+        - button "Accolades" [ref=e220]:
+          - img [ref=e221]
+          - generic [ref=e223]: Accolades
+        - button "Set Bonus Finder" [ref=e224]:
+          - img [ref=e225]
+          - generic [ref=e227]: Set Bonus Finder
+        - button "Totals" [ref=e228]:
+          - img [ref=e229]
+          - generic [ref=e231]: Totals
+        - button "Compare Sets" [ref=e232]:
+          - img [ref=e233]
+          - generic [ref=e235]: Compare Sets
+        - button "Compare Slotting" [ref=e236]:
+          - img [ref=e237]
+          - generic [ref=e239]: Compare Slotting
+        - button "Enhancement List" [ref=e240]:
+          - img [ref=e241]
+          - generic [ref=e243]: Enhancement List
+        - button "Configure" [ref=e244]:
+          - img [ref=e245]
+          - generic [ref=e248]: Configure
+        - button "Controls" [ref=e249]:
+          - img [ref=e250]
+          - generic [ref=e252]: Controls
+    - main [ref=e253]:
+      - generic [ref=e255]: Press D to toggle the dashboard. Press T to toggle the responsive info panel. While info panel is open, hold shift to make it persist.
+      - generic [ref=e256]:
+        - generic [ref=e257]:
+          - generic [ref=e258]:
+            - heading "Available Powers" [level=2] [ref=e259]
+            - radiogroup "Power view mode" [ref=e260]:
+              - radio "Category view - powers grouped by type" [checked] [ref=e261]:
+                - img [ref=e262]
+              - radio "Chronological view - powers by level taken (Mids style)" [ref=e264]:
+                - img [ref=e265]
+          - generic [ref=e267]:
+            - generic [ref=e268]:
+              - button "▼ Primary & Secondary" [ref=e269] [cursor=pointer]:
+                - generic [ref=e270]: ▼
+                - text: Primary & Secondary
+              - generic [ref=e271]:
+                - generic [ref=e273]:
+                  - generic [ref=e274]:
+                    - generic [ref=e275]: Archery
+                    - generic [ref=e276]: (2)
+                  - generic [ref=e277]:
+                    - button "1 Snap Shot" [ref=e278] [cursor=pointer]:
+                      - generic "Available at level 1": "1"
+                      - generic: Snap Shot
+                    - button "1 Aimed Shot" [ref=e279] [cursor=pointer]:
+                      - generic "Available at level 1": "1"
+                      - generic: Aimed Shot
+                    - button "2 Fistful of Arrows" [ref=e280] [cursor=pointer]:
+                      - generic "Available at level 2": "2"
+                      - generic: Fistful of Arrows
+                    - button "6 Blazing Arrow" [ref=e281] [cursor=pointer]:
+                      - generic "Available at level 6": "6"
+                      - generic: Blazing Arrow
+                    - button "8 Aim" [ref=e282] [cursor=pointer]:
+                      - generic "Available at level 8": "8"
+                      - generic: Aim
+                    - button "12 Explosive Arrow" [ref=e283] [cursor=pointer]:
+                      - generic "Available at level 12": "12"
+                      - generic: Explosive Arrow
+                    - button "18 Ranged Shot" [ref=e284] [cursor=pointer]:
+                      - generic "Available at level 18": "18"
+                      - generic: Ranged Shot
+                    - button "26 Stunning Shot" [ref=e285] [cursor=pointer]:
+                      - generic "Available at level 26": "26"
+                      - generic: Stunning Shot
+                    - button "32 Rain of Arrows" [ref=e286] [cursor=pointer]:
+                      - generic "Available at level 32": "32"
+                      - generic: Rain of Arrows
+                - generic [ref=e288]:
+                  - generic [ref=e289]:
+                    - generic [ref=e290]: Devices
+                    - generic [ref=e291]: (2)
+                  - generic [ref=e292]:
+                    - button "1 Web Grenade" [ref=e293] [cursor=pointer]:
+                      - generic "Available at level 1": "1"
+                      - generic: Web Grenade
+                    - button "2 Caltrops" [ref=e294] [cursor=pointer]:
+                      - generic "Available at level 2": "2"
+                      - generic: Caltrops
+                    - button "4 Taser" [ref=e295] [cursor=pointer]:
+                      - generic "Available at level 4": "4"
+                      - generic: Taser
+                    - button "10 Targeting Drone" [ref=e296] [cursor=pointer]:
+                      - generic "Available at level 10": "10"
+                      - generic: Targeting Drone
+                    - button "16 Smoke Grenade" [ref=e297] [cursor=pointer]:
+                      - generic "Available at level 16": "16"
+                      - generic: Smoke Grenade
+                    - button "20 Field Operative" [ref=e298] [cursor=pointer]:
+                      - generic "Available at level 20": "20"
+                      - generic: Field Operative
+                    - button "28 Trip Mine" [ref=e299] [cursor=pointer]:
+                      - generic "Available at level 28": "28"
+                      - generic: Trip Mine
+                    - button "35 Time Bomb" [ref=e300] [cursor=pointer]:
+                      - generic "Available at level 35": "35"
+                      - generic: Time Bomb
+                    - button "38 Gun Drone" [ref=e301] [cursor=pointer]:
+                      - generic "Available at level 38": "38"
+                      - generic: Gun Drone
+            - generic [ref=e302]:
+              - button "▼ Power Pools & Epic" [ref=e303] [cursor=pointer]:
+                - generic [ref=e304]: ▼
+                - text: Power Pools & Epic
+              - generic [ref=e305]:
+                - button "+ Add Power Pool…" [ref=e307]
+                - button "+ Choose Epic / Patron Pool…" [ref=e309]
+        - generic [ref=e310]:
+          - heading "Primary Powers" [level=2] [ref=e312]
+          - generic [ref=e314]:
+            - generic [ref=e315] [cursor=pointer]:
+              - generic [ref=e316]: ▶
+              - heading "Archery" [level=4] [ref=e317]
+              - generic [ref=e318]: (2)
+            - generic [ref=e319]:
+              - generic [ref=e322]:
+                - generic [ref=e324]: L1
+                - generic [ref=e325]:
+                  - generic [ref=e326]:
+                    - generic "Right-click to lock power info" [ref=e327]: Snap Shot
+                    - generic [ref=e328]:
+                      - button "Power info" [ref=e329]:
+                        - img [ref=e330]
+                      - button "Compare slotting" [ref=e332]:
+                        - img [ref=e333]
+                      - button "Remove power" [ref=e335]:
+                        - img [ref=e336]
+                  - generic [ref=e339]:
+                    - generic [ref=e340]:
+                      - generic "Empty slot 1 - tap to add" [ref=e341] [cursor=pointer]:
+                        - generic [ref=e342]: +
+                      - generic:
+                        - generic: "1"
+                    - generic "Add slot (1/6) - drag for more" [ref=e343] [cursor=pointer]:
+                      - generic [ref=e344]: +
+              - generic [ref=e347]:
+                - generic [ref=e349]: L2
+                - generic [ref=e350]:
+                  - generic [ref=e351]:
+                    - generic "Right-click to lock power info" [ref=e352]: Aimed Shot
+                    - generic [ref=e353]:
+                      - button "Power info" [ref=e354]:
+                        - img [ref=e355]
+                      - button "Compare slotting" [ref=e357]:
+                        - img [ref=e358]
+                      - button "Remove power" [ref=e360]:
+                        - img [ref=e361]
+                  - generic [ref=e364]:
+                    - generic [ref=e365]:
+                      - generic "Empty slot 1 - tap to add" [ref=e366] [cursor=pointer]:
+                        - generic [ref=e367]: +
+                      - generic:
+                        - generic: "2"
+                    - generic "Add slot (1/6) - drag for more" [ref=e368] [cursor=pointer]:
+                      - generic [ref=e369]: +
+        - generic [ref=e370]:
+          - heading "Secondary Powers" [level=2] [ref=e372]
+          - generic [ref=e374]:
+            - generic [ref=e375] [cursor=pointer]:
+              - generic [ref=e376]: ▶
+              - heading "Devices" [level=4] [ref=e377]
+              - generic [ref=e378]: (2)
+            - generic [ref=e379]:
+              - generic [ref=e382]:
+                - generic [ref=e384]: L1
+                - generic [ref=e385]:
+                  - generic [ref=e386]:
+                    - generic "Right-click to lock power info" [ref=e387]: Web Grenade
+                    - generic [ref=e388]:
+                      - button "Power info" [ref=e389]:
+                        - img [ref=e390]
+                      - button "Compare slotting" [ref=e392]:
+                        - img [ref=e393]
+                      - button "Remove power" [ref=e395]:
+                        - img [ref=e396]
+                  - generic [ref=e398]:
+                    - generic [ref=e399]:
+                      - generic [ref=e400]:
+                        - generic "Empty slot 1 - tap to add" [ref=e401] [cursor=pointer]:
+                          - generic [ref=e402]: +
+                        - generic:
+                          - generic: "1"
+                      - generic "Add slot (1/6) - drag for more" [ref=e403] [cursor=pointer]:
+                        - generic [ref=e404]: +
+                    - button [ref=e406]
+              - generic [ref=e410]:
+                - generic [ref=e412]: L4
+                - generic [ref=e413]:
+                  - generic [ref=e414]:
+                    - generic "Right-click to lock power info" [ref=e415]: Caltrops
+                    - generic [ref=e416]:
+                      - button "Power info" [ref=e417]:
+                        - img [ref=e418]
+                      - button "Compare slotting" [ref=e420]:
+                        - img [ref=e421]
+                      - button "Remove power" [ref=e423]:
+                        - img [ref=e424]
+                  - generic [ref=e426]:
+                    - generic [ref=e427]:
+                      - generic [ref=e428]:
+                        - generic "Empty slot 1 - tap to add" [ref=e429] [cursor=pointer]:
+                          - generic [ref=e430]: +
+                        - generic:
+                          - generic: "4"
+                      - generic "Add slot (1/6) - drag for more" [ref=e431] [cursor=pointer]:
+                        - generic [ref=e432]: +
+                    - button [ref=e434]
+        - generic [ref=e436]:
+          - heading "Pool Powers" [level=2] [ref=e438]
+          - generic [ref=e440]:
+            - generic [ref=e441]:
+              - generic [ref=e442] [cursor=pointer]:
+                - generic [ref=e443]: ▶
+                - heading "Fitness" [level=4] [ref=e444]
+                - generic [ref=e445]: (4)
+              - generic [ref=e446]:
+                - generic [ref=e450]:
+                  - generic [ref=e451]:
+                    - generic "Right-click to lock power info" [ref=e452]: Swift
+                    - generic [ref=e453]: (Auto)
+                    - generic [ref=e454]:
+                      - button "Power info" [ref=e455]:
+                        - img [ref=e456]
+                      - button "Compare slotting" [ref=e458]:
+                        - img [ref=e459]
+                  - generic [ref=e462]:
+                    - generic [ref=e463]:
+                      - generic "Empty slot 1 - tap to add" [ref=e464] [cursor=pointer]:
+                        - generic [ref=e465]: +
+                      - generic:
+                        - generic: "1"
+                    - generic "Add slot (1/6) - drag for more" [ref=e466] [cursor=pointer]:
+                      - generic [ref=e467]: +
+                - generic [ref=e471]:
+                  - generic [ref=e472]:
+                    - generic "Right-click to lock power info" [ref=e473]: Hurdle
+                    - generic [ref=e474]: (Auto)
+                    - generic [ref=e475]:
+                      - button "Power info" [ref=e476]:
+                        - img [ref=e477]
+                      - button "Compare slotting" [ref=e479]:
+                        - img [ref=e480]
+                  - generic [ref=e483]:
+                    - generic [ref=e484]:
+                      - generic "Empty slot 1 - tap to add" [ref=e485] [cursor=pointer]:
+                        - generic [ref=e486]: +
+                      - generic:
+                        - generic: "1"
+                    - generic "Add slot (1/6) - drag for more" [ref=e487] [cursor=pointer]:
+                      - generic [ref=e488]: +
+                - generic [ref=e492]:
+                  - generic [ref=e493]:
+                    - generic "Right-click to lock power info" [ref=e494]: Health
+                    - generic [ref=e495]: (Auto)
+                    - generic [ref=e496]:
+                      - button "Power info" [ref=e497]:
+                        - img [ref=e498]
+                      - button "Compare slotting" [ref=e500]:
+                        - img [ref=e501]
+                  - generic [ref=e504]:
+                    - generic [ref=e505]:
+                      - generic "Empty slot 1 - tap to add" [ref=e506] [cursor=pointer]:
+                        - generic [ref=e507]: +
+                      - generic:
+                        - generic: "1"
+                    - generic [ref=e508]:
+                      - generic "Empty slot 2 - tap to add, right-click to remove, drag to remove multiple" [ref=e509] [cursor=pointer]:
+                        - generic [ref=e510]: +
+                      - generic:
+                        - generic: "8"
+                    - generic [ref=e511]:
+                      - generic "Empty slot 3 - tap to add, right-click to remove, drag to remove multiple" [ref=e512] [cursor=pointer]:
+                        - generic [ref=e513]: +
+                      - generic:
+                        - generic: "16"
+                    - 'generic "Left-click: add slot (3/6) • Right-click: remove • Drag for more" [ref=e514] [cursor=pointer]':
+                      - generic [ref=e515]: +
+                - generic [ref=e519]:
+                  - generic [ref=e520]:
+                    - generic "Right-click to lock power info" [ref=e521]: Stamina
+                    - generic [ref=e522]: (Auto)
+                    - generic [ref=e523]:
+                      - button "Power info" [ref=e524]:
+                        - img [ref=e525]
+                      - button "Compare slotting" [ref=e527]:
+                        - img [ref=e528]
+                  - generic [ref=e531]:
+                    - generic [ref=e532]:
+                      - generic "Empty slot 1 - tap to add" [ref=e533] [cursor=pointer]:
+                        - generic [ref=e534]: +
+                      - generic:
+                        - generic: "1"
+                    - generic [ref=e535]:
+                      - generic "Empty slot 2 - tap to add, right-click to remove, drag to remove multiple" [ref=e536] [cursor=pointer]:
+                        - generic [ref=e537]: +
+                      - generic:
+                        - generic: "12"
+                    - generic [ref=e538]:
+                      - generic "Empty slot 3 - tap to add, right-click to remove, drag to remove multiple" [ref=e539] [cursor=pointer]:
+                        - generic [ref=e540]: +
+                      - generic:
+                        - generic: "22"
+                    - 'generic "Left-click: add slot (3/6) • Right-click: remove • Drag for more" [ref=e541] [cursor=pointer]':
+                      - generic [ref=e542]: +
+            - generic [ref=e544] [cursor=pointer]:
+              - generic [ref=e545]: ▶
+              - heading "Basic" [level=4] [ref=e546]
+              - generic [ref=e547]: (3)
+            - generic [ref=e549] [cursor=pointer]:
+              - generic [ref=e550]: ▶
+              - heading "Prestige Sprints" [level=4] [ref=e551]
+              - generic [ref=e552]: (5)
+            - generic [ref=e554] [cursor=pointer]:
+              - generic [ref=e555]: ▶
+              - heading "Blaster Inherent" [level=4] [ref=e556]
+              - generic [ref=e557]: (1)
+        - generic [ref=e558]:
+          - generic [ref=e559]:
+            - heading "Power Info" [level=2] [ref=e560]
+            - generic [ref=e561]:
+              - generic "Enable power info tooltip on hover" [ref=e562] [cursor=pointer]:
+                - checkbox "Tooltips" [ref=e564]
+                - generic [ref=e568]: Tooltips
+              - button "Pop out info panel into separate window" [ref=e569]:
+                - img [ref=e570]
+          - generic [ref=e573]:
+            - 'generic "Info panel: hover-preview mode" [ref=e678]':
+              - img [ref=e679]
+            - generic [ref=e681]:
+              - generic [ref=e683]:
+                - heading "Dive Attack" [level=3] [ref=e684]
+                - text: Click
+              - generic [ref=e685]:
+                - generic [ref=e686]: PBAoE High DMG(Smashing)
+                - generic [ref=e687]: Foe Knockdown; Self Teleport
+                - generic [ref=e688]: +Jump
+              - generic [ref=e689]:
+                - generic [ref=e690]:
+                  - generic [ref=e691]: Power Type
+                  - generic [ref=e692]: Click
+                - generic "Knockback, Melee AoE Damage, Universal Damage Sets" [ref=e693]:
+                  - generic [ref=e694]: Allowed Enh
+                  - generic [ref=e695]: Knockback, Melee AoE Damage, Universal Damage Sets
+              - generic [ref=e697]:
+                - generic [ref=e698]:
+                  - generic [ref=e699]: 🐾 Summons
+                  - generic [ref=e700]: Dive Attack
+                  - generic [ref=e701]: (4s)
+                - generic [ref=e702]:
+                  - 'button "▶ Pet DPS: 5.1" [ref=e703] [cursor=pointer]':
+                    - generic [ref=e704]: ▶
+                    - generic [ref=e705]: "Pet DPS:"
+                    - generic [ref=e706]: "5.1"
+                  - button "▶ Effects" [ref=e708] [cursor=pointer]:
+                    - generic [ref=e709]: ▶
+                    - generic [ref=e710]: Effects
+              - generic [ref=e711]:
+                - heading "Power Effects" [level=4] [ref=e712]
+                - generic [ref=e713]:
+                  - generic [ref=e714]:
+                    - generic [ref=e715]: Stat
+                    - generic [ref=e716]: Base
+                    - generic [ref=e717]: Enhanced
+                    - generic [ref=e718]: Final
+                  - generic [ref=e719]: BUFFS
+                  - generic [ref=e720]:
+                    - generic [ref=e721]: Teleport
+                    - generic [ref=e722]: "1.00"
+                    - generic [ref=e723]: —
+                    - generic [ref=e724]: —
+                  - generic [ref=e725]:
+                    - generic [ref=e726]: End Cost
+                    - generic [ref=e727]: "14.35"
+                    - generic [ref=e728]: "14.35"
+                    - generic [ref=e729]: "14.35"
+                  - generic [ref=e730]:
+                    - generic [ref=e731]: Rech Time
+                    - generic [ref=e732]: 34.00s
+                    - generic [ref=e733]: 34.00s
+                    - generic [ref=e734]: 34.00s
+                  - generic [ref=e735]:
+                    - generic [ref=e736]: Accuracy
+                    - generic [ref=e737]: 75.00%
+                    - generic [ref=e738]: 75.00%
+                    - generic [ref=e739]: 75.00%
+              - generic [ref=e740]:
+                - heading "Damage (Lvl 50)" [level=4] [ref=e741]:
+                  - text: Damage
+                  - generic [ref=e742]: (Lvl 50)
+                - generic [ref=e743]:
+                  - radiogroup "Damage display mode" [ref=e744]:
+                    - radio "DMG" [checked] [ref=e745]
+                    - radio "DPA" [ref=e746]
+                    - radio "DPS" [ref=e747]
+                    - radio "DPE" [ref=e748]
+                  - generic [ref=e749]:
+                    - generic [ref=e750]: Type
+                    - generic [ref=e751]: Base
+                    - generic [ref=e752]: Enhanced
+                    - generic [ref=e753]: Final
+                  - generic [ref=e754]:
+                    - generic [ref=e755]: Smash
+                    - generic [ref=e756]: "509.39"
+                    - generic [ref=e757]: —
+                    - generic [ref=e758]: —
+                  - 'generic "Damage cap: 500%" [ref=e759]'
+                  - generic [ref=e764]:
+                    - generic [ref=e765]:
+                      - generic [ref=e766]: Cycle TimeA
+                      - generic [ref=e767]: 35.72s
+                    - generic [ref=e768]:
+                      - text: Average DMG
+                      - generic [ref=e769]: "509.39"
+              - generic [ref=e770]:
+                - generic [ref=e771]:
+                  - heading "Perma Tracker" [level=4] [ref=e772]
+                  - button "Track" [ref=e773]
+                - generic [ref=e774]:
+                  - generic [ref=e777]: 0.0%
+                  - generic [ref=e778]:
+                    - generic [ref=e779]:
+                      - generic [ref=e780]: +Recharge
+                      - generic [ref=e781]: 0% / 750%
+                    - generic [ref=e782]:
+                      - generic [ref=e783]: Eff. Rchg
+                      - generic [ref=e784]: 34.0s
+                    - generic [ref=e785]:
+                      - generic [ref=e786]: Base / Duration
+                      - generic [ref=e787]: 34s / 4s
+                    - generic [ref=e788]:
+                      - generic [ref=e789]: Gap
+                      - generic [ref=e790]: 30.0s
+              - generic [ref=e791]:
+                - generic [ref=e792]:
+                  - generic [ref=e793]: Activation
+                  - generic [ref=e794]: 1.500s
+                - generic [ref=e795]:
+                  - generic [ref=e796]: ArcanaTime
+                  - generic [ref=e797]: 1.716s
+                - generic [ref=e798]:
+                  - generic [ref=e799]: Pwr Range
+                  - generic [ref=e800]: 100ft
+                - generic [ref=e801]:
+                  - generic [ref=e802]: Attack Type
+                  - generic [ref=e803]: Ranged
+              - paragraph [ref=e804]: "You dive in the air and smash down among ranks of foes in the blink of an eye. Using this power allows you to dive to a selected area to deal significant smashing damage to all foes near the location you teleport to, most foes that are struck by your Dive Attack will be knocked down. If you have also trained Fly, this power unlocks Afterburner, a power that greatly increases your maximum fly speed. You must be at least level 14 and have two other Flight Powers before selecting Dive Attack and not have trained Blink Blitz, Spring Attack, or Whirlwind. Damage: High, Recharge: Slow."
+    - generic [ref=e574]:
+      - button "Open help" [ref=e575]:
+        - img [ref=e576]
+      - button "Changelog" [ref=e578]:
+        - img [ref=e579]
+      - button "Send feedback or report a bug" [ref=e581]:
+        - img [ref=e582]
+      - button "Buy me a coffee" [ref=e584]:
+        - img [ref=e585]
+        - text: Buy me a coffee
+  - generic:
+    - iframe
+  - dialog "Add a Power Pool" [ref=e595]:
+    - generic [ref=e596]:
+      - generic [ref=e597]:
+        - heading "Add a Power Pool" [level=2] [ref=e598]
+        - button "Close modal" [ref=e599]:
+          - img [ref=e600]
+      - generic [ref=e603]:
+        - paragraph [ref=e604]: Click a pool to preview its powers, then choose a starting power — or add the pool empty.
+        - button "▶ Concealment" [ref=e606] [cursor=pointer]:
+          - generic [ref=e607]:
+            - generic [ref=e608]: ▶
+            - generic [ref=e609]: Concealment
+        - button "▶ Experimentation" [ref=e611] [cursor=pointer]:
+          - generic [ref=e612]:
+            - generic [ref=e613]: ▶
+            - generic [ref=e614]: Experimentation
+        - button "▶ Fighting" [ref=e616] [cursor=pointer]:
+          - generic [ref=e617]:
+            - generic [ref=e618]: ▶
+            - generic [ref=e619]: Fighting
+        - generic [ref=e620]:
+          - button "▶ Flight" [expanded] [ref=e621] [cursor=pointer]:
+            - generic [ref=e622]:
+              - generic [ref=e623]: ▶
+              - generic [ref=e624]: Flight
+          - generic [ref=e670]:
+            - button "+ Add pool without picking a power" [ref=e672]
+            - button "1 Hover" [ref=e673] [cursor=pointer]:
+              - generic "Available at level 1": "1"
+              - generic: Hover
+            - button "1 Air Superiority" [ref=e674] [cursor=pointer]:
+              - generic "Available at level 1": "1"
+              - generic: Air Superiority
+            - button "4 Fly" [ref=e675] [cursor=pointer]:
+              - generic "Available at level 4": "4"
+              - generic: Fly
+            - button "14 Aerobatics" [ref=e676]:
+              - generic "Requires level 14": "14"
+              - generic: Aerobatics
+            - button "14 Dive Attack" [ref=e677]:
+              - generic "Requires level 14": "14"
+              - generic: Dive Attack
+        - button "▶ Force of Will" [ref=e626] [cursor=pointer]:
+          - generic [ref=e627]:
+            - generic [ref=e628]: ▶
+            - generic [ref=e629]: Force of Will
+        - button "▶ Gadgetry" [ref=e631] [cursor=pointer]:
+          - generic [ref=e632]:
+            - generic [ref=e633]: ▶
+            - generic [ref=e634]: Gadgetry
+        - button "▶ Leadership" [ref=e636] [cursor=pointer]:
+          - generic [ref=e637]:
+            - generic [ref=e638]: ▶
+            - generic [ref=e639]: Leadership
+        - button "▶ Leaping" [ref=e641] [cursor=pointer]:
+          - generic [ref=e642]:
+            - generic [ref=e643]: ▶
+            - generic [ref=e644]: Leaping
+        - button "▶ Medicine" [ref=e646] [cursor=pointer]:
+          - generic [ref=e647]:
+            - generic [ref=e648]: ▶
+            - generic [ref=e649]: Medicine
+        - button "▶ Presence" [ref=e651] [cursor=pointer]:
+          - generic [ref=e652]:
+            - generic [ref=e653]: ▶
+            - generic [ref=e654]: Presence
+        - button "▶ Sorcery" [ref=e656] [cursor=pointer]:
+          - generic [ref=e657]:
+            - generic [ref=e658]: ▶
+            - generic [ref=e659]: Sorcery
+        - button "▶ Speed" [ref=e661] [cursor=pointer]:
+          - generic [ref=e662]:
+            - generic [ref=e663]: ▶
+            - generic [ref=e664]: Speed
+        - button "▶ Teleportation" [ref=e666] [cursor=pointer]:
+          - generic [ref=e667]:
+            - generic [ref=e668]: ▶
+            - generic [ref=e669]: Teleportation

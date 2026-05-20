@@ -2761,6 +2761,18 @@ export const POWER_POOLS_RAW = {
           "endurance": 13.52,
           "activationTime": 1.5,
           "effectArea": "Location",
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 0.5,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Melee_Damage"
+            }
+          ],
           "teleport": {
             "scale": 1,
             "table": "Ranged_Ones"

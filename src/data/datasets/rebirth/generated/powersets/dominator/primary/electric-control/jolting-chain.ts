@@ -51,6 +51,12 @@ export const JoltingChain: Power = {
       "scale": 0.1,
       "table": "Ranged_Ones"
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Chain_Jolt_Dominator_Jump1",
+      "duration": 1,
+      "entityCount": 2
+    },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"

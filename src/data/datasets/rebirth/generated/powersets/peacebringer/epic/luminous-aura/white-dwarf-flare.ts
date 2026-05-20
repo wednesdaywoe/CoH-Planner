@@ -40,6 +40,7 @@ export const WhiteDwarfFlare: Power = {
     "Kheldian Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

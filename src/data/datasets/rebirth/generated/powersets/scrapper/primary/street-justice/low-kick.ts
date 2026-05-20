@@ -38,6 +38,7 @@ export const ShinBreaker: Power = {
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

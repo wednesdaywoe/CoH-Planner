@@ -39,6 +39,7 @@ export const SolarFlare: Power = {
     "Defense Debuff",
     "Knockback",
     "Melee AoE Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

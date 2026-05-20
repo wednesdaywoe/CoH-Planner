@@ -39,5 +39,12 @@ export const ShadowField: Power = {
     "Holds",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Shadow_Field_Controller",
+      "duration": 45
+    }
+  }
 };

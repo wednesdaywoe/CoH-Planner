@@ -41,6 +41,7 @@ export const GoldenDragonfly: Power = {
     "Defense Debuff",
     "Knockback",
     "Melee AoE Damage",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -38,6 +38,7 @@ export const MaimingSlash: Power = {
     "Melee Damage",
     "Slow Movement",
     "Threat Duration",
+    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

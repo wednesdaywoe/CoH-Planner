@@ -73,6 +73,11 @@ export const SingleShot: Power = {
         "durations": {
           "regenDebuff": 10
         },
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_DisintegrateSpread",
+          "duration": 6
+        },
         "buffDuration": 10
       }
     }
@@ -86,7 +91,7 @@ export const SingleShot: Power = {
     {
       "kind": "effect-proc",
       "chance": 0.20000000298023224,
-      "label": "Unknown(116)"
+      "label": "Create_Entity"
     }
   ]
 };
