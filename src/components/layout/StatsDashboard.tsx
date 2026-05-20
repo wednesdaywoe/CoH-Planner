@@ -12,7 +12,7 @@ import { formatBonusValue2 as formatBonusValue } from '@/utils/set-bonus-format'
 import { getArchetype } from '@/data';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
@@ -183,6 +183,8 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
   const procSettingsModalOpen = useUIStore((s) => s.procSettingsModalOpen);
   const closeProcSettingsModal = useUIStore((s) => s.closeProcSettingsModal);
+  const enhancementToolsModalOpen = useUIStore((s) => s.enhancementToolsModalOpen);
+  const closeEnhancementToolsModal = useUIStore((s) => s.closeEnhancementToolsModal);
   const trackedStats = useUIStore((s) => s.trackedStats);
   const toggleTrackedStat = useUIStore((s) => s.toggleTrackedStat);
   const ensureTrackedStats = useUIStore((s) => s.ensureTrackedStats);
@@ -667,6 +669,12 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
       <ProcSettingsModal
         isOpen={procSettingsModalOpen}
         onClose={closeProcSettingsModal}
+      />
+
+      {/* Enhancement Tools Modal */}
+      <EnhancementToolsModal
+        isOpen={enhancementToolsModalOpen}
+        onClose={closeEnhancementToolsModal}
       />
       </>}
     </>

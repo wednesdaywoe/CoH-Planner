@@ -187,6 +187,9 @@ interface UIState {
   /** Proc settings modal open state */
   procSettingsModalOpen: boolean;
 
+  /** Enhancement Tools modal open state */
+  enhancementToolsModalOpen: boolean;
+
   /** Include proc damage in per-power DPS calculations */
   includeProcDamageInDPS: boolean;
 
@@ -380,6 +383,8 @@ interface UIActions {
   setProcSettings: (settings: ProcSettings) => void;
   openProcSettingsModal: () => void;
   closeProcSettingsModal: () => void;
+  openEnhancementToolsModal: () => void;
+  closeEnhancementToolsModal: () => void;
   toggleIncludeProcDamageInDPS: () => void;
   toggleUseArcanaTime: () => void;
   setDamageDisplayMode: (mode: DamageDisplayMode) => void;
@@ -704,6 +709,7 @@ export const useUIStore = create<UIStore>()(
       contentMode: 'standard' as const,
       procSettings: { ...DEFAULT_PROC_SETTINGS },
       procSettingsModalOpen: false,
+      enhancementToolsModalOpen: false,
       includeProcDamageInDPS: true,
       useArcanaTime: true,
       damageDisplayMode: 'damage' as DamageDisplayMode,
@@ -904,6 +910,12 @@ export const useUIStore = create<UIStore>()(
 
       closeProcSettingsModal: () =>
         set({ procSettingsModalOpen: false }),
+
+      openEnhancementToolsModal: () =>
+        set({ enhancementToolsModalOpen: true }),
+
+      closeEnhancementToolsModal: () =>
+        set({ enhancementToolsModalOpen: false }),
 
       toggleIncludeProcDamageInDPS: () =>
         set((state) => ({

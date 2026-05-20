@@ -121,19 +121,32 @@ interface BuildActions {
   setVaultId: (id: string | null) => void;
 
   /**
-   * Walk every slotted enhancement and bump it to its "finalized" form:
-   *   - Hamidon / Titan / Hydra / D-Sync / prestige (`type: 'special'`)
-   *     get their level set to `specialLevel` (default 53 — the L53 HO/
-   *     Yin/Hydra cap most CoH builds aim for).
-   *   - Generic IO and Set IO pieces (`type: 'io-set'`, `'io-generic'`)
-   *     at level 50 or attuned get their boost set to `boostLevel`
-   *     (default 5 — Enhancement Catalyst max). Sub-50 IOs are skipped
-   *     because boosters only apply to L50+ in-game.
+   * Walk every slotted enhancement and bump it to its "finalized" form.
+   * All options are individually optional — pass only the ones you want
+   * to change; omitted ones leave the corresponding state alone.
+   *   - `specialLevel`: set Hamidon/Titan/Hydra/D-Sync (`type: 'special'`)
+   *     to this level. Typical cap 53.
+   *   - `ioLevel`: force every non-attuned IO (`type: 'io-set'`,
+   *     `'io-generic'`) to this level. Set IOs are clamped to the set's
+   *     [minLevel, maxLevel] range. Attuned IOs are skipped (they don't
+   *     carry a meaningful level — they scale with character level).
+   *   - `attuneAll`: flip `attuned: true` on every set IO. Doesn't apply
+   *     to generic IOs (no attunement state). Mirrors the in-game catalyst
+   *     conversion by also clearing `boost` on any IO that becomes attuned
+   *     this way (attuned IOs cannot carry boosters).
+   *   - `boostLevel`: set the +X catalyst boost on every NON-attuned IO
+   *     at L50+ (generic or set). Attuned IOs cannot accept boosters in
+   *     the game; sub-50 non-attuned IOs are similarly ineligible.
    * Origin enhancements (TO/DO/SO) are untouched — they don't have a
-   * boost mechanic. Any slot already at the target level/boost is left
-   * alone so the operation idempotent and the breakdown stays clean.
+   * boost mechanic. Slots already at the target value are left alone so
+   * the operation is idempotent and the breakdown stays clean.
    */
-  maximizeEnhancementLevels: (options?: { specialLevel?: number; boostLevel?: number }) => void;
+  maximizeEnhancementLevels: (options?: {
+    specialLevel?: number;
+    ioLevel?: number;
+    attuneAll?: boolean;
+    boostLevel?: number;
+  }) => void;
 
   // Accolades
   addAccolade: (accolade: Accolade) => void;
@@ -1686,25 +1699,62 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       maximizeEnhancementLevels: (options) => {
-        const specialLevel = options?.specialLevel ?? 53;
-        const boostLevel = options?.boostLevel ?? 5;
+        const { specialLevel, ioLevel, attuneAll, boostLevel } = options ?? {};
         // Map a single slot to its maxed form. Returns the same object
         // when nothing changes so the React equality check downstream can
-        // bail without a rerender.
+        // bail without a rerender. Each option is applied independently —
+        // omitted options leave the corresponding state alone.
         const maxSlot = (slot: Enhancement | null): Enhancement | null => {
           if (!slot) return slot;
           if (slot.type === 'special') {
+            if (specialLevel === undefined) return slot;
             if (slot.level === specialLevel) return slot;
             return { ...slot, level: specialLevel };
           }
           if (slot.type === 'io-set' || slot.type === 'io-generic') {
-            // Boost only meaningfully applies to L50+ IOs in-game. Attuned
-            // IOs scale with character level and accept boosts when
-            // catalyzed, so include them too.
-            const eligible = slot.attuned === true || (slot.level ?? 50) >= 50;
-            if (!eligible) return slot;
-            if ((slot.boost ?? 0) === boostLevel) return slot;
-            return { ...slot, boost: boostLevel };
+            let next: Enhancement = slot;
+
+            // attuneAll: flip attuned=true on set IOs. Generic IOs have
+            // no attunement state, so leave them alone. Applying a
+            // catalyst in-game also strips any existing boosters from the
+            // IO, so we clear `boost` at the same time to keep state
+            // consistent.
+            if (attuneAll && slot.type === 'io-set' && slot.attuned !== true) {
+              next = { ...next, attuned: true, boost: undefined };
+            }
+
+            // ioLevel: force non-attuned IO level. Set IOs are clamped to
+            // the set's [minLevel, maxLevel] range; generic IOs are clamped
+            // to [10, 50]. Attuned IOs (including those just-flipped by
+            // attuneAll above) don't carry a meaningful level, so we skip.
+            const isAttuned = next.type === 'io-set' && next.attuned === true;
+            if (ioLevel !== undefined && !isAttuned) {
+              let target = ioLevel;
+              if (next.type === 'io-set' && next.setId) {
+                const set = getIOSet(next.setId);
+                if (set) {
+                  // set.minLevel may be < 10 in data but in-game floor is 10.
+                  target = Math.min(set.maxLevel, Math.max(set.minLevel ?? 10, ioLevel));
+                }
+              } else if (next.type === 'io-generic') {
+                target = Math.min(50, Math.max(10, ioLevel));
+              }
+              if ((next.level ?? 50) !== target) {
+                next = { ...next, level: target };
+              }
+            }
+
+            // boostLevel: apply +X catalyst boost. Eligible only for
+            // NON-attuned L50+ IOs (generic or set). Attuned IOs cannot
+            // accept boosters in-game — they scale with character level
+            // and that's the only knob they have.
+            if (boostLevel !== undefined && !isAttuned && (next.level ?? 50) >= 50) {
+              if ((next.boost ?? 0) !== boostLevel) {
+                next = { ...next, boost: boostLevel };
+              }
+            }
+
+            return next === slot ? slot : next;
           }
           return slot;
         };

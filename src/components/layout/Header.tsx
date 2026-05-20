@@ -97,9 +97,9 @@ export function Header() {
   const clearPowers = useBuildStore((s) => s.clearPowers);
   const clearAllEnhancementsGlobal = useBuildStore((s) => s.clearAllEnhancementsGlobal);
   const clearAllExtraSlots = useBuildStore((s) => s.clearAllExtraSlots);
-  const maximizeEnhancementLevels = useBuildStore((s) => s.maximizeEnhancementLevels);
   const resetForNewBuild = useUIStore((s) => s.resetForNewBuild);
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
+  const openEnhancementToolsModal = useUIStore((s) => s.openEnhancementToolsModal);
   const includeProcDamageInDPS = useUIStore((s) => s.includeProcDamageInDPS);
   const toggleIncludeProcDamageInDPS = useUIStore((s) => s.toggleIncludeProcDamageInDPS);
   const combatMode = useUIStore((s) => s.combatMode);
@@ -112,7 +112,7 @@ export function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const isOnBuildsPage = location.pathname.startsWith('/builds');
-  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | 'clear-slots' | 'clear-enhancements' | 'maximize' | null>(null);
+  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | 'clear-slots' | 'clear-enhancements' | null>(null);
 
   const archetypeId = build.archetype.id;
 
@@ -150,7 +150,7 @@ export function Header() {
             onClear={() => setConfirmAction('clear')}
             onClearSlots={() => setConfirmAction('clear-slots')}
             onClearEnhancements={() => setConfirmAction('clear-enhancements')}
-            onMaximize={() => setConfirmAction('maximize')}
+            onEnhancementTools={openEnhancementToolsModal}
             onAbout={openAboutModal}
           />
         </div>
@@ -286,14 +286,6 @@ export function Header() {
         message="Remove every slotted enhancement across the build? Powers and slot allocations are kept."
         confirmLabel="Clear Enhancements"
         onConfirm={() => { clearAllEnhancementsGlobal(); setConfirmAction(null); }}
-        onCancel={() => setConfirmAction(null)}
-      />
-      <ConfirmModal
-        isOpen={confirmAction === 'maximize'}
-        title="Maximize Enhancement Levels"
-        message="Set every Hamidon / Titan / Hydra / D-Sync to level 53 and apply +5 boost to every level-50 (or attuned) IO. SO/DO/TO and lower-level IOs are left alone. Use Undo to revert."
-        confirmLabel="Maximize"
-        onConfirm={() => { maximizeEnhancementLevels(); setConfirmAction(null); }}
         onCancel={() => setConfirmAction(null)}
       />
     </header>
@@ -782,7 +774,7 @@ function ActionMenu({
   onClear,
   onClearSlots,
   onClearEnhancements,
-  onMaximize,
+  onEnhancementTools,
   onAbout,
 }: {
   onOpenModal: (tab?: 'save' | 'load-import' | 'share-export') => void;
@@ -790,7 +782,7 @@ function ActionMenu({
   onClear: () => void;
   onClearSlots: () => void;
   onClearEnhancements: () => void;
-  onMaximize: () => void;
+  onEnhancementTools: () => void;
   onAbout: () => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -907,12 +899,12 @@ function ActionMenu({
             Clear Enhancements
           </button>
           <button
-            onClick={() => { onMaximize(); setOpen(false); }}
+            onClick={() => { onEnhancementTools(); setOpen(false); }}
             className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2"
-            title="Set HOs/Titans/Hydras/D-Syncs to L53 and apply +5 boost to every L50 (or attuned) IO."
+            title="Bulk-edit enhancement levels, attunement, and boosters across the build."
           >
             <svg className="w-4 h-4 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
-            Maximize Enhancements
+            Enhancement Tools
           </button>
           {supabase && !loading && (
             <>

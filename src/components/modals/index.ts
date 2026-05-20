@@ -20,4 +20,5 @@ export { CompareSlottingModal } from './CompareSlottingModal';
 export { DetailedTotalsModal } from './DetailedTotalsModal';
 export { PowersetCompareModal } from './PowersetCompareModal';
 export { ProcSettingsModal } from './ProcSettingsModal';
+export { EnhancementToolsModal } from './EnhancementToolsModal';
 export { PoolPickerModal } from './PoolPickerModal';

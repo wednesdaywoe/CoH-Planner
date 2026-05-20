@@ -55,9 +55,9 @@ export function MobileBottomNav() {
   const clearPowers = useBuildStore((s) => s.clearPowers);
   const clearAllEnhancementsGlobal = useBuildStore((s) => s.clearAllEnhancementsGlobal);
   const clearAllExtraSlots = useBuildStore((s) => s.clearAllExtraSlots);
-  const maximizeEnhancementLevels = useBuildStore((s) => s.maximizeEnhancementLevels);
   const resetForNewBuild = useUIStore((s) => s.resetForNewBuild);
-  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | 'clear-slots' | 'clear-enhancements' | 'maximize' | null>(null);
+  const openEnhancementToolsModal = useUIStore((s) => s.openEnhancementToolsModal);
+  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | 'clear-slots' | 'clear-enhancements' | null>(null);
 
   const requestNewBuild = () => {
     closeMobileSheet();
@@ -75,9 +75,9 @@ export function MobileBottomNav() {
     closeMobileSheet();
     setConfirmAction('clear-enhancements');
   };
-  const requestMaximize = () => {
+  const requestEnhancementTools = () => {
     closeMobileSheet();
-    setConfirmAction('maximize');
+    openEnhancementToolsModal();
   };
 
   // Picking any non-Incarnate tab should close the Incarnate modal so tab
@@ -118,7 +118,7 @@ export function MobileBottomNav() {
             onRequestClearPowers={requestClearPowers}
             onRequestClearSlots={requestClearSlots}
             onRequestClearEnhancements={requestClearEnhancements}
-            onRequestMaximize={requestMaximize}
+            onRequestEnhancementTools={requestEnhancementTools}
           />
         </MobileSheet>
       )}
@@ -198,14 +198,6 @@ export function MobileBottomNav() {
         message="Remove every slotted enhancement across the build? Powers and slot allocations are kept."
         confirmLabel="Clear Enhancements"
         onConfirm={() => { clearAllEnhancementsGlobal(); setConfirmAction(null); }}
-        onCancel={() => setConfirmAction(null)}
-      />
-      <ConfirmModal
-        isOpen={confirmAction === 'maximize'}
-        title="Maximize Enhancement Levels"
-        message="Set every Hamidon / Titan / Hydra / D-Sync to level 53 and apply +5 boost to every level-50 (or attuned) IO. SO/DO/TO and lower-level IOs are left alone. Use Undo to revert."
-        confirmLabel="Maximize"
-        onConfirm={() => { maximizeEnhancementLevels(); setConfirmAction(null); }}
         onCancel={() => setConfirmAction(null)}
       />
     </>
@@ -294,14 +286,14 @@ function MobileMenuContent({
   onRequestClearPowers,
   onRequestClearSlots,
   onRequestClearEnhancements,
-  onRequestMaximize,
+  onRequestEnhancementTools,
 }: {
   onDone: () => void;
   onRequestNewBuild: () => void;
   onRequestClearPowers: () => void;
   onRequestClearSlots: () => void;
   onRequestClearEnhancements: () => void;
-  onRequestMaximize: () => void;
+  onRequestEnhancementTools: () => void;
 }) {
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
@@ -367,7 +359,7 @@ function MobileMenuContent({
         {itemNoClose('Clear powers', onRequestClearPowers, true)}
         {itemNoClose('Clear slots', onRequestClearSlots, true)}
         {itemNoClose('Clear enhancements', onRequestClearEnhancements, true)}
-        {itemNoClose('Maximize enhancements', onRequestMaximize)}
+        {itemNoClose('Enhancement Tools', onRequestEnhancementTools)}
       </Section>
       <Section label="Info">
         {item('Help', openHelpModal)}
