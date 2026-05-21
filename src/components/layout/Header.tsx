@@ -15,6 +15,8 @@ import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui'
 import type { BadgeVariant } from '@/components/ui';
 import { getActiveDataset } from '@/data/dataset';
 import { buildShareUrl } from '@/utils/url-build-sync';
+import { quickShareBuild } from '@/services/sharedBuilds';
+import type { BuildExport } from '@/types/build';
 import type { DatasetId } from '@/data/dataset';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, OPPORTUNITY_CRIT_MULTIPLIER } from '@/utils/calculations';
@@ -795,6 +797,8 @@ function ActionMenu({
   const logout = useAuthStore((s) => s.logout);
   const currentOnboardingStep2 = useOnboardingCurrentStep();
   const [linkCopied, setLinkCopied] = useState(false);
+  const [shortLinkState, setShortLinkState] = useState<'idle' | 'loading' | 'copied' | 'error'>('idle');
+  const [showSignInForShortLink, setShowSignInForShortLink] = useState(false);
 
   const handleCopyLiveLink = async () => {
     try {
@@ -804,6 +808,27 @@ function ActionMenu({
       setTimeout(() => setLinkCopied(false), 1500);
     } catch (err) {
       console.error('Failed to copy live link:', err);
+    }
+  };
+
+  const handleCopyShortLink = async () => {
+    if (!user) {
+      setShowSignInForShortLink(true);
+      setOpen(false);
+      return;
+    }
+    setShortLinkState('loading');
+    try {
+      const exportJson = useBuildStore.getState().exportBuild();
+      const exportData = JSON.parse(exportJson) as BuildExport;
+      const { url } = await quickShareBuild(exportData);
+      await navigator.clipboard.writeText(url);
+      setShortLinkState('copied');
+      setTimeout(() => setShortLinkState('idle'), 1500);
+    } catch (err) {
+      console.error('Failed to create short link:', err);
+      setShortLinkState('error');
+      setTimeout(() => setShortLinkState('idle'), 2000);
     }
   };
 
@@ -846,6 +871,24 @@ function ActionMenu({
     : undefined;
 
   return (
+    <>
+    <ConfirmModal
+      isOpen={showSignInForShortLink}
+      onCancel={() => setShowSignInForShortLink(false)}
+      onConfirm={async () => {
+        setShowSignInForShortLink(false);
+        try {
+          await login();
+        } catch (err) {
+          console.error('Failed to start login:', err);
+        }
+      }}
+      title="Sign in to create a short link"
+      message="Short links are tied to your account so you can update or delete them later. Sign in with Discord to continue. (You'll be redirected away from this page; your build is saved.)"
+      confirmLabel="Sign in with Discord"
+      cancelLabel="Cancel"
+      variant="primary"
+    />
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
@@ -861,23 +904,35 @@ function ActionMenu({
 
       {open && (
         <div className="absolute left-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl py-1 min-w-[180px] z-50">
-          <button onClick={() => { onOpenModal('save'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+          <button onClick={() => { onOpenModal('save'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Save the current build to your browser's local storage under a name.">
             <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" /></svg>
             Save
           </button>
-          <button onClick={() => { onOpenModal('load-import'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+          <button onClick={() => { onOpenModal('load-import'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Load a locally saved build, or paste in JSON / Mids / popmenu data.">
             <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
             Load / Import
+          </button>
+          <button
+            onClick={handleCopyShortLink}
+            disabled={shortLinkState === 'loading'}
+            className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2 disabled:opacity-60 disabled:cursor-wait"
+            title="Create a short, shareable URL (works in Discord). Unlisted — won't appear in the public Builds gallery. Requires sign-in."
+          >
+            <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 12L3.269 3.125A59.769 59.769 0 0121.485 12 59.768 59.768 0 013.27 20.875L5.999 12zm0 0h7.5" /></svg>
+            {shortLinkState === 'loading' ? 'Creating...'
+              : shortLinkState === 'copied' ? 'Link copied!'
+              : shortLinkState === 'error' ? 'Failed — try again'
+              : 'Copy Short Link'}
           </button>
           <button
             onClick={handleCopyLiveLink}
             className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2"
             title="Copy a URL that encodes the current build. The link updates live as you edit."
           >
-            <svg className="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 015.656 5.656l-3 3a4 4 0 01-5.656 0M10.172 13.828a4 4 0 01-5.656-5.656l3-3a4 4 0 015.656 0" /></svg>
+            <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 015.656 5.656l-3 3a4 4 0 01-5.656 0M10.172 13.828a4 4 0 01-5.656-5.656l3-3a4 4 0 015.656 0" /></svg>
             {linkCopied ? 'Link copied!' : 'Copy Live Link'}
           </button>
-          <button onClick={() => { onOpenModal('share-export'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" data-onboarding="export-import">
+          <button onClick={() => { onOpenModal('share-export'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" data-onboarding="export-import" title="Publish to the public Builds gallery, or export the build as JSON / Mids / popmenu.">
             <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
             Share / Export
           </button>
@@ -919,11 +974,11 @@ function ActionMenu({
                     )}
                     <span className="text-xs text-gray-400 truncate max-w-[120px]">{displayName}</span>
                   </div>
-                  <button onClick={() => { navigate({ to: '/builds' }); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+                  <button onClick={() => { navigate({ to: '/builds' }); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Browse and manage your shared builds.">
                     <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
                     My Builds
                   </button>
-                  <button onClick={() => { navigate({ to: '/settings' }); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+                  <button onClick={() => { navigate({ to: '/settings' }); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Account and app settings.">
                     <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                     Account
                   </button>
@@ -934,27 +989,28 @@ function ActionMenu({
                         setOpen(false);
                       }}
                       className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2"
+                      title="View your public author profile page."
                     >
                       <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                       View my Profile
                     </button>
                   )}
-                  <button onClick={() => { navigate({ to: '/settings/profile' }); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+                  <button onClick={() => { navigate({ to: '/settings/profile' }); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Edit your handle, display name, and bio.">
                     <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
                     Profile Settings
                   </button>
-                  <button onClick={() => { logout(); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-red-400 hover:bg-gray-700 hover:text-red-300 transition-colors flex items-center gap-2">
+                  <button onClick={() => { logout(); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-red-400 hover:bg-gray-700 hover:text-red-300 transition-colors flex items-center gap-2" title="Sign out of your account on this browser.">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
                     Log Out
                   </button>
                 </>
               ) : (
                 <>
-                  <button onClick={() => { login('discord'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+                  <button onClick={() => { login('discord'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Sign in with Discord to share builds, claim a public author handle, and create short links.">
                     <svg className="w-4 h-4 text-indigo-400" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
                     Log in with Discord
                   </button>
-                  <button onClick={() => { login('custom:simplelogin'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+                  <button onClick={() => { login('custom:simplelogin'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Sign in with SimpleLogin (email-based, privacy-focused).">
                     <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                     Log in with SimpleLogin
                   </button>
@@ -963,13 +1019,14 @@ function ActionMenu({
             </>
           )}
           <hr className="border-gray-700 my-1" />
-          <button onClick={() => { onAbout(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+          <button onClick={() => { onAbout(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="App version, credits, and recent changes.">
             <img src="img/favicon-32x32.png" alt="" className="w-4 h-4" />
             About Sidekick
           </button>
         </div>
       )}
     </div>
+    </>
   );
 }
 

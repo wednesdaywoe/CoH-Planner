@@ -5,10 +5,12 @@
 import { supabase } from '@/lib/supabase';
 import { useAuthStore } from '@/stores/authStore';
 import type { SharedBuild, ShareBuildInput, SearchFilters, SearchResult } from '@/types/shared';
+import type { BuildExport } from '@/types/build';
 
 const DEFAULT_PAGE_SIZE = 20;
 const OWNER_TOKENS_KEY = 'coh-planner-owner-tokens';
 const FAVORITES_KEY = 'coh-planner-favorites';
+const QUICK_SHARE_CACHE_KEY = 'coh-planner-quick-share';
 
 // ---- Favorites management (localStorage) ----
 
@@ -184,6 +186,107 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
     url: `${window.location.origin}/builds/${data.id}`,
     updated: data.updated ?? false,
   };
+}
+
+// ---- Quick share (one-click unlisted short link) ----
+
+interface QuickShareCache {
+  shareId: string;
+  fingerprint: string;
+}
+
+function readQuickShareCache(): QuickShareCache | null {
+  try {
+    const raw = localStorage.getItem(QUICK_SHARE_CACHE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as QuickShareCache;
+    if (typeof parsed?.shareId !== 'string' || typeof parsed?.fingerprint !== 'string') return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function writeQuickShareCache(cache: QuickShareCache): void {
+  localStorage.setItem(QUICK_SHARE_CACHE_KEY, JSON.stringify(cache));
+}
+
+/** Clear the quick-share cache. Called on logout so a different user on the
+ *  same browser doesn't try to update the previous user's unlisted build. */
+export function clearQuickShareCache(): void {
+  localStorage.removeItem(QUICK_SHARE_CACHE_KEY);
+}
+
+async function fingerprintBuild(buildExport: BuildExport): Promise<string> {
+  const json = JSON.stringify(buildExport.build);
+  const bytes = new TextEncoder().encode(json);
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  // 16 hex chars (64 bits) is plenty to avoid collisions for one user
+  return Array.from(new Uint8Array(digest).slice(0, 8))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+/** One-click unlisted share. Auth required.
+ *
+ * Behavior:
+ *   - If the current build matches the cached fingerprint, returns the cached
+ *     URL with no network call (instant re-copy).
+ *   - Else, updates the cached share row in place via `existingId` (or creates
+ *     a new row on the first share, or if the cached row is no longer ownable).
+ *   - The created build is unlisted (`is_public: false`) — reachable by the
+ *     exact URL but not surfaced in the public gallery.
+ */
+export async function quickShareBuild(buildExport: BuildExport): Promise<{ url: string }> {
+  const user = useAuthStore.getState().user;
+  if (!user) throw new Error('Sign in with Discord to create a short link.');
+
+  const fingerprint = await fingerprintBuild(buildExport);
+  const cached = readQuickShareCache();
+
+  if (cached && cached.fingerprint === fingerprint) {
+    return { url: `${window.location.origin}/builds/${cached.shareId}` };
+  }
+
+  // Generate a meaningful name (mirrors the fallback in ExportImportModal)
+  let name = buildExport.build.name;
+  if (!name || /^untitled\s*build$/i.test(name.trim())) {
+    const at = buildExport.build.archetype?.name || '';
+    const pri = buildExport.build.primary?.name || '';
+    const sec = buildExport.build.secondary?.name || '';
+    name = ['Generic ' + at, pri, sec].filter(Boolean).join(' - ') || 'Shared Build';
+  }
+
+  const authorName =
+    (user.user_metadata?.full_name as string | undefined) ||
+    (user.user_metadata?.name as string | undefined) ||
+    '';
+
+  const shareInput: ShareBuildInput = {
+    name,
+    description: '',
+    author_name: authorName,
+    server: (buildExport.build.serverId as string | undefined) || '',
+    tags: [],
+    build_json: buildExport,
+    is_public: false,
+  };
+
+  // Try updating the cached row first; if it fails (deleted, ownership lost,
+  // edge function rejects), fall back to creating a new one.
+  if (cached) {
+    try {
+      const result = await shareBuild({ ...shareInput, existingId: cached.shareId });
+      writeQuickShareCache({ shareId: result.id, fingerprint });
+      return { url: result.url };
+    } catch {
+      // fall through to create
+    }
+  }
+
+  const result = await shareBuild(shareInput);
+  writeQuickShareCache({ shareId: result.id, fingerprint });
+  return { url: result.url };
 }
 
 /** Delete a shared build (requires ownership via token or Discord auth) */

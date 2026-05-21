@@ -6,6 +6,7 @@
 
 import { create } from 'zustand';
 import { signInWithProvider, signOut, getSession, onAuthStateChange } from '@/services/auth';
+import { clearQuickShareCache } from '@/services/sharedBuilds';
 import type { AuthProvider } from '@/services/auth';
 import type { User } from '@supabase/supabase-js';
 
@@ -54,6 +55,9 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 
   logout: async () => {
     await signOut();
+    // Drop the unlisted "Copy Short Link" cache so a different user on this
+    // browser doesn't try to update the previous user's build.
+    clearQuickShareCache();
     set({ user: null });
   },
 }));
