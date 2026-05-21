@@ -764,6 +764,15 @@ const updateSetTracking = computeSetTracking;
  * normalize it back to the base powerset. The planner expects these to
  * always be base powersets, with branch powers stored alongside in the
  * powers array.
+ *
+ * Also moves powers that ended up in the wrong role array (primary vs
+ * secondary). Older builds — and at least one stale Mids import path —
+ * stored Night Widow Training primary powers (Build_Up, Slash,
+ * Smoke_Grenade) inside the secondary Teamwork array, where hydration
+ * couldn't find them and fell through to the iconless stub. The mover
+ * compares each power against the archetype's full primary + secondary
+ * def sets (base + every branch) and shuffles any that land in the
+ * wrong role.
  */
 function normalizeBranchPowersets(build: Build): void {
   const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
@@ -784,6 +793,94 @@ function normalizeBranchPowersets(build: Build): void {
         build.secondary.name = basePowerset.name;
       }
     }
+  }
+
+  // Build a role lookup: every powerset reachable from this archetype
+  // (base primary, base secondary, branch primaries, branch secondaries)
+  // → its role. Two indexes per role: by lowercased internalName (strong
+  // match) and by lowercased display name (covers builds that pre-date
+  // the NW_/Frt_ internalName renames — e.g. their `Slash` still lines
+  // up with the current `NW_Slash` power via shared display name).
+  type RoleIndex = {
+    byInternal: Map<string, { powerSetId: string }>;
+    byName: Map<string, { powerSetId: string }>;
+  };
+  const makeIndex = (): RoleIndex => ({ byInternal: new Map(), byName: new Map() });
+  const indexes: Record<'primary' | 'secondary', RoleIndex> = {
+    primary: makeIndex(),
+    secondary: makeIndex(),
+  };
+
+  const indexPowerset = (role: 'primary' | 'secondary', setId: string | undefined): void => {
+    if (!setId) return;
+    const ps = getPowerset(setId);
+    if (!ps) return;
+    for (const p of ps.powers) {
+      const idx = indexes[role];
+      const inKey = p.internalName.toLowerCase();
+      const nameKey = p.name.toLowerCase();
+      // First write wins — base set takes precedence over branch sets, so
+      // a power present in both surfaces with the base powerset id.
+      if (!idx.byInternal.has(inKey)) idx.byInternal.set(inKey, { powerSetId: setId });
+      if (!idx.byName.has(nameKey)) idx.byName.set(nameKey, { powerSetId: setId });
+    }
+  };
+
+  // Base sets first so they win on collisions, then branch sets.
+  for (const setId of archetype.primarySets) indexPowerset('primary', setId);
+  for (const setId of archetype.secondarySets) indexPowerset('secondary', setId);
+  for (const branch of Object.values(archetype.branches)) {
+    if (!branch) continue;
+    indexPowerset('primary', branch.primarySet);
+    indexPowerset('secondary', branch.secondarySet);
+  }
+
+  // Classify a power: which role does it belong to? Returns null when no
+  // index matches — those stay put rather than being moved blindly.
+  const classify = (power: SelectedPower): 'primary' | 'secondary' | null => {
+    const inKey = power.internalName.toLowerCase();
+    const nameKey = power.name.toLowerCase();
+    if (indexes.primary.byInternal.has(inKey)) return 'primary';
+    if (indexes.secondary.byInternal.has(inKey)) return 'secondary';
+    if (indexes.primary.byName.has(nameKey)) return 'primary';
+    if (indexes.secondary.byName.has(nameKey)) return 'secondary';
+    return null;
+  };
+
+  const keepPrimary: SelectedPower[] = [];
+  const keepSecondary: SelectedPower[] = [];
+  const moves: string[] = [];
+
+  // Refuse to move if the target role's powerset id is null — there's no
+  // valid `powerSet` to assign and moving would just orphan it elsewhere.
+  const canMoveToPrimary = build.primary.id !== null;
+  const canMoveToSecondary = build.secondary.id !== null;
+
+  for (const p of build.primary.powers) {
+    const role = classify(p);
+    if (role === 'secondary' && canMoveToSecondary) {
+      keepSecondary.push({ ...p, powerSet: build.secondary.id as string });
+      moves.push(`${p.internalName} primary→secondary`);
+    } else {
+      keepPrimary.push(p);
+    }
+  }
+  for (const p of build.secondary.powers) {
+    const role = classify(p);
+    if (role === 'primary' && canMoveToPrimary) {
+      keepPrimary.push({ ...p, powerSet: build.primary.id as string });
+      moves.push(`${p.internalName} secondary→primary`);
+    } else {
+      keepSecondary.push(p);
+    }
+  }
+
+  if (moves.length > 0) {
+    build.primary = { ...build.primary, powers: keepPrimary };
+    build.secondary = { ...build.secondary, powers: keepSecondary };
+    console.warn(
+      `[normalizeBranchPowersets] Moved ${moves.length} misplaced power(s) for ${archetype.name}: ${moves.join(', ')}`
+    );
   }
 }
 

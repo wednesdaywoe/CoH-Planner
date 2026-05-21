@@ -11403,11 +11403,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "pieces": [
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Knockback",
-          "Endurance"
+          "Knockback"
         ],
-        "name": "Damage/Knockback/Endurance",
+        "name": "Accuracy/Damage/Knockback",
         "num": 1,
         "proc": false,
         "unique": false
@@ -11446,11 +11446,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
           "Endurance",
           "Knockback"
         ],
-        "name": "Damage/Endurance/Knockback",
+        "name": "Accuracy/Damage/Endurance/Knockback",
         "num": 5,
         "proc": false,
         "unique": false
@@ -17552,10 +17553,10 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "pieces": [
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 1,
         "proc": false,
         "unique": false
@@ -17582,21 +17583,22 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 4,
         "proc": false,
         "unique": false
       },
       {
         "aspects": [
+          "Accuracy",
           "Damage",
-          "Recharge",
-          "Endurance"
+          "Recharge"
         ],
-        "name": "Damage/Recharge/Endurance",
+        "name": "Accuracy/Damage/Recharge",
         "num": 5,
         "proc": false,
         "unique": false
@@ -25170,9 +25172,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "pieces": [
       {
         "aspects": [
-          "Endurance"
+          "Accuracy"
         ],
-        "name": "Endurance",
+        "name": "Accuracy",
         "num": 1,
         "proc": false,
         "unique": true
@@ -25198,10 +25200,10 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 4,
         "proc": false,
         "unique": true
@@ -28578,9 +28580,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "pieces": [
       {
         "aspects": [
-          "Endurance"
+          "Accuracy"
         ],
-        "name": "Endurance",
+        "name": "Accuracy",
         "num": 1,
         "proc": false,
         "unique": true
@@ -28606,10 +28608,10 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
-          "Damage",
-          "Endurance"
+          "Accuracy",
+          "Damage"
         ],
-        "name": "Damage/Endurance",
+        "name": "Accuracy/Damage",
         "num": 4,
         "proc": false,
         "unique": true

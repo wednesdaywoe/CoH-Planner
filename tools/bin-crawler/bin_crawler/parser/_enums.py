@@ -293,6 +293,21 @@ ATTRIB_NAME: dict[int, str] = {
 # filtered out by attrib-type detection rather than producing wrong data.
 ATTRIB_NAME_REBIRTH: dict[int, str] = {
     **ATTRIB_NAME,
+    # Rebirth shifts Accuracy to 85 (HC: 84). Index 84 may still exist in
+    # Rebirth as something else, but in every observed boost-piece context
+    # 85 carries the Accuracy aspect. Confirmed by cross-referencing 802
+    # Rebirth boost pieces (Rolling_Barrage_A, Bonesnap_A, etc.) — all
+    # match the HC equivalent's Accuracy attrib exactly. The 254 non-boost
+    # uses (5thColumn, BanishedPantheon critter defense toggles, aspect=
+    # Resistance, scale=1, duration=999999) line up with HC's pattern of
+    # the same attrib doing double duty as "accuracy-debuff resistance"
+    # on AV/elite-boss defensive powers.
+    #
+    # Symptom before fix: every Acc/Dam (and Acc/Dmg/Rech, etc.) IO piece
+    # on Rebirth surfaced as `Unknown(85)` and the io-sets extractor
+    # heuristically mapped that to "Endurance" — making Rolling Barrage's
+    # piece 1 read as "Damage/Endurance" instead of "Accuracy/Damage".
+    85: "Accuracy",
     116: "Create_Entity",
 }
 

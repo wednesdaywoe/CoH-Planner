@@ -225,7 +225,11 @@ ATTRIB_TO_ASPECT = {
     # Unknown indices we've seen in boost pieces — map to the most common
     # CoH boost-type meaning. These are heuristics; refine when the
     # binary parser maps them properly.
-    'Unknown(85)':        'Endurance',     # EnduranceReduction in CoH attribs (typical)
+    # Note: index 85 (Accuracy on Rebirth) and 116 (Create_Entity on Rebirth)
+    # are now mapped in ATTRIB_NAME_REBIRTH, so the parser surfaces them
+    # under their real names and these `Unknown(N)` keys never fire. Kept
+    # here only as a safety net in case the parser regresses.
+    'Unknown(85)':        'Accuracy',      # Rebirth's Accuracy slot (HC: 84)
     'Unknown(86)':        'Interrupt',
     'Unknown(116)':       None,            # Special / proc trigger — used as a marker
 }
@@ -235,7 +239,10 @@ def _collapse_aspects(attribs: list[str]) -> tuple[list[str], bool]:
     """Collapse a piece's attribs into planner aspect labels.
 
     Returns (aspects, is_proc). is_proc=True when the piece carries a
-    proc-marker attrib (Unknown(116) or similar).
+    proc-marker attrib (Unknown(116) or similar). Aspects are returned
+    in CoH community order (Accuracy, Damage, Endurance, Recharge, then
+    others) so the generated piece names match HC's hand-curated entries
+    and Mids exports — "Accuracy/Damage" not "Damage/Accuracy".
     """
     aspects: list[str] = []
     is_proc = False
@@ -248,14 +255,28 @@ def _collapse_aspects(attribs: list[str]) -> tuple[list[str], bool]:
     for a in sorted(distinct):
         mapped = ATTRIB_TO_ASPECT.get(a)
         if mapped is None:
-            # Marker-only attrib (e.g. Unknown(116) for proc trigger).
             if a == 'Unknown(116)':
                 is_proc = True
             continue
         if mapped not in aspects:
             aspects.append(mapped)
 
-    return aspects, is_proc
+    return _sort_aspects_canonical(aspects), is_proc
+
+
+# CoH community / Mids canonical piece-name ordering. The four most-
+# common attack-IO aspects come first in this fixed order; anything
+# else (procs, exotic mez aspects) follows alphabetically. Used by
+# `_collapse_aspects` so a piece carrying {Damage, Accuracy} surfaces
+# as "Accuracy/Damage" — matching how HC's hand-curated data names
+# them and how players reference them in Mids exports.
+_ASPECT_CANONICAL_ORDER = ['Accuracy', 'Damage', 'Endurance', 'Recharge']
+
+
+def _sort_aspects_canonical(aspects: list[str]) -> list[str]:
+    canonical = [a for a in _ASPECT_CANONICAL_ORDER if a in aspects]
+    rest = sorted(a for a in aspects if a not in _ASPECT_CANONICAL_ORDER)
+    return canonical + rest
 
 
 def _piece_name_from_aspects(aspects: list[str]) -> str:
