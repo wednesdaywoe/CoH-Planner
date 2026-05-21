@@ -1716,7 +1716,7 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     setCategory: "Arachnos Archetype Sets",
     setName: "Dominion of Arachnos",
     ioName: "Recharge/Chance for -Dam(All)/Chance for Terror",
-    ppm: 3,
+    ppm: 4,
     mechanics: "Foe(-Damage All, Fear) for 8s",
     pvpNotes: "",
     type: "Proc",

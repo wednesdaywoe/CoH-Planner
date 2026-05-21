@@ -44,10 +44,11 @@ Stacking case the user cares about: 6-slot Preventive Medicine (+3.75%) + 6-slot
 
 ## What was fixed this pass
 
-### ✅ Bug 1: Superior Dominion of Arachnos PPM 4 → 5
-- **Edit**: [src/data/proc-data.ts:1731](src/data/proc-data.ts#L1731) — `ppm: 4` → `ppm: 5`
-- **Scope decision**: applied to the SHARED `proc-data.ts` (affects both HC and Rebirth datasets). User wasn't sure whether HC also has it wrong; this is easy to split per-dataset later if HC's in-game value is actually 4.
-- Regular Dominion of Arachnos stays at PPM 3 per user direction (gap from 3 → 5 is now +2, which is unusual but the user confirmed Superior should be 5 and regular is fine).
+### ✅ Bug 1: Dominion of Arachnos proc PPM fix (both variants)
+- **Edits in shared** [src/data/proc-data.ts](src/data/proc-data.ts):
+  - Regular Dominion of Arachnos: `ppm: 3` → `ppm: 4` ([:1719](src/data/proc-data.ts#L1719))
+  - Superior Dominion of Arachnos: `ppm: 4` → `ppm: 5` ([:1731](src/data/proc-data.ts#L1731))
+- **Confirmed by user**: HC reports the same values (Superior = 5, regular = 4) — shared-file change is correct for both datasets, no per-dataset split needed.
 
 ### ✅ Bug 2: Witchcraft + Superior Witchcraft proc piece data
 - **Edits to** [src/data/datasets/rebirth/io-sets-raw.ts](src/data/datasets/rebirth/io-sets-raw.ts):
@@ -131,21 +132,13 @@ Lowest scope, additive UI work. Power Info modal (likely `src/components/modals/
 - Darkest Night: add -ToHit Debuff throughput display
 - Generalize: any effect with `{scale, table}` should show its post-enhancement resolved value
 
-### 🟡 Outstanding decision: per-dataset proc data?
-
-The Bug 1 fix was applied to the SHARED `src/data/proc-data.ts`. If HC's in-game Superior Dominion is actually 4 PPM (not 5 like Rebirth), this fix is currently wrong for HC. To revert just HC's value, would need to either:
-- Split `proc-data.ts` into per-dataset variants (mirror the at-tables pattern), or
-- Add Rebirth-specific overrides in a similar pattern to power overrides
-
-User to confirm HC's actual in-game value when next testing on HC.
-
 ---
 
 ## File reference quick-jump
 
 | Bug | Files touched / files to read next |
 |-----|-----|
-| 1 ✅ | [src/data/proc-data.ts:1727-1738](src/data/proc-data.ts#L1727-L1738) |
+| 1 ✅ | [src/data/proc-data.ts:1715-1738](src/data/proc-data.ts#L1715-L1738) (both regular and Superior) |
 | 2 ✅ partial | [src/data/datasets/rebirth/io-sets-raw.ts:25454](src/data/datasets/rebirth/io-sets-raw.ts#L25454) (Superior); [:28845](src/data/datasets/rebirth/io-sets-raw.ts#L28845) (regular); [src/data/proc-data.ts](src/data/proc-data.ts) (appended at end) |
 | 2 ⏭ rebuild | Same files; also `src/types/` for "Universal Debuff" aspect addition |
 | 3 ⏭ calc | [src/utils/calculations/character-totals.ts:1135](src/utils/calculations/character-totals.ts#L1135) (`enduranceDiscount` accumulator); `src/data/incarnate-effects-generated.ts` |
