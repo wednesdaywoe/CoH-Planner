@@ -25587,9 +25587,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -Res Debuff",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -28978,9 +28978,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for -Res Debuff",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],

@@ -1728,7 +1728,7 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     setCategory: "Arachnos Archetype Sets",
     setName: "Superior Dominion of Arachnos",
     ioName: "Recharge/Chance for -Dam(All)/Chance for Terror",
-    ppm: 4,
+    ppm: 5,
     mechanics: "Foe(-Damage All, Fear) for 8s",
     pvpNotes: "",
     type: "Proc",
@@ -1987,6 +1987,34 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     levelRange: "10--50",
     pool: "",
     unique: ""
+  },
+
+  // ============================================
+  // Rebirth: Witchcraft (Halloween event Sleep set)
+  // ============================================
+  "Witchcraft: Chance for -Res Debuff": {
+    setCategory: "Sleep",
+    setName: "Witchcraft",
+    ioName: "Chance for -Res Debuff",
+    ppm: 3.5,
+    mechanics: "Foe(-Resistance 20%) for 10s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Unique"
+  },
+  "Superior Witchcraft: Chance for -Res Debuff": {
+    setCategory: "Sleep",
+    setName: "Superior Witchcraft",
+    ioName: "Chance for -Res Debuff",
+    ppm: 6,
+    mechanics: "Foe(-Resistance 20%) for 10s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Unique"
   },
 };
 
