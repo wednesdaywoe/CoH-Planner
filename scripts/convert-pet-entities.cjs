@@ -39,6 +39,14 @@ const OUTPUT_PATH = datasetPath(datasetId, 'pet-entities.ts');
 // can require() it directly without parsing the generated TS.
 const SIDECAR_LIFESPANS_PATH = datasetPath(datasetId, 'pet-lifespans.json');
 
+// Sidecar JSON of fully-qualified Self_Destruct power name → delay seconds.
+// Used for pseudopet summons (PL_StaticObject, Vines pseudo-pets) whose
+// `params.redirects` array names a `*.Self_Destruct` redirect power — those
+// pseudopets aren't backed by a pet entity file, so the entity-keyed sidecar
+// can't reach them. Built by scanning every `self_destruct.json` in the bin
+// export, regardless of which category it lives in.
+const SIDECAR_SELF_DESTRUCT_PATH = datasetPath(datasetId, 'self-destruct-delays.json');
+
 // Damage type attributes we care about
 const DAMAGE_ATTRIBS = new Set([
   'smashing_dmg', 'lethal_dmg', 'fire_dmg', 'cold_dmg',
@@ -358,6 +366,23 @@ function processUpgradeDirectory(dirPath) {
   return abilities;
 }
 
+/** Walk a directory tree and collect every file whose basename matches. */
+function findFilesRecursive(rootDir, basename) {
+  const out = [];
+  function walk(dir) {
+    let entries;
+    try { entries = fs.readdirSync(dir, { withFileTypes: true }); }
+    catch { return; }
+    for (const e of entries) {
+      const full = path.join(dir, e.name);
+      if (e.isDirectory()) walk(full);
+      else if (e.isFile() && e.name === basename) out.push(full);
+    }
+  }
+  walk(rootDir);
+  return out;
+}
+
 /**
  * Pull the pet's lifespan (seconds) out of its Self_Destruct power.
  *
@@ -538,6 +563,28 @@ function main() {
   }
   fs.writeFileSync(SIDECAR_LIFESPANS_PATH, JSON.stringify(lifespans, null, 2) + '\n');
   console.log(`Wrote ${SIDECAR_LIFESPANS_PATH} (${Object.keys(lifespans).length} entries)`);
+
+  // Build the Self_Destruct delay map by walking every category for
+  // `self_destruct.json` files. The pseudopet pathway (PL_StaticObject,
+  // Vines) routes through `params.redirects` rather than the entity record,
+  // so convert-powerset needs to resolve a dotted redirect name (e.g.
+  // `Redirects.Gravity_Control.Self_Destruct`) to its delay independently
+  // of the pet entity table.
+  const selfDestructDelays = {};
+  const allSelfDestructFiles = findFilesRecursive(POWERS_PATH, 'self_destruct.json');
+  for (const filePath of allSelfDestructFiles) {
+    const delay = extractLifespan(filePath);
+    if (delay === null) continue;
+    try {
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+      const fullName = data.full_name;
+      if (fullName) selfDestructDelays[fullName] = delay;
+    } catch {
+      // skip unparseable
+    }
+  }
+  fs.writeFileSync(SIDECAR_SELF_DESTRUCT_PATH, JSON.stringify(selfDestructDelays, null, 2) + '\n');
+  console.log(`Wrote ${SIDECAR_SELF_DESTRUCT_PATH} (${Object.keys(selfDestructDelays).length} entries)`);
 
   // Print summary for our 3 target entities
   const targets = ['Pets_Tornado', 'Pets_LightningStorm', 'Pets_Gremlin_Controller'];

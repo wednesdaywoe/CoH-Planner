@@ -33,6 +33,45 @@ const PET_LIFESPANS = fs.existsSync(PET_LIFESPANS_PATH)
   ? JSON.parse(fs.readFileSync(PET_LIFESPANS_PATH, 'utf-8'))
   : {};
 
+// Self_Destruct delays by fully-qualified power name. Covers the pseudopet
+// case (PL_StaticObject patches, Vines pseudo-pets) where the parent power's
+// `params.redirects` array names a `*.Self_Destruct` redirect rather than
+// routing through a pet entity record. Built by convert-pet-entities.cjs's
+// recursive scan over every category in the bin export.
+const SELF_DESTRUCT_DELAYS_PATH = datasetPath(datasetId, 'self-destruct-delays.json');
+const SELF_DESTRUCT_DELAYS = fs.existsSync(SELF_DESTRUCT_DELAYS_PATH)
+  ? JSON.parse(fs.readFileSync(SELF_DESTRUCT_DELAYS_PATH, 'utf-8'))
+  : {};
+
+/**
+ * Resolve the pet/pseudopet lifespan for an EntCreate template. Three-stage
+ * cascade — first hit wins:
+ *   1. entity_def in PET_LIFESPANS (named pet entities: Pets_Shade etc.)
+ *   2. any *.Self_Destruct entry in params.redirects (pseudopets like
+ *      PL_StaticObject + Redirects.Gravity_Control.Self_Destruct, Vines +
+ *      Villain_Pets.Vines.Self_Destruct)
+ *   3. priority_list in PET_LIFESPANS (Glue Arrow case: entity_def is an
+ *      opaque P-hash but priority_list names a real pet entity)
+ * Returns 0 when nothing matches (matches the pre-cascade behavior).
+ */
+function resolvePetLifespan(params) {
+  if (!params) return 0;
+  if (params.entity_def && PET_LIFESPANS[params.entity_def]) {
+    return PET_LIFESPANS[params.entity_def];
+  }
+  if (Array.isArray(params.redirects)) {
+    for (const r of params.redirects) {
+      if (typeof r === 'string' && r.endsWith('.Self_Destruct') && SELF_DESTRUCT_DELAYS[r]) {
+        return SELF_DESTRUCT_DELAYS[r];
+      }
+    }
+  }
+  if (params.priority_list && PET_LIFESPANS[params.priority_list]) {
+    return PET_LIFESPANS[params.priority_list];
+  }
+  return 0;
+}
+
 // All datasets (HC + Rebirth + future) write into their own
 // `src/data/datasets/<id>/{generated,overrides,powersets}/` tree.
 const OUTPUT_GENERATED_PATH = datasetPath(datasetId, 'generated', 'powersets');
@@ -1941,11 +1980,9 @@ function extractEffects(templates, powerName) {
             if (params.redirects?.length > 0) entityInfo.powers = params.redirects;
             // Duration source: prefer the AttribMod's Duration (Spirit Tree,
             // Tar Patch, Carrion Creepers — duration lives on the summoning
-            // call itself). Otherwise fall back to the pet's bundled lifespan
-            // (Self_Destruct.Silent_Kill.Delay — Haunt 60s, Dark Extraction
-            // 200s, Hell on Earth 90s).
-            const lifespanFallback = params.entity_def ? PET_LIFESPANS[params.entity_def] : 0;
-            const effectiveDuration = duration || lifespanFallback || 0;
+            // call itself). Otherwise cascade through pet/pseudopet lifespan
+            // lookups — see resolvePetLifespan for the order.
+            const effectiveDuration = duration || resolvePetLifespan(params);
             if (effectiveDuration > 0) entityInfo.duration = effectiveDuration;
             if (hasCopyBoosts) entityInfo.copyBoosts = true;
             effects.summon = entityInfo;

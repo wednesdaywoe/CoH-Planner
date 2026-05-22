@@ -50,7 +50,8 @@ export const Vines: Power = {
         "Villain_Pets.Vines.Vines_Pulse",
         "Villain_Pets.Vines.Vines_Debuff",
         "Villain_Pets.Vines.Vines_OneShot"
-      ]
+      ],
+      "duration": 60
     }
   }
 };

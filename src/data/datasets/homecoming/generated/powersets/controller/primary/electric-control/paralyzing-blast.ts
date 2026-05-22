@@ -51,7 +51,8 @@ export const TeslaCoil: Power = {
         "Redirects.Electric_Control.Tesla_Coil_Debuff",
         "Redirects.Electric_Control.Tesla_Coil_OneShot",
         "Redirects.Electric_Control.Self_Destruct"
-      ]
+      ],
+      "duration": 60
     }
   }
 };

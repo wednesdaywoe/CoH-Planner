@@ -1,6 +1,10 @@
-### Use this space to document to-dos when we run into data gaps that require refining the bin parser
+### Use this space to document to-dos when we run into data gaps that require refining the bin parser. When complete, please mark completed. Please put new issues at the top, move old issues below
 
----
+---NEW ISSUES---
+
+
+
+---OLD ISSUES---
 
 ## ✅ Non-kExpression template `delay` field offset (FIXED 2026-05-21)
 
@@ -27,21 +31,27 @@ This is the same kind of bug the kExpression branch had originally; that one was
 
 ---
 
-## ⏳ Pseudopet lifespans (PL_StaticObject / Vines patches)
+## ✅ Pseudopet lifespans (PL_StaticObject / Vines patches) (FIXED 2026-05-21)
 
-**Symptom.** Four player Click powers still ship without `summon.duration` after the Silent_Kill fix above:
+**Symptom.** After the Silent_Kill fix above, four player Click powers still shipped without `summon.duration`:
 
-| Power | entity_def | Real duration |
+| Power | entity_def | Lifespan |
 |---|---|---|
-| Gravity Distortion Field (Cont/Dom) | PL_StaticObject | ~30s |
-| Paralyzing Blast (Cont/Dom) | PL_StaticObject | ~30s |
-| Glue Arrow | P4234428342 (patch) | ~13s |
-| Vines (Plant Control) | Vines pseudo-pet | ~10-15s |
+| Gravity Distortion Field (Cont/Dom) | PL_StaticObject | 60s |
+| Paralyzing Blast (Cont/Dom) | PL_StaticObject | 60s |
+| Vines (Plant Control) | Vines pseudo-pet | 60s |
+| Glue Arrow | P4234428342 (P-hash patch) | 30s |
 
-**Why not solved by Silent_Kill fix.** These pseudopets aren't represented as pet entity files (`pets_*.json` / `mastermindpets_*.json`) — they're engine-side primitives whose lifespan is governed by their granted/redirect power's rules instead of a bundled Self_Destruct. So the entity-keyed lookup in `pet-lifespans.json` has no entry for them.
+**Why not solved by Silent_Kill fix.** These pseudopets aren't represented as pet entity files (`pets_*.json` / `mastermindpets_*.json`) — they're engine-side primitives that don't have their own bundled power list keyed on the entity record. So the entity-keyed lookup in `pet-lifespans.json` had no entry to consult.
 
-**Likely fix paths (not yet investigated).**
-- The granted redirect power (e.g. `Redirects.Gravity_Control.Gravity_Distortion_Field`) probably has the lifespan as its `LifeTime` or `Duration`. Worth confirming with raw .powers defs.
-- Alternatively, the parent power's `chain_delay` or `power_lifetime` (fields 41-44 and 62-65 in powers.bin — currently read but discarded) might carry the value. See [`_parse_power`](tools/bin-crawler/bin_crawler/parser/_powers.py) line 928-935 for the discarded lifetime fields.
+**Root mechanism (turns out it's the same Silent_Kill data, just routed differently).** Each pseudopet's summoning AttribMod populates `params.redirects` with the redirect powers the pseudopet runs — and one of those redirects is a `*.Self_Destruct` power carrying the Silent_Kill delay. Examples:
+- Gravity Distortion Field → `Redirects.Gravity_Control.Self_Destruct` (delay 60)
+- Paralyzing Blast → `Redirects.Electric_Control.Self_Destruct` (delay 60)
+- Vines → `Villain_Pets.Vines.Self_Destruct` (delay 60)
+- Glue Arrow → no Self_Destruct in redirects, but `priority_list: "Pets_StickyArrow_Blaster"` names a real pet entity that's in the existing entity-keyed sidecar (delay 30)
 
-**Impact.** Perma tracker eligibility check still skips these four powers. Not blocking — small set of affected powers, all of them have wiki-known durations that could be hand-curated as a stopgap if needed.
+**Fix.**
+- [scripts/convert-pet-entities.cjs](scripts/convert-pet-entities.cjs) now also produces `src/data/datasets/<id>/self-destruct-delays.json` — a map of fully-qualified Self_Destruct power names to their Silent_Kill delay. Built by a recursive walk over the bin export for every `self_destruct.json`. 43 HC entries.
+- [scripts/convert-powerset.cjs](scripts/convert-powerset.cjs) wraps the lookup in a three-stage `resolvePetLifespan` cascade: (1) entity_def in pet-lifespans, (2) any `*.Self_Destruct` in params.redirects → self-destruct-delays, (3) priority_list in pet-lifespans. First hit wins; returns 0 if nothing matches (matches pre-fix behavior).
+
+**Verified live.** All four powers now ship with `summon.duration` set, and the perma-tracker eligibility check includes them.

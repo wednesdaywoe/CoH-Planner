@@ -49,7 +49,8 @@ export const GravityDistortionField: Power = {
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Slow",
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot",
         "Redirects.Gravity_Control.Self_Destruct"
-      ]
+      ],
+      "duration": 60
     }
   }
 };
