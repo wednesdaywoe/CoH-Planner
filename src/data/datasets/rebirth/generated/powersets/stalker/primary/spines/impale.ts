@@ -62,7 +62,15 @@ export const Impale: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Melee_Immobilize"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8
+    },
+    "buffDuration": 8
   },
   "specialEffects": [
     {

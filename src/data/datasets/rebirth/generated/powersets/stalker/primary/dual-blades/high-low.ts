@@ -68,7 +68,12 @@ export const OneThousandCuts: Power = {
           "table": "Melee_Debuff_Def"
         },
         "durations": {
-          "defenseDebuff": 20
+          "defenseDebuff": 20,
+          "tohitDebuff": 20
+        },
+        "tohitDebuff": {
+          "scale": 1,
+          "table": "Melee_DeBuff_ToHit"
         },
         "buffDuration": 20
       }

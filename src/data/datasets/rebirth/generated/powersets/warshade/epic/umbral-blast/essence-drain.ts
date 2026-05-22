@@ -57,5 +57,15 @@ export const EssenceDrain: Power = {
       "table": "Melee_HealSelf"
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  },
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Warshade_Defensive.Umbral_Aura.Black_Dwarf_Drain ! && Inherent.Inherent.Black_Dwarf_Drain ! &&"
 };

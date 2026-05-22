@@ -49,14 +49,19 @@ export const SunlessMire: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6,
+      "tohitBuff": 30,
+      "damageBuff": 30
+    },
     "tohitBuff": {
       "scale": 1,
       "table": "Melee_Buff_ToHit",
       "perTarget": 1
-    },
-    "durations": {
-      "tohitBuff": 30,
-      "damageBuff": 30
     },
     "damageBuff": {
       "scale": 20,

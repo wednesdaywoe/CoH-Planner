@@ -56,7 +56,15 @@ export const GraviticEmanation: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
   },
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Emanation ! && Inherent.Inherent.Dark_Nova_Emanation ! &&"
 };

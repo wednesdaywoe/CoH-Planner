@@ -51,13 +51,18 @@ export const PsychicWail: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     },
+    "rechargeDebuff": {
+      "scale": 0.7,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 20,
+      "damageBuff": 9.47
+    },
     "damageBuff": {
       "scale": 0.027,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "damageBuff": 9.47
-    },
-    "buffDuration": 9.47
+    "buffDuration": 20
   }
 };

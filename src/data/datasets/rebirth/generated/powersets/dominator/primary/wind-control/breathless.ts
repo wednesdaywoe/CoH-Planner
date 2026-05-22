@@ -52,7 +52,20 @@ export const Breathless: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 15,
+      "damageDebuff": 15
+    },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "buffDuration": 15
   },
   "conditionalEffects": [
     {
@@ -66,6 +79,22 @@ export const Breathless: Power = {
           "scale": 22.5,
           "table": "Ranged_Immobilize"
         }
+      }
+    },
+    {
+      "id": "wind_control_pressure",
+      "label": "Pressure",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "damageDebuff": {
+          "scale": 2,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 15
+        },
+        "buffDuration": 15
       }
     }
   ]

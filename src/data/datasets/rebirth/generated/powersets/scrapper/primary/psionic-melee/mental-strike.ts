@@ -49,6 +49,16 @@ export const MentalStrike: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  },
   "conditionalEffects": [
     {
       "id": "psionic_melee_insight",

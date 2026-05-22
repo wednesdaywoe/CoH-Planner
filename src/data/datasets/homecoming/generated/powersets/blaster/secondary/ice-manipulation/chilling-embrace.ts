@@ -40,18 +40,28 @@ export const FrigidProtection: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 5,
+      "damageDebuff": 5,
+      "absorb": 12,
+      "recoveryBuff": 3
+    },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Dam"
+    },
     "absorb": {
       "scale": 0.3,
       "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "absorb": 12,
-      "recoveryBuff": 3
     },
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 12
+    "buffDuration": 5
   }
 };

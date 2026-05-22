@@ -57,5 +57,15 @@ export const UmbralTorrent: Power = {
       "scale": 0.5184,
       "table": "Ranged_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

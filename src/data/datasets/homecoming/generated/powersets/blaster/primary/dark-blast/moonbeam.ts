@@ -56,12 +56,17 @@ export const Moonbeam: Power = {
     }
   ],
   "effects": {
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10,
+      "rangeBuff": 10
+    },
     "rangeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
     },
     "buffDuration": 10
   },

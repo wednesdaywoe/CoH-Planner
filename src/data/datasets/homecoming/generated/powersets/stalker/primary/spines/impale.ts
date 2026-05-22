@@ -67,12 +67,17 @@ export const Impale: Power = {
       "scale": 15,
       "table": "Melee_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8,
+      "regenDebuff": 15
+    },
     "regenDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenDebuff": 15
     },
     "buffDuration": 15
   },

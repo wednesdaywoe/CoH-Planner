@@ -1,0 +1,108 @@
+- generic [active] [ref=e1]:
+  - img "Sidekick Banner" [ref=e3]
+  - generic [ref=e26]:
+    - banner [ref=e27]:
+      - generic [ref=e28]:
+        - button "File" [ref=e31]:
+          - img [ref=e32]
+          - generic [ref=e34]: File
+        - button "Settings" [ref=e37]:
+          - img [ref=e38]
+          - generic [ref=e41]: Settings
+        - button "Untitled Build · Blaster · Archery · Devices" [ref=e43]:
+          - img [ref=e44]
+          - generic [ref=e46]: Untitled Build · Blaster · Archery · Devices
+          - img [ref=e47]
+        - generic [ref=e50]: Homecoming
+        - generic [ref=e51]:
+          - generic [ref=e52]: Lvl
+          - button "−" [ref=e53]
+          - generic [ref=e54]: "50"
+          - button "+" [disabled] [ref=e55]
+          - slider [ref=e57] [cursor=pointer]: "50"
+        - button "Level Up" [ref=e58]:
+          - img [ref=e59]
+          - generic [ref=e61]: Level Up
+        - generic [ref=e62]:
+          - button "Undo (Ctrl+Z)" [disabled] [ref=e63]
+          - button "Redo (Ctrl+Shift+Z)" [disabled] [ref=e66]
+      - generic [ref=e69]:
+        - button "Shared Builds" [ref=e70]:
+          - generic [ref=e71]: Shared Builds
+        - generic "Show stats as they would be in active combat — includes always-on toggles and proc averages." [ref=e73] [cursor=pointer]:
+          - checkbox "In-Combat" [ref=e75]
+          - generic [ref=e79]: In-Combat
+        - generic [ref=e80]:
+          - generic "Include proc damage in DPS calculations (averaged based on activation rate). Click the gear to configure proc behavior." [ref=e81] [cursor=pointer]
+          - button "Proc Settings — configure how procs are averaged into DPS" [ref=e88]
+        - generic "Show a banner above the dashboard and ring offending powers in orange when the build has any set bonus that exceeds the Rule of 5 cap." [ref=e93] [cursor=pointer]:
+          - checkbox "Bonus Cap Alert" [checked] [ref=e95]
+          - generic [ref=e99]: Bonus Cap Alert
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e104]
+          - generic [ref=e128]
+          - generic [ref=e160]
+          - generic [ref=e176]
+        - generic [ref=e188]:
+          - generic [ref=e189]
+          - generic [ref=e192]
+      - generic [ref=e212]:
+        - generic [ref=e214]: Lvl 50
+        - generic [ref=e216]: Pwr 24/24
+        - generic [ref=e218]: Slot 67/67
+        - button "Accolades" [ref=e220]:
+          - img [ref=e221]
+          - generic [ref=e223]: Accolades
+        - button "Set Bonus Finder" [ref=e224]:
+          - img [ref=e225]
+          - generic [ref=e227]: Set Bonus Finder
+        - button "Totals" [ref=e228]:
+          - img [ref=e229]
+          - generic [ref=e231]: Totals
+        - button "Compare Sets" [ref=e232]:
+          - img [ref=e233]
+          - generic [ref=e235]: Compare Sets
+        - button "Compare Slotting" [ref=e236]:
+          - img [ref=e237]
+          - generic [ref=e239]: Compare Slotting
+        - button "Enhancement List" [ref=e240]:
+          - img [ref=e241]
+          - generic [ref=e243]: Enhancement List
+        - button "Configure" [ref=e244]:
+          - img [ref=e245]
+          - generic [ref=e248]: Configure
+        - button "Controls" [ref=e249]:
+          - img [ref=e250]
+          - generic [ref=e252]: Controls
+    - main [ref=e253]:
+      - generic [ref=e255]: Press D to toggle the dashboard. Press T to toggle the responsive info panel. While info panel is open, hold shift to make it persist.
+      - generic [ref=e256]:
+        - generic [ref=e257]:
+          - generic [ref=e258]
+          - generic [ref=e267]
+        - generic [ref=e312]:
+          - heading "Primary Powers" [level=2] [ref=e314]
+          - generic [ref=e316]: Select powers from the available list
+        - generic [ref=e317]:
+          - heading "Secondary Powers" [level=2] [ref=e319]
+          - generic [ref=e321]: Select powers from the available list
+        - generic [ref=e322]:
+          - heading "Pool Powers" [level=2] [ref=e324]
+          - generic [ref=e326]
+        - generic [ref=e432]:
+          - generic [ref=e433]
+          - generic [ref=e447]: Hover over a power to see details
+    - generic [ref=e448]:
+      - button "Open help" [ref=e449]:
+        - img [ref=e450]
+      - button "Changelog" [ref=e452]:
+        - img [ref=e453]
+      - button "Send feedback or report a bug" [ref=e455]:
+        - img [ref=e456]
+      - button "Buy me a coffee" [ref=e458]:
+        - img [ref=e459]
+        - text: Buy me a coffee
+  - generic:
+    - iframe

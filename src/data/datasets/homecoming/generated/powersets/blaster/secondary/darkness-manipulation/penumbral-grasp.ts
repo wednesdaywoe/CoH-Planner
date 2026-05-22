@@ -70,9 +70,14 @@ export const PenumbralGrasp: Power = {
       "table": "Ranged_Ones"
     },
     "durations": {
-      "damageBuff": 9.17
+      "damageBuff": 9.17,
+      "tohitDebuff": 10
     },
-    "buffDuration": 9.17,
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -49,6 +49,14 @@ export const InertialSiphon: Power = {
       "isPseudoPet": false,
       "entity": "Pets_Guardian_InertialSiphonBuff",
       "duration": 1
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "rechargeDebuff": 45
+    },
+    "buffDuration": 45
   }
 };

@@ -62,7 +62,8 @@ export const EntropicAura: Power = {
       "sleep": 2.25,
       "immobilize": 2.25,
       "debuffResistance": 2.25,
-      "rechargeBuff": 2.25
+      "rechargeBuff": 2.25,
+      "rechargeDebuff": 2.25
     },
     "knockback": {
       "scale": 10,
@@ -107,6 +108,10 @@ export const EntropicAura: Power = {
       "scale": 0.385,
       "table": "Melee_Ones",
       "perTarget": 0.035
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
     },
     "taunt": {
       "scale": 1,

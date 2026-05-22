@@ -53,11 +53,19 @@ export const HymnofDissonance: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 18
+    },
     "hold": {
       "mag": 4,
       "scale": 1,
       "table": "Melee_PvPMez"
-    }
+    },
+    "buffDuration": 18
   },
   "specialEffects": [
     {

@@ -52,7 +52,15 @@ export const Quills: Power = {
       "mag": 0.33000001311302185,
       "scale": 3,
       "table": "Melee_Immobilize"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 3
+    },
+    "buffDuration": 3
   },
   "specialEffects": [
     {

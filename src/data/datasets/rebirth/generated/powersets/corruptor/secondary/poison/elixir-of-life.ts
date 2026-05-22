@@ -59,7 +59,9 @@ export const ElixirofLife: Power = {
       "damageBuff": 90,
       "tohitBuff": 90,
       "resistance": 90,
-      "hold": 4
+      "hold": 4,
+      "damageDebuff": 45,
+      "tohitDebuff": 45
     },
     "rechargeBuff": {
       "scale": 1,
@@ -85,6 +87,14 @@ export const ElixirofLife: Power = {
       "table": "Ranged_Ones"
     },
     "effectDuration": 4,
+    "damageDebuff": {
+      "scale": 4,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "tohitDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_ToHit"
+    },
     "buffDuration": 90
   }
 };

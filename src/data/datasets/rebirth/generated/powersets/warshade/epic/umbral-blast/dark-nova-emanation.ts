@@ -49,5 +49,15 @@ export const DarkNovaEmanation: Power = {
     "scale": 0.99,
     "table": "Ranged_SSDamage"
   },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8
+    },
+    "buffDuration": 8
+  },
   "requires": "0"
 };

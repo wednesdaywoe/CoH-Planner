@@ -3012,7 +3012,25 @@ export const POWER_POOLS_RAW = {
           "recharge": 12,
           "endurance": 13,
           "activationTime": 2.93,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damageDebuff": {
+            "scale": 1,
+            "table": "Ranged_Debuff_Dam"
+          },
+          "durations": {
+            "damageDebuff": 15,
+            "rechargeDebuff": 15,
+            "tohitDebuff": 15
+          },
+          "rechargeDebuff": {
+            "scale": 0.1,
+            "table": "Ranged_Slow"
+          },
+          "tohitDebuff": {
+            "scale": 1,
+            "table": "Ranged_DeBuff_ToHit"
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -4240,12 +4258,17 @@ export const POWER_POOLS_RAW = {
           "endurance": 7.8,
           "activationTime": 2.67,
           "effectArea": "SingleTarget",
+          "rechargeDebuff": {
+            "scale": 0.6,
+            "table": "Ranged_Slow"
+          },
+          "durations": {
+            "rechargeDebuff": 15,
+            "regenDebuff": 15
+          },
           "regenDebuff": {
             "scale": 0.5,
             "table": "Ranged_Ones"
-          },
-          "durations": {
-            "regenDebuff": 15
           },
           "buffDuration": 15
         }

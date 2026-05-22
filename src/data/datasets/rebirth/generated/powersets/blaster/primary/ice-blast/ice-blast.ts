@@ -54,14 +54,19 @@ export const IceBlast: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10,
+      "damageBuff": 9.17
+    },
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "damageBuff": 9.17
-    },
-    "buffDuration": 9.17,
+    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

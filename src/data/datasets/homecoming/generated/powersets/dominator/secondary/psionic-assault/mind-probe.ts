@@ -47,5 +47,15 @@ export const MindProbe: Power = {
       "scale": 1.619,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  }
 };

@@ -59,6 +59,16 @@ export const KineticBolt: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8
+    },
+    "buffDuration": 8
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

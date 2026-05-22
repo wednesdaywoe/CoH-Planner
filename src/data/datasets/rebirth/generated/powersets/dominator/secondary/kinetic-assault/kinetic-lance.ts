@@ -61,6 +61,16 @@ export const KineticLance: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 15
+    },
+    "buffDuration": 15
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

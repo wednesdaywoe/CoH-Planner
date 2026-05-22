@@ -39,9 +39,22 @@ export const ChillingEmbrace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 5,
+      "damageDebuff": 5
+    },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Dam"
+    },
     "taunt": {
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "buffDuration": 5
   }
 };

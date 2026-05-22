@@ -48,6 +48,16 @@ export const Quasar: Power = {
     "scale": 4,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 20
+    },
+    "buffDuration": 20
+  },
   "conditionalEffects": [
     {
       "id": "warshade_blaster_mode",

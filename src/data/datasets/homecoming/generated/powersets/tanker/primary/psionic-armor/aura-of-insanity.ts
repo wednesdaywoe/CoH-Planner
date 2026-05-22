@@ -72,6 +72,7 @@ export const AuraofInsanity: Power = {
       "regenDebuff": 4,
       "resistanceDebuff": 4,
       "defenseDebuff": 4,
+      "tohitDebuff": 4,
       "confuse": 4,
       "stun": 4,
       "sleep": 4,
@@ -115,6 +116,10 @@ export const AuraofInsanity: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
+    },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Melee_DeBuff_ToHit"
     },
     "confuse": {
       "mag": 2.5,

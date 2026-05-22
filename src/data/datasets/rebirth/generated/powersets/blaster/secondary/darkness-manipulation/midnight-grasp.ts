@@ -62,14 +62,19 @@ export const MidnightGrasp: Power = {
       "scale": 15,
       "table": "Melee_Immobilize"
     },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Melee_DeBuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 20,
+      "damageBuff": 9.57
+    },
     "damageBuff": {
       "scale": 0.137,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "damageBuff": 9.57
-    },
-    "buffDuration": 9.57,
+    "buffDuration": 20,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

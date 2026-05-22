@@ -70,11 +70,19 @@ export const ThrowSpines: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
     "immobilize": {
       "mag": 0.6700000166893005,
       "scale": 10,
       "table": "Melee_Immobilize"
-    }
+    },
+    "buffDuration": 10
   },
   "specialEffects": [
     {

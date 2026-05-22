@@ -54,6 +54,16 @@ export const EngulfingDarkness: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Melee_DeBuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

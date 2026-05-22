@@ -78,12 +78,22 @@ export const DualWield: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8,
+      "damageDebuff": 6,
+      "damageBuff": 9.17
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Dam"
+    },
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.17
     },
     "buffDuration": 9.17,
     "maxStacks": 2,

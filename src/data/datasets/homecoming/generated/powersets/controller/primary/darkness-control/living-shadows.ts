@@ -67,7 +67,15 @@ export const LivingShadows: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 8
+    },
+    "buffDuration": 8
   },
   "specialEffects": [
     {

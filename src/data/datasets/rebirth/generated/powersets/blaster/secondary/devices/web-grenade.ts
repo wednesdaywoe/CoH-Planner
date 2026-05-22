@@ -45,14 +45,19 @@ export const WebGrenade: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 15,
+      "damageBuff": 8.87
+    },
     "damageBuff": {
       "scale": 0.09,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "damageBuff": 8.87
-    },
-    "buffDuration": 8.87,
+    "buffDuration": 15,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -67,7 +67,15 @@ export const BlackDwarfStrike: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
   },
   "specialEffects": [
     {

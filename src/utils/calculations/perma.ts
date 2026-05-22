@@ -32,6 +32,17 @@ export interface PermaInfo {
 }
 
 /**
+ * Upper bound on `recharge/duration - 1` (the +recharge% needed to perma)
+ * past which the tracker can never read above ~62% no matter what the
+ * player slots. Pinned to the +500% server-side global recharge cap so
+ * we only show the tracker on powers where reaching perma is at least
+ * theoretically possible. Excludes Rest (+900% needed), Category Five
+ * (+750%), Build Up (+800%), and similar "asymptote at ~60%" cases that
+ * just confuse the user.
+ */
+const PRACTICAL_RECHARGE_CAP = 5;
+
+/**
  * Check if a power is eligible for perma tracking.
  *
  * A power is perma-eligible when keeping it active permanently is meaningful:
@@ -41,6 +52,14 @@ export interface PermaInfo {
  *   gap to close. Charged Armor and other defense toggles were
  *   incorrectly tracked because both have recharge + per-tick duration.
  * - Must have both a recharge time and a duration (buff, effect, or summon)
+ * - Must have a SELF-state worth keeping up: a self-buff effect or a pet
+ *   summon. Foe-debuff-only attacks (e.g. Suppression's -DEF) populate
+ *   `buffDuration` with the foe-debuff duration, but there's nothing on
+ *   the caster to perma — the debuff just expires on the target after
+ *   each hit, and we don't model debuff-stacking-via-cast-cadence.
+ * - Perma must be mathematically achievable. Reject powers whose
+ *   recharge/duration ratio exceeds the practical recharge cap (e.g. Rest
+ *   at 300s/30s would need +900% recharge, double the practical ceiling).
  * - For powers that deal damage (attacks): require recharge >= 2× duration, since
  *   the duration is typically a hold/mez that roughly matches recharge (Dark Grasp).
  *   This still includes buff-attacks like Soul Drain (120s rech / 30s dur).
@@ -57,8 +76,67 @@ export function isPermaEligible(power: Power | SelectedPower): boolean {
   const duration = getDuration(effects);
   if (recharge <= 0 || duration <= 0) return false;
 
+  if (!hasSelfStateToKeepUp(effects)) return false;
+
+  const rechargeNeeded = recharge / duration - 1;
+  if (rechargeNeeded > PRACTICAL_RECHARGE_CAP) return false;
+
   const hasDamage = !!(power as Power).damage;
   return hasDamage ? recharge >= duration * 2 : recharge > duration;
+}
+
+/**
+ * True when the power applies a self-buff or summons a pet — i.e. there's
+ * a caster-side state whose uptime perma tracking actually measures. Foe
+ * debuffs and mez don't count: those expire on the target after the cast,
+ * and the planner doesn't model the implicit "keep firing the attack to
+ * refresh the debuff" pattern. A `selfPenalty: true` flag flips the
+ * debuff fields to self-buffs (Granite Armor etc.), so honour it.
+ */
+function hasSelfStateToKeepUp(effects: PowerEffects): boolean {
+  if (effects.summon?.duration && effects.summon.duration > 0) return true;
+
+  const selfBuffPresent =
+    effects.tohitBuff !== undefined ||
+    effects.damageBuff !== undefined ||
+    effects.defenseBuff !== undefined ||
+    effects.defenseBuffSuppressible !== undefined ||
+    effects.rechargeBuff !== undefined ||
+    effects.recoveryBuff !== undefined ||
+    effects.regenBuff !== undefined ||
+    effects.regenBuffUnenhanced !== undefined ||
+    effects.speedBuff !== undefined ||
+    effects.enduranceBuff !== undefined ||
+    effects.enduranceGain !== undefined ||
+    effects.maxHPBuff !== undefined ||
+    effects.maxEndBuff !== undefined ||
+    effects.rangeBuff !== undefined ||
+    effects.enduranceDiscount !== undefined ||
+    effects.perceptionBuff !== undefined ||
+    effects.absorb !== undefined ||
+    effects.defense !== undefined ||
+    effects.resistance !== undefined ||
+    effects.elusivity !== undefined ||
+    effects.movement !== undefined ||
+    effects.stealth !== undefined ||
+    effects.debuffResistance !== undefined ||
+    effects.mezResistance !== undefined ||
+    effects.protection !== undefined ||
+    effects.untouchable !== undefined ||
+    effects.fly !== undefined;
+  if (selfBuffPresent) return true;
+
+  // Self-penalty powers (Granite Armor's -damage, Defensive Adaptation's
+  // -recharge) flip the debuff fields to self-buffs. Those count too.
+  if (effects.selfPenalty) {
+    if (
+      effects.damageDebuff !== undefined ||
+      effects.rechargeDebuff !== undefined ||
+      effects.slow !== undefined
+    ) return true;
+  }
+
+  return false;
 }
 
 /**

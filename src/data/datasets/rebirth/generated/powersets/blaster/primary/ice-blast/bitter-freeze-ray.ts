@@ -49,6 +49,14 @@ export const BitterFreezeRay: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 18,
+      "damageBuff": 10
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
@@ -58,10 +66,7 @@ export const BitterFreezeRay: Power = {
       "scale": 0.165,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "damageBuff": 10
-    },
-    "buffDuration": 10,
+    "buffDuration": 18,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

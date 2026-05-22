@@ -46,14 +46,19 @@ export const BlackDwarfMire: Power = {
     "table": "Melee_InherentDamage"
   },
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6,
+      "tohitBuff": 10,
+      "damageBuff": 10
+    },
     "tohitBuff": {
       "scale": 0.5,
       "table": "Melee_Buff_ToHit",
       "perTarget": 0.5
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
     },
     "damageBuff": {
       "scale": 1.25,

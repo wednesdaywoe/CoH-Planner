@@ -37,5 +37,15 @@ export const SnowStorm: Power = {
   "allowedSetCategories": [
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 0.75
+    },
+    "buffDuration": 0.75
+  }
 };

@@ -55,5 +55,15 @@ export const Strike: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  }
 };

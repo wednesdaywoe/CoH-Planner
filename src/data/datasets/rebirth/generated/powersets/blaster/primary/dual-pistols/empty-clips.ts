@@ -100,13 +100,23 @@ export const EmptyClips: Power = {
     },
     "durations": {
       "defenseDebuff": 8,
+      "rechargeDebuff": 8,
+      "damageDebuff": 6,
       "damageBuff": 9.17
+    },
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Dam"
     },
     "damageBuff": {
       "scale": 0.051,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 9.17
+    "buffDuration": 8
   },
   "specialEffects": [
     {

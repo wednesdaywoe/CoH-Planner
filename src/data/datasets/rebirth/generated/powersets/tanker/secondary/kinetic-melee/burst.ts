@@ -58,7 +58,15 @@ export const Burst: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 7
+    },
+    "buffDuration": 7
   },
   "specialEffects": [
     {

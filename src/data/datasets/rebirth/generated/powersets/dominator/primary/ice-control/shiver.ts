@@ -39,5 +39,15 @@ export const Shiver: Power = {
     "Slow Movement",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.65,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 18
+    },
+    "buffDuration": 18
+  }
 };

@@ -57,6 +57,16 @@ export const Spin: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

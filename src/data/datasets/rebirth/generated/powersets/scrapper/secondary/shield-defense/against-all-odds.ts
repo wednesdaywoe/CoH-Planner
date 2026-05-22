@@ -44,7 +44,12 @@ export const AgainstAllOdds: Power = {
       "perTarget": 4.3999999999999995
     },
     "durations": {
-      "damageBuff": 1
+      "damageBuff": 1,
+      "damageDebuff": 1
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Dam"
     },
     "buffDuration": 1,
     "maxStacks": 2,

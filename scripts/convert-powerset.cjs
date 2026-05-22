@@ -22,6 +22,17 @@ const RAW_DATA_PATH = (datasetId === 'homecoming' && !fs.existsSync(path.join(RA
   ? RAW_DATA_BASE
   : path.join(RAW_DATA_BASE, datasetId);
 
+// Pet lifespans (entity_def → seconds) harvested from each pet's bundled
+// Self_Destruct power by convert-pet-entities.cjs. Used as fallback when a
+// summoning power's EntCreate AttribMod has Duration=0 — the actual lifespan
+// in that case lives on the pet's Self_Destruct.Silent_Kill.Delay rather
+// than on the AttribMod. File is regenerated whenever convert-pet-entities
+// runs; if missing, we silently skip the fallback (matches old behavior).
+const PET_LIFESPANS_PATH = datasetPath(datasetId, 'pet-lifespans.json');
+const PET_LIFESPANS = fs.existsSync(PET_LIFESPANS_PATH)
+  ? JSON.parse(fs.readFileSync(PET_LIFESPANS_PATH, 'utf-8'))
+  : {};
+
 // All datasets (HC + Rebirth + future) write into their own
 // `src/data/datasets/<id>/{generated,overrides,powersets}/` tree.
 const OUTPUT_GENERATED_PATH = datasetPath(datasetId, 'generated', 'powersets');
@@ -1928,7 +1939,14 @@ function extractEffects(templates, powerName) {
             if (params.entity_def) entityInfo.entity = params.entity_def;
             if (params.display_name) entityInfo.displayName = DISPLAY_NAME_OVERRIDES[powerName] || params.display_name;
             if (params.redirects?.length > 0) entityInfo.powers = params.redirects;
-            if (duration) entityInfo.duration = duration;
+            // Duration source: prefer the AttribMod's Duration (Spirit Tree,
+            // Tar Patch, Carrion Creepers — duration lives on the summoning
+            // call itself). Otherwise fall back to the pet's bundled lifespan
+            // (Self_Destruct.Silent_Kill.Delay — Haunt 60s, Dark Extraction
+            // 200s, Hell on Earth 90s).
+            const lifespanFallback = params.entity_def ? PET_LIFESPANS[params.entity_def] : 0;
+            const effectiveDuration = duration || lifespanFallback || 0;
+            if (effectiveDuration > 0) entityInfo.duration = effectiveDuration;
             if (hasCopyBoosts) entityInfo.copyBoosts = true;
             effects.summon = entityInfo;
           } else if (effects.summon.entities) {
@@ -1966,13 +1984,16 @@ function extractEffects(templates, powerName) {
         if (aspect === 'strength') {
           // Affects target's damage OUTPUT
           if (isDebuff) {
-            // Only include damageDebuff for self-targeting effects (e.g., Granite Armor -30% damage)
-            // Skip enemy-targeting damage debuffs (e.g., Time's Juncture Foe -Damage)
-            if (isSelfTargeting) {
-              effects.damageDebuff = makeEffect();
-              effects.selfPenalty = true;
-              recordDuration('damageDebuff');
-            }
+            // Capture both self-penalty (Granite Armor -30% damage) and
+            // foe-targeting damage debuffs (Darkest Night, Time's Juncture).
+            // `selfPenalty` is what gates the calc engine — only set it
+            // when the debuff actually applies to the caster's stats.
+            // Foe debuffs without the flag still surface in Power Info via
+            // the registry's `damageDebuff` entry so users can see -X%
+            // displayed alongside other power effects.
+            effects.damageDebuff = makeEffect();
+            if (isSelfTargeting) effects.selfPenalty = true;
+            recordDuration('damageDebuff');
           } else {
             effects.damageBuff = makeEffect();
             recordDuration('damageBuff');
@@ -2243,13 +2264,13 @@ function extractEffects(templates, powerName) {
             effects.debuffResistance.tohit = makeEffect();
             recordDuration('debuffResistance');
           } else if (isDebuff) {
-            // Only include tohitDebuff for self-targeting effects
-            // Skip enemy-targeting tohit debuffs (e.g., Time's Juncture Foe -ToHit)
-            if (isSelfTargeting) {
-              effects.tohitDebuff = makeEffect();
-              effects.selfPenalty = true;
-              recordDuration('tohitDebuff');
-            }
+            // Capture both self-penalty and foe-targeting tohit debuffs
+            // (Darkest Night, Time's Juncture, Radiation Infection, etc.).
+            // `selfPenalty` gates the calc engine; without it, foe debuffs
+            // still surface in Power Info but don't penalise caster ToHit.
+            effects.tohitDebuff = makeEffect();
+            if (isSelfTargeting) effects.selfPenalty = true;
+            recordDuration('tohitDebuff');
           } else {
             effects.tohitBuff = makeEffect();
             recordDuration('tohitBuff');
@@ -2262,13 +2283,12 @@ function extractEffects(templates, powerName) {
             effects.debuffResistance.recharge = makeEffect();
             recordDuration('debuffResistance');
           } else if (isDebuff || scale < 0 || table?.toLowerCase().includes('slow')) {
-            // Only include rechargeDebuff for self-targeting effects (e.g., Granite Armor -65% recharge)
-            // Skip enemy-targeting recharge debuffs (e.g., Reaction Time Foe -Recharge)
-            if (isSelfTargeting) {
-              effects.rechargeDebuff = makeEffect();
-              effects.selfPenalty = true;
-              recordDuration('rechargeDebuff');
-            }
+            // Capture both self-penalty (Granite Armor -65% recharge) and
+            // foe-targeting recharge debuffs (Radiation Infection, etc.).
+            // `selfPenalty` gates the calc engine.
+            effects.rechargeDebuff = makeEffect();
+            if (isSelfTargeting) effects.selfPenalty = true;
+            recordDuration('rechargeDebuff');
           } else {
             effects.rechargeBuff = makeEffect();
             recordDuration('rechargeBuff');

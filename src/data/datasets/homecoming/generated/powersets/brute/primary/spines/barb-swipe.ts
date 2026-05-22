@@ -65,7 +65,15 @@ export const BarbSwipe: Power = {
       "mag": 0.33000001311302185,
       "scale": 8,
       "table": "Melee_Immobilize"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 2
+    },
+    "buffDuration": 2
   },
   "requires": "Brute_Defense.Shield_Defense !"
 };

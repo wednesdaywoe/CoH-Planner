@@ -127,7 +127,12 @@ export const ParasiticLeech: Power = {
           "table": "Melee_Ones"
         },
         "durations": {
-          "absorb": 45
+          "absorb": 45,
+          "damageDebuff": 30
+        },
+        "damageDebuff": {
+          "scale": 2.66,
+          "table": "Melee_Debuff_Dam"
         },
         "buffDuration": 45
       },

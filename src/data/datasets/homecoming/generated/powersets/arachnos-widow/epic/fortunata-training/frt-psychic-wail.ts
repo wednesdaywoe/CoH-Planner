@@ -57,6 +57,14 @@ export const PsychicWail: Power = {
       "mag": 4,
       "scale": 1,
       "table": "Ranged_PvPMez"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.7,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 20
+    },
+    "buffDuration": 20
   }
 };

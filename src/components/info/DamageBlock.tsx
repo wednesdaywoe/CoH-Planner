@@ -433,11 +433,11 @@ function DamageMetrics({
               {metric.valueFinal.toFixed(2)}
               {improved && metric.valueBase > 0 && (
                 <span className="text-green-400 text-xs ml-1">
-                  (+{((metric.valueFinal / metric.valueBase - 1) * 100).toFixed(0)}%)
+                  (+{(((metric.valueFinal - procContribution) / metric.valueBase - 1) * 100).toFixed(0)}%)
                 </span>
               )}
               {procDamagePerActivation > 0 && (
-                <span className="text-cyan-400 text-xs ml-1" title="Includes proc damage">
+                <span className="text-cyan-400 text-xs ml-1" title="Average proc damage per activation, shown separately so the (+%) badge reflects the enhancement-strength multiplier on the attack itself, not the additive proc chunk.">
                   +{procContribution.toFixed(1)} proc
                 </span>
               )}

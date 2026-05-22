@@ -40,12 +40,22 @@ export const Infrigidate: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.7,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 20,
+      "defenseDebuff": 20,
+      "damageDebuff": 20
+    },
     "defenseDebuff": {
       "scale": 2.5,
       "table": "Ranged_Debuff_Def"
     },
-    "durations": {
-      "defenseDebuff": 20
+    "damageDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Dam"
     },
     "buffDuration": 20
   }

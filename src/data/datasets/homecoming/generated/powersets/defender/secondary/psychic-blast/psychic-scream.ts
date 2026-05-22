@@ -52,5 +52,15 @@ export const PsychicScream: Power = {
       "scale": 0.7988,
       "table": "Ranged_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

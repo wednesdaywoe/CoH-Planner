@@ -52,6 +52,16 @@ export const Burst: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "effects": {
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 7
+    },
+    "buffDuration": 7
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

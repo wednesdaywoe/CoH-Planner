@@ -74,7 +74,15 @@ export const SpineBurst: Power = {
       "mag": 0.33000001311302185,
       "scale": 10,
       "table": "Melee_Immobilize"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8
+    },
+    "buffDuration": 8
   },
   "specialEffects": [
     {

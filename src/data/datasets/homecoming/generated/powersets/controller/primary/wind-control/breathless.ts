@@ -54,15 +54,43 @@ export const Breathless: Power = {
       "scale": 1,
       "table": "Ranged_PvPMez"
     },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 15,
+      "enduranceDiscount": 15,
+      "rechargeDebuff": 15
+    },
     "enduranceDiscount": {
       "scale": 0.3,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "enduranceDiscount": 15
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
     },
     "buffDuration": 15
   },
+  "conditionalEffects": [
+    {
+      "id": "wind_control_pressure",
+      "label": "Pressure",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "damageDebuff": {
+          "scale": 2,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 15
+        },
+        "buffDuration": 15
+      }
+    }
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

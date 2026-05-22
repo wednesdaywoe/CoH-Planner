@@ -54,6 +54,16 @@ export const DarkNovaBlast: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

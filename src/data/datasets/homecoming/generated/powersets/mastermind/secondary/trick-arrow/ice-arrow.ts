@@ -39,16 +39,13 @@ export const IceArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "absorb": {
-      "scale": 0.45,
-      "table": "Ranged_Special"
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
     },
     "durations": {
+      "rechargeDebuff": 10,
+      "damageDebuff": 10,
       "absorb": 60,
       "enduranceDrain": 10,
       "confuse": 10,
@@ -57,7 +54,21 @@ export const IceArrow: Power = {
       "immobilize": 10,
       "stun": 10,
       "sleep": 10,
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "tohitDebuff": 10
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    },
+    "damageDebuff": {
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "absorb": {
+      "scale": 0.45,
+      "table": "Ranged_Special"
     },
     "enduranceDrain": {
       "scale": 0.9,
@@ -90,6 +101,10 @@ export const IceArrow: Power = {
       "table": "Ranged_Special"
     },
     "defenseDebuff": {
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "tohitDebuff": {
       "scale": 0.45,
       "table": "Ranged_Special"
     },

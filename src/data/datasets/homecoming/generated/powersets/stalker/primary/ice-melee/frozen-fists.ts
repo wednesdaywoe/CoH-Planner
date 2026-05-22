@@ -69,6 +69,16 @@ export const FrozenFists: Power = {
       "tickRate": 0.25
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 5
+    },
+    "buffDuration": 5
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

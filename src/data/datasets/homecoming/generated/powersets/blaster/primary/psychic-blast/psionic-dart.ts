@@ -52,5 +52,15 @@ export const PsionicDarts: Power = {
       "scale": 0.5767,
       "table": "Ranged_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  }
 };

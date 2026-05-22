@@ -61,5 +61,15 @@ export const IceBlast: Power = {
       "scale": 1.809,
       "table": "Ranged_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

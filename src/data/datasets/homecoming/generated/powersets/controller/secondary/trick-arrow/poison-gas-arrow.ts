@@ -48,6 +48,14 @@ export const PoisonGasArrow: Power = {
         "Redirects.Trick_Arrow.PoisonGasArrow"
       ],
       "duration": 20
-    }
+    },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 60
+    },
+    "buffDuration": 60
   }
 };

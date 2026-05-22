@@ -47,6 +47,16 @@ export const MassDriver: Power = {
     "duration": 2.1,
     "tickRate": 1
   },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 12
+    },
+    "buffDuration": 12
+  },
   "conditionalEffects": [
     {
       "id": "kinetic_assault_impulse",

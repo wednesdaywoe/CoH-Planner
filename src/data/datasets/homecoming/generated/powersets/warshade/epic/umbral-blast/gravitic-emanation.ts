@@ -64,6 +64,14 @@ export const GraviticEmanation: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

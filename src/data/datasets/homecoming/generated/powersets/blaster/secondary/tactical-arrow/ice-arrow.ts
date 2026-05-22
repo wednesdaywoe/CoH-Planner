@@ -54,6 +54,14 @@ export const IceArrow: Power = {
       "mag": 3,
       "scale": 1,
       "table": "Ranged_PvPMez"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

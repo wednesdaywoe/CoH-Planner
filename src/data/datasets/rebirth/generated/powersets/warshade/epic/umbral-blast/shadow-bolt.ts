@@ -45,5 +45,15 @@ export const ShadowBolt: Power = {
     "type": "Negative",
     "scale": 0.68,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 4
+    },
+    "buffDuration": 4
   }
 };

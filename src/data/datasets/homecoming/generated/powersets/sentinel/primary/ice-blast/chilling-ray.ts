@@ -69,6 +69,14 @@ export const ChillingRay: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Sleep"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
   }
 };

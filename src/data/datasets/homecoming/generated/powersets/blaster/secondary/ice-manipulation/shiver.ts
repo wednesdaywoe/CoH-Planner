@@ -38,5 +38,15 @@ export const Shiver: Power = {
   "allowedSetCategories": [
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.325,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 60
+    },
+    "buffDuration": 60
+  }
 };

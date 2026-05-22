@@ -94,7 +94,15 @@ export const ConcentratedStrike: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
-    }
+    },
+    "damageDebuff": {
+      "scale": 0.7,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 12
+    },
+    "buffDuration": 12
   },
   "specialEffects": [
     {

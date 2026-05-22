@@ -44,6 +44,32 @@ export const IceArrow: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
+    },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  },
+  "conditionalEffects": [
+    {
+      "id": "acidarrow_acidburn",
+      "label": "AcidArrow AcidBurn",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.08,
+          "table": "Ranged_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 10
+        },
+        "buffDuration": 10
+      }
     }
-  }
+  ]
 };

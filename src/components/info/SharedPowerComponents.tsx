@@ -774,11 +774,16 @@ export function RegistryEffectsDisplay({
       if (key === 'healing') continue;
       if (key === 'absorb') continue;
 
-      // Skip damageBuff unless it has perTarget metadata (per-target stacking like Soul Drain)
-      if (key === 'damageBuff') {
-        const dmgBuff = effects?.damageBuff;
-        if (!(typeof dmgBuff === 'object' && dmgBuff !== null && 'perTarget' in dmgBuff)) continue;
-      }
+      // damageBuff was previously skipped here (the original comment said
+      // "handled by Defiance section for Blasters"). That blanket skip hid
+      // every click/toggle +Damage buff in Power Info — Aim, Build Up,
+      // Tactical Training: Assault, Leadership: Assault, Fortitude all
+      // displayed +ToHit but never +Damage even though both effects sit
+      // side-by-side in the power data. The Defiance-section concern no
+      // longer applies; let damageBuff render the same as tohitBuff so a
+      // power's own +Damage contribution is visible alongside its other
+      // buffs. The dashboard's global +Damage total still aggregates it
+      // separately, same as tohitBuff aggregates into global +ToHit.
 
       // Handle expandByType effects (defense, resistance, elusivity, protection)
       if (config.expandByType && typeof value === 'object' && value !== null) {

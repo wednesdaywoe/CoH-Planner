@@ -47,5 +47,15 @@ export const Thundergust: Power = {
     "type": "Smashing",
     "scale": 0.24,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 12
+    },
+    "buffDuration": 12
   }
 };

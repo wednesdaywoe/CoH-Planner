@@ -50,5 +50,15 @@ export const Lunge: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8
+    },
+    "buffDuration": 8
+  }
 };

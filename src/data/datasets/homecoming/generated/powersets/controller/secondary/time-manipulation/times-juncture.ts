@@ -37,5 +37,44 @@ export const TimesJuncture: Power = {
     "Slow Movement",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitDebuff": {
+      "scale": 1.25,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 1,
+      "damageDebuff": 1
+    },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "buffDuration": 1
+  },
+  "conditionalEffects": [
+    {
+      "id": "time_crawl_debuff",
+      "label": "Time Crawl Debuff",
+      "scope": "per-power",
+      "defaultActive": false,
+      "mode": "replace",
+      "effects": {
+        "tohitDebuff": {
+          "scale": 1.5,
+          "table": "Ranged_Debuff_ToHit"
+        },
+        "durations": {
+          "tohitDebuff": 1,
+          "damageDebuff": 1
+        },
+        "damageDebuff": {
+          "scale": 2.4,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "buffDuration": 1
+      }
+    }
+  ]
 };

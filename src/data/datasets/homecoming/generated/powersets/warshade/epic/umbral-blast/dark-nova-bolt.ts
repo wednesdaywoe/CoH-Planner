@@ -52,5 +52,15 @@ export const DarkNovaBolt: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 3
+    },
+    "buffDuration": 3
+  },
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Bolt ! &&"
 };

@@ -47,6 +47,14 @@ export const BlindingPowder: Power = {
       "scale": 10,
       "table": "Melee_Sleep"
     },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Melee_DeBuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 15,
+      "perceptionDebuff": 20
+    },
     "confuse": {
       "mag": 2,
       "scale": 20,
@@ -55,9 +63,6 @@ export const BlindingPowder: Power = {
     "perceptionDebuff": {
       "scale": 0.9,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "perceptionDebuff": 20
     },
     "buffDuration": 20
   },

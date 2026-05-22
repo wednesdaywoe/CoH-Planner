@@ -50,6 +50,47 @@ Stacking case the user cares about: 6-slot Preventive Medicine (+3.75%) + 6-slot
   - Superior Dominion of Arachnos: `ppm: 4` → `ppm: 5` ([:1731](src/data/proc-data.ts#L1731))
 - **Confirmed by user**: HC reports the same values (Superior = 5, regular = 4) — shared-file change is correct for both datasets, no per-dataset split needed.
 
+### ✅ Bug 4 (calc, partial): Alpha not gated by `allowedEnhancements`
+Root cause was Alpha incarnate bonuses leaking into powers that don't accept the corresponding enhancement category. Toggle damage buffs (Tactical Training: Assault, Leadership: Assault, etc.) listed 15% in the data but displayed as **+19.95%** because `enhBonuses.damage` from Alpha Intuition Radial T4 (+33%) was being multiplied in unconditionally (15 × 1.33 = 19.95). TT:Assault's `allowedEnhancements` is `["EnduranceReduction", "Recharge"]` — it doesn't accept Damage enhancement, so Alpha's Damage portion shouldn't apply.
+
+**Edits:**
+- [src/utils/calculations/enhancement-values.ts](src/utils/calculations/enhancement-values.ts):
+  - Added optional `allowedEnhancements?: EnhancementStatType[]` to `PowerWithSlots` interface.
+  - New exported helper `filterAlphaByAllowedEnhancements(alphaBonuses, allowed)` that returns only the Alpha aspects whose corresponding `EnhancementStatType` appears in `allowed` (undefined = no filter, preserves legacy behaviour).
+  - New `ASPECT_TO_ENH_TYPE` reverse map: aspect-key (`damage`) → `EnhancementStatType` (`Damage`).
+  - `combineWithAlphaED` now gates both Step 2 (ED-subject alpha) and Step 4 (ED-bypass alpha) by `allowedEnhancements`.
+- [src/utils/calculations/character-totals.ts](src/utils/calculations/character-totals.ts):
+  - Added `allowedEnhancements?: EnhancementStatType[]` to internal `PowerWithToggle` interface.
+  - `applyActivePowerBonuses` call to `combineWithAlphaED` now passes `power.allowedEnhancements`.
+  - No-slots branch uses the new `filterAlphaByAllowedEnhancements` helper instead of cloning Alpha verbatim.
+
+**Verified:** the new helper, called with `['EnduranceReduction', 'Recharge']`, drops Alpha's `damage` and `accuracy` aspects (preserves `endurance` and `recharge`). TT:Assault's displayed bonus should now read +15% instead of +19.95%. Type-check passes.
+
+**✅ Bug 4 part 2 (DONE): Heavy Burst +518% / Suppression +511% display fix**
+
+Not a calc bug — a display bug in the `(+%)` badge next to the Average DMG /
+DPS / DPA / DPE value. The badge was computed as `(valueFinal / valueBase - 1) * 100`,
+but `valueFinal` included proc damage that was ALSO shown separately as
+`+208.5 proc`. So proc damage was double-counted into the multiplier display.
+
+Traced with the Huntspidermind Arachnos Soldier build:
+- Heavy Burst pure-DoT, scale 0.155714, 7 ticks → `dotTotalBase ≈ 60.6`, enhanced ratio `dotTotalFinal/dotTotalBase ≈ 2.74` (≈ +174% — close to the user's expected +163.816% once Bug 4 part 1's Alpha gating took effect)
+- `procDamagePerActivation` ≈ 208.5 (slotted Detonation: Smashing Damage + Spectral Radial Flawless Interface Negative DoT × 10 expectedTargets on a cone)
+- Old display: `(60.6 × 2.74 + 208.5) / 60.6 - 1 ≈ 5.18 → +518%`. The 208.5 / 60.6 ≈ 3.44 inflation came entirely from including proc in the numerator but not denominator.
+
+**Fix:** [src/components/info/DamageBlock.tsx:436](src/components/info/DamageBlock.tsx#L436) —
+subtract `procContribution` from `valueFinal` before computing the +% so the badge
+reflects the enhancement-strength multiplier on the attack itself, not the additive
+proc chunk that's already shown next to it. Subtraction is unit-safe across all four
+display modes because `computeProcContribution` divides proc damage by the same
+denominator (`finalCycleTime` / `effectiveCastTime` / `endCost`) that `valueFinal`
+uses internally. Tooltip on the proc annotation updated to spell out the convention.
+
+Hypothesis from the original report — "procs are being calculated per-DoT-tick instead
+of per-cast" — checked and ruled out. The slotted-IO proc loop in DamageBlock and the
+incarnate proc accumulator in InfoPanel both compute one `chance × damage` per
+activation, not per DoT tick.
+
 ### ✅ Bug 2: Witchcraft + Superior Witchcraft proc piece data
 - **Edits to** [src/data/datasets/rebirth/io-sets-raw.ts](src/data/datasets/rebirth/io-sets-raw.ts):
   - `superior_witchcraft` piece 6: `"Empty"` (proc: false) → `"Chance for -Res Debuff"` (proc: true)
@@ -67,6 +108,48 @@ Stacking case the user cares about: 6-slot Preventive Medicine (+3.75%) + 6-slot
 
 ## What remains — concrete next steps
 
+### ✅ Bug 2 follow-up (DONE): Witchcraft + Superior Witchcraft full rebuild
+
+Rewrote both sets at [io-sets-raw.ts:25454](src/data/datasets/rebirth/io-sets-raw.ts#L25454) (Superior) and [:28845](src/data/datasets/rebirth/io-sets-raw.ts#L28845) (regular) to match the canonical Rebirth bin data:
+
+**Type clarification:** the user's wiki paste said "Sleep set" but the bin category is `ECToHitDeBuff` (To Hit Debuff). Keeping `"type": "To Hit Debuff"` is correct — that's the official game classification.
+
+**Piece aspects:** active pieces 1-5 now use `"ToHit Debuff"` (the primary aspect, matches HC's pattern for ToHit Debuff sets). Display names use the CoH community term "Universal Debuff" for the multi-aspect debuff pieces (the bin shows these pieces are also slottable in Slow + Defense Debuff powers, but ToHit Debuff is the primary classification).
+
+| # | Aspects | Name |
+|---|---|---|
+| 1 | `["ToHit Debuff"]` | Universal Debuff |
+| 2 | `["Accuracy", "ToHit Debuff"]` | Accuracy/Universal Debuff |
+| 3 | `["Accuracy", "Recharge"]` | Accuracy/Recharge |
+| 4 | `["ToHit Debuff", "Endurance", "Recharge"]` | Universal Debuff/Endurance/Recharge |
+| 5 | `["Accuracy", "Endurance", "Recharge"]` | Accuracy/Endurance/Recharge |
+| 6 | `[]` proc | Chance for -Res Debuff (already fixed prior session) |
+
+**Bonus tiers** rebuilt from bin (`Increased_Damage_3`/`_7`, `Increased_Energy_Neg_Ranged_Def_5`/`_7`, `Improved_Recharge_Time_4`/`_7`, `Accuracy_4`/`_7`, `Energy_Neg_Mez_Res_5`/`_7`):
+
+| Pieces | Witchcraft | Superior |
+|---|---|---|
+| 2 | +2% Damage (all) ← **was missing** | +4% Damage |
+| 3 | +3.75/3.75/1.875% Def E/N/Ranged | +5/5/2.5% Def E/N/Ranged |
+| 4 | +6.25% Recharge | +10% Recharge |
+| 5 | +9% Accuracy ← **was missing** | +15% Accuracy |
+| 6 | +4.5% E/N Resist + 7.5% Imm/Hold/Stun/Sleep Resist | +6% E/N Resist + 10% Imm/Hold/Stun/Sleep Resist |
+
+Also removed spurious **Fear** and **Confuse** resistance entries from the 6-pc bonus — those weren't in the bin (only Immobilized, Held, Stunned, Sleep are).
+
+Type-check passes. Witchcraft set composition is now ground-truth-matched.
+
+### ✅ Other Rebirth event-set bonus gaps (DONE for Imperial Might, deferred for Total_Might)
+
+- **`imperial_might`** — populated 4 of 5 bin tiers at [io-sets-raw.ts:11396](src/data/datasets/rebirth/io-sets-raw.ts#L11396):
+  - 2pc: +7.5% Increased Movement
+  - 3pc: +300% Knockback Protection (scale −3.0 in the bin)
+  - 4pc: +9.0% Accuracy
+  - 5pc: +3.0% Damage (all 8 damage types — bin's `Increased_Damage_5` lists Smashing/Lethal/Fire/Cold/Energy/NegEnergy/Toxic/Psionic)
+  - 6pc: **deferred** — Total_Might is a `Set_Mode` unlock (10.25s click effect via `Set_Bonus.Set_Bonus.Total_Might`), not a passive stat bonus. The planner has no model for set-mode unlocks. Would need either a flavour "unique effect" string entry or a new bonus type. Confirmed via [tools/bin-crawler](tools/bin-crawler) inspection that this is a real Rebirth-exclusive 6pc mode trigger.
+- **`inexhaustibility`** — bin has no bonuses; 0 in the data is correct. Leave as-is.
+
+**Original section (kept for reference):**
 ### 🔴 Bug 2 follow-up: Witchcraft set composition is fundamentally broken
 
 User's wiki paste (canonical Rebirth source) says Witchcraft is a **Sleep** set with these pieces:
@@ -119,18 +202,91 @@ This means the rebuild needs:
 
 **Secondary question from Bug 4**: User asks where the ON/OFF toggle for Destiny and Hybrid slots is. Find/add this — likely in the IncarnatePicker component or build dashboard. Search for `isActive` on incarnate slots and how Hybrid effects get gated on/off.
 
-### 🔴 Bug 3: Hybrid Endurance Discount + display semantics
+### ✅ Bug 3 (calc, DONE): Hybrid T4 Support Endurance Discount restored
 
-Two sub-bugs:
-1. **Calc bug**: Hybrid: T4 Support's +10% Endurance Discount auto effect isn't reaching the global Endurance Discount stat. Likely a connection problem between the incarnate effect aggregation (`src/data/incarnate-effects-generated.ts` / `src/utils/calculations/`) and the `global.enduranceDiscount` accumulator. Trace from [src/utils/calculations/character-totals.ts:1135](src/utils/calculations/character-totals.ts#L1135) (`resolveScaledEffect(effects.enduranceDiscount, ...)`) backwards.
-2. **Display semantics (NOT a bug, but a UX call to make)**: User argues Endurance Discount should be displayed in additive divisor form (e.g. `+20%` for set bonuses) rather than the current multiplier form. Argument: in-game, +Endurance Discount works like a "global set bonus" akin to +Global Recharge, additive between set bonuses + incarnate bonuses, then applied via `100/(100+divisor)`. Worth a conversation before changing display.
+Root cause was a **literal wrong-attrib-name** in [scripts/convert-incarnate-effects.cjs](scripts/convert-incarnate-effects.cjs) silent-boost handler (line ~531). The Hybrid Support silent boosts (`support_boost_{common,uncommon,rare,very_rare}.json`) store the +%/EndDiscount as bin attrib `'EnduranceDiscount'` (index 92), but the converter was checking for `'Endurance'` (index 22 — a different attrib for max-end buffs). The silent boost was silently dropped → `support_genome_8/9` shipped with `passive: {}` → `applyHybridStatBlock` had nothing to add → `global.enduranceDiscount` got 0 contribution.
 
-### 🟡 Bug 5: Power Info missing buff/debuff throughput
+**Edits:**
+- [scripts/convert-incarnate-effects.cjs](scripts/convert-incarnate-effects.cjs):
+  - Silent-boost handler (line 530-538): `'Endurance'` → `'EnduranceDiscount'`. The 5 lines added a comment explaining the index-22-vs-92 distinction since the bug pattern is exactly the kind of trap to hit again.
+  - Inline buff handler (line ~477): accepts both `'Endurance'` and `'EnduranceDiscount'` defensively, since Mids/CoD2-derived data uses the shorter name and bin export uses the longer one.
+- Re-ran `node scripts/convert-incarnate-effects.cjs` for both HC and Rebirth.
 
-Lowest scope, additive UI work. Power Info modal (likely `src/components/modals/PowerInfoModal.tsx` or similar — confirm path) needs:
-- Aim: add +Damage throughput display (already shows +ToHit)
-- Darkest Night: add -ToHit Debuff throughput display
-- Generalize: any effect with `{scale, table}` should show its post-enhancement resolved value
+**Verified** in [src/data/datasets/homecoming/generated/incarnate-effects.ts](src/data/datasets/homecoming/generated/incarnate-effects.ts):
+- `support_genome_2` (T2): `passive: {"enduranceDiscount": 0.05}`
+- `support_genome_8` (T4 Core): `passive: {"enduranceDiscount": 0.1}` ← was `{}` before
+- `support_genome_9` (T4 Radial): `passive: {"enduranceDiscount": 0.1, defMelee/AoE/...}` ← `enduranceDiscount` added
+- Same fix lands in Rebirth. Type-check passes.
+
+`applyHybridStatBlock` already had the correct path: it iterates `stats[stat]` → multiplies by 100 → adds to `global[stat]`. The +10% now flows through. Stacking case (6-slot PrevMed + 6-slot ReactDef + 2-slot UnbGuard + Hybrid Support T4 = +20%) should compute correctly.
+
+### ✅ Bug 3 (display + pipeline, DONE): EndDisc unified + divisor math everywhere
+
+Display-semantics discussion uncovered three more latent calc bugs sharing the same
+root cause: the planner had **two parallel EndDisc accumulators**
+(`global.endurance` from set bonuses and `global.enduranceDiscount` from active-power
+effects), they were combined with the wrong formula at the wrong time, and the
+dashboard converted the result into a multiplier-form percentage that didn't match
+in-game / Mids convention. Fixed as one consolidated pass.
+
+**Symptoms**
+- A. Set-bonus +EndDisc never reached toggle cost calc (wrong divisor input).
+- B. Active-power EndDisc (Conserve Power, Hybrid Support T4, etc.) was applied
+  post-hoc as `cost *= (1 - global/100)` — a linear approximation that diverges
+  badly from the true divisor `cost = base / (1 + EndDisc/100)` at higher %.
+- C. Dashboard "End Disc" stat showed only set-bonus EndDisc, ignoring active-
+  power contributions.
+- D. Dashboard label `End Disc` showed multiplicative `1 - 1/(1 + endRdx/100)` form
+  (e.g. `16.67%` from +20% sum) rather than the additive divisor input (`+20%`)
+  that matches Mids and the in-game combat-attributes window.
+
+**Fix — single canonical accumulator, divisor math, ordering**
+
+[src/utils/calculations/character-totals.ts](src/utils/calculations/character-totals.ts):
+1. **New `applyToggleEndCosts` function** — runs in a new Step 9.7 after every
+   global EndDisc source is aggregated (set bonuses → fitness → active powers →
+   procs → accolades → incarnates). Uses `cost = base / (1 + slotEndRdx + global.endurance/100)`
+   per toggle.
+2. **Removed inline toggle cost calc** from `applyActivePowerBonuses` (was Step 7);
+   only the per-power side-effects (defense/resistance/etc.) remain there.
+3. **Active-power `effects.enduranceDiscount`** now adds to `global.endurance`
+   instead of `global.enduranceDiscount`, with breakdown key `'endurance'`.
+4. **Hybrid Support T4 passive `enduranceDiscount`** in `applyHybridStatBlock`
+   now routes to `global.endurance` (same path / breakdown bucket as set bonuses).
+5. **Removed post-hoc reduction** (lines 2945-2952) — the linear `cost *= (1 - global/100)`
+   patch is gone; the divisor formula in Step 9.7 supersedes it.
+
+[src/data/core/stat-definitions.ts](src/data/core/stat-definitions.ts):
+6. `endreduction.getValue` now returns `stats.enduranceReduction` directly
+   (additive divisor-input %), with tooltip explaining the divisor formula and
+   that the value matches Mids / in-game.
+
+**`global.enduranceDiscount` field retained but no longer written** — left in the
+GlobalBonuses type for the moment so external consumers don't break; safe to delete
+in a follow-up. Type-check passes.
+
+### ✅ Bug 5 (DONE): Power Info now shows buff/debuff throughput
+
+Two separate sub-bugs, both fixed.
+
+**Sub-bug A — Aim's +Damage was hidden by a display filter.**
+[SharedPowerComponents.tsx:777-781](src/components/info/SharedPowerComponents.tsx#L777-L781) had a `if (key === 'damageBuff') continue;` short-circuit (only let `perTarget` damageBuffs like Soul Drain through). Comment said "handled by Defiance section for Blasters" but that section no longer exists — and the filter was hiding +Damage on Aim, Build Up, Tactical Training: Assault, Leadership: Assault, Fortitude, and every other click/toggle damage buff. Removed the filter; damageBuff now renders the same as tohitBuff. **Verified live:** Aim Power Info shows `+Damage 50.00%` alongside `+ToHit 50.00%`.
+
+**Sub-bug B — Foe debuffs were dropped at convert time entirely.**
+[scripts/convert-powerset.cjs](scripts/convert-powerset.cjs) had three `if (isSelfTargeting) { ... }` guards on `damageDebuff`, `tohitDebuff`, and `rechargeDebuff` capture. The intent was to prevent foe debuffs from being applied to the caster's own stats (since `effects.damageDebuff` used to mean "self-penalty only"). But the calc engine ALREADY gates those fields on the `selfPenalty: true` flag, so the safer pattern is:
+- Capture the debuff into the existing field regardless of target
+- Only set `selfPenalty: true` when `isSelfTargeting`
+- Calc engine ignores fields without `selfPenalty` for caster stats (unchanged)
+- Display layer renders them via existing registry entries (`tohitDebuff` → "-ToHit", `damageDebuff` → "-Damage", `rechargeDebuff` → "-Recharge") — no display changes needed
+
+Removed the three guards. Re-converted all HC + Rebirth powersets + pools + epic pools. **Verified live:** Darkest Night Power Info now shows `-ToHit 18.75%` and `-Damage 25.00%` in a DEBUFFS section. Granite Armor's self-penalty Damage debuff still applies to the caster (the `selfPenalty` flag is still set). Other powers that now light up: Time's Juncture, Radiation Infection (also gained `defenseDebuff` since that was already foe-aware), Cold Domination toggles, the rest of the Dark Miasma debuff suite.
+
+**Generalization piece:** the post-enhancement "Final" column for these debuffs uses the registry's `enhancementAspect: 'tohitDebuff' | 'defenseDebuff' | 'damageDebuff'` mapping, so slotted ToHit Debuff / Defense Debuff IOs will boost the displayed value automatically. Stats with `{scale, table}` already flowed through this path for buffs; debuffs now use the same path.
+
+**Files touched:**
+- [src/components/info/SharedPowerComponents.tsx](src/components/info/SharedPowerComponents.tsx) — removed the damageBuff display filter
+- [scripts/convert-powerset.cjs](scripts/convert-powerset.cjs) — removed 3 `isSelfTargeting` debuff drops
+- Regenerated all powerset / pool / epic TS files (~1k generated files updated). Type-check passes.
 
 ---
 

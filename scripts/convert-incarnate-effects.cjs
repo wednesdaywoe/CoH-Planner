@@ -473,8 +473,11 @@ function extractHybrid() {
               statKey = ATTRIB_MAP[attrib];
             }
           } else if (aspect === 'Strength') {
-            // Enhancement-type buffs
-            if (attrib === 'Endurance') statKey = 'enduranceDiscount';
+            // Enhancement-type buffs. Accept both 'Endurance' (legacy CoD2
+            // name) and 'EnduranceDiscount' (current bin export name —
+            // attrib index 92 vs Endurance's 22, they're distinct in the
+            // game enum but Mids/CoD2 used the shorter name).
+            if (attrib === 'Endurance' || attrib === 'EnduranceDiscount') statKey = 'enduranceDiscount';
           }
 
           if (!statKey) continue;
@@ -527,8 +530,12 @@ function extractHybrid() {
             statKey = 'damage'; // Assault passive +Dmg
           } else if (attrib === 'Regeneration' && aspect === 'Current') {
             statKey = 'regeneration'; // Melee passive +Regen
-          } else if (attrib === 'Endurance' && aspect === 'Strength') {
-            statKey = 'enduranceDiscount'; // Support passive End Discount
+          } else if (attrib === 'EnduranceDiscount' && aspect === 'Strength') {
+            // Hybrid Support silent boosts (support_boost_{common,uncommon,rare,very_rare})
+            // store the +X% endurance discount as attrib 'EnduranceDiscount'
+            // (index 92), not 'Endurance' (index 22). The earlier name was wrong
+            // and made the +10% T4 Support passive vanish from `global.enduranceDiscount`.
+            statKey = 'enduranceDiscount';
           } else if (aspect === 'Resistance') {
             // Control passive Status Resistance
             const mezTypes = ['Confused', 'Terrorized', 'Held', 'Immobilized', 'Stunned', 'Sleep', 'Afraid'];

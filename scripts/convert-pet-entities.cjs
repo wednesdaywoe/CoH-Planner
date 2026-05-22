@@ -32,6 +32,13 @@ const POWERS_PATH = ROOT;
 // first wave of Stage A. Both HC and Rebirth write through datasetPath().
 const OUTPUT_PATH = datasetPath(datasetId, 'pet-entities.ts');
 
+// Sidecar JSON of entity_def → lifespan_seconds, consumed by convert-powerset.cjs
+// to populate summon.duration when a summoning power's EntCreate AttribMod has
+// Duration=0 (the lifespan lives on the pet's bundled Self_Destruct power instead).
+// Kept alongside the script so build pipelines that run convert-pet-entities first
+// can require() it directly without parsing the generated TS.
+const SIDECAR_LIFESPANS_PATH = datasetPath(datasetId, 'pet-lifespans.json');
+
 // Damage type attributes we care about
 const DAMAGE_ATTRIBS = new Set([
   'smashing_dmg', 'lethal_dmg', 'fire_dmg', 'cold_dmg',
@@ -352,6 +359,42 @@ function processUpgradeDirectory(dirPath) {
 }
 
 /**
+ * Pull the pet's lifespan (seconds) out of its Self_Destruct power.
+ *
+ * Pet lifespans aren't stored on the entity record. They're encoded as a
+ * Silent_Kill AttribMod inside each pet's bundled Self_Destruct Auto power:
+ * the pet auto-fires Self_Destruct on spawn, and the Silent_Kill's `Delay`
+ * field is when the despawn actually triggers.
+ *
+ * In the bin export the Silent_Kill AttribMod is labeled `Create_Entity`
+ * (both share enum index 117). We disambiguate by signature: target=Self,
+ * stack=Stack, table='Melee_Ones', no EntCreate params. Permanent pets
+ * (mastermind primaries that last until killed) either have no Self_Destruct
+ * power at all or have one with delay=0.
+ */
+function extractLifespan(powerFilePath) {
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(powerFilePath, 'utf-8'));
+  } catch {
+    return null;
+  }
+  for (const effectGroup of (data.effects || [])) {
+    for (const t of (effectGroup.templates || [])) {
+      const attribs = t.attribs || [];
+      if (!attribs.includes('Create_Entity')) continue;
+      if (t.target !== 'Self') continue;
+      if (t.stack !== 'Stack') continue;
+      if (t.table !== 'Melee_Ones') continue;
+      if (t.params) continue; // real Create_Entity has EntCreate params
+      const delay = typeof t.delay === 'number' ? t.delay : 0;
+      if (delay > 0) return delay;
+    }
+  }
+  return null;
+}
+
+/**
  * Read an entity file and extract its powers
  */
 function processEntity(entityFilePath) {
@@ -375,6 +418,7 @@ function processEntity(entityFilePath) {
   // Process each power and track powerset paths for upgrade tier scanning
   const abilities = [];
   const powersetPaths = new Set(); // Track unique powerset directories
+  let lifespan = null;
 
   for (let i = 0; i < powerFullNames.length; i++) {
     const fullName = powerFullNames[i]; // e.g., "Pets.Tornado.Tornado_Attack"
@@ -395,6 +439,14 @@ function processEntity(entityFilePath) {
       // Try without underscores
       const altPath = path.join(POWERS_PATH, category, powerset, `${power.replace(/ /g, '_')}.json`);
       if (!fs.existsSync(altPath)) continue;
+    }
+
+    // Pet lifespan: harvested from the bundled Self_Destruct power's
+    // Silent_Kill delay. Recorded once per entity. Pets without a finite
+    // lifespan (Mastermind primaries that die only to enemy damage) either
+    // have no Self_Destruct or its delay is 0 — leave `lifespan` null.
+    if (power === 'self_destruct' && lifespan === null) {
+      lifespan = extractLifespan(powerFilePath);
     }
 
     const ability = processPetPower(powerFilePath);
@@ -427,6 +479,7 @@ function processEntity(entityFilePath) {
     commandable: entityData.commandable_pet === 1,
     copyCreatorMods: entityData.copy_creator_mods === true,
     abilities,
+    lifespan: lifespan ?? undefined,
     upgradeTiers: upgradeTiers.length > 0 ? upgradeTiers : undefined,
   };
 }
@@ -474,6 +527,17 @@ function main() {
   const tsContent = generateTypeScript(entities);
   fs.writeFileSync(OUTPUT_PATH, tsContent);
   console.log(`Wrote ${OUTPUT_PATH}`);
+
+  // Emit sidecar JSON of pet lifespans for convert-powerset to consume.
+  // Only entities with a real positive lifespan land here; permanent pets are absent.
+  const lifespans = {};
+  for (const [name, entity] of Object.entries(entities)) {
+    if (typeof entity.lifespan === 'number' && entity.lifespan > 0) {
+      lifespans[name] = entity.lifespan;
+    }
+  }
+  fs.writeFileSync(SIDECAR_LIFESPANS_PATH, JSON.stringify(lifespans, null, 2) + '\n');
+  console.log(`Wrote ${SIDECAR_LIFESPANS_PATH} (${Object.keys(lifespans).length} entries)`);
 
   // Print summary for our 3 target entities
   const targets = ['Pets_Tornado', 'Pets_LightningStorm', 'Pets_Gremlin_Controller'];
@@ -548,6 +612,11 @@ function generateTypeScript(entities) {
   lines.push(`  commandable: boolean;`);
   lines.push(`  copyCreatorMods: boolean;`);
   lines.push(`  abilities: PetAbility[];`);
+  lines.push(`  /** Pet lifespan in seconds (from bundled Self_Destruct power's Silent_Kill delay).`);
+  lines.push(`   *  Omitted for permanent pets (mastermind primaries, etc.) that despawn only`);
+  lines.push(`   *  when killed or unsummoned. Used by convert-powerset to populate`);
+  lines.push(`   *  \`summon.duration\` for summoning powers whose EntCreate Duration is 0. */`);
+  lines.push(`  lifespan?: number;`);
   lines.push(`  upgradeTiers?: PetUpgradeTier[];`);
   lines.push(`}`);
   lines.push(``);
@@ -560,6 +629,9 @@ function generateTypeScript(entities) {
     lines.push(`    characterClass: ${JSON.stringify(entity.characterClass)},`);
     lines.push(`    commandable: ${entity.commandable},`);
     lines.push(`    copyCreatorMods: ${entity.copyCreatorMods},`);
+    if (typeof entity.lifespan === 'number' && entity.lifespan > 0) {
+      lines.push(`    lifespan: ${entity.lifespan},`);
+    }
     lines.push(`    abilities: [`);
 
     for (const ability of entity.abilities) {

@@ -63,6 +63,14 @@ export const Chilblain: Power = {
       "mag": 5,
       "scale": 1,
       "table": "Ranged_PvPMez"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 18
+    },
+    "buffDuration": 18
   }
 };

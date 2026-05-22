@@ -57,7 +57,9 @@ export const Resurgence: Power = {
       "recoveryBuff": 90,
       "rechargeBuff": 90,
       "damageBuff": 90,
-      "tohitBuff": 90
+      "tohitBuff": 90,
+      "damageDebuff": 45,
+      "tohitDebuff": 45
     },
     "recoveryBuff": {
       "scale": 2,
@@ -74,6 +76,14 @@ export const Resurgence: Power = {
     "tohitBuff": {
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
+    },
+    "damageDebuff": {
+      "scale": 4,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "tohitDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_ToHit"
     },
     "buffDuration": 90
   }

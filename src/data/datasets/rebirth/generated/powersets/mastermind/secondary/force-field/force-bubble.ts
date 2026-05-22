@@ -37,6 +37,16 @@ export const ForceBubble: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "damageDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 0.3
+    },
+    "buffDuration": 0.3
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -33,13 +33,18 @@ export const HeatExhaustion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "damageDebuff": {
+      "scale": 5,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 40,
+      "regenDebuff": 40,
+      "recoveryDebuff": 40
+    },
     "regenDebuff": {
       "scale": 5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 40,
-      "recoveryDebuff": 40
     },
     "recoveryDebuff": {
       "scale": 2,

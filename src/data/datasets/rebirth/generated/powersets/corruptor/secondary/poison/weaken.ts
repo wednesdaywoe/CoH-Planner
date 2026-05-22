@@ -40,13 +40,13 @@ export const Weaken: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
-      "mag": 1,
-      "scale": 0.5,
+    "damageDebuff": {
+      "scale": 0.25,
       "table": "Ranged_Stun"
     },
-    "effectDuration": 30,
     "durations": {
+      "damageDebuff": 30,
+      "tohitDebuff": 30,
       "stun": 30,
       "sleep": 30,
       "confuse": 30,
@@ -56,6 +56,16 @@ export const Weaken: Power = {
       "defenseDebuff": 30,
       "enduranceDrain": 30
     },
+    "tohitDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Stun"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "effectDuration": 30,
     "sleep": {
       "mag": 1,
       "scale": 0.5,

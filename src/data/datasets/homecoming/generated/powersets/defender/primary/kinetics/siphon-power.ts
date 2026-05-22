@@ -33,13 +33,18 @@ export const SiphonPower: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 30,
+      "damageBuff": 30
+    },
     "damageBuff": {
       "scale": 2,
       "table": "Ranged_Buff_Dmg",
       "perTarget": 0
-    },
-    "durations": {
-      "damageBuff": 30
     },
     "buffDuration": 30
   }

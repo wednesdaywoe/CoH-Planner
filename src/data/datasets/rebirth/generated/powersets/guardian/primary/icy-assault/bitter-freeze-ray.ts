@@ -48,10 +48,18 @@ export const BitterFreezeRay: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 18
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "buffDuration": 18
   }
 };

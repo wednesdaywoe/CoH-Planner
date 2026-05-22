@@ -61,5 +61,15 @@ export const SiphonLife: Power = {
       "scale": 2.1509,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Melee_DeBuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

@@ -40,11 +40,19 @@ export const NeurotoxicBreath: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.65,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 20
+    },
     "hold": {
       "mag": 2,
       "scale": 3,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "buffDuration": 20
   },
   "specialEffects": [
     {

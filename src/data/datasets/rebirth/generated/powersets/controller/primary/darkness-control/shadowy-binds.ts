@@ -55,7 +55,15 @@ export const ShadowyBinds: Power = {
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_DeBuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 15
+    },
+    "buffDuration": 15
   },
   "specialEffects": [
     {

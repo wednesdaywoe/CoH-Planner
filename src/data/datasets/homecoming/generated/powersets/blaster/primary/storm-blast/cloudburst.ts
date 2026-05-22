@@ -49,5 +49,28 @@ export const Cloudburst: Power = {
     "table": "Ranged_Damage",
     "duration": 2.9,
     "tickRate": 0.30000001192092896
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stormblast_instormcell",
+      "label": "StormBlast InStormCell",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.1,
+          "table": "Melee_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 8,
+          "tohitDebuff": 8
+        },
+        "tohitDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_ToHit"
+        },
+        "buffDuration": 8
+      }
+    }
+  ]
 };

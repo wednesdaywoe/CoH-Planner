@@ -48,14 +48,19 @@ export const TouchoftheBeyond: Power = {
       "scale": 10,
       "table": "Melee_Fear"
     },
-    "regenBuff": {
-      "scale": 2.25,
-      "table": "Melee_Ones"
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Melee_DeBuff_ToHit"
     },
     "durations": {
+      "tohitDebuff": 20,
       "regenBuff": 60,
       "recoveryBuff": 60,
       "damageBuff": 8.67
+    },
+    "regenBuff": {
+      "scale": 2.25,
+      "table": "Melee_Ones"
     },
     "recoveryBuff": {
       "scale": 0.5,

@@ -70,5 +70,15 @@ export const Gloom: Power = {
       "duration": 3.6,
       "tickRate": 0.5
     }
-  ]
+  ],
+  "effects": {
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

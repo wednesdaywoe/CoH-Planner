@@ -44,6 +44,16 @@ export const PsionicLance: Power = {
     "scale": 3.56,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "conditionalEffects": [
     {
       "id": "psionic_melee_insight",

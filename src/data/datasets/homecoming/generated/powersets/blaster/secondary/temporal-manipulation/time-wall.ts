@@ -55,6 +55,15 @@ export const TimeWall: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.6,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 20,
+      "regenDebuff": 20,
+      "damageBuff": 9.1
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
@@ -63,10 +72,6 @@ export const TimeWall: Power = {
     "regenDebuff": {
       "scale": 0.45,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 20,
-      "damageBuff": 9.1
     },
     "damageBuff": {
       "scale": 0.106,

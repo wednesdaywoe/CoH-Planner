@@ -59,6 +59,16 @@ export const CrushingBlast: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

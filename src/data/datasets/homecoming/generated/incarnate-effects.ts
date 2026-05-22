@@ -548,7 +548,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Genome
   'support_genome': {
     tree: 'support',
-    passive: {},
+    passive: {"enduranceDiscount":0.025},
     frontLoaded: {"defMelee":0.02,"defSmashing":0.02,"defLethal":0.02},
     perTarget: {},
     maxTargets: 0,
@@ -558,7 +558,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Core Genome
   'support_genome_2': {
     tree: 'support',
-    passive: {},
+    passive: {"enduranceDiscount":0.05},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -568,7 +568,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Radial Genome
   'support_genome_3': {
     tree: 'support',
-    passive: {},
+    passive: {"enduranceDiscount":0.05},
     frontLoaded: {"defMelee":0.02,"defAoE":0.02,"defSmashing":0.02,"defLethal":0.02,"defEnergy":0.02,"defNegative":0.02},
     perTarget: {},
     maxTargets: 0,
@@ -578,7 +578,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Total Core Graft
   'support_genome_4': {
     tree: 'support',
-    passive: {},
+    passive: {"enduranceDiscount":0.075},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -588,7 +588,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Partial Core Graft
   'support_genome_5': {
     tree: 'support',
-    passive: {},
+    passive: {"enduranceDiscount":0.075},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -598,7 +598,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Partial Radial Graft
   'support_genome_6': {
     tree: 'support',
-    passive: {},
+    passive: {"enduranceDiscount":0.075},
     frontLoaded: {"defMelee":0.08,"defAoE":0.08,"defSmashing":0.08,"defLethal":0.08,"defFire":0.08,"defCold":0.08,"defEnergy":0.08,"defNegative":0.08},
     perTarget: {},
     maxTargets: 0,
@@ -608,7 +608,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Total Radial Graft
   'support_genome_7': {
     tree: 'support',
-    passive: {},
+    passive: {"enduranceDiscount":0.075},
     frontLoaded: {"defMelee":0.06,"defAoE":0.06,"defSmashing":0.06,"defLethal":0.06,"defFire":0.06,"defCold":0.06,"defEnergy":0.06,"defNegative":0.06},
     perTarget: {},
     maxTargets: 0,
@@ -618,7 +618,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Core Embodiment
   'support_genome_8': {
     tree: 'support',
-    passive: {},
+    passive: {"enduranceDiscount":0.1},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -628,7 +628,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Radial Embodiment
   'support_genome_9': {
     tree: 'support',
-    passive: {},
+    passive: {"enduranceDiscount":0.1},
     frontLoaded: {"defRanged":0.08,"defMelee":0.08,"defAoE":0.08,"defSmashing":0.08,"defLethal":0.08,"defFire":0.08,"defCold":0.08,"defEnergy":0.08,"defNegative":0.08,"defPsionic":0.08,"defToxic":0.08},
     perTarget: {},
     maxTargets: 0,

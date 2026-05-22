@@ -53,12 +53,17 @@ export const PsionicLance: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10,
+      "rangeBuff": 10
+    },
     "rangeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
     },
     "buffDuration": 10
   },

@@ -57,6 +57,8 @@ export const AuraofMadness: Power = {
       "regenDebuff": 4,
       "resistanceDebuff": 4,
       "defenseDebuff": 4,
+      "tohitDebuff": 4,
+      "damageDebuff": 4,
       "confuse": 4,
       "stun": 4,
       "sleep": 4,
@@ -100,6 +102,14 @@ export const AuraofMadness: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
+    },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Melee_DeBuff_ToHit"
+    },
+    "damageDebuff": {
+      "scale": 1.995,
+      "table": "Melee_Debuff_Dam"
     },
     "confuse": {
       "mag": 2.5,

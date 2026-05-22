@@ -52,10 +52,18 @@ export const PsiBlade: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.12,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "buffDuration": 6
   },
   "conditionalEffects": [
     {

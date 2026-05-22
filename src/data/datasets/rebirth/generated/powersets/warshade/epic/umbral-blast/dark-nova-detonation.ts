@@ -50,6 +50,16 @@ export const DarkNovaDetonation: Power = {
     "scale": 0.9,
     "table": "Ranged_SSDamage"
   },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -52,6 +52,16 @@ export const IceSword: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8
+    },
+    "buffDuration": 8
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -46,12 +46,22 @@ export const TwilightGrasp: Power = {
       "entity": "Pets_MMTwilight",
       "duration": 1
     },
+    "tohitDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 20,
+      "damageDebuff": 20,
+      "regenDebuff": 20
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Dam"
+    },
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 20
     },
     "buffDuration": 20
   }

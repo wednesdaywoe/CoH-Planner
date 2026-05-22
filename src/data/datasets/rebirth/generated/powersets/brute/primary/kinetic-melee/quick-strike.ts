@@ -57,7 +57,15 @@ export const QuickStrike: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "damageDebuff": {
+      "scale": 0.85,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 4
+    },
+    "buffDuration": 4
   },
   "specialEffects": [
     {

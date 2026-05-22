@@ -90,14 +90,24 @@ export const BulletRain: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10,
+      "damageDebuff": 8,
+      "damageBuff": 9.17
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Dam"
+    },
     "damageBuff": {
       "scale": 0.034,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "damageBuff": 9.17
-    },
-    "buffDuration": 9.17
+    "buffDuration": 10
   },
   "specialEffects": [
     {

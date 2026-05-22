@@ -39,13 +39,15 @@ export const Benumb: Power = {
     },
     "durations": {
       "regenDebuff": 30,
+      "damageDebuff": 30,
       "confuse": 30,
       "fear": 30,
       "hold": 30,
       "immobilize": 30,
       "stun": 30,
       "sleep": 30,
-      "defenseDebuff": 30
+      "defenseDebuff": 30,
+      "tohitDebuff": 30
     },
     "enduranceDrain": {
       "scale": 0.05,
@@ -54,6 +56,10 @@ export const Benumb: Power = {
     "enduranceGain": {
       "scale": 5.5,
       "table": "Ranged_EndDrain"
+    },
+    "damageDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Stun"
     },
     "confuse": {
       "mag": 1,
@@ -87,6 +93,10 @@ export const Benumb: Power = {
       "table": "Ranged_Stun"
     },
     "defenseDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "tohitDebuff": {
       "scale": 0.5,
       "table": "Ranged_Stun"
     },

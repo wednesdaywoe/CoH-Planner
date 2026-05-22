@@ -56,14 +56,19 @@ export const Chilblain: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 18,
+      "damageBuff": 8.67
+    },
     "damageBuff": {
       "scale": 0.077,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "damageBuff": 8.67
-    },
-    "buffDuration": 8.67,
+    "buffDuration": 18,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

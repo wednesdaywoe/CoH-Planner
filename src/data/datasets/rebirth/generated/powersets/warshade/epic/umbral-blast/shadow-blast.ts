@@ -48,6 +48,16 @@ export const ShadowBlast: Power = {
     "scale": 1.64,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

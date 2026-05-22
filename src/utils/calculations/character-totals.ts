@@ -12,7 +12,7 @@
  * - Global Bonuses → Dashboard Stats (with breakdown tracking)
  */
 
-import type { Build, Accolade, Enhancement, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
+import type { Build, Accolade, Enhancement, EnhancementStatType, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
 import { getTableValue } from '@/data/at-tables';
@@ -36,6 +36,7 @@ import {
 } from './stats';
 import {
   combineWithAlphaED,
+  filterAlphaByAllowedEnhancements,
   BASE_RECOVERY_RATE,
   BASE_REGEN_RATE,
   type EnhancementBonuses,
@@ -599,6 +600,9 @@ interface PowerWithToggle {
   effects?: ActivePowerEffect;
   slots?: (Enhancement | null)[];
   stats?: { endurance?: number; activatePeriod?: number; [key: string]: unknown };
+  /** Used by `combineWithAlphaED` to gate Alpha bonuses by what the power
+   * actually accepts as enhancements. See enhancement-values.ts. */
+  allowedEnhancements?: EnhancementStatType[];
 }
 
 /** targetType values where the power cannot be cast on self — the buff goes
@@ -616,6 +620,68 @@ const ALLY_ONLY_TARGET_TYPES = new Set([
   'deadplayerfriend',
   'deadoraliveleaguemate',
 ]);
+
+/**
+ * Sum per-second endurance cost from active toggles using the canonical CoH
+ * divisor formula:
+ *
+ *     actualCost = baseEndPerSec / (1 + slotEndRdx + globalEndDisc/100)
+ *
+ * Runs AFTER all global EndDisc sources have been aggregated (set bonuses,
+ * active-power discounts like Conserve Power, Hybrid Support T4) so the
+ * divisor sees the full sum in one shot. This replaces the older two-step
+ * pattern (per-toggle cost using only slot enhancement, then a post-hoc
+ * `cost *= (1 - global/100)` rescale), which used the wrong linear formula
+ * and silently dropped any discount sources that hadn't been aggregated yet.
+ */
+function applyToggleEndCosts(
+  powers: PowerWithToggle[],
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>,
+  buildLevel: number,
+  alphaBonuses: EnhancementBonuses = {},
+  alphaEdBypassRatio: number = 0,
+  exemplarLevel?: number,
+): void {
+  const globalEndDiscDecimal = (global.endurance || 0) / 100;
+  for (const power of powers) {
+    if (power.powerType?.toLowerCase() !== 'toggle' || !power.isActive) continue;
+    if (power.targetType && ALLY_ONLY_TARGET_TYPES.has(power.targetType.toLowerCase())) continue;
+
+    let baseEndPerSec = 0;
+    if (power.effects?.enduranceCost) {
+      baseEndPerSec = power.effects.enduranceCost;
+    } else if (power.stats?.endurance) {
+      const activatePeriod = power.stats.activatePeriod ?? 0.5;
+      baseEndPerSec = activatePeriod > 0 ? power.stats.endurance / activatePeriod : 0;
+    }
+    if (baseEndPerSec <= 0) continue;
+
+    let enhBonuses: EnhancementBonuses;
+    if (power.slots && power.slots.length > 0) {
+      enhBonuses = combineWithAlphaED(
+        { name: power.name, slots: power.slots, allowedEnhancements: power.allowedEnhancements },
+        buildLevel,
+        getIOSet,
+        alphaBonuses,
+        alphaEdBypassRatio,
+        exemplarLevel
+      );
+    } else {
+      enhBonuses = filterAlphaByAllowedEnhancements(alphaBonuses, power.allowedEnhancements);
+    }
+    const slotEndRdx = enhBonuses.endurance || 0;
+
+    const divisor = 1 + slotEndRdx + globalEndDiscDecimal;
+    const actualCost = baseEndPerSec / divisor;
+    global.toggleEndCost += actualCost;
+    addToBreakdown(breakdown, 'toggleEndCost', {
+      name: power.name,
+      value: actualCost,
+      type: 'active-power',
+    });
+  }
+}
 
 /**
  * Apply bonuses from active toggle powers
@@ -654,7 +720,7 @@ function applyActivePowerBonuses(
     let enhBonuses: EnhancementBonuses;
     if (power.slots && power.slots.length > 0) {
       enhBonuses = combineWithAlphaED(
-        { name: power.name, slots: power.slots },
+        { name: power.name, slots: power.slots, allowedEnhancements: power.allowedEnhancements },
         buildLevel,
         getIOSet,
         alphaBonuses,
@@ -662,34 +728,19 @@ function applyActivePowerBonuses(
         exemplarLevel
       );
     } else {
-      enhBonuses = { ...alphaBonuses };
+      // No slots → only Alpha contributes. Same gate as combineWithAlphaED
+      // applies: don't apply Alpha bonuses for aspects the power doesn't
+      // accept. Without this filter, e.g. Tactical Training: Assault
+      // (allowedEnhancements: EndRdx + Recharge only) would still receive
+      // Alpha Intuition's +33% Damage, inflating the displayed +Damage
+      // toggle bonus.
+      enhBonuses = filterAlphaByAllowedEnhancements(alphaBonuses, power.allowedEnhancements);
     }
 
-    // Track toggle endurance cost for active toggle powers.
-    // Runs before the `!power.effects` bail-out below: most primary/secondary toggles
-    // have no `effects` block (only `stats`), but still draw endurance per second.
-    if (power.powerType?.toLowerCase() === 'toggle' && power.isActive) {
-      // Pool/epic powers: effects.enduranceCost is already per-second (converted at transform)
-      // Primary/secondary powers: stats.endurance is per-tick, divide by activatePeriod
-      let baseEndPerSec = 0;
-      if (power.effects?.enduranceCost) {
-        baseEndPerSec = power.effects.enduranceCost;
-      } else if (power.stats?.endurance) {
-        const activatePeriod = power.stats.activatePeriod ?? 0.5;
-        baseEndPerSec = activatePeriod > 0 ? power.stats.endurance / activatePeriod : 0;
-      }
-      if (baseEndPerSec > 0) {
-        // EnduranceReduction enhancement reduces the cost
-        const endRedBonus = enhBonuses.endurance || 0;
-        const actualCost = baseEndPerSec * (1 / (1 + endRedBonus));
-        global.toggleEndCost += actualCost;
-        addToBreakdown(breakdown, 'toggleEndCost', {
-          name: power.name,
-          value: actualCost,
-          type: 'active-power',
-        });
-      }
-    }
+    // Toggle endurance cost calc is now handled by applyToggleEndCosts, which
+    // runs after all global EndDisc sources (set bonuses, active powers,
+    // incarnates) have been aggregated — so the divisor formula sees the
+    // complete picture in one pass instead of needing a post-hoc rescale.
 
     if (!power.effects) continue;
 
@@ -1131,11 +1182,13 @@ function applyActivePowerBonuses(
 
     // Endurance Discount (e.g., Conserve Power — reduces end costs by a percentage)
     // Stored as a scaled effect; the resolved value is a decimal (e.g., 0.6 = 60% discount)
+    // Routed to global.endurance (canonical EndDisc accumulator) so toggle cost
+    // and the dashboard "End Disc" stat see a single unified sum.
     if (effects.enduranceDiscount !== undefined) {
       const discount = resolveScaledEffect(effects.enduranceDiscount, archetypeId, buildLevel) * 100;
       if (discount > 0) {
-        global.enduranceDiscount += discount;
-        addToBreakdown(breakdown, 'enduranceDiscount', {
+        global.endurance += discount;
+        addToBreakdown(breakdown, 'endurance', {
           name: power.name,
           value: discount,
           type: 'active-power',
@@ -2322,6 +2375,17 @@ function applyHybridStatBlock(
       continue;
     }
 
+    // Endurance discount (e.g., Hybrid Support T4 passive) flows into the
+    // canonical EndDisc accumulator (global.endurance) — same bucket set
+    // bonuses use — so the divisor formula in applyToggleEndCosts and the
+    // dashboard "End Disc" stat both pick it up.
+    if (stat === 'enduranceDiscount') {
+      const value = decimal * 100;
+      global.endurance += value;
+      addToBreakdown(breakdown, 'endurance', { name: sourceName, value, type: 'incarnate' });
+      continue;
+    }
+
     // Mez protection uses raw magnitude (not percentage)
     if (stat.startsWith('prot')) {
       const key = stat as keyof GlobalBonuses;
@@ -2923,23 +2987,21 @@ export function calculateCharacterTotals(
     debugHitChance(targetOffset, globalBonuses.levelShift, effectiveLevelDiff, ppBaseToHit, globalBonuses.toHit, globalBonuses.accuracy, globalBonuses.hitChance);
   }
 
+  // Step 9.7: Compute toggle endurance costs now that every global EndDisc
+  // source (set bonuses, active-power discounts, Hybrid Support T4) has been
+  // aggregated into global.endurance. Uses the divisor formula
+  // `cost = base / (1 + slotEndRdx + global.endurance/100)` — the same math
+  // the game and the per-power Power Info panel use. Replaces the earlier
+  // pattern that summed per-toggle costs in Step 7 and then post-hoc scaled
+  // by `(1 - global/100)` (wrong formula, and missed any discount source
+  // that hadn't been aggregated by the time Step 7 ran, e.g. Hybrid T4 in
+  // Step 9).
+  if (_debug) debugGroup('Step 9.7: Toggle End Costs');
+  applyToggleEndCosts(allPowers, globalBonuses, breakdown, effectiveLevel, alphaBonuses, alphaEdBypassRatio, exemplarLevel);
+  if (_debug) debugGroupEnd();
+
   // Step 10: Convert to character stats format
   const stats = convertToCharacterStats(globalBonuses);
-
-  // Apply endurance discount (e.g., Conserve Power, set bonuses, Cardiac
-  // Alpha) to toggle costs. Scale every per-toggle breakdown source by the
-  // same factor so the breakdown rows match the displayed total — without
-  // this, sources show the slot-enhanced cost ("Enhanced" tier) while the
-  // top-line total uses the post-discount cost ("Final" tier), and Hot
-  // Feet etc. appear to over-contribute.
-  if (globalBonuses.enduranceDiscount > 0) {
-    const discountFactor = 1 - globalBonuses.enduranceDiscount / 100;
-    globalBonuses.toggleEndCost *= discountFactor;
-    const tec = breakdown.get('toggleEndCost');
-    if (tec) {
-      tec.sources.forEach((s) => { s.value *= discountFactor; });
-    }
-  }
 
   // Compute net endurance per second (recovery minus toggle costs)
   // MaxEndurance bonuses are flat values (accolades +5, power effects in absolute points)
@@ -2948,7 +3010,7 @@ export function calculateCharacterTotals(
   globalBonuses.netEndPerSec = recoveryEndPerSec - globalBonuses.toggleEndCost;
 
   if (_debug) {
-    debugNetEndurance(totalMaxEnd, globalBonuses.maxEndurance, globalBonuses.recovery, recoveryEndPerSec, globalBonuses.toggleEndCost, globalBonuses.enduranceDiscount, globalBonuses.netEndPerSec);
+    debugNetEndurance(totalMaxEnd, globalBonuses.maxEndurance, globalBonuses.recovery, recoveryEndPerSec, globalBonuses.toggleEndCost, globalBonuses.endurance, globalBonuses.netEndPerSec);
     debugFinalStats(globalBonuses as unknown as Record<string, number>);
     debugEnd();
   }

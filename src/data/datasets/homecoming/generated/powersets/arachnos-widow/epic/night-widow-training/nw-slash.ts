@@ -59,5 +59,15 @@ export const Slash: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

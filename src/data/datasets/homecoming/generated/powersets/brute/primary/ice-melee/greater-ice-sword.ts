@@ -62,5 +62,15 @@ export const GreaterIceSword: Power = {
       "scale": 1.2398,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

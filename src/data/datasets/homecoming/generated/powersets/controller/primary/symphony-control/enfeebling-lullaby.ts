@@ -49,11 +49,19 @@ export const EnfeeblingLullaby: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 15
+    },
     "sleep": {
       "mag": 4,
       "scale": 1,
       "table": "Ranged_PvPMez"
-    }
+    },
+    "buffDuration": 15
   },
   "specialEffects": [
     {

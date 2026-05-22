@@ -49,6 +49,16 @@ export const CallHawk: Power = {
     "duration": 1.3,
     "tickRate": 0.30000001192092896
   },
+  "effects": {
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_DeBuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

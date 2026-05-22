@@ -98,6 +98,21 @@ export const DualWield: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8,
+      "damageDebuff": 6
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "buffDuration": 8
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

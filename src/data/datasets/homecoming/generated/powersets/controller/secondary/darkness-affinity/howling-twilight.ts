@@ -48,6 +48,14 @@ export const HowlingTwilight: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 30,
+      "regenDebuff": 30
+    },
     "fear": {
       "mag": 3,
       "scale": 15,
@@ -66,9 +74,6 @@ export const HowlingTwilight: Power = {
     "regenDebuff": {
       "scale": 35,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
     },
     "buffDuration": 30
   }

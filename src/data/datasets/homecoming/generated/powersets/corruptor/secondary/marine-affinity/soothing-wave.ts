@@ -42,5 +42,15 @@ export const SoothingWave: Power = {
     "type": "Heal",
     "scale": 1,
     "table": "Ranged_Heal"
+  },
+  "effects": {
+    "damageDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

@@ -45,7 +45,15 @@ export const Glacier: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
   },
   "specialEffects": [
     {

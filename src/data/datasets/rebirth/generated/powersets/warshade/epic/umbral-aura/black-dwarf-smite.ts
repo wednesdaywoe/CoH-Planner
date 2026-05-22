@@ -57,6 +57,13 @@ export const BlackDwarfSmite: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
     "stun": {
       "mag": 2,
       "scale": 6,
@@ -65,7 +72,8 @@ export const BlackDwarfSmite: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "buffDuration": 10
   },
   "specialEffects": [
     {

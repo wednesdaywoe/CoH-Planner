@@ -39,12 +39,22 @@ export const SporeCloud: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 0.75,
+      "damageDebuff": 0.75,
+      "regenDebuff": 0.75
+    },
+    "damageDebuff": {
+      "scale": 1.125,
+      "table": "Ranged_Debuff_Dam"
+    },
     "regenDebuff": {
       "scale": 4.75,
       "table": "Ranged_Res_Boolean"
-    },
-    "durations": {
-      "regenDebuff": 0.75
     },
     "buffDuration": 0.75
   }

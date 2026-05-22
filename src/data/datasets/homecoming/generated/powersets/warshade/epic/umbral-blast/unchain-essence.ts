@@ -52,11 +52,19 @@ export const UnchainEssence: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
     "stun": {
       "mag": 3,
       "scale": 5,
       "table": "Ranged_Stun"
-    }
+    },
+    "buffDuration": 10
   },
   "specialEffects": [
     {

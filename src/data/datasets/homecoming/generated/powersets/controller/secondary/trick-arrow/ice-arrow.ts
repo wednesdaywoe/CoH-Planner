@@ -45,11 +45,12 @@ export const IceArrow: Power = {
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
-    "absorb": {
+    "damageDebuff": {
       "scale": 0.45,
       "table": "Ranged_Special"
     },
     "durations": {
+      "damageDebuff": 10,
       "absorb": 60,
       "enduranceDrain": 10,
       "confuse": 10,
@@ -58,7 +59,13 @@ export const IceArrow: Power = {
       "immobilize": 10,
       "stun": 10,
       "sleep": 10,
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "tohitDebuff": 10,
+      "rechargeDebuff": 10
+    },
+    "absorb": {
+      "scale": 0.45,
+      "table": "Ranged_Special"
     },
     "enduranceDrain": {
       "scale": 0.9,
@@ -93,6 +100,14 @@ export const IceArrow: Power = {
     "defenseDebuff": {
       "scale": 0.45,
       "table": "Ranged_Special"
+    },
+    "tohitDebuff": {
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
     },
     "buffDuration": 10
   }

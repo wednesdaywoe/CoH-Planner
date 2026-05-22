@@ -50,5 +50,15 @@ export const Swipe: Power = {
       "duration": 2.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 4
+    },
+    "buffDuration": 4
+  }
 };

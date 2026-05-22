@@ -56,14 +56,19 @@ export const AbyssalGaze: Power = {
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_DeBuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10,
+      "damageBuff": 9.17
+    },
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "damageBuff": 9.17
-    },
-    "buffDuration": 9.17,
+    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

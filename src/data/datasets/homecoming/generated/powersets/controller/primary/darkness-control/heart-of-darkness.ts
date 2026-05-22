@@ -64,7 +64,15 @@ export const HeartofDarkness: Power = {
       "mag": 4,
       "scale": 1,
       "table": "Ranged_PvPMez"
-    }
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10
+    },
+    "buffDuration": 10
   },
   "specialEffects": [
     {

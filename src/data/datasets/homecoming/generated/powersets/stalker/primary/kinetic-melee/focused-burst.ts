@@ -64,6 +64,16 @@ export const FocusedBurst: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
+  "effects": {
+    "damageDebuff": {
+      "scale": 0.7,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

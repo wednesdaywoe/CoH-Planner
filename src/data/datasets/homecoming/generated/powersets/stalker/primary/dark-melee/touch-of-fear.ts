@@ -68,10 +68,18 @@ export const TouchofFear: Power = {
     }
   ],
   "effects": {
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Melee_DeBuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 20
+    },
     "fear": {
       "mag": 3,
       "scale": 7,
       "table": "Melee_Fear"
-    }
+    },
+    "buffDuration": 20
   }
 };

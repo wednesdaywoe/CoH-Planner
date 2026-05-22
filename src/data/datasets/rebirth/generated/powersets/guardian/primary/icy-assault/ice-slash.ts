@@ -50,5 +50,15 @@ export const IceSlash: Power = {
       "scale": 1,
       "table": "Melee_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  }
 };

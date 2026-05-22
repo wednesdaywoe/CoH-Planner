@@ -39,6 +39,17 @@ export const ReactionTime: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 10,
+      "movement": 10,
+      "recoveryBuff": 1.25,
+      "absorb": 12
+    },
     "slow": {
       "runSpeed": {
         "scale": 0.7,
@@ -58,17 +69,6 @@ export const ReactionTime: Power = {
       }
     },
     "selfPenalty": true,
-    "durations": {
-      "slow": 10,
-      "rechargeDebuff": 10,
-      "movement": 10,
-      "recoveryBuff": 1.25,
-      "absorb": 12
-    },
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
     "movement": {
       "runSpeed": {
         "scale": 1,

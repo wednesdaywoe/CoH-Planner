@@ -45,6 +45,16 @@ export const PsychicScream: Power = {
     "scale": 1.3,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "conditionalEffects": [
     {
       "id": "psionic_melee_insight",

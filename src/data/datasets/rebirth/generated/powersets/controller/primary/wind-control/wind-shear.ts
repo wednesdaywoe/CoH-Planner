@@ -37,5 +37,20 @@ export const WindShear: Power = {
     "Slow Movement",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Melee_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 2.1,
+      "damageDebuff": 2.1
+    },
+    "damageDebuff": {
+      "scale": 1.25,
+      "table": "Melee_Debuff_Dam"
+    },
+    "buffDuration": 2.1
+  }
 };

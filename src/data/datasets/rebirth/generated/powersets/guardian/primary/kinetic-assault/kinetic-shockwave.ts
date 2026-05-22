@@ -53,6 +53,16 @@ export const KineticShockwave: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "effects": {
+    "damageDebuff": {
+      "scale": 1.2,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "conditionalEffects": [
     {
       "id": "kinetic_assault_impulse",

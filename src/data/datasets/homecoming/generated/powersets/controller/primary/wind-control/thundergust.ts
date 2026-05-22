@@ -55,6 +55,16 @@ export const Thundergust: Power = {
       "table": "Ranged_Damage"
     }
   ],
+  "effects": {
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 12
+    },
+    "buffDuration": 12
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

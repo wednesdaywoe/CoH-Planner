@@ -55,5 +55,15 @@ export const Thundergust: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
+  "effects": {
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 12
+    },
+    "buffDuration": 12
+  },
   "requires": "accesslevel char> 0 >="
 };

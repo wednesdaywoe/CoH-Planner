@@ -107,7 +107,17 @@ export const ExecutionersShot: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 8
+      "defenseDebuff": 8,
+      "rechargeDebuff": 10,
+      "damageDebuff": 8
+    },
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Dam"
     },
     "buffDuration": 8
   },

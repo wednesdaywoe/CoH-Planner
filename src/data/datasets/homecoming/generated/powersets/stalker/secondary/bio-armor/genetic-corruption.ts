@@ -42,7 +42,15 @@ export const GeneticCorruption: Power = {
       "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
-    }
+    },
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 5
+    },
+    "buffDuration": 5
   },
   "specialEffects": [
     {

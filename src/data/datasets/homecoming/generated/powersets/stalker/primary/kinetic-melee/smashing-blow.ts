@@ -66,7 +66,15 @@ export const SmashingBlow: Power = {
       "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
-    }
+    },
+    "damageDebuff": {
+      "scale": 0.7,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 10
+    },
+    "buffDuration": 10
   },
   "specialEffects": [
     {

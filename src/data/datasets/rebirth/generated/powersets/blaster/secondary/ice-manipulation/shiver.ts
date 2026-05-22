@@ -41,13 +41,18 @@ export const Shiver: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.65,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 18,
+      "damageBuff": 9.67
+    },
     "damageBuff": {
       "scale": 0.028,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "damageBuff": 9.67
-    },
-    "buffDuration": 9.67
+    "buffDuration": 18
   }
 };

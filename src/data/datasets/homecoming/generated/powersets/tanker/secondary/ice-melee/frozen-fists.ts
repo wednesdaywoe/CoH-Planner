@@ -66,5 +66,15 @@ export const FrozenFists: Power = {
       "scale": 1.1027,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 5
+    },
+    "buffDuration": 5
+  }
 };

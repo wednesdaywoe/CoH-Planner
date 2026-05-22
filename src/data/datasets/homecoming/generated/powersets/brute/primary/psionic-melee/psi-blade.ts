@@ -61,6 +61,16 @@ export const PsiBlade: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.12,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  },
   "conditionalEffects": [
     {
       "id": "psionic_melee_insight",

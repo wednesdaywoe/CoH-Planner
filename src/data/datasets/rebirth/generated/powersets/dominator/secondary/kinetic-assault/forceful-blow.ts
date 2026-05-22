@@ -50,6 +50,16 @@ export const ForcefulBlow: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "effects": {
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

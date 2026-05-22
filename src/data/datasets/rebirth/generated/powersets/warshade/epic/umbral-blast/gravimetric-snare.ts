@@ -65,6 +65,14 @@ export const GravimetricSnare: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
   }
 };

@@ -64,7 +64,15 @@ export const ShadowyBinds: Power = {
       "mag": 5,
       "scale": 1,
       "table": "Ranged_PvPMez"
-    }
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 15
+    },
+    "buffDuration": 15
   },
   "specialEffects": [
     {

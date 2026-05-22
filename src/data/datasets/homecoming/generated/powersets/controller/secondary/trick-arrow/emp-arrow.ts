@@ -52,11 +52,12 @@ export const EMPArrow: Power = {
       ],
       "duration": 240
     },
-    "absorb": {
-      "scale": 2,
+    "damageDebuff": {
+      "scale": 1.2,
       "table": "Ranged_Res_Boolean"
     },
     "durations": {
+      "damageDebuff": 45,
       "absorb": 45,
       "enduranceDrain": 45,
       "confuse": 45,
@@ -66,7 +67,12 @@ export const EMPArrow: Power = {
       "stun": 45,
       "sleep": 45,
       "defenseDebuff": 45,
+      "tohitDebuff": 45,
       "regenDebuff": 45
+    },
+    "absorb": {
+      "scale": 2,
+      "table": "Ranged_Res_Boolean"
     },
     "enduranceDrain": {
       "scale": 16.67,
@@ -104,6 +110,10 @@ export const EMPArrow: Power = {
       "table": "Ranged_Res_Boolean"
     },
     "defenseDebuff": {
+      "scale": 1.2,
+      "table": "Ranged_Res_Boolean"
+    },
+    "tohitDebuff": {
       "scale": 1.2,
       "table": "Ranged_Res_Boolean"
     },

@@ -51,6 +51,16 @@ export const PsionicLance: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "quickSnipe": {
     "stats": {
       "castTime": 1.33,

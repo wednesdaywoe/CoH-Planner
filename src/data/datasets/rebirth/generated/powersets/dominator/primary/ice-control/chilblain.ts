@@ -55,7 +55,15 @@ export const Chilblain: Power = {
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 18
+    },
+    "buffDuration": 18
   },
   "conditionalEffects": [
     {

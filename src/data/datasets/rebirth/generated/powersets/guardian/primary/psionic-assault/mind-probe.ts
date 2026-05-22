@@ -41,6 +41,16 @@ export const MindProbe: Power = {
     "scale": 1.96,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  },
   "conditionalEffects": [
     {
       "id": "psionic_melee_insight",

@@ -62,6 +62,14 @@ export const GravityWell: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

@@ -133,7 +133,17 @@ export const EyeoftheStorm: Power = {
           "scale": 0.0335,
           "table": "Melee_PvPDamage"
         }
-      ]
+      ],
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.15,
+          "table": "Melee_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 8
+        },
+        "buffDuration": 8
+      }
     },
     {
       "id": "perfection_of_soul_level_3",

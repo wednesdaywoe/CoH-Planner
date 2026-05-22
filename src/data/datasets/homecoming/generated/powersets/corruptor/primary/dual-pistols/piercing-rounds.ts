@@ -100,6 +100,19 @@ export const PiercingRounds: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8,
+      "damageDebuff": 6,
+      "resistanceDebuff": 15
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Dam"
+    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 2,
@@ -133,9 +146,6 @@ export const PiercingRounds: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 15
     },
     "buffDuration": 15
   }

@@ -11394,7 +11394,48 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "type": "Slow Movement"
   },
   "imperial_might": {
-    "bonuses": [],
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+7.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+300.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 300
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9.0% Accuracy",
+            "stat": "accuracy",
+            "value": 9.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Damage (All)",
+            "stat": "damage",
+            "value": 3.0
+          }
+        ],
+        "pieces": 5
+      }
+    ],
     "category": "event",
     "icon": "ImperialMight.png",
     "maxLevel": 50,
@@ -25456,6 +25497,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+4.0% Damage (All)",
+            "stat": "damage",
+            "value": 4.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
             "desc": "+5.0% Defense (Energy)",
             "stat": "defense_(energy)",
             "value": 5.0
@@ -25482,6 +25533,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           }
         ],
         "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+15.0% Accuracy",
+            "stat": "accuracy",
+            "value": 15.0
+          }
+        ],
+        "pieces": 5
       },
       {
         "effects": [
@@ -25514,16 +25575,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "desc": "+10.0% Sleep Resistance",
             "stat": "sleep_resistance",
             "value": 10.0
-          },
-          {
-            "desc": "+10.0% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 10.0
-          },
-          {
-            "desc": "+10.0% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 10.0
           }
         ],
         "pieces": 6
@@ -25537,50 +25588,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff",
+        "name": "Universal Debuff",
         "num": 1,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "ToHit Buff",
-          "Endurance"
+          "Accuracy",
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff/Endurance",
+        "name": "Accuracy/Universal Debuff",
         "num": 2,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "ToHit Debuff",
           "Endurance",
-          "Recharge",
-          "ToHit Buff"
+          "Recharge"
         ],
-        "name": "Endurance/Recharge/ToHit Buff",
+        "name": "Universal Debuff/Endurance/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 5,
         "proc": false,
         "unique": true
@@ -28847,6 +28899,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+2.0% Damage (All)",
+            "stat": "damage",
+            "value": 2.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
             "desc": "+3.75% Defense (Energy)",
             "stat": "defense_(energy)",
             "value": 3.75
@@ -28873,6 +28935,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           }
         ],
         "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+9.0% Accuracy",
+            "stat": "accuracy",
+            "value": 9.0
+          }
+        ],
+        "pieces": 5
       },
       {
         "effects": [
@@ -28905,16 +28977,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "desc": "+7.5% Sleep Resistance",
             "stat": "sleep_resistance",
             "value": 7.5
-          },
-          {
-            "desc": "+7.5% Fear Resistance",
-            "stat": "fear_resistance",
-            "value": 7.5
-          },
-          {
-            "desc": "+7.5% Confuse Resistance",
-            "stat": "confuse_resistance",
-            "value": 7.5
           }
         ],
         "pieces": 6
@@ -28928,50 +28990,51 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "pieces": [
       {
         "aspects": [
-          "ToHit Buff"
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff",
+        "name": "Universal Debuff",
         "num": 1,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "ToHit Buff",
-          "Endurance"
+          "Accuracy",
+          "ToHit Debuff"
         ],
-        "name": "ToHit Buff/Endurance",
+        "name": "Accuracy/Universal Debuff",
         "num": 2,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
-          "Recharge",
-          "Endurance"
+          "Accuracy",
+          "Recharge"
         ],
-        "name": "Recharge/Endurance",
+        "name": "Accuracy/Recharge",
         "num": 3,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "ToHit Debuff",
           "Endurance",
-          "Recharge",
-          "ToHit Buff"
+          "Recharge"
         ],
-        "name": "Endurance/Recharge/ToHit Buff",
+        "name": "Universal Debuff/Endurance/Recharge",
         "num": 4,
         "proc": false,
         "unique": true
       },
       {
         "aspects": [
+          "Accuracy",
           "Endurance",
           "Recharge"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Accuracy/Endurance/Recharge",
         "num": 5,
         "proc": false,
         "unique": true

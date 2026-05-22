@@ -64,7 +64,15 @@ export const ConcentratedStrike: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 8
+    },
+    "buffDuration": 8
   },
   "specialEffects": [
     {

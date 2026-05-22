@@ -400,31 +400,26 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     duration = r.read_f4()
     magnitude = r.read_f4()
 
-    # kExpression templates (typ_raw == 3) reorder the next fields: the binary
-    # layout is dur_expr_tokens, mag_expr_tokens, delay — NOT delay first then
-    # the expressions. Confirmed against Savage_Leap_AoE (Scale 0.845, Delay
-    # 0.1, 12-token MagnitudeExpr) and Rending_Flurry_Normal (Scale 1.182,
-    # no Delay, 8-token MagnitudeExpr) — both now produce values that match
-    # the .powers source.
+    # Layout for ALL templates is dur_expr_tokens (u4_array), mag_expr_tokens
+    # (u4_array), delay (f4) — NOT delay first then expressions. The same order
+    # the kExpression branch uses; non-kExpression just has both arrays empty
+    # in the typical case. Confirmed against Savage_Leap_AoE (kExpression,
+    # Scale 0.845, Delay 0.1) and against ~227 Self_Destruct templates whose
+    # Silent_Kill AttribMods have Delay set to the pet lifespan (Pets_Shade
+    # 60s, Pets_Living_Hellfire 90s, Pets_Mastermind_Ghosts 300s, etc.).
     #
-    # The old layout read `delay` at this position and then `mag_expr_tokens,
-    # dur_expr_tokens`. That happened to work for kExpression templates with
-    # no Delay AND no DurationExpr (delay-slot bytes were 0 = empty u4_array
-    # count, and the trailing u4 that should have been delay coincided with
-    # tick_chance=1.0 by accident). The moment a kExpression template had a
-    # real `Delay` value (Savage_Leap_AoE T[0]: 0.1), the bytes after
-    # mag_expr_tokens read as a huge u4_array count and overran the record,
-    # silently dropping the template (376 templates / 1080 EGs across HC).
-    if _typ_raw == 3:
-        r.read_u4_array()  # dur_expr_tokens (almost always empty)
-        r.read_u4_array()  # mag_expr_tokens
-        delay = r.read_f4()
-        dur_expr = ''
-        mag_expr = ''
-    else:
-        delay = r.read_f4()
-        dur_expr = r.read_string()
-        mag_expr = r.read_string()
+    # The previous non-kExpression layout (`delay = f4; dur_expr/mag_expr = string`)
+    # happened to look right for templates with no Delay AND no expressions —
+    # delay-slot bytes were 0 (empty u4_array count), and the two trailing
+    # string reads returned empty (string offset 0). It quietly dropped Delay
+    # on any template that had one. The kExpression branch had this same bug
+    # historically; it was fixed by reordering tokens-before-delay. The same
+    # reorder is correct for non-kExpression templates too.
+    r.read_u4_array()  # dur_expr_tokens (almost always empty)
+    r.read_u4_array()  # mag_expr_tokens (almost always empty)
+    delay = r.read_f4()
+    dur_expr = ''
+    mag_expr = ''
 
     # Tick fields
     app_period = r.read_f4()

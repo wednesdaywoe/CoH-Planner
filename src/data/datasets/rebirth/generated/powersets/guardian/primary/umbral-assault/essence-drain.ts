@@ -53,5 +53,15 @@ export const EssenceDrain: Power = {
       "scale": 1,
       "table": "Melee_HealSelf"
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  }
 };

@@ -83,13 +83,23 @@ export const Pistols: Power = {
     },
     "durations": {
       "defenseDebuff": 8,
+      "rechargeDebuff": 8,
+      "damageDebuff": 5,
       "damageBuff": 8.5
+    },
+    "rechargeDebuff": {
+      "scale": 0.12,
+      "table": "Ranged_Slow"
+    },
+    "damageDebuff": {
+      "scale": 0.8,
+      "table": "Ranged_Debuff_Dam"
     },
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8.5,
+    "buffDuration": 8,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

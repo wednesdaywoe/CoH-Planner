@@ -43,10 +43,18 @@ export const ColdSnap: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.65,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 18
+    },
     "fear": {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Fear"
-    }
+    },
+    "buffDuration": 18
   }
 };

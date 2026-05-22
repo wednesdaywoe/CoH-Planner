@@ -45,7 +45,12 @@ export const FlashArrow: Power = {
       "table": "Ranged_Ones"
     },
     "durations": {
-      "perceptionDebuff": 60
+      "perceptionDebuff": 60,
+      "tohitDebuff": 60
+    },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Ranged_DeBuff_ToHit"
     },
     "summon": {
       "isPseudoPet": false,
@@ -53,5 +58,23 @@ export const FlashArrow: Power = {
       "duration": 5
     },
     "buffDuration": 60
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "acidarrow_acidburn",
+      "label": "AcidArrow AcidBurn",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "tohitDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_DeBuff_ToHit"
+        },
+        "durations": {
+          "tohitDebuff": 60
+        },
+        "buffDuration": 60
+      }
+    }
+  ]
 };

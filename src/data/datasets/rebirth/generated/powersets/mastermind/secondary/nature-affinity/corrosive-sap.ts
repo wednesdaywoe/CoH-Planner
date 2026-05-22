@@ -68,7 +68,12 @@ export const CorrosiveEnzymes: Power = {
       }
     },
     "durations": {
-      "resistanceDebuff": 30
+      "resistanceDebuff": 30,
+      "damageDebuff": 30
+    },
+    "damageDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Dam"
     },
     "buffDuration": 30
   }

@@ -49,6 +49,11 @@ export interface PetEntity {
   commandable: boolean;
   copyCreatorMods: boolean;
   abilities: PetAbility[];
+  /** Pet lifespan in seconds (from bundled Self_Destruct power's Silent_Kill delay).
+   *  Omitted for permanent pets (mastermind primaries, etc.) that despawn only
+   *  when killed or unsummoned. Used by convert-powerset to populate
+   *  `summon.duration` for summoning powers whose EntCreate Duration is 0. */
+  lifespan?: number;
   upgradeTiers?: PetUpgradeTier[];
 }
 
@@ -6394,6 +6399,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_boss",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 300,
     abilities: [
       {
         name: "Ghastly_Blast",
@@ -6425,6 +6431,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_lt",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 300,
     abilities: [
       {
         name: "Ghastly_Blast",
@@ -6456,6 +6463,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 300,
     abilities: [
       {
         name: "Ghastly_Blast",
@@ -6998,6 +7006,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 90,
     abilities: [
       {
         name: "Claw_Rake",
@@ -8449,6 +8458,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    lifespan: 1,
     abilities: [
       {
         name: "Blast_Radius",
@@ -9579,6 +9589,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    lifespan: 2,
     abilities: [
       {
         name: "Entangle",
@@ -9624,6 +9635,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    lifespan: 14,
     abilities: [
       {
         name: "Vine_Smash",
@@ -10190,6 +10202,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    lifespan: 20,
     abilities: [
       {
         name: "Blazing_Aura",
@@ -10339,6 +10352,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    lifespan: 5,
     abilities: [
       {
         name: "Enflame",
@@ -12424,6 +12438,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 90,
     abilities: [
       {
         name: "Claw_Rake",
@@ -12549,6 +12564,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "lt_grunt",
     commandable: false,
     copyCreatorMods: false,
+    lifespan: 60,
     abilities: [
       {
         name: "Shadow_Punch",
@@ -12580,6 +12596,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "lt_grunt",
     commandable: false,
     copyCreatorMods: false,
+    lifespan: 60,
     abilities: [
       {
         name: "Shadow_Punch",
@@ -12766,6 +12783,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    lifespan: 15,
     abilities: [
       {
         name: "Fire",
@@ -12787,6 +12805,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    lifespan: 15,
     abilities: [
       {
         name: "Fire",
@@ -12808,6 +12827,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    lifespan: 15,
     abilities: [
       {
         name: "Fire",
@@ -12939,6 +12959,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    lifespan: 20,
     abilities: [
       {
         name: "Shocking_Aura",
@@ -14045,6 +14066,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    lifespan: 30,
     abilities: [
       {
         name: "Poison_Trap",
@@ -14512,6 +14534,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    lifespan: 10,
     abilities: [
       {
         name: "Irradiated_Ground",
@@ -14910,6 +14933,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    lifespan: 60,
     abilities: [
       {
         name: "Shadow_Punch",
@@ -16249,6 +16273,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    lifespan: 30,
     abilities: [
       {
         name: "StickyArrow",
@@ -16271,6 +16296,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    lifespan: 30,
     abilities: [
       {
         name: "StickyArrow",
@@ -16923,6 +16949,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 120,
     abilities: [
       {
         name: "Brawl",
@@ -16943,6 +16970,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 120,
     abilities: [
       {
         name: "Knife",
@@ -16963,6 +16991,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 120,
     abilities: [
       {
         name: "Baseball_Bat",
@@ -16983,6 +17012,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 120,
     abilities: [
       {
         name: "Sledgehammer",
@@ -17003,6 +17033,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 120,
     abilities: [
       {
         name: "Fireman_Axe",
@@ -17023,6 +17054,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 120,
     abilities: [
       {
         name: "Revolver",
@@ -17043,6 +17075,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 120,
     abilities: [
       {
         name: "Pipe",
@@ -17063,6 +17096,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 120,
     abilities: [
       {
         name: "Rock",
@@ -17083,6 +17117,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "henchman_minion_small",
     commandable: true,
     copyCreatorMods: false,
+    lifespan: 120,
     abilities: [
       {
         name: "Automatic_Pistol",
@@ -17336,6 +17371,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    lifespan: 30,
     abilities: [
       {
         name: "Poison_Gas",
@@ -17371,6 +17407,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: false,
+    lifespan: 30,
     abilities: [
       {
         name: "Poison_Gas",
@@ -18244,6 +18281,7 @@ export const PET_ENTITIES: Record<string, PetEntity> = {
     characterClass: "minion_pets",
     commandable: false,
     copyCreatorMods: true,
+    lifespan: 200,
     abilities: [
       {
         name: "Shadow_Bolt",

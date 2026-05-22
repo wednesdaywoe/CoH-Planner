@@ -48,6 +48,13 @@ export const Quills: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 3
+    },
     "immobilize": {
       "mag": 0.33000001311302185,
       "scale": 3,
@@ -56,6 +63,7 @@ export const Quills: Power = {
     "taunt": {
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "buffDuration": 3
   }
 };

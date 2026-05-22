@@ -67,5 +67,15 @@ export const Frost: Power = {
       "duration": 1.1,
       "tickRate": 0.30000001192092896
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8
+    },
+    "buffDuration": 8
+  }
 };

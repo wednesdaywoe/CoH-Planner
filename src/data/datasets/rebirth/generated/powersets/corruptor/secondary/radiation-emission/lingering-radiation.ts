@@ -40,12 +40,17 @@ export const LingeringRadiation: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.6,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 30,
+      "regenDebuff": 30
+    },
     "regenDebuff": {
       "scale": 5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
     },
     "buffDuration": 30
   }

@@ -214,8 +214,18 @@ export const HailofBullets: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 5
+      "defenseBuff": 5,
+      "rechargeDebuff": 10,
+      "damageDebuff": 8
     },
-    "buffDuration": 5
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "buffDuration": 10
   }
 };

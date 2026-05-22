@@ -44,6 +44,37 @@ export const EntanglingArrow: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
+    },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 15,
+      "damageDebuff": 15
+    },
+    "damageDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "buffDuration": 15
+  },
+  "conditionalEffects": [
+    {
+      "id": "acidarrow_acidburn",
+      "label": "AcidArrow AcidBurn",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.08,
+          "table": "Ranged_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 15
+        },
+        "buffDuration": 15
+      }
     }
-  }
+  ]
 };

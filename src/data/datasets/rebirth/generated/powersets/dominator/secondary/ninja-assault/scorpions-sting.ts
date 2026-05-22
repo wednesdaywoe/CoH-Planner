@@ -72,7 +72,15 @@ export const ScorpionsSting: Power = {
       "mag": 3,
       "scale": 5,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "damageDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 15
+    },
+    "buffDuration": 15
   },
   "specialEffects": [
     {

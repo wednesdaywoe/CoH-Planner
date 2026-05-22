@@ -53,5 +53,20 @@ export const BitterIceBlast: Power = {
       "scale": 1.28,
       "table": "Ranged_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Ranged_DeBuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 6,
+      "rechargeDebuff": 12
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "buffDuration": 12
+  }
 };

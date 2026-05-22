@@ -39,7 +39,12 @@ export const FulcrumShift: Power = {
       "perTarget": 2
     },
     "durations": {
-      "damageBuff": 45
+      "damageBuff": 45,
+      "damageDebuff": 30
+    },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
     },
     "buffDuration": 45
   }

@@ -39,5 +39,20 @@ export const ChillingEmbrace: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 5,
+      "damageDebuff": 5
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Dam"
+    },
+    "buffDuration": 5
+  }
 };

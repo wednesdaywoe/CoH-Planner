@@ -59,6 +59,14 @@ export const CryoFreezeRay: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 12
+    },
+    "buffDuration": 12
   }
 };

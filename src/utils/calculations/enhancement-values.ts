@@ -485,7 +485,73 @@ export interface SlotWithEnhancement {
 export interface PowerWithSlots {
   name: string;
   slots: (Enhancement | null)[];
+  /** What enhancement categories the power accepts. Used by
+   * `combineWithAlphaED` to gate Alpha bonuses — without this, Alpha
+   * Intuition Radial T4 (+33% Damage) would boost the damage of every
+   * active toggle in the build, including ones like Tactical Training:
+   * Assault whose `allowedEnhancements` is just EndRdx + Recharge. The
+   * displayed +Damage on such powers would then inflate by the alpha
+   * multiplier (15% × 1.33 = 19.95%) instead of the true 15%. */
+  allowedEnhancements?: EnhancementStatType[];
 }
+
+/** Filter an EnhancementBonuses object to only include aspects the power
+ * accepts via its `allowedEnhancements` list. Used by `combineWithAlphaED`
+ * and by callers that bypass it (no-slot powers). When `allowed` is
+ * undefined, returns the bonuses unchanged. */
+export function filterAlphaByAllowedEnhancements(
+  alphaBonuses: EnhancementBonuses,
+  allowed: EnhancementStatType[] | undefined,
+): EnhancementBonuses {
+  if (!allowed) return { ...alphaBonuses };
+  const allowedAspects = new Set(
+    Object.entries(ASPECT_TO_ENH_TYPE)
+      .filter(([, enhType]) => allowed.includes(enhType))
+      .map(([aspectKey]) => aspectKey),
+  );
+  const filtered: EnhancementBonuses = {};
+  for (const [aspect, value] of Object.entries(alphaBonuses)) {
+    if (allowedAspects.has(aspect)) {
+      filtered[aspect] = value;
+    }
+  }
+  return filtered;
+}
+
+/** Aspect-key → EnhancementStatType reverse map. Mirrors `ASPECT_NAME_MAP`
+ * which goes the other direction; used to gate Alpha bonuses by whether
+ * a power accepts the corresponding enhancement category. */
+const ASPECT_TO_ENH_TYPE: Record<string, EnhancementStatType> = {
+  damage: 'Damage',
+  accuracy: 'Accuracy',
+  recharge: 'Recharge',
+  endurance: 'EnduranceReduction',
+  enduranceMod: 'EnduranceModification',
+  range: 'Range',
+  heal: 'Healing',
+  defense: 'Defense',
+  defenseBuff: 'Defense',
+  resistance: 'Resistance',
+  tohit: 'ToHit',
+  tohitDebuff: 'ToHit Debuff',
+  defenseDebuff: 'Defense Debuff',
+  hold: 'Hold',
+  stun: 'Stun',
+  immobilize: 'Immobilize',
+  sleep: 'Sleep',
+  confuse: 'Confuse',
+  fear: 'Fear',
+  knockback: 'Knockback',
+  slow: 'Slow',
+  taunt: 'Taunt',
+  interrupt: 'Interrupt',
+  absorb: 'Absorb',
+  intangible: 'Intangible',
+  mezDuration: 'Mez Duration',
+  run: 'Run Speed',
+  fly: 'Fly',
+  jump: 'Jump',
+};
 
 export interface EnhancementBonuses {
   accuracy?: number;
@@ -711,9 +777,25 @@ export function combineWithAlphaED(
     }
   });
 
+  // Alpha is a global boost that applies only to aspects the power's
+  // `allowedEnhancements` list accepts (matches the game's behaviour —
+  // Alpha Intuition Radial T4's +33% Damage doesn't boost Tactical
+  // Training: Assault because TT:Assault only accepts EndRdx + Recharge).
+  // When `allowedEnhancements` isn't supplied (legacy callers, generic
+  // contexts), fall back to "apply everything" to preserve prior behaviour.
+  const allowedAspectKeys: Set<string> | null = power.allowedEnhancements
+    ? new Set(
+        Object.entries(ASPECT_TO_ENH_TYPE)
+          .filter(([, enhType]) => power.allowedEnhancements!.includes(enhType))
+          .map(([aspectKey]) => aspectKey),
+      )
+    : null;
+  const alphaAcceptsAspect = (aspect: string): boolean =>
+    allowedAspectKeys === null || allowedAspectKeys.has(aspect);
+
   // Step 2: Add ED-subject portion of alpha (1 - bypassRatio) to raw totals
   for (const [aspect, value] of Object.entries(alphaBonuses)) {
-    if (value !== undefined && value !== 0) {
+    if (value !== undefined && value !== 0 && alphaAcceptsAspect(aspect)) {
       const edSubject = value * (1 - edBypassRatio);
       rawBonuses[aspect] = (rawBonuses[aspect] || 0) + edSubject;
     }
@@ -726,9 +808,9 @@ export function combineWithAlphaED(
     result[aspect] = applyED(rawValue, schedule);
   });
 
-  // Step 4: Add ED-bypass portion of alpha on top
+  // Step 4: Add ED-bypass portion of alpha on top (same gate as Step 2)
   for (const [aspect, value] of Object.entries(alphaBonuses)) {
-    if (value !== undefined && value !== 0) {
+    if (value !== undefined && value !== 0 && alphaAcceptsAspect(aspect)) {
       const bypass = value * edBypassRatio;
       result[aspect] = (result[aspect] || 0) + bypass;
     }

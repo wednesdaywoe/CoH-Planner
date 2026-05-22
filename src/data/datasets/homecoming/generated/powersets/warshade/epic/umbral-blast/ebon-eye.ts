@@ -51,5 +51,15 @@ export const EbonEye: Power = {
       "scale": 2.0748,
       "table": "Ranged_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
+  }
 };

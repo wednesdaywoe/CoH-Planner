@@ -46,5 +46,15 @@ export const DarkNovaBolt: Power = {
     "scale": 0.68,
     "table": "Ranged_SSDamage"
   },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 3
+    },
+    "buffDuration": 3
+  },
   "requires": "0"
 };

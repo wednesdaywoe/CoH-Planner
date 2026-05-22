@@ -75,13 +75,18 @@ export const IncendiaryAura: Power = {
     },
     "durations": {
       "resistanceDebuff": 5,
+      "tohitDebuff": 0.45,
       "defenseDebuff": 0.45
+    },
+    "tohitDebuff": {
+      "scale": 1.25,
+      "table": "Melee_DeBuff_ToHit"
     },
     "defenseDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 5
+    "buffDuration": 0.45
   },
   "specialEffects": [
     {

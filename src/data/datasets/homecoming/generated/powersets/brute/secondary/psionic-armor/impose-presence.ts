@@ -48,7 +48,12 @@ export const ImposePresence: Power = {
     },
     "durations": {
       "tohitBuff": 1,
+      "rechargeDebuff": 1.25,
       "defenseBuff": 1
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Melee_Slow"
     },
     "defenseBuff": {
       "ranged": {

@@ -52,12 +52,17 @@ export const FrostBreath: Power = {
     "tickRate": 0.5
   },
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 10,
+      "damageBuff": 10.17
+    },
     "damageBuff": {
       "scale": 0.082,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.17
     },
     "buffDuration": 10.17
   }

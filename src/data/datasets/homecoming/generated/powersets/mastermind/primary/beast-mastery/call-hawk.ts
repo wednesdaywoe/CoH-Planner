@@ -60,12 +60,17 @@ export const CallHawk: Power = {
     }
   ],
   "effects": {
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10,
+      "maxHPBuff": 30
+    },
     "maxHPBuff": {
       "scale": 0.4,
       "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 30
     },
     "buffDuration": 30
   },

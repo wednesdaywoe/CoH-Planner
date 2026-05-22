@@ -396,16 +396,10 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   endreduction: {
     id: 'endreduction',
     label: 'End Disc',
-    getValue: (stats) => {
-      // Convert raw EndRdx% to Endurance Discount% as shown in-game:
-      // Game formula: cost = baseCost / (1 + endRdx/100), so discount = 1 - 1/(1 + endRdx/100)
-      const endRdx = stats.enduranceReduction;
-      if (endRdx <= 0) return 0;
-      return (1 - 1 / (1 + endRdx / 100)) * 100;
-    },
+    getValue: (stats) => stats.enduranceReduction,
     format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.enduranceDiscount,
-    tooltip: 'Endurance Discount: reduces endurance cost of powers',
+    tooltip: 'Endurance Discount (additive %): the sum that feeds the cost formula cost = base / (1 + EndDisc/100). Matches the value Mids and the in-game combat-attributes window show.',
     breakdownKey: 'endurance',
   },
   endcost: {

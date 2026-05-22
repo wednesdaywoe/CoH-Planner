@@ -62,5 +62,15 @@ export const Blackstar: Power = {
       "scale": 1.1707,
       "table": "Ranged_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "tohitDebuff": {
+      "scale": 5,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 20
+    },
+    "buffDuration": 20
+  }
 };

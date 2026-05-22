@@ -43,6 +43,14 @@ export const ArcticAir: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 2.25,
+      "stealth": 2.25
+    },
     "stealth": {
       "stealthPvE": {
         "scale": 35,
@@ -52,9 +60,6 @@ export const ArcticAir: Power = {
         "scale": 389,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "stealth": 2.25
     },
     "fear": {
       "mag": 3,

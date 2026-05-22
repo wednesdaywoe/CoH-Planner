@@ -55,11 +55,19 @@ export const Lunge: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 4
+    },
     "immobilize": {
       "mag": 0.33000001311302185,
       "scale": 8,
       "table": "Melee_Immobilize"
-    }
+    },
+    "buffDuration": 4
   },
   "specialEffects": [
     {

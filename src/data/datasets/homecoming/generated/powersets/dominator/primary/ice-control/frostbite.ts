@@ -65,6 +65,14 @@ export const Frostbite: Power = {
       "mag": 5,
       "scale": 1,
       "table": "Ranged_PvPMez"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 15
+    },
+    "buffDuration": 15
   }
 };

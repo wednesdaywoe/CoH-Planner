@@ -49,14 +49,19 @@ export const TimeShift: Power = {
       "scale": 1,
       "table": "Ranged_PvPMez"
     },
+    "tohitDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 20,
+      "damageBuff": 9.53
+    },
     "damageBuff": {
       "scale": 0.033,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "damageBuff": 9.53
-    },
-    "buffDuration": 9.53
+    "buffDuration": 20
   },
   "conditionalEffects": [
     {

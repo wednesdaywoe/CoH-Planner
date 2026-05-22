@@ -55,11 +55,19 @@ export const BarbSwipe: Power = {
     }
   ],
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 2
+    },
     "immobilize": {
       "mag": 0.33000001311302185,
       "scale": 8,
       "table": "Melee_Immobilize"
-    }
+    },
+    "buffDuration": 2
   },
   "specialEffects": [
     {

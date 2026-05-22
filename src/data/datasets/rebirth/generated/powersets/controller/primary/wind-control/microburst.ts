@@ -58,7 +58,15 @@ export const Microburst: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
-    }
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 12
+    },
+    "buffDuration": 12
   },
   "conditionalEffects": [
     {

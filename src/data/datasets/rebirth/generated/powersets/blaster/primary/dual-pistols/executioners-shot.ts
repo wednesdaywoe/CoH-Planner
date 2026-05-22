@@ -87,13 +87,23 @@ export const ExecutionersShot: Power = {
     },
     "durations": {
       "defenseDebuff": 8,
+      "rechargeDebuff": 10,
+      "damageDebuff": 8,
       "damageBuff": 9.17
+    },
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Dam"
     },
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 9.17,
+    "buffDuration": 8,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

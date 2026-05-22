@@ -55,6 +55,16 @@ export const Moonbeam: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
+  "effects": {
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "quickSnipe": {
     "stats": {
       "castTime": 1.33,
