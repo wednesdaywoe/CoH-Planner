@@ -60,8 +60,16 @@ interface RequiresContext {
 function evaluateAtom(atom: string, ctx: RequiresContext): boolean {
   const trimmed = atom.trim();
 
-  // Access level checks → always true for planner
-  if (trimmed.includes('char>accesslevel')) return true;
+  // Access level checks → always true for planner. Two surface forms in data:
+  //   infix : "char>accesslevel >= 0"
+  //   RPN   : "accesslevel char> 0 >="
+  // The planner doesn't model accesslevel, so any expression that mentions
+  // the `accesslevel` token is treated as satisfied. (Was previously
+  // matching only the infix substring `char>accesslevel`, which caused
+  // Tanker Radiation Melee's Devastating Blow and several Wind Control
+  // powers to be silently filtered out of the picker — their bin-extracted
+  // requires is the RPN form.)
+  if (/\baccesslevel\b/.test(trimmed)) return true;
 
   // No dots → simple display name prerequisite (e.g., "Dark Nova")
   if (!trimmed.includes('.')) {
@@ -86,15 +94,25 @@ function evaluateAtom(atom: string, ctx: RequiresContext): boolean {
   return false;
 }
 
+/** Comparison operators that appear in raw .def RPN — always treated as
+ *  always-true gates by the planner since they're typed against runtime
+ *  attribs (accesslevel, level, etc.) the planner doesn't model. */
+const RPN_COMPARISON_OPS = new Set(['>=', '<=', '>', '<', '==', '!=']);
+
 /**
  * Evaluate a Reverse Polish Notation requires expression. Raw .def files use
  * RPN (operators come after operands), and the converter doesn't translate
  * to infix, so we evaluate RPN directly.
  *
  * Examples:
- *   "X !"                   → !X
- *   "A B && C !"            → A && B && !C
- *   "A B || C || D || !"    → !(A || B || C || D)
+ *   "X !"                       → !X
+ *   "A B && C !"                → A && B && !C
+ *   "A B || C || D || !"        → !(A || B || C || D)
+ *   "accesslevel char> 0 >="    → true (accesslevel comparison)
+ *
+ * Operand tokens that aren't power references (numeric literals, attribute
+ * modifiers like `char>` that prefix an attrib access) push `true` so the
+ * surrounding comparison/logic doesn't underflow the stack.
  */
 function evaluateRpnRequires(expr: string, ctx: RequiresContext): boolean | null {
   // Tokenize on whitespace; trailing comma is a terminator some powers carry.
@@ -114,6 +132,22 @@ function evaluateRpnRequires(expr: string, ctx: RequiresContext): boolean | null
       const b = stack.pop()!;
       const a = stack.pop()!;
       stack.push(a || b);
+    } else if (RPN_COMPARISON_OPS.has(tok)) {
+      // Comparisons are runtime-attribute gates (accesslevel, level, etc.)
+      // that the planner treats as always satisfied. Consume two operands
+      // and push true.
+      if (stack.length < 2) return null;
+      stack.pop();
+      stack.pop();
+      stack.push(true);
+    } else if (isRpnAttribQualifier(tok)) {
+      // Qualifier tokens like `char>` and `target>` are postfix modifiers
+      // on the previous attrib token (`accesslevel char>` together means
+      // "the char's accesslevel"), not a separate stack push. No-op.
+    } else if (isRpnNumericLiteral(tok)) {
+      // Numeric literals push true — they're operands for a following
+      // comparison op, which the planner short-circuits.
+      stack.push(true);
     } else {
       stack.push(evaluateAtom(tok, ctx));
     }
@@ -122,16 +156,32 @@ function evaluateRpnRequires(expr: string, ctx: RequiresContext): boolean | null
   return stack[0];
 }
 
+/** Numeric literal token (e.g. `0`, `1.5`, `-3`). */
+function isRpnNumericLiteral(tok: string): boolean {
+  return /^-?\d+(\.\d+)?$/.test(tok);
+}
+
+/** Postfix qualifier tokens like `char>` / `target>` that modify the
+ *  previous attrib token rather than pushing their own stack value. */
+function isRpnAttribQualifier(tok: string): boolean {
+  return tok.endsWith('>') && !tok.includes('.');
+}
+
 /**
  * Detect RPN form. The last whitespace-separated token is one of the operator
  * symbols `!`, `&&`, `||` (the operator follows its operands in RPN).
+ * Comparison ops (`>=`, `<=`, etc.) also count — they appear at the end of
+ * accesslevel-gated expressions like `accesslevel char> 0 >=`.
  */
 function looksLikeRpn(expr: string): boolean {
   const trimmed = expr.replace(/,$/, '').trim();
   const lastSpace = trimmed.lastIndexOf(' ');
   if (lastSpace < 0) return false;
   const lastTok = trimmed.slice(lastSpace + 1);
-  return lastTok === '!' || lastTok === '&&' || lastTok === '||';
+  return (
+    lastTok === '!' || lastTok === '&&' || lastTok === '||' ||
+    RPN_COMPARISON_OPS.has(lastTok)
+  );
 }
 
 /**
@@ -157,7 +207,12 @@ function looksLikeRpn(expr: string): boolean {
 function evaluateRequires(requires: string, ctx: RequiresContext): boolean {
   const expr = requires.trim();
 
-  // RPN form (raw .def expressions)
+  // RPN form (raw .def expressions). Includes detection for comparison ops
+  // (`>=`, `<=`, `>`, `<`, `==`, `!=`) so accesslevel-gated expressions like
+  // `accesslevel char> 0 >=` and the compound `accesslevel char> 0 >= AT.Set.Power &&`
+  // (Tanker Radiation Melee Devastating Blow, Wind Control Clear Skies) are
+  // recognized as RPN and handed to the evaluator that knows how to short-
+  // circuit accesslevel.
   if (looksLikeRpn(expr)) {
     const result = evaluateRpnRequires(expr, ctx);
     if (result !== null) return result;
