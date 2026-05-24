@@ -2325,7 +2325,11 @@ export function getAlphaEnhancementBonuses(
   if (alphaEffects.accuracy !== undefined) bonuses.accuracy = alphaEffects.accuracy;
   if (alphaEffects.recharge !== undefined) bonuses.recharge = alphaEffects.recharge;
   if (alphaEffects.enduranceReduction !== undefined) bonuses.endurance = alphaEffects.enduranceReduction;
-  if (alphaEffects.enduranceModification !== undefined) bonuses.enduranceModification = alphaEffects.enduranceModification;
+  // Musculature / Agility carry `enduranceModification` in the alpha data
+  // but every downstream gate in enhancement-values keys this aspect as
+  // `enduranceMod`. Writing the long form here used to drop the bonus
+  // silently in filterAlphaByAllowedEnhancements.
+  if (alphaEffects.enduranceModification !== undefined) bonuses.enduranceMod = alphaEffects.enduranceModification;
   if (alphaEffects.range !== undefined) bonuses.range = alphaEffects.range;
   if (alphaEffects.heal !== undefined) bonuses.heal = alphaEffects.heal;
   if (alphaEffects.defense !== undefined) bonuses.defense = alphaEffects.defense;
