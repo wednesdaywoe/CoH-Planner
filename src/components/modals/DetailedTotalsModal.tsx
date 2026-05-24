@@ -7,7 +7,7 @@ import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { Modal, ModalBody } from './Modal';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { convertToLegacyStats } from '@/hooks/useCalculatedStats';
-import { useBuildStore, useAuthStore } from '@/stores';
+import { useBuildStore, useAuthStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { formatBonusValue2 as formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data/archetypes';
@@ -141,6 +141,7 @@ function computeAllStats(
   baseHP: number,
   maxHPCap: number,
   archetypeId?: string,
+  rechargeMidsStyle: boolean = true,
 ) {
   const at = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
   const defenseCap = (at?.stats.defenseCap ?? 0.45) * 100;
@@ -164,6 +165,24 @@ function computeAllStats(
         let cap: number | undefined;
         if (id.startsWith('def_') || id.startsWith('defense_')) cap = defenseCap;
         else if (id.startsWith('res_')) cap = resistanceCap;
+
+        // Recharge display mode: opt out of the Mids-style 100% base offset
+        // and revert to bonus-only "+X%" rendering. Mirrors the override in
+        // StatsDashboard so the modal stays in sync with the headline tile.
+        if (id === 'recharge' && !rechargeMidsStyle) {
+          return {
+            ...def,
+            value,
+            breakdown,
+            cap,
+            format: (v: StatValue) => {
+              const n = Number(v);
+              return `${n >= 0 ? '+' : ''}${formatBonusValue(n)}%`;
+            },
+            tooltip: 'Global recharge from set bonuses',
+            totalBaseOffset: undefined,
+          } as StatRow;
+        }
 
         return { ...def, value, breakdown, cap } as StatRow;
       })
@@ -461,6 +480,7 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
   const stats = useCalculatedStats();
   const calcResult = useCharacterCalculation();
   const build = useBuildStore((s) => s.build);
+  const rechargeMidsStyle = useUIStore((s) => s.rechargeMidsStyle);
 
   const health = getBaselineHealth(build.archetype?.id ?? undefined, build.level);
   const baseHP = health.baseHealth;
@@ -476,17 +496,17 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
 
   // Compute stats for current build
   const currentBuildStats = useMemo(
-    () => computeAllStats(stats, globalBonuses, breakdowns, baseHP, maxHPCap, build.archetype?.id ?? undefined),
-    [stats, globalBonuses, breakdowns, baseHP, maxHPCap, build.archetype?.id],
+    () => computeAllStats(stats, globalBonuses, breakdowns, baseHP, maxHPCap, build.archetype?.id ?? undefined, rechargeMidsStyle),
+    [stats, globalBonuses, breakdowns, baseHP, maxHPCap, build.archetype?.id, rechargeMidsStyle],
   );
 
   // Compute stats for loaded builds
   const loadedBuildStats = useMemo(
     () =>
       loadedBuilds.map((lb) =>
-        computeAllStats(lb.legacyStats, lb.calcResult.globalBonuses, lb.calcResult.breakdown, lb.baseHP, lb.maxHPCap, lb.build.archetype?.id ?? undefined),
+        computeAllStats(lb.legacyStats, lb.calcResult.globalBonuses, lb.calcResult.breakdown, lb.baseHP, lb.maxHPCap, lb.build.archetype?.id ?? undefined, rechargeMidsStyle),
       ),
-    [loadedBuilds],
+    [loadedBuilds, rechargeMidsStyle],
   );
 
   // Handle file load

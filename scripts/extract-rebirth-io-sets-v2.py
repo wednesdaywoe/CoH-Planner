@@ -235,7 +235,7 @@ ATTRIB_TO_ASPECT = {
 }
 
 
-def _collapse_aspects(attribs: list[str]) -> tuple[list[str], bool]:
+def _collapse_aspects(attribs: list[str], set_category: str = '') -> tuple[list[str], bool]:
     """Collapse a piece's attribs into planner aspect labels.
 
     Returns (aspects, is_proc). is_proc=True when the piece carries a
@@ -243,13 +243,21 @@ def _collapse_aspects(attribs: list[str]) -> tuple[list[str], bool]:
     in CoH community order (Accuracy, Damage, Endurance, Recharge, then
     others) so the generated piece names match HC's hand-curated entries
     and Mids exports — "Accuracy/Damage" not "Damage/Accuracy".
+
+    `set_category` is the boostset's EC* category (e.g. "ECResist", "ECMelee").
+    In CoH, boost pieces with the 8 damage-type attribs always have
+    aspect=Strength in the binary — the slotted power decides which
+    "Strength" scalar that buffs. For a Resist Damage set (ECResist) the
+    relevant scalar is the power's resistance scale, so the planner should
+    label those pieces "Damage Resistance" rather than "Damage" to match
+    HC's hand-curated convention (Aegis, Impervium Armor, etc.).
     """
     aspects: list[str] = []
     is_proc = False
     distinct = set(attribs)
 
     if DAMAGE_ATTRIBS.issubset(distinct):
-        aspects.append('Damage')
+        aspects.append('Damage Resistance' if set_category == 'ECResist' else 'Damage')
         distinct -= DAMAGE_ATTRIBS
 
     for a in sorted(distinct):
@@ -270,7 +278,7 @@ def _collapse_aspects(attribs: list[str]) -> tuple[list[str], bool]:
 # `_collapse_aspects` so a piece carrying {Damage, Accuracy} surfaces
 # as "Accuracy/Damage" — matching how HC's hand-curated data names
 # them and how players reference them in Mids exports.
-_ASPECT_CANONICAL_ORDER = ['Accuracy', 'Damage', 'Endurance', 'Recharge']
+_ASPECT_CANONICAL_ORDER = ['Accuracy', 'Damage', 'Damage Resistance', 'Endurance', 'Recharge']
 
 
 def _sort_aspects_canonical(aspects: list[str]) -> list[str]:
@@ -430,7 +438,7 @@ def main() -> int:
                 for t in eg.templates:
                     if t.attribs:
                         attribs.extend(t.attribs)
-            aspects, is_proc = _collapse_aspects(attribs)
+            aspects, is_proc = _collapse_aspects(attribs, s.category)
             piece_display = _piece_name_from_aspects(aspects) or 'Special'
             if is_proc:
                 # Proc pieces get a contextual "Chance for X" label later.

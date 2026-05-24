@@ -21,8 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-05-23',
+    date: '2026-05-24',
     items: [
+      { message: 'Fix for some Rebirth boostSets showing up in the wrong place with the wrong attribes', type: 'fix' },
+      { message: 'The display of global recharge can now be toggled between a simple sum of your bonuses (e.g. +25%), and the base-100% plus bonuses (e.g., 125%) Settings > Display', type: 'feat' },
       { message: 'Began work on building a Thunderspy dataset. Not enabled yet, but soon!', type: 'feat' },
       { message: 'For Rebirth: Fixed Devastating Blow and three Wind Control powers being silently hidden from the picker by their accesslevel requirement', type: 'fix' },
       { message: 'Added a new Copy Short Link to the File menu. This generates a much friendlier link for sharing, but it does require authentication', type: 'feat' },

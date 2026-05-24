@@ -6,7 +6,7 @@
  */
 
 import { useState, useCallback } from 'react';
-import { useAuthStore } from '@/stores';
+import { useAuthStore, useUIStore } from '@/stores';
 import { supabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/Button';
 import { getOwnedBuildIds, claimBuilds } from '@/services/sharedBuilds';
@@ -34,6 +34,9 @@ export function GeneralSettings() {
       setCalcDebug(true);
     }
   }, [calcDebug]);
+
+  const rechargeMidsStyle = useUIStore((s) => s.rechargeMidsStyle);
+  const toggleRechargeMidsStyle = useUIStore((s) => s.toggleRechargeMidsStyle);
 
   const handleClaim = async () => {
     setClaimLoading(true);
@@ -137,6 +140,37 @@ export function GeneralSettings() {
           )}
         </div>
       )}
+
+      {/* Display section */}
+      <div className="bg-gray-800 border border-gray-700 rounded-lg p-5 mb-6">
+        <h2 className="text-sm font-semibold text-gray-300 mb-3">Display</h2>
+
+        <label className="flex items-center gap-3 cursor-pointer">
+          <button
+            type="button"
+            role="switch"
+            aria-checked={rechargeMidsStyle}
+            onClick={toggleRechargeMidsStyle}
+            className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+              rechargeMidsStyle ? 'bg-blue-600' : 'bg-gray-600'
+            }`}
+          >
+            <span
+              className={`inline-block h-3.5 w-3.5 rounded-full bg-white transition-transform ${
+                rechargeMidsStyle ? 'translate-x-4.5' : 'translate-x-0.5'
+              }`}
+            />
+          </button>
+          <div>
+            <p className="text-sm text-white">Mids-style Recharge Total</p>
+            <p className="text-xs text-gray-500">
+              Show recharge as base 100% plus bonuses (e.g. +25% bonuses → 125%),
+              matching Mids' "Haste" column. Off by default — the planner shows
+              just the bonus portion (+25%), matching the in-game display.
+            </p>
+          </div>
+        </label>
+      </div>
 
       {/* Debug section */}
       <div className="bg-gray-800 border border-gray-700 rounded-lg p-5 mb-6">

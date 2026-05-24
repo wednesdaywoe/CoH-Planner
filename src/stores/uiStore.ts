@@ -333,6 +333,12 @@ interface UIState {
    *  (Rule-of-5-rejected) set bonus. Default on so first-time users learn
    *  what the strikethrough/orange-ring indicators mean. */
   ruleOf5AlertEnabled: boolean;
+
+  /** Display recharge as Mids' speed-multiplier "Haste" (100% base + bonuses,
+   *  e.g. +70% Hasten → 170%) when true. When false, show just the bonus
+   *  portion (+70%) — matches what the in-game UI displays. Default is
+   *  false (game-style); toggle on for Mids parity. */
+  rechargeMidsStyle: boolean;
 }
 
 export interface ToastAction {
@@ -602,6 +608,8 @@ interface UIActions {
   toggleHelpToastEnabled: () => void;
   setRuleOf5AlertEnabled: (enabled: boolean) => void;
   toggleRuleOf5AlertEnabled: () => void;
+  setRechargeMidsStyle: (enabled: boolean) => void;
+  toggleRechargeMidsStyle: () => void;
 
   // Hard reset of build-specific UI state (for New Build)
   resetForNewBuild: () => void;
@@ -752,6 +760,7 @@ export const useUIStore = create<UIStore>()(
       toasts: [],
       helpToastEnabled: true,
       ruleOf5AlertEnabled: true,
+      rechargeMidsStyle: false,
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex, overrideSelect, virtualSlots, powerCategory) =>
@@ -1506,6 +1515,9 @@ export const useUIStore = create<UIStore>()(
       setRuleOf5AlertEnabled: (enabled) => set({ ruleOf5AlertEnabled: enabled }),
       toggleRuleOf5AlertEnabled: () =>
         set((state) => ({ ruleOf5AlertEnabled: !state.ruleOf5AlertEnabled })),
+      setRechargeMidsStyle: (enabled) => set({ rechargeMidsStyle: enabled }),
+      toggleRechargeMidsStyle: () =>
+        set((state) => ({ rechargeMidsStyle: !state.rechargeMidsStyle })),
 
       resetForNewBuild: () =>
         set({
@@ -1596,6 +1608,7 @@ export const useUIStore = create<UIStore>()(
         globalAdjusters: state.globalAdjusters,
         helpToastEnabled: state.helpToastEnabled,
         ruleOf5AlertEnabled: state.ruleOf5AlertEnabled,
+        rechargeMidsStyle: state.rechargeMidsStyle,
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };

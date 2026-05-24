@@ -192,6 +192,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const toggleDashboardCollapsed = useUIStore((s) => s.toggleDashboardCollapsed);
   const setHoverHint = useUIStore((s) => s.setHoverHint);
   const combatMode = useUIStore((s) => s.combatMode);
+  const rechargeMidsStyle = useUIStore((s) => s.rechargeMidsStyle);
   // Welcome modal (auto-shows on first visit)
   const [welcomeModalOpen, closeWelcomeModal] = useWelcomeModal();
 
@@ -279,6 +280,19 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         // Override format/tooltip so the active travel-toggle cap applies.
         let tooltip = def.tooltip;
         let format = def.format;
+        // Recharge has two display modes (settings → General → "Mids-style
+        // recharge"). The stat definition encodes the Mids style (100% +
+        // bonuses) as the default; opting out swaps in the bonus-only
+        // display ("+25%") and drops the totalBaseOffset.
+        let totalBaseOffset = def.totalBaseOffset;
+        if (config.stat === 'recharge' && !rechargeMidsStyle) {
+          format = (v) => {
+            const n = Number(v);
+            return `${n >= 0 ? '+' : ''}${formatBonusValue(n)}%`;
+          };
+          tooltip = 'Global recharge from set bonuses';
+          totalBaseOffset = undefined;
+        }
         if (config.stat === 'runspeed' || config.stat === 'jumpspeed' || config.stat === 'jumpheight') {
           const movementStat = config.stat === 'runspeed' ? 'runSpeed'
             : config.stat === 'jumpspeed' ? 'jumpSpeed'
@@ -299,7 +313,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
           tooltip = `${sign}${pct.toFixed(2)}% fly speed buff. Effective cap ${cap.toFixed(2)} mph. Base mph requires an active fly power.`;
         }
 
-        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, totalBaseOffset: def.totalBaseOffset, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip, format };
+        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, totalBaseOffset, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip, format };
       })
       .filter((stat) => {
         if (stat.showWhenZero) return true;
@@ -314,7 +328,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         }
         return Number(v) !== 0;
       });
-  }, [statsConfig, stats, baseHP, maxHPCap, breakdowns, globalBonuses, effectiveMovementCaps]);
+  }, [statsConfig, stats, baseHP, maxHPCap, breakdowns, globalBonuses, effectiveMovementCaps, rechargeMidsStyle]);
 
   // Stat categories for grouping (should match config modal)
   const STAT_CATEGORIES = [
