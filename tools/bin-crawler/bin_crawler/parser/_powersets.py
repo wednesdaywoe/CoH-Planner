@@ -54,7 +54,11 @@ def parse_powersets(bin_path_or_data) -> list[PowersetRecord]:
     if is_parse6:
         layouts = [_parse_parse6]
     else:
-        layouts = [_parse_primary, _parse_fallback]
+        # _parse_parse6 last: Thunderspy uses Parse7 framing but the older
+        # Parse6 record schema (3 account strings, vestigial+real available
+        # u4_arrays). HC records match _parse_primary or _parse_fallback first,
+        # so this only kicks in on Thunderspy/Rebirth-shaped data.
+        layouts = [_parse_primary, _parse_fallback, _parse_parse6]
 
     records = []
     fail_count = 0

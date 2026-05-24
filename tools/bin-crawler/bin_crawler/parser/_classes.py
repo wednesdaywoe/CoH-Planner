@@ -53,19 +53,23 @@ def _read_str_at(data, rec_start, off, strtab_base):
 
 
 def _find_named_tables_offset(data, rec_start, rec_len):
-    """Scan backwards for the named_tables struct array."""
+    """Scan backwards for the named_tables struct array.
+
+    HC has level cap 50 + 5 Incarnate = ~105 floats per table (sub_len ~428).
+    Thunderspy/older CoH has level cap 50 only, so vcount ~= 50 and sub_len
+    ~= 4 (name) + 4 (count) + 50*4 (floats) = 208 bytes. Accept either range.
+    """
     for offset in range(rec_len - 12, 0, -4):
         count = struct.unpack_from("<I", data, rec_start + offset)[0]
         if not (30 <= count <= 200):
             continue
-        # First sub-record length should be ~428 bytes
         sub_len = struct.unpack_from("<I", data, rec_start + offset + 4)[0]
-        if not (400 <= sub_len <= 500):
+        # HC: 400-500 bytes (vcount=105). Thunderspy/older: 150-300 (vcount=50).
+        if not (150 <= sub_len <= 600):
             continue
-        # Verify: name string + count of 105 float values
         sub_start = rec_start + offset + 8
         vcount = struct.unpack_from("<I", data, sub_start + 4)[0]
-        if vcount == 105:
+        if 40 <= vcount <= 150:
             return offset
     return None
 
@@ -279,10 +283,20 @@ def parse_classes(bin_path_or_data) -> list[ClassRecord]:
         icon_off = _find_icon_offset(data, rec_start, rec_len, strtab_base)
         if icon_off is not None:
             icon = _read_str_at(data, rec_start, icon_off, strtab_base)
-            # Categories: icon + 20, +24, +28 (after icon, u4 skip, 3 screenshots)
-            primary = _read_str_at(data, rec_start, icon_off + 20, strtab_base)
-            secondary = _read_str_at(data, rec_start, icon_off + 24, strtab_base)
-            pool = _read_str_at(data, rec_start, icon_off + 28, strtab_base)
+            # HC layout: categories at icon + 20/24/28 (5 u4 gap after icon for
+            # screenshots etc). Thunderspy's older record schema drops those
+            # intermediate fields and puts categories at icon + 4/8/12. Detect
+            # by reading the HC slot first: in Thunderspy that slot lands on
+            # the parent_class field, which begins with "Class_".
+            hc_primary = _read_str_at(data, rec_start, icon_off + 20, strtab_base)
+            if hc_primary.startswith("Class_") or not hc_primary:
+                primary = _read_str_at(data, rec_start, icon_off + 4, strtab_base)
+                secondary = _read_str_at(data, rec_start, icon_off + 8, strtab_base)
+                pool = _read_str_at(data, rec_start, icon_off + 12, strtab_base)
+            else:
+                primary = hc_primary
+                secondary = _read_str_at(data, rec_start, icon_off + 24, strtab_base)
+                pool = _read_str_at(data, rec_start, icon_off + 28, strtab_base)
 
         # Find and parse named modifier tables
         named_tables = {}

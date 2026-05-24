@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-05-23',
     items: [
+      { message: 'Began work on building a Thunderspy dataset. Not enabled yet, but soon!', type: 'feat' },
       { message: 'For Rebirth: Fixed Devastating Blow and three Wind Control powers being silently hidden from the picker by their accesslevel requirement', type: 'fix' },
       { message: 'Added a new Copy Short Link to the File menu. This generates a much friendlier link for sharing, but it does require authentication', type: 'feat' },
       { message: 'Added some safety checks when loading older builds to prevent powers from ending up in the wrong places', type: 'fix' },

@@ -58,16 +58,19 @@ def _decode_flags(flags_raw: int) -> list[str]:
     return [name for bit, name in _FLAG_BITS if flags_raw & bit]
 
 
-def _detect_format(r: BinReader) -> tuple[bool, bool]:
-    """Detect whether the Parse7 powers.bin has field 45b and/or field 41b.
+def _detect_format(r: BinReader) -> tuple[bool, bool, bool]:
+    """Detect Parse7 powers.bin layout variant.
 
-    Tests first 20 records across all 4 combinations of (has_41b, has_45b).
-    Wrong layout shifts reads by 4+ bytes, producing implausible numeric values.
-    Returns (has_field_41b, has_field_45b).
+    Tests the first 20 records across HC's 4 combinations of (has_41b, has_45b)
+    plus Thunderspy's Parse6-derived layout. Wrong layout shifts reads by 4+
+    bytes, producing implausible numeric values. Returns
+    (has_field_41b, has_field_45b, is_thunderspy). is_thunderspy is mutually
+    exclusive with the HC flags; when True, the others are False.
     """
     save_pos = r.pos
-    best = (False, False)
+    best = (False, False, False)
     best_score = -1
+    # Try the 4 HC combos
     for has_41b in (False, True):
         for has_45b in (False, True):
             r._pos = save_pos
@@ -77,20 +80,36 @@ def _detect_format(r: BinReader) -> tuple[bool, bool]:
                 sub = r.sub_reader(rec_len)
                 try:
                     pw = _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
-                    plausible = (
-                        0 <= pw.range <= 500
-                        and 0 <= pw.recharge_time <= 3600
-                        and 0 <= pw.endurance_cost <= 500
-                        and 0 <= pw.time_to_activate <= 30
-                    )
-                    if plausible:
+                    if (0 <= pw.range <= 500
+                            and 0 <= pw.recharge_time <= 3600
+                            and 0 <= pw.endurance_cost <= 500
+                            and 0 <= pw.time_to_activate <= 30):
                         score += 1
                 except Exception:
                     pass
                 r.skip(rec_len)
             if score > best_score:
                 best_score = score
-                best = (has_41b, has_45b)
+                best = (has_41b, has_45b, False)
+    # Try Thunderspy layout
+    r._pos = save_pos
+    score = 0
+    for _ in range(20):
+        rec_len = r.read_u4()
+        sub = r.sub_reader(rec_len)
+        try:
+            pw = _parse_power_parse6(sub, thunderspy=True)
+            if (0 <= pw.range <= 500
+                    and 0 <= pw.recharge_time <= 3600
+                    and 0 <= pw.endurance_cost <= 500
+                    and 0 <= pw.time_to_activate <= 30):
+                score += 1
+        except Exception:
+            pass
+        r.skip(rec_len)
+    if score > best_score:
+        best_score = score
+        best = (False, False, True)
     r._pos = save_pos
     return best
 
@@ -110,8 +129,13 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
         #   - field 45b (u4 between box_size and range) added in a past HC patch
         #   - field 41b (8 bytes after chain_delay) added in 2026 experimental patch
         # Wrong layout produces implausible values (negative range, huge recharge).
-        has_41b, has_45b = _detect_format(r)
-        parser = lambda sub: _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
+        has_41b, has_45b, is_thunderspy = _detect_format(r)
+        if is_thunderspy:
+            # Thunderspy: Parse7 wrapper, Parse6-derived schema with HC-style
+            # box (24 bytes) and no field 43b. Reuses _parse_power_parse6.
+            parser = lambda sub: _parse_power_parse6(sub, thunderspy=True)
+        else:
+            parser = lambda sub: _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
 
     records = []
     for i in range(count):
@@ -1039,7 +1063,119 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     )
 
 
-def _parse_effect_template_parse6(r: BinReader) -> EffectTemplate:
+# Known Thunderspy table-name prefixes used to locate the modifier table inside
+# an effect template. The table sits in the middle of the variable-layout tail
+# block; scanning for these prefixes is more robust than tracking offsets.
+_TSPY_TABLE_PREFIXES = (
+    "Melee_", "Ranged_", "Self_", "Inherent_", "Boost_", "Pet_",
+    "Defense_", "Resist_", "Buff_", "Debuff_",
+)
+
+
+def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) -> EffectTemplate:
+    """Parse a Thunderspy AttribMod template.
+
+    Thunderspy predates the enum-coded AttribMod format used by HC (Parse7) and
+    Parse6/Rebirth. Attribs are stored as STRING NAMES (string-table offsets)
+    rather than enum indices, and the tail block beyond `requires` has a
+    variable layout the source spec doesn't document publicly.
+
+    Strategy: parse the well-defined header (attribs, magnitude-default,
+    duration defaults, requires-RPN) deterministically, then SCAN the remaining
+    bytes for the modifier table name (`Melee_Damage`, `Ranged_Damage`, …) and
+    pull the table-scale + duration that immediately follow it. This loses some
+    of the rarely-used flags but recovers the load-bearing damage/heal/mez
+    numbers the planner needs.
+    """
+    def _resolve_str(off: int) -> str | None:
+        if off == 0 or off >= 200000:
+            return None
+        abs_pos = strtab_base + off
+        if abs_pos <= 0 or abs_pos >= len(strtab_data):
+            return None
+        if strtab_data[abs_pos - 1] != 0:
+            return None
+        end = abs_pos
+        limit = min(abs_pos + 256, len(strtab_data))
+        while end < limit and strtab_data[end] != 0:
+            end += 1
+        try:
+            s = bytes(strtab_data[abs_pos:end]).decode("ascii")
+        except UnicodeDecodeError:
+            return None
+        if not s or not all(0x20 <= ord(c) < 0x7f for c in s):
+            return None
+        return s
+
+    # Attribs: u4_array of string offsets
+    attrib_offs = r.read_u4_array()
+    attribs = [n for n in (_resolve_str(o) for o in attrib_offs) if n]
+
+    # Magnitude (default — table-scale found later usually overrides for damage)
+    magnitude = r.read_f4()
+    # Two unknown u4s — often 0; likely Aspect + Target enums in some records
+    r.read_u4()
+    r.read_u4()
+    # Duration defaults — instant attacks use -1.0 sentinel
+    duration_default = r.read_f4()
+    max_duration_default = r.read_f4()
+    # Requires expression (RPN string tokens)
+    req_offs = r.read_u4_array()
+    req_parts = [n for n in (_resolve_str(o) for o in req_offs) if n]
+    jit_requires = ' '.join(req_parts) if req_parts else ''
+
+    # Scan the remainder for the first table-name string. The bytes from here
+    # to the end of the template carry a mix of length-prefixed sub-arrays and
+    # f4 values; we only need the table + the two f4s that follow it.
+    tail_start = r._pos
+    tail = bytes(strtab_data[tail_start:r._end])
+    table = ''
+    scale = 0.0
+    duration = 0.0
+    for k in range(0, len(tail) - 4, 4):
+        u = struct.unpack_from('<I', tail, k)[0]
+        candidate = _resolve_str(u)
+        if not candidate or not candidate.startswith(_TSPY_TABLE_PREFIXES):
+            continue
+        table = candidate
+        # Next f4 is the table scale (the multiplier applied to the table value)
+        if k + 8 <= len(tail):
+            scale = struct.unpack_from('<f', tail, k + 4)[0]
+        # The f4 two slots after the table is the duration override — 0 for
+        # instant attacks, DoT tick-window length (e.g. 3.1) for DoTs. Mez
+        # template durations live further down in a different slot we don't
+        # extract here; the planner reconstructs them as scale × table-lookup.
+        if k + 12 <= len(tail):
+            duration = struct.unpack_from('<f', tail, k + 8)[0]
+        break
+
+    # Sentinel -1 means "instant" — collapse to 0 so downstream doesn't read
+    # it as a real duration value.
+    if duration_default == -1.0:
+        duration_default = 0.0
+    if duration < 0:
+        duration = 0.0
+    # For damage attacks, table-scale supersedes the template-level magnitude
+    # default (which is the unscaled "1.0" placeholder). Magnitude only matters
+    # for non-table effects like raw mez magnitudes.
+    final_scale = scale if table else magnitude
+
+    r.skip_to_end()
+    return EffectTemplate(
+        attribs=attribs,
+        type="",  # Thunderspy schema doesn't expose this consistently
+        application_type="",
+        aspect="",
+        target="",
+        table=table,
+        scale=final_scale,
+        duration=duration or duration_default,
+        magnitude=magnitude,
+        jit_requires=jit_requires,
+    )
+
+
+def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> EffectTemplate:
     """Parse a single AttribMod (effect template) — Parse6/Rebirth layout.
 
     Per the Ghidra-extracted depth=1 AttribMod descriptor at 0x1408e8a10
@@ -1080,7 +1216,10 @@ def _parse_effect_template_parse6(r: BinReader) -> EffectTemplate:
     # Create_Entity at 116, HC at 117). Use the Rebirth-specific map so
     # entity-spawn templates resolve and their `params.entity_def` gets
     # populated for the downstream summon wiring.
-    attribs = [ATTRIB_NAME_REBIRTH.get(attrib_raw // 4, f"Unknown({attrib_raw // 4})")]
+    # Thunderspy uses HC's ATTRIB_NAME map (predates the Parse6/Rebirth +1 shift
+    # at Create_Entity and Accuracy); Rebirth uses ATTRIB_NAME_REBIRTH.
+    attrib_map = ATTRIB_NAME if thunderspy else ATTRIB_NAME_REBIRTH
+    attribs = [attrib_map.get(attrib_raw // 4, f"Unknown({attrib_raw // 4})")]
     aspect_raw = r.read_u4()
     # Parse6 uses value*4 encoding (4-byte aspect-table entries) vs HC's
     # value*8. Distribution across 21,559 Rebirth records: top values
@@ -1194,7 +1333,7 @@ def _parse_effect_template_parse6(r: BinReader) -> EffectTemplate:
     )
 
 
-def _parse_effects_parse6(r: BinReader) -> tuple[list[EffectGroup], list[EffectGroup]]:
+def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False) -> tuple[list[EffectGroup], list[EffectGroup]]:
     """Parse Parse6 effects: a flat struct_array of AttribMod records.
 
     Wraps each AttribMod in a synthetic single-template EffectGroup so
@@ -1213,7 +1352,12 @@ def _parse_effects_parse6(r: BinReader) -> tuple[list[EffectGroup], list[EffectG
             raise ValueError(f"Parse6 effect elem_len {elem_len} > remaining")
         elem_reader = r.sub_reader(elem_len)
         try:
-            tmpl = _parse_effect_template_parse6(elem_reader)
+            if thunderspy:
+                tmpl = _parse_effect_template_thunderspy(
+                    elem_reader, r._data, r._strtab_base
+                )
+            else:
+                tmpl = _parse_effect_template_parse6(elem_reader)
             # Synthetic group — Parse6 stores conditional gates (PvE vs PvP,
             # mode-active variants, drowning checks, etc.) on the
             # per-template `jit_requires` field, since there's no
@@ -1247,8 +1391,17 @@ def _parse_effects_parse6(r: BinReader) -> tuple[list[EffectGroup], list[EffectG
     return effects, []
 
 
-def _parse_power_parse6(r: BinReader) -> PowerRecord:
-    """Parse a single power record (Parse6/Rebirth layout)."""
+def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False) -> PowerRecord:
+    """Parse a single power record (Parse6/Rebirth layout).
+
+    The `thunderspy` flag selects Thunderspy's Parse7-wrapped variant of this
+    schema, which differs from stock Parse6 in exactly two ways:
+      - Field 43b (u4_array) is absent on Thunderspy (Parse6/Rebirth has it)
+      - Box fields 44/45 are HC-style 24 bytes (2×f4×3), not Parse6's 8 bytes
+    Everything else — the missing HC extras (35b, 38/38b-d, 41b, 43c, 45b, 48b,
+    52b), the post-boosts tail (5 u4_arrays + flat AttribMod struct_array, no
+    Redirect, no ActivationEffect) — is identical to Parse6.
+    """
 
     # 1-9: Same as Parse7 minus HC extras
     full_name = r.read_string()
@@ -1294,8 +1447,12 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
     r.read_f4()  # 41 chain_delay
     r.read_string_array()  # 42
     r.read_string_array()  # 43
-    r.read_u4_array()  # 43b
-    r.skip(8)  # 44-45 box (Parse6: 2×f4 = 8 bytes)
+    if not thunderspy:
+        r.read_u4_array()  # 43b (present in Parse6/Rebirth, absent in Thunderspy)
+    if thunderspy:
+        r.skip(24)  # 44-45 box (HC-style 2×f4×3 = 24 bytes)
+    else:
+        r.skip(8)  # 44-45 box (Parse6: 2×f4 = 8 bytes)
     range_val = r.read_f4()  # 46
     range_secondary = r.read_f4()  # 47
     time_to_activate = r.read_f4()  # 48
@@ -1324,8 +1481,10 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
     r.read_bool()  # 72
     boosts_raw = r.read_u4_array()  # 73
     # Parse6 (Rebirth) uses a different BOOST_TYPE enum than Parse7 (HC) —
-    # see _enums.py BOOST_TYPE_REBIRTH for the divergence.
-    boosts_allowed = [BOOST_TYPE_REBIRTH.get(v, f"Unknown({v})") for v in boosts_raw]
+    # see _enums.py BOOST_TYPE_REBIRTH for the divergence. Thunderspy predates
+    # the Rebirth-only positions 10/36, so it uses HC's stock enum.
+    boost_map = BOOST_TYPE if thunderspy else BOOST_TYPE_REBIRTH
+    boosts_allowed = [boost_map.get(v, f"Unknown({v})") for v in boosts_raw]
     # 74: u4_array of mode/group refs (see HC parser comment). Not
     # allowed_boostset_cats — that field doesn't exist in the binary.
     r.read_u4_array()
@@ -1352,7 +1511,7 @@ def _parse_power_parse6(r: BinReader) -> PowerRecord:
         r.read_u4_array()  # ModesDisallowed
         r.read_u4_array()  # ModesSuspended
         try:
-            effects, activation_effects = _parse_effects_parse6(r)
+            effects, activation_effects = _parse_effects_parse6(r, thunderspy=thunderspy)
         except Exception:
             effects = []
             activation_effects = []

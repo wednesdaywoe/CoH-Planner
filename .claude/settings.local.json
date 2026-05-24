@@ -1,6 +1,9 @@
 {
   "permissions": {
     "allow": [
+      "c*)",
+      "Bash(python:*)",
+      "Bash(py -3 *)",
       "Bash(python convert_powerset.py:*)",
       "Bash(python batch_convert_defense_sets.py:*)",
       "Bash(git commit:*)",
