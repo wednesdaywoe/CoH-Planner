@@ -1053,6 +1053,8 @@ function SettingsPopover() {
   const setUIScale = useUIStore((s) => s.setUIScale);
   const useArcanaTime = useUIStore((s) => s.useArcanaTime);
   const toggleUseArcanaTime = useUIStore((s) => s.toggleUseArcanaTime);
+  const rechargeMidsStyle = useUIStore((s) => s.rechargeMidsStyle);
+  const toggleRechargeMidsStyle = useUIStore((s) => s.toggleRechargeMidsStyle);
 
   const onboardingEnabled = useOnboardingStore((s) => s.enabled);
   const toggleOnboarding = useOnboardingStore((s) => s.toggle);
@@ -1255,6 +1257,17 @@ function SettingsPopover() {
                   checked={useArcanaTime}
                   onChange={toggleUseArcanaTime}
                   label="ArcanaTime"
+                />
+              </Tooltip>
+            </div>
+            <div className="flex items-center justify-between">
+              <Tooltip content="Show recharge as base 100% + bonuses (Mids 'Haste'). Off shows just the bonus (+25%), matching the in-game display.">
+                <Toggle
+                  id="recharge-mids-style-toggle"
+                  name="rechargeMidsStyle"
+                  checked={rechargeMidsStyle}
+                  onChange={toggleRechargeMidsStyle}
+                  label="Mids Recharge"
                 />
               </Tooltip>
             </div>
