@@ -20,6 +20,15 @@ installChunkErrorReload()
 if (import.meta.env.PROD && import.meta.env.VITE_SENTRY_DSN) {
   Sentry.init({
     dsn: import.meta.env.VITE_SENTRY_DSN,
+    // Stale-tab chunk failures are recovered by installChunkErrorReload —
+    // filter them here so Sentry doesn't log noise after every deploy.
+    ignoreErrors: [
+      /Failed to fetch dynamically imported module/i,
+      /Importing a module script failed/i,
+      /error loading dynamically imported module/i,
+      /Unable to preload CSS/i,
+      /ChunkLoadError/i,
+    ],
   })
 }
 

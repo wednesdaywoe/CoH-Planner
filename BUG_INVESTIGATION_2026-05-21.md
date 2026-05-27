@@ -40,6 +40,11 @@ Stacking case the user cares about: 6-slot Preventive Medicine (+3.75%) + 6-slot
 ### Bug 5 — Power Info missing buff/debuff throughput
 > Darkest Night doesn't show -ToHit Debuff throughput. Aim shows +ToHit but not +Damage. Post-enhancement values for buff/debuff effects are not shown.
 
+### Bug 6 — Shield Defense: Grant Cover incorrectly grants defense to caster (added 2026-05-25)
+> Grant Cover when toggled on increases the caster's defense numbers. However, Grant Cover only provides defense to teammates, not to self. It does provide DDR (defense debuff resistance) to self.
+>
+> Repro: Tanker / Shield Defense / level 50, Homecoming dataset. App version 0.1.7.8-beta.
+
 ---
 
 ## What was fixed this pass
@@ -99,6 +104,13 @@ activation, not per DoT tick.
   - `"Witchcraft: Chance for -Res Debuff"`: 3.5 PPM, `Foe(-Resistance 20%) for 10s`, level 10–50, Unique
   - `"Superior Witchcraft: Chance for -Res Debuff"`: 6 PPM, same effect, level 50, Unique
 - Both sets are Rebirth-exclusive (HC has no Witchcraft sets at all).
+
+### ✅ Bug 6: Grant Cover defenseBuff team-only flag
+- The calc engine already supports `effects.defenseBuffExcludesSelf: true` at [character-totals.ts:799](src/utils/calculations/character-totals.ts#L799) — the data files just weren't setting it.
+- Added `effects: { defenseBuffExcludesSelf: true }` to all 7 Grant Cover override files (4 HC ATs + 3 Rebirth ATs):
+  - HC: tanker (primary), scrapper/brute/stalker (secondary)
+  - Rebirth: tanker (primary), scrapper/brute (secondary — no Rebirth stalker shield)
+- DDR (`debuffResistance.defense`) and -Recharge resistance still apply to self via the generated layer — only the `defenseBuff` block is gated.
 
 ### Verification
 - `npm run lint` (typecheck) passes
@@ -290,6 +302,36 @@ Removed the three guards. Re-converted all HC + Rebirth powersets + pools + epic
 
 ---
 
+## 🟡 Open audit (followup, low urgency): other "team-only buff" data omissions
+
+Bug 6 (Grant Cover) was a case where the in-game description says the buff "is only applied to nearby team mates, but not yourself" but the data didn't reflect that — so the caster was getting a phantom defense bonus. The calc engine's `effects.defenseBuffExcludesSelf` flag at [character-totals.ts:799](src/utils/calculations/character-totals.ts#L799) exists for exactly this case, but currently Grant Cover is the only power that uses it.
+
+**Suspect powers worth verifying** (toggles or auras that give buffs to teammates but not the caster):
+- **Phalanx Fighting** (Shield Defense passive) — self-only per design, but check it's not double-applying via Grant Cover's exclusion
+- **Maneuvers** (Leadership pool) — in-game does buff self, likely correct, verify anyway
+- **Dispersion Bubble** (Force Field) — buffs self + nearby, likely correct
+- **Insulation Shield / Deflection Shield** (Force Field) — single-ally targeted via `targetType: "Ally"`, already filtered by `ALLY_ONLY_TARGET_TYPES` in [character-totals.ts:610](src/utils/calculations/character-totals.ts#L610)
+- **Sonic Dispersion / Sonic Barrier / Sonic Haven** (Sonic Resonance) — same family of buffs as Force Field
+- Any other "Grant X to teammates" / "buffs nearby allies" toggle. Quick sweep:
+  ```bash
+  grep -rln "team mates, but not yourself\|not yourself\|but not self\|not the caster" src/data/datasets/*/generated/powersets/
+  ```
+
+**Fix pattern when found** — add to the relevant override file (one per AT × dataset, mirroring the Grant Cover changes):
+```ts
+export const overrides: Partial<Power> = {
+  effects: {
+    defenseBuffExcludesSelf: true,
+  },
+};
+```
+
+**Open architecture gap**: `defenseBuffExcludesSelf` is the only "excludes self" flag in the Power type so far ([power.ts:301](src/types/power.ts#L301)). If we find a team-only **ToHit buff** or **damage buff** power (analogous Leadership-style aura that doesn't include the caster), we'd need to extend both the Power type and the calc engine to gate those effects too — e.g. `tohitBuffExcludesSelf`, `damageBuffExcludesSelf`. The calc engine sites that would need conditional gating are at [character-totals.ts:703-727](src/utils/calculations/character-totals.ts#L703-L727).
+
+**Triggering this audit**: do it when a user reports the analogous "buff is showing on my totals but shouldn't" for another power, or as a planned sweep during quieter dev time. Not worth a proactive deep audit now — the original Grant Cover report came in user testing, so users are an effective signal.
+
+---
+
 ## File reference quick-jump
 
 | Bug | Files touched / files to read next |
@@ -302,6 +344,7 @@ Removed the three guards. Re-converted all HC + Rebirth powersets + pools + epic
 | 4 ⏭ calc | [src/utils/calculations/character-totals.ts:718](src/utils/calculations/character-totals.ts#L718) (damageBuff enh-multiplier gate); [src/utils/calculations/damage.ts](src/utils/calculations/damage.ts); [src/utils/calculations/at-effects.ts:104](src/utils/calculations/at-effects.ts#L104) |
 | 4 ⏭ toggles | Find Incarnate Destiny/Hybrid `isActive` handling — search `src/components/incarnate/` |
 | 5 ⏭ | Power Info modal — confirm path via `grep -rn "Power Info" src/components/` |
+| 6 ✅ | 7 Grant Cover override files under `src/data/datasets/{homecoming,rebirth}/overrides/powersets/*/shield-defense/grant-cover.ts` |
 
 ---
 
