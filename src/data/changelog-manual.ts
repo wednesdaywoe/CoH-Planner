@@ -21,8 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-05-24',
+    date: '2026-05-28',
     items: [
+      { message: 'Welcome Modal on page load has been retired, its now part of the the "New Update Available" banner, and can also be accessed through menus. Various small UI tweaks' , type: 'update' },
+      { message: 'Fix for Grant Cover applying its bonus to the user' , type: 'fix' },
       { message: 'Fix for some Rebirth boostSets showing up in the wrong place with the wrong attribs', type: 'fix' },
       { message: 'The display of global recharge can now be toggled between a simple sum of your bonuses (e.g. +25%), and the base-100% plus bonuses (e.g., 125%) Settings > Display', type: 'feat' },
       { message: 'Began work on building a Thunderspy dataset. Not enabled yet, but soon!', type: 'feat' },
