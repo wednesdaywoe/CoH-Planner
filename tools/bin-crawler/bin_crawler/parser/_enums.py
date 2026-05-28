@@ -286,10 +286,8 @@ ATTRIB_NAME: dict[int, str] = {
 # attack powers (Dive Attack, Blink Blitz) and pet summons surface as
 # `Unknown(116)` and lose their `Pets_X` summon wiring downstream.
 #
-# A handful of other Rebirth indices (85, 88, 91) also report as Unknown but
-# don't correspond to a clean HC-shifted neighbour — they're separate enum
-# divergences. Leaving them unmapped is fine until a player-visible bug
-# surfaces, since the unknown name reaches the converter as-is and is
+# Other Rebirth indices (91, ...) still report as Unknown until a player-
+# visible bug surfaces; the unknown name reaches the converter as-is and is
 # filtered out by attrib-type detection rather than producing wrong data.
 ATTRIB_NAME_REBIRTH: dict[int, str] = {
     **ATTRIB_NAME,
@@ -308,6 +306,11 @@ ATTRIB_NAME_REBIRTH: dict[int, str] = {
     # heuristically mapped that to "Endurance" — making Rolling Barrage's
     # piece 1 read as "Damage/Endurance" instead of "Accuracy/Damage".
     85: "Accuracy",
+    # Rebirth shifts Range to 88 (HC: 87) — the same +1 pattern as Accuracy.
+    # Symptom before fix: Rebirth-only IO sets with a +Range set bonus
+    # (Rolling Barrage 2-piece +7.5% Range, etc.) silently lost the tier
+    # because the bonus extractor saw `Unknown(88)` and failed lookup.
+    88: "Range",
     116: "Create_Entity",
 }
 

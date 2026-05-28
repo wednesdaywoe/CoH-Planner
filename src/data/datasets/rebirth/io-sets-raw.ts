@@ -190,6 +190,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
             "desc": "+180.0% Maxendurance",
             "stat": "maxendurance",
             "value": 180.0
@@ -6500,6 +6510,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+7.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
             "desc": "+18.75% Maxhp",
             "stat": "maxhp",
             "value": 18.75
@@ -6551,6 +6571,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           }
         ],
         "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          }
+        ],
+        "pieces": 5
       },
       {
         "effects": [
@@ -8441,6 +8471,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           }
         ],
         "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+6.0% Immobilize Duration",
+            "stat": "immobilize_duration",
+            "value": 6.0
+          }
+        ],
+        "pieces": 4
       },
       {
         "effects": [
@@ -11356,12 +11406,42 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+7.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+300.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 300.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
             "desc": "+9.0% Accuracy",
             "stat": "accuracy",
             "value": 9.0
           }
         ],
         "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          }
+        ],
+        "pieces": 5
       }
     ],
     "category": "event",
@@ -12762,6 +12842,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "libertys_belt": {
     "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Recovery",
+            "stat": "recovery",
+            "value": 1.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 3
+      },
       {
         "effects": [
           {
@@ -17496,12 +17596,32 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+7.5% Range",
+            "stat": "range",
+            "value": 7.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
             "desc": "+11.25% Maxhp",
             "stat": "maxhp",
             "value": 11.25
           }
         ],
         "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          }
+        ],
+        "pieces": 4
       },
       {
         "effects": [
@@ -20197,6 +20317,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
             "desc": "+360.0% Maxendurance",
             "stat": "maxendurance",
             "value": 360.0
@@ -22055,6 +22185,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
             "desc": "+30.0% Maxhp",
             "stat": "maxhp",
             "value": 30.0
@@ -22106,6 +22246,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           }
         ],
         "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4.0
+          }
+        ],
+        "pieces": 5
       },
       {
         "effects": [
@@ -24420,6 +24570,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
             "desc": "+6.0% Energy Resistance",
             "stat": "energy_resistance",
             "value": 6.0
@@ -24800,6 +24960,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+16.0% Regeneration",
+            "stat": "regeneration",
+            "value": 16.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
             "desc": "+10.0% Recharge",
             "stat": "recharge",
             "value": 10.0
@@ -25171,6 +25341,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+4.0% Recovery",
+            "stat": "recovery",
+            "value": 4.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 4.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
             "desc": "+15.0% Accuracy",
             "stat": "accuracy",
             "value": 15.0
@@ -25187,6 +25377,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           }
         ],
         "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4.0
+          }
+        ],
+        "pieces": 6
       }
     ],
     "category": "event",
@@ -25442,6 +25642,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           }
         ],
         "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 3
       }
     ],
     "category": "event",
@@ -25451,17 +25661,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "name": "Superior Winter's Gift",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Range"
+        ],
+        "name": "Range",
         "num": 1,
         "proc": false,
         "unique": false
       },
       {
         "aspects": [
-          "Endurance"
+          "Endurance",
+          "Range"
         ],
-        "name": "Endurance",
+        "name": "Endurance/Range",
         "num": 2,
         "proc": false,
         "unique": false
@@ -25478,6 +25691,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "superior_witchcraft": {
     "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+4.0% Damage",
+            "stat": "damage",
+            "value": 4.0
+          }
+        ],
+        "pieces": 2
+      },
       {
         "effects": [
           {
@@ -25636,6 +25859,41 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+10.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 10.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+5.0% +Res(Slow)",
+            "stat": "+res(slow)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% +Res(Recharge Debuff)",
+            "stat": "+res(recharge_debuff)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+8.0% Regeneration",
+            "stat": "regeneration",
+            "value": 8.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
             "desc": "+7.5% Recharge",
             "stat": "recharge",
             "value": 7.5
@@ -25671,17 +25929,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "name": "Synapse's Agility",
     "pieces": [
       {
-        "aspects": [],
-        "name": "Empty",
+        "aspects": [
+          "Range"
+        ],
+        "name": "Range",
         "num": 1,
         "proc": false,
         "unique": false
       },
       {
         "aspects": [
-          "Recharge"
+          "Recharge",
+          "Range"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Range",
         "num": 2,
         "proc": false,
         "unique": false
@@ -25689,9 +25950,10 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Endurance",
-          "Recharge"
+          "Recharge",
+          "Range"
         ],
-        "name": "Endurance/Recharge",
+        "name": "Endurance/Recharge/Range",
         "num": 3,
         "proc": false,
         "unique": false
@@ -25708,9 +25970,10 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
-          "Endurance"
+          "Endurance",
+          "Range"
         ],
-        "name": "Endurance",
+        "name": "Endurance/Range",
         "num": 5,
         "proc": false,
         "unique": false
@@ -25945,6 +26208,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "the_haunting": {
     "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          }
+        ],
+        "pieces": 2
+      },
       {
         "effects": [
           {
@@ -28119,6 +28392,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+10.0% Regeneration",
+            "stat": "regeneration",
+            "value": 10.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
             "desc": "+6.25% Recharge",
             "stat": "recharge",
             "value": 6.25
@@ -28614,6 +28897,26 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
+            "desc": "+2.0% Recovery",
+            "stat": "recovery",
+            "value": 2.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.5% Increased Movement",
+            "stat": "increased_movement",
+            "value": 2.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
             "desc": "+9.0% Accuracy",
             "stat": "accuracy",
             "value": 9.0
@@ -28630,6 +28933,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           }
         ],
         "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          }
+        ],
+        "pieces": 6
       }
     ],
     "category": "event",
@@ -28904,6 +29217,16 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "witchcraft": {
     "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          }
+        ],
+        "pieces": 2
+      },
       {
         "effects": [
           {

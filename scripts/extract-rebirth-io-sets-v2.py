@@ -343,8 +343,73 @@ ATTRIB_TO_BONUS_STAT = {
     ('Damage',       'Strength'): 'damage',
     ('ToHit',        'Strength'): 'tohit',
     ('Accuracy',     'Strength'): 'accuracy',
+    ('Range',        'Strength'): 'range',
     ('PerceptionRadius', 'Current'): 'perception',
+    # ----- All 8 damage types × Strength collapse to a single "+X% Damage" bonus.
+    # Rebirth (and HC) encode "+X% Damage" as 8 parallel templates, one per
+    # damage type, all aspect=Strength. Dedup in _resolve_bonus_effects
+    # squashes the 8 entries into one "damage" effect.
+    ('Smashing_Dmg',        'Strength'): 'damage',
+    ('Lethal_Dmg',          'Strength'): 'damage',
+    ('Fire_Dmg',            'Strength'): 'damage',
+    ('Cold_Dmg',            'Strength'): 'damage',
+    ('Energy_Dmg',          'Strength'): 'damage',
+    ('Negative_Energy_Dmg', 'Strength'): 'damage',
+    ('Toxic_Dmg',           'Strength'): 'damage',
+    ('Psionic_Dmg',         'Strength'): 'damage',
+    # Healing-strength bonus (Heal_Dmg attrib carries healing-buff scale).
+    ('Heal_Dmg',     'Strength'): 'healing_strength',
+    # Rebirth's alternate Recovery/Regen encoding. HC uses
+    # ('Endurance','Strength') / ('HitPoints','Strength'); Rebirth's
+    # Set_Bonus powers carry them as the dedicated Recovery/Regeneration
+    # attribs with aspect=Current. Both map to the same planner stats.
+    ('Recovery',     'Current'):  'recovery',
+    ('Regeneration', 'Current'):  'regeneration',
+    # Endurance reduction buff (rare but present on some Rebirth sets).
+    ('EnduranceDiscount', 'Strength'): 'endurance_discount',
+    # Mez duration buffs — extend the duration of YOUR mez attacks on
+    # enemies. Per-type (no collapse): each maps to a distinct stat.
+    ('Confused',     'Strength'): 'confuse_duration',
+    ('Held',         'Strength'): 'hold_duration',
+    ('Stunned',      'Strength'): 'stun_duration',
+    ('Immobilized',  'Strength'): 'immobilize_duration',
+    ('Sleep',        'Strength'): 'sleep_duration',
+    ('Terrorized',   'Strength'): 'terror_duration',
+    # All 4 movement-speed attribs collapse to a single "+X% Increased
+    # Movement" bonus (Rebirth, like HC, encodes this as 4 parallel
+    # templates). Both Current and Strength aspects appear.
+    ('RunningSpeed', 'Current'):  'increased_movement',
+    ('FlyingSpeed',  'Current'):  'increased_movement',
+    ('JumpingSpeed', 'Current'):  'increased_movement',
+    ('JumpHeight',   'Current'):  'increased_movement',
+    ('RunningSpeed', 'Strength'): 'increased_movement',
+    ('FlyingSpeed',  'Strength'): 'increased_movement',
+    ('JumpingSpeed', 'Strength'): 'increased_movement',
+    ('JumpHeight',   'Strength'): 'increased_movement',
+    # Movement debuff (slow) resistance.
+    ('RunningSpeed', 'Resistance'): '+res(slow)',
+    ('FlyingSpeed',  'Resistance'): '+res(slow)',
+    # Recharge debuff resistance.
+    ('RechargeTime', 'Resistance'): '+res(recharge_debuff)',
+    # Knockback protection (magnitude points).
+    ('Knockback',    'Current'):  'knockback_protection',
+    ('Knockup',      'Current'):  'knockback_protection',
+    # Knockback strength buff.
+    ('Knockback',    'Strength'): 'knockback_strength',
+    ('Knockup',      'Strength'): 'knockback_strength',
 }
+
+# (attrib, aspect) tuples that should be ignored entirely — not bonuses,
+# just power-state metadata that happens to appear in Set_Bonus effect
+# templates. Suppresses noise in the unmapped-pairs diagnostic.
+_BONUS_LOOKUP_IGNORE: set[tuple[str, str]] = {
+    ('Set_Mode', 'Absolute'),
+}
+
+# Populated during _resolve_bonus_effects when a (attrib, aspect) tuple
+# has no entry in ATTRIB_TO_BONUS_STAT. Printed at end-of-run so the next
+# silently-dropped bonus surfaces immediately instead of vanishing.
+_UNMAPPED_BONUS_PAIRS: dict[tuple[str, str], int] = {}
 
 
 def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
@@ -370,6 +435,12 @@ def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
             if key:
                 stats.append(key)
         if not stats:
+            # Diagnostic: record what we dropped so a missing mapping
+            # doesn't silently swallow a real bonus tier next time.
+            for a, aspect in pairs:
+                if (a, aspect) in _BONUS_LOOKUP_IGNORE:
+                    continue
+                _UNMAPPED_BONUS_PAIRS[(a, aspect)] = _UNMAPPED_BONUS_PAIRS.get((a, aspect), 0) + 1
             continue
         # Dedup, preserve order
         seen = set()
@@ -377,6 +448,12 @@ def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
         # Use the first stat as the primary; emit one effect per distinct stat.
         for stat in unique_stats:
             value_pct = round(scale * 100, 4)
+            # Knockback protection is stored as a negative-magnitude attrib
+            # in the binary (-3 scale = +3 mag of resistance to KB). The
+            # planner's calc engine expects the positive "+400 = 4 mag"
+            # convention HC's hand-curated data uses, so flip the sign here.
+            if stat == 'knockback_protection':
+                value_pct = abs(value_pct)
             desc = f'+{value_pct}% {stat.replace("_", " ").title()}'
             out.append({'stat': stat, 'value': value_pct, 'desc': desc})
     return out
@@ -531,6 +608,11 @@ def main() -> int:
     print(f'  {len(out_sets) - shared_overridden} Rebirth-only sets total')
     for sk in skipped[:8]:
         print(f'  skip: {sk}')
+
+    if _UNMAPPED_BONUS_PAIRS:
+        print(f'\n!! Dropped {sum(_UNMAPPED_BONUS_PAIRS.values())} bonus tiers due to unmapped (attrib, aspect) pairs:')
+        for (attrib, aspect), n in sorted(_UNMAPPED_BONUS_PAIRS.items(), key=lambda kv: -kv[1]):
+            print(f'   ({attrib!r}, {aspect!r}) x {n}  -> add to ATTRIB_TO_BONUS_STAT')
 
     # Verify Guardian ATOs are present
     print('\nGuardian ATOs:')
