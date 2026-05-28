@@ -302,33 +302,26 @@ Removed the three guards. Re-converted all HC + Rebirth powersets + pools + epic
 
 ---
 
-## 🟡 Open audit (followup, low urgency): other "team-only buff" data omissions
+## ✅ Audit closed (2026-05-25): other "team-only buff" data omissions
 
-Bug 6 (Grant Cover) was a case where the in-game description says the buff "is only applied to nearby team mates, but not yourself" but the data didn't reflect that — so the caster was getting a phantom defense bonus. The calc engine's `effects.defenseBuffExcludesSelf` flag at [character-totals.ts:799](src/utils/calculations/character-totals.ts#L799) exists for exactly this case, but currently Grant Cover is the only power that uses it.
+Bug 6 (Grant Cover) was a case where the in-game description says the buff "is only applied to nearby team mates, but not yourself" but the data didn't reflect that — so the caster was getting a phantom defense bonus. The calc engine's `effects.defenseBuffExcludesSelf` flag at [character-totals.ts:799](src/utils/calculations/character-totals.ts#L799) was added for exactly this case.
 
-**Suspect powers worth verifying** (toggles or auras that give buffs to teammates but not the caster):
-- **Phalanx Fighting** (Shield Defense passive) — self-only per design, but check it's not double-applying via Grant Cover's exclusion
-- **Maneuvers** (Leadership pool) — in-game does buff self, likely correct, verify anyway
-- **Dispersion Bubble** (Force Field) — buffs self + nearby, likely correct
-- **Insulation Shield / Deflection Shield** (Force Field) — single-ally targeted via `targetType: "Ally"`, already filtered by `ALLY_ONLY_TARGET_TYPES` in [character-totals.ts:610](src/utils/calculations/character-totals.ts#L610)
-- **Sonic Dispersion / Sonic Barrier / Sonic Haven** (Sonic Resonance) — same family of buffs as Force Field
-- Any other "Grant X to teammates" / "buffs nearby allies" toggle. Quick sweep:
-  ```bash
-  grep -rln "team mates, but not yourself\|not yourself\|but not self\|not the caster" src/data/datasets/*/generated/powersets/
-  ```
+**Result of audit:** Grant Cover remains the **only power across HC and Rebirth** datasets that needs this flag. Every suspect was verified to be correctly modeled:
 
-**Fix pattern when found** — add to the relevant override file (one per AT × dataset, mirroring the Grant Cover changes):
-```ts
-export const overrides: Partial<Power> = {
-  effects: {
-    defenseBuffExcludesSelf: true,
-  },
-};
-```
+| Power | Verified behavior | Status |
+|---|---|---|
+| **Phalanx Fighting** (Shield Defense) | Self-only buff that scales with nearby allies (`targetType: "Self"`, "you will gain a small bonus...grows for each ally"). | ✅ Correct |
+| **Maneuvers** (Leadership) | "Defense of yourself and all nearby teammates" — caster explicitly included. | ✅ Correct |
+| **Dispersion Bubble** (Force Field) | PBAoE toggle centered on caster; shortHelp says "Team +Def" (CoH convention: includes caster). | ✅ Correct |
+| **Sonic Dispersion / Barrier / Haven** (Sonic Resonance) | Same shape as Dispersion Bubble; caster included per game behavior. | ✅ Correct |
+| **Insulation/Deflection Shield** (Force Field) | Single-ally targeted via `targetType: "Ally"`. | ✅ Already filtered by `ALLY_ONLY_TARGET_TYPES` |
+| **Speed Boost** (Kinetics) | "You cannot use this power on yourself" — `targetType: "Ally (Alive)"`. | ✅ Already filtered by `ALLY_ONLY_TARGET_TYPES` |
 
-**Open architecture gap**: `defenseBuffExcludesSelf` is the only "excludes self" flag in the Power type so far ([power.ts:301](src/types/power.ts#L301)). If we find a team-only **ToHit buff** or **damage buff** power (analogous Leadership-style aura that doesn't include the caster), we'd need to extend both the Power type and the calc engine to gate those effects too — e.g. `tohitBuffExcludesSelf`, `damageBuffExcludesSelf`. The calc engine sites that would need conditional gating are at [character-totals.ts:703-727](src/utils/calculations/character-totals.ts#L703-L727).
+**Broader sweep:** grepped both datasets for any other description containing exclusion language (`except yourself`, `not the caster`, `excluding yourself`, `not affect you`, `but not yourself`). **Zero hits outside Grant Cover** — Grant Cover is the only power in the dataset whose description explicitly excludes the caster from a buff.
 
-**Triggering this audit**: do it when a user reports the analogous "buff is showing on my totals but shouldn't" for another power, or as a planned sweep during quieter dev time. Not worth a proactive deep audit now — the original Grant Cover report came in user testing, so users are an effective signal.
+**Architecture gap status — still theoretical.** No team-only ToHit-buff or damage-buff power exists in the data today, so the Power type does not need `tohitBuffExcludesSelf` / `damageBuffExcludesSelf` yet. The calc engine sites at [character-totals.ts:703-727](src/utils/calculations/character-totals.ts#L703-L727) remain ready to gate them if such a power ever appears (most likely vector: new Rebirth / Thunderspy content, or a future HC pool rework).
+
+**Re-trigger this audit if:** a user reports the analogous "buff is showing on my totals but shouldn't" for another power, or if new dataset content introduces a power whose description carries the "not yourself / not the caster" exclusion clause. No proactive resweep needed.
 
 ---
 

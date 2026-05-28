@@ -10,7 +10,7 @@ export { ExportImportModal } from './ExportImportModal';
 export { FeedbackModal } from './FeedbackModal';
 export { ChangelogModal } from './ChangelogModal';
 export { EnhancementListModal } from './EnhancementListModal';
-export { WelcomeModal, useWelcomeModal } from './WelcomeModal';
+export { WelcomeModal } from './WelcomeModal';
 export { PowerInfoModal } from './PowerInfoModal';
 export { SetBonusLookupModal } from './SetBonusLookupModal';
 export { ControlsModal } from './ControlsModal';

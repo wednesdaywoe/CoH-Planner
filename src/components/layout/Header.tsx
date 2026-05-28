@@ -110,6 +110,8 @@ export function Header() {
   const ruleOf5AlertEnabled = useUIStore((s) => s.ruleOf5AlertEnabled);
   const toggleRuleOf5AlertEnabled = useUIStore((s) => s.toggleRuleOf5AlertEnabled);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
+  const openWelcomeModal = useUIStore((s) => s.openWelcomeModal);
+  const openChangelogModal = useUIStore((s) => s.openChangelogModal);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -154,6 +156,8 @@ export function Header() {
             onClearEnhancements={() => setConfirmAction('clear-enhancements')}
             onEnhancementTools={openEnhancementToolsModal}
             onAbout={openAboutModal}
+            onWhatsNew={openWelcomeModal}
+            onChangelog={openChangelogModal}
           />
         </div>
 
@@ -778,6 +782,8 @@ function ActionMenu({
   onClearEnhancements,
   onEnhancementTools,
   onAbout,
+  onWhatsNew,
+  onChangelog,
 }: {
   onOpenModal: (tab?: 'save' | 'load-import' | 'share-export') => void;
   onNew: () => void;
@@ -786,6 +792,8 @@ function ActionMenu({
   onClearEnhancements: () => void;
   onEnhancementTools: () => void;
   onAbout: () => void;
+  onWhatsNew: () => void;
+  onChangelog: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -894,12 +902,12 @@ function ActionMenu({
         onClick={() => setOpen(!open)}
         data-onboarding={triggerOnboardingId2}
         className="flex items-center gap-1 px-2 py-1.5 text-xs text-emerald-300 hover:text-white bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-700/50 rounded transition-colors"
-        title="Build actions"
+        title="Menu"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <span className="hidden sm:inline">File</span>
+        <span className="hidden sm:inline">Menu</span>
       </button>
 
       {open && (
@@ -1019,6 +1027,18 @@ function ActionMenu({
             </>
           )}
           <hr className="border-gray-700 my-1" />
+          <button onClick={() => { onWhatsNew(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-amber-300 hover:bg-gray-700 hover:text-amber-200 transition-colors flex items-center gap-2" title="Recent changes and announcements.">
+            <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+            What's New
+          </button>
+          <button onClick={() => { onChangelog(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Full changelog.">
+            <svg className="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            Changelog
+          </button>
           <button onClick={() => { onAbout(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="App version, credits, and recent changes.">
             <img src="img/favicon-32x32.png" alt="" className="w-4 h-4" />
             About Sidekick
@@ -1095,8 +1115,7 @@ function SettingsPopover() {
         title="Build settings"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
         </svg>
         <span className="hidden sm:inline">Settings</span>
       </button>

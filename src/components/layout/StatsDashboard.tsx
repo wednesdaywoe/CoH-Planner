@@ -12,7 +12,7 @@ import { formatBonusValue2 as formatBonusValue } from '@/utils/set-bonus-format'
 import { getArchetype } from '@/data';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
@@ -193,9 +193,6 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const setHoverHint = useUIStore((s) => s.setHoverHint);
   const combatMode = useUIStore((s) => s.combatMode);
   const rechargeMidsStyle = useUIStore((s) => s.rechargeMidsStyle);
-  // Welcome modal (auto-shows on first visit)
-  const [welcomeModalOpen, closeWelcomeModal] = useWelcomeModal();
-
   // Get incarnate state with fallback for old builds
   const incarnatesRaw = build.incarnates;
   const incarnates = incarnatesRaw || createEmptyIncarnateBuildState();
@@ -667,11 +664,8 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         onClose={closeDetailedTotalsModal}
       />
 
-      {/* Welcome Modal (auto-shows on first visit) */}
-      <WelcomeModal
-        isOpen={welcomeModalOpen}
-        onClose={closeWelcomeModal}
-      />
+      {/* Welcome Modal — opened from the update banner's "learn more" link */}
+      <WelcomeModal />
 
       {/* Compare Slotting Modal */}
       <CompareSlottingModal />
@@ -767,7 +761,7 @@ function DashboardActionButtons(props: DashboardActionButtonsProps) {
         'amber',
         props.openAccoladesModal,
         'Toggle accolade bonuses',
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />,
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16.5 18.75h-9a3 3 0 00-3 3h15a3 3 0 00-3-3zm0 0v-3.375c0-.621-.504-1.125-1.125-1.125h-.871m-5.007 0H8.625C8.004 14.25 7.5 14.754 7.5 15.375v3.375m9-4.5a7.5 7.5 0 00.982-3.172M7.5 14.25a7.5 7.5 0 01-.981-3.172m10.962 0a6 6 0 005.395-4.972c-.95-.187-1.913-.357-2.886-.51m-2.51 5.482a23.65 23.65 0 01-9 0m-2.51-5.482c-.973.153-1.937.323-2.886.51A6 6 0 006.52 11.078M18.75 4.97A48.42 48.42 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0V4.5c0-.621-.504-1.125-1.125-1.125H6.875c-.621 0-1.125.504-1.125 1.125v.47" />,
         'Accolades',
         'accolades',
       )}

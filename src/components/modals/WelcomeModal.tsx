@@ -1,8 +1,7 @@
 /**
- * WelcomeModal - Shows recent changes on first visit or version update
+ * WelcomeModal - Shows recent changes; opened from the update banner's "learn more" link.
  */
 
-import { useState, useEffect } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 import { useUIStore } from '@/stores';
@@ -27,28 +26,15 @@ function StatusBadge({ status }: { status: ChangeStatus }) {
   );
 }
 
-const STORAGE_KEY = 'coh-planner-welcome-dismissed';
-
-interface WelcomeModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
-  const [dontShowAgain, setDontShowAgain] = useState(false);
+export function WelcomeModal() {
+  const isOpen = useUIStore((s) => s.welcomeModalOpen);
+  const handleClose = useUIStore((s) => s.closeWelcomeModal);
   const openChangelogModal = useUIStore((s) => s.openChangelogModal);
   const openControlsModal = useUIStore((s) => s.openControlsModal);
   const { date: changesDate, items: recentChanges } = getRecentChanges();
   const formattedDate = changesDate
     ? new Date(changesDate + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
     : '';
-
-  const handleClose = () => {
-    if (dontShowAgain) {
-      localStorage.setItem(STORAGE_KEY, APP_VERSION);
-    }
-    onClose();
-  };
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} showCloseButton={false} size="lg">
@@ -154,40 +140,10 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
       </ModalBody>
 
       <ModalFooter>
-        <label className="flex items-center gap-2 mr-auto text-sm text-gray-400 cursor-pointer">
-          <input
-            type="checkbox"
-            checked={dontShowAgain}
-            onChange={(e) => setDontShowAgain(e.target.checked)}
-            className="rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500 focus:ring-offset-gray-900"
-          />
-          Don't show this again
-        </label>
         <Button onClick={handleClose}>
           Got it!
         </Button>
       </ModalFooter>
     </Modal>
   );
-}
-
-/**
- * Hook to manage welcome modal visibility
- * Returns [isOpen, close] - modal auto-opens on first visit
- */
-export function useWelcomeModal(): [boolean, () => void] {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const dismissed = localStorage.getItem(STORAGE_KEY);
-    if (dismissed !== APP_VERSION) {
-      // Small delay to let the app render first
-      const timer = setTimeout(() => setIsOpen(true), 500);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  const close = () => setIsOpen(false);
-
-  return [isOpen, close];
 }

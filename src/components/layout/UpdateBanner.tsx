@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useUIStore } from '@/stores';
 
 interface UpdateBannerProps {
   visible: boolean;
@@ -6,20 +7,28 @@ interface UpdateBannerProps {
 
 export function UpdateBanner({ visible }: UpdateBannerProps) {
   const [dismissed, setDismissed] = useState(false);
+  const openWelcomeModal = useUIStore((s) => s.openWelcomeModal);
 
   if (!visible || dismissed) return null;
 
   return (
     <div className="bg-amber-600/90 text-white text-sm flex items-center justify-center gap-3 px-4 py-1.5 flex-wrap">
-      <span>A new version is available.</span>
+      <span>Sidekick has received an update! Please</span>
       <button
         onClick={() => window.location.reload()}
         className="px-2.5 py-0.5 bg-white/20 hover:bg-white/30 rounded text-white font-medium transition-colors"
       >
         Refresh
       </button>
-      <span className="text-white/70 text-xs">
-        If your saved build powers appear at wrong levels, please remove and re-pick them to fix.
+      <span>
+        your browser. Click{' '}
+        <button
+          onClick={openWelcomeModal}
+          className="underline text-white hover:text-white/80 font-medium transition-colors"
+        >
+          here
+        </button>
+        {' '}to learn more.
       </span>
       <button
         onClick={() => setDismissed(true)}
