@@ -2437,6 +2437,33 @@ export const useBuildStore = create<BuildStore>()(
             state.build.serverId = 'homecoming';
           }
 
+          // URL-param sync: when the user opens `?serverId=X` (e.g. a
+          // bookmarked link to a specific dataset) and the persisted
+          // build belongs to a different server, treat the URL as
+          // authoritative — main.tsx has already loaded the URL's
+          // dataset, so we need build.serverId to agree or the header
+          // dropdown, the URL writer, and the dataset facade will all
+          // read different values. Skipped when a hash is present,
+          // because the hash carries its own serverId via importBuild.
+          try {
+            if (typeof window !== 'undefined') {
+              const hasHash = !!window.location.hash && window.location.hash !== '#';
+              if (!hasHash) {
+                const param = new URLSearchParams(window.location.search).get('serverId');
+                if ((param === 'homecoming' || param === 'rebirth') && param !== state.build.serverId) {
+                  state.build.serverId = param;
+                  // Archetype/primary/secondary picks reference dataset-
+                  // specific IDs; clear them to mirror handleServerChange.
+                  state.build.archetype = { id: null, name: '', stats: null, inherent: null };
+                  state.build.primary = { id: null, name: '', powers: [] };
+                  state.build.secondary = { id: null, name: '', powers: [] };
+                }
+              }
+            }
+          } catch {
+            // URL access blocked (e.g. SSR / sandbox) — leave build untouched.
+          }
+
           // Migration: Initialize incarnates if missing (for builds created before incarnate system)
           if (!state.build.incarnates) {
             state.build.incarnates = createEmptyIncarnateBuildState();

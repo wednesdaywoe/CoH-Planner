@@ -21,7 +21,7 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-05-28',
+    date: '2026-05-29',
     items: [
       { message: 'Welcome Modal on page load has been retired, its now part of the the "New Update Available" banner, and can also be accessed through menus. Various small UI tweaks' , type: 'update' },
       { message: 'Fix for Grant Cover applying its bonus to the user' , type: 'fix' },
