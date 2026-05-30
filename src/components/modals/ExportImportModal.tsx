@@ -4,6 +4,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
+import { ForumExportModal } from './ForumExportModal';
 import { Button } from '../ui/Button';
 import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import type { ArchetypeBranchId } from '@/types';
@@ -49,6 +50,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [importError, setImportError] = useState<string | null>(null);
   const [importSuccess, setImportSuccess] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Forum-export modal state — opens a sibling dialog rather than
+  // expanding inline, since the preview needs more room than the share
+  // tab can comfortably give it.
+  const [showForumExport, setShowForumExport] = useState(false);
 
   // Popmenu state
   const [showPopmenu, setShowPopmenu] = useState(false);
@@ -735,6 +741,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   // ============================================
 
   return (
+    <>
     <Modal isOpen={isOpen} onClose={handleClose} size="lg" showCloseButton={true}>
       <ModalHeader>
         <div className="flex gap-4 border-b border-gray-700 -mb-4">
@@ -1488,6 +1495,14 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   <Button
                     variant="secondary"
                     size="sm"
+                    onClick={() => setShowForumExport(true)}
+                    className="flex-1"
+                  >
+                    Forum Post
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    size="sm"
                     onClick={() => setShowPopmenu(!showPopmenu)}
                     className="flex-1"
                   >
@@ -1589,5 +1604,10 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         </div>
       </ModalFooter>
     </Modal>
+    <ForumExportModal
+      isOpen={showForumExport}
+      onClose={() => setShowForumExport(false)}
+    />
+  </>
   );
 }

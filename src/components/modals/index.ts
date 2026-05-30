@@ -22,3 +22,4 @@ export { PowersetCompareModal } from './PowersetCompareModal';
 export { ProcSettingsModal } from './ProcSettingsModal';
 export { EnhancementToolsModal } from './EnhancementToolsModal';
 export { PoolPickerModal } from './PoolPickerModal';
+export { ForumExportModal } from './ForumExportModal';
