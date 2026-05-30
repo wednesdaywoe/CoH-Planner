@@ -185,6 +185,9 @@ export const CATEGORY_PRIORITY: IOSetCategory[] = [
   'Confuse',
   'Fear',
   'Knockback',
+  // Universal Control Duration sits with the other mez categories — a
+  // single-set niche (Forced Indoctrination) that buffs every mez type.
+  'Universal Control Duration',
   // Support primary categories
   'Healing',
   'To Hit Buff',
@@ -222,6 +225,11 @@ export const CATEGORY_PRIORITY: IOSetCategory[] = [
   'Sentinel Archetype Sets',
   'Kheldian Archetype Sets',
   'Soldiers of Arachnos Archetype Sets',
+  'Guardian Archetype Sets',
+  // Single-piece Rebirth Challenge enhancement (Inexhaustibility) — niche
+  // but kept in the priority list so the sidebar surfaces it predictably
+  // alongside other special categories once the parser ships piece data.
+  'Rest Buff',
 ];
 
 /**

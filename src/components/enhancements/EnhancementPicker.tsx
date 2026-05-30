@@ -169,6 +169,14 @@ export function EnhancementPicker() {
       if ((set.category === 'uncommon' || set.category === 'rare') && set.type !== 'Universal Damage Sets') {
         cats.add(set.type);
       }
+      // A handful of curated set types are conceptually standard sidebar
+      // categories (universal control / rest buff niches) but ship with
+      // event-tier rarity for exemplar-immunity. Surface them as standard
+      // categories so users can find sets like Forced Indoctrination
+      // without first knowing to click the Event filter.
+      if (set.type === 'Universal Control Duration' || set.type === 'Rest Buff') {
+        cats.add(set.type);
+      }
     }
     return sortCategoriesByPriority(Array.from(cats));
   }, [availableSets]);
