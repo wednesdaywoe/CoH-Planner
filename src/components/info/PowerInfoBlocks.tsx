@@ -277,9 +277,19 @@ function ProcChanceRow({
               : 'Pin Proc Chance open across powers'}
             aria-label={pinned ? 'Unpin Proc Chance' : 'Pin Proc Chance open'}
             aria-pressed={pinned}
-            className={`ml-1 text-[12px] leading-none transition-colors ${pinned ? 'text-amber-300' : 'text-slate-500 hover:text-slate-300'}`}
+            className={`ml-1 inline-flex items-center transition-colors ${pinned ? 'text-amber-300' : 'text-slate-500 hover:text-slate-300'}`}
           >
-            {pinned ? '📌' : '📍'}
+            {pinned ? (
+              // Heroicons v2 outline — lock-closed
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+              </svg>
+            ) : (
+              // Heroicons v2 outline — lock-open
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+              </svg>
+            )}
           </button>
         </div>
         <span className="text-slate-200">
