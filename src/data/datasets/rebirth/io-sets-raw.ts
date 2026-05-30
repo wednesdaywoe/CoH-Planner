@@ -9160,17 +9160,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "value": 5.25
           },
           {
-            "desc": "+9% Mez Resistance (All Resistance",
-            "stat": "mez_resistance_(all)",
-            "value": 8.75
-          },
-          {
             "desc": "+5% Cold and Fire",
             "stat": "damage_resistance_(cold)",
             "value": 5.25
           },
           {
-            "desc": "+9% Mez Resistance (All Resistance",
+            "desc": "+9% Mez Resistance (All)",
             "stat": "mez_resistance_(all)",
             "value": 8.75
           }
@@ -12155,11 +12150,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "desc": "+400.0% Knockback Protection",
             "stat": "knockback_protection",
             "value": 400
-          },
-          {
-            "desc": "+400.0% Knockback Protection",
-            "stat": "knockback_protection",
-            "value": 400
           }
         ],
         "pieces": 3
@@ -13804,19 +13794,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "value": 4.5
           },
           {
-            "desc": "+8% Mez Resistance (All Resistance",
-            "stat": "mez_resistance_(all)",
-            "value": 7.5
-          },
-          {
             "desc": "+4% Lethal and Smashing",
             "stat": "damage_resistance_(lethal)",
             "value": 4.5
-          },
-          {
-            "desc": "+8% Mez Resistance (All Resistance",
-            "stat": "mez_resistance_(all)",
-            "value": 7.5
           },
           {
             "desc": "+4% Cold and Fire",
@@ -13824,7 +13804,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "value": 4.5
           },
           {
-            "desc": "+8% Mez Resistance (All Resistance",
+            "desc": "+8% Mez Resistance (All)",
             "stat": "mez_resistance_(all)",
             "value": 7.5
           }
@@ -22825,17 +22805,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "value": 6
           },
           {
-            "desc": "+10% Mez Resistance (All Resistance",
-            "stat": "mez_resistance_(all)",
-            "value": 10
-          },
-          {
             "desc": "+6% Cold and Fire",
             "stat": "damage_resistance_(cold)",
             "value": 6
           },
           {
-            "desc": "+10% Mez Resistance (All Resistance",
+            "desc": "+10% Mez Resistance (All)",
             "stat": "mez_resistance_(all)",
             "value": 10
           }
@@ -23433,19 +23408,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "value": 6
           },
           {
-            "desc": "+10% Mez Resistance (All Resistance",
-            "stat": "mez_resistance_(all)",
-            "value": 10
-          },
-          {
             "desc": "+6% Lethal and Smashing",
             "stat": "damage_resistance_(lethal)",
             "value": 6
-          },
-          {
-            "desc": "+10% Mez Resistance (All Resistance",
-            "stat": "mez_resistance_(all)",
-            "value": 10
           },
           {
             "desc": "+6% Cold and Fire",
@@ -23453,7 +23418,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "value": 6
           },
           {
-            "desc": "+10% Mez Resistance (All Resistance",
+            "desc": "+10% Mez Resistance (All)",
             "stat": "mez_resistance_(all)",
             "value": 10
           }
@@ -24787,19 +24752,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "value": 6
           },
           {
-            "desc": "+10% Mez Resistance (All Resistance",
-            "stat": "mez_resistance_(all)",
-            "value": 10
-          },
-          {
             "desc": "+6% Lethal and Smashing",
             "stat": "damage_resistance_(lethal)",
             "value": 6
-          },
-          {
-            "desc": "+10% Mez Resistance (All Resistance",
-            "stat": "mez_resistance_(all)",
-            "value": 10
           },
           {
             "desc": "+6% Cold and Fire",
@@ -24807,7 +24762,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "value": 6
           },
           {
-            "desc": "+10% Mez Resistance (All Resistance",
+            "desc": "+10% Mez Resistance (All)",
             "stat": "mez_resistance_(all)",
             "value": 10
           }
@@ -28089,19 +28044,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "value": 4.5
           },
           {
-            "desc": "+8% Mez Resistance (All Resistance",
-            "stat": "mez_resistance_(all)",
-            "value": 7.5
-          },
-          {
             "desc": "+4% Lethal and Smashing",
             "stat": "damage_resistance_(lethal)",
             "value": 4.5
-          },
-          {
-            "desc": "+8% Mez Resistance (All Resistance",
-            "stat": "mez_resistance_(all)",
-            "value": 7.5
           },
           {
             "desc": "+4% Cold and Fire",
@@ -28109,7 +28054,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "value": 4.5
           },
           {
-            "desc": "+8% Mez Resistance (All Resistance",
+            "desc": "+8% Mez Resistance (All)",
             "stat": "mez_resistance_(all)",
             "value": 7.5
           }

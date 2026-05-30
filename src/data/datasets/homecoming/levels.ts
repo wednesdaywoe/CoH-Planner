@@ -565,6 +565,55 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
       runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
     },
   },
+  // Ninja Run and Beast Run are P2W travel toggles available to every
+  // character on both HC and Rebirth. Mutually exclusive in-game (toggling
+  // one auto-deactivates the other); the togglePowerActive action in
+  // buildStore enforces that. Movement scales (0.40 run, 0.55 jump,
+  // 0.25 jump-height) sourced from powers.bin: Inherent.Inherent.
+  // Prestige_Ninja_Run / Prestige_Beast_Run, verified identical across
+  // HC live and Rebirth assets.
+  {
+    name: 'Ninja Run',
+    internalName: 'Ninja_Run',
+    fullName: 'Inherent.Inherent.Prestige_Ninja_Run',
+    description: 'You can run, leap, and land like a ninja. While active you gain a significant boost to running speed, jumping speed, and jumping height, and you take reduced damage from falling.',
+    shortHelp: 'Toggle: Self +Run, +Jump',
+    icon: 'inherent_ninjarun.png',
+    powerType: 'Toggle',
+    available: -1,
+    maxSlots: 4,
+    allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
+    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
+    isLocked: true,
+    category: 'basic',
+    effects: {
+      enduranceCost: 0.13,
+      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning' },
+      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping' },
+      jumpHeight: { scale: 0.25, table: 'Melee_Leap' },
+    },
+  },
+  {
+    name: 'Beast Run',
+    internalName: 'Beast_Run',
+    fullName: 'Inherent.Inherent.Prestige_Beast_Run',
+    description: 'You can run, leap, and land like a beast. While active you gain a significant boost to running speed, jumping speed, and jumping height, and you take reduced damage from falling.',
+    shortHelp: 'Toggle: Self +Run, +Jump',
+    icon: 'inherent_beastrun.png',
+    powerType: 'Toggle',
+    available: -1,
+    maxSlots: 4,
+    allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
+    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
+    isLocked: true,
+    category: 'basic',
+    effects: {
+      enduranceCost: 0.13,
+      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning' },
+      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping' },
+      jumpHeight: { scale: 0.25, table: 'Melee_Leap' },
+    },
+  },
 ];
 
 /**

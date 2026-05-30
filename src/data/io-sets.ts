@@ -97,6 +97,14 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   'Sentinel Archetype Sets': 'Sentinel Archetype Sets',
   'Kheldian Archetype Sets': 'Kheldian Archetype Sets',
   'Soldiers of Arachnos Archetype Sets': 'Soldiers of Arachnos Archetype Sets',
+  'Guardian Archetype Sets': 'Guardian Archetype Sets',
+
+  // Rebirth Challenge Enhancement categories — universal mez set (Forced
+  // Indoctrination) + the single-piece Rest enhancement (Inexhaustibility).
+  // Without these identity entries the picker silently drops the sets even
+  // though the per-power `allowedSetCategories` already lists the category.
+  'Universal Control Duration': 'Universal Control Duration',
+  'Rest Buff': 'Rest Buff',
 };
 
 /**

@@ -962,6 +962,13 @@ function applyToAllPowers(
     epicPool: build.epicPool
       ? { ...build.epicPool, powers: updater(build.epicPool.powers) }
       : null,
+    // Inherent powers (Sprint, Brawl, Rest, archetype inherent, etc.) need
+    // the same treatment — otherwise togglePowerActive looks up Sprint in
+    // `build.inherents`, computes the new isActive value, then writes it
+    // nowhere, leaving the toggle visually stuck. Callers that explicitly
+    // re-set `inherents` after this call (clearPowers, clearAllExtraSlots)
+    // still win; they just override our pass-through with their own.
+    inherents: updater(build.inherents),
   };
 }
 
@@ -2069,6 +2076,13 @@ export const useBuildStore = create<BuildStore>()(
         const dwarfForms = new Set(['White_Dwarf', 'Black_Dwarf']);
         const isNovaToggle = novaForms.has(powerName);
         const isDwarfToggle = dwarfForms.has(powerName);
+        // Ninja Run and Beast Run are P2W travel toggles that the game
+        // treats as a single "alt-run" slot — toggling one off the other.
+        // The pair stacks with Sprint (the user can have both Sprint and
+        // Ninja Run active), so only the Ninja/Beast pair is mutually
+        // exclusive with itself.
+        const altRunPair = new Set(['Ninja_Run', 'Beast_Run']);
+        const isAltRunToggle = altRunPair.has(powerName);
         const wasActive = found.power.isActive ?? false;
         const willBeActive = !wasActive;
 
@@ -2084,6 +2098,10 @@ export const useBuildStore = create<BuildStore>()(
                 return { ...p, isActive: false };
               }
               if (isDwarfToggle && novaForms.has(p.internalName ?? '')) {
+                return { ...p, isActive: false };
+              }
+              // Ninja Run ↔ Beast Run mutual exclusivity.
+              if (isAltRunToggle && p.internalName && p.internalName !== powerName && altRunPair.has(p.internalName)) {
                 return { ...p, isActive: false };
               }
             }
@@ -2418,6 +2436,24 @@ export const useBuildStore = create<BuildStore>()(
               }
               return power;
             });
+          }
+
+          // Migration: Append any inherent powers added since this build was
+          // saved — e.g. Ninja Run / Beast Run were added in 2026-05. Without
+          // this, existing builds load missing the new toggles and the user
+          // has to do a full rebuild to access them.
+          if (state.build.inherents.length > 0 && state.build.archetype.id) {
+            const desired = getInherentSelectedPowers(
+              state.build.archetype.id,
+              state.build.archetype.name || undefined,
+              state.build.archetype.inherent,
+              state.build.level,
+            );
+            const have = new Set(state.build.inherents.map((p) => p.internalName));
+            const missing = desired.filter((p) => !have.has(p.internalName));
+            if (missing.length > 0) {
+              state.build.inherents = [...state.build.inherents, ...missing];
+            }
           }
 
           // Migration: Reconcile per-server auto-granted inherent slots

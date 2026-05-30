@@ -130,7 +130,7 @@ function IncarnateSlotMini({
   );
 
   return (
-    <Tooltip content={tooltipContent}>
+    <Tooltip content={tooltipContent} position="bottom">
       <button
         onClick={onClick}
         onContextMenu={handleContextMenu}

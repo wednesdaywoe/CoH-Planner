@@ -16,6 +16,7 @@
  */
 
 import { useState } from 'react';
+import { useUIStore } from '@/stores';
 import type { Power, TargetType, EffectArea, SelectedPower, IOSetEnhancement } from '@/types';
 import type { PowerDamageResult } from '@/utils/calculations';
 import { calcThreeTier as calcThreeTierUtil } from './powerDisplayUtils';
@@ -178,7 +179,14 @@ function ProcChanceRow({
   arcDegrees,
   slottedRechargeBonus,
 }: ProcChanceRowProps) {
-  const [expanded, setExpanded] = useState(false);
+  // Per-view local expansion plus a persisted "pin" toggle. The pin
+  // wins when on — Power Info shows the breakdown automatically for
+  // every power the user clicks through, so they don't have to chase
+  // the chevron on each one.
+  const pinned = useUIStore((s) => s.procChancePinned);
+  const togglePinned = useUIStore((s) => s.toggleProcChancePinned);
+  const [localExpanded, setLocalExpanded] = useState(false);
+  const expanded = pinned || localExpanded;
 
   if (!selectedPower?.slots) return null;
 
@@ -235,17 +243,45 @@ function ProcChanceRow({
 
   return (
     <>
-      <div
-        role="button"
-        aria-expanded={expanded}
-        title={expanded ? 'Hide proc chance detail' : 'Show proc chance breakdown'}
-        className="grid grid-cols-[7rem_1fr] gap-1 text-xs cursor-pointer select-none hover:bg-slate-700/30 -mx-0.5 px-0.5 rounded"
-        onClick={() => setExpanded((v) => !v)}
-      >
-        <span className="text-slate-400">
-          <span className={`inline-block text-[10px] mr-0.5 transition-transform ${expanded ? 'rotate-90' : ''}`}>▶</span>
-          Proc Chance
-        </span>
+      <div className="grid grid-cols-[7rem_1fr] gap-1 text-xs select-none hover:bg-slate-700/30 -mx-0.5 px-0.5 rounded">
+        <div className="flex items-center text-slate-400">
+          <span
+            role="button"
+            tabIndex={pinned ? -1 : 0}
+            aria-expanded={expanded}
+            title={
+              pinned
+                ? 'Proc Chance is pinned open — click the pin to release'
+                : expanded
+                  ? 'Hide proc chance detail'
+                  : 'Show proc chance breakdown'
+            }
+            onClick={() => { if (!pinned) setLocalExpanded((v) => !v); }}
+            onKeyDown={(e) => {
+              if (pinned) return;
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setLocalExpanded((v) => !v);
+              }
+            }}
+            className={`flex items-center ${pinned ? 'cursor-default' : 'cursor-pointer'}`}
+          >
+            <span className={`inline-block text-[10px] mr-0.5 transition-transform ${expanded ? 'rotate-90' : ''}`}>▶</span>
+            Proc Chance
+          </span>
+          <button
+            type="button"
+            onClick={togglePinned}
+            title={pinned
+              ? 'Unpin — Proc Chance will collapse when you click another power'
+              : 'Pin Proc Chance open across powers'}
+            aria-label={pinned ? 'Unpin Proc Chance' : 'Pin Proc Chance open'}
+            aria-pressed={pinned}
+            className={`ml-1 text-[12px] leading-none transition-colors ${pinned ? 'text-amber-300' : 'text-slate-500 hover:text-slate-300'}`}
+          >
+            {pinned ? '📌' : '📍'}
+          </button>
+        </div>
         <span className="text-slate-200">
           {entries.length} slotted{ppmEntries.length > 0 ? ` — ${headline}` : ''}
         </span>

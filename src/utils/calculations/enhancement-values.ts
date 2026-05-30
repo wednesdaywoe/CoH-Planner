@@ -442,6 +442,16 @@ export function getEffectiveAspectCount(
   return Math.max(explicit, nameSegments);
 }
 
+// "Mez" is the universal-mez aspect carried by Controller and Dominator
+// ATOs (Will of the Controller, Ascendency of the Dominator, Dominating
+// Grasp, Overpowering Presence, and their Superior variants). In-game the
+// game uses whichever of these six mez types the slotted power actually
+// applies, so the planner expands the aspect to all six with the same
+// value. Only the type that matches the power's effect contributes to its
+// final stat; the rest are harmless extras that get filtered out at the
+// effect-matching layer.
+const UNIVERSAL_MEZ_KEYS = ['hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear'] as const;
+
 /**
  * Parse IO set piece aspects into enhancement bonuses
  */
@@ -462,6 +472,16 @@ export function parseIOSetPieceValues(
 
   // Each aspect gets the schedule's value modified by aspect count
   aspects.forEach((aspect) => {
+    if (aspect.trim() === 'Mez') {
+      // Universal-mez expansion (see UNIVERSAL_MEZ_KEYS comment above).
+      // All six mez types share Schedule A, so one lookup feeds all keys.
+      const baseValue = getIOValueAtLevel(level, 'A');
+      const value = baseValue * modifier;
+      for (const key of UNIVERSAL_MEZ_KEYS) {
+        bonuses[key] = (bonuses[key] ?? 0) + value;
+      }
+      return;
+    }
     const normalized = normalizeAspectName(aspect);
     if (normalized) {
       const schedule = getAspectSchedule(normalized);

@@ -211,6 +211,12 @@ interface UIState {
   /** Combat mode: suppress defense buffs from stealth/travel powers */
   combatMode: boolean;
 
+  /** Pin the Power Info "Proc Chance" detail section to stay expanded
+   *  across power selections. Without this, the section's expansion is
+   *  a per-selection local state in the InfoPanel that resets every
+   *  time the user clicks a different power. */
+  procChancePinned: boolean;
+
   /** Hints/help visibility */
   hintsEnabled: boolean;
 
@@ -398,6 +404,7 @@ interface UIActions {
   toggleUseArcanaTime: () => void;
   setDamageDisplayMode: (mode: DamageDisplayMode) => void;
   toggleCombatMode: () => void;
+  toggleProcChancePinned: () => void;
   toggleHints: () => void;
   toggleDarkMode: () => void;
   toggleCompactMode: () => void;
@@ -730,6 +737,7 @@ export const useUIStore = create<UIStore>()(
       useArcanaTime: true,
       damageDisplayMode: 'damage' as DamageDisplayMode,
       combatMode: false,
+      procChancePinned: false,
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,
       statsConfig: defaultStatsConfig,
@@ -942,6 +950,11 @@ export const useUIStore = create<UIStore>()(
       toggleCombatMode: () =>
         set((state) => ({
           combatMode: !state.combatMode,
+        })),
+
+      toggleProcChancePinned: () =>
+        set((state) => ({
+          procChancePinned: !state.procChancePinned,
         })),
 
       toggleUseArcanaTime: () =>
@@ -1594,6 +1607,7 @@ export const useUIStore = create<UIStore>()(
         contentMode: state.contentMode,
         procSettings: state.procSettings,
         combatMode: state.combatMode,
+        procChancePinned: state.procChancePinned,
         hintsEnabled: state.hintsEnabled,
         infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled, undocked: false },
         statsConfig: state.statsConfig,

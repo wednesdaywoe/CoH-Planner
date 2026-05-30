@@ -304,10 +304,29 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
             return `${a.toFixed(2)} ${unit}${c ? ' *' : ''}`;
           };
         } else if (config.stat === 'flyspeed') {
+          // Display fly speed in mph for parity with run/jump speeds (user
+          // ask 2026-05-30). MOVEMENT_BASES.flySpeed is 0 by design — the
+          // game requires an active fly power for the character to fly at
+          // all — so the dashboard math assumes a standard Fly / Mystic
+          // Flight base of 31.5 mph as the most likely active power. Other
+          // fly powers (Group Fly @ 21 mph, etc.) won't match the displayed
+          // value perfectly; the tooltip notes the assumption so the user
+          // knows what they're looking at.
+          const STANDARD_FLY_BASE_MPH = 31.5;
+          const cap = effectiveMovementCaps.flySpeed;
           const pct = Number(value);
           const sign = pct >= 0 ? '+' : '';
-          const cap = effectiveMovementCaps.flySpeed;
-          tooltip = `${sign}${pct.toFixed(2)}% fly speed buff. Effective cap ${cap.toFixed(2)} mph. Base mph requires an active fly power.`;
+          const computeMph = (p: number) => {
+            const raw = STANDARD_FLY_BASE_MPH * (1 + p / 100);
+            const capped = raw >= cap;
+            return { value: capped ? cap : raw, capped };
+          };
+          const { value: mph, capped } = computeMph(pct);
+          tooltip = `${sign}${pct.toFixed(2)}% buff → ${mph.toFixed(2)} mph${capped ? ` (capped at ${cap.toFixed(2)})` : ''}. Assumes standard Fly / Mystic Flight base (31.5 mph). Actual base depends on which fly power is active.`;
+          format = (v) => {
+            const { value: m, capped: c } = computeMph(Number(v));
+            return `${m.toFixed(2)} mph${c ? ' *' : ''}`;
+          };
         }
 
         return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, totalBaseOffset, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip, format };
