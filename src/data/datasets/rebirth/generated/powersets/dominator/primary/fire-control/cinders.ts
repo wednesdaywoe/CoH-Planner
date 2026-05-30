@@ -34,7 +34,8 @@ export const Cinders: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
-    "Holds"
+    "Holds",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

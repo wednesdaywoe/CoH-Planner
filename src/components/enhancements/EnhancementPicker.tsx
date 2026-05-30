@@ -23,7 +23,7 @@ import { formatBonusDesc } from '@/utils/set-bonus-format';
 import { getPairedStat } from '@/utils/calculations/set-bonuses';
 import { useBonusTracking } from '@/hooks';
 import { Modal, ModalBody } from '@/components/modals';
-import { Tooltip, Toggle } from '@/components/ui';
+import { Tooltip, Toggle, LevelSpinner } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
 import type { IOSet, IOSetPiece, EnhancementStatType, SpecialEnhancementDef, IOSetCategory, SpecialEnhancement, Enhancement } from '@/types';
 import { getSetTrackedMatches } from '@/data/set-bonus-index';
@@ -658,21 +658,17 @@ export function EnhancementPicker() {
               title="Crafting level for IO enhancements (10–53). Higher level = stronger effect, but exemplaring below the level disables it."
             >
               <span className="text-xs text-gray-400">Lv</span>
-              <button
-                onClick={() => setGlobalIOLevel(globalIOLevel - 1)}
-                title="Decrease IO crafting level"
-                className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
-                disabled={attunementEnabled || globalIOLevel <= 10}
-              >-</button>
-              <span className={`text-sm font-mono w-6 text-center ${attunementEnabled ? 'text-gray-500' : 'text-blue-400'}`}>
-                {globalIOLevel}
-              </span>
-              <button
-                onClick={() => setGlobalIOLevel(globalIOLevel + 1)}
-                title="Increase IO crafting level"
-                className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
-                disabled={attunementEnabled || globalIOLevel >= 53}
-              >+</button>
+              <LevelSpinner
+                value={globalIOLevel}
+                min={10}
+                max={53}
+                onChange={setGlobalIOLevel}
+                disabled={attunementEnabled}
+                decreaseTitle="Decrease IO crafting level"
+                increaseTitle="Increase IO crafting level"
+                valueTitle="Drag up/down to change, click to type (10–53)"
+                valueColorClass={attunementEnabled ? 'text-gray-500' : 'text-blue-400'}
+              />
             </div>
             <Toggle
               id="attunement-toggle-picker"
@@ -687,21 +683,17 @@ export function EnhancementPicker() {
               title="Catalyst boost level (+0 to +5). Each boost increases enhancement strength."
             >
               <span className="text-xs text-gray-400">Boost</span>
-              <button
-                onClick={() => setGlobalBoostLevel(globalBoostLevel - 1)}
-                title="Decrease catalyst boost level"
-                className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
-                disabled={globalBoostLevel === 0}
-              >-</button>
-              <span className={`text-sm font-mono w-6 text-center ${globalBoostLevel > 0 ? 'text-green-400' : 'text-gray-500'}`}>
-                +{globalBoostLevel}
-              </span>
-              <button
-                onClick={() => setGlobalBoostLevel(globalBoostLevel + 1)}
-                title="Increase catalyst boost level"
-                className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
-                disabled={globalBoostLevel === 5}
-              >+</button>
+              <LevelSpinner
+                value={globalBoostLevel}
+                min={0}
+                max={5}
+                onChange={setGlobalBoostLevel}
+                showPlus
+                decreaseTitle="Decrease catalyst boost level"
+                increaseTitle="Increase catalyst boost level"
+                valueTitle="Drag up/down to change, click to type (0–5)"
+                valueColorClass={globalBoostLevel > 0 ? 'text-green-400' : 'text-gray-500'}
+              />
             </div>
           </div>
         </div>

@@ -30,74 +30,59 @@ export const PowerBoost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "damageBuff": {
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "durations": {
-      "damageBuff": 15,
-      "absorb": 15,
-      "enduranceGain": 15,
-      "movement": 15,
-      "confuse": 15,
-      "fear": 15,
-      "hold": 15,
-      "immobilize": 15,
-      "stun": 15,
-      "sleep": 15,
-      "defenseBuff": 15,
-      "tohitBuff": 15
-    },
-    "absorb": {
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "enduranceGain": {
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "movement": {
-      "runSpeed": {
+    "specialBuff": {
+      "heal": {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
-      "flySpeed": {
+      "absorb": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "endurance": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "movement": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "confuse": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "fear": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "hold": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "immobilize": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "stun": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "sleep": {
         "scale": 0.66,
         "table": "Melee_Stun"
       }
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "effectDuration": 15,
-    "fear": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
+    "durations": {
+      "specialBuff": 15,
+      "defenseBuff": 15,
+      "damageBuff": 15,
+      "tohitBuff": 15
     },
     "defenseBuff": {
+      "scale": 0.66,
+      "table": "Melee_Stun"
+    },
+    "damageBuff": {
       "scale": 0.66,
       "table": "Melee_Stun"
     },

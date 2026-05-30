@@ -33,7 +33,8 @@ export const Scare: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Fear"
+    "Fear",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

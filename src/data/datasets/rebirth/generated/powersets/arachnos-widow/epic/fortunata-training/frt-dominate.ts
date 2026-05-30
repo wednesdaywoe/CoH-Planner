@@ -37,6 +37,7 @@ export const Dominate: Power = {
     "Holds",
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

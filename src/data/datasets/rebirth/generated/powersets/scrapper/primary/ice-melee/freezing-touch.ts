@@ -36,6 +36,7 @@ export const FreezingTouch: Power = {
     "Holds",
     "Melee Damage",
     "Scrapper Archetype Sets",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

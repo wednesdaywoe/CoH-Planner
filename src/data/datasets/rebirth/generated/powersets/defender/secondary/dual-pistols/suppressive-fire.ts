@@ -39,6 +39,7 @@ export const SuppressiveFire: Power = {
     "Holds",
     "Ranged Damage",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

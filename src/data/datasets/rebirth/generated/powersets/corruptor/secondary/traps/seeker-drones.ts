@@ -40,6 +40,7 @@ export const SeekerDrones: Power = {
     "Ranged Damage",
     "Stuns",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

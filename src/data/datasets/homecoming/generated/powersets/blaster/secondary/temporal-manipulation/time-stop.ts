@@ -42,12 +42,14 @@ export const TimeStop: Power = {
       "scale": 1,
       "table": "Ranged_PvPMez"
     },
-    "damageDebuff": {
-      "scale": 0.25,
-      "table": "Ranged_Stun"
+    "specialBuff": {
+      "heal": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      }
     },
     "durations": {
-      "damageDebuff": 20,
+      "specialBuff": 20,
       "regenDebuff": 20,
       "damageBuff": 9.67
     },

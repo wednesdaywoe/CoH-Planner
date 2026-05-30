@@ -36,6 +36,7 @@ export const SmashingBlow: Power = {
     "Melee Damage",
     "Stalker Archetype Sets",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -40,6 +40,7 @@ export const SeismicSmash: Power = {
     "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

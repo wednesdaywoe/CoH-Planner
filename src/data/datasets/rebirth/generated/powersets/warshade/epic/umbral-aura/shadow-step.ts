@@ -69,5 +69,23 @@ export const ShadowStep: Power = {
       "fly"
     ]
   },
+  "conditionalEffects": [
+    {
+      "id": "shadow_slipping",
+      "label": "Shadow Slipping",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "rangeBuff": {
+          "scale": 0.5,
+          "table": "Ranged_Ones"
+        },
+        "durations": {
+          "rangeBuff": 10
+        },
+        "buffDuration": 10
+      }
+    }
+  ],
   "requires": "Inherent.Inherent.Shadow_Step !"
 };

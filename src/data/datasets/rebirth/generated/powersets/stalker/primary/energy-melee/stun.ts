@@ -38,6 +38,7 @@ export const StaggeringBurst: Power = {
     "Melee AoE Damage",
     "Stalker Archetype Sets",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

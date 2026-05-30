@@ -38,6 +38,7 @@ export const ShockingGrasp: Power = {
     "Endurance Modification",
     "Holds",
     "Melee Damage",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

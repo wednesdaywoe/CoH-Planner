@@ -40,7 +40,8 @@ export const DrowningPool: Power = {
     "Defense Debuff",
     "Dominator Archetype Sets",
     "Holds",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

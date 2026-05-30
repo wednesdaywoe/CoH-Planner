@@ -407,14 +407,18 @@ function renderExtraInstanceRow(params: {
   fontSize: string;
   archetypeId?: string;
   level?: number;
+  effectDur?: number;
 }): React.ReactNode {
-  const { key, baseKey, baseConfig, extra, gridCols, fontSize, archetypeId, level } = params;
+  const { key, baseKey, baseConfig, extra, gridCols, fontSize, archetypeId, level, effectDur } = params;
   const value = extra.value;
   const labelPrefix = baseConfig?.label ?? prettyKeyFallback(baseKey);
   const sourceTag = (
     <span className="text-cyan-400/70 italic ml-1">(from {extra.sourceLabel})</span>
   );
   const colorClass = baseConfig?.colorClass ?? 'text-slate-300';
+  const durationSuffix = effectDur != null
+    ? <span className="text-slate-400 font-normal text-[11px] ml-0.5">({effectDur}s)</span>
+    : null;
 
   // Mez (format='mag'): show "+ Mag X (Ys)" matching the base row's shape.
   if (baseConfig?.format === 'mag' && isMezEffect(value) && archetypeId && level) {
@@ -423,9 +427,42 @@ function renderExtraInstanceRow(params: {
     const magStr = Number.isInteger(value.mag) ? value.mag.toString() : value.mag.toFixed(1);
     return (
       <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
-        <span className={colorClass}>+ {labelPrefix}</span>
+        <span className={colorClass}>+ {labelPrefix}{durationSuffix}</span>
         <span className="text-slate-300">
           Mag {magStr}{baseDuration != null ? ` (${baseDuration.toFixed(1)}s)` : ''}
+          {sourceTag}
+        </span>
+        <span className="text-slate-500">—</span>
+        <span className="text-slate-500">—</span>
+      </div>
+    );
+  }
+
+  // Percent-format effects (rechargeDebuff, damageDebuff, resistance, etc.):
+  // resolve the scaled value through the AT table the same way the base row
+  // does so the user sees "-8%" alongside "-40%" rather than a raw "0.08"
+  // that looks like an unrelated number. Falls through to the raw-scale
+  // fallback when we can't resolve the value cleanly.
+  if (baseConfig?.format === 'percent' && typeof value === 'object' && value !== null && 'scale' in value && 'table' in value) {
+    const v = value as { scale: number; table: string };
+    let percent: number | null = null;
+    if (archetypeId) {
+      const tableVal = getTableValue(archetypeId, v.table, level ?? 50);
+      if (tableVal !== undefined) {
+        percent = Math.abs(v.scale * tableVal) * 100;
+      }
+    }
+    if (percent === null) {
+      // *_ones tables (Melee_Ones, Ranged_Ones, Ranged_Slow at 1.0) return 1.0;
+      // matches the convention already in `getTableBaseValue`.
+      percent = Math.abs(v.scale) * 100;
+    }
+    const signed = (baseConfig.calculation === 'debuff' ? '-' : '+') + percent.toFixed(2) + '%';
+    return (
+      <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+        <span className={colorClass}>+ {labelPrefix}{durationSuffix}</span>
+        <span className="text-slate-300">
+          {signed}
           {sourceTag}
         </span>
         <span className="text-slate-500">—</span>
@@ -441,7 +478,7 @@ function renderExtraInstanceRow(params: {
   // collisions still get surfaced rather than silently dropped.
   return (
     <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
-      <span className={colorClass}>+ {labelPrefix}</span>
+      <span className={colorClass}>+ {labelPrefix}{durationSuffix}</span>
       <span className="text-slate-300">
         {summarizeExtraValue(value)}
         {sourceTag}
@@ -714,15 +751,18 @@ export function RegistryEffectsDisplay({
   const durations = effects?.durations as Record<string, number> | undefined;
   const buffDur = effects?.buffDuration as number | undefined;
 
-  // Look up duration for an effect key, returns undefined if same as buffDuration or not present
+  // Look up the duration to annotate a row with. Prefer per-effect entries
+  // when present; fall back to `buffDuration` so debuff/buff rows always
+  // surface "how long does this last" — even when the per-effect map is
+  // empty, the power-level `buffDuration` field is the same number.
+  // Historically the renderer skipped the annotation when the per-effect
+  // duration matched buffDuration on the assumption it was shown elsewhere,
+  // but buffDuration is not actually rendered as a primary display value —
+  // the `duration` prop on this component is unused. Re-surfacing the
+  // duration here is the only place users see "-Recharge lasts 15s".
   const getEffectDuration = (effectKey: string): number | undefined => {
-    if (!durations) return undefined;
-    // Try exact key first, then strip expanded suffix (e.g. "defense_smashing" → "defense")
     const baseKey = effectKey.includes('_') ? effectKey.split('_')[0] : effectKey;
-    const dur = durations[effectKey] ?? durations[baseKey];
-    if (dur === undefined) return undefined;
-    // Don't annotate if it matches buffDuration (already shown in execution stats)
-    if (buffDur && Math.abs(dur - buffDur) < 0.01) return undefined;
+    const dur = durations?.[effectKey] ?? durations?.[baseKey] ?? buffDur;
     return dur;
   };
 
@@ -884,10 +924,21 @@ export function RegistryEffectsDisplay({
   // Handle absorb separately (resolve AT table for actual HP values, like healing)
   const absorb = effects?.absorb;
   if (absorb && typeof absorb === 'object' && 'scale' in absorb && absorb.scale != null) {
-    const absorbConfig = EFFECT_REGISTRY['absorb'];
-    if (absorbConfig && categories.includes(absorbConfig.category as EffectCategory)) {
+    const baseAbsorbConfig = EFFECT_REGISTRY['absorb'];
+    if (baseAbsorbConfig && categories.includes(baseAbsorbConfig.category as EffectCategory)) {
+      // `*_Ones` tables (Melee_Ones, Ranged_Ones) are constant 1.0 across
+      // all ATs and levels — they signal "scale is a % of target Max HP",
+      // not an HP value to scale through a Heal table. Rebirth's Spirit
+      // Ward rework is the canonical case: scale 0.10 × Ranged_Ones means
+      // 10% of the target's Max HP, NOT 0.10 HP. Without the percent
+      // hint we'd display the bare scale and look broken.
+      const tableLower = absorb.table?.toLowerCase() ?? '';
+      const isOnesTable = tableLower.endsWith('_ones');
+      const absorbConfig = isOnesTable
+        ? { ...baseAbsorbConfig, label: `${baseAbsorbConfig.label} (% Max HP)`, format: 'percent' as const }
+        : baseAbsorbConfig;
       let baseAbsorbHP = absorb.scale;
-      if (absorb.table && archetypeId) {
+      if (absorb.table && archetypeId && !isOnesTable) {
         const tableVal = getTableValue(archetypeId, absorb.table, level ?? 50);
         if (tableVal !== undefined) {
           baseAbsorbHP = absorb.scale * tableVal;
@@ -1333,6 +1384,7 @@ export function RegistryEffectsDisplay({
           fontSize,
           archetypeId,
           level,
+          effectDur: itemKey ? getEffectDuration(itemKey) : undefined,
         }));
         const result: React.ReactNode[] = [];
         if (sectionHeader) result.push(sectionHeader);

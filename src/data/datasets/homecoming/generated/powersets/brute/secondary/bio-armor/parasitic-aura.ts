@@ -58,11 +58,6 @@ export const ParasiticAura: Power = {
       "table": "Melee_Ones",
       "perTarget": 0.65
     },
-    "absorb": {
-      "scale": 2,
-      "table": "Melee_Ones",
-      "perTarget": 2
-    },
     "damageDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Dam"
@@ -73,7 +68,12 @@ export const ParasiticAura: Power = {
       "absorb",
       "recoveryBuff",
       "regenBuff"
-    ]
+    ],
+    "absorb": {
+      "scale": 2,
+      "table": "Melee_Ones",
+      "perTarget": 2
+    }
   },
   "conditionalEffects": [
     {
@@ -105,10 +105,6 @@ export const ParasiticAura: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "absorb": {
-          "scale": 1,
-          "table": "Melee_Ones"
-        },
         "durations": {
           "absorb": 45,
           "damageDebuff": 30

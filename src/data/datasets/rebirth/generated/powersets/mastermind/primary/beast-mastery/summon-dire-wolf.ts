@@ -48,6 +48,7 @@ export const SummonDireWolf: Power = {
     "Running & Sprints",
     "Slow Movement",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

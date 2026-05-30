@@ -37,6 +37,7 @@ export const WillDomination: Power = {
     "Defender Archetype Sets",
     "Ranged Damage",
     "Sleep",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

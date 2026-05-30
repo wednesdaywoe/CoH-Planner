@@ -37,6 +37,7 @@ export const FrozenAura: Power = {
     "Blaster Archetype Sets",
     "Melee AoE Damage",
     "Sleep",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

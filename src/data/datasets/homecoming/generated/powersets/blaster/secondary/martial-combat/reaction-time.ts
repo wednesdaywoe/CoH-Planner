@@ -47,6 +47,7 @@ export const ReactionTime: Power = {
       "rechargeDebuff": 10,
       "slow": 10,
       "movement": 10,
+      "specialBuff": 10,
       "recoveryBuff": 1.25,
       "absorb": 12
     },
@@ -62,10 +63,6 @@ export const ReactionTime: Power = {
       "jumpSpeed": {
         "scale": 0.7,
         "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
       }
     },
     "selfPenalty": true,
@@ -73,6 +70,12 @@ export const ReactionTime: Power = {
       "runSpeed": {
         "scale": 1,
         "table": "Melee_SpeedRunning"
+      }
+    },
+    "specialBuff": {
+      "movement": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
       }
     },
     "recoveryBuff": {

@@ -518,13 +518,41 @@ REBIRTH_SET_CATEGORY_OVERRIDES: dict[str, str] = {
 }
 
 
+# Rebirth Challenge Enhancement sets (Secret Master TF/SF rewards) have
+# non-standard category fields in boostsets.bin — Forced_Indoctrination
+# stores an empty `category` despite being a fully-functional universal
+# control set, and Inexhaustibility stores empty for both `category` and
+# `rarity`. Override here so the per-power category index and the IO-set
+# `type` field both surface them correctly.
+#
+# Forced Indoctrination: universal control set, slots into any power that
+#   accepts immobilize / sleep / stun / hold / fear / confuse. The binary's
+#   729-entry allowed_powers list propagates this category to all of them.
+# Inexhaustibility: single-piece special enhancement, slots only into Rest.
+_CHALLENGE_SET_OVERRIDES_BY_RARITY = {
+    "ForcedIndoctrination": "Universal Control Duration",
+}
+_CHALLENGE_SET_OVERRIDES_BY_NAME = {
+    "Inexhaustibility": "Rest Buff",
+}
+
+
 def _resolve_category(s: BoostSetRecord) -> str:
     """Map the set's EC-label to a planner category, accounting for the
-    Running/Leaping split. The planner treats "Running & Sprints" as a
-    distinct category from "Running" (Thrust vs Quickfoot/Celerity): the
-    distinction is data-derived — if the set's allowed-powers list includes
-    Sprint, it's the "& Sprints" variant.
+    Running/Leaping split and the Rebirth Challenge Enhancement overrides.
+
+    The planner treats "Running & Sprints" as a distinct category from
+    "Running" (Thrust vs Quickfoot/Celerity): the distinction is data-
+    derived — if the set's allowed-powers list includes Sprint, it's the
+    "& Sprints" variant.
     """
+    # Rebirth Challenge overrides win over EC_CATEGORY lookup. Their
+    # category field is empty in the binary so the default lookup
+    # returns "" and the set gets silently dropped without these.
+    override = _CHALLENGE_SET_OVERRIDES_BY_NAME.get(s.name) \
+        or _CHALLENGE_SET_OVERRIDES_BY_RARITY.get(s.rarity)
+    if override:
+        return override
     base = EC_CATEGORY_TO_PLANNER.get(s.category, "")
     if base in ("Running", "Leaping") and _SPRINT_MARKER in s.allowed_powers:
         return f"{base} & Sprints"

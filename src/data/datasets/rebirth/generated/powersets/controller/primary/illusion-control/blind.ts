@@ -39,6 +39,7 @@ export const Blind: Power = {
     "Holds",
     "Ranged Damage",
     "Sleep",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

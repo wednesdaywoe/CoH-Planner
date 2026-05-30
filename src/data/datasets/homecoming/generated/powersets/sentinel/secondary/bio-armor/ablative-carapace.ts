@@ -34,10 +34,6 @@ export const AblativeCarapace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "absorb": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
     "durations": {
       "absorb": 30,
       "regenBuff": 30
@@ -55,10 +51,6 @@ export const AblativeCarapace: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "absorb": {
-          "scale": 0.09,
-          "table": "Melee_Ones"
-        },
         "durations": {
           "absorb": 30
         },

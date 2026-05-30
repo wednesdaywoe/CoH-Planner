@@ -36,6 +36,7 @@ export const SeismicSmash: Power = {
     "Dominator Archetype Sets",
     "Holds",
     "Melee Damage",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

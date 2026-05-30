@@ -47,49 +47,46 @@ export const Weaken: Power = {
     "durations": {
       "damageDebuff": 30,
       "tohitDebuff": 30,
-      "stun": 30,
-      "sleep": 30,
-      "confuse": 30,
-      "fear": 30,
-      "immobilize": 30,
-      "hold": 30,
-      "defenseDebuff": 30,
-      "enduranceDrain": 30
+      "specialBuff": 30,
+      "defenseDebuff": 30
     },
     "tohitDebuff": {
       "scale": 0.25,
       "table": "Ranged_Stun"
     },
-    "stun": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "effectDuration": 30,
-    "sleep": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
+    "specialBuff": {
+      "stun": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "sleep": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "confuse": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "fear": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "immobilize": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "hold": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "heal": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "endurance": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      }
     },
     "defenseDebuff": {
       "scale": 0.25,
@@ -106,10 +103,6 @@ export const Weaken: Power = {
         "scale": 0.25,
         "table": "Ranged_Stun"
       }
-    },
-    "enduranceDrain": {
-      "scale": 0.75,
-      "table": "Ranged_Stun"
     },
     "buffDuration": 30
   }

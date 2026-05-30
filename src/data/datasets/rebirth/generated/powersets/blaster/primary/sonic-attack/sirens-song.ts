@@ -40,6 +40,7 @@ export const SirensSong: Power = {
     "Blaster Archetype Sets",
     "Ranged AoE Damage",
     "Sleep",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

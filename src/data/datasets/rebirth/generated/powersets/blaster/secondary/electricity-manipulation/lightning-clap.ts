@@ -39,7 +39,8 @@ export const ForceofThunder: Power = {
     "Endurance Modification",
     "Healing",
     "Knockback",
-    "Stuns"
+    "Stuns",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

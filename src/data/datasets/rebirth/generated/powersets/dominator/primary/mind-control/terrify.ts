@@ -43,6 +43,7 @@ export const Terrify: Power = {
     "Fear",
     "Ranged AoE Damage",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -34,7 +34,8 @@ export const ThunderClap: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

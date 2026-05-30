@@ -34,7 +34,8 @@ export const GeneticCorruption: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Sleep"
+    "Sleep",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

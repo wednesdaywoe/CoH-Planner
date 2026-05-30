@@ -1564,6 +1564,35 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "",
     unique: "Exclusive"
   },
+  // ── Rebirth Halloween: Endless Nightmare (Sleep) ───────────────────
+  // Triggers Fear on the slept target plus Psionic damage if the foe
+  // was woken early by an attack. PPM per wiki; Superior PPM reported
+  // by user verification as 2.5 (wiki uncertainty noted — confirm if
+  // tested directly in-game).
+  "Endless Nightmare: Recharge/Chance for Fear, Psionic Damage": {
+    setCategory: "Sleep",
+    setName: "Endless Nightmare",
+    ioName: "Recharge/Chance for Fear, Psionic Damage",
+    ppm: 2.5,
+    mechanics: "Foe Fear(8s) + Damage(Psionic 7 - 72) if woken early",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "Halloween",
+    unique: "Unique"
+  },
+  "Superior Endless Nightmare: Recharge/Chance for Fear, Psionic Damage": {
+    setCategory: "Sleep",
+    setName: "Superior Endless Nightmare",
+    ioName: "Recharge/Chance for Fear, Psionic Damage",
+    ppm: 2.5,
+    mechanics: "Foe Fear(8s) + Damage(Psionic 10 - 107) if woken early",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "Halloween",
+    unique: "Unique"
+  },
   "Unrelenting Fury: Recharge/Chance for +End Discount,+Regeneration": {
     setCategory: "Brute Archetype Sets",
     setName: "Unrelenting Fury",

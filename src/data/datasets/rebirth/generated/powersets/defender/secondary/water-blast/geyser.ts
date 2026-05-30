@@ -44,6 +44,7 @@ export const Geyser: Power = {
     "Slow Movement",
     "Stuns",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

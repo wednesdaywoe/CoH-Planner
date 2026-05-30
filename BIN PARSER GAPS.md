@@ -2,6 +2,24 @@
 
 ---NEW ISSUES---
 
+## 🟡 Rebirth Inexhaustibility — non-standard `boostsets.bin` record layout
+
+**Symptom.** Inexhaustibility (Secret Master 5th Column TF/SF reward, single-piece special enhancement that slots only into the Rest inherent) is present in the planner with `type: "Rest Buff"` but ships with empty `pieces: []` and `bonuses: []`, so it can't be slotted and has no in-game effect surfaced. By contrast, the other three Rebirth Challenge Enhancements work end-to-end:
+- Liberty's Belt — extracts cleanly (`type: "Resist Damage"`)
+- Imperial Might — extracts cleanly (`type: "Knockback"`)
+- Forced Indoctrination — fixed 2026-05-30 via rarity override → `"Universal Control Duration"`
+
+**Root cause.** Inexhaustibility's `boostsets.bin` record uses a non-standard layout: both the `rarity` and `category` fields are empty, and there are no allowed_powers, no boostlist entries, and no bonus references. The parser at [tools/bin-crawler/bin_crawler/parser/_boostsets.py](tools/bin-crawler/bin_crawler/parser/_boostsets.py) treats it as a malformed/empty record (the `if power_count > rec_len` guard bails out early) and produces an empty BoostSetRecord. The 2026-05-30 override gets the set into the IO-set library with a category name, but the parser still produces no piece or bonus data to ship.
+
+**Layout hypothesis.** The boost piece power exists at `Set_Bonus.Challenge_Set_Bonus.Inexhaustibility` (visible in `powers.bin`), and the in-game enhancement is documented as a single-piece special enhancement with a Rest-buff effect. The binary record likely uses a "challenge variant" layout with reordered/optional fields — needs RE work to find the field offsets.
+
+**Fix paths.**
+1. **Parser work (preferred).** Detect the challenge-variant layout in `_boostsets.py` and parse its actual fields. Generalizes to any future single-piece challenge enhancement Rebirth adds.
+2. **Hand-curated override.** Add a manual entry in [scripts/extract-rebirth-io-sets-v2.py](scripts/extract-rebirth-io-sets-v2.py) (alongside `PIECE_OVERRIDES` / `ICON_OVERRIDES`) pointing at the `Set_Bonus.Challenge_Set_Bonus.Inexhaustibility` power record for its bonus, plus a hardcoded single-piece entry. Faster but doesn't generalize.
+
+**Deferred** — not blocking the user who reported the Challenge Enhancements bug (their build is mez-focused, Forced Indoctrination was the high-impact fix). Revisit when someone reports needing Inexhaustibility specifically, or when starting a broader pass on single-piece special enhancements.
+
+---
 
 
 ---OLD ISSUES---

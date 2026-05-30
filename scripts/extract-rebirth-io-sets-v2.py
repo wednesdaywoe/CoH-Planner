@@ -29,7 +29,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / 'tools' / 'bin-crawler'))
 
 from bin_crawler.parser._pigg import BinResolver
-from bin_crawler.parser._boostsets import parse_boostsets, EC_CATEGORY_TO_PLANNER, BoostSetRecord
+from bin_crawler.parser._boostsets import parse_boostsets, EC_CATEGORY_TO_PLANNER, BoostSetRecord, _resolve_category
 from bin_crawler.parser._powers import parse_powers, PowerRecord
 from bin_crawler.parser._messages import load_messages
 
@@ -287,6 +287,51 @@ def _sort_aspects_canonical(aspects: list[str]) -> list[str]:
     return canonical + rest
 
 
+# Map proc-effect attribs to short human-readable labels for piece
+# naming. These are NOT enhancement aspects (which use Strength) — they
+# describe what the proc does when it triggers. Damage types get
+# collapsed by category in `_proc_effect_labels` below.
+_PROC_EFFECT_LABEL = {
+    'Terrorized':         'Fear',
+    'Held':               'Hold',
+    'Stunned':            'Stun',
+    'Sleep':              'Sleep',
+    'Confused':           'Confuse',
+    'Immobilized':        'Immobilize',
+    'HitPoints':          'Heal',
+    'Endurance':          'Endurance',
+    'Recovery':           '+Recovery',
+    'Regeneration':       '+Regeneration',
+    'Smashing_Dmg':       'Smashing Damage',
+    'Lethal_Dmg':         'Lethal Damage',
+    'Fire_Dmg':           'Fire Damage',
+    'Cold_Dmg':           'Cold Damage',
+    'Energy_Dmg':         'Energy Damage',
+    'Negative_Energy_Dmg': 'Negative Energy Damage',
+    'Toxic_Dmg':          'Toxic Damage',
+    'Psionic_Dmg':        'Psionic Damage',
+    'Heal_Dmg':           'Heal',
+    'Create_Entity':      'Resurrect',  # Negative-scale Create_Entity = resurrect proc on RFtG-style sets
+}
+
+
+def _proc_effect_labels(attribs: list[str]) -> list[str]:
+    """Build short labels describing what a proc piece does when it
+    triggers. Used to surface "Recharge/Chance for Fear, Psionic Damage"
+    instead of a bare "Recharge/Chance". Deduplicates while preserving
+    insertion order so the binary order shows through.
+    """
+    seen: set[str] = set()
+    out: list[str] = []
+    for a in attribs:
+        label = _PROC_EFFECT_LABEL.get(a)
+        if not label or label in seen:
+            continue
+        seen.add(label)
+        out.append(label)
+    return out
+
+
 def _piece_name_from_aspects(aspects: list[str]) -> str:
     """Build a piece display name from its aspects.
 
@@ -490,7 +535,12 @@ def main() -> int:
         if not rarity:
             skipped.append(f'{s.name}: unmapped rarity {s.rarity!r}')
             continue
-        type_ = EC_CATEGORY_TO_PLANNER.get(s.category, '')
+        # _resolve_category applies the same rarity/name overrides used by
+        # build_power_category_index for the per-power allowedSetCategories,
+        # so the IO-set `type` field and the per-power match keys agree
+        # (notably the Rebirth Challenge sets — Forced Indoctrination ->
+        # "Universal Control Duration", Inexhaustibility -> "Rest Buff").
+        type_ = _resolve_category(s)
 
         # Resolve display name via clientmessages.
         display = msgs._keys.get(s.display_name, '') if s.display_name else ''
@@ -509,22 +559,59 @@ def main() -> int:
                     break
             if not piece_power:
                 continue
-            # Collect attribs across the piece's effect templates.
+            # Collect enhancement-aspect attribs across the piece's effect
+            # templates, separating proc-trigger markers and proc-effect
+            # templates from the enhancement aspects.
+            #
+            # Enhancement aspects (Recharge, Accuracy, Sleep, Hold, ...) always
+            # use aspect=Strength — they buff that stat's effectiveness on the
+            # slotted power. Proc effects (apply X when triggered) use Current
+            # or Absolute. Proc trigger markers also use Current/Absolute and
+            # match specific (attrib, aspect, scale) signatures observed in
+            # Rebirth (verified on Endless Nightmare, Witchcraft, Vampire's
+            # Bite, The Haunting, Guardian's Gift, etc.):
+            #   - Create_Entity × Current × |scale|=1.0   (ATO + summon procs)
+            #   - Null × Absolute × scale=1.0             (Halloween procs)
+            # On HC the proc marker surfaces as Unknown(116) and is handled
+            # by `_collapse_aspects`; Rebirth's index 116 is named
+            # Create_Entity per ATTRIB_NAME_REBIRTH, so we detect it here at
+            # the template level instead.
             attribs: list[str] = []
+            proc_effect_attribs: list[str] = []  # Attribs from proc-effect templates (used for piece naming)
+            is_proc_marker = False
             for eg in piece_power.effects:
                 for t in eg.templates:
-                    if t.attribs:
+                    if not t.attribs:
+                        continue
+                    if len(t.attribs) == 1 and abs(abs(t.scale) - 1.0) < 0.01:
+                        a0 = t.attribs[0]
+                        if a0 == 'Create_Entity' and t.aspect == 'Current':
+                            is_proc_marker = True
+                            continue
+                        if a0 == 'Null' and t.aspect == 'Absolute':
+                            is_proc_marker = True
+                            continue
+                    # Enhancement aspects use Strength. Templates with other
+                    # aspects (Current/Absolute) are proc effects.
+                    if t.aspect == 'Strength':
                         attribs.extend(t.attribs)
+                    else:
+                        proc_effect_attribs.extend(t.attribs)
             aspects, is_proc = _collapse_aspects(attribs, s.category)
+            is_proc = is_proc or is_proc_marker
             piece_display = _piece_name_from_aspects(aspects) or 'Special'
             if is_proc:
-                # Proc pieces get a contextual "Chance for X" label later.
-                # For now, "Recharge/Chance for Resolve" style if recharge present,
-                # else "Chance for X".
+                # Build a "Chance for X" label using whatever proc effects
+                # we saw (Terrorized -> Fear, Psionic_Dmg -> Psionic Damage,
+                # Create_Entity for resurrection/summon procs, etc.). Falls
+                # back to a bare "Chance" / "Recharge/Chance" when the binary
+                # offers no readable effect attribs.
+                effect_labels = _proc_effect_labels(proc_effect_attribs)
+                effect_phrase = ', '.join(effect_labels)
                 if 'Recharge' in aspects:
-                    piece_display = f'Recharge/Chance'
+                    piece_display = f'Recharge/Chance for {effect_phrase}' if effect_phrase else 'Recharge/Chance'
                 else:
-                    piece_display = 'Chance'
+                    piece_display = f'Chance for {effect_phrase}' if effect_phrase else 'Chance'
             # Authoritative unique flag: the piece's `slot_requires`
             # contains a `BoostsSlotted>X <= 0` constraint when the game
             # enforces uniqueness for that piece (purples, ATOs, ATIO

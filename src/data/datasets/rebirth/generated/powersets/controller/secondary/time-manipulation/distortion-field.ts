@@ -36,7 +36,8 @@ export const DistortionField: Power = {
     "Controller Archetype Sets",
     "Holds",
     "Slow Movement",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

@@ -39,7 +39,8 @@ export const TouchoftheBeyond: Power = {
     "Accurate Healing",
     "Endurance Modification",
     "Fear",
-    "Healing"
+    "Healing",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

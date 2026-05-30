@@ -29,12 +29,19 @@ export const QuantumAcceleration: Power = {
   "effects": {
     "movement": {
       "flySpeed": {
-        "scale": 0.35,
-        "table": "Ranged_SpeedFlying"
+        "scale": 1,
+        "table": "Melee_Ones"
       }
     },
     "durations": {
-      "movement": 0.75
+      "movement": 0.75,
+      "specialBuff": 0.75
+    },
+    "specialBuff": {
+      "movement": {
+        "scale": 0.35,
+        "table": "Ranged_SpeedFlying"
+      }
     },
     "buffDuration": 0.75
   },

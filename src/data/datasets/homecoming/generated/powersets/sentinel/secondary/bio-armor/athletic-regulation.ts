@@ -101,18 +101,14 @@ export const AthleticRegulation: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "movement": {
-          "runSpeed": {
-            "scale": 0.33,
-            "table": "Melee_Ones"
-          },
-          "flySpeed": {
+        "specialBuff": {
+          "movement": {
             "scale": 0.33,
             "table": "Melee_Ones"
           }
         },
         "durations": {
-          "movement": 2.25
+          "specialBuff": 2.25
         },
         "buffDuration": 2.25
       },

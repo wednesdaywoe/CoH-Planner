@@ -40,12 +40,7 @@ export const Benumb: Power = {
     "durations": {
       "regenDebuff": 30,
       "damageDebuff": 30,
-      "confuse": 30,
-      "fear": 30,
-      "hold": 30,
-      "immobilize": 30,
-      "stun": 30,
-      "sleep": 30,
+      "specialBuff": 30,
       "defenseDebuff": 30,
       "tohitDebuff": 30
     },
@@ -61,36 +56,35 @@ export const Benumb: Power = {
       "scale": 0.5,
       "table": "Ranged_Stun"
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "effectDuration": 30,
-    "fear": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
+    "specialBuff": {
+      "heal": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "confuse": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "fear": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "hold": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "immobilize": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "stun": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "sleep": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      }
     },
     "defenseDebuff": {
       "scale": 0.5,

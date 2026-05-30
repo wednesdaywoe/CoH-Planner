@@ -36,6 +36,7 @@ export const ThunderKick: Power = {
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

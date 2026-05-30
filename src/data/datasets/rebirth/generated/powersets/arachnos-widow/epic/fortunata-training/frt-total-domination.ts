@@ -36,7 +36,8 @@ export const TotalDomination: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
-    "Soldiers of Arachnos Archetype Sets"
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

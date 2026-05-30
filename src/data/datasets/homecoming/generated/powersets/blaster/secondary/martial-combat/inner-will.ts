@@ -57,7 +57,8 @@ export const InnerWill: Power = {
       "hold": 30,
       "confuse": 30,
       "fear": 30,
-      "mezResistance": 30
+      "mezResistance": 30,
+      "specialBuff": 30
     },
     "sleep": {
       "mag": 1,
@@ -107,6 +108,32 @@ export const InnerWill: Power = {
       },
       "sleep": {
         "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "specialBuff": {
+      "confuse": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 0.5,
         "table": "Melee_Ones"
       }
     },

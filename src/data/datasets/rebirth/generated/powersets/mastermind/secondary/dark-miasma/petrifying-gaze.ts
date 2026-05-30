@@ -33,7 +33,8 @@ export const PetrifyingGaze: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds"
+    "Holds",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

@@ -37,7 +37,7 @@ export const ForceBarrier: Power = {
   "maxSlots": 6,
   "effects": {
     "absorb": {
-      "scale": 1.3,
+      "scale": 0.3,
       "table": "Ranged_Ones"
     },
     "durations": {

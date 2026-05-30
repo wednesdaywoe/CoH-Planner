@@ -21,3 +21,5 @@ export type { BadgeVariant, BadgeSize, IOSetRarityType } from './Badge';
 export { Input } from './Input';
 
 export { CollapsibleSection } from './CollapsibleSection';
+
+export { LevelSpinner } from './LevelSpinner';

@@ -36,6 +36,7 @@ export const Subdue: Power = {
   "allowedSetCategories": [
     "Immobilize",
     "Ranged Damage",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

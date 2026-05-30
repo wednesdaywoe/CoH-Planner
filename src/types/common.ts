@@ -179,7 +179,11 @@ export type IOSetCategory =
   | 'Sentinel Archetype Sets'
   | 'Kheldian Archetype Sets'
   | 'Soldiers of Arachnos Archetype Sets'
-  | 'Guardian Archetype Sets';
+  | 'Guardian Archetype Sets'
+  // Rebirth Challenge Enhancement categories — universal mez set (Forced
+  // Indoctrination) and the single-piece Rest enhancement (Inexhaustibility)
+  | 'Universal Control Duration'
+  | 'Rest Buff';
 
 // ============================================
 // IO SET RARITY

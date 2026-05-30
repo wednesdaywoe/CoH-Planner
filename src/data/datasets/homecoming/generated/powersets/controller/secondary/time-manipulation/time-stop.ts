@@ -43,12 +43,14 @@ export const TimeStop: Power = {
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
-    "damageDebuff": {
-      "scale": 0.25,
-      "table": "Ranged_Stun"
+    "specialBuff": {
+      "heal": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      }
     },
     "durations": {
-      "damageDebuff": 20,
+      "specialBuff": 20,
       "regenDebuff": 20
     },
     "regenDebuff": {

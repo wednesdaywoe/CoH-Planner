@@ -57,11 +57,6 @@ export const ParasiticLeech: Power = {
       "table": "Melee_Ones",
       "perTarget": 0.9279999999999999
     },
-    "absorb": {
-      "scale": 0.186,
-      "table": "Melee_Ones",
-      "perTarget": 0.186
-    },
     "regenDebuff": {
       "scale": 2,
       "table": "Melee_Res_Boolean"
@@ -72,7 +67,12 @@ export const ParasiticLeech: Power = {
       "absorb",
       "recoveryBuff",
       "regenBuff"
-    ]
+    ],
+    "absorb": {
+      "scale": 0.186,
+      "table": "Melee_Ones",
+      "perTarget": 0.186
+    }
   },
   "conditionalEffects": [
     {
@@ -122,10 +122,6 @@ export const ParasiticLeech: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "absorb": {
-          "scale": 0.043,
-          "table": "Melee_Ones"
-        },
         "durations": {
           "absorb": 45,
           "damageDebuff": 30

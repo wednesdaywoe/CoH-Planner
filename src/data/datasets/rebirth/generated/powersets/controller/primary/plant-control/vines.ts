@@ -36,7 +36,8 @@ export const Vines: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Holds"
+    "Holds",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

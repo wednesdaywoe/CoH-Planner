@@ -35,7 +35,8 @@ export const DarkPit: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Stuns"
+    "Stuns",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

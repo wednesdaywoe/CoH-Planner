@@ -37,6 +37,7 @@ export const StunningShot: Power = {
     "Corruptor Archetype Sets",
     "Ranged Damage",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

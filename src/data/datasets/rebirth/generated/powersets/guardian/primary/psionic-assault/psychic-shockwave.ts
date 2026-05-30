@@ -36,6 +36,7 @@ export const PsychicShockwave: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

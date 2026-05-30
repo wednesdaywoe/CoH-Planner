@@ -39,6 +39,7 @@ export const KineticShockwave: Power = {
     "Knockback",
     "Melee AoE Damage",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

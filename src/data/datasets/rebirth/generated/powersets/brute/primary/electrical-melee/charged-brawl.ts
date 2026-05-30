@@ -40,6 +40,7 @@ export const ChargedBrawl: Power = {
     "Melee Damage",
     "Sleep",
     "Threat Duration",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

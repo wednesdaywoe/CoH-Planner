@@ -40,6 +40,7 @@ export const AbyssalGaze: Power = {
     "Holds",
     "Ranged Damage",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

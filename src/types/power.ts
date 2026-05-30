@@ -340,6 +340,13 @@ export interface PowerEffects {
    *  with full duration but their magnitude does not stack. Only meaningful
    *  when `maxStacks` is set. */
   stacksLinear?: string[];
+  /** Seconds between successive stack applications for "ramp" powers that
+   *  apply 1 stack per tick within a single cast (e.g. Rebirth's Spirit
+   *  Ward: 5×0.10 absorb stacks, one every 3s). Distinguishes this from
+   *  recast-stacking (Crab Spider Serum etc.) where stacks come from
+   *  recasting the power before previous stacks expire. The InfoPanel uses
+   *  this to render "Stacks (every Xs)" on the slider label. */
+  stackInterval?: number;
 
   // === SELF-PENALTY FLAG ===
   /** If true, debuff fields (damageDebuff, slow, rechargeDebuff) are genuine self-penalties

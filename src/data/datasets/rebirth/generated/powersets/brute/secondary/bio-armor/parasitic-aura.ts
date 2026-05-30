@@ -110,7 +110,7 @@ export const ParasiticAura: Power = {
       "defaultActive": false,
       "effects": {
         "absorb": {
-          "scale": 1.033,
+          "scale": 0.033,
           "table": "Melee_Ones"
         },
         "durations": {

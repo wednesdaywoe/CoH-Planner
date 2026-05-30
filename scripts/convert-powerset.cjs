@@ -1894,6 +1894,31 @@ function extractEffects(templates, powerName) {
   const effects = {};
   const unmappedAttribs = new Set();
 
+  // Pre-scan for repeated-template absorb stacks. The Rebirth Spirit Ward
+  // rework emits 5 identical Absorb/Current/Magnitude templates (one per
+  // stack) plus 5 paired aspect=Maximum/type=Expression cap expressions
+  // (filtered later). Without this pre-scan the main loop would accumulate
+  // 5 × per-stack-scale into a single total-scale value, losing the stack
+  // count that the user actually wants to see. We surface maxStacks +
+  // per-stack scale so the InfoPanel slider displays "10% × 1..5 stacks"
+  // rather than a flat 50% lump sum.
+  const absorbApplyTemplates = templates.filter(t =>
+    t.attribs && t.attribs.length === 1 &&
+    t.attribs[0]?.toLowerCase() === 'absorb' &&
+    t.aspect?.toLowerCase() === 'current' &&
+    (t.type === 'Magnitude' || !t.type)
+  );
+  let absorbStackCount = 0;
+  if (absorbApplyTemplates.length > 1) {
+    const first = absorbApplyTemplates[0];
+    const allMatch = absorbApplyTemplates.every(t =>
+      Math.abs((t.scale || 0) - (first.scale || 0)) < 1e-6 &&
+      t.table === first.table &&
+      t.target === first.target
+    );
+    if (allMatch) absorbStackCount = absorbApplyTemplates.length;
+  }
+
   for (const template of templates) {
     if (!template.attribs || template.attribs.length === 0) continue;
 
@@ -2018,6 +2043,17 @@ function extractEffects(templates, powerName) {
         // Check if this is a defense buff/debuff (table contains Buff_Def or Debuff_Def)
         const isDefenseEffect = tableLower.includes('buff_def') || tableLower.includes('debuff_def');
 
+        // Heal_Dmg/Strength is a heal-output buff (Power Boost), NOT a
+        // damage buff. The attrib name is shared with damage handlers
+        // because the binary reuses it for -regen effects, but the
+        // Strength aspect on this attrib means "scale up heals you cast".
+        if (dmgType === 'Heal' && aspect === 'strength') {
+          if (!effects.specialBuff) effects.specialBuff = {};
+          effects.specialBuff.heal = makeEffect();
+          recordDuration('specialBuff');
+          continue;
+        }
+
         if (aspect === 'strength') {
           // Affects target's damage OUTPUT
           if (isDebuff) {
@@ -2135,6 +2171,16 @@ function extractEffects(templates, powerName) {
             effects.mezResistance[mezType] = makeEffect();
           }
           recordDuration('mezResistance');
+        } else if (aspect === 'strength') {
+          // Strength buff on a mez attrib (Power Boost, Domination etc.)
+          // is a multiplier to the caster's mez output strength — NOT a
+          // direct mez application. Route to specialBuff[mezType] so the
+          // display reads "+66% Hold Strength" instead of the nonsensical
+          // "Mag 1 Hold (15s)" the direct-mez branch would produce on
+          // these self-targeted buff powers.
+          if (!effects.specialBuff) effects.specialBuff = {};
+          effects.specialBuff[mezType] = makeEffect();
+          recordDuration('specialBuff');
         } else {
           const newMez = makeMezEffect();
           // Keep the higher magnitude mez effect (for powers with multiple mez effects)
@@ -2197,6 +2243,15 @@ function extractEffects(templates, powerName) {
           if (!effects.debuffResistance) effects.debuffResistance = {};
           effects.debuffResistance.movement = makeEffect();
           recordDuration('debuffResistance');
+        } else if (isSelfTargeting && aspect === 'strength') {
+          // Strength buff on a movement attrib (Power Boost-style) is a
+          // multiplier to the caster's movement-effect strength — your
+          // applied slows scale up — NOT a direct caster movement buff.
+          // Real self-movement buffs (Lightning Reflexes, Swift, Sprint
+          // toggle, etc.) use aspect=Current.
+          if (!effects.specialBuff) effects.specialBuff = {};
+          effects.specialBuff.movement = makeEffect();
+          recordDuration('specialBuff');
         } else if (isSelfTargeting && (isDebuff || scale < 0)) {
           // Self-targeting movement penalty (e.g., Granite Armor -70% run speed)
           if (!effects.slow) effects.slow = {};
@@ -2246,6 +2301,16 @@ function extractEffects(templates, powerName) {
             if (!effects.debuffResistance) effects.debuffResistance = {};
             effects.debuffResistance.endurance = makeEffect();
             recordDuration('debuffResistance');
+          } else if (aspect === 'strength') {
+            // Strength buff on Endurance attrib (Power Boost-style) is a
+            // multiplier to the caster's endurance-mod output strength —
+            // your applied +End / End Drain powers scale up — NOT a
+            // direct endurance gain for the caster. Real endurance-gain
+            // powers (Recovery Aura, Conserve Power's tick, Power Sink,
+            // etc.) carry aspect=Current or = Magnitude on this attrib.
+            if (!effects.specialBuff) effects.specialBuff = {};
+            effects.specialBuff.endurance = makeEffect();
+            recordDuration('specialBuff');
           } else if (aspect === 'maximum') {
             addOrAccumulate('maxEndBuff');
           } else if (isDebuff || scale < 0) {
@@ -2286,6 +2351,37 @@ function extractEffects(templates, powerName) {
             addOrAccumulate('regenBuff');
           }
         } else if (resType === 'absorb') {
+          // Multi-stack absorb powers (Rebirth's Spirit Ward, etc.) pair
+          // each absorb-shield template (aspect=Current, type=Magnitude)
+          // with an Expression-typed Maximum template that's just an
+          // engine-side absorb-cap — not user-facing absorb. Skip those
+          // so we don't double-count them into the displayed scale.
+          //
+          // HC sustains (Wild Fortress, Sound Barrier, Temporal Healing,
+          // Sentinel's Ward) also use aspect=Maximum but with type=Magnitude
+          // and real scale values for the actual shield — those must keep
+          // contributing. The discriminator is type=Expression on the
+          // Maximum template.
+          if (aspect === 'maximum' && template.type === 'Expression') {
+            // Even though we don't accumulate these into the absorb scale,
+            // their `duration` is the only place the per-stack tick interval
+            // lives (the Current/Magnitude apply templates carry dur=0).
+            // Surface it through `recordDuration` so the InfoPanel can
+            // narrate the staggered ramp ("Stacks (every 3s)").
+            recordDuration('absorb');
+            continue;
+          }
+          if (aspect === 'strength') {
+            // Strength buff on Absorb (Power Boost-style) is a multiplier
+            // to the caster's absorb-buff output, not a direct absorb
+            // shield. Route to specialBuff so the display reads "+66%
+            // Absorb Strength" rather than implying the power gives the
+            // caster a shield it doesn't.
+            if (!effects.specialBuff) effects.specialBuff = {};
+            effects.specialBuff.absorb = makeEffect();
+            recordDuration('specialBuff');
+            continue;
+          }
           addOrAccumulate('absorb');
         }
         continue;
@@ -2419,6 +2515,30 @@ function extractEffects(templates, powerName) {
   if (unmappedAttribs.size > 0) {
     // Uncomment for debugging:
     // console.log('  Unmapped attribs:', [...unmappedAttribs].join(', '));
+  }
+
+  // Repeated-absorb-template stacking. When the pre-scan found N identical
+  // Absorb/Current/Magnitude templates, the main loop accumulated N×scale
+  // into effects.absorb.scale. Reverse the accumulation back to per-stack
+  // scale and tag the effect so the InfoPanel slider exposes the stack
+  // axis (Spirit Ward → 1..5 stacks of 10% each, total 50% at full stack).
+  if (absorbStackCount > 1 && effects.absorb && typeof effects.absorb.scale === 'number') {
+    effects.absorb.scale = effects.absorb.scale / absorbStackCount;
+    effects.maxStacks = Math.max(effects.maxStacks || 0, absorbStackCount);
+    if (!effects.stacksLinear) effects.stacksLinear = [];
+    if (!effects.stacksLinear.includes('absorb')) {
+      effects.stacksLinear = [...effects.stacksLinear, 'absorb'].sort();
+    }
+    // Mark this stacking as "ramps tick-by-tick" so the InfoPanel slider
+    // can narrate the cadence ("Stacks (every 3s)") rather than imply the
+    // stacks are instantaneous. The interval is the per-stack tick captured
+    // in durations.absorb. Distinguishes Spirit Ward-style ramp stacking
+    // from recast stacking (Crab Spider Serum etc.) where the duration is
+    // the full buff lifetime.
+    const absorbTick = effects.durations && effects.durations.absorb;
+    if (absorbTick && absorbTick > 0) {
+      effects.stackInterval = absorbTick;
+    }
   }
 
   // Derive buffDuration from durations map — use the most common duration among buff/debuff effects

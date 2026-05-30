@@ -30,60 +30,53 @@ export const GatherShadows: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "effectDuration": 10,
-    "durations": {
-      "stun": 10,
-      "sleep": 10,
-      "confuse": 10,
-      "fear": 10,
-      "immobilize": 10,
-      "hold": 10,
-      "movement": 10,
-      "defenseBuff": 10,
-      "damageBuff": 10,
-      "absorb": 10,
-      "tohitBuff": 10,
-      "enduranceGain": 10
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "movement": {
-      "runSpeed": {
+    "specialBuff": {
+      "stun": {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
-      "flySpeed": {
+      "sleep": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "confuse": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "fear": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "immobilize": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "hold": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "movement": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "heal": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "absorb": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "endurance": {
         "scale": 0.5,
         "table": "Melee_Stun"
       }
+    },
+    "durations": {
+      "specialBuff": 10,
+      "defenseBuff": 10,
+      "damageBuff": 10,
+      "tohitBuff": 10
     },
     "defenseBuff": {
       "scale": 0.5,
@@ -105,15 +98,7 @@ export const GatherShadows: Power = {
       "scale": 4,
       "table": "Melee_Buff_Dmg"
     },
-    "absorb": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
     "tohitBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "enduranceGain": {
       "scale": 0.5,
       "table": "Melee_Stun"
     },

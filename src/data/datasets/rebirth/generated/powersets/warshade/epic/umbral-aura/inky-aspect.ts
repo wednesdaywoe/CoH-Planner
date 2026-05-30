@@ -35,7 +35,8 @@ export const InkyAspect: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Stuns"
+    "Stuns",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "damage": {

@@ -39,6 +39,7 @@ export const MidnightGrasp: Power = {
     "Melee Damage",
     "Stalker Archetype Sets",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

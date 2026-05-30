@@ -38,60 +38,47 @@ export const AmpUp: Power = {
     },
     "durations": {
       "rechargeBuff": 90,
-      "damageBuff": 90,
-      "absorb": 90,
-      "enduranceGain": 90,
-      "confuse": 90,
-      "fear": 90,
-      "hold": 90,
-      "immobilize": 90,
-      "stun": 90,
-      "sleep": 90,
+      "specialBuff": 90,
       "defenseBuff": 90,
       "tohitBuff": 90
     },
-    "damageBuff": {
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "absorb": {
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "enduranceGain": {
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "effectDuration": 90,
-    "fear": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
+    "specialBuff": {
+      "heal": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "absorb": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "endurance": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "confuse": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "fear": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "hold": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "immobilize": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "stun": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "sleep": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      }
     },
     "defenseBuff": {
       "scale": 3.6,

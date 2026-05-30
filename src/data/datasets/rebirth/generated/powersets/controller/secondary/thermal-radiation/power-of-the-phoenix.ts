@@ -38,6 +38,7 @@ export const PowerofthePhoenix: Power = {
     "Healing",
     "Ranged AoE Damage",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

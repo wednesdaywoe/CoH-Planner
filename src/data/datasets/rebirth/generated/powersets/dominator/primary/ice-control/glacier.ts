@@ -37,7 +37,8 @@ export const Glacier: Power = {
     "Dominator Archetype Sets",
     "Holds",
     "Slow Movement",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

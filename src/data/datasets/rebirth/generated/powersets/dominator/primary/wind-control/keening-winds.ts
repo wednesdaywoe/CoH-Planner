@@ -38,7 +38,8 @@ export const KeeningWinds: Power = {
   "allowedSetCategories": [
     "Confuse",
     "Dominator Archetype Sets",
-    "Endurance Modification"
+    "Endurance Modification",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

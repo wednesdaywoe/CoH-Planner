@@ -42,7 +42,7 @@ export const ChargeUp: Power = {
       "tohitBuff": 10,
       "rangeBuff": 10,
       "damageBuff": 10,
-      "enduranceGain": 10
+      "specialBuff": 10
     },
     "rangeBuff": {
       "scale": 0.333,
@@ -52,9 +52,11 @@ export const ChargeUp: Power = {
       "scale": 4,
       "table": "Melee_Buff_Dmg"
     },
-    "enduranceGain": {
-      "scale": 0.25,
-      "table": "Ranged_EndDrain"
+    "specialBuff": {
+      "endurance": {
+        "scale": 0.25,
+        "table": "Ranged_EndDrain"
+      }
     },
     "buffDuration": 10,
     "maxStacks": 2,

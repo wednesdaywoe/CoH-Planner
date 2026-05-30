@@ -43,6 +43,7 @@ export const JacobsLadder: Power = {
     "Melee AoE Damage",
     "Sleep",
     "Threat Duration",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

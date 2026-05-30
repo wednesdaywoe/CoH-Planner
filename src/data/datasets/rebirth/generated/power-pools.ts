@@ -355,6 +355,7 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -568,6 +569,7 @@ export const POWER_POOLS_RAW = {
           "Knockback",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -2364,6 +2366,7 @@ export const POWER_POOLS_RAW = {
           "Knockback",
           "Melee Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -2838,7 +2841,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Fear"
+          "Fear",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -2873,7 +2877,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Fear"
+          "Fear",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 0.9,
@@ -3138,12 +3143,14 @@ export const POWER_POOLS_RAW = {
           "endurance": 19.5,
           "activationTime": 3.33,
           "effectArea": "SingleTarget",
-          "damageBuff": {
-            "scale": 0.25,
-            "table": "Melee_Ones"
+          "specialBuff": {
+            "heal": {
+              "scale": 0.25,
+              "table": "Melee_Ones"
+            }
           },
           "durations": {
-            "damageBuff": 60,
+            "specialBuff": 60,
             "resistanceDebuff": 60
           },
           "resistanceDebuff": {
@@ -3193,12 +3200,17 @@ export const POWER_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "absorb": {
-            "scale": 5.5,
+            "scale": 0.1,
             "table": "Ranged_Ones"
           },
           "durations": {
             "absorb": 3
           },
+          "maxStacks": 5,
+          "stacksLinear": [
+            "absorb"
+          ],
+          "stackInterval": 3,
           "buffDuration": 3
         }
       },
@@ -3672,6 +3684,7 @@ export const POWER_POOLS_RAW = {
           "Knockback",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -4452,7 +4465,7 @@ export const POWER_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "SingleTarget",
           "absorb": {
-            "scale": 1.25,
+            "scale": 0.25,
             "table": "Melee_Ones"
           },
           "durations": {

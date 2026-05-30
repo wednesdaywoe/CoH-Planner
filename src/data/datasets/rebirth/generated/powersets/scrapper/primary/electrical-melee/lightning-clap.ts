@@ -36,7 +36,8 @@ export const LightningClap: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Scrapper Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

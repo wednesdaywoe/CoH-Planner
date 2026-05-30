@@ -41,6 +41,7 @@ export const SweepingCross: Power = {
     "Melee AoE Damage",
     "Stuns",
     "Threat Duration",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

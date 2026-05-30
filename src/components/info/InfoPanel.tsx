@@ -165,7 +165,14 @@ function getStackingInfo(power: Power): { maxStacks: number; label: string } | n
   // effect listed in `effects.stacksLinear`. Falls through here when there
   // is no per-target scaling (e.g. Siphon Speed's caster recharge buff).
   if (power.effects.maxStacks) {
-    return { maxStacks: power.effects.maxStacks, label: 'Stacks' };
+    // Ramp-stacking powers (Spirit Ward → 1 stack per 3s within one cast)
+    // carry `stackInterval`; recast-stacking powers (Crab Spider Serum,
+    // Build Up, etc.) don't. Surface the cadence on the slider label only
+    // for the ramp case so we don't mislabel recast stacking as "every Xs".
+    const label = power.effects.stackInterval && power.effects.stackInterval > 0
+      ? `Stacks (every ${power.effects.stackInterval}s)`
+      : 'Stacks';
+    return { maxStacks: power.effects.maxStacks, label };
   }
 
   return null;

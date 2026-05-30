@@ -41,47 +41,37 @@ export const SoundBooster: Power = {
     "durations": {
       "tohitBuff": 10,
       "damageBuff": 10,
-      "confuse": 10,
-      "fear": 10,
-      "hold": 10,
-      "immobilize": 10,
-      "stun": 10,
-      "sleep": 10
+      "specialBuff": 10
     },
     "damageBuff": {
       "scale": 6,
       "table": "Melee_Buff_Dmg"
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 10,
-    "fear": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
+    "specialBuff": {
+      "confuse": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      }
     },
     "buffDuration": 10,
     "maxStacks": 2,

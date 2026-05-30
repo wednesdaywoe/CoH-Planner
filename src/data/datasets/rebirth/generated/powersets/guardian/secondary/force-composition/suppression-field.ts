@@ -35,7 +35,8 @@ export const SuppressionField: Power = {
   "allowedSetCategories": [
     "Holds",
     "Slow Movement",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

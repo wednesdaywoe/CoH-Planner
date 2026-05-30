@@ -37,6 +37,7 @@ export const PsychicWail: Power = {
     "Corruptor Archetype Sets",
     "Melee AoE Damage",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

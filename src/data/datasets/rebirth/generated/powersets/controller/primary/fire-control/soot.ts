@@ -37,6 +37,7 @@ export const Char: Power = {
     "Controller Archetype Sets",
     "Holds",
     "Ranged Damage",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

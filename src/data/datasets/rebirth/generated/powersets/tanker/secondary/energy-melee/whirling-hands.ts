@@ -39,6 +39,7 @@ export const WhirlingHands: Power = {
     "Stuns",
     "Tanker Archetype Sets",
     "Threat Duration",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

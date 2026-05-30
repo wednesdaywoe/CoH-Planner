@@ -37,7 +37,8 @@ export const ParalyzingBlast: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Holds"
+    "Holds",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

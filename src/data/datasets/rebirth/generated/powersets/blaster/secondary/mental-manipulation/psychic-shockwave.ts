@@ -37,6 +37,7 @@ export const PsychicShockwave: Power = {
     "Blaster Archetype Sets",
     "Melee AoE Damage",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

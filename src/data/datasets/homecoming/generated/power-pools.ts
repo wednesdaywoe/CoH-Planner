@@ -270,14 +270,7 @@ export const POWER_POOLS_RAW = {
             "tohitBuff": 60,
             "damageBuff": 60,
             "rechargeBuff": 60,
-            "enduranceGain": 60,
-            "movement": 60,
-            "confuse": 60,
-            "fear": 60,
-            "hold": 60,
-            "immobilize": 60,
-            "stun": 60,
-            "sleep": 60,
+            "specialBuff": 60,
             "defenseBuff": 60
           },
           "damageBuff": {
@@ -288,50 +281,39 @@ export const POWER_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Res_Boolean"
           },
-          "enduranceGain": {
-            "scale": 1,
-            "table": "Melee_Res_Boolean"
-          },
-          "movement": {
-            "runSpeed": {
+          "specialBuff": {
+            "endurance": {
               "scale": 1,
               "table": "Melee_Res_Boolean"
             },
-            "flySpeed": {
+            "movement": {
+              "scale": 1,
+              "table": "Melee_Res_Boolean"
+            },
+            "confuse": {
+              "scale": 1,
+              "table": "Melee_Res_Boolean"
+            },
+            "fear": {
+              "scale": 1,
+              "table": "Melee_Res_Boolean"
+            },
+            "hold": {
+              "scale": 1,
+              "table": "Melee_Res_Boolean"
+            },
+            "immobilize": {
+              "scale": 1,
+              "table": "Melee_Res_Boolean"
+            },
+            "stun": {
+              "scale": 1,
+              "table": "Melee_Res_Boolean"
+            },
+            "sleep": {
               "scale": 1,
               "table": "Melee_Res_Boolean"
             }
-          },
-          "confuse": {
-            "mag": 1,
-            "scale": 1,
-            "table": "Melee_Res_Boolean"
-          },
-          "effectDuration": 60,
-          "fear": {
-            "mag": 1,
-            "scale": 1,
-            "table": "Melee_Res_Boolean"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 1,
-            "table": "Melee_Res_Boolean"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 1,
-            "table": "Melee_Res_Boolean"
-          },
-          "stun": {
-            "mag": 1,
-            "scale": 1,
-            "table": "Melee_Res_Boolean"
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 1,
-            "table": "Melee_Res_Boolean"
           },
           "defenseBuff": {
             "scale": 1,
@@ -1216,12 +1198,19 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "movement": {
             "flySpeed": {
-              "scale": 0.35,
-              "table": "Ranged_SpeedFlying"
+              "scale": 1,
+              "table": "Melee_Ones"
             }
           },
           "durations": {
-            "movement": 0.75
+            "movement": 0.75,
+            "specialBuff": 0.75
+          },
+          "specialBuff": {
+            "movement": {
+              "scale": 0.35,
+              "table": "Ranged_SpeedFlying"
+            }
           },
           "buffDuration": 0.75
         }
@@ -3206,12 +3195,14 @@ export const POWER_POOLS_RAW = {
           "endurance": 19.5,
           "activationTime": 3.33,
           "effectArea": "SingleTarget",
-          "damageBuff": {
-            "scale": 0.25,
-            "table": "Melee_Ones"
+          "specialBuff": {
+            "heal": {
+              "scale": 0.25,
+              "table": "Melee_Ones"
+            }
           },
           "durations": {
-            "damageBuff": 60,
+            "specialBuff": 60,
             "resistanceDebuff": 60
           },
           "resistanceDebuff": {

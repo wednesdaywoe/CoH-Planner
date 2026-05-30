@@ -44,7 +44,7 @@ export const WildBastion: Power = {
   },
   "effects": {
     "absorb": {
-      "scale": 1.25,
+      "scale": 0.25,
       "table": "Ranged_Ones"
     },
     "durations": {

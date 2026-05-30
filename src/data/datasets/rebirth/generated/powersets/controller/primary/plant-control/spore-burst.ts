@@ -36,7 +36,8 @@ export const SporeBurst: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Sleep"
+    "Sleep",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

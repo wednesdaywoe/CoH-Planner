@@ -42,6 +42,7 @@ export const AtomSmasher: Power = {
     "Stalker Archetype Sets",
     "Stuns",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

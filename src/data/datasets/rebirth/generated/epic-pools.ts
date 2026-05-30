@@ -48,6 +48,7 @@ export const EPIC_POOLS_RAW = {
           "Immobilize",
           "Ranged Damage",
           "Slow Movement",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -113,6 +114,7 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Ranged Damage",
           "Slow Movement",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -338,7 +340,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize"
+          "Immobilize",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -532,7 +535,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -739,6 +743,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -802,6 +807,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -876,6 +882,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -922,6 +929,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -1686,6 +1694,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -2049,7 +2058,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize"
+          "Immobilize",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -2337,6 +2347,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -2674,6 +2685,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -2946,6 +2958,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -3010,6 +3023,7 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -3151,7 +3165,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Stuns"
+          "Stuns",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -3275,6 +3290,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Sleep",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -3562,6 +3578,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Sleep",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -4109,6 +4126,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -4288,6 +4306,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -4395,7 +4414,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize"
+          "Immobilize",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -4549,7 +4569,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -4744,6 +4765,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -4995,60 +5017,53 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "stun": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "effectDuration": 15,
-          "durations": {
-            "stun": 15,
-            "sleep": 15,
-            "confuse": 15,
-            "fear": 15,
-            "immobilize": 15,
-            "hold": 15,
-            "movement": 15,
-            "defenseBuff": 15,
-            "damageBuff": 15,
-            "absorb": 15,
-            "tohitBuff": 15,
-            "enduranceGain": 15
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "confuse": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "fear": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "movement": {
-            "runSpeed": {
+          "specialBuff": {
+            "stun": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "flySpeed": {
+            "sleep": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "confuse": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fear": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "hold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "movement": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "heal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "absorb": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
               "scale": 0.66,
               "table": "Melee_Stun"
             }
+          },
+          "durations": {
+            "specialBuff": 15,
+            "defenseBuff": 15,
+            "damageBuff": 15,
+            "tohitBuff": 15
           },
           "defenseBuff": {
             "scale": 0.66,
@@ -5070,15 +5085,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.66,
             "table": "Melee_Stun"
           },
-          "absorb": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
           "tohitBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "enduranceGain": {
             "scale": 0.66,
             "table": "Melee_Stun"
           },
@@ -5108,6 +5115,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -5205,7 +5213,8 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Stuns"
+          "Stuns",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -5344,6 +5353,7 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -5538,7 +5548,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Holds"
+          "Holds",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -5681,6 +5692,7 @@ export const EPIC_POOLS_RAW = {
           "Immobilize",
           "Ranged AoE Damage",
           "To Hit Debuff",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -5761,6 +5773,7 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Stuns",
           "To Hit Debuff",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -6877,6 +6890,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -6936,7 +6950,8 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Sleep"
+          "Sleep",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -6984,6 +6999,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -7088,6 +7104,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -7209,6 +7226,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -7389,7 +7407,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Stuns"
+          "Stuns",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -7460,6 +7479,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Immobilize",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -7520,6 +7540,7 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -7630,6 +7651,7 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Melee AoE Damage",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -8661,6 +8683,7 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -8933,6 +8956,7 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -9126,6 +9150,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -9307,6 +9332,7 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -9532,6 +9558,7 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -9679,6 +9706,7 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Slow Movement",
           "To Hit Debuff",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -9734,6 +9762,7 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Slow Movement",
           "To Hit Debuff",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -9985,6 +10014,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Immobilize",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10086,6 +10116,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10236,6 +10267,7 @@ export const EPIC_POOLS_RAW = {
           "Immobilize",
           "Ranged Damage",
           "Slow Movement",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10290,6 +10322,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Melee AoE Damage",
           "Sleep",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10335,6 +10368,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Melee Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10479,6 +10513,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10691,6 +10726,7 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Stuns",
           "To Hit Debuff",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -10860,7 +10896,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -11066,6 +11103,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -11195,6 +11233,7 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -11346,6 +11385,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -11609,6 +11649,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Melee Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -11863,7 +11904,8 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Confuse"
+          "Confuse",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -11902,6 +11944,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Melee Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -12050,7 +12093,8 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Sleep"
+          "Sleep",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -12104,6 +12148,7 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -12486,6 +12531,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -12543,6 +12589,7 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -13179,6 +13226,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -13368,6 +13416,7 @@ export const EPIC_POOLS_RAW = {
           "Healing",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -13518,7 +13567,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize"
+          "Immobilize",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -13710,6 +13760,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -14065,7 +14116,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize"
+          "Immobilize",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -14288,6 +14340,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -14540,6 +14593,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -14646,6 +14700,7 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Knockback",
           "Melee Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -14736,6 +14791,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -14799,7 +14855,8 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Immobilize"
+          "Immobilize",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -14950,60 +15007,53 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "stun": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "effectDuration": 15,
-          "durations": {
-            "stun": 15,
-            "sleep": 15,
-            "confuse": 15,
-            "fear": 15,
-            "immobilize": 15,
-            "hold": 15,
-            "movement": 15,
-            "defenseBuff": 15,
-            "damageBuff": 15,
-            "absorb": 15,
-            "tohitBuff": 15,
-            "enduranceGain": 15
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "confuse": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "fear": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "movement": {
-            "runSpeed": {
+          "specialBuff": {
+            "stun": {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
-            "flySpeed": {
+            "sleep": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "confuse": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "fear": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "hold": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "movement": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "heal": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "absorb": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
               "scale": 0.44,
               "table": "Melee_Stun"
             }
+          },
+          "durations": {
+            "specialBuff": 15,
+            "defenseBuff": 15,
+            "damageBuff": 15,
+            "tohitBuff": 15
           },
           "defenseBuff": {
             "scale": 0.44,
@@ -15025,15 +15075,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.44,
             "table": "Melee_Stun"
           },
-          "absorb": {
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
           "tohitBuff": {
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "enduranceGain": {
             "scale": 0.44,
             "table": "Melee_Stun"
           },
@@ -15063,7 +15105,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -15228,6 +15271,7 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Melee AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -15295,6 +15339,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -15358,6 +15403,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -15531,7 +15577,8 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Stuns"
+          "Stuns",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -15576,6 +15623,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -15632,6 +15680,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -15727,6 +15776,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -15771,6 +15821,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Sleep",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -15989,60 +16040,53 @@ export const EPIC_POOLS_RAW = {
           "endurance": 13,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "stun": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "effectDuration": 12.5,
-          "durations": {
-            "stun": 12.5,
-            "sleep": 12.5,
-            "confuse": 12.5,
-            "fear": 12.5,
-            "immobilize": 12.5,
-            "hold": 12.5,
-            "movement": 12.5,
-            "defenseBuff": 12.5,
-            "damageBuff": 12.5,
-            "absorb": 12.5,
-            "tohitBuff": 12.5,
-            "enduranceGain": 12.5
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "confuse": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "fear": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "movement": {
-            "runSpeed": {
+          "specialBuff": {
+            "stun": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "flySpeed": {
+            "sleep": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "confuse": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fear": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "hold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "movement": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "heal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "absorb": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
               "scale": 0.66,
               "table": "Melee_Stun"
             }
+          },
+          "durations": {
+            "specialBuff": 12.5,
+            "defenseBuff": 12.5,
+            "damageBuff": 12.5,
+            "tohitBuff": 12.5
           },
           "defenseBuff": {
             "scale": 0.66,
@@ -16064,17 +16108,9 @@ export const EPIC_POOLS_RAW = {
             "scale": 8,
             "table": "Melee_Buff_Dmg"
           },
-          "absorb": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
           "tohitBuff": {
             "scale": 1,
             "table": "Melee_Buff_ToHit"
-          },
-          "enduranceGain": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
           },
           "buffDuration": 12.5
         }
@@ -16221,6 +16257,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -16454,60 +16491,53 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "stun": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "effectDuration": 15,
-          "durations": {
-            "stun": 15,
-            "sleep": 15,
-            "confuse": 15,
-            "fear": 15,
-            "immobilize": 15,
-            "hold": 15,
-            "movement": 15,
-            "defenseBuff": 15,
-            "damageBuff": 15,
-            "absorb": 15,
-            "tohitBuff": 15,
-            "enduranceGain": 15
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "confuse": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "fear": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "movement": {
-            "runSpeed": {
+          "specialBuff": {
+            "stun": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "flySpeed": {
+            "sleep": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "confuse": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fear": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "hold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "movement": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "heal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "absorb": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
               "scale": 0.66,
               "table": "Melee_Stun"
             }
+          },
+          "durations": {
+            "specialBuff": 15,
+            "defenseBuff": 15,
+            "damageBuff": 15,
+            "tohitBuff": 15
           },
           "defenseBuff": {
             "scale": 0.66,
@@ -16529,15 +16559,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.66,
             "table": "Melee_Stun"
           },
-          "absorb": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
           "tohitBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "enduranceGain": {
             "scale": 0.66,
             "table": "Melee_Stun"
           },
@@ -16579,6 +16601,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Melee Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -16978,6 +17001,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Confuse",
           "Melee AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -17388,6 +17412,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -17429,7 +17454,8 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Sleep"
+          "Sleep",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -17515,6 +17541,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Confuse",
           "Melee AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -17602,6 +17629,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -17657,6 +17685,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -17982,6 +18011,7 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Stuns",
           "To Hit Debuff",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -18093,6 +18123,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -18342,7 +18373,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -18620,6 +18652,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -18908,6 +18941,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Ranged Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -19048,6 +19082,7 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Stuns",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -19135,6 +19170,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Melee Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -19289,6 +19325,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -19597,7 +19634,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Slow Movement",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -19878,6 +19916,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -20162,6 +20201,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Ranged AoE Damage",
+          "Universal Control Duration",
           "Universal Damage Sets"
         ],
         "effects": {
@@ -20363,7 +20403,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Slow Movement",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,
@@ -20589,7 +20630,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Slow Movement",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Control Duration"
         ],
         "effects": {
           "accuracy": 1,

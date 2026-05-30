@@ -40,6 +40,7 @@ export const Wormhole: Power = {
     "Knockback",
     "Stuns",
     "Teleport",
+    "Universal Control Duration",
     "Universal Travel"
   ],
   "maxSlots": 6,

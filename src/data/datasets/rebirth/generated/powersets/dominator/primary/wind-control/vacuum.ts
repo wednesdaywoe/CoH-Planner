@@ -42,6 +42,7 @@ export const Vacuum: Power = {
     "Ranged AoE Damage",
     "Slow Movement",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

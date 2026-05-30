@@ -35,7 +35,7 @@ export const ParticleShielding: Power = {
   "maxSlots": 6,
   "effects": {
     "absorb": {
-      "scale": 7.525000000000001,
+      "scale": 0.075,
       "table": "Melee_Ones"
     },
     "durations": {
@@ -46,6 +46,11 @@ export const ParticleShielding: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
+    "maxStacks": 7,
+    "stacksLinear": [
+      "absorb"
+    ],
+    "stackInterval": 5,
     "buffDuration": 30
   }
 };

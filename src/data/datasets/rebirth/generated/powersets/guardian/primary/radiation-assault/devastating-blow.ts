@@ -41,6 +41,7 @@ export const DevastatingBlow: Power = {
     "Melee Damage",
     "Stuns",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

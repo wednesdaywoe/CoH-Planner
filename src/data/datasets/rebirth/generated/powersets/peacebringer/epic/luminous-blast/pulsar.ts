@@ -33,7 +33,8 @@ export const Pulsar: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Stuns"
+    "Stuns",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

@@ -36,6 +36,7 @@ export const WrathofHell: Power = {
   "allowedSetCategories": [
     "Holds",
     "Ranged Damage",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

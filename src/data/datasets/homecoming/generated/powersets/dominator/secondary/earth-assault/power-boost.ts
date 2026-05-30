@@ -36,66 +36,51 @@ export const PowerUp: Power = {
     },
     "durations": {
       "damageBuff": 10,
-      "absorb": 10,
-      "enduranceGain": 10,
-      "movement": 10,
-      "confuse": 10,
-      "fear": 10,
-      "hold": 10,
-      "immobilize": 10,
-      "stun": 10,
-      "sleep": 10,
+      "specialBuff": 10,
       "defenseBuff": 10,
       "tohitBuff": 10
     },
-    "absorb": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "movement": {
-      "runSpeed": {
+    "specialBuff": {
+      "heal": {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
-      "flySpeed": {
+      "absorb": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "endurance": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "movement": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "confuse": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "fear": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "hold": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "immobilize": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "stun": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "sleep": {
         "scale": 0.5,
         "table": "Melee_Stun"
       }
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "effectDuration": 10,
-    "fear": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
     },
     "defenseBuff": {
       "scale": 0.5,

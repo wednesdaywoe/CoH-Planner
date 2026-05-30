@@ -34,10 +34,6 @@ export const MasterBrawler: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "absorb": {
-      "scale": 4,
-      "table": "Melee_HealSelf"
-    },
     "durations": {
       "absorb": 30
     },

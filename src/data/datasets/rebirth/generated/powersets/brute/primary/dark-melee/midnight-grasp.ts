@@ -41,6 +41,7 @@ export const MidnightGrasp: Power = {
     "Melee Damage",
     "Threat Duration",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

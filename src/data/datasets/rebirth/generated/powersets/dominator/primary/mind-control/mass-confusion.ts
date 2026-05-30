@@ -36,7 +36,8 @@ export const MassConfusion: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
-    "Dominator Archetype Sets"
+    "Dominator Archetype Sets",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

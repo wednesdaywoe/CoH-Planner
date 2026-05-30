@@ -35,7 +35,8 @@ export const EMPulse: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Holds"
+    "Holds",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

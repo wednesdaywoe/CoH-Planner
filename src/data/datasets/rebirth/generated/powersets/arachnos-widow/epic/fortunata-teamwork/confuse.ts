@@ -33,7 +33,8 @@ export const Confuse: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Confuse"
+    "Confuse",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

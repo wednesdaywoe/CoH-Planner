@@ -40,6 +40,7 @@ export const DarkGrasp: Power = {
     "Holds",
     "Ranged Damage",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

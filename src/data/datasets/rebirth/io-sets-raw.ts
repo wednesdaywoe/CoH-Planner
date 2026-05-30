@@ -6664,12 +6664,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
-          "Recharge",
-          "Fear"
+          "Recharge"
         ],
-        "name": "Recharge/Fear",
+        "name": "Recharge/Chance for Fear, Psionic Damage",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -8603,7 +8602,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Universal Control Duration"
   },
   "fortunata_hypnosis": {
     "bonuses": [
@@ -11895,7 +11894,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "minLevel": 1,
     "name": "Inexhaustibility",
     "pieces": [],
-    "type": ""
+    "type": "Rest Buff"
   },
   "jaunt": {
     "bonuses": [
@@ -17583,9 +17582,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -22339,12 +22338,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [
-          "Recharge",
-          "Fear"
+          "Recharge"
         ],
-        "name": "Recharge/Fear",
+        "name": "Recharge/Chance for Fear, Psionic Damage",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -24015,9 +24013,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -24726,9 +24724,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -25042,9 +25040,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -25846,9 +25844,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -26367,9 +26365,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -28474,9 +28472,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -29372,9 +29370,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],

@@ -38,6 +38,7 @@ export const SeismicSmash: Power = {
     "Holds",
     "Melee Damage",
     "Threat Duration",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

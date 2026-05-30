@@ -43,6 +43,7 @@ export const Tornado: Power = {
     "Recharge Intensive Pets",
     "Stuns",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

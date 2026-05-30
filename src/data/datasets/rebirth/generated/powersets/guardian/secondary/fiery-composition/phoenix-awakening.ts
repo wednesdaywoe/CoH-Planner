@@ -36,6 +36,7 @@ export const PhoenixAwakening: Power = {
     "Healing",
     "Melee AoE Damage",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

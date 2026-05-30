@@ -37,6 +37,7 @@ export const PsychicWail: Power = {
     "Melee AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -35,6 +35,7 @@ export const TotalFocus: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

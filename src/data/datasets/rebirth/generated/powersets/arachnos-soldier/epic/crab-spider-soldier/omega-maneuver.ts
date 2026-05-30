@@ -39,6 +39,7 @@ export const OmegaManeuver: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
     "Threat Duration",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

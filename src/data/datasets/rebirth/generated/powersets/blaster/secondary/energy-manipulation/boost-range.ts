@@ -28,5 +28,15 @@ export const BoostRange: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rangeBuff": {
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    },
+    "durations": {
+      "rangeBuff": 30
+    },
+    "buffDuration": 30
+  }
 };

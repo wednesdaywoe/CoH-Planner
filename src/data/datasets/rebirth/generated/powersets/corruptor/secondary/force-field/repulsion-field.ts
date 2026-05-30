@@ -32,7 +32,8 @@ export const ContainmentShell: Power = {
     "Immobilize"
   ],
   "allowedSetCategories": [
-    "Immobilize"
+    "Immobilize",
+    "Universal Control Duration"
   ],
   "maxSlots": 6,
   "effects": {

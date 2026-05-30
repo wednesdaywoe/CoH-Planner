@@ -52,64 +52,56 @@ export const EMPArrow: Power = {
       ],
       "duration": 240
     },
-    "damageDebuff": {
-      "scale": 1.2,
-      "table": "Ranged_Res_Boolean"
+    "specialBuff": {
+      "heal": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "absorb": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "endurance": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "confuse": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "fear": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "hold": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "stun": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "durations": {
-      "damageDebuff": 45,
-      "absorb": 45,
-      "enduranceDrain": 45,
-      "confuse": 45,
-      "fear": 45,
-      "hold": 45,
-      "immobilize": 45,
-      "stun": 45,
-      "sleep": 45,
+      "specialBuff": 45,
       "defenseDebuff": 45,
+      "damageDebuff": 45,
       "tohitDebuff": 45,
       "regenDebuff": 45
     },
-    "absorb": {
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "enduranceDrain": {
-      "scale": 16.67,
-      "table": "Ranged_EndDrain"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 45,
-    "fear": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 7,
-      "table": "Ranged_Immobilize"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
     "defenseDebuff": {
+      "scale": 1.2,
+      "table": "Ranged_Res_Boolean"
+    },
+    "damageDebuff": {
       "scale": 1.2,
       "table": "Ranged_Res_Boolean"
     },
@@ -117,9 +109,18 @@ export const EMPArrow: Power = {
       "scale": 1.2,
       "table": "Ranged_Res_Boolean"
     },
+    "enduranceDrain": {
+      "scale": 16.67,
+      "table": "Ranged_EndDrain"
+    },
     "regenDebuff": {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 7,
+      "table": "Ranged_Immobilize"
     },
     "buffDuration": 45
   }

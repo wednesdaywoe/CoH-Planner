@@ -36,6 +36,7 @@ export const BoneSmasher: Power = {
     "Dominator Archetype Sets",
     "Melee Damage",
     "Stuns",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

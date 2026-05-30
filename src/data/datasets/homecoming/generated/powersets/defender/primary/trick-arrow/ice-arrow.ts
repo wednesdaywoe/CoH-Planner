@@ -46,14 +46,7 @@ export const IceArrow: Power = {
     "durations": {
       "rechargeDebuff": 10,
       "damageDebuff": 10,
-      "absorb": 60,
-      "enduranceDrain": 10,
-      "confuse": 10,
-      "fear": 10,
-      "hold": 10,
-      "immobilize": 10,
-      "stun": 10,
-      "sleep": 10,
+      "specialBuff": 10,
       "defenseDebuff": 10,
       "tohitDebuff": 10
     },
@@ -66,39 +59,43 @@ export const IceArrow: Power = {
       "scale": 0.45,
       "table": "Ranged_Special"
     },
-    "absorb": {
-      "scale": 0.45,
-      "table": "Ranged_Special"
-    },
-    "enduranceDrain": {
-      "scale": 0.9,
-      "table": "Ranged_Special"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.45,
-      "table": "Ranged_Special"
-    },
-    "effectDuration": 10,
-    "fear": {
-      "mag": 1,
-      "scale": 0.45,
-      "table": "Ranged_Special"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.45,
-      "table": "Ranged_Special"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.45,
-      "table": "Ranged_Special"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.45,
-      "table": "Ranged_Special"
+    "specialBuff": {
+      "heal": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "absorb": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "endurance": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "confuse": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "fear": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "hold": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "immobilize": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "stun": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "sleep": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      }
     },
     "defenseDebuff": {
       "scale": 0.45,

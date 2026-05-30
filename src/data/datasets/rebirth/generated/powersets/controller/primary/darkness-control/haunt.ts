@@ -40,6 +40,7 @@ export const Haunt: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "To Hit Debuff",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

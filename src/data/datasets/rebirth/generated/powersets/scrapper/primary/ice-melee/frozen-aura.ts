@@ -37,6 +37,7 @@ export const FrozenAura: Power = {
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
     "Sleep",
+    "Universal Control Duration",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
