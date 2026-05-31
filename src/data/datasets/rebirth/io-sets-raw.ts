@@ -8521,14 +8521,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Damage",
-          "Confuse",
-          "Fear",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun"
+          "Mez"
         ],
-        "name": "Damage/Confuse/Fear/Hold/Immobilize/Sleep/Stun",
+        "name": "Damage/Mez",
         "num": 1,
         "proc": false,
         "unique": true
@@ -8537,14 +8532,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Accuracy",
           "Damage",
-          "Confuse",
-          "Fear",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun"
+          "Mez"
         ],
-        "name": "Accuracy/Damage/Confuse/Fear/Hold/Immobilize/Sleep/Stun",
+        "name": "Accuracy/Damage/Mez",
         "num": 2,
         "proc": false,
         "unique": true
@@ -8553,14 +8543,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage",
           "Recharge",
-          "Confuse",
-          "Fear",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun"
+          "Mez"
         ],
-        "name": "Damage/Recharge/Confuse/Fear/Hold/Immobilize/Sleep/Stun",
+        "name": "Damage/Recharge/Mez",
         "num": 3,
         "proc": false,
         "unique": true
@@ -8580,16 +8565,10 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Accuracy",
           "Damage",
-          "Endurance",
           "Recharge",
-          "Confuse",
-          "Fear",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun"
+          "Mez"
         ],
-        "name": "Accuracy/Damage/Endurance/Recharge/Confuse/Fear/Hold/Immobilize/Sleep/Stun",
+        "name": "Accuracy/Damage/Recharge/Mez",
         "num": 5,
         "proc": false,
         "unique": true
@@ -17476,17 +17455,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Damage",
-          "Confuse",
           "Endurance Modification",
-          "Fear",
           "Healing",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
+          "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Confuse/Endurance Modification/Fear/Healing/Hold/Immobilize/Sleep/Stun/ToHit Buff",
+        "name": "Damage/Endurance Modification/Healing/Mez/ToHit Buff",
         "num": 1,
         "proc": false,
         "unique": true
@@ -17495,16 +17469,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage",
           "Recharge",
-          "Confuse",
           "Endurance Modification",
-          "Fear",
           "Healing",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun"
+          "Mez"
         ],
-        "name": "Damage/Recharge/Confuse/Endurance Modification/Fear/Healing/Hold/Immobilize/Sleep/Stun",
+        "name": "Damage/Recharge/Endurance Modification/Healing/Mez",
         "num": 2,
         "proc": false,
         "unique": true
@@ -17523,17 +17492,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage",
           "Endurance",
-          "Confuse",
           "Endurance Modification",
-          "Fear",
           "Healing",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
+          "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Endurance/Confuse/Endurance Modification/Fear/Healing/Hold/Immobilize/Sleep/Stun/ToHit Buff",
+        "name": "Damage/Endurance/Endurance Modification/Healing/Mez/ToHit Buff",
         "num": 4,
         "proc": false,
         "unique": true
@@ -17543,17 +17507,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage",
           "Endurance",
           "Recharge",
-          "Confuse",
           "Endurance Modification",
-          "Fear",
           "Healing",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
+          "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Endurance/Recharge/Confuse/Endurance Modification/Fear/Healing/Hold/Immobilize/Sleep/Stun/ToHit Buff",
+        "name": "Damage/Endurance/Recharge/Endurance Modification/Healing/Mez/ToHit Buff",
         "num": 5,
         "proc": false,
         "unique": true
@@ -23892,17 +23851,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Damage",
-          "Confuse",
           "Endurance Modification",
-          "Fear",
           "Healing",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
+          "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Confuse/Endurance Modification/Fear/Healing/Hold/Immobilize/Sleep/Stun/ToHit Buff",
+        "name": "Damage/Endurance Modification/Healing/Mez/ToHit Buff",
         "num": 1,
         "proc": false,
         "unique": true
@@ -23911,16 +23865,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage",
           "Recharge",
-          "Confuse",
           "Endurance Modification",
-          "Fear",
           "Healing",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun"
+          "Mez"
         ],
-        "name": "Damage/Recharge/Confuse/Endurance Modification/Fear/Healing/Hold/Immobilize/Sleep/Stun",
+        "name": "Damage/Recharge/Endurance Modification/Healing/Mez",
         "num": 2,
         "proc": false,
         "unique": true
@@ -23939,17 +23888,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage",
           "Endurance",
-          "Confuse",
           "Endurance Modification",
-          "Fear",
           "Healing",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
+          "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Endurance/Confuse/Endurance Modification/Fear/Healing/Hold/Immobilize/Sleep/Stun/ToHit Buff",
+        "name": "Damage/Endurance/Endurance Modification/Healing/Mez/ToHit Buff",
         "num": 4,
         "proc": false,
         "unique": true
@@ -23959,17 +23903,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage",
           "Endurance",
           "Recharge",
-          "Confuse",
           "Endurance Modification",
-          "Fear",
           "Healing",
-          "Hold",
-          "Immobilize",
-          "Sleep",
-          "Stun",
+          "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Endurance/Recharge/Confuse/Endurance Modification/Fear/Healing/Hold/Immobilize/Sleep/Stun/ToHit Buff",
+        "name": "Damage/Endurance/Recharge/Endurance Modification/Healing/Mez/ToHit Buff",
         "num": 5,
         "proc": false,
         "unique": true

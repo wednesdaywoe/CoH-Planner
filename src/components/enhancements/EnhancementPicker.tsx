@@ -244,7 +244,16 @@ export function EnhancementPicker() {
         sets = availableSets.filter((set) => set.pieces.some((p) => p.proc));
         break;
       default:
-        sets = availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
+        // Special-set classification (ATO / purple / event / pvp) normally
+        // hides those sets from standard type filters because they own
+        // their own sidebar buttons. But the niche "Universal Control
+        // Duration" / "Rest Buff" categories ARE their own home — Forced
+        // Indoctrination / Inexhaustibility ship with event rarity for
+        // exemplar-immunity but conceptually belong here. Skip the
+        // special filter when the user has selected one of these.
+        sets = (sidebarFilter === 'Universal Control Duration' || sidebarFilter === 'Rest Buff')
+          ? availableSets.filter((set) => set.type === sidebarFilter)
+          : availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
     }
     // Level Up mode: only show sets the character can use at their current level
     if (levelUpMode) {

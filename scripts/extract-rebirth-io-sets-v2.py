@@ -164,6 +164,23 @@ REBIRTH_PIECE_RENAMES = {
     'ragnarok': {6: 'Chance for Knockdown'},
 }
 
+# Per-piece aspect overrides for cases where the binary template carries
+# attribs that don't match the in-game piece per the Rebirth wiki / in-game
+# enhancement window. Each entry replaces the parsed aspect list outright
+# (after `_collapse_aspects` runs) — the piece name is regenerated from the
+# overridden list.
+#
+# Forced Indoctrination piece 5: binary template includes
+# `EnduranceDiscount/Strength` alongside Acc/Dmg/Rech/mez, but the wiki and
+# in-game tooltip describe this as Acc/Dmg/Rech/Ctrl (no End Reduction).
+# Tracking the upstream discrepancy via this override so the planner shows
+# what the player actually slots; revisit if Rebirth changes the binary.
+REBIRTH_PIECE_ASPECT_OVERRIDES: dict[str, dict[int, list[str]]] = {
+    'forced_indoctrination': {
+        5: ['Accuracy', 'Damage', 'Recharge', 'Mez'],
+    },
+}
+
 # ---------------------------------------------------------------------
 # Rarity → planner category
 # ---------------------------------------------------------------------
@@ -202,7 +219,13 @@ DAMAGE_ATTRIBS = {
 }
 # Resistance attribs same idea — all 8 → "Damage Resistance".
 RESISTANCE_ATTRIBS = DAMAGE_ATTRIBS
-# Mez attribs — all 5 of these → "Mez Resistance".
+# Mez attribs — all 6 of these → "Mez" (universal mez aspect, matches
+# Controller / Dominator ATO convention in Will of the Controller etc.).
+# Without the collapse, Forced Indoctrination's pieces would surface as
+# "Damage/Confuse/Fear/Hold/Immobilize/Sleep/Stun" — accurate but unwieldy.
+# Recognised as "Mez" by the planner's universal-mez expansion (every mez
+# type gets the same Schedule A value, see UNIVERSAL_MEZ_KEYS in
+# enhancement-values.ts).
 MEZ_ATTRIBS = {'Held', 'Stunned', 'Sleep', 'Confused', 'Terrorized', 'Immobilized'}
 
 # Map of bin attrib → planner aspect label (for boost pieces).
@@ -259,6 +282,10 @@ def _collapse_aspects(attribs: list[str], set_category: str = '') -> tuple[list[
     if DAMAGE_ATTRIBS.issubset(distinct):
         aspects.append('Damage Resistance' if set_category == 'ECResist' else 'Damage')
         distinct -= DAMAGE_ATTRIBS
+
+    if MEZ_ATTRIBS.issubset(distinct):
+        aspects.append('Mez')
+        distinct -= MEZ_ATTRIBS
 
     for a in sorted(distinct):
         mapped = ATTRIB_TO_ASPECT.get(a)
@@ -688,6 +715,19 @@ def main() -> int:
             new_name = renames.get(p.get('num'))
             if new_name:
                 p['name'] = new_name
+
+    # Apply per-piece aspect overrides (for wiki/in-game vs binary
+    # discrepancies). Each override replaces the aspect list outright and
+    # regenerates the piece name from the canonical ordering.
+    for set_id, piece_overrides in REBIRTH_PIECE_ASPECT_OVERRIDES.items():
+        entry = out_sets.get(set_id)
+        if not entry:
+            continue
+        for p in entry.get('pieces', []):
+            new_aspects = piece_overrides.get(p.get('num'))
+            if new_aspects:
+                p['aspects'] = _sort_aspects_canonical(list(new_aspects))
+                p['name'] = '/'.join(p['aspects'])
 
     print(f'\nExtracted {len(out_sets)} sets ({len(skipped)} skipped)')
     print(f'  {shared_overridden} shared sets overridden with HC data')
