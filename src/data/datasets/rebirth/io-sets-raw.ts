@@ -8575,9 +8575,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance for Psionic Damage",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -25573,9 +25573,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "Chance",
         "num": 3,
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],

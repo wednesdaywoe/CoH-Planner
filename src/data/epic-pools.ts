@@ -219,12 +219,18 @@ export function getEpicPool(id: string): EpicPool | undefined {
 
 // Hero ATs that lack patron pool data use their villain counterpart's patron pools.
 // All ATs can access patron pools in-game (unlocked via going rogue/villain).
+// Blasters are paired with Mastermind here because the in-game proliferation
+// gave Blaster patron pools (Leviathan, Soul) the heavy-hitting Mastermind
+// roster (School of Sharks + Knockout Blow / Chum Spray + Spirit Shark Jaws
+// for Leviathan, etc.) — not Corruptor's lighter Hibernate / Coralax-summon
+// roster. Mace and Mu Mastery are already authored natively for Blaster, so
+// only Leviathan and Soul fall back, and they need the Mastermind variant.
 const PATRON_POOL_FALLBACK: Record<string, string> = {
   defender: 'corruptor',
   tanker: 'brute',
   scrapper: 'stalker',
   controller: 'dominator',
-  blaster: 'corruptor',
+  blaster: 'mastermind',
 };
 
 // Villain ATs that lack epic pool data use their hero counterpart's epic pools.

@@ -626,6 +626,16 @@ def main() -> int:
                         proc_effect_attribs.extend(t.attribs)
             aspects, is_proc = _collapse_aspects(attribs, s.category)
             is_proc = is_proc or is_proc_marker
+            # Fallback proc detection: when the piece has NO Strength
+            # templates (no enhancement aspects to collapse) but DOES carry
+            # Current/Absolute templates with damage-type attribs, it's a
+            # bare proc piece — the damage template itself is the effect.
+            # Forced Indoctrination piece 6 is the canonical case: a single
+            # Psionic_Dmg/Absolute/Magnitude template with no Null marker
+            # alongside it. Without this branch, _collapse_aspects sees an
+            # empty attrib list and the piece exports as `name="Empty"`.
+            if not is_proc and not attribs and proc_effect_attribs:
+                is_proc = True
             piece_display = _piece_name_from_aspects(aspects) or 'Special'
             if is_proc:
                 # Build a "Chance for X" label using whatever proc effects
