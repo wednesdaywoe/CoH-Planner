@@ -934,7 +934,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   <input
                     ref={fileInputRef}
                     type="file"
-                    accept=".json,.skif"
+                    accept=".json,.skif,application/json,application/octet-stream,text/plain"
                     onChange={handleImportFromFile}
                     className="w-full text-sm text-gray-400
                       file:mr-4 file:py-2 file:px-4
@@ -1005,7 +1005,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   <input
                     ref={midsFileInputRef}
                     type="file"
-                    accept=".mbd,.mxd,.json,.skif"
+                    accept=".mbd,.mxd,.json,.skif,application/json,application/octet-stream,text/plain"
                     onChange={handleMidsFileUpload}
                     className="w-full text-sm text-gray-400
                       file:mr-4 file:py-2 file:px-4
@@ -1134,7 +1134,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   <input
                     ref={extFileInputRef}
                     type="file"
-                    accept=".json"
+                    accept=".json,application/json,text/plain"
                     onChange={(e) => {
                       const file = e.target.files?.[0];
                       if (!file) return;

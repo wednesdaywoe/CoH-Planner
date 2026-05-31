@@ -685,7 +685,7 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
           <input
             ref={fileInputRef}
             type="file"
-            accept=".skif,.json"
+            accept=".skif,.json,application/json,application/octet-stream,text/plain"
             onChange={handleFileLoad}
             className="hidden"
           />
