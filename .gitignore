@@ -65,3 +65,6 @@ tools/pigg-wrangler-dist/build/
 tools/pigg-wrangler-dist/dist/
 tools/bin-crawler/exported_powers/
 tools/bin-crawler/**/static/cache/
+
+# Playwright MCP test artifacts
+.playwright-mcp/

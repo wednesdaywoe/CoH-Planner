@@ -347,6 +347,30 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     [globalBonuses]
   );
 
+  // Augment the aspect-keyed bonuses with active +Strength self-buffs (Power
+  // Boost family). Strength is a non-ED multiplier on the caster's OWN matching
+  // output, so it lands in the Final column exactly like a global bonus
+  // (final = base × (1 + enh + global)). Defense and mez have no pre-existing
+  // global coupling here, and heal-strength is genuinely additive with the
+  // existing +Heal set-bonus strength — so strength is added for those.
+  // ToHit/damage are intentionally left to their existing handling: the
+  // dashboard totals already fold in ToHit strength, and Power Boost grants no
+  // damage strength at all. Stored on globalBonuses as fractions by
+  // calculateCharacterTotals (collectStrengthBuffs).
+  const globalBonusesWithStrength = useMemo(() => {
+    const out: Record<string, number> = { ...globalBonusesForCalc };
+    const add = (aspect: string, val: number) => {
+      if (val) out[aspect] = (out[aspect] || 0) + val;
+    };
+    add('defense', globalBonuses.strengthDefense);
+    add('heal', globalBonuses.strengthHeal);
+    const mezStr = globalBonuses.strengthMez;
+    if (mezStr) {
+      for (const k of ['hold', 'stun', 'sleep', 'confuse', 'fear', 'immobilize']) add(k, mezStr);
+    }
+    return out;
+  }, [globalBonusesForCalc, globalBonuses.strengthDefense, globalBonuses.strengthHeal, globalBonuses.strengthMez]);
+
   // Kheldian form redirect (Rebirth only): for human-form base powers
   // that PowerRedirector to a form-specific variant, swap the displayed
   // power's effect data to the variant when the user has selected that
@@ -926,7 +950,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         effects={stackingInfo && targetsHit > 1 ? adjustEffectsForTargets(effects, targetsHit) : effects}
         allowedEnhancements={power?.allowedEnhancements || []}
         enhancementBonuses={enhancementBonuses}
-        globalBonuses={globalBonusesForCalc}
+        globalBonuses={globalBonusesWithStrength}
         buffDebuffMod={effectiveMod}
         archetypeId={archetypeId ?? undefined}
         level={build.level}

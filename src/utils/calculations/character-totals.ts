@@ -157,6 +157,19 @@ export interface GlobalBonuses {
   baseToHit: number;
   hitChance: number;
   combatModifier: number;
+  // +Strength buffs (Power Boost family). Stored as fractions (e.g. 1.229 =
+  // +122.9% strength), NOT percentages like the fields above. These are
+  // non-ED multipliers applied to the caster's OWN power outputs for the
+  // matching aspect (def/tohit/heal/absorb/endmod/movement/mez), additive
+  // with enhancement strength. They never touch damage, resistance, or set
+  // bonuses, and add nothing on their own ("twice nothing is nothing").
+  strengthDefense: number;
+  strengthToHit: number;
+  strengthHeal: number;
+  strengthAbsorb: number;
+  strengthEndMod: number;
+  strengthMovement: number;
+  strengthMez: number;
 }
 
 /**
@@ -273,6 +286,13 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     baseToHit: 0.75,
     hitChance: 0.75,
     combatModifier: 1.0,
+    strengthDefense: 0,
+    strengthToHit: 0,
+    strengthHeal: 0,
+    strengthAbsorb: 0,
+    strengthEndMod: 0,
+    strengthMovement: 0,
+    strengthMez: 0,
   };
 }
 
@@ -588,6 +608,10 @@ interface ActivePowerEffect {
   /** Linear self-stacking metadata — see PowerEffects.stacksLinear */
   stacksLinear?: readonly string[];
   maxStacks?: number;
+  /** +Strength self-buff container (Power Boost family) — keyed by aspect
+   *  (defense/melee/.../tohit/heal/absorb/endurance/movement/mez). Each entry
+   *  is a Strength-aspect multiplier on the caster's own matching output. */
+  specialBuff?: Record<string, ScalarOrScaled>;
 }
 
 interface PowerWithToggle {
@@ -688,6 +712,84 @@ function applyToggleEndCosts(
  * Enhancement bonuses are now factored in to boost the base power values
  * Alpha incarnate bonuses are added to the enhancement bonuses for applicable aspects
  */
+/**
+ * Accumulated +Strength self-buffs (Power Boost family), as FRACTIONS
+ * (e.g. 0.5 = +50% strength). Applied as a non-ED additive term in the
+ * per-power enhancement multiplier for the matching aspect.
+ */
+export interface StrengthBuffs {
+  defense: number;
+  toHit: number;
+  heal: number;
+  absorb: number;
+  endMod: number;
+  movement: number;
+  mez: number;
+}
+
+function emptyStrengthBuffs(): StrengthBuffs {
+  return { defense: 0, toHit: 0, heal: 0, absorb: 0, endMod: 0, movement: 0, mez: 0 };
+}
+
+/** specialBuff keys representing defense strength (all positions + all types + Base_Defense). */
+const STRENGTH_DEFENSE_KEYS = new Set([
+  'defense', 'melee', 'ranged', 'aoe',
+  'smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic',
+]);
+/** specialBuff keys representing mez strength (boosts both magnitude and duration). */
+const STRENGTH_MEZ_KEYS = new Set([
+  'hold', 'stun', 'sleep', 'confuse', 'fear', 'immobilize',
+]);
+
+/**
+ * Collect active +Strength self-buffs (Power Boost, Power Build Up, Power Up,
+ * Bass Boost, Gather Shadows, Adrenal Booster, …) from the build's active
+ * powers. Each `specialBuff` entry is a Strength-aspect buff that multiplies
+ * the caster's OWN matching power output — non-ED, additive with enhancement
+ * strength, and it adds nothing on its own ("twice nothing is nothing").
+ *
+ * Within one power the defense (and mez) sub-keys are uniform — the binary
+ * simply enumerates every defense/mez attribute — so we take the
+ * representative (max) per power rather than summing the ~12 defense keys.
+ * Across multiple active strength powers (and self-stacks via maxStacks /
+ * stacksLinear) the fractions add. Returns fractions per aspect.
+ */
+export function collectStrengthBuffs(
+  powers: PowerWithToggle[],
+  archetypeId: string,
+  buildLevel: number,
+  targetsHitValues: Record<string, number> = {},
+): StrengthBuffs {
+  const sb = emptyStrengthBuffs();
+  for (const power of powers) {
+    const isAuto = power.powerType?.toLowerCase() === 'auto';
+    if (!(isAuto || power.isActive)) continue;
+    const special = power.effects?.specialBuff as Record<string, ScalarOrScaled> | undefined;
+    if (!special || typeof special !== 'object') continue;
+
+    const targetsHit = targetsHitValues[power.internalName];
+    const stacksLinear = power.effects?.stacksLinear;
+    const maxStacks = power.effects?.maxStacks;
+    let defMax = 0;
+    let mezMax = 0;
+    for (const [key, raw] of Object.entries(special)) {
+      const adjusted = adjustForStacking(raw, targetsHit, stacksLinear, 'specialBuff', maxStacks);
+      const frac = resolveScaledEffect(adjusted, archetypeId, buildLevel);
+      if (frac <= 0) continue;
+      if (STRENGTH_DEFENSE_KEYS.has(key)) defMax = Math.max(defMax, frac);
+      else if (STRENGTH_MEZ_KEYS.has(key)) mezMax = Math.max(mezMax, frac);
+      else if (key === 'tohit') sb.toHit += frac;
+      else if (key === 'heal') sb.heal += frac;
+      else if (key === 'absorb') sb.absorb += frac;
+      else if (key === 'endurance') sb.endMod += frac;
+      else if (key === 'movement') sb.movement += frac;
+    }
+    sb.defense += defMax;
+    sb.mez += mezMax;
+  }
+  return sb;
+}
+
 function applyActivePowerBonuses(
   powers: PowerWithToggle[],
   global: GlobalBonuses,
@@ -698,7 +800,8 @@ function applyActivePowerBonuses(
   alphaEdBypassRatio: number = 0,
   targetsHitValues: Record<string, number> = {},
   exemplarLevel?: number,
-  combatMode?: boolean
+  combatMode?: boolean,
+  strengthBuffs: StrengthBuffs = emptyStrengthBuffs()
 ): void {
   for (const power of powers) {
     // Auto powers are always active; others require explicit isActive toggle
@@ -752,7 +855,7 @@ function applyActivePowerBonuses(
     // ToHit buff (stored as decimal, convert to percentage)
     // Enhanced by ToHit enhancements
     if (effects.tohitBuff !== undefined) {
-      const enhMultiplier = 1 + (enhBonuses.tohit || 0);
+      const enhMultiplier = 1 + (enhBonuses.tohit || 0) + strengthBuffs.toHit;
       const adjustedBuff = adjustForStacking(effects.tohitBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'tohitBuff', effects.maxStacks);
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.toHit += value;
@@ -798,7 +901,7 @@ function applyActivePowerBonuses(
     // Skip defenseBuff when defenseBuffExcludesSelf is set (e.g., Grant Cover — team only)
     const defenseEffects = effects.defense || (!effects.defenseBuffExcludesSelf ? effects.defenseBuff : undefined);
     if (defenseEffects && typeof defenseEffects === 'object') {
-      const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
+      const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0) + strengthBuffs.defense;
       for (const [type, value] of Object.entries(defenseEffects)) {
         const adjustedDef = adjustForStacking(value, targetsHitValues[power.internalName], effects.stacksLinear, 'defenseBuff', effects.maxStacks);
         const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
@@ -816,7 +919,7 @@ function applyActivePowerBonuses(
 
     // Suppressible defense from stealth/travel powers (skipped in combat mode)
     if (!combatMode && effects.defenseBuffSuppressible && typeof effects.defenseBuffSuppressible === 'object') {
-      const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
+      const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0) + strengthBuffs.defense;
       for (const [type, value] of Object.entries(effects.defenseBuffSuppressible)) {
         const adjustedDef = adjustForStacking(value, targetsHitValues[power.internalName], effects.stacksLinear, 'defenseBuff', effects.maxStacks);
         const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
@@ -2919,7 +3022,19 @@ export function calculateCharacterTotals(
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
   if (_debug) debugGroup('Step 7: Active Power Bonuses');
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode);
+  // Collect active +Strength self-buffs (Power Boost family) FIRST, so each
+  // boosted power's defense/tohit/etc. output is multiplied by the strength
+  // when applyActivePowerBonuses runs. Stored on globalBonuses (as fractions)
+  // for the Power Info per-power display to read.
+  const strengthBuffs = collectStrengthBuffs(allPowers, build.archetype.id || '', effectiveLevel, options?.targetsHitValues ?? {});
+  globalBonuses.strengthDefense = strengthBuffs.defense;
+  globalBonuses.strengthToHit = strengthBuffs.toHit;
+  globalBonuses.strengthHeal = strengthBuffs.heal;
+  globalBonuses.strengthAbsorb = strengthBuffs.absorb;
+  globalBonuses.strengthEndMod = strengthBuffs.endMod;
+  globalBonuses.strengthMovement = strengthBuffs.movement;
+  globalBonuses.strengthMez = strengthBuffs.mez;
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs);
   if (_debug) debugGroupEnd();
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
