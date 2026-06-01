@@ -270,8 +270,7 @@ export const POWER_POOLS_RAW = {
             "tohitBuff": 60,
             "damageBuff": 60,
             "rechargeBuff": 60,
-            "specialBuff": 60,
-            "defenseBuff": 60
+            "specialBuff": 60
           },
           "damageBuff": {
             "scale": 1,
@@ -313,11 +312,15 @@ export const POWER_POOLS_RAW = {
             "sleep": {
               "scale": 1,
               "table": "Melee_Res_Boolean"
+            },
+            "defense": {
+              "scale": 1,
+              "table": "Melee_Res_Boolean"
+            },
+            "tohit": {
+              "scale": 1,
+              "table": "Melee_Res_Boolean"
             }
-          },
-          "defenseBuff": {
-            "scale": 1,
-            "table": "Melee_Res_Boolean"
           },
           "buffDuration": 60
         }

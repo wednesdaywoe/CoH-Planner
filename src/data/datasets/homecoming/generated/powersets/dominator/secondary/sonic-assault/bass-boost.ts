@@ -31,14 +31,12 @@ export const BassBoost: Power = {
   "maxSlots": 6,
   "effects": {
     "damageBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
+      "scale": 4,
+      "table": "Melee_Buff_Dmg"
     },
     "durations": {
       "damageBuff": 10,
-      "specialBuff": 10,
-      "defenseBuff": 10,
-      "tohitBuff": 10
+      "specialBuff": 10
     },
     "specialBuff": {
       "heal": {
@@ -80,20 +78,64 @@ export const BassBoost: Power = {
       "sleep": {
         "scale": 0.5,
         "table": "Melee_Stun"
+      },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "aoe": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "cold": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "psionic": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "toxic": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "tohit": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
       }
-    },
-    "defenseBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "tohitBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
     },
     "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
-      "damageBuff"
+      "specialBuff"
     ]
   }
 };

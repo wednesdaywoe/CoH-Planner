@@ -457,62 +457,109 @@ export const EPIC_POOLS_RAW = {
           },
           "tohitDebuff": {
             "scale": 0.3,
-            "table": "Melee_Ones"
+            "table": "Ranged_Ones"
           },
           "durations": {
             "tohitDebuff": 30,
+            "specialBuff": 30,
             "damageDebuff": 30,
-            "defenseDebuff": 30,
-            "absorb": 30,
-            "enduranceDrain": 30,
-            "confuse": 30,
-            "fear": 30,
-            "hold": 30,
-            "immobilize": 30,
-            "stun": 30,
-            "sleep": 30
+            "specialDebuff": 30
+          },
+          "specialBuff": {
+            "heal": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "absorb": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "endurance": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "confuse": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "fear": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "hold": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "immobilize": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "stun": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "sleep": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            }
           },
           "damageDebuff": {
             "scale": 0.3,
             "table": "Melee_Ones"
           },
-          "defenseDebuff": {
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "absorb": {
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "enduranceDrain": {
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "effectDuration": 30,
-          "fear": {
-            "mag": 1,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "mag": 1,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 0.3,
-            "table": "Melee_Ones"
+          "specialDebuff": {
+            "ranged": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "melee": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "aoe": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "smashing": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "lethal": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "fire": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "cold": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "energy": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "negative": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "psionic": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "toxic": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "defense": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            }
           },
           "buffDuration": 30
         }
@@ -6279,80 +6326,102 @@ export const EPIC_POOLS_RAW = {
           "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "damageBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "durations": {
-            "damageBuff": 15,
-            "absorb": 15,
-            "enduranceGain": 15,
-            "movement": 15,
-            "confuse": 15,
-            "fear": 15,
-            "hold": 15,
-            "immobilize": 15,
-            "stun": 15,
-            "sleep": 15,
-            "defenseBuff": 15,
-            "tohitBuff": 15
-          },
-          "absorb": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "enduranceGain": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "movement": {
-            "runSpeed": {
+          "specialBuff": {
+            "heal": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "flySpeed": {
+            "absorb": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "movement": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "confuse": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fear": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "hold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "stun": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "sleep": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "ranged": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "melee": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "aoe": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fire": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "cold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "negative": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "psionic": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "toxic": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "defense": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "tohit": {
               "scale": 0.66,
               "table": "Melee_Stun"
             }
           },
-          "confuse": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "effectDuration": 15,
-          "fear": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "stun": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "defenseBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "tohitBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
+          "durations": {
+            "specialBuff": 15
           },
           "buffDuration": 15
         }
@@ -13174,62 +13243,109 @@ export const EPIC_POOLS_RAW = {
           },
           "tohitDebuff": {
             "scale": 0.3,
-            "table": "Melee_Ones"
+            "table": "Ranged_Ones"
           },
           "durations": {
             "tohitDebuff": 30,
+            "specialBuff": 30,
             "damageDebuff": 30,
-            "defenseDebuff": 30,
-            "absorb": 30,
-            "enduranceDrain": 30,
-            "confuse": 30,
-            "fear": 30,
-            "hold": 30,
-            "immobilize": 30,
-            "stun": 30,
-            "sleep": 30
+            "specialDebuff": 30
+          },
+          "specialBuff": {
+            "heal": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "absorb": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "endurance": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "confuse": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "fear": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "hold": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "immobilize": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "stun": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "sleep": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            }
           },
           "damageDebuff": {
             "scale": 0.3,
             "table": "Melee_Ones"
           },
-          "defenseDebuff": {
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "absorb": {
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "enduranceDrain": {
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "effectDuration": 30,
-          "fear": {
-            "mag": 1,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "mag": 1,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 0.3,
-            "table": "Melee_Ones"
+          "specialDebuff": {
+            "ranged": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "melee": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "aoe": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "smashing": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "lethal": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "fire": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "cold": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "energy": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "negative": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "psionic": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "toxic": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            },
+            "defense": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
+            }
           },
           "buffDuration": 30
         }
@@ -13800,80 +13916,102 @@ export const EPIC_POOLS_RAW = {
           "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "damageBuff": {
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "durations": {
-            "damageBuff": 15,
-            "absorb": 15,
-            "enduranceGain": 15,
-            "movement": 15,
-            "confuse": 15,
-            "fear": 15,
-            "hold": 15,
-            "immobilize": 15,
-            "stun": 15,
-            "sleep": 15,
-            "defenseBuff": 15,
-            "tohitBuff": 15
-          },
-          "absorb": {
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "enduranceGain": {
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "movement": {
-            "runSpeed": {
+          "specialBuff": {
+            "heal": {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
-            "flySpeed": {
+            "absorb": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "movement": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "confuse": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "fear": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "hold": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "stun": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "sleep": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "ranged": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "melee": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "aoe": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "fire": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "cold": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "negative": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "psionic": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "toxic": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "defense": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "tohit": {
               "scale": 0.44,
               "table": "Melee_Stun"
             }
           },
-          "confuse": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "effectDuration": 15,
-          "fear": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "stun": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "defenseBuff": {
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "tohitBuff": {
-            "scale": 0.44,
-            "table": "Melee_Stun"
+          "durations": {
+            "specialBuff": 15
           },
           "buffDuration": 15
         }
@@ -15166,81 +15304,113 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
           },
           "durations": {
-            "tohitBuff": 15,
-            "damageBuff": 15,
-            "absorb": 15,
-            "enduranceGain": 15,
-            "movement": 15,
-            "confuse": 15,
-            "fear": 15,
-            "hold": 15,
-            "immobilize": 15,
-            "stun": 15,
-            "sleep": 15,
-            "defenseBuff": 15
+            "tohitBuff": 12.5,
+            "damageBuff": 12.5,
+            "specialBuff": 15
           },
           "damageBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
+            "scale": 8,
+            "table": "Melee_Buff_Dmg"
           },
-          "absorb": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "enduranceGain": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "movement": {
-            "runSpeed": {
+          "specialBuff": {
+            "heal": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "flySpeed": {
+            "absorb": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "movement": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "confuse": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fear": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "hold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "stun": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "sleep": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "ranged": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "melee": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "aoe": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fire": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "cold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "negative": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "psionic": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "toxic": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "defense": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "tohit": {
               "scale": 0.66,
               "table": "Melee_Stun"
             }
           },
-          "confuse": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "effectDuration": 15,
-          "fear": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "stun": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "defenseBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "buffDuration": 15
+          "buffDuration": 12.5
         }
       },
       {
@@ -15648,80 +15818,102 @@ export const EPIC_POOLS_RAW = {
           "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "damageBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "durations": {
-            "damageBuff": 15,
-            "absorb": 15,
-            "enduranceGain": 15,
-            "movement": 15,
-            "confuse": 15,
-            "fear": 15,
-            "hold": 15,
-            "immobilize": 15,
-            "stun": 15,
-            "sleep": 15,
-            "defenseBuff": 15,
-            "tohitBuff": 15
-          },
-          "absorb": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "enduranceGain": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "movement": {
-            "runSpeed": {
+          "specialBuff": {
+            "heal": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "flySpeed": {
+            "absorb": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "movement": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "confuse": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fear": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "hold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "stun": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "sleep": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "ranged": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "melee": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "aoe": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fire": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "cold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "negative": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "psionic": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "toxic": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "defense": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "tohit": {
               "scale": 0.66,
               "table": "Melee_Stun"
             }
           },
-          "confuse": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "effectDuration": 15,
-          "fear": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "stun": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "defenseBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "tohitBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
+          "durations": {
+            "specialBuff": 15
           },
           "buffDuration": 15
         }
