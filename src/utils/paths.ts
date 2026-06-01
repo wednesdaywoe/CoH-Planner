@@ -4,15 +4,16 @@
 
 /**
  * Get the base URL for the application
- * In development: "/"
- * In production (GitHub Pages): "/CoH-Planner/"
+ * Vite supplies this via `import.meta.env.BASE_URL` based on the `base`
+ * field in vite.config.ts — currently "/" in both dev and prod since the
+ * site is served from the coh-sidekick.com custom domain at the root.
  */
 export const BASE_URL = import.meta.env.BASE_URL;
 
 /**
  * Resolve an absolute path with the base URL
  * @param path Path starting with "/" (e.g., "/img/Unknown.png")
- * @returns Full path with base URL (e.g., "/CoH-Planner/img/Unknown.png")
+ * @returns Full path with base URL (e.g., "/img/Unknown.png")
  */
 export function resolvePath(path: string): string {
   // If path doesn't start with /, return as-is

@@ -1,5 +1,5 @@
 /**
- * Export a CoH-Planner build to Mids Reborn .mbd (JSON) format.
+ * Export a Sidekick build to Mids Reborn .mbd (JSON) format.
  * This is the reverse of src/utils/mids-import/.
  */
 
@@ -363,7 +363,7 @@ function buildSlotEntries(slots: (Enhancement | null)[], powerLevel: number): Mb
 // ============================================
 
 /**
- * Export a CoH-Planner Build to Mids Reborn .mbd JSON format.
+ * Export a Sidekick Build to Mids Reborn .mbd JSON format.
  * Returns the JSON string ready to save as a .mbd file.
  */
 export function exportToMids(build: Build): string {

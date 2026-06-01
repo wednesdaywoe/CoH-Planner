@@ -1,5 +1,5 @@
 -- ============================================
--- CoH-Planner Shared Builds — Supabase Schema
+-- Sidekick Shared Builds — Supabase Schema
 -- Run this in the Supabase SQL editor after creating your project
 -- ============================================
 

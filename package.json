@@ -1,5 +1,5 @@
 {
-  "name": "coh-planner",
+  "name": "coh-sidekick",
   "version": "1.0.0",
   "description": "City of Heroes Character Build Planner",
   "type": "module",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wednesdaywoe/CoH-Planner.git"
+    "url": "git+https://github.com/wednesdaywoe/CoH-Sidekick.git"
   },
   "keywords": [
     "city-of-heroes",
@@ -25,9 +25,9 @@
   "author": "Wednesdaywoe",
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/wednesdaywoe/CoH-Planner/issues"
+    "url": "https://github.com/wednesdaywoe/CoH-Sidekick/issues"
   },
-  "homepage": "https://github.com/wednesdaywoe/CoH-Planner#readme",
+  "homepage": "https://github.com/wednesdaywoe/CoH-Sidekick#readme",
   "dependencies": {
     "@sentry/react": "^10.53.1",
     "@sentry/vite-plugin": "^5.3.0",
