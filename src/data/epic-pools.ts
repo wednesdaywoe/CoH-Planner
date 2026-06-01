@@ -109,8 +109,14 @@ function transformEpicPower(legacy: LegacyEpicPower): Power {
     ...effectFields
   } = legacy.effects;
 
-  // Convert per-tick endurance to per-second
-  const endPerSec = endurance ? endurance / (activatePeriod || 0.5) : undefined;
+  // Toggle endurance is per-tick in the binary data — convert to per-second.
+  // Clicks pay a flat cost per activation and must NOT be divided by the tick
+  // period (doing so doubled e.g. Power Boost's 9.75 to 19.5). Mirrors the
+  // isToggle gating in power-pools.ts:transformPoolPower.
+  const isToggle = legacy.powerType === 'Toggle';
+  const endPerSec = endurance
+    ? (isToggle ? endurance / (activatePeriod || 0.5) : endurance)
+    : undefined;
 
   return {
     name: legacy.name,

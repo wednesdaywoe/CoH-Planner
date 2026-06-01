@@ -59,28 +59,10 @@ export const GatherShadows: Power = {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
-      "heal": {
+      "defense": {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
-      "absorb": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "endurance": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      }
-    },
-    "durations": {
-      "specialBuff": 10,
-      "defenseBuff": 10,
-      "damageBuff": 10,
-      "tohitBuff": 10
-    },
-    "defenseBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun",
       "melee": {
         "scale": 0.5,
         "table": "Melee_Stun"
@@ -92,26 +74,65 @@ export const GatherShadows: Power = {
       "aoe": {
         "scale": 0.5,
         "table": "Melee_Stun"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "cold": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "psionic": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "heal": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "absorb": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "tohit": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "endurance": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
       }
+    },
+    "durations": {
+      "specialBuff": 10,
+      "damageBuff": 10
     },
     "damageBuff": {
       "scale": 4,
       "table": "Melee_Buff_Dmg"
     },
-    "tohitBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
     "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
-      "absorb",
       "damageBuff",
-      "defenseBuff",
-      "enduranceGain",
-      "flySpeed",
-      "runSpeed",
-      "tohitBuff"
+      "specialBuff"
     ]
   }
 };

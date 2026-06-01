@@ -2055,8 +2055,28 @@ function extractEffects(templates, powerName) {
         }
 
         if (aspect === 'strength') {
-          // Affects target's damage OUTPUT
-          if (isDebuff) {
+          // aspect=Strength on a damage-TYPE attrib normally means the
+          // target's damage OUTPUT (Build Up, Assault, Darkest Night). BUT
+          // the binary names the *damage* attribute with a `_Dmg` suffix
+          // (Smashing_Dmg) and the *defense* attribute of the same element
+          // bare (Smashing). A BARE typed attrib at aspect=Strength is a
+          // +Defense-STRENGTH buff (Power Boost) — a multiplier on the
+          // caster's own defense output, NOT damage. Route bare types to
+          // specialBuff/specialDebuff (the strength container) so they are
+          // not mistaken for flat damage. (Granite proves both coexist:
+          // its def is bare `Smashing`, its -dmg penalty is `Smashing_Dmg`.)
+          const isDamageAttrib = attrib.endsWith('_dmg');
+          if (!isDamageAttrib) {
+            if (isDebuff) {
+              if (!effects.specialDebuff) effects.specialDebuff = {};
+              effects.specialDebuff[dmgType.toLowerCase()] = makeEffect();
+              recordDuration('specialDebuff');
+            } else {
+              if (!effects.specialBuff) effects.specialBuff = {};
+              effects.specialBuff[dmgType.toLowerCase()] = makeEffect();
+              recordDuration('specialBuff');
+            }
+          } else if (isDebuff) {
             // Capture both self-penalty (Granite Armor -30% damage) and
             // foe-targeting damage debuffs (Darkest Night, Time's Juncture).
             // `selfPenalty` is what gates the calc engine — only set it
@@ -2115,6 +2135,20 @@ function extractEffects(templates, powerName) {
             effects.resistance[posType.toLowerCase()] = makeEffect();
             recordDuration('resistance');
           }
+        } else if (aspect === 'strength') {
+          // +Defense-STRENGTH by position (Power Boost: Melee/Ranged/Area at
+          // aspect=Strength on the Melee_Stun table). A strength multiplier
+          // on the caster's own positional defense output — NOT a flat
+          // defense buff. Route to the specialBuff strength container.
+          if (isDebuff) {
+            if (!effects.specialDebuff) effects.specialDebuff = {};
+            effects.specialDebuff[posType.toLowerCase()] = makeEffect();
+            recordDuration('specialDebuff');
+          } else {
+            if (!effects.specialBuff) effects.specialBuff = {};
+            effects.specialBuff[posType.toLowerCase()] = makeEffect();
+            recordDuration('specialBuff');
+          }
         } else if (isDebuff) {
           if (!effects.defenseDebuff) effects.defenseDebuff = {};
           effects.defenseDebuff[posType.toLowerCase()] = makeEffect();
@@ -2138,6 +2172,20 @@ function extractEffects(templates, powerName) {
           if (!effects.debuffResistance) effects.debuffResistance = {};
           effects.debuffResistance.defense = makeEffect();
           recordDuration('debuffResistance');
+        } else if (aspect === 'strength') {
+          // +Defense-STRENGTH (all) — Power Boost's Base_Defense at
+          // aspect=Strength. A strength multiplier applied to all the
+          // caster's defense, NOT a flat +Defense(All). Route to the
+          // specialBuff strength container.
+          if (isDebuff) {
+            if (!effects.specialDebuff) effects.specialDebuff = {};
+            effects.specialDebuff.defense = makeEffect();
+            recordDuration('specialDebuff');
+          } else {
+            if (!effects.specialBuff) effects.specialBuff = {};
+            effects.specialBuff.defense = makeEffect();
+            recordDuration('specialBuff');
+          }
         } else if (isDebuff) {
           effects.defenseDebuff = makeEffect();
           recordDuration('defenseDebuff');
@@ -2396,6 +2444,14 @@ function extractEffects(templates, powerName) {
             if (!effects.debuffResistance) effects.debuffResistance = {};
             effects.debuffResistance.tohit = makeEffect();
             recordDuration('debuffResistance');
+          } else if (aspect === 'strength') {
+            // +ToHit-STRENGTH (Power Boost). A multiplier on the caster's
+            // own ToHit-buff output (Tactics, Aim, etc.), NOT a flat +ToHit.
+            // Build Up's flat +ToHit is aspect=Current and still routes to
+            // the tohitBuff branch below. Route strength to specialBuff.
+            if (!effects.specialBuff) effects.specialBuff = {};
+            effects.specialBuff.tohit = makeEffect();
+            recordDuration('specialBuff');
           } else if (isDebuff) {
             // Capture both self-penalty and foe-targeting tohit debuffs
             // (Darkest Night, Time's Juncture, Radiation Infection, etc.).
@@ -2641,6 +2697,22 @@ function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
 
   // Only care about self-buffs (positive effects)
   if (isDebuff) return [];
+
+  // Self-targeted aspect=Strength buffs are routed by extractEffects into the
+  // `specialBuff` strength container (Power Boost family: +Def/+ToHit/+Mez/
+  // +Heal/+Absorb/+EndMod/+Movement STRENGTH). Mirror that here so stacking
+  // metadata (stacksLinear) references the real `specialBuff` key instead of
+  // the old damageBuff/defenseBuff/tohitBuff keys. The lone exception is the
+  // *damage* strength buff (Build Up/Assault), whose attribs carry the `_Dmg`
+  // suffix and which extractEffects keeps on `damageBuff` — let those fall
+  // through to the per-attrib logic below.
+  if (aspect === 'strength') {
+    const isDamageStrength = template.attribs.some(a => {
+      const al = a?.toLowerCase();
+      return al && al.endsWith('_dmg') && al !== 'heal_dmg';
+    });
+    if (!isDamageStrength) return [{ effectKey: 'specialBuff' }];
+  }
 
   const results = [];
 

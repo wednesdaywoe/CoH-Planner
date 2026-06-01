@@ -5046,28 +5046,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "heal": {
+            "defense": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "absorb": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "endurance": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            }
-          },
-          "durations": {
-            "specialBuff": 15,
-            "defenseBuff": 15,
-            "damageBuff": 15,
-            "tohitBuff": 15
-          },
-          "defenseBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun",
             "melee": {
               "scale": 0.66,
               "table": "Melee_Stun"
@@ -5079,15 +5061,54 @@ export const EPIC_POOLS_RAW = {
             "aoe": {
               "scale": 0.66,
               "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fire": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "cold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "negative": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "psionic": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "heal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "absorb": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "tohit": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
             }
           },
-          "damageBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "tohitBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
+          "durations": {
+            "specialBuff": 15
           },
           "buffDuration": 15
         }
@@ -15036,28 +15057,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
-            "heal": {
+            "defense": {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
-            "absorb": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            },
-            "endurance": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            }
-          },
-          "durations": {
-            "specialBuff": 15,
-            "defenseBuff": 15,
-            "damageBuff": 15,
-            "tohitBuff": 15
-          },
-          "defenseBuff": {
-            "scale": 0.44,
-            "table": "Melee_Stun",
             "melee": {
               "scale": 0.44,
               "table": "Melee_Stun"
@@ -15069,15 +15072,54 @@ export const EPIC_POOLS_RAW = {
             "aoe": {
               "scale": 0.44,
               "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "fire": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "cold": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "negative": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "psionic": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "heal": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "absorb": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "tohit": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
             }
           },
-          "damageBuff": {
-            "scale": 0.44,
-            "table": "Melee_Stun"
-          },
-          "tohitBuff": {
-            "scale": 0.44,
-            "table": "Melee_Stun"
+          "durations": {
+            "specialBuff": 15
           },
           "buffDuration": 15
         }
@@ -16069,28 +16111,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "heal": {
+            "defense": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "absorb": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "endurance": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            }
-          },
-          "durations": {
-            "specialBuff": 12.5,
-            "defenseBuff": 12.5,
-            "damageBuff": 12.5,
-            "tohitBuff": 12.5
-          },
-          "defenseBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun",
             "melee": {
               "scale": 0.66,
               "table": "Melee_Stun"
@@ -16102,15 +16126,64 @@ export const EPIC_POOLS_RAW = {
             "aoe": {
               "scale": 0.66,
               "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fire": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "cold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "negative": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "psionic": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "heal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "absorb": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "tohit": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
             }
           },
-          "damageBuff": {
-            "scale": 8,
-            "table": "Melee_Buff_Dmg"
+          "durations": {
+            "specialBuff": 12.5,
+            "tohitBuff": 12.5,
+            "damageBuff": 12.5
           },
           "tohitBuff": {
             "scale": 1,
             "table": "Melee_Buff_ToHit"
+          },
+          "damageBuff": {
+            "scale": 8,
+            "table": "Melee_Buff_Dmg"
           },
           "buffDuration": 12.5
         }
@@ -16520,28 +16593,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "heal": {
+            "defense": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "absorb": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "endurance": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            }
-          },
-          "durations": {
-            "specialBuff": 15,
-            "defenseBuff": 15,
-            "damageBuff": 15,
-            "tohitBuff": 15
-          },
-          "defenseBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun",
             "melee": {
               "scale": 0.66,
               "table": "Melee_Stun"
@@ -16553,15 +16608,54 @@ export const EPIC_POOLS_RAW = {
             "aoe": {
               "scale": 0.66,
               "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fire": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "cold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "negative": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "psionic": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "heal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "absorb": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "tohit": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
             }
           },
-          "damageBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
-          },
-          "tohitBuff": {
-            "scale": 0.66,
-            "table": "Melee_Stun"
+          "durations": {
+            "specialBuff": 15
           },
           "buffDuration": 15
         }
