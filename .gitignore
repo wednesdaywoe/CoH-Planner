@@ -52,6 +52,8 @@ CLAUDE.md
 docs/
 raw defs/
 tools/ghidra-audit/project/
+CLAUDE.md
+CoH-Planner.code-workspace
 
 # Python bytecode caches (anywhere in the repo)
 **/__pycache__/
