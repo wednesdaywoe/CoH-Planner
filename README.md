@@ -6,13 +6,13 @@ CoH Sidekick is designed to stay free and community-maintained for as long as th
 
 ## The Sidekick Suite
 
-CoH Sidekick is the flagship of a small suite of community tools for the CoH data ecosystem. All three ship from this repository:
+CoH Sidekick is the main feature of a small suite of community tools for the CoH data ecosystem:
 
 - **CoH Sidekick** — the character build planner (this app). React/TypeScript web application in [src/](src/).
 - **Pigg Wrangler** — a viewer, extractor, and Python library for the game's `.pigg` archive files. Lives under [tools/pigg-wrangler/](tools/pigg-wrangler/), with a PyInstaller build configuration in [tools/pigg-wrangler-dist/](tools/pigg-wrangler-dist/).
 - **Bin Crawler** — a parser for the game's binary `.bin` data files (Cryptic Parse6 / Parse7 formats), plus an HTTP API for consumers. Lives under [tools/bin-crawler/](tools/bin-crawler/). Depends on Pigg Wrangler for archive access.
 
-The planner is the main feature; Pigg Wrangler and Bin Crawler exist so the community has maintained, open tooling to keep extracting and inspecting game data as the game evolves.
+Pigg Wrangler and Bin Crawler exist so the community has maintained, open tooling to keep extracting and inspecting game data as the game evolves.
 
 ## License
 
