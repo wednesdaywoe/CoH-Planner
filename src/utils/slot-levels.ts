@@ -490,3 +490,143 @@ export function backfillSlotOrderLevels(build: Build): boolean {
   }
   return changed;
 }
+
+// ============================================================
+// SLOT-LEVEL MOVE / SWAP
+// ============================================================
+
+/**
+ * Identifies one allocated slot on one power. `category` is optional — when
+ * omitted it is resolved from the build (matching `removeSlot`'s by-name
+ * behavior), so callers that only have a power's internal name can still
+ * address its slots.
+ */
+export interface SlotLevelRef {
+  powerName: string;
+  slotIndex: number;
+  category?: PowerCategory;
+}
+
+/** A power resolved to a concrete category, as `collectAllPowers` sees it. */
+interface ResolvedRef {
+  power: SelectedPower;
+  category: PowerCategory;
+}
+
+/** Resolve a SlotLevelRef to its power + concrete category, or null. */
+function resolveRef(build: Build, ref: SlotLevelRef): ResolvedRef | null {
+  const category = resolveSlotCategory(build, ref.powerName, ref.category);
+  if (!category) return null;
+  const cp = collectAllPowers(build).find(
+    (c) => c.category === category && c.power.internalName === ref.powerName
+  );
+  return cp ? { power: cp.power, category } : null;
+}
+
+/**
+ * First user-allocatable slot index on a power: index 0 is the free base
+ * slot, and inherents may carry auto-granted (fixed-level) slots after it.
+ * Neither can have its level moved.
+ */
+function userSlotFloor(power: SelectedPower, category: PowerCategory): number {
+  return category === 'inherent' ? 1 + inherentCount(power) : 1;
+}
+
+/** A power's pick level — the earliest a slot on it may be placed. */
+function powerPickLevel(power: SelectedPower, category: PowerCategory): number {
+  return category === 'inherent' ? 1 : power.level;
+}
+
+/**
+ * Whether a single slot is a user-allocated slot whose level can be moved
+ * (i.e. not the free base slot and not an auto-granted inherent slot, and it
+ * actually exists on the power). Used to gate the "Move slot level…" menu item.
+ */
+export function isMovableSlot(build: Build, ref: SlotLevelRef): boolean {
+  const r = resolveRef(build, ref);
+  if (!r) return false;
+  return (
+    ref.slotIndex >= userSlotFloor(r.power, r.category) &&
+    ref.slotIndex < r.power.slots.length
+  );
+}
+
+/**
+ * Whether the grant levels of two slots can be swapped. Both must be
+ * user-allocated slots (see `isMovableSlot`), and after the swap each slot's
+ * level must still be >= its power's pick level (a slot can't sit at a level
+ * earlier than its power was taken).
+ */
+export function canMoveSlotLevel(
+  build: Build,
+  source: SlotLevelRef,
+  target: SlotLevelRef
+): boolean {
+  const s = resolveRef(build, source);
+  const t = resolveRef(build, target);
+  if (!s || !t) return false;
+
+  // Same slot → nothing to swap.
+  if (s.category === t.category && source.powerName === target.powerName && source.slotIndex === target.slotIndex) {
+    return false;
+  }
+
+  if (!isMovableSlot(build, source) || !isMovableSlot(build, target)) return false;
+
+  const levels = computeAllSlotLevels(build);
+  const sLevel = levels.get(powerKey(s.category, source.powerName))?.[source.slotIndex];
+  const tLevel = levels.get(powerKey(t.category, target.powerName))?.[target.slotIndex];
+  if (sLevel === undefined || tLevel === undefined) return false;
+
+  // After the swap, source holds tLevel and target holds sLevel.
+  return tLevel >= powerPickLevel(s.power, s.category) &&
+    sLevel >= powerPickLevel(t.power, t.category);
+}
+
+/**
+ * Return a NEW build with the grant levels of two slots swapped. Enhancers are
+ * untouched — they live in `power.slots`, not `slotOrder`, so swapping levels
+ * is purely a slotOrder operation. Returns null if the swap is invalid.
+ *
+ * Freezes current computed levels into `slotOrder` first (via
+ * `ensureSlotOrderPopulated`) so the swap is well-defined even from respec
+ * mode or a partially-populated slotOrder.
+ */
+export function applySlotLevelMove(
+  build: Build,
+  source: SlotLevelRef,
+  target: SlotLevelRef
+): Build | null {
+  if (!canMoveSlotLevel(build, source, target)) return null;
+
+  const s = resolveRef(build, source)!;
+  const t = resolveRef(build, target)!;
+
+  const next: Build = { ...build, slotOrder: [...build.slotOrder] };
+  ensureSlotOrderPopulated(next);
+  backfillSlotOrderLevels(next);
+
+  const levels = computeAllSlotLevels(next);
+  const sLevel = levels.get(powerKey(s.category, source.powerName))![source.slotIndex];
+  const tLevel = levels.get(powerKey(t.category, target.powerName))![target.slotIndex];
+
+  const matches = (
+    entry: Build['slotOrder'][number],
+    powerName: string,
+    slotIndex: number,
+    category: PowerCategory
+  ): boolean =>
+    entry.powerName === powerName &&
+    entry.slotIndex === slotIndex &&
+    resolveSlotCategory(next, entry.powerName, entry.category) === category;
+
+  next.slotOrder = next.slotOrder.map((entry) =>
+    matches(entry, source.powerName, source.slotIndex, s.category)
+      ? { ...entry, level: tLevel }
+      : matches(entry, target.powerName, target.slotIndex, t.category)
+        ? { ...entry, level: sLevel }
+        : entry
+  );
+
+  return next;
+}

@@ -438,6 +438,7 @@ function PoolPowerGroup({
                   level={power.level}
                   isLocked={isLocked}
                   selectedPower={power}
+                  powerCategory="pool"
                   toggleSize={shouldShowToggle(power) ? 'md' : undefined}
                   isActive={power.isActive ?? false}
                   onToggle={() => onToggle(power.internalName, 'pool')}
@@ -702,6 +703,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
                 level={power.level}
                 isLocked={isLocked}
                 selectedPower={power}
+                powerCategory="epic"
                 toggleSize={shouldShowToggle(power) ? 'md' : undefined}
                 isActive={power.isActive ?? false}
                 onToggle={() => togglePowerActive(power.internalName, 'epic')}
@@ -810,6 +812,7 @@ function InherentPowerGroup({
                 stackedLayout
                 muted
                 selectedPower={power}
+                powerCategory="inherent"
                 showRemove={false}
                 showAutoLabel={power.powerType === 'Auto'}
                 isLocked={isLocked}

@@ -184,6 +184,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                   level={power.level}
                   isLocked={isLocked}
                   selectedPower={power}
+                  powerCategory={category}
                   toggleSize={shouldShowToggle(power) ? 'md' : undefined}
                   isActive={power.isActive ?? false}
                   onToggle={() => togglePowerActive(power.internalName, category)}

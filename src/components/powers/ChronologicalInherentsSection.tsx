@@ -290,6 +290,7 @@ function InherentGroup({
               size="xs"
               muted
               selectedPower={power}
+              powerCategory="inherent"
               showRemove={false}
               isLocked={isLocked}
               slots={power.slots}

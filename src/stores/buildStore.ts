@@ -47,7 +47,7 @@ import {
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
-import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated } from '@/utils/slot-levels';
+import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, type SlotLevelRef } from '@/utils/slot-levels';
 import { useHistoryStore } from './historyStore';
 import { useUIStore } from './uiStore';
 
@@ -95,6 +95,14 @@ interface BuildActions {
   // Slots (category is optional — disambiguates when multiple powers share the same internalName)
   addSlot: (powerName: string, category?: PowerCategory) => boolean;
   removeSlot: (powerName: string, slotIndex: number, category?: PowerCategory) => boolean;
+  /**
+   * Swap the grant LEVELS of two allocated slots, leaving their enhancers in
+   * place. Mids-style "move a slot's level to another power". Returns false if
+   * the swap is invalid (e.g. would put a slot below its power's pick level).
+   */
+  moveSlotLevel: (source: SlotLevelRef, target: SlotLevelRef) => boolean;
+  /** Whether `moveSlotLevel(source, target)` would succeed (for UI hinting). */
+  canMoveSlotLevel: (source: SlotLevelRef, target: SlotLevelRef) => boolean;
   clearSlotOrder: () => void;
 
   // Enhancements
@@ -1669,6 +1677,19 @@ export const useBuildStore = create<BuildStore>()(
         });
 
         return true;
+      },
+
+      moveSlotLevel: (source, target) => {
+        const state = get();
+        const moved = applySlotLevelMove(state.build, source, target);
+        if (!moved) return false;
+        historyCheckpoint();
+        set(() => ({ build: moved }));
+        return true;
+      },
+
+      canMoveSlotLevel: (source, target) => {
+        return canMoveSlotLevel(get().build, source, target);
       },
 
       clearSlotOrder: () => {

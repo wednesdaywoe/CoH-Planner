@@ -50,6 +50,12 @@ interface TouchableSlotProps {
   onDragStateChange?: (state: { mode: 'slots' | 'enhancements'; count: number } | null) => void;
   /** Whether this slot is highlighted for pending removal */
   highlightRemoval?: 'slot' | 'enhancement' | null;
+  /** Begin a slot-level move with this slot as the source. Omitted when the
+   *  slot can't be a move source (base slot, auto-granted inherent slot). */
+  onMoveSlotLevel?: () => void;
+  /** Slot-level-move highlight: this slot is the armed source, or a valid
+   *  destination to swap into. Null when not in move mode / not eligible. */
+  moveHighlight?: 'source' | 'target' | null;
 }
 
 export function TouchableSlot({
@@ -71,6 +77,8 @@ export function TouchableSlot({
   filledSlotCount = 0,
   onDragStateChange,
   highlightRemoval,
+  onMoveSlotLevel,
+  moveHighlight,
 }: TouchableSlotProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
@@ -283,13 +291,17 @@ export function TouchableSlot({
             ${config.fontSize} font-semibold cursor-pointer transition-transform hover:scale-110
             select-none
             ${
-              highlightRemoval === 'enhancement'
-                ? 'border-amber-500 bg-amber-900/40 ring-1 ring-amber-500/50'
-                : highlightRemoval === 'slot'
-                  ? 'border-red-500 bg-red-900/40 ring-1 ring-red-500/50'
-                  : slot
-                    ? 'border-transparent bg-transparent'
-                    : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
+              moveHighlight === 'source'
+                ? 'border-sk-magenta bg-sk-magenta/30 ring-2 ring-sk-magenta animate-pulse'
+                : moveHighlight === 'target'
+                  ? 'border-emerald-400 bg-emerald-500/20 ring-2 ring-emerald-400/70'
+                  : highlightRemoval === 'enhancement'
+                    ? 'border-amber-500 bg-amber-900/40 ring-1 ring-amber-500/50'
+                    : highlightRemoval === 'slot'
+                      ? 'border-red-500 bg-red-900/40 ring-1 ring-red-500/50'
+                      : slot
+                        ? 'border-transparent bg-transparent'
+                        : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
             }
           `}
           style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
@@ -339,6 +351,7 @@ export function TouchableSlot({
         onClearAllEnhancements={onClearAllEnhancements}
         onRemoveAllSlots={onRemoveAllSlots}
         onCompareSlotting={onCompareSlotting}
+        onMoveSlotLevel={onMoveSlotLevel}
       />
     </>
   );

@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-06-1',
     items: [
+      { message: 'You can now move slot levels around! Shift-Right-Click a slot and select "Move Slot Level", then just click the slot you want to swap levels with', type: 'feat' },
       { message: 'Pulled one thread on Power Boost and the whole sweater came apart...turned into a whole mess of data gaps. Many fixes ensued 🤕', type: 'fix' },
       { message: 'Fix for Blaster patron-pool selection', type: 'fix' },
       { message: 'Welcome Modal on page load has been retired, its now part of the the "New Update Available" banner, and can also be accessed through menus. Various small UI tweaks' , type: 'update' },

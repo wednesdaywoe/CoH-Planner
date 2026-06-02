@@ -12,6 +12,7 @@
  * functions exported alongside the map.
  */
 
+import { useEffect } from 'react';
 import { useUIStore } from '@/stores';
 
 // ============================================
@@ -35,7 +36,7 @@ export const HINTS = {
   emptySlot: 'Click to add an enhancement',
   emptySlotRemovable:
     'Click to add an enhancement · Right-click to remove slot · Right-click & drag to remove multiple',
-  filledSlot: 'Click to change enhancement · Right-click to remove',
+  filledSlot: 'Click to change enhancement · Right-click to remove · Shift-Right-click for more options',
   filledSlotRemovable:
     'Click to change enhancement · Right-click to remove · Right-click & drag to remove multiple',
 
@@ -74,6 +75,35 @@ export function getGhostHint(canAdd: boolean, canRemove: boolean): string {
 
 export function PlannerHintBar() {
   const hint = useUIStore((s) => s.hoverHint);
+  const slotMoveSource = useUIStore((s) => s.slotMoveSource);
+  const cancelSlotLevelMove = useUIStore((s) => s.cancelSlotLevelMove);
+
+  // While arming a slot-level move, Esc anywhere cancels it. Registered once
+  // here (the hint bar is a singleton) rather than per-slot.
+  useEffect(() => {
+    if (!slotMoveSource) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') cancelSlotLevelMove();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [slotMoveSource, cancelSlotLevelMove]);
+
+  if (slotMoveSource) {
+    return (
+      <div className="hidden md:flex border-b border-sk-magenta/60 bg-sk-magenta/15 px-3 py-1 text-[11px] text-slate-100 min-h-[1.75rem] items-center flex-shrink-0 gap-2">
+        <span className="truncate">
+          Moving a slot&apos;s level — click a <span className="text-sk-magenta font-semibold">highlighted</span> slot to swap levels (enhancers stay put).
+        </span>
+        <button
+          onClick={cancelSlotLevelMove}
+          className="ml-auto flex-shrink-0 px-2 py-0.5 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 text-[10px]"
+        >
+          Cancel (Esc)
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="hidden md:flex border-b border-slate-700 bg-slate-800/60 px-3 py-1 text-[11px] text-slate-300 min-h-[1.75rem] items-center flex-shrink-0">

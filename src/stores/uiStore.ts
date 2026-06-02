@@ -27,6 +27,7 @@ import type {
   Enhancement,
 } from '@/types';
 import { createDefaultIncarnateActiveState } from '@/types';
+import type { SlotLevelRef } from '@/utils/slot-levels';
 
 // ============================================
 // PROC SETTINGS
@@ -295,6 +296,11 @@ interface UIState {
 
   /** Contextual hint text shown at the bottom of the planner (driven by mouseenter on slots/ghosts/etc). Null hides the bar. */
   hoverHint: string | null;
+
+  /** When set, the planner is in "pick a destination slot" mode for a
+   *  Mids-style slot-level move: the user chose "Move slot level…" on this
+   *  slot and the next slot they click becomes the swap target. Null = idle. */
+  slotMoveSource: SlotLevelRef | null;
 
   /** Tracked stats — breakdownKey values for stats the user wants to chase via set bonuses */
   trackedStats: string[];
@@ -568,6 +574,10 @@ interface UIActions {
   // Hover hint (contextual help text at bottom of planner)
   setHoverHint: (hint: string | null) => void;
 
+  // Slot-level move (Mids-style): arm a source slot, then click a destination
+  beginSlotLevelMove: (source: SlotLevelRef) => void;
+  cancelSlotLevelMove: () => void;
+
   // Tracked Stats
   toggleTrackedStat: (breakdownKey: string) => void;
   ensureTrackedStats: (keys: string[]) => void;
@@ -765,6 +775,7 @@ export const useUIStore = create<UIStore>()(
       compareSlottingPower: null,
       powerViewMode: 'category', // Default to category-based view
       hoverHint: null,
+      slotMoveSource: null,
       trackedStats: [], // No tracked stats by default
       targetsHitValues: {}, // No per-target overrides by default
       mechanicAdjusters: {}, // No per-power conditional toggles overridden by default
@@ -1430,6 +1441,9 @@ export const useUIStore = create<UIStore>()(
 
       // Hover hint — ephemeral; never persisted
       setHoverHint: (hint) => set({ hoverHint: hint }),
+
+      beginSlotLevelMove: (source) => set({ slotMoveSource: source }),
+      cancelSlotLevelMove: () => set({ slotMoveSource: null }),
 
       // Tracked Stats
       toggleTrackedStat: (breakdownKey) =>

@@ -14,6 +14,8 @@ import { TouchableSlot } from './TouchableSlot';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { PermaRing } from './PermaRing';
 import type { SlotSize } from './TouchableSlot';
+import { useBuildStore, useUIStore, type PowerCategory } from '@/stores';
+import { isMovableSlot, type SlotLevelRef } from '@/utils/slot-levels';
 
 type PowerRowSize = 'xs' | 'sm' | 'md' | 'lg';
 
@@ -75,6 +77,10 @@ interface PowerRowProps {
   slotLevels?: number[];
   /** Full power object for perma ring display */
   selectedPower?: SelectedPower;
+  /** Store category for this power — enables the slot-level move feature
+   *  (addresses slots unambiguously). Falls back to by-name resolution when
+   *  omitted. */
+  powerCategory?: PowerCategory;
 }
 
 export function PowerRow({
@@ -108,6 +114,7 @@ export function PowerRow({
   onInfoClick,
   slotLevels,
   selectedPower,
+  powerCategory,
 }: PowerRowProps) {
   const isTouch = useIsTouchDevice();
   // On touch devices, suppress hover-triggered info panel — use the info button instead
@@ -123,7 +130,43 @@ export function PowerRow({
   const iconClass = ICON_CLASS_MAP[size];
   const iconPixelSize = size === 'lg' ? 24 : 16;
 
+  // --- Slot-level move (Mids-style "drag a slot's level to another power") ---
+  // The source slot is armed via the context menu (stored in uiStore); the next
+  // slot the user clicks becomes the swap target. Enhancers never move — only
+  // the grant levels swap (see applySlotLevelMove).
+  const internalName = selectedPower?.internalName;
+  const slotMoveSource = useUIStore((s) => s.slotMoveSource);
+  const beginSlotLevelMove = useUIStore((s) => s.beginSlotLevelMove);
+  const cancelSlotLevelMove = useUIStore((s) => s.cancelSlotLevelMove);
+  const moveSlotLevel = useBuildStore((s) => s.moveSlotLevel);
+  const canMoveSlotLevel = useBuildStore((s) => s.canMoveSlotLevel);
+  const build = useBuildStore((s) => s.build);
+  const moveActive = !!slotMoveSource;
+
+  const slotRef = (index: number): SlotLevelRef => ({
+    powerName: internalName ?? name,
+    slotIndex: index,
+    category: powerCategory,
+  });
+  const isMoveSourceSlot = (index: number): boolean =>
+    !!slotMoveSource &&
+    slotMoveSource.powerName === (internalName ?? name) &&
+    slotMoveSource.slotIndex === index;
+  const moveHighlightFor = (index: number): 'source' | 'target' | null => {
+    if (!moveActive) return null;
+    if (isMoveSourceSlot(index)) return 'source';
+    return canMoveSlotLevel(slotMoveSource!, slotRef(index)) ? 'target' : null;
+  };
+
   const handleSlotClick = (index: number) => {
+    // In move mode, a click completes (valid target) or cancels (anything else).
+    if (moveActive) {
+      if (!isMoveSourceSlot(index)) {
+        moveSlotLevel(slotMoveSource!, slotRef(index));
+      }
+      cancelSlotLevelMove();
+      return;
+    }
     onOpenPicker?.(index);
   };
 
@@ -306,6 +349,12 @@ export function PowerRow({
           filledSlotCount={filledSlotCount}
           onDragStateChange={handleDragStateChange}
           highlightRemoval={highlightedSlots.get(index) ?? null}
+          moveHighlight={moveHighlightFor(index)}
+          onMoveSlotLevel={
+            internalName && !moveActive && isMovableSlot(build, slotRef(index))
+              ? () => beginSlotLevelMove(slotRef(index))
+              : undefined
+          }
         />
       ))}
       {onAddSlots && (
