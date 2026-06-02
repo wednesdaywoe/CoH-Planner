@@ -25,6 +25,7 @@ import { PlannerHintBar } from '@/components/powers/PlannerHintBar';
 import { ChronologicalPowerView } from '@/components/powers/ChronologicalPowerView';
 import { InfoPanel } from '@/components/info/InfoPanel';
 import { PopOutInfoPanel } from '@/components/info/PopOutInfoPanel';
+import { SetBonusPopup } from '@/components/info/SetBonusPopup';
 import { Toggle, CollapsibleSection } from '@/components/ui';
 import { ViewModeToggle } from '@/components/ui/ViewModeToggle';
 import { MAX_POWER_PICKS, getArchetype } from '@/data';
@@ -52,6 +53,7 @@ export function PlannerPage() {
   const tooltipEnabled = useUIStore((s) => s.infoPanel.tooltipEnabled);
   const toggleInfoPanelTooltip = useUIStore((s) => s.toggleInfoPanelTooltip);
   const undocked = useUIStore((s) => s.infoPanel.undocked);
+  const setBonusPopupOpen = useUIStore((s) => s.setBonusPopupOpen);
   const undockInfoPanel = useUIStore((s) => s.undockInfoPanel);
   const powerViewMode = usePowerViewMode();
 
@@ -235,6 +237,7 @@ export function PlannerPage() {
 
         {/* Floating overlay when undocked */}
         {undocked && <PopOutInfoPanel />}
+        {setBonusPopupOpen && <SetBonusPopup />}
       </>
     );
   }
@@ -428,6 +431,7 @@ export function PlannerPage() {
 
       {/* Floating overlay when undocked */}
       {undocked && <PopOutInfoPanel />}
+      {setBonusPopupOpen && <SetBonusPopup />}
     </>
   );
 }

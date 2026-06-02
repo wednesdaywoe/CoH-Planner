@@ -153,6 +153,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const closeAboutModal = useUIStore((s) => s.closeAboutModal);
   const setBonusLookupModalOpen = useUIStore((s) => s.setBonusLookupModalOpen);
   const openSetBonusLookupModal = useUIStore((s) => s.openSetBonusLookupModal);
+  const openSetBonusPopup = useUIStore((s) => s.openSetBonusPopup);
   const closeSetBonusLookupModal = useUIStore((s) => s.closeSetBonusLookupModal);
   const incarnateModalOpen = useUIStore((s) => s.incarnateModalOpen);
   const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
@@ -548,6 +549,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
             <DashboardActionButtons
               openAccoladesModal={openAccoladesModal}
               openSetBonusLookupModal={openSetBonusLookupModal}
+              openSetBonusPopup={openSetBonusPopup}
               openDetailedTotalsModal={openDetailedTotalsModal}
               openPowersetCompareModal={openPowersetCompareModal}
               openCompareSlotting={openCompareSlotting}
@@ -562,6 +564,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
             <DashboardActionButtons
               openAccoladesModal={openAccoladesModal}
               openSetBonusLookupModal={openSetBonusLookupModal}
+              openSetBonusPopup={openSetBonusPopup}
               openDetailedTotalsModal={openDetailedTotalsModal}
               openPowersetCompareModal={openPowersetCompareModal}
               openCompareSlotting={openCompareSlotting}
@@ -707,6 +710,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
 interface DashboardActionButtonsProps {
   openAccoladesModal: () => void;
   openSetBonusLookupModal: () => void;
+  openSetBonusPopup: () => void;
   openDetailedTotalsModal: () => void;
   openPowersetCompareModal: () => void;
   openCompareSlotting: () => void;
@@ -784,6 +788,14 @@ function DashboardActionButtons(props: DashboardActionButtonsProps) {
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />,
         isMobile ? 'Set Bonuses' : 'Set Bonus Finder',
         'set-bonus-finder',
+      )}
+      {btn(
+        'green',
+        props.openSetBonusPopup,
+        'Active set-bonus totals (hover a row for set + power sources)',
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6h13M3 12h9M3 18h5" />,
+        'Set Totals',
+        'set-bonus-totals',
       )}
       {btn(
         'blue',

@@ -128,7 +128,7 @@ export function getPairedStat(stat: string): string | undefined {
 /**
  * Map of stat names from IO sets to internal stat keys
  */
-const STAT_NAME_MAP: Record<string, string | null> = {
+export const STAT_NAME_MAP: Record<string, string | null> = {
   // Offense
   Damage: 'damage',
   damage: 'damage',

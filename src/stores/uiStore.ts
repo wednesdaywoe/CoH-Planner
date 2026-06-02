@@ -144,6 +144,10 @@ interface UIState {
   /** Set Bonus Lookup modal open state */
   setBonusLookupModalOpen: boolean;
 
+  /** Floating "Set Bonus Totals" popup — a lightweight draggable window that
+   *  lists active set-bonus totals with per-source (set + power) drill-down. */
+  setBonusPopupOpen: boolean;
+
   /** Power Info modal open state (mobile only) */
   powerInfoModalOpen: boolean;
 
@@ -506,6 +510,10 @@ interface UIActions {
   openSetBonusLookupModal: () => void;
   closeSetBonusLookupModal: () => void;
 
+  // Set Bonus Totals popup (floating)
+  openSetBonusPopup: () => void;
+  closeSetBonusPopup: () => void;
+
   // Power Info Modal (mobile only)
   openPowerInfoModal: () => void;
   closePowerInfoModal: () => void;
@@ -730,6 +738,7 @@ export const useUIStore = create<UIStore>()(
       detailedTotalsModalOpen: false,
       powersetCompareModalOpen: false,
       setBonusLookupModalOpen: false,
+      setBonusPopupOpen: false,
       powerInfoModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
@@ -1290,6 +1299,12 @@ export const useUIStore = create<UIStore>()(
         set({ powersetCompareModalOpen: false }),
 
       // Set Bonus Lookup Modal
+      openSetBonusPopup: () =>
+        set({ setBonusPopupOpen: true }),
+
+      closeSetBonusPopup: () =>
+        set({ setBonusPopupOpen: false }),
+
       openSetBonusLookupModal: () =>
         set({ setBonusLookupModalOpen: true }),
 
