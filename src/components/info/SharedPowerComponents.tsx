@@ -214,6 +214,11 @@ export function DamageRow({
 /** Minimum number of expanded entries to trigger collapsible behavior */
 const COLLAPSE_THRESHOLD = 2;
 
+/** Large expanded groups (e.g. Power Boost's 22-entry "+Special" strength list)
+ *  start collapsed so they don't flood the panel — the summary row still shows
+ *  the value. Smaller groups (mez protection ~6, debuff resistance 7) stay open. */
+const DEFAULT_COLLAPSED_AT = 8;
+
 interface DisplayableEffect {
   effect: GroupedEffect;
   baseValue: number;
@@ -251,7 +256,7 @@ function CollapsibleEffectGroup({
   dominationActive: boolean;
   finalColumnColor: string;
 }) {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(items.length >= DEFAULT_COLLAPSED_AT);
 
   // Check if all values are the same for a compact summary
   const allSameBase = items.every(i => Math.abs(i.tiers.base - items[0].tiers.base) < 0.01);

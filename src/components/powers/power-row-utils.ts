@@ -32,6 +32,10 @@ const CASTER_BUFF_KEYS = [
   'rangeBuff', 'enduranceDiscount', 'threatBuff', 'perceptionBuff', 'absorb',
   // Unsuffixed top-level fields (used by some powers in place of *Buff)
   'defense', 'resistance',
+  // +Strength self-buff container (Power Boost family). The whole point of
+  // toggling these is to apply their strength to your other powers, so they
+  // must be activatable even though they carry no flat *Buff fields.
+  'specialBuff',
   // Movement buffs
   'runSpeed', 'flySpeed', 'jumpHeight', 'jumpSpeed', 'fly',
   'movementControl', 'movementFriction',
@@ -59,7 +63,7 @@ function isDamagingAttack(power: { damage?: unknown }): boolean {
   });
 }
 
-function hasPersistentBuffEffects(power: { effects?: object; damage?: unknown }): boolean {
+function hasPersistentBuffEffects(power: { effects?: object; damage?: unknown }, isSelf: boolean): boolean {
   if (!power.effects) return false;
   const effects = power.effects as Record<string, unknown>;
   // selfPenalty flag means debuff fields (e.g., Granite Armor's -damage) are real self-effects
@@ -71,8 +75,13 @@ function hasPersistentBuffEffects(power: { effects?: object; damage?: unknown })
   // range, not a generic active-power flag. Real persistent self-buffs
   // (resistance, defense, mez resistance, etc.) on the same power still
   // trigger the toggle.
-  const skip = isDamagingAttack(power) ? new Set(['damageBuff', 'rangeBuff']) : null;
-  return CASTER_BUFF_KEYS.some(key => key in effects && !skip?.has(key));
+  const skip = isDamagingAttack(power) ? new Set(['damageBuff', 'rangeBuff']) : new Set<string>();
+  // `specialBuff` (the +Strength container) only implies a *caster* buff when
+  // the power is self-targeted. Legacy foe -Special debuffs (Benumb, Weaken,
+  // Time Stop) store a positive `specialBuff` on a Foe-targeted power — those
+  // must not gain a self-buff toggle.
+  if (!isSelf) skip.add('specialBuff');
+  return CASTER_BUFF_KEYS.some(key => key in effects && !skip.has(key));
 }
 
 function affectsCaster(power: { targetType?: string }): boolean {
@@ -99,5 +108,6 @@ export function shouldShowToggle(power: {
   if (powerType === 'toggle') return true;
   if (powerType !== 'click') return false;
   if (!affectsCaster(power)) return false;
-  return hasPersistentBuffEffects(power);
+  const isSelf = !power.targetType || power.targetType.toLowerCase() === 'self';
+  return hasPersistentBuffEffects(power, isSelf);
 }

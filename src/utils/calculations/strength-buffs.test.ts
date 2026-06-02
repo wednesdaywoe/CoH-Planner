@@ -4,6 +4,7 @@ import { loadDataset } from '@/data/dataset';
 import { getEpicPool } from '@/data/epic-pools';
 import { createEmptyBuild } from '@/types/build';
 import { calcThreeTier } from '@/components/info/powerDisplayUtils';
+import { shouldShowToggle } from '@/components/powers/power-row-utils';
 
 /**
  * Tests for the Power Boost / +Strength mechanic.
@@ -93,6 +94,29 @@ describe('collectStrengthBuffs', () => {
     ], 'controller', 50);
     // No specialBuff → no strength at all
     expect(sb).toEqual({ defense: 0, toHit: 0, heal: 0, absorb: 0, endMod: 0, movement: 0, mez: 0 });
+  });
+
+  it('excludes Foe-targeted specialBuff (legacy -Special debuffs like Benumb/Time Stop)', () => {
+    const sb = collectStrengthBuffs([
+      mk({ internalName: 'TimeStop', isActive: true, targetType: 'Foe', effects: { specialBuff: { hold: s(1.0), immobilize: s(1.0) } } }),
+    ], 'controller', 50);
+    expect(sb.mez).toBe(0);
+    expect(sb).toEqual({ defense: 0, toHit: 0, heal: 0, absorb: 0, endMod: 0, movement: 0, mez: 0 });
+  });
+});
+
+describe('shouldShowToggle — Power Boost family is activatable', () => {
+  it('shows a toggle for a self Click with only specialBuff (Power Boost)', () => {
+    expect(shouldShowToggle({ powerType: 'Click', targetType: 'Self', effects: { specialBuff: { defense: s(0.66) } } })).toBe(true);
+  });
+  it('still shows a toggle for Build Up (self Click with damageBuff)', () => {
+    expect(shouldShowToggle({ powerType: 'Click', targetType: 'Self', effects: { damageBuff: { scale: 8, table: 'Melee_Buff_Dmg' } } })).toBe(true);
+  });
+  it('does NOT show a self toggle for a Foe Click whose only buff-ish field is a legacy specialBuff', () => {
+    expect(shouldShowToggle({ powerType: 'Click', targetType: 'Foe', effects: { specialBuff: { hold: s(1.0) } } })).toBe(false);
+  });
+  it('does NOT show a toggle for a plain damage Click', () => {
+    expect(shouldShowToggle({ powerType: 'Click', targetType: 'Foe', damage: { type: 'Smashing', scale: 1 }, effects: {} })).toBe(false);
   });
 });
 

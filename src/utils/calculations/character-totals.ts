@@ -764,6 +764,12 @@ export function collectStrengthBuffs(
   for (const power of powers) {
     const isAuto = power.powerType?.toLowerCase() === 'auto';
     if (!(isAuto || power.isActive)) continue;
+    // A +Strength self-buff is, by definition, self-targeted. Legacy data for
+    // foe -Special debuffs (Benumb, Weaken, Time Stop) stores the magnitude as
+    // a positive `specialBuff` on a Foe-targeted power; without this gate they
+    // would be counted as a caster strength buff. (Regenerated powers route
+    // foe -Special to `specialDebuff` instead — see extractEffects.)
+    if (power.targetType && power.targetType.toLowerCase() !== 'self') continue;
     const special = power.effects?.specialBuff as Record<string, ScalarOrScaled> | undefined;
     if (!special || typeof special !== 'object') continue;
 
