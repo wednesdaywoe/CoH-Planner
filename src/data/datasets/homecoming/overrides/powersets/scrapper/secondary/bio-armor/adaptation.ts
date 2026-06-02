@@ -11,8 +11,6 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "name": "Evolving Armor",
-  "available": 9,
   "effects": {
     "durations": {
       "resistance": 1

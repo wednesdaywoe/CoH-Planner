@@ -3101,9 +3101,12 @@ function mergeStackingPatches(effects, stackingResult) {
 
 // Display name overrides for powers where clientmessages has stale/incorrect names
 const DISPLAY_NAME_OVERRIDES = {
-  // Note: Paralyzing_Blast is the internalName but in-game display is "Tesla Coil" (from clientmessages)
-  'Adaptation': 'Adaptation',              // Bio Armor: clientmessages shows "Evolving Armor", in-game is "Adaptation"
-  'Evolution': 'Evolving Armor',           // Bio Armor: clientmessages shows "Adaptation", in-game is "Evolving Armor"
+  // Bio Armor's "Adaptation"/"Evolving Armor" overrides were removed: they were
+  // written for the old April-2019 clientmessages source whose display names
+  // were swapped. The current pigg/bin export already carries the correct
+  // `display_name` per power (internal "Evolution" → "Adaptation", internal
+  // "Adaptation" → "Evolving Armor"), so overriding here re-introduced the swap.
+  // Trust `display_name` from the source instead.
 };
 
 // Icon overrides for powers where binary data references a renamed/missing icon file

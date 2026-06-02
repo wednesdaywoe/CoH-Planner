@@ -943,7 +943,13 @@ export function RegistryEffectsDisplay({
         ? { ...baseAbsorbConfig, label: `${baseAbsorbConfig.label} (% Max HP)`, format: 'percent' as const }
         : baseAbsorbConfig;
       let baseAbsorbHP = absorb.scale;
-      if (absorb.table && archetypeId && !isOnesTable) {
+      if (isOnesTable) {
+        // `*_Ones` table → scale is a FRACTION of Max HP (0.10 = 10%). The
+        // 'percent' renderer prints the value verbatim with a % suffix (it
+        // does NOT multiply by 100), so convert the fraction to percent units
+        // here — otherwise Spirit Ward reads "0.10%" instead of "10%".
+        baseAbsorbHP = absorb.scale * 100;
+      } else if (absorb.table && archetypeId) {
         const tableVal = getTableValue(archetypeId, absorb.table, level ?? 50);
         if (tableVal !== undefined) {
           baseAbsorbHP = absorb.scale * tableVal;

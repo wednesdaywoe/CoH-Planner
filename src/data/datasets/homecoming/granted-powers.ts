@@ -49,8 +49,21 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
   // ============================================
   // BIO ARMOR - Adaptation stances
   // ============================================
+  // Bio Armor's adaptation form-switcher has TWO different internal names
+  // depending on the archetype: Scrapper/Brute/Tanker call it "Evolution"
+  // (display "Adaptation"); Stalker/Sentinel call it "Adaptation". Both grant
+  // the same three stances. We register both keys; `getSubPowers` further
+  // filters by each stance's `requires` so the stances attach to the correct
+  // parent in archetypes (Scrapper/Brute/Tanker) that ALSO have a separate
+  // internal-"Adaptation" power (the +Res "Evolving Armor" toggle).
   'Adaptation': {
     parentPower: 'Adaptation',
+    grantedPowers: ['Defensive_Adaptation', 'Efficient_Adaptation', 'Offensive_Adaptation'],
+    mutuallyExclusive: true,
+    description: 'Bio Armor stances - only one can be active at a time',
+  },
+  'Evolution': {
+    parentPower: 'Evolution',
     grantedPowers: ['Defensive_Adaptation', 'Efficient_Adaptation', 'Offensive_Adaptation'],
     mutuallyExclusive: true,
     description: 'Bio Armor stances - only one can be active at a time',
