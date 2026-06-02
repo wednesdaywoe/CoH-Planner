@@ -3446,6 +3446,15 @@ function convertPowerset(category, powersetName) {
   for (const file of powerFiles) {
     const powerJson = JSON.parse(fs.readFileSync(path.join(rawPath, file), 'utf-8'));
 
+    // Skip GlobalBoost powers — these are hidden, auto-issued global-enhancement
+    // procs (the engine fires them automatically; the player never picks them).
+    // They share their parent's display name (e.g. Build_Up_Proc → "Reach for the
+    // Limit"), so emitting them as powerset powers creates a duplicate that
+    // becomes pickable once the real power satisfies the proc's `requires`.
+    if (powerJson.type === 'GlobalBoost') {
+      continue;
+    }
+
     // Find the available level for this power. The bin-export `powers` array
     // is alphabetical (CoD2's `power_names` was game-pick order), so we use
     // available_level as the canonical sort key — matches in-game pick order.
@@ -3456,7 +3465,13 @@ function convertPowerset(category, powersetName) {
       const leaf = n.split('.').pop().toLowerCase();
       return leaf === targetName;
     });
-    const availableLevel = powerIndex >= 0 ? indexJson.available_level[powerIndex] : 0;
+    let availableLevel = powerIndex >= 0 ? indexJson.available_level[powerIndex] : 0;
+    // The bin/pigg source stores the "-1 = auto-granted, not player-pickable"
+    // sentinel UNSIGNED, so it arrives as 0xFFFFFFFF (4294967295) — or another
+    // high-bit value for -2, etc. Normalize back to a signed negative so the
+    // `available < 0` checks (picker filter, mechanicType detection below)
+    // recognize granted toggles (ammo, adaptations, Staff forms) again.
+    if (availableLevel >= 0x80000000) availableLevel -= 0x100000000;
 
     const power = convertPower(powerJson, availableLevel, categoryInfo.archetype, categoryInfo.type);
     powers.push({ power, powerIndex: powerIndex >= 0 ? powerIndex : 999, availableLevel, file });

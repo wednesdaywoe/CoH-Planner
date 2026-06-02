@@ -543,8 +543,17 @@ export function AvailablePowers({
   // Form sub-powers (Kheldian Nova/Dwarf attacks) are auto-granted and hidden
   const allPowers = powerset
     ? powerset.powers.filter(p => {
-        // Filter out auto-granted powers
-        if (p.available < 0) return false;
+        // Filter out auto-granted powers. The auto-grant sentinel is -1, but
+        // the HC pigg/bin source stores it UNSIGNED, so it arrives as
+        // 0xFFFFFFFF (4294967295) — i.e. -1's high bit is set. Catch both the
+        // signed and unsigned forms, otherwise granted toggles (Dual Pistols
+        // ammo, Bio Armor adaptations, Staff forms) leak into the picker once
+        // their parent power satisfies their `requires`.
+        if (p.available < 0 || p.available >= 0x80000000) return false;
+        // Filter out hidden GlobalBoost procs (auto-issued global enhancements
+        // like Martial Combat's Build_Up_Proc). They share a real power's
+        // display name and are never player-picked.
+        if (p.powerType === 'Global Enhancement') return false;
         // Filter out set mechanics/inherents (hiddenPassive, hiddenAuto, etc.)
         if (p.mechanicType === 'hiddenPassive' || p.mechanicType === 'hiddenAuto') return false;
         // Filter out form sub-powers (auto-granted on HC; redirect-only on Rebirth).

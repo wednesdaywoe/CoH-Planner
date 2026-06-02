@@ -354,7 +354,7 @@ export function hydrateBuild(slim: Record<string, any>): Build {
  * Hydrate an array of slim powers by matching against powerset definitions.
  */
 function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], powerSetId: string): SelectedPower[] {
-  return slimPowers.map((slim) => {
+  const hydrated = slimPowers.map((slim) => {
     // Find the matching power definition. Lookup order:
     //   1. exact internalName (fast path)
     //   2. case-insensitive internalName (covers HC-patch casing changes
@@ -417,6 +417,20 @@ function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], pow
       ...(slim.grantedByPower ? { grantedByPower: slim.grantedByPower } : {}),
       ...(slim.inherentSlotCount ? { inherentSlotCount: slim.inherentSlotCount } : {}),
     } as SelectedPower;
+  });
+
+  // Drop duplicate internal names within a powerset. A category can never
+  // legitimately hold the same power twice (addPower guards that), so a dup
+  // here is always corruption — most often a retired hidden power that now
+  // resolves, by display name, onto the real power it shadowed. The classic
+  // case: Martial Combat's "Build_Up_Proc" (a GlobalBoost proc that shared the
+  // display name "Reach for the Limit") collapsing onto Reach_for_the_Limit and
+  // showing twice. Keeping the first occurrence preserves the user's slots.
+  const seen = new Set<string>();
+  return hydrated.filter((p) => {
+    if (seen.has(p.internalName)) return false;
+    seen.add(p.internalName);
+    return true;
   });
 }
 

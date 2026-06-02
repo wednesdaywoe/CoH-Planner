@@ -358,7 +358,11 @@ function convertEpicPool(poolId, existingPool) {
     }
 
     const rawJson = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    const availableLevel = availableLevels[i] !== undefined ? availableLevels[i] : 34;
+    let availableLevel = availableLevels[i] !== undefined ? availableLevels[i] : 34;
+    // Normalize the unsigned "-1 = auto-granted" sentinel (0xFFFFFFFF) back to
+    // a signed negative, matching the pool/powerset converters, so granted
+    // sub-powers stay out of the picker.
+    if (availableLevel >= 0x80000000) availableLevel -= 0x100000000;
     collected.push({ rawJson, availableLevel, originalIndex: i });
   }
 

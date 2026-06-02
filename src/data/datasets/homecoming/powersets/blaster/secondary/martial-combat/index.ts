@@ -18,7 +18,6 @@ import { ReactionTime as ReactionTime } from './reaction-time';
 import { InnerWill as InnerWill } from './inner-will';
 import { ThrowSand as ThrowSand } from './throw-sand';
 import { EaglesClaw as EaglesClaw } from './eagles-claw';
-import { ReachfortheLimit as ReachfortheLimit2 } from './build-up-proc';
 
 export const powerset: Powerset = {
   id: 'blaster/martial-combat',
@@ -37,7 +36,6 @@ export const powerset: Powerset = {
     InnerWill,
     ThrowSand,
     EaglesClaw,
-    ReachfortheLimit2,
   ],
 };
 

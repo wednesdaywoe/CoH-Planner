@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-1',
+    date: '2026-06-2',
     items: [
+      { message: 'Fix for some auto-grant powers that were mangled by the previous data set regeneration', type: 'fix' },
       { message: 'You can now move slot levels around! Shift-Right-Click a slot and select "Move Slot Level", then just click the slot you want to swap levels with', type: 'feat' },
       { message: 'Pulled one thread on Power Boost and the whole sweater came apart...turned into a whole mess of data gaps. Many fixes ensued 🤕', type: 'fix' },
       { message: 'Fix for Blaster patron-pool selection', type: 'fix' },
