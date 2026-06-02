@@ -994,6 +994,21 @@ export function RegistryEffectsDisplay({
     priority: 10,
   };
 
+  // Distinguish mez PROTECTION from APPLIED mez. Self mez protection (armor
+  // toggles) is encoded with a *_Res_Boolean table — the magnitude is the
+  // protection points, applied permanently while toggled. APPLIED mez (a foe
+  // hold, or a confuse/fear AURA like Arctic Air) uses a duration table
+  // (Ranged_Fear, Ranged_Immobilize, Ranged_Ones, …) where duration = scale ×
+  // table. Only the former belongs in the "Status Prot" group; the latter must
+  // render as individual control rows ("Confuse Mag 3 (Xs)") so foe-applied mez
+  // isn't mislabeled as self protection.
+  const isProtectionMez = (item: DisplayableEffect): boolean => {
+    const v = item.effect.value as { table?: string } | number | undefined | null;
+    if (typeof v === 'number') return true; // bare protection magnitude
+    const tbl = (v && typeof v === 'object' && typeof v.table === 'string') ? v.table.toLowerCase() : '';
+    return tbl.includes('res_boolean');
+  };
+
   // Find and group consecutive mez protection effects
   const grouped: DisplayableEffect[] = [];
   let i = 0;
@@ -1002,10 +1017,10 @@ export function RegistryEffectsDisplay({
     const rawKey = eff.effect.key;
 
     // Check for mez protection group
-    if (MEZ_PROT_KEYS.has(rawKey) && eff.effect.config.format === 'mag') {
+    if (MEZ_PROT_KEYS.has(rawKey) && eff.effect.config.format === 'mag' && isProtectionMez(eff)) {
       const groupItems: DisplayableEffect[] = [];
       let j = i;
-      while (j < displayableEffects.length && MEZ_PROT_KEYS.has(displayableEffects[j].effect.key) && displayableEffects[j].effect.config.format === 'mag') {
+      while (j < displayableEffects.length && MEZ_PROT_KEYS.has(displayableEffects[j].effect.key) && displayableEffects[j].effect.config.format === 'mag' && isProtectionMez(displayableEffects[j])) {
         groupItems.push(displayableEffects[j]);
         j++;
       }
