@@ -23,7 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-06-1',
     items: [
-      { message: 'Pulled one thread on Power Boost and the whole sweater came apart — turned out to be a pile of data gaps. Many fixes ensued 🧶', type: 'fix' },
+      { message: 'Pulled one thread on Power Boost and the whole sweater came apart...turned into a whole mess of data gaps. Many fixes ensued 🤕', type: 'fix' },
       { message: 'Fix for Blaster patron-pool selection', type: 'fix' },
       { message: 'Welcome Modal on page load has been retired, its now part of the the "New Update Available" banner, and can also be accessed through menus. Various small UI tweaks' , type: 'update' },
       { message: 'The display of global recharge can now be toggled between a simple sum of your bonuses (e.g. +25%), and the base-100% plus bonuses (e.g., 125%) Settings > Display', type: 'feat' },
