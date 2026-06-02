@@ -452,6 +452,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const effectivePower = conditionalMerge.power;
   const extraInstances = conditionalMerge.extraInstances;
 
+  // Incarnate damage procs (Interface DoTs, Hybrid Assault) fire on outgoing
+  // ATTACKS, so they only belong on powers that can slot Damage enhancements
+  // (TO/DO/SO/IO damage eligibility). Without this gate they were appended to
+  // every clickable power — buffs, toggles, mez with no damage component.
+  const powerCanSlotDamage = !!effectivePower?.allowedEnhancements?.includes('Damage');
+
   // Calculate actual damage using archetype modifiers and level
   const calculatedDamage = useMemo(() => {
     if (!effectivePower?.damage && !effectivePower?.effects?.damage) return null;
@@ -705,7 +711,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     // active, regardless of slotted enhancements. Their entries show up
     // alongside the IO-proc rows so the user sees the full proc landscape
     // for the cast.
-    if (archetypeId) {
+    if (archetypeId && powerCanSlotDamage) {
       const incProcs = getActiveIncarnateDamageProcs(build.incarnates, {
         hybrid: !!incarnateActive?.hybrid,
         interface: !!incarnateActive?.interface,
@@ -742,7 +748,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     }
 
     return entries.length > 0 ? entries : null;
-  }, [calculatedDamage, selectedPower, effectivePower, build.level, build.incarnates, archetypeId, incarnateActive?.hybrid, incarnateActive?.interface, enhancementBonuses.recharge, globalBonusesForCalc.damage]);
+  }, [calculatedDamage, selectedPower, effectivePower, build.level, build.incarnates, archetypeId, incarnateActive?.hybrid, incarnateActive?.interface, enhancementBonuses.recharge, globalBonusesForCalc.damage, powerCanSlotDamage]);
 
   // Average incarnate-proc damage per cast for THIS attack. Fed to
   // DamageBlock so its "+X proc" annotation includes Hybrid/Interface
@@ -750,7 +756,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // procDamageEntries (which gates on calculatedDamage being null);
   // direct-damage attacks need this number too.
   const incarnateProcDamage = useMemo(() => {
-    if (!archetypeId || !effectivePower) return 0;
+    if (!archetypeId || !effectivePower || !powerCanSlotDamage) return 0;
     const baseRecharge = effectivePower.stats?.recharge ?? effectivePower.effects?.recharge ?? 0;
     const castTime = effectivePower.stats?.castTime ?? effectivePower.effects?.castTime ?? 0;
     const radius = effectivePower.stats?.radius ?? effectivePower.effects?.radius ?? 0;
@@ -776,7 +782,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       expectedTargets,
     );
     return contribs.reduce((sum, c) => sum + c.avgDamage, 0);
-  }, [effectivePower, archetypeId, build.level, build.incarnates, incarnateActive?.hybrid, incarnateActive?.interface, enhancementBonuses.recharge]);
+  }, [effectivePower, archetypeId, build.level, build.incarnates, incarnateActive?.hybrid, incarnateActive?.interface, enhancementBonuses.recharge, powerCanSlotDamage]);
 
   // Per-target buff scaling (stored in UI store so it persists across power switches)
   const stackingInfo = useMemo(() => power ? getStackingInfo(power) : null, [power]);
