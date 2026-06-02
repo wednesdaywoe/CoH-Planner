@@ -289,7 +289,11 @@ export function hydrateBuild(slim: Record<string, any>): Build {
         (inh) => inh.name.toLowerCase() === slimInh.name.toLowerCase()
       );
     }
-    if (match && slimInh.slots.length > 0) {
+    // Don't restore stored slots onto a now-unslottable inherent (maxSlots 0):
+    // a build shared before Ninja Run / Beast Run were corrected would otherwise
+    // re-apply their phantom base slot. getInherentSelectedPowers already gave
+    // such powers an empty slots array.
+    if (match && slimInh.slots.length > 0 && match.maxSlots !== 0) {
       match.slots = slimInh.slots.map((s: SlimEnhancement | null) =>
         s ? hydrateEnhancement(s) : null
       );

@@ -581,9 +581,12 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
     icon: 'inherent_ninjarun.png',
     powerType: 'Toggle',
     available: -1,
-    maxSlots: 4,
-    allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
+    // Ninja Run is unslottable in-game (powers.bin boosts_allowed: []). It must
+    // get zero slots — no base slot, no auto slot. (Sprint, by contrast, IS
+    // slottable, so it keeps its allowances above.)
+    maxSlots: 0,
+    allowedEnhancements: [],
+    allowedSetCategories: [],
     isLocked: true,
     category: 'basic',
     effects: {
@@ -602,9 +605,11 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
     icon: 'inherent_beastrun.png',
     powerType: 'Toggle',
     available: -1,
-    maxSlots: 4,
-    allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
+    // Beast Run is unslottable in-game (powers.bin boosts_allowed: []) — same as
+    // Ninja Run. Zero slots, no auto slot.
+    maxSlots: 0,
+    allowedEnhancements: [],
+    allowedSetCategories: [],
     isLocked: true,
     category: 'basic',
     effects: {

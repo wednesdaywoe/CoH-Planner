@@ -2432,7 +2432,12 @@ export const useBuildStore = create<BuildStore>()(
               const def = getInherentPowerDef(power.internalName)
                 ?? getInherentPowerDef(power.name.replace(/\s+/g, '_'));
               if (def && power.maxSlots !== def.maxSlots) {
-                return { ...power, maxSlots: def.maxSlots };
+                const updated = { ...power, maxSlots: def.maxSlots };
+                // If the definition is now unslottable (Ninja Run / Beast Run
+                // corrected to maxSlots 0), drop any stale slots carried from
+                // the old definition so they don't keep their phantom base slot.
+                if (def.maxSlots === 0) updated.slots = [];
+                return updated;
               }
               return power;
             });
