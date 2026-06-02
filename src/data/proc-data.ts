@@ -1733,7 +1733,10 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     setCategory: "Controller Archetype Sets",
     setName: "Superior Overpowering Presence",
     ioName: "Recharge/Chance for Energy Font",
-    ppm: 1,
+    // Superior ATO procs run +1 PPM over their non-superior version (cf.
+    // Entomb 2 → Superior Entomb 3, Gauntleted Fist 2 → Superior 3). The
+    // base "Chance for Energy Font" is 1 PPM, so the Superior piece is 2.
+    ppm: 2,
     mechanics: "Chance for Energy Font Pet(Stun & Damage)",
     pvpNotes: "",
     type: "Proc",
