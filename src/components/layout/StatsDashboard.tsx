@@ -10,6 +10,7 @@ import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { formatBonusValue2 as formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data';
+import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal } from '@/components/modals';
@@ -224,17 +225,9 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
     countNonGranted(build.secondary.powers) +
     build.pools.reduce((sum, pool) => sum + countNonGranted(pool.powers), 0) +
     (build.epicPool ? countNonGranted(build.epicPool.powers) : 0);
-  // Count placed (additional) slots only — excludes the free first slot each power gets.
-  // The 67 budget is for manually placed slots; free first slots are separate.
-  // Includes inherent power slots (they count against the budget in-game).
-  const countExtra = (powers: { slots: unknown[] }[]) =>
-    powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0);
-  const currentSlotCount =
-    countExtra(build.primary.powers) +
-    countExtra(build.secondary.powers) +
-    build.pools.reduce((sum, pool) => sum + countExtra(pool.powers), 0) +
-    (build.epicPool ? countExtra(build.epicPool.powers) : 0) +
-    countExtra(build.inherents);
+  // Slots that consume the level-up budget (the "/67"). Excludes each power's
+  // free base slot and any auto-granted freebie slots (Rebirth Health/Stamina).
+  const currentSlotCount = countPlacedBudgetSlots(build);
 
   // Effective movement caps — travel toggles (Super Speed / Mighty Leap / Fly /
   // Afterburner / etc.) raise the cap of their corresponding stat while active,

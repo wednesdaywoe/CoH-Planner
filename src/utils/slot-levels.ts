@@ -18,8 +18,35 @@
  */
 
 import type { Build, SelectedPower } from '@/types';
-import { SLOT_GRANTS, getInherentAutoGrantedSlotLevels } from '@/data';
+import { SLOT_GRANTS, getInherentAutoGrantedSlotLevels, getInherentAutoGrantedSlotCount } from '@/data';
 import { powerKey, type PowerCategory } from '@/utils/power-key';
+
+/**
+ * Count enhancement slots that consume the level-up budget (the "/67" counter).
+ *
+ * Each power's base slot (index 0) is free. So are any auto-granted "freebie"
+ * slots — Rebirth grants Health +2 and Stamina +2 outside the budget (71 total
+ * slots, but only 67 allocatable during leveling). Those must NOT count, or the
+ * counter goes red at 68–71. Slots placed BEYOND the freebies still count
+ * (e.g. 6-slotting Health costs 3 budget slots: 6 − 1 base − 2 freebie). HC has
+ * no auto-granted slots, so this reduces to "slots beyond the base".
+ */
+export function countPlacedBudgetSlots(
+  build: Pick<Build, 'primary' | 'secondary' | 'pools' | 'epicPool' | 'inherents' | 'level'>,
+): number {
+  const extra = (powers: SelectedPower[]) =>
+    powers.reduce((sum, p) => {
+      const free = 1 + getInherentAutoGrantedSlotCount(p.internalName, build.level);
+      return sum + Math.max(0, p.slots.length - free);
+    }, 0);
+  return (
+    extra(build.primary.powers) +
+    extra(build.secondary.powers) +
+    build.pools.reduce((sum, pool) => sum + extra(pool.powers), 0) +
+    (build.epicPool ? extra(build.epicPool.powers) : 0) +
+    extra(build.inherents)
+  );
+}
 
 /** Number of inherent (auto-granted) slots a power has, if any. */
 function inherentCount(power: SelectedPower): number {

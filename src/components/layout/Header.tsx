@@ -11,6 +11,7 @@ import { useHistoryStore } from '@/stores/historyStore';
 import { useOnboardingStore, useOnboardingCurrentStep } from '@/stores/onboardingStore';
 import { supabase } from '@/lib/supabase';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel } from '@/data';
+import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import type { BadgeVariant } from '@/components/ui';
 import { getActiveDataset } from '@/data/dataset';
@@ -311,18 +312,6 @@ function countManualPowerPicks(build: ReturnType<typeof useBuildStore.getState>[
   );
 }
 
-function countManualPlacedSlots(build: ReturnType<typeof useBuildStore.getState>['build']): number {
-  const extra = (powers: { slots: unknown[] }[]) =>
-    powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0);
-  return (
-    extra(build.primary.powers) +
-    extra(build.secondary.powers) +
-    build.pools.reduce((sum, pool) => sum + extra(pool.powers), 0) +
-    (build.epicPool ? extra(build.epicPool.powers) : 0) +
-    extra(build.inherents)
-  );
-}
-
 // Color-codes the active dataset so a glance at the header tells you which
 // server's data is loaded — helpful when the build's serverId could
 // otherwise diverge from what's been hydrated into the data layer.
@@ -349,7 +338,7 @@ function LevelUpModeButton() {
 
   const level = build.level;
   const picksUsed = countManualPowerPicks(build);
-  const slotsUsed = countManualPlacedSlots(build);
+  const slotsUsed = countPlacedBudgetSlots(build);
 
   // Per-level grant model: at each level the user must consume EXACTLY the
   // grants for that level before advancing. We compute "remaining at this
@@ -463,7 +452,7 @@ function HeaderLevelSlider() {
   const picksAvailable = getPowerPicksAtLevel(level);
   const slotsAvailable = getTotalSlotsAtLevel(level);
   const picksUsed = countManualPowerPicks(build);
-  const slotsUsed = countManualPlacedSlots(build);
+  const slotsUsed = countPlacedBudgetSlots(build);
   const readyToAdvance = picksUsed >= picksAvailable && slotsUsed >= slotsAvailable;
   const forwardGated = levelUpMode && !readyToAdvance;
   const upDisabled = level >= MAX_LEVEL || forwardGated;
