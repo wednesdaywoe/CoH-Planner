@@ -68,9 +68,9 @@ export const HowlingTwilight: Power = {
       "duration": 1
     },
     "stun": {
-      "mag": 3,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 2,
+      "scale": 15,
+      "table": "Ranged_Ones"
     },
     "regenDebuff": {
       "scale": 35,

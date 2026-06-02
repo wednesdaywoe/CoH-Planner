@@ -54,9 +54,9 @@ export const FrozenAura: Power = {
   ],
   "effects": {
     "sleep": {
-      "mag": 3,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 2,
+      "scale": 20,
+      "table": "Ranged_Sleep"
     }
   }
 };

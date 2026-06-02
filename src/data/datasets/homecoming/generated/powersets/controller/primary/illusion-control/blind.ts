@@ -56,14 +56,14 @@ export const Blind: Power = {
   ],
   "effects": {
     "hold": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Immobilize"
     },
     "sleep": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Melee_PvPMez"
+      "mag": 2,
+      "scale": 10,
+      "table": "Melee_Sleep"
     }
   },
   "specialEffects": [

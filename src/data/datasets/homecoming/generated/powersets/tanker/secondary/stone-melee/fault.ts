@@ -64,8 +64,8 @@ export const Fault: Power = {
   "effects": {
     "stun": {
       "mag": 2,
-      "scale": 1,
-      "table": "Melee_PvPMez"
+      "scale": 8,
+      "table": "Melee_Stun"
     }
   }
 };

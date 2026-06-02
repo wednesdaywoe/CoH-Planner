@@ -55,9 +55,9 @@ export const EchoChamber: Power = {
   ],
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 1,
-      "table": "Melee_PvPMez"
+      "mag": 2,
+      "scale": 10,
+      "table": "Ranged_Immobilize"
     }
   }
 };

@@ -40,9 +40,9 @@ export const DarkPit: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 3,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 2,
+      "scale": 8,
+      "table": "Ranged_Stun"
     },
     "damageBuff": {
       "scale": 0.018,

@@ -89,8 +89,8 @@ export const ForceBomb: Power = {
     },
     "stun": {
       "mag": 2,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "scale": 8,
+      "table": "Ranged_Stun"
     },
     "buffDuration": 30
   },

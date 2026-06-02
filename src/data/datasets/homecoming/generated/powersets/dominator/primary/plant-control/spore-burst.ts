@@ -41,9 +41,9 @@ export const SporeBurst: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 3,
+      "scale": 12,
+      "table": "Ranged_Sleep"
     }
   }
 };

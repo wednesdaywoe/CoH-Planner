@@ -58,8 +58,8 @@ export const DreadfulDiscord: Power = {
   "effects": {
     "fear": {
       "mag": 3,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "scale": 15,
+      "table": "Ranged_Fear"
     }
   }
 };

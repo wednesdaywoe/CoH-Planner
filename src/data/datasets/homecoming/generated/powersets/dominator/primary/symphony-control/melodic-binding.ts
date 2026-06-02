@@ -56,9 +56,9 @@ export const MelodicBinding: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 5,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 4,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
     }
   }
 };

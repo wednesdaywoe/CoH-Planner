@@ -56,9 +56,9 @@ export const ImpassionedSerenade: Power = {
   ],
   "effects": {
     "confuse": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 3,
+      "scale": 20,
+      "table": "Ranged_Immobilize"
     }
   }
 };

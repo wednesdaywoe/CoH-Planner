@@ -43,9 +43,9 @@ export const SoundCannon: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 3,
-      "scale": 1,
-      "table": "Melee_PvPMez"
+      "mag": 2,
+      "scale": 8,
+      "table": "Melee_Fear"
     }
   }
 };

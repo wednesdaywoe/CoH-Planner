@@ -2231,10 +2231,22 @@ function extractEffects(templates, powerName) {
           recordDuration('specialBuff');
         } else {
           const newMez = makeMezEffect();
-          // Keep the higher magnitude mez effect (for powers with multiple mez effects)
-          if (!effects[mezType] || newMez.mag > effects[mezType].mag) {
-            effects[mezType] = newMez;
-          }
+          const cur = effects[mezType];
+          // Prefer the PvE template. A power can carry both a PvE mez template
+          // (e.g. Dominate's Mag-3 Ranged_Immobilize) and a PvP one (Mag-4
+          // Ranged_PvPMez). PvP "*_PvPMez" tables have no PvE AT-table entry,
+          // so a hold whose duration is `scale × table` silently shows no
+          // duration if the PvP template wins. The old "higher magnitude wins"
+          // tiebreaker did exactly that (Mag 4 > Mag 3). Always keep PvE over
+          // PvP; only fall back to the higher-magnitude rule among same-kind
+          // templates.
+          const newIsPvP = /pvp/i.test(table || '');
+          const curIsPvP = cur ? /pvp/i.test(cur.table || '') : false;
+          let take;
+          if (!cur) take = true;
+          else if (curIsPvP !== newIsPvP) take = curIsPvP; // prefer PvE
+          else take = newMez.mag > cur.mag;
+          if (take) effects[mezType] = newMez;
           if (duration) effects.effectDuration = duration;
           recordDuration(mezType);
         }

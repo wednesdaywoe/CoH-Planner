@@ -38,9 +38,9 @@ export const TimeStop: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 3,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 2,
+      "scale": 10,
+      "table": "Ranged_Immobilize"
     },
     "specialBuff": {
       "heal": {

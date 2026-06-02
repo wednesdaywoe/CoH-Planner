@@ -39,9 +39,9 @@ export const Cinders: Power = {
   "maxSlots": 6,
   "effects": {
     "hold": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
     }
   }
 };

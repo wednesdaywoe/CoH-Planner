@@ -39,9 +39,9 @@ export const SaltCrystals: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Sleep"
     },
     "defenseDebuff": {
       "scale": 2,

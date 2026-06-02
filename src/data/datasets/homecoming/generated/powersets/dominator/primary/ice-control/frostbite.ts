@@ -62,9 +62,9 @@ export const Frostbite: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 5,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
     },
     "rechargeDebuff": {
       "scale": 0.2,

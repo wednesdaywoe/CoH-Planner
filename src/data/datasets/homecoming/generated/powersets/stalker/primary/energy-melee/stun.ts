@@ -72,8 +72,8 @@ export const PowerCrash: Power = {
   "effects": {
     "stun": {
       "mag": 3,
-      "scale": 1,
-      "table": "Melee_PvPMez"
+      "scale": 5,
+      "table": "Melee_Stun"
     }
   },
   "specialEffects": [

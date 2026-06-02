@@ -63,9 +63,9 @@ export const BrilliantBarrage: Power = {
   ],
   "effects": {
     "fear": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Fear"
     }
   }
 };

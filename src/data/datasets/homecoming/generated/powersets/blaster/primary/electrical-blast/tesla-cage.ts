@@ -66,8 +66,8 @@ export const TeslaCage: Power = {
     },
     "hold": {
       "mag": 3,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "scale": 8,
+      "table": "Ranged_Ones"
     },
     "enduranceDrain": {
       "scale": 2.71,

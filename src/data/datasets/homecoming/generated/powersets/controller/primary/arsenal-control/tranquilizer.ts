@@ -61,9 +61,9 @@ export const Tranquilizer: Power = {
   ],
   "effects": {
     "sleep": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 3.5,
+      "scale": 30,
+      "table": "Ranged_Sleep"
     }
   },
   "specialEffects": [

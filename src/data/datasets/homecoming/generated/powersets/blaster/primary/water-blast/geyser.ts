@@ -96,8 +96,8 @@ export const Geyser: Power = {
       "effects": {
         "stun": {
           "mag": 3,
-          "scale": 1,
-          "table": "Ranged_PvPMez"
+          "scale": 5,
+          "table": "Ranged_Stun"
         }
       },
       "group": "tidal_power-stacks",

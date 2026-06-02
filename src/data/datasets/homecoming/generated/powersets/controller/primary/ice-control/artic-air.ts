@@ -60,9 +60,9 @@ export const ArcticAir: Power = {
       }
     },
     "confuse": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 3,
+      "scale": 2,
+      "table": "Ranged_Fear"
     },
     "fear": {
       "mag": 1,

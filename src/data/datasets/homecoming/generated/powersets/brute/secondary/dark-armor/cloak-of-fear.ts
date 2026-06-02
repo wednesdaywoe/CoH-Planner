@@ -44,9 +44,9 @@ export const CloakofFear: Power = {
   "maxSlots": 6,
   "effects": {
     "fear": {
-      "mag": 3,
+      "mag": 1,
       "scale": 1,
-      "table": "Melee_PvPMez"
+      "table": "Melee_Ones"
     },
     "effectDuration": 3,
     "durations": {

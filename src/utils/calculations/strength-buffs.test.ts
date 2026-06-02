@@ -5,6 +5,8 @@ import { getEpicPool } from '@/data/epic-pools';
 import { createEmptyBuild } from '@/types/build';
 import { calcThreeTier } from '@/components/info/powerDisplayUtils';
 import { shouldShowToggle } from '@/components/powers/power-row-utils';
+import { getPowerset } from '@/data/powersets';
+import { getTableValue } from '@/data/at-tables';
 
 /**
  * Tests for the Power Boost / +Strength mechanic.
@@ -199,4 +201,37 @@ describe('Power Boost integration — General totals (rebirth, controller)', () 
     // And it never fabricates damage.
     expect(on.globalBonuses.damage).toBe(off.globalBonuses.damage);
   });
+});
+
+describe('Mez duration surfacing — prefer PvE template over PvP (homecoming)', () => {
+  beforeAll(async () => {
+    await loadDataset('homecoming');
+  });
+
+  // Homecoming holds carry both a PvE template (e.g. Ranged_Immobilize) and a
+  // PvP one (Ranged_PvPMez). The PvP table has no PvE AT-table entry, so if the
+  // converter's "higher magnitude wins" rule picked it, the mez duration
+  // (scale × table) silently vanished. The fix prefers the PvE template.
+  const cases: Array<[string, string, string]> = [
+    ['controller/mind-control', 'Dominate', 'hold'],
+    ['controller/mind-control', 'Total_Domination', 'hold'],
+    ['controller/mind-control', 'Mesmerize', 'sleep'],
+  ];
+
+  for (const [psId, internalName, mezKey] of cases) {
+    it(`${internalName} ${mezKey} uses a resolvable PvE table (duration surfaces)`, () => {
+      const ps = getPowerset(psId);
+      expect(ps, `powerset ${psId}`).toBeTruthy();
+      const power = ps!.powers.find(p => p.internalName === internalName);
+      expect(power, internalName).toBeTruthy();
+      const mez = (power!.effects as Record<string, { scale: number; table: string; mag?: number }>)[mezKey];
+      expect(mez, `${internalName}.${mezKey}`).toBeTruthy();
+      // Not the PvP table…
+      expect(mez.table).not.toMatch(/pvp/i);
+      // …and the AT table resolves, so duration = scale × table is computable & positive.
+      const tableVal = getTableValue('controller', mez.table, 50);
+      expect(tableVal, `table ${mez.table} resolves`).toBeGreaterThan(0);
+      expect(mez.scale * (tableVal as number)).toBeGreaterThan(0);
+    });
+  }
 });

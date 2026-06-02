@@ -58,9 +58,9 @@ export const Wormhole: Power = {
       "mezResistance": 15
     },
     "stun": {
-      "mag": 4,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
     },
     "buffDuration": 15
   },

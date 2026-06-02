@@ -60,8 +60,8 @@ export const Defibrillate: Power = {
     },
     "sleep": {
       "mag": 3,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "scale": 30,
+      "table": "Ranged_Sleep"
     },
     "enduranceDrain": {
       "scale": 20.3,
@@ -71,6 +71,10 @@ export const Defibrillate: Power = {
       "scale": 30,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
   }
 };

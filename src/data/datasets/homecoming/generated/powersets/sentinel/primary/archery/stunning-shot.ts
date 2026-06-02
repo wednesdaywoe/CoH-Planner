@@ -65,8 +65,8 @@ export const StunningShot: Power = {
   "effects": {
     "stun": {
       "mag": 3,
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "scale": 4,
+      "table": "Ranged_Stun"
     }
   }
 };
