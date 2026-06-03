@@ -1670,6 +1670,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -1681,6 +1682,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -1943,6 +1948,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -1954,6 +1960,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -2688,6 +2698,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 10.5,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -2699,6 +2710,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Ranged_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Ranged_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -4964,6 +4979,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -4975,6 +4991,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -5789,6 +5809,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -5800,6 +5821,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -7534,9 +7559,9 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "sleep": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Sleep"
           }
         }
       },
@@ -9431,8 +9456,8 @@ export const EPIC_POOLS_RAW = {
           ],
           "stun": {
             "mag": 3,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "scale": 8,
+            "table": "Ranged_Stun"
           },
           "defenseDebuff": {
             "scale": 2,
@@ -10154,6 +10179,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -10165,6 +10191,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -10427,6 +10457,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -10438,6 +10469,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -13155,9 +13190,9 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
-            "mag": 5,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "mag": 4,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
           },
           "tohitDebuff": {
             "scale": 0.75,
@@ -17841,9 +17876,9 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
           },
           "tohitDebuff": {
             "scale": 0.75,
@@ -18219,9 +18254,9 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_EndDrain"
           },
           "stun": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
           },
           "recoveryDebuff": {
             "scale": 1,
@@ -18414,9 +18449,9 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
-            "mag": 5,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
           }
         }
       },
@@ -18738,9 +18773,9 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "immobilize": {
-            "mag": 5,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
           },
           "rechargeDebuff": {
             "scale": 0.2,
@@ -18952,8 +18987,8 @@ export const EPIC_POOLS_RAW = {
           ],
           "sleep": {
             "mag": 2,
-            "scale": 1,
-            "table": "Melee_PvPMez"
+            "scale": 10,
+            "table": "Melee_Sleep"
           }
         }
       },
@@ -19709,6 +19744,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -19720,6 +19756,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Ranged_Res_Boolean"
             }
+          },
+          "accuracyBuff": {
+            "scale": 2,
+            "table": "Ranged_Buff_ToHit"
           },
           "perceptionBuff": {
             "scale": 5,
@@ -20546,9 +20586,9 @@ export const EPIC_POOLS_RAW = {
           "radius": 25,
           "maxTargets": 16,
           "sleep": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Sleep"
           }
         }
       },
@@ -20668,9 +20708,9 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
           }
         }
       },
@@ -22917,9 +22957,9 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "sleep": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "mag": 3.5,
+            "scale": 30,
+            "table": "Ranged_Sleep"
           }
         }
       },
@@ -22973,9 +23013,9 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "hold": {
-            "mag": 4,
-            "scale": 1,
-            "table": "Ranged_PvPMez"
+            "mag": 3,
+            "scale": 10,
+            "table": "Ranged_Immobilize"
           }
         }
       },
@@ -24575,6 +24615,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -24586,6 +24627,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -24833,6 +24878,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -24844,6 +24890,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,

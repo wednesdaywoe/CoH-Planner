@@ -6,21 +6,32 @@ with diagnoses and recommended fixes. Newest entries at top.
 
 ---NEW ISSUES---
 
-## ⚠️ Epic-pools generated files are stale — a regen surfaces mez-table drift (found 2026-06-03)
+## ⚠️ Powerset/pool layer still needs the accuracy + mez-PvE fixes; a regen surfaces broad stale drift (found 2026-06-03)
 
-While fixing Focused Accuracy I discovered that re-running `convert-epic-pools.cjs`
-produces a non-trivial diff **unrelated to the accuracy fix** — mez effects flip
-`Ranged_PvPMez`/`Melee_PvPMez` → `Ranged_Sleep`/`Ranged_Stun` (and some PvPMez
-rows drop) on ~8 epic control powers (Flash Freeze, Hoarfrost, Dark Pit,
-Engulfing Darkness, Lightning Field, Cremate, …). Confirmed **pre-existing**:
-the drift appears even with the converter change reverted, so the committed
-`datasets/<id>/generated/epic-pools.ts` is simply older than the current
-converter+data. (The raw still carries `Ranged_PvPMez`, so the converter now
-remaps PvP mez → PvE Sleep/Stun somewhere; likely a correct improvement, but
-unverified.) This is why the Focused Accuracy fix below used **overrides** rather
-than a full regen. **To-do:** vet the mez remap against in-game values, then do a
-deliberate epic-pools regen for both datasets (which also makes the accuracy
-overrides redundant). Same staleness probably affects `generated/powersets`.
+The accuracy fix and the mez-PvE fix below were materialized for **epic-pools**
+(clean regen, see ✅ entries). The same two converter fixes also apply to the
+**powerset and pool** layers, but those generated files are stale across *many*
+unrelated categories, so a blanket regen is not safe to ship without review.
+
+- **Accuracy still dropped** on these non-epic powers (raw has `Accuracy /
+  aspect=Strength`, no `accuracyBuff` in any committed powerset/pool file):
+  Combat Training: Offensive (Arachnos Soldier/Widow), Eagle Eye, Terra Firma
+  (Stone Armor), Beryl Crystals, Debilitating Spores, Defiance Buff, and the
+  Devices-pool Targeting Drone. These show no +Accuracy until fixed.
+- **Mez `PvPMez` staleness** in HC powersets is tiny — 4 files (Scramble Thoughts
+  ×3 ATs, Arctic Air). Rebirth powersets: 0 (already current).
+- **But a full `convert-all-powersets.cjs --force` regen drifts broadly** — e.g.
+  bio-armor's generated export renames `Adaptation` → `Evolving Armor` (would
+  break the name-keyed override + any `import { Adaptation }`), amp-up restructures
+  `specialBuff/defenseBuff/tohitBuff` → `specialBuff` + `defense`/`tohit`
+  (Ranged_Buff_Dmg), beta-decay reshapes its `specialBuff`, etc. These are
+  accumulated converter improvements since the powerset files were last built;
+  each category needs its own verification (like the epic-pools mez check below).
+
+**Recommended next step:** either (a) surgical `accuracyBuff` overrides for the ~7
+powerset/pool accuracy powers above (zero-drift, mirrors the old epic-pools
+stopgap), or (b) a deliberate full powerset/pool regen with a category-by-category
+diff review (bigger, also picks up the mez-PvE fix + every other latent improvement).
 
 ---
 
@@ -49,23 +60,33 @@ wrong). Fix, three layers + override:
    and the `ActivePowerEffect` interface; display entry added to
    [effect-registry.ts](src/data/core/effect-registry.ts) (`+Accuracy`, no
    `enhancementAspect`).
-3. **Data** — applied via **overrides** (not a full regen, to avoid the unrelated
-   mez drift above): [homecoming](src/data/datasets/homecoming/overrides/epic-pools.ts)
-   (10 powers) + [rebirth](src/data/datasets/rebirth/overrides/epic-pools.ts) (12
-   powers), each merging the exact `accuracyBuff` value the converter emits (table
-   varies by AT — e.g. HC Brute uses `Ranged_Ones`, HC Sentinel `Ranged_Buff_ToHit`
-   scale 2; both resolve to ~+20%). Covers Focused Accuracy, Targeting Drone, and
-   Personal Force Field. The `withOverrides` deep-merge on `effects` preserves the
-   other effects. Idempotent — a future deliberate regen yields the same values.
+3. **Data** — materialized via a **deliberate epic-pools regen of both datasets**
+   (`node scripts/convert-epic-pools.cjs --dataset {homecoming,rebirth} --apply`).
+   The full diff was classified per-power: HC = 22 changed (10 `accuracyBuff`
+   additions + 12 PvE-mez fixes — see the ✅ mez note below), Rebirth = 12 (all
+   `accuracyBuff`). No other categories changed, no regressions. The earlier
+   stop-gap `accuracyBuff` overrides were **removed** — the generated layer now
+   owns the data (covers Focused Accuracy, Targeting Drone, Personal Force Field).
 
 **Verified:** [focused-accuracy.test.ts](src/utils/calculations/focused-accuracy.test.ts)
-asserts FA toggled on adds exactly +20% to `globalBonuses.accuracy` (0 when off).
-tsc clean, 79/79 tests pass. Targeting Drone / Personal Force Field covered by the
-same override set. Alpha-incarnate accuracy path is unaffected (special-cased).
+asserts FA toggled on adds exactly +20% to `globalBonuses.accuracy` (0 when off),
+now resolved through the generated layer. tsc clean, 79/79 tests pass.
+Alpha-incarnate accuracy path is unaffected (special-cased).
 
-**Not done:** the broader epic-pools regen + mez review (see the ⚠️ entry above);
-any *powerset* accuracy self-buffs (none currently known beyond the epic set) would
-need their own override or a powersets regen.
+**Not done:** powerset/pool accuracy powers (Combat Training: Offensive, Eagle Eye,
+Terra Firma, …) — see the ⚠️ entry at top.
+
+## ✅ Epic-pools PvE-mez staleness (FIXED 2026-06-03, via the regen above)
+
+The committed `epic-pools.ts` was built before the converter's "prefer the PvE mez
+table over PvP" fix (`convert-powerset.cjs` ~line 2244: `*_PvPMez` tables have no
+PvE AT-table entry, so a hold/sleep/stun whose duration is `scale × table` silently
+showed **no duration** when the old "higher-magnitude-wins" tiebreaker picked the
+PvP template). **Verified correct:** each affected power's raw carries *both* a PvE
+template (e.g. `Ranged_Sleep`, scale 12) and a PvP one (`Ranged_PvPMez`, mag 4) —
+`collectTemplatesDeep` finds both and the fix now keeps the PvE one. Materialized by
+the regen above (12 HC powers: Flash Freeze→Sleep, Stalagmites→Stun, Netherworld
+Grasp→Immobilize, etc.). Rebirth was already current (Parse6, 0 PvPMez powersets).
 
 ---
 

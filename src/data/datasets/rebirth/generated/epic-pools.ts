@@ -1208,6 +1208,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -1219,6 +1220,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -1440,6 +1445,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -1451,6 +1457,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -2127,6 +2137,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -2138,6 +2149,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -4030,6 +4045,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -4041,6 +4057,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -4527,6 +4547,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -4538,6 +4559,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -7832,6 +7857,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -7843,6 +7869,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -8076,6 +8106,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -8087,6 +8118,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -11024,6 +11059,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -11035,6 +11071,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -11541,6 +11581,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -11552,6 +11593,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -11836,6 +11881,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -11847,6 +11893,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -20631,6 +20681,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -20642,6 +20693,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,
@@ -20857,6 +20912,7 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "tohitBuff": 0.75,
             "debuffResistance": 0.75,
+            "accuracyBuff": 0.75,
             "perceptionBuff": 0.75
           },
           "debuffResistance": {
@@ -20868,6 +20924,10 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Melee_Ones"
             }
+          },
+          "accuracyBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
           },
           "perceptionBuff": {
             "scale": 0.6,

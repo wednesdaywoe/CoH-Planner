@@ -10,22 +10,7 @@
  */
 import type { Power } from '@/types';
 
-export const EPIC_POOL_OVERRIDES: Record<string, Partial<Power>> = {
-  // +Accuracy self-buff restoration. Focused Accuracy / Targeting Drone /
-  // Personal Force Field grant a flat +Accuracy (aspect=Strength on the Accuracy
-  // attrib) that the old generated extraction dropped — the converter now emits
-  // `accuracyBuff`, but a full epic-pools regen also surfaces unrelated stale mez
-  // drift, so these merge the exact accuracyBuff values surgically instead.
-  // Values copied verbatim from the converter (table varies by AT). Idempotent:
-  // a future deliberate regen produces the same values, making these redundant.
-  'Epic.Body_Mastery.Focused_Accuracy': { effects: { accuracyBuff: { scale: 0.2, table: 'Melee_Ones' } } },
-  'Epic.Body_Mastery_Stalker.Focused_Accuracy': { effects: { accuracyBuff: { scale: 0.2, table: 'Melee_Ones' } } },
-  'Epic.Brute_Mace_Mastery.Focused_Accuracy': { effects: { accuracyBuff: { scale: 0.2, table: 'Ranged_Ones' } } },
-  'Epic.Controller_Mace_Mastery.Personal_Force_Field': { effects: { accuracyBuff: { scale: 0.2, table: 'Melee_Ones' } } },
-  'Epic.Corruptor_Mace_Mastery.Focused_Accuracy': { effects: { accuracyBuff: { scale: 0.2, table: 'Melee_Ones' } } },
-  'Epic.Energy_Mastery.Focused_Accuracy': { effects: { accuracyBuff: { scale: 0.2, table: 'Melee_Ones' } } },
-  'Epic.Energy_Mastery_Brute.Focused_Accuracy': { effects: { accuracyBuff: { scale: 0.2, table: 'Melee_Ones' } } },
-  'Epic.Sentinel_Mace_Mastery.Focused_Accuracy': { effects: { accuracyBuff: { scale: 2, table: 'Ranged_Buff_ToHit' } } },
-  'Epic.Weapon_Mastery.Targeting_Drone': { effects: { accuracyBuff: { scale: 0.2, table: 'Melee_Ones' } } },
-  'Epic.Weapon_Mastery_Stalker.Targeting_Drone': { effects: { accuracyBuff: { scale: 0.2, table: 'Melee_Ones' } } },
-};
+// The Focused Accuracy / Targeting Drone / Personal Force Field +Accuracy buffs
+// (and the PvE mez-table fix) now come straight from the generated layer after a
+// deliberate epic-pools regen — no overrides needed. See BIN PARSER GAPS.md.
+export const EPIC_POOL_OVERRIDES: Record<string, Partial<Power>> = {};
