@@ -48,6 +48,16 @@ export const INCARNATE_RECIPES: Record<IncarnateSlotId, Record<number, TierRecip
     3: { threads: 100, empyrean: 8,incarnateComponents: ['1x Rare Incarnate Component'],      requires: ['t2'] },
     4: { threads: 300, empyrean: 30,incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
   },
+  // Genesis (Rebirth-only). Placeholder costs mirroring the standard incarnate
+  // slots — Genesis crafting costs aren't verified yet, and the Genesis slot is
+  // currently excluded from the crafting UI, so these are never surfaced. They
+  // exist to keep INCARNATE_RECIPES total over IncarnateSlotId.
+  genesis: {
+    1: { threads: 60,  empyrean: 0,incarnateComponents: ['1x Common Incarnate Component'],    requires: [] },
+    2: { threads: 240, empyrean: 0,incarnateComponents: ['4x Uncommon Incarnate Component'],  requires: ['t1'] },
+    3: { threads: 100, empyrean: 8,incarnateComponents: ['1x Rare Incarnate Component'],      requires: ['t2'] },
+    4: { threads: 300, empyrean: 30,incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
+  },
 };
 
 // ============================================

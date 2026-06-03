@@ -28,6 +28,8 @@ import {
   GENERATED_INTERFACE_EFFECTS as REBIRTH_INTERFACE,
   GENERATED_JUDGEMENT_EFFECTS as REBIRTH_JUDGEMENT,
   GENERATED_LORE_EFFECTS as REBIRTH_LORE,
+  // Genesis is Rebirth-only — Homecoming's generated file has no such export.
+  GENERATED_GENESIS_EFFECTS as REBIRTH_GENESIS,
 } from './datasets/rebirth/generated/incarnate-effects';
 import { getActiveDataset } from './dataset';
 
@@ -193,6 +195,86 @@ export interface LoreEffects {
 }
 
 /**
+ * The level-44-and-below "exemplar power" a Genesis ability grants. When you
+ * exemplar below 45 your incarnate abilities switch off — but Genesis instead
+ * grants one of these usable powers, typed by tree:
+ *   verdict → an AoE damage attack (like a mini Judgement)
+ *   socket  → a proc/debuff applied to your attacks (like Interface)
+ *   data    → a pet summon (like Lore)
+ *   fate    → a PBAoE ally buff (+End/+Recovery/+Recharge; Clarion adds mez prot)
+ * All four are display-only EXCEPT Fate's self stat-buff, which feeds the
+ * dashboard while exemplared below 45 (see applyGenesisExemplarBuff).
+ */
+export type GenesisExemplarEffect =
+  | {
+      kind: 'attack';
+      damageType: string;
+      effectArea: string;
+      range: number;
+      radius: number;
+      arc: number;
+      maxTargets: number;
+      activationTime: number;
+      recharge: number;
+      damageScale: number;
+      tableName: string;
+      secondaryEffects: string[];
+    }
+  | {
+      kind: 'proc';
+      label: string;
+      debuffType?: string;
+      debuffMagnitude?: number;
+      dotType?: string;
+      dotDamage?: number;
+      dotTableName?: string;
+      duration: number;
+      procPeriod: number;
+    }
+  | {
+      kind: 'summon';
+      faction: string;
+      pets: string[];
+      duration: number;
+      recharge: number;
+    }
+  | {
+      kind: 'buff';
+      stats: { endurance?: number; recovery?: number; recharge?: number };
+      mezProtection?: number;
+      radius: number;
+      recharge: number;
+    };
+
+/**
+ * Genesis amplifier effects (Rebirth-only).
+ *
+ * Genesis is NOT a flat global buff slot — each tree amplifies a partner
+ * incarnate slot by `tierPercent` (0.025 | 0.05 | 0.075 | 0.1):
+ *   data    → your Lore pets' damage (+ flat `loreMaxHP`)
+ *   fate    → your Destiny slot ability's effects
+ *   socket  → your Interface procs AND your player Max HP / Max Endurance
+ *   verdict → your Judgement attack's damage
+ * Only Socket's player Max HP / Max End reach the dashboard directly; the rest
+ * scale a partner slot's contribution (see applyIncarnateBonuses / the Info
+ * panel's Judgement & Lore displays).
+ */
+export interface GenesisEffects {
+  displayName: string;
+  tree: string;
+  enhancesSlot: IncarnateSlotId;
+  /** Amplification fraction applied to the partner slot / player Max HP+End. */
+  tierPercent: number;
+  /** Data only: flat Max HP granted to your Lore pets. */
+  loreMaxHP?: number;
+  /** The level-44- exemplar-only power this ability grants (reference). */
+  exemplarPower: string;
+  /** Resolved below-45 exemplar power, typed by tree. Descriptive only, except
+   *  Fate's self-buff which feeds the dashboard while exemplared below 45. */
+  exemplarEffect?: GenesisExemplarEffect;
+}
+
+/**
  * Combined incarnate power effects
  */
 export interface IncarnatePowerEffects {
@@ -205,6 +287,7 @@ export interface IncarnatePowerEffects {
   interface?: InterfaceEffects;
   judgement?: JudgementEffects;
   lore?: LoreEffects;
+  genesis?: GenesisEffects;
 }
 
 // ============================================
@@ -307,6 +390,19 @@ function loreEffectsRegistry(): Record<string, LoreEffects> {
 }
 
 // ============================================
+// GENESIS EFFECTS DATA (Rebirth-only)
+// ============================================
+
+// Genesis data auto-generated — see scripts/convert-incarnate-effects.cjs.
+// Homecoming has no Genesis slot, so this is empty for non-Rebirth datasets.
+const _genesisEmpty: Record<string, GenesisEffects> = {};
+function genesisEffectsRegistry(): Record<string, GenesisEffects> {
+  return _isRebirth()
+    ? (REBIRTH_GENESIS as unknown as Record<string, GenesisEffects>)
+    : _genesisEmpty;
+}
+
+// ============================================
 // LOOKUP FUNCTIONS
 // ============================================
 
@@ -317,7 +413,7 @@ function normalizePowerId(powerId: string): string {
   // Remove common prefixes
   let normalized = powerId
     .toLowerCase()
-    .replace(/^incarnate\.(alpha|judgement|interface|destiny|lore|hybrid)\./, '')
+    .replace(/^incarnate\.(alpha|judgement|interface|destiny|lore|hybrid|genesis)\./, '')
     .replace(/[.\s-]/g, '_');
 
   return normalized;
@@ -405,12 +501,20 @@ export function getLoreEffects(powerId: string): LoreEffects | null {
 }
 
 /**
+ * Get Genesis amplifier effects for a power (Rebirth-only; null elsewhere).
+ */
+export function getGenesisEffects(powerId: string): GenesisEffects | null {
+  const normalized = normalizePowerId(powerId);
+  return genesisEffectsRegistry()[normalized] || null;
+}
+
+/**
  * Get effects for any incarnate power based on its slot
  */
 export function getIncarnateEffects(
   slotId: IncarnateSlotId,
   powerId: string
-): AlphaEffects | DestinyEffects | HybridEffects | InterfaceEffects | JudgementEffects | LoreEffects | null {
+): AlphaEffects | DestinyEffects | HybridEffects | InterfaceEffects | JudgementEffects | LoreEffects | GenesisEffects | null {
   switch (slotId) {
     case 'alpha':
       return getAlphaEffects(powerId);
@@ -424,6 +528,8 @@ export function getIncarnateEffects(
       return getJudgementEffects(powerId);
     case 'lore':
       return getLoreEffects(powerId);
+    case 'genesis':
+      return getGenesisEffects(powerId);
     default:
       return null;
   }

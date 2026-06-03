@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-06-2',
     items: [
+      { message: 'Rebirth users can now utilize the Genesis incarnate slot! (lucky 😤) Now, Genesis is complicated and I expect this first pass to be messy. Please manage your expectations accordingly, and report any issues you find!', type: 'feat' },
       { message: 'Added a Set Totals pop-up, just below the dashboard', type: 'feat' },
       { message: 'Fix for some auto-grant powers that were mangled by the previous data set regeneration', type: 'fix' },
       { message: 'You can now move slot levels around! Shift-Right-Click a slot and select "Move Slot Level", then just click the slot you want to swap levels with', type: 'feat' },

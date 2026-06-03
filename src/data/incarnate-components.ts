@@ -917,6 +917,9 @@ const RAW_COMPONENTS: Record<IncarnateSlotId, RawSlotData> = {
   lore: LORE_DATA,
   destiny: DESTINY_DATA,
   hybrid: HYBRID_DATA,
+  // Genesis (Rebirth-only) salvage isn't catalogued yet; the slot is excluded
+  // from the crafting UI, so an empty map is correct (accessors return null).
+  genesis: {},
 };
 
 // ============================================

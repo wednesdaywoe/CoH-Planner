@@ -10,9 +10,15 @@
 // ============================================
 
 /**
- * The 6 main incarnate slots
+ * The main incarnate slots.
+ *
+ * `genesis` is a 7th slot that only exists on the Rebirth server (added in
+ * Rebirth Issue 6). It is a partner-slot amplifier rather than a standalone
+ * power, so it is hidden in the UI for datasets that don't have it — see
+ * `getSelectableIncarnateSlotIds()`. It is still a first-class member of this
+ * union so build state, serialization and export handle it uniformly.
  */
-export type IncarnateSlotId = 'alpha' | 'judgement' | 'interface' | 'destiny' | 'lore' | 'hybrid';
+export type IncarnateSlotId = 'alpha' | 'judgement' | 'interface' | 'destiny' | 'lore' | 'hybrid' | 'genesis';
 
 /**
  * Power rarity tiers (Common -> Very Rare)
@@ -99,6 +105,8 @@ export interface IncarnateBuildState {
   destiny: SelectedIncarnatePower | null;
   lore: SelectedIncarnatePower | null;
   hybrid: SelectedIncarnatePower | null;
+  /** Rebirth-only. Null on Homecoming builds (slot doesn't exist there). */
+  genesis: SelectedIncarnatePower | null;
 }
 
 /**
@@ -112,6 +120,7 @@ export interface IncarnateActiveState {
   interface: boolean;
   judgement: boolean;
   lore: boolean;
+  genesis: boolean;
 }
 
 /**
@@ -122,7 +131,7 @@ export interface IncarnateActiveState {
  * powers don't contribute passive stats; level shift is gated by the separate
  * incarnateLevelShiftActive flag, not per-slot active state).
  */
-export type ToggleableIncarnateSlot = 'alpha' | 'destiny' | 'hybrid' | 'interface' | 'judgement' | 'lore';
+export type ToggleableIncarnateSlot = 'alpha' | 'destiny' | 'hybrid' | 'interface' | 'judgement' | 'lore' | 'genesis';
 
 // ============================================
 // CRAFTING TYPES
@@ -232,6 +241,7 @@ export const INCARNATE_SLOT_ORDER: IncarnateSlotId[] = [
   'destiny',
   'lore',
   'hybrid',
+  'genesis',
 ];
 
 /**
@@ -264,6 +274,7 @@ export function createEmptyIncarnateBuildState(): IncarnateBuildState {
     destiny: null,
     lore: null,
     hybrid: null,
+    genesis: null,
   };
 }
 
@@ -278,6 +289,7 @@ export function createDefaultIncarnateActiveState(): IncarnateActiveState {
     interface: true,
     judgement: true,
     lore: true,
+    genesis: true,
   };
 }
 
@@ -318,6 +330,25 @@ export function inferTierFromPowerName(powerName: string): IncarnateTier {
   }
 
   // Common (Tier 1): Base power without Core/Radial modifier
+  return 'common';
+}
+
+/**
+ * Infer tier for a Genesis-slot power.
+ *
+ * Genesis powers can't use `inferTierFromPowerName` because every one of them
+ * contains the word "Genesis", which that function treats as a Very Rare marker
+ * (it's the Destiny/Hybrid T4 keyword). Genesis uses its own naming ladder:
+ *   common   = "<Tree> Genesis"                 (no branch keyword)
+ *   uncommon = "<Tree> Core/Radial Genesis"
+ *   rare     = "<Tree> Total/Partial ... Genesis"
+ *   veryrare = "<Tree> Core/Radial Flawless Genesis"
+ */
+export function inferGenesisTier(powerName: string): IncarnateTier {
+  const l = powerName.toLowerCase();
+  if (l.includes('flawless')) return 'veryrare';
+  if (l.includes('total') || l.includes('partial')) return 'rare';
+  if (l.includes('core') || l.includes('radial')) return 'uncommon';
   return 'common';
 }
 

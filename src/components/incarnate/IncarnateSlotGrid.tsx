@@ -3,8 +3,7 @@
  */
 
 import type { IncarnateSlotId, SelectedIncarnatePower, IncarnateActiveState, ToggleableIncarnateSlot } from '@/types';
-import { INCARNATE_SLOT_ORDER } from '@/types';
-import { getPowerIconPath, getAllIncarnateSlots, getSlotColor, getTierColor, isSlotToggleable } from '@/data';
+import { getPowerIconPath, getAllIncarnateSlots, getSlotColor, getTierColor, isSlotToggleable, getSelectableIncarnateSlotIds } from '@/data';
 import { Tooltip } from '@/components/ui';
 import { useLongPress } from '@/hooks';
 import { IncarnateEffectsTooltip } from './IncarnateEffectsTooltip';
@@ -16,6 +15,7 @@ const SLOT_DESCRIPTION: Record<IncarnateSlotId, string> = {
   destiny: 'Powerful targeted-ally buff or area control on a long recharge.',
   lore: 'Summons a pair of pets for 5 minutes on a long recharge.',
   hybrid: 'Toggleable AT-flavored boost (Assault, Support, Control, or Melee).',
+  genesis: 'Amplifies a partner slot — Data→Lore, Fate→Destiny, Socket→Interface, Verdict→Judgement. Rebirth only.',
 };
 
 interface IncarnateSlotGridProps {
@@ -25,14 +25,17 @@ interface IncarnateSlotGridProps {
   incarnateActive: IncarnateActiveState;
   onToggleActive: (slotId: ToggleableIncarnateSlot) => void;
   horizontal?: boolean;
+  /** Exemplared below 45 — incarnates suppressed (Genesis swaps to exemplar power). */
+  suppressed?: boolean;
 }
 
-export function IncarnateSlotGrid({ incarnates, disabled, onSlotClick, incarnateActive, onToggleActive, horizontal }: IncarnateSlotGridProps) {
+export function IncarnateSlotGrid({ incarnates, disabled, onSlotClick, incarnateActive, onToggleActive, horizontal, suppressed = false }: IncarnateSlotGridProps) {
   const slots = getAllIncarnateSlots();
+  const slotIds = getSelectableIncarnateSlotIds();
 
   return (
     <div className={horizontal ? "grid grid-cols-6 gap-1" : "grid grid-cols-3 gap-1"}>
-      {INCARNATE_SLOT_ORDER.map((slotId) => {
+      {slotIds.map((slotId) => {
         const slot = slots.find((s) => s.id === slotId);
         if (!slot) return null;
 
@@ -47,6 +50,7 @@ export function IncarnateSlotGrid({ incarnates, disabled, onSlotClick, incarnate
             disabled={disabled}
             onClick={() => onSlotClick(slotId)}
             isActive={slotId in incarnateActive ? incarnateActive[slotId as keyof IncarnateActiveState] : true}
+            suppressed={suppressed}
             onToggleActive={onToggleActive}
           />
         );
@@ -62,6 +66,7 @@ interface IncarnateSlotMiniProps {
   disabled: boolean;
   onClick: () => void;
   isActive?: boolean;
+  suppressed?: boolean;
   onToggleActive?: (slotId: ToggleableIncarnateSlot) => void;
 }
 
@@ -72,12 +77,16 @@ function IncarnateSlotMini({
   disabled,
   onClick,
   isActive = true,
+  suppressed = false,
   onToggleActive,
 }: IncarnateSlotMiniProps) {
   const slotColor = getSlotColor(slotId);
   const tierColor = selectedPower ? getTierColor(selectedPower.tier) : slotColor;
   const canToggle = isSlotToggleable(slotId) && selectedPower !== null;
-  const dimmed = canToggle && !isActive;
+  // Below 45 every slot is off except Genesis, which swaps to its exemplar power.
+  const isSuppressed = suppressed && selectedPower !== null;
+  const isGenesisSwap = isSuppressed && slotId === 'genesis';
+  const dimmed = (canToggle && !isActive) || (isSuppressed && !isGenesisSwap);
 
   const iconPath = selectedPower ? getPowerIconPath(selectedPower.icon) : null;
 
@@ -112,7 +121,11 @@ function IncarnateSlotMini({
         />
         Tier: {tierLabel}
       </div>
-      {canToggle && (
+      {isGenesisSwap ? (
+        <div className="text-[10px] text-lime-400 mt-1">Below 45: grants its exemplar power</div>
+      ) : isSuppressed ? (
+        <div className="text-[10px] text-amber-400/90 mt-1">Inactive below level 45</div>
+      ) : canToggle && (
         <div className="text-[10px] text-gray-500 mt-1">
           {isActive ? 'Active — right-click or long-press to disable' : 'Disabled — right-click or long-press to enable'}
         </div>
@@ -151,7 +164,7 @@ function IncarnateSlotMini({
         style={{
           borderWidth: '1px',
           borderStyle: selectedPower ? 'solid' : 'dashed',
-          borderColor: disabled ? '#374151' : dimmed ? '#374151' : selectedPower ? tierColor : slotColor + '60',
+          borderColor: disabled ? '#374151' : isGenesisSwap ? '#A3E635' : dimmed ? '#374151' : selectedPower ? tierColor : slotColor + '60',
         }}
       >
         {/* Icon or letter circle */}
@@ -195,7 +208,7 @@ function IncarnateSlotMini({
         {canToggle && (
           <div
             className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full transition-colors duration-200 ${
-              isActive ? 'bg-green-400' : 'bg-gray-600'
+              isGenesisSwap ? 'bg-lime-400' : isSuppressed ? 'bg-gray-600' : isActive ? 'bg-green-400' : 'bg-gray-600'
             }`}
           />
         )}

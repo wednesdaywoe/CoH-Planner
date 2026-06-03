@@ -18,6 +18,7 @@ import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/com
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
+import { getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import type { IncarnateSlotId, ToggleableIncarnateSlot } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
@@ -74,6 +75,7 @@ interface CollapsedDashboardRowProps {
   incarnates: ReturnType<typeof createEmptyIncarnateBuildState>;
   isLevel50: boolean;
   incarnateActive: ReturnType<typeof useUIStore.getState>['incarnateActive'];
+  suppressed: boolean;
   openIncarnateModal: (slotId: IncarnateSlotId) => void;
   toggleIncarnateActive: (slotId: ToggleableIncarnateSlot) => void;
 }
@@ -91,6 +93,7 @@ function CollapsedDashboardRow({
   incarnates,
   isLevel50,
   incarnateActive,
+  suppressed,
   openIncarnateModal,
   toggleIncarnateActive,
 }: CollapsedDashboardRowProps) {
@@ -131,6 +134,7 @@ function CollapsedDashboardRow({
           onSlotClick={openIncarnateModal}
           incarnateActive={incarnateActive}
           onToggleActive={toggleIncarnateActive}
+          suppressed={suppressed}
           horizontal
         />
       </div>
@@ -195,10 +199,15 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const setHoverHint = useUIStore((s) => s.setHoverHint);
   const combatMode = useUIStore((s) => s.combatMode);
   const rechargeMidsStyle = useUIStore((s) => s.rechargeMidsStyle);
+  const exemplarMode = useUIStore((s) => s.exemplarMode);
+  const exemplarLevel = useUIStore((s) => s.exemplarLevel);
   // Get incarnate state with fallback for old builds
   const incarnatesRaw = build.incarnates;
   const incarnates = incarnatesRaw || createEmptyIncarnateBuildState();
   const isLevel50 = build.level >= INCARNATE_REQUIRED_LEVEL;
+  // Incarnates are suppressed below effective level 45 (Genesis swaps to its
+  // exemplar power). Drives the grey/lime slot treatment, in sync with the calc.
+  const incarnatesSuppressed = areIncarnatesSuppressed(getEffectiveLevel(build.level, exemplarMode, exemplarLevel));
 
   const health = getBaselineHealth(build.archetype?.id ?? undefined, build.level);
   const baseHP = health.baseHealth;
@@ -432,6 +441,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
             incarnates={incarnates}
             isLevel50={isLevel50}
             incarnateActive={incarnateActive}
+            suppressed={incarnatesSuppressed}
             openIncarnateModal={openIncarnateModal}
             toggleIncarnateActive={toggleIncarnateActive}
           />
@@ -506,6 +516,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
               onSlotClick={openIncarnateModal}
               incarnateActive={incarnateActive}
               onToggleActive={toggleIncarnateActive}
+              suppressed={incarnatesSuppressed}
               horizontal
             />
           </div>
@@ -585,6 +596,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
             onSlotClick={openIncarnateModal}
             incarnateActive={incarnateActive}
             onToggleActive={toggleIncarnateActive}
+            suppressed={incarnatesSuppressed}
             horizontal
           />
           {isLevel50 && (

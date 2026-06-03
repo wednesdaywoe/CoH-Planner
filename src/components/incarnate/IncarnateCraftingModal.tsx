@@ -20,6 +20,10 @@ import { TIER_NUMBER, branchVariants, aggregateSalvage, inferT3VariantKey } from
 
 type ActiveView = 'per-slot' | 'shopping-list';
 
+// Genesis is excluded from crafting — its recipe/salvage costs aren't catalogued
+// yet (Rebirth-only slot). The effects are modeled; the crafting checklist isn't.
+const CRAFTING_SLOT_IDS = INCARNATE_SLOT_ORDER.filter((id) => id !== 'genesis');
+
 interface IncarnateCraftingModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -38,7 +42,8 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
   const [activeView, setActiveView] = useState<ActiveView>('per-slot');
 
   const slots = getAllIncarnateSlots();
-  const activeSlotId: IncarnateSlotId = currentSlot || 'alpha';
+  // Genesis has no crafting view; if it's the last-touched slot, default to alpha.
+  const activeSlotId: IncarnateSlotId = (currentSlot && currentSlot !== 'genesis') ? currentSlot : 'alpha';
   const currentPower = incarnates[activeSlotId];
 
   // Handle escape key
@@ -90,7 +95,7 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
         {/* Header: slot tabs + shopping list tab + close */}
         <div className="flex items-center justify-between border-b border-gray-700 px-1 sm:px-2">
           <div className="flex flex-1 overflow-x-auto">
-            {INCARNATE_SLOT_ORDER.map((slotId) => {
+            {CRAFTING_SLOT_IDS.map((slotId) => {
               const slot = slots.find((s) => s.id === slotId);
               if (!slot) return null;
               const isActive = !isShoppingList && slotId === activeSlotId;

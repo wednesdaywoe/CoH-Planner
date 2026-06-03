@@ -5,8 +5,9 @@
 
 import { useCallback } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
-import { getAllIncarnateSlots, isSlotToggleable } from '@/data';
-import { INCARNATE_SLOT_ORDER, INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
+import { getAllIncarnateSlots, isSlotToggleable, getSelectableIncarnateSlotIds } from '@/data';
+import { getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
+import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { ToggleableIncarnateSlot, IncarnateSlotId } from '@/types';
 import { IncarnateSlotButton } from './IncarnateSlotButton';
 import { IncarnateModal } from './IncarnateModal';
@@ -20,6 +21,8 @@ export function IncarnatePanel() {
   const closeIncarnateModal = useUIStore((s) => s.closeIncarnateModal);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const toggleIncarnateActive = useUIStore((s) => s.toggleIncarnateActive);
+  const exemplarMode = useUIStore((s) => s.exemplarMode);
+  const exemplarLevel = useUIStore((s) => s.exemplarLevel);
   const incarnateLevelShiftActive = useUIStore((s) => s.incarnateLevelShiftActive);
   const toggleIncarnateLevelShift = useUIStore((s) => s.toggleIncarnateLevelShift);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
@@ -31,10 +34,18 @@ export function IncarnatePanel() {
   const incarnates = incarnatesRaw || createEmptyIncarnateBuildState();
 
   const isLevel50 = build.level >= INCARNATE_REQUIRED_LEVEL;
-  const slots = getAllIncarnateSlots();
+  // Genesis only exists on Rebirth, so the offered slot set is dataset-aware.
+  const selectableSlotIds = getSelectableIncarnateSlotIds();
+  const slots = getAllIncarnateSlots().filter((s) => selectableSlotIds.includes(s.id));
 
   // Count filled slots (safely handle undefined incarnates)
-  const filledSlotCount = INCARNATE_SLOT_ORDER.filter((id) => incarnates?.[id] !== null).length;
+  const filledSlotCount = selectableSlotIds.filter((id) => incarnates?.[id] !== null).length;
+
+  // Below effective level 45, incarnate abilities are suppressed (Genesis swaps
+  // to its exemplar power). Derived — mirrors the dashboard calc.
+  const effectiveLevel = getEffectiveLevel(build.level, exemplarMode, exemplarLevel);
+  const suppressed = areIncarnatesSuppressed(effectiveLevel);
+  const hasGenesis = incarnates?.genesis != null;
 
   // Handle incarnate hover for info panel
   const handleIncarnateHover = useCallback(
@@ -58,8 +69,14 @@ export function IncarnatePanel() {
               Incarnate Powers
             </div>
             <div className="text-[10px] text-gray-500">
-              {isLevel50 ? `${filledSlotCount}/6 slots filled` : 'Requires Level 50'}
+              {isLevel50 ? `${filledSlotCount}/${selectableSlotIds.length} slots filled` : 'Requires Level 50'}
             </div>
+            {isLevel50 && suppressed && filledSlotCount > 0 && (
+              <div className="text-[10px] text-amber-400/90 mt-0.5 max-w-[150px] leading-tight">
+                Suppressed below 45 — inactive at level {effectiveLevel}.
+                {hasGenesis && ' Genesis grants its exemplar power.'}
+              </div>
+            )}
           </div>
 
           {/* Slot buttons */}
@@ -77,6 +94,7 @@ export function IncarnatePanel() {
                   selectedPower={incarnates?.[slot.id] || null}
                   disabled={!isLevel50}
                   isActive={isActive}
+                  suppressed={suppressed}
                   onToggleActive={toggleIncarnateActive}
                   onHover={handleIncarnateHover}
                   onClick={() => openIncarnateModal(slot.id)}

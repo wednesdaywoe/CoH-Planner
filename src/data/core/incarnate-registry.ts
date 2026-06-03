@@ -29,7 +29,8 @@ export type IncarnateEffectType =
   | 'proc_debuff'   // Interface: proc-based debuffs on attacks
   | 'click_buff'    // Destiny: clickable team buff
   | 'summon'        // Lore: summon faction pets
-  | 'toggle';       // Hybrid: toggle power with stat bonuses
+  | 'toggle'        // Hybrid: toggle power with stat bonuses
+  | 'amplify';      // Genesis (Rebirth): amplifies a partner incarnate slot
 
 export interface IncarnateSlotConfig {
   /** Slot identifier */
@@ -94,6 +95,14 @@ isToggleable: true,
 isToggleable: true,
     effectType: 'toggle',
     description: 'Toggle power with stat bonuses',
+  },
+  genesis: {
+    id: 'genesis',
+    displayName: 'Genesis',
+    color: '#A3E635',
+    isToggleable: true,
+    effectType: 'amplify',
+    description: 'Amplifies a partner incarnate slot (Rebirth only)',
   },
 };
 
@@ -218,6 +227,12 @@ export const TREE_DESCRIPTIONS: Record<string, Record<string, string>> = {
     melee: 'Melee damage and survival',
     ranged: 'Ranged damage',
     support: 'Buff/Debuff effectiveness',
+  },
+  genesis: {
+    data: "Boosts your Lore pets' damage and Max HP",
+    fate: 'Boosts your Destiny ability effects',
+    socket: 'Boosts Interface procs and your Max HP/Endurance',
+    verdict: 'Boosts your Judgement attack damage',
   },
 };
 

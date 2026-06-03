@@ -16,6 +16,8 @@ interface IncarnateSlotButtonProps {
   selectedPower: SelectedIncarnatePower | null;
   disabled?: boolean;
   isActive?: boolean;
+  /** Exemplared below 45 — incarnates suppressed (Genesis swaps to exemplar power). */
+  suppressed?: boolean;
   onToggleActive?: (slotId: ToggleableIncarnateSlot) => void;
   onHover?: (slotId: IncarnateSlotId, powerId: string | null) => void;
   onClick: () => void;
@@ -27,6 +29,7 @@ export function IncarnateSlotButton({
   selectedPower,
   disabled = false,
   isActive = true,
+  suppressed = false,
   onToggleActive,
   onHover,
   onClick,
@@ -34,7 +37,11 @@ export function IncarnateSlotButton({
   const slotColor = getSlotColor(slotId);
   const tierColor = selectedPower ? getTierColor(selectedPower.tier) : slotColor;
   const canToggle = isSlotToggleable(slotId) && selectedPower !== null;
-  const dimmed = canToggle && !isActive;
+  // Below 45 every slot is off; Genesis is special — it swaps to its exemplar
+  // power rather than going dark, so we accent it instead of greying it out.
+  const isSuppressed = suppressed && selectedPower !== null;
+  const isGenesisSwap = isSuppressed && slotId === 'genesis';
+  const dimmed = (canToggle && !isActive) || (isSuppressed && !isGenesisSwap);
 
   // Get icon path
   const iconPath = selectedPower
@@ -90,12 +97,16 @@ export function IncarnateSlotButton({
       style={{
         borderWidth: '2px',
         borderStyle: 'solid',
-        borderColor: disabled ? '#4B5563' : dimmed ? '#4B5563' : tierColor,
-        boxShadow: disabled || dimmed ? 'none' : `0 0 8px ${tierColor}40`,
+        borderColor: disabled ? '#4B5563' : isGenesisSwap ? '#A3E635' : dimmed ? '#4B5563' : tierColor,
+        boxShadow: isGenesisSwap ? '0 0 8px #A3E63560' : disabled || dimmed ? 'none' : `0 0 8px ${tierColor}40`,
       }}
       title={
         selectedPower
-          ? `${selectedPower.displayName} (${selectedPower.treeName})${canToggle ? '\nRight-click or long-press to toggle on/off' : ''}`
+          ? `${selectedPower.displayName} (${selectedPower.treeName})${
+              isGenesisSwap ? '\nBelow 45: grants its exemplar power'
+                : isSuppressed ? '\nInactive below level 45'
+                : canToggle ? '\nRight-click or long-press to toggle on/off' : ''
+            }`
           : `Select ${slotName} power`
       }
     >
@@ -145,7 +156,7 @@ export function IncarnateSlotButton({
       {canToggle && (
         <div
           className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full transition-colors duration-200 ${
-            isActive ? 'bg-green-400' : 'bg-gray-600'
+            isGenesisSwap ? 'bg-lime-400' : isSuppressed ? 'bg-gray-600' : isActive ? 'bg-green-400' : 'bg-gray-600'
           }`}
         />
       )}

@@ -188,6 +188,7 @@ export {
   getIncarnatePowersByTier,
   getIncarnatePower,
   getIncarnateSlotIconPath,
+  getSelectableIncarnateSlotIds,
 } from './incarnates';
 
 // Incarnate registry (centralized slot/tier metadata, layout config, display helpers)
@@ -236,6 +237,7 @@ export {
   getInterfaceEffects,
   getJudgementEffects,
   getLoreEffects,
+  getGenesisEffects,
   getIncarnateEffects,
   formatEffectPercent,
   formatEffectValue,
@@ -247,6 +249,8 @@ export type {
   InterfaceEffects,
   JudgementEffects,
   LoreEffects,
+  GenesisEffects,
+  GenesisExemplarEffect,
   IncarnatePowerEffects,
 } from './incarnate-effects';
 

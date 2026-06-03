@@ -6,9 +6,8 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useBuildStore, useUIStore } from '@/stores';
-import { getAllIncarnateSlots, getIncarnateTrees } from '@/data';
+import { getAllIncarnateSlots, getIncarnateTrees, getSelectableIncarnateSlotIds } from '@/data';
 import type { IncarnatePower, SelectedIncarnatePower } from '@/types';
-import { INCARNATE_SLOT_ORDER } from '@/types';
 import { getSlotColor } from '@/data';
 import { IncarnatePowerTree } from './IncarnatePowerTree';
 
@@ -28,6 +27,7 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
   const [selectedTreeId, setSelectedTreeId] = useState<string | null>(null);
 
   const slots = getAllIncarnateSlots();
+  const selectableSlotIds = getSelectableIncarnateSlotIds();
   const activeSlotId = currentSlot || 'alpha';
   const activeSlot = slots.find((s) => s.id === activeSlotId);
   const trees = activeSlot ? getIncarnateTrees(activeSlotId) : [];
@@ -112,7 +112,7 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
         {/* Header with slot tabs */}
         <div className="flex items-center justify-between border-b border-gray-700 px-1 sm:px-2">
           <div className="flex flex-1 overflow-x-auto">
-            {INCARNATE_SLOT_ORDER.map((slotId) => {
+            {selectableSlotIds.map((slotId) => {
               const slot = slots.find((s) => s.id === slotId);
               if (!slot) return null;
 
@@ -235,7 +235,7 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
             <div />
           )}
           <div className="flex gap-2">
-            {currentPower && (
+            {currentPower && activeSlotId !== 'genesis' && (
               <button
                 onClick={() => { onClose(); openIncarnateCraftingModal(); }}
                 className="px-4 py-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors rounded-lg hover:bg-blue-900/30 border border-blue-800 hover:border-blue-600"

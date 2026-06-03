@@ -899,10 +899,310 @@ function extractLore() {
 }
 
 // ============================================
+// GENESIS EXEMPLAR POWERS (below level 45)
+// ============================================
+// Each Genesis ability grants a usable power when exemplared below 45. These
+// live as self-contained main files under exported_powers/<id>/incarnate/{data,
+// fate,socket,verdict}/. We parse them into a typed `exemplarEffect` discriminated
+// by tree. Standalone parsers (reusing the shared maps/helpers) keep the existing
+// slot extractors byte-identical — no drift to Alpha/Destiny/etc.
+
+/** "Incarnate.Verdict.Ion_Total_Core_Verdict" -> { tree:'verdict', file:'.../verdict/ion_total_core_verdict.json' } */
+function genesisExemplarPath(ref) {
+  const parts = (ref || '').split('.');
+  const tree = (parts[1] || '').toLowerCase();
+  const name = (parts[2] || '').toLowerCase();
+  return { tree, file: path.join(RAW_BASE, tree, name + '.json') };
+}
+
+/** Verdict: an AoE damage attack (mirrors Judgement). */
+function parseExemplarAttack(data) {
+  const helpText = data.display_help || '';
+  let damageType = null, damageScale = 0;
+  const secondaryEffects = [];
+  for (const eff of data.effects || []) {
+    for (const t of eff.templates || []) {
+      const attrib = (t.attribs || [])[0];
+      const scale = t.scale || 0;
+      const aspect = t.aspect || '';
+      if (attrib in DAMAGE_TYPE_MAP && aspect === 'Absolute') {
+        const dm = (t.duration || '').match(/([\d.]+)\s*seconds?/i);
+        const durSec = dm ? parseFloat(dm[1]) : 0;
+        if (durSec === 0 && scale > damageScale) { damageType = DAMAGE_TYPE_MAP[attrib]; damageScale = scale; }
+        else if (durSec > 0) secondaryEffects.push(`DoT(${DAMAGE_TYPE_MAP[attrib]}) ${round(scale, 2)} scale/${round(durSec, 1)}s`);
+      } else if (['Held', 'Stunned', 'Immobilized', 'Knocked', 'Sleep'].includes(attrib) && scale > 0) {
+        secondaryEffects.push(`${attrib} Mag ${round(scale, 1)}`);
+      }
+    }
+  }
+  let area = data.effect_area || 'Unknown';
+  if (helpText.includes('Cone')) area = 'Cone';
+  else if (helpText.includes('PBAoE')) area = 'PBAoE';
+  else if (helpText.includes('Targeted') && helpText.includes('AoE')) area = 'Targeted AoE';
+  else if (helpText.includes('AoE')) area = 'AoE';
+  return {
+    damageType: damageType || 'Unknown', effectArea: area,
+    range: round(data.range || 0, 1), radius: round(data.radius || 0, 1), arc: round(data.arc || 0, 1),
+    maxTargets: data.max_targets_hit || 0, activationTime: round(data.activation_time || 0, 2),
+    recharge: round(data.recharge_time || 180, 1), damageScale: round(damageScale, 2),
+    tableName: 'Ranged_Tempdamage', secondaryEffects: [...new Set(secondaryEffects)],
+  };
+}
+
+/** Socket: a proc/debuff applied to your attacks (mirrors Interface). */
+function parseExemplarProc(data) {
+  const label = data.display_short_help || data.display_name || '';
+  let magnitude = 0, duration = 0, dotType = null, dotDamage = 0, dotTableName = '';
+  for (const eff of data.effects || []) {
+    for (const t of eff.templates || []) {
+      const attrib = (t.attribs || [])[0];
+      const scale = t.scale || 0;
+      const aspect = t.aspect || '';
+      if (!attrib || scale === 0) continue;
+      const dm = (t.duration || '').match(/([\d.]+)\s*seconds?/i);
+      const durSec = dm ? parseFloat(dm[1]) : 0;
+      const tname = (t.table && typeof t.table === 'object') ? (t.table.column_name || '')
+        : (typeof t.table === 'string' ? t.table : '');
+      if (aspect === 'Absolute' && attrib in INTERFACE_DOT_MAP) {
+        if (Math.abs(scale) > Math.abs(dotDamage)) {
+          dotType = INTERFACE_DOT_MAP[attrib]; dotDamage = round(Math.abs(scale));
+          dotTableName = tname || 'Ranged_Tempdamage'; duration = durSec;
+        }
+      } else if (Math.abs(scale) > Math.abs(magnitude)) {
+        magnitude = round(Math.abs(scale));
+        if (durSec) duration = durSec;
+      }
+    }
+  }
+  const out = { label, duration: round(duration, 2), procPeriod: round(data.activate_period || 0, 1) };
+  if (magnitude > 0) { out.debuffType = label; out.debuffMagnitude = magnitude; }
+  if (dotType) { out.dotType = dotType; out.dotDamage = dotDamage; out.dotTableName = dotTableName; }
+  return out;
+}
+
+/** Data: a pet summon (mirrors Lore). */
+function parseExemplarSummon(data) {
+  const pets = [];
+  let duration = 150;
+  for (const eff of data.effects || []) {
+    for (const t of eff.templates || []) {
+      if ((t.attribs || [])[0] === 'Create_Entity') {
+        const ed = (t.params || {}).entity_def || '';
+        if (ed) pets.push(petTypeFromEntityDef(ed));
+        const dm = (t.duration || '').match(/([\d.]+)\s*seconds?/i);
+        if (dm) duration = parseFloat(dm[1]);
+      }
+    }
+  }
+  return {
+    faction: factionFromPowerId((data.name || '').toLowerCase()),
+    pets: pets.length ? pets : ['Pet'],
+    duration: round(duration, 1), recharge: round(data.recharge_time || 900, 1),
+  };
+}
+
+/** Fate: a PBAoE ally buff (+End/+Recharge; Clarion adds mez protection). */
+function parseExemplarBuff(data) {
+  const stats = {};
+  let mezProtection = 0;
+  for (const eff of data.effects || []) {
+    for (const t of eff.templates || []) {
+      const attrib = (t.attribs || [])[0];
+      const aspect = t.aspect || '';
+      const scale = t.scale || 0;
+      if (!attrib) continue;
+      if (attrib === 'RechargeTime' && aspect === 'Strength') stats.recharge = Math.max(stats.recharge || 0, scale);
+      else if (attrib === 'Recovery' && aspect === 'Current') stats.recovery = Math.max(stats.recovery || 0, scale);
+      else if (attrib === 'Endurance' && aspect === 'Current' && scale > 0) stats.endurance = Math.max(stats.endurance || 0, scale);
+      else if (aspect === 'Current' && scale < 0 && ['Held', 'Sleep', 'Stunned', 'Immobilized', 'Terrorized', 'Confused'].includes(attrib)) {
+        mezProtection = Math.max(mezProtection, Math.abs(scale));
+      }
+    }
+  }
+  for (const k of Object.keys(stats)) stats[k] = round(stats[k]);
+  const out = { stats, radius: round(data.radius || 0, 1), recharge: round(data.recharge_time || 0, 1) };
+  if (mezProtection > 0) out.mezProtection = round(mezProtection, 1);
+  return out;
+}
+
+/** Resolve a Genesis exemplar-power ref into a typed effect (by tree). */
+function resolveGenesisExemplar(ref) {
+  if (!ref) return null;
+  const { tree, file } = genesisExemplarPath(ref);
+  const data = readJson(file);
+  if (!data) { console.warn(`  WARN: Genesis exemplar JSON missing: ${file}`); return null; }
+  switch (tree) {
+    case 'verdict': return { kind: 'attack', ...parseExemplarAttack(data) };
+    case 'socket': return { kind: 'proc', ...parseExemplarProc(data) };
+    case 'data': return { kind: 'summon', ...parseExemplarSummon(data) };
+    case 'fate': return { kind: 'buff', ...parseExemplarBuff(data) };
+    default: return null;
+  }
+}
+
+// ============================================
+// GENESIS EXTRACTION (Rebirth-only)
+// ============================================
+// Rebirth finished the Genesis slot. Each ability GRANTS two things: a
+// Genesis_Silent "boost" power that buffs its partner incarnate slot (the
+// "level 45+" effect, active when incarnates aren't exemplar-suppressed), and
+// an exemplar-only power usable only below level 45 (the "44-" effect).
+//
+// Parse6 decodes Grant_Power as `Null` but still fills params.power_names, so we
+// follow the silent chain (genesis -> Genesis_Silent.{slot}_Boost ->
+// ..._Data_Boost) to the real effect templates — the same resolution the other
+// slots use. The 4 trees map to partner slots: Data->Lore, Fate->Destiny,
+// Socket->Interface, Verdict->Judgement.
+
+const GENESIS_TREE_TO_SLOT = {
+  data: 'lore', fate: 'destiny', socket: 'interface', verdict: 'judgement',
+};
+
+/** Map a silent-boost effect template to the Genesis 45+ stat key, or null. */
+function genesisStatKey(t) {
+  const attrib = (t.attribs || [])[0];
+  if (!attrib) return null;
+  const aspect = t.aspect;
+  const table = (t.table || '').toLowerCase();
+  if (aspect === 'Strength') {
+    // Damage buff (Data/Verdict, and part of Fate's broad buff).
+    if (attrib.endsWith('_Dmg') && attrib !== 'Heal_Dmg') return 'damage';
+    if (attrib === 'Heal_Dmg') return 'strengthHeal';
+    // Fate's "+X% Destiny effects" — uniform strength to def/res/mez/endmod.
+    if (['Melee', 'Ranged', 'Area'].includes(attrib)) return 'strengthDefense';
+    if (['Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative_Energy', 'Psionic', 'Toxic'].includes(attrib)) return 'strengthResistance';
+    if (['Held', 'Stunned', 'Immobilized', 'Sleep', 'Confused', 'Afraid', 'Terrorized', 'Placate', 'Taunt'].includes(attrib)) return 'strengthMez';
+    if (attrib === 'Endurance') return 'strengthEndMod';
+    if (attrib === 'HitPoints') return 'strengthMaxHP';
+    return null;
+  }
+  if (aspect === 'Maximum') {
+    // Flat HP (Data, table Melee_Ones) vs % HP (Socket, table Melee_HealSelf).
+    if (attrib === 'HitPoints') return table === 'melee_ones' ? 'maxHP' : 'maxHPPct';
+    if (attrib === 'Endurance') return 'maxEndurance';
+  }
+  return null;
+}
+
+/** Recursively resolve a Genesis_Silent chain, recording each real (non-grant)
+ *  template's stat into `effects`. Attribs that share a key+scale (all 8 damage
+ *  types, all mez types) are recorded once — never summed. */
+function accumulateGenesisSilent(silentName, cache, seen, effects) {
+  if (seen.has(silentName)) return;
+  seen.add(silentName);
+  const data = cache[silentName];
+  if (!data) return;
+  for (const eff of data.effects || []) {
+    for (const t of eff.templates || []) {
+      if (isGrantPowerTemplate(t)) continue;
+      const key = genesisStatKey(t);
+      if (!key) continue;
+      const scale = t.scale || 0;
+      if (effects[key] === undefined || Math.abs(scale) > Math.abs(effects[key])) {
+        effects[key] = round(scale);
+      }
+    }
+  }
+  for (const ref of extractGrantedPowers(data)) {
+    accumulateGenesisSilent(silentRefToFilename(ref), cache, seen, effects);
+  }
+}
+
+/** Collapse the raw per-attrib scales into the canonical Genesis shape: a
+ *  single `tierPercent` amplification (0.025 | 0.05 | 0.075 | 0.1) plus, for
+ *  Data, the flat Max HP buff its Lore pets get. Targeting is fixed per tree
+ *  (see GENESIS_TREE_TO_SLOT) — the percent isn't a flat global player buff:
+ *    data    → amplifies your Lore pets' damage (+ flat pet HP)
+ *    verdict → amplifies your Judgement attack's damage
+ *    fate    → amplifies your Destiny slot ability's effects (uniform strength)
+ *    socket  → amplifies your Interface procs AND your player Max HP / Max End
+ *  The bin stores each tree's percent in a different raw unit (damage/strength
+ *  decimals are already the fraction; Socket's maxHPPct scale is 10x the
+ *  fraction), so normalize them all to the same 0.025..0.1 tier value here.
+ *  The wiki confirms Socket's player Max HP / Max End scale identically to the
+ *  tier percent (T4 = +10% each), so the consumer derives both from tierPercent. */
+function deriveGenesisTier(tree, raw) {
+  switch (tree) {
+    case 'data':
+      return { tierPercent: raw.damage || 0, loreMaxHP: raw.maxHP || 0 };
+    case 'verdict':
+      return { tierPercent: raw.damage || 0 };
+    case 'fate':
+      return { tierPercent: raw.strengthDefense || raw.strengthResistance
+        || raw.strengthMez || raw.strengthMaxHP || raw.strengthHeal
+        || raw.strengthEndMod || 0 };
+    case 'socket':
+      return { tierPercent: round((raw.maxHPPct || 0) * 0.1) };
+    default:
+      return { tierPercent: 0 };
+  }
+}
+
+/** The 44- exemplar-only power a Genesis ability grants (lives in its tree
+ *  category, e.g. Incarnate.Data.Longbow_Core_Superior_Data). */
+function extractGenesisExemplarPower(data, tree) {
+  for (const eff of data.effects || []) {
+    for (const t of eff.templates || []) {
+      if (!isGrantPowerTemplate(t)) continue;
+      const pnames = [...(t.power_names || []), ...((t.params && t.params.power_names) || [])];
+      for (const pn of pnames) {
+        const parts = pn.split('.');
+        if (parts.length === 3 && parts[1].toLowerCase() === tree.toLowerCase()) return pn;
+      }
+    }
+  }
+  return '';
+}
+
+function extractGenesis() {
+  console.log('\n=== GENESIS ===');
+  const mainDir = path.join(RAW_BASE, 'genesis');
+  const silentDir = path.join(RAW_BASE, 'genesis_silent');
+  const results = {};
+
+  const silentCache = {};
+  for (const f of readDir(silentDir)) {
+    const data = readJson(path.join(silentDir, f));
+    if (data) silentCache[f.replace('.json', '')] = data;
+  }
+
+  for (const f of readDir(mainDir)) {
+    const data = readJson(path.join(mainDir, f));
+    if (!data) continue;
+    const powerId = f.replace('.json', '');
+    const tree = powerId.split('_')[0];
+    const displayName = data.display_name || powerId;
+
+    const effects = {};
+    const seen = new Set();
+    for (const ref of extractGrantedPowers(data)) {
+      accumulateGenesisSilent(silentRefToFilename(ref), silentCache, seen, effects);
+    }
+
+    const exemplarRef = extractGenesisExemplarPower(data, tree);
+    results[powerId] = {
+      displayName,
+      tree,
+      enhancesSlot: GENESIS_TREE_TO_SLOT[tree] || '',
+      ...deriveGenesisTier(tree, effects),
+      exemplarPower: exemplarRef,
+      exemplarEffect: resolveGenesisExemplar(exemplarRef),
+    };
+
+    const r = results[powerId];
+    const extra = r.loreMaxHP ? `, loreMaxHP:${r.loreMaxHP}` : '';
+    console.log(`  ${displayName}: →${r.enhancesSlot} +${(r.tierPercent * 100).toFixed(1)}%${extra}`);
+  }
+
+  console.log(`  Total: ${Object.keys(results).length} powers`);
+  return results;
+}
+
+// ============================================
 // TYPESCRIPT CODE GENERATION
 // ============================================
 
-function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore) {
+function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore, genesis) {
   const lines = [];
 
   lines.push(`/**`);
@@ -1067,6 +1367,51 @@ function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore) {
   lines.push('};');
   lines.push('');
 
+  // ---- GENESIS (Rebirth-only) ----
+  // Emitted only when the slot exists (Rebirth) so the Homecoming file is
+  // unchanged. `effects` are the level-45+ partner-slot buffs; `exemplarPower`
+  // is the level-44- exemplar-only grant (display/reference for now).
+  if (genesis && Object.keys(genesis).length > 0) {
+    lines.push('// ============================================');
+    lines.push('// GENESIS EFFECTS (Rebirth)');
+    lines.push('// ============================================');
+    lines.push('// Each ability AMPLIFIES a partner slot at level 45+ (and grants an');
+    lines.push('// exemplar-only power below 45). `tierPercent` (0.025|0.05|0.075|0.1)');
+    lines.push('// is the amplification; what it targets is fixed per tree:');
+    lines.push('//   data    → your Lore pets\' damage (+ flat `loreMaxHP`)');
+    lines.push('//   verdict → your Judgement attack\'s damage');
+    lines.push('//   fate    → your Destiny slot ability\'s effects');
+    lines.push('//   socket  → your Interface procs AND your player Max HP / Max End');
+    lines.push('// It is NOT a flat global player buff — see incarnate-effects.ts.');
+    lines.push('');
+    lines.push('export const GENERATED_GENESIS_EFFECTS: Record<string, {');
+    lines.push('  displayName: string;');
+    lines.push('  tree: string;');
+    lines.push('  enhancesSlot: string;');
+    lines.push('  tierPercent: number;');
+    lines.push('  loreMaxHP?: number;');
+    lines.push('  exemplarPower: string;');
+    lines.push('  // Below-45 exemplar power (typed by tree). Authoritative shape:');
+    lines.push('  // GenesisExemplarEffect in incarnate-effects.ts.');
+    lines.push('  exemplarEffect?: { kind: string; [k: string]: unknown };');
+    lines.push('}> = {');
+    for (const [id, data] of Object.entries(genesis)) {
+      lines.push(`  // ${data.displayName}`);
+      const entry = {
+        displayName: data.displayName,
+        tree: data.tree,
+        enhancesSlot: data.enhancesSlot,
+        tierPercent: data.tierPercent,
+      };
+      if (data.loreMaxHP) entry.loreMaxHP = data.loreMaxHP;
+      entry.exemplarPower = data.exemplarPower;
+      if (data.exemplarEffect) entry.exemplarEffect = data.exemplarEffect;
+      lines.push(`  '${id}': ${JSON.stringify(entry)},`);
+    }
+    lines.push('};');
+    lines.push('');
+  }
+
   return lines.join('\n');
 }
 
@@ -1089,8 +1434,9 @@ function main() {
   const iface = extractInterface();
   const judgement = extractJudgement();
   const lore = extractLore();
+  const genesis = extractGenesis();
 
-  const output = generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore);
+  const output = generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore, genesis);
 
   if (DRY_RUN) {
     console.log('\n=== DRY RUN — would write to:', OUTPUT_FILE);
@@ -1109,6 +1455,7 @@ function main() {
   console.log(`  Interface: ${Object.keys(iface).length} powers`);
   console.log(`  Judgement: ${Object.keys(judgement).length} powers`);
   console.log(`  Lore:      ${Object.keys(lore).length} powers`);
+  console.log(`  Genesis:   ${Object.keys(genesis).length} powers`);
 }
 
 main();

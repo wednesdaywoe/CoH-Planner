@@ -19,12 +19,14 @@ import type {
 import {
   INCARNATE_SLOT_ORDER,
   inferTierFromPowerName,
+  inferGenesisTier,
   inferBranchFromPowerName,
 } from '@/types';
 import {
   getSlotColor,
   getTreeDescription,
 } from './incarnate-registry';
+import { getActiveDataset } from './dataset';
 
 // ============================================
 // RAW DATA IMPORTS
@@ -37,6 +39,9 @@ import interfaceIndex from './incarnate-indices/interface.json';
 import destinyIndex from './incarnate-indices/destiny.json';
 import loreIndex from './incarnate-indices/lore.json';
 import hybridIndex from './incarnate-indices/hybrid.json';
+// Genesis is a Rebirth-only 7th slot (the index is vendored from the Rebirth
+// export). The slot is hidden in the UI for datasets that don't have it.
+import genesisIndex from './incarnate-indices/genesis.json';
 
 // Bin-crawler index shape: `powers` is the full-name array; the parallel
 // `power_display_names` and `power_short_helps` arrays are populated
@@ -58,6 +63,7 @@ const RAW_SLOT_INDICES: Record<IncarnateSlotId, RawSlotIndex> = {
   destiny: destinyIndex as RawSlotIndex,
   lore: loreIndex as RawSlotIndex,
   hybrid: hybridIndex as RawSlotIndex,
+  genesis: genesisIndex as RawSlotIndex,
 };
 
 
@@ -126,7 +132,11 @@ function buildSlotDefinition(slotId: IncarnateSlotId): IncarnateSlotDefinition {
     const shortHelp = raw.power_short_helps?.[i] || '';
 
     const { tree } = parsePowerName(fullName);
-    const tier = inferTierFromPowerName(displayName);
+    // Genesis names all contain "Genesis" (a Very Rare keyword for other
+    // slots), so they need their own tier ladder (flawless = Very Rare).
+    const tier = slotId === 'genesis'
+      ? inferGenesisTier(displayName)
+      : inferTierFromPowerName(displayName);
     const branch = inferBranchFromPowerName(displayName);
     const icon = getIconFromTier(slotId, tree, tier);
 
@@ -307,4 +317,26 @@ export function getIncarnatePower(
  */
 export function getIncarnateSlotIconPath(slotId: IncarnateSlotId): string {
   return getPowerIconPath(`incarnate_${slotId}_blank.png`);
+}
+
+/**
+ * Slots that exist only on specific datasets. Genesis was added in Rebirth
+ * Issue 6 and has no Homecoming equivalent.
+ */
+const DATASET_ONLY_SLOTS: Partial<Record<IncarnateSlotId, string>> = {
+  genesis: 'rebirth',
+};
+
+/**
+ * The incarnate slots that should be offered in the UI for the active dataset.
+ * Filters out slots that don't exist on the current server (e.g. Genesis on
+ * Homecoming). Build state, serialization and export still carry every slot in
+ * INCARNATE_SLOT_ORDER — this only governs what the picker/grid shows.
+ */
+export function getSelectableIncarnateSlotIds(): IncarnateSlotId[] {
+  const datasetId = getActiveDataset().id;
+  return INCARNATE_SLOT_ORDER.filter((id) => {
+    const requiredDataset = DATASET_ONLY_SLOTS[id];
+    return !requiredDataset || requiredDataset === datasetId;
+  });
 }

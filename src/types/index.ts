@@ -157,6 +157,7 @@ export {
   createEmptyIncarnateBuildState,
   createDefaultIncarnateActiveState,
   inferTierFromPowerName,
+  inferGenesisTier,
   inferBranchFromPowerName,
   // Crafting utilities
   createEmptyCraftingChecklistState,

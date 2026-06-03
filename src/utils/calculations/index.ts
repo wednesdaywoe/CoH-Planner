@@ -120,6 +120,13 @@ export {
   type CharacterCalculationResult,
 } from './character-totals';
 
+// Effective level + incarnate exemplar suppression
+export {
+  INCARNATE_MIN_LEVEL,
+  getEffectiveLevel,
+  areIncarnatesSuppressed,
+} from './effective-level';
+
 // AT-based effect calculations (using Homecoming tables)
 export {
   calculateScaledEffect,

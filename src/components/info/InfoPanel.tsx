@@ -18,6 +18,7 @@ import {
   getInterfaceEffects,
   getJudgementEffects,
   getLoreEffects,
+  getGenesisEffects,
   formatEffectValue,
   isSlotToggleable,
   findProcData,
@@ -28,13 +29,14 @@ import {
   getActiveDamageConversion,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
 import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
+import type { GenesisExemplarEffect } from '@/data';
 import { getActiveIncarnateDamageProcs, computeIncarnateProcContributions } from '@/data/incarnate-procs';
 import { resolvePath } from '@/utils/paths';
 import { resolveKheldianRedirect } from '@/data/datasets/rebirth/kheldian-redirects';
@@ -1369,9 +1371,79 @@ interface IncarnateInfoProps {
   powerId: string;
 }
 
+/** Render a Genesis below-45 exemplar power's details, by kind. */
+function renderGenesisExemplar(ex: GenesisExemplarEffect, archetypeId: string, level: number) {
+  const row = (label: string, value: string, color = 'text-slate-300') => (
+    <div className="flex justify-between text-sm" key={label}>
+      <span className="text-slate-300">{label}</span>
+      <span className={color}>{value}</span>
+    </div>
+  );
+  const pct = (v: number) => `+${(v * 100).toFixed(0)}%`;
+  switch (ex.kind) {
+    case 'attack': {
+      const dmg = calculateIncarnateDamage(ex.damageScale, ex.tableName, archetypeId, level);
+      return (
+        <>
+          {row(`Damage (${ex.damageType})`, dmg !== null ? dmg.toFixed(1) : `${ex.damageScale} scale`, 'text-red-400')}
+          {row('Effect Area', ex.effectArea, 'text-cyan-400')}
+          {ex.radius > 0 && row('Radius', `${ex.radius} ft`)}
+          {ex.maxTargets > 0 && row('Max Targets', `${ex.maxTargets}`)}
+          {row('Recharge', `${ex.recharge}s`)}
+          {ex.secondaryEffects.length > 0 && (
+            <div className="flex flex-wrap gap-1 pt-0.5" key="sec">
+              {ex.secondaryEffects.map((s, i) => (
+                <span key={i} className="text-[10px] px-1.5 py-0.5 bg-slate-700/50 rounded text-amber-400">{s}</span>
+              ))}
+            </div>
+          )}
+        </>
+      );
+    }
+    case 'proc': {
+      const dot = ex.dotType && ex.dotDamage && ex.dotTableName
+        ? calculateIncarnateDamage(ex.dotDamage, ex.dotTableName, archetypeId, level) : null;
+      return (
+        <>
+          {row('Effect', ex.label, 'text-cyan-400')}
+          {ex.debuffMagnitude !== undefined && !ex.dotType && row('Magnitude', `${ex.debuffMagnitude}`)}
+          {ex.dotType && row(`DoT (${ex.dotType})`, dot !== null ? dot.toFixed(1) : `${ex.dotDamage} scale`, 'text-red-400')}
+          {ex.duration > 0 && row('Duration', `${ex.duration}s`)}
+          {row('Triggers', `every ${ex.procPeriod}s`)}
+        </>
+      );
+    }
+    case 'summon':
+      return (
+        <>
+          {row('Faction', ex.faction, 'text-cyan-400')}
+          {row('Pets', ex.pets.join(', '))}
+          {row('Duration', `${ex.duration}s (${Math.round(ex.duration / 60)}m)`)}
+          {row('Recharge', `${ex.recharge}s (${Math.round(ex.recharge / 60)}m)`)}
+        </>
+      );
+    case 'buff':
+      return (
+        <>
+          {ex.stats.recharge ? row('Recharge', pct(ex.stats.recharge), 'text-cyan-400') : null}
+          {ex.stats.recovery ? row('Recovery', pct(ex.stats.recovery), 'text-blue-400') : null}
+          {ex.stats.endurance ? row('Endurance', pct(ex.stats.endurance), 'text-blue-400') : null}
+          {ex.mezProtection ? row('Mez Protection', `Mag ${ex.mezProtection}`, 'text-purple-400') : null}
+          {row('Radius', `${ex.radius} ft`)}
+        </>
+      );
+  }
+}
+
 function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
   const build = useBuildStore((s) => s.build);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
+  const exemplarMode = useUIStore((s) => s.exemplarMode);
+  const exemplarLevel = useUIStore((s) => s.exemplarLevel);
+  // Below 45, incarnate abilities are suppressed (Genesis swaps to its exemplar
+  // power). Drives which Genesis block is emphasized.
+  const exemplarEffectiveLevel = getEffectiveLevel(build.level, exemplarMode, exemplarLevel);
+  const incarnatesSuppressed = areIncarnatesSuppressed(exemplarEffectiveLevel);
 
   const selectedPower = build.incarnates?.[slotId];
   if (!selectedPower) {
@@ -1396,6 +1468,16 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
   const interfaceEffects = slotId === 'interface' ? getInterfaceEffects(powerId) : null;
   const judgementEffects = slotId === 'judgement' ? getJudgementEffects(powerId) : null;
   const loreEffects = slotId === 'lore' ? getLoreEffects(powerId) : null;
+  const genesisEffects = slotId === 'genesis' ? getGenesisEffects(powerId) : null;
+  const genesisPct = genesisEffects ? `+${(genesisEffects.tierPercent * 100).toFixed(1)}%` : '';
+
+  // A slotted + active Genesis amplifies its partner slot's display. When the
+  // user is viewing Judgement/Lore, fold in the matching Verdict/Data boost.
+  const slottedGenesis = build.incarnates?.genesis && (incarnateActive?.genesis ?? true)
+    ? getGenesisEffects(build.incarnates.genesis.powerId)
+    : null;
+  const verdictGenesisPct = slottedGenesis?.tree === 'verdict' ? slottedGenesis.tierPercent : 0;
+  const dataGenesis = slottedGenesis?.tree === 'data' ? slottedGenesis : null;
 
   return (
     <div className="space-y-2">
@@ -1683,10 +1765,14 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
 
       {/* Judgement Effects (Click attack) */}
       {judgementEffects && (() => {
-        const judgementDamage = calculateIncarnateDamage(
+        const baseJudgementDamage = calculateIncarnateDamage(
           judgementEffects.damageScale, judgementEffects.tableName,
           build.archetype.id ?? '', build.level
         );
+        // Verdict Genesis amplifies the Judgement attack's damage.
+        const judgementDamage = baseJudgementDamage !== null && verdictGenesisPct > 0
+          ? baseJudgementDamage * (1 + verdictGenesisPct)
+          : baseJudgementDamage;
         return (
         <div>
           <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
@@ -1697,6 +1783,9 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
               <span className="text-slate-300">Damage ({judgementEffects.damageType})</span>
               <span className="text-red-400">
                 {judgementDamage !== null ? `${judgementDamage.toFixed(1)}` : `${judgementEffects.damageScale} scale`}
+                {verdictGenesisPct > 0 && (
+                  <span className="text-[10px] text-lime-400 ml-1">(+{(verdictGenesisPct * 100).toFixed(1)}% Genesis)</span>
+                )}
               </span>
             </div>
             <div className="flex justify-between text-sm">
@@ -1780,7 +1869,90 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
               <span className="text-slate-300">Recharge</span>
               <span className="text-slate-300">{loreEffects.rechargeTime}s ({Math.round(loreEffects.rechargeTime / 60)}m)</span>
             </div>
+            {dataGenesis && (
+              <div className="mt-1 pt-1 border-t border-slate-700/60 text-[11px] text-lime-400">
+                Data Genesis: +{(dataGenesis.tierPercent * 100).toFixed(1)}% pet damage
+                {dataGenesis.loreMaxHP !== undefined && `, +${dataGenesis.loreMaxHP} pet Max HP`}
+              </div>
+            )}
           </div>
+        </div>
+      )}
+
+      {/* Genesis Effects — 45+ amplifier + below-45 exemplar power. The block
+          matching the current effective level is emphasized; the other is dimmed. */}
+      {genesisEffects && (
+        <div className="space-y-2">
+          {/* 45+ amplifier */}
+          <div className={incarnatesSuppressed ? 'opacity-50' : ''}>
+            <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
+              Enhances {genesisEffects.enhancesSlot.charAt(0).toUpperCase() + genesisEffects.enhancesSlot.slice(1)}
+              <span className="text-slate-500 font-normal normal-case"> (45+{incarnatesSuppressed ? ', inactive' : ''})</span>
+            </h4>
+            <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
+              {genesisEffects.tree === 'data' && (
+                <>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-slate-300">Lore Pet Damage</span>
+                    <span className="text-red-400">{genesisPct}</span>
+                  </div>
+                  {genesisEffects.loreMaxHP !== undefined && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-300">Lore Pet Max HP</span>
+                      <span className="text-green-400">+{genesisEffects.loreMaxHP}</span>
+                    </div>
+                  )}
+                </>
+              )}
+              {genesisEffects.tree === 'fate' && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-300">Destiny Effects</span>
+                  <span className="text-cyan-400">{genesisPct}</span>
+                </div>
+              )}
+              {genesisEffects.tree === 'socket' && (
+                <>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-slate-300">Interface Proc Chance</span>
+                    <span className="text-cyan-400">{genesisPct}</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-slate-300">Your Max HP</span>
+                    <span className="text-green-400">{genesisPct}</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-slate-300">Your Max Endurance</span>
+                    <span className="text-blue-400">{genesisPct}</span>
+                  </div>
+                </>
+              )}
+              {genesisEffects.tree === 'verdict' && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-300">Judgement Damage</span>
+                  <span className="text-red-400">{genesisPct}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Below-45 exemplar power */}
+          {genesisEffects.exemplarEffect && (
+            <div className={incarnatesSuppressed ? '' : 'opacity-60'}>
+              <h4 className="text-[11px] font-semibold text-amber-400/90 uppercase tracking-wide mb-1">
+                Below Level 45
+                <span className="text-slate-500 font-normal normal-case"> (exemplar{incarnatesSuppressed ? ', active' : ''})</span>
+              </h4>
+              <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
+                {renderGenesisExemplar(genesisEffects.exemplarEffect, build.archetype.id ?? '', build.level)}
+              </div>
+            </div>
+          )}
+
+          <p className="text-[11px] text-slate-400 mt-1">
+            {incarnatesSuppressed
+              ? `Exemplared to ${exemplarEffectiveLevel}: the exemplar power is active; the 45+ amplifier is suppressed.`
+              : 'Active at level 45+. Below 45 it grants the exemplar power shown above.'}
+          </p>
         </div>
       )}
     </div>

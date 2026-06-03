@@ -4,7 +4,7 @@
  */
 
 import type { IncarnateSlotId } from '@/types';
-import type { AlphaEffects, DestinyEffects, HybridEffects, InterfaceEffects, JudgementEffects, LoreEffects } from '@/data';
+import type { AlphaEffects, DestinyEffects, HybridEffects, InterfaceEffects, JudgementEffects, LoreEffects, GenesisEffects, GenesisExemplarEffect } from '@/data';
 import {
   getAlphaEffects,
   getDestinyEffects,
@@ -12,6 +12,7 @@ import {
   getInterfaceEffects,
   getJudgementEffects,
   getLoreEffects,
+  getGenesisEffects,
   formatEffectValue,
 } from '@/data';
 import { calculateIncarnateDamage } from '@/data/at-tables';
@@ -69,6 +70,74 @@ export interface EffectData {
   entries: EffectEntry[];
   footer?: string;
   tags?: string[];
+}
+
+/**
+ * Build display rows for a Genesis amplifier. Genesis doesn't grant flat global
+ * player buffs — each tree amplifies a specific partner slot (and Socket also
+ * the player's Max HP / Max End), so the rows name the real targets.
+ */
+function genesisEffectEntries(fx: GenesisEffects): EffectEntry[] {
+  const pct = `+${(fx.tierPercent * 100).toFixed(1)}%`;
+  switch (fx.tree) {
+    case 'data':
+      return [
+        { label: 'Lore Pet Damage', value: pct },
+        ...(fx.loreMaxHP ? [{ label: 'Lore Pet Max HP', value: `+${fx.loreMaxHP}` }] : []),
+      ];
+    case 'fate':
+      return [{ label: 'Destiny Effects', value: pct }];
+    case 'socket':
+      return [
+        { label: 'Interface Proc Chance', value: pct },
+        { label: 'Your Max HP', value: pct },
+        { label: 'Your Max Endurance', value: pct },
+      ];
+    case 'verdict':
+      return [{ label: 'Judgement Damage', value: pct }];
+    default:
+      return [];
+  }
+}
+
+function genesisHeader(fx: GenesisEffects): string {
+  const slot = fx.enhancesSlot.charAt(0).toUpperCase() + fx.enhancesSlot.slice(1);
+  return `Enhances ${slot}`;
+}
+
+/** Display rows for a Genesis below-45 exemplar power, by kind. */
+function genesisExemplarEntries(ex: GenesisExemplarEffect): EffectEntry[] {
+  switch (ex.kind) {
+    case 'attack':
+      return [
+        { label: `Damage (${ex.damageType})`, value: `${ex.damageScale} scale` },
+        { label: 'Area', value: ex.effectArea },
+        { label: 'Recharge', value: `${ex.recharge}s` },
+      ];
+    case 'proc': {
+      const entries: EffectEntry[] = [];
+      if (ex.dotType) entries.push({ label: ex.label, value: `${ex.dotDamage} scale DoT` });
+      else if (ex.debuffMagnitude !== undefined) entries.push({ label: ex.label, value: `Mag ${ex.debuffMagnitude}` });
+      else entries.push({ label: ex.label, value: 'proc' });
+      entries.push({ label: 'Triggers', value: `every ${ex.procPeriod}s` });
+      return entries;
+    }
+    case 'summon':
+      return [
+        { label: 'Faction', value: ex.faction },
+        { label: 'Pets', value: ex.pets.join(', ') },
+        { label: 'Duration', value: `${Math.round(ex.duration / 60)}min` },
+      ];
+    case 'buff': {
+      const entries: EffectEntry[] = [];
+      if (ex.stats.recharge) entries.push({ label: 'Recharge', value: formatEffectValue(ex.stats.recharge) });
+      if (ex.stats.recovery) entries.push({ label: 'Recovery', value: formatEffectValue(ex.stats.recovery) });
+      if (ex.stats.endurance) entries.push({ label: 'Endurance', value: formatEffectValue(ex.stats.endurance) });
+      if (ex.mezProtection) entries.push({ label: 'Mez Protection', value: `Mag ${ex.mezProtection}` });
+      entries.push({ label: 'Radius', value: `${ex.radius}ft` });
+      return entries;
+    }
+  }
 }
 
 /** Extract structured effect data for any incarnate slot/power */
@@ -157,6 +226,11 @@ export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string,
       ];
       return { header: 'Summon Pets', entries, tags: fx.pets };
     }
+    case 'genesis': {
+      const fx = getGenesisEffects(powerId);
+      if (!fx) return null;
+      return { header: genesisHeader(fx), entries: genesisEffectEntries(fx) };
+    }
     default:
       return null;
   }
@@ -201,6 +275,11 @@ export function IncarnateEffectsTooltip({ slotId, powerId }: { slotId: Incarnate
       const fx = getLoreEffects(powerId);
       if (!fx) return null;
       return <LoreTooltip fx={fx} />;
+    }
+    case 'genesis': {
+      const fx = getGenesisEffects(powerId);
+      if (!fx) return null;
+      return <GenesisTooltip fx={fx} />;
     }
     default:
       return null;
@@ -370,6 +449,25 @@ function LoreTooltip({ fx }: { fx: LoreEffects }) {
       </div>
       <EffectRow label="Duration" value={`${Math.round(fx.duration / 60)}min`} />
       <EffectRow label="Recharge" value={`${Math.round(fx.rechargeTime / 60)}min`} />
+    </div>
+  );
+}
+
+function GenesisTooltip({ fx }: { fx: GenesisEffects }) {
+  return (
+    <div className="text-[11px] mt-2 border-t border-gray-600 pt-1.5 space-y-0.5">
+      <div className="text-cyan-400 font-semibold mb-0.5">{genesisHeader(fx)} <span className="text-gray-500 font-normal">(45+)</span></div>
+      {genesisEffectEntries(fx).map((e) => (
+        <EffectRow key={e.label} label={e.label} value={e.value} />
+      ))}
+      {fx.exemplarEffect && (
+        <div className="mt-1.5 border-t border-gray-700 pt-1">
+          <div className="text-amber-400/90 font-semibold mb-0.5">Below Level 45 (exemplared)</div>
+          {genesisExemplarEntries(fx.exemplarEffect).map((e, i) => (
+            <EffectRow key={i} label={e.label} value={e.value} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

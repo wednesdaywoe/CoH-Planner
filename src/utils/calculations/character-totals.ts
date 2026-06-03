@@ -14,7 +14,8 @@
 
 import type { Build, Accolade, Enhancement, EnhancementStatType, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
-import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
+import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
+import type { DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
 import { getPowerPool } from '@/data/power-pools';
@@ -43,6 +44,7 @@ import {
 } from './enhancement-values';
 import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
+import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
 import {
   isCalcDebugEnabled,
   debugBuildContext,
@@ -2439,8 +2441,11 @@ function applyAccoladeBonuses(
  */
 export function getAlphaEnhancementBonuses(
   incarnates: IncarnateBuildState | undefined,
-  incarnateActive: IncarnateActiveState | undefined
+  incarnateActive: IncarnateActiveState | undefined,
+  incarnatesSuppressed = false,
 ): EnhancementBonuses {
+  // Exemplared below 45 — incarnate abilities are off entirely.
+  if (incarnatesSuppressed) return {};
   if (!incarnates?.alpha) return {};
 
   // Check if alpha is active
@@ -2570,9 +2575,72 @@ function applyHybridStatBlock(
 }
 
 /**
+ * The active Genesis amplifier (Rebirth-only), or null. Genesis is toggleable,
+ * so it only contributes when its slot toggle is on.
+ */
+function getActiveGenesis(
+  incarnates: IncarnateBuildState | undefined,
+  active: { genesis?: boolean },
+): GenesisEffects | null {
+  if (!incarnates?.genesis || active.genesis === false) return null;
+  return getGenesisEffects(incarnates.genesis.powerId);
+}
+
+/**
+ * Scale a Destiny effect block by a factor (used by Fate Genesis, which
+ * amplifies Destiny slot ability effects). Only the numeric stat fields are
+ * scaled — level shift and the duration metadata are left untouched.
+ */
+function scaleDestinyEffects(fx: DestinyEffects, factor: number): DestinyEffects {
+  const skip = new Set(['levelShift', 'initialDuration', 'totalDuration']);
+  const scaled: DestinyEffects = { ...fx };
+  for (const [k, v] of Object.entries(fx)) {
+    if (skip.has(k) || typeof v !== 'number') continue;
+    (scaled as Record<string, number>)[k] = v * factor;
+  }
+  return scaled;
+}
+
+/**
+ * Below level 45, a slotted+active Fate Genesis grants its exemplar buff (a
+ * PBAoE ally buff: +Recharge / +Recovery, applied to self here as peak values
+ * like Destiny). It's the only incarnate contribution that survives below 45 —
+ * Verdict/Socket/Data exemplar powers are attacks/procs/pets (display-only).
+ * Clarion's mez protection is display-only (matching Destiny's mezProtection).
+ */
+function applyGenesisExemplarBuff(
+  incarnates: IncarnateBuildState | undefined,
+  active: { genesis?: boolean },
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>,
+): void {
+  const genesis = getActiveGenesis(incarnates, active);
+  if (!genesis || genesis.tree !== 'fate') return;
+  const ex = genesis.exemplarEffect;
+  if (!ex || ex.kind !== 'buff') return;
+
+  const sourceName = `${genesis.displayName} (exemplar)`;
+  if (ex.stats.recharge) {
+    const value = ex.stats.recharge * 100;
+    global.recharge += value;
+    addToBreakdown(breakdown, 'recharge', { name: sourceName, value, type: 'incarnate' });
+  }
+  if (ex.stats.recovery) {
+    const value = ex.stats.recovery * 100;
+    global.recovery += value;
+    addToBreakdown(breakdown, 'recovery', { name: sourceName, value, type: 'incarnate' });
+  }
+}
+
+/**
  * Apply bonuses from incarnate powers
  * Alpha provides enhancement bonuses, Destiny/Hybrid provide direct stat bonuses
  * Interface is proc-based and doesn't provide direct stats
+ *
+ * Genesis (Rebirth-only) amplifies a partner slot rather than granting flat
+ * buffs: Socket adds player Max HP / Max End here; Fate scales the Destiny block
+ * applied below. Verdict (Judgement damage) and Data (Lore pets) are display-only
+ * and handled in the Info panel, not on the dashboard.
  */
 function applyIncarnateBonuses(
   incarnates: IncarnateBuildState | undefined,
@@ -2580,6 +2648,7 @@ function applyIncarnateBonuses(
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>,
   levelShiftActive = true,
+  incarnatesSuppressed = false,
 ): void {
   if (!incarnates) return;
   const _debugBefore = isCalcDebugEnabled() ? { ...global } : null;
@@ -2592,7 +2661,21 @@ function applyIncarnateBonuses(
     interface: true,
     judgement: true,
     lore: true,
+    genesis: true,
   };
+
+  // Exemplared below 45: all normal incarnate bonuses are off. The ONLY
+  // contribution that survives is Genesis's below-45 exemplar power — and of
+  // the four trees, only Fate's grants a self stat-buff. The attack/proc/summon
+  // are display-only (handled in the Info panel), so we return after it.
+  if (incarnatesSuppressed) {
+    applyGenesisExemplarBuff(incarnates, active, global, breakdown);
+    return;
+  }
+
+  // Fate Genesis amplifies the Destiny block applied below.
+  const genesis = getActiveGenesis(incarnates, active);
+  const fateMultiplier = genesis?.tree === 'fate' ? genesis.tierPercent : 0;
 
   // Alpha - Enhancement bonuses are handled separately via getAlphaEnhancementBonuses()
   // They are applied in applyActivePowerBonuses() to boost power effectiveness
@@ -2601,9 +2684,15 @@ function applyIncarnateBonuses(
   // Destiny - Direct stat bonuses (defense, resistance, regen, recovery, etc.)
   // Note: These are initial/peak values since effects diminish over time
   if (incarnates.destiny && active.destiny) {
-    const destinyEffects = getDestinyEffects(incarnates.destiny.powerId);
+    let destinyEffects = getDestinyEffects(incarnates.destiny.powerId);
     if (destinyEffects) {
-      const powerName = incarnates.destiny.displayName;
+      // Fate Genesis (Rebirth) boosts Destiny ability effects by its tier %.
+      if (fateMultiplier > 0) {
+        destinyEffects = scaleDestinyEffects(destinyEffects, 1 + fateMultiplier);
+      }
+      const powerName = fateMultiplier > 0
+        ? `${incarnates.destiny.displayName} (+${(fateMultiplier * 100).toFixed(1)}% Genesis)`
+        : incarnates.destiny.displayName;
 
       // Defense All
       if (destinyEffects.defenseAll !== undefined) {
@@ -2728,6 +2817,18 @@ function applyIncarnateBonuses(
       // Layer 3: Per-target bonuses — not applied yet (needs slider infrastructure)
       // When slider is added: applyHybridStatBlock(scaled perTarget, `${powerName} (per-target)`, ...)
     }
+  }
+
+  // Genesis (Rebirth) — Socket is the only tree with a direct player-stat effect:
+  // +Max HP and +Max Endurance (both at the tier %). Fate is handled above
+  // (Destiny scaling); Verdict (Judgement) and Data (Lore pets) are display-only.
+  if (genesis?.tree === 'socket' && incarnates.genesis) {
+    const powerName = incarnates.genesis.displayName;
+    const value = genesis.tierPercent * 100;
+    global.maxHP += value;
+    addToBreakdown(breakdown, 'maxHP', { name: powerName, value, type: 'incarnate' });
+    global.maxEndurance += value;
+    addToBreakdown(breakdown, 'maxEndurance', { name: powerName, value, type: 'incarnate' });
   }
 
   // Interface - These are proc effects that debuff enemies, not player stats
@@ -2956,7 +3057,10 @@ export function calculateCharacterTotals(
   // effectiveLevel drives HP, fitness, and toggle scaling — always use build.level
   // Set bonus suppression only applies in exemplar mode (don't suppress at low build levels)
   const exemplarLevel = options?.exemplarLevel;
-  const effectiveLevel = exemplarMode ? (exemplarLevel ?? build.level) : build.level;
+  const effectiveLevel = getEffectiveLevel(build.level, exemplarMode, exemplarLevel);
+  // Incarnate abilities turn off entirely below level 45 (Genesis swaps to its
+  // exemplar power). Gates the two incarnate calc entry points below.
+  const incarnatesSuppressed = areIncarnatesSuppressed(effectiveLevel);
 
   // Debug: build context
   if (_debug) {
@@ -3037,7 +3141,7 @@ export function calculateCharacterTotals(
   const allPowers = collectAllPowers(build);
 
   // Step 5: Get Alpha incarnate enhancement bonuses (apply to all powers including fitness)
-  const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
+  const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive, incarnatesSuppressed);
   // Alpha tier dictates how much of the boost bypasses ED (Common 1/6 …
   // Very Rare 2/3). Passed alongside alphaBonuses so combineWithAlphaED
   // splits the buff correctly against the per-power IO ED total.
@@ -3092,7 +3196,7 @@ export function calculateCharacterTotals(
   // Step 9: Apply incarnate bonuses (Destiny, Hybrid - direct stats)
   // Note: Alpha bonuses were already applied in Step 7 as enhancement bonuses
   if (_debug) debugGroup('Step 9: Incarnate Bonuses');
-  applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown, options?.incarnateLevelShiftActive ?? true);
+  applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown, options?.incarnateLevelShiftActive ?? true, incarnatesSuppressed);
   if (_debug) debugGroupEnd();
 
   // Step 9.1: Apply archetype inherent damage bonuses (Vigilance, Fury)
