@@ -329,6 +329,7 @@ interface PowerEffects {
   maxEndurance?: number | { scale: number };
   maxHealth?: number | { scale: number };
   tohitBuff?: number;
+  accuracyBuff?: number;
   damageBuff?: number;
   defense?: Record<string, number>;
   resistance?: Record<string, number>;

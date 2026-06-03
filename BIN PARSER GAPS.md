@@ -1,14 +1,75 @@
 ### Use this space to document to-dos when we run into data gaps that require refining the bin parser. When complete, please mark completed. Please put new issues at the top, move old issues below
 
----NEW ISSUES---
-
 Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 (`tools/bin-crawler/` + `scripts/convert-powerset.cjs` + `scripts/convert-epic-pools.cjs`),
 with diagnoses and recommended fixes. Newest entries at top.
 
+---NEW ISSUES---
+
+## ⚠️ Epic-pools generated files are stale — a regen surfaces mez-table drift (found 2026-06-03)
+
+While fixing Focused Accuracy I discovered that re-running `convert-epic-pools.cjs`
+produces a non-trivial diff **unrelated to the accuracy fix** — mez effects flip
+`Ranged_PvPMez`/`Melee_PvPMez` → `Ranged_Sleep`/`Ranged_Stun` (and some PvPMez
+rows drop) on ~8 epic control powers (Flash Freeze, Hoarfrost, Dark Pit,
+Engulfing Darkness, Lightning Field, Cremate, …). Confirmed **pre-existing**:
+the drift appears even with the converter change reverted, so the committed
+`datasets/<id>/generated/epic-pools.ts` is simply older than the current
+converter+data. (The raw still carries `Ranged_PvPMez`, so the converter now
+remaps PvP mez → PvE Sleep/Stun somewhere; likely a correct improvement, but
+unverified.) This is why the Focused Accuracy fix below used **overrides** rather
+than a full regen. **To-do:** vet the mez remap against in-game values, then do a
+deliberate epic-pools regen for both datasets (which also makes the accuracy
+overrides redundant). Same staleness probably affects `generated/powersets`.
+
 ---
 
-## 2026-06-03 — Focused Accuracy missing its +Accuracy self-buff
+## ✅ Focused Accuracy missing its +Accuracy self-buff (FIXED 2026-06-03)
+
+**✅ RESOLUTION (2026-06-03).** Root cause confirmed exactly as diagnosed: the raw
+template `Accuracy / aspect=Strength / Melee_Ones / scale 0.2` (= +20%) was
+dropped by the converter and unhandled by the calc. Key correction to the
+original plan: Accuracy is inherently a **Strength-aspect stat** (all 40 in-game
+Accuracy templates are aspect=Strength — there is no Current variant), so for
+Accuracy `aspect=Strength` IS the normal +Accuracy buff, NOT a Power-Boost-style
+amplifier. It therefore routes to `accuracyBuff` → `global.accuracy`, **not**
+`specialBuff` (the plan's suggested strength→specialBuff routing would have been
+wrong). Fix, three layers + override:
+1. **Converter** ([convert-powerset.cjs](scripts/convert-powerset.cjs)) — added
+   `'accuracy': 'accuracy'` to `COMBAT_MODIFIERS`, an `else if (modType ===
+   'accuracy')` emit branch (resistance → `debuffResistance.accuracy`, neg →
+   `accuracyDebuff`, else → `accuracyBuff`), and an accuracy carve-out in the
+   stacking-metadata helper so it maps to `accuracyBuff` not the specialBuff
+   strength container.
+2. **Calc** ([character-totals.ts](src/utils/calculations/character-totals.ts)) —
+   added an `effects.accuracyBuff` handler right after `tohitBuff` that adds the
+   scaled value × 100 into `global.accuracy` (additive with set bonuses). **No**
+   enhancement multiplier — accuracy enhancements boost attack-roll accuracy, not
+   a buff power's own +Accuracy. Effect-type decls added to `power.ts`, `stats.ts`,
+   and the `ActivePowerEffect` interface; display entry added to
+   [effect-registry.ts](src/data/core/effect-registry.ts) (`+Accuracy`, no
+   `enhancementAspect`).
+3. **Data** — applied via **overrides** (not a full regen, to avoid the unrelated
+   mez drift above): [homecoming](src/data/datasets/homecoming/overrides/epic-pools.ts)
+   (10 powers) + [rebirth](src/data/datasets/rebirth/overrides/epic-pools.ts) (12
+   powers), each merging the exact `accuracyBuff` value the converter emits (table
+   varies by AT — e.g. HC Brute uses `Ranged_Ones`, HC Sentinel `Ranged_Buff_ToHit`
+   scale 2; both resolve to ~+20%). Covers Focused Accuracy, Targeting Drone, and
+   Personal Force Field. The `withOverrides` deep-merge on `effects` preserves the
+   other effects. Idempotent — a future deliberate regen yields the same values.
+
+**Verified:** [focused-accuracy.test.ts](src/utils/calculations/focused-accuracy.test.ts)
+asserts FA toggled on adds exactly +20% to `globalBonuses.accuracy` (0 when off).
+tsc clean, 79/79 tests pass. Targeting Drone / Personal Force Field covered by the
+same override set. Alpha-incarnate accuracy path is unaffected (special-cased).
+
+**Not done:** the broader epic-pools regen + mez review (see the ⚠️ entry above);
+any *powerset* accuracy self-buffs (none currently known beyond the epic set) would
+need their own override or a powersets regen.
+
+---
+
+<details><summary>Original diagnosis (2026-06-03, pre-fix)</summary>
 
 **Reported:** User in-game build showed Focused Accuracy granting +ToHit but
 no +Accuracy (expected ~+20%). General/Offense tab Accuracy total only
@@ -113,6 +174,8 @@ works), and any boost-style accuracy buffs in Epic pools.
 - `src/data/datasets/rebirth/generated/epic-pools.ts` (regenerate)
 - `tools/bin-crawler/bin_crawler/parser/_enums.py:242,308` (attrib mapping —
   already correct, FYI)
+
+</details>
 
 ---
 

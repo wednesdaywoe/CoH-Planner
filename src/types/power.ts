@@ -293,6 +293,8 @@ export interface PowerEffects {
   // === BUFF EFFECTS ===
   /** ToHit buff value (scale or {scale, table}) */
   tohitBuff?: NumberOrScaled;
+  /** Accuracy self-buff value (scale or {scale, table}) — e.g. Focused Accuracy */
+  accuracyBuff?: NumberOrScaled;
   /** Damage buff value (scale or {scale, table}) */
   damageBuff?: NumberOrScaled;
   /** Defense buff value - can be single value or by type */

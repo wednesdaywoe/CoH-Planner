@@ -876,6 +876,7 @@ const RESOURCE_TYPES = {
 // Combat modifier attributes
 const COMBAT_MODIFIERS = {
   'tohit': 'toHit', 'to_hit': 'toHit',
+  'accuracy': 'accuracy',
   'base_defense': 'defense', 'defense': 'defense',
   'threatlevel': 'threatLevel', 'threat_level': 'threatLevel',
   'rechargetime': 'rechargeTime', 'recharge_time': 'rechargeTime', 'speed_recharge': 'rechargeTime',
@@ -2476,6 +2477,25 @@ function extractEffects(templates, powerName) {
             effects.tohitBuff = makeEffect();
             recordDuration('tohitBuff');
           }
+        } else if (modType === 'accuracy') {
+          // +Accuracy self-buff (Focused Accuracy, Eagle Eye, Targeting Drone,
+          // Personal Force Field, etc.). Accuracy is inherently a Strength-aspect
+          // stat (it has NO Current variant — all 40 in-game Accuracy templates
+          // are aspect=Strength), so Strength here is the normal +Accuracy buff,
+          // NOT a Power Boost-style amplifier. Route it straight to accuracyBuff
+          // (additive into global.accuracy alongside set bonuses), not specialBuff.
+          if (aspect === 'resistance') {
+            if (!effects.debuffResistance) effects.debuffResistance = {};
+            effects.debuffResistance.accuracy = makeEffect();
+            recordDuration('debuffResistance');
+          } else if (isDebuff || scale < 0) {
+            effects.accuracyDebuff = makeEffect();
+            if (isSelfTargeting) effects.selfPenalty = true;
+            recordDuration('accuracyDebuff');
+          } else {
+            effects.accuracyBuff = makeEffect();
+            recordDuration('accuracyBuff');
+          }
         } else if (modType === 'defense') {
           // Skip - handled by BASE_DEFENSE section above
         } else if (modType === 'rechargeTime') {
@@ -2723,7 +2743,11 @@ function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
       const al = a?.toLowerCase();
       return al && al.endsWith('_dmg') && al !== 'heal_dmg';
     });
-    if (!isDamageStrength) return [{ effectKey: 'specialBuff' }];
+    // Accuracy is a Strength-aspect stat by nature; extractEffects routes its
+    // buff to `accuracyBuff` (not the specialBuff strength container), so let it
+    // fall through to the combat-modifier mapping below for matching metadata.
+    const isAccuracy = template.attribs.some(a => a?.toLowerCase() === 'accuracy');
+    if (!isDamageStrength && !isAccuracy) return [{ effectKey: 'specialBuff' }];
   }
 
   const results = [];
@@ -2781,6 +2805,7 @@ function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
     if (COMBAT_MODIFIERS[attrib]) {
       const modType = COMBAT_MODIFIERS[attrib];
       if (modType === 'toHit' && !isDebuff) return [{ effectKey: 'tohitBuff' }];
+      if (modType === 'accuracy' && !isDebuff) return [{ effectKey: 'accuracyBuff' }];
       if (modType === 'rechargeTime' && !isDebuff && !tableLower.includes('slow')) return [{ effectKey: 'rechargeBuff' }];
       if (modType === 'threatLevel') return [{ effectKey: 'threatBuff' }];
       if (modType === 'enduranceDiscount') return [{ effectKey: 'enduranceDiscount' }];

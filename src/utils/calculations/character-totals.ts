@@ -571,6 +571,7 @@ function adjustForStacking(
 
 interface ActivePowerEffect {
   tohitBuff?: number;
+  accuracyBuff?: number;
   damageBuff?: number;
   rechargeBuff?: ScalarOrScaled;
   defense?: Record<string, ScalarOrScaled>;
@@ -892,6 +893,21 @@ function applyActivePowerBonuses(
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    // Accuracy buff (a flat +Accuracy self-buff like Focused Accuracy, stored as
+    // a decimal). Additive into global.accuracy alongside set bonuses. Not
+    // enhanced — accuracy enhancements boost attack-roll accuracy, not the
+    // buff power's own +Accuracy (these powers don't slot accuracy-buff enh).
+    if (effects.accuracyBuff !== undefined) {
+      const adjustedBuff = adjustForStacking(effects.accuracyBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'accuracyBuff', effects.maxStacks);
+      const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100;
+      global.accuracy += value;
+      addToBreakdown(breakdown, 'accuracy', {
         name: power.name,
         value,
         type: 'active-power',

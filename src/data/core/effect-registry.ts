@@ -349,6 +349,16 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     enhancementAspect: 'tohit',
     priority: 1,
   },
+  accuracyBuff: {
+    label: '+Accuracy',
+    category: 'buff',
+    colorClass: STAT_COLORS.accuracy,
+    format: 'percent',
+    calculation: 'buff',
+    // No enhancementAspect: accuracy enhancements boost attack-roll accuracy,
+    // not a buff power's own +Accuracy (Focused Accuracy can't slot it).
+    priority: 1,
+  },
   damageBuff: {
     label: '+Damage',
     category: 'buff',
