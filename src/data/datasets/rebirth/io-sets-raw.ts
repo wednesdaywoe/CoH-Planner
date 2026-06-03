@@ -11867,7 +11867,15 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "maxLevel": 50,
     "minLevel": 1,
     "name": "Inexhaustibility",
-    "pieces": [],
+    "pieces": [
+      {
+        "aspects": [],
+        "name": "Inexhaustibility",
+        "num": 1,
+        "proc": true,
+        "unique": true
+      }
+    ],
     "type": "Rest Buff"
   },
   "jaunt": {

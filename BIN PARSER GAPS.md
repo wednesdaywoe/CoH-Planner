@@ -2,27 +2,25 @@
 
 ---NEW ISSUES---
 
-## 🟡 Rebirth Inexhaustibility — non-standard `boostsets.bin` record layout
-
-**Symptom.** Inexhaustibility (Secret Master 5th Column TF/SF reward, single-piece special enhancement that slots only into the Rest inherent) is present in the planner with `type: "Rest Buff"` but ships with empty `pieces: []` and `bonuses: []`, so it can't be slotted and has no in-game effect surfaced. By contrast, the other three Rebirth Challenge Enhancements work end-to-end:
-- Liberty's Belt — extracts cleanly (`type: "Resist Damage"`)
-- Imperial Might — extracts cleanly (`type: "Knockback"`)
-- Forced Indoctrination — fixed 2026-05-30 via rarity override → `"Universal Control Duration"`
-
-**Root cause.** Inexhaustibility's `boostsets.bin` record uses a non-standard layout: both the `rarity` and `category` fields are empty, and there are no allowed_powers, no boostlist entries, and no bonus references. The parser at [tools/bin-crawler/bin_crawler/parser/_boostsets.py](tools/bin-crawler/bin_crawler/parser/_boostsets.py) treats it as a malformed/empty record (the `if power_count > rec_len` guard bails out early) and produces an empty BoostSetRecord. The 2026-05-30 override gets the set into the IO-set library with a category name, but the parser still produces no piece or bonus data to ship.
-
-**Layout hypothesis.** The boost piece power exists at `Set_Bonus.Challenge_Set_Bonus.Inexhaustibility` (visible in `powers.bin`), and the in-game enhancement is documented as a single-piece special enhancement with a Rest-buff effect. The binary record likely uses a "challenge variant" layout with reordered/optional fields — needs RE work to find the field offsets.
-
-**Fix paths.**
-1. **Parser work (preferred).** Detect the challenge-variant layout in `_boostsets.py` and parse its actual fields. Generalizes to any future single-piece challenge enhancement Rebirth adds.
-2. **Hand-curated override.** Add a manual entry in [scripts/extract-rebirth-io-sets-v2.py](scripts/extract-rebirth-io-sets-v2.py) (alongside `PIECE_OVERRIDES` / `ICON_OVERRIDES`) pointing at the `Set_Bonus.Challenge_Set_Bonus.Inexhaustibility` power record for its bonus, plus a hardcoded single-piece entry. Faster but doesn't generalize.
-
-**Deferred** — not blocking the user who reported the Challenge Enhancements bug (their build is mez-focused, Forced Indoctrination was the high-impact fix). Revisit when someone reports needing Inexhaustibility specifically, or when starting a broader pass on single-piece special enhancements.
-
----
-
+_(none)_
 
 ---OLD ISSUES---
+
+## ✅ Rebirth Inexhaustibility — no-rarity `boostsets.bin` record variant (FIXED 2026-06-02)
+
+**Symptom.** Inexhaustibility (Secret Master 5th Column TF/SF reward, single-piece special that slots only into the Rest inherent) shipped with empty `pieces: []` and `bonuses: []`, so it couldn't be slotted. The other three Rebirth Challenge Enhancements (Liberty's Belt, Imperial Might, Forced Indoctrination) all use the standard layout and extract cleanly.
+
+**Root cause (decoded from the binary).** Record #152 (rec_len=316) is a **no-rarity variant**: it omits both the rarity AND category strings, so the `power_count` u4 sits directly in the rarity slot. The parser read those bytes as a bogus empty pascal string, desynced, then read the first power string as `power_count` (garbage > rec_len) and the `> rec_len` guard bailed → empty record. Decoded contents:
+- allowed power: `Inherent.Inherent.Rest`
+- piece: `Boosts.Attuned_Inexhaustibility_A.Attuned_Inexhaustibility_A` — a `Set_Mode`/aspect=Strength special with no enhancement stat
+- bonus: min 1 / max 6 → auto-power `Set_Bonus.Challenge_Set_Bonus.Inexhaustibility`, gated by an embedded `PowerBoostsSlotted 1 >=` requires expression
+- effect (`powers.bin`): a Rest-only proc — 3 effect groups @ 50% chance: Heal (2.0×Melee_Heal), +Endurance (Current 0.10), +Regeneration (Current 2.0 / 10.25s). Proc-like and tied to Rest; does **not** fit the planner's flat `bonuses[].effects[]` (stat+value) model.
+
+**Fix (two parts).**
+1. **Parser fidelity** — [_boostsets.py](tools/bin-crawler/bin_crawler/parser/_boostsets.py): added `_rarity_is_present()` (rarity tags are always alphabetic; the no-rarity variant has a u4 whose content byte is `0x00`). When absent, skip the rarity+category strings and read `power_count` from that slot. Generalizes to any future no-rarity record. Verified safe: of 233 Rebirth sets, exactly 1 (Inexhaustibility) is no-rarity; all 232 normal records parse identically (Jaunt still 28 powers / 3 boostlists / 2 bonuses). Inexhaustibility now extracts its allowed power + piece + bonus min/max. (The non-standard bonus-block tail still leaves `auto_powers` empty — acceptable, since the effect is proc-like and isn't modeled as a set bonus.)
+2. **Data** — [io-sets-raw.ts](src/data/datasets/rebirth/io-sets-raw.ts): hand-added the single proc-special piece (`aspects: []`, `proc: true`, `unique: true`) so Inexhaustibility is **slottable into Rest**. Left `bonuses: []` — the Rest-buff is a power-effect proc, not a flat set bonus, so fabricating a stat+value bonus would mislead the SetBonusDisplay (which renders `{stat}: +{value}%`). Zero drift to other sets.
+
+**Not done:** surfacing the Rest-proc effect numerically. The planner doesn't model "while resting" procs; the set is now functional (slottable) and labeled `Rest Buff`.
 
 ## ✅ Non-kExpression template `delay` field offset (FIXED 2026-05-21)
 

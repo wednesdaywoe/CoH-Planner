@@ -176,6 +176,21 @@ def _next_is_ec_string(sub: Parse6BinReader) -> bool:
     return bytes(sub._data[sub._pos + 2:sub._pos + 4]) == b"EC"
 
 
+def _rarity_is_present(sub: Parse6BinReader) -> bool:
+    """True when the rarity slot holds a real pascal string. Rarity tags are
+    always alphabetic ("ECCommon", "LibertysBelt", "ECSWinter", ...). Some
+    Rebirth challenge records (e.g. Inexhaustibility) omit the rarity AND
+    category strings entirely, so the u4 power_count sits in this slot instead —
+    its first content byte is 0x00, which no real rarity tag has."""
+    if sub._pos + 4 > sub._end:
+        return False
+    slen = struct.unpack_from("<H", sub._data, sub._pos)[0]
+    if not (0 < slen < 64):
+        return False
+    first = sub._data[sub._pos + 2]
+    return (0x41 <= first <= 0x5a) or (0x61 <= first <= 0x7a)
+
+
 def _parse_boostsets_parse6(r: Parse6BinReader) -> list[BoostSetRecord]:
     """Parse6 (Rebirth/retail) layout. Same record schema as Parse7 but with
     inline pascal strings in place of string-table offsets.
@@ -198,20 +213,22 @@ def _parse_boostsets_parse6(r: Parse6BinReader) -> list[BoostSetRecord]:
         display_name = sub.read_string()
         description  = sub.read_string()
         sub.read_u4()  # opaque flag
-        rarity       = sub.read_string()
 
-        if _next_is_ec_string(sub):
-            category    = sub.read_string()
-            power_count = sub.read_u4()
+        # Most records: rarity string, then optional category string, then
+        # power_count. The no-rarity variant (Inexhaustibility) omits both
+        # strings and the power_count sits in the rarity slot — detect that so
+        # we don't consume the count as a bogus empty string and desync.
+        category = ""  # filled in by pool-matching below for regular sets
+        if _rarity_is_present(sub):
+            rarity = sub.read_string()
+            if _next_is_ec_string(sub):
+                category = sub.read_string()
         else:
-            category    = ""  # filled in by pool-matching below
-            power_count = sub.read_u4()
+            rarity = ""
+        power_count = sub.read_u4()
 
-        # Implausible power_count means this record uses a layout we don't
-        # understand (Rebirth has one such oddball: an empty-rarity
-        # "Inexhaustibility" record that is structured differently). Skip
-        # the power list rather than crashing — the set still exports with
-        # its header fields but no allowed-powers, which is graceful enough.
+        # Safety net: an implausible power_count still means a layout we don't
+        # understand — skip the power list rather than crashing.
         if power_count > rec_len:
             powers: list[str] = []
         else:
