@@ -60,6 +60,13 @@ export const STAT_GROUP_INFO: Record<string, StatGroupInfo> = {
   mezresist: { group: 'Mez/Debuff Res', label: 'Mez Resistance' },
   debuffresistrecharge: { group: 'Mez/Debuff Res', label: 'Slow Res (Rech)' },
   debuffresistslow: { group: 'Mez/Debuff Res', label: 'Slow Res (Move)' },
+  // Mez / control duration (offensive — boosts the mez you apply)
+  immobilizeDuration: { group: 'Mez Duration', label: 'Immobilize' },
+  holdDuration: { group: 'Mez Duration', label: 'Hold' },
+  stunDuration: { group: 'Mez Duration', label: 'Stun' },
+  sleepDuration: { group: 'Mez Duration', label: 'Sleep' },
+  confuseDuration: { group: 'Mez Duration', label: 'Confuse' },
+  terrorDuration: { group: 'Mez Duration', label: 'Fear' },
   // Movement
   runspeed: { group: 'Movement', label: 'Run Speed' },
   flyspeed: { group: 'Movement', label: 'Fly Speed' },
@@ -69,5 +76,5 @@ export const STAT_GROUP_INFO: Record<string, StatGroupInfo> = {
 
 /** Display order for the broad groups. Unlisted groups (e.g. "Misc") sort last. */
 export const SET_BONUS_GROUP_ORDER = [
-  'General', 'Health & Endurance', 'Defense', 'Resistance', 'Mez/Debuff Res', 'Movement', 'Misc',
+  'General', 'Health & Endurance', 'Defense', 'Resistance', 'Mez Duration', 'Mez/Debuff Res', 'Movement', 'Misc',
 ];

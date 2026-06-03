@@ -296,6 +296,15 @@ const GLOBAL_BONUS_ASPECT_MAP: [string, keyof CharacterGlobalBonuses][] = [
   ['range', 'range'],
   ['tohit', 'toHit'],
   ['heal', 'healOther'],
+  // Offensive mez/control duration → power effect keys (terror → 'fear').
+  // Produces e.g. result['immobilize'] = immobilizeDuration / 100, which the
+  // mez-duration rows in SharedPowerComponents read as a global multiplier.
+  ['immobilize', 'immobilizeDuration'],
+  ['hold', 'holdDuration'],
+  ['stun', 'stunDuration'],
+  ['sleep', 'sleepDuration'],
+  ['confuse', 'confuseDuration'],
+  ['fear', 'terrorDuration'],
 ];
 
 /**

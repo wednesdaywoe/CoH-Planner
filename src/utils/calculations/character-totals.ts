@@ -170,6 +170,16 @@ export interface GlobalBonuses {
   strengthEndMod: number;
   strengthMovement: number;
   strengthMez: number;
+
+  // Offensive mez/control duration buffs from IO set bonuses (percent). Applied
+  // to the duration of the mez a power inflicts (Immobilize/Hold/Stun/etc.) —
+  // mapped to the matching power effect key via GLOBAL_BONUS_ASPECT_MAP.
+  immobilizeDuration: number;
+  holdDuration: number;
+  stunDuration: number;
+  sleepDuration: number;
+  confuseDuration: number;
+  terrorDuration: number;
 }
 
 /**
@@ -293,6 +303,12 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     strengthEndMod: 0,
     strengthMovement: 0,
     strengthMez: 0,
+    immobilizeDuration: 0,
+    holdDuration: 0,
+    stunDuration: 0,
+    sleepDuration: 0,
+    confuseDuration: 0,
+    terrorDuration: 0,
   };
 }
 
@@ -362,6 +378,14 @@ const STAT_TO_GLOBAL: Record<string, keyof GlobalBonuses> = {
   mezresist: 'mezResist',
   healother: 'healOther',
   threatlevel: 'threatLevel',
+
+  // Offensive mez/control duration (normalized keys are lowercased+alpha-only)
+  immobilizeduration: 'immobilizeDuration',
+  holdduration: 'holdDuration',
+  stunduration: 'stunDuration',
+  sleepduration: 'sleepDuration',
+  confuseduration: 'confuseDuration',
+  terrorduration: 'terrorDuration',
 
   // Mez Protection (from IO set bonuses — value is stored as %, divide by 100 for mag)
   kbprotection: 'protKnockback',

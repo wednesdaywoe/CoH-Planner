@@ -229,6 +229,14 @@ export const STAT_NAME_MAP: Record<string, string | null> = {
   'mez_resistance_(all)': 'mezresist',
   MezRes: 'mezresist',
 
+  // Mez / control duration (offensive — boosts the duration of mez YOU apply)
+  'immobilize_duration': 'immobilizeDuration',
+  'hold_duration': 'holdDuration',
+  'stun_duration': 'stunDuration',
+  'sleep_duration': 'sleepDuration',
+  'confuse_duration': 'confuseDuration',
+  'terror_duration': 'terrorDuration',
+
   // Mez Protection (from IO set unique bonuses)
   'knockback_protection': 'kbprotection',
 
