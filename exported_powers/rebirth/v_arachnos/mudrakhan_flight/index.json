@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.MuDrakhan_Flight",
+  "display_name": "MuDrakhan_Flight",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "mudrakhan_flight_set.ico",
+  "powers": [
+    "V_Arachnos.MuDrakhan_Flight.Fly"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Fly"
+  ],
+  "power_short_helps": [
+    "Self Travel"
+  ]
+}

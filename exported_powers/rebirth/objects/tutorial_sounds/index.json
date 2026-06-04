@@ -1,0 +1,31 @@
+{
+  "key": "Objects.Tutorial_Sounds",
+  "display_name": "Tutorial_Sounds",
+  "help": "Sound",
+  "short_help": "Sound",
+  "icon": "tutorial_sounds_set.ico",
+  "powers": [
+    "Objects.Tutorial_Sounds.Resistance-Ghouls_Battle1",
+    "Objects.Tutorial_Sounds.Resistance-Ghouls_Battle1_End",
+    "Objects.Tutorial_Sounds.Resistance-PPD_Battle1",
+    "Objects.Tutorial_Sounds.Resistance-PPD_Battle1_End"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Resistance-Ghouls Battle1",
+    "Resistance-Ghouls Battle1 End",
+    "Resistance-PPD Battle1",
+    "Resistance-PPD Battle1 End"
+  ],
+  "power_short_helps": [
+    "Sound",
+    "Sound",
+    "Sound",
+    "Sound"
+  ]
+}

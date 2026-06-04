@@ -1,0 +1,23 @@
+{
+  "key": "V_Arachnos.Protective_Generator",
+  "display_name": "Protective_Generator",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "protective_generator_set.ico",
+  "powers": [
+    "V_Arachnos.Protective_Generator.Dispersion_Bubble_FX",
+    "V_Arachnos.Protective_Generator.Dispersion_Bubble_Real"
+  ],
+  "available_level": [
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Dispersion Bubble",
+    "Dispersion Bubble Real"
+  ],
+  "power_short_helps": [
+    "+DEF(All), +Res(Hold, Immobilize, Disorient)",
+    "+DEF(All), +Res(Hold, Immobilize, Disorient)"
+  ]
+}

@@ -1,0 +1,505 @@
+{
+  "name": "Long_Range_Teleport",
+  "full_name": "Pool.Teleportation.Long_Range_Teleport",
+  "short_name": "Long_Range_Teleport",
+  "type": "Click",
+  "display_name": "Mass Translocate",
+  "display_fullname": "Pool Teleportation Long Range Teleport",
+  "display_help": "Mass Translocate allows you to teleport a group of foes in close proximity to each other to your location.  If you have also trained Teleport, this power unlocks Long Range Teleport, a power which offers new ways to teleport.  You must be at least level 14 and have two other Teleportation Powers before selecting Mass Translocate.  Recharge: Long",
+  "display_short_help": "Ranged (Targeted AoE), Foe Teleport",
+  "icon": "teleportation_foldspace.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 30.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 25.0,
+  "activation_time": 3.17,
+  "recharge_time": 60.0,
+  "activate_period": 0.0,
+  "endurance_cost": 15.0,
+  "interrupt_time": 2.0,
+  "target_type": "Foe",
+  "target_type_secondary": "Teleport",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Accuracy"
+  ],
+  "allowed_set_categories": [
+    "Teleport",
+    "Universal Travel"
+  ],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && ||",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    132
+  ],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 0.0,
+          "duration": "1.50 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Teleport"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 2.1,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 1.1699999570846558,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Teleport"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 100.0,
+          "duration": "15 seconds",
+          "magnitude": 1.0,
+          "delay": 1.2999999523162842,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 0.3,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 1.1699999570846558,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "StealthRadius_PVE"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 20.0,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 1.1699999570846558,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Intangible"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 0.75,
+          "duration": "0 seconds",
+          "magnitude": 3.0,
+          "delay": 1.1699999570846558,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Untouchable"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 0.75,
+          "duration": "0 seconds",
+          "magnitude": 3.0,
+          "delay": 1.1699999570846558,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "ThreatLevel"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": -1.0,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 1.1699999570846558,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "OnlyAffectsSelf"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 0.75,
+          "duration": "0 seconds",
+          "magnitude": 3.0,
+          "delay": 1.1699999570846558,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "arch source> Class_Stalker eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Meter"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": -10.0,
+          "duration": "4 seconds",
+          "magnitude": 1.0,
+          "delay": 1.1699999570846558,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "arch source> Class_Stalker eq",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": -1.0,
+          "duration": "1 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_TPFoeTauntWide",
+            "priority_list": "PL_StaticObject"
+          }
+        }
+      ]
+    }
+  ],
+  "available_level": 13,
+  "powerset": "Pool.Teleportation"
+}

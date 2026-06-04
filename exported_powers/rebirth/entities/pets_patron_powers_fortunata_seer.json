@@ -1,0 +1,66 @@
+{
+  "name": "Pets_Patron_Powers_Fortunata_Seer",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Base",
+    "character_class_name": "minion_pets",
+    "description": "Fortunata Seers can glimpse moments into the future. They use this ability to increase the defenses of the more mundane troops they slavishly lead into combat.",
+    "display_name": "",
+    "display_class_name": "",
+    "power_full_names": [
+      "Villain_Pets.Fortunata_Seer.Mental_Training",
+      "Villain_Pets.Fortunata_Seer.Self_Destruct",
+      "Villain_Pets.Fortunata_Seer.Mind_Link",
+      "Villain_Pets.Fortunata_Seer.Mind_Probe",
+      "Villain_Pets.Fortunata_Seer.Psionic_Dart",
+      "Villain_Pets.Fortunata_Seer.Mental_Blast",
+      "Villain_Pets.Fortunata_Seer.Psionic_Lance",
+      "Villain_Pets.Fortunata_Seer.Subdue"
+    ],
+    "power_display_names": [
+      "Mental Training",
+      "Self Destruct",
+      "Mind Link",
+      "Mind Probe",
+      "Psionic Dart",
+      "Mental Blast",
+      "Psionic Lance",
+      "Subdue"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Villain_Pets",
+        "power_set": "Fortunata_Seer",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Patron Powers Fortunata Seer"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

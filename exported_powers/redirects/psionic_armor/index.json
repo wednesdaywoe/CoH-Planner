@@ -1,0 +1,31 @@
+{
+  "key": "Redirects.Psionic_Armor",
+  "display_name": "Psionic Armor",
+  "help": "Psionic Armor",
+  "short_help": "Psionic Armor",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Redirects.Psionic_Armor.Memento_Mori_Dead",
+    "Redirects.Psionic_Armor.Memento_Mori",
+    "Redirects.Psionic_Armor.Consume_Psyche",
+    "Redirects.Psionic_Armor.Devour_Psyche"
+  ],
+  "available_level": [
+    29,
+    29,
+    5,
+    15
+  ],
+  "power_display_names": [
+    "Memento Mori",
+    "Memento Mori",
+    "Consume Psyche",
+    "Devour Psyche"
+  ],
+  "power_short_helps": [
+    "Self Rez, +Max HP, Special",
+    "Self Rez, +Max HP, Special",
+    "PBAoE Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery",
+    "Cone Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery"
+  ]
+}

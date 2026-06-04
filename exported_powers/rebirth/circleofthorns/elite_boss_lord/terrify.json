@@ -1,0 +1,46 @@
+{
+  "name": "Terrify",
+  "full_name": "CircleOfThorns.Elite_Boss_Lord.Terrify",
+  "short_name": "Terrify",
+  "type": "Click",
+  "display_name": "Terrify",
+  "display_fullname": "CircleOfThorns Elite Boss Lord Terrify",
+  "display_help": "This power Terrifies foes within a cone area in front of you, causing them to tremble in Fear uncontrollably. The affect is so frightening and overwhelming, that the target takes real damage from the physiological response to this Psionic attack. Damage: Minor, Recharge: Slow",
+  "display_short_help": "Ranged (Cone), Minor DMG(Psionic), Foe Fear(Special)",
+  "icon": "mentalcontrol_terrify.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 0.9,
+  "effect_area": "Cone",
+  "max_targets_hit": 16,
+  "radius": 60.0,
+  "arc": 1.5707963705062866,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.03,
+  "recharge_time": 20.0,
+  "activate_period": 0.0,
+  "endurance_cost": 14.0,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    140
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "CircleOfThorns.Elite_Boss_Lord"
+}

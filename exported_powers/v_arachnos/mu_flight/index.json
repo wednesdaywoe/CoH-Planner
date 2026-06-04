@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Mu_Flight",
+  "display_name": "Mu_Flight",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "mu_flight_set.ico",
+  "powers": [
+    "V_Arachnos.Mu_Flight.Fly"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Fly"
+  ],
+  "power_short_helps": [
+    "Self Travel"
+  ]
+}

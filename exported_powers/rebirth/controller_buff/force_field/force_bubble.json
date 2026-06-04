@@ -1,0 +1,738 @@
+{
+  "name": "Force_Bubble",
+  "full_name": "Controller_Buff.Force_Field.Force_Bubble",
+  "short_name": "Force_Bubble",
+  "type": "Toggle",
+  "display_name": "Force Bubble",
+  "display_fullname": "Controller Buff Force Field Force Bubble",
+  "display_help": "Creates a large Force Bubble which protects all allies inside by weakening and possibly pushing away foes. All enemies within the bubble will have their motions greatly hampered by the force, Slowing their movement and reducing the damage of their attacks, and some will even slip and fall down. If Repulsion Field is also active, enemies that enter the bubble will be Repelled away from its center, forcing them back. This Repel effect can still affect a target that has been captured by Barrier Field. Purchasing Force Bubble also grants the Repulsion Field power. Recharge: Slow",
+  "display_short_help": "Toggle: PBAoE Foe -Speed, -DMG(All), Knockdown, Repel (Special)",
+  "icon": "forcefield_forcebubble.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 50.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.07,
+  "recharge_time": 15.0,
+  "activate_period": 0.25,
+  "endurance_cost": 0.13,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Foe",
+    "Self"
+  ],
+  "targets_affected": [
+    "Foe",
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Slow",
+    "EnduranceDiscount",
+    "Recharge"
+  ],
+  "allowed_set_categories": [
+    "Slow Movement",
+    "To Hit Debuff"
+  ],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && @ToHitRoll .10 + @ToHit < && entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Repel"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 10.0,
+          "duration": "0.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && @ToHitRoll .10 + @ToHit < && entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "PVE_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Repel"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 10.0,
+          "duration": "0.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 0.009999999776482582,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "PVE_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Knockback"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 0.1,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.009999999776482582,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 0.009999999776482582,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Knockback"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 0.1,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.009999999776482582,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && @ToHitRoll .10 + @ToHit >= && entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> player eq && @ToHitRoll .10 + @ToHit >= && entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "RunningSpeed"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Slow",
+          "scale": 0.4,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "FlyingSpeed"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Slow",
+          "scale": 0.4,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "JumpHeight"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Slow",
+          "scale": 0.4,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "JumpingSpeed"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Slow",
+          "scale": 0.4,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Smashing_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 2.5,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Lethal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 2.5,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Fire_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 2.5,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Cold_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 2.5,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 2.5,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Negative_Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 2.5,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 2.5,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Psionic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 2.5,
+          "duration": "0.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "entref target> entref source> eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "entref target> entref source> eq",
+          "caster_stack": "Individual",
+          "stack": "RefreshToCount",
+          "stack_limit": 1,
+          "stack_key": "4294967295"
+        }
+      ]
+    }
+  ],
+  "available_level": 37,
+  "powerset": "Controller_Buff.Force_Field"
+}

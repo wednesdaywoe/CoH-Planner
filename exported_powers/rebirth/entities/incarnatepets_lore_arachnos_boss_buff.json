@@ -1,0 +1,87 @@
+{
+  "name": "IncarnatePets_Lore_Arachnos_Boss_Buff",
+  "group_name": "IncarnatePets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Ranged",
+    "character_class_name": "boss_praetoriangrunt",
+    "description": "This Arachnos Essence has been conjured out of the mists of the Well of the Furies, a study of an enemy made substance and brought to heel.",
+    "display_name": "Arachnos Essence",
+    "display_class_name": "",
+    "power_full_names": [
+      "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+      "Incarnate.Lore_Pet_Generic.Lore_Power",
+      "Incarnate.Lore_Pet_Generic.Super_Leap",
+      "Incarnate.Lore_Pet_Arachnos_Boss.Venom_Burst",
+      "Incarnate.Lore_Pet_Arachnos_Boss.Toxic_Claws",
+      "Incarnate.Lore_Pet_Arachnos_Boss.Claw_Pierce",
+      "Rularuu.Reflections.Resistance"
+    ],
+    "power_display_names": [
+      "Lore Evasion",
+      "Lore Power",
+      "Super Leap",
+      "Venom Burst",
+      "Toxic Claws",
+      "Claw Pierce",
+      "Resistance"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Generic",
+        "power": "Lore_Evasion",
+        "level": 0
+      },
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Generic",
+        "power": "Lore_Power",
+        "level": 0
+      },
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Generic",
+        "power": "Super_Leap",
+        "level": 0
+      },
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Arachnos_Boss",
+        "power": "*",
+        "level": 0
+      },
+      {
+        "power_category": "Rularuu",
+        "power_set": "Reflections",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Lore Arachnos Boss Buff"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

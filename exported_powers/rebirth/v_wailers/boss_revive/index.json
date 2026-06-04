@@ -1,0 +1,19 @@
+{
+  "key": "V_Wailers.Boss_Revive",
+  "display_name": "Boss Revive",
+  "help": "Wailers",
+  "short_help": "Wailers",
+  "icon": "boss_revive_set.ico",
+  "powers": [
+    "V_Wailers.Boss_Revive.Revive"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Revive"
+  ],
+  "power_short_helps": [
+    "Self Rez"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Crab_Spider_Boss_Armor",
+  "display_name": "Crab_Spider_Boss_Armor",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "crab_spider_boss_armor_set.ico",
+  "powers": [
+    "V_Arachnos.Crab_Spider_Boss_Armor.Fortification"
+  ],
+  "available_level": [
+    39
+  ],
+  "power_display_names": [
+    "Fortification"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Disorient, Hold, Immobilize, Sleep, All DMG but Psionics)"
+  ]
+}

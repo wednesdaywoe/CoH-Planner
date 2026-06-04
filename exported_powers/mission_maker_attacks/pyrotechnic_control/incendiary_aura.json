@@ -1,0 +1,53 @@
+{
+  "name": "Incendiary_Aura",
+  "full_name": "Mission_Maker_Attacks.Pyrotechnic_Control.Incendiary_Aura",
+  "short_name": "Incendiary_Aura",
+  "type": "Auto",
+  "display_name": "Incendiary Aura",
+  "display_fullname": "Mission Maker Attacks Pyrotechnic Control Incendiary Aura",
+  "display_help": "You create an aura of pyrotechnic energy around yourself that has combustible properties. THis energy <br><br>Enemies within range of the power have a persistent chance of Blasting Off into the air.",
+  "display_short_help": "Toggle: PBAoE, Foe Knockdown, Chance for Blast Off",
+  "icon": "pyrotechnic_multipurposemissiles",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 10,
+  "radius": 20.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 20.0,
+  "activate_period": 0.2,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Foe"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Recharge",
+    "Debuff_ToHit",
+    "Debuff_Defense",
+    "Accuracy"
+  ],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",
+  "attack_types": [
+    112,
+    124
+  ],
+  "effects": [],
+  "available_level": 17,
+  "powerset": "Mission_Maker_Attacks.Pyrotechnic_Control"
+}

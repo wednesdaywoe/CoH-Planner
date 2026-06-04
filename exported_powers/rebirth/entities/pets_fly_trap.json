@@ -1,0 +1,57 @@
+{
+  "name": "Pets_Fly_Trap",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Base",
+    "character_class_name": "minion_pets",
+    "description": "This carnivorous plant is straight of out some prehistoric nightmare. It obviously has a taste for fresh meat.",
+    "display_name": "Plant Control",
+    "display_class_name": "",
+    "power_full_names": [
+      "Villain_Pets.Fly_Trap.Entangle",
+      "Villain_Pets.Fly_Trap.Thorny_Darts",
+      "Villain_Pets.Fly_Trap.Fling_Thorns",
+      "Villain_Pets.Fly_Trap.Bite",
+      "Villain_Pets.Fly_Trap.Resistance"
+    ],
+    "power_display_names": [
+      "Entangle",
+      "Thorny Darts",
+      "Fling Thorns",
+      "Bite",
+      "Resistance"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Villain_Pets",
+        "power_set": "Fly_Trap",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Fly Trap"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

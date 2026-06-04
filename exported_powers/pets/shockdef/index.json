@@ -1,0 +1,19 @@
+{
+  "key": "Pets.ShockDef",
+  "display_name": "Liquefy",
+  "help": "Sonic Attack",
+  "short_help": "Sonic Attack",
+  "icon": "shockdef_set.ico",
+  "powers": [
+    "Pets.ShockDef.Liquefy"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Liquefy"
+  ],
+  "power_short_helps": [
+    "Liquefy"
+  ]
+}

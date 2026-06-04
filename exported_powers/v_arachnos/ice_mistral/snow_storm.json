@@ -1,0 +1,47 @@
+{
+  "name": "Snow_Storm",
+  "full_name": "V_Arachnos.Ice_Mistral.Snow_Storm",
+  "short_name": "Snow_Storm",
+  "type": "Toggle",
+  "display_name": "Snow Storm",
+  "display_fullname": "V Arachnos Ice Mistral Snow Storm",
+  "display_help": "The chill from this Snow Storm has dramatically Slowed your attack and movement speed.",
+  "display_short_help": "-Speed, -Recharge",
+  "icon": "stormsummoning_snowstorm.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 25.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.03,
+  "recharge_time": 20.0,
+  "activate_period": 0.5,
+  "endurance_cost": 0.35,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Foe"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    128
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "V_Arachnos.Ice_Mistral"
+}

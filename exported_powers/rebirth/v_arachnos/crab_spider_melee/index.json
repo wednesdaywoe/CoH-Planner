@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Crab_Spider_Melee",
+  "display_name": "Crab_Spider_Melee",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "crab_spider_melee_set.ico",
+  "powers": [
+    "V_Arachnos.Crab_Spider_Melee.Slice"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Slice"
+  ],
+  "power_short_helps": [
+    "Melee, Heavy DMG(Lethal), Foe -DEF"
+  ]
+}

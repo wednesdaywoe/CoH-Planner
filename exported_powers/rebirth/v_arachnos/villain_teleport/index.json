@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Villain_Teleport",
+  "display_name": "Villain Teleport",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "villain_teleport_set.ico",
+  "powers": [
+    "V_Arachnos.Villain_Teleport.Teleport"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Teleport"
+  ],
+  "power_short_helps": [
+    "Teleport"
+  ]
+}

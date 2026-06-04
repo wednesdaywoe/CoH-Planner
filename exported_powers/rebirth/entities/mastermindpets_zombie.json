@@ -1,0 +1,51 @@
+{
+  "name": "MastermindPets_Zombie",
+  "group_name": "MastermindPets",
+  "commandable_pet": 1,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": true,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Melee",
+    "character_class_name": "minion_henchman",
+    "description": "The walking dead may be slow and stupid, but wise heroes know better than to underestimate them. Even when a person survives an encounter with a zombie, he rarely escapes entirely unscathed. He will often find himself waking in the night, shuddering at the memory of a dry and lifeless touch.",
+    "display_name": "Necromancy",
+    "display_class_name": "",
+    "power_full_names": [
+      "Mastermind_Pets.Zombie.Resistance",
+      "Mastermind_Pets.Zombie.Zombie_Brawl",
+      "Mastermind_Pets.Zombie.Super_Leap"
+    ],
+    "power_display_names": [
+      "Resistance",
+      "Zombie Brawl",
+      "Super Leap"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Mastermind_Pets",
+        "power_set": "Zombie",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

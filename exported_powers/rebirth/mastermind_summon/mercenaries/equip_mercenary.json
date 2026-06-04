@@ -1,0 +1,48 @@
+{
+  "name": "Equip_Mercenary",
+  "full_name": "Mastermind_Summon.Mercenaries.Equip_Mercenary",
+  "short_name": "Equip_Mercenary",
+  "type": "Click",
+  "display_name": "Equip Mercenary",
+  "display_fullname": "Mastermind Summon Mercenaries Equip Mercenary",
+  "display_help": "Equip your Mercenary Henchmen with more advanced munitions and weaponry.  This power permanently bestows new weapons and abilities to all Mercenary Henchman. The powers gained are unique and dependent upon the type of Mercenary Henchman.  This power only works on your Mercenary Henchmen and you can only Equip your Mercenary Henchmen once with this power. Recharge: Fast",
+  "display_short_help": "Ranged, Equip Mercenary Henchman",
+  "icon": "paramilitary_equipsoldier.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 30.0,
+  "arc": 0.0,
+  "range": 50.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.3,
+  "recharge_time": 6.0,
+  "activate_period": 0.0,
+  "endurance_cost": 22.75,
+  "interrupt_time": 0.0,
+  "target_type": "MyPet",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "MyPet"
+  ],
+  "targets_affected": [
+    "MyPet"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge"
+  ],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 5,
+  "powerset": "Mastermind_Summon.Mercenaries"
+}

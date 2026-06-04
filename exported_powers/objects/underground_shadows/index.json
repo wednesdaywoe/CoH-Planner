@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Underground_Shadows",
+  "display_name": "Underground Shadows",
+  "help": "In the Shadows",
+  "short_help": "In the Shadows",
+  "icon": "underground_shadows_set.ico",
+  "powers": [
+    "Objects.Underground_Shadows.In_the_Shadows"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "In the Shadows"
+  ],
+  "power_short_helps": [
+    "In the Shadows"
+  ]
+}

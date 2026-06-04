@@ -1,0 +1,57 @@
+{
+  "name": "Pets_Phantasm",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Base",
+    "character_class_name": "minion_pets",
+    "description": "",
+    "display_name": "Illusions",
+    "display_class_name": "",
+    "power_full_names": [
+      "Pets.Phantasm.Power_Bolt",
+      "Pets.Phantasm.Energy_Torrent",
+      "Pets.Phantasm.Resistance",
+      "Pets.Phantasm.DecoyPhantasm",
+      "Pets.Phantasm.Fly"
+    ],
+    "power_display_names": [
+      "Power Bolt",
+      "Energy Torrent",
+      "Resistance",
+      "DecoyPhantasm",
+      "Fly"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Pets",
+        "power_set": "Phantasm",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Phantasm"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

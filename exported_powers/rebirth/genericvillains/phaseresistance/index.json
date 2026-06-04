@@ -1,0 +1,19 @@
+{
+  "key": "GenericVillains.PhaseResistance",
+  "display_name": "Phase Resistance",
+  "help": "Intangible",
+  "short_help": "Intangible",
+  "icon": "phaseresistance_set.ico",
+  "powers": [
+    "GenericVillains.PhaseResistance.Phase_Resistance"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Phase Resistance"
+  ],
+  "power_short_helps": [
+    "Intangible"
+  ]
+}

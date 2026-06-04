@@ -1,0 +1,23 @@
+{
+  "key": "Crey.Hopkins_Ranged_Missions",
+  "display_name": "Hopkins_Ranged_Missions",
+  "help": "Crey",
+  "short_help": "Crey",
+  "icon": "hopkins_ranged_set.ico",
+  "powers": [
+    "Crey.Hopkins_Ranged_Missions.Cryo_Rifle",
+    "Crey.Hopkins_Ranged_Missions.N2_Cannon"
+  ],
+  "available_level": [
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Cryo Rifle",
+    "N2 Cannon"
+  ],
+  "power_short_helps": [
+    "-Recharge, -Speed, Sleep",
+    "-Recharge, -Speed"
+  ]
+}

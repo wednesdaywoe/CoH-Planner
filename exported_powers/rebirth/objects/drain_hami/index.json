@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Drain_Hami",
+  "display_name": "Drain Hami",
+  "help": "Map",
+  "short_help": "Map",
+  "icon": "drain_hami_set.ico",
+  "powers": [
+    "Objects.Drain_Hami.Drain"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Drain"
+  ],
+  "power_short_helps": [
+    "Untouchable"
+  ]
+}

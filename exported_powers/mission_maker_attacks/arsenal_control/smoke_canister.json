@@ -1,0 +1,47 @@
+{
+  "name": "Smoke_Canister",
+  "full_name": "Mission_Maker_Attacks.Arsenal_Control.Smoke_Canister",
+  "short_name": "Smoke_Canister",
+  "type": "Click",
+  "display_name": "Smoke Canister",
+  "display_fullname": "Mission Maker Attacks Arsenal Control Smoke Canister",
+  "display_help": "The Smoke Canister is a powerful infiltration tool. Fling it at a target location and it will quickly cover the area in smoke. While engulfed within this smoke, most enemies will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will become confused and might attack their allies.",
+  "display_short_help": "Ranged (Location AoE), Foe -Perception, -To Hit, Confuse",
+  "icon": "arsenalcontrol_smokegrenade",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.05,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.4,
+  "recharge_time": 45.0,
+  "activate_period": 0.0,
+  "endurance_cost": 22.4,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Foe"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    120
+  ],
+  "effects": [],
+  "available_level": 11,
+  "powerset": "Mission_Maker_Attacks.Arsenal_Control"
+}

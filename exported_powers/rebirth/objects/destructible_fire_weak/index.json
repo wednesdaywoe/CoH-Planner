@@ -1,0 +1,23 @@
+{
+  "key": "Objects.Destructible_Fire_Weak",
+  "display_name": "Fire",
+  "help": "Fire",
+  "short_help": "Fire",
+  "icon": "destructible_fire_weak_set.ico",
+  "powers": [
+    "Objects.Destructible_Fire_Weak.Resistance",
+    "Objects.Destructible_Fire_Weak.Fire"
+  ],
+  "available_level": [
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Resistance",
+    "Fire"
+  ],
+  "power_short_helps": [
+    "Resistance",
+    "DoT(Fire)"
+  ]
+}

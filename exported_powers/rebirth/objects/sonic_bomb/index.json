@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Sonic_Bomb",
+  "display_name": "Sonic Bomb",
+  "help": "Object",
+  "short_help": "Object",
+  "icon": "sonic_bomb_set.ico",
+  "powers": [
+    "Objects.Sonic_Bomb.Sonic_Bomb"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Sonic Bomb"
+  ],
+  "power_short_helps": [
+    "AoE Moderate Dam(Lethal/Fire), Knockback"
+  ]
+}

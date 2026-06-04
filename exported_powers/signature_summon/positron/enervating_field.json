@@ -1,0 +1,47 @@
+{
+  "name": "Enervating__Field",
+  "full_name": "Signature_Summon.Positron.Enervating__Field",
+  "short_name": "Enervating__Field",
+  "type": "Click",
+  "display_name": "Enervating Field",
+  "display_fullname": "Signature Summon Positron Enervating  Field",
+  "display_help": "You have been exposed to an Enervating Field of radiation. Your damage and damage resistance are reduced.",
+  "display_short_help": "Foe -DMG, -Res",
+  "icon": "radiationpoisoning_enervatingfield.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 15.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.5,
+  "recharge_time": 90.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.7,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Foe"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    132
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Signature_Summon.Positron"
+}

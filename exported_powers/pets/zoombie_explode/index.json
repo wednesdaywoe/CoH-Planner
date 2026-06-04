@@ -1,0 +1,19 @@
+{
+  "key": "Pets.Zoombie_Explode",
+  "display_name": "Zoombie Explosion",
+  "help": "Vahzilok Freaklok",
+  "short_help": "Vahzilok",
+  "icon": "vahzilok_explode_set.ico",
+  "powers": [
+    "Pets.Zoombie_Explode.Explode"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Explode"
+  ],
+  "power_short_helps": [
+    "Explode"
+  ]
+}

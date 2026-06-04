@@ -1,0 +1,23 @@
+{
+  "key": "Rikti.Rikti_Gunman_Movement",
+  "display_name": "Rikti Gunman Movement",
+  "help": "Rikti",
+  "short_help": "Rikti",
+  "icon": "rikti_gunman_movement_set.ico",
+  "powers": [
+    "Rikti.Rikti_Gunman_Movement.Teleport",
+    "Rikti.Rikti_Gunman_Movement.Super_Leap"
+  ],
+  "available_level": [
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Teleport",
+    "Super Leap"
+  ],
+  "power_short_helps": [
+    "Self Travel",
+    "Self Travel"
+  ]
+}

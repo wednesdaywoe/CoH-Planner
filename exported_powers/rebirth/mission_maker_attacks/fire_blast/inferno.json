@@ -1,0 +1,47 @@
+{
+  "name": "Inferno",
+  "full_name": "Mission_Maker_Attacks.Fire_Blast.Inferno",
+  "short_name": "Inferno",
+  "type": "Click",
+  "display_name": "Inferno",
+  "display_fullname": "Mission Maker Attacks Fire Blast Inferno",
+  "display_help": "Unleashes a massive fiery explosion to devastate all nearby enemies and set them ablaze. Inferno deals massive damage to all nearby foes, although the damage does vary.  Activating this power leaves you drained of Endurance and unable to recover Endurance for a while. Damage: Extreme, Recharge: Very Long",
+  "display_short_help": "PBAoE, Extreme DMG(Fire/Smash), Self -Recovery",
+  "icon": "fireblast_inferno.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.4,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 25.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 3.0,
+  "recharge_time": 360.0,
+  "activate_period": 0.0,
+  "endurance_cost": 28.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    124
+  ],
+  "effects": [],
+  "available_level": 31,
+  "powerset": "Mission_Maker_Attacks.Fire_Blast"
+}

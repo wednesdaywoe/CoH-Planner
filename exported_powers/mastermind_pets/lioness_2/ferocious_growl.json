@@ -1,0 +1,47 @@
+{
+  "name": "Ferocious_Growl",
+  "full_name": "Mastermind_Pets.Lioness_2.Ferocious_Growl",
+  "short_name": "Ferocious_Growl",
+  "type": "Click",
+  "display_name": "Ferocious Growl",
+  "display_fullname": "Mastermind Pets Lioness 2 Ferocious Growl",
+  "display_help": "The beast rattles her foes by letting out a ferocious growl. Affected foes will be stunned for a short time.<br><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "PBAoE, Foe Stun",
+  "icon": "beastmastery_petferociousgrowl.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 6,
+  "radius": 15.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.0,
+  "recharge_time": 120.0,
+  "activate_period": 0.0,
+  "endurance_cost": 13.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Stun"
+  ],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Mastermind_Pets.Lioness_2"
+}

@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Rage_Container_OnDeath",
+  "display_name": "Superadine Lab",
+  "help": "Object",
+  "short_help": "Object",
+  "icon": "superadine_lab_set.ico",
+  "powers": [
+    "Objects.Rage_Container_OnDeath.Rage_Exposure_Granter"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Summon Cleanup"
+  ],
+  "power_short_helps": [
+    "Clear Pets"
+  ]
+}

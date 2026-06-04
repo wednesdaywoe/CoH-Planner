@@ -1,0 +1,19 @@
+{
+  "key": "Rikti.Drop_Zone_FX",
+  "display_name": "Drop Zone FX",
+  "help": "Rikti",
+  "short_help": "Rikti",
+  "icon": "drop_zone_fx_set.ico",
+  "powers": [
+    "Rikti.Drop_Zone_FX.SummonFX"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "SummonFX"
+  ],
+  "power_short_helps": [
+    "Summon"
+  ]
+}

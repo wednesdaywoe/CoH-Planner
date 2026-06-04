@@ -1,0 +1,19 @@
+{
+  "key": "Objects.TerminalField",
+  "display_name": "TerminalField",
+  "help": "Volume",
+  "short_help": "Volume",
+  "icon": "terminalfield_set.ico",
+  "powers": [
+    "Objects.TerminalField.Terminal_Field"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Terminal Field"
+  ],
+  "power_short_helps": [
+    "Power Suppression: Slow"
+  ]
+}

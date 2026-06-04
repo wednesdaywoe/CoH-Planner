@@ -1,0 +1,54 @@
+{
+  "name": "Sparkling_Field",
+  "full_name": "Mission_Maker_Attacks.Pyrotechnic_Control.Sparkling_Field",
+  "short_name": "Sparkling_Field",
+  "type": "Click",
+  "display_name": "Sparkling Chain",
+  "display_fullname": "Mission Maker Attacks Pyrotechnic Control Sparkling Field",
+  "display_help": "Immobilizes a group of foes one by one in a chain formation, dealing Fire and Energy damage over time to each enemy in the chain. More resilient foes may require multiple casts to Immobilize. Sparkling Chain is slower and less damaging than Sparkling Cage, but can capture multiple targets.<br><br>This power has a chance of Blasting Off targets into the air. This chance is greater on the initial target of Sparking Chain.",
+  "display_short_help": "Ranged (Targeted AoE), Minor DoT(Fire, Energy), Foe Immobilize",
+  "icon": "pyrotechnic_sparklingfield",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 0.9,
+  "effect_area": "Chain",
+  "max_targets_hit": 16,
+  "radius": 15.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.03,
+  "recharge_time": 4.0,
+  "activate_period": 0.0,
+  "endurance_cost": 21.0,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Foe"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Immobilize",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    124
+  ],
+  "effects": [],
+  "available_level": 1,
+  "powerset": "Mission_Maker_Attacks.Pyrotechnic_Control"
+}

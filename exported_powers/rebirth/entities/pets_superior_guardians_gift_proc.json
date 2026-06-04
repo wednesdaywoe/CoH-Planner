@@ -1,0 +1,54 @@
+{
+  "name": "Pets_Superior_Guardians_Gift_Proc",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Ignore",
+    "character_class_name": "minion_pets",
+    "description": "",
+    "display_name": "Superior Scourging Blast",
+    "display_class_name": "",
+    "power_full_names": [
+      "Pets.ResistAll.ResistAll",
+      "Pets.Superior_Guardians_Gift_Proc.Superior_Guardians_Gift"
+    ],
+    "power_display_names": [
+      "ResistAll",
+      "Superior Guardians Gift"
+    ],
+    "power_levels": [
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Pets",
+        "power_set": "ResistAll",
+        "power": "*",
+        "level": 0
+      },
+      {
+        "power_category": "Pets",
+        "power_set": "Superior_Guardians_Gift_Proc",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Superior Guardians Gift Proc"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Heat_Exhaustion",
+  "full_name": "Rikti.The_Dragon_HM.Heat_Exhaustion",
+  "short_name": "Heat_Exhaustion",
+  "type": "Click",
+  "display_name": "Heat Exhaustion",
+  "display_fullname": "Rikti The Dragon HM Heat Exhaustion",
+  "display_help": "Overwhelm a single foe with waves of exhausting heat. The initial effect will drain the target of some Endurance, but the heat is so overwhelming that the affected target will be weakened. Their Damage output, Endurance Recovery and Hit Point Regeneration will all be reduced.",
+  "display_short_help": "High-Accuracy, Ranged, Foe -DMG, -End, -Recovery, -Regen",
+  "icon": "thermalradiation_heatexhaustion.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 2.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 70.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.07,
+  "recharge_time": 120.0,
+  "activate_period": 0.0,
+  "endurance_cost": 17.5,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    124
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Rikti.The_Dragon_HM"
+}

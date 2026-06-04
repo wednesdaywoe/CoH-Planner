@@ -1,0 +1,50 @@
+{
+  "name": "Catherine_Wheel",
+  "full_name": "Mission_Maker_Attacks.Pyrotechnic_Control.Catherine_Wheel",
+  "short_name": "Catherine_Wheel",
+  "type": "Click",
+  "display_name": "Catherine Wheel",
+  "display_fullname": "Mission Maker Attacks Pyrotechnic Control Catherine Wheel",
+  "display_help": "You can craft a wheel of pure pyrotechnic energy to assist you in battle. The Catherine Wheel employs a variety of pyrotechnic powers to damage and distract enemies. If an enemy becomes affected by the Blast Off effect from one of your powers, the Catherine Wheel may Intercept the enemy with an attack, dealing additional damage.",
+  "display_short_help": "Summon Catherine Wheel: Ranged DMG (Fire, Energy), Special",
+  "icon": "pyrotechnic_catherinewheel",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.03,
+  "recharge_time": 120.0,
+  "activate_period": 0.0,
+  "endurance_cost": 26.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 31,
+  "powerset": "Mission_Maker_Attacks.Pyrotechnic_Control"
+}

@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Fortunata_Defense",
+  "display_name": "Fortunata_Defense",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "fortunata_defense_set.ico",
+  "powers": [
+    "V_Arachnos.Fortunata_Defense.Mental_Training"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Mental Training"
+  ],
+  "power_short_helps": [
+    "Resistance"
+  ]
+}

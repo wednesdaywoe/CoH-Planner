@@ -1,0 +1,47 @@
+{
+  "name": "Stunning_Shot",
+  "full_name": "Mission_Maker_Attacks.Archery.Stunning_Shot",
+  "short_name": "Stunning_Shot",
+  "type": "Click",
+  "display_name": "Stunning Shot",
+  "display_fullname": "Mission Maker Attacks Archery Stunning Shot",
+  "display_help": "You fire a blunt, weighted arrow at your target's chest. The Stunning Shot has a good chance of stunning your foe. Damage: Minor, Recharge: Slow",
+  "display_short_help": "Ranged Disorient, Minor DMG(Smashing)",
+  "icon": "archery_stunarrow.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.155,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.0,
+  "recharge_time": 20.0,
+  "activate_period": 0.0,
+  "endurance_cost": 13.72,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    116
+  ],
+  "effects": [],
+  "available_level": 34,
+  "powerset": "Mission_Maker_Attacks.Archery"
+}

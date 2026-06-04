@@ -1,0 +1,54 @@
+{
+  "name": "Pets_Whirlwind_Lightning_Jump3",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Ignore",
+    "character_class_name": "minion_pets",
+    "description": "",
+    "display_name": "Electrical Melee",
+    "display_class_name": "",
+    "power_full_names": [
+      "Pets.ResistAll.ResistAll",
+      "Pets.Whirlwind_Lightning_Jump3.Charge"
+    ],
+    "power_display_names": [
+      "ResistAll",
+      "Charge"
+    ],
+    "power_levels": [
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Pets",
+        "power_set": "ResistAll",
+        "power": "*",
+        "level": 0
+      },
+      {
+        "power_category": "Pets",
+        "power_set": "Whirlwind_Lightning_Jump3",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Whirlwind Lightning Jump3"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

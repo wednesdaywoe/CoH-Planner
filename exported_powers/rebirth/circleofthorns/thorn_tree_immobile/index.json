@@ -1,0 +1,19 @@
+{
+  "key": "CircleOfThorns.Thorn_Tree_Immobile",
+  "display_name": "Thorn Tree Immobile",
+  "help": "Circle Of Thorns",
+  "short_help": "Circle Of Thorns",
+  "icon": "thorn_tree_immobile_set.ico",
+  "powers": [
+    "CircleOfThorns.Thorn_Tree_Immobile.Immobile"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Immobile"
+  ],
+  "power_short_helps": [
+    "Immobile"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Growl",
+  "full_name": "Mastermind_Pets.Alpha_Wolf_3.Growl",
+  "short_name": "Growl",
+  "type": "Click",
+  "display_name": "Growl",
+  "display_fullname": "Mastermind Pets Alpha Wolf 3 Growl",
+  "display_help": "The Alpha Wolf snarls at nearby enemies reducing their Damage and Chance to Hit moderately for a short time.<br><br><color #fcfc95>Notes: Growl is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_short_help": "PBAoE, Foes -Dmg, -To Hit",
+  "icon": "beastmastery_petgrowl.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 15.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.6,
+  "recharge_time": 45.0,
+  "activate_period": 0.0,
+  "endurance_cost": 13.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Debuff_ToHit"
+  ],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Mastermind_Pets.Alpha_Wolf_3"
+}

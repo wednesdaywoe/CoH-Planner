@@ -1,0 +1,63 @@
+{
+  "name": "Pets_Lt_Wailer_Queen",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Default_Ranged",
+    "character_class_name": "minion_pets",
+    "description": "St. Martial is infested with these horrid demons. A rumor on a Johnnie 'The Pipes' Sonata fan-site a few weeks back 'joked' that the singer must have sold his soul for his golden voice and the demons are here to collect. Maybe there's some truth to it.",
+    "display_name": "Wailers",
+    "display_class_name": "",
+    "power_full_names": [
+      "V_Wailers.Minion.Shriek",
+      "V_Wailers.Minion.Slash",
+      "V_Wailers.Lt.Scream",
+      "V_Wailers.Lt.Sirens_Song",
+      "V_Wailers.Lt.Song_of_the_Nightingale"
+    ],
+    "power_display_names": [
+      "Shriek",
+      "Slash",
+      "Scream",
+      "Sirens Song",
+      "Song of the Nightingale"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "V_Wailers",
+        "power_set": "Minion",
+        "power": "*",
+        "level": 0
+      },
+      {
+        "power_category": "V_Wailers",
+        "power_set": "Lt",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Lt Wailer Queen"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

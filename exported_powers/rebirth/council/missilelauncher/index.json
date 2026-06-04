@@ -1,0 +1,19 @@
+{
+  "key": "Council.MissileLauncher",
+  "display_name": "Missile Launcher",
+  "help": "Council",
+  "short_help": "Council",
+  "icon": "missilelauncher_set.ico",
+  "powers": [
+    "Council.MissileLauncher.Missile_Launcher"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Missile Launcher"
+  ],
+  "power_short_helps": [
+    "Ranged Lethal/Smash, +KB"
+  ]
+}

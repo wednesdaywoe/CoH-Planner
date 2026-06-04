@@ -1,0 +1,46 @@
+{
+  "name": "Deceive",
+  "full_name": "Mission_Maker_Attacks.Illusion_Control.Deceive",
+  "short_name": "Deceive",
+  "type": "Click",
+  "display_name": "Deceive",
+  "display_fullname": "Mission Maker Attacks Illusion Control Deceive",
+  "display_help": "You can Deceive an enemy into believing their friends are not who they appear to be. If successful, the enemy will ignore you and attack their own allies. If you Deceive someone before they have noticed you, your presence will continue to be masked. You will not receive any Experience Points for foes defeated by a Deceived enemy.",
+  "display_short_help": "Ranged, Foe Confuse",
+  "icon": "illusions_decieve.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.2,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.0,
+  "recharge_time": 4.0,
+  "activate_period": 0.0,
+  "endurance_cost": 11.48,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    140
+  ],
+  "effects": [],
+  "available_level": 1,
+  "powerset": "Mission_Maker_Attacks.Illusion_Control"
+}

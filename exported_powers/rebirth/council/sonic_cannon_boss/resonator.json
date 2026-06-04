@@ -1,0 +1,47 @@
+{
+  "name": "Resonator",
+  "full_name": "Council.Sonic_Cannon_Boss.Resonator",
+  "short_name": "Resonator",
+  "type": "Click",
+  "display_name": "Resonator",
+  "display_fullname": "Council Sonic Cannon Boss Resonator",
+  "display_help": "The Resonator has reduced you Resistance to all damage types except Psionics and you are feeling Disoriented.",
+  "display_short_help": "Disorient, -RES(All but Psionics)",
+  "icon": "assaultweapons_arflamethrower.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Cone",
+  "max_targets_hit": 16,
+  "radius": 60.0,
+  "arc": 0.5235987901687622,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.87,
+  "recharge_time": 20.0,
+  "activate_period": 0.0,
+  "endurance_cost": 7.0,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    132
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Council.Sonic_Cannon_Boss"
+}

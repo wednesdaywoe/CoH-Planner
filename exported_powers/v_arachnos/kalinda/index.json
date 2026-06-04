@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Kalinda",
+  "display_name": "Kalinda",
+  "help": "Kalinda",
+  "short_help": "Kalinda",
+  "icon": "kalinda_set.ico",
+  "powers": [
+    "V_Arachnos.Kalinda.Fate_Sealed"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Fate Sealed"
+  ],
+  "power_short_helps": [
+    "Auto: Self +Mezz, +Res(Mezz)"
+  ]
+}

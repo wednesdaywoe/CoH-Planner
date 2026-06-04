@@ -1,0 +1,47 @@
+{
+  "name": "Twilight_Grasp",
+  "full_name": "RoguesGallery.Desdemona.Twilight_Grasp",
+  "short_name": "Twilight_Grasp",
+  "type": "Click",
+  "display_name": "Twilight Grasp",
+  "display_fullname": "RoguesGallery Desdemona Twilight Grasp",
+  "display_help": "You channel Negative Energy from the Netherworld through yourself to a targeted foe. Twilight Grasp drains the power from that target and slowly transfers it to you and all nearby allies. The targeted foe's chance to hit and damage are reduced, while you and your nearby allies are healed. Recharge: Moderate",
+  "display_short_help": "Ranged, Foe -To-hit -DMG, Team Heal",
+  "icon": "darkmiasma_twilightgrasp.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.37,
+  "recharge_time": 8.0,
+  "activate_period": 0.0,
+  "endurance_cost": 10.5,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    136
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "RoguesGallery.Desdemona"
+}

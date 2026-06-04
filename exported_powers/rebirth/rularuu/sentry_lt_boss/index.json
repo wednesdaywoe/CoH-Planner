@@ -1,0 +1,23 @@
+{
+  "key": "Rularuu.Sentry_Lt_Boss",
+  "display_name": "Sentry_Lt_Boss",
+  "help": "Rularuu",
+  "short_help": "Rularuu",
+  "icon": "sentry_lt_boss_set.ico",
+  "powers": [
+    "Rularuu.Sentry_Lt_Boss.Paralytic_Gaze",
+    "Rularuu.Sentry_Lt_Boss.Optic_Blast"
+  ],
+  "available_level": [
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Paralytic Gaze",
+    "Optic Blast"
+  ],
+  "power_short_helps": [
+    "Hold",
+    "-SPD, -Recharge, -DEF"
+  ]
+}

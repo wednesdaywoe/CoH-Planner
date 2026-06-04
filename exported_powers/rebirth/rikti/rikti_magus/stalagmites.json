@@ -1,0 +1,47 @@
+{
+  "name": "Stalagmites",
+  "full_name": "Rikti.Rikti_Magus.Stalagmites",
+  "short_name": "Stalagmites",
+  "type": "Click",
+  "display_name": "Stalagmites",
+  "display_fullname": "Rikti Rikti Magus Stalagmites",
+  "display_help": "The Rikti Magus has left you Disoriented with his Stalagmite attack.  Your Defense is lowered.",
+  "display_short_help": "Disorient, -DEF",
+  "icon": "earthgrasp_quicksand.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 50.0,
+  "arc": 0.0,
+  "range": 120.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.1,
+  "recharge_time": 30.0,
+  "activate_period": 0.0,
+  "endurance_cost": 14.0,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    120
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Rikti.Rikti_Magus"
+}

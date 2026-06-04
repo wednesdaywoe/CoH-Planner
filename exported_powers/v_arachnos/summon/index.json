@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Summon",
+  "display_name": "Summon",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "summon_set.ico",
+  "powers": [
+    "V_Arachnos.Summon.Teleport"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Teleport"
+  ],
+  "power_short_helps": [
+    "Teleport"
+  ]
+}

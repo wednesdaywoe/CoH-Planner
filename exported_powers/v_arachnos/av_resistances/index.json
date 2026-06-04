@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.AV_Resistances",
+  "display_name": "AV Resistances",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "av_resistances_set.ico",
+  "powers": [
+    "V_Arachnos.AV_Resistances.Resistance"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Resistance"
+  ],
+  "power_short_helps": [
+    "Resistance"
+  ]
+}

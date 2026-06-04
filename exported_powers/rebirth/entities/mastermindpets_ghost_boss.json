@@ -1,0 +1,69 @@
+{
+  "name": "MastermindPets_Ghost_Boss",
+  "group_name": "MastermindPets",
+  "commandable_pet": 1,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": true,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Ranged",
+    "character_class_name": "boss_henchman",
+    "description": "Death is not the end, it is only a doorway.  A Lich's corporeal form is but a fragile shell, and when one falls, it can return as a Lich.  No longer bound to corporeal form, a Wraith's seeks to consume the souls of the living so it can gain enough power to move onto the next plane.",
+    "display_name": "Necromancy",
+    "display_class_name": "",
+    "power_full_names": [
+      "Mastermind_Pets.Ghosts.Resistance",
+      "Mastermind_Pets.Ghosts.Phase_Shift",
+      "Mastermind_Pets.Ghosts.Self_Destruct",
+      "Mastermind_Pets.Ghosts.Ghastly_Blast",
+      "Mastermind_Pets.Ghosts.Fly",
+      "Mastermind_Pets.Ghosts.Life_Drain",
+      "Mastermind_Pets.Ghosts.Enchant",
+      "Mastermind_Pets.Ghosts.Necroplasmic_Grasp",
+      "Mastermind_Pets.Ghosts.Empower"
+    ],
+    "power_display_names": [
+      "Resistance",
+      "Phase Shift",
+      "Self Destruct",
+      "Ghastly Blast",
+      "Fly",
+      "Life Drain",
+      "Enchant",
+      "Necroplasmic Grasp",
+      "Empower"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Mastermind_Pets",
+        "power_set": "Ghosts",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Ghost Boss"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

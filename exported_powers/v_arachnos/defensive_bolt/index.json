@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Defensive_Bolt",
+  "display_name": "Defensive_Bolt",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "defensive_bolt_set.ico",
+  "powers": [
+    "V_Arachnos.Defensive_Bolt.Lightning_Blast"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Lightning Blast"
+  ],
+  "power_short_helps": [
+    "High DMG(Energy), Foe -End"
+  ]
+}

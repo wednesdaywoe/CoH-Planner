@@ -1,0 +1,57 @@
+{
+  "name": "Pets_MM_Thug_Arsonist_Burn",
+  "group_name": "Pets",
+  "commandable_pet": 1,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": true,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Ignore",
+    "character_class_name": "minion_henchman",
+    "description": "The Arsonist has set this fire with his Fire Bomb.  You should stay away!",
+    "display_name": "",
+    "display_class_name": "",
+    "power_full_names": [
+      "Pets.ResistAll.ResistAll",
+      "Mastermind_Pets.Arsonist_Burn.Fire",
+      "Mastermind_Pets.Arsonist_Burn.Avoid"
+    ],
+    "power_display_names": [
+      "ResistAll",
+      "Fire",
+      "Avoid"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Pets",
+        "power_set": "ResistAll",
+        "power": "*",
+        "level": 0
+      },
+      {
+        "power_category": "Mastermind_Pets",
+        "power_set": "Arsonist_Burn",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "MM Thug Arsonist Burn"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

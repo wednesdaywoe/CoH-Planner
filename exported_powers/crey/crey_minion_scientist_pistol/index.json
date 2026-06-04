@@ -1,0 +1,19 @@
+{
+  "key": "Crey.Crey_Minion_Scientist_Pistol",
+  "display_name": "Crey_Minion_Scientist_Pistol",
+  "help": "Crey",
+  "short_help": "Crey",
+  "icon": "crey_minion_scientist_pistol_set.ico",
+  "powers": [
+    "Crey.Crey_Minion_Scientist_Pistol.Cryo_Pistol"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Cryo Pistol"
+  ],
+  "power_short_helps": [
+    "-Recharge, -Speed, Sleep"
+  ]
+}

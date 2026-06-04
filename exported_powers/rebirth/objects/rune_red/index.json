@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Rune_Red",
+  "display_name": "Rune",
+  "help": "Rune",
+  "short_help": "Rune",
+  "icon": "rune_red_set.ico",
+  "powers": [
+    "Objects.Rune_Red.Thurisaz_Rune"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Thurisaz Rune"
+  ],
+  "power_short_helps": [
+    "AoE Fire, DoT"
+  ]
+}

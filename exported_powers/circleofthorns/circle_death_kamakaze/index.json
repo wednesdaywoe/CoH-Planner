@@ -1,0 +1,19 @@
+{
+  "key": "CircleOfThorns.Circle_Death_Kamakaze",
+  "display_name": "Circle_Kamakaze",
+  "help": "Circle of Thorns",
+  "short_help": "Circle of Thorns",
+  "icon": "circle_death_kamakaze_set.ico",
+  "powers": [
+    "CircleOfThorns.Circle_Death_Kamakaze.Kamikaze"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Kamikaze"
+  ],
+  "power_short_helps": [
+    "Suicide Special"
+  ]
+}

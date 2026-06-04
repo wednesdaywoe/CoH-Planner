@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Mu_Cone",
+  "display_name": "Mu_Cone",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "mu_cone_set.ico",
+  "powers": [
+    "V_Arachnos.Mu_Cone.Static_Discharge"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Static Discharge"
+  ],
+  "power_short_helps": [
+    "DoT(Energy)"
+  ]
+}

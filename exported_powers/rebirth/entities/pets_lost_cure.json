@@ -1,0 +1,48 @@
+{
+  "name": "Pets_Lost_Cure",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "UltraCoward",
+    "character_class_name": "minion_unkillablenpc",
+    "description": "A civilian.",
+    "display_name": "Paragon Citizen",
+    "display_class_name": "P1969047068",
+    "power_full_names": [
+      "NPC_Pets.Civilian_Panic.Panic",
+      "NPC_Pets.Civilian_Panic.Resistance"
+    ],
+    "power_display_names": [
+      "Panic",
+      "Resistance"
+    ],
+    "power_levels": [
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "NPC_Pets",
+        "power_set": "Civilian_Panic",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Lost Cure"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

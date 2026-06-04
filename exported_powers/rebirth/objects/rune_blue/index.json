@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Rune_Blue",
+  "display_name": "Rune",
+  "help": "Rune",
+  "short_help": "Rune",
+  "icon": "rune_blue_set.ico",
+  "powers": [
+    "Objects.Rune_Blue.Uruz_Rune"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Uruz Rune"
+  ],
+  "power_short_helps": [
+    "-End"
+  ]
+}

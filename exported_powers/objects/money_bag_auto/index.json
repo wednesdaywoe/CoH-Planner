@@ -1,0 +1,19 @@
+{
+  "key": "Objects.money_Bag_Auto",
+  "display_name": "money_Bag_Auto",
+  "help": "",
+  "short_help": "",
+  "icon": "",
+  "powers": [
+    "Objects.money_Bag_Auto.Loot_Bag"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Loot Bag"
+  ],
+  "power_short_helps": [
+    "Loot"
+  ]
+}

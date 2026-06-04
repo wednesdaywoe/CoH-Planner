@@ -1,0 +1,52 @@
+{
+  "name": "Glittering_Column",
+  "full_name": "Mission_Maker_Attacks.Pyrotechnic_Control.Glittering_Column",
+  "short_name": "Glittering_Column",
+  "type": "Click",
+  "display_name": "Glittering Column",
+  "display_fullname": "Mission Maker Attacks Pyrotechnic Control Glittering Column",
+  "display_help": "You summon a column of brilliant, glittering energy that is sure to capture foes' attention. The column will reduce the ToHit of any foe within a short range, while also Taunting them, forcing them to direct their attacks in its direction. <br><br>When the Glittering Column expires, it explodes, Blasting Off nearby enemies into the air.",
+  "display_short_help": "Summon Glittering Column: Taunt, -ToHit, AoE DMG (Fire, Energy)",
+  "icon": "pyrotechnic_glitteringcolumn",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.17,
+  "recharge_time": 20.0,
+  "activate_period": 0.0,
+  "endurance_cost": 7.8,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Foe"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Taunt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Debuff_ToHit",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 5,
+  "powerset": "Mission_Maker_Attacks.Pyrotechnic_Control"
+}

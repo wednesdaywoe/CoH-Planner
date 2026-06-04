@@ -1,0 +1,69 @@
+{
+  "name": "Pets_Patron_Powers_Night_Widow",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Base",
+    "character_class_name": "minion_pets",
+    "description": "Night Widows are trained in stealth, infiltration, disguise, and cold-blooded murder. Most of their victims never even see them coming.",
+    "display_name": "",
+    "display_class_name": "",
+    "power_full_names": [
+      "Villain_Pets.Night_Widow.Stealth",
+      "Villain_Pets.Night_Widow.Self_Destruct",
+      "Villain_Pets.Night_Widow.Mental_Training",
+      "Villain_Pets.Night_Widow.Smoke_Grenade",
+      "Villain_Pets.Night_Widow.Mental_Blast",
+      "Villain_Pets.Night_Widow.Swipe",
+      "Villain_Pets.Night_Widow.Lunge",
+      "Villain_Pets.Night_Widow.Strike",
+      "Villain_Pets.Night_Widow.Slash"
+    ],
+    "power_display_names": [
+      "Stealth",
+      "Self Destruct",
+      "Mental Training",
+      "Smoke Grenade",
+      "Mental Blast",
+      "Swipe",
+      "Lunge",
+      "Strike",
+      "Slash"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Villain_Pets",
+        "power_set": "Night_Widow",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Patron Powers Night Widow"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

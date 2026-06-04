@@ -1,0 +1,47 @@
+{
+  "name": "Glacier",
+  "full_name": "CircleOfThorns.Lilitu.Glacier",
+  "short_name": "Glacier",
+  "type": "Click",
+  "display_name": "Glacier",
+  "display_fullname": "CircleOfThorns Lilitu Glacier",
+  "display_help": "You can freeze all foes around yourself in blocks of Glacial ice. The targets are frozen solid, helpless, and can be attacked. Even after the victims emerge, they remain chilled and their attack and movement speed is Slowed for a while. This power can only be cast near the ground.",
+  "display_short_help": "PBAoE, Foe Hold, -Recharge, -SPD",
+  "icon": "iceformation_glacier.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 30.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.03,
+  "recharge_time": 240.0,
+  "activate_period": 0.0,
+  "endurance_cost": 21.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    128
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "CircleOfThorns.Lilitu"
+}

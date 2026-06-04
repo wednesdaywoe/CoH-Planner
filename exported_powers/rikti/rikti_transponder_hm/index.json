@@ -1,0 +1,19 @@
+{
+  "key": "Rikti.Rikti_Transponder_HM",
+  "display_name": "Rikti Transponder (Advanced Mode)",
+  "help": "Rikti",
+  "short_help": "Rikti",
+  "icon": "rikti_transponder_set.ico",
+  "powers": [
+    "Rikti.Rikti_Transponder_HM.Transponder"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Transponder"
+  ],
+  "power_short_helps": [
+    "Build Transponder"
+  ]
+}

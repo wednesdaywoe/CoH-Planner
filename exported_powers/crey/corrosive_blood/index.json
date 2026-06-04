@@ -1,0 +1,19 @@
+{
+  "key": "Crey.Corrosive_Blood",
+  "display_name": "Corrosive Blood",
+  "help": "Corrosive Blood",
+  "short_help": "Experimentation",
+  "icon": "experimentation_corrosive_vial_set.ico",
+  "powers": [
+    "Crey.Corrosive_Blood.Corrosive_Blood"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Corrosive Blood"
+  ],
+  "power_short_helps": [
+    "Ranged (Location AoE), DoT (Toxic), -Defense"
+  ]
+}

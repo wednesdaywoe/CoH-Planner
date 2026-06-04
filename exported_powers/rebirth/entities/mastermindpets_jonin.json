@@ -1,0 +1,57 @@
+{
+  "name": "MastermindPets_Jonin",
+  "group_name": "MastermindPets",
+  "commandable_pet": 1,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": true,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Jounin",
+    "character_class_name": "lt_henchman",
+    "description": "The Jounin Ninja is a master assassins and expert swordsman. A master of stealth and shadow, few ever see them coming.",
+    "display_name": "Ninjas",
+    "display_class_name": "",
+    "power_full_names": [
+      "Mastermind_Pets.Jonin.Resistance",
+      "Mastermind_Pets.Jonin.Hack",
+      "Mastermind_Pets.Jonin.Slash",
+      "Mastermind_Pets.Jonin.Caltrops",
+      "Mastermind_Pets.Jonin.Super_Leap"
+    ],
+    "power_display_names": [
+      "Resistance",
+      "Hack",
+      "Slash",
+      "Caltrops",
+      "Super Leap"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Mastermind_Pets",
+        "power_set": "Jonin",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Jonin"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

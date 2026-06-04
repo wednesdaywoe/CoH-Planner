@@ -1,0 +1,19 @@
+{
+  "key": "Council.12Gauge",
+  "display_name": "12 Gauge",
+  "help": "Council",
+  "short_help": "Council",
+  "icon": "12gauge_set.ico",
+  "powers": [
+    "Council.12Gauge.12_Gauge"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "12 Gauge"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), Moderate DMG(Lethal), Foe Knockback"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "key": "Crey.Crey_Boss_Armored_Buff",
+  "display_name": "Crey_Boss_Armored_Buff",
+  "help": "Crey",
+  "short_help": "Crey",
+  "icon": "crey_boss_armored_buff_set.ico",
+  "powers": [
+    "Crey.Crey_Boss_Armored_Buff.Dispersion_Bubble"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Dispersion Bubble"
+  ],
+  "power_short_helps": [
+    "Team AoE Toggle +Res(Special)"
+  ]
+}

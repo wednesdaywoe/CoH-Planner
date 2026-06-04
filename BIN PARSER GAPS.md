@@ -19,8 +19,7 @@ and `Epic.Field_Mastery.Repulsion_Bomb`). Cheap, no repo-footprint cost, catches
 *known* failure shapes at PR time.
 
 **The deferred end-state (the heavy half):** commit the **converter input** —
-`exported_powers/{homecoming,rebirth}` filtered to the 34 player categories
-(**~113 MB / 14,216 files**, vs the 233 MB / ~25k full export, vs the 30 MB / 6,176-file
+`exported_powers/` for both datasets (**~233 MB / ~25k files**, vs the 30 MB / 6,176-file
 committed `generated/` output) — so CI can run the converters **end-to-end** and byte-diff
 the regenerated `generated/` against what's committed. That catches **any** converter drift,
 not just the four known classes, and closes two gaps the current setup has:
@@ -31,11 +30,29 @@ not just the four known classes, and closes two gaps the current setup has:
 - **Two-machine fragility:** the raw source lives only on the PC + laptop local copies
   (see CLAUDE.md "Source Data"); there is no canonical, versioned input.
 
-**Why deferred, not done:** +113 MB in git history is heavier than ideal for a web app
-repo. Before committing it raw, evaluate: **git LFS** for the JSON blobs, a **sparse subset**
-(only the fields the converters actually read), or a **compressed single-archive** input the
-CI job expands. Pick the lightest option that still lets CI run `convert-*.cjs` and diff.
-Until then, the invariant scan above is the safety net.
+**Why it's the full ~233 MB, not a prunable subset.** The exporter is **not** a blind dump
+— [`export_powers.py`](tools/bin-crawler/bin_crawler/export_powers.py) already filters
+204 → ~60 categories. The 34 player AT/pool/epic categories are the core; the other ~25 are
+a *documented, genuinely-consumed dependency closure* the converters dereference:
+`*_Aux` (leap/charge hit-data via `Execute_Power`), `Pets`/`Villain_Pets`/`Mastermind_Pets`/
+`Kheldian_Pets` (snipe & redirect targets, henchman powers), and the **villain-group block**
+(Rularuu, Council, Crey, Rikti, DevouringEarth, CircleOfThorns…) that **Lore incarnate pets
+"mimic"**. That last block is why the export is full of enemy types — and it lands in the
+committed `incarnate-effects.ts` (both datasets) via `convert-pet-entities.cjs` /
+`convert-incarnate-effects.cjs`. So a CI regen needs the **whole closure**, not the 34 AT
+categories. (The real over-export is *granularity within* those categories — a whole 302-file
+`council/` is pulled for ~3-4 Lore-referenced attacks — but tightening that needs the full
+transitive entity/redirect closure, fragile and not worth it.)
+
+**Decision (2026-06-03): commit the full ~233 MB as-is.** Acceptable because GitHub allows
+it — no single file approaches the 100 MB hard limit (every power JSON is KB-scale; biggest
+is ~44 KB), the ~233 MB total is well under GitHub's ~1 GB soft recommendation and the 2 GB
+per-push limit, and our files are tiny JSON, not large blobs. The cost is permanent git-history
+weight + slower clones + a ~25k-file working tree — tolerable for the reproducibility win.
+*Optional* later shrink, if history weight bites: drop the ~10 unread template fields
+(`duration_expression`, `magnitude_expression`, `flags_raw`, `tick_*`…) at export time — the
+only prune that preserves regen, but bounded by the "fully replace CoD2" goal that wants some
+of them (`suppress_events`, `flags`). git LFS is **not** needed (no large individual files).
 
 ---
 

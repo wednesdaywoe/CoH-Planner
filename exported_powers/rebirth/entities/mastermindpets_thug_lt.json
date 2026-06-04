@@ -1,0 +1,60 @@
+{
+  "name": "MastermindPets_Thug_Lt",
+  "group_name": "MastermindPets",
+  "commandable_pet": 1,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": true,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Ranged",
+    "character_class_name": "lt_henchman",
+    "description": "A natural leader.  In another life, he could have amounted to something.  Never-the-less, younger Thugs can learn a lot from him, and are more effective fighters when he is around. The Thug Enforcer has seen his share of gang wars, and his experience with street weapons is invaluable.",
+    "display_name": "Thugs",
+    "display_class_name": "",
+    "power_full_names": [
+      "Mastermind_Pets.Thug_Lt.Resistance",
+      "Mastermind_Pets.Thug_Lt.Brawl",
+      "Mastermind_Pets.Thug_Lt.Burst",
+      "Mastermind_Pets.Thug_Lt.Heavy_Burst",
+      "Mastermind_Pets.Thug_Lt.Maneuvers",
+      "Mastermind_Pets.Thug_Lt.Super_Leap"
+    ],
+    "power_display_names": [
+      "Resistance",
+      "Brawl",
+      "Burst",
+      "Heavy Burst",
+      "Maneuvers",
+      "Super Leap"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Mastermind_Pets",
+        "power_set": "Thug_Lt",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Thug Lt"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

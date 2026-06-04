@@ -1,0 +1,54 @@
+{
+  "name": "MastermindPets_Thug_Arsonist",
+  "group_name": "MastermindPets",
+  "commandable_pet": 1,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": true,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Medic",
+    "character_class_name": "minion_henchman",
+    "description": "The Arsonist probably suffers from some form of pyromania.  He likely hides some deep-seated trauma or has some background of family dysfunction. None of that matters now.  The Arsonist's only pleasure is to burn things, and people, to the ground.",
+    "display_name": "Thugs",
+    "display_class_name": "",
+    "power_full_names": [
+      "Mastermind_Pets.Thug_Arsonist.Resistance",
+      "Mastermind_Pets.Thug_Arsonist.Super_Leap",
+      "Mastermind_Pets.Thug_Arsonist.Brawl",
+      "Mastermind_Pets.Thug_Arsonist.Molotov_Cocktail"
+    ],
+    "power_display_names": [
+      "Resistance",
+      "Super Leap",
+      "Brawl",
+      "Molotov Cocktail"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Mastermind_Pets",
+        "power_set": "Thug_Arsonist",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Thug Arsonist"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

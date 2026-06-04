@@ -1,0 +1,19 @@
+{
+  "key": "Crey.Crey_Minion_Agent_Pistol",
+  "display_name": "Crey_Minion_Agent_Pistol",
+  "help": "Crey",
+  "short_help": "Crey",
+  "icon": "crey_minion_agent_pistol_set.ico",
+  "powers": [
+    "Crey.Crey_Minion_Agent_Pistol.Automatic_Pistol"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Automatic Pistol"
+  ],
+  "power_short_helps": [
+    "Ranged Lethal, Med Dam"
+  ]
+}

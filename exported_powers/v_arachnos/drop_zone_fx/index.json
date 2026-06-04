@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Drop_Zone_FX",
+  "display_name": "Drop Zone FX",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "drop_zone_fx_set.ico",
+  "powers": [
+    "V_Arachnos.Drop_Zone_FX.SummonFX"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "SummonFX"
+  ],
+  "power_short_helps": [
+    "Summon"
+  ]
+}

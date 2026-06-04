@@ -1,0 +1,63 @@
+{
+  "name": "MastermindPets_Thug_Boss",
+  "group_name": "MastermindPets",
+  "commandable_pet": 1,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": true,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Ranged",
+    "character_class_name": "boss_henchman",
+    "description": "This Thug is a massive Brute. The Bruiser has worked his way though the ranks and has nothing left to prove.  He is strong, tough and has a mean temper.",
+    "display_name": "Thugs",
+    "display_class_name": "",
+    "power_full_names": [
+      "Mastermind_Pets.Thug_Boss.Resistance",
+      "Mastermind_Pets.Thug_Boss.Jab",
+      "Mastermind_Pets.Thug_Boss.Punch",
+      "Mastermind_Pets.Thug_Boss.Fury",
+      "Mastermind_Pets.Thug_Boss.Fury_Buff",
+      "Mastermind_Pets.Thug_Boss.Rage_Dampen",
+      "Mastermind_Pets.Thug_Boss.Super_Leap"
+    ],
+    "power_display_names": [
+      "Resistance",
+      "Jab",
+      "Punch",
+      "Fury",
+      "Fury Buff",
+      "Rage Dampen",
+      "Super Leap"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Mastermind_Pets",
+        "power_set": "Thug_Boss",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Thug Boss"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

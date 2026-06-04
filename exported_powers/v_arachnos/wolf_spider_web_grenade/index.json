@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Wolf_Spider_Web_Grenade",
+  "display_name": "Wolf_Spider_Web_Grenade",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "wolf_spider_web_grenade_set.ico",
+  "powers": [
+    "V_Arachnos.Wolf_Spider_Web_Grenade.Web_Grenade"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Web Grenade"
+  ],
+  "power_short_helps": [
+    "Ranged, Foe Immobilize, -Fly, -Recharge, -SPD, -Jump"
+  ]
+}

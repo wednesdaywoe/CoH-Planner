@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Psychic_Scream",
+  "display_name": "Psychic Scream",
+  "help": "Volume",
+  "short_help": "Volume",
+  "icon": "psychic_scream_set.ico",
+  "powers": [
+    "Objects.Psychic_Scream.Psychic_Scream"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Psychic Scream"
+  ],
+  "power_short_helps": [
+    "Psychic Scream"
+  ]
+}

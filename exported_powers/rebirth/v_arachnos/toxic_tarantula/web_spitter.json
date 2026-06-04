@@ -1,0 +1,46 @@
+{
+  "name": "Web_Spitter",
+  "full_name": "V_Arachnos.Toxic_Tarantula.Web_Spitter",
+  "short_name": "Web_Spitter",
+  "type": "Click",
+  "display_name": "Web Spitter",
+  "display_fullname": "V Arachnos Toxic Tarantula Web Spitter",
+  "display_help": "You have been caught in a web.  You cannot move or fly and your attack speed is reduced.",
+  "display_short_help": "Immobilize, -Fly, -Recharge",
+  "icon": "gadgets_webgrenade.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 20.0,
+  "arc": 0.0,
+  "range": 50.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.17,
+  "recharge_time": 30.0,
+  "activate_period": 0.0,
+  "endurance_cost": 10.5,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "V_Arachnos.Toxic_Tarantula"
+}

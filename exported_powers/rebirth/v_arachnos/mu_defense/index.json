@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Mu_Defense",
+  "display_name": "Mu_Defense",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "mu_defense_set.ico",
+  "powers": [
+    "V_Arachnos.Mu_Defense.Lightning_Armor"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Lightning Armor"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Fire, Cold, Energy, Negative, End Drain)"
+  ]
+}

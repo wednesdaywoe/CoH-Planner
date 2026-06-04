@@ -1,0 +1,57 @@
+{
+  "name": "MastermindPets_Skeletal_Warrior",
+  "group_name": "MastermindPets",
+  "commandable_pet": 1,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": true,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Melee",
+    "character_class_name": "lt_henchman",
+    "description": "Only the most battle hardened warriors filled with a lust for revenge will return as a Grave Knight.  This undead warrior may be sentient, but it has no understanding of a living world now alien to him.  It can only see its own bloodlust and thirst for vengeance. Only the most powerful Masterminds can control them.",
+    "display_name": "Necromancy",
+    "display_class_name": "",
+    "power_full_names": [
+      "Mastermind_Pets.Skeleton.Resistance",
+      "Mastermind_Pets.Skeleton.Hack",
+      "Mastermind_Pets.Skeleton.Slash",
+      "Mastermind_Pets.Skeleton.Dark_Blast",
+      "Mastermind_Pets.Skeleton.Super_Leap"
+    ],
+    "power_display_names": [
+      "Resistance",
+      "Hack",
+      "Slash",
+      "Dark Blast",
+      "Super Leap"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Mastermind_Pets",
+        "power_set": "Skeleton",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Skeletal Warrior"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

@@ -1,0 +1,81 @@
+{
+  "name": "IncarnatePets_Lore_Tsoo_Boss",
+  "group_name": "IncarnatePets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Melee",
+    "character_class_name": "boss_praetoriangrunt",
+    "description": "This Tsoo essence has been conjured out of the mists of the Well of the Furies, a study of an enemy made substance and brought to heel.",
+    "display_name": "Tsoo Essence",
+    "display_class_name": "",
+    "power_full_names": [
+      "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+      "Incarnate.Lore_Pet_Generic.Super_Leap",
+      "Incarnate.Lore_Pet_Tsoo_Boss.Mercurial_Blow",
+      "Incarnate.Lore_Pet_Tsoo_Boss.Precise_Strike",
+      "Incarnate.Lore_Pet_Tsoo_Boss.Serpents_Reach",
+      "Incarnate.Lore_Pet_Tsoo_Boss.Eye_of_the_Storm",
+      "Rularuu.Reflections.Resistance"
+    ],
+    "power_display_names": [
+      "Lore Evasion",
+      "Super Leap",
+      "Mercurial Blow",
+      "Precise Strike",
+      "Serpents Reach",
+      "Eye of the Storm",
+      "Resistance"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Generic",
+        "power": "Lore_Evasion",
+        "level": 0
+      },
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Generic",
+        "power": "Super_Leap",
+        "level": 0
+      },
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Tsoo_Boss",
+        "power": "*",
+        "level": 0
+      },
+      {
+        "power_category": "Rularuu",
+        "power_set": "Reflections",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Lore Tsoo Boss"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

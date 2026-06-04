@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Massive_Explosion_OnDeath",
+  "display_name": "Explosion",
+  "help": "Object",
+  "short_help": "Object",
+  "icon": "massive_explosion_ondeath_set.ico",
+  "powers": [
+    "Objects.Massive_Explosion_OnDeath.Massive_Explosion"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Massive Explosion"
+  ],
+  "power_short_helps": [
+    "Disorient"
+  ]
+}

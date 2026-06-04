@@ -1,0 +1,51 @@
+{
+  "key": "Guardian_Assault.Hellfire_Assault",
+  "display_name": "Hellfire_Assault",
+  "help": "",
+  "short_help": "",
+  "icon": "",
+  "powers": [
+    "Guardian_Assault.Hellfire_Assault.Hellfire_Flares",
+    "Guardian_Assault.Hellfire_Assault.Hellfire_Smash",
+    "Guardian_Assault.Hellfire_Assault.Crack_Whip",
+    "Guardian_Assault.Hellfire_Assault.Corruption",
+    "Guardian_Assault.Hellfire_Assault.Soul_Searing",
+    "Guardian_Assault.Hellfire_Assault.Hellfire_Burst",
+    "Guardian_Assault.Hellfire_Assault.Lash",
+    "Guardian_Assault.Hellfire_Assault.Hellfire_Blaze",
+    "Guardian_Assault.Hellfire_Assault.Wrath_Of_Hell"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Hellfire Flares",
+    "Hellfire Smash",
+    "Crack Whip",
+    "Corruption",
+    "Soul Searing",
+    "Hellfire Burst",
+    "Lash",
+    "Hellfire Blaze",
+    "Wrath of Hell"
+  ],
+  "power_short_helps": [
+    "Ranged, Minor DMG(Fire)",
+    "Melee, High DMG(Smash/Toxic) Foe Knockdown",
+    "Short Ranged (Cone), High DMG(Fire), Foe -Res, Knockdown, DoT(Toxic)",
+    "Ranged, Minor DMG(Fire), Foe Minor DoT (Toxic), -Res",
+    "Self +Toxic Damage on all attacks, +ToHit",
+    "PBAoE, Moderate DoT(Toxic)",
+    "Close, High DMG(Fire), Foe -Res, Knockdown, Minor DoT(Toxic)",
+    "Ranged, High DMG(Fire/Toxic), Foe -Res",
+    "Ranged, Extreme DoT(Fire), Short Foe Hold, Foe -Res"
+  ]
+}

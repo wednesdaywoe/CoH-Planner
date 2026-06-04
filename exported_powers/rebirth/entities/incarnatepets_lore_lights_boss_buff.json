@@ -1,0 +1,90 @@
+{
+  "name": "IncarnatePets_Lore_Lights_Boss_Buff",
+  "group_name": "IncarnatePets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Melee",
+    "character_class_name": "boss_praetoriangrunt",
+    "description": "This Polar Light essence has been conjured out of the mists of the Well of the Furies, a study of an enemy made substance and brought to heel.",
+    "display_name": "Polar Lights Essence",
+    "display_class_name": "",
+    "power_full_names": [
+      "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+      "Incarnate.Lore_Pet_Generic.Lore_Power",
+      "Incarnate.Lore_Pet_Generic.Fly",
+      "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Bolt",
+      "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Blast",
+      "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Scatter",
+      "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Detonation",
+      "Incarnate.Lore_Pet_Generic.Essence_Small"
+    ],
+    "power_display_names": [
+      "Lore Evasion",
+      "Lore Power",
+      "Fly",
+      "Northern Lights Bolt",
+      "Northern Lights Blast",
+      "Northern Lights Scatter",
+      "Northern Lights Detonation",
+      "Essence Small"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Generic",
+        "power": "Lore_Evasion",
+        "level": 0
+      },
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Generic",
+        "power": "Lore_Power",
+        "level": 0
+      },
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Generic",
+        "power": "Fly",
+        "level": 0
+      },
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Lights_Boss",
+        "power": "*",
+        "level": 0
+      },
+      {
+        "power_category": "Incarnate",
+        "power_set": "Lore_Pet_Generic",
+        "power": "Essence_Small",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Lore Lights Boss Buff"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

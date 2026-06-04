@@ -1,0 +1,69 @@
+{
+  "name": "Pets_Decoy",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Base",
+    "character_class_name": "minion_pets",
+    "description": "",
+    "display_name": "Illusions",
+    "display_class_name": "",
+    "power_full_names": [
+      "Pets.Decoy.Decoy",
+      "Pets.Decoy.Fire_Sword",
+      "Pets.Decoy.Ice_Sword",
+      "Pets.Decoy.Punch",
+      "Pets.Decoy.Hurl",
+      "Pets.Decoy.Power_Bolt",
+      "Pets.Decoy.Fire_Blast",
+      "Pets.Decoy.Ice_Blast",
+      "Pets.Decoy.Lightning_Bolt"
+    ],
+    "power_display_names": [
+      "Decoy",
+      "Fire Sword",
+      "Ice Sword",
+      "Punch",
+      "Hurl",
+      "Power Bolt",
+      "Fire Blast",
+      "Ice Blast",
+      "Lightning Bolt"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Pets",
+        "power_set": "Decoy",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 50,
+      "experience": 0,
+      "display_names": [
+        "Decoy"
+      ],
+      "costumes": []
+    }
+  ],
+  "source_file": ""
+}

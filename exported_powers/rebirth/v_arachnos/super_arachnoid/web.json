@@ -1,0 +1,46 @@
+{
+  "name": "Web",
+  "full_name": "V_Arachnos.Super_Arachnoid.Web",
+  "short_name": "Web",
+  "type": "Click",
+  "display_name": "Web",
+  "display_fullname": "V Arachnos Super Arachnoid Web",
+  "display_help": "You have been caught in a web.  You cannot move or fly and your attack speed is reduced.",
+  "display_short_help": "Immobilize, -Fly, -Recharge",
+  "icon": "gadgets_webgrenade.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 10.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.17,
+  "recharge_time": 30.0,
+  "activate_period": 0.0,
+  "endurance_cost": 14.0,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "V_Arachnos.Super_Arachnoid"
+}

@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Short_Fuse",
+  "display_name": "Short_Fuse",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "short_fuse_set.ico",
+  "powers": [
+    "V_Arachnos.Short_Fuse.Self_Destruct"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Self Destruct"
+  ],
+  "power_short_helps": [
+    "Self Destruct"
+  ]
+}
