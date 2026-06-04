@@ -1,0 +1,65 @@
+# Continuous Integration — type-check + tests (incl. the generated-data invariant scan)
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check (tsc --noEmit)
+        run: npm run lint
+
+      # Includes src/data/converter-invariants.test.ts — the structural invariant
+      # scan over the committed generated/ data (export-name === internalName, no
+      # bare specialBuff, no 0xFFFFFFFF sentinels, no new PvP-only mez tables).
+      - name: Tests
+        run: npm test
+
+  # ── FUTURE: regen-and-diff guard ─────────────────────────────────────────────
+  # Now that exported_powers/ (the converter input) is committed, CI can run the
+  # convert-*.cjs pipeline and assert src/data/datasets/*/generated/ is byte-
+  # identical to the committed output — catching ANY converter drift, not just the
+  # known classes the invariant scan above covers. This is the strongest guard.
+  #
+  # Prerequisites before enabling (tracked in BIN PARSER GAPS.md):
+  #   1. A single regen-orchestration entrypoint (e.g. `npm run regen`). Today
+  #      convert-powerset.cjs converts one <category> <powerset> at a time; the
+  #      full generated/ tree needs all ~610 powersets x 2 datasets, plus
+  #      convert-epic-pools, convert-incarnate-effects, convert-pet-entities,
+  #      generate-kheldian-variants, extract-at-tables, extract-rebirth-io-sets,
+  #      in dependency order.
+  #   2. A validated clean full regen committed, so generated/ === regen output.
+  #      Sampled converters (incarnate-effects, defender radiation_emission)
+  #      reproduce byte-identical today, but all ~620 conversion units must be
+  #      confirmed clean before this diff can pass green on the first run.
+  #
+  # Sketch once both land:
+  #   regen-diff:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v4
+  #       - uses: actions/setup-node@v4
+  #         with: { node-version: '20', cache: 'npm' }
+  #       - run: npm ci
+  #       - run: npm run regen
+  #       - run: git diff --exit-code -- src/data/datasets/*/generated/
