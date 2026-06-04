@@ -92,30 +92,46 @@ not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
   both datasets (de-risked: `toggle_ignore`-only, no drift; sole incidental change
   was Rest gaining `allowed_set_categories ['Rest Buff']`). 784 powers. This proved
   the full parser→export→converter→model→display path and the re-export workflow.
-- ⏸️ **`IgnoreStrength` — RECLASSIFIED, deferred.** It is *not* a missing-field
-  capture: the bin parser already extracts it into `template.flags`, and it's
-  mostly moot (4,482 "real" cases are dominated by attribs nothing strength-
-  enhances — `Grant_Power`/`Create_Entity`/`Set_Mode`/`Null` — or proc/pseudopet
-  paths) or already handled (regen → `regenBuffUnenhanced`/`effects.n`). The naïve
-  "mark all IgnoreStrength unenhanceable" is *dangerous*: ~1,600 attacks carry it
-  only on the `aspect=Strength, scale=0` damage **meta-template** (the engine's
-  strength-definition row), so doing so would wrongly de-enhance their damage. The
-  residual is a careful **per-attrib calc-correctness audit**, not the opener.
+- ⚠️ **`IgnoreStrength` — CONFIRMED CALC GAP (not "moot" — that earlier call was
+  wrong).** The data is captured (`template.flags`), so nothing is lost; the gap is
+  that the **converter only honors `IgnoreStrength` for regeneration** (the
+  `resType === 'regeneration'` branch → `regenBuffUnenhanced`/`effects.n`). Every
+  other real-stat effect that ignores strength is mishandled. After filtering the
+  traps (the `aspect=Strength, scale=0` damage **meta-template**; `aspect=Resistance`
+  -Res/debuff-resistance templates that merely use `*_Dmg`/`Base_Defense` attribs;
+  procs; pets), **288 player-powerset effects** remain with a genuine
+  `aspect=Current/Absolute` `IgnoreStrength`: Endurance 120, Recovery 90, ToHit 50,
+  Base_Defense 10, RechargeTime 8, Heal 7, Absorb 3. Two failure modes:
+  - **Over-enhance** (main `effects`): emitted as a normal enhanceable effect.
+    *Confirmed:* Bio Armor **Environmental Adaptation**'s +ToHit (0.75, `IgnoreStrength`
+    in game) → generated `tohitBuff: 0.75`, and `tohitBuff` has
+    `enhancementAspect: 'tohit'`, so the calc boosts it with ToHit IOs / global +ToHit.
+  - **Dropped entirely** (`activation_effects` toggles/autos): the converter drops
+    non-regen `IgnoreStrength` templates there (`isDropForActivationEffects`) — the
+    very "missing data" pattern we keep getting bitten by.
+  **Fix:** generalize the unenhanceable handling beyond regen — mark these effects so
+  the calc skips their `enhancementAspect` (and stop dropping them in
+  `activation_effects`). Calc-affecting; needs care (the meta-template / resistance
+  traps above show how a naïve `flags.includes('IgnoreStrength')` over-fires). Scope
+  with the `aspect ∈ {Current,Absolute,Magnitude}` + non-proc discriminator validated
+  here. The discipline: the data was never the problem — our *use* of it was.
 
 ### Next steps (priority order)
-1. **Other clean power-field captures** (same pattern as the mez fields):
+1. **Fix the `IgnoreStrength` calc gap** (confirmed above): generalize the
+   regen-only unenhanceable handling to the 288 player effects (Endurance/Recovery/
+   ToHit/Defense/Heal/Absorb/Recharge), and stop dropping them in
+   `activation_effects`. Calc-affecting — scope with the validated discriminator.
+2. **Other clean power-field captures** (same pattern as the mez fields):
    `TimeToRoot` (2,340 — animation lock, affects DPS/rotation), `ModesDisallowed`
    (3,475), `StrengthsDisallowed` (951), `BuyRequires` (631). All genuinely absent,
    distinct names. Need parser reads + re-export (the toggle_ignore workflow).
-2. **Add the `.powers`↔export attrib name-map** to `audit.py` → produce a clean
+3. **Add the `.powers`↔export attrib name-map** to `audit.py` → produce a clean
    attrib-gap list → then close the genuinely-dropped exotic attribs.
-3. **Phase 2 — converter completeness**: diff `exported_powers` vs `generated` (the
+4. **Phase 2 — converter completeness**: diff `exported_powers` vs `generated` (the
    class the knockback bug belonged to — parser captured it, converter dropped it);
    ensure every mechanically-relevant template/field incl. `requires_expression`
    gating is emitted. Also fold in the un-parsed template tail (`suppress_events`,
    `flags`, `fx`).
-4. **`IgnoreStrength` calc-correctness audit** (the reclassified item above): a
-   careful per-attrib pass on which real effects should be unenhanceable.
 5. **Later**: a `.powers ⊆ extraction` guard, once the sweep backlog is worked down.
 
 ## ✅ Rebirth Blaster ToHit-buff AT modifiers were stale (FIXED 2026-06-03)
