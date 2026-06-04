@@ -10,33 +10,49 @@
 
 /** A heal sourced from a power's `damage` field. */
 export interface HealingFromDamage {
+  /** Total base heal scale (all same-table Heal entries summed). */
   scale: number;
   table?: string;
-  /** From the AttribMod's IgnoreStrength flag — this heal is NOT boosted by
-   *  Healing enhancement or global +Heal. */
-  ignoreStrength?: boolean;
+  /** Portion of `scale` flagged IgnoreStrength — NOT boosted by Healing enh or
+   *  global +Heal. Some powers (DNA Siphon, Rebuild DNA, Inner Will) pair an
+   *  enhanceable heal with an unenhanceable one; the calc enhances only
+   *  `scale - unenhancedScale`. Absent when the whole heal is enhanceable. */
+  unenhancedScale?: number;
 }
 
 type DamageEntry = { type?: string; scale: number; table?: string; ignoreStrength?: boolean };
 
 /**
- * Extract the `type: 'Heal'` entry from a power's `damage` field (a single object
- * or an array of entries). Returns undefined when there's no heal entry.
+ * Extract a power's heal from its `damage` field (a single `type: 'Heal'` object
+ * or an array of entries). Sums the same-table Heal entries — a power can carry an
+ * enhanceable heal AND an IgnoreStrength one — tracking the unenhanceable portion.
+ * Returns undefined when there's no heal entry.
  */
 export function extractHealingFromDamage(damage: unknown): HealingFromDamage | undefined {
   if (!damage) return undefined;
 
-  let entry: DamageEntry | undefined;
-  if (!Array.isArray(damage) && typeof damage === 'object' && 'type' in (damage as object) && (damage as { type: string }).type === 'Heal') {
-    entry = damage as DamageEntry;
-  } else if (Array.isArray(damage)) {
-    entry = (damage as DamageEntry[]).find((e) => e?.type === 'Heal');
-  }
+  const heals: DamageEntry[] = Array.isArray(damage)
+    ? (damage as DamageEntry[]).filter((e) => e?.type === 'Heal')
+    : (typeof damage === 'object' && 'type' in (damage as object) && (damage as { type: string }).type === 'Heal'
+        ? [damage as DamageEntry]
+        : []);
+  if (!heals.length) return undefined;
 
-  if (!entry || typeof entry.scale !== 'number') return undefined;
+  // Combine only entries that share the first heal's table (mixing tables would be
+  // unitless-incorrect; the both-portions powers are all single-table in practice).
+  const table = heals[0].table;
+  let scale = 0;
+  let unenhancedScale = 0;
+  for (const e of heals) {
+    if (typeof e.scale !== 'number' || e.table !== table) continue;
+    scale += e.scale;
+    if (e.ignoreStrength) unenhancedScale += e.scale;
+  }
+  if (scale === 0 && unenhancedScale === 0) return undefined;
+
   return {
-    scale: entry.scale,
-    table: entry.table,
-    ...(entry.ignoreStrength ? { ignoreStrength: true } : {}),
+    scale,
+    table,
+    ...(unenhancedScale ? { unenhancedScale } : {}),
   };
 }

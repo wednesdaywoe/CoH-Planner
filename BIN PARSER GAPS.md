@@ -139,25 +139,35 @@ not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
     `ignoreStrength`, the helper carries it, and `power-stats.ts` skips Healing enh /
     global +Heal for it. Fixed the genuine single-IgnoreStrength-heal powers —
     **Inner Will, Restore Essence (7.5), Energy Transfer** — no longer over-enhanced.
-  - 🔎 **DNA Siphon / Rebuild DNA = a *different* (pre-existing) issue.** They have
-    **two** Heal templates — an enhanceable portion (e.g. 1.25, no flag) AND an
-    unenhanceable one (0.375, IgnoreStrength). The heal extraction takes the **first**
-    entry (the enhanceable one), so the displayed heal is correctly enhanced — these
-    have **no over-enhance bug**. They have a separate **under-count**: the second
-    (unenhanceable) Heal portion is dropped entirely. Fixing that means summing
-    multiple `type:'Heal'` entries (applying enh only to the non-IgnoreStrength ones)
-    — a distinct "both-portions heal" task, not the over-enhance one. Tracked here.
-  - ⬜ **Still open:** the `activation_effects` **drop** of non-regen `IgnoreStrength`
-    templates — nuanced because some are genuine unenhanceable-only effects (keep) and
-    some are enhanceable-copy duplicates (drop); needs the duplicate-vs-genuine
-    discriminator before touching.
+  - ✅ **Both-portions heal SUMMED** (`extractHealingFromDamage` now combines same-table
+    `type:'Heal'` entries into `scale` + `unenhancedScale`; `power-stats` enhances only
+    `scale − unenhancedScale`). This unified single-portion / fully-unenhanced /
+    both-portions handling and **fixed Inner Will** (it actually pairs a 0.075
+    IgnoreStrength heal with a 0.075 enhanceable one — the old "take first entry" logic
+    showed only 0.075; now 0.15 with enh on half). Runtime-only (the entries were
+    already in `generated`), tsc + 84 tests.
+  - ⚠️ **OPEN — DNA Siphon / Rebuild DNA heal is *conditional* and dropped entirely.**
+    Their heal templates carry a `requires_expression` (`Cur.kHitPoints target> 0 >`,
+    and the 0.375 portion additionally `kDefensiveAdaptation Source.Mode?`), so
+    `extractDamage` drops them — these powers show **no heal at all** in the planner.
+    That's a bigger "conditional heal not captured" gap (distinct from IgnoreStrength):
+    conditional heals should likely route through the `conditionalEffects` mechanism.
+    Not fixed here.
+  - ✅ **`activation_effects` drop — verified harmless (no action).** Audited every
+    non-regen `IgnoreStrength` self template the filter drops: **0** are real
+    enhanceable buffs (aspect=Current/Absolute on recovery/tohit/heal/defense/etc.).
+    The non-duplicate drops are all meta-templates (the all-damage-types strength row,
+    `Set_Mode`, `Grant_Power`, `Create_Entity`, `Global_Chance_Mod` — correctly
+    dropped / skipped by `extractEffects` anyway) or protection (mez/KB/debuff-
+    resistance) that is **also captured from the power's main `effects`** (confirmed:
+    Entropy Shield's `mezResistance` etc. are present). So the drop loses nothing real
+    — the earlier "duplicate-vs-genuine" worry didn't survive verification.
 
 ### Next steps (priority order)
-1. **`IgnoreStrength` remainder** (Recovery + ToHit + single-portion Heal done;
-   Defense verified non-bug): (a) the `activation_effects` **drop** of non-regen
-   IgnoreStrength templates (duplicate-vs-genuine); (b) the **both-portions heal**
-   under-count (DNA Siphon / Rebuild DNA — sum multiple `type:'Heal'` entries).
-   Both bounded — not blockers.
+1. **`IgnoreStrength` is DONE** — Recovery, ToHit, Heal (single + both-portions) fixed;
+   Defense + `activation_effects` drop verified non-issues. New unrelated gap surfaced:
+   **conditional heals dropped** (DNA Siphon / Rebuild DNA show no heal — their heal
+   templates are `requires_expression`-gated; route through `conditionalEffects`).
 2. **Other clean power-field captures** (same pattern as the mez fields):
    `TimeToRoot` (2,340 — animation lock, affects DPS/rotation), `ModesDisallowed`
    (3,475), `StrengthsDisallowed` (951), `BuyRequires` (631). All genuinely absent,
