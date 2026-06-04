@@ -60,5 +60,11 @@ export const CrowdControl: Power = {
       "scale": 0.764,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  }
 };

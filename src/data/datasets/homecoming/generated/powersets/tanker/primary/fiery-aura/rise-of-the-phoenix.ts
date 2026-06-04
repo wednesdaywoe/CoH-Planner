@@ -45,6 +45,10 @@ export const RiseofthePhoenix: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 4.1,
+      "table": "Melee_Knockback"
+    },
     "stun": {
       "mag": 4,
       "scale": 10,

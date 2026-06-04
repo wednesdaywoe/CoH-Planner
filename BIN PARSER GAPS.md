@@ -6,28 +6,57 @@ with diagnoses and recommended fixes. Newest entries at top.
 
 ---NEW ISSUES---
 
-## ⚠️ OPEN — Kheldian form-variant converter drops real knockback (do NOT regenerate)
+## ✅ Offensive knockback was dropped from ALL attacks (FIXED 2026-06-04)
 
-`scripts/generate-kheldian-variants.cjs` currently produces **worse** output than
-what's committed in `src/data/datasets/rebirth/kheldian-form-variants.ts`. A regen
-**drops the real knockback effects** from Nova/Dwarf attacks and **adds a spurious
-`rechargeDebuff` (Ranged_Slow, scale 0.2)**. Verified against source: e.g.
-`exported_powers/rebirth/kheldian_pets/bright_nova/*.json` for **Bright Nova Blast**
-has knockback (`Ranged_Knockback`) and **no** slow — the committed file matches that,
-the regen does not. So the committed data is correct and the converter regressed at
-some point (likely in the effect-extraction path the kheldian script shares).
+Root cause of the kheldian "drops knockback" symptom: in `extractEffects`
+([convert-powerset.cjs](scripts/convert-powerset.cjs)) the knockback handler had
+`if (!isSelfTargeting) continue;` — which dropped **every foe-targeted knockback**,
+i.e. the offensive KB that attacks apply (Energy Blast, Storm, Nova/Dwarf, all
+knockdowns). The regen-diff guard stayed green because every powerset regenerated
+*consistently* without it; the long-stale `kheldian-form-variants.ts` was the lone
+canary that still carried the correct (old-converter) knockback.
 
-**Until fixed:** do not commit a kheldian-form-variants regen. The regen-diff CI guard
-is intentionally scoped to `generated/` and does **not** cover this file, so it won't
-force the regression in — but `npm run regen` (full) will dirty it locally; leave it
-reverted. Display-only impact (the file feeds `InfoPanel`'s Nova/Dwarf info via
-`KHELDIAN_FORM_VARIANT_POWERS`), so no calc effect, but the displayed effects are wrong
-after a naive regen.
+Fix: in the foe-targeted branch, **emit offensive KB** (positive-magnitude `Current`)
+and **skip only protection/reduction** — KB applied to *protect* the foe from being
+knocked (immobilize -KB: Stone Cages / Freeze Ray, encoded as `aspect=Resistance` +100
+paired with `aspect=Current` −100 on `*_Ones`). The discriminator is principled, not a
+threshold: offensive KB is positive Current; protection is resistance-aspect **or**
+negative scale. Restored **~1030 knockback/knockup/repel effects across 888 generated
+files** (verified: power-burst 4, Wormhole 14, Tremor knockdown 1.34, Bright Nova Blast
+1 == committed; zero mag-100 leaks; Stone Cages clean). Powers whose conditional effect
+*was* knockback (Storm Blast In-Storm-Cell, etc.) also correctly materialize that
+conditional and get descriptive labels. tsc clean, 84/84 tests.
 
-Related minor: `homecoming/kheldian-form-variants.ts` is dead output — `InfoPanel`
-imports the **rebirth** map unconditionally (`@/data/datasets/rebirth/kheldian-form-variants`),
-so HC's variant data is never consumed (and was never committed). A proper fix would
-make the kheldian-info lookup dataset-aware; for now the HC file is left ungenerated.
+**Remaining (deferred to the `.powers` extraction audit):**
+- **Foe -KB protection** (immobilize "can't be knocked") is now correctly *excluded*
+  from offensive KB but **not modeled** — there's no `PowerEffects` field for foe-applied
+  KB protection, and the game folds it into "Immobilize". Per the completeness decision
+  (2026-06-04) it should be modeled as its own effect; doing so after the audit.
+- **`kheldian-form-variants.ts` itself** was left reverted (not regenerated): a regen
+  carries additional *unvetted* accumulated converter deltas (a `tohitBuff` 0.5 removed,
+  a `rechargeDebuff`/`Ranged_Slow` 0.2 added) from being long-stale. These need
+  source-verification — exactly the audit's job — before the file is regenerated.
+- `homecoming/kheldian-form-variants.ts` is dead output (`InfoPanel` imports the
+  **rebirth** map unconditionally); make the lookup dataset-aware when modeling resumes.
+
+## 🎯 GOAL (active) — `.powers` extraction-completeness audit
+
+Decision (2026-06-04): stop omitting *mechanically-relevant* data for file size. The
+naïve early choice to skip "build-irrelevant" fields keeps surprising us (knockback,
+foe -KB, brute mods, Kheldian effects). New rule: **capture everything that affects what
+a power does; skip only asset references** (`VisualFX`/`.PFX` paths, animation `include`s,
+combat-text message IDs, icon internals).
+
+Oracle: the HC dev's authoritative `.powers` source defs (`raw defs/`, 4,943 powers,
+same category structure, gitignored). Confirmed OK to use (public game data, anon source).
+Plan: **build an audit framework + one-time sweep first**, then decide on a guard.
+- Phase 1 — export completeness: diff each `.powers` def vs our `exported_powers` JSON;
+  flag missing effect groups (e.g. Energy Torrent: 6 raw `Effect` blocks vs our 5),
+  missing AttribMods/fields, the un-parsed template tail (`suppress_events`, `flags`,
+  `fx`), unmapped exotic attribs. Fix the parser to close structural gaps.
+- Phase 2 — converter completeness: diff `exported_powers` vs `generated`; ensure every
+  mechanically-relevant template/field (incl. `requires_expression` gating) is emitted.
+- Later: consider a `.powers ⊆ extraction` guard once the sweep backlog is worked down.
 
 ## ✅ Rebirth Blaster ToHit-buff AT modifiers were stale (FIXED 2026-06-03)
 

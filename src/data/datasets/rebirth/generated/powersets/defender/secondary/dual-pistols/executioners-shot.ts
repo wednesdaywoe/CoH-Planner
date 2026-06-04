@@ -90,6 +90,10 @@ export const ExecutionersShot: Power = {
       "rechargeDebuff": 10,
       "damageDebuff": 8
     },
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    },
     "rechargeDebuff": {
       "scale": 0.15,
       "table": "Ranged_Slow"

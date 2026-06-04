@@ -78,6 +78,10 @@ export const DualWield: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 0.75,
+      "table": "Ranged_Knockback"
+    },
     "rechargeDebuff": {
       "scale": 0.15,
       "table": "Ranged_Slow"

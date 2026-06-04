@@ -55,5 +55,11 @@ export const PowerThrust: Power = {
       "scale": 1.3399,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 16,
+      "table": "Melee_Knockback"
+    }
+  }
 };

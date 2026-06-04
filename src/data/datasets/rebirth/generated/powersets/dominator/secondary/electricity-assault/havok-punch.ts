@@ -61,6 +61,10 @@ export const HavokPunch: Power = {
       "scale": 15,
       "table": "Melee_Sleep"
     },
+    "knockback": {
+      "scale": 0.75,
+      "table": "Melee_Knockback"
+    },
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Melee_Ones"

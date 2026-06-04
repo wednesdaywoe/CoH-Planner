@@ -57,6 +57,10 @@ export const DarkNovaDetonation: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 4,
+      "table": "Ranged_Knockback"
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"

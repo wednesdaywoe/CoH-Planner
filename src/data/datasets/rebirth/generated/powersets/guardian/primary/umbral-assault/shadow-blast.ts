@@ -55,6 +55,10 @@ export const ShadowBlast: Power = {
     "durations": {
       "rechargeDebuff": 10
     },
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    },
     "buffDuration": 10
   },
   "specialEffects": [

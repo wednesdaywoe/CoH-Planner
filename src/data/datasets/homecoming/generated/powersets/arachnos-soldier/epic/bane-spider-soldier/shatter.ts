@@ -65,6 +65,12 @@ export const Shatter: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

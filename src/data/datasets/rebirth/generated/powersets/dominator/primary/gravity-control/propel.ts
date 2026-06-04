@@ -45,5 +45,11 @@ export const Propel: Power = {
     "type": "Smashing",
     "scale": 1.96,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    }
   }
 };

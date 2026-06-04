@@ -87,14 +87,19 @@ export const HailofBullets: Power = {
     }
   ],
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
+    "knockback": {
+      "scale": 0.8,
+      "table": "Ranged_Ones"
     },
     "durations": {
+      "knockback": 3.5,
       "rechargeDebuff": 10,
       "defenseBuff": 5,
       "damageDebuff": 8
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
     },
     "defenseBuff": {
       "melee": {

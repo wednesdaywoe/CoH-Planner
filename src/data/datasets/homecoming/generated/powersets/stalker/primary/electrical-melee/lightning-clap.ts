@@ -82,6 +82,10 @@ export const LightningClap: Power = {
       "scale": 5,
       "table": "Melee_Stun"
     },
+    "knockback": {
+      "scale": 1.28,
+      "table": "Melee_Ones"
+    },
     "buffDuration": 4
   },
   "specialEffects": [

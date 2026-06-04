@@ -68,6 +68,10 @@ export const CallHawk: Power = {
       "tohitDebuff": 10,
       "maxHPBuff": 30
     },
+    "knockback": {
+      "scale": 1.34,
+      "table": "Ranged_Ones"
+    },
     "maxHPBuff": {
       "scale": 0.4,
       "table": "Melee_HealSelf"

@@ -74,5 +74,11 @@ export const HighLow: Power = {
       "scale": 0.6725,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  }
 };

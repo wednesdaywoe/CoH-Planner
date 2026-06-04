@@ -52,6 +52,12 @@ export const Slug: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
+  "effects": {
+    "knockback": {
+      "scale": 1.5,
+      "table": "Ranged_Knockback"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

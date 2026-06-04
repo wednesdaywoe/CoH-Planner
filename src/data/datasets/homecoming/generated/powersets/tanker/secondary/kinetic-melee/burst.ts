@@ -69,6 +69,10 @@ export const Burst: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 0.8934,
+      "table": "Melee_Ones"
+    },
     "damageDebuff": {
       "scale": 1.2,
       "table": "Melee_Debuff_Dam"

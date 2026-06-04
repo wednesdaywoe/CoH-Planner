@@ -49,6 +49,10 @@ export const Thundergust: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    },
     "tohitDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_ToHit"

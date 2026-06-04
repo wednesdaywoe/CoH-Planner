@@ -136,11 +136,16 @@ export const HailofBullets: Power = {
     "durations": {
       "rechargeDebuff": 10,
       "damageDebuff": 8,
+      "knockback": 2.3,
       "defenseBuff": 5
     },
     "damageDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Dam"
+    },
+    "knockback": {
+      "scale": 1.6,
+      "table": "Ranged_Ones"
     },
     "defenseBuff": {
       "ranged": {

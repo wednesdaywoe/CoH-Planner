@@ -83,6 +83,10 @@ export const ThunderStrike: Power = {
       "scale": 5,
       "table": "Melee_Stun"
     },
+    "knockback": {
+      "scale": 1.28,
+      "table": "Melee_Ones"
+    },
     "damageBuff": {
       "scale": 0.078,
       "table": "Melee_Ones",

@@ -68,5 +68,11 @@ export const ArcofDestruction: Power = {
       "scale": 1.9586,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  }
 };

@@ -54,6 +54,10 @@ export const HeavyMallet: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
     "hold": {
       "mag": 3,
       "scale": 8,

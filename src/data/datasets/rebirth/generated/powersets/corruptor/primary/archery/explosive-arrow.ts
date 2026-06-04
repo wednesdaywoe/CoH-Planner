@@ -59,6 +59,12 @@ export const ExplosiveArrow: Power = {
       "table": "Ranged_Damage"
     }
   ],
+  "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

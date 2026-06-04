@@ -81,5 +81,11 @@ export const PowerPush: Power = {
       "scale": 1.192,
       "table": "Ranged_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 16,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

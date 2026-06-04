@@ -52,6 +52,10 @@ export const PowerThrust: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 8,
+      "table": "Melee_Knockback"
+    },
     "damageBuff": {
       "scale": 0.066,
       "table": "Melee_Ones"

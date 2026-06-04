@@ -60,5 +60,11 @@ export const SweepingStrike: Power = {
       "scale": 0.8292,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  }
 };

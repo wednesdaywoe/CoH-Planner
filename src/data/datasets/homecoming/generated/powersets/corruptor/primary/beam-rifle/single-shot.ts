@@ -52,6 +52,12 @@ export const SingleShot: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Ranged_Ones"
+    }
+  },
   "conditionalEffects": [
     {
       "id": "beam_rifle_debuff",

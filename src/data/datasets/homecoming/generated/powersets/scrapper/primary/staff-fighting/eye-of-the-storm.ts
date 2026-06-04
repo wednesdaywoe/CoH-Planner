@@ -66,6 +66,12 @@ export const EyeoftheStorm: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  },
   "conditionalEffects": [
     {
       "id": "perfection_of_body_level_3",

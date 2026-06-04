@@ -103,6 +103,10 @@ export const EmptyClips: Power = {
       "rechargeDebuff": 8,
       "damageDebuff": 6
     },
+    "knockback": {
+      "scale": 0.4,
+      "table": "Ranged_Knockback"
+    },
     "rechargeDebuff": {
       "scale": 0.15,
       "table": "Ranged_Slow"

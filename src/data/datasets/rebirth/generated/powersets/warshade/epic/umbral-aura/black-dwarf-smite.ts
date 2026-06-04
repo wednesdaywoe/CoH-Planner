@@ -58,6 +58,10 @@ export const BlackDwarfSmite: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"

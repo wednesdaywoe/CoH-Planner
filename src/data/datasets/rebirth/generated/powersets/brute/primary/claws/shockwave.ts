@@ -51,6 +51,10 @@ export const Shockwave: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 0.7,
+      "table": "Melee_Knockback"
+    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"

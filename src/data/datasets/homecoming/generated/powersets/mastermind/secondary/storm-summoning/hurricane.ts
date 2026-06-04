@@ -44,7 +44,16 @@ export const Hurricane: Power = {
       "table": "Ranged_Debuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 10
+      "tohitDebuff": 10,
+      "repel": 1.05
+    },
+    "repel": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "knockback": {
+      "scale": 8,
+      "table": "Ranged_Knockback"
     },
     "buffDuration": 10
   },

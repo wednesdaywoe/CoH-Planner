@@ -47,6 +47,12 @@ export const Pendulum: Power = {
     "scale": 1.9,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

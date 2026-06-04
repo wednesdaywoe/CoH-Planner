@@ -48,6 +48,10 @@ export const MassLevitate: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "knockup": {
+      "scale": 2,
+      "table": "Melee_Knockback"
+    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"

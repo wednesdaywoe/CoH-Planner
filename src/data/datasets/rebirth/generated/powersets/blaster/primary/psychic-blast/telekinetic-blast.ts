@@ -53,6 +53,10 @@ export const TelekineticBlast: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 4,
+      "table": "Ranged_Knockback"
+    },
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"

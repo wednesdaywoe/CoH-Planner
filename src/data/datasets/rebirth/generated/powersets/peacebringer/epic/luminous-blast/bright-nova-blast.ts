@@ -50,6 +50,10 @@ export const BrightNovaBlast: Power = {
     "table": "Ranged_SSDamage"
   },
   "effects": {
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    },
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"

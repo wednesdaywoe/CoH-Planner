@@ -69,6 +69,10 @@ export const SonicClap: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 1.3,
+      "table": "Melee_Ones"
+    },
     "stun": {
       "mag": 2,
       "scale": 8,

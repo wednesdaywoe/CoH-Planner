@@ -53,6 +53,12 @@ export const Jawbreaker: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
+  "effects": {
+    "knockup": {
+      "scale": 4,
+      "table": "Melee_Knockback"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -56,6 +56,10 @@ export const JoltingChain: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 1.32,
+      "table": "Ranged_Ones"
+    },
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Ranged_Ones"

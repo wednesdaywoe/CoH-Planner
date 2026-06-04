@@ -56,6 +56,10 @@ export const SpinningStrike: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
@@ -80,6 +84,12 @@ export const SpinningStrike: Power = {
           "table": "Melee_Damage"
         }
       ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      },
       "group": "combo-levels"
     },
     {
@@ -100,6 +110,12 @@ export const SpinningStrike: Power = {
           "table": "Melee_Damage"
         }
       ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      },
       "group": "combo-levels"
     },
     {
@@ -121,6 +137,10 @@ export const SpinningStrike: Power = {
         }
       ],
       "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        },
         "fear": {
           "mag": 3,
           "scale": 6,

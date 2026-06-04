@@ -64,6 +64,10 @@ export const RadioactiveSmash: Power = {
     "durations": {
       "defenseDebuff": 10
     },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
     "buffDuration": 10
   },
   "specialEffects": [

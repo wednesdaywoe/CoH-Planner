@@ -82,6 +82,10 @@ export const Special1: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "specialBuff"

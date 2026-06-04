@@ -51,6 +51,10 @@ export const ForcefulBlow: Power = {
     }
   ],
   "effects": {
+    "knockup": {
+      "scale": 0.75,
+      "table": "Melee_Knockback"
+    },
     "damageDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Dam"

@@ -62,6 +62,10 @@ export const Fault: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
     "stun": {
       "mag": 2,
       "scale": 8,

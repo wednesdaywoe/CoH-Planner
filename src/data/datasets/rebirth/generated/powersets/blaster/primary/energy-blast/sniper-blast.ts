@@ -55,6 +55,10 @@ export const SniperBlast: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 0.7,
+      "table": "Ranged_Knockback"
+    },
     "damageBuff": {
       "scale": 0.088,
       "table": "Ranged_Ones"

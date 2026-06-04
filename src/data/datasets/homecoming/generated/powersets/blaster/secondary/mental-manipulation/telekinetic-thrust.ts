@@ -57,6 +57,10 @@ export const TelekineticThrust: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 16,
+      "table": "Melee_Knockback"
+    },
     "damageBuff": {
       "scale": 0.137,
       "table": "Melee_Ones"

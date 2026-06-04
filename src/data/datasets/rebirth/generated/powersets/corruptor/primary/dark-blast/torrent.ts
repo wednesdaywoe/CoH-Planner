@@ -52,6 +52,10 @@ export const Torrent: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 5,
+      "table": "Ranged_Knockback"
+    },
     "tohitDebuff": {
       "scale": 0.75,
       "table": "Ranged_DeBuff_ToHit"

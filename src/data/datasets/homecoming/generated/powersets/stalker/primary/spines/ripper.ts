@@ -69,6 +69,10 @@ export const Ripper: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
     "immobilize": {
       "mag": 0.6700000166893005,
       "scale": 10,

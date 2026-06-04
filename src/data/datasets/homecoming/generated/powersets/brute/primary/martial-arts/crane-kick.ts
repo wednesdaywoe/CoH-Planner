@@ -53,6 +53,12 @@ export const CraneKick: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
+  "effects": {
+    "knockback": {
+      "scale": 6,
+      "table": "Melee_Knockback"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

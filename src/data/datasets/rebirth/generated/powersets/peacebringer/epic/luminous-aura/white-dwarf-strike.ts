@@ -63,6 +63,10 @@ export const WhiteDwarfStrike: Power = {
     "durations": {
       "defenseDebuff": 6
     },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"

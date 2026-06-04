@@ -62,6 +62,10 @@ export const RadiantStrike: Power = {
     "durations": {
       "defenseDebuff": 6
     },
+    "knockback": {
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
     "buffDuration": 6
   },
   "specialEffects": [

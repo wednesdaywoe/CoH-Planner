@@ -71,6 +71,10 @@ export const Ripper: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
     "rechargeDebuff": {
       "scale": 0.1,
       "table": "Melee_Slow"

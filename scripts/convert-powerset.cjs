@@ -2261,8 +2261,26 @@ function extractEffects(templates, powerName) {
       // affected enemies, etc.) are debuffs applied to the target and
       // must not surface as caster KB protection / resistance.
       if (KNOCKBACK_TYPES[attrib]) {
-        if (!isSelfTargeting) continue;
         const kbType = KNOCKBACK_TYPES[attrib];
+        if (!isSelfTargeting) {
+          // Foe-targeted KB. Offensive KB (the attack knocks/knocks-down the foe)
+          // is a POSITIVE-magnitude Current effect → emit as an applied control
+          // effect (Energy Blast mag 4, Wormhole mag 7, Nova attacks, Tremor/
+          // Jolting knockdown 0.67, etc.). Skip KB applied to PROTECT the foe from
+          // being knocked — the immobilize -KB on Stone Cages/Freeze Ray/etc. —
+          // which is encoded as aspect=Resistance (+100) paired with a negative
+          // aspect=Current (-100) on the *_Ones table. Neither is offensive KB.
+          // (Modeling that foe KB-protection as its own effect is a separate gap;
+          // see BIN PARSER GAPS.md.)
+          if (aspect === 'resistance' || scale <= 0) continue;
+          if (effects[kbType] && effects[kbType].table === table) {
+            effects[kbType].scale += Math.abs(scale);
+          } else {
+            effects[kbType] = makeEffect();
+          }
+          recordDuration(kbType);
+          continue;
+        }
         if (aspect === 'resistance') {
           // KB/KU at aspect=Resistance is two different things depending on
           // the table: `Melee_Res_Boolean` (or any res_boolean variant) is

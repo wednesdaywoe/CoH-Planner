@@ -56,6 +56,10 @@ export const DawnStrike: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 20,
+      "table": "Ranged_Knockback"
+    },
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"

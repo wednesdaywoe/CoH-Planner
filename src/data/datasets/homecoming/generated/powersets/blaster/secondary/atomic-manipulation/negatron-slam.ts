@@ -65,6 +65,10 @@ export const NegatronSlam: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    },
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Melee_Debuff_Def"

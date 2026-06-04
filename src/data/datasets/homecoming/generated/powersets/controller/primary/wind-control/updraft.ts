@@ -51,6 +51,12 @@ export const Updraft: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
+  "effects": {
+    "knockup": {
+      "scale": 12,
+      "table": "Ranged_Knockback"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

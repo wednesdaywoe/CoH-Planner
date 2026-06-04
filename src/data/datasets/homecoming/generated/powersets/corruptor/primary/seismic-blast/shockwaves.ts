@@ -26,6 +26,12 @@ export const Shockwaves: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -173,6 +173,10 @@ export const BulletRain: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 4,
+      "table": "Ranged_Knockback"
+    },
     "rechargeDebuff": {
       "scale": 0.15,
       "table": "Ranged_Slow"

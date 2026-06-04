@@ -58,6 +58,12 @@ export const MaceBeam: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -59,6 +59,12 @@ export const EmptyClips: Power = {
       "tickRate": 0.30000001192092896
     }
   ],
+  "effects": {
+    "knockback": {
+      "scale": 1.28,
+      "table": "Ranged_Knockback"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

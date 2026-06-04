@@ -57,6 +57,10 @@ export const FollowThrough: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
     "stun": {
       "mag": 3,
       "scale": 4,

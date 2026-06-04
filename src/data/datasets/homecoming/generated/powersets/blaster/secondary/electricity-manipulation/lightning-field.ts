@@ -39,6 +39,10 @@ export const LightningField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Melee_Knockback"
+    },
     "stun": {
       "mag": 2,
       "scale": 8,

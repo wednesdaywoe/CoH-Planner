@@ -56,6 +56,10 @@ export const KineticShockwave: Power = {
     }
   ],
   "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
     "damageDebuff": {
       "scale": 1.2,
       "table": "Melee_Debuff_Dam"

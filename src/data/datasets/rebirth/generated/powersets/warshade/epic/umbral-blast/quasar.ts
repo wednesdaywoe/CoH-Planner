@@ -49,6 +49,10 @@ export const Quasar: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 10,
+      "table": "Ranged_Knockback"
+    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"

@@ -54,5 +54,11 @@ export const Shockwave: Power = {
       "scale": 0.32,
       "table": "Ranged_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

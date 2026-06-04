@@ -51,6 +51,10 @@ export const DarkMatterDetonation: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"

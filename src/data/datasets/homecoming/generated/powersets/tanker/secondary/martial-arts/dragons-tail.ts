@@ -54,6 +54,12 @@ export const DragonsTail: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

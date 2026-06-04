@@ -62,6 +62,10 @@ export const SkySplitter: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
+    },
+    "knockup": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
     }
   },
   "conditionalEffects": [

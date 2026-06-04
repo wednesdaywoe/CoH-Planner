@@ -46,6 +46,10 @@ export const TranquilizerDart: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 0.75,
+      "table": "Ranged_Knockback"
+    },
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"

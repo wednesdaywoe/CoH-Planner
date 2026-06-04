@@ -53,5 +53,11 @@ export const Focus: Power = {
       "scale": 1.0446,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 1.34,
+      "table": "Melee_Ones"
+    }
+  }
 };

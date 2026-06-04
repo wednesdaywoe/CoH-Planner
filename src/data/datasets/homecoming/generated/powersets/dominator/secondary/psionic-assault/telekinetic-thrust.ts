@@ -59,5 +59,11 @@ export const TelekineticThrust: Power = {
       "scale": 1.035,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 16,
+      "table": "Melee_Knockback"
+    }
+  }
 };

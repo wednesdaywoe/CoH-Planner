@@ -54,6 +54,10 @@ export const SkySplitter: Power = {
       "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"
+    },
+    "knockup": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
     }
   },
   "conditionalEffects": [

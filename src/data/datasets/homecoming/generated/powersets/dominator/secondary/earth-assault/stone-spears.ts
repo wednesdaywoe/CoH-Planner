@@ -51,6 +51,12 @@ export const StoneSpears: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
+  "effects": {
+    "knockup": {
+      "scale": 1.34,
+      "table": "Ranged_Ones"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

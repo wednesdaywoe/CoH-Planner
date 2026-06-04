@@ -59,6 +59,10 @@ export const LuminousDetonation: Power = {
     "durations": {
       "defenseDebuff": 10
     },
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    },
     "buffDuration": 10
   },
   "specialEffects": [

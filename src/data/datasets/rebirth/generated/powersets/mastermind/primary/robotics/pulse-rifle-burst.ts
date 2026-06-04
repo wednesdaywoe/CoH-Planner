@@ -44,6 +44,12 @@ export const PulseRifleBurst: Power = {
     "scale": 1.64,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "knockback": {
+      "scale": 1.5,
+      "table": "Ranged_Knockback"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

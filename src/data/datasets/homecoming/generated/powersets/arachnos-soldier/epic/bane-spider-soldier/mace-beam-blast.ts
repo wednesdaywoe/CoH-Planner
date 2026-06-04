@@ -58,5 +58,11 @@ export const MaceBeamBlast: Power = {
       "scale": 1.1814,
       "table": "Ranged_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

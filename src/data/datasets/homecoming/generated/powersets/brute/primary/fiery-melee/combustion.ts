@@ -71,5 +71,11 @@ export const Combustion: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "knockup": {
+      "scale": 1.5,
+      "table": "Melee_Ones"
+    }
+  }
 };

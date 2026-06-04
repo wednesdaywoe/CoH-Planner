@@ -70,6 +70,12 @@ export const Shockwave: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
+  "effects": {
+    "knockback": {
+      "scale": 1.4,
+      "table": "Melee_Knockback"
+    }
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",
