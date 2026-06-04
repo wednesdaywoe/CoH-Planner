@@ -4,6 +4,8 @@
 
 Prefer fixing root problems properly over quick fixes. The planner handles complex game mechanics with many interacting systems (AT tables, enhancement calculations, power effects, set bonuses). Band-aid fixes create compounding issues that are harder to debug later. When a bug surfaces, investigate whether it's a symptom of a deeper systemic issue before patching the surface behavior. This is essential for making the app reliable and maintainable.
 
+**Before touching game data (bin parser, converters, calc), read [GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md)** — the durable principles and the specific gotchas (strength meta-templates, resistance-aspect traps, proc/pet exclusions, the verify-don't-assume discipline, the re-export de-risk workflow). The running issue log is [BIN PARSER GAPS.md](BIN%20PARSER%20GAPS.md).
+
 ## Source Data
 
 The raw source data (`raw_data_homecoming-*`) is gitignored due to the enormous number of files. This project exists on two machines (PC and Laptop), each with their own local copy of the source data.
