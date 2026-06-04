@@ -6,6 +6,39 @@ with diagnoses and recommended fixes. Newest entries at top.
 
 ---NEW ISSUES---
 
+## 🎯 GOAL (deferred) — commit the converter input so CI can regenerate + byte-diff
+
+**Shipped now (the lightweight half):** [converter-invariants.test.ts](src/data/converter-invariants.test.ts)
+— a structural invariant scan over the **committed `generated/`** data that runs in CI
+with **zero raw data**. It locks in the converter-regression classes that have repeatedly
+bitten us: export const === `PascalCase(internalName)` (the bio-armor naming saga), no
+malformed bare `specialBuff` (the RechargeTime/Strength stacking regression), no unsigned
+`0xFFFFFFFF` sentinels, and no NEW `*_PvPMez` tables (prefer-PvE mez fix; a 5-entry
+allowlist grandfathers the genuinely-PvP-only powers — scramble-thoughts ×3, arctic-air,
+and `Epic.Field_Mastery.Repulsion_Bomb`). Cheap, no repo-footprint cost, catches the
+*known* failure shapes at PR time.
+
+**The deferred end-state (the heavy half):** commit the **converter input** —
+`exported_powers/{homecoming,rebirth}` filtered to the 34 player categories
+(**~113 MB / 14,216 files**, vs the 233 MB / ~25k full export, vs the 30 MB / 6,176-file
+committed `generated/` output) — so CI can run the converters **end-to-end** and byte-diff
+the regenerated `generated/` against what's committed. That catches **any** converter drift,
+not just the four known classes, and closes two gaps the current setup has:
+
+- **Reproducibility:** today a fresh clone / CI **cannot** rebuild `generated/` — the
+  converter input is gitignored, so the strongest possible guard (regenerate-and-diff) is
+  impossible. The invariant scan is a proxy for it.
+- **Two-machine fragility:** the raw source lives only on the PC + laptop local copies
+  (see CLAUDE.md "Source Data"); there is no canonical, versioned input.
+
+**Why deferred, not done:** +113 MB in git history is heavier than ideal for a web app
+repo. Before committing it raw, evaluate: **git LFS** for the JSON blobs, a **sparse subset**
+(only the fields the converters actually read), or a **compressed single-archive** input the
+CI job expands. Pick the lightest option that still lets CI run `convert-*.cjs` and diff.
+Until then, the invariant scan above is the safety net.
+
+---
+
 ## ✅ Powerset/pool deep regen — converter `specialBuff` regression fixed, layers brought current (FIXED 2026-06-03)
 
 Brought the stale `generated/powersets` + `generated/power-pools` layers current for
