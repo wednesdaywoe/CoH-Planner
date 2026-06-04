@@ -18,6 +18,12 @@ export const BlackDwarf: Power = {
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "castThroughMez": [
+    "hold",
+    "sleep",
+    "stun",
+    "terror"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 1,

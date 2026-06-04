@@ -18,6 +18,12 @@ export const PowerSurge: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "castThroughMez": [
+    "hold",
+    "sleep",
+    "stun",
+    "terror"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 350,

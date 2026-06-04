@@ -18,6 +18,12 @@ export const BlazingAura: Power = {
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "castThroughMez": [
+    "hold",
+    "sleep",
+    "stun",
+    "terror"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,

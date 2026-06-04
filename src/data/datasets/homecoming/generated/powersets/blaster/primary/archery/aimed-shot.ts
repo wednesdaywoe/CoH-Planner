@@ -18,6 +18,12 @@ export const AimedShot: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "castThroughMez": [
+    "hold",
+    "sleep",
+    "stun",
+    "terror"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 80,

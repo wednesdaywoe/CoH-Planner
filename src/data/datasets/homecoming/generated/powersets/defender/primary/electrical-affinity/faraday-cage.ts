@@ -18,6 +18,11 @@ export const FaradayCage: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "castThroughMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 25,

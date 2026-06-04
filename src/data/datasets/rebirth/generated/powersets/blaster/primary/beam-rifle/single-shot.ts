@@ -18,6 +18,12 @@ export const SingleShot: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "castThroughMez": [
+    "hold",
+    "sleep",
+    "stun",
+    "terror"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,

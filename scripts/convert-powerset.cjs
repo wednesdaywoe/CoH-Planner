@@ -3218,6 +3218,15 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     effectArea: EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area,
   };
 
+  // Cast-through-mez: which mez states this power can still be activated through
+  // (Blaster Defiance lets low-tier attacks fire while Held/Slept/Stunned/
+  // Terrorized; some click powers are flagged similarly). The bin parser captures
+  // it as `cast_through`; surface it for the Info panel. Omit when empty so the
+  // vast majority of powers carry nothing.
+  if (Array.isArray(powerJson.cast_through) && powerJson.cast_through.length) {
+    power.castThroughMez = powerJson.cast_through;
+  }
+
   // Basic stats
   power.stats = {
     accuracy: powerJson.accuracy,

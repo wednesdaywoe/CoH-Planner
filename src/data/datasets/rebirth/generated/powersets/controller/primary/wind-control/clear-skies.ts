@@ -18,6 +18,12 @@ export const ClearSkies: Power = {
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "castThroughMez": [
+    "hold",
+    "sleep",
+    "stun",
+    "terror"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 2

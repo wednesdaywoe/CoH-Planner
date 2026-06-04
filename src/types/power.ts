@@ -538,6 +538,13 @@ export interface Power {
   effectArea?: EffectArea;
   /** Max targets for AoE */
   maxTargets?: number;
+  /**
+   * Mez states this power can still be activated through (e.g. Blaster Defiance
+   * lets low-tier attacks fire while Held/Slept/Stunned/Terrorized). Values:
+   * 'hold' | 'sleep' | 'stun' | 'terror'. Absent when the power can't be cast
+   * through any mez (the common case).
+   */
+  castThroughMez?: Array<'hold' | 'sleep' | 'stun' | 'terror'>;
   /** Prerequisite power(s) - logical expression */
   requires?: string;
   /**

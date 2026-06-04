@@ -37,13 +37,30 @@ interface TagsBlockProps {
   power: Power;
 }
 
+const CAST_THROUGH_MEZ_LABELS: Record<string, string> = {
+  hold: 'Held', sleep: 'Slept', stun: 'Stunned', terror: 'Terrorized',
+};
+
+function formatCastThroughMez(states: readonly string[]): string {
+  return states.map((s) => CAST_THROUGH_MEZ_LABELS[s] ?? s).join(', ');
+}
+
 export function TagsBlock({ power }: TagsBlockProps) {
   const targetLabel = formatTargetType(power.targetType);
   const allowedEnh = formatAllowedEnhancements(power);
+  const castThroughMez = power.castThroughMez?.length ? formatCastThroughMez(power.castThroughMez) : null;
   return (
     <div className="bg-slate-800/40 rounded p-2 space-y-0.5">
       <KvRow label="Power Type" value={power.powerType} />
       {targetLabel && <KvRow label="Target Type" value={targetLabel} />}
+      {castThroughMez && (
+        <KvRow
+          label="Cast While Mez'd"
+          value={castThroughMez}
+          valueClass="text-amber-300"
+          title={`This power can still be activated while ${castThroughMez} (e.g. Blaster Defiance).`}
+        />
+      )}
       {allowedEnh && <KvRow label="Allowed Enh" value={allowedEnh} valueClass="text-slate-300 truncate" title={allowedEnh} />}
     </div>
   );
