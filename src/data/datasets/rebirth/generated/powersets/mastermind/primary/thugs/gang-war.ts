@@ -41,6 +41,7 @@ export const GangWar: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
+      "duration": 120,
       "entities": [
         {
           "entity": "Pets_Thug_Pose_01",

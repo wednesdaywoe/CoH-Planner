@@ -39,7 +39,8 @@ export const GlueArrow: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_StickyArrow"
+      "entity": "Pets_StickyArrow",
+      "duration": 30
     }
   }
 };

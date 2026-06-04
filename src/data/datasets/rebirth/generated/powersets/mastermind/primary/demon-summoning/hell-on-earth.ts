@@ -55,6 +55,7 @@ export const HellonEarth: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Living_Hellfire",
+      "duration": 90,
       "entityCount": 10
     },
     "buffDuration": 90

@@ -48,6 +48,7 @@ export const Haunt: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Shade",
+      "duration": 60,
       "entityCount": 2
     }
   }

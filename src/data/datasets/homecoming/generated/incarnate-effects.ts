@@ -1317,3 +1317,100 @@ export const GENERATED_LORE_EFFECTS: Record<string, {
   // Warworks Total Radial Improved Ally
   'warworks_total_radial_improved_ally': {"faction":"War Works","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":1},
 };
+
+// ============================================
+// GENESIS EFFECTS (Rebirth)
+// ============================================
+// Each ability AMPLIFIES a partner slot at level 45+ (and grants an
+// exemplar-only power below 45). `tierPercent` (0.025|0.05|0.075|0.1)
+// is the amplification; what it targets is fixed per tree:
+//   data    → your Lore pets' damage (+ flat `loreMaxHP`)
+//   verdict → your Judgement attack's damage
+//   fate    → your Destiny slot ability's effects
+//   socket  → your Interface procs AND your player Max HP / Max End
+// It is NOT a flat global player buff — see incarnate-effects.ts.
+
+export const GENERATED_GENESIS_EFFECTS: Record<string, {
+  displayName: string;
+  tree: string;
+  enhancesSlot: string;
+  tierPercent: number;
+  loreMaxHP?: number;
+  exemplarPower: string;
+  // Below-45 exemplar power (typed by tree). Authoritative shape:
+  // GenesisExemplarEffect in incarnate-effects.ts.
+  exemplarEffect?: { kind: string; [k: string]: unknown };
+}> = {
+  // Data Core Flawless Genesis
+  'data_core_flawless_genesis': {"displayName":"Data Core Flawless Genesis","tree":"data","enhancesSlot":"lore","tierPercent":0.1,"loreMaxHP":200,"exemplarPower":"Incarnate.Data.Longbow_Core_Superior_Data","exemplarEffect":{"kind":"summon","faction":"Longbow","pets":["Boss","Lieutenant"],"duration":150,"recharge":900}},
+  // Data Core Genesis
+  'data_core_genesis': {"displayName":"Data Core Genesis","tree":"data","enhancesSlot":"lore","tierPercent":0.05,"loreMaxHP":100,"exemplarPower":"Incarnate.Data.Robotic_Drones_Core_Data","exemplarEffect":{"kind":"summon","faction":"Drones","pets":["Boss"],"duration":150,"recharge":900}},
+  // Data Genesis
+  'data_genesis': {"displayName":"Data Genesis","tree":"data","enhancesSlot":"lore","tierPercent":0.025,"loreMaxHP":50,"exemplarPower":"Incarnate.Data.Rikti_Data","exemplarEffect":{"kind":"summon","faction":"Rikti","pets":["Lieutenant"],"duration":150,"recharge":900}},
+  // Data Partial Core Genesis
+  'data_partial_core_genesis': {"displayName":"Data Partial Core Genesis","tree":"data","enhancesSlot":"lore","tierPercent":0.075,"loreMaxHP":150,"exemplarPower":"Incarnate.Data.IDF_Partial_Core_Improved_Data","exemplarEffect":{"kind":"summon","faction":"IDF","pets":["Boss","Support"],"duration":150,"recharge":900}},
+  // Data Partial Radial Genesis
+  'data_partial_radial_genesis': {"displayName":"Data Partial Radial Genesis","tree":"data","enhancesSlot":"lore","tierPercent":0.075,"loreMaxHP":150,"exemplarPower":"Incarnate.Data.Clockwork_Partial_Radial_Improved_Data","exemplarEffect":{"kind":"summon","faction":"Clockwork","pets":["Lieutenant","Support"],"duration":150,"recharge":600}},
+  // Data Radial Flawless Genesis
+  'data_radial_flawless_genesis': {"displayName":"Data Radial Flawless Genesis","tree":"data","enhancesSlot":"lore","tierPercent":0.1,"loreMaxHP":200,"exemplarPower":"Incarnate.Data.Arachnos_Radial_Superior_Data","exemplarEffect":{"kind":"summon","faction":"Arachnos","pets":["Boss","Support"],"duration":150,"recharge":600}},
+  // Data Radial Genesis
+  'data_radial_genesis': {"displayName":"Data Radial Genesis","tree":"data","enhancesSlot":"lore","tierPercent":0.05,"loreMaxHP":100,"exemplarPower":"Incarnate.Data.Polar_Lights_Radial_Data","exemplarEffect":{"kind":"summon","faction":"Lights","pets":["Lieutenant","Support"],"duration":150,"recharge":900}},
+  // Data Total Core Genesis
+  'data_total_core_genesis': {"displayName":"Data Total Core Genesis","tree":"data","enhancesSlot":"lore","tierPercent":0.075,"loreMaxHP":150,"exemplarPower":"Incarnate.Data.Cimeroran_Total_Core_Improved_Data","exemplarEffect":{"kind":"summon","faction":"Cimeroran","pets":["Boss","Lieutenant"],"duration":150,"recharge":900}},
+  // Data Total Radial Genesis
+  'data_total_radial_genesis': {"displayName":"Data Total Radial Genesis","tree":"data","enhancesSlot":"lore","tierPercent":0.075,"loreMaxHP":150,"exemplarPower":"Incarnate.Data.Vanguard_Total_Radial_Improved_Data","exemplarEffect":{"kind":"summon","faction":"Vanguard","pets":["Lieutenant","Support"],"duration":150,"recharge":900}},
+  // Fate Core Flawless Genesis
+  'fate_core_flawless_genesis': {"displayName":"Fate Core Flawless Genesis","tree":"fate","enhancesSlot":"destiny","tierPercent":0.1,"exemplarPower":"Incarnate.Fate.Clarion_Core_Fortune","exemplarEffect":{"kind":"buff","stats":{},"radius":60,"recharge":240,"mezProtection":10.5}},
+  // Fate Core Genesis
+  'fate_core_genesis': {"displayName":"Fate Core Genesis","tree":"fate","enhancesSlot":"destiny","tierPercent":0.05,"exemplarPower":"Incarnate.Fate.Ageless_Core_Fate","exemplarEffect":{"kind":"buff","stats":{"endurance":0.25,"recharge":0.2,"recovery":2.5},"radius":30,"recharge":240}},
+  // Fate Genesis
+  'fate_genesis': {"displayName":"Fate Genesis","tree":"fate","enhancesSlot":"destiny","tierPercent":0.025,"exemplarPower":"Incarnate.Fate.Ageless_Fate","exemplarEffect":{"kind":"buff","stats":{"endurance":0.25,"recharge":0.2},"radius":30,"recharge":240}},
+  // Fate Partial Core Genesis
+  'fate_partial_core_genesis': {"displayName":"Fate Partial Core Genesis","tree":"fate","enhancesSlot":"destiny","tierPercent":0.075,"exemplarPower":"Incarnate.Fate.Rebirth_Partial_Core_Fate","exemplarEffect":{"kind":"buff","stats":{},"radius":30,"recharge":240}},
+  // Fate Partial Radial Genesis
+  'fate_partial_radial_genesis': {"displayName":"Fate Partial Radial Genesis","tree":"fate","enhancesSlot":"destiny","tierPercent":0.075,"exemplarPower":"Incarnate.Fate.Barrier_Partial_Radial_Fate","exemplarEffect":{"kind":"buff","stats":{},"radius":30,"recharge":240}},
+  // Fate Radial Flawless Genesis
+  'fate_radial_flawless_genesis': {"displayName":"Fate Radial Flawless Genesis","tree":"fate","enhancesSlot":"destiny","tierPercent":0.1,"exemplarPower":"Incarnate.Fate.Clarion_Radial_Fortune","exemplarEffect":{"kind":"buff","stats":{},"radius":60,"recharge":240,"mezProtection":15}},
+  // Fate Radial Genesis
+  'fate_radial_genesis': {"displayName":"Fate Radial Genesis","tree":"fate","enhancesSlot":"destiny","tierPercent":0.05,"exemplarPower":"Incarnate.Fate.Ageless_Radial_Fate","exemplarEffect":{"kind":"buff","stats":{"endurance":0.25,"recharge":0.2},"radius":30,"recharge":240}},
+  // Fate Total Core Genesis
+  'fate_total_core_genesis': {"displayName":"Fate Total Core Genesis","tree":"fate","enhancesSlot":"destiny","tierPercent":0.075,"exemplarPower":"Incarnate.Fate.Rebirth_Total_Core_Fate","exemplarEffect":{"kind":"buff","stats":{},"radius":60,"recharge":240}},
+  // Fate Total Radial Genesis
+  'fate_total_radial_genesis': {"displayName":"Fate Total Radial Genesis","tree":"fate","enhancesSlot":"destiny","tierPercent":0.075,"exemplarPower":"Incarnate.Fate.Barrier_Total_Radial_Fate","exemplarEffect":{"kind":"buff","stats":{},"radius":30,"recharge":240}},
+  // Socket Core Flawless Genesis
+  'socket_core_flawless_genesis': {"displayName":"Socket Core Flawless Genesis","tree":"socket","enhancesSlot":"interface","tierPercent":0.1,"exemplarPower":"Incarnate.Socket.Resistance_Debuff","exemplarEffect":{"kind":"proc","label":"-Resistance","duration":8.3,"procPeriod":10,"debuffType":"-Resistance","debuffMagnitude":0.0125}},
+  // Socket Core Genesis
+  'socket_core_genesis': {"displayName":"Socket Core Genesis","tree":"socket","enhancesSlot":"interface","tierPercent":0.05,"exemplarPower":"Incarnate.Socket.Confuse","exemplarEffect":{"kind":"proc","label":"Confused","duration":0,"procPeriod":10,"debuffType":"Confused","debuffMagnitude":4.3}},
+  // Socket Genesis
+  'socket_genesis': {"displayName":"Socket Genesis","tree":"socket","enhancesSlot":"interface","tierPercent":0.025,"exemplarPower":"Incarnate.Socket.Immobilize","exemplarEffect":{"kind":"proc","label":"Immobilized","duration":0,"procPeriod":10,"debuffType":"Immobilized","debuffMagnitude":4.3}},
+  // Socket Partial Core Genesis
+  'socket_partial_core_genesis': {"displayName":"Socket Partial Core Genesis","tree":"socket","enhancesSlot":"interface","tierPercent":0.075,"exemplarPower":"Incarnate.Socket.Endurance_Drain","exemplarEffect":{"kind":"proc","label":"-End, -Recovery","duration":4.3,"procPeriod":10,"debuffType":"-End, -Recovery","debuffMagnitude":0.25}},
+  // Socket Partial Radial Genesis
+  'socket_partial_radial_genesis': {"displayName":"Socket Partial Radial Genesis","tree":"socket","enhancesSlot":"interface","tierPercent":0.075,"exemplarPower":"Incarnate.Socket.MaxHP_Debuff","exemplarEffect":{"kind":"proc","label":"-MaxHP","duration":8.3,"procPeriod":10,"debuffType":"-MaxHP","debuffMagnitude":0.0175}},
+  // Socket Radial Flawless Genesis
+  'socket_radial_flawless_genesis': {"displayName":"Socket Radial Flawless Genesis","tree":"socket","enhancesSlot":"interface","tierPercent":0.1,"exemplarPower":"Incarnate.Socket.Resistance_Debuff","exemplarEffect":{"kind":"proc","label":"-Resistance","duration":8.3,"procPeriod":10,"debuffType":"-Resistance","debuffMagnitude":0.0125}},
+  // Socket Radial Genesis
+  'socket_radial_genesis': {"displayName":"Socket Radial Genesis","tree":"socket","enhancesSlot":"interface","tierPercent":0.05,"exemplarPower":"Incarnate.Socket.Confuse","exemplarEffect":{"kind":"proc","label":"Confused","duration":0,"procPeriod":10,"debuffType":"Confused","debuffMagnitude":4.3}},
+  // Socket Total Core Genesis
+  'socket_total_core_genesis': {"displayName":"Socket Total Core Genesis","tree":"socket","enhancesSlot":"interface","tierPercent":0.075,"exemplarPower":"Incarnate.Socket.Endurance_Drain","exemplarEffect":{"kind":"proc","label":"-End, -Recovery","duration":4.3,"procPeriod":10,"debuffType":"-End, -Recovery","debuffMagnitude":0.25}},
+  // Socket Total Radial Genesis
+  'socket_total_radial_genesis': {"displayName":"Socket Total Radial Genesis","tree":"socket","enhancesSlot":"interface","tierPercent":0.075,"exemplarPower":"Incarnate.Socket.DoT_Toxic","exemplarEffect":{"kind":"proc","label":"Minor DoT(Toxic)","duration":4.3,"procPeriod":10,"dotType":"Toxic","dotDamage":0.05,"dotTableName":"Melee_IncarnateProcDamage"}},
+  // Verdict Core Flawless Genesis
+  'verdict_core_flawless_genesis': {"displayName":"Verdict Core Flawless Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.1,"exemplarPower":"Incarnate.Verdict.Pyronic_Core_Final_Verdict","exemplarEffect":{"kind":"attack","damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.1 scale/10.6s"]}},
+  // Verdict Core Genesis
+  'verdict_core_genesis': {"displayName":"Verdict Core Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.05,"exemplarPower":"Incarnate.Verdict.Void_Core_Verdict","exemplarEffect":{"kind":"attack","damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  // Verdict Genesis
+  'verdict_genesis': {"displayName":"Verdict Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.025,"exemplarPower":"Incarnate.Verdict.Void_Verdict","exemplarEffect":{"kind":"attack","damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  // Verdict Partial Core Genesis
+  'verdict_partial_core_genesis': {"displayName":"Verdict Partial Core Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Ion_Partial_Core_Verdict","exemplarEffect":{"kind":"attack","damageType":"Energy","effectArea":"AoE","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  // Verdict Partial Radial Genesis
+  'verdict_partial_radial_genesis': {"displayName":"Verdict Partial Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Cryonic_Partial_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  // Verdict Radial Flawless Genesis
+  'verdict_radial_flawless_genesis': {"displayName":"Verdict Radial Flawless Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.1,"exemplarPower":"Incarnate.Verdict.Vorpal_Radial_Final_Verdict","exemplarEffect":{"kind":"attack","damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":40,"activationTime":2.5,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  // Verdict Radial Genesis
+  'verdict_radial_genesis': {"displayName":"Verdict Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.05,"exemplarPower":"Incarnate.Verdict.Void_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  // Verdict Total Core Genesis
+  'verdict_total_core_genesis': {"displayName":"Verdict Total Core Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Ion_Total_Core_Verdict","exemplarEffect":{"kind":"attack","damageType":"Energy","effectArea":"AoE","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+  // Verdict Total Radial Genesis
+  'verdict_total_radial_genesis': {"displayName":"Verdict Total Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Cryonic_Partial_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
+};
