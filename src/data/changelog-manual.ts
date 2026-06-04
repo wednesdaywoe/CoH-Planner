@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-2',
+    date: '2026-06-3',
     items: [
+      { message: 'Rebirth: Fix a bug causing the planner to overstate Blaster ToHit buffs (Aim/Tactics/Build Up).', type: 'fix' },
       { message: 'Rebirth users can now utilize the Genesis incarnate slot! (lucky 😤) Now, Genesis is complicated and I expect this first pass to be messy. Please manage your expectations accordingly, and report any issues you find!', type: 'feat' },
       { message: 'Added a Set Totals pop-up, just below the dashboard', type: 'feat' },
       { message: 'Fix for some auto-grant powers that were mangled by the previous data set regeneration', type: 'fix' },
