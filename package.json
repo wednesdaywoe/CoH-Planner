@@ -9,6 +9,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "tsc --noEmit",
+    "regen": "node scripts/regen-all.cjs",
+    "regen:generated": "node scripts/regen-all.cjs --generated-only",
     "test": "vitest run",
     "test:watch": "vitest",
     "import-mids": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/bulk-import-mids.ts",

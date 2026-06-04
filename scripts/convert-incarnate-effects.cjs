@@ -48,7 +48,13 @@ function readJson(filePath) {
 
 function readDir(dirPath) {
   try {
-    return fs.readdirSync(dirPath).filter(f => f.endsWith('.json') && f !== 'index.json');
+    // Sort so output order is deterministic across platforms (NTFS readdir is
+    // alphabetical, ext4 is hash-order) — the regen-diff CI guard runs on Linux
+    // and must byte-match output committed from Windows.
+    return fs
+      .readdirSync(dirPath)
+      .filter(f => f.endsWith('.json') && f !== 'index.json')
+      .sort();
   } catch {
     return [];
   }

@@ -1,0 +1,65 @@
+# Regen-and-diff guard.
+#
+# Rebuilds src/data/datasets/*/generated/ from the committed exported_powers/
+# input (no .pigg, no Python) and asserts it byte-matches what's checked in.
+# This catches ANY converter drift or stale generated/ output — a strictly
+# stronger guard than the structural invariant scan in the test suite, which
+# only covers known regression classes.
+#
+# Deterministic and fast (~45s full regen — the converters embed no timestamps).
+# Scoped to generated/ only: the layered at-tables / kheldian / pet-entities /
+# index files are produced by separate converters and reconciled deliberately
+# (some carry calc-affecting data changes), so they are intentionally NOT gated
+# here. `npm run regen` (no flag) rebuilds those too for local use.
+#
+# Path-filtered so it runs only when something that can change generated/ moves:
+# converter scripts, the input data, the generated output itself, or this file.
+name: Regen diff
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'exported_powers/**'
+      - 'src/data/datasets/*/generated/**'
+      - 'package.json'
+      - '.github/workflows/regen-diff.yml'
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'exported_powers/**'
+      - 'src/data/datasets/*/generated/**'
+      - 'package.json'
+      - '.github/workflows/regen-diff.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regen-diff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Regenerate generated/ from committed exported_powers/
+        run: npm run regen:generated
+
+      - name: Assert generated/ matches converter output
+        run: |
+          git diff --stat -- src/data/datasets/homecoming/generated src/data/datasets/rebirth/generated
+          git diff --exit-code -- src/data/datasets/homecoming/generated src/data/datasets/rebirth/generated || {
+            echo "::error::generated/ drifted from converter output. Run 'npm run regen' locally and commit the result.";
+            exit 1;
+          }
