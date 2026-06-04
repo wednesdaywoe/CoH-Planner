@@ -190,9 +190,9 @@ export const Adaptation: Power = {
         },
         "durations": {
           "regenBuffUnenhanced": 1,
-          "recoveryBuff": 1
+          "recoveryBuffUnenhanced": 1
         },
-        "recoveryBuff": {
+        "recoveryBuffUnenhanced": {
           "scale": 0.18,
           "table": "Melee_Ones"
         },

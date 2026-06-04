@@ -79,7 +79,7 @@ export const PowerSurge: Power = {
     },
     "durations": {
       "resistance": 30,
-      "recoveryBuff": 30,
+      "recoveryBuffUnenhanced": 30,
       "regenBuff": 30,
       "knockup": 30,
       "knockback": 30,
@@ -92,7 +92,7 @@ export const PowerSurge: Power = {
       "sleep": 30,
       "regenDebuff": 15
     },
-    "recoveryBuff": {
+    "recoveryBuffUnenhanced": {
       "scale": 1,
       "table": "Melee_Ones"
     },

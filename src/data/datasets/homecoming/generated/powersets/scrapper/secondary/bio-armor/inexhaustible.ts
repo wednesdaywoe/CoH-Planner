@@ -97,9 +97,9 @@ export const Inexhaustible: Power = {
         },
         "durations": {
           "regenBuffUnenhanced": 5.25,
-          "recoveryBuff": 5.25
+          "recoveryBuffUnenhanced": 5.25
         },
-        "recoveryBuff": {
+        "recoveryBuffUnenhanced": {
           "scale": 0.1,
           "table": "Melee_Ones"
         },

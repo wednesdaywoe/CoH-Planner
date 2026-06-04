@@ -571,6 +571,7 @@ function adjustForStacking(
 
 interface ActivePowerEffect {
   tohitBuff?: number;
+  tohitBuffUnenhanced?: ScalarOrScaled;
   accuracyBuff?: number;
   damageBuff?: number;
   rechargeBuff?: ScalarOrScaled;
@@ -593,6 +594,7 @@ interface ActivePowerEffect {
   regenBuff?: ScalarOrScaled;
   regenBuffUnenhanced?: ScalarOrScaled;
   recoveryBuff?: ScalarOrScaled;
+  recoveryBuffUnenhanced?: ScalarOrScaled;
   maxHPBuff?: ScalarOrScaled;
   maxEndBuff?: ScalarOrScaled;
   // Effect targeting (SingleTarget, AoE, etc.)
@@ -891,6 +893,19 @@ function applyActivePowerBonuses(
       const enhMultiplier = 1 + (enhBonuses.tohit || 0) + strengthBuffs.toHit;
       const adjustedBuff = adjustForStacking(effects.tohitBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'tohitBuff', effects.maxStacks);
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      global.toHit += value;
+      addToBreakdown(breakdown, 'toHit', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    // ToHit buff that ignores strength (IgnoreStrength) — NOT boosted by ToHit
+    // enh or global +ToHit (e.g. Bio Armor Environmental Adaptation's +ToHit).
+    if (effects.tohitBuffUnenhanced !== undefined) {
+      const adjusted = adjustForStacking(effects.tohitBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'tohitBuffUnenhanced', effects.maxStacks);
+      const value = resolveScaledEffect(adjusted, archetypeId, buildLevel) * 100;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
         name: power.name,
@@ -1287,6 +1302,19 @@ function applyActivePowerBonuses(
           type: 'active-power',
         });
       }
+    }
+
+    // Recovery buff that ignores strength (IgnoreStrength) — NOT boosted by End
+    // Mod enh or global +recovery (e.g. Bio Armor adaptation's ride-along recovery).
+    if (effects.recoveryBuffUnenhanced !== undefined) {
+      const adjusted = adjustForStacking(effects.recoveryBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'recoveryBuffUnenhanced', effects.maxStacks);
+      const value = resolveScaledEffect(adjusted, archetypeId, buildLevel) * 100;
+      global.recovery += value;
+      addToBreakdown(breakdown, 'recovery', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
     }
 
     // Max HP buff

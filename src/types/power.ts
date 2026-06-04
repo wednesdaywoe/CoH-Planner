@@ -293,6 +293,8 @@ export interface PowerEffects {
   // === BUFF EFFECTS ===
   /** ToHit buff value (scale or {scale, table}) */
   tohitBuff?: NumberOrScaled;
+  /** ToHit buff value (unenhanceable — IgnoreStrength; not boosted by ToHit enh / global +ToHit) */
+  tohitBuffUnenhanced?: NumberOrScaled;
   /** Accuracy self-buff value (scale or {scale, table}) — e.g. Focused Accuracy */
   accuracyBuff?: NumberOrScaled;
   /** Damage buff value (scale or {scale, table}) */
@@ -307,6 +309,8 @@ export interface PowerEffects {
   rechargeBuff?: NumberOrScaled;
   /** Recovery buff value (percentage as decimal) */
   recoveryBuff?: NumberOrScaled;
+  /** Recovery buff value (unenhanceable — IgnoreStrength; not boosted by End Mod / global +recovery) */
+  recoveryBuffUnenhanced?: NumberOrScaled;
   /** Regeneration buff value */
   regenBuff?: NumberOrScaled;
   /** Regeneration buff value (unenhanceable — IgnoreStrength) */

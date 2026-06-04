@@ -155,12 +155,12 @@ export const SkySplitter: Power = {
         }
       ],
       "effects": {
-        "tohitBuff": {
+        "tohitBuffUnenhanced": {
           "scale": 2,
           "table": "Melee_Buff_ToHit"
         },
         "durations": {
-          "tohitBuff": 15
+          "tohitBuffUnenhanced": 15
         },
         "buffDuration": 15
       }
@@ -189,9 +189,9 @@ export const SkySplitter: Power = {
         },
         "durations": {
           "regenBuffUnenhanced": 15,
-          "recoveryBuff": 15
+          "recoveryBuffUnenhanced": 15
         },
-        "recoveryBuff": {
+        "recoveryBuffUnenhanced": {
           "scale": 1.66,
           "table": "Melee_Ones"
         },

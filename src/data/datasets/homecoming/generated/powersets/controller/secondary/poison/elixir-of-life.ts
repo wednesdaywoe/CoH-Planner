@@ -59,7 +59,7 @@ export const ElixirofLife: Power = {
       "recoveryBuff": 90,
       "rechargeBuff": 90,
       "damageBuff": 90,
-      "tohitBuff": 90,
+      "tohitBuffUnenhanced": 90,
       "resistance": 90,
       "stealth": 15,
       "hold": 4,
@@ -74,7 +74,7 @@ export const ElixirofLife: Power = {
       "scale": 4,
       "table": "Ranged_Buff_Dmg"
     },
-    "tohitBuff": {
+    "tohitBuffUnenhanced": {
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
     },

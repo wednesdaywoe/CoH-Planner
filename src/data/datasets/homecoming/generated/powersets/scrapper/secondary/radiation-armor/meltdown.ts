@@ -72,12 +72,12 @@ export const Meltdown: Power = {
     },
     "durations": {
       "resistance": 60,
-      "recoveryBuff": 60,
+      "recoveryBuffUnenhanced": 60,
       "damageBuff": 60,
       "recoveryDebuff": 10,
       "debuffResistance": 10
     },
-    "recoveryBuff": {
+    "recoveryBuffUnenhanced": {
       "scale": 0.3,
       "table": "Melee_Ones"
     },

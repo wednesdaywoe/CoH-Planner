@@ -157,12 +157,12 @@ export const EnvironmentalAdaptation: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "tohitBuff": {
+        "tohitBuffUnenhanced": {
           "scale": 0.75,
           "table": "Melee_Buff_ToHit"
         },
         "durations": {
-          "tohitBuff": 0.75
+          "tohitBuffUnenhanced": 0.75
         },
         "buffDuration": 0.75
       },

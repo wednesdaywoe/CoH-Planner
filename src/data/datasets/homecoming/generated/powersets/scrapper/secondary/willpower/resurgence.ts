@@ -52,7 +52,7 @@ export const Resurgence: Power = {
       "recoveryBuff": 90,
       "rechargeBuff": 90,
       "damageBuff": 90,
-      "tohitBuff": 90,
+      "tohitBuffUnenhanced": 90,
       "damageDebuff": 45,
       "tohitDebuff": 45,
       "untouchable": 15,
@@ -66,7 +66,7 @@ export const Resurgence: Power = {
       "scale": 4,
       "table": "Ranged_Buff_Dmg"
     },
-    "tohitBuff": {
+    "tohitBuffUnenhanced": {
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
     },

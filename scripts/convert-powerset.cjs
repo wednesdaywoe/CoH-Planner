@@ -2404,6 +2404,10 @@ function extractEffects(templates, powerName) {
             recordDuration('debuffResistance');
           } else if (isDebuff || scale < 0) {
             addOrAccumulate('recoveryDebuff');
+          } else if (template.flags?.includes('IgnoreStrength')) {
+            // IgnoreStrength: Endurance Mod enh / global +recovery don't apply to
+            // this portion (e.g. Bio Armor adaptation's ride-along +recovery).
+            addOrAccumulate('recoveryBuffUnenhanced');
           } else {
             addOrAccumulate('recoveryBuff');
           }
@@ -2491,6 +2495,11 @@ function extractEffects(templates, powerName) {
             effects.tohitDebuff = makeEffect();
             if (isSelfTargeting) effects.selfPenalty = true;
             recordDuration('tohitDebuff');
+          } else if (template.flags?.includes('IgnoreStrength')) {
+            // IgnoreStrength: ToHit Buff enh / global +ToHit don't apply to this
+            // buff (e.g. Bio Armor Environmental Adaptation's +ToHit).
+            effects.tohitBuffUnenhanced = makeEffect();
+            recordDuration('tohitBuffUnenhanced');
           } else {
             effects.tohitBuff = makeEffect();
             recordDuration('tohitBuff');
@@ -2529,6 +2538,8 @@ function extractEffects(templates, powerName) {
             if (isSelfTargeting) effects.selfPenalty = true;
             recordDuration('rechargeDebuff');
           } else {
+            // Note: +recharge buffs aren't enhanced by Recharge IOs (those reduce a
+            // power's own recharge), so IgnoreStrength is moot here — no split.
             effects.rechargeBuff = makeEffect();
             recordDuration('rechargeBuff');
           }

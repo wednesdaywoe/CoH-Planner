@@ -55,7 +55,7 @@ export const ConduitofPain: Power = {
       "recoveryBuff": 60,
       "rechargeBuff": 60,
       "damageBuff": 60,
-      "tohitBuff": 60,
+      "tohitBuffUnenhanced": 60,
       "stealth": 15,
       "damageDebuff": 30,
       "tohitDebuff": 30
@@ -68,7 +68,7 @@ export const ConduitofPain: Power = {
       "scale": 3,
       "table": "Ranged_Buff_Dmg"
     },
-    "tohitBuff": {
+    "tohitBuffUnenhanced": {
       "scale": 2,
       "table": "Ranged_Buff_ToHit"
     },

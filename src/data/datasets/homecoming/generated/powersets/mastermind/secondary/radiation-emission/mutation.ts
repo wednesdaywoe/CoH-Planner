@@ -55,7 +55,7 @@ export const Mutation: Power = {
       "recoveryBuff": 90,
       "rechargeBuff": 90,
       "damageBuff": 90,
-      "tohitBuff": 90,
+      "tohitBuffUnenhanced": 90,
       "stealth": 15,
       "damageDebuff": 45,
       "tohitDebuff": 45
@@ -68,7 +68,7 @@ export const Mutation: Power = {
       "scale": 4,
       "table": "Ranged_Buff_Dmg"
     },
-    "tohitBuff": {
+    "tohitBuffUnenhanced": {
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
     },

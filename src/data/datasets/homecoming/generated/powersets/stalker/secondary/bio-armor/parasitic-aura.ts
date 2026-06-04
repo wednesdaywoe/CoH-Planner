@@ -80,12 +80,12 @@ export const ParasiticAura: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "recoveryBuff": {
+        "recoveryBuffUnenhanced": {
           "scale": 0.09,
           "table": "Melee_Ones"
         },
         "durations": {
-          "recoveryBuff": 45,
+          "recoveryBuffUnenhanced": 45,
           "regenBuffUnenhanced": 45
         },
         "regenBuffUnenhanced": {

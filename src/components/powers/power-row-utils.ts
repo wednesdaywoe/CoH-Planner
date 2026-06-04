@@ -26,8 +26,8 @@ export function hasHealingDamage(power: { damage?: unknown }): boolean {
  */
 const CASTER_BUFF_KEYS = [
   // Standard *Buff fields
-  'tohitBuff', 'damageBuff', 'defenseBuff', 'defenseBuffSuppressible',
-  'rechargeBuff', 'recoveryBuff', 'regenBuff', 'regenBuffUnenhanced',
+  'tohitBuff', 'tohitBuffUnenhanced', 'damageBuff', 'defenseBuff', 'defenseBuffSuppressible',
+  'rechargeBuff', 'recoveryBuff', 'recoveryBuffUnenhanced', 'regenBuff', 'regenBuffUnenhanced',
   'speedBuff', 'enduranceBuff', 'enduranceGain', 'maxHPBuff', 'maxEndBuff',
   'rangeBuff', 'enduranceDiscount', 'threatBuff', 'perceptionBuff', 'absorb',
   // Unsuffixed top-level fields (used by some powers in place of *Buff)

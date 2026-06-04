@@ -42,13 +42,13 @@ export const ParticleShielding: Power = {
     "durations": {
       "absorb": 60,
       "regenBuff": 30,
-      "recoveryBuff": 60
+      "recoveryBuffUnenhanced": 60
     },
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "recoveryBuff": {
+    "recoveryBuffUnenhanced": {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
