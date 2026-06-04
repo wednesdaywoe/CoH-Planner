@@ -1,0 +1,48 @@
+Power Blaster_Support.Gadgets.Time_Bomb
+{
+    Name                 "Time_Bomb"                   
+    DisplayName          "7RRFPJVL7QW2YAV87RCNWRL85W"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             2
+    EntsAffected         kNone
+    EntsAutoHit          kNone
+    Target               kLiterallyAnything
+    EffectArea           kCharacter
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    FaceTarget           kFalse
+    HighlightEval        kRemoteBomb Mode?
+    HighlightRing        255 0 0 255
+    HighlightIcon        Gadgets_Timebomb
+    DisplayShortHelp     "P683974322"
+    DisplayHelp          "6JJKHEJAPWDCWWLATAQ757PAZX"
+    IconName             "Gadgets_RemoteBomb.tga"
+
+    Redirect
+    {
+        Power Redirects.Gadgets.Remote_Bomb_Target
+        Requires kRemoteBomb source.Mode? ! target.isFriend? ! &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Gadgets.Remote_Bomb_Self
+        Requires kRemoteBomb source.Mode? !
+    }
+    
+    Redirect
+    {
+        Power Redirects.Gadgets.Time_Bomb
+        Requires kRemoteBomb source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Redirects.Gadgets.Remote_Bomb_Blaster_Info
+        Requires 0
+        ShowInInfo 1
+    }
+    
+}

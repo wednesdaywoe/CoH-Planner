@@ -1,0 +1,49 @@
+#******************************************#
+# Power: Pets > Thug Arsonist Burn > Fire  #
+# Info:  DoT(Fire)                         #
+#******************************************#
+
+Power Mastermind_Pets.Arsonist_Burn.Fire
+{
+    Name                 "Fire"                        
+    DisplayName          "P4176258801"
+    Type                 kAuto
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    ActivatePeriod       0.2
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\Villain_ArsonHellion_Burn_Pet.pfx"
+    include              menu\Powers\AnimFX\Villain_ArsonHellion_Burn_Pet.pfx
+    DisplayShortHelp     "P3423146141"
+    DisplayHelp          "P306963201"
+    IconName             "FlamingShield_Burn.tga"
+    MaxTargetsHit        5
+    DisplayTargetShortHelp "P3423146141"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.0600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+}

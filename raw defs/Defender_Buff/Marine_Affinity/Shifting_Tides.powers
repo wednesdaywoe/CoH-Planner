@@ -1,0 +1,262 @@
+#*************************************************************************************#
+# Power: Buff > Marine Affinity > Shifting Tides                                      #
+# Info:  Toggle: Ranged (Targeted AoE), Team +DMG, +ToHit, +Recharge, Special Damage  #
+#*************************************************************************************#
+
+Power Defender_Buff.Marine_Affinity.Shifting_Tides
+{
+    Name                 "Shifting_Tides"              
+    DisplayName          "C93ZFWP6Y5YNYUNAV9Z2XVP6NA"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kDeadOrAliveAny
+    EntsAutoHit          kDeadOrAliveAny
+    Target               kDeadOrAliveAny
+    Range                80
+    EnduranceCost        0.078
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         15
+    ActivatePeriod       0.1
+    EffectArea           kSphere
+    Radius               25
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kBuff_ToHit_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Shifting_Tides.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Shifting_Tides.pfx
+    DisplayShortHelp     "QJM7CD4MQAXKWYM9EWZBMHTREX"
+    DisplayHelp          "MJ7FD2HGNTJEYVX4ZHERNTPXFX"
+    IconName             "MarineAffinity_ShiftingTides.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags NoHitDelay
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.5000
+            Magnitude 1.0000
+            Delay 0.5000
+            TickChance 0.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4173738004"
+                DisplayVictimHit "P1163387325"
+                DisplayInfo "RW32EWEG3H2NYTZ3VPCPUR9GRQ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Table "Ranged_Buff_Dmg"
+            Scale 0.2400
+            Magnitude 1.0000
+            TickChance 0.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayInfo "Y8DV3N7ELVFNYGM9UE6UAJEZRW"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Table "Ranged_Buff_ToHit"
+            Scale 0.0800
+            Magnitude 1.0000
+            TickChance 0.0000
+            StackType kIgnore
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "Y8DV3N7ELVFNYGM9UE6UAJEZRW"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Table "Melee_Ones"
+            Scale 0.0200
+            Magnitude 1.0000
+            TickChance 0.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayInfo "Y8DV3N7ELVFNYGM9UE6UAJEZRW"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires entref target> entref source> eq ! target.isFriend? ! && kShiftingTides target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStackThenIgnore
+            StackLimit 10
+            Flags IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Rising_Tide
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "WetStatus"
+            Requires kWet target.Mode? !
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 10.0000
+                Magnitude kWet
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "9D4E9JJ6JUHHYRM48NFCQZWY4A"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "RisingTide"
+            Chance 0.2500
+            Requires Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower? !
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.5000
+                Magnitude 1.0000
+                Delay 0.5000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4173738004"
+                    DisplayVictimHit "P1163387325"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kStr
+                Target kTarget
+                Table "Melee_Ones"
+                Duration 0.2400
+                StackType kReplace
+                Flags KeepThroughDeath CopyBoosts CopyCreatorCostume
+                Params Power
+                {
+                    Power Redirects.Marine_Affinity.Shifting_Tides_FX
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires entref target> entref source> eq ! target.isFriend? ! && Redirects.Marine_Affinity.Shifting_Tides target.ownPower? ! &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            StackType kReplace
+            Flags KeepThroughDeath CopyBoosts CopyCreatorCostume
+            Params Power
+            {
+                Power Redirects.Marine_Affinity.Shifting_Tides
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower?
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 0.2000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags NoHitDelay
+            FX
+            {
+                ContinuingFX PFX4
+            }
+            
+        }
+    }
+}

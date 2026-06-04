@@ -1,0 +1,213 @@
+Power Brute_Defense.Shield_Defense.One_with_the_Shield
+{
+    Name                 "One_with_the_Shield"         
+    DisplayName          "P805726243"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        2.6
+    TimeToActivate       2.5
+    RechargeTime         360
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost, kHeal_Boost, kRes_Damage_Boost, kRecovery_Boost
+    IgnoreStrength       kTrue
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu/powers/AnimFX/Player_Shield_OneWithTheShield.pfx"
+    include              menu/powers/AnimFX/Player_Shield_OneWithTheShield.pfx
+    DisplayShortHelp     "P1397713808"
+    DisplayHelp          "NF467KJESY56W4CZT95P6YJYTX"
+    DisplayAttackerHit   "P2265673329"
+    IconName             "ShieldDefense_OneWithTheShield.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 3.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS\Shields\OneWithTheShield_Continuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire kCold kEnergy kNegative_Energy kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 1.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 2.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -100.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback kRepel
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRepel
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -10.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffEndContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -0.6000
+            Magnitude 1.0000
+            Delay 120.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P657239359"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 110.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "PNNS8P9NMUAEW8NX8BCK3X6Z8Z"
+                DisplayFloat "PNNS8P9NMUAEW8NX8BCK3X6Z8Z"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -50.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 5.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

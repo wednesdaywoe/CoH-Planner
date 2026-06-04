@@ -1,0 +1,53 @@
+Power Dominator_Control.Pyrotechnic_Control.Hypnotizing_Lights
+{
+    Name                 "Hypnotizing_Lights"          
+    DisplayName          "L23WJ5SLXAYXYQV6PCRPT29YJA"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    EnduranceCost        8.528
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         45
+    EffectArea           kCone
+    Radius               70
+    Arc                  45
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSleep_Boost, kConfuse_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Hypnotizing_Lights.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Hypnotizing_Lights.pfx
+    DisplayShortHelp     "Z6DPVBCRWGCJWHNNZTSJFDT6L3"
+    DisplayHelp          "ZG2HBZ6RHZNKYZVYZPDQRSCXRS"
+    DisplayAttackerHit   "P2427223947"
+    DisplayVictimHit     "P275249828"
+    IconName             "Pyrotechnic_HypnotizingLights"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "USBJKCYE99J9WMXZRZWRKAF3FA"
+
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kCur
+            Target kCaster
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay NoProjectileDelay CopyBoosts ProcSeparately
+            Params Power
+            {
+                Power Redirects.Pyrotechnic_Control.Hypnotizing_Lights
+                Power Redirects.Pyrotechnic_Control.HypnotizingLights_Narrow
+            }
+            
+        }
+    }
+}

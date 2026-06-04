@@ -1,0 +1,437 @@
+#*********************************************************************************************************#
+# Power: Ranged > Water Blast > Dehydrate                                                                 #
+# Info:  Ranged, DMG(Cold/Smash), Foe -Speed, -Defense, DoT(Cold), Self +Heal Over Time, +/- Tidal Power  #
+#*********************************************************************************************************#
+
+Power Sentinel_Ranged.Water_Blast.Dehydrate
+{
+    Name                 "Dehydrate"                   
+    DisplayName          "P4212295513"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        8.528
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost
+    HighlightEval        temporary_powers.temporary_powers.tidal_power ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_Dehydrate.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_Dehydrate.PFX
+    DisplayShortHelp     "2VAZJYW9LTQMYSXWYWMKWH3FB2"
+    DisplayHelp          "MTMHY3ES2LMPYJXSV5W9FYBPR3"
+    IconName             "WaterBlast_Dehydrate.tga"
+    DisplayTargetShortHelp "P953118727"
+    DisplayTargetHelp    "P30930399"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.2500
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.7500
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4173738004"
+                    DisplayVictimHit "P1163387325"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1488
+                Duration 4.1000
+                MagnitudeExpr @StdResult
+                Magnitude 1.0000
+                DurationExpr 4.1 1 kWet target.Mode? 0.5 * + *
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3556385711"
+                    DisplayVictimHit "P658755009"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.2500
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.7500
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3JG5HRUCJEFYDNKTKYT8NS6YZ"
+                    DisplayVictimHit "RSFS5JY5GJRWYDVQRKL8MVN2KW"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.1488
+                Duration 4.1000
+                MagnitudeExpr @StdResult
+                Magnitude 1.0000
+                DurationExpr 4.1 1 kWet target.Mode? 0.5 * + *
+                Period 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MQ4YDWQFCSEBWXXQUC6NJBDXVQ"
+                    DisplayVictimHit "GDQ7FR7X93TTY7X3UPT8P9J7B3"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.5072
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.5218
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4173738004"
+                    DisplayVictimHit "P1163387325"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.1331
+                Duration 4.1000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3556385711"
+                    DisplayVictimHit "P658755009"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.5072
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.5218
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3JG5HRUCJEFYDNKTKYT8NS6YZ"
+                    DisplayVictimHit "RSFS5JY5GJRWYDVQRKL8MVN2KW"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.1331
+                Duration 4.1000
+                Magnitude 1.0000
+                Period 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MQ4YDWQFCSEBWXXQUC6NJBDXVQ"
+                    DisplayVictimHit "GDQ7FR7X93TTY7X3UPT8P9J7B3"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <=
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_HealSelf"
+            Scale 0.2750
+            Duration 3.1000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P606393157"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_HealSelf"
+            Scale 0.4130
+            Duration 3.1000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P606393157"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance RevokeAll
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Tidal_Power
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "TidalPower"
+        Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <=
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance NoHitDelay NoProjectileDelay
+            Messages
+            {
+                DisplayAttackerHit "P971765401"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Tidal_Power
+            }
+            
+        }
+    }
+}

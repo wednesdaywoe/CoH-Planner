@@ -1,0 +1,75 @@
+Power Scrapper_Defense.Energy_Aura.Efficiency
+{
+    Name                 "Efficiency"                  
+    DisplayName          "P218247840"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       1.17
+    RechargeTime         120
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_EnergyAura_ConservePower.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_EnergyAura_ConservePower.PFX
+    DisplayShortHelp     "P3200710885"
+    DisplayHelp          "T36B3GHSCHW3YCVVG68XYEBVJQ"
+    DisplayAttackerHit   "P222920327"
+    IconName             "EnergyAura_Energize.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnduranceDiscount
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffEndContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 2.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

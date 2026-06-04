@@ -1,0 +1,198 @@
+#**************************************#
+# Power: Summon > Ninjas > Call Genin  #
+# Info:  Summon Genin                  #
+#**************************************#
+
+Power Mastermind_Summon.Ninjas.Call_Genin
+{
+    Name                 "Call_Genin"                  
+    DisplayName          "P2880843410"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        5.46
+    TimeToActivate       1.7
+    TimeToRoot           1.7
+    RechargeTime         5
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kStunned_Boost, kSpeedRunning_Boost
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Mastermind_Ninja_Summon_Ninjas.pfx"
+    include              menu\Powers\AnimFX\Mastermind_Ninja_Summon_Ninjas.pfx
+    DisplayShortHelp     "P1506353275"
+    DisplayHelp          "EAW3PQN2ME43WDNCAE9E2QXAR2"
+    IconName             "Ninjas_CallGenin.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Genin
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires combatlevel source> 5 >
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Genin
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires combatlevel source> 17 >
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Genin
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 25.0000
+            Magnitude 1.0000
+            Delay 1.7000
+            StackType kIgnore
+            Flags NoHitDelay SetTimer
+            Params Power
+            {
+                Power Mastermind_Summon.Ninjas.Call_Genin
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Duration 2.0000
+            Magnitude 1.0000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&
+            StackType kStack
+            Suppress Attacked 8 Always
+            Flags IgnoreResistance NoHitDelay
+            Messages
+            {
+                DisplayInfo "8VVPP8TX54P4YUL33N3RAN2NRA"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&
+            StackType kStack
+            Suppress Attacked 8 Always
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "8VVPP8TX54P4YUL33N3RAN2NRA"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 3.0000
+            Magnitude 500.0000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&
+            StackType kStack
+            Suppress Attacked 8 Always
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath NoHitDelay
+            Messages
+            {
+                DisplayInfo "8VVPP8TX54P4YUL33N3RAN2NRA"
+            }
+            
+        }
+    }
+}

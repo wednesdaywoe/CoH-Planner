@@ -1,0 +1,47 @@
+Power Temporary_Powers.Temporary_Powers.Absorb_Toggle_Test
+{
+    Name                 "Absorb_Toggle_Test"          
+    DisplayName          "P2396692819"
+    BuyRequires          accesslevel char> 0 >=
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       3.1
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_Regeneration_Integration.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_Regeneration_Integration.PFX
+    DisplayShortHelp     "P4086618003"
+    DisplayHelp          "ZLT3CGYNPCERWQNNVPU4ZBUXC3"
+    IconName             "TheSunFortune.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 20.2500
+            MagnitudeExpr Max.kHitPoints source> 0.02 *
+            Magnitude 1.0000
+            StackType kStackThenIgnore
+            StackLimit 10
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    }
+}

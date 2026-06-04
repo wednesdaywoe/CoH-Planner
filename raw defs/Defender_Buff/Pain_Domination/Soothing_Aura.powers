@@ -1,0 +1,57 @@
+#*************************************************#
+# Power: Buff > Pain Domination > Soothing Aura   #
+# Info:  Toggle: PBAoE, Team Minor Periodic Heal  #
+#*************************************************#
+
+Power Defender_Buff.Pain_Domination.Soothing_Aura
+{
+    Name                 "Soothing_Aura"               
+    DisplayName          "P2901723507"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        0.78
+    TimeToActivate       1.67
+    RechargeTime         10
+    ActivatePeriod       4
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_PainDomination_SoothingAura.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_PainDomination_SoothingAura.PFX
+    DisplayShortHelp     "P658702312"
+    DisplayHelp          "23X9J5RW4JVHYULLG38T5SRY3Z"
+    IconName             "PainDomination_SoothingAura.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P3481954157"
+    DisplayTargetHelp    "P1800862508"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 0.3750
+            Magnitude 1.0000
+            StackType kStack
+            CancelEvents Stunned Held Sleep
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

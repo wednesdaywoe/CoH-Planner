@@ -1,0 +1,127 @@
+Power Stalker_Defense.Regeneration.Instant_Healing
+{
+    Name                 "Instant_Healing"             
+    DisplayName          "P2482136037"
+    BuyRequires          Stalker_Defense.Regeneration.Instant_Regeneration !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       1.17
+    RechargeTime         650
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Regeneration_InstantHealing.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Regeneration_InstantHealing.PFX
+    DisplayShortHelp     "P181672001"
+    DisplayHelp          "468NNRXS6GQXY8C2RSR4SV7JXX"
+    DisplayAttackerHit   "P2198838236"
+    IconName             "Regeneration_InstantHealing.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 6.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 2.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags PvPOnly
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 4.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 2.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX2
+                }
+                
+            }
+        }
+    }
+}

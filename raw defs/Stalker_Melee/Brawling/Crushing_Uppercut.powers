@@ -1,0 +1,666 @@
+Power Stalker_Melee.Brawling.Crushing_Uppercut
+{
+    Name                 "Crushing_Uppercut"           
+    DisplayName          "P1268394429"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                13
+    EnduranceCost        14.352
+    TimeToActivate       2.17
+    TimeToRoot           2.17
+    RechargeTime         25
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kStunned_Boost, kHold_Boost
+    StrengthsDisallowed  kRange
+    HighlightEval        Temporary_Powers.Temporary_Powers.Combo_Level_3
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Brawling_CrushingUppercut.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Brawling_CrushingUppercut.pfx
+    DisplayShortHelp     "5NGRWQMA8WHVWMBKY2UQ5VTJNZ"
+    DisplayHelp          "7C4JD4JX8VQEYUC5H27KE3KZFX"
+    IconName             "Brawling_CrushingUppercut.tga"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3511654510"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Assassins_Focus
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockup
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 3.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Combo0"
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 3.1800
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_Stun"
+                Scale 7.5000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Combo1"
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 3.3390
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_Stun"
+                Scale 8.6250
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Combo2"
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 3.5616
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_Stun"
+                Scale 9.3750
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Combo3"
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 3.9750
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_Stun"
+                Scale 10.5000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kHeld
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_Stun"
+                Scale 10.5000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4134654113"
+                    DisplayVictimHit "P3642575485"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StealthCrit"
+            Requires kMeter source> 0 > enttype target> critter eq &&
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 3.1800
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "ASTeamCrit"
+            Chance 0.0700
+            Requires enttype target> critter eq kMeter source> .9 < &&
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 3.1800
+                Magnitude 1.0000
+                StackType kStack
+                Flags HideZero
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockup
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 3.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Combo0"
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 2.9189
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Combo1"
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 3.0649
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Combo2"
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 3.2692
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Combo3"
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 3.6486
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kHeld
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P4134654113"
+                    DisplayVictimHit "P3642575485"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StealthCrit"
+            Requires kMeter source> 0 > enttype target> player eq &&
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 2.9189
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.2000
+            Requires kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || &&
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 2.9189
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "ComboConsume"
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Combo_Level_1
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Combo_Level_2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Combo_Level_3
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,69 @@
+Power Temporary_Powers.Temporary_Powers.Divining_Rod
+{
+    Name                 "Divining_Rod"                
+    DisplayName          "P3450722684"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        18.98
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         16
+    EffectArea           kCharacter
+    NumCharges           20
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Divining_Rod.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Divining_Rod.pfx
+    DisplayShortHelp     "M3FHFQ4WZWQBWWLZE25Q2HWU9S"
+    DisplayHelp          "ZFMDBAVB6U6EW6XNV7HZ3FTJUX"
+    IconName             "Temp_Ranged_Heavy.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Ghost target.HasTag? arch target> Class_Boss_Archvillain eq ! && arch target> Class_Boss_PraetorianArchvillain eq ! &&
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+}

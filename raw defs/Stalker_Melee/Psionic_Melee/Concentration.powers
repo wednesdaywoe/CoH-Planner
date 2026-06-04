@@ -1,0 +1,68 @@
+#***********************************************#
+# Power: Melee > Psionic Melee > Concentration  #
+# Info:  Self +DMG, +To Hit                     #
+#***********************************************#
+
+Power Stalker_Melee.Psionic_Melee.Concentration
+{
+    Name                 "Concentration"               
+    DisplayName          "P2948187885"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        5.2
+    TimeToActivate       1.17
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\PsionicMelee_Concentration.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\PsionicMelee_Concentration.PFX
+    DisplayShortHelp     "P1254867148"
+    DisplayHelp          "P4017978372"
+    IconName             "PsionicMelee_Concentration.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 2.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3717188858"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 8.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

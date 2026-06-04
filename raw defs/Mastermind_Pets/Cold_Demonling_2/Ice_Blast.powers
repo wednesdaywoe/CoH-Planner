@@ -1,0 +1,84 @@
+#****************************************************#
+# Power: Pets > Demons Cold Demonling 2 > Ice Blast  #
+# Info:  Ranged, DMG(Cold), Foe -Recharge, -SPD      #
+#****************************************************#
+
+Power Mastermind_Pets.Cold_Demonling_2.Ice_Blast
+{
+    Name                 "Ice_Blast"                   
+    DisplayName          "P1574051147"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_ColdDemonling2_IceBlast.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_ColdDemonling2_IceBlast.pfx
+    DisplayShortHelp     "7KB7P3REP2LSY5XZMQ9SNA5ZCZ"
+    DisplayHelp          "LRA2STWEHJX8WPVSEAKRQKU2JQ"
+    IconName             "IceBlast_IceBlast.tga"
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P1851895213"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4173738004"
+                DisplayVictimHit "P1163387325"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

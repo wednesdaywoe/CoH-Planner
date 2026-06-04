@@ -1,0 +1,203 @@
+#**********************************************************#
+# Power: Epic > Dark Mastery > Engulfing Darkness          #
+# Info:  PBAoE, DMG(Negative), Foe -To Hit, DoT(Negative)  #
+#**********************************************************#
+
+Power Epic.Sentinel_Dark_Mastery.Engulfing_Darkness
+{
+    Name                 "Engulfing_Darkness"          
+    DisplayName          "P2223435669"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        16.848
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         36
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_DarknessAssault_EngulfingDarkness.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_DarknessAssault_EngulfingDarkness.pfx
+    DisplayShortHelp     "2K93R6LG3GQ9W6Z65PN9JC5UPQ"
+    DisplayHelp          "XDPQ3TVSWE3PY3XENJTWHHANJ2"
+    IconName             "DarknessControl_PBAoE"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1093259659"
+    DisplayTargetHelp    "P1740457600"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2637081052"
+                    DisplayVictimHit "P936402029"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.1000
+                Duration 3.1000
+                Magnitude 1.0000
+                Delay 0.5000
+                Period 1.0000
+                TickChance 0.8000
+                StackType kStack
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "P1461699593"
+                    DisplayVictimHit "P3815778435"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.0000
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MKNQB68MKQ4GWWBRPFD3WYFNQQ"
+                    DisplayVictimHit "3V64ZZSHFGUAWFNN3KA2TRDP2Q"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 0.1000
+                Duration 3.1000
+                Magnitude 1.0000
+                Delay 0.5000
+                Period 1.0000
+                TickChance -0.2000
+                StackType kStack
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "K22Y2XSCQVQMWYNH8LJ9MTVR9X"
+                    DisplayVictimHit "8JAPCQQXASQPWRB6SG2CSCSHM2"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.9969
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2637081052"
+                    DisplayVictimHit "P936402029"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.9969
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MKNQB68MKQ4GWWBRPFD3WYFNQQ"
+                    DisplayVictimHit "3V64ZZSHFGUAWFNN3KA2TRDP2Q"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

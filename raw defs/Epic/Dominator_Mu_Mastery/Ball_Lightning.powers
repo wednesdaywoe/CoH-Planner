@@ -1,0 +1,223 @@
+Power Epic.Dominator_Mu_Mastery.Ball_Lightning
+{
+    Name                 "Ball_Lightning"              
+    DisplayName          "P2138267515"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.184
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         32
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_MuMastery_BallLightning.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_MuMastery_BallLightning.pfx
+    DisplayShortHelp     "74JMQAAJ83RMYBBLHYLWCUNJHW"
+    DisplayHelp          "T5B2ZENPAQY2WRB8T3LUCRQKZQ"
+    IconName             "Arachnos_Patron_RangedAoEModerateDmg.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1831456333"
+    DisplayTargetHelp    "P2467806480"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.3000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1800
+            Duration 3.1000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.0700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.2242
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.1046
+            Duration 3.1000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -1.2500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Tag "Containment"
+        Requires enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.hasTag? || && arch source> class_controller == &&
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_InherentDamage"
+            Scale 1.0200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "KPFVHG6DVS62YALA9NLSHQJKAQ"
+                DisplayVictimHit "GY4X98DXBB46WWXT9PB8KGUQP2"
+                DisplayFloat "P3070513493"
+                DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Containment"
+        Requires enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> class_controller == &&
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.7474
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "KPFVHG6DVS62YALA9NLSHQJKAQ"
+                DisplayVictimHit "GY4X98DXBB46WWXT9PB8KGUQP2"
+                DisplayFloat "P3070513493"
+                DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+            }
+            
+        }
+    }
+}

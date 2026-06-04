@@ -1,0 +1,48 @@
+#*****************************************#
+# Power: Pets > Necro Zombie 2 > Enchant  #
+# Info:  Enchant                          #
+#*****************************************#
+
+Power Mastermind_Pets.Zombie_2.Enchant
+{
+    Name                 "Enchant"                     
+    DisplayName          "P2091019232"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_ZombieHorde_Enchant.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_ZombieHorde_Enchant.pfx
+    DisplayShortHelp     "P2091019232"
+    DisplayHelp          "P1620618570"
+    IconName             "Necromancy_EnchantUndead.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,107 @@
+Power Brute_Defense.Fiery_Aura.Blazing_Aura
+{
+    Name                 "Blazing_Aura"                
+    DisplayName          "P819498605"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        1.04
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         4
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kTaunt_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_FieryAura_BlazingAura.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_FieryAura_BlazingAura.PFX
+    DisplayShortHelp     "Q4QQDM4JUBN3W8C7U8YFC4EGWX"
+    DisplayHelp          "2ZTEN4J7HZECYSVG787GQHYZT3"
+    IconName             "FlamingShield_FieryAura.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P3659462790"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.0990
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "InherentTaunt"
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Inherents.Fury_Proc_Aura
+            }
+            
+        }
+    }
+}

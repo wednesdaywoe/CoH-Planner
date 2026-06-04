@@ -1,0 +1,151 @@
+Power Pool.Leadership.Tactics
+{
+    Name                 "Tactics"                     
+    DisplayName          "P1934302270"
+    BuyRequires          Pool.Leadership.Defense Pool.Leadership.Assault ||
+    ModesDisallowed      kDisable_All, kDisable_Pool
+    ModesSuspended       kSuppress_PoolToggles
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kCaster
+    EnduranceCost        0.78
+    TimeToActivate       1.5
+    RechargeTime         15
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               60
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Leadership_Tactics.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Leadership_Tactics.pfx
+    DisplayShortHelp     "P3192701214"
+    DisplayHelp          "FZLDF7YVRL4CWSVNPE9JP5DSVX"
+    DisplayAttackerHit   "P929745669"
+    DisplayVictimHit     "P1485429003"
+    IconName             "Leadership_Tactics.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P3397519668"
+    DisplayTargetHelp    "P1894767178"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 1.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 1.5000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 1.7500
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 1.7500
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -15.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 3.2500
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

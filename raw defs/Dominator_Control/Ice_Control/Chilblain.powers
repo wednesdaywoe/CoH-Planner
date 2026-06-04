@@ -1,0 +1,265 @@
+Power Dominator_Control.Ice_Control.Chilblain
+{
+    Name                 "Chilblain"                   
+    DisplayName          "P2787247941"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kImmobilized_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_IceControl_Chilblain.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_IceControl_Chilblain.PFX
+    DisplayShortHelp     "T6RCU75ZKG2SY4LDYD6WQ93JJ3"
+    DisplayHelp          "DRTQGWF2YKCTY2ZKNLPN27HBTZ"
+    IconName             "IceFormation_Chillblains.tga"
+    DisplayTargetShortHelp "P1003436427"
+    DisplayTargetHelp    "P1822762282"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2000
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3556385711"
+                DisplayVictimHit "P658755009"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 15.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Immobilize"
+                Scale 22.5000
+                Magnitude 4.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "5LRMX7ZHD9YJYYZLCBNBQZBSFX"
+                    DisplayVictimHit "GPY5AP6NAEVWYHCWYJVMP2ULHW"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.2758
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3556385711"
+                DisplayVictimHit "P658755009"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 5.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Flags IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "5LRMX7ZHD9YJYYZLCBNBQZBSFX"
+                    DisplayVictimHit "GPY5AP6NAEVWYHCWYJVMP2ULHW"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.3000
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.3000
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.6000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

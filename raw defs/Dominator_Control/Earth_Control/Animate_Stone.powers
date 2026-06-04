@@ -1,0 +1,48 @@
+Power Dominator_Control.Earth_Control.Animate_Stone
+{
+    Name                 "Animate_Stone"               
+    DisplayName          "P40838925"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        20.8
+    TimeToActivate       3.2
+    TimeToRoot           3.2
+    RechargeTime         240
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kStunned_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_EarthControl_AnimateStone.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_EarthControl_AnimateStone.PFX
+    DisplayShortHelp     "ABP45LEX73WSW9XEJAC22YPHQ2"
+    DisplayHelp          "P3571219026"
+    IconName             "EarthGrasp_AnimateStone.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Stone
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

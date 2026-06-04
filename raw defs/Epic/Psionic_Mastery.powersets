@@ -1,0 +1,49 @@
+PowerSet Epic.Psionic_Mastery
+{
+    Name "Psionic_Mastery"
+    DisplayName "P1773904258"
+    DisplayShortHelp "P1773904258"
+    DisplayHelp "P3673575170"
+    IconName "Psionic_Mastery_set.ico"
+
+    Powers Epic.Psionic_Mastery.Mental_Blast
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psionic_Mastery.Indomitable_Will
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psionic_Mastery.Mind_Over_Body
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psionic_Mastery.World_of_Confusion
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psionic_Mastery.Psionic_Tornado
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

@@ -1,0 +1,65 @@
+PowerSet Mastermind_Pets.Thug_Boss
+{
+    Name "Thug_Boss"
+    DisplayName "P525420200"
+    DisplayShortHelp "P1151940263"
+    DisplayHelp "P1151940263"
+    IconName "Thug_Boss_set.ico"
+
+    Powers Mastermind_Pets.Thug_Boss.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Boss.Jab
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Boss.Punch
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Boss.Fury
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Boss.Fury_Buff
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Boss.Rage_Dampen
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Boss.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

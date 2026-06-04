@@ -1,0 +1,44 @@
+Power Temporary_Powers.Temporary_Powers.Combo_Level_1
+{
+    Name                 "Combo_Level_1"               
+    DisplayName          "P1164242601"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTime             6
+    StackingUsage        kTrue
+    MaxLifeTime          6
+    DisplayShortHelp     "P1164242601"
+    DisplayHelp          "P1139026363"
+    IconName             "Brawling_ComboLevel1.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P1164242601"
+            }
+            
+        }
+    }
+}

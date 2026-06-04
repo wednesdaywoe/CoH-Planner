@@ -1,0 +1,53 @@
+Power Defender_Buff.Trick_Arrow.Disruption_Arrow
+{
+    Name                 "Disruption_Arrow"            
+    DisplayName          "P697171009"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                70
+    EnduranceCost        14.56
+    TimeToActivate       1.16
+    TimeToRoot           1.16
+    RechargeTime         30
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\TrickArrow_Sonic_NoGeo.pfx"
+    include              menu\Powers\AnimFX\TrickArrow_Sonic_NoGeo.pfx
+    DisplayShortHelp     "P366155604"
+    DisplayHelp          "F7SX7ZDZCH6YYPZJZQTT85XRCA"
+    DisplayAttackerHit   "P3032945010"
+    IconName             "TrickArrow_DebuffDamRes.tga"
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P3466742994"
+    DisplayTargetHelp    "P1489999320"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Disruption Arrow"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Trick_Arrow.Disruption_Arrow
+                Power Pets.ResistAll.ResistAll
+            }
+            
+        }
+    }
+}

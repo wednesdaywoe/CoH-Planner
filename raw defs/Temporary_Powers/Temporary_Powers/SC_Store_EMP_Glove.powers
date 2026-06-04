@@ -1,0 +1,131 @@
+Power Temporary_Powers.Temporary_Powers.SC_Store_EMP_Glove
+{
+    Name                 "SC_Store_EMP_Glove"          
+    DisplayName          "P2029543939"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.66
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         8
+    EffectArea           kCharacter
+    NumCharges           10
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\ELECTRICAL_BOLT_LIGHTNING_BOLT.pfx"
+    include              menu\Powers\AnimFX\ELECTRICAL_BOLT_LIGHTNING_BOLT.pfx
+    DisplayShortHelp     "BRY3Z5G7U22DWXV4WNGU2YAJYS"
+    DisplayHelp          "YLSCMGPTTBEGYKMXD2AFEZGMJW"
+    IconName             "Temporary_EMPGlove.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -2.6700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Requires Electronic target.HasTag?
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+}

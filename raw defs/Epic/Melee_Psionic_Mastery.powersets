@@ -1,0 +1,49 @@
+PowerSet Epic.Melee_Psionic_Mastery
+{
+    Name "Melee_Psionic_Mastery"
+    DisplayName "P1773904258"
+    DisplayShortHelp "P1773904258"
+    DisplayHelp "P3673575170"
+    IconName "Psionic_Mastery_set.ico"
+
+    Powers Epic.Melee_Psionic_Mastery.Mental_Blast
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Melee_Psionic_Mastery.Psionic_Lance
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Melee_Psionic_Mastery.Psychic_Scream
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Melee_Psionic_Mastery.Harmonic_Mind
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Melee_Psionic_Mastery.Psionic_Nexus
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

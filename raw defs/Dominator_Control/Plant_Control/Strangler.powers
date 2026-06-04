@@ -1,0 +1,198 @@
+Power Dominator_Control.Plant_Control.Strangler
+{
+    Name                 "Strangler"                   
+    DisplayName          "P1512853674"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_Strangler.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_Strangler.PFX
+    DisplayShortHelp     "UCFYC9Y5A9SNYCCWTPHYPP3SWW"
+    DisplayHelp          "FTRHUGY7MHBUWKVTXNGD49T96A"
+    IconName             "PlantControl_Strangler.tga"
+    DisplayTargetShortHelp "P1388205829"
+    DisplayTargetHelp    "P1317566367"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 12.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_LassoStun
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2200
+            Duration 4.2000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1545979143"
+                DisplayVictimHit "P2876742505"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_LassoStun
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.4338
+            Duration 4.2000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1545979143"
+                DisplayVictimHit "P2876742505"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 18.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "SDG9VDYPNMVUYCCXQHCXLRHPS2"
+                DisplayVictimHit "N5ZZQ384R93HYPC57YDKTK9S3Z"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_LassoStun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "SDG9VDYPNMVUYCCXQHCXLRHPS2"
+                DisplayVictimHit "N5ZZQ384R93HYPC57YDKTK9S3Z"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_LassoStun
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,68 @@
+#****************************************#
+# Power: Pets > Thug Lieutenant > Burst  #
+# Info:  -Def                            #
+#****************************************#
+
+Power Mastermind_Pets.Thug_Lt.Burst
+{
+    Name                 "Burst"                       
+    DisplayName          "P3170865076"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        4.368
+    DontSetStance        1
+    TimeToActivate       2.2
+    TimeToRoot           2.2
+    RechargeTime         3
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Villain_SubmachineGun_Black.pfx"
+    include              menu\Powers\AnimFX\Villain_SubmachineGun_Black.pfx
+    DisplayShortHelp     "P3100956268"
+    DisplayHelp          "3BKLNGZQVYFYW9M43SFH9HMSUZ"
+    IconName             "AssaultWeapons_ARBurst.tga"
+    DisplayTargetShortHelp "P3100956268"
+    DisplayTargetHelp    "P2580875101"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2900
+            Duration 0.7000
+            Magnitude 1.0000
+            Period 0.3000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

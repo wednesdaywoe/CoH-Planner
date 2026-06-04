@@ -1,0 +1,64 @@
+Power Temporary_Powers.Temporary_Powers.Nictus_Transformation
+{
+    Name                 "Nictus_Transformation"       
+    DisplayName          "P3147089640"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                9999
+    RechargeTime         999
+    EffectArea           kCharacter
+    NumCharges           999
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Scripted_RomulusTransformation_NictusBeam.pfx"
+    include              menu\Powers\AnimFX\Scripted_RomulusTransformation_NictusBeam.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P3T55FXV6MB3YBZ8QKWPSFANRX"
+    IconName             "Temporary_ResonanceDisrupter.tga"
+
+
+    Effect
+    {
+        Requires Romans_Romulus target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 9999.0000
+            Magnitude 1.0000
+            Delay 4.7500
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Roman_Romulus_Augustus_Nictus_01
+                Priority 10
+            }
+            
+        }
+    }
+}

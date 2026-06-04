@@ -1,0 +1,50 @@
+Power Temporary_Powers.Temporary_Powers.Mapserver_Presence
+{
+    Name                 "Mapserver_Presence"          
+    DisplayName          "V65WPHHFVQTCYUCZ95U4U3NDNX"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    RefreshesOnActivePlayerChange kTrue
+    DisplayShortHelp     "86NZKPXX448SWMVRPHLNLLB3LX"
+    DisplayHelp          "CRCZSHQ3JNTQYZNBA9FE2RA34Z"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX WORLD\Unique\Mapserver_Presence\Mapserver_Presence.fx
+            }
+            
+        }
+    }
+}

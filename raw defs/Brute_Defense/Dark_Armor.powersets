@@ -1,0 +1,89 @@
+PowerSet Brute_Defense.Dark_Armor
+{
+    Name "Dark_Armor"
+    DisplayName "P3882874730"
+    DisplayShortHelp "P3882874730"
+    DisplayHelp "P3831997756"
+    IconName "Dark_Armor_set.ico"
+
+    Powers Brute_Defense.Dark_Armor.Dark_Embrace
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Defense.Dark_Armor.Death_Shroud
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Defense.Dark_Armor.Murky_Cloud
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Defense.Dark_Armor.Obsidian_Shield
+    Available 9
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Defense.Dark_Armor.Dark_Regeneration
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Defense.Dark_Armor.Obscure_Sustenance
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Defense.Dark_Armor.Cloak_of_Darkness
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Defense.Dark_Armor.Cloak_of_Fear
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Defense.Dark_Armor.Oppressive_Gloom
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Defense.Dark_Armor.Soul_Transfer
+    Available 29
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

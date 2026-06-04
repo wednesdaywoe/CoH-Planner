@@ -1,0 +1,272 @@
+Power Dominator_Assault.Savage_Assault.Call_Hawk
+{
+    Name                 "Call_Hawk"                   
+    DisplayName          "P1109248985"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.9702
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         14
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kKnockback_Boost
+    HighlightEval        temporary_powers.temporary_powers.savage_melee_blood_frenzy_stalker ownPowerNum? 5 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\SavageAssault_CallHawk.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\SavageAssault_CallHawk.pfx
+    DisplayShortHelp     "6GQQZ9ZHDVD8WUN4GDL2RXXJLW"
+    DisplayHelp          "HAMP7WM7DYEYYDZTF66J9LJXAW"
+    IconName             "SavageMelee_CallHawk"
+    DisplayTargetShortHelp "P2190949330"
+    DisplayTargetHelp    "P1468139104"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.5200
+            Duration 1.3000
+            Magnitude 1.0000
+            Delay 0.2500
+            Period 0.3000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 < &&
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2429
+            Duration 4.1000
+            MagnitudeExpr Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2543
+            Duration 5.1000
+            MagnitudeExpr Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.6000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance RevokeAll
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.4683
+            Duration 1.3000
+            Magnitude 1.0000
+            Delay 0.2500
+            Period 0.3000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Chance 0.4000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.4000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2432555977"
+                DisplayFloat "P4236885904"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted
+            }
+            
+        }
+    }
+}

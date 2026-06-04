@@ -1,0 +1,61 @@
+Power Blaster_Ranged.Electrical_Blast.Voltaic_Sentinel
+{
+    Name                 "Voltaic_Sentinel"            
+    DisplayName          "P4186800839"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        0.52
+    TimeToActivate       3.1
+    TimeToRoot           3.1
+    RechargeTime         10
+    ActivatePeriod       1
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost
+    ProcAllowed          kNone
+    IgnoreToggleMaxDistance kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_ElectricalBlast_VoltaicSentinel.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_ElectricalBlast_VoltaicSentinel.PFX
+    DisplayShortHelp     "J8FYWBECDYE6WJZVZYXDML2SDW"
+    DisplayHelp          "RUEKM9HC3Y3BYPL59X93TCD6PS"
+    IconName             "ElectricalBolt_VoltaicSentinal.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            Flags CopyBoosts PseudoPet
+            Messages
+            {
+                DisplayAttackerHit "P964605222"
+            }
+            
+            Params EntCreate
+            {
+                Costume Pet_NoCollision
+                DisplayName "Voltaic Sentinel"
+                PriorityList "PL_Untargetable_FightPreferRanged"
+                Power Pets.ResistAll_NoFly.ResistAll
+                Power Pets.VoltaicSentinel_PseudoPet.Electrical_Bolt
+                Power Pets.VoltaicSentinel_PseudoPet.Electrical_Field
+            }
+            
+        }
+    }
+}

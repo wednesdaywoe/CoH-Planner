@@ -1,0 +1,84 @@
+Power Temporary_Powers.Temporary_Powers.GRHeroAlignmentPower
+{
+    Name                 "GRHeroAlignmentPower"        
+    DisplayName          "P1924267531"
+    ModesDisallowed      kArena, kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       3.67
+    RechargeTime         360
+    EffectArea           kSphere
+    Radius               25
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\AlignmentPower_Justice.pfx"
+    include              menu\Powers\AnimFX\AlignmentPower_Justice.pfx
+    DisplayShortHelp     "P985805731"
+    DisplayHelp          "7ZZE92WEEU37WTCC4PNGL3ZGRQ"
+    IconName             "AlignmentPower_CalltoJustice.tga"
+    MaxTargetsHit        8
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.1000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2816041539"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.4000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance Cooldown
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.PVP_Damage_ToHit
+                Power Temporary_Powers.Temporary_Powers.PVP_Recharge_Special
+            }
+            
+        }
+    }
+}

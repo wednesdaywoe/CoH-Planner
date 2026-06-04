@@ -1,0 +1,58 @@
+#*********************************#
+# Power: Pets > Thug Boss > Fury  #
+# Info:  Self +DMG, Special       #
+#*********************************#
+
+Power Mastermind_Pets.Thug_Boss.Fury
+{
+    Name                 "Fury"                        
+    DisplayName          "P4191264938"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EffectArea           kCharacter
+    DisplayShortHelp     "P677038171"
+    DisplayHelp          "P1320621657"
+    IconName             "Inherent_BlasterDesperation.tga"
+    ShowInManage         kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Requires AttackedByOtherClick target.EventCount> 0 >
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            MagnitudeExpr AttackedByOtherClick target.EventCount> 2.5 * 0.0 5.0 minmax 100.0 kMeter source> 100 * - 20.0 / dup * 0.0 1.0 minmax *
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Requires ActivateAttackClick target.EventCount> 0 >
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            MagnitudeExpr ActivateAttackClick target.EventCount> 5 * 0.0 10.0 minmax 100.0 kMeter source> 100 * - 20.0 / dup * 0.0 1.0 minmax *
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

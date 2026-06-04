@@ -1,0 +1,170 @@
+Power Defender_Ranged.Assault_Rifle.Ignite
+{
+    Name                 "Ignite"                      
+    DisplayName          "P1492322528"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.15
+    AttackTypes          kRanged_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        13.52
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         14
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\AssaultWep_AR_Player_Flame_incinerator_NoGeo.pfx"
+    include              menu\Powers\AnimFX\AssaultWep_AR_Player_Flame_incinerator_NoGeo.pfx
+    DisplayShortHelp     "DR5L4ZJ3LQDPWNCU4YNB66EHRQ"
+    DisplayHelp          "BPJ5UX9M95KBYAL2YSFZYYD943"
+    IconName             "AssaultWeapons_DOT"
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P4290202187"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Ignite
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires NearGround target.EventTimeSince> 0.5 >=
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Table "Melee_Level"
+                Scale 1.0000
+                Duration 5.5000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreCombatMods KeepThroughDeath CopyBoosts CopyCreatorMods PseudoPet
+                Params EntCreate
+                {
+                    DisplayName "Flames"
+                    PriorityList "PL_StaticObject"
+                    Power Pets.ResistAll_NoFly.ResistAll
+                    Power Redirects.Assault_Rifle.Ignite
+                    Power Redirects.Assault_Rifle.Avoid
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+                DisplayInfo "9LRK5KXGT6JEYLMG2BFF9C5J3S"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1022
+            Duration 5.2500
+            Magnitude 1.0000
+            Delay 0.2500
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+                DisplayInfo "9LRK5KXGT6JEYLMG2BFF9C5J3S"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.9077
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.0927
+            Duration 5.2500
+            Magnitude 1.0000
+            Delay 0.2500
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

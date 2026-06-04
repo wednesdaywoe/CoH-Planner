@@ -1,0 +1,91 @@
+Power Warshade_Offensive.Umbral_Blast.Essence_Drain
+{
+    Name                 "Essence_Drain"               
+    DisplayName          "P2207186138"
+    ModesDisallowed      kDisable_All, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        15.6
+    TimeToActivate       1.93
+    TimeToRoot           1.93
+    RechargeTime         15
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Melee_SiphonLife.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Melee_SiphonLife.pfx
+    DisplayShortHelp     "EVJJEVTGYHHEW3M9JCVEU6U5YS"
+    DisplayHelp          "JHYK984VXEPMWEX4D6XSRKF4J2"
+    IconName             "UmbralBlast_EssenceDrain.tga"
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P3136978300"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

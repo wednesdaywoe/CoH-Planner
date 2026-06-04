@@ -1,0 +1,81 @@
+PowerSet Brute_Melee.Sonic_Melee
+{
+    Name "Sonic_Melee"
+    DisplayName "9ZQATGVZQ7CEY4XAETFKWZL2YS"
+    DisplayShortHelp "9ZQATGVZQ7CEY4XAETFKWZL2YS"
+    DisplayHelp "ELKZ8M727Q2XW4M52PH3586KYX"
+    IconName "Sonic_Manipulation_set.ico"
+
+    Powers Brute_Melee.Sonic_Melee.Sonic_Thrust
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Melee.Sonic_Melee.Strident_Echo
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Melee.Sonic_Melee.Attune
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Melee.Sonic_Melee.Build_Up
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Melee.Sonic_Melee.Sonic_Clap
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Melee.Sonic_Melee.Taunt
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Melee.Sonic_Melee.Sandmans_Whisper
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Melee.Sonic_Melee.Deafening_Wave
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Brute_Melee.Sonic_Melee.Earsplitter
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

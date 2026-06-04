@@ -1,0 +1,69 @@
+Power Temporary_Powers.Temporary_Powers.SC_Adv_Assault_Rifle_Heavy_Burst
+{
+    Name                 "SC_Adv_Assault_Rifle_Heavy_Burst"
+    DisplayName          "P4112847571"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        9.1
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         10
+    EffectArea           kCharacter
+    NumCharges           15
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_AdvancedAssult_Rifle_HeavyBurst.pfx"
+    include              menu\Powers\AnimFX\Villain_AdvancedAssult_Rifle_HeavyBurst.pfx
+    DisplayShortHelp     "P2845745130"
+    DisplayHelp          "X4XXRQCHPJF8Y3XYMUCVELH3C2"
+    IconName             "Temporary_RangeHeavyDamage.tga"
+    DisplayTargetShortHelp "P261707612"
+    DisplayTargetHelp    "P4273926965"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.1780
+            Duration 2.0000
+            Magnitude 1.0000
+            Period 0.2000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

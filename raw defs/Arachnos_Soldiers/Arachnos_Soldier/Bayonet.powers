@@ -1,0 +1,141 @@
+Power Arachnos_Soldiers.Arachnos_Soldier.Bayonet
+{
+    Name                 "Bayonet"                     
+    DisplayName          "P394055383"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_Wolf_FrontKick.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_Wolf_FrontKick.pfx
+    DisplayShortHelp     "JWQ7HF66AE5EY9LA35JKERSJF3"
+    DisplayHelp          "4MXZW5BFHBVGYYCL2ZNGXE4E7Q"
+    IconName             "ArachnosSoldier_Bayonet.tga"
+    DisplayTargetShortHelp "P3014490551"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.4400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kMeter source> 0 > enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.4400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.8889
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kMeter source> 0 > enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.8889
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1200
+            Duration 5.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,57 @@
+#**********************************************************#
+# Power: Buff > Dark Miasma > Tar Patch                    #
+# Info:  Ranged (Location AoE), Target -Speed, -Res, -Fly  #
+#**********************************************************#
+
+Power Mastermind_Buff.Dark_Miasma.Tar_Patch
+{
+    Name                 "Tar_Patch"                   
+    DisplayName          "P1281699562"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                90
+    EnduranceCost        7.8
+    TimeToActivate       3.1
+    TimeToRoot           3.1
+    RechargeTime         90
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kSlow_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_DarkMiasma_TarPatch.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_DarkMiasma_TarPatch.PFX
+    DisplayShortHelp     "P2412290026"
+    DisplayHelp          "P3597943772"
+    IconName             "DarkMiasma_TarPatch.tga"
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P2018496806"
+    DisplayTargetHelp    "P274040453"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Tar Patch"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Dark_Miasma.Tar
+            }
+            
+        }
+    }
+}

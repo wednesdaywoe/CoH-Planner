@@ -1,0 +1,155 @@
+Power Blaster_Support.Electricity_Manipulation.Power_Sink
+{
+    Name                 "Power_Sink"                  
+    DisplayName          "P2664724052"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_ElectricityManipulation_PowerSink.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_ElectricityManipulation_PowerSink.PFX
+    DisplayShortHelp     "P3080198159"
+    DisplayHelp          "P371300059"
+    IconName             "ElectricityManipulation_PowerSink.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.3500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_EndDrain"
+            Scale -10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 25.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P1197092217"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0480
+            Duration 9.5300
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildStatic"
+        Requires Blaster_Ranged.Electrical_Blast.Tesla_Cage source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Shock_Therapy_Static
+            }
+            
+        }
+    }
+}

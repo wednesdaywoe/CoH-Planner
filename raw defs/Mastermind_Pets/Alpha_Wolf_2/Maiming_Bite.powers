@@ -1,0 +1,117 @@
+#****************************************************#
+# Power: Pets > Beast Alpha Wolf 2 > Maiming Bite    #
+# Info:  Melee, Light DMG(Lethal), Foe -Speed, -Def  #
+#****************************************************#
+
+Power Mastermind_Pets.Alpha_Wolf_2.Maiming_Bite
+{
+    Name                 "Maiming_Bite"                
+    DisplayName          "P68199730"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        6.864
+    PreferenceMultiplier 2
+    TimeToActivate       1.9
+    TimeToRoot           1.9
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    ChainIntoPower       Mastermind_Pets.Alpha_Wolf_2.PM_Maiming_Bite
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_Wolf_MaimingBite.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_Wolf_MaimingBite.pfx
+    DisplayShortHelp     "7TK428ZNRQF5WWM6F2EXPDAKRX"
+    DisplayHelp          "JN2EYPUKUYCBWYMVEZ7RF94BFS"
+    IconName             "BeastMastery_PetMaimingBite.tga"
+    DisplayTargetShortHelp "P2103286178"
+    DisplayTargetHelp    "P3272411351"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 0.8000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Tag "CritActive"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.6600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

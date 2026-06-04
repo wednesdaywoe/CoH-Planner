@@ -1,0 +1,225 @@
+Power Scrapper_Melee.Stone_Melee.Tremor
+{
+    Name                 "Tremor"                      
+    DisplayName          "P3042336983"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        13.52
+    TimeToActivate       2.53
+    TimeToRoot           2.53
+    RechargeTime         14
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteMelee_StoneMelee_Tremor.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteMelee_StoneMelee_Tremor.PFX
+    DisplayShortHelp     "MBHXGY36M35KWALQ9H647MAZ33"
+    DisplayHelp          "CVP6C6HJXSHLYMBKV5N2MUB2ZA"
+    IconName             "StoneMelee_Tremor.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0400
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "CritLarge" "ScrapperCrit_AoE"
+            Chance 0.1000
+            Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.0400
+                Magnitude 1.0000
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritSmall" "ScrapperCrit_AoE"
+            Chance 0.0500
+            Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.0400
+                Magnitude 1.0000
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.8000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 0.6700
+                Magnitude 1.0000
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.4500
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+                FX
+                {
+                    ContinuingFX POWERS/FireControl/CindersHit.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.0924
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "CritPlayer" "ScrapperCrit_AoE"
+            Chance 0.0500
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.0924
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.8000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 0.6700
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    }
+}

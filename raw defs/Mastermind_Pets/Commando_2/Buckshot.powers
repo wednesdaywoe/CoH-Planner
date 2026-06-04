@@ -1,0 +1,134 @@
+#***************************************************#
+# Power: Pets > Mercenary Commando 2 > Buckshot     #
+# Info:  Ranged (Cone), DMG(Lethal), Foe Knockback  #
+#***************************************************#
+
+Power Mastermind_Pets.Commando_2.Buckshot
+{
+    Name                 "Buckshot"                    
+    DisplayName          "P1510705530"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        8.528
+    PreferenceMultiplier 3
+    DontSetStance        1
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         8
+    EffectArea           kCone
+    Radius               40
+    Arc                  30
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Commando_2_Buckshot.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Commando_2_Buckshot.pfx
+    DisplayShortHelp     "SFUNKWQCG8Q6WDLNA8B7MP5D4S"
+    DisplayHelp          "4V7ZCZVCLK5HWGXRC4HZ4THF6Z"
+    IconName             "AssaultWeapons_ShotgunBuckShot.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && || kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && ||
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.9100
+                MagnitudeExpr @StdResult kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && + kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && + 0.0333 * 1 + *
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.9100
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.7500
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

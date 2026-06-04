@@ -1,0 +1,48 @@
+#*********************************************#
+# Power: Melee > Spines > Assassin's Impaler  #
+# Info:  Melee, DMG(Lethal)                   #
+#*********************************************#
+
+Power Stalker_Melee.Spines.Assassins_Impaler
+{
+    Name                 "Assassins_Impaler"           
+    DisplayName          "P1271663734"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3
+    TimeToRoot           0.3666667
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerMelee_Spines_AssassinsImpaler.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerMelee_Spines_AssassinsImpaler.PFX
+    DisplayShortHelp     "4R3HS6SGYQ4KW2NMFYFMJGEH2Q"
+    DisplayHelp          "ACUF53QW62VGWBCDUDKWTRXBKW"
+    IconName             "Quills_AssassinStrike.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Spines_Assassins_Strike.Assassins_Impaler_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Spines_Assassins_Strike.Assassins_Impaler_Stealth
+        Requires 1
+    }
+    
+}

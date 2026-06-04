@@ -1,0 +1,205 @@
+#*************************************************#
+# Power: Epic > Fire Mastery > Fire Sword Circle  #
+# Info:  PBAoE Melee, DMG(Fire/Lethal)            #
+#*************************************************#
+
+Power Epic.Sentinel_Fire_Mastery.Fire_Sword_Circle
+{
+    Name                 "Fire_Sword_Circle"           
+    DisplayName          "P1509772423"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        18.512
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         40
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteMelee_FieryMelee_FireSwordCircle.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteMelee_FieryMelee_FireSwordCircle.PFX
+    DisplayShortHelp     "8GH4PHQ5ZKV4YSB5WPP7XDVY2S"
+    DisplayHelp          "VDBXWEJ64QFYYCBFDTCG2CQK4Z"
+    IconName             "FireTrap_PBAoE"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P3168769471"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.4240
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.4240
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "VW85MT4UMEU8W4CGRC8YN7AXWX"
+                    DisplayVictimHit "JMTY7ABEW2DCWAM7ENWKLHJCJA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.1000
+                Duration 3.1000
+                Magnitude 1.0000
+                Delay 0.5000
+                Period 1.0000
+                TickChance 0.8000
+                StackType kStack
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 0.1000
+                Duration 3.1000
+                Magnitude 1.0000
+                Delay 0.5000
+                Period 1.0000
+                TickChance -0.2000
+                StackType kStack
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "JLMQ5V7UYVUVYKLBA9TN9VE3PW"
+                    DisplayVictimHit "CJCUR3VLHW2EWEMG2G2AT57K33"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.5476
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.5476
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "VW85MT4UMEU8W4CGRC8YN7AXWX"
+                    DisplayVictimHit "JMTY7ABEW2DCWAM7ENWKLHJCJA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+}

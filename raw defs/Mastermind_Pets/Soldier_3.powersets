@@ -1,0 +1,41 @@
+PowerSet Mastermind_Pets.Soldier_3
+{
+    Name "Soldier_3"
+    DisplayName "64LH9FKNN73LW9NELMAF6YW2XS"
+    DisplayShortHelp "P3643806322"
+    DisplayHelp "P3643806322"
+    IconName "Soldier_3_set.ico"
+
+    Powers Mastermind_Pets.Soldier_3.Assault_Rifle_Auto_Fire
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Soldier_3.Assault_Rifle_Burst
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Soldier_3.Assault_Rifle_Heavy_Burst
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Soldier_3.Tactical_Upgrade
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

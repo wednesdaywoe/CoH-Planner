@@ -1,0 +1,198 @@
+#******************************************************#
+# Power: Summon > Demon Summoning > Summon Demonlings  #
+# Info:  Summon Demonlings                             #
+#******************************************************#
+
+Power Mastermind_Summon.Demon_Summoning.Summon_Demonlings
+{
+    Name                 "Summon_Demonlings"           
+    DisplayName          "P2691191548"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        5.46
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         5
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_DemonSummoning_SummonDemonlings.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_DemonSummoning_SummonDemonlings.pfx
+    DisplayShortHelp     "P2691191548"
+    DisplayHelp          "D6KPDECLS2LKY5BKZQW6YJR6P3"
+    IconName             "DemonSummoning_SummonDemonlings.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 2.6500
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Fiery_Demonling
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires combatlevel source> 5 >
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 3.3500
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Cold_Demonling
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires combatlevel source> 17 >
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Hellfire_Demonling
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 25.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kIgnore
+            Flags NoHitDelay SetTimer
+            Params Power
+            {
+                Power Mastermind_Summon.Demon_Summoning.Summon_Demonlings
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Duration 2.0000
+            Magnitude 1.0000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&
+            StackType kStack
+            Suppress Attacked 8 Always
+            Flags IgnoreResistance NoHitDelay
+            Messages
+            {
+                DisplayInfo "8VVPP8TX54P4YUL33N3RAN2NRA"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&
+            StackType kStack
+            Suppress Attacked 8 Always
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "8VVPP8TX54P4YUL33N3RAN2NRA"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 3.0000
+            Magnitude 500.0000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&
+            StackType kStack
+            Suppress Attacked 8 Always
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath NoHitDelay
+            Messages
+            {
+                DisplayInfo "8VVPP8TX54P4YUL33N3RAN2NRA"
+            }
+            
+        }
+    }
+}

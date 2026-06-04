@@ -1,0 +1,81 @@
+PowerSet Blaster_Ranged.Radiation_Blast
+{
+    Name "Radiation_Blast"
+    DisplayName "P2580904099"
+    DisplayShortHelp "P2580904099"
+    DisplayHelp "P531070819"
+    IconName "Radiation_Blast_set.ico"
+
+    Powers Blaster_Ranged.Radiation_Blast.Neutrino_Bolt
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Radiation_Blast.X-Ray_Beam
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Radiation_Blast.Irradiate
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Radiation_Blast.Electron_Haze
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Radiation_Blast.Aim
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Radiation_Blast.Proton_Volley
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Radiation_Blast.Cosmic_Burst
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Radiation_Blast.Neutron_Bomb
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Radiation_Blast.Atomic_Blast
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

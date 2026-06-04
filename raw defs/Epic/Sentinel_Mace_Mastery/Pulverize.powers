@@ -1,0 +1,258 @@
+#*****************************************************************#
+# Power: Epic > Mace Mastery > Pulverize                          #
+# Info:  Melee, High DMG(Smash), Minor DoT(Toxic), Foe Disorient  #
+#*****************************************************************#
+
+Power Epic.Sentinel_Mace_Mastery.Pulverize
+{
+    Name                 "Pulverize"                   
+    DisplayName          "P3731646031"
+    BuyRequires          $archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 owned? || &&
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         16
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_Bane_Pulverize.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_Bane_Pulverize.pfx
+    DisplayShortHelp     "P1455142294"
+    DisplayHelp          "KL33KY5G3CD9YBNJEHT3A63A9X"
+    IconName             "Arachnos_Patron_Pulverize.tga"
+    DisplayTargetShortHelp "P3522923894"
+    DisplayTargetHelp    "P2183680756"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.6400
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.6400
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kToxic
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.1000
+                Duration 4.1000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4250172858"
+                    DisplayVictimHit "P1470793739"
+                }
+                
+                FX
+                {
+                    ContinuingFX V_COV\EnemyPowers\Arachnos\BaneMace\BaneMaceHitContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kToxic
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 0.1000
+                Duration 4.1000
+                Magnitude 1.0000
+                Period 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "Y67DJDFNPKLNYLMRF478R2HDF2"
+                    DisplayVictimHit "YRTEXK6MMDU7YBBH3EWMNP2R7X"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+                FX
+                {
+                    ContinuingFX V_COV\EnemyPowers\Arachnos\BaneMace\BaneMaceHitContinuing.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 5.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 2.0900
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 2.0900
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing\StunContinuing.fx
+            }
+            
+        }
+    }
+}

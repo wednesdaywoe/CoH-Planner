@@ -1,0 +1,73 @@
+PowerSet Mastermind_Pets.Thug_Arsonist_3
+{
+    Name "Thug_Arsonist_3"
+    DisplayName "NZGPHG6J6XHWYRNZE9X93K39L2"
+    DisplayShortHelp "P1151940263"
+    DisplayHelp "P1151940263"
+    IconName "Thug_Arsonist_3_set.ico"
+
+    Powers Mastermind_Pets.Thug_Arsonist_3.Fire_Bomb
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Arsonist_3.Upgraded
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_1_3
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_1_4
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_2_3
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_2_4
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_3_3
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_3_4
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

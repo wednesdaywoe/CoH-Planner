@@ -1,0 +1,169 @@
+Power Dominator_Control.Plant_Control.Seeds_of_Confusion
+{
+    Name                 "Seeds_of_Confusion"          
+    DisplayName          "P822704386"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                50
+    EnduranceCost        15.6
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         6
+    EffectArea           kCone
+    Radius               50
+    Arc                  60
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kConfuse_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_SeedsofConfusion.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_SeedsofConfusion.PFX
+    DisplayShortHelp     "P233247000"
+    DisplayHelp          "34TSHYXTU6KUWXVAXDDAFUEJGZ"
+    DisplayAttackerHit   "P2425856116"
+    DisplayVictimHit     "P3436513023"
+    IconName             "PlantControl_SeedsConfusion.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1116895679"
+    DisplayTargetHelp    "P4213198885"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 6.5000
+            Delay 1.0800
+            StackType kStack
+            Flags IgnoreCombatMods NoHitDelay NoProjectileDelay AdjustTimer
+            Params Power
+            {
+                Power Dominator_Control.Plant_Control.Seeds_of_Confusion
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kConfused
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale 8.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4049735792"
+                    DisplayVictimHit "P553075930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kConfused
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Immobilize"
+                Scale 12.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "ECHGVYJ4Z6HKYSX334AD7P9YXA"
+                    DisplayVictimHit "PL79DDUJGCRWYCCWL82FRPG54W"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kConfused
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Confused 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P4049735792"
+                    DisplayVictimHit "P553075930"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kConfused
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Confused 15 WhenInactive
+                Flags IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "ECHGVYJ4Z6HKYSX334AD7P9YXA"
+                    DisplayVictimHit "PL79DDUJGCRWYCCWL82FRPG54W"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                }
+                
+            }
+        }
+    }
+}

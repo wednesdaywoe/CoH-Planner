@@ -1,0 +1,45 @@
+Power Temporary_Powers.Temporary_Powers.Absorb_Test
+{
+    Name                 "Absorb_Test"                 
+    DisplayName          "P3484786928"
+    BuyRequires          accesslevel char> 0 >=
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       1.17
+    RechargeTime         10
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\Inherent_Domination.pfx"
+    include              menu\Powers\AnimFX\Inherent_Domination.pfx
+    DisplayShortHelp     "P4086618003"
+    DisplayHelp          "SF8GZMTQL48XYRMKJV8ME79XPZ"
+    IconName             "TheSunFortune.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            MagnitudeExpr Max.kHitPoints source> 0.5 *
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    }
+}

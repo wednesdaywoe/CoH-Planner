@@ -1,0 +1,117 @@
+Power Temporary_Powers.Temporary_Powers.Power_of_Scirocco_Summon_Click
+{
+    Name                 "Power_of_Scirocco_Summon_Click"
+    DisplayName          "P2312817863"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                80
+    TimeToActivate       3.1
+    TimeToRoot           3.1
+    RechargeTime         150
+    EffectArea           kLocation
+    LifeTimeInGame       1200
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayRequires   mapname> reichsman_base eq
+    ServerTrayPriority   2
+    TargetNearGround     kTrue
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Scirocco_SummonDustDevil.pfx"
+    include              menu\Powers\AnimFX\Villain_Scirocco_SummonDustDevil.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "DP6WF62THJPFWWB4TL763DJQB2"
+    IconName             "PowerofScirocco.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            FX
+            {
+                ConditionalFX V_COV\Powers\ElectricalBlast\ElectricityCage.fx
+                ConditionalBits ANIM_ElectroStun
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Dust_Devil1
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Dust_Devil1
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Dust_Devil1
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Dust_Devil1
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    }
+}

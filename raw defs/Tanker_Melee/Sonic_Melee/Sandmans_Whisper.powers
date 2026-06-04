@@ -1,0 +1,309 @@
+#***********************************************************#
+# Power: Melee > Sonic Melee > Sandman's Whisper            #
+# Info:  Melee, DMG(Smashing/Energy), Foe Sleep, -Res(DMG)  #
+#***********************************************************#
+
+Power Tanker_Melee.Sonic_Melee.Sandmans_Whisper
+{
+    Name                 "Sandmans_Whisper"            
+    DisplayName          "R3LP8Z75XBF3WPCVM54SHNRJ4Z"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    TimeToActivate       1.77
+    TimeToRoot           1.77
+    RechargeTime         8
+    ActivatePeriod       3
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSleep_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    IgnoreToggleMaxDistance kTrue
+    HighlightEval        kDD_DebuffMode_1 Mode? !
+    HighlightRing        255 128 128 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Scrapper_Melee_Sonic_Melee_Shrie1.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Scrapper_Melee_Sonic_Melee_Shrie1.pfx
+    DisplayShortHelp     "D6HJBJSM2X9GW3NU3GRRHRMEHQ"
+    DisplayHelp          "Y7TXEPHVT5RVWLXRT6E7QDK42S"
+    IconName             "SonicManipulation_Whisper2"
+    DisplayTargetShortHelp "VPQ75H69RXGBYMB7NKQ4F6TN43"
+    DisplayTargetHelp    "S6WDZ88ZBNKTWKBU2QVTLKF5X3"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 13.5000
+                Magnitude kDD_DebuffMode_1
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kRes
+                Target kTarget
+                Table "Melee_Debuff_Res_Dmg"
+                Scale -1.2000
+                Duration 15.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+                FX
+                {
+                    ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            Effect
+            {
+            
+                Effect
+                {
+                    Flags Fallback
+                
+                    Effect
+                    {
+                    
+                        AttribMod
+                        {
+                            Attrib kSmashing
+                            Aspect kAbs
+                            Target kTarget
+                            Table "Melee_Damage"
+                            Scale 0.8200
+                            Magnitude 1.0000
+                            StackType kStack
+                            Messages
+                            {
+                                DisplayAttackerHit "P119576033"
+                                DisplayVictimHit "P1719855107"
+                            }
+                            
+                        }
+                    
+                        AttribMod
+                        {
+                            Attrib kEnergy
+                            Aspect kAbs
+                            Target kTarget
+                            Table "Melee_Damage"
+                            Scale 0.8200
+                            Magnitude 1.0000
+                            StackType kStack
+                            Messages
+                            {
+                                DisplayAttackerHit "P2559786529"
+                                DisplayVictimHit "P377644626"
+                            }
+                            
+                        }
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "SMAttune"
+                    Chance 0.0000
+                    Requires kSonicAtuneSelf source.Mode? kSonicAtuneFoe target.Mode? &&
+                
+                    Effect
+                    {
+                    
+                        AttribMod
+                        {
+                            Attrib kSmashing
+                            Aspect kAbs
+                            Target kTarget
+                            Table "Melee_Damage"
+                            Scale 0.9020
+                            Magnitude 1.0000
+                            StackType kStack
+                            Messages
+                            {
+                                DisplayAttackerHit "P119576033"
+                                DisplayVictimHit "P1719855107"
+                            }
+                            
+                        }
+                    
+                        AttribMod
+                        {
+                            Attrib kEnergy
+                            Aspect kAbs
+                            Target kTarget
+                            Table "Melee_Damage"
+                            Scale 0.9020
+                            Magnitude 1.0000
+                            StackType kStack
+                            Messages
+                            {
+                                DisplayAttackerHit "P2559786529"
+                                DisplayVictimHit "P377644626"
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Requires enttype target> critter eq
+                Flags HitRollSuccess
+            
+                AttribMod
+                {
+                    Attrib kSleep
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Melee_Sleep"
+                    Scale 15.0000
+                    Magnitude 3.0000
+                    Delay 0.2500
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P786700626"
+                        DisplayVictimHit "P2415654930"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/SleepContinuing.fx
+                        ConditionalBits ANIM_SLEEP
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "FieryEmbrace"
+                Chance 0.0000
+            
+                AttribMod
+                {
+                    Attrib kFire
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 0.7380
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2798397535"
+                        DisplayVictimHit "P459143670"
+                    }
+                    
+                    FX
+                    {
+                        ContinuingFX POWERS/FireControl/CindersHit.fx
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kSmashing
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.9795
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P119576033"
+                        DisplayVictimHit "P1719855107"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.9795
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kSleep
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Melee_PvPMez"
+                    Scale 1.0000
+                    Magnitude 3.0000
+                    Delay 0.2500
+                    StackType kStack
+                    Suppress Stunned 15 WhenInactive
+                    Suppress Immobilized 15 WhenInactive
+                    Suppress Held 15 WhenInactive
+                    Suppress Sleep 15 WhenInactive
+                    Suppress Terrorized 15 WhenInactive
+                    Messages
+                    {
+                        DisplayAttackerHit "P786700626"
+                        DisplayVictimHit "P2415654930"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/SleepContinuing.fx
+                    }
+                    
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+Power Temporary_Powers.Art_Test.Ranged
+{
+    Name                 "Ranged"                      
+    DisplayName          "P2430742932"
+    BuyRequires          accesslevel char> 9 >
+    ActivateRequires     accesslevel char> 9 >
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    TimeToActivate       1.2
+    TimeToRoot           1.2
+    RechargeTime         4
+    EffectArea           kCharacter
+    IgnoreAttackTimeErrors floyd
+    DisplayShortHelp     "P2430742932"
+    DisplayHelp          "M9WWEQYAG6SWWJXLYW4D8MUPGS"
+    IconName             "PowerBlast_PowerBolts.tga"
+
+
+    Effect
+    {
+        Requires accesslevel source> 9 >
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P793036068"
+                DisplayVictimHit "P834484945"
+            }
+            
+        }
+    }
+}

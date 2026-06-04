@@ -1,0 +1,224 @@
+Power Dominator_Control.Fire_Control.Ring_of_Fire
+{
+    Name                 "Ring_of_Fire"                
+    DisplayName          "P896308763"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kImmobilized_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_FireControl_RingofFire.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_FireControl_RingofFire.PFX
+    DisplayShortHelp     "P369354458"
+    DisplayHelp          "PSR7PHEUKPBKYWCSEJM5PL4CZX"
+    IconName             "FireTrap_RingOfFire.tga"
+    DisplayTargetShortHelp "P1688818094"
+    DisplayTargetHelp    "P147771599"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2200
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 15.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.2758
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 5.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 22.5000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "5LRMX7ZHD9YJYYZLCBNBQZBSFX"
+                DisplayVictimHit "GPY5AP6NAEVWYHCWYJVMP2ULHW"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "5LRMX7ZHD9YJYYZLCBNBQZBSFX"
+                DisplayVictimHit "GPY5AP6NAEVWYHCWYJVMP2ULHW"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.6000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

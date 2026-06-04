@@ -1,0 +1,76 @@
+Power Temporary_Powers.Temporary_Powers.Touched_Blarf
+{
+    Name                 "Touched_Blarf"               
+    DisplayName          "7MDJ63DL8FM8YDVUN93GBY3PTW"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTime             8
+    IgnoreAttackTimeErrors ignore
+    IgnoreStrength       kTrue
+    ProcAllowed          kNone
+    IgnoreLevelBought    kTrue
+    VisualFX             "menu\Powers\AnimFX\Enemies\Event\Blarf\Petting_Blarf.pfx"
+    include              menu\Powers\AnimFX\Enemies\Event\Blarf\Petting_Blarf.pfx
+    DisplayShortHelp     "WPZ5JZU78LLJW6XRFEM623UADS"
+    DisplayHelp          "ZXVTUZCFT938WQXR88M3KVZWJZ"
+    IconName             "Blarf_Digestion.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    DisplayTargetShortHelp "WPZ5JZU78LLJW6XRFEM623UADS"
+    DisplayTargetHelp    "K7CYMUA2JA53W2ZBP9WBMRLGMA"
+    NumAllowed           50
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.0100
+            Duration 8.0000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "4FYTHH68JMLJWWB2L8V39AB2FS"
+                DisplayVictimHit "B4WTMJWRNFV3Y9BHEA9WCEV5PZ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.0000
+            Duration 8.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kRefresh
+            StackKey kPermaDamage
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2022455776"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,71 @@
+Power Temporary_Powers.Temporary_Powers.Disable_Temp
+{
+    Name                 "Disable_Temp"                
+    DisplayName          "P4165635187"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    DisplayShortHelp     "P3434071072"
+    DisplayHelp          "P2635169998"
+    IconName             "Temporary_TerraVoltaGlow.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.8000
+            Magnitude kDisable_Temp
+            Period 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath AlwaysPersist
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.8000
+            Magnitude kDisable_Portals
+            Period 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath AlwaysPersist
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.8000
+            Magnitude kDisableFortuneBuffs
+            Period 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath AlwaysPersist
+        }
+    }
+}

@@ -1,0 +1,43 @@
+Power Temporary_Powers.Temporary_Powers.Cupid_Jealousy
+{
+    Name                 "Cupid_Jealousy"              
+    DisplayName          "P2680551755"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kAny
+    EntsAutoHit          kAny
+    Target               kAny
+    Range                80
+    EnduranceCost        5
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         20
+    EffectArea           kCharacter
+    AIReport             kNever
+    NumCharges           5
+    StackingUsage        kTrue
+    MaxNumCharges        99
+    IgnoreAttackTimeErrors tsweeney
+    Deletable            kTrue
+    VisualFX             "menu\powers\animfx\Archery_Cupid_Jealousy.pfx"
+    include              menu\powers\animfx\Archery_Cupid_Jealousy.pfx
+    DisplayShortHelp     "P1301490892"
+    DisplayHelp          "CZ6UQ4EAU726Y7X2KCXA7KDTGS"
+    IconName             "Temporary_RangeModerateDamage.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+    Redirect
+    {
+        Power Temporary_Powers.Temporary_Powers.Cupid_Jealousy_Friend
+        Requires target.isFriend?
+    }
+    
+    Redirect
+    {
+        Power Temporary_Powers.Temporary_Powers.Cupid_Jealousy_Foe
+        Requires 1
+    }
+    
+}

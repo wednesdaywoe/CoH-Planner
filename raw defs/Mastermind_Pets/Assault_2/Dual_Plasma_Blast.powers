@@ -1,0 +1,128 @@
+#****************************************************#
+# Power: Pets > Robot Assault 2 > Dual Plasma Blast  #
+# Info:  -Regeneration                               #
+#****************************************************#
+
+Power Mastermind_Pets.Assault_2.Dual_Plasma_Blast
+{
+    Name                 "Dual_Plasma_Blast"           
+    DisplayName          "P362566214"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.192
+    PreferenceMultiplier 3
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         25
+    EffectArea           kSphere
+    Radius               5
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRechargeTime
+    ChainIntoPower       Mastermind_Pets.Assault.Conserve_Power
+    VisualFX             "menu\Powers\AnimFX\RobotArmy_DualPlasma_Blast.pfx"
+    include              menu\Powers\AnimFX\RobotArmy_DualPlasma_Blast.pfx
+    DisplayShortHelp     "P977901485"
+    DisplayHelp          "ZB5VZ3KK34ERW6VV7N2S2G5WD2"
+    IconName             "Robotics_LaserRifleBlast.tga"
+    MaxTargetsHit        5
+
+
+    Effect
+    {
+        RadiusOuter 0.0000
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2100
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

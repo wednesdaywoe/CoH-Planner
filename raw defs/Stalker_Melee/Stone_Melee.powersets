@@ -1,0 +1,81 @@
+PowerSet Stalker_Melee.Stone_Melee
+{
+    Name "Stone_Melee"
+    DisplayName "P635704859"
+    DisplayShortHelp "P635704859"
+    DisplayHelp "P211611681"
+    IconName "Stone_Melee_set.ico"
+
+    Powers Stalker_Melee.Stone_Melee.Stone_Fist
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Stone_Melee.Stone_Mallet
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Stone_Melee.Fault
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Stone_Melee.Assassins_Rockslide
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Stone_Melee.Build_Up
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Stone_Melee.Placate
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Stone_Melee.Heavy_Mallet
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Stone_Melee.Hurl_Boulder
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Stone_Melee.Tremor
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

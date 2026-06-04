@@ -1,0 +1,38 @@
+Power Temporary_Powers.Art_Test.Self_Toggle
+{
+    Name                 "Self_Toggle"                 
+    DisplayName          "P1308569331"
+    BuyRequires          accesslevel char> 9 >
+    ActivateRequires     accesslevel char> 9 >
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       1.2
+    RechargeTime         4
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    IgnoreAttackTimeErrors floyd
+    DisplayShortHelp     "P1308569331"
+    DisplayHelp          "KJC6KWP3USE6YPLEGDT82KVQ23"
+    IconName             "Invulnerability_TemporaryInvulnerabilty.tga"
+
+
+    Effect
+    {
+        Requires accesslevel source> 9 >
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

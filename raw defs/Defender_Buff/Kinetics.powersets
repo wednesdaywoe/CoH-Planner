@@ -1,0 +1,81 @@
+PowerSet Defender_Buff.Kinetics
+{
+    Name "Kinetics"
+    DisplayName "P1213219189"
+    DisplayShortHelp "P1213219189"
+    DisplayHelp "P1630872074"
+    IconName "Kinetics_set.ico"
+
+    Powers Defender_Buff.Kinetics.Transfusion
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Kinetics.Siphon_Power
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Kinetics.Repel
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Kinetics.Siphon_Speed
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Kinetics.Increase_Density
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Kinetics.Speed_Boost
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Kinetics.Inertial_Reduction
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Kinetics.Transference
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Kinetics.Kinetic_Transfer
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

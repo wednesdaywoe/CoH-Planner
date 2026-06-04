@@ -1,0 +1,190 @@
+Power Epic.Tank_Psionic_Mastery.Mesmerize
+{
+    Name                 "Mesmerize"                   
+    DisplayName          "P132115517"
+    BuyRequires          $archetype @Class_Brute == $archetype @Class_Tanker == ||
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                100
+    EnduranceCost        5.2
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_MindControl_Mesmerize.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_MindControl_Mesmerize.PFX
+    DisplayShortHelp     "4M6YF9UTVHWEYZCSUTDKTZFC5S"
+    DisplayHelp          "X24LTYDSVNVBWXNAV5PX5GXSGZ"
+    IconName             "Psionic_Mastery_Mesmerize"
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "P2909147384"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 30.0000
+                Magnitude 3.5000
+                Delay 0.2500
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                    ConditionalBits ANIM_SLEEP
+                }
+                
+            }
+        
+            Effect
+            {
+                Flags HitRollSuccess
+            
+                AttribMod
+                {
+                    Attrib kPsionic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P801507873"
+                        DisplayVictimHit "P3863231487"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires Raid target.HasTag?
+            Flags HitRollSuccess
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 30.0000
+                Magnitude 3.5000
+                Delay 0.2500
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                    ConditionalBits ANIM_SLEEP
+                }
+                
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kPsionic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P801507873"
+                        DisplayVictimHit "P3863231487"
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.8090
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            Delay 0.2500
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/SleepContinuing.fx
+                ConditionalBits ANIM_SLEEP
+            }
+            
+        }
+    }
+}

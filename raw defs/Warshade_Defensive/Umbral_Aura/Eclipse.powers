@@ -1,0 +1,91 @@
+Power Warshade_Defensive.Umbral_Aura.Eclipse
+{
+    Name                 "Eclipse"                     
+    DisplayName          "P1927810339"
+    ModesDisallowed      kDisable_All, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        0.52
+    TimeToActivate       1.03
+    TimeToRoot           1.03
+    RechargeTime         300
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost, kRecovery_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_EndDrain.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_EndDrain.pfx
+    DisplayShortHelp     "P1895773880"
+    DisplayHelp          "3UNHYG7D8CKPWUMFXP6FWRPHWA"
+    IconName             "UmbralAura_Eclipse.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.3300
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 25.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P1197092217"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 1.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

@@ -1,0 +1,72 @@
+Power Dominator_Control.Plant_Control.Vines
+{
+    Name                 "Vines"                       
+    DisplayName          "P3475827511"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.6
+    TimeToActivate       2.1
+    TimeToRoot           2.1
+    RechargeTime         240
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_Vines.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_Vines.PFX
+    DisplayShortHelp     "3TJEZU3MN544WBMQWN6GQC3GJX"
+    DisplayHelp          "VRLRQC9ZFYXNYYV3B7H44RW4NA"
+    DisplayAttackerHit   "P1536694226"
+    DisplayVictimHit     "P3818610018"
+    IconName             "PlantControl_Vines.tga"
+    DisplayTargetShortHelp "P3220742713"
+    DisplayTargetHelp    "P1778180013"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods CopyBoosts CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Vines"
+                PriorityList "PL_Untargetable_FightPreferRanged"
+                Power Villain_Pets.Vines.Self_Destruct
+                Power Pets.ResistAll.ResistAll
+                Power Villain_Pets.Vines.Vines_Pulse
+                Power Villain_Pets.Vines.Vines_Debuff
+                Power Villain_Pets.Vines.Vines_OneShot
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            DelayedRequires Villain_Pets.Vines.Vines_OneShot target.ownPower?
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods NoHitDelay NoProjectileDelay
+        }
+    }
+}

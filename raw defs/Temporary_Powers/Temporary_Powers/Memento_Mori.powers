@@ -1,0 +1,70 @@
+Power Temporary_Powers.Temporary_Powers.Memento_Mori
+{
+    Name                 "Memento_Mori"                
+    DisplayName          "5424BLSXV9UZYBMT6M5J4PBT4A"
+    Type                 kAuto
+    Accuracy             1
+    AIGroups             kPostDeath
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    RechargeTime         9999
+    ActivatePeriod       200
+    EffectArea           kCharacter
+    LifeTimeInGame       45
+    StackingUsage        kTrue
+    MaxLifeTimeInGame    45
+    CastableAfterDeath   kDeadOnly
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRecovery_Boost
+    ProcAllowed          kNone
+    Deletable            kTrue
+    DisplayShortHelp     "P1762744290"
+    DisplayHelp          "LA2835GUURGZWWMUN45FEF8DZX"
+    IconName             "DarkArmor_SoulTransfer.tga"
+    TimeToConfirm        10
+    DisplayConfirm       P1594673917
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P345555159"
+    NumAllowed           1
+    PointValue           3
+    PointMultiplier      0.083
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kCur
+            Table "Melee_Ones"
+            Delay 5.0000
+            StackType kStack
+            Flags KeepThroughDeath CopyBoosts
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Memento_Mori_Execute
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 4.0000
+            DelayedRequires cur.kHitPoints source> 0 ==
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance DelayEval RevokeAll
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Memento_Mori
+            }
+            
+        }
+    }
+}

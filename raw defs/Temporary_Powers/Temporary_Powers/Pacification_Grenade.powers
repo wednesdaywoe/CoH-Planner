@@ -1,0 +1,74 @@
+Power Temporary_Powers.Temporary_Powers.Pacification_Grenade
+{
+    Name                 "Pacification_Grenade"        
+    DisplayName          "P2097226501"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         20
+    EffectArea           kCharacter
+    NumCharges           1
+    LifeTime             1800
+    TargetRequires       type target> Marauder_P_Marauder eq kRoidedIDF target.Mode? ! &&
+    ServerTrayPriority   9
+    Tradeable            kTrue
+    Deletable            kTrue
+    InstanceLocked       kTrue
+    VisualFX             "menu\Powers\AnimFX\TemporaryPowers_PacificationGrenade.pfx"
+    include              menu\Powers\AnimFX\TemporaryPowers_PacificationGrenade.pfx
+    DisplayShortHelp     "P3834876086"
+    DisplayHelp          "Z6QA4TPQU3G7YSBGR3JSWKFJ4Z"
+    DisplayAttackerHit   "P3034647437"
+    IconName             "AssaultWeapons_ARM30grenade.tga"
+    ShowInManage         kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 45.0000
+            Magnitude kRoidedIDF
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Objects_Marauder_Debuff_Marker
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

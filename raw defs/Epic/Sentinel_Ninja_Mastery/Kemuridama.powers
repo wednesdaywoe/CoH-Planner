@@ -1,0 +1,154 @@
+#********************************************#
+# Power: Epic > Weapon Mastery > Kemuridama  #
+# Info:  PBAoE, Foe Placate -DMG -To Hit     #
+#********************************************#
+
+Power Epic.Sentinel_Ninja_Mastery.Kemuridama
+{
+    Name                 "Kemuridama"                  
+    DisplayName          "P2749703869"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.4
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost, kTaunt_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_SmokeFlash.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_SmokeFlash.PFX
+    DisplayShortHelp     "P979928112"
+    DisplayHelp          "JK2XRM2B62EAW6L8FF69PR5QYQ"
+    IconName             "NinjaTools_Placate"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2382289630"
+    DisplayTargetHelp    "P1992703752"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Taunt"
+            Scale 15.0000
+            Magnitude 4.0000
+            Delay 0.2000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing\PlacateHit.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 3.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing\DeBuffDamageContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 1.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayAttackerHit "P3624185911"
+                DisplayVictimHit "P3543385282"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing\DeBuffToHitContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Taunt"
+            Scale 6.0000
+            Magnitude 3.0000
+            Delay 0.2000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing\PlacateHit.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 4.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing\DeBuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,96 @@
+Power Arachnos_Soldiers.Crab_Spider_Soldier.Longfang
+{
+    Name                 "Longfang"                    
+    DisplayName          "P15878826"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.192
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_Crab_Longfang.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_Crab_Longfang.pfx
+    DisplayShortHelp     "STB7LVZCBDH6WNLJERFJLYXXYZ"
+    DisplayHelp          "UFA2XA9KQR5LY4B3EB4T92QZAZ"
+    IconName             "CrabSpider_Longfang.tga"
+    DisplayTargetShortHelp "P2193164563"
+    DisplayTargetHelp    "P4043698462"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.6600
+            Duration 0.7000
+            Magnitude 1.0000
+            Period 0.3000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.5770
+            Duration 0.7000
+            Magnitude 1.0000
+            Period 0.3000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,175 @@
+Power Mastermind_Buff.Storm_Summoning.Hurricane
+{
+    Name                 "Hurricane"                   
+    DisplayName          "P1760327861"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.1625
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         10
+    ActivatePeriod       0.25
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost, kKnockback_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_StormSummoning_Hurricane.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_StormSummoning_Hurricane.PFX
+    DisplayShortHelp     "P1862200715"
+    DisplayHelp          "ZU6GZMEJFQ69YYXMWXXUT8L4LZ"
+    DisplayAttackerHit   "P550045858"
+    IconName             "StormSummoning_Hurricane.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3138537290"
+    DisplayTargetHelp    "P3051269457"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRange
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.6000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 3.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kRepel
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 1.0500
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+
+    Effect
+    {
+        RadiusOuter 15.0000
+        Requires enttype target> player eq @ToHitRoll .10 + @ToHit < &&
+    
+        AttribMod
+        {
+            Attrib kRepel
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kReplace
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0500
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        RadiusOuter 15.0000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        RadiusOuter 15.0000
+        Requires enttype target> player eq @ToHitRoll .10 + @ToHit >= &&
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P60309514"
+                DisplayVictimHit "P3821930393"
+            }
+            
+        }
+    }
+}

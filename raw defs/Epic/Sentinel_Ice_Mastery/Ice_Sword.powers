@@ -1,0 +1,202 @@
+#******************************************************#
+# Power: Epic > Ice Mastery > Ice Sword                #
+# Info:  Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD  #
+#******************************************************#
+
+Power Epic.Sentinel_Ice_Mastery.Ice_Sword
+{
+    Name                 "Ice_Sword"                   
+    DisplayName          "P2306375624"
+    BuyRequires          $archetype @Class_Sentinel ==
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        10.192
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_IceManipulation_IceSword.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_IceManipulation_IceSword.PFX
+    DisplayShortHelp     "SVQVWXU72WCRYJV95LJMDNKTC3"
+    DisplayHelp          "DJA5H993TZHAYBNXYDTBJ3TLV3"
+    IconName             "Ice_Mastery_IceSword"
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P3154778032"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.9600
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4173738004"
+                    DisplayVictimHit "P1163387325"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 0.9600
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.0000
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3JG5HRUCJEFYDNKTKYT8NS6YZ"
+                    DisplayVictimHit "RSFS5JY5GJRWYDVQRKL8MVN2KW"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 2.1310
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4173738004"
+                    DisplayVictimHit "P1163387325"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 2.1310
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3JG5HRUCJEFYDNKTKYT8NS6YZ"
+                    DisplayVictimHit "RSFS5JY5GJRWYDVQRKL8MVN2KW"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.1000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.1000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

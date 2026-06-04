@@ -1,0 +1,76 @@
+#***********************************************#
+# Power: Pets > Ninja Genin 2 > Shuriken Throw  #
+# Info:  Ranged, DMG(Lethal)                    #
+#***********************************************#
+
+Power Mastermind_Pets.Genin_2.Snap_Shot
+{
+    Name                 "Snap_Shot"                   
+    DisplayName          "P991737560"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        6.864
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Villain_Shuriken.pfx"
+    include              menu\Powers\AnimFX\Villain_Shuriken.pfx
+    DisplayShortHelp     "NB2XU8MP3FUEW3ZHSEP8PG2N9A"
+    DisplayHelp          "8SAV2AWF6PWRY6LULFEM7R5D82"
+    IconName             "AssaultWeapons_ARBurst.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CriticalHit"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_InherentDamage"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

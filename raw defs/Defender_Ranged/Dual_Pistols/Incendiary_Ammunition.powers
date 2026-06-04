@@ -1,0 +1,281 @@
+#*******************************************************#
+# Power: Ranged > Dual Pistols > Incendiary Ammunition  #
+# Info:  Toggle: Ammo Change (Fire), Special            #
+#*******************************************************#
+
+Power Defender_Ranged.Dual_Pistols.Incendiary_Ammunition
+{
+    Name                 "Incendiary_Ammunition"       
+    DisplayName          "P2300601394"
+    BuyRequires          Defender_Ranged.Dual_Pistols.Swap_Ammo
+    ModesRequired        kLethalAmmo
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kAmmo_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       0.63
+    RechargeTime         4
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\DualPistols_AmmoSwap.pfx"
+    include              menu\Powers\AnimFX\DualPistols_AmmoSwap.pfx
+    DisplayShortHelp     "P539806842"
+    DisplayHelp          "X4PN85E9UFDBWKN2FFXBC467RQ"
+    IconName             "DualPistols_IncendiaryAmmo.tga"
+    ShowInManage         kFalse
+    Cancelable           kTrue
+    Free                 kTrue
+    AutoIssue            kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingBits ANIM_AMMO ANIM_INCENDIARYROUNDS
+            }
+            
+            Params EffectFilter
+            {
+                Tag FireDamage
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag HailofBulletsFire
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag HailofBulletsCold
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag HailofBulletsToxic
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag HailofBulletsLethal
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.4000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag HailofBulletsEndKnockback
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag Lethal
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.8000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag FireDamageDoT
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.1000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag LethalKB10
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag LethalKB25
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag LethalKB50
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.7000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag LethalKB70
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.0500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag HailofBulletsKnockdown
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude kFireAmmo
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

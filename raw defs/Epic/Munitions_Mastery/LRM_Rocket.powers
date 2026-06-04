@@ -1,0 +1,43 @@
+Power Epic.Munitions_Mastery.LRM_Rocket
+{
+    Name                 "LRM_Rocket"                  
+    DisplayName          "P1046091651"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        18.2
+    InterruptTime        2
+    TimeToActivate       3.87
+    TimeToRoot           1.87
+    RechargeTime         240
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kKnockback_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_MunitionsMastery_LRMRocket.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_MunitionsMastery_LRMRocket.pfx
+    DisplayShortHelp     "8SE9SGAESWJMYBV9Q62XFWSX3Z"
+    DisplayHelp          "M3BT6C2294MWY8N8UYPYKGSACZ"
+    IconName             "MunitionsMastery_LRMRocket.tga"
+    MaxTargetsHit        16
+
+    Redirect
+    {
+        Power Pets.Epic_LRMRocket.LRM_Rocket_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Pets.Epic_LRMRocket.LRM_Rocket_Normal
+        Requires 1
+    }
+    
+}

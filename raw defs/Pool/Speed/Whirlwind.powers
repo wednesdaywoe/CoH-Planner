@@ -1,0 +1,129 @@
+Power Pool.Speed.Whirlwind
+{
+    Name                 "Whirlwind"                   
+    DisplayName          "P4152178509"
+    BuyRequires          Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool
+    ModesSuspended       kSuppress_PoolToggles
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.4875
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         20
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               7
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kKnockback_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Speed_Whirlwind.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Speed_Whirlwind.pfx
+    DisplayShortHelp     "P3487441435"
+    DisplayHelp          "KWPQGKFTQCSBY6X79BW842BANX"
+    DisplayAttackerHit   "P3144030591"
+    IconName             "SuperSpeed_Whirlwind.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -0.3000
+            Duration 3.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Tag "ReduceIfKD"
+        Chance 1.1000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.5000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P657239359"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 2.0000
+            StackType kReplace
+            Suppress Knocked 10 WhenInactive
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.5000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P657239359"
+            }
+            
+        }
+    }
+}

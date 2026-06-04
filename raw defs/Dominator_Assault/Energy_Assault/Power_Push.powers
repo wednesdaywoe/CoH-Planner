@@ -1,0 +1,174 @@
+Power Dominator_Assault.Energy_Assault.Power_Push
+{
+    Name                 "Power_Push"                  
+    DisplayName          "P4281908744"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.4
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        8.528
+    TimeToActivate       1.1
+    TimeToRoot           1.1
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_EnergyAssault_PowerPush.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_EnergyAssault_PowerPush.PFX
+    DisplayShortHelp     "NSQDDF7ZUZDTY3LW5AZEMY36FA"
+    DisplayHelp          "4R3JX3TN8RD6WEXXEZKRB9LCAX"
+    IconName             "EnergyAssault_PowerPush.tga"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.6560
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.9840
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.5960
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.8940
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Tag "EnergyStore"
+        Chance 0.2000
+        Requires kStunned target> 0 > Redirects.Energy_Melee.Energy_Store_Assault source.ownPower? ! &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Redirects.Energy_Melee.Energy_Store_Assault
+            }
+            
+        }
+    }
+}

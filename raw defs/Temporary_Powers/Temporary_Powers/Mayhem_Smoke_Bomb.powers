@@ -1,0 +1,98 @@
+Power Temporary_Powers.Temporary_Powers.Mayhem_Smoke_Bomb
+{
+    Name                 "Mayhem_Smoke_Bomb"           
+    DisplayName          "P75374878"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        9.75
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               35
+    AIReport             kNever
+    NumCharges           10
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Gadgets_SmokeGrenade.pfx"
+    include              menu\Powers\AnimFX\Gadgets_SmokeGrenade.pfx
+    DisplayShortHelp     "P1118005641"
+    DisplayHelp          "W9XBVKKR4DYKWEBRKPPG9X5KNX"
+    IconName             "Temporary_RangeAoEBlind.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2217246121"
+    DisplayTargetHelp    "P152798133"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.9000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX Powers/Gadgets/SmokeGrenadeContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.5000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX Powers/Gadgets/SmokeGrenadeContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.9000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Damaged
+            FX
+            {
+                ContinuingFX Powers/Gadgets/SmokeGrenadeContinuing.fx
+            }
+            
+        }
+    }
+}

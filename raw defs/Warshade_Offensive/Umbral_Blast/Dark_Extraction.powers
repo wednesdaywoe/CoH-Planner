@@ -1,0 +1,72 @@
+Power Warshade_Offensive.Umbral_Blast.Dark_Extraction
+{
+    Name                 "Dark_Extraction"             
+    DisplayName          "P360260552"
+    ModesDisallowed      kDisable_All, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadFoe
+    EntsAutoHit          kDeadFoe
+    Target               kDeadFoe
+    Range                40
+    EnduranceCost        26
+    TimeToActivate       3.2
+    TimeToRoot           3.2
+    RechargeTime         240
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_RaiseFoe.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_RaiseFoe.pfx
+    DisplayShortHelp     "P4107512448"
+    DisplayHelp          "56RGB8CT8SU6WAV9FXEA4Y9G3X"
+    DisplayAttackerHit   "P2727926811"
+    IconName             "UmbralBlast_DarkExtraction.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            Delay 4.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Warshade_Extraction
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P256533052"
+                DisplayVictimHit "P285457741"
+            }
+            
+            FX
+            {
+                ContinuingBits ANIM_RAISEDEAD ANIM_STRONG
+            }
+            
+        }
+    }
+}

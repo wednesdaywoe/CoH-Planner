@@ -1,0 +1,75 @@
+#**********************************************************#
+# Power: Buff > Dark Miasma > Darkest Night                #
+# Info:  Toggle: Ranged (Targeted AoE), Foe -DMG, -To Hit  #
+#**********************************************************#
+
+Power Mastermind_Buff.Dark_Miasma.Darkest_Night
+{
+    Name                 "Darkest_Night"               
+    DisplayName          "P1936194933"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kDeadOrAliveFoe
+    Range                70
+    EnduranceCost        0.26
+    TimeToActivate       3.17
+    TimeToRoot           3.17
+    RechargeTime         10
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_DarkMiasma_DarkestNight.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_DarkMiasma_DarkestNight.PFX
+    DisplayShortHelp     "P553898035"
+    DisplayHelp          "HM43GXKSVBMGYKCD4WW82N6EG2"
+    DisplayAttackerHit   "P2595569261"
+    DisplayVictimHit     "P1811048855"
+    IconName             "DarkMiasma_DarkestNight.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3286818350"
+    DisplayTargetHelp    "P3570112387"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 1.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+}

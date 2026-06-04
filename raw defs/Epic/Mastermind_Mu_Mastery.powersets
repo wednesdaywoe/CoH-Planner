@@ -1,0 +1,49 @@
+PowerSet Epic.Mastermind_Mu_Mastery
+{
+    Name "Mastermind_Mu_Mastery"
+    DisplayName "P219921951"
+    DisplayShortHelp "P219921951"
+    DisplayHelp "P2730572537"
+    IconName "Mastermind_Mu_Mastery_set.ico"
+
+    Powers Epic.Mastermind_Mu_Mastery.Static_Discharge
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Mastermind_Mu_Mastery.Charged_Armor
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Mastermind_Mu_Mastery.Thunder_Strike
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Mastermind_Mu_Mastery.Electrifying_Fences
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Mastermind_Mu_Mastery.Electric_Shackles
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

@@ -1,0 +1,169 @@
+Power Tanker_Defense.Energy_Aura.Energy_Drain
+{
+    Name                 "Energy_Drain"                
+    DisplayName          "P2805665154"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       2.37
+    TimeToRoot           2.37
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_EnergyAura_EnergyDrain.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_EnergyAura_EnergyDrain.PFX
+    DisplayShortHelp     "P612294370"
+    DisplayHelp          "P4101166586"
+    IconName             "EnergyAura_Drain.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale -0.3300
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P626718221"
+                    DisplayVictimHit "P453378455"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_EndDrain"
+                Scale -10.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P626718221"
+                    DisplayVictimHit "P453378455"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Buff_Def"
+                Scale 0.0800
+                Duration 45.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayInfo "KBU8Q6HA4GJ2YKVQJ6GLGCQ2MZ"
+                }
+                
+                FX
+                {
+                    ContinuingFX GenericContinuing/BuffDefContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Buff_Def"
+                Scale 0.0400
+                Duration 45.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 25.0000
+                Magnitude 1.0000
+                Delay 0.2500
+                StackType kStack
+                Flags IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayVictimHit "P1197092217"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayVictimHit "P3842703125"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.3000
+        
+            AttribMod
+            {
+                Attrib kRecovery
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale -1.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+            }
+        }
+    }
+}

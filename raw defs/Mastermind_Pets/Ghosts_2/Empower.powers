@@ -1,0 +1,49 @@
+#***************************************#
+# Power: Pets > Necro Wraith > Empower  #
+# Info:  Empower                        #
+#***************************************#
+
+Power Mastermind_Pets.Ghosts_2.Empower
+{
+    Name                 "Empower"                     
+    DisplayName          "P1386049433"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_Empower.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_Empower.pfx
+    DisplayShortHelp     "P1386049433"
+    DisplayHelp          "P3753743131"
+    IconName             "Necromancy_DarkEmpowerment.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,323 @@
+Power Blaster_Support.Electricity_Manipulation.Havok_Punch
+{
+    Name                 "Havok_Punch"                 
+    DisplayName          "P632018255"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        13.52
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         14
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost, kKnockback_Boost, kSleep_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_ElectricityManipulation_HavokPunch.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_ElectricityManipulation_HavokPunch.PFX
+    DisplayShortHelp     "GMGKEFXF6YFWYEZFBKRVMFT24A"
+    DisplayHelp          "N3S3RZDXBCH2YGBEZ7MJUZ46RQ"
+    IconName             "ElectricityManipulation_HavokPunch.tga"
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "P1252614011"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.6000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 2.0100
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_EndDrain"
+            Scale -4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Sleep"
+            Scale 15.0000
+            Magnitude 3.0000
+            Delay 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_ElectroStun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            Delay 0.2500
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_ElectroStun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 0.7500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 0.7500
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 6.7600
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P1197092217"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0990
+            Duration 9.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildStatic"
+        Requires Blaster_Ranged.Electrical_Blast.Tesla_Cage source.ownPower?
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Shock_Therapy_Static
+            }
+            
+        }
+    }
+}

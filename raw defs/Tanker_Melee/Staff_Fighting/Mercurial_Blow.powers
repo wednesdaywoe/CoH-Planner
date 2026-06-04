@@ -1,0 +1,159 @@
+Power Tanker_Melee.Staff_Fighting.Mercurial_Blow
+{
+    Name                 "Mercurial_Blow"              
+    DisplayName          "P4212191260"
+    BuyRequires          Tanker_Defense.Shield_Defense !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                9
+    EnduranceCost        4.368
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         3
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/ScrapperMelee_LongStaff_MercurialBlow.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/ScrapperMelee_LongStaff_MercurialBlow.PFX
+    DisplayShortHelp     "3G5P9GS6XMMRWVCXL2V8KRXGU2"
+    DisplayHelp          "GL6FNUZSMG9WY8X9X87N5ZE3M3"
+    IconName             "StaffFighting_MercurialBlow.tga"
+    DisplayTargetShortHelp "P3100956268"
+    DisplayTargetHelp    "P3627445229"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.8400
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 1.0000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags CancelOnMiss
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.3780
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+                FX
+                {
+                    ContinuingFX POWERS/FireControl/CindersHit.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.2200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 1.0000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kCur
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay NoProjectileDelay
+            Params Power
+            {
+                Power Redirects.Staff_Melee.Perfection_Level
+            }
+            
+        }
+    }
+}

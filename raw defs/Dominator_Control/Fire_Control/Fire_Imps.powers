@@ -1,0 +1,88 @@
+Power Dominator_Control.Fire_Control.Fire_Imps
+{
+    Name                 "Fire_Imps"                   
+    DisplayName          "P638235624"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        26
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         240
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_FireControl_FireImps.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_FireControl_FireImps.PFX
+    DisplayShortHelp     "P1781968311"
+    DisplayHelp          "P2898089301"
+    IconName             "FireTrap_FireImps.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_LevelMinus"
+            Scale 1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_FireImp
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_LevelMinus"
+            Scale 1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kReplace
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_FireImp
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_LevelMinus"
+            Scale 1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kReplace
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_FireImp
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,167 @@
+Power Epic.Dominator_Mace_Mastery.Disruptor_Blast
+{
+    Name                 "Disruptor_Blast"             
+    DisplayName          "P2464121079"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.184
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         32
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_MaceMastery_DisruptorBlast.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_MaceMastery_DisruptorBlast.pfx
+    DisplayShortHelp     "4BAPY52BWGJJY7B4F4H8ZL2T62"
+    DisplayHelp          "F9TVNL8HMJNGW8XVKYNZ7AW5TX"
+    IconName             "Arachnos_Patron_RangedAoEModerateDmg.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Containment"
+            Requires kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.hasTag? || arch source> class_controller == &&
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "KPFVHG6DVS62YALA9NLSHQJKAQ"
+                    DisplayVictimHit "GY4X98DXBB46WWXT9PB8KGUQP2"
+                    DisplayFloat "P3070513493"
+                    DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.2000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Knockback"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.9477
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Containment"
+            Requires kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> class_controller == &&
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.9477
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "KPFVHG6DVS62YALA9NLSHQJKAQ"
+                    DisplayVictimHit "GY4X98DXBB46WWXT9PB8KGUQP2"
+                    DisplayFloat "P3070513493"
+                    DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.2000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Knockback"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    }
+}

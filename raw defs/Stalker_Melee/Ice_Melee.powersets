@@ -1,0 +1,81 @@
+PowerSet Stalker_Melee.Ice_Melee
+{
+    Name "Ice_Melee"
+    DisplayName "P3699032934"
+    DisplayShortHelp "P3699032934"
+    DisplayHelp "P2598044333"
+    IconName "Ice_Melee_set.ico"
+
+    Powers Stalker_Melee.Ice_Melee.Frozen_Fists
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Ice_Melee.Ice_Sword
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Ice_Melee.Frost
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Ice_Melee.Assassins_Ice_Swords
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Ice_Melee.Placate
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Ice_Melee.Build_Up
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Ice_Melee.Ice_Patch
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Ice_Melee.Freezing_Touch
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Ice_Melee.Frozen_Aura
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

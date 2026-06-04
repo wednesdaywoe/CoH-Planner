@@ -1,0 +1,99 @@
+Power Temporary_Powers.Phasing.MercyContactPhase
+{
+    Name                 "MercyContactPhase"           
+    DisplayName          "P341581089"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    RefreshesOnActivePlayerChange kTrue
+    DisplayShortHelp     "P3899172876"
+    DisplayHelp          "P3899172876"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Requires Phasing_KuzminMission2Complete Target.TokenOwned? Phasing_FB_KuzminMission2Complete Target.TokenOwned? || Phasing_FB_KuzminMission2NotCompleted Target.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact1
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires KilledfireWire source.TokenOwned? ! Phasing_FB_FireWireArcStart source.TokenOwned? ||
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires missionKilledHarris source.TokenOwned? ! Phasing_FB_Harris_StoryArcStart source.TokenOwned? ||
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact5
+            }
+            
+        }
+    }
+}

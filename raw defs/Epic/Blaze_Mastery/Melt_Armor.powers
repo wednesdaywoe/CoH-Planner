@@ -1,0 +1,66 @@
+Power Epic.Blaze_Mastery.Melt_Armor
+{
+    Name                 "Melt_Armor"                  
+    DisplayName          "P3190899346"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        18.2
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         200
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ThermalRadiation_MeltArmor.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ThermalRadiation_MeltArmor.PFX
+    DisplayShortHelp     "P883673132"
+    DisplayHelp          "EP7SUCBDNXEBYWXX7FEZNFRPY3"
+    DisplayAttackerHit   "P1591168787"
+    DisplayVictimHit     "P503219343"
+    IconName             "PyreMastery_MeltArmor.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1874250117"
+    DisplayTargetHelp    "P397266516"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.0000
+            Duration 40.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Debuff_Res_Dmg"
+            Scale -3.0000
+            Duration 40.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

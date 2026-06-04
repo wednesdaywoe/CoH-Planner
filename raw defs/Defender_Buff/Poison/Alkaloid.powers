@@ -1,0 +1,68 @@
+#**********************************#
+# Power: Buff > Poison > Alkaloid  #
+# Info:  Ally Heal, +Res(Toxic)    #
+#**********************************#
+
+Power Defender_Buff.Poison.Alkaloid
+{
+    Name                 "Alkaloid"                    
+    DisplayName          "P3338218470"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       1.53
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_Alkaloid.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_Alkaloid.PFX
+    DisplayShortHelp     "P192217088"
+    DisplayHelp          "P2522191693"
+    IconName             "Poison_Alkaloid.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.7300
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

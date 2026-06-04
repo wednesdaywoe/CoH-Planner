@@ -1,0 +1,157 @@
+Power Warshade_Offensive.Umbral_Blast.Gravimetric_Snare
+{
+    Name                 "Gravimetric_Snare"           
+    DisplayName          "P2242028378"
+    ModesDisallowed      kDisable_All, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kImmobilized_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Ranged_Immobilize.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Ranged_Immobilize.pfx
+    DisplayShortHelp     "7A3HFMQ7X9PVWMCCZ3RWA4YN52"
+    DisplayHelp          "RWU6MDJC7ZB2Y9N3EAP8YXA732"
+    IconName             "UmbralBlast_GravimetricSnare.tga"
+    DisplayTargetShortHelp "P466643657"
+    DisplayTargetHelp    "P2350667847"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2000
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1461699593"
+                DisplayVictimHit "P3815778435"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 15.0000
+            Magnitude 3.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.3458
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1461699593"
+                DisplayVictimHit "P3815778435"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

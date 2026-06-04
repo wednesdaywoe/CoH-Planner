@@ -1,0 +1,463 @@
+Power Warshade_Defensive.Umbral_Aura.Black_Dwarf
+{
+    Name                 "Black_Dwarf"                 
+    DisplayName          "P508543496"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kKheldian_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.13
+    RechargeTime         1
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost, kRecovery_Boost, kJump_Boost
+    IgnoreAttackTimeErrors jhamilton
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    GlobalStrengthsDisallowed kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+    ToggleDroppable      kNever
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Tanker_Transform.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Tanker_Transform.pfx
+    DisplayShortHelp     "P2162812352"
+    DisplayHelp          "D2GQ9D6JCR8SW3XUVE82TPN3UX"
+    DisplayAttackerHit   "P2107100164"
+    IconName             "UmbralAura_BlackDwarf.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 5.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kStunned kSleep
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -50.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -60.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kStunned kSleep
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -50.0000
+            Duration 2.0300
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -60.0000
+            Duration 2.0300
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 5.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 5.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kStunned kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 5.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 6.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense kToHit kRechargeTime
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kStunned kSleep
+            Aspect kRes
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 5.0000
+            Duration 2.0300
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kRes
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 6.0000
+            Duration 2.0300
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense kToHit kRechargeTime
+            Aspect kRes
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 2.0300
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight
+            Aspect kRes
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 2.0300
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 7.5000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kThreatLevel
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0100
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Control"
+            Scale 10.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 100.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -100.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -100.0000
+            Duration 2.0300
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude kSuppress_PoolToggles
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude kDisable_Walk
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude kWarshade_Tanker_Mode
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            Period 3.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Kheldian_Dwarf_Warshade
+                Priority 7
+            }
+            
+        }
+    }
+}

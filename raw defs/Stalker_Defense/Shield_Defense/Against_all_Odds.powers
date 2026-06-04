@@ -1,0 +1,103 @@
+Power Stalker_Defense.Shield_Defense.Against_all_Odds
+{
+    Name                 "Against_all_Odds"            
+    DisplayName          "P2771670526"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.208
+    TimeToActivate       2.5
+    RechargeTime         10
+    ActivatePeriod       1
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > && kMeter source> .9 < &&
+    VisualFX             "menu/powers/AnimFX/Player_Shield_AgainstAllOdds.pfx"
+    include              menu/powers/AnimFX/Player_Shield_AgainstAllOdds.pfx
+    DisplayShortHelp     "P1693381488"
+    DisplayHelp          "829K6JYQ8JNDYMMSU6BEH7MHA2"
+    DisplayAttackerHit   "P3170588225"
+    IconName             "ShieldDefense_AgainstAllOdds.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_DMG"
+            Scale 1.0000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_DMG"
+            Scale 1.0000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX POWERS\Shields\AgainstAllOdds_Continuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_DMG"
+            Scale 0.5500
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Debuff_Dam"
+            Scale 1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

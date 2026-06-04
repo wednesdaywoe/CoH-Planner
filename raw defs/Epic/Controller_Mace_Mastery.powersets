@@ -1,0 +1,51 @@
+PowerSet Epic.Controller_Mace_Mastery
+{
+    Name "Controller_Mace_Mastery"
+    DisplayName "P1468440306"
+    DisplayShortHelp "P1468440306"
+    DisplayHelp "P2748514603"
+    CostumeKeys CustomWeapon_ArachnosMace
+    CostumeParts ArachnosMace_Default
+    IconName "Controller_Mace_Mastery_set.ico"
+
+    Powers Epic.Controller_Mace_Mastery.Poisonous_Ray
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Controller_Mace_Mastery.Scorpion_Shield
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Controller_Mace_Mastery.Disruptor_Blast
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Controller_Mace_Mastery.Personal_Force_Field
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Controller_Mace_Mastery.Summon_Tarantula
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

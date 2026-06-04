@@ -1,0 +1,50 @@
+#***********************************************#
+# Power: Buff > Pain Domination > Nullify Pain  #
+# Info:  PBAoE, Team +Heal                      #
+#***********************************************#
+
+Power Mastermind_Buff.Pain_Domination.Nullify_Pain
+{
+    Name                 "Nullify_Pain"                
+    DisplayName          "P175982904"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       2.03
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_PainDomination_NullifyPain.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_PainDomination_NullifyPain.PFX
+    DisplayShortHelp     "P1906443399"
+    DisplayHelp          "P3532212810"
+    IconName             "PainDomination_NullifyPain.tga"
+    MaxTargetsHit        255
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 0.8800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

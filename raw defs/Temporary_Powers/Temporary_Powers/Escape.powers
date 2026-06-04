@@ -1,0 +1,126 @@
+Power Temporary_Powers.Temporary_Powers.Escape
+{
+    Name                 "Escape"                      
+    DisplayName          "P574928312"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.75
+    EffectArea           kCharacter
+    LifeTime             90
+    DisplayShortHelp     "P802353247"
+    DisplayHelp          "P492171401"
+    DisplayAttackerHit   "P3996246684"
+    IconName             "Inspiration_resist_sleep_hold_Lvl_3.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    DisplayTargetShortHelp "P802353247"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -20.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/ability/StrengthContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -10.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/ability/StrengthContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRepel
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/ability/StrengthContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTaunt kPlacate
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 2.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/ability/StrengthContinuing.fx
+            }
+            
+        }
+    }
+}

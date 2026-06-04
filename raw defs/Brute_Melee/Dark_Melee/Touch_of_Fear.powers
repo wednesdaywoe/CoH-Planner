@@ -1,0 +1,52 @@
+Power Brute_Melee.Dark_Melee.Touch_of_Fear
+{
+    Name                 "Touch_of_Fear"               
+    DisplayName          "P1744130983"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    TimeToActivate       1.97
+    TimeToRoot           1.97
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               6
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kFear_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    ProcMainTargetOnly   kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteMelee_DarkMelee_TouchofFear.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteMelee_DarkMelee_TouchofFear.PFX
+    DisplayShortHelp     "XS5FWBADK5X3Y9XEXZC8F8HBJ2"
+    DisplayHelp          "P919042621"
+    IconName             "ShadowFighting_TouchOfFearAoE"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1128528124"
+    DisplayTargetHelp    "P793722308"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay CopyBoosts
+            Params Power
+            {
+                Power Redirects.Dark_Melee.Touch_of_Fear_AoE
+                Power Redirects.Dark_Melee.Touch_of_Fear_ST
+            }
+            
+        }
+    }
+}

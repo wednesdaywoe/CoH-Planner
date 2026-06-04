@@ -1,0 +1,125 @@
+Power Blaster_Support.Plant_Manipulation.Wild_Fortress
+{
+    Name                 "Wild_Fortress"               
+    DisplayName          "P1422226856"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       2.27
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRes_Damage_Boost, kRecovery_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\PlantManipulation_WildFortress.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\PlantManipulation_WildFortress.PFX
+    DisplayShortHelp     "EGRFXM27Z2LVYKXALURJ2HQDQZ"
+    DisplayHelp          "UR2X3CFNMRP2YANFDRK3E7VM8X"
+    IconName             "PlantManipulation_WildFortress"
+
+
+    Effect
+    {
+        Requires @CustomFX ShowFloaters eq !
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Target kTarget
+            Table "Melee_HealSelf"
+            Scale 0.1500
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoFloaters IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Res_Boolean"
+            Scale -30.0000
+            Duration 2.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires @CustomFX ShowFloaters eq
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Target kTarget
+            Table "Melee_HealSelf"
+            Scale 0.1500
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.5000
+            Duration 2.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Ranged_Res_Dmg"
+            Scale 2.0000
+            Duration 2.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

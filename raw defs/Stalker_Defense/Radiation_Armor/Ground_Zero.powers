@@ -1,0 +1,50 @@
+Power Stalker_Defense.Radiation_Armor.Ground_Zero
+{
+    Name                 "Ground_Zero"                 
+    DisplayName          "P2728914404"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFriend, kFoe
+    EntsAutoHit          kFriend
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       3
+    TimeToRoot           3
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    TargetRequires       0
+    ProcMainTargetOnly   kTrue
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/RadiationArmor_GroundZero.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/RadiationArmor_GroundZero.PFX
+    DisplayShortHelp     "8NJ2CTSFBE8HWKVLNXDFFQ36NZ"
+    DisplayHelp          "UA3Q3J8AN45EW8CGTYG69PBTC2"
+    IconName             "RadiationArmor_GroundZero.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3521613722"
+    DisplayTargetHelp    "P3447141410"
+
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay CopyBoosts
+            Params Power
+            {
+                Power Redirects.Rad_Armor.Ground_Zero_Ally
+                Power Redirects.Rad_Armor.Ground_Zero_Foe
+            }
+            
+        }
+    }
+}

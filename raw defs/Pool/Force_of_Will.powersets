@@ -1,0 +1,59 @@
+PowerSet Pool.Force_of_Will
+{
+    Name "Force_of_Will"
+    DisplayName "P3317971026"
+    DisplayShortHelp "P3317971026"
+    DisplayHelp "P2397175304"
+    SetBuyRequires Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt || Pool.Sorcery.Mystic_Flight || Pool.Experimentation.Experimental_Injection || Pool.Experimentation.Toxic_Dart || Pool.Experimentation.Speed_of_Sound || Pool.Gadgetry.Nano_Net || Pool.Gadgetry.Wrist_Blaster || Pool.Gadgetry.Jetpack || Pool.Utility_Belt.Bolas || Pool.Utility_Belt.Poisoned_Dagger || Pool.Utility_Belt.Freerunning || !
+    SetBuyRequiresFailedText "You can only have one Specialized power pool in your build."
+    IconName "Force_of_Will_set.ico"
+
+    Powers Pool.Force_of_Will.Weaken_Resolve
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Force_of_Will.Project_Will
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Force_of_Will.Mighty_Leap
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Force_of_Will.Stomp
+    Available -1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Force_of_Will.Wall_of_Force
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Force_of_Will.Unleash_Potential
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

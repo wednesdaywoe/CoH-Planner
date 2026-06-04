@@ -1,0 +1,169 @@
+Power Dominator_Control.Earth_Control.Volcanic_Gasses
+{
+    Name                 "Volcanic_Gasses"             
+    DisplayName          "P497353619"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.4
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        18.2
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         240
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_EarthControl_VolcanicGasses.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_EarthControl_VolcanicGasses.PFX
+    DisplayShortHelp     "MGE63TFDR4UNYQCUZEMJUWYVRQ"
+    DisplayHelp          "BBEJF6GK7PU5W8Z58PMU4WBNZ2"
+    IconName             "EarthGrasp_VolcanicGasses.tga"
+    DisplayTargetShortHelp "P1580114403"
+    DisplayTargetHelp    "P1012408864"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Volcanicgas
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Volcanicgeyser
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            Delay 10.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Volcanicgeyser
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            Delay 20.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Volcanicgeyser
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            Delay 30.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Volcanicgeyser
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            Delay 40.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Volcanicgeyser
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 50.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Volcanicgeyser
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    }
+}

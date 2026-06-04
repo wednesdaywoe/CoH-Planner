@@ -1,0 +1,50 @@
+Power Temporary_Powers.Temporary_Powers.Warwolf_Whistle_FB
+{
+    Name                 "Warwolf_Whistle_FB"          
+    DisplayName          "P305673413"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         240
+    EffectArea           kLocation
+    NumCharges           2
+    Deletable            kTrue
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Warwolf_Whistle.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Warwolf_Whistle.pfx
+    DisplayShortHelp     "P3672847964"
+    DisplayHelp          "RRKUGCDBVF6AWQXA87KD6XNP3W"
+    IconName             "Temporary_WarWolfWhistle.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Warwolf
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

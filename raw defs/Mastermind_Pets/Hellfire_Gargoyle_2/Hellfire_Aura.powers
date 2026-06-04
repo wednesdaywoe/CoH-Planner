@@ -1,0 +1,57 @@
+#***********************************************************#
+# Power: Pets > Demons Hellfire Gargoyle 2 > Hellfire Aura  #
+# Info:  Auto: PBAoE, DoT(Toxic)                            #
+#***********************************************************#
+
+Power Mastermind_Pets.Hellfire_Gargoyle_2.Hellfire_Aura
+{
+    Name                 "Hellfire_Aura"               
+    DisplayName          "P2648838997"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    RechargeTime         4
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_HellfireGargoyle2_HellfireAura.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_HellfireGargoyle2_HellfireAura.pfx
+    DisplayShortHelp     "6U2MQ9T2GHQLY6LM47HPL35R22"
+    DisplayHelp          "ADXDKSYPP5H9YYMLF3UHRHFV83"
+    IconName             "FlamingShield_FieryAura.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3014490551"
+    DisplayTargetHelp    "P2505542025"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2851307520"
+                DisplayVictimHit "P105122461"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

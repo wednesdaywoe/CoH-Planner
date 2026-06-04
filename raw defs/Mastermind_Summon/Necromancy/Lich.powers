@@ -1,0 +1,79 @@
+#************************************#
+# Power: Summon > Necromancy > Lich  #
+# Info:  Summon Lich                 #
+#************************************#
+
+Power Mastermind_Summon.Necromancy.Lich
+{
+    Name                 "Lich"                        
+    DisplayName          "P3124304184"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        13.18
+    TimeToActivate       3.17
+    TimeToRoot           3.17
+    RechargeTime         15
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kKnockback_Boost, kImmobilized_Boost, kFear_Boost, kHold_Boost
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_Lich.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_Lich.PFX
+    DisplayShortHelp     "P1774529674"
+    DisplayHelp          "3RKY9N3SVGW8WGVUJB9MCFWALQ"
+    IconName             "Necromancy_SummonLitch.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Lich
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 50.0000
+            Magnitude 1.0000
+            Delay 3.1700
+            StackType kIgnore
+            Flags NoHitDelay SetTimer
+            Params Power
+            {
+                Power Mastermind_Summon.Necromancy.Lich
+            }
+            
+        }
+    }
+}

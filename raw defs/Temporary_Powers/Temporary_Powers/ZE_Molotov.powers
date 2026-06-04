@@ -1,0 +1,75 @@
+Power Temporary_Powers.Temporary_Powers.ZE_Molotov
+{
+    Name                 "ZE_Molotov"                  
+    DisplayName          "P675900933"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.5
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               15
+    NumCharges           10
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_DynamiteBundle.pfx"
+    include              menu\Powers\AnimFX\Villain_DynamiteBundle.pfx
+    DisplayShortHelp     "P2581090281"
+    DisplayHelp          "2ABPKHM3YMQ2YKNQRAG4RY4L6W"
+    IconName             "Temporary_Molotov.tga"
+    MaxTargetsHit        6
+    DisplayTargetShortHelp "P2581090281"
+    DisplayTargetHelp    "P3582546467"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.8000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround CopyBoosts
+            Params EntCreate
+            {
+                EntityDef PraetorianAngryCitizens_Burn
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,319 @@
+#******************************************************#
+# Power: Epic > Leviathan Mastery > School of Sharks   #
+# Info:  Ranged (Cone), DoT(Negative), Foe Immobilize  #
+#******************************************************#
+
+Power Epic.Sentinel_Leviathan_Mastery.School_of_Sharks
+{
+    Name                 "School_of_Sharks"            
+    DisplayName          "P1701467337"
+    BuyRequires          $archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 owned? || &&
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                50
+    EnduranceCost        10.795
+    TimeToActivate       2.37
+    TimeToRoot           2.37
+    RechargeTime         16
+    EffectArea           kCone
+    Radius               50
+    Arc                  30
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kImmobilized_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_LeviathanMastery_SchoolOfSharks.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_LeviathanMastery_SchoolOfSharks.pfx
+    DisplayShortHelp     "7DHW5K4UWA7RYAXW7YVMHAZHDW"
+    DisplayHelp          "FKXJQMDQCXLJWJZRPH8S54TBJW"
+    IconName             "Arachnos_Patron_ConeImmobilize.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P444445179"
+    DisplayTargetHelp    "P3149058435"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 15.0000
+            Magnitude 3.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1339
+                Magnitude 1.0000
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "P2637081052"
+                    DisplayVictimHit "P936402029"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.0595
+                Duration 7.1000
+                Magnitude 1.0000
+                Delay 1.0000
+                Period 1.0000
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "P1461699593"
+                    DisplayVictimHit "P3815778435"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.1339
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "MKNQB68MKQ4GWWBRPFD3WYFNQQ"
+                    DisplayVictimHit "3V64ZZSHFGUAWFNN3KA2TRDP2Q"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.0595
+                Duration 7.1000
+                Magnitude 1.0000
+                Delay 1.0000
+                Period 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "K22Y2XSCQVQMWYNH8LJ9MTVR9X"
+                    DisplayVictimHit "8JAPCQQXASQPWRB6SG2CSCSHM2"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.1240
+                Duration 7.1000
+                Magnitude 1.0000
+                Delay 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1461699593"
+                    DisplayVictimHit "P3815778435"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.1102
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2637081052"
+                    DisplayVictimHit "P936402029"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.1240
+                Duration 7.1000
+                Magnitude 1.0000
+                Delay 1.0000
+                Period 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "K22Y2XSCQVQMWYNH8LJ9MTVR9X"
+                    DisplayVictimHit "8JAPCQQXASQPWRB6SG2CSCSHM2"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.1102
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MKNQB68MKQ4GWWBRPFD3WYFNQQ"
+                    DisplayVictimHit "3V64ZZSHFGUAWFNN3KA2TRDP2Q"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

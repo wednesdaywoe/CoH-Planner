@@ -1,0 +1,40 @@
+Power Temporary_Powers.Temporary_Powers.Curse_of_Weariness
+{
+    Name                 "Curse_of_Weariness"          
+    DisplayName          "P3621625843"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTime             300
+    DisplayShortHelp     "P3437769315"
+    DisplayHelp          "P3987438438"
+    IconName             "DarkCast_SoulDrain.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kMax
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -50.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffEnd2Continuing.fx
+            }
+            
+        }
+    }
+}

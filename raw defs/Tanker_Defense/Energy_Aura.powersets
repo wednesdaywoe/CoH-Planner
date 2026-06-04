@@ -1,0 +1,81 @@
+PowerSet Tanker_Defense.Energy_Aura
+{
+    Name "Energy_Aura"
+    DisplayName "P249871547"
+    DisplayShortHelp "P249871547"
+    DisplayHelp "P466841289"
+    IconName "Energy_Aura_set.ico"
+
+    Powers Tanker_Defense.Energy_Aura.Kinetic_Shield
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Energy_Aura.Dampening_Field
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Energy_Aura.Power_Shield
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Energy_Aura.Entropy_Shield
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Energy_Aura.Energy_Protection
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Energy_Aura.Energy_Reserve
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Energy_Aura.Energize
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Energy_Aura.Energy_Drain
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Energy_Aura.Overload
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

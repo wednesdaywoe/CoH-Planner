@@ -1,0 +1,902 @@
+Power Scrapper_Melee.Staff_Fighting.Eye_of_the_Storm
+{
+    Name                 "Eye_of_the_Storm"            
+    DisplayName          "P1480912102"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAoE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        16.016
+    TimeToActivate       2.57
+    TimeToRoot           2.57
+    RechargeTime         17
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    HighlightEval        Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 || Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 ||
+    HighlightRing        255 127 0 255
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/ScrapperMelee_LongStaff_EyeoOfStorm.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/ScrapperMelee_LongStaff_EyeoOfStorm.PFX
+    DisplayShortHelp     "68SMQBQMKRXSYVXHEEPRMMRBT3"
+    DisplayHelp          "GXNJXHZJ2KYFY3N44AV2WVGN6S"
+    IconName             "StaffFighting_EyeoftheStorm.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2211841663"
+    DisplayTargetHelp    "P68898796"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.2050
+                Duration 2.3000
+                Magnitude 1.0000
+                Period 0.4000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1545979143"
+                    DisplayVictimHit "P2876742505"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Body"
+            Requires Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.4920
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kRes
+                Target kTarget
+                Table "Melee_Res_Dmg"
+                Scale -1.0000
+                Duration 6.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+                FX
+                {
+                    ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\Hit_Body.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 2.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\CHILD_EyeOfTheStorm_Body.fx
+                }
+                
+            }
+        
+            Effect
+            {
+                Flags HideFromInfo
+            
+                AttribMod
+                {
+                    Attrib kRevokePower
+                    Aspect kAbs
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    Delay 0.5000
+                    StackType kIgnore
+                    Flags IgnoreStrength IgnoreResistance
+                    Params Power
+                    {
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Tag "Mind"
+            Requires Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.4920
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P801507873"
+                    DisplayVictimHit "P3863231487"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\Hit_Mind.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 2.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\CHILD_EyeOfTheStorm_Mind.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kJumpHeight kRechargeTime
+                Aspect kStr
+                Target kTarget
+                Table "Melee_Slow"
+                Scale 0.1500
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+            }
+        
+            AttribMod
+            {
+                Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Slow"
+                Scale 0.1500
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffSpeedFeet.fx
+                }
+                
+            }
+        
+            Effect
+            {
+                Flags HideFromInfo
+            
+                AttribMod
+                {
+                    Attrib kRevokePower
+                    Aspect kAbs
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    Delay 0.5000
+                    StackType kIgnore
+                    Flags IgnoreStrength IgnoreResistance
+                    Params Power
+                    {
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Tag "Soul"
+            Requires Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.4920
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2559786529"
+                    DisplayVictimHit "P377644626"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\Hit_Soul.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 2.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\CHILD_EyeOfTheStorm_Soul.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 1.0000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags CancelOnMiss IgnoreStrength
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+                }
+                
+            }
+        
+            Effect
+            {
+                Flags HideFromInfo
+            
+                AttribMod
+                {
+                    Attrib kRevokePower
+                    Aspect kAbs
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    Delay 0.5000
+                    StackType kIgnore
+                    Flags IgnoreStrength IgnoreResistance
+                    Params Power
+                    {
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.4000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 0.6700
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.0923
+                Duration 2.3000
+                Magnitude 1.0000
+                Period 0.4000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                }
+                
+                FX
+                {
+                    ContinuingFX POWERS/FireControl/CindersHit.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritLarge" "ScrapperCrit_AoE"
+            Chance 0.1000
+            Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.2300
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritSmall" "ScrapperCrit_AoE"
+            Chance 0.0500
+            Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.2300
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.1678
+                Duration 2.3000
+                Magnitude 1.0000
+                Period 0.4000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1545979143"
+                    DisplayVictimHit "P2876742505"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Body"
+            Requires Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.0335
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kRes
+                Target kTarget
+                Table "Melee_Res_Dmg"
+                Scale -1.0000
+                Duration 6.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\Hit_Body.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 2.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\CHILD_EyeOfTheStorm_Body.fx
+                }
+                
+            }
+        
+            Effect
+            {
+                Flags HideFromInfo
+            
+                AttribMod
+                {
+                    Attrib kRevokePower
+                    Aspect kAbs
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    Delay 0.5000
+                    StackType kIgnore
+                    Flags IgnoreStrength IgnoreResistance
+                    Params Power
+                    {
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Tag "Mind"
+            Requires Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.0335
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P801507873"
+                    DisplayVictimHit "P3863231487"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\Hit_Mind.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 2.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\CHILD_EyeOfTheStorm_Mind.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kJumpHeight kRechargeTime
+                Aspect kStr
+                Target kTarget
+                Table "Melee_Slow"
+                Scale 0.1500
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+            }
+        
+            AttribMod
+            {
+                Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Slow"
+                Scale 0.1500
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffSpeedFeet.fx
+                }
+                
+            }
+        
+            Effect
+            {
+                Flags HideFromInfo
+            
+                AttribMod
+                {
+                    Attrib kRevokePower
+                    Aspect kAbs
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    Delay 0.5000
+                    StackType kIgnore
+                    Flags IgnoreStrength IgnoreResistance
+                    Params Power
+                    {
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Tag "Soul"
+            Requires Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.0335
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2559786529"
+                    DisplayVictimHit "P377644626"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\Hit_Soul.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 2.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX CustomizeablePowers\StaffFighting\CHILD_EyeOfTheStorm_Soul.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 1.0000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags CancelOnMiss IgnoreStrength
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+                }
+                
+            }
+        
+            Effect
+            {
+                Flags HideFromInfo
+            
+                AttribMod
+                {
+                    Attrib kRevokePower
+                    Aspect kAbs
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    Delay 0.5000
+                    StackType kIgnore
+                    Flags IgnoreStrength IgnoreResistance
+                    Params Power
+                    {
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3
+                        Power Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.4000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 0.6700
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritPlayer" "ScrapperCrit_AoE"
+            Chance 0.0500
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.1843
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kCur
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay NoProjectileDelay
+            Params Power
+            {
+                Power Redirects.Staff_Melee.Perfection_Level
+            }
+            
+        }
+    }
+}

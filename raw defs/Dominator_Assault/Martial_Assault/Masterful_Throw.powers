@@ -1,0 +1,40 @@
+Power Dominator_Assault.Martial_Assault.Masterful_Throw
+{
+    Name                 "Masterful_Throw"             
+    DisplayName          "P3417996420"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        18.512
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MartialAssault_MasterfulThrow_Quick.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MartialAssault_MasterfulThrow_Quick.PFX
+    DisplayShortHelp     "P2719548459"
+    DisplayHelp          "TCQVBNDWQLBTY5VEVY8GXCER43"
+    IconName             "MartialAssault_MasterfulThrow.tga"
+    DisplayTargetShortHelp "P2190949330"
+
+    Redirect
+    {
+        Power Villain_Pets.Dominator_MartialAssault_Snipe.Masterful_Throw_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Dominator_MartialAssault_Snipe.Masterful_Throw_Normal
+        Requires 1
+    }
+    
+}

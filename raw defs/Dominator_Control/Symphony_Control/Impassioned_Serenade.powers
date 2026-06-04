@@ -1,0 +1,107 @@
+Power Dominator_Control.Symphony_Control.Impassioned_Serenade
+{
+    Name                 "Impassioned_Serenade"        
+    DisplayName          "JKMHNVRBKYEUYNC8FRCY3XRV92"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kConfuse_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Symphony_Control_Impassioned_Serenade.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Symphony_Control_Impassioned_Serenade.pfx
+    DisplayShortHelp     "TZ4HUJQQKUYTYZZM8BG8EFQ9RW"
+    DisplayHelp          "TCJ5DB4FVKZ7WLX5BEENW8CHD2"
+    IconName             "SymphonyControl_ConfuseST"
+    DisplayTargetShortHelp "P1116895679"
+    DisplayTargetHelp    "BPT6CSQSJWBXYHCFJHU8PC9P32"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.6500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.0400
+            Duration 30.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kReplace
+            RequiredEvent Confused 1
+            Suppress Sleep 1 Always
+            Messages
+            {
+                DisplayAttackerHit "P2287672660"
+                DisplayVictimHit "P3092393664"
+                DisplayInfo "DF3659HJ5BJCWTZTLXKYRNCCTW"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kCur
+            Table "Melee_Ones"
+            Delay 0.2500
+            StackType kStack
+            Params Power
+            {
+                Power Redirects.Symphony_Control.Impassioned_Serenade_Dominator
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "ReverbImpassionedSerenade"
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kCur
+            Target kCastersOwnerAndAllPets
+            Table "Melee_Ones"
+            Delay 2.0000
+            DelayedRequires Pets_Reverberant target.VillainName>
+            StackType kStack
+            Params Power
+            {
+                Power Pets.Reverberant.Impassioned_Serenade
+            }
+            
+        }
+    }
+}

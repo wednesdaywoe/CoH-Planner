@@ -1,0 +1,62 @@
+Power Temporary_Powers.Temporary_Powers.Summer_Event_Administrator
+{
+    Name                 "Summer_Event_Administrator"  
+    DisplayName          "P2728490693"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       0.73
+    TimeToRoot           0.73
+    RechargeTime         30
+    EffectArea           kCharacter
+    LifeTime             10
+    IgnoreStrength       kTrue
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   2
+    IgnoreLevelBought    kTrue
+    Deletable            kTrue
+    ShootThroughUntouchable kTrue
+    InstanceLocked       kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Essence_Leviathan.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Essence_Leviathan.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "SHU8AHEXCLZ6W6LZMSKMME274S"
+    IconName             "Temporary_Prometheus.tga"
+    AnimMainTargetOnly   kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    DisplayTargetShortHelp "P2211841663"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Messages
+            {
+                DisplayVictimHit "P2570415023"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef SummerEvent_Heist_Hitter_Marker
+                PriorityList "PL_Neutral_Actor"
+            }
+            
+        }
+    }
+}

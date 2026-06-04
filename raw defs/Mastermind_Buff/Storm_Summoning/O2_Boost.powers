@@ -1,0 +1,155 @@
+Power Mastermind_Buff.Storm_Summoning.O2_Boost
+{
+    Name                 "O2_Boost"                    
+    DisplayName          "P4232593684"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       2.27
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_StormSummoning_O2Boost.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_StormSummoning_O2Boost.PFX
+    DisplayShortHelp     "P1565891011"
+    DisplayHelp          "XWSR7YLSZRMHY6ZLJAN9ZEKRQ2"
+    IconName             "StormSummoning_O2Boost.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P1630761439"
+    DisplayTargetHelp    "P1243226818"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance kRecovery
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 4.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.5000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.5000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -20.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kStunned kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -25.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kSuppress
+            StackKey kPvPMezProt
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

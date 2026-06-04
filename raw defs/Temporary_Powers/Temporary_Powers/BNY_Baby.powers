@@ -1,0 +1,144 @@
+Power Temporary_Powers.Temporary_Powers.BNY_Baby
+{
+    Name                 "BNY_Baby"                    
+    DisplayName          "VNRRTFJFXT4AYHXHX87DQ5QCZA"
+    Type                 kAuto
+    Accuracy             1.2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTime             900
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "GU8XGMYN9EDQWUCUMFMBLT6AUZ"
+    DisplayHelp          "N3XHK2ZMKCPDY2M93XA9VSFAUS"
+    IconName             "Temporary_FreakshowDisguise.tga"
+    DisplayTargetShortHelp "GU8XGMYN9EDQWUCUMFMBLT6AUZ"
+    DisplayTargetHelp    "VNRRTFJFXT4AYHXHX87DQ5QCZA"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires costume target> female eq
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.7000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            Params Costume
+            {
+                Costume Baby_Costume_F
+                Priority 9
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude kDisable_Incarnate
+            Period 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> male eq
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.7000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            Params Costume
+            {
+                Costume Baby_Costume_M
+                Priority 9
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude kDisable_Incarnate
+            Period 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> huge eq
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.7000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            Params Costume
+            {
+                Costume Baby_Costume_H
+                Priority 9
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude kDisable_Incarnate
+            Period 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

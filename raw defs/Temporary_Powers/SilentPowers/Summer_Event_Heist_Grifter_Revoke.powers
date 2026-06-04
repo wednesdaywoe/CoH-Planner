@@ -1,0 +1,77 @@
+Power Temporary_Powers.SilentPowers.Summer_Event_Heist_Grifter_Revoke
+{
+    Name                 "Summer_Event_Heist_Grifter_Revoke"
+    DisplayName          "P3508800285"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    EffectArea           kCharacter
+    AIReport             kNever
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    ShootThroughUntouchable kTrue
+    InstanceLocked       kTrue
+    DisplayShortHelp     "P1142517709"
+    DisplayHelp          "P1142517709"
+    IconName             "DarkMiasma_TarPatch.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    DisplayTargetShortHelp "P906160339"
+    DisplayTargetHelp    "P82710288"
+
+
+    Effect
+    {
+        Requires Temporary_Powers.SilentPowers.Summer_Event_Heist_Grifter target.OwnPower?
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance RevokeAll
+            Params Power
+            {
+                Power Temporary_Powers.SilentPowers.Summer_Event_Heist_Grifter
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.SilentPowers.Summer_Event_Heist_Grifter target.OwnPower? !
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.SilentPowers.Summer_Event_Heist_Grifter_Revoke
+            }
+            
+        }
+    }
+}

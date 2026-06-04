@@ -1,0 +1,42 @@
+Power Arachnos_Soldiers.Arachnos_Soldier.Heavy_Burst
+{
+    Name                 "Heavy_Burst"                 
+    DisplayName          "P358900709"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                50
+    EnduranceCost        11.856
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         12
+    EffectArea           kCone
+    Radius               50
+    Arc                  30
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_HeavyBurst_Switchboard.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_HeavyBurst_Switchboard.pfx
+    DisplayShortHelp     "MRAJFW669SPQWWNVALYB2C6L72"
+    DisplayHelp          "A5TMUGUWV35AW8ZEEWZ5GS83P2"
+    IconName             "ArachnosSoldier_HeavyBurst.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P2714801799"
+
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Crab_Heavy_Burst
+        Requires @CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Wolf_Heavy_Burst
+        Requires 1
+    }
+    
+}

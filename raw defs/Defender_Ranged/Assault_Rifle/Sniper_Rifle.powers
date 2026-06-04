@@ -1,0 +1,39 @@
+Power Defender_Ranged.Assault_Rifle.Sniper_Rifle
+{
+    Name                 "Sniper_Rifle"                
+    DisplayName          "P3081000933"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kKnockback_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\AssaultWep_AR_Player_Sniper_Quick.pfx"
+    include              menu\Powers\AnimFX\AssaultWep_AR_Player_Sniper_Quick.pfx
+    DisplayShortHelp     "HUUL7B2K9FAUWBZGQRYTBZQ5G2"
+    DisplayHelp          "3C6XLVTSK9FWY8ZC4U77CNE8WS"
+    IconName             "AssaultWeapons_SniperRifle.tga"
+
+    Redirect
+    {
+        Power Pets.Defender_AR_Snipe.Sniper_Rifle_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Pets.Defender_AR_Snipe.Sniper_Rifle_Normal
+        Requires 1
+    }
+    
+}

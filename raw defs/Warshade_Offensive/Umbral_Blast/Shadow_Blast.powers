@@ -1,0 +1,147 @@
+Power Warshade_Offensive.Umbral_Blast.Shadow_Blast
+{
+    Name                 "Shadow_Blast"                
+    DisplayName          "P2341052953"
+    ModesDisallowed      kDisable_All, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kKnockback_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_NightBlast.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_NightBlast.pfx
+    DisplayShortHelp     "P3730608247"
+    DisplayHelp          "Z9RYSYUKSRKCY6BMLH2ZCSKXVA"
+    IconName             "UmbralBlast_ShadowBlast.tga"
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P3432723974"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.8890
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,40 @@
+Power Temporary_Powers.Temporary_Powers.Mystic_Fortune_Lock
+{
+    Name                 "Mystic_Fortune_Lock"         
+    DisplayName          "P2608204308"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    LifeTimeInGame       1200
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P1346207032"
+    IconName             "MysticFortune.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

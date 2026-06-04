@@ -1,0 +1,159 @@
+#***************************************************#
+# Power: Epic > Weapon Mastery > Sting of the Wasp  #
+# Info:  Melee, DMG(Lethal), Foe -Def               #
+#***************************************************#
+
+Power Epic.Sentinel_Ninja_Mastery.Sting_of_the_Wasp
+{
+    Name                 "Sting_of_the_Wasp"           
+    DisplayName          "P482956191"
+    BuyRequires          $archetype @Class_Sentinel ==
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        6.032
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\Ninja_Katana_Down_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Ninja_Katana_Down_NoGeo.pfx
+    DisplayShortHelp     "ZSUCGXTARWWAYUMFHP78W3T2BQ"
+    DisplayHelp          "4QRSZHXVY62YWZMKW4M9G4XPYA"
+    IconName             "NinjaTools_KatanaLight"
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P2982196974"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.1600
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.1600
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            TickChance 0.9980
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.6190
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.6190
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+}

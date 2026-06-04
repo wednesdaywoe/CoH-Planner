@@ -1,0 +1,48 @@
+Power Mastermind_Buff.Traps.Triage_Beacon
+{
+    Name                 "Triage_Beacon"               
+    DisplayName          "P3860346273"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       2.77
+    TimeToRoot           2.77
+    RechargeTime         200
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Traps_TriageBeacon.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Traps_TriageBeacon.PFX
+    DisplayShortHelp     "P3379444764"
+    DisplayHelp          "KWAZB9A6DSPHY6M23VYJ43G4GA"
+    IconName             "Traps_DroppedAoEBuffRegen.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Traps_Triage_Beacon
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

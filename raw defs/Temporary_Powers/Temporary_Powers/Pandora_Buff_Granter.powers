@@ -1,0 +1,39 @@
+Power Temporary_Powers.Temporary_Powers.Pandora_Buff_Granter
+{
+    Name                 "Pandora_Buff_Granter"        
+    DisplayName          "P924634103"
+    BuyRequires          accesslevel char> 0 >=
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EffectArea           kCharacter
+    Deletable            kTrue
+    DisplayShortHelp     "P3563799947"
+    DisplayHelp          "P54696132"
+    IconName             "Temporary_TerraVoltaGlow.tga"
+
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Pandora_Buff
+            }
+            
+        }
+    }
+}

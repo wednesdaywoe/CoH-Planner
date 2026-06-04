@@ -1,0 +1,152 @@
+Power Epic.Dark_Mastery.Soul_Drain
+{
+    Name                 "Soul_Drain"                  
+    DisplayName          "JZAS62A88ADLWJLHKE9UQ5SC2Z"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kDeadOrAliveFoe
+    EntsAutoHit          kNone
+    Target               kDeadOrAliveFoe
+    Range                60
+    EnduranceCost        15.6
+    TimeToActivate       2.37
+    TimeToRoot           2.37
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_DarkMelee_SoulDrain.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_DarkMelee_SoulDrain.PFX
+    DisplayShortHelp     "HW8A4ANUBDVGWCZX4ZRRWWH6KZ"
+    DisplayHelp          "S7WNFGRMHMFQWTZL69CFPM25FZ"
+    IconName             "Dark_Mastery_SpiritDrain"
+    MaxTargetsHit        5
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.4000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 0.2000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 0.8000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 4.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq && arch source> Class_Corruptor eq &&
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.4000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "JUEWBM7JZMNJWZMJKL4U2CVPQ2"
+                DisplayVictimHit "FVD8UKSJKSPEWPBXHWQ49E9TY2"
+                DisplayFloat "P111359259"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq && arch source> Class_Corruptor eq &&
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.2900
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "JUEWBM7JZMNJWZMJKL4U2CVPQ2"
+                DisplayVictimHit "FVD8UKSJKSPEWPBXHWQ49E9TY2"
+                DisplayFloat "P111359259"
+            }
+            
+        }
+    }
+}

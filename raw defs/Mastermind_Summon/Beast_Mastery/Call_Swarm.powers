@@ -1,0 +1,201 @@
+#*********************************************************#
+# Power: Summon > Beast Mastery > Call Swarm              #
+# Info:  Ranged, Light DoT(Lethal), Foe -Defense, -Speed  #
+#*********************************************************#
+
+Power Mastermind_Summon.Beast_Mastery.Call_Swarm
+{
+    Name                 "Call_Swarm"                  
+    DisplayName          "P4289027545"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        4.368
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         3
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost
+    HighlightEval        kPersonalAttack1 Mode? !
+    HighlightRing        163 136 101 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_CallSwarm.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_CallSwarm.pfx
+    DisplayShortHelp     "P1455896769"
+    DisplayHelp          "TJJ38L2LEP5XWZLUWUUP9SULYS"
+    IconName             "BeastMastery_CallSwarm.tga"
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P2137762428"
+    DisplayTargetHelp    "P1304255405"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1848
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 0.7500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.2440
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 0.7500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3200
+        Requires temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Pack_Mentality
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Apex Predator"
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_HealSelf"
+            Scale 0.4000
+            Duration 30.0000
+            Magnitude 1.0000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || enttype target> player eq ||
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kAccuracy
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0300
+            Duration 10.0000
+            Magnitude 1.0000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || enttype target> player eq ||
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kCaster
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude kPersonalAttack1
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

@@ -1,0 +1,314 @@
+#******************************************#
+# Power: Summon > Ninjas > Kuji-In Zen     #
+# Info:  Ranged, Enlighten Ninja Henchman  #
+#******************************************#
+
+Power Mastermind_Summon.Ninjas.Kuji_In_Zen
+{
+    Name                 "Kuji_In_Zen"                 
+    DisplayName          "BLE5XHDFSAVEW4MM6UZ2K43HSQ"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kMastermindUpgrade2
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kMyPet
+    Range                50
+    EnduranceCost        11.375
+    TimeToActivate       2.37
+    RechargeTime         0.5
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    StrengthsDisallowed  kRechargeTime
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Mastermind_Ninja_Upgrade_2.pfx"
+    include              menu\Powers\AnimFX\Mastermind_Ninja_Upgrade_2.pfx
+    DisplayShortHelp     "P2137491224"
+    DisplayHelp          "8TW5YT9KJWM4YTMVBZM4QT7J63"
+    DisplayAttackerHit   "P606020474"
+    IconName             "Ninjas_UpgradeEquipment.tga"
+    MaxTargetsHit        16
+    AnimMainTargetOnly   kTrue
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Requires MastermindPets_Genin target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Genin_3.Aimed_Shot
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Genin_3.Crane_Kick
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Genin_3.Costume1
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Genin_3.Enlighten
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Genin_3.Kuji-In_Sha
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires MastermindPets_Jonin target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Jonin_3.Head_Splitter
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Jonin_3.Blinding_Powder
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Jonin_3.Costume1
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Jonin_3.Enlighten
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Genin_3.Kuji-In_Sha
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires MastermindPets_Oni target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Oni_3.Char
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Oni_3.Rain_of_Fire
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Oni_3.Enlighten
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Genin_3.Kuji-In_Sha
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires MastermindPets_Genin target.VillainName> MastermindPets_Jonin target.VillainName> || MastermindPets_Oni target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 7.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingBits ANIM_HIGH ANIM_HIT ANIM_NINJAUPGRADE
+            }
+            
+        }
+    }
+}

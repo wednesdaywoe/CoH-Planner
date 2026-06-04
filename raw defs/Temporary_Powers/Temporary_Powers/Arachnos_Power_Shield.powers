@@ -1,0 +1,63 @@
+Power Temporary_Powers.Temporary_Powers.Arachnos_Power_Shield
+{
+    Name                 "Arachnos_Power_Shield"       
+    DisplayName          "P1440983643"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.1625
+    TimeToActivate       0.67
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            600
+    IgnoreStrength       kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Arachnos_Shield.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Arachnos_Shield.pfx
+    DisplayShortHelp     "P287518923"
+    DisplayHelp          "XSUDQ4KAKMH9YYC96J3ULDJ8TQ"
+    DisplayAttackerHit   "P3629109375"
+    IconName             "Temporary_SelfBuffDefense.tga"
+    DisplayTargetShortHelp "P2937554370"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX V_COV\Powers\ItemsandTempPowers\ArachnosPowerShield\ArachnosPowerShield.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

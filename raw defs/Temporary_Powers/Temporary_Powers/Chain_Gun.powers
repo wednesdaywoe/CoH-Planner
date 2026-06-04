@@ -1,0 +1,48 @@
+Power Temporary_Powers.Temporary_Powers.Chain_Gun
+{
+    Name                 "Chain_Gun"                   
+    DisplayName          "P193312026"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    TimeToActivate       6
+    TimeToRoot           6
+    RechargeTime         16
+    EffectArea           kCharacter
+    NumCharges           30
+    VisualFX             "menu\Powers\AnimFX\Villain_Chaingun.pfx"
+    include              menu\Powers\AnimFX\Villain_Chaingun.pfx
+    DisplayShortHelp     "P3694738782"
+    DisplayHelp          "CGGVTRML5KETYQN9R7QJXQA5TQ"
+    IconName             "AssaultWeapons_ARFullAuto.tga"
+    DisplayTargetShortHelp "P3694738782"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.2060
+            Duration 5.1000
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+}

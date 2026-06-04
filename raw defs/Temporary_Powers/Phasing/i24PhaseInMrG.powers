@@ -1,0 +1,75 @@
+Power Temporary_Powers.Phasing.i24PhaseInMrG
+{
+    Name                 "i24PhaseInMrG"               
+    DisplayName          "P571292771"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    RefreshesOnActivePlayerChange kTrue
+    DisplayShortHelp     "P3899172876"
+    DisplayHelp          "P3899172876"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Requires Phasing_i24_Villain_PhaseIn_MrG source.TokenOwned? Phasing_i24_Villain_PhaseIn_MrG_Flashback source.TokenOwned? || Phasing_i24_Villain_PhaseIn_ArcBegin_Flashback source.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact1
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_i24_Villain_PhaseIn_Allies source.TokenOwned? Phasing_i24_Villain_PhaseIn_Allies_Flashback source.TokenOwned? || Phasing_i24_Villain_PhaseIn_ArcBegin_Flashback source.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact2
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,68 @@
+Power Temporary_Powers.Temporary_Powers.V_Shivan_Bolt
+{
+    Name                 "V_Shivan_Bolt"               
+    DisplayName          "P3764153087"
+    ModesRequired        kShivan_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        3.12
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         1.5
+    EffectArea           kCharacter
+    LifeTimeInGame       3600
+    VisualFX             "menu\Powers\AnimFX\RADIATION_Burst_NeutrinoBlast.pfx"
+    include              menu\Powers\AnimFX\RADIATION_Burst_NeutrinoBlast.pfx
+    DisplayShortHelp     "H8ULCLV94B7UYXMC7W8964Q6GQ"
+    DisplayHelp          "9PFBBERYCKH5YKVMEJHNXYH6UX"
+    IconName             "LuminousBlast_GleamingBolt.tga"
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P2247395871"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.9000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "FRSSJKC5PYCBYNNS2UGWW7LEFW"
+                DisplayVictimHit "G95KU877F7JQYNL5D339GMXRXZ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 3.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/IrradiateContinuingFx.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,57 @@
+#****************************************#
+# Power: Buff > Empathy > Recovery Aura  #
+# Info:  PBAoE, Ally +Recovery           #
+#****************************************#
+
+Power Mastermind_Buff.Empathy.Recovery_Aura
+{
+    Name                 "Recovery_Aura"               
+    DisplayName          "P3826125234"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        26
+    TimeToActivate       2.03
+    RechargeTime         500
+    EffectArea           kSphere
+    Radius               25
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Empathy_RecoveryAura.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Empathy_RecoveryAura.PFX
+    DisplayShortHelp     "P3682556562"
+    DisplayHelp          "P1790811977"
+    DisplayAttackerHit   "P1138309770"
+    DisplayVictimHit     "P4278187717"
+    IconName             "Empathy_RecoveryAura.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P2310678054"
+    DisplayTargetHelp    "P2288653983"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 2.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffEndContinuing.fx
+            }
+            
+        }
+    }
+}

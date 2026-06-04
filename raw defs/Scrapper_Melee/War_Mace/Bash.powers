@@ -1,0 +1,239 @@
+Power Scrapper_Melee.War_Mace.Bash
+{
+    Name                 "Bash"                        
+    DisplayName          "P506932706"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        5.2
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost
+    StrengthsDisallowed  kRange
+    ProcMainTargetOnly   kTrue
+    VisualFX             "menu\Powers\AnimFX\Mace_HorizontialSlash_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Mace_HorizontialSlash_NoGeo.pfx
+    DisplayShortHelp     "FQBP7LC8EFDWWRN9CBVD4TBP9Z"
+    DisplayHelp          "47YECHXBMP2LWFXPJN5EVZ9CYS"
+    IconName             "Mace_Bash.tga"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 5.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.3494
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.4500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CritPlayer" "ScrapperCrit_ST"
+        Chance 0.0500
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.3494
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CritSmall" "ScrapperCrit_ST"
+        Chance 0.0500
+        Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CritLarge" "ScrapperCrit_ST"
+        Chance 0.1000
+        Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

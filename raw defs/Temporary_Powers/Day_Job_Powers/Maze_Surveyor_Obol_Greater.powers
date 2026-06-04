@@ -1,0 +1,39 @@
+Power Temporary_Powers.Day_Job_Powers.Maze_Surveyor_Obol_Greater
+{
+    Name                 "Maze_Surveyor_Obol_Greater"  
+    DisplayName          "9JMEG96ZLDUPYUMCBE4J7JFS52"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    LifeTimeInGame       7200
+    Deletable            kTrue
+    DisplayShortHelp     "5WBAEM6KW9T4WENKD4T4824BXW"
+    DisplayHelp          "H5JHMLZBFVLZY3VKW4VRUZHPW3"
+    IconName             "DayJob_Loot.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

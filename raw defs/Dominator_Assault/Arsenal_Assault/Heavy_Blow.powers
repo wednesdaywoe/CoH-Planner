@@ -1,0 +1,127 @@
+Power Dominator_Assault.Arsenal_Assault.Heavy_Blow
+{
+    Name                 "Heavy_Blow"                  
+    DisplayName          "MGXGDSKACWGEWDVUDNHGN2VGHZ"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        11.856
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Assault_Armed_Assault_Heavy_Blow.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Assault_Armed_Assault_Heavy_Blow.pfx
+    DisplayShortHelp     "K95FNTJP3A4HYHXRGL6SPN3NY2"
+    DisplayHelp          "F3WC4V5VK7XAWZMQMT6VJNPCJW"
+    IconName             "AssaultWeapons_HeavyBlow"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 2.2800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.6700
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.6290
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.6700
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,81 @@
+PowerSet Mastermind_Pets.Ghosts_1
+{
+    Name "Ghosts_1"
+    DisplayName "DTMUWCA7HUNBYJMQ3AN63S4H3Z"
+    DisplayShortHelp "P3178236627"
+    DisplayHelp "P2757174098"
+    IconName "Ghosts_set.ico"
+
+    Powers Mastermind_Pets.Ghosts_1.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ghosts_1.Phase_Shift
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ghosts_1.Self_Destruct
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ghosts_1.Ghastly_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ghosts_1.Fly
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ghosts_1.Life_Drain
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ghosts_1.Enchant
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ghosts_1.Necroplasmic_Grasp
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ghosts_1.Empower
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

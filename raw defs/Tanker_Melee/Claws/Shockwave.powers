@@ -1,0 +1,158 @@
+Power Tanker_Melee.Claws.Shockwave
+{
+    Name                 "Shockwave"                   
+    DisplayName          "P1222944546"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                30
+    EnduranceCost        13.4784
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         14.4
+    EffectArea           kCone
+    Radius               30
+    Arc                  90
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kTaunt_Boost
+    VisualFX             "menu\Powers\AnimFX\Claws_Wave_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Claws_Wave_NoGeo.pfx
+    DisplayShortHelp     "F3ABSVDSUSSKY8BD68SJJNB6KS"
+    DisplayHelp          "PWAMP4PTU69HYFM4ZDWJAS9YXZ"
+    IconName             "Claws_Wave.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.1301
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 0.7000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.7921
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 0.7000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "PVP_MainTargetOnly"
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.2119
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.5084
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

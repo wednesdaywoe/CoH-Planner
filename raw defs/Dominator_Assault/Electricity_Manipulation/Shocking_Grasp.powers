@@ -1,0 +1,61 @@
+Power Dominator_Assault.Electricity_Manipulation.Shocking_Grasp
+{
+    Name                 "Shocking_Grasp"              
+    DisplayName          "P4186800839"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        26
+    TimeToActivate       3.1
+    TimeToRoot           3.1
+    RechargeTime         60
+    ActivatePeriod       1
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost
+    ProcAllowed          kNone
+    IgnoreToggleMaxDistance kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_ElectricityManipulation_ShockingGrasp.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_ElectricityManipulation_ShockingGrasp.PFX
+    DisplayShortHelp     "P3227875875"
+    DisplayHelp          "Q4KNGXB6A468WGNZBGMZREG7BS"
+    IconName             "ElectricalAssault_VoltaicSentinel.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            Flags CopyBoosts PseudoPet
+            Messages
+            {
+                DisplayAttackerHit "P964605222"
+            }
+            
+            Params EntCreate
+            {
+                Costume Pet_NoCollision
+                DisplayName "Voltaic Sentinel"
+                PriorityList "PL_Untargetable_FightPreferRanged"
+                Power Pets.ResistAll_NoFly.ResistAll
+                Power Pets.VoltaicSentinel_Dominator.Electrical_Bolt
+                Power Pets.VoltaicSentinel_Dominator.Electrical_Field
+            }
+            
+        }
+    }
+}

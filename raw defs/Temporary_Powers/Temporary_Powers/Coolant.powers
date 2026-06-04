@@ -1,0 +1,49 @@
+Power Temporary_Powers.Temporary_Powers.Coolant
+{
+    Name                 "Coolant"                     
+    DisplayName          "P2663184169"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                20
+    TimeToActivate       1.07
+    RechargeTime         10
+    EffectArea           kCharacter
+    NumCharges           20
+    LifeTimeInGame       5400
+    ServerTrayRequires   mapname> trial_03_01_room eq
+    ServerTrayPriority   1
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Coolant.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Coolant.pfx
+    DisplayShortHelp     "P2278225876"
+    DisplayHelp          "L2VKXV2SM2H6YAZDND4B6V6WTZ"
+    IconName             "Reactor_Coolant.tga"
+    NumAllowed           10
+
+
+    Effect
+    {
+        Requires Objects_Reactor_Core target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kSpecial
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.2000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P3119631387"
+            }
+            
+        }
+    }
+}

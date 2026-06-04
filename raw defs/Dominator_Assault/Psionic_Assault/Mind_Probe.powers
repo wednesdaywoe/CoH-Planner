@@ -1,0 +1,106 @@
+Power Dominator_Assault.Psionic_Assault.Mind_Probe
+{
+    Name                 "Mind_Probe"                  
+    DisplayName          "P361216995"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        10.192
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_PsionicAssault_MindProbe.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_PsionicAssault_MindProbe.PFX
+    DisplayShortHelp     "P825120974"
+    DisplayHelp          "3UPKQY5HLU7QW6LN5ECCAHKQQA"
+    IconName             "PsionicAssault_MindProbe.tga"
+    DisplayTargetShortHelp "P3214140212"
+    DisplayTargetHelp    "P3434442888"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.9600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.4000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.6190
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

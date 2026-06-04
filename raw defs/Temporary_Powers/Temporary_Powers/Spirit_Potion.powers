@@ -1,0 +1,139 @@
+Power Temporary_Powers.Temporary_Powers.Spirit_Potion
+{
+    Name                 "Spirit_Potion"               
+    DisplayName          "P2917459168"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    GroupMembership      kRest_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        32.5
+    TimeToActivate       3
+    RechargeTime         60
+    EffectArea           kCharacter
+    NumCharges           3
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_SpiritPotion.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_SpiritPotion.pfx
+    DisplayShortHelp     "P2250716377"
+    DisplayHelp          "2Y6BBJV8773DWBVVENCT3Z8XBZ"
+    DisplayAttackerHit   "P3206175017"
+    IconName             "Temporary_ResonanceDisrupter.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.3000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX Powers/Invisibility/InvisibilityPhaseShiftContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 20.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 222.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 10 Always
+            Suppress HitByFoe 10 Always
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPhase
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 60.0000
+            Magnitude 3.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                CombatPhase GhostPhased
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPhase
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 60.0000
+            Magnitude 3.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                CombatPhase NoPrime
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kIntangible
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 60.0000
+            Magnitude 3.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kThreatLevel
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

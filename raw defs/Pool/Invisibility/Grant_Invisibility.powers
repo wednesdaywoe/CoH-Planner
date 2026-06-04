@@ -1,0 +1,122 @@
+Power Pool.Invisibility.Grant_Invisibility
+{
+    Name                 "Grant_Invisibility"          
+    DisplayName          "P3917858559"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kLeaguemate
+    EntsAutoHit          kLeaguemate
+    Target               kLeaguemate
+    Range                40
+    EnduranceCost        15.6
+    TimeToActivate       1.17
+    RechargeTime         3
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Concealment_GrantInvisibility.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Concealment_GrantInvisibility.pfx
+    DisplayShortHelp     "P3143585501"
+    DisplayHelp          "WKS29ZRMKNB5YMMYCGTFAP6U2S"
+    DisplayVictimHit     "P4108882767"
+    DisplayPowerDefenseFloat "P3802943013"
+    IconName             "Invisibility_GroupInvisibility.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P2623971958"
+    DisplayTargetHelp    "P2302773260"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Table "Melee_Ones"
+            Scale 55.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 10 Always
+            Suppress HitByFoe 10 Always
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Table "Melee_Ones"
+            Scale 611.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 10 Always
+            Suppress HitByFoe 10 Always
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Table "Melee_Buff_Def"
+            Scale 0.2500
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 10 Always
+            Suppress HitByFoe 10 Always
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Table "Melee_Buff_Def"
+            Scale 0.2500
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Table "Melee_Ones"
+            Scale 0.1000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 10 Always
+            Suppress HitByFoe 10 Always
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

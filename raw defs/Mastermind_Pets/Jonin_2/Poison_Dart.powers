@@ -1,0 +1,113 @@
+#*********************************************#
+# Power: Pets > Ninja Jounin 2 > Poison Dart  #
+# Info:  Poison: DoT (Toxic), -Regeneration   #
+#*********************************************#
+
+Power Mastermind_Pets.Jonin_2.Poison_Dart
+{
+    Name                 "Poison_Dart"                 
+    DisplayName          "P2013867959"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        5.2
+    DontSetStance        1
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu/powers/AnimFX/Jounin_Jounin_PoisonDart.pfx"
+    include              menu/powers/AnimFX/Jounin_Jounin_PoisonDart.pfx
+    DisplayShortHelp     "UX2G5JSYEHRBWBZJPW4B8R97DA"
+    DisplayHelp          "KAK7AXPHQU9XY9M76FM6M5UFUW"
+    IconName             "Quills_Lunge.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Tag "CriticalHit"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_InherentDamage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.7500
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1000
+            Duration 9.0000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+        }
+    }
+}

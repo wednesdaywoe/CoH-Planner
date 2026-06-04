@@ -1,0 +1,122 @@
+Power Defender_Ranged.Assault_Rifle.Beanbag
+{
+    Name                 "Beanbag"                     
+    DisplayName          "P2366196313"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kRanged_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        10.192
+    TimeToActivate       0.9
+    TimeToRoot           0.9
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost
+    VisualFX             "menu\Powers\AnimFX\AssaultWep_AR_Player_Beanbag_NoGeo.pfx"
+    include              menu\Powers\AnimFX\AssaultWep_AR_Player_Beanbag_NoGeo.pfx
+    DisplayShortHelp     "P4088271525"
+    DisplayHelp          "V2X59APVXQNHW7NLU25EWRC9J2"
+    IconName             "AssaultWeapons_ShotgunBeanbag.tga"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.9800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 10.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.4300
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+}

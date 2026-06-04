@@ -1,0 +1,67 @@
+PowerSet Pool.Sorcery
+{
+    Name "Sorcery"
+    DisplayName "P2797511102"
+    DisplayShortHelp "P2797511102"
+    DisplayHelp "P248322099"
+    SetBuyRequires Pool.Gadgetry.Nano_Net Pool.Gadgetry.Wrist_Blaster || Pool.Gadgetry.Jetpack || Pool.Experimentation.Experimental_Injection || Pool.Experimentation.Toxic_Dart || Pool.Experimentation.Speed_of_Sound || Pool.Force_of_Will.Weaken_Resolve || Pool.Force_of_Will.Project_Will || Pool.Force_of_Will.Mighty_Leap || Pool.Utility_Belt.Bolas || Pool.Utility_Belt.Poisoned_Dagger || Pool.Utility_Belt.Freerunning || !
+    SetBuyRequiresFailedText "You can only have one Specialized power pool in your build."
+    IconName "Sorcery_set.ico"
+
+    Powers Pool.Sorcery.Spirit_Ward
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Sorcery.Arcane_Bolt
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Sorcery.Arcane_Proc
+    Available -1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Sorcery.Mystic_Flight
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Sorcery.Translocation
+    Available -1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Sorcery.Enflame
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Sorcery.Rune_of_Protection
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

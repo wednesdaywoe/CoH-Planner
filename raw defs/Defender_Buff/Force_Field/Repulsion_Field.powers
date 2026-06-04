@@ -1,0 +1,196 @@
+Power Defender_Buff.Force_Field.Repulsion_Field
+{
+    Name                 "Repulsion_Field"             
+    DisplayName          "P3240570147"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.1625
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         20
+    ActivatePeriod       0.25
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kKnockback_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ForceField_RepulsionField.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ForceField_RepulsionField.PFX
+    DisplayShortHelp     "P2358627271"
+    DisplayHelp          "6ZQCFF9YE5W7W2LXJ6YHWZU8KW"
+    DisplayAttackerHit   "P662208976"
+    IconName             "ForceField_RepulsionField.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Tag "ReduceIfKD" "RepulsionField"
+            Chance 1.1000
+            RadiusInner 0.0000
+            RadiusOuter 9.0000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Knockback"
+                Scale 3.0000
+                StackType kReplace
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Repel" "ReduceIfKD"
+        
+            AttribMod
+            {
+                Attrib kRepel
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 10.0000
+                Duration 0.2500
+                Magnitude 1.0000
+                StackType kStack
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+            Requires @ToHitRoll .10 + @ToHit >=
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P3490945591"
+                    DisplayVictimHit "P500455014"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            RadiusInner 0.0000
+            RadiusOuter 9.0000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Knockback"
+                Scale 3.0000
+                TickChance 0.5000
+                StackType kReplace
+                Suppress Knocked 10 WhenInactive
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kAbs
+                Target kSelf
+                Table "Ranged_Ones"
+                Scale -1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayVictimHit "P657239359"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kStr
+                Table "Ranged_Ones"
+                StackType kStack
+            }
+        }
+    
+        Effect
+        {
+            Tag "Repel"
+            Requires @ToHitRoll .10 + @ToHit <
+        
+            AttribMod
+            {
+                Attrib kRepel
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 10.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                StackType kStack
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "RepulsionField"
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -10000.0000
+            Duration 0.3000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params EffectFilter
+            {
+                Tag RepulsionField
+            }
+        }
+    }
+}

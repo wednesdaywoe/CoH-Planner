@@ -1,0 +1,81 @@
+Power Pool.Leadership.Defense
+{
+    Name                 "Defense"                     
+    DisplayName          "P3009043276"
+    ModesDisallowed      kDisable_All, kDisable_Pool
+    ModesSuspended       kSuppress_PoolToggles
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kCaster
+    EnduranceCost        0.78
+    TimeToActivate       1.5
+    RechargeTime         15
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               60
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Leadership_Maneuvers.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Leadership_Maneuvers.pfx
+    DisplayShortHelp     "P1097757426"
+    DisplayHelp          "EL4ZU4RCQRKTW4NXY8BWJW45F3"
+    DisplayAttackerHit   "P1722481992"
+    DisplayVictimHit     "P836189985"
+    DisplayPowerDefenseFloat "P2514521623"
+    IconName             "Leadership_Defense.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P2623971958"
+    DisplayTargetHelp    "P3370322156"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 0.3500
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDefContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 0.3500
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

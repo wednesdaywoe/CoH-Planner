@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Protector_3
+{
+    Name "Protector_3"
+    DisplayName "R4RN95ZF69WCY6B4S9PC3DMDWA"
+    DisplayShortHelp "P3769939914"
+    DisplayHelp "P1779242559"
+    IconName "Protector_3_set.ico"
+
+    Powers Mastermind_Pets.Protector_3.Overcharged_Burst
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Protector_3.Photon_Grenade
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Protector_3.Seeker_Drones
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Protector_3.Repair
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Protector_3.Upgrade
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

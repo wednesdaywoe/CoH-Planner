@@ -1,0 +1,95 @@
+#*********************************************************************#
+# Power: Buff > Nature Affinity > Overgrowth                          #
+# Info:  PBAoE, Team +Damage, +To Hit, +Endurance Discount, +5 Bloom  #
+#*********************************************************************#
+
+Power Defender_Buff.Nature_Affinity.Overgrowth
+{
+    Name                 "Overgrowth"                  
+    DisplayName          "P1079812492"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        26
+    TimeToActivate       3
+    RechargeTime         255
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_Overgrowth.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_Overgrowth.PFX
+    DisplayShortHelp     "P181650770"
+    DisplayHelp          "P4083655080"
+    DisplayAttackerHit   "P1308624307"
+    DisplayVictimHit     "P2078016945"
+    IconName             "NatureAffinity_Overgrowth.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P2838804940"
+    DisplayTargetHelp    "P2349076262"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 6.6000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEnduranceDiscount
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 0.5000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Bloom
+                Count 5
+            }
+            
+        }
+    }
+}

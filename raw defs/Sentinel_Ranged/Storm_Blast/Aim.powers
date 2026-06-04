@@ -1,0 +1,122 @@
+#*********************************************#
+# Power: Ranged > Storm Blast > Intensify     #
+# Info:  Self +To Hit, +DMG, +Range, Special  #
+#*********************************************#
+
+Power Sentinel_Ranged.Storm_Blast.Aim
+{
+    Name                 "Aim"                         
+    DisplayName          "PRXSD99SJRC2YJMN2L2MM2YWZ3"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        5.2
+    TimeToActivate       1.17
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_StormBlast_Aim.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_StormBlast_Aim.pfx
+    DisplayShortHelp     "6WM4L36XW62DWHBEVR47PEJ78A"
+    DisplayHelp          "9LBZXRUH6SN2YBNGCJA6EWCG3Z"
+    IconName             "StormBlast_Aim.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 5.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P194443417"
+                DisplayInfo "BP6C5UEC5RJZYNZFSUSRZ35USX"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 2.5000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag IncreaseStormStrength
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kRange
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3330
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    ActivationEffect
+    {
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing
+                Count 5
+            }
+            
+        }
+    }
+}

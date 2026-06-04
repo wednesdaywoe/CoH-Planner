@@ -1,0 +1,49 @@
+PowerSet Epic.Primal_Forces_Mastery
+{
+    Name "Primal_Forces_Mastery"
+    DisplayName "P2798743803"
+    DisplayShortHelp "P2798743803"
+    DisplayHelp "P3850591855"
+    IconName "Primal_Forces_Mastery_set.ico"
+
+    Powers Epic.Primal_Forces_Mastery.Power_Blast
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Primal_Forces_Mastery.Conserve_Power
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Primal_Forces_Mastery.Temp_Invulnerability
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Primal_Forces_Mastery.Energy_Torrent
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Primal_Forces_Mastery.Power_Boost
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

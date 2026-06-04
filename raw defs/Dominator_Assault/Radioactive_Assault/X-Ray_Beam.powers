@@ -1,0 +1,142 @@
+Power Dominator_Assault.Radioactive_Assault.X-Ray_Beam
+{
+    Name                 "X-Ray_Beam"                  
+    DisplayName          "P3711817127"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        11.024
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         11
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_RadiationBlast_XRayBeam.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_RadiationBlast_XRayBeam.PFX
+    DisplayShortHelp     "4R6ANCZ5XQ7YY9LADJEDWRYRG2"
+    DisplayHelp          "SQUJPDM2E9YYYCM64TG5XDRASZ"
+    IconName             "RadioactiveAssault_XRayBeam"
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P2415784079"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 2.1200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.0000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 2.0116
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Contaminated"
+        Chance 0.3100
+        Requires Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? ! Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated_Imunity target.ownPower? ! &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P303727486"
+                DisplayVictimHit "P4180007661"
+                DisplayFloat "P3342354899"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower?
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Villain_Pets.Dominator_RadioactiveAssault_Snipe.X-Ray_Beam_Contamination
+            }
+            
+        }
+    }
+}

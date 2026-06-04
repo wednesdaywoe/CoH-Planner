@@ -1,0 +1,198 @@
+Power Dominator_Control.Electric_Control.Synaptic_Overload
+{
+    Name                 "Synaptic_Overload"           
+    DisplayName          "P3263998155"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.6
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         6
+    EffectArea           kChain
+    Radius               15
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRecovery_Boost, kConfuse_Boost
+    ChainDelay           0.7
+    ChainFork            1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+    ChainEff             1 0.25 @ChainJump 1 - * - 0.25 1 minmax
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_ElectricControl_SynapticOverload.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_ElectricControl_SynapticOverload.pfx
+    DisplayShortHelp     "P711874253"
+    DisplayHelp          "H2LKUL2EVD3AW6X9JPEZT933YA"
+    IconName             "ElectricControl_SynapticOverload.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P4006396885"
+    DisplayTargetHelp    "P2909616078"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 10.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+                DisplayInfo "V3BL3P96JYHSYAZU7VGWDX95NQ"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+                DisplayInfo "V3BL3P96JYHSYAZU7VGWDX95NQ"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Confused 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+                DisplayInfo "V3BL3P96JYHSYAZU7VGWDX95NQ"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+                DisplayInfo "V3BL3P96JYHSYAZU7VGWDX95NQ"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 15.0000
+            Magnitude 3.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "ECHGVYJ4Z6HKYSX334AD7P9YXA"
+                DisplayVictimHit "PL79DDUJGCRWYCCWL82FRPG54W"
+                DisplayFloat "P2610687982"
+                DisplayInfo "DM9M2VVQBXWXW5L36HP6TW2F83"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayInfo "REZA422TTRPXYZXD6MZU9D7WNQ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            Delay 2.0500
+            StackType kStack
+            Flags NoHitDelay NoProjectileDelay
+            Params Power
+            {
+                Power Redirects.Electric_Control.Synaptic_Overload
+            }
+            
+        }
+    }
+}

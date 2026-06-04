@@ -1,0 +1,49 @@
+Power Epic.Dominator_Mu_Mastery.Summon_Guardian
+{
+    Name                 "Summon_Guardian"             
+    DisplayName          "P2939588278"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        20.8
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         900
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_MuMastery_Summon.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_MuMastery_Summon.pfx
+    DisplayShortHelp     "95AJ4SM8BMVVWFMJUCNMWXDBVQ"
+    DisplayHelp          "3UGRRDVLHC8HYUZ3PDJYEURSZ2"
+    IconName             "Arachnos_Patron_SummonOnePet.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef Pets_Patron_Powers_Mu_Guardian
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    }
+}

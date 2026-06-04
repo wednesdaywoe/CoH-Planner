@@ -1,0 +1,100 @@
+Power Defender_Buff.Sonic_Debuff.Sonic_Cage
+{
+    Name                 "Sonic_Cage"                  
+    DisplayName          "P1900924020"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.4
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        12.48
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_SonicDebuff_SonicCage.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_SonicDebuff_SonicCage.PFX
+    DisplayShortHelp     "P3258422862"
+    DisplayHelp          "BZT4YU8AENTSYMMP6UXGXTYTJS"
+    IconName             "SonicDebuff_Hold.tga"
+    DisplayTargetShortHelp "P1145282425"
+    DisplayTargetHelp    "P3432540632"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kImmobilized kUntouchable kOnlyAffectsSelf
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 4.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2641364819"
+                DisplayVictimHit "P1053776284"
+                DisplayFloat "P1900924020"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kUntouchable kOnlyAffectsSelf
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Untouchable 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P2641364819"
+                DisplayVictimHit "P1053776284"
+                DisplayFloat "P1900924020"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Untouchable 15 WhenInactive
+            Flags IgnoreSuppressErrors
+        }
+    }
+}

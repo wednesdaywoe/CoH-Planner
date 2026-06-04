@@ -1,0 +1,55 @@
+#**********************************************#
+# Power: Pets > Robot Protector > Laser Burst  #
+# Info:  Ranged DoT (Energy)                   #
+#**********************************************#
+
+Power Mastermind_Pets.Protector.Laser_Burst
+{
+    Name                 "Laser_Burst"                 
+    DisplayName          "P3730028760"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                90
+    EnduranceCost        6.864
+    DontSetStance        1
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\RobotArmy_2ndMech_Lazer_Burst.pfx"
+    include              menu\Powers\AnimFX\RobotArmy_2ndMech_Lazer_Burst.pfx
+    DisplayShortHelp     "S77NWLQAD8XRWAMEHHVABS6YPX"
+    DisplayHelp          "BWQRTY8BB5VFYYZZEVLV2BAT6S"
+    IconName             "Robotics_LaserRifleBurst.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.4400
+            Duration 0.5100
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    }
+}

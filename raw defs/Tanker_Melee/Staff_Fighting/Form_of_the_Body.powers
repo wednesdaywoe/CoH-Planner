@@ -1,0 +1,192 @@
+Power Tanker_Melee.Staff_Fighting.Form_of_the_Body
+{
+    Name                 "Form_of_the_Body"            
+    DisplayName          "P323782650"
+    BuyRequires          Tanker_Melee.Staff_Fighting.Staff_Mastery
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kAmmo_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       0.63
+    RechargeTime         4
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/ScrapperMelee_LongStaff_StaffMastery.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/ScrapperMelee_LongStaff_StaffMastery.PFX
+    DisplayShortHelp     "P1897539723"
+    DisplayHelp          "7AAPMYZ9LV8MWNVF7QLEK73RDW"
+    IconName             "StaffFighting_FormoftheBody.tga"
+    ShowInManage         kFalse
+    Free                 kTrue
+    AutoIssue            kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingBits ANIM_FORMOFTHEBODY ANIM_STAFFMASTERY
+            }
+            
+            Params EffectFilter
+            {
+                Tag PerfectionofBody
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag PerfectionofMind
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag PerfectionofSoul
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3
+            }
+            
+        }
+    }
+}

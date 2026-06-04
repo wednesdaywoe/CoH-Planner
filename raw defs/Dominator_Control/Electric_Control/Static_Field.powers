@@ -1,0 +1,51 @@
+Power Dominator_Control.Electric_Control.Static_Field
+{
+    Name                 "Static_Field"                
+    DisplayName          "P3286362090"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        15.6
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         40
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRecovery_Boost, kSlow_Boost, kSleep_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/DominatorControl_ElectricControl_StaticField.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/DominatorControl_ElectricControl_StaticField.PFX
+    DisplayShortHelp     "P3233630827"
+    DisplayHelp          "P3218952694"
+    IconName             "ElectricControl_StaticField.tga"
+    DisplayTargetShortHelp "P126903745"
+    DisplayTargetHelp    "P625742039"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 25.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Static Field"
+                PriorityList "PL_StaticObject"
+                Power Pets.Static_Field_Controller.Static_Field
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,56 @@
+#****************************************#
+# Power: Pets > Ninja Jounin > Caltrops  #
+# Info:  DoT (Lethal), -SPD              #
+#****************************************#
+
+Power Mastermind_Pets.Jonin.Caltrops
+{
+    Name                 "Caltrops"                    
+    DisplayName          "P4162546018"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                30
+    EnduranceCost        7.8
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         30
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    StrengthsDisallowed  kRechargeTime
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu/powers/AnimFX/Jounin_Jounin_Caltrops.pfx"
+    include              menu/powers/AnimFX/Jounin_Jounin_Caltrops.pfx
+    DisplayShortHelp     "F6G57VD8PCAZW6V574YLM43KKX"
+    DisplayHelp          "P1306558302"
+    IconName             "Gadgets_Caltrops.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods KeepThroughDeath CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Jounin's Caltrops"
+                PriorityList "PL_StaticObject"
+                Power Mastermind_Pets.Ninja_Pets.Jounins_Caltrops
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,210 @@
+Power Mastermind_Buff.Force_Field.Repulsion_Bomb
+{
+    Name                 "Repulsion_Bomb"              
+    DisplayName          "P1063135657"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        16.9
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         30
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kStunned_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ForceField_RepulsionBomb.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ForceField_RepulsionBomb.PFX
+    DisplayShortHelp     "D3SWUE98UVZDYMBDBYFEM9XQXZ"
+    DisplayHelp          "JG5G8BXMV7WUW2XRHWQBDF9FKX"
+    IconName             "ForceField_RepulsionBomb.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.6000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Debuff_Res_Dmg"
+            Scale -1.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnock
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+            Params Knock
+            {
+                VecStart                       Target
+                VecEnd                         Down
+                Vel                            0.0000
+                VelMag                         0.1000
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.1000
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 2.0000
+                Delay 0.1250
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Debuff_Res_Dmg"
+            Scale -1.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnock
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 9.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+            Params Knock
+            {
+                VecStart                       Target
+                VecEnd                         Down
+                Vel                            0.0000
+                VelMag                         0.1000
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.1000
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale 8.0000
+                Magnitude 2.0000
+                Delay 0.1250
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,70 @@
+Power Pool.Leadership.Assault
+{
+    Name                 "Assault"                     
+    DisplayName          "P55898000"
+    ModesDisallowed      kDisable_All, kDisable_Pool
+    ModesSuspended       kSuppress_PoolToggles
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kCaster
+    EnduranceCost        0.78
+    TimeToActivate       1.5
+    RechargeTime         15
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               60
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Leadership_Assault.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Leadership_Assault.pfx
+    DisplayShortHelp     "P253176242"
+    DisplayHelp          "A9GM4RKK93CSWTBTLTR69UXZDZ"
+    DisplayAttackerHit   "P2420471347"
+    DisplayVictimHit     "P1338507259"
+    IconName             "Leadership_Assault.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P2588995686"
+    DisplayTargetHelp    "P3093320529"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 1.5000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTaunt kPlacate
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 1.7500
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,91 @@
+PowerSet Arachnos_Soldiers.Crab_Spider_Soldier
+{
+    Name "Crab_Spider_Soldier"
+    DisplayName "P2090269218"
+    DisplayShortHelp "P2090269218"
+    DisplayHelp "P3217604765"
+    SpecializeAt 23
+    SpecializeRequires Arachnos_Soldiers.Bane_Spider_Soldier powerset? Training_Gadgets.Bane_Spider_Training Powerset? || !
+    IconName "Crab_Spider_Soldier_set.ico"
+
+    Powers Arachnos_Soldiers.Crab_Spider_Soldier.Channelgun
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Crab_Spider_Soldier.Slice
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Crab_Spider_Soldier.Longfang
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Crab_Spider_Soldier.Aim
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Crab_Spider_Soldier.Suppression
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Crab_Spider_Soldier.Arm_Lash
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Crab_Spider_Soldier.CS_Frag_Grenade
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Crab_Spider_Soldier.Frenzy
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Crab_Spider_Soldier.Omega_Maneuver
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

@@ -1,0 +1,114 @@
+Power Dominator_Control.Wind_Control.Clear_Skies
+{
+    Name                 "Clear_Skies"                 
+    DisplayName          "P2618032340"
+    BuyRequires          accesslevel char> 0 >= Dominator_Control.Wind_Control.Vortex && Dominator_Control.Wind_Control.Vacuum &&
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    DisplayShortHelp     "P2981941033"
+    DisplayHelp          "P23676007"
+    IconName             "WindControl_ClearSkies.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    Free                 kTrue
+    AutoIssue            kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P707862458"
+    DisplayTargetHelp    "P4201704727"
+
+
+    Effect
+    {
+        Requires kClearSkies source.mode?
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Buff_ToHit"
+            Scale 2.5000
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime kEnduranceDiscount
+            Aspect kStr
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.2500
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.2500
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 2.1000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P2618032340"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kClearSkies source.mode? ! kCloudedSkies source.mode? &&
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 2.1000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P3554134698"
+            }
+            
+        }
+    }
+}

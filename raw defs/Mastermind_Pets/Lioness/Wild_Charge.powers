@@ -1,0 +1,90 @@
+#***************************************************#
+# Power: Pets > Beast Lioness > Wild Charge         #
+# Info:  Self +DMG, +Speed, +Res(Slow, Immobilize)  #
+#***************************************************#
+
+Power Mastermind_Pets.Lioness.Wild_Charge
+{
+    Name                 "Wild_Charge"                 
+    DisplayName          "P3586044733"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kBuff
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        5.2
+    PreferenceMultiplier 4
+    TimeToActivate       0.6
+    RechargeTime         90
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Lioness_WildCharge.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Lioness_WildCharge.pfx
+    DisplayShortHelp     "P1291662329"
+    DisplayHelp          "QCQ3EKWCXSWWWRB5E34FLLXGRW"
+    IconName             "BeastMastery_PetWildCharge.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2068452172"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 3.3000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -50.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kRechargeTime
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

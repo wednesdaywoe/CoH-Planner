@@ -1,0 +1,242 @@
+Power Temporary_Powers.Temporary_Powers.Rune_of_Binding
+{
+    Name                 "Rune_of_Binding"             
+    DisplayName          "9FJWNMQG3P9HYKZERKY64GVK2S"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        9.75
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         8
+    EffectArea           kCharacter
+    NumCharges           5
+    StackingUsage        kTrue
+    MaxNumCharges        9999
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Temporary_Power_RuneofBinding.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Temporary_Power_RuneofBinding.pfx
+    DisplayShortHelp     "65SCZLE2MX8SY3B3EDDD89NPDA"
+    DisplayHelp          "PYJ53NW88K9TY6VHVXHW92UR4X"
+    IconName             "Temporary_GeometricGauntlets.tga"
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "3GLSH4TUCZM2WTMQM2U4C6BHAA"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires BanishedPantheon_Giant_Totem target.VillainName> BanishedPantheon_Giant_Totem_Monster target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 30.0000
+            Magnitude 26.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Tempdamage"
+            Scale 0.2000
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2287672660"
+                DisplayVictimHit "P3092393664"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.6000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires BanishedPantheon_Giant_Totem target.VillainName> ! BanishedPantheon_Giant_Totem_Monster target.VillainName> ! &&
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Tempdamage"
+            Scale 0.2000
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2287672660"
+                DisplayVictimHit "P3092393664"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.6000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Immobilize"
+                Scale 15.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4257051740"
+                    DisplayVictimHit "P2588894681"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P4257051740"
+                    DisplayVictimHit "P2588894681"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        }
+    }
+}

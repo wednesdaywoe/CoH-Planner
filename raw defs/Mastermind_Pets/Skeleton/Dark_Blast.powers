@@ -1,0 +1,70 @@
+#********************************************#
+# Power: Pets > Necro Skeleton > Dark Blast  #
+# Info:  -To Hit                             #
+#********************************************#
+
+Power Mastermind_Pets.Skeleton.Dark_Blast
+{
+    Name                 "Dark_Blast"                  
+    DisplayName          "P369601562"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        2.6
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_DarkBlast.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_DarkBlast.PFX
+    DisplayShortHelp     "P2190949330"
+    DisplayHelp          "LGLXAXUSTPZQYSLJJHALCVA3PA"
+    IconName             "DarkCast_DarkBlast.tga"
+    DisplayTargetShortHelp "P2190949330"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,119 @@
+Power Temporary_Powers.Temporary_Powers.PS_Antimatter_Cosmic_Burst
+{
+    Name                 "PS_Antimatter_Cosmic_Burst"  
+    DisplayName          "P1205668238"
+    Type                 kClick
+    Accuracy             1.3
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        5
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         4
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   996
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\RADIATION_Burst_CosmicRay.pfx"
+    include              menu\Powers\AnimFX\RADIATION_Burst_CosmicRay.pfx
+    DisplayShortHelp     "P788279074"
+    DisplayHelp          "XC4TGHCEQU6XW4MLSFXDSN4HP2"
+    IconName             "RadiationBurst_CosmicBurst"
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P788279074"
+    DisplayTargetHelp    "P3218261043"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 16.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 3.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreStrength IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+        }
+    }
+}

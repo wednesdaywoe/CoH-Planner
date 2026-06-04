@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Jonin
+{
+    Name "Jonin"
+    DisplayName "D3FA2FGG7NXVYKNSCHF8MTP3PX"
+    DisplayShortHelp "P1004628773"
+    DisplayHelp "P1004628773"
+    IconName "Jonin_set.ico"
+
+    Powers Mastermind_Pets.Jonin.Hack
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Jonin.Slash
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Jonin.Caltrops
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Jonin.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Jonin.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

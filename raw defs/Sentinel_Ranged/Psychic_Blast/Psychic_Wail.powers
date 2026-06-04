@@ -1,0 +1,209 @@
+#***************************************************************#
+# Power: Ranged > Psychic Blast > Psychic Wail                  #
+# Info:  PBAoE, Superior DMG(Psionic), Foe Disorient -Recharge  #
+#***************************************************************#
+
+Power Sentinel_Ranged.Psychic_Blast.Psychic_Wail
+{
+    Name                 "Psychic_Wail"                
+    DisplayName          "P4071174395"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.5
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       1.97
+    TimeToRoot           1.97
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_PsychicBlast_PsychicWail.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_PsychicBlast_PsychicWail.PFX
+    DisplayShortHelp     "CWGSFWSJRJQ9YZC69WYERGZDJZ"
+    DisplayHelp          "VP5CV7LP63QUYWLB7DJT2VCFJA"
+    IconName             "PsychicBlast_PsychicWail.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3214140212"
+    DisplayTargetHelp    "P677546203"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 2.2530
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P801507873"
+                    DisplayVictimHit "P3863231487"
+                    DisplayInfo "85NKYGU6W4RDWRMYAT3W8G3QFW"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            RadiusInner 0.0000
+            RadiusOuter 10.0000
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.9280
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P801507873"
+                    DisplayVictimHit "P3863231487"
+                    DisplayInfo "P3P28LLZCYBBYGXF8CLQ2DPD72"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+            RadiusInner 10.0000
+            RadiusOuter 20.0000
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.9280
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                    DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "5HAQ7Y3AF7P9WEMSHR8W3GKCYQ"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale 10.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.3450
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.7000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

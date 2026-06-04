@@ -1,0 +1,266 @@
+Power Epic.Electricity_Mastery.Shocking_Bolt
+{
+    Name                 "Shocking_Bolt"               
+    DisplayName          "P2651575508"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        8.528
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         24
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_ElectricalMastery_ShockingBolt.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_ElectricalMastery_ShockingBolt.pfx
+    DisplayShortHelp     "LGMG2FAQPKR5YNV9JBQ6VXJR4W"
+    DisplayHelp          "T8DGSN6HJT4YYBX4LSEK3MTKGS"
+    IconName             "ElectricityMastery_ShockingBolt.tga"
+    DisplayTargetShortHelp "P3859267840"
+    DisplayTargetHelp    "P3211993838"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 10.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_Electrostun
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1000
+            Duration 4.2000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -2.0000
+            Duration 8.1000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1906782324"
+                DisplayVictimHit "P2943139457"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 5.3300
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P1197092217"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.5520
+            Duration 4.2000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_Electrostun
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_ElectroStun
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -1.0000
+            Duration 8.1000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1906782324"
+                DisplayVictimHit "P2943139457"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CorruptorOnly"
+        Requires arch source> class_corruptor ==
+    
+        Effect
+        {
+            Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq && arch source> class_corruptor == &&
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.1000
+                Duration 4.2000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "XLV2AER5C93WWMXMEPGJ58SWES"
+                    DisplayVictimHit "Z33J955KZ2EGWSC3M9BW4Y8ZZS"
+                    DisplayFloat "P111359259"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq && arch source> class_corruptor == &&
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.5520
+                Duration 4.2000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "XLV2AER5C93WWMXMEPGJ58SWES"
+                    DisplayVictimHit "Z33J955KZ2EGWSC3M9BW4Y8ZZS"
+                    DisplayFloat "P111359259"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    }
+}

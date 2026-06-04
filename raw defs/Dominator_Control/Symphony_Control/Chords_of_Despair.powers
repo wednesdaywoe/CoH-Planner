@@ -1,0 +1,202 @@
+Power Dominator_Control.Symphony_Control.Chords_of_Despair
+{
+    Name                 "Chords_of_Despair"           
+    DisplayName          "ZHRAZR5WX9EZW5XUZS8YBPYJTA"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Symphony_Control_Chords_of_Despair.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Symphony_Control_Chords_of_Despair.pfx
+    DisplayShortHelp     "P3095732666"
+    DisplayHelp          "TN26N465R7AYYZMMGY3U3XX6BW"
+    IconName             "SymphonyControl_HoldAoE"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3220742713"
+    DisplayTargetHelp    "CMASGXGFUEDXWNCNAT5BGJTJLQ"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+                ConditionalBits ANIM_SONICSTUN
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+        
+            AttribMod
+            {
+                Attrib kHeld
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Immobilize"
+                Scale 12.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "SDG9VDYPNMVUYCCXQHCXLRHPS2"
+                    DisplayVictimHit "N5ZZQ384R93HYPC57YDKTK9S3Z"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                    ConditionalBits ANIM_SONICSTUN
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+                ConditionalBits ANIM_SONICSTUN
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+        
+            AttribMod
+            {
+                Attrib kHeld
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "SDG9VDYPNMVUYCCXQHCXLRHPS2"
+                    DisplayVictimHit "N5ZZQ384R93HYPC57YDKTK9S3Z"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                    ConditionalBits ANIM_SONICSTUN
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 14.5000
+            Delay 2.7000
+            StackType kStack
+            Flags IgnoreCombatMods NoHitDelay NoProjectileDelay AdjustTimer
+            Params Power
+            {
+                Power Dominator_Control.Symphony_Control.Chords_of_Despair
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "ReverbChordsOfDespair"
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kCur
+            Target kCastersOwnerAndAllPets
+            Table "Melee_Ones"
+            Delay 5.0000
+            DelayedRequires Pets_Reverberant target.VillainName>
+            StackType kStack
+            Params Power
+            {
+                Power Pets.Reverberant.Chords_of_Despair
+            }
+            
+        }
+    }
+}

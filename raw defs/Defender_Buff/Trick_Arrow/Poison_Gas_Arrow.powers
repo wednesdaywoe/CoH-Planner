@@ -1,0 +1,91 @@
+Power Defender_Buff.Trick_Arrow.Poison_Gas_Arrow
+{
+    Name                 "Poison_Gas_Arrow"            
+    DisplayName          "P2744262583"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.5
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                70
+    EnduranceCost        10.4
+    TimeToActivate       1.16
+    TimeToRoot           1.16
+    RechargeTime         45
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\TrickArrow_PoisonGas_NoGeo.pfx"
+    include              menu\Powers\AnimFX\TrickArrow_PoisonGas_NoGeo.pfx
+    DisplayShortHelp     "P1169805848"
+    DisplayHelp          "Y8ULLJYGE9PSYAVBXPGWDU75UQ"
+    IconName             "TrickArrow_DebuffDamage.tga"
+    MaxTargetsHit        16
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods KeepThroughDeath CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Poison Gas Arrow"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Trick_Arrow.PoisonGasArrow
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Table "Ranged_Debuff_Dam"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Table "Ranged_Debuff_Dam"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

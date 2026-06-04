@@ -1,0 +1,171 @@
+Power Widow_Training.Widow_Training.Spin
+{
+    Name                 "Spin"                        
+    DisplayName          "P2990050225"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        15.451
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         14
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\powers\AnimFX\ArachnosWidow_Spin.pfx"
+    include              menu\powers\AnimFX\ArachnosWidow_Spin.pfx
+    DisplayShortHelp     "GG5AKZCR2VX6Y3VWQDNZESN3CQ"
+    DisplayHelp          "KHJUMDHVKQ68WZMSFKMFQ7XW5A"
+    IconName             "WidowTraining_Spin.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P460077861"
+    DisplayTargetHelp    "P2034057112"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.3506
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires kMeter source> 0 > enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.9004
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.5485
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires kMeter source> 0 > enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.0329
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1000
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,81 @@
+PowerSet Dominator_Assault.Earth_Assault
+{
+    Name "Earth_Assault"
+    DisplayName "P3308845961"
+    DisplayShortHelp "P3308845961"
+    DisplayHelp "P2268326529"
+    IconName "Earth_Assault_set.ico"
+
+    Powers Dominator_Assault.Earth_Assault.Stone_Spears
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Earth_Assault.Stone_Mallet
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Earth_Assault.Tremor
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Earth_Assault.Hurl_Boulder
+    Available 9
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Earth_Assault.Power_Boost
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Earth_Assault.Heavy_Mallet
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Earth_Assault.Seismic_Smash
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Earth_Assault.Mud_Pots
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Earth_Assault.Fissure
+    Available 29
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

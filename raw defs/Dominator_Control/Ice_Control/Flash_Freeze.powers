@@ -1,0 +1,258 @@
+Power Dominator_Control.Ice_Control.Flash_Freeze
+{
+    Name                 "Flash_Freeze"                
+    DisplayName          "P889361091"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    EnduranceCost        15.6
+    TimeToActivate       2.37
+    TimeToRoot           2.37
+    RechargeTime         45
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_IceControl_FlashFreeze.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_IceControl_FlashFreeze.PFX
+    DisplayShortHelp     "4FVDHER64KL9WFL6UAVRHNKMCS"
+    DisplayHelp          "WP9K9U64PHFLWLZ56ZMHTXND9Z"
+    IconName             "IceFormation_FlashFreeze.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "P1543480825"
+
+
+    Effect
+    {
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4173738004"
+                DisplayVictimHit "P1163387325"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Requires Raid target.HasTag? !
+            Flags Fallback HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 12.0000
+                Magnitude 3.0000
+                Delay 0.2500
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        
+            Effect
+            {
+                Tag "Domination"
+            
+                AttribMod
+                {
+                    Attrib kSleep
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_Sleep"
+                    Scale 18.0000
+                    Magnitude 3.0000
+                    Delay 0.2500
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "HCYV6KACMWG3YQX2DS7N8W38LX"
+                        DisplayVictimHit "UGEDCLNDYGUFWUZT6ZJ45CR8E3"
+                        DisplayFloat "P2610687982"
+                        DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX PFX
+                        ConditionalBits ANIM_LassoStun
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Flags HitRollSuccess
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 12.0000
+                Magnitude 3.0000
+                Delay 0.2500
+                StackType kStack
+                Flags DeepSleep
+                Messages
+                {
+                    DisplayAttackerHit "NKDV9HTYHNKUW9L67FGDUSRFYX"
+                    DisplayVictimHit "3XWUH8FZ2L6PY9LYAEZ8FUGZUZ"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        
+            Effect
+            {
+                Tag "Domination"
+            
+                AttribMod
+                {
+                    Attrib kSleep
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_Sleep"
+                    Scale 18.0000
+                    Magnitude 3.0000
+                    Delay 0.2500
+                    StackType kStack
+                    Flags DeepSleep
+                    Messages
+                    {
+                        DisplayAttackerHit "NZLFLTW38ZMJWTB4SLEKX6JAEQ"
+                        DisplayVictimHit "SN33DLBK9AXLYTCPJ97LHWFT3A"
+                        DisplayFloat "P2610687982"
+                        DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX PFX
+                        ConditionalBits ANIM_LassoStun
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            Delay 0.2500
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags DeepSleep
+            Messages
+            {
+                DisplayAttackerHit "NKDV9HTYHNKUW9L67FGDUSRFYX"
+                DisplayVictimHit "3XWUH8FZ2L6PY9LYAEZ8FUGZUZ"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_LassoStun
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 1.0000
+                Delay 0.2500
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Flags IgnoreResistance DeepSleep
+                Messages
+                {
+                    DisplayAttackerHit "NZLFLTW38ZMJWTB4SLEKX6JAEQ"
+                    DisplayVictimHit "SN33DLBK9AXLYTCPJ97LHWFT3A"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        }
+    }
+}

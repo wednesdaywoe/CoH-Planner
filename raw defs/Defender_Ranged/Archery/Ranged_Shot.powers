@@ -1,0 +1,39 @@
+Power Defender_Ranged.Archery.Ranged_Shot
+{
+    Name                 "Ranged_Shot"                 
+    DisplayName          "P2594484288"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.155
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\Archery_SniperQuick.pfx"
+    include              menu\Powers\AnimFX\Archery_SniperQuick.pfx
+    DisplayShortHelp     "VADZDY4CUB25YVBLFQ7RAF7EQS"
+    DisplayHelp          "6HUSXFM8P7WVYMNF39QA8BJVBQ"
+    IconName             "Archery_SniperArrow.tga"
+
+    Redirect
+    {
+        Power Pets.Defender_Archery_Snipe.Ranged_Shot_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Pets.Defender_Archery_Snipe.Ranged_Shot_Normal
+        Requires 1
+    }
+    
+}

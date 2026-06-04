@@ -1,0 +1,151 @@
+Power Dominator_Assault.Psionic_Assault.Telekinetic_Thrust
+{
+    Name                 "Telekinetic_Thrust"          
+    DisplayName          "P1526688896"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        7.696
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         7
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_PsionicAssault_TelekineticThrust.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_PsionicAssault_TelekineticThrust.PFX
+    DisplayShortHelp     "X4X4MB7TZNGCYFMXSQDAWJ492Q"
+    DisplayHelp          "UZWTAYP83Q26WQXWTYUK86LK43"
+    IconName             "PsionicAssault_TelekineticThrust.tga"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.3700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.1100
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.3450
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.0350
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

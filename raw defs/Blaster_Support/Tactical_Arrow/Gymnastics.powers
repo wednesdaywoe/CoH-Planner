@@ -1,0 +1,72 @@
+Power Blaster_Support.Tactical_Arrow.Gymnastics
+{
+    Name                 "Gymnastics"                  
+    DisplayName          "P851023681"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                70
+    EnduranceCost        15.6
+    TimeToActivate       1.16
+    TimeToRoot           1.16
+    RechargeTime         90
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Blaster_Support_Tactical_Arrow_Gymnastics.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Blaster_Support_Tactical_Arrow_Gymnastics.pfx
+    DisplayShortHelp     "XV4ADS9T438EWUBR5K2FRV6RHQ"
+    DisplayHelp          "A32DAS6B9TRUWLN55DPPJFHZEX"
+    IconName             "TacticalArrow_Knockdown"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P4100491214"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_OilSlickOil_Blaster
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

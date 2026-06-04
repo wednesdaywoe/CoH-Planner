@@ -1,0 +1,81 @@
+PowerSet Dominator_Control.Pyrotechnic_Control
+{
+    Name "Pyrotechnic_Control"
+    DisplayName "KXG8LEC2D5WTY2XJQNCMNUFAFW"
+    DisplayShortHelp "KXG8LEC2D5WTY2XJQNCMNUFAFW"
+    DisplayHelp "A7NZ48UULNJ3YDL4UZQPR7A89Q"
+    IconName "Electric_Control_set.ico"
+
+    Powers Dominator_Control.Pyrotechnic_Control.Sparkling_Cage
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Pyrotechnic_Control.Dazzle
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Pyrotechnic_Control.Sparkling_Field
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Pyrotechnic_Control.Glittering_Column
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Pyrotechnic_Control.Hypnotizing_Lights
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Pyrotechnic_Control.Glitz
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Pyrotechnic_Control.Incendiary_Aura
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Pyrotechnic_Control.Explosive_Bouquet
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Pyrotechnic_Control.Catherine_Wheel
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

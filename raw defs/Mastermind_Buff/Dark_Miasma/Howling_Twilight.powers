@@ -1,0 +1,225 @@
+#************************************************************************************************#
+# Power: Buff > Dark Miasma > Howling Twilight                                                   #
+# Info:  Ranged (AoE), Minor DMG(Negative), Target Slow, -Recharge, -Regen, Disorient, Ally Rez  #
+#************************************************************************************************#
+
+Power Mastermind_Buff.Dark_Miasma.Howling_Twilight
+{
+    Name                 "Howling_Twilight"            
+    DisplayName          "P3229109842"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         180
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kStunned_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_DarkMiasma_HowlingTwilight.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_DarkMiasma_HowlingTwilight.PFX
+    DisplayShortHelp     "P205558678"
+    DisplayHelp          "E3A6H3G9AEK9YLNEH7CCQLH7H2"
+    DisplayAttackerHit   "P2058899669"
+    IconName             "DarkMiasma_HowlingTwilight.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P2669148710"
+    DisplayTargetHelp    "P2253919205"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffSpeedAll.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kAfraid
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 15.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1619677251"
+                DisplayVictimHit "P1771033909"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_HowlingVillain
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 15.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -5.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -30.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+            }
+            
+        }
+    }
+}

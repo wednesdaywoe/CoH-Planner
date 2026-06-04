@@ -1,0 +1,93 @@
+Power Temporary_Powers.Temporary_Powers.Snake-B-Gone
+{
+    Name                 "Snake-B-Gone"                
+    DisplayName          "P483330732"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.4
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                30
+    EnduranceCost        6.5
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         4
+    EffectArea           kCharacter
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_SnakeBeGone_Grenade.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_SnakeBeGone_Grenade.pfx
+    DisplayShortHelp     "P1397128752"
+    DisplayHelp          "9VKM2C6UZ9YDYSZDNKSU3L54BX"
+    IconName             "Temporary_ChromaticGrenades.tga"
+
+
+    Effect
+    {
+        Requires group target> Snakes eq Snakes_Stheno target.VillainName> ! &&
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Magnitude 5.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX V_COV\Powers\ItemsandTempPowers\PoisonGun\PoisonHitContinuing.fx
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires group target> Snakes eq Snakes_Stheno target.VillainName> ! && Objects_Snake_Egg_High_1 target.VillainName> || Objects_Snake_Egg_High_2 target.VillainName> || Objects_Snake_Egg_High_3 target.VillainName> || Objects_Snake_Egg_High_4 target.VillainName> || Objects_Snake_Egg_High_5 target.VillainName> || Objects_Snake_Egg_High_6 target.VillainName> || Objects_Snake_Egg_High_7 target.VillainName> || Objects_Snake_Egg_High_8 target.VillainName> || Objects_Snake_Egg_High_9 target.VillainName> || Objects_Snake_Egg_High_10 target.VillainName> || !
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P2338895045"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Objects_Snake_Egg_High_1 target.VillainName> Objects_Snake_Egg_High_2 target.VillainName> || Objects_Snake_Egg_High_3 target.VillainName> || Objects_Snake_Egg_High_4 target.VillainName> || Objects_Snake_Egg_High_5 target.VillainName> || Objects_Snake_Egg_High_6 target.VillainName> || Objects_Snake_Egg_High_7 target.VillainName> || Objects_Snake_Egg_High_8 target.VillainName> || Objects_Snake_Egg_High_9 target.VillainName> || Objects_Snake_Egg_High_10 target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

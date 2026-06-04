@@ -1,0 +1,91 @@
+Power Mastermind_Buff.Kinetics.Inertial_Reduction
+{
+    Name                 "Inertial_Reduction"          
+    DisplayName          "P4081596977"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        23.4
+    TimeToActivate       2.03
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kJump_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Kinetics_InertialReduction.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Kinetics_InertialReduction.PFX
+    DisplayShortHelp     "P3810722637"
+    DisplayHelp          "3JHK9GZY3JCBWZBNB6B5CGKZ83"
+    DisplayAttackerHit   "P2870689215"
+    DisplayVictimHit     "P1925169516"
+    IconName             "KineticBoost_InitialReductions.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P1459003196"
+    DisplayTargetHelp    "P2340966442"
+
+
+    Effect
+    {
+        Requires Power_DisallowSpeedBoost target.TokenOwned? !
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Leap"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_SpeedJumping"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Control"
+            Scale 10.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Friction"
+            Scale 10.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

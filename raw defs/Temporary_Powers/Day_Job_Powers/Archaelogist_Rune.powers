@@ -1,0 +1,76 @@
+Power Temporary_Powers.Day_Job_Powers.Archaelogist_Rune
+{
+    Name                 "Archaelogist_Rune"           
+    DisplayName          "P2449104955"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        18.98
+    TimeToActivate       3.1
+    TimeToRoot           3.1
+    RechargeTime         16
+    EffectArea           kCharacter
+    NumCharges           30
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Rune_of_Warding.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Rune_of_Warding.pfx
+    DisplayShortHelp     "LM5684TAFWGRYSX6ZX3ZRUP2X3"
+    DisplayHelp          "H4A84P7AG7VSWRB6AT7L88DA93"
+    IconName             "DayJob_HeavyRanged.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.2000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Humanoid target.HasTag? ! Human target.HasTag? ! &&
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.2000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+            FX
+            {
+                ContinuingFX Powers/ElectricityControl/ElectricityShaklesHit.fx
+                ContinuingBits ANIM_ElectroStun
+            }
+            
+        }
+    }
+}

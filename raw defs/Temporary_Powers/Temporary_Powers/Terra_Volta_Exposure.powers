@@ -1,0 +1,40 @@
+Power Temporary_Powers.Temporary_Powers.Terra_Volta_Exposure
+{
+    Name                 "Terra_Volta_Exposure"        
+    DisplayName          "P775821617"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    UsageTime            7200
+    DisplayShortHelp     "P1246633515"
+    DisplayHelp          "P2295075060"
+    IconName             "Temporary_TerraVoltaGlow.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX WORLD\City/Terra_Volta/Respec/TerraVoltaRespec.fx
+            }
+            
+        }
+    }
+}

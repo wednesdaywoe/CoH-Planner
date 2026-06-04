@@ -1,0 +1,237 @@
+Power Dominator_Control.Symphony_Control.Confounding_Chant
+{
+    Name                 "Confounding_Chant"           
+    DisplayName          "FAGE84YZBYLYWRBXJH4F35C3MW"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        15.6
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         90
+    EffectArea           kCone
+    Radius               70
+    Arc                  45
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Symphony_Control_Confounding_Chant.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Symphony_Control_Confounding_Chant.pfx
+    DisplayShortHelp     "FQCWHTBD7RZEYGZQ62WCYTLVAZ"
+    DisplayHelp          "V549PJWVLG2LWRBBKGGZQSLJ23"
+    IconName             "SymphonyControl_StunAoE"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "BJAU8AKSHAGLY8VT9LMWD5B3YA"
+    DisplayTargetHelp    "NLEVNJN7GGLPY8ZUW54QZTV5MZ"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            DisplayInfo "AYC9YV3TQA93YKV3GDUGPTMF62"
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1250
+                Duration 19.7500
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kReplace
+                Suppress Stunned 0.1 Always
+                Suppress Sleep 0.1 Always
+                Messages
+                {
+                    DisplayAttackerHit "P2287672660"
+                    DisplayVictimHit "P3092393664"
+                    DisplayInfo "MUXGXJ3PEM3LYNLF8BE5KQDACX"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1250
+                Duration 34.7500
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kReplace
+                RequiredEvent Stunned 0.1
+                Suppress Sleep 0.1 Always
+                Messages
+                {
+                    DisplayAttackerHit "P2287672660"
+                    DisplayVictimHit "P3092393664"
+                    DisplayInfo "MUXGXJ3PEM3LYNLF8BE5KQDACX"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "669UCY84RP2TWAVP7J9K5QG86X"
+                    DisplayVictimHit "AS5CAMWDSKCTYQX4LKUFFDVXKW"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_SONICSTUN
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale 12.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "669UCY84RP2TWAVP7J9K5QG86X"
+                    DisplayVictimHit "AS5CAMWDSKCTYQX4LKUFFDVXKW"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "ReverbChantOfRebut"
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kCur
+            Target kCastersOwnerAndAllPets
+            Table "Melee_Ones"
+            Delay 5.0000
+            DelayedRequires Pets_Reverberant target.VillainName>
+            StackType kStack
+            Params Power
+            {
+                Power Pets.Reverberant.Confounding_Chant
+            }
+            
+        }
+    }
+}

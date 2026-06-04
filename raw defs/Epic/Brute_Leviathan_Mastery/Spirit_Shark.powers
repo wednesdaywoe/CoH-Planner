@@ -1,0 +1,299 @@
+Power Epic.Brute_Leviathan_Mastery.Spirit_Shark
+{
+    Name                 "Spirit_Shark"                
+    DisplayName          "P3804756563"
+    BuyRequires          $archetype @Class_Brute == $archetype @Class_Tanker == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 owned? || &&
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        7.28
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         13
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    HighlightEval        Temporary_Powers.Temporary_Powers.Leviathan_Hunger ownPowerNum? 5 ==
+    HighlightRing        255 128 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_LeviathanMastery_SpiritShark.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_LeviathanMastery_SpiritShark.pfx
+    DisplayShortHelp     "PPW6JNFYUU2GYXLPDNJ46Q3XSX"
+    DisplayHelp          "GAMKCA3Q33B4YUXMM542WHA4TZ"
+    IconName             "Arachnos_Patron_TargetedRangedHighDmg.tga"
+    DisplayTargetShortHelp "P3278563378"
+    DisplayTargetHelp    "P861697510"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.8400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.7000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 ==
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1400
+                Duration 3.2000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3137354887"
+                    DisplayVictimHit "P130826600"
+                    DisplayInfo "WWVBDNFETMLTYWX432TJUUBEU2"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1400
+                Duration 3.2000
+                MagnitudeExpr Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0.8 * 1 + @StdResult *
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3137354887"
+                    DisplayVictimHit "P130826600"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRevokePower
+                Aspect kAbs
+                Target kSelf
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance NoHitDelay NoProjectileDelay RevokeAll
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Leviathan_Hunger
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.3920
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.7000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0 ==
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.2320
+                Duration 3.2000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3137354887"
+                    DisplayVictimHit "P130826600"
+                    DisplayInfo "WWVBDNFETMLTYWX432TJUUBEU2"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 1 >=
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.1400
+                Duration 3.2000
+                Magnitude 1.0000
+                DurationExpr Temporary_Powers.Temporary_Powers.Leviathan_Hunger source.ownPowerNum? 0.8 * 1 + @StdResult *
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3137354887"
+                    DisplayVictimHit "P130826600"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRevokePower
+                Aspect kAbs
+                Target kSelf
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance NoHitDelay NoProjectileDelay RevokeAll
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Leviathan_Hunger
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.3780
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.0630
+            Duration 3.2000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

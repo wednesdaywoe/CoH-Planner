@@ -1,0 +1,57 @@
+#**************************************************************************************#
+# Power: Pets > Necro Enslaved Specter > Fade                                          #
+# Info:  Auto Res Sleep, Fear, Disorient, Slow, Smash, Cold, Negative, Toxic, Psionic  #
+#**************************************************************************************#
+
+Power Mastermind_Pets.Zombie_Minion.Fade
+{
+    Name                 "Fade"                        
+    DisplayName          "P3932635806"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Zombie_Minion_Rot.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Zombie_Minion_Rot.pfx
+    DisplayShortHelp     "UEQZ4NFJH83NYKVSBDJXHC2CBA"
+    DisplayHelp          "H4MRY6WFQ3CRW5NENVUQV82KZ3"
+    IconName             "DarkArmor_DarkEmbrace.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Tag "Rot"
+        Chance 0.0000
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -500.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Damage"
+            Scale 0.0005
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoFloaters IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath
+        }
+    }
+}

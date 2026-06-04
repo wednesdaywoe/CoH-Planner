@@ -1,0 +1,137 @@
+Power Temporary_Powers.Temporary_Powers.Crystal_of_Resilience
+{
+    Name                 "Crystal_of_Resilience"       
+    DisplayName          "P2857996439"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTime             604800
+    IgnoreStrength       kTrue
+    Deletable            kTrue
+    DisplayShortHelp     "P2388627655"
+    DisplayHelp          "P1939400071"
+    IconName             "Empathy_Fortitude.tga"
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P2388627655"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.The_Perfect_Eye
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.The_True_Furnace
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Heart_of_a_Storm_Elemental
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Anger_Monument
+            }
+            
+        }
+    }
+}

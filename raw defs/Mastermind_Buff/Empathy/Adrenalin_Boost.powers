@@ -1,0 +1,99 @@
+#*****************************************************************#
+# Power: Buff > Empathy > Adrenalin Boost                         #
+# Info:  Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)  #
+#*****************************************************************#
+
+Power Mastermind_Buff.Empathy.Adrenalin_Boost
+{
+    Name                 "Adrenalin_Boost"             
+    DisplayName          "P2670569272"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       2.27
+    RechargeTime         300
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Empathy_AdrenalinBoost.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Empathy_AdrenalinBoost.PFX
+    DisplayShortHelp     "P67400177"
+    DisplayHelp          "P49021921"
+    DisplayAttackerHit   "P2814703278"
+    DisplayVictimHit     "P3796200085"
+    IconName             "Empathy_AdrenalinBoost.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P1037884928"
+    DisplayTargetHelp    "P87926957"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffEndContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 5.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffMaxHPCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight kRechargeTime
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.8000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

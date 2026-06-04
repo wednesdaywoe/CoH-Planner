@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Lioness_3
+{
+    Name "Lioness_3"
+    DisplayName "DFLQYRK864LDWQX5KKXB9ES9KZ"
+    DisplayShortHelp "P4126288098"
+    DisplayHelp "P4126288098"
+    IconName "Lioness_3_set.ico"
+
+    Powers Mastermind_Pets.Lioness_3.PM_Ferocious_Growl
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lioness_3.Claw_Swipe
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lioness_3.Lick_Wounds
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lioness_3.PM_Claw_Swipe
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lioness_3.Tame_Beasts
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

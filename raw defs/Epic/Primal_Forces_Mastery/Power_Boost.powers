@@ -1,0 +1,82 @@
+Power Epic.Primal_Forces_Mastery.Power_Boost
+{
+    Name                 "Power_Boost"                 
+    DisplayName          "P314575027"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    RechargeTime         120
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_EnergyManipulation_PowerBoost.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_EnergyManipulation_PowerBoost.PFX
+    DisplayShortHelp     "P3047510863"
+    DisplayHelp          "9HPMWG99RKWWYDXNJN7WKJDH3Q"
+    IconName             "PrimalForcesMastery_PowerBoost.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+        Tag "PowerBoostA"
+    
+        AttribMod
+        {
+            Attrib kHeal kAbsorb kEndurance kSpeedRunning kSpeedFlying kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.6600
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            StackKey kPowerBoost
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            Messages
+            {
+                DisplayAttackerHit "P3834136190"
+            }
+            
+            FX
+            {
+                ContinuingFX Powers\Ability\PowerBoostContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "PowerBoostB"
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack kDefense kToHit
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.6600
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            StackKey kPowerBoost
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            Messages
+            {
+                DisplayAttackerHit "P3834136190"
+            }
+            
+            FX
+            {
+                ContinuingFX Powers\Ability\PowerBoostContinuing.fx
+            }
+            
+        }
+    }
+}

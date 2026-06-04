@@ -1,0 +1,141 @@
+Power Temporary_Powers.Temporary_Powers.Mutation:_Pain_Tolerance
+{
+    Name                 "Mutation:_Pain_Tolerance"    
+    DisplayName          "P4231482119"
+    ModesDisallowed      kArena, kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       1200
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\TemporaryPowers_SecondaryMutation_PainTolerance.pfx"
+    include              menu\Powers\AnimFX\TemporaryPowers_SecondaryMutation_PainTolerance.pfx
+    DisplayShortHelp     "P495567194"
+    DisplayHelp          "P2210010762"
+    IconName             "SecondaryMutation.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnduranceDiscount
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Mutation:_Acute_Senses
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Mutation:_Tough_Hide
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Mutation:_Quick_Reflexes
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Mutation:_Heightened_Speed
+            }
+            
+        }
+    }
+}

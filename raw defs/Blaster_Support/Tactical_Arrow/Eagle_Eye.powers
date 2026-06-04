@@ -1,0 +1,130 @@
+Power Blaster_Support.Tactical_Arrow.Eagle_Eye
+{
+    Name                 "Eagle_Eye"                   
+    DisplayName          "P469631177"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       1.17
+    RechargeTime         10
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRecovery_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TacticalArrow_EagleEye.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\TacticalArrow_EagleEye.pfx
+    DisplayShortHelp     "W97JBN47RN9VWKBPVWP8BGCGEX"
+    DisplayHelp          "FXDH2YP93FBXYVNY2BNF9MJ2MZ"
+    DisplayAttackerHit   "P1046721788"
+    IconName             "TacticalArrow_EagleEye.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Res_Boolean"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kAccuracy
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.1250
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.1250
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

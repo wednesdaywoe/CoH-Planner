@@ -1,0 +1,216 @@
+Power Blaster_Support.Time_Manipulation.Future_Pain
+{
+    Name                 "Future_Pain"                 
+    DisplayName          "P1925669722"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        16.848
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         18
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kFear_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TimeManipulation_FuturePain.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TimeManipulation_FuturePain.PFX
+    DisplayShortHelp     "R7LY8HMCCE3VWEL37LQTFB48P3"
+    DisplayHelp          "MPHBWDBJPZ4QWLVJ6CFW8DECFZ"
+    IconName             "TimeManipulation_FuturePain"
+    DisplayTargetShortHelp "P1128528124"
+    DisplayTargetHelp    "P1995465160"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 3.2400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 2.2862
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Fear"
+            Scale 5.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P508540991"
+                DisplayVictimHit "P1197143274"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/AfraidContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P508540991"
+                DisplayVictimHit "P1197143274"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/AfraidContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? &&
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Fear"
+            Scale 5.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "98FHXGJ2QNDCWTXAVYV55SHLLX"
+                DisplayVictimHit "4KAS8HPQM552WNLCBKRSV6AMUQ"
+                DisplayFloat "P2238940030"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/AfraidContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? &&
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "98FHXGJ2QNDCWTXAVYV55SHLLX"
+                DisplayVictimHit "4KAS8HPQM552WNLCBKRSV6AMUQ"
+                DisplayFloat "P2238940030"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/AfraidContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1100
+            Duration 9.1700
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

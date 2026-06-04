@@ -1,0 +1,125 @@
+#**************************************************************#
+# Power: Summon > Demon Summoning > Corruption                 #
+# Info:  Ranged, Light DMG(Fire), Foe Minor DoT (Toxic), -Res  #
+#**************************************************************#
+
+Power Mastermind_Summon.Demon_Summoning.Corruption
+{
+    Name                 "Corruption"                  
+    DisplayName          "P3377876385"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        4.368
+    TimeToActivate       1.23
+    TimeToRoot           1.23
+    RechargeTime         3
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_DemonSummoning_Corruption.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_DemonSummoning_Corruption.pfx
+    DisplayShortHelp     "L76BE8RBP7R8YDMRDYUVFHHZPS"
+    DisplayHelp          "9GCZE2VUWAGFWZM7WYBK4V7VLW"
+    IconName             "DemonSummoning_Corruption.tga"
+    DisplayTargetShortHelp "P3237071411"
+    DisplayTargetHelp    "P695963167"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.7600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.4210
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1500
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Debuff_Res_Dmg"
+            Scale -1.2500
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+}

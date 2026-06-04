@@ -1,0 +1,80 @@
+#**************************************************#
+# Power: Pets > Mercenary Spec Ops 3 > SCAR Snipe  #
+# Info:  Ranged, DMG(Lethal)                       #
+#**************************************************#
+
+Power Mastermind_Pets.Spec_Ops_3.SCAR_Snipe
+{
+    Name                 "SCAR_Snipe"                  
+    DisplayName          "P4056710273"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        6.864
+    PreferenceMultiplier 3
+    DontSetStance        1
+    TimeToActivate       1.8
+    TimeToRoot           1.8
+    RechargeTime         16
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Spec_Ops_3_SCAR_Snipe.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Spec_Ops_3_SCAR_Snipe.pfx
+    DisplayShortHelp     "NB2XU8MP3FUEW3ZHSEP8PG2N9A"
+    DisplayHelp          "YNRHNHN88SFRWQCQVFBGTNFS73"
+    IconName             "AssaultWeapons_ARBurst.tga"
+
+
+    Effect
+    {
+        Requires kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && || kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && ||
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.9600
+            MagnitudeExpr @StdResult kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && + kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && + 0.0333 * 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags Fallback
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 2.9200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+}

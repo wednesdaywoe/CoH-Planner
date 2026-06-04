@@ -1,0 +1,142 @@
+#*************************************************#
+# Power: Pets > Necro Skeleton 3 > Head Splitter  #
+# Info:  -DEF                                     #
+#*************************************************#
+
+Power Mastermind_Pets.Skeleton_3.Head_Splitter
+{
+    Name                 "Head_Splitter"               
+    DisplayName          "P1583216299"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                10
+    EnduranceCost        6.76
+    DontSetStance        1
+    TimeToActivate       2.87
+    TimeToRoot           2.87
+    RechargeTime         14
+    EffectArea           kCone
+    Radius               10
+    Arc                  20
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu/powers/AnimFX/MastermindPet_GraveKnight_Sword_Clobber.pfx"
+    include              menu/powers/AnimFX/MastermindPet_GraveKnight_Sword_Clobber.pfx
+    DisplayShortHelp     "P373215750"
+    DisplayHelp          "BEBEXGUWMK4AYDNZGBZH77DSNA"
+    IconName             "Sword_HeadSplitter.tga"
+    MaxTargetsHit        5
+    DisplayTargetShortHelp "P373215750"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 2.6000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 0.5000
+            Duration 10.0000
+            Magnitude 1.0000
+            TickChance 0.9980
+            StackType kStack
+            Flags CancelOnMiss
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1500
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 2.6000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

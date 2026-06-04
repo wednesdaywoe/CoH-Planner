@@ -1,0 +1,156 @@
+Power Pool.Leaping.Combat_Jumping
+{
+    Name                 "Combat_Jumping"              
+    DisplayName          "P3474890240"
+    ModesDisallowed      kDisable_All, kDisable_JumpToggles, kDisable_Pool
+    ModesSuspended       kSuppress_JumpToggles, kSuppress_PoolToggles
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.0325
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost, kBuff_Defense_Boost, kJump_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Leaping_SuperJump.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Leaping_SuperJump.pfx
+    DisplayShortHelp     "P2977037445"
+    DisplayHelp          "XJQRLDZXJ9V9YKZLFF4C8UN4VW"
+    DisplayAttackerHit   "P3690202278"
+    DisplayPowerDefenseFloat "P2514521623"
+    IconName             "Jump_CombatJump.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0100
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Control"
+            Scale 10.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -30.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+}

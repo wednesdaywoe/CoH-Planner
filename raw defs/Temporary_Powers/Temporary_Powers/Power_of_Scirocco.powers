@@ -1,0 +1,51 @@
+Power Temporary_Powers.Temporary_Powers.Power_of_Scirocco
+{
+    Name                 "Power_of_Scirocco"           
+    DisplayName          "P2312817863"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       1200
+    DisplayShortHelp     "P1002072209"
+    DisplayHelp          "P2407338472"
+    IconName             "PowerofScirocco.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kRechargeTime
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance kRecovery
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

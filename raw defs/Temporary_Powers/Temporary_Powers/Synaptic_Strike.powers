@@ -1,0 +1,68 @@
+Power Temporary_Powers.Temporary_Powers.Synaptic_Strike
+{
+    Name                 "Synaptic_Strike"             
+    DisplayName          "P2430364255"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                5
+    EnduranceCost        5.88
+    TimeToActivate       3.07
+    TimeToRoot           3.07
+    RechargeTime         6
+    EffectArea           kCharacter
+    LifeTime             1200
+    ServerTrayPriority   2
+    VisualFX             "menu\Powers\AnimFX\Hero_Synapse_ElectricFlurry.pfx"
+    include              menu\Powers\AnimFX\Hero_Synapse_ElectricFlurry.pfx
+    DisplayShortHelp     "P3246794800"
+    DisplayHelp          "C2JA8FPVY3JKW2VR8PXBETVRLX"
+    IconName             "SuperSpeed_Flurry.tga"
+    DoNotSave            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1500
+            Duration 1.8000
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1545979143"
+                DisplayVictimHit "P2876742505"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1500
+            Duration 1.8000
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    }
+}

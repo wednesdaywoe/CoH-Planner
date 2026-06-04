@@ -1,0 +1,201 @@
+#******************************************************************************#
+# Power: Pets > Beast Dire Wolf 3 > Terrible Howl                              #
+# Info:  PBAoE, High DMG(Cold), Foe Terrorize, Minor DoT(Cold), -Rech, -Speed  #
+#******************************************************************************#
+
+Power Mastermind_Pets.Dire_Wolf_3.Terrible_Howl
+{
+    Name                 "Terrible_Howl"               
+    DisplayName          "P2901772066"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        16.64
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kEnduranceDiscount_Boost, kFear_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    ChainIntoPower       Mastermind_Pets.Dire_Wolf_3.PM_Terrible_Howl
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Wolf_TerribleHowl.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Wolf_TerribleHowl.pfx
+    DisplayShortHelp     "P1429329392"
+    DisplayHelp          "JFK6BTGSJGBAWFBV27654R9NJ3"
+    IconName             "BeastMastery_PetTerribleHowl.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P508540991"
+                DisplayVictimHit "P1197143274"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/AfraidContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P508540991"
+                DisplayVictimHit "P1197143274"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/AfraidContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4173738004"
+                DisplayVictimHit "P1163387325"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2000
+            Duration 2.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3556385711"
+                DisplayVictimHit "P658755009"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.3000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.3000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.6000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Tag "CritActive"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.7500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

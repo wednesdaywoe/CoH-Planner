@@ -1,0 +1,39 @@
+Power Scrapper_Defense.Psionic_Armor.Memento_Mori
+{
+    Name                 "Memento_Mori"                
+    DisplayName          "5424BLSXV9UZYBMT6M5J4PBT4A"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        18.2
+    TimeToActivate       1.33
+    TimeToRoot           1.17
+    RechargeTime         300
+    EffectArea           kSphere
+    Radius               25
+    CastableAfterDeath   kDeadOrAlive
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRecovery_Boost, kFear_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Memento_Mori.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Memento_Mori.pfx
+    DisplayShortHelp     "7FWSVF8EA4SGYMCMT3P28GH37A"
+    DisplayHelp          "EU5KMZA6HV34YNZ5V388JTDC3S"
+    IconName             "PsionicArmor_MementoMori"
+    MaxTargetsHit        10
+
+    Redirect
+    {
+        Power Redirects.Psionic_Armor.Memento_Mori_Dead
+        Requires kHitPoints% source> 0 ==
+    }
+    
+    Redirect
+    {
+        Power Redirects.Psionic_Armor.Memento_Mori
+        Requires 1
+    }
+    
+}

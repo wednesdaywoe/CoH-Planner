@@ -1,0 +1,194 @@
+Power Blaster_Support.Ice_Manipulation.Chilling_Embrace
+{
+    Name                 "Chilling_Embrace"            
+    DisplayName          "P2308673115"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    TimeToActivate       0.73
+    TimeToRoot           0.73
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRecovery_Boost, kSlow_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       kStealthRadius source> 36 < cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_IceManipulation_ChillingEmbrace.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_IceManipulation_ChillingEmbrace.PFX
+    DisplayShortHelp     "P4068326937"
+    DisplayHelp          "PF49LCD23LKMWBBGXT8782ZBG2"
+    DisplayAttackerHit   "P3060559231"
+    IconName             "IceManipulation_ChillingEmbrace.tga"
+    MaxTargetsHit        10
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DisplayTargetShortHelp "P3655213320"
+    DisplayTargetHelp    "P3232901028"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.7000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.4000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.7000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Debuff_Dam"
+            Scale 2.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreCombatMods
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kSpeedRunning
+                Aspect kMax
+                Target kTarget
+                Table "Melee_SpeedRunning"
+                Scale -1.0000
+                Duration 5.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Sustain"
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kAbsorb
+                Aspect kMax
+                Target kSelf
+                Table "Melee_HealSelf"
+                Scale 0.1500
+                Duration 12.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags NoFloaters IgnoreCombatMods
+                Messages
+                {
+                    DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRecovery
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.5000
+                Duration 3.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        }
+    
+        Effect
+        {
+            Requires @CustomFX ShowFloaters eq
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kAbsorb
+                Aspect kMax
+                Target kSelf
+                Table "Melee_HealSelf"
+                Scale 0.1500
+                Duration 12.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRecovery
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.5000
+                Duration 3.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_MoteBlue
+{
+    Name                 "Labyrinth_MoteBlue"          
+    DisplayName          "L4D886VLJHCVY7N49WZ94PBLQW"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    ProcAllowed          kNone
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P514195764"
+    DisplayHelp          "4QDRJ2TDCS6LWFVH3ZMTZ46ESW"
+    IconName             "Temporary_LabyrinthMoteBlue.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P2310678054"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.1000
+            Duration 2.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

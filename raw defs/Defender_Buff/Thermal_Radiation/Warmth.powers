@@ -1,0 +1,51 @@
+#*******************************************#
+# Power: Buff > Thermal Radiation > Warmth  #
+# Info:  PBAoE, Team +Heal                  #
+#*******************************************#
+
+Power Defender_Buff.Thermal_Radiation.Warmth
+{
+    Name                 "Warmth"                      
+    DisplayName          "P2367202029"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       2.03
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               25
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ThermalRadiation_Warmth.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ThermalRadiation_Warmth.PFX
+    DisplayShortHelp     "P1906443399"
+    DisplayHelp          "P2831673235"
+    IconName             "ThermalRadiation_Warmth.tga"
+    MaxTargetsHit        255
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

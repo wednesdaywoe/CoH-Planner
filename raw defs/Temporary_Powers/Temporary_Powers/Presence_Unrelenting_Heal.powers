@@ -1,0 +1,73 @@
+Power Temporary_Powers.Temporary_Powers.Presence_Unrelenting_Heal
+{
+    Name                 "Presence_Unrelenting_Heal"   
+    DisplayName          "P1388360999"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    LifeTime             30
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P2844095694"
+    DisplayHelp          "P3393937194"
+    IconName             "Manipulation_Unrelenting_Heal.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    DisplayTargetShortHelp "P1329660044"
+
+
+    Effect
+    {
+        Tag "PresenceHealHigh"
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0200
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "PresenceHealLow"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0050
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

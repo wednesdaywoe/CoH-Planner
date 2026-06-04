@@ -1,0 +1,111 @@
+Power Tanker_Defense.Stone_Armor.Crystal_Armor
+{
+    Name                 "Crystal_Armor"               
+    DisplayName          "P488882655"
+    ModesDisallowed      kDisable_All
+    ModesSuspended       kGranite_Mode
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kCrystal_Armor_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.104
+    TimeToActivate       1
+    RechargeTime         4
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost, kRecovery_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_StoneArmor_CrystalArmor.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_StoneArmor_CrystalArmor.PFX
+    DisplayShortHelp     "QK39KU87T4HCWYXSUPVECLBMRS"
+    DisplayHelp          "2DNDTXC9JKENY3XLFY2DXLPGAW"
+    DisplayAttackerHit   "P3054793793"
+    IconName             "StoneArmor_CrystalArmor.tga"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kEnergy_Attack kNegative_Energy_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 1.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kEnergy_Attack kNegative_Energy_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 1.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy_Elude kNegative_Energy_Elude
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 0.4000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,52 @@
+#*******************************************************#
+# Power: Pets > Demons Ember Demon 3 > Abyssal Mending  #
+# Info:  Demon Ally Heal                                #
+#*******************************************************#
+
+Power Mastermind_Pets.Ember_Demon_3.Abyssal_Mending
+{
+    Name                 "Abyssal_Mending"             
+    DisplayName          "P1025304465"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kHealAlly
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        13
+    PreferenceMultiplier 5
+    TimeToActivate       2.27
+    RechargeTime         30
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost, kHeal_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon2_AbyssalMending.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon2_AbyssalMending.pfx
+    DisplayShortHelp     "P113636010"
+    DisplayHelp          "P4233769566"
+    IconName             "ThermalRadiation_Cauterize.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.9600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

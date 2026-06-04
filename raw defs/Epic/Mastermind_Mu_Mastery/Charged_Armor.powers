@@ -1,0 +1,76 @@
+Power Epic.Mastermind_Mu_Mastery.Charged_Armor
+{
+    Name                 "Charged_Armor"               
+    DisplayName          "P571716827"
+    BuyRequires          $archetype @Class_Mastermind == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 owned? || &&
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.13
+    TimeToActivate       0.67
+    RechargeTime         8
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_MuMastery_ChargedArmor.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_MuMastery_ChargedArmor.pfx
+    DisplayShortHelp     "P3265949263"
+    DisplayHelp          "P2102775189"
+    DisplayAttackerHit   "P782710974"
+    IconName             "Arachnos_Patron_ResistBuff.tga"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kEnergy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 2.7500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 2.7500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,49 @@
+PowerSet Epic.Sentinel_Electricity_Mastery
+{
+    Name "Sentinel_Electricity_Mastery"
+    DisplayName "P590027019"
+    DisplayShortHelp "P590027019"
+    DisplayHelp "P847317549"
+    IconName "Sentinel_Electricity_Mastery_set.ico"
+
+    Powers Epic.Sentinel_Electricity_Mastery.Chain_Fences
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Electricity_Mastery.Havok_Punch
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Electricity_Mastery.Paralyzing_Jolt
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Electricity_Mastery.Lightning_Field
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Electricity_Mastery.Rehabilitating_Circuit
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

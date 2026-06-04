@@ -1,0 +1,113 @@
+Power Temporary_Powers.Day_Job_Powers.Warden_Baton
+{
+    Name                 "Warden_Baton"                
+    DisplayName          "P2082248681"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                5
+    EnduranceCost        7.15
+    TimeToActivate       2.87
+    TimeToRoot           2.87
+    RechargeTime         4
+    EffectArea           kCharacter
+    NumCharges           30
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Baton.pfx"
+    include              menu\Powers\AnimFX\Villain_Baton.pfx
+    DisplayShortHelp     "9J7ABSLFZANDWVNFL54T93Q7YW"
+    DisplayHelp          "6TY5QUAQ55DXY5ZB63XVAHVVLZ"
+    IconName             "DayJob_MeleeStun.tga"
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P1066116238"
+    DisplayTargetHelp    "P2418887360"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 0.4000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.6600
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 6.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing\StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.6600
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing\StunContinuing.fx
+            }
+            
+        }
+    }
+}

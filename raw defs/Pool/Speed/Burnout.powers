@@ -1,0 +1,101 @@
+Power Pool.Speed.Burnout
+{
+    Name                 "Burnout"                     
+    DisplayName          "P190292040"
+    BuyRequires          Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        48.75
+    TimeToActivate       1
+    RechargeTime         1800
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Speed_Burnout.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Speed_Burnout.pfx
+    DisplayShortHelp     "P1776881406"
+    DisplayHelp          "AAZ5TK4BPNV4WDN9LYV53RR7QX"
+    DisplayAttackerHit   "P3207966633"
+    IconName             "SuperSpeed_Burnout.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                PowerCategory Arachnos_Soldiers
+                PowerCategory Blaster_Ranged
+                PowerCategory Blaster_Support
+                PowerCategory Brute_Defense
+                PowerCategory Brute_Melee
+                PowerCategory Controller_Buff
+                PowerCategory Controller_Control
+                PowerCategory Corruptor_Buff
+                PowerCategory Corruptor_Ranged
+                PowerCategory Defender_Buff
+                PowerCategory Defender_Ranged
+                PowerCategory Dominator_Assault
+                PowerCategory Dominator_Control
+                PowerCategory Mastermind_Buff
+                PowerCategory Mastermind_Summon
+                PowerCategory Peacebringer_Defensive
+                PowerCategory Peacebringer_Offensive
+                PowerCategory Scrapper_Defense
+                PowerCategory Scrapper_Melee
+                PowerCategory Sentinel_Defense
+                PowerCategory Sentinel_Ranged
+                PowerCategory Stalker_Defense
+                PowerCategory Stalker_Melee
+                PowerCategory Tanker_Defense
+                PowerCategory Tanker_Melee
+                PowerCategory Teamwork
+                PowerCategory Training_Gadgets
+                PowerCategory Warshade_Defensive
+                PowerCategory Warshade_Offensive
+                PowerCategory Widow_Training
+                PowerSet Pets.Nature_Affinity_Controller
+                PowerSet Pets.Nature_Affinity_Corruptor
+                PowerSet Pets.Nature_Affinity_Defender
+                PowerSet Pets.Nature_Affinity_Mastermind
+                PowerSet Pets.Titan_Weapons
+                PowerSet Pets.Titan_Weapons_Tanker
+                PowerSet Pets.Water_Blast_Blaster
+                PowerSet Pets.Water_Blast_Corruptor
+                PowerSet Pets.Water_Blast_Defender
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kMax
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -25.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

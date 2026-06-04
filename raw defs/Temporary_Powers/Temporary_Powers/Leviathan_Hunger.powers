@@ -1,0 +1,40 @@
+Power Temporary_Powers.Temporary_Powers.Leviathan_Hunger
+{
+    Name                 "Leviathan_Hunger"            
+    DisplayName          "N3BXDZLQKT67YKZNLMPJVJZ4KQ"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1000
+    EffectArea           kCharacter
+    LifeTime             60
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "5NS89Y5LAGS6W8LUSPZDDT48KS"
+    DisplayHelp          "CJQG57B55YCMYQZ2PQRRF6W92Z"
+    IconName             "Arachnos_Patron_TargetedRangedHighDmg.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    NumAllowed           5
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Table "Melee_Ones"
+            Duration 60.0000
+            StackType kIgnore
+            Messages
+            {
+                DisplayAttackerHit "J33DBNDKM2Q6Y4NJ9H3THQKJMA"
+            }
+            
+        }
+    }
+}

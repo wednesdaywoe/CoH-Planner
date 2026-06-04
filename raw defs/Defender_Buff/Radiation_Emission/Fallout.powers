@@ -1,0 +1,77 @@
+#*************************************************************************************#
+# Power: Buff > Radiation Emission > Fallout                                          #
+# Info:  Post-Defeat: PBAoE, Extreme DMG(Energy), Foe -To Hit, -DEF, -DMG, -Res(All)  #
+#*************************************************************************************#
+
+Power Defender_Buff.Radiation_Emission.Fallout
+{
+    Name                 "Fallout"                     
+    DisplayName          "P310781374"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadLeaguemate
+    EntsAutoHit          kDeadLeaguemate
+    Target               kDeadLeaguemate
+    Range                60
+    EnduranceCost        20.8
+    TimeToActivate       3.2
+    TimeToRoot           3.2
+    RechargeTime         300
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_RadiationEmission_Fallout.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_RadiationEmission_Fallout.PFX
+    DisplayShortHelp     "P783614258"
+    DisplayHelp          "JQANXYRUK3E7YZNLXS26SZD3J2"
+    IconName             "RadiationPoisoning_Fallout.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P2158078059"
+                DisplayVictimHit "P2416771117"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Fallout
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingBits ANIM_RAISEDEAD ANIM_STRONG
+            }
+            
+        }
+    }
+}

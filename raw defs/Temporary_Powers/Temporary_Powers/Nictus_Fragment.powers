@@ -1,0 +1,81 @@
+Power Temporary_Powers.Temporary_Powers.Nictus_Fragment
+{
+    Name                 "Nictus_Fragment"             
+    DisplayName          "P27719367"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        19.5
+    TimeToActivate       1.93
+    TimeToRoot           1.93
+    RechargeTime         15
+    EffectArea           kCharacter
+    NumCharges           75
+    StrengthsDisallowed  kRange
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Melee_SiphonLife.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Melee_SiphonLife.pfx
+    DisplayShortHelp     "EVJJEVTGYHHEW3M9JCVEU6U5YS"
+    DisplayHelp          "F3VB3AVHWU9YW7L2LA63KZBLQ3"
+    IconName             "Temporary_NictusFragment.tga"
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P376783017"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    }
+}

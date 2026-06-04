@@ -1,0 +1,41 @@
+PowerSet Mastermind_Pets.Genin
+{
+    Name "Genin"
+    DisplayName "ZYVWRLD2E4HKYTVRSVEJWBMDYZ"
+    DisplayShortHelp "P1004628773"
+    DisplayHelp "P1004628773"
+    IconName "Genin_set.ico"
+
+    Powers Mastermind_Pets.Genin.Thunder_Kick
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Genin.Shuriken
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Genin.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Genin.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

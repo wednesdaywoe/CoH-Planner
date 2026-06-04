@@ -1,0 +1,124 @@
+Power Temporary_Powers.Temporary_Powers.Nectar
+{
+    Name                 "Nectar"                      
+    DisplayName          "P1841618965"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.5
+    TimeToActivate       1.53
+    TimeToRoot           1.53
+    RechargeTime         240
+    EffectArea           kSphere
+    Radius               10
+    AIReport             kNever
+    NumCharges           20
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Ambrosia.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Ambrosia.pfx
+    DisplayShortHelp     "P361720593"
+    DisplayHelp          "TJCNGNTXWEHFYVLVJ3CVRMDTLS"
+    IconName             "Temporary_TargetedPBAoEConfuse.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P2332288638"
+    DisplayTargetHelp    "P4213198885"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 60.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 60.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Confused 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 2.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+}

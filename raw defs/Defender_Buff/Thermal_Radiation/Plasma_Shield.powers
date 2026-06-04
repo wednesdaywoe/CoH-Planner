@@ -1,0 +1,57 @@
+#***************************************************#
+# Power: Buff > Thermal Radiation > Plasma Shield   #
+# Info:  Ranged, Ally +Res(Energy, Negative, Fire)  #
+#***************************************************#
+
+Power Defender_Buff.Thermal_Radiation.Plasma_Shield
+{
+    Name                 "Plasma_Shield"               
+    DisplayName          "P1907338798"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    RechargeTime         2
+    EffectArea           kSphere
+    Radius               30
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ThermalRadiation_PlasmaShield.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ThermalRadiation_PlasmaShield.PFX
+    DisplayShortHelp     "P3994307906"
+    DisplayHelp          "4PPM4NGFBCLBWNVWK8X8ZX2TTX"
+    DisplayAttackerHit   "P507595321"
+    DisplayVictimHit     "P1541038042"
+    IconName             "ThermalRadiation_PlasmaShield.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire kEnergy kNegative_Energy
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 2.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

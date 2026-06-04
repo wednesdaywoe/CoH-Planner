@@ -1,0 +1,121 @@
+Power Pool.Manipulation.Unrelenting
+{
+    Name                 "Unrelenting"                 
+    DisplayName          "P1388360999"
+    BuyRequires          Pool.Manipulation.Challenge Pool.Manipulation.Provoke && Pool.Manipulation.Challenge Pool.Manipulation.Intimidate && || Pool.Manipulation.Challenge Pool.Manipulation.Invoke_Panic && || Pool.Manipulation.Provoke Pool.Manipulation.Intimidate && || Pool.Manipulation.Provoke Pool.Manipulation.Invoke_Panic && || Pool.Manipulation.Intimidate Pool.Manipulation.Invoke_Panic && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       1.97
+    RechargeTime         600
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Presence_Unrelenting.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Presence_Unrelenting.pfx
+    DisplayShortHelp     "P1421969585"
+    DisplayHelp          "8438GUHLH5KKY7NEHW9CLZCLKX"
+    IconName             "Manipulation_Unrelenting.tga"
+    DisplayTargetShortHelp "P3924420667"
+    DisplayTargetHelp    "P1974006744"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0200
+            Duration 30.0000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P606393157"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 2.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires cur.kHitPoints source> 1 <
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P606393157"
+            }
+            
+            FX
+            {
+                ContinuingBits ANIM_RAISEDEAD
+            }
+            
+        }
+    }
+}

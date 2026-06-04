@@ -1,0 +1,315 @@
+#********************************************************************#
+# Power: Melee > Psionic Melee > Greater Psi Blade                   #
+# Info:  Melee, DMG(Psionic/Lethal), Foe -Rech, Hold; Self -Insight  #
+#********************************************************************#
+
+Power Tanker_Melee.Psionic_Melee.Greater_Psi_Blade
+{
+    Name                 "Greater_Psi_Blade"           
+    DisplayName          "P3232304211"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         15
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    HighlightEval        Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight ownPower?
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\PsionicMelee_PsiBladeGreat.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\PsionicMelee_PsiBladeGreat.PFX
+    DisplayShortHelp     "T8WY2JJSBBESYPV45JCR3TA75W"
+    DisplayHelp          "SQ3NVVRU94HQY4MM83ZQA5LJNW"
+    IconName             "PsionicMelee_GreaterPsiBlade.tga"
+    DisplayTargetShortHelp "P3721528132"
+    DisplayTargetHelp    "P3873023144"
+
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3941087674"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.6900
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 2.0700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+                ConditionalBits Anim_Stun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.6875
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 2.0624
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+                ConditionalBits Anim_Stun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.1200
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.6560
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "HXH546YKGEYVWHVWMRLKMLDVWX"
+                DisplayVictimHit "H6M9BQ77B8F8Y9X89L4BL62EQZ"
+                DisplayFloat "P653056153"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+                ConditionalBits Anim_Stun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.6500
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "HXH546YKGEYVWHVWMRLKMLDVWX"
+                DisplayVictimHit "H6M9BQ77B8F8Y9X89L4BL62EQZ"
+                DisplayFloat "P653056153"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.2420
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

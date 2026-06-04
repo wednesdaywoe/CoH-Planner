@@ -1,0 +1,98 @@
+#*********************************************#
+# Power: Pets > Robot Repair Drone > Explode  #
+# Info:  AoE Damage(Fire), Knockback          #
+#*********************************************#
+
+Power Mastermind_Pets.Repair_Drone.Explode
+{
+    Name                 "Explode"                     
+    DisplayName          "P2613974289"
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kFire_Attack
+    AIGroups             kPostDeath
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    RechargeTime         1000
+    EffectArea           kSphere
+    Radius               12
+    CastableAfterDeath   kDeadOnly
+    IgnoreStrength       kTrue
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Repair_Drone_Trip_Mine.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Repair_Drone_Trip_Mine.pfx
+    DisplayShortHelp     "2YZLLUBE7WWKWNLL6PF95VKW7X"
+    DisplayHelp          "48FQPMXCP8TGYNBWL66A4A5CB3"
+    IconName             "DarkMiasma_TarPatch.tga"
+    MaxTargetsHit        5
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

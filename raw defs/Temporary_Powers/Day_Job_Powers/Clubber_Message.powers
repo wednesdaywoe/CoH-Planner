@@ -1,0 +1,45 @@
+Power Temporary_Powers.Day_Job_Powers.Clubber_Message
+{
+    Name                 "Clubber_Message"             
+    DisplayName          "P3547318693"
+    ActivateRequires     DJ_SuperGroupBase inVolume> ! DJ_Hospital inVolume> ! && DJ_Vault inVolume> ! &&
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    AIReport             kNever
+    IsEnvironmentHit     kTrue
+    DisplayShortHelp     "P1125211164"
+    DisplayHelp          "P3004664593"
+    IconName             "DayJob_LootBuff.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P1125211164"
+    NumAllowed           2
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

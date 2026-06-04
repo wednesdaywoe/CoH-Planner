@@ -1,0 +1,286 @@
+#*************************************************************#
+# Power: Melee > Sonic Melee > Attune                         #
+# Info:  Melee Toggle, DMG(Energy), Foe DOT(Energy), Special  #
+#*************************************************************#
+
+Power Scrapper_Melee.Sonic_Melee.Attune
+{
+    Name                 "Attune"                      
+    DisplayName          "M69A6D2C3D29YYBJ6FCM37NTYZ"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                20
+    EnduranceCost        0.104
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         0.5
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    IgnoreToggleMaxDistance kTrue
+    HighlightEval        kSonicAtuneSelf Mode? !
+    HighlightRing        144 218 205 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Sonic_Melee_Echo_Chamber.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Sonic_Melee_Echo_Chamber.pfx
+    DisplayShortHelp     "D7TDTS7Z77X9W7M42TNR43CFSA"
+    DisplayHelp          "T2R59GS4MT77WUZUM4YLVRP2BS"
+    IconName             "SonicManipulation_DoT"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Tag "AtuneModeSet"
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.6000
+                Magnitude kSonicAtuneFoe
+                StackType kRefreshToCount
+                StackLimit 1
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.6000
+                Magnitude kSonicAtuneSelf
+                StackType kRefreshToCount
+                StackLimit 1
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kGlobalChanceMod
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.6000
+                Magnitude 1.0000
+                StackType kRefreshToCount
+                StackLimit 1
+                Flags IgnoreStrength IgnoreResistance
+                Params EffectFilter
+                {
+                    Tag SMAttune
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires kSonicAtune1Foe target.Mode? !
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.6000
+                Magnitude kSonicAtune1FoeRefresh
+                StackType kRefreshToCount
+                StackLimit 1
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        }
+    
+        Effect
+        {
+            Requires kSonicAtune2Foe target.Mode? !
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.6000
+                Magnitude kSonicAtune2FoeRefresh
+                StackType kRefreshToCount
+                StackLimit 1
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        }
+    
+        Effect
+        {
+            Requires distance 40 <=
+            Flags HitRollSuccess
+        
+            Effect
+            {
+                Requires enttype target> critter eq
+            
+                Effect
+                {
+                
+                    AttribMod
+                    {
+                        Attrib kEnergy
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_Damage"
+                        Scale 0.2500
+                        Duration 1.7500
+                        Magnitude 1.0000
+                        Period 2.0000
+                        StackType kIgnore
+                        Messages
+                        {
+                            DisplayAttackerHit "P59899910"
+                            DisplayVictimHit "P3210640873"
+                            DisplayInfo "9BSB9KVL4M38WHXDB96QE93TLX"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "CritSmall" "ScrapperCrit_ST"
+                    Chance 0.0500
+                    Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||
+                
+                    AttribMod
+                    {
+                        Attrib kEnergy
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_InherentDamage"
+                        Scale 0.2500
+                        Duration 1.7500
+                        Magnitude 1.0000
+                        Period 2.0000
+                        StackType kIgnore
+                        Messages
+                        {
+                            DisplayAttackerHit "C9PYKVU83YLXY5VLF95X7QCKKS"
+                            DisplayVictimHit "2F2886DUMBDLYMLJJP7VTZCB6S"
+                            DisplayFloat "P2440464263"
+                            DisplayInfo "9BSB9KVL4M38WHXDB96QE93TLX"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "CritLarge" "ScrapperCrit_ST"
+                    Chance 0.1000
+                    Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !
+                
+                    AttribMod
+                    {
+                        Attrib kEnergy
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_InherentDamage"
+                        Scale 0.2500
+                        Duration 1.7500
+                        Magnitude 1.0000
+                        Period 2.0000
+                        StackType kIgnore
+                        Messages
+                        {
+                            DisplayAttackerHit "C9PYKVU83YLXY5VLF95X7QCKKS"
+                            DisplayVictimHit "2F2886DUMBDLYMLJJP7VTZCB6S"
+                            DisplayFloat "P2440464263"
+                            DisplayInfo "9BSB9KVL4M38WHXDB96QE93TLX"
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Requires enttype target> player eq
+            
+                Effect
+                {
+                    Requires kMeter source> .9 < arch source> Class_Stalker eq ! ||
+                
+                    AttribMod
+                    {
+                        Attrib kEnergy
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_PvPDamage"
+                        Scale 0.2500
+                        Duration 1.7500
+                        Magnitude 1.0000
+                        Period 2.0000
+                        StackType kIgnore
+                        Messages
+                        {
+                            DisplayAttackerHit "P59899910"
+                            DisplayVictimHit "P3210640873"
+                            DisplayInfo "9BSB9KVL4M38WHXDB96QE93TLX"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "CritPlayer" "ScrapperCrit_ST"
+                    Chance 0.0500
+                    Requires arch source> Class_Scrapper eq
+                
+                    AttribMod
+                    {
+                        Attrib kEnergy
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_PvPDamage"
+                        Scale 0.2500
+                        Duration 1.7500
+                        Magnitude 1.0000
+                        Period 2.0000
+                        StackType kIgnore
+                        Messages
+                        {
+                            DisplayAttackerHit "C9PYKVU83YLXY5VLF95X7QCKKS"
+                            DisplayVictimHit "2F2886DUMBDLYMLJJP7VTZCB6S"
+                            DisplayFloat "P2440464263"
+                            DisplayInfo "9BSB9KVL4M38WHXDB96QE93TLX"
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}

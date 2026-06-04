@@ -1,0 +1,69 @@
+Power Defender_Ranged.Archery.Snap_Shot
+{
+    Name                 "Snap_Shot"                   
+    DisplayName          "P2783200921"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.155
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        3.536
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         2
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\Archery_Quick_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Archery_Quick_NoGeo.pfx
+    DisplayShortHelp     "P1884795216"
+    DisplayHelp          "JUFVVGWFNTKRWTX9G3G5WNY8ZQ"
+    IconName             "Archery_QuickArrow.tga"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.6800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.1799
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+}

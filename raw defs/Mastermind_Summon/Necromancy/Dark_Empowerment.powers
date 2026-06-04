@@ -1,0 +1,447 @@
+#************************************************#
+# Power: Summon > Necromancy > Dark Empowerment  #
+# Info:  Ranged, Empower Undead Henchman         #
+#************************************************#
+
+Power Mastermind_Summon.Necromancy.Dark_Empowerment
+{
+    Name                 "Dark_Empowerment"            
+    DisplayName          "P3036150683"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kMastermindUpgrade2
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kMyPet
+    Range                50
+    EnduranceCost        11.375
+    TimeToActivate       2.07
+    RechargeTime         0.5
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    StrengthsDisallowed  kRechargeTime
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_DarkEmpowerment.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_DarkEmpowerment.PFX
+    DisplayShortHelp     "P1390363359"
+    DisplayHelp          "UEPUUTLQ4WN9WRNMC6M9ZTQKL3"
+    DisplayAttackerHit   "P1402300901"
+    IconName             "Necromancy_DarkEmpowerment.tga"
+    MaxTargetsHit        16
+    AnimMainTargetOnly   kTrue
+
+
+    Effect
+    {
+        Requires MastermindPets_Zombie target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Zombie_3.Siphon_Life
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Zombie_3.Empower
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires MastermindPets_Skeletal_Warrior target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_3.Head_Splitter
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_3.Hack
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_3.Slash
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_3.Siphon_Life
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_2.Disembowel
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_2.Hack
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_2.Slash
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton.Hack
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton.Slash
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_3.Costume2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_3.Mode2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_3.Empower
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_2.Costume1
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_3.Death_Shroud
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires MastermindPets_Skeletal_Warrior target.VillainName> kRage target> .5 > &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Skeleton_3.Disembowel
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires MastermindPets_Lich target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Lich_3.Fearsome_Stare
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Lich_3.Costume2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Lich_3.Mode2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Lich_3.Empower
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Lich_3.Life_Drain
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Lich_2.Costume1
+            }
+            
+        }
+    }
+}

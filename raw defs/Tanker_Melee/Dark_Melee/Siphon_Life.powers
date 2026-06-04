@@ -1,0 +1,139 @@
+Power Tanker_Melee.Dark_Melee.Siphon_Life
+{
+    Name                 "Siphon_Life"                 
+    DisplayName          "P1123970646"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        10.192
+    TimeToActivate       1.93
+    TimeToRoot           1.93
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerMelee_DarkMelee_SiphonLife.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerMelee_DarkMelee_SiphonLife.PFX
+    DisplayShortHelp     "82WQDWP8HRNNYCVAZADJJDUPWA"
+    DisplayHelp          "XHJXQAKCUSF6WTMSTNL4MS93E2"
+    IconName             "ShadowFighting_SiphonLife.tga"
+    DisplayTargetShortHelp "P2190949330"
+    DisplayTargetHelp    "P3838442771"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.9600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 2.1509
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.8820
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

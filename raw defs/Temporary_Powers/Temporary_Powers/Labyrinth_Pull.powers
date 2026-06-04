@@ -1,0 +1,109 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_Pull
+{
+    Name                 "Labyrinth_Pull"              
+    DisplayName          "P30790420"
+    ModesRequired        kInLabyrinth
+    ModesDisallowed      kDisable_All, kDisable_Temp
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    TargetSecondary      kPosition
+    EnduranceCost        13.52
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               100
+    NumCharges           5
+    StackingUsage        kTrue
+    MaxNumCharges        50
+    PositionCenter       kFocus
+    PositionHeight       0.5
+    FaceTarget           kFalse
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Enemies\Event\DungeonLabyrinth\DungeonLabyrinth_PullThroughFog.pfx"
+    include              menu\Powers\AnimFX\Enemies\Event\DungeonLabyrinth\DungeonLabyrinth_PullThroughFog.pfx
+    DisplayShortHelp     "44PBE7MDLNY9YJCF9EYMCHVEXQ"
+    DisplayHelp          "DXLKH7HZQ7DHW9BNNT9UYTMM9S"
+    IconName             "Temporary_EnemyPull"
+    MaxTargetsHit        16
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires mapname> Hazard_07_01 eq
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 99.0000
+            Magnitude 3.0000
+            Delay 1.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3586768535"
+                DisplayVictimHit "P142628168"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            Delay 2.8000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires mapname> Hazard_07_01 eq !
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.1000
+            Magnitude 3.0000
+            Delay 1.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3586768535"
+                DisplayVictimHit "P142628168"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            Delay 2.8000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

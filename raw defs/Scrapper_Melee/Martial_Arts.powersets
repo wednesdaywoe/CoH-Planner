@@ -1,0 +1,81 @@
+PowerSet Scrapper_Melee.Martial_Arts
+{
+    Name "Martial_Arts"
+    DisplayName "P2980117763"
+    DisplayShortHelp "P2980117763"
+    DisplayHelp "P4173384790"
+    IconName "Martial_Arts_set.ico"
+
+    Powers Scrapper_Melee.Martial_Arts.Thunder_Kick
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Melee.Martial_Arts.Storm_Kick
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Melee.Martial_Arts.Cobra_Strike
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Melee.Martial_Arts.Focus_Chi
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Melee.Martial_Arts.Crane_Kick
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Melee.Martial_Arts.Warriors_Challenge
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Melee.Martial_Arts.Crippling_Axe_Kick
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Melee.Martial_Arts.Dragons_Tail
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Melee.Martial_Arts.Eagles_Claw
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

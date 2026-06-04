@@ -1,0 +1,46 @@
+#****************************************#
+# Power: Pets > Robot Assault 2 > Equip  #
+# Info:  Equip                           #
+#****************************************#
+
+Power Mastermind_Pets.Assault_2.Equip
+{
+    Name                 "Equip"                       
+    DisplayName          "P867364020"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    DisplayShortHelp     "P867364020"
+    DisplayHelp          "P270871615"
+    IconName             "Robotics_EquipRobot.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX V_COV\Powers\Robotics\Robot_Army_MechThreeUpgrade_Weapon.fx
+            }
+            
+        }
+    }
+}

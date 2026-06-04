@@ -1,0 +1,52 @@
+#***************************************************************************************#
+# Power: Buff > Poison > Poison Trap                                                    #
+# Info:  Place Trap: PBAoE Foe Hold, -END, -Recovery, Chance to Hold, Minor DoT(Toxic)  #
+#***************************************************************************************#
+
+Power Mastermind_Buff.Poison.Poison_Trap
+{
+    Name                 "Poison_Trap"                 
+    DisplayName          "P1358094474"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost, kHold_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_PoisonTrap.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_PoisonTrap.PFX
+    DisplayShortHelp     "P673564903"
+    DisplayHelp          "3YT8RFK5RVBYY2N9PLNPZ9RC2S"
+    IconName             "Poison_Poison_Trap.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 260.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Poison_Trap
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    }
+}

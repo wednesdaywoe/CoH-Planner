@@ -1,0 +1,39 @@
+Power Temporary_Powers.Temporary_Powers.Warburg_Launch_Codes
+{
+    Name                 "Warburg_Launch_Codes"        
+    DisplayName          "P2650956222"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTime             300
+    DisplayShortHelp     "P1246633515"
+    DisplayHelp          "P3710051594"
+    IconName             "sp_icon_code_full.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX WORLD\City/Terra_Volta/Respec/TerraVoltaRespec.fx
+            }
+            
+        }
+    }
+}

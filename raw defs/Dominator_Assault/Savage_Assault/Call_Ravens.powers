@@ -1,0 +1,181 @@
+Power Dominator_Assault.Savage_Assault.Call_Ravens
+{
+    Name                 "Call_Ravens"                 
+    DisplayName          "P3171874424"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.155
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        16.9
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         14
+    EffectArea           kCone
+    Radius               40
+    Arc                  30
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\SavageAssault_CallRavens.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\SavageAssault_CallRavens.PFX
+    DisplayShortHelp     "8MS66V2G46DPW3NAZUZWJBJETZ"
+    DisplayHelp          "MLD8LZSU9UDNWCC37BFD4LQDHZ"
+    IconName             "SavageMelee_CallRavens"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2410
+            Duration 3.1000
+            MagnitudeExpr Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .014 * 1 + @StdResult *
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 0.7500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.2514
+            Duration 3.1000
+            MagnitudeExpr Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .014 * 1 + @StdResult *
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 0.7500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.6000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildFrenzy"
+        Requires Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2663588066"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker
+                Count 2
+            }
+            
+        }
+    }
+}

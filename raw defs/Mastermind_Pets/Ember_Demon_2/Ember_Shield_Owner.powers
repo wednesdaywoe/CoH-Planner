@@ -1,0 +1,75 @@
+#******************************************************************#
+# Power: Pets > Demons Ember Demon 2 > Ember Shield Owner          #
+# Info:  Auto PBAoE, Owner +Res(Fire, Lethal, Smash, Cold, Toxic)  #
+#******************************************************************#
+
+Power Mastermind_Pets.Ember_Demon_2.Ember_Shield_Owner
+{
+    Name                 "Ember_Shield_Owner"          
+    DisplayName          "P2188818374"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    AIGroups             kBuff
+    EntsAffected         kMyOwner
+    EntsAutoHit          kMyOwner
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kSphere
+    Radius               60
+    AIReport             kNever
+    BoostsAllowed        kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P2074987946"
+    DisplayHelp          "P1295283086"
+    DisplayAttackerHit   "P2833984066"
+    DisplayVictimHit     "P1631997812"
+    IconName             "ThermalRadiation_FireShield.tga"
+    MaxTargetsHit        1
+    DisplayTargetShortHelp "P1300212996"
+    DisplayTargetHelp    "P522162355"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kOverlap
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.3330
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kOverlap
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 0.6660
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kOverlap
+            Flags IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,165 @@
+Power Blaster_Support.Electricity_Manipulation.Lightning_Clap
+{
+    Name                 "Lightning_Clap"              
+    DisplayName          "P1316692835"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    Target               kCaster
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kHeal_Boost, kDamage_Boost, kRecovery_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       kStealthRadius source> 36 <
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_ElectricityManipulation_LightningField.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_ElectricityManipulation_LightningField.PFX
+    DisplayShortHelp     "V4N2JJSJ8WTQWENAJ9TWPV3TN2"
+    DisplayHelp          "MQMDPST4ANG8W5LYFE53B3MF7W"
+    IconName             "ElectricityManipulation_LightningField.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1831456333"
+    DisplayTargetHelp    "P2516347203"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.0200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_EndDrain"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.1382
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Sustain"
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.1250
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.1250
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

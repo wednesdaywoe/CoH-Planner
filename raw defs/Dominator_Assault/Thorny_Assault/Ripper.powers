@@ -1,0 +1,178 @@
+Power Dominator_Assault.Thorny_Assault.Ripper
+{
+    Name                 "Ripper"                      
+    DisplayName          "P4259928669"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         15
+    EffectArea           kCone
+    Radius               7
+    Arc                  60
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_ThornyAssault_Ripper.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_ThornyAssault_Ripper.PFX
+    DisplayShortHelp     "FNKMAVRMJHR4W2L3JESWUXU3R3"
+    DisplayHelp          "6CS6WSKKV68KYLZATCR7NVRSWX"
+    IconName             "ThornyAssault_Ripper.tga"
+    MaxTargetsHit        5
+    DisplayTargetShortHelp "P2583813465"
+    DisplayTargetHelp    "P2137952550"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 2.3000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.6000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 2.1925
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Chance 0.6000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2000
+            Duration 4.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 3.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,300 @@
+Power Dominator_Control.Symphony_Control.Enfeebling_Lullaby
+{
+    Name                 "Enfeebling_Lullaby"          
+    DisplayName          "CKMVDZNMJH7TYSVVG4ES9E3XA3"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                70
+    EnduranceCost        15.6
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         45
+    EffectArea           kCone
+    Radius               70
+    Arc                  45
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Symphony_Control_Chant_of_Rebut.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Symphony_Control_Chant_of_Rebut.pfx
+    DisplayShortHelp     "MXUHF33CCA2VW6VNMQPYXPK8G2"
+    DisplayHelp          "N9C3T53VMWTBYHB4NQPNQJQTF2"
+    IconName             "SymphonyControl_SleepST"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "Q7KRYMV9SSL2W7L93SEZ2Y6LHX"
+    DisplayTargetHelp    "ES42TKLNJ74CY2X3B2TXVYE4M2"
+
+
+    Effect
+    {
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Sleep 1 Always
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+                DisplayInfo "NRJA2EUWTYMGYSBYGHEFDBPUV3"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Debuff_Dam"
+            Scale 2.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Requires Raid target.HasTag? !
+            Flags Fallback HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 12.0000
+                Magnitude 3.0000
+                Delay 0.2500
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_SLEEP
+                }
+                
+            }
+        
+            Effect
+            {
+                Tag "Domination"
+            
+                AttribMod
+                {
+                    Attrib kSleep
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_Sleep"
+                    Scale 18.0000
+                    Magnitude 3.0000
+                    Delay 0.2500
+                    StackType kReplace
+                    Messages
+                    {
+                        DisplayAttackerHit "HCYV6KACMWG3YQX2DS7N8W38LX"
+                        DisplayVictimHit "UGEDCLNDYGUFWUZT6ZJ45CR8E3"
+                        DisplayFloat "P2610687982"
+                        DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX PFX
+                        ConditionalBits ANIM_SLEEP
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Flags HitRollSuccess
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 12.0000
+                Magnitude 3.0000
+                Delay 0.2500
+                StackType kReplace
+                Flags DeepSleep
+                Messages
+                {
+                    DisplayAttackerHit "NKDV9HTYHNKUW9L67FGDUSRFYX"
+                    DisplayVictimHit "3XWUH8FZ2L6PY9LYAEZ8FUGZUZ"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_SLEEP
+                }
+                
+            }
+        
+            Effect
+            {
+                Tag "Domination"
+            
+                AttribMod
+                {
+                    Attrib kSleep
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_Sleep"
+                    Scale 18.0000
+                    Magnitude 3.0000
+                    Delay 0.2500
+                    StackType kReplace
+                    Flags DeepSleep
+                    Messages
+                    {
+                        DisplayAttackerHit "NZLFLTW38ZMJWTB4SLEKX6JAEQ"
+                        DisplayVictimHit "SN33DLBK9AXLYTCPJ97LHWFT3A"
+                        DisplayFloat "P2610687982"
+                        DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX PFX
+                        ConditionalBits ANIM_SLEEP
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            Delay 0.2500
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags DeepSleep
+            Messages
+            {
+                DisplayAttackerHit "NKDV9HTYHNKUW9L67FGDUSRFYX"
+                DisplayVictimHit "3XWUH8FZ2L6PY9LYAEZ8FUGZUZ"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_SLEEP
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Flags DeepSleep
+                Messages
+                {
+                    DisplayAttackerHit "NZLFLTW38ZMJWTB4SLEKX6JAEQ"
+                    DisplayVictimHit "SN33DLBK9AXLYTCPJ97LHWFT3A"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_SONICSTUN
+                }
+                
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "ReverbEnfeeblingLullaby"
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kCur
+            Target kCastersOwnerAndAllPets
+            Table "Melee_Ones"
+            Delay 4.0000
+            DelayedRequires Pets_Reverberant target.VillainName>
+            StackType kStack
+            Params Power
+            {
+                Power Pets.Reverberant.Enfeebling_Lullaby
+            }
+            
+        }
+    }
+}

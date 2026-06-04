@@ -1,0 +1,48 @@
+Power Scrapper_Defense.Bio_Organic_Armor.Efficient_Adaptation
+{
+    Name                 "Efficient_Adaptation"        
+    DisplayName          "P979801571"
+    BuyRequires          Scrapper_Defense.Bio_Organic_Armor.Evolution
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kBio_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       0.67
+    RechargeTime         4
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/SymbioticArmor_EfficientAdaptation.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/SymbioticArmor_EfficientAdaptation.PFX
+    DisplayShortHelp     "P3550450199"
+    DisplayHelp          "NMN5HX6USR5ZWXX9DEG3ZTL2DS"
+    IconName             "BioOrganicArmor_EfficientAdaptation.tga"
+    ShowInManage         kFalse
+    Free                 kTrue
+    AutoIssue            kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.1000
+            Magnitude kRestedAdaptation
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

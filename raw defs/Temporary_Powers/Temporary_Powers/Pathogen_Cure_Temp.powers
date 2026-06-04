@@ -1,0 +1,162 @@
+Power Temporary_Powers.Temporary_Powers.Pathogen_Cure_Temp
+{
+    Name                 "Pathogen_Cure_Temp"          
+    DisplayName          "P1966975286"
+    Type                 kClick
+    Accuracy             2
+    AIGroups             kPostDeath
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    TargetVisibility     kNone
+    TimeToActivate       2.27
+    TimeToRoot           2.27
+    RechargeTime         1000
+    EffectArea           kSphere
+    Radius               30
+    CastableAfterDeath   kDeadOnly
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Vahzilok_Pathogen_Pathogen_Cure_Tem1.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Vahzilok_Pathogen_Pathogen_Cure_Tem1.pfx
+    DisplayShortHelp     "P1227366386"
+    DisplayHelp          "B9QKWTDZ5VFUWCXQWZ735HQEFX"
+    DisplayVictimHit     "P2908117541"
+    IconName             "Temporary_VahzilokDiseaseSL3.tga"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    Free                 kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 0.3500
+            Duration 60.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kTargetsOwnerAndAllPets
+            Table "Melee_Heal"
+            Scale 3.0000
+            Duration 60.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 60.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Tag "Experimental_Immune_ToHit"
+        Chance 0.7500
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 40.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P3369568199"
+                DisplayFloat "P4018093326"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Experimental_Immune_Haste"
+        Chance 0.8000
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTargetsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 40.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P1491846009"
+                DisplayFloat "P1543397326"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Experimental_Immune_Recov"
+        Chance 0.8500
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kMax
+            Target kTargetsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 20.0000
+            Duration 40.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P1958096402"
+                DisplayFloat "P1798017456"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 40.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

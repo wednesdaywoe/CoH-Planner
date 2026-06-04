@@ -1,0 +1,38 @@
+Power Pool.Teleportation.Teleport
+{
+    Name                 "Teleport"                    
+    DisplayName          "P569504987"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Teleport, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    ModesSuspended       kSuppress_TravelToggles
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kTeleport
+    Range                350
+    EnduranceCost        13
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    EffectArea           kLocation
+    AIReport             kNever
+    BoostsAllowed        kRange_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Teleportation_Teleport.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Teleportation_Teleport.pfx
+    DisplayShortHelp     "P2537599147"
+    DisplayHelp          "2A8SBTUJZHUTWSN89S6G4ULAUZ"
+    IconName             "Teleportation_Teleport.tga"
+    ShowBuffIcon         kFalse
+
+    Redirect
+    {
+        Power Redirects.Pool_Teleportation.Teleport_LowEnd
+        Requires kChainTeleport source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Redirects.Pool_Teleportation.Teleport
+        Requires 1
+    }
+    
+}

@@ -1,0 +1,44 @@
+Power Temporary_Powers.Temporary_Powers.Incarnate_Reward_Dark_Astoria
+{
+    Name                 "Incarnate_Reward_Dark_Astoria"
+    DisplayName          "P2400153302"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P2400153302"
+    DisplayHelp          "P699722492"
+    IconName             "PowerofBlackScorpion.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.2500
+            Magnitude kIncarnateRewards
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

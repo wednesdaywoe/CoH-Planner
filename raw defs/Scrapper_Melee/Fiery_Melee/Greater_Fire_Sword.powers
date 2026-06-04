@@ -1,0 +1,245 @@
+#**************************************************#
+# Power: Melee > Fiery Melee > Greater Fire Sword  #
+# Info:  Melee, DMG(Fire)                          #
+#**************************************************#
+
+Power Scrapper_Melee.Fiery_Melee.Greater_Fire_Sword
+{
+    Name                 "Greater_Fire_Sword"          
+    DisplayName          "P1412058975"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        12.688
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    ProcMainTargetOnly   kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_FieryMelee_GreaterFireSword.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_FieryMelee_GreaterFireSword.PFX
+    DisplayShortHelp     "JAP4KZNGFJM4YANPGFKAGDR7JQ"
+    DisplayHelp          "ACBD3M6VQ7ZFWFNBVJZUXL7W7S"
+    IconName             "FieryFray_GreaterFireSword.tga"
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P3168769471"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 2.2800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "CritLarge" "ScrapperCrit_ST"
+            Chance 0.1000
+            Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 2.2800
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "VW85MT4UMEU8W4CGRC8YN7AXWX"
+                    DisplayVictimHit "JMTY7ABEW2DCWAM7ENWKLHJCJA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritSmall" "ScrapperCrit_ST"
+            Chance 0.0500
+            Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 2.2800
+                Magnitude 1.0000
+                StackType kStack
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "VW85MT4UMEU8W4CGRC8YN7AXWX"
+                    DisplayVictimHit "JMTY7ABEW2DCWAM7ENWKLHJCJA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.0260
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+                FX
+                {
+                    ContinuingFX POWERS/FireControl/CindersHit.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance -0.2000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.0900
+                Duration 4.1000
+                Magnitude 1.0000
+                Delay 0.5000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                }
+                
+                FX
+                {
+                    ContinuingFX POWERS/FireControl/CindersHit.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.8390
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "CritPlayer" "ScrapperCrit_ST"
+            Chance 0.0500
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.8390
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "VW85MT4UMEU8W4CGRC8YN7AXWX"
+                    DisplayVictimHit "JMTY7ABEW2DCWAM7ENWKLHJCJA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "Scorching Heat"
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2000
+            Duration 4.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

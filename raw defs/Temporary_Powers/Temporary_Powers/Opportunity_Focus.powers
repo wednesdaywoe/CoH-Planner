@@ -1,0 +1,44 @@
+Power Temporary_Powers.Temporary_Powers.Opportunity_Focus
+{
+    Name                 "Opportunity_Focus"           
+    DisplayName          "P3067961052"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    LifeTime             45
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P556209093"
+    DisplayHelp          "P1678110459"
+    IconName             "Inherent_TargetLock"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0250
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag SntlOpt
+            }
+        }
+    }
+}

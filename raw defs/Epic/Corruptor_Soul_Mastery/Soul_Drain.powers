@@ -1,0 +1,151 @@
+Power Epic.Corruptor_Soul_Mastery.Soul_Drain
+{
+    Name                 "Soul_Drain"                  
+    DisplayName          "P2786855971"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       2.37
+    TimeToRoot           2.37
+    RechargeTime         240
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_SoulMastery_SoulDrain.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_SoulMastery_SoulDrain.pfx
+    DisplayShortHelp     "3JS4ZCXHRBMDYMMHQR5NQR7BWA"
+    DisplayHelp          "9L5225DZ5AANWUNJV4JY96Q6YX"
+    IconName             "Arachnos_Patron_PBAoEBuffDamage.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 0.2000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 0.8000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 4.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq && arch source> Class_Corruptor eq &&
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "JUEWBM7JZMNJWZMJKL4U2CVPQ2"
+                DisplayVictimHit "FVD8UKSJKSPEWPBXHWQ49E9TY2"
+                DisplayFloat "P111359259"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq && arch source> Class_Corruptor eq &&
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.6408
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "JUEWBM7JZMNJWZMJKL4U2CVPQ2"
+                DisplayVictimHit "FVD8UKSJKSPEWPBXHWQ49E9TY2"
+                DisplayFloat "P111359259"
+            }
+            
+        }
+    }
+}

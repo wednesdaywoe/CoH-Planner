@@ -1,0 +1,49 @@
+PowerSet Epic.Dark_Mastery
+{
+    Name "Dark_Mastery"
+    DisplayName "P3397489959"
+    DisplayShortHelp "P3397489959"
+    DisplayHelp "P1890358854"
+    IconName "Dark_Mastery_set.ico"
+
+    Powers Epic.Dark_Mastery.Oppressive_Gloom
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Dark_Mastery.Dark_Consumption
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Dark_Mastery.Dark_Embrace
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Dark_Mastery.Soul_Transfer
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Dark_Mastery.Soul_Drain
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

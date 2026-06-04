@@ -1,0 +1,115 @@
+Power Temporary_Powers.Temporary_Powers.KR_Focused_Burst
+{
+    Name                 "KR_Focused_Burst"            
+    DisplayName          "P3256943054"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.72
+    TimeToActivate       2.2
+    TimeToRoot           2.2
+    RechargeTime         5
+    EffectArea           kCharacter
+    ServerTrayPriority   1
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Temporary_Powers_Temporary_Powers_KR_Focused_Burst.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Temporary_Powers_Temporary_Powers_KR_Focused_Burst.pfx
+    DisplayShortHelp     "P2641850359"
+    DisplayHelp          "7QBSQNL9C4TKYGZKH2G4CPNGWX"
+    IconName             "AssaultWeapons_ARBurst.tga"
+    DoNotSave            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.3500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.3500
+            Duration 0.5000
+            Magnitude 1.0000
+            Delay 0.1500
+            Period 0.1500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Flags IgnoreStrength IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

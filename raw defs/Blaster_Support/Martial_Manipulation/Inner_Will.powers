@@ -1,0 +1,185 @@
+Power Blaster_Support.Martial_Manipulation.Inner_Will
+{
+    Name                 "Inner_Will"                  
+    DisplayName          "P315654723"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       1.03
+    RechargeTime         180
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost
+    TargetRequires       kHitPoints% source> 50 < kEndurance% source> 50 < || cur.kHeld source> 0 > || cur.kImmobilize source> 0 > || cur.kStun source> 0 > || cur.kTerrorized source> 0 > || cur.kConfused source> 0 > || cur.kSleep source> 0 > ||
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MartialManipulation_InnerWill.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MartialManipulation_InnerWill.PFX
+    DisplayShortHelp     "P600575083"
+    DisplayHelp          "F27VJGE5FQ9NWCM8QRW6QZTF4A"
+    IconName             "MartialManipulation_InnerWill.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            MagnitudeExpr mod.kStun source> 1 + 2 30 minmax negate
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P3752789310"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            MagnitudeExpr mod.kSleep source> 1 + 2 30 minmax negate
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            MagnitudeExpr mod.kImmobilize source> 1 + 2 30 minmax negate
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            MagnitudeExpr mod.kHeld source> 1 + 2 30 minmax negate
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            MagnitudeExpr mod.kConfused source> 1 + 2 30 minmax negate
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            MagnitudeExpr mod.kTerrorized source> 1 + 2 30 minmax negate
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0750
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0750
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

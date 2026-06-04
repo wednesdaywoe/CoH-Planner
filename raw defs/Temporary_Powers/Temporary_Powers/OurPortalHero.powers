@@ -1,0 +1,50 @@
+Power Temporary_Powers.Temporary_Powers.OurPortalHero
+{
+    Name                 "OurPortalHero"               
+    DisplayName          "P2113393922"
+    ActivateRequires     isTutorialMap? ! isMissionMap? kDisable_Temp Mode? && ! &&
+    ModesDisallowed      kDisable_All, kDisable_Portals, kDisable_Teleport, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                15
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         300
+    EffectArea           kLocation
+    IgnoreLevelBought    kTrue
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_PortableWorkbench_Summon.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_PortableWorkbench_Summon.pfx
+    DisplayShortHelp     "P2353155363"
+    DisplayHelp          "397WMUS38J5TWJXCETZJ47X4ZS"
+    IconName             "Teleportation_Ouroboros.tga"
+    ShowInManage         kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Ouroboros_Door_Hero
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

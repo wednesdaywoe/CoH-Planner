@@ -1,0 +1,139 @@
+#************************************************************#
+# Power: Pets > Demons Hellfire Gargoyle 3 > Hellfire Smash  #
+# Info:  Melee, DMG(Smash/Toxic) Foe Knockdown               #
+#************************************************************#
+
+Power Mastermind_Pets.Hellfire_Gargoyle_3.Hellfire_Smash
+{
+    Name                 "Hellfire_Smash"              
+    DisplayName          "P1676580839"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_HellfireGargoyle3_HellfireSmash.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_HellfireGargoyle3_HellfireSmash.pfx
+    DisplayShortHelp     "G5QD7TEL56LFWHCZKEAXY4GUUZ"
+    DisplayHelp          "MN5F3DC4XGRMWRXRQQLPTX5L2W"
+    IconName             "FieryFray_Scorch.tga"
+    DisplayTargetShortHelp "P3014490551"
+    DisplayTargetHelp    "P3168769471"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2851307520"
+                DisplayVictimHit "P105122461"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1000
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.4000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 0.7000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.4000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 0.7000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

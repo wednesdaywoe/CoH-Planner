@@ -1,0 +1,49 @@
+PowerSet Epic.Defender_Ice_Mastery
+{
+    Name "Defender_Ice_Mastery"
+    DisplayName "P3578212861"
+    DisplayShortHelp "P3578212861"
+    DisplayHelp "P3035053533"
+    IconName "Chill_Mastery_set.ico"
+
+    Powers Epic.Defender_Ice_Mastery.Frozen_Armor
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Defender_Ice_Mastery.Flash_Freeze
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Defender_Ice_Mastery.Hoarfrost
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Defender_Ice_Mastery.Ice_Slick
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Defender_Ice_Mastery.Ice_Elemental
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

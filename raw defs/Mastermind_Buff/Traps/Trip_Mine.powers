@@ -1,0 +1,47 @@
+Power Mastermind_Buff.Traps.Trip_Mine
+{
+    Name                 "Trip_Mine"                   
+    DisplayName          "P466688635"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        13
+    InterruptTime        4
+    TimeToActivate       5
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Traps_TripMine.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Traps_TripMine.PFX
+    DisplayShortHelp     "P2631147992"
+    DisplayHelp          "VTL2TN9UEKQMWJZLU2LQDSYDHA"
+    IconName             "Traps_DroppedAoEDamage.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 260.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Traps_Mine
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    }
+}

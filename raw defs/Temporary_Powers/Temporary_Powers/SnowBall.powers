@@ -1,0 +1,47 @@
+Power Temporary_Powers.Temporary_Powers.SnowBall
+{
+    Name                 "SnowBall"                    
+    DisplayName          "P571909597"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kAny
+    EntsAutoHit          kNone
+    Target               kAny
+    Range                70
+    TimeToActivate       3.33
+    TimeToRoot           3.33
+    RechargeTime         1
+    EffectArea           kCharacter
+    LifeTime             1036800
+    Deletable            kTrue
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Snowball.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Snowball.pfx
+    DisplayShortHelp     "P2914708810"
+    DisplayHelp          "DS5BVHMPK3ZXYCMLUAAYJGA2US"
+    IconName             "Inherent_Brawl.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3019606823"
+                DisplayVictimHit "P1563454072"
+            }
+            
+        }
+    }
+}

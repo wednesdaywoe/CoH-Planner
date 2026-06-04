@@ -1,0 +1,74 @@
+Power Sentinel_Defense.Willpower.Up_to_the_Challenge
+{
+    Name                 "Up_to_the_Challenge"         
+    DisplayName          "P79306351"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.208
+    TimeToActivate       3
+    RechargeTime         10
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerDefense_Willpower_UptotheChallenge.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerDefense_Willpower_UptotheChallenge.PFX
+    DisplayShortHelp     "P2824309476"
+    DisplayHelp          "3MLAT5TA2LTSWBZACMLASNRT9A"
+    DisplayAttackerHit   "P2766815750"
+    IconName             "Willpower_RiseToTheChallenge.tga"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX PFX4
+            }
+            
+        }
+    }
+}

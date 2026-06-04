@@ -1,0 +1,123 @@
+Power Dominator_Assault.Martial_Assault.Envenomed_Blades
+{
+    Name                 "Envenomed_Blades"            
+    DisplayName          "P3197030490"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    RechargeTime         160
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MartialAssault_EnvenomedBlades.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MartialAssault_EnvenomedBlades.pfx
+    DisplayShortHelp     "P3027878100"
+    DisplayHelp          "BV8CLVWRJ3G4W2VS5MKUS7ELZA"
+    IconName             "MartialAssault_EnvenomedBlades.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2312834946"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Envenomed_Blades
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1200
+            Duration 40.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4069907051"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 40.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.0500
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2312834946"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Envenomed_Blades
+            }
+            
+        }
+    }
+}

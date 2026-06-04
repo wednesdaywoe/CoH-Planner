@@ -1,0 +1,81 @@
+Power Temporary_Powers.Temporary_Powers.Warburg_Chemical
+{
+    Name                 "Warburg_Chemical"            
+    DisplayName          "P3443609182"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kNoNukes, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.8
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    TargetVisibility     kNone
+    Range                100
+    EnduranceCost        17.16
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         5
+    EffectArea           kLocation
+    NumCharges           1
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Warburg_Missile_Chemical.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Warburg_Missile_Chemical.pfx
+    DisplayShortHelp     "P2829474410"
+    DisplayHelp          "ADBMGMLHARLZWMN7XUDY97ULFX"
+    DisplayAttackerHit   "P3256323102"
+    DisplayVictimHit     "P2478400538"
+    IconName             "Temporary_Warburg_DebuffDefense.tga"
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P2310087768"
+    DisplayTargetHelp    "P1466780348"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 3.0000
+            Magnitude 1.0000
+            Delay 0.3500
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            FX
+            {
+                ContinuingFX V_COV\Powers\ItemsandTempPowers\Warburg\ChemicalWeapon\ChemHitContinuing.fx
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Warburg_Chemical
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 5.5000
+            Magnitude 1.0000
+            Delay 0.3500
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Warburg_Afterglow
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

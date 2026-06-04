@@ -1,0 +1,113 @@
+Power Dominator_Assault.Sonic_Assault.Scream
+{
+    Name                 "Scream"                      
+    DisplayName          "P629534904"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.864
+    TimeToActivate       1.47
+    TimeToRoot           1.47
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_SonicAttack_Scream.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_SonicAttack_Scream.PFX
+    DisplayShortHelp     "6RR3A5G9TC5JYRBQKXCTP5LNJX"
+    DisplayHelp          "38N3C85UC6L8YTBRTT8CP95A3S"
+    IconName             "SonicManipulation_Scream"
+    DisplayTargetShortHelp "P1231743921"
+    DisplayTargetHelp    "P3310910494"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1320
+            Duration 1.0500
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1545979143"
+                DisplayVictimHit "P2876742505"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1320
+            Duration 1.0500
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.3338
+            Duration 1.0500
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Sonic Vibrations"
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Sonic.Sonic_Vibrations_2_Dominator
+            }
+            
+        }
+    }
+}

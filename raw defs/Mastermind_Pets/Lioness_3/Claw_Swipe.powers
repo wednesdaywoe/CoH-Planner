@@ -1,0 +1,159 @@
+#************************************************************#
+# Power: Pets > Beast Lioness 3 > Claw Swipe                 #
+# Info:  Melee, Moderate DMG(Lethal), Foe Minor DoT(Lethal)  #
+#************************************************************#
+
+Power Mastermind_Pets.Lioness_3.Claw_Swipe
+{
+    Name                 "Claw_Swipe"                  
+    DisplayName          "P3267943523"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    PreferenceMultiplier 3
+    TimeToActivate       2.13
+    TimeToRoot           2.13
+    RechargeTime         8
+    EffectArea           kCone
+    Radius               7
+    Arc                  90
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    ChainIntoPower       Mastermind_Pets.Lioness_3.PM_Claw_Swipe
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Lioness_ClawSwipe.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Lioness_ClawSwipe.PFX
+    DisplayShortHelp     "P1823787649"
+    DisplayHelp          "VEWHWBYXZS92Y3ZGL4LKT5ADHZ"
+    IconName             "BeastMastery_PetClawSwipe.tga"
+    MaxTargetsHit        16
+    MaxBoosts            10
+    DisplayTargetShortHelp "P2103286178"
+    DisplayTargetHelp    "P1144929472"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.3630
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.3630
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2420
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2420
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1250
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CritActive"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.6050
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

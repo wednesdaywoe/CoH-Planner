@@ -1,0 +1,176 @@
+#******************************************************#
+# Power: Buff > Marine Affinity > Power of the Depths  #
+# Info:  PBAoE, Team +MaxHP, +MaxEnd, +Regen, +Range   #
+#******************************************************#
+
+Power Defender_Buff.Marine_Affinity.Call_Depths
+{
+    Name                 "Call_Depths"                 
+    DisplayName          "VWU59ZBF3A29WGN78699F4JAMX"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        26
+    TimeToActivate       3
+    RechargeTime         240
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_MarineAffinity_CallDepths.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_MarineAffinity_CallDepths.PFX
+    DisplayShortHelp     "E8CB6A6AY8TGYCLM44YGU2XQ3Z"
+    DisplayHelp          "S7MVRR57DPHSYRVUYEW2683P8A"
+    DisplayAttackerHit   "S2FPAB5MP3Q4W5CN5ZUPR42BZA"
+    DisplayVictimHit     "EHKTGU286DVRWJC42TFEJ5VAB3"
+    IconName             "MarineAffinity_PowerOfTheDepths.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "CZ28V2GXEYY4W9BB9MBAGGLLH3"
+    DisplayTargetHelp    "A3JWC8E5598MWRCZNPNG5UL9LS"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffMaxHPCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRange
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 0.3750
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            StackType kIgnore
+            Params Power
+            {
+                Power Redirects.Marine_Affinity.TidePool_WateryDomain
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Decay"
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            TickMultiplier 0.995
+            StackType kReplace
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "XN8VD3RQ22D2WRX2LVA98GJ65Z"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            TickMultiplier 0.995
+            StackType kReplace
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "XN8VD3RQ22D2WRX2LVA98GJ65Z"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            TickMultiplier 0.995
+            StackType kReplace
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "XN8VD3RQ22D2WRX2LVA98GJ65Z"
+            }
+            
+        }
+    }
+}

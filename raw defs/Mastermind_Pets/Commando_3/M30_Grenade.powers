@@ -1,0 +1,169 @@
+#*************************************************************#
+# Power: Pets > Mercenary Commando 3 > M30 Grenade            #
+# Info:  Ranged (Targeted AoE), DMG(Smash/Lethal), Knockback  #
+#*************************************************************#
+
+Power Mastermind_Pets.Commando_3.M30_Grenade
+{
+    Name                 "M30_Grenade"                 
+    DisplayName          "P451509224"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAOE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        15.184
+    PreferenceMultiplier 2
+    DontSetStance        1
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Commando_3_M30_Grenade.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Commando_3_M30_Grenade.pfx
+    DisplayShortHelp     "C492DTU4PUV7Y9ZYTPHKNUJGE2"
+    DisplayHelp          "D74WJPF2JSBXW2LPKLKNP42KQA"
+    IconName             "AssaultWeapons_ARM30grenade.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && || kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && ||
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.3000
+                MagnitudeExpr @StdResult kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && + kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && + 0.0333 * 1 + *
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.6000
+                MagnitudeExpr @StdResult kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && + kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && + 0.0333 * 1 + *
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.3000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.6000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

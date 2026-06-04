@@ -1,0 +1,100 @@
+Power Temporary_Powers.Temporary_Powers.Test_Target_Lock
+{
+    Name                 "Test_Target_Lock"            
+    DisplayName          "P153355278"
+    ModesDisallowed      kDisable_All
+    Type                 kGlobalBoost
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    BoostsAllowed        kScience_Boost, kTechnology_Boost, kMagic_Boost, kMutation_Boost, kNatural_Boost, kDamage_Boost
+    IgnoreStrength       kTrue
+    BoostIgnoreEffectiveness kTrue
+    BoostCombinable      kFalse
+    DisplayShortHelp     "P2226335223"
+    DisplayHelp          "X299A9DYNUWWW4MPU3AVE8NTH3"
+    DisplayAttackerHit   "P1098082122"
+    DisplayVictimHit     "P755155674"
+    IconName             "Incarnate_Hybrid_Assault_Uncommon.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    NumAllowed           1
+
+
+    Effect
+    {
+        Tag "Damage"
+        Requires target.isFriend? ! CategoryName power.base> Judgement eq ! &&
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Duration 5.0000
+            MagnitudeExpr .8 rechargetime power.base> 1 30 minmax * 1.8 + 2 * @StdResult * 10 / areafactor power.base> / .25 *
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags CancelOnMiss IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+            FX
+            {
+                ContinuingFX Powers\coldcontrol\IceRootContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Damage"
+        Requires target.isFriend? ! CategoryName power.base> Judgement eq ! &&
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Duration 5.0000
+            MagnitudeExpr .8 rechargetime power.base> 1 30 minmax * 1.8 + 2 * @StdResult * 10 / areafactor power.base> / .25 *
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags CancelOnMiss IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+            FX
+            {
+                ContinuingFX CustomizeablePowers\ContinuingConditionalFX\Fire_Continuing.fx
+            }
+            
+        }
+    }
+}

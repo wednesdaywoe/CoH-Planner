@@ -1,0 +1,44 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_Presence
+{
+    Name                 "Labyrinth_Presence"          
+    DisplayName          "RBSCGH5EKJHFYVV8EZ7FZ6M34S"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    ProcAllowed          kNone
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "B9A2S9ZQUW27YUBJUF9R4J9F33"
+    DisplayHelp          "UAJJHXD2N98MWPZ8ULMMKCHSGS"
+    IconName             "Temporary_LabyrinthCall.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.5000
+            Magnitude kLabyrinthPresence
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

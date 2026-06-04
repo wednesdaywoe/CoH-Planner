@@ -1,0 +1,127 @@
+Power Dominator_Assault.Dark_Assault.Moonbeam
+{
+    Name                 "Moonbeam"                    
+    DisplayName          "P2223435669"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        16.848
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         18
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_DarknessAssault_EngulfingDarkness.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_DarknessAssault_EngulfingDarkness.pfx
+    DisplayShortHelp     "B7VCAG6A3M4QYCXTSHG8ZHY23X"
+    DisplayHelp          "BR59FZXLAYPLYRBTFHW5VL76Y2"
+    IconName             "DarknessAssault_DeathShroud.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1093259659"
+    DisplayTargetHelp    "P1740457600"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1000
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P1461699593"
+                DisplayVictimHit "P3815778435"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.8640
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

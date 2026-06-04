@@ -1,0 +1,40 @@
+Power Temporary_Powers.Temporary_Powers.Disable_Stealth
+{
+    Name                 "Disable_Stealth"             
+    DisplayName          "P885425021"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    DisplayShortHelp     "P885425021"
+    DisplayHelp          "P75435868"
+    IconName             "Temporary_TerraVoltaGlow.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+        Tag "NoStealth"
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kMax
+            Target kSelf
+            Table "Melee_NoStealth"
+            Scale 1.0000
+            Duration 1.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath AlwaysPersist
+        }
+    }
+}

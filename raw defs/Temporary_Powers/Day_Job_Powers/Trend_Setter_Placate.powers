@@ -1,0 +1,73 @@
+Power Temporary_Powers.Day_Job_Powers.Trend_Setter_Placate
+{
+    Name                 "Trend_Setter_Placate"        
+    DisplayName          "P3534004199"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                50
+    EnduranceCost        3.25
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         60
+    EffectArea           kCharacter
+    NumCharges           30
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_FreakshowSign.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_FreakshowSign.pfx
+    DisplayShortHelp     "P3841617860"
+    DisplayHelp          "QAT2BUTFUWDRYVLU8E7HW7MLGS"
+    IconName             "DayJob_Placate.tga"
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P1943041994"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 10.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 6.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+}

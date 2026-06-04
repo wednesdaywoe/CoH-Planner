@@ -1,0 +1,166 @@
+#*******************************************#
+# Power: Pets > Necro Wraith > Phase Shift  #
+# Info:  Self Intangible                    #
+#*******************************************#
+
+Power Mastermind_Pets.Ghosts_2.Phase_Shift
+{
+    Name                 "Phase_Shift"                 
+    DisplayName          "P3288641264"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kMidBattle
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        3.64
+    PreferenceMultiplier 0
+    TimeToActivate       3
+    RechargeTime         60
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_PhaseShift.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_PhaseShift.pfx
+    DisplayShortHelp     "P2250716377"
+    DisplayHelp          "3LDDV8CTNGVGWWB2758D8AHRFA"
+    IconName             "Invisibility_PhaseShift.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.1000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kIntangible
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 7.0000
+            Magnitude 100.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3282672142"
+                DisplayVictimHit "P1918954866"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kUntouchable
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 6.5000
+            Magnitude 100.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P254360634"
+                DisplayVictimHit "P3770798626"
+                DisplayFloat "P3288641264"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 7.0000
+            Magnitude -100.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kOnlyAffectsSelf
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 7.0000
+            Magnitude 100.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1876721539"
+                DisplayVictimHit "P702528604"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_HealSelf"
+            Scale 0.5000
+            Duration 12.0000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P606393157"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kAfraid
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Magnitude 100.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1619677251"
+                DisplayVictimHit "P1771033909"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,402 @@
+#*************************************************#
+# Power: Ranged > Storm Blast > Hailstones        #
+# Info:  Ranged, DMG(Cold), Chance for Knockdown  #
+#*************************************************#
+
+Power Blaster_Ranged.Storm_Blast.Hailstones
+{
+    Name                 "Hailstones"                  
+    DisplayName          "S5W5MDVFWA6RWVXYZ2Z72HVFLQ"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_StormBlast_Hailstones.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_StormBlast_Hailstones.PFX
+    DisplayShortHelp     "MQCAXYM7NYMYWANQHUKBZ2YHFQ"
+    DisplayHelp          "MK6V8S3HXUNJYPBG95HA2QK73A"
+    IconName             "StormBlast_Hailstones.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.6400
+            Magnitude 1.0000
+            Delay 0.6000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4173738004"
+                DisplayVictimHit "P1163387325"
+                DisplayInfo "GB74KM2X8GEAW4MFZ54YN537Q2"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2500
+            Duration 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 0.3000
+            StackType kStack
+            Flags NoHitDelay
+            Messages
+            {
+                DisplayAttackerHit "P3556385711"
+                DisplayVictimHit "P658755009"
+            }
+            
+        }
+    
+        Effect
+        {
+            Chance 0.2500
+            Requires temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !
+        
+            AttribMod
+            {
+                Attrib kKnock
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 0.6700
+                Magnitude 1.0000
+                Delay 0.3000
+                StackType kStack
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+                Params Knock
+                {
+                    VecStart                       Target
+                    VecEnd                         Down
+                    Priority                       5
+                }
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 1.5000
+                Magnitude 1.0000
+                StackType kStack
+                Flags NoHitDelay
+                FX
+                {
+                    ContinuingFX PFX2
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.5000
+            Requires temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?
+        
+            AttribMod
+            {
+                Attrib kKnock
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 0.6700
+                Magnitude 1.0000
+                Delay 0.3000
+                StackType kStack
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+                Params Knock
+                {
+                    VecStart                       Target
+                    VecEnd                         Down
+                    Priority                       5
+                }
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 1.5000
+                Magnitude 1.0000
+                StackType kStack
+                Flags NoHitDelay
+                FX
+                {
+                    ContinuingFX PFX2
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.8890
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4173738004"
+                DisplayVictimHit "P1163387325"
+                DisplayInfo "GB74KM2X8GEAW4MFZ54YN537Q2"
+            }
+            
+        }
+    
+        Effect
+        {
+            Chance 0.2500
+            Requires temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 7.1000
+                Magnitude 1.0000
+                StackType kStack
+                Flags NoHitDelay
+                FX
+                {
+                    ContinuingFX PFX2
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kKnock
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Knockback"
+                Scale 1.0000
+                Magnitude 1.0000
+                Delay 0.3000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+                Params Knock
+                {
+                    VecStart                       Target
+                    VecEnd                         Down
+                }
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.5000
+            Requires temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 7.1000
+                Magnitude 1.0000
+                StackType kStack
+                Flags NoHitDelay
+                FX
+                {
+                    ContinuingFX PFX2
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kKnock
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Knockback"
+                Scale 1.0000
+                Magnitude 1.0000
+                Delay 0.3000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+                Params Knock
+                {
+                    VecStart                       Target
+                    VecEnd                         Down
+                }
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "IncreaseStormStrength"
+        Chance 0.3000
+        Requires kLightningCat5 source.Mode? !
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kCur
+            Target kCastersOwnerAndAllPets
+            Table "Melee_Ones"
+            DelayedRequires Redirects.Storm_Blast.StormCell_Tempest target.ownPower?
+            StackType kStack
+            Params Power
+            {
+                Power Redirects.Storm_Blast.StormCell_LightningAura
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude kLightningCat5
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    ActivationEffect
+    {
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "StormBrewing"
+            Chance 0.2500
+        
+            Effect
+            {
+                Tag "StormBrewing"
+                Chance 0.2500
+            
+                AttribMod
+                {
+                    Attrib kGrantPower
+                    Aspect kCur
+                    Target kCastersOwnerAndAllPets
+                    Table "Melee_Ones"
+                    DelayedRequires Redirects.Storm_Blast.StormCell_Tempest target.ownPower?
+                    StackType kReplace
+                    Params Power
+                    {
+                        Power Redirects.Storm_Blast.StormCell_WindSpeed
+                    }
+                    
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+Power Epic.Tank_Psionic_Mastery.Harmonic_Mind
+{
+    Name                 "Harmonic_Mind"               
+    DisplayName          "BQBCB8VCYP6UWYMKKLRWT34LYA"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kRecovery_Boost
+    DisplayShortHelp     "VB5L5GJU9UXZWRC75NPWNKR23Q"
+    DisplayHelp          "FMJLV98SSPCMYMNK9Q4U3XFE22"
+    IconName             "Psionic_Mastery_HarmonicMind"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1250
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEnduranceDiscount
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.1250
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

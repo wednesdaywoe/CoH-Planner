@@ -1,0 +1,261 @@
+#*****************************************************************#
+# Power: Pets > Mercenary Commando 3 > LRM Rocket                 #
+# Info:  Sniper (Targeted AoE), DMG(Smash/Lethal), Foe Knockback  #
+#*****************************************************************#
+
+Power Mastermind_Pets.Commando_3.LRM_Rocket
+{
+    Name                 "LRM_Rocket"                  
+    DisplayName          "P1046091651"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        9.1845
+    PreferenceMultiplier 5
+    DontSetStance        1
+    TimeToActivate       1.9
+    TimeToRoot           1.9
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Commando_3_LRM_Rocket.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Commando_3_LRM_Rocket.pfx
+    DisplayShortHelp     "3RXX4MKZCAZWW3L7X6G9RXBSFZ"
+    DisplayHelp          "HHGUDWVZHZULWWM9SSYTR9BVNQ"
+    IconName             "MunitionsMastery_LRMRocket.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.7000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && || kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && ||
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.5046
+                MagnitudeExpr @StdResult kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && + kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && + 0.0333 * 1 + *
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            Effect
+            {
+                Requires enttype target> critter eq
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Type kExpression
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 0.7519
+                    MagnitudeExpr @StdResult kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && + kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && + 0.0333 * 1 + *
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3785438311"
+                        DisplayVictimHit "P1873832980"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Requires enttype target> player eq
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Type kExpression
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 0.3809
+                    MagnitudeExpr @StdResult kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && + kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && + 0.0333 * 1 + *
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3785438311"
+                        DisplayVictimHit "P1873832980"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Type kExpression
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 0.3758
+                    MagnitudeExpr @StdResult kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && + kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && + 0.0333 * 1 + *
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3785438311"
+                        DisplayVictimHit "P1873832980"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.5046
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            Effect
+            {
+                Requires enttype target> critter eq
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 0.7519
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3785438311"
+                        DisplayVictimHit "P1873832980"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Requires enttype target> player eq
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 0.3809
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3785438311"
+                        DisplayVictimHit "P1873832980"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 0.3758
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3785438311"
+                        DisplayVictimHit "P1873832980"
+                    }
+                    
+                }
+            }
+        }
+    }
+}

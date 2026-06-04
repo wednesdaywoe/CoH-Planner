@@ -1,0 +1,117 @@
+Power Temporary_Powers.Temporary_Powers.Invention_Plasmatic_Taser
+{
+    Name                 "Invention_Plasmatic_Taser"   
+    DisplayName          "P3146827758"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        14.82
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         12
+    EffectArea           kCone
+    Radius               40
+    Arc                  45
+    NumCharges           24
+    StackingUsage        kTrue
+    MaxNumCharges        240
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\ENERGY_BLAST_EnergyTorrent.pfx"
+    include              menu\Powers\AnimFX\ENERGY_BLAST_EnergyTorrent.pfx
+    DisplayShortHelp     "VC85P9MJ697YWRX5TCCNMNTVBX"
+    DisplayHelp          "636QLAKGRFYCWJVVV6MYS63M9W"
+    IconName             "Temporary_PlasmaticTaser.tga"
+    MaxTargetsHit        10
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P777593458"
+    DisplayTargetHelp    "P981358139"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.3000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.6600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 3.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 3.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

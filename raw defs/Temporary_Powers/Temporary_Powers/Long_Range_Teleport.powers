@@ -1,0 +1,63 @@
+Power Temporary_Powers.Temporary_Powers.Long_Range_Teleport
+{
+    Name                 "Long_Range_Teleport"         
+    DisplayName          "P1984196100"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    DisplayShortHelp     "P2146958267"
+    DisplayHelp          "P1822123736"
+    IconName             "Accolade_LongRangeTeleport"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires Temporary_Powers.SilentPowers.Long_Range_Teleport source.ownPower? !
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Type kExpression
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            MagnitudeExpr Long_Range_Teleport target.TokenTime> 600 + now - 0 600 minmax
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance SetTimer
+            Params Power
+            {
+                Power Temporary_Powers.Accolades.Long_Range_Teleport
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Long_Range_Teleport
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,81 @@
+PowerSet Blaster_Ranged.Water_Blast
+{
+    Name "Water_Blast"
+    DisplayName "P76845986"
+    DisplayShortHelp "P76845986"
+    DisplayHelp "P1558430094"
+    IconName "Water_Blast_set.ico"
+
+    Powers Blaster_Ranged.Water_Blast.Aqua_Bolt
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Water_Blast.Hydro_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Water_Blast.Water_Burst
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Water_Blast.Whirlpool
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Water_Blast.Tidal_Forces
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Water_Blast.Dehydrate
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Water_Blast.Water_Jet
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Water_Blast.Steam_Spray
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Water_Blast.Geyser
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

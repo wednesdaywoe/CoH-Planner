@@ -1,0 +1,62 @@
+Power Temporary_Powers.Temporary_Powers.Bit_Test
+{
+    Name                 "Bit_Test"                    
+    DisplayName          "P416251186"
+    ModesDisallowed      kDisable_All, kDisable_Temp
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    RechargeTime         5
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    UsageTime            1800
+    Deletable            kTrue
+    DisplayShortHelp     "P2018365746"
+    DisplayHelp          "AZ58665XPWHYYEZYH53FA9JFX3"
+    IconName             "Temporary_CryoniteArmor.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingBits ANIM_SHIELD
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingBits ANIM_LEFTHAND
+            }
+            
+        }
+    }
+}

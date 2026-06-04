@@ -1,0 +1,74 @@
+Power Brute_Defense.Ice_Armor.Icicles
+{
+    Name                 "Icicles"                     
+    DisplayName          "P4016394961"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        1.04
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         4
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kTaunt_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerDefense_IceArmor_Icicles.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerDefense_IceArmor_Icicles.PFX
+    DisplayShortHelp     "7RMDMRJK7AFNYMXXBCM5L4FUU3"
+    DisplayHelp          "4FZDD4D6Y2UNYWLTDMLBARYYPZ"
+    IconName             "IceArmor_Icicles.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3278563378"
+    DisplayTargetHelp    "P1931673693"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4173738004"
+                DisplayVictimHit "P1163387325"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "InherentTaunt"
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Inherents.Fury_Proc_Aura
+            }
+            
+        }
+    }
+}

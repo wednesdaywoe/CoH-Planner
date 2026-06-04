@@ -1,0 +1,169 @@
+Power Blaster_Ranged.Ice_Blast.Freeze_Ray
+{
+    Name                 "Freeze_Ray"                  
+    DisplayName          "P2392861019"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        10.192
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_IceBlast_FreezeRay.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_IceBlast_FreezeRay.PFX
+    DisplayShortHelp     "RMRLD4X9QESXWKZY4YNA25Y72W"
+    DisplayHelp          "GJE3MDA3H22WYENUJYXTJVPDQA"
+    IconName             "IceBlast_FreezeRay.tga"
+    DisplayTargetShortHelp "P3220742713"
+    DisplayTargetHelp    "P3798667255"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2000
+            Duration 2.0000
+            Magnitude 1.0000
+            Period 0.2000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3556385711"
+                DisplayVictimHit "P658755009"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Sleep"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+                ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+                ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kHeld target> 0 >
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -100.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayInfo "P3912192696"
+            }
+            
+        }
+    }
+}

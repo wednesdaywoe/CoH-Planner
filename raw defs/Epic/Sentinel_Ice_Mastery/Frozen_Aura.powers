@@ -1,0 +1,285 @@
+#******************************************#
+# Power: Epic > Ice Mastery > Frozen Aura  #
+# Info:  PBAoE, DMG(Cold), Foe Sleep       #
+#******************************************#
+
+Power Epic.Sentinel_Ice_Mastery.Frozen_Aura
+{
+    Name                 "Frozen_Aura"                 
+    DisplayName          "P1695746557"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        18.512
+    TimeToActivate       2.1
+    TimeToRoot           2.1
+    RechargeTime         40
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerMelee_IceMelee_FrozenAura.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerMelee_IceMelee_FrozenAura.PFX
+    DisplayShortHelp     "4CFZ2PP3JUYHW7VYCQKBLBJ2KZ"
+    DisplayHelp          "8HR5GQ9SMAGPWBVAJ6CYQQVQAZ"
+    DisplayAttackerHit   "P1784789294"
+    IconName             "Ice_Mastery_FrozenAura"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "P1742153832"
+
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_LassoStun
+            }
+            
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.3880
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4173738004"
+                    DisplayVictimHit "P1163387325"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+            Flags HitRollSuccess
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.3880
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3JG5HRUCJEFYDNKTKYT8NS6YZ"
+                    DisplayVictimHit "RSFS5JY5GJRWYDVQRKL8MVN2KW"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_Sleep"
+                Scale 10.0000
+                Magnitude 2.0000
+                Delay 0.3300
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        
+            Effect
+            {
+                Flags HitRollSuccess
+            
+                Effect
+                {
+                
+                    AttribMod
+                    {
+                        Attrib kCold
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_Damage"
+                        Scale 1.4240
+                        Magnitude 1.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P4173738004"
+                            DisplayVictimHit "P1163387325"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "SentCrit" "SentCritAoE"
+                    Flags HitRollSuccess
+                
+                    AttribMod
+                    {
+                        Attrib kCold
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_InherentDamage"
+                        Scale 1.4240
+                        Magnitude 1.0000
+                        TickChance 0.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P3JG5HRUCJEFYDNKTKYT8NS6YZ"
+                            DisplayVictimHit "RSFS5JY5GJRWYDVQRKL8MVN2KW"
+                            DisplayFloat "P2440464263"
+                            DisplayInfo "P85281792"
+                        }
+                        
+                    }
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires Raid target.HasTag?
+            Flags HitRollSuccess HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_Sleep"
+                Scale 10.0000
+                Magnitude 2.0000
+                Delay 0.3300
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        
+            Effect
+            {
+            
+                Effect
+                {
+                
+                    AttribMod
+                    {
+                        Attrib kCold
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_Damage"
+                        Scale 1.4240
+                        Magnitude 1.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P4173738004"
+                            DisplayVictimHit "P1163387325"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "SentCrit" "SentCritAoE"
+                
+                    AttribMod
+                    {
+                        Attrib kCold
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_InherentDamage"
+                        Scale 1.4240
+                        Magnitude 1.0000
+                        TickChance 0.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P3JG5HRUCJEFYDNKTKYT8NS6YZ"
+                            DisplayVictimHit "RSFS5JY5GJRWYDVQRKL8MVN2KW"
+                            DisplayFloat "P2440464263"
+                            DisplayInfo "P85281792"
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}

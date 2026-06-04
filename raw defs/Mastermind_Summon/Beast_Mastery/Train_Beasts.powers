@@ -1,0 +1,332 @@
+#***********************************************#
+# Power: Summon > Beast Mastery > Train Beasts  #
+# Info:  Ranged, Train Beast Henchmen           #
+#***********************************************#
+
+Power Mastermind_Summon.Beast_Mastery.Train_Beasts
+{
+    Name                 "Train_Beasts"                
+    DisplayName          "P1659836107"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kMastermindUpgrade1
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kMyPet
+    Range                50
+    EnduranceCost        11.375
+    TimeToActivate       1.67
+    RechargeTime         0.5
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRange_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    StrengthsDisallowed  kRechargeTime
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_TrainBeast.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_TrainBeast.pfx
+    DisplayShortHelp     "P1765044495"
+    DisplayHelp          "93AXEDFZAWFDWULXELUXJY48K3"
+    DisplayAttackerHit   "P2521141658"
+    IconName             "BeastMastery_TrainBeasts.tga"
+    MaxTargetsHit        16
+    AnimMainTargetOnly   kTrue
+
+
+    Effect
+    {
+        Tag "T1 Howler Wolf"
+        Requires MastermindPets_Howler_Wolf target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Howler_Wolf_2.Maiming_Bite
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Howler_Wolf_2.PM_Maiming_Bite
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Howler_Wolf_2.Howl
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Howler_Wolf_2.Train_Beasts
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "T1 Alpha Wolf"
+        Requires MastermindPets_Howler_Wolf_Alpha target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Alpha_Wolf_2.Maiming_Bite
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Alpha_Wolf_2.PM_Maiming_Bite
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Alpha_Wolf_2.Howl
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Alpha_Wolf_2.Train_Beasts
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "T2 Lioness"
+        Requires MastermindPets_Lioness target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Lioness_2.Lions_Roar
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Lioness_2.Ferocious_Growl
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Lioness_2.Train_Beasts
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "T3 Dire Wolf"
+        Requires MastermindPets_Dire_Wolf target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Dire_Wolf_2.Maiming_Bite
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Dire_Wolf_2.PM_Maiming_Bite
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Dire_Wolf_2.Freezing_Roar
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Dire_Wolf_2.PM_Freezing_Roar
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Dire_Wolf_2.Train_Beasts
+            }
+            
+        }
+    }
+}

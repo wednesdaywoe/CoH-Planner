@@ -1,0 +1,89 @@
+#*********************************************************#
+# Power: Buff > Electrical Affinity > Insulating Circuit  #
+# Info:  Ranged (Chain), Ally +Absorb, Self +Static       #
+#*********************************************************#
+
+Power Defender_Buff.Shock_Therapy.Insulating_Circuit
+{
+    Name                 "Insulating_Circuit"          
+    DisplayName          "P3793210305"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kFriend
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       1
+    RechargeTime         20
+    EffectArea           kChain
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    ChainDelay           0.1
+    ChainFork            3
+    ChainEff             1 0.25 @ChainJump 1 - * - 0.5 1 minmax
+    ChainTarget          101 kHitPoints% target> - enttype maintarget> enttype target> eq 99 * 1 + * 1 prevdistance / +
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ShockTherapy_InsulatingCircuit.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ShockTherapy_InsulatingCircuit.PFX
+    DisplayShortHelp     "P2218846629"
+    DisplayHelp          "P2880696513"
+    IconName             "ShockTherapy_InsulatingCircuit.tga"
+    MaxTargetsHit        5
+    MaxTargetsExpr       4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 2.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "LAZMHA5H7UY6W2CD6AFZPAGRUW"
+                DisplayVictimHit "YQRNBJS9LQWHWXL26N2T8NWK6W"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildStatic"
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Shock_Therapy_Static
+            }
+            
+        }
+    }
+}

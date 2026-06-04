@@ -1,0 +1,45 @@
+Power Temporary_Powers.Temporary_Powers.Total_Perfection_of_Body
+{
+    Name                 "Total_Perfection_of_Body"    
+    DisplayName          "DGNYLSCXP6XTWKZQLQ7TTBHDMS"
+    ModesDisallowed      kFormOfTheBody
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTime             300
+    StackingUsage        kTrue
+    MaxLifeTime          300
+    DisplayShortHelp     "DGNYLSCXP6XTWKZQLQ7TTBHDMS"
+    DisplayHelp          "DEL7BPFLY72UY6NPV546CFG5X3"
+    IconName             "StaffFighting_PerfectionofBodyLevel3.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 0.4000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

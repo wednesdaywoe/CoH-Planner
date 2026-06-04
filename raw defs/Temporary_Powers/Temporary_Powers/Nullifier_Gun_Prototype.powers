@@ -1,0 +1,112 @@
+Power Temporary_Powers.Temporary_Powers.Nullifier_Gun_Prototype
+{
+    Name                 "Nullifier_Gun_Prototype"     
+    DisplayName          "P173103164"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.5
+    TimeToActivate       3.5
+    TimeToRoot           3.5
+    RechargeTime         4
+    EffectArea           kCharacter
+    NumCharges           5
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Malta_Sapper_sapper.pfx"
+    include              menu\Powers\AnimFX\Villain_Malta_Sapper_sapper.pfx
+    DisplayShortHelp     "P2651678694"
+    DisplayHelp          "J6WRSBKC4Q45YWMAPWQQFY32RA"
+    IconName             "Temporary_RangeLightDamage.tga"
+    DisplayTargetShortHelp "P3035366588"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.7500
+            Duration 2.1000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1906782324"
+                DisplayVictimHit "P2943139457"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffEnd2Continuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -10.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+    
+        AttribMod
+        {
+            Attrib kDropToggles
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P1799220205"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+    
+        AttribMod
+        {
+            Attrib kDropToggles
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P1799220205"
+            }
+            
+        }
+    }
+}

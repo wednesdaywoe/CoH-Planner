@@ -1,0 +1,41 @@
+Power Warshade_Offensive.Umbral_Blast.Ebon_Eye
+{
+    Name                 "Ebon_Eye"                    
+    DisplayName          "P3532688882"
+    ModesDisallowed      kDisable_All, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        5.2
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    ServerTrayRequires   kWarshade_Blaster_Mode mode? Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? ! &&
+    ServerTrayPriority   1010
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_EyeBeam.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_EyeBeam.pfx
+    DisplayShortHelp     "P2696435472"
+    DisplayHelp          "7HT3J7JUE7TMWBZENZPJWVF53W"
+    IconName             "UmbralBlast_EbonEye.tga"
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P4153907656"
+
+    Redirect
+    {
+        Power Kheldian_Pets.Umbral_Blast.Ebon_Eye
+        Requires kWarshade_Blaster_Mode source.Mode? !
+    }
+    
+    Redirect
+    {
+        Power Kheldian_Pets.Umbral_Blast.Nova_Ebon_Eye
+        Requires kWarshade_Blaster_Mode source.Mode?
+    }
+    
+}

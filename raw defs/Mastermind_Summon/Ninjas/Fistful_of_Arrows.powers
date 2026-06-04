@@ -1,0 +1,117 @@
+#*********************************************#
+# Power: Summon > Ninjas > Fistful of Arrows  #
+# Info:  Ranged (Cone), DMG(Lethal)           #
+#*********************************************#
+
+Power Mastermind_Summon.Ninjas.Fistful_of_Arrows
+{
+    Name                 "Fistful_of_Arrows"           
+    DisplayName          "P34818005"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.155
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        8.528
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         8
+    EffectArea           kCone
+    Radius               40
+    Arc                  30
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    HighlightEval        kPersonalAttack3 Mode? !
+    HighlightRing        136 117 140 255
+    VisualFX             "menu\Powers\AnimFX\Archery_Cone_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Archery_Cone_NoGeo.pfx
+    DisplayShortHelp     "P1434610098"
+    DisplayHelp          "Q6YBZHJFK44BYZVJ6X9M3Z8LNA"
+    IconName             "Ninjas_FistFullArrows.tga"
+    MaxTargetsHit        10
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.9100
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.7125
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Sensei's Guidance"
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 0.0300
+            Duration 30.0000
+            Magnitude 1.0000
+            DelayedRequires arch target> Class_Lt_Henchman eq arch target> Class_Boss_Henchman eq || arch target> Class_Minion_Henchman eq || arch target> Class_Henchman_Lt eq || arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq ||
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag CriticalHit
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kCaster
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude kPersonalAttack3
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

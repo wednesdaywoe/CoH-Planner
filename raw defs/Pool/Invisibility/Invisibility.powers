@@ -1,0 +1,342 @@
+Power Pool.Invisibility.Invisibility
+{
+    Name                 "Invisibility"                
+    DisplayName          "P1852570192"
+    ModesDisallowed      kDisable_All, kDisable_JumpToggles, kDisable_Pool, kDisable_RunToggles, kDisable_Travel
+    ModesSuspended       kSuppress_JumpToggles, kSuppress_PoolToggles, kSuppress_RunToggles, kSuppress_TravelToggles
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.2275
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost, kBuff_Defense_Boost, kJump_Boost, kSpeedRunning_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Concealment_Invisibility.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Concealment_Invisibility.pfx
+    DisplayShortHelp     "P650784021"
+    DisplayHelp          "6WGJX3YNT4NQWEVSVUMP354993"
+    DisplayAttackerHit   "P3430542905"
+    DisplayPowerDefenseFloat "P3802943013"
+    IconName             "Invisibility_Infiltration"
+
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Leap"
+            Scale 0.2750
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 0.6050
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedRunning"
+            Scale 0.4400
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Requires ActivateAttackClick source.EventTimeSince> 4 >
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Leap"
+            Scale 0.2750
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents ActivateAttackClick Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 0.6050
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents ActivateAttackClick Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents ActivateAttackClick Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents ActivateAttackClick Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedRunning"
+            Scale 0.4400
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents ActivateAttackClick Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.8500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 0.7500
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag TravelStance
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude kHidden_Attack
+            StackType kStack
+            StackKey kStealthToggle
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Requires Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 36.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Attacked HitByFoe Stunned Held Sleep MissionObjectClick
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 389.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Attacked HitByFoe Stunned Held Sleep MissionObjectClick
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Attacked HitByFoe Stunned Held Sleep MissionObjectClick
+            Flags IgnoreResistance
+        }
+    
+        Effect
+        {
+            Flags PvPOnly
+        
+            AttribMod
+            {
+                Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Buff_Def"
+                Scale 0.2500
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kSuppress
+                StackKey kStealthToggle
+                CancelEvents Attacked HitByFoe MissionObjectClick
+                Flags IgnoreResistance StackByAttribAndKey
+            }
+        }
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Buff_Def"
+                Scale 0.2500
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kSuppress
+                StackKey kStealthToggle
+                CancelEvents Attacked HitByFoe Stunned Held Sleep MissionObjectClick
+                Flags IgnoreResistance StackByAttribAndKey
+            }
+        }
+    }
+}

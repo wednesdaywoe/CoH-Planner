@@ -1,0 +1,53 @@
+Power Mastermind_Buff.Trick_Arrow.Glue_Arrow
+{
+    Name                 "Glue_Arrow"                  
+    DisplayName          "P3237857720"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        7.8
+    TimeToActivate       1.16
+    TimeToRoot           1.16
+    RechargeTime         60
+    EffectArea           kLocation
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kSlow_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\TrickArrow_Sticky_NoGeo.pfx"
+    include              menu\Powers\AnimFX\TrickArrow_Sticky_NoGeo.pfx
+    DisplayShortHelp     "P766338561"
+    DisplayHelp          "TY9VBB664JFFWWZFT8Y3E692HA"
+    IconName             "TrickArrow_Slow.tga"
+    MaxTargetsHit        16
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods KeepThroughDeath CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Glue Arrow"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Trick_Arrow.GlueArrow
+            }
+            
+        }
+    }
+}

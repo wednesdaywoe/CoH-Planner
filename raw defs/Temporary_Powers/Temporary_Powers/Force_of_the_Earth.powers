@@ -1,0 +1,110 @@
+Power Temporary_Powers.Temporary_Powers.Force_of_the_Earth
+{
+    Name                 "Force_of_the_Earth"          
+    DisplayName          "P1196898730"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         30
+    EffectArea           kSphere
+    Radius               25
+    AIReport             kNever
+    NumCharges           5
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Force_of_the_Earth.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Force_of_the_Earth.pfx
+    DisplayShortHelp     "P2684033640"
+    DisplayHelp          "WXAJY82SYCYEYUXY2LWJLP67HS"
+    IconName             "Temporary_TargetedAoEConfuse.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1116895679"
+    DisplayTargetHelp    "P4213198885"
+
+
+    Effect
+    {
+        Requires group target> DevouringEarth eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 20.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires group target> DevouringEarth eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires group target> DevouringEarth eq !
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P2338895045"
+            }
+            
+        }
+    }
+}

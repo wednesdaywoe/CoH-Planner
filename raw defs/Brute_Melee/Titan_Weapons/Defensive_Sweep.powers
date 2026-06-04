@@ -1,0 +1,44 @@
+Power Brute_Melee.Titan_Weapons.Defensive_Sweep
+{
+    Name                 "Defensive_Sweep"             
+    DisplayName          "P1426350644"
+    BuyRequires          Brute_Defense.Shield_Defense !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                10
+    EnduranceCost        5.356
+    TimeToActivate       2.2
+    TimeToRoot           2.2
+    RechargeTime         4
+    EffectArea           kCone
+    Radius               10
+    Arc                  120
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kBuff_Defense_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange kArc
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TitanWeapon_DefensiveSweep_Slow.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TitanWeapon_DefensiveSweep_Slow.PFX
+    DisplayShortHelp     "G7EZQNDR75MYYVCHXYK5FUT8H2"
+    DisplayHelp          "UY7VZ8M85Q39YNX9YJC9EGNLM2"
+    IconName             "TitanWeapons_DefensiveSweep.tga"
+    MaxTargetsHit        5
+    DisplayTargetShortHelp "P2646575536"
+    DisplayTargetHelp    "P2721162609"
+
+    Redirect
+    {
+        Power Villain_Pets.Titan_Weapons_Brute.Defensive_Sweep_Fast
+        Requires kFastMode source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Titan_Weapons_Brute.Defensive_Sweep_Slow
+        Requires 1
+    }
+    
+}

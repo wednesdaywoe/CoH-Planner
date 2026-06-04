@@ -1,0 +1,79 @@
+Power Temporary_Powers.Temporary_Powers.Ring_of_Pain
+{
+    Name                 "Ring_of_Pain"                
+    DisplayName          "P1894374898"
+    ModesDisallowed      kDisable_All, kDisable_Temp
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    EnduranceCost        2.6
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         8
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    UsageTime            600
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_RingOfPain.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_RingOfPain.pfx
+    DisplayShortHelp     "P2552344474"
+    DisplayHelp          "Y6462H4C5U64WNXH3L5SUXMYAX"
+    DisplayAttackerHit   "P2455344214"
+    IconName             "Temporary_RingofPain.tga"
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P1495070103"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 5.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX Powers/DarknessControl/PetrifyingGazeHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpecial
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_TempDamage"
+            Scale 0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "V8ND2H63B27MYECNYX8SLH9V73"
+                DisplayVictimHit "75AP8BX3BDYDY8CUQHXWKZ4ZAA"
+            }
+            
+            FX
+            {
+                ContinuingFX Powers/DarknessControl/DarkestNightHitContinuing.fx
+            }
+            
+        }
+    }
+}

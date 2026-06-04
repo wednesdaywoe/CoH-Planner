@@ -1,0 +1,96 @@
+Power Temporary_Powers.Temporary_Powers.Anniversary_Pet_Support
+{
+    Name                 "Anniversary_Pet_Support"     
+    DisplayName          "P988355531"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       240
+    EffectArea           kCharacter
+    LifeTimeInGame       240
+    BoostsAllowed        kRecovery_Boost
+    Deletable            kTrue
+    DisplayShortHelp     "P925986476"
+    DisplayHelp          "P677426630"
+    IconName             "Temporary_SignatureSummon.tga"
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires type source> hero eq
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            StackKey kSignatureSummon
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_SignatureSummon_Manticore
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires type source> villain eq
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            StackKey kSignatureSummon
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_SignatureSummon_GhostWidow
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Alt_Signature_Summon_Lock
+            }
+            
+        }
+    }
+}

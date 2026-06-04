@@ -1,0 +1,81 @@
+PowerSet Tanker_Melee.Stone_Melee
+{
+    Name "Stone_Melee"
+    DisplayName "P635704859"
+    DisplayShortHelp "P635704859"
+    DisplayHelp "P211611681"
+    IconName "Stone_Melee_set.ico"
+
+    Powers Tanker_Melee.Stone_Melee.Stone_Fist
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Stone_Melee.Stone_Mallet
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Stone_Melee.Heavy_Mallet
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Stone_Melee.Taunt
+    Available 9
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Stone_Melee.Build_Up
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Stone_Melee.Fault
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Stone_Melee.Tremor
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Stone_Melee.Hurl_Boulder
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Stone_Melee.Seismic_Smash
+    Available 29
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

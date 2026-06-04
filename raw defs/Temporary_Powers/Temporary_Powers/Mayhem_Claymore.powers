@@ -1,0 +1,86 @@
+Power Temporary_Powers.Temporary_Powers.Mayhem_Claymore
+{
+    Name                 "Mayhem_Claymore"             
+    DisplayName          "P324685783"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        6.5
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         4
+    EffectArea           kCharacter
+    LifeTimeInGame       1800
+    StrengthsDisallowed  kRange
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Sword_HorizontialSlash.pfx"
+    include              menu\Powers\AnimFX\Sword_HorizontialSlash.pfx
+    DisplayShortHelp     "G4G22D4CUDZ7WCMXNTL3UQZHJA"
+    DisplayHelp          "76X4NDYE4TX5WYX2SDBJU7AF53"
+    IconName             "Temp_Melee_Heavy.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 1.0000
+            Duration 6.0000
+            Magnitude 1.0000
+            TickChance 0.9980
+            StackType kStack
+            Flags CancelOnMiss
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0500
+        Requires arch source> Class_Scrapper eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

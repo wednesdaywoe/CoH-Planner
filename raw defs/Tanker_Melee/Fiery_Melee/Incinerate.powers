@@ -1,0 +1,116 @@
+#******************************************#
+# Power: Melee > Fiery Melee > Incinerate  #
+# Info:  Melee, DoT (Fire)                 #
+#******************************************#
+
+Power Tanker_Melee.Fiery_Melee.Incinerate
+{
+    Name                 "Incinerate"                  
+    DisplayName          "P3360343670"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        6.864
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerMelee_FieryMelee_Incinerate.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerMelee_FieryMelee_Incinerate.PFX
+    DisplayShortHelp     "8U3GFPRPHVEDYQZZQXMLHE2XYZ"
+    DisplayHelp          "9CZEEZVBXSFNW4V97MNSPK4FM2"
+    IconName             "FieryFray_Incinerate.tga"
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P3168769471"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2500
+            Duration 4.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.1125
+                Duration 4.6000
+                Magnitude 1.0000
+                Period 0.5000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.1969
+            Duration 4.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

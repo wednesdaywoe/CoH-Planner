@@ -1,0 +1,130 @@
+Power Epic.Psychic_Mastery.Mass_Hypnosis
+{
+    Name                 "Mass_Hypnosis"               
+    DisplayName          "P1476679299"
+    BuyRequires          $archetype @Class_Defender == $archetype @Class_Corruptor == ||
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.6
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               25
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_MindControl_MassHypnosis.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_MindControl_MassHypnosis.PFX
+    DisplayShortHelp     "P3125035697"
+    DisplayHelp          "8GN88CUBBT4VY2L542WZ8XYQ4X"
+    IconName             "MentalControl_MassHypnosis.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "P3338491291"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 12.0000
+                Magnitude 3.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires Raid target.HasTag?
+            Flags HitRollSuccess
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 12.0000
+                Magnitude 3.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/SleepContinuing.fx
+                ConditionalBits ANIM_SLEEP
+            }
+            
+        }
+    }
+}

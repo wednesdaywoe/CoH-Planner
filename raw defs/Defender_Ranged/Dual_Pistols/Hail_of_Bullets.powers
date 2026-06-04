@@ -1,0 +1,625 @@
+#******************************************************************************************#
+# Power: Ranged > Dual Pistols > Hail of Bullets                                           #
+# Info:  PBAoE, DMG(Lethal/Special), Self +Def(Melee, Ranged, AoE), Foe Knockdown/Special  #
+#******************************************************************************************#
+
+Power Defender_Ranged.Dual_Pistols.Hail_of_Bullets
+{
+    Name                 "Hail_of_Bullets"             
+    DisplayName          "P2117656133"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.4
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        20.8
+    TimeToActivate       2.47
+    TimeToRoot           2.47
+    RechargeTime         105
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kKnockback_Boost
+    VisualFX             "menu\Powers\AnimFX\DualPistols_HailofBullets.pfx"
+    include              menu\Powers\AnimFX\DualPistols_HailofBullets.pfx
+    DisplayShortHelp     "CVS8CWPKBL2HY4M86YGCXNCQMA"
+    DisplayHelp          "U8JYJ2G525RTYLXAJ2D47BB6RW"
+    IconName             "DualPistols_HailofBullets.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P2211841663"
+    DisplayTargetHelp    "P611470853"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 0.3178
+                    Duration 2.3000
+                    Magnitude 1.0000
+                    Period 0.2000
+                    TickChance 0.6000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3137354887"
+                        DisplayVictimHit "P130826600"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "HailofBulletsLethal"
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 0.1362
+                    Duration 2.3000
+                    Magnitude 1.0000
+                    Period 0.2000
+                    TickChance 0.6000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3137354887"
+                        DisplayVictimHit "P130826600"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "FireDamage"
+            
+                Effect
+                {
+                    Tag "HailofBulletsFire"
+                
+                    AttribMod
+                    {
+                        Attrib kFire
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_Damage"
+                        Scale 0.1362
+                        Duration 2.3000
+                        Magnitude 1.0000
+                        Period 0.2000
+                        TickChance 0.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P1083355571"
+                            DisplayVictimHit "P3022741469"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "FireDamageDoT"
+                
+                    AttribMod
+                    {
+                        Attrib kFire
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_Damage"
+                        Scale 0.2000
+                        Duration 4.1000
+                        Magnitude 1.0000
+                        Delay 0.5000
+                        Period 1.0000
+                        TickChance 0.0000
+                        StackType kStack
+                        Flags CancelOnMiss
+                        Messages
+                        {
+                            DisplayAttackerHit "P1083355571"
+                            DisplayVictimHit "P3022741469"
+                        }
+                        
+                        FX
+                        {
+                            ContinuingFX POWERS/FireControl/CindersHit.fx
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Tag "ColdDamage"
+                Chance 0.0000
+            
+                Effect
+                {
+                    Tag "HailofBulletsCold"
+                
+                    AttribMod
+                    {
+                        Attrib kCold
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_Damage"
+                        Scale 0.1362
+                        Duration 2.3000
+                        Magnitude 1.0000
+                        Period 0.2000
+                        TickChance 0.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P3556385711"
+                            DisplayVictimHit "P658755009"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "ColdDamage"
+                
+                    AttribMod
+                    {
+                        Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+                        Aspect kCur
+                        Target kTarget
+                        Table "Ranged_Slow"
+                        Scale 0.2000
+                        Duration 10.0000
+                        Magnitude 1.0000
+                        StackType kStack
+                    }
+                
+                    AttribMod
+                    {
+                        Attrib kJumpHeight kRechargeTime
+                        Aspect kStr
+                        Target kTarget
+                        Table "Ranged_Slow"
+                        Scale 0.2000
+                        Duration 10.0000
+                        Magnitude 1.0000
+                        StackType kStack
+                        Flags IgnoreStrength
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Tag "ToxicDamage"
+                Chance 0.0000
+            
+                Effect
+                {
+                    Tag "HailofBulletsToxic"
+                
+                    AttribMod
+                    {
+                        Attrib kToxic
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_Damage"
+                        Scale 0.1362
+                        Duration 2.3000
+                        Magnitude 1.0000
+                        Period 0.2000
+                        TickChance 0.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P4250172858"
+                            DisplayVictimHit "P1470793739"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "ToxicDamage"
+                
+                    AttribMod
+                    {
+                        Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                        Aspect kStr
+                        Target kTarget
+                        Table "Ranged_Debuff_Dam"
+                        Scale 2.0000
+                        Duration 8.0000
+                        Magnitude 1.0000
+                        StackType kReplace
+                        Flags IgnoreStrength
+                        FX
+                        {
+                            ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Tag "Knock"
+            
+                Effect
+                {
+                    Tag "HailofBulletsKnockdown"
+                
+                    AttribMod
+                    {
+                        Attrib kKnockback
+                        Aspect kCur
+                        Target kTarget
+                        Table "Ranged_Ones"
+                        Scale 0.4000
+                        Duration 2.3000
+                        Magnitude 1.0000
+                        Period 0.2000
+                        TickChance 0.1000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P1956156720"
+                            DisplayVictimHit "P3390955917"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "HailofBulletsEndKnockback"
+                
+                    AttribMod
+                    {
+                        Attrib kKnockback
+                        Aspect kCur
+                        Target kTarget
+                        Table "Ranged_Ones"
+                        Scale 0.4000
+                        Magnitude 1.0000
+                        Delay 2.3000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P1956156720"
+                            DisplayVictimHit "P3390955917"
+                        }
+                        
+                    }
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 0.1335
+                    Duration 2.3000
+                    Magnitude 1.0000
+                    Period 0.2000
+                    TickChance 0.6000
+                    StackType kStack
+                    Flags IgnoreResistance
+                    Messages
+                    {
+                        DisplayAttackerHit "L3RCZA8LA38WW2MK299YMDJ7KW"
+                        DisplayVictimHit "VNXB8YAS5S4WYRNTSMLB5U5XJ2"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "HailofBulletsLethal"
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 0.0568
+                    Duration 2.3000
+                    Magnitude 1.0000
+                    Period 0.2000
+                    TickChance 0.6000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3137354887"
+                        DisplayVictimHit "P130826600"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "FireDamage"
+            
+                Effect
+                {
+                    Tag "HailofBulletsFire"
+                
+                    AttribMod
+                    {
+                        Attrib kFire
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_PvPDamage"
+                        Scale 0.0568
+                        Duration 2.3000
+                        Magnitude 1.0000
+                        Period 0.2000
+                        TickChance 0.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P1083355571"
+                            DisplayVictimHit "P3022741469"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "FireDamageDoT"
+                
+                    AttribMod
+                    {
+                        Attrib kFire
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_PvPDamage"
+                        Scale 0.1627
+                        Duration 4.1000
+                        Magnitude 1.0000
+                        Delay 0.5000
+                        Period 1.0000
+                        TickChance 0.0000
+                        StackType kStack
+                        Flags CancelOnMiss
+                        Messages
+                        {
+                            DisplayAttackerHit "P1083355571"
+                            DisplayVictimHit "P3022741469"
+                        }
+                        
+                        FX
+                        {
+                            ContinuingFX POWERS/FireControl/CindersHit.fx
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Tag "ColdDamage"
+                Chance 0.0000
+            
+                Effect
+                {
+                    Tag "HailofBulletsCold"
+                
+                    AttribMod
+                    {
+                        Attrib kCold
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_PvPDamage"
+                        Scale 0.0568
+                        Duration 2.3000
+                        Magnitude 1.0000
+                        Period 0.2000
+                        TickChance 0.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P3556385711"
+                            DisplayVictimHit "P658755009"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "ColdDamage"
+                
+                    AttribMod
+                    {
+                        Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+                        Aspect kCur
+                        Target kTarget
+                        Table "Ranged_Slow"
+                        Scale 0.2000
+                        Duration 10.0000
+                        Magnitude 1.0000
+                        StackType kStack
+                    }
+                
+                    AttribMod
+                    {
+                        Attrib kJumpHeight kRechargeTime
+                        Aspect kStr
+                        Target kTarget
+                        Table "Ranged_Slow"
+                        Scale 0.2000
+                        Duration 10.0000
+                        Magnitude 1.0000
+                        StackType kStack
+                        Flags IgnoreStrength
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Tag "ToxicDamage"
+                Chance 0.0000
+            
+                Effect
+                {
+                    Tag "HailofBulletsToxic"
+                
+                    AttribMod
+                    {
+                        Attrib kToxic
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_PvPDamage"
+                        Scale 0.0568
+                        Duration 2.3000
+                        Magnitude 1.0000
+                        Period 0.2000
+                        TickChance 0.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P4250172858"
+                            DisplayVictimHit "P1470793739"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "ToxicDamage"
+                
+                    AttribMod
+                    {
+                        Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                        Aspect kStr
+                        Target kTarget
+                        Table "Ranged_Debuff_Dam"
+                        Scale 2.0000
+                        Duration 8.0000
+                        Magnitude 1.0000
+                        StackType kReplace
+                        Flags IgnoreStrength
+                        FX
+                        {
+                            ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Tag "Knock"
+            
+                Effect
+                {
+                    Tag "HailofBulletsKnockdown"
+                
+                    AttribMod
+                    {
+                        Attrib kKnockback
+                        Aspect kCur
+                        Target kTarget
+                        Table "Ranged_Ones"
+                        Scale 0.4000
+                        Duration 2.3000
+                        Magnitude 1.0000
+                        Period 0.2000
+                        TickChance 0.1000
+                        StackType kStack
+                        Suppress Knocked 10 WhenInactive
+                        Messages
+                        {
+                            DisplayAttackerHit "P1956156720"
+                            DisplayVictimHit "P3390955917"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "HailofBulletsEndKnockback"
+                
+                    AttribMod
+                    {
+                        Attrib kKnockback
+                        Aspect kCur
+                        Target kTarget
+                        Table "Ranged_Ones"
+                        Scale 0.4000
+                        Magnitude 1.0000
+                        Delay 2.3000
+                        StackType kStack
+                        Suppress Knocked 10 WhenInactive
+                        Messages
+                        {
+                            DisplayAttackerHit "P1956156720"
+                            DisplayVictimHit "P3390955917"
+                        }
+                        
+                    }
+                }
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kRanged_Attack kMelee_Attack kAOE_Attack
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Buff_Def"
+                Scale 1.5000
+                Duration 5.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        }
+    }
+}

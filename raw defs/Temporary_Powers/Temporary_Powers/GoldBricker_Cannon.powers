@@ -1,0 +1,135 @@
+Power Temporary_Powers.Temporary_Powers.GoldBricker_Cannon
+{
+    Name                 "GoldBricker_Cannon"          
+    DisplayName          "ZGGPGRUCFGA3W3CFQS2X36L9SW"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        10.1461
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         30
+    EffectArea           kCone
+    Radius               60
+    Arc                  30
+    NumCharges           25
+    StackingUsage        kTrue
+    MaxNumCharges        50
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Goldbricker_Sonic_Cannon_ConeBlast.pfx"
+    include              menu\Powers\AnimFX\Villain_Goldbricker_Sonic_Cannon_ConeBlast.pfx
+    DisplayShortHelp     "U2C6XYNW9GVBYRVXGTM3MQUUH2"
+    DisplayHelp          "RMQ3D4EDX88JYSBJ6V8CXLLLSA"
+    IconName             "Temporary_ConeRangeModerateDamage.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3396406263"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.2000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.5000
+            Duration 14.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.6000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 6.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+}

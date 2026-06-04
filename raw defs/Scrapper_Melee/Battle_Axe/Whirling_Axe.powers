@@ -1,0 +1,272 @@
+Power Scrapper_Melee.Battle_Axe.Whirling_Axe
+{
+    Name                 "Whirling_Axe"                
+    DisplayName          "B4XWCEGZ8YBAWRM7VH9L4TRXLQ"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        16.848
+    TimeToActivate       2.1
+    TimeToRoot           2.1
+    RechargeTime         18
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Brute_Melee_Battle_Axe_Whirling_Ax1.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Brute_Melee_Battle_Axe_Whirling_Ax1.pfx
+    DisplayShortHelp     "NRDZ53SF2FD8YYV4QRAF5TZ6CS"
+    DisplayHelp          "T2MNBTMFZPL8WSBZSD2WRDNH83"
+    IconName             "BattleAxe_WhirlingAxe.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kRepel
+            Aspect kCur
+            Target kTarget
+            Table "Ones"
+            Scale 2.0000
+            Duration 0.1500
+            Magnitude 3.0000
+            StackType kReplace
+            CancelEvents Teleported
+            Flags ResistMagnitude NoHitDelay
+            Params Knock
+            {
+                VecStart                       Target
+                Vel                            0.0000
+                VelMag                         1.0000
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Params Power
+            {
+                Power Redirects.Battle_Axe.Battle_Axe
+            }
+            
+        }
+    
+        Effect
+        {
+            Delay 1.2000
+        
+            Effect
+            {
+                Chance 0.5000
+                Requires enttype target> critter eq
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "CritLarge" "ScrapperCrit_AoE"
+                Chance 0.1000
+                Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_InherentDamage"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                        DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "CritSmall" "ScrapperCrit_AoE"
+                Chance 0.0500
+                Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_InherentDamage"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                        DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "FieryEmbrace"
+                Chance 0.0000
+            
+                AttribMod
+                {
+                    Attrib kFire
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 0.4500
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2798397535"
+                        DisplayVictimHit "P459143670"
+                    }
+                    
+                    FX
+                    {
+                        ContinuingFX POWERS/FireControl/CindersHit.fx
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kRepel
+            Aspect kCur
+            Target kTarget
+            Table "Ones"
+            Scale 1.0000
+            Duration 0.3500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Teleported
+            Flags IgnoreCombatMods NoHitDelay
+            Params Knock
+            {
+                VecStart                       Target
+                Vel                            0.0000
+                VelMag                         0.1000
+            }
+        }
+    
+        Effect
+        {
+            Delay 1.2000
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.7969
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kStr
+                Table "Melee_Ones"
+                StackType kStack
+                Params Power
+                {
+                    Power Redirects.Battle_Axe.Battle_Axe
+                }
+                
+            }
+        
+            Effect
+            {
+                Chance 0.5000
+                Requires enttype target> player eq
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Suppress Knocked 10 WhenInactive
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                    }
+                    
+                }
+            }
+        }
+    }
+}

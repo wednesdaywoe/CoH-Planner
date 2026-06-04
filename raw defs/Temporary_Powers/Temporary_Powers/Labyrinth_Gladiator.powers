@@ -1,0 +1,54 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_Gladiator
+{
+    Name                 "Labyrinth_Gladiator"         
+    DisplayName          "P777765499"
+    ActivateRequires     mapname> Hazard_07_01 eq
+    ModesDisallowed      kDisable_All, kDisable_Temp
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        9.75
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         240
+    EffectArea           kLocation
+    NumCharges           1
+    StackingUsage        kTrue
+    MaxNumCharges        5
+    Deletable            kTrue
+    TargetNearGround     kTrue
+    VisualFX             "menu/Powers/AnimFX/Temporary_Power_Shivan_Summon_Toggle.pfx"
+    include              menu/Powers/AnimFX/Temporary_Power_Shivan_Summon_Toggle.pfx
+    DisplayShortHelp     "UJFVD6BLSYRCWEM8HJJY5927LZ"
+    DisplayHelp          "F2FGWHXNW352YUNN7A7A4WSYZ2"
+    IconName             "Temporary_WarWolfWhistle.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Miscellaneous_Labyrinth_Gladiator_Summon
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+}

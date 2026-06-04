@@ -1,0 +1,94 @@
+Power Epic.VEAT_Soul_Mastery.Dark_Obliteration
+{
+    Name                 "Dark_Obliteration"           
+    DisplayName          "P663035305"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.184
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         32
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_SoulMastery_DarkObliteration.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_SoulMastery_DarkObliteration.pfx
+    DisplayShortHelp     "AQR8UJBG9QEZWAZWM5V2B6GTKA"
+    DisplayHelp          "RYDJLD23F9H5YAZ2S9SQ6QJ563"
+    IconName             "Arachnos_Patron_RangedAoEModerateDmg.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.9000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0500
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.7323
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+}

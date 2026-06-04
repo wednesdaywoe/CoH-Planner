@@ -1,0 +1,341 @@
+Power Dominator_Control.Wind_Control.Microburst
+{
+    Name                 "Microburst"                  
+    DisplayName          "P522412001"
+    BuyRequires          accesslevel char> 0 >=
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        19.5
+    TimeToActivate       2.37
+    TimeToRoot           2.37
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost, kStunned_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_FireControl_Flashfire.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_FireControl_Flashfire.PFX
+    DisplayShortHelp     "2ZH8UNKMQ7CXYBM2WRHURLQXSW"
+    DisplayHelp          "FRRGCCPMW7EMWZLJ2TMZQ2W3G2"
+    IconName             "WindControl_Microburst.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P641419673"
+    DisplayTargetHelp    "P1249260964"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2000
+            MagnitudeExpr @Scale 0.02 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.1429
+            MagnitudeExpr @Scale 0.02 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? * + @Value * @Effectiveness * @Strength *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 12.0000
+            Magnitude 3.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "669UCY84RP2TWAVP7J9K5QG86X"
+                DisplayVictimHit "AS5CAMWDSKCTYQX4LKUFFDVXKW"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags NearGround IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "669UCY84RP2TWAVP7J9K5QG86X"
+                DisplayVictimHit "AS5CAMWDSKCTYQX4LKUFFDVXKW"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.3000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.3000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -2.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 5 ==
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayAttackerHit "P3931143024"
+                DisplayVictimHit "P3572259374"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 ==
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.5000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelfsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 1.1000
+            Magnitude 1.0000
+            Delay 0.2000
+            Period 0.2000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P2883443510"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Wind_Control_Pressure
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Type kConstant
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P123669248"
+            }
+            
+        }
+    }
+}

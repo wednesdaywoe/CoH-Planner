@@ -1,0 +1,129 @@
+Power Defender_Buff.Time_Manipulation.Temporal_Selection
+{
+    Name                 "Temporal_Selection"          
+    DisplayName          "P492426561"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       2.27
+    RechargeTime         120
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_TimeManipulation_TemporalSelection.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_TimeManipulation_TemporalSelection.PFX
+    DisplayShortHelp     "P3301978780"
+    DisplayHelp          "BAN7UHKDT8YQW5LWYVXWZR6TC3"
+    DisplayAttackerHit   "P170218134"
+    DisplayVictimHit     "P1338077671"
+    IconName             "TimeManipulation_TemporalSelection.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P760049584"
+    DisplayTargetHelp    "P324667887"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.3000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 2.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffMaxHPCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,54 @@
+#************************************#
+# Power: Pets > Robot Pets > Flames  #
+# Info:  Burn                        #
+#************************************#
+
+Power Mastermind_Pets.Robot_Pets.Burn
+{
+    Name                 "Burn"                        
+    DisplayName          "P638756335"
+    Type                 kAuto
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    ActivatePeriod       0.8
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kDamage_Boost
+    StrengthsDisallowed  kRadius
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_Burn_Burn.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_Burn_Burn.PFX
+    DisplayShortHelp     "P4116755002"
+    DisplayHelp          "KFPXWG7FKFPRYWCYYQTH874THQ"
+    IconName             "FlamingShield_Burn.tga"
+    MaxTargetsHit        3
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.0500
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 3
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    }
+}

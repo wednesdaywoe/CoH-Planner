@@ -1,0 +1,64 @@
+Power Temporary_Powers.Temporary_Powers.Energy_Ring_Toss
+{
+    Name                 "Energy_Ring_Toss"            
+    DisplayName          "P96212192"
+    ModesDisallowed      kDisable_All, kdisable_temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                100
+    EnduranceCost        8
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         60
+    EffectArea           kCharacter
+    LifeTimeInGame       72000
+    VisualFX             "menu\Powers\AnimFX\Villain_Carnival_Energy_Ring_Toss.pfx"
+    include              menu\Powers\AnimFX\Villain_Carnival_Energy_Ring_Toss.pfx
+    DisplayShortHelp     "2H6UQW66T8P8Y4MCTMDN95J6EX"
+    DisplayHelp          "QXG7XFVYQC5YWLBRXY8959YNY3"
+    IconName             "AssaultWeapons_ARBurst.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+}

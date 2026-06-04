@@ -1,0 +1,84 @@
+Power Temporary_Powers.Temporary_Powers.Mayhem_IR_Goggles
+{
+    Name                 "Mayhem_IR_Goggles"           
+    DisplayName          "P1095847941"
+    ModesDisallowed      kDisable_All, kDisable_Temp
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.39
+    TimeToActivate       1
+    RechargeTime         2
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    UsageTime            1800
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_IRGoggle.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_IRGoggle.pfx
+    DisplayShortHelp     "P3185637534"
+    DisplayHelp          "58WTGRFW3UD4WZNMN48NT26T7W"
+    DisplayAttackerHit   "P1932330441"
+    IconName             "Temporary_WeddingBand.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX V_COV\Items\IR_Goggle\TempPower_IRGoggle.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 0.6670
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 0.4000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

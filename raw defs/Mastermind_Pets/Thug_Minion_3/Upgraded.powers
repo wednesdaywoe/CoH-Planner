@@ -1,0 +1,42 @@
+#**************************************************#
+# Power: Pets > Thug Minion 3 > Upgrade Equipment  #
+# Info:  Upgrade Equipment                         #
+#**************************************************#
+
+Power Mastermind_Pets.Thug_Minion_3.Upgraded
+{
+    Name                 "Upgraded"                    
+    DisplayName          "P1528906040"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    DisplayShortHelp     "P1528906040"
+    DisplayHelp          "P3698192647"
+    IconName             "Paramilitary_EquipSoldier.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 11.0000
+            Magnitude kMastermind_Upgrade_2
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

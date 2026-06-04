@@ -1,0 +1,81 @@
+Power Brute_Defense.Stone_Armor.Stone_Skin
+{
+    Name                 "Stone_Skin"                  
+    DisplayName          "P3562269594"
+    BuyRequires          Brute_Melee.Claws !
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kRes_Damage_Boost, kBuff_Defense_Boost
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "LEN2EBJCCSNDYRZLVLP59668GS"
+    DisplayHelp          "3H99Z26Z39Y4WMC8966L7YEGVX"
+    IconName             "StoneArmor_StoneSkin.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

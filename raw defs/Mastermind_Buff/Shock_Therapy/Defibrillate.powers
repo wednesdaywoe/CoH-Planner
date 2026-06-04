@@ -1,0 +1,81 @@
+#********************************************************************#
+# Power: Buff > Electrical Affinity > Defibrillate                   #
+# Info:  Melee (Targeted AoE), Ally Rez, Foe Sleep, -End, -Recovery  #
+#********************************************************************#
+
+Power Mastermind_Buff.Shock_Therapy.Defibrillate
+{
+    Name                 "Defibrillate"                
+    DisplayName          "P2439270849"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack
+    EntsAffected         kDeadOrAliveAny
+    EntsAutoHit          kDeadOrAliveAny
+    Target               kDeadOrAliveAny
+    Range                7
+    EnduranceCost        10.4
+    TimeToActivate       3.3
+    RechargeTime         120
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kRecovery_Boost, kSleep_Boost
+    TargetRequires       target.isFriend? enttype target> player eq && kHitPoints target> 0 == && target.isFriend? ! kHitPoints target> 0 > && ||
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ShockTherapy_Defibrillate.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ShockTherapy_Defibrillate.PFX
+    DisplayShortHelp     "P3902182182"
+    DisplayHelp          "P2377612901"
+    IconName             "ShockTherapy_Defibrillate.tga"
+    DisplayTargetShortHelp "P345555159"
+    DisplayTargetHelp    "P478643514"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Defibrillate_Revive
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Defibrillate_Debuff
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Consume_Static
+            }
+            
+        }
+    }
+}

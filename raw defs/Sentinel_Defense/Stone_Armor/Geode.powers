@@ -1,0 +1,299 @@
+Power Sentinel_Defense.Stone_Armor.Geode
+{
+    Name                 "Geode"                       
+    DisplayName          "P1607189276"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.026
+    MaxToggleTime        30
+    TimeToActivate       0.07
+    RechargeTime         180
+    ActivatePeriod       0.1
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetNearGround     kTrue
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Scrapper_Defense_Stone_Armor_Geode.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Scrapper_Defense_Stone_Armor_Geode.pfx
+    DisplayShortHelp     "P2940947448"
+    DisplayHelp          "SDZB5663RJ45YQMNFTY78UWGUQ"
+    IconName             "StoneArmor_Geode.tga"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay CopyBoosts
+            Params Power
+            {
+                Power Redirects.Stone_Armor.Geode_Buff
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 7.5000
+            Duration 0.2000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "HQJSZT5DMDMLWCB2YVB5M85SH2"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 3.0000
+            Duration 0.2000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "HQJSZT5DMDMLWCB2YVB5M85SH2"
+            }
+            
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kRechargePower
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                Delay 3.0000
+                DelayedRequires HitByFoe source.EventTimeSince> 0.5 <
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance Cooldown
+                Params Power
+                {
+                    Power Sentinel_Defense.Stone_Armor.Geode
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags PvPOnly
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                ApplicationType kOnActivate
+                Target kSelf
+                Table "Melee_Ones"
+                Scale -1.0000
+                Duration 99999.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags PseudoPet
+                Params EntCreate
+                {
+                    Costume Carin_Beacon
+                    DisplayName "Geode"
+                    PriorityList "Combat"
+                    Power Redirects.Stone_Armor.Geode
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                ApplicationType kOnActivate
+                Target kSelf
+                Table "Melee_Ones"
+                Scale -1.0000
+                Duration 99999.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Params EntCreate
+                {
+                    Class Class_Minion_Pets
+                    Costume Carin_Beacon
+                    DisplayName "Geode"
+                    PriorityList "Combat"
+                    Power Redirects.Stone_Armor.Geode
+                    Power Redirects.Stone_Armor.Geode_Scaling
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "GeodeRoot"
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 0.2000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -10.0000
+            Duration 0.2000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -10000.0000
+            Duration 0.2000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kUntouchable
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1000.0000
+            Duration 0.2000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic kTaunt kAccuracy
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -999.0000
+            Duration 0.2000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "GrantThermalBoost"
+            Requires Sentinel_Defense.Stone_Armor.Brimstone_Armor source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                StackType kStack
+                Params Power
+                {
+                    Power Redirects.Stone_Armor.Thermal
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kGlobalChanceMod
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale -100.0000
+                Duration 2.0000
+                StackType kStack
+                Params EffectFilter
+                {
+                    Tag GrantThermalBoost
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "RepositionGeode"
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay
+            Params Power
+            {
+                Power Redirects.Stone_Armor.Geode_Pull
+            }
+            
+        }
+    }
+}

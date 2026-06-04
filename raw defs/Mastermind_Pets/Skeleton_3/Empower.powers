@@ -1,0 +1,85 @@
+#****************************************************#
+# Power: Pets > Necro Skeleton 3 > Dark Empowerment  #
+# Info:  Empower                                     #
+#****************************************************#
+
+Power Mastermind_Pets.Skeleton_3.Empower
+{
+    Name                 "Empower"                     
+    DisplayName          "P3036150683"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_GraveKnight_Empower.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_GraveKnight_Empower.pfx
+    DisplayShortHelp     "P1386049433"
+    DisplayHelp          "7R3E7HJ78CEWWJLSUZBM529ZZS"
+    IconName             "Necromancy_DarkEmpowerment.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kMeter
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 11.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 0.7500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 0.7500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

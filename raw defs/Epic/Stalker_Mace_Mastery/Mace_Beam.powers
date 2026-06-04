@@ -1,0 +1,40 @@
+Power Epic.Stalker_Mace_Mastery.Mace_Beam
+{
+    Name                 "Mace_Beam"                   
+    DisplayName          "P3336005936"
+    BuyRequires          $archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 owned? || &&
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         24
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kKnockback_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/Patron_MaceMastery_Snipe_MaceBeam_Quick.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/Patron_MaceMastery_Snipe_MaceBeam_Quick.pfx
+    DisplayShortHelp     "W3H46LSNBJZJY4XTMKHF92476Z"
+    DisplayHelp          "VS4Q4TCH68S5WQNTZTNS2LVEQW"
+    IconName             "Arachnos_Patron_TargetedRangedSnipe.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Stalker_EpicMaceMastery_Snipe.Mace_Beam_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Stalker_EpicMaceMastery_Snipe.Mace_Beam_Normal
+        Requires 1
+    }
+    
+}

@@ -1,0 +1,55 @@
+Power Temporary_Powers.Temporary_Powers.Particle_Cannon
+{
+    Name                 "Particle_Cannon"             
+    DisplayName          "P3046470625"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                50
+    EnduranceCost        12.74
+    TimeToActivate       15.67
+    TimeToRoot           15.67
+    RechargeTime         4
+    EffectArea           kCharacter
+    NumCharges           20
+    LifeTimeInGame       5400
+    ServerTrayRequires   mapname> trial_01_01_room eq
+    ServerTrayPriority   2
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\TempPower_RiktiBlasterShot01.pfx"
+    include              menu\Powers\AnimFX\TempPower_RiktiBlasterShot01.pfx
+    DisplayShortHelp     "P843530210"
+    DisplayHelp          "RS7DUFSTL5P7Y6BHWCNC733MP3"
+    IconName             "Temporary_EMPGlove.tga"
+    NumAllowed           10
+
+
+    Effect
+    {
+        Requires Hydra_Head target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kUnique2
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.0042
+            Duration 9.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2689111849"
+                DisplayVictimHit "P1226702143"
+            }
+            
+        }
+    }
+}

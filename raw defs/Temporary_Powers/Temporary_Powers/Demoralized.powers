@@ -1,0 +1,93 @@
+Power Temporary_Powers.Temporary_Powers.Demoralized
+{
+    Name                 "Demoralized"                 
+    DisplayName          "P935274572"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    RechargeTime         12
+    ActivatePeriod       12
+    EffectArea           kSphere
+    Radius               30
+    LifeTimeInGame       12
+    CastableAfterDeath   kDeadOrAlive
+    DisplayShortHelp     "P1827100201"
+    DisplayHelp          "P3865848324"
+    IconName             "Temporary_VahzilokDiseaseSL3.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1827100201"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 1.0000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2500
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 8.0000
+            Magnitude 5.0000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P508540991"
+                DisplayVictimHit "P1197143274"
+                DisplayInfo "T7NES8EHMDJJYMLZWSAW6AQM9A"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/AfraidContinuing.fx
+            }
+            
+        }
+    }
+}

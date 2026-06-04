@@ -1,0 +1,172 @@
+Power Defender_Buff.Kinetics.Increase_Density
+{
+    Name                 "Increase_Density"            
+    DisplayName          "P3687435012"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                70
+    EnduranceCost        5.2
+    TimeToActivate       2.07
+    RechargeTime         3
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Kinetics_IncreaseDensity.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Kinetics_IncreaseDensity.PFX
+    DisplayShortHelp     "P1601178268"
+    DisplayHelp          "C7NFBLH3YLEHYJBRCYU84KG7Z2"
+    DisplayAttackerHit   "P1924523378"
+    DisplayVictimHit     "P3719467599"
+    IconName             "KineticBoost_IncreaseDensity.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P1228522254"
+    DisplayTargetHelp    "P4245891083"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kEnergy
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 2.5000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -30.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 3.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -25.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kSuppress
+            StackKey kPvPMezProt
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback kRepel
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -10.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Power_DisallowSpeedBoost target.TokenOwned? !
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.1000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.1000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

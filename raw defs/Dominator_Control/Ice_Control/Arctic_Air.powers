@@ -1,0 +1,282 @@
+Power Dominator_Control.Ice_Control.Arctic_Air
+{
+    Name                 "Arctic_Air"                  
+    DisplayName          "P550725603"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        2.08
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         15
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kSlow_Boost, kConfuse_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_IceControl_ArcticAir.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_IceControl_ArcticAir.PFX
+    DisplayShortHelp     "P3441487566"
+    DisplayHelp          "KQ4PQYUXG6F2Y2LBKEK693XGRW"
+    DisplayAttackerHit   "P608428488"
+    DisplayVictimHit     "P3253187687"
+    IconName             "IceFormation_ArticAir.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1153392305"
+    DisplayTargetHelp    "P1027505645"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.5000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.6500
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.6500
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -35.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -389.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 10 Always
+            Suppress HitByFoe 10 Always
+            Suppress MissionObjectClick 10 Always
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_SpeedRunning"
+            Scale -1.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        Effect
+        {
+            Chance 0.3000
+        
+            Effect
+            {
+                Tag "Domination"
+            
+                AttribMod
+                {
+                    Attrib kConfused
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_Fear"
+                    Scale 2.0000
+                    Magnitude 1.0000
+                    Delay 1.0000
+                    StackType kReplace
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kConfused
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_Fear"
+                    Scale 3.0000
+                    Magnitude 3.0000
+                    Delay 1.0000
+                    StackType kReplace
+                    StackKey kArcticAir
+                    Flags StackByAttribAndKey
+                    Messages
+                    {
+                        DisplayFloat "P2610687982"
+                        DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Flags Fallback
+            
+                AttribMod
+                {
+                    Attrib kConfused
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_Fear"
+                    Scale 2.0000
+                    Magnitude 3.0000
+                    Delay 1.0000
+                    StackType kReplace
+                    StackKey kArcticAir
+                    Flags StackByAttribAndKey
+                    Messages
+                    {
+                        DisplayInfo "9ACGJ5KAMFWAWQCC7YUKLJ53BA"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+    
+        AttribMod
+        {
+            Attrib kAfraid
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 3.0000
+            Duration 2.0000
+            StackType kReplace
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            Delay 1.0000
+            StackType kReplace
+            Suppress Confused 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires kStealth source> 0.5 >
+        
+            AttribMod
+            {
+                Attrib kConfused
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kReplace
+                Suppress Confused 15 WhenInactive
+                FX
+                {
+                    ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                }
+                
+            }
+        }
+    }
+}

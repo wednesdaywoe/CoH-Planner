@@ -1,0 +1,109 @@
+Power Dominator_Control.Electric_Control.Stunning_Aura
+{
+    Name                 "Stunning_Aura"               
+    DisplayName          "P2659011467"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         15
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kHeal_Boost, kRecovery_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    ShuffleTargets       kTrue
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/DominatorControl_ElectricControl_StunningAura.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/DominatorControl_ElectricControl_StunningAura.PFX
+    DisplayShortHelp     "P3425504256"
+    DisplayHelp          "P2447704017"
+    IconName             "ElectricControl_StunningAura.tga"
+    MaxTargetsHit        16
+    OverCapTrigger       8
+    OverCapMultiplier    0.3
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P3035366588"
+    DisplayTargetHelp    "P1175493268"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay NoProjectileDelay CopyBoosts
+            Params Power
+            {
+                Power Redirects.Electric_Control.Stunning_Aura
+            }
+            
+        }
+    }
+}

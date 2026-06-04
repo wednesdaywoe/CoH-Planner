@@ -1,0 +1,247 @@
+Power Blaster_Support.Ice_Manipulation.Frozen_Aura
+{
+    Name                 "Frozen_Aura"                 
+    DisplayName          "P1695746557"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        18.512
+    TimeToActivate       2.1
+    TimeToRoot           2.1
+    RechargeTime         20
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_IceManipulation_FrozenAura.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_IceManipulation_FrozenAura.PFX
+    DisplayShortHelp     "P1844734462"
+    DisplayHelp          "7XTKH3DG9D77YZNK2Y7GEJZAKA"
+    DisplayAttackerHit   "P3745356051"
+    IconName             "IceManipulation_FrozenAura.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "P1722100846"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 20.0000
+                Magnitude 2.0000
+                Delay 0.5000
+                StackType kReplace
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 12.0000
+                Magnitude 1.0000
+                Delay 0.5000
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        
+            Effect
+            {
+                Flags HitRollSuccess
+            
+                AttribMod
+                {
+                    Attrib kCold
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 1.4240
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P4173738004"
+                        DisplayVictimHit "P1163387325"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires Raid target.HasTag?
+            Flags HitRollSuccess HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 20.0000
+                Magnitude 2.0000
+                Delay 0.5000
+                StackType kReplace
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 12.0000
+                Magnitude 1.0000
+                Delay 0.5000
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kCold
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 1.4240
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P4173738004"
+                        DisplayVictimHit "P1163387325"
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            Delay 0.5000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_LassoStun
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.0680
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4173738004"
+                DisplayVictimHit "P1163387325"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

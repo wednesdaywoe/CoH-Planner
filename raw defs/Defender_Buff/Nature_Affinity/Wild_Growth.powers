@@ -1,0 +1,93 @@
+#*************************************************#
+# Power: Buff > Nature Affinity > Wild Growth     #
+# Info:  PBAoE, Team +Res(All), +Regen, +2 Bloom  #
+#*************************************************#
+
+Power Defender_Buff.Nature_Affinity.Wild_Growth
+{
+    Name                 "Wild_Growth"                 
+    DisplayName          "P2637559551"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       2.17
+    RechargeTime         225
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_WildGrowth.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_WildGrowth.PFX
+    DisplayShortHelp     "P133552514"
+    DisplayHelp          "P2864920265"
+    DisplayAttackerHit   "P2298271210"
+    DisplayVictimHit     "P795756643"
+    IconName             "NatureAffinity_WildGrowth.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P1014121148"
+    DisplayTargetHelp    "P243810788"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffMaxHPCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Bloom
+                Count 2
+            }
+            
+        }
+    }
+}

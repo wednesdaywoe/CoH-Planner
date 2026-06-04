@@ -1,0 +1,81 @@
+Power Pool.Sorcery.Enflame
+{
+    Name                 "Enflame"                     
+    DisplayName          "P2059206902"
+    BuyRequires          Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt + Pool.Sorcery.Mystic_Flight + 1 >
+    ModesDisallowed      kDisable_All, kDisable_Pool
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kAny
+    EntsAutoHit          kAny
+    Target               kAny
+    Range                80
+    EnduranceCost        1.56
+    MaxToggleTime        60
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         10
+    ActivatePeriod       3
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/OriginPool_Sorcery_Enflame.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/OriginPool_Sorcery_Enflame.PFX
+    DisplayShortHelp     "NX7N5G7VYBVMYJCAMDPNMX2BM3"
+    DisplayHelp          "FTDDFW3DM9FMY5NMUDGJC9SVMX"
+    IconName             "SorceryPool_Enflame.tga"
+    MaxTargetsHit        5
+    DisplayTargetShortHelp "P3430523109"
+    DisplayTargetHelp    "P4077624027"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P2832274689"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Enflame_Pet
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 3.2500
+            StackType kReplace
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

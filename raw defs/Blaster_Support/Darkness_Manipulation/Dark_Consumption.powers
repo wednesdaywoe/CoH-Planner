@@ -1,0 +1,84 @@
+Power Blaster_Support.Darkness_Manipulation.Dark_Consumption
+{
+    Name                 "Dark_Consumption"            
+    DisplayName          "P3604985100"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        0.52
+    TimeToActivate       1.03
+    TimeToRoot           1.03
+    RechargeTime         180
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_DarkMelee_DarkConsumption.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_DarkMelee_DarkConsumption.PFX
+    DisplayShortHelp     "MBAP9P8UJJ45WKCWG7SGPCT9WX"
+    DisplayHelp          "9ENDWX77PNE4YTCW7EWNVL8T4W"
+    IconName             "DarknessManipulation_DarkConsumption.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.8000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 25.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P1197092217"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0310
+            Duration 8.5300
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

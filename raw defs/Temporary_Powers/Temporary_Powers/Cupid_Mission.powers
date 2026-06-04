@@ -1,0 +1,48 @@
+Power Temporary_Powers.Temporary_Powers.Cupid_Mission
+{
+    Name                 "Cupid_Mission"               
+    DisplayName          "P792746651"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        5
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         20
+    EffectArea           kCharacter
+    IgnoreAttackTimeErrors tsweeney
+    TargetRequires       Arachnos_Red_Widow target.VillainName>
+    VisualFX             "menu\powers\animfx\Archery_Cupid.pfx"
+    include              menu\powers\animfx\Archery_Cupid.pfx
+    DisplayShortHelp     "P4237132906"
+    DisplayHelp          "RN6LF7PPN367YBL6HQRGHQP8TW"
+    IconName             "Temporary_RangeModerateDamage.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kAddBehavior
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.9900
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params Behavior
+            {
+                Behavior SetObjective(ScriptCupidBowHit)
+            }
+            
+        }
+    }
+}

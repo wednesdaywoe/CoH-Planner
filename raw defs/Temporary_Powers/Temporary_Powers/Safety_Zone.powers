@@ -1,0 +1,44 @@
+Power Temporary_Powers.Temporary_Powers.Safety_Zone
+{
+    Name                 "Safety_Zone"                 
+    DisplayName          "9BNRAK855G4HY6LWVVGVW72H83"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    RefreshesOnActivePlayerChange kTrue
+    DisplayShortHelp     "TKAJDU8KKMURWGZLJNVYPUZVJ2"
+    DisplayHelp          "2NJNFRG64REGYKZ9EJA5WUM7YZ"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kUntouchable kOnlyAffectsSelf
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 100.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

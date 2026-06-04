@@ -1,0 +1,48 @@
+#******************************************************#
+# Power: Melee > Psionic Melee > Assassin's Psi Blade  #
+# Info:  Melee, DMG(Psionic/Smash), +Insight           #
+#******************************************************#
+
+Power Stalker_Melee.Psionic_Melee.Assassins_Psi_Blade
+{
+    Name                 "Assassins_Psi_Blade"         
+    DisplayName          "P1338696765"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3
+    TimeToRoot           1
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\PsionicMelee_AssassinsPsiBlade.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\PsionicMelee_AssassinsPsiBlade.PFX
+    DisplayShortHelp     "S6QDCFV9MEEKYHZFGJCXNWPU3A"
+    DisplayHelp          "G75Y2GNS668BWNLURARTDLPEKA"
+    IconName             "PsionicMelee_AssassinsPsiBlade.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Psionic_Melee_Assassins_Strike.Assassins_Psi_Blade_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Psionic_Melee_Assassins_Strike.Assassins_Psi_Blade_Stealth
+        Requires 1
+    }
+    
+}

@@ -1,0 +1,241 @@
+Power Brute_Defense.Willpower.Strength_of_Will
+{
+    Name                 "Strength_of_Will"            
+    DisplayName          "P1043791663"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        2.6
+    TimeToActivate       3.1
+    RechargeTime         300
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_Willpower_StrengthofWill.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_Willpower_StrengthofWill.PFX
+    DisplayShortHelp     "P2655318871"
+    DisplayHelp          "CPES7FMP2U2BWGLFBKFMTCZJG2"
+    DisplayAttackerHit   "P92195323"
+    IconName             "Willpower_StrengthOfWill.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 2.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 1.2500
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -100.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback kRepel
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRepel
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -10.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffEndContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -0.5000
+            Magnitude 1.0000
+            Delay 120.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P657239359"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 110.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "KN45CA7ZQ9FPYYMQ93U9B58FXA"
+                DisplayFloat "KN45CA7ZQ9FPYYMQ93U9B58FXA"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -50.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -50.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kImmobilized kStunned kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 5.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX3
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 5.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX4
+            }
+            
+        }
+    }
+}

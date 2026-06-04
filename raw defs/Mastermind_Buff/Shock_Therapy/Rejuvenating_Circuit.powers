@@ -1,0 +1,104 @@
+#***********************************************************#
+# Power: Buff > Electrical Affinity > Rejuvenating Circuit  #
+# Info:  Ranged (Chain), Ally Heal, Self +Static            #
+#***********************************************************#
+
+Power Mastermind_Buff.Shock_Therapy.Rejuvenating_Circuit
+{
+    Name                 "Rejuvenating_Circuit"        
+    DisplayName          "P174169081"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kFriend
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       1.17
+    RechargeTime         8
+    EffectArea           kChain
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    ChainDelay           0.1
+    ChainFork            3
+    ChainEff             1 0.25 @ChainJump 1 - * - 0.5 1 minmax
+    ChainTarget          101 kHitPoints% target> - enttype maintarget> enttype target> eq 99 * 1 + * 1 prevdistance / +
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ShockTherapy_RejuvenatingCircuit.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ShockTherapy_RejuvenatingCircuit.PFX
+    DisplayShortHelp     "P3194455334"
+    DisplayHelp          "P4232441342"
+    IconName             "ShockTherapy_RejuvenatingCircuit.tga"
+    MaxTargetsHit        5
+    MaxTargetsExpr       4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.5500
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildStatic"
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Shock_Therapy_Static
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 0.4100
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

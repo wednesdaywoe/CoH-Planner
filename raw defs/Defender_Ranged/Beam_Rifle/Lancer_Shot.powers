@@ -1,0 +1,190 @@
+Power Defender_Ranged.Beam_Rifle.Lancer_Shot
+{
+    Name                 "Lancer_Shot"                 
+    DisplayName          "P937537777"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        11.024
+    TimeToActivate       1.9
+    TimeToRoot           1.9
+    RechargeTime         11
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost
+    VisualFX             "menu\Powers\AnimFx\BeamRifle_LancerShot.pfx"
+    include              menu\Powers\AnimFx\BeamRifle_LancerShot.pfx
+    DisplayShortHelp     "S3ZJHXAD43CSWSBDZ88EW4XTJA"
+    DisplayHelp          "KJMK7T7HHY5KYDLMH4AZTELJAA"
+    IconName             "BeamRifle_LancerShot.tga"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P3540767336"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 2.1200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 2.1699
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Disintegrate Bonus"
+        Requires enttype target> critter eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? &&
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.4240
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "R6RQ258JZRQ6WPNCKACK5YG63A"
+                DisplayVictimHit "M7SBCDZDV6BVW6NPAKPWWRZE7A"
+                DisplayFloat "P3729946649"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Disintegrate Bonus"
+        Requires enttype target> player eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? &&
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.4340
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "R6RQ258JZRQ6WPNCKACK5YG63A"
+                DisplayVictimHit "M7SBCDZDV6BVW6NPAKPWWRZE7A"
+                DisplayFloat "P3729946649"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Disintegrate"
+        Requires Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower?
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Pets.DisintegrateSpread.Disintegrate_Spread
+            }
+            
+        }
+    }
+}

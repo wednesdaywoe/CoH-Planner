@@ -1,0 +1,36 @@
+Power Temporary_Powers.Temporary_Powers.Test_Roll
+{
+    Name                 "Test_Roll"                   
+    DisplayName          "P1921860226"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Teleport, kDisable_Travel
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetSecondary      kPosition
+    EffectArea           kCharacter
+    PositionDistance     40
+    PositionYaw          90
+    FaceTarget           kFalse
+    DisplayShortHelp     "P2537599147"
+    DisplayHelp          "P3847603555"
+    IconName             "Teleportation_Teleport.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

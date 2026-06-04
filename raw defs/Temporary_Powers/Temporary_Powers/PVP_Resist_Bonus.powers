@@ -1,0 +1,52 @@
+Power Temporary_Powers.Temporary_Powers.PVP_Resist_Bonus
+{
+    Name                 "PVP_Resist_Bonus"            
+    DisplayName          "P2779120650"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P640667714"
+    DisplayHelp          "P3543941423"
+    IconName             "InherentPeacebringer_InterSpacialLink.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Tag "PVPResist"
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_PVPResist"
+            Scale 1.0000
+            Duration 10.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTimeToRoot
+            Aspect kStr
+            Table "Melee_Ones"
+            Scale 0.3333
+            Duration 10.5000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

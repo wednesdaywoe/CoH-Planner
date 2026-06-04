@@ -1,0 +1,83 @@
+PowerSet Tanker_Melee.Titan_Weapons
+{
+    Name "Titan_Weapons"
+    DisplayName "P1852466848"
+    DisplayShortHelp "P1852466848"
+    DisplayHelp "P1324871844"
+    CostumeKeys CustomWeapon_TitanWeapon_Base
+    CostumeParts TitanWeapon_Default
+    IconName "Titan_Weapons_set.ico"
+
+    Powers Tanker_Melee.Titan_Weapons.Defensive_Sweep
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Titan_Weapons.Crushing_Blow
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Titan_Weapons.Sweeping_Strike
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Titan_Weapons.Taunt
+    Available 9
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Titan_Weapons.Follow_Through
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Titan_Weapons.Build_Up
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Titan_Weapons.Shatter_Armor
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Titan_Weapons.Whirling_Slice
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Melee.Titan_Weapons.Arc_of_Destruction
+    Available 29
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

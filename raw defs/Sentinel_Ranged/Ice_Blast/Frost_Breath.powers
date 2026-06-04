@@ -1,0 +1,238 @@
+#******************************************************#
+# Power: Ranged > Ice Blast > Frost Breath             #
+# Info:  Close (Cone), DoT(Cold), Foe -Recharge, -SPD  #
+#******************************************************#
+
+Power Sentinel_Ranged.Ice_Blast.Frost_Breath
+{
+    Name                 "Frost_Breath"                
+    DisplayName          "P2163593760"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        15.184
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         16
+    EffectArea           kCone
+    Radius               40
+    Arc                  30
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_IceBlast_FrostBreath.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_IceBlast_FrostBreath.PFX
+    DisplayShortHelp     "AV2K7W734QF3WVVNYLBGUJU23S"
+    DisplayHelp          "A7BET7F5JHECW9X4J7A33YEQRX"
+    IconName             "IceBlast_FrostBreath.tga"
+    MaxTargetsHit        6
+    DisplayTargetShortHelp "P2155113270"
+    DisplayTargetHelp    "P8249571"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.7000
+                Duration 0.6000
+                Magnitude 1.0000
+                Period 0.5000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3556385711"
+                    DisplayVictimHit "P658755009"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.7000
+                Duration 0.6000
+                Magnitude 1.0000
+                Period 0.5000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MQ4YDWQFCSEBWXXQUC6NJBDXVQ"
+                    DisplayVictimHit "GDQ7FR7X93TTY7X3UPT8P9J7B3"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags SecondaryTargetsOnly
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.6734
+                Duration 0.6000
+                Magnitude 1.0000
+                Period 0.5000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3556385711"
+                    DisplayVictimHit "P658755009"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+            Flags SecondaryTargetsOnly
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.6734
+                Duration 0.6000
+                Magnitude 1.0000
+                Period 0.5000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MQ4YDWQFCSEBWXXQUC6NJBDXVQ"
+                    DisplayVictimHit "GDQ7FR7X93TTY7X3UPT8P9J7B3"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags MainTargetOnly
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.4545
+                Duration 0.6000
+                Magnitude 1.0000
+                Period 0.5000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3556385711"
+                    DisplayVictimHit "P658755009"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.4545
+                Duration 0.6000
+                Magnitude 1.0000
+                Period 0.5000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MQ4YDWQFCSEBWXXQUC6NJBDXVQ"
+                    DisplayVictimHit "GDQ7FR7X93TTY7X3UPT8P9J7B3"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+}

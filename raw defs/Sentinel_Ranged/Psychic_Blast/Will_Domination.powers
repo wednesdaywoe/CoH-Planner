@@ -1,0 +1,201 @@
+#**************************************************#
+# Power: Ranged > Psychic Blast > Will Domination  #
+# Info:  Ranged, High DMG(Psionic), Foe Sleep      #
+#**************************************************#
+
+Power Sentinel_Ranged.Psychic_Blast.Will_Domination
+{
+    Name                 "Will_Domination"             
+    DisplayName          "P3818834986"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                75
+    EnduranceCost        10.192
+    TimeToActivate       1.1
+    TimeToRoot           1.1
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_PsychicBlast_WillDomination.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_PsychicBlast_WillDomination.PFX
+    DisplayShortHelp     "P1392069802"
+    DisplayHelp          "MY6B3RK2LJHTWVLPM4767F8UEA"
+    IconName             "PsychicBlast_WillDomination.tga"
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "P3498727642"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Chance 0.8000
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 8.0000
+                Magnitude 3.0000
+                Delay 0.2500
+                StackType kStack
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                    ConditionalBits ANIM_SLEEP
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 1.9600
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P801507873"
+                    DisplayVictimHit "P3863231487"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 1.9600
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                    DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+            Chance 0.8000
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                Delay 0.2500
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                    ConditionalBits ANIM_SLEEP
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.5700
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P801507873"
+                    DisplayVictimHit "P3863231487"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.5700
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                    DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+}

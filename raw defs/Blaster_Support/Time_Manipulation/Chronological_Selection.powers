@@ -1,0 +1,146 @@
+Power Blaster_Support.Time_Manipulation.Chronological_Selection
+{
+    Name                 "Chronological_Selection"     
+    DisplayName          "P2237651091"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       1.17
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TimeManipulation_ChronologicalSelection.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TimeManipulation_ChronologicalSelection.PFX
+    DisplayShortHelp     "7LN29VZ9NW9DWBCPNFGUV53ZGZ"
+    DisplayHelp          "MJXD25LY57GNYYZBNLKQW8R2MZ"
+    DisplayAttackerHit   "P2111457154"
+    IconName             "TimeManipulation_ChronologicalSelection"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P3433539956"
+    DisplayTargetHelp    "P2111457154"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 2.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 5.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? !
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,41 @@
+PowerSet Mastermind_Pets.Thug_Minion
+{
+    Name "Thug_Minion"
+    DisplayName "P1023609420"
+    DisplayShortHelp "P1151940263"
+    DisplayHelp "P1151940263"
+    IconName "Thug_Minion_set.ico"
+
+    Powers Mastermind_Pets.Thug_Minion.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Minion.Brawl
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Minion.Pistol
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Minion.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

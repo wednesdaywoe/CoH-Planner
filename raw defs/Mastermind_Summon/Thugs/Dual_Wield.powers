@@ -1,0 +1,205 @@
+#********************************************#
+# Power: Summon > Thugs > Dual Wield         #
+# Info:  Ranged, DMG(Lethal), Foe Knockback  #
+#********************************************#
+
+Power Mastermind_Summon.Thugs.Dual_Wield
+{
+    Name                 "Dual_Wield"                  
+    DisplayName          "P2558716359"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.864
+    TimeToActivate       1.2
+    TimeToRoot           1.2
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    HighlightEval        kPersonalAttack2 Mode? ! Mastermind_Summon.Thugs.Gang_War && combatlevel auto> 18 >= &&
+    HighlightRing        192 192 0 255
+    VisualFX             "menu\Powers\AnimFX\Mastermind_Thugs_DualGuns_BigShot_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Mastermind_Thugs_DualGuns_BigShot_NoGeo.pfx
+    DisplayShortHelp     "JRPXVF24DJCZWKX6MSFMS6SBWA"
+    DisplayHelp          "XPZTWWMZN5K5W4MLL4XN84WRNA"
+    IconName             "Thugs_TargetedRangedHeavyDmg.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.6600
+            Duration 0.3000
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2500
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.7400
+            Duration 0.3000
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2500
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.6400
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "StreetCred2"
+        Requires Mastermind_Summon.Thugs.Gang_War source.ownPower? combatlevel source> 18 >= &&
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -100.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params EffectFilter
+            {
+                Tag StreetCred2
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kCaster
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude kPersonalAttack2
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        Effect
+        {
+            Tag "StreetCred"
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Street_Cred
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 35.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_06
+                    PriorityList "PL_FightPreferRanged"
+                }
+                
+            }
+        }
+    }
+}

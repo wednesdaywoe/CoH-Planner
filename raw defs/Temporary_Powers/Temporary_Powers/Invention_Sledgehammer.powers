@@ -1,0 +1,98 @@
+Power Temporary_Powers.Temporary_Powers.Invention_Sledgehammer
+{
+    Name                 "Invention_Sledgehammer"      
+    DisplayName          "P1328070561"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                5
+    EnduranceCost        12.74
+    TimeToActivate       2.17
+    TimeToRoot           2.17
+    RechargeTime         10
+    EffectArea           kCharacter
+    NumCharges           30
+    StackingUsage        kTrue
+    MaxNumCharges        300
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temp_Sledgehammer.pfx"
+    include              menu\Powers\AnimFX\Temp_Sledgehammer.pfx
+    DisplayShortHelp     "BNK3APLNW447WZNCR3SW99L97A"
+    DisplayHelp          "DELZFNYV7DKVYNLE7WN74YSX22"
+    IconName             "Temp_Melee_Heavy.tga"
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P117761514"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 1.9600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.8000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.8000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

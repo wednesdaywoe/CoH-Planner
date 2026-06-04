@@ -1,0 +1,44 @@
+Power Temporary_Powers.Day_Job_Powers.Shop_Keeper_Message
+{
+    Name                 "Shop_Keeper_Message"         
+    DisplayName          "P1512529661"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    AIReport             kNever
+    IsEnvironmentHit     kTrue
+    DisplayShortHelp     "P3973697071"
+    DisplayHelp          "P1901312488"
+    IconName             "DayJob_LootBuff.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P3973697071"
+    NumAllowed           2
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

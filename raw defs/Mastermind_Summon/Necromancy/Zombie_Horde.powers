@@ -1,0 +1,198 @@
+#********************************************#
+# Power: Summon > Necromancy > Zombie Horde  #
+# Info:  Summon Zombies                      #
+#********************************************#
+
+Power Mastermind_Summon.Necromancy.Zombie_Horde
+{
+    Name                 "Zombie_Horde"                
+    DisplayName          "P1229299309"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        5.46
+    TimeToActivate       3.1
+    TimeToRoot           3.1
+    RechargeTime         5
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_ZombieHorde.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_ZombieHorde.PFX
+    DisplayShortHelp     "P1434861979"
+    DisplayHelp          "ZWAYRNJYXPZBW7LXTHDDFJ2TKS"
+    IconName             "Necromancy_CallZombieHorde.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Zombie
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires combatlevel source> 5 >
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Zombie
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires combatlevel source> 17 >
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Zombie
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 25.0000
+            Magnitude 1.0000
+            Delay 3.1000
+            StackType kIgnore
+            Flags NoHitDelay SetTimer
+            Params Power
+            {
+                Power Mastermind_Summon.Necromancy.Zombie_Horde
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Duration 2.0000
+            Magnitude 1.0000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&
+            StackType kStack
+            Suppress Attacked 8 Always
+            Flags IgnoreResistance NoHitDelay
+            Messages
+            {
+                DisplayInfo "8VVPP8TX54P4YUL33N3RAN2NRA"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&
+            StackType kStack
+            Suppress Attacked 8 Always
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "8VVPP8TX54P4YUL33N3RAN2NRA"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 3.0000
+            Magnitude 500.0000
+            DelayedRequires arch target> Class_Henchman_Lt eq arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || distance 60 > &&
+            StackType kStack
+            Suppress Attacked 8 Always
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath NoHitDelay
+            Messages
+            {
+                DisplayInfo "8VVPP8TX54P4YUL33N3RAN2NRA"
+            }
+            
+        }
+    }
+}

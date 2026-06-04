@@ -1,0 +1,48 @@
+Power Temporary_Powers.Temporary_Powers.Mayhem_Rock
+{
+    Name                 "Mayhem_Rock"                 
+    DisplayName          "P2956531312"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                50
+    TimeToActivate       3.33
+    TimeToRoot           3.33
+    RechargeTime         4
+    EffectArea           kCharacter
+    NumCharges           1
+    Deletable            kTrue
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_SmallRockThrow.pfx"
+    include              menu\Powers\AnimFX\Villain_SmallRockThrow.pfx
+    DisplayShortHelp     "P2502731832"
+    DisplayHelp          "YW5SLBG9SCF6W6LNFQ2G3L3XQQ"
+    IconName             "Temporary_RangeLightDamage.tga"
+    NumAllowed           10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.6800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,49 @@
+Power Temporary_Powers.Temporary_Powers.Winter_Holiday_Cheer
+{
+    Name                 "Winter_Holiday_Cheer"        
+    DisplayName          "P2949531511"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                5
+    EffectArea           kCharacter
+    NumCharges           1
+    VisualFX             "menu\Powers\AnimFX\WinterEvent_HolidayCheer.pfx"
+    include              menu\Powers\AnimFX\WinterEvent_HolidayCheer.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P1133016847"
+    DisplayAttackerHit   "P3294493860"
+    DisplayVictimHit     "P488345723"
+    IconName             "Temporary_HolidayCheer.tga"
+
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kReward
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayFloat "P2227793950"
+            }
+            
+            Params Reward
+            {
+                Reward Holiday2006_HolidayCheer
+            }
+            
+        }
+    }
+}

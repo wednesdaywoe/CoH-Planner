@@ -1,0 +1,132 @@
+#**************************************#
+# Power: Ranged > Archery > Snap Shot  #
+# Info:  Ranged, Light DMG(Lethal)     #
+#**************************************#
+
+Power Sentinel_Ranged.Archery.Snap_Shot
+{
+    Name                 "Snap_Shot"                   
+    DisplayName          "P2783200921"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.155
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        3.54
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         2
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\Archery_Quick_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Archery_Quick_NoGeo.pfx
+    DisplayShortHelp     "P1152063585"
+    DisplayHelp          "2RLAVJ7S99XDYZCP9F73B5NMFZ"
+    IconName             "Archery_QuickArrow.tga"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.8400
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.8400
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.1800
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.1800
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+}

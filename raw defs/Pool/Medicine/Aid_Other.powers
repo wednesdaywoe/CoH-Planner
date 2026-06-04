@@ -1,0 +1,37 @@
+Power Pool.Medicine.Aid_Other
+{
+    Name                 "Aid_Other"                   
+    DisplayName          "P1185560707"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                25
+    EnduranceCost        6.5
+    InterruptTime        1
+    TimeToActivate       3.93
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kHeal_Boost
+    InterruptLikeSleep   kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Medicine_AidOther.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Medicine_AidOther.pfx
+    DisplayShortHelp     "P2554536452"
+    DisplayHelp          "DYZKW3S6A2CEWTNHHPXRS2YZZ3"
+    IconName             "Medicine_Aid.tga"
+
+    Redirect
+    {
+        Power Pets.Pool_Medicine_AidOther.AidOther_NoInterrupt
+        Requires Pool.Medicine.Field_Medic source.ownPower?
+    }
+    
+    Redirect
+    {
+        Power Pets.Pool_Medicine_AidOther.AidOther_Interrupt
+        Requires 1
+    }
+    
+}

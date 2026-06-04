@@ -1,0 +1,164 @@
+#*****************************************************************************************#
+# Power: Buff > Poison > Antidote                                                         #
+# Info:  Ally +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Slow, Cold, Toxic)  #
+#*****************************************************************************************#
+
+Power Defender_Buff.Poison.Antidote
+{
+    Name                 "Antidote"                    
+    DisplayName          "P3729372453"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                70
+    EnduranceCost        5.2
+    TimeToActivate       1.53
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_Antidote.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_Antidote.PFX
+    DisplayShortHelp     "P1579801539"
+    DisplayHelp          "P3386622561"
+    DisplayAttackerHit   "P4104594625"
+    DisplayVictimHit     "P1108383803"
+    IconName             "Poison_Antidote.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P456139789"
+    DisplayTargetHelp    "P69254025"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -30.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 5.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 3.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 8.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -25.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kSuppress
+            StackKey kPvPMezProt
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kRechargeTime
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 2.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

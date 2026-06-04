@@ -1,0 +1,178 @@
+Power Tanker_Melee.Broad_Sword.Disembowel
+{
+    Name                 "Disembowel"                  
+    DisplayName          "P1185357530"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        10.192
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kKnockback_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\Sword_BigUp_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Sword_BigUp_NoGeo.pfx
+    DisplayShortHelp     "ELLYZHYVGXTFYAMMYREHDUL83S"
+    DisplayHelp          "GP5ANWEH9GZ4WSZBUG5BW4PUPS"
+    IconName             "Sword_Disembowel.tga"
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P2543120370"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.9600
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.7500
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kKnockup
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Knockback"
+                Scale 2.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.8820
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+                FX
+                {
+                    ContinuingFX POWERS/FireControl/CindersHit.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.8499
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.7500
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kKnockup
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Knockback"
+                Scale 2.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            TickChance 0.9980
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

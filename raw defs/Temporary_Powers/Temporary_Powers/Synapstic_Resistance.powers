@@ -1,0 +1,125 @@
+Power Temporary_Powers.Temporary_Powers.Synapstic_Resistance
+{
+    Name                 "Synapstic_Resistance"        
+    DisplayName          "P3001372640"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    LifeTime             1200
+    DisplayShortHelp     "P1196525362"
+    DisplayHelp          "P1196525362"
+    IconName             "ElectricalBolt_ThunderouseBlast.tga"
+    DoNotSave            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance kRecovery
+            Aspect kRes
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 5.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTaunt kImmobilized
+            Aspect kRes
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 100.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_SpeedRunning"
+            Scale 1.2500
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX V_COV\EnemyPowers\SignatureHeroes\Synapse\DoubleTimeGlow.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -100.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedJumping kJumpHeight kRechargeTime
+            Aspect kRes
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 100.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 2.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,115 @@
+Power Blaster_Ranged.Radiation_Blast.Irradiate
+{
+    Name                 "Irradiate"                   
+    DisplayName          "P3608202196"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        18.512
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         20
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_RadiationBlast_Irradiate.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_RadiationBlast_Irradiate.PFX
+    DisplayShortHelp     "PEA9P85Y7SD2YDXVNM6JABQWF3"
+    DisplayHelp          "CZ8KGDXJYCK5Y3Z2LFKD3X7V5Z"
+    IconName             "RadiationBurst_Irradiate"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1338093887"
+    DisplayTargetHelp    "P584783765"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1000
+            Duration 4.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 3.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.0287
+            Duration 4.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

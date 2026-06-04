@@ -1,0 +1,335 @@
+Power Dominator_Control.Wind_Control.Vacuum
+{
+    Name                 "Vacuum"                      
+    DisplayName          "P3584390836"
+    BuyRequires          accesslevel char> 0 >=
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kAny
+    EntsAutoHit          kFriend, kMyPet
+    Target               kAny
+    Range                80
+    EnduranceCost        19.5
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         240
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kSlow_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_IceControl_Glacier.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_IceControl_Glacier.PFX
+    DisplayShortHelp     "P930857572"
+    DisplayHelp          "BXEGW7PT3EL2Y8MRSFYRQ7DTEX"
+    IconName             "WindControl_Vacuum.tga"
+    DisplayTargetShortHelp "P2211841663"
+    DisplayTargetHelp    "P1253583898"
+
+
+    Effect
+    {
+        Requires entref target.owner> entref source> eq !
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 8.0000
+            Magnitude 1.0000
+            DurationExpr 8 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 2 * +
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P2375591925"
+                DisplayVictimHit "P1660374886"
+                DisplayFloat "P492122490"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_WindControl_Vacuum_Dominator
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX Powers\coldcontrol\IceRootContinuing.fx
+                ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX Powers\coldcontrol\IceRootContinuing.fx
+                ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires entref target.owner> entref source> eq ! target.isfriend? ! && enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 12.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "SDG9VDYPNMVUYCCXQHCXLRHPS2"
+                DisplayVictimHit "N5ZZQ384R93HYPC57YDKTK9S3Z"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX Powers\coldcontrol\IceRootContinuing.fx
+                ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires entref target.owner> entref source> eq ! target.isfriend? ! && enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "SDG9VDYPNMVUYCCXQHCXLRHPS2"
+                DisplayVictimHit "N5ZZQ384R93HYPC57YDKTK9S3Z"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX Powers\coldcontrol\IceRootContinuing.fx
+                ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.1929
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kCloudedSkies source.mode? ! entref target.owner> entref source> eq &&
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kExpression
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude kClearSkies
+            DurationExpr Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 5 * 30 +
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2127866998"
+                DisplayFloat "P1913056471"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires entref target.owner> entref source> eq
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 239.0000
+            Magnitude kCloudedSkies
+            Delay 0.5000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayFloat "P1913056471"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelfsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 1.1000
+            Magnitude 1.0000
+            Delay 0.2000
+            Period 0.2000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P2883443510"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Wind_Control_Pressure
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Type kConstant
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P123669248"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,43 @@
+Power Defender_Ranged.Seismic_Blast.Stalagmite
+{
+    Name                 "Stalagmite"                  
+    DisplayName          "P1556791462"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.192
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost
+    NearGround           kTrue
+    HighlightEval        kSeismicPower Mode?
+    HighlightRing        192 64 0 255
+    HighlightIcon        SeismicBlast_Stalagmite_Mega
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Stalagmite.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Stalagmite.pfx
+    DisplayShortHelp     "U77QTJHFT4TPWSXS4YLANNHCZ2"
+    DisplayHelp          "XKRG7LWGAFCFW7LLGAXVRGPQVS"
+    IconName             "SeismicBlast_Stalagmite"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+    Redirect
+    {
+        Power Redirects.Seismic_Blast.Defender_Stalagmite_Enhanced
+        Requires kSeismicPower source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Redirects.Seismic_Blast.Defender_Stalagmite
+        Requires 1
+    }
+    
+}

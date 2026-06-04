@@ -1,0 +1,263 @@
+Power Pool.Utility_Belt.Freerunning
+{
+    Name                 "Freerunning"                 
+    DisplayName          "P2608073664"
+    BuyRequires          accesslevel char> 0 >=
+    ModesDisallowed      kDisable_All, kDisable_JumpToggles, kDisable_Pool, kDisable_RunToggles, kDisable_Travel
+    ModesSuspended       kSuppress_JumpToggles, kSuppress_PoolToggles, kSuppress_RunToggles, kSuppress_TravelToggles
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kLeap_Group, kLeapRoot_Group, kSpeed_Group, kSpeedRoot_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.2275
+    RechargeTime         4
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kJump_Boost, kSpeedRunning_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu/Powers/AnimFX/Inherent_Prestige_NinjaRun.pfx"
+    include              menu/Powers/AnimFX/Inherent_Prestige_NinjaRun.pfx
+    DisplayShortHelp     "P3472536357"
+    DisplayHelp          "KMTCLQXK6APPWABLTP8687WYSZ"
+    IconName             "UtilityBelt_Freerunning.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNinjaRun
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude kFreeRunningOn
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag LeapingOn
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag SpeedOn
+            }
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Leap"
+            Scale 0.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 0.5500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedRunning"
+            Scale 0.4000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Leap"
+            Scale 0.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 0.5500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedRunning"
+            Scale 0.4000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    }
+}

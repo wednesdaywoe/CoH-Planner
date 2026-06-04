@@ -1,0 +1,59 @@
+Power Temporary_Powers.Temporary_Powers.Holographic_Projector
+{
+    Name                 "Holographic_Projector"       
+    DisplayName          "P459742190"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kHidden_Attack, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    GroupMembership      kStealth_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    AIReport             kNever
+    LifeTime             10800
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Holographic_Projector.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Holographic_Projector.pfx
+    DisplayShortHelp     "P3978072165"
+    DisplayHelp          "P3178390966"
+    IconName             "Temporary_ResonanceDisrupter.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Council_Galaxy_Boss
+                Priority 9
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

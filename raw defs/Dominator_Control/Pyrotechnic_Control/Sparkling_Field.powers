@@ -1,0 +1,360 @@
+Power Dominator_Control.Pyrotechnic_Control.Sparkling_Field
+{
+    Name                 "Sparkling_Field"             
+    DisplayName          "TBT9LAVWNEKNWJLWL89TDM6B4Q"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.9
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       1.03
+    TimeToRoot           1.03
+    RechargeTime         8
+    EffectArea           kChain
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kImmobilized_Boost
+    ChainDelay           0.3
+    ChainFork            1, 4, 4
+    ChainEff             1
+    ChainTarget          enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Sparkling_Field.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Sparkling_Field.pfx
+    DisplayShortHelp     "YSVTKZ3EYBQAY4XS3BLHBRTDQS"
+    DisplayHelp          "H4RYSBXVD6S6WEBVPDTK63J62X"
+    IconName             "Pyrotechnic_SparklingField"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "2WU26ZN6ZS98WTZCEYGY4DJ6NS"
+    DisplayTargetHelp    "PYYSM2L2XZH4YRLNY7KBYNNWKW"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 1.1000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoHitDelay
+        }
+    }
+
+    Effect
+    {
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingBits ANIM_HIT ANIM_QUICK
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.0550
+                Duration 5.2000
+                Magnitude 1.0000
+                Period 2.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Immobilize"
+                Scale 15.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4257051740"
+                    DisplayVictimHit "P2588894681"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.0550
+                Duration 5.2000
+                Magnitude 1.0000
+                Period 2.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P59899910"
+                    DisplayVictimHit "P3210640873"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.0345
+                Duration 5.2000
+                Magnitude 1.0000
+                Period 2.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 5.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P4257051740"
+                    DisplayVictimHit "P2588894681"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.0345
+                Duration 5.2000
+                Magnitude 1.0000
+                Period 2.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P59899910"
+                    DisplayVictimHit "P3210640873"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Immobilize"
+                Scale 22.5000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "5LRMX7ZHD9YJYYZLCBNBQZBSFX"
+                    DisplayVictimHit "GPY5AP6NAEVWYHCWYJVMP2ULHW"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Flags IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "5LRMX7ZHD9YJYYZLCBNBQZBSFX"
+                    DisplayVictimHit "GPY5AP6NAEVWYHCWYJVMP2ULHW"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kRes
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 100.0000
+                Duration 12.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kFly
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale -1.6000
+                Duration 10.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreResistance
+            }
+        }
+    
+        Effect
+        {
+            Tag "Main Target"
+            Chance 0.4000
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Ones"
+                StackType kStack
+                Flags CopyBoosts
+                Messages
+                {
+                    DisplayInfo "Z8GQSYVPRHE3WPVP724AKCMLCQ"
+                }
+                
+                Params Power
+                {
+                    Power Redirects.Pyrotechnic_Control.Blast_Off
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.2500
+            Flags SecondaryTargetsOnly
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Ones"
+                StackType kStack
+                Flags CopyBoosts
+                Messages
+                {
+                    DisplayInfo "S9SLRM7E63U4Y9NKP5BHYN2SZZ"
+                }
+                
+                Params Power
+                {
+                    Power Redirects.Pyrotechnic_Control.Blast_Off
+                }
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+Power Brute_Melee.Ice_Melee.Ice_Patch
+{
+    Name                 "Ice_Patch"                   
+    DisplayName          "P4055248625"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       1.57
+    TimeToRoot           1.57
+    RechargeTime         35
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    StrengthsDisallowed  kRange
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerMelee_IceMelee_IcePatch.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerMelee_IceMelee_IcePatch.PFX
+    DisplayShortHelp     "P2169202770"
+    DisplayHelp          "P30277698"
+    IconName             "IcyOnslaught_IcePatch.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround IgnoreStrength IgnoreResistance CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P3663385126"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_IcePatch
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

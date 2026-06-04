@@ -1,0 +1,143 @@
+Power Temporary_Powers.Temporary_Powers.Void_Hunter_Rifle
+{
+    Name                 "Void_Hunter_Rifle"           
+    DisplayName          "P37263432"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.5
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        6.5
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         3
+    EffectArea           kCharacter
+    NumCharges           10
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Nictus_Rifle.pfx"
+    include              menu\Powers\AnimFX\Villain_Nictus_Rifle.pfx
+    DisplayShortHelp     "P1722645486"
+    DisplayHelp          "BAVGYA8U6GPTYMV6YMNHJJAAPX"
+    IconName             "Temporary_RangeModerateDamage.tga"
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P2166696133"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Requires FreedomCorps_Romulus target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kSpecial
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 3.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "V8ND2H63B27MYECNYX8SLH9V73"
+                DisplayVictimHit "75AP8BX3BDYDY8CUQHXWKZ4ZAA"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.7500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires FreedomCorps_Romulus target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 4.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+}

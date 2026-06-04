@@ -1,0 +1,72 @@
+Power Blaster_Support.Tactical_Arrow.Glue_Arrow
+{
+    Name                 "Glue_Arrow"                  
+    DisplayName          "P3237857720"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    EnduranceCost        7.8
+    TimeToActivate       1.16
+    TimeToRoot           1.16
+    RechargeTime         45
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TacticalArrow_GlueArrow.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\TacticalArrow_GlueArrow.pfx
+    DisplayShortHelp     "87DPBCPCTDPUWFVXF76WC35H2A"
+    DisplayHelp          "FV2ZQ3G4GC6WYZLSXBT6PL7WT3"
+    IconName             "TacticalArrow_Slow.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P4234428342"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_StickyArrow_Blaster
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

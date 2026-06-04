@@ -1,0 +1,146 @@
+#*********************************************************#
+# Power: Pets > Beast Howler Wolf 3 > Feral Charge        #
+# Info:  Melee, Moderate DMG(Smash), Foe -Def, Knockdown  #
+#*********************************************************#
+
+Power Mastermind_Pets.Howler_Wolf_3.Throat_Bite
+{
+    Name                 "Throat_Bite"                 
+    DisplayName          "P2538644110"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    PreferenceMultiplier 3
+    TimeToActivate       1.4
+    TimeToRoot           1.4
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    ChainIntoPower       Mastermind_Pets.Howler_Wolf_3.PM_Throat_Bite
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_Wolf_FeralCharge.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_Wolf_FeralCharge.pfx
+    DisplayShortHelp     "K7QAFN234P89YGVNRCL8DVQVA3"
+    DisplayHelp          "95DK7FQLATRZWYNRNNDF8HFJKX"
+    IconName             "BeastMastery_PetThroatBite.tga"
+    DisplayTargetShortHelp "P3100956268"
+    DisplayTargetHelp    "P2183607626"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 0.8000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.6000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.6000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CritActive"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.8200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,39 @@
+Power Brute_Melee.Titan_Weapons.Crushing_Blow
+{
+    Name                 "Crushing_Blow"               
+    DisplayName          "P775678673"
+    BuyRequires          Brute_Defense.Shield_Defense !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                9
+    EnduranceCost        8.7838
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TitanWeapon_CrushingBlow_Slow.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TitanWeapon_CrushingBlow_Slow.PFX
+    DisplayShortHelp     "HZP5KUT82U3PWMMJC9KJTCKFZZ"
+    DisplayHelp          "45JCQMJJYNWZYJNMDN22GG79AW"
+    IconName             "TitanWeapons_CrushingBlow.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Titan_Weapons_Brute.Crushing_Blow_Fast
+        Requires kFastMode source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Titan_Weapons_Brute.Crushing_Blow_Slow
+        Requires 1
+    }
+    
+}

@@ -1,0 +1,75 @@
+PowerSet Widow_Training.Widow_Training
+{
+    Name "Widow_Training"
+    DisplayName "P759289431"
+    DisplayShortHelp "P2278903469"
+    DisplayHelp "P2380610307"
+    CostumeKeys CustomWeapon_ArachnosClawsRight CustomWeapon_ArachnosClawsLeft
+    CostumeParts ArachnosClawsLeft_Default ArachnosClawsRight_Default
+    IconName "Widow_Training_set.ico"
+
+    Powers Widow_Training.Widow_Training.Poison_Dart
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Widow_Training.Swipe
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Widow_Training.Lunge
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Widow_Training.Dart_Burst
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Widow_Training.Follow_Up
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Widow_Training.Spin
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Widow_Training.Strike
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Widow_Training.Confront
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

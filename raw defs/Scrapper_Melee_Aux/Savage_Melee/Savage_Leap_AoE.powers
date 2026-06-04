@@ -1,0 +1,242 @@
+Power Scrapper_Melee_Aux.Savage_Melee.Savage_Leap_AoE
+{
+    Name                 "Savage_Leap_AoE"             
+    DisplayName          "P2494344335"
+    BuyRequires          0
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                1000
+    TargetSecondary      kPosition
+    RechargeTime         40
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/SavageMelee_SavageLeapAoE.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/SavageMelee_SavageLeapAoE.pfx
+    DisplayShortHelp     "3KMRE9N3RBJXWAC96BNTXE3SGZ"
+    DisplayHelp          "8G97L8CMSXLEYFL56MXVP2P8KX"
+    IconName             "SavageMelee_SavageLeap.tga"
+    MaxTargetsHit        10
+    Free                 kTrue
+    DisplayTargetShortHelp "P2103286178"
+    DisplayTargetHelp    "P2734086620"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.8450
+            MagnitudeExpr distance 25 - 0 40 minmax 40 / 1 + @StdResult *
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.0680
+            Duration 3.1000
+            MagnitudeExpr distance 25 - 0 40 minmax 40 / 1 + @StdResult *
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "CritSmall" "ScrapperCrit_AoE"
+            Chance 0.0500
+            Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 0.8450
+                MagnitudeExpr distance 25 - 0 40 minmax 40 / 1 + @StdResult *
+                Magnitude 1.0000
+                Delay 0.1000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritLarge" "ScrapperCrit_AoE"
+            Chance 0.1000
+            Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 0.8450
+                MagnitudeExpr distance 25 - 0 40 minmax 40 / 1 + @StdResult *
+                Magnitude 1.0000
+                Delay 0.1000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.2500
+            MagnitudeExpr distance 25 - 0 40 minmax 40 / 1 + @StdResult *
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.0201
+            Duration 3.1000
+            MagnitudeExpr distance 25 - 0 40 minmax 40 / 1 + @StdResult *
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "CritPlayer" "ScrapperCrit_AoE"
+            Chance 0.1000
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.2500
+                MagnitudeExpr distance 25 - 0 40 minmax 40 / 1 + @StdResult *
+                Magnitude 1.0000
+                Delay 0.1000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.3800
+            MagnitudeExpr distance 25 - 0 40 minmax 40 / 1 + @StdResult *
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

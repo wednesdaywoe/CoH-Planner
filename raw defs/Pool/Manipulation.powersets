@@ -1,0 +1,49 @@
+PowerSet Pool.Manipulation
+{
+    Name "Manipulation"
+    DisplayName "P2416027123"
+    DisplayShortHelp "P2416027123"
+    DisplayHelp "P408603072"
+    IconName "Manipulation_set.ico"
+
+    Powers Pool.Manipulation.Challenge
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Manipulation.Provoke
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Manipulation.Intimidate
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Manipulation.Invoke_Panic
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Manipulation.Unrelenting
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

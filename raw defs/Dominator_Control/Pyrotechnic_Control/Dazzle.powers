@@ -1,0 +1,251 @@
+Power Dominator_Control.Pyrotechnic_Control.Dazzle
+{
+    Name                 "Dazzle"                      
+    DisplayName          "APNQLGL9VDBMWZLZU7VLV8PN9S"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Dazzle.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Dazzle.pfx
+    DisplayShortHelp     "KEBDGB6YUGP2Y4NMQKTWKYF3XX"
+    DisplayHelp          "KG69D9XX8GVPYVZ4JQYL4S73WS"
+    IconName             "Pyrotechnic_Dazzle"
+    DisplayTargetShortHelp "YG7RN34ZGNALY5XW7GQRVHDTY2"
+    DisplayTargetHelp    "YFSBCKBAMW7BW3Z93FQLT8NVYS"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 12.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_SonicStun
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.3134
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.3134
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 18.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "SDG9VDYPNMVUYCCXQHCXLRHPS2"
+                DisplayVictimHit "N5ZZQ384R93HYPC57YDKTK9S3Z"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "SDG9VDYPNMVUYCCXQHCXLRHPS2"
+                DisplayVictimHit "N5ZZQ384R93HYPC57YDKTK9S3Z"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_SonicStun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.4000
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Messages
+            {
+                DisplayInfo "H8TWX2CPU4C2WZZ8WJRC2GLGTW"
+            }
+            
+            Params Power
+            {
+                Power Redirects.Pyrotechnic_Control.Blast_Off
+            }
+            
+        }
+    }
+}

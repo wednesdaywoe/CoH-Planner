@@ -1,0 +1,74 @@
+Power Temporary_Powers.Temporary_Powers.Pandora_Proc
+{
+    Name                 "Pandora_Proc"                
+    DisplayName          "P3265676552"
+    ModesDisallowed      kDisable_All
+    Type                 kGlobalBoost
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kScience_Boost, kTechnology_Boost, kMagic_Boost, kMutation_Boost, kNatural_Boost, kDamage_Boost
+    IgnoreStrength       kTrue
+    BoostIgnoreEffectiveness kTrue
+    BoostCombinable      kFalse
+    DisplayShortHelp     "Y6N7WZDWQTFMW5M36UUD73PLDZ"
+    DisplayHelp          "ALBJRUU3USD4W7CTLDVMRU2FZZ"
+    IconName             "BaneSpider_PoisonousRay.tga"
+    DoNotSave            kTrue
+    Free                 kTrue
+    DisplayTargetShortHelp "P1248076475"
+
+
+    Effect
+    {
+        Tag "Damage"
+        Chance 0.3300
+        Requires target.isFriend? ! temporary_powers.temporary_powers.Pandora_Buff source.ownPowerNum? 29 > &&
+    
+        AttribMod
+        {
+            Attrib kSpecial
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P943663967"
+                DisplayVictimHit "P4055702145"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires target.isFriend? !
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Type kExpression
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            MagnitudeExpr Temporary_Powers.Temporary_Powers.Pandora_Buff source.ownPowerNum? -.03 * @StdResult *
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance StackExactPower
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+}

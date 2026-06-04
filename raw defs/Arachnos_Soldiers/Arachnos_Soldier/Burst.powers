@@ -1,0 +1,39 @@
+Power Arachnos_Soldiers.Arachnos_Soldier.Burst
+{
+    Name                 "Burst"                       
+    DisplayName          "P3170865076"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_Burstfire_Switchboard.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_Burstfire_Switchboard.pfx
+    DisplayShortHelp     "STB7LVZCBDH6WNLJERFJLYXXYZ"
+    DisplayHelp          "RY9XMHAK8HT9W7ZWA3VN2JJ4EA"
+    IconName             "ArachnosSoldier_Burst.tga"
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P2714801799"
+
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Crab_Burst
+        Requires @CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Wolf_Burst
+        Requires 1
+    }
+    
+}

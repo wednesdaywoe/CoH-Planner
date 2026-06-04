@@ -1,0 +1,63 @@
+Power Temporary_Powers.Temporary_Powers.HM_LGTF_MeleePrescience
+{
+    Name                 "HM_LGTF_MeleePrescience"     
+    DisplayName          "2WG5KMZ9WLN8YKVLKTVQZVN7B2"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    ProcAllowed          kNone
+    DisplayShortHelp     "4MZSAT5TEWXFWANW2U3YYAZ7EW"
+    DisplayHelp          "4Y9XZ92GFTP8W3C9UY48GD9D5Z"
+    IconName             "Rikti_Melee_Prescience.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    DisplayTargetShortHelp "N8G3ASL642LCYBM8EUCLTK6YZZ"
+    DisplayTargetHelp    "VZTNUW9C4YHSYWNNYZ3V72A8LW"
+    NumAllowed           20
+
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kMelee_Attack
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale -1.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kMelee_Attack
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale -0.2500
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

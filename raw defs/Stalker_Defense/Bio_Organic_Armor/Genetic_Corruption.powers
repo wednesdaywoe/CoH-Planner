@@ -1,0 +1,268 @@
+Power Stalker_Defense.Bio_Organic_Armor.Genetic_Corruption
+{
+    Name                 "Genetic_Corruption"          
+    DisplayName          "P1520465567"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kPsionic_Attack
+    EntsAffected         kFoe, kCaster
+    EntsAutoHit          kFoe, kCaster
+    Target               kCaster
+    EnduranceCost        2.08
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         4
+    ActivatePeriod       4
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kSleep_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > && kMeter source> .9 < &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\SymbioticArmor_GeneticCorruption.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\SymbioticArmor_GeneticCorruption.PFX
+    DisplayShortHelp     "P3767502500"
+    DisplayHelp          "PCTQ2C4YUN9PYAZ62FMAKMZ3GQ"
+    IconName             "BioOrganicArmor_GeneticCorruption.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P118791785"
+    DisplayTargetHelp    "P1668981426"
+
+
+    Effect
+    {
+        Tag "NormalDebuffGC"
+        Chance 0.6600
+        Requires enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation source.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 6.0000
+            Magnitude 2.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/SleepContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "NormalDebuffGC"
+        Chance 0.6600
+        Requires enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation source.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/SleepContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "OffensiveAdaptationGC"
+        Chance 0.8500
+        Requires enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation source.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 6.0000
+            Magnitude 2.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/SleepContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "OffensiveAdaptationGC"
+        Chance 0.8500
+        Requires enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation source.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/SleepContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires entref target> entref source> eq kRestedAdaptation source.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 4.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires entref target> entref source> eq kDefensiveAdaptation source.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.7500
+            Duration 4.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFire kCold kEnergy kNegative_Energy kPsionic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 1.0000
+            Duration 4.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires entref target> entref source> eq ! kDefensiveAdaptation source.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Debuff_Dam"
+            Scale 1.5000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires entref target> entref source> eq ! kDefensiveAdaptation source.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Debuff_Dam"
+            Scale 1.9950
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

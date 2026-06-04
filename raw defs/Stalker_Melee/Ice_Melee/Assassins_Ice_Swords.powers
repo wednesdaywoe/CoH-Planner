@@ -1,0 +1,43 @@
+Power Stalker_Melee.Ice_Melee.Assassins_Ice_Swords
+{
+    Name                 "Assassins_Ice_Swords"        
+    DisplayName          "P1328254383"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3.67
+    TimeToRoot           1.2
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        kDD_StatusMode_1 Mode? kDD_BonusAoEMode_1 Mode? || temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 == ||
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerMelee_IceMelee_AssassinsStrike.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerMelee_IceMelee_AssassinsStrike.pfx
+    DisplayShortHelp     "DXY8GFT6MGZJW9ZQGBKQVYT4FW"
+    DisplayHelp          "YASFBTH7RRRSYTZMVVKFGK7QUQ"
+    IconName             "IcyOnslaught_Assassin.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Ice_Melee_Assassins_Frost.Assassins_Frost_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Ice_Melee_Assassins_Frost.Assassins_Frost_Stealth
+        Requires 1
+    }
+    
+}

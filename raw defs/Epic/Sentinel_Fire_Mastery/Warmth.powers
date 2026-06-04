@@ -1,0 +1,52 @@
+#**************************************#
+# Power: Epic > Fire Mastery > Warmth  #
+# Info:  PBAoE, Team +Heal             #
+#**************************************#
+
+Power Epic.Sentinel_Fire_Mastery.Warmth
+{
+    Name                 "Warmth"                      
+    DisplayName          "P2367202029"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       2.03
+    RechargeTime         32
+    EffectArea           kSphere
+    Radius               25
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ThermalRadiation_Warmth.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ThermalRadiation_Warmth.PFX
+    DisplayShortHelp     "P1906443399"
+    DisplayHelp          "T2VAJM72R3ZJYSZA8X76ZUMZ2W"
+    IconName             "FireTrap_Heal"
+    MaxTargetsHit        255
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

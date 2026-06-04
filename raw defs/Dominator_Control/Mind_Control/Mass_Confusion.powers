@@ -1,0 +1,167 @@
+Power Dominator_Control.Mind_Control.Mass_Confusion
+{
+    Name                 "Mass_Confusion"              
+    DisplayName          "P603284719"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               25
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kConfuse_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_MindControl_MassConfusion.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_MindControl_MassConfusion.PFX
+    DisplayShortHelp     "P2684033640"
+    DisplayHelp          "88DFQMSP3PLAWQCPR8Q6YN3GRW"
+    DisplayAttackerHit   "P2335000104"
+    DisplayVictimHit     "P3385848054"
+    IconName             "MentalControl_Confuse.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1116895679"
+    DisplayTargetHelp    "P4213198885"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 20.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+        
+            AttribMod
+            {
+                Attrib kConfused
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Immobilize"
+                Scale 30.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "ECHGVYJ4Z6HKYSX334AD7P9YXA"
+                    DisplayVictimHit "PL79DDUJGCRWYCCWL82FRPG54W"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Confused 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+        
+            AttribMod
+            {
+                Attrib kConfused
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Confused 15 WhenInactive
+                Flags IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "ECHGVYJ4Z6HKYSX334AD7P9YXA"
+                    DisplayVictimHit "PL79DDUJGCRWYCCWL82FRPG54W"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 14.5000
+            Delay 2.1000
+            StackType kStack
+            Flags IgnoreCombatMods NoHitDelay NoProjectileDelay AdjustTimer
+            Params Power
+            {
+                Power Dominator_Control.Mind_Control.Mass_Confusion
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,49 @@
+PowerSet Pool.Teleportation
+{
+    Name "Teleportation"
+    DisplayName "P1190958607"
+    DisplayShortHelp "P1190958607"
+    DisplayHelp "P3277815516"
+    IconName "Teleportation_set.ico"
+
+    Powers Pool.Teleportation.Recall_Friend
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Teleportation.Teleport_Foe
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Teleportation.Teleport
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Teleportation.Team_Teleport
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Teleportation.Long_Range_Teleport
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

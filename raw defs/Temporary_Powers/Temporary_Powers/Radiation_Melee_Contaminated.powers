@@ -1,0 +1,63 @@
+Power Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated
+{
+    Name                 "Radiation_Melee_Contaminated"
+    DisplayName          "P3767211900"
+    BuyRequires          accesslevel char> 0 >=
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    LifeTime             10
+    StackingUsage        kTrue
+    MaxLifeTime          15
+    DisplayShortHelp     "P3767211900"
+    DisplayHelp          "P3080516449"
+    IconName             "RadiationMelee_Contaminated.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.0100
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX POWERS\RadiationControl\EnervatingFieldContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated_Imunity
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,108 @@
+Power Warshade_Offensive.Umbral_Blast.Dark_Nova_Bolt
+{
+    Name                 "Dark_Nova_Bolt"              
+    DisplayName          "P3505323644"
+    BuyRequires          Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Bolt ! &&
+    ModesRequired        kWarshade_Blaster_Mode
+    ModesDisallowed      kDisable_All, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                100
+    EnduranceCost        3.12
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         1.5
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1011
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Blaster_NightBolt.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Blaster_NightBolt.pfx
+    DisplayShortHelp     "P3090539366"
+    DisplayHelp          "JNPDM6A4KRWRYVX8BWYMF2F6R2"
+    IconName             "UmbralBlast_ShadowBolt.tga"
+    Free                 kTrue
+    AutoIssue            kTrue
+    DisplayTargetShortHelp "P1490875287"
+    DisplayTargetHelp    "P2951545758"
+
+
+    Effect
+    {
+        Tag "SSDamage"
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_InherentDamage"
+            Scale 0.6000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 3.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 3.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Tag "SSDamage"
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_InherentDamage"
+            Scale 1.8120
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+}

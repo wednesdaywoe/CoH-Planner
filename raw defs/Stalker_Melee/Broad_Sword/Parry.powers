@@ -1,0 +1,231 @@
+#*****************************************************#
+# Power: Melee > Broad Sword > Parry                  #
+# Info:  Melee, DMG(Lethal), Self +DEF(Melee,Lethal)  #
+#*****************************************************#
+
+Power Stalker_Melee.Broad_Sword.Parry
+{
+    Name                 "Parry"                       
+    DisplayName          "P504284770"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        4.368
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         3
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kBuff_Defense_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\Sword_Parry_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Sword_Parry_NoGeo.pfx
+    DisplayShortHelp     "A2EAJWQ7GP6VWQBGSKND4B3YM2"
+    DisplayHelp          "E2XKAD2QBGDPW3BLWWTQP8A2UQ"
+    IconName             "Sword_Parry.tga"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.8400
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StealthCrit"
+            Chance 0.5000
+            Requires kMeter source> 0 >
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 0.8400
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "ASTeamCrit"
+            Chance 0.0700
+            Requires kMeter source> .9 <
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 0.8400
+                Magnitude 1.0000
+                StackType kStack
+                Flags HideZero
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.4510
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StealthCrit"
+            Requires kMeter source> 0 >
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.4510
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.2000
+            Requires kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || &&
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.4510
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kMelee_Attack kLethal_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 2.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDefContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.6500
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3511654510"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Assassins_Focus
+            }
+            
+        }
+    }
+}

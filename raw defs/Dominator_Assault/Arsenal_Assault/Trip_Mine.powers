@@ -1,0 +1,50 @@
+Power Dominator_Assault.Arsenal_Assault.Trip_Mine
+{
+    Name                 "Trip_Mine"                   
+    DisplayName          "P466688635"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        18.512
+    TimeToActivate       1.93
+    TimeToRoot           1.93
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    IgnoreStance         kTrue
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Assault_Armed_Assault_Trip_Mine.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Assault_Armed_Assault_Trip_Mine.pfx
+    DisplayShortHelp     "KGEW4U9GH3FPYDNRNWDEX74ELA"
+    DisplayHelp          "V2HHYS6C5AXRY4MD7ZC4B8CZ4S"
+    IconName             "AssaultWeapons_TripMine"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 170.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Mine"
+                PriorityList "PL_Untargetable_FightPreferRanged"
+                Power Pets.Trip_Mine_Dominator.TripMine_Resistance
+                Power Pets.Trip_Mine_Dominator.TripMine_Info
+            }
+            
+        }
+    }
+}

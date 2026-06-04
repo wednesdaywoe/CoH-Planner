@@ -1,0 +1,65 @@
+Power Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing
+{
+    Name                 "StormBlast_StormBrewing"     
+    DisplayName          "6PT3TWW6THTJWXBP8EVVKEU6CA"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       999
+    EffectArea           kCharacter
+    AIReport             kNever
+    LifeTime             30
+    IgnoreStrength       kTrue
+    StrengthsDisallowed  kRange
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "MCXCBTHJZM2LWAVQ7LM4DS66XZ"
+    IconName             "StormBlast_StormCell.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    NumAllowed           5
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1750
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kRefreshToCount
+            StackLimit 5
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag StormBrewing
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0100
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStackThenIgnore
+            StackLimit 5
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag IncreaseStormStrength
+            }
+        }
+    }
+}

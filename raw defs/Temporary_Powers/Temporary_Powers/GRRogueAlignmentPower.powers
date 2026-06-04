@@ -1,0 +1,104 @@
+Power Temporary_Powers.Temporary_Powers.GRRogueAlignmentPower
+{
+    Name                 "GRRogueAlignmentPower"       
+    DisplayName          "P2326007375"
+    ModesDisallowed      kArena, kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        9.75
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         180
+    EffectArea           kSphere
+    Radius               15
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\AlignmentPower_Duplicity.pfx"
+    include              menu\Powers\AnimFX\AlignmentPower_Duplicity.pfx
+    DisplayShortHelp     "P1111895396"
+    DisplayHelp          "28N5XKDJXN74YDL92EJJHCGL3Z"
+    IconName             "AlignmentPower_Duplicity.tga"
+    MaxTargetsHit        10
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P1116895679"
+    DisplayTargetHelp    "P257850452"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 10.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kStack
+            Suppress Confused 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.1000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

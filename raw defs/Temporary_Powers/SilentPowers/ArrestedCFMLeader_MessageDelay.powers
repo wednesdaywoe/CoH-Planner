@@ -1,0 +1,48 @@
+Power Temporary_Powers.SilentPowers.ArrestedCFMLeader_MessageDelay
+{
+    Name                 "ArrestedCFMLeader_MessageDelay"
+    DisplayName          "P4075819195"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    LifeTime             86400
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P2030045667"
+    DisplayHelp          "P2030045667"
+    IconName             "Inherent_BlasterDesperation.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+
+
+    Effect
+    {
+        Requires ArrestedCFMLeader source.tokenOwned?
+    
+        AttribMod
+        {
+            Attrib kReward
+            Aspect kCur
+            ApplicationType kOnExpire
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Reward
+            {
+                Reward ArrestedCFMLeader_Message
+            }
+            
+        }
+    }
+}

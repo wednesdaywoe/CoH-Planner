@@ -1,0 +1,41 @@
+PowerSet Mastermind_Pets.Skeleton
+{
+    Name "Skeleton"
+    DisplayName "AFQ9SYF7J9E8WVVWCMZVFVVXLS"
+    DisplayShortHelp "P3240964949"
+    DisplayHelp "P1902266804"
+    IconName "Skeleton_set.ico"
+
+    Powers Mastermind_Pets.Skeleton.Hack
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Skeleton.Slash
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Skeleton.Dark_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Skeleton.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

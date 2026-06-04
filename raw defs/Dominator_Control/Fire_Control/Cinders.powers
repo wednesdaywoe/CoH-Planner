@@ -1,0 +1,182 @@
+Power Dominator_Control.Fire_Control.Cinders
+{
+    Name                 "Cinders"                     
+    DisplayName          "P3475731785"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        8.528
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_FireControl_Cinders.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_FireControl_Cinders.PFX
+    DisplayShortHelp     "P646414368"
+    DisplayHelp          "Q9VDHJV9TSHFWEXC6JXC9QFM4A"
+    IconName             "FireTrap_Cinders.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3220742713"
+    DisplayTargetHelp    "P3466769997"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 12.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "SDG9VDYPNMVUYCCXQHCXLRHPS2"
+                DisplayVictimHit "N5ZZQ384R93HYPC57YDKTK9S3Z"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Domination"
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "SDG9VDYPNMVUYCCXQHCXLRHPS2"
+                DisplayVictimHit "N5ZZQ384R93HYPC57YDKTK9S3Z"
+                DisplayFloat "P2610687982"
+                DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 14.5000
+            Delay 1.1000
+            StackType kStack
+            Flags IgnoreCombatMods NoHitDelay NoProjectileDelay AdjustTimer
+            Params Power
+            {
+                Power Dominator_Control.Fire_Control.Cinders
+            }
+            
+        }
+    }
+}

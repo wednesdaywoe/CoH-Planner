@@ -1,0 +1,81 @@
+PowerSet Defender_Buff.Sonic_Debuff
+{
+    Name "Sonic_Debuff"
+    DisplayName "P565143336"
+    DisplayShortHelp "P565143336"
+    DisplayHelp "P1603931228"
+    IconName "Sonic_Debuff_set.ico"
+
+    Powers Defender_Buff.Sonic_Debuff.Sonic_Siphon
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Sonic_Debuff.Sonic_Barrier
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Sonic_Debuff.Sonic_Haven
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Sonic_Debuff.Sonic_Cage
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Sonic_Debuff.Disruption_Field
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Sonic_Debuff.Sonic_Dispersion
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Sonic_Debuff.Sonic_Repulsion
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Sonic_Debuff.Clarity
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Sonic_Debuff.Liquefy
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

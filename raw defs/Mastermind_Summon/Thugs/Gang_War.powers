@@ -1,0 +1,409 @@
+#***********************************#
+# Power: Summon > Thugs > Gang War  #
+# Info:  Summon Posse               #
+#***********************************#
+
+Power Mastermind_Summon.Thugs.Gang_War
+{
+    Name                 "Gang_War"                    
+    DisplayName          "P2038123334"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    EnduranceCost        13
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         300
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    IgnoreStrength       kTrue
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    HighlightEval        kGangWar Mode?
+    HighlightRing        192 192 0 255
+    VisualFX             "menu\Powers\AnimFX\Mastermind_Thugs_Summon_Thugs.pfx"
+    include              menu\Powers\AnimFX\Mastermind_Thugs_Summon_Thugs.pfx
+    DisplayShortHelp     "P3619002621"
+    DisplayHelp          "P3374995273"
+    IconName             "Thugs_TargetedSummonMob.tga"
+    ShowBuffIcon         kFalse
+
+
+    ActivationEffect
+    {
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_01
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 0.5000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_02
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 1.5000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_03
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 2.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_04
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 3.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_05
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 3.5000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_06
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StreetCred"
+            Chance 0.7500
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 4.5000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_07
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StreetCred"
+            Chance 0.7500
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 5.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_08
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StreetCred"
+            Chance 0.5000
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 5.5000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_09
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StreetCred"
+            Chance 0.5000
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_02
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StreetCred"
+            Chance 0.2500
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 2.5000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_04
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StreetCred"
+            Chance 0.1000
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 4.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_06
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StreetCred"
+            Chance 0.1000
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude 1.0000
+                Delay 6.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_09
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Delay 1.0000
+        
+            AttribMod
+            {
+                Attrib kCancelMods
+                Aspect kStr
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Params EffectFilter
+                {
+                    Tag StreetCredCancel
+                }
+            }
+        
+            AttribMod
+            {
+                Attrib kCancelMods
+                Aspect kStr
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Params EffectFilter
+                {
+                    Tag StreetCred1
+                }
+            }
+        
+            AttribMod
+            {
+                Attrib kCancelMods
+                Aspect kStr
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Params EffectFilter
+                {
+                    Tag StreetCred2
+                }
+            }
+        
+            AttribMod
+            {
+                Attrib kCancelMods
+                Aspect kStr
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Params EffectFilter
+                {
+                    Tag StreetCred3
+                }
+            }
+        }
+    }
+}

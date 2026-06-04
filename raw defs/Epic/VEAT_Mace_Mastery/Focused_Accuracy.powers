@@ -1,0 +1,110 @@
+Power Epic.VEAT_Mace_Mastery.Focused_Accuracy
+{
+    Name                 "Focused_Accuracy"            
+    DisplayName          "P172602630"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         30
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_MaceMastery_ShatterArmor.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_MaceMastery_ShatterArmor.pfx
+    DisplayShortHelp     "XUMJKU48V9K9W8LZ7L2JKD2A2S"
+    DisplayHelp          "PSNDP6TSUGYYWDMSC24Q4NX5QQ"
+    IconName             "Arachnos_Patron_TargetedDeBuffDefense.tga"
+    DisplayTargetShortHelp "P3450006853"
+    DisplayTargetHelp    "P1225687354"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 2.7600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 3.2310
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Res_Dmg"
+            Scale -2.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+}

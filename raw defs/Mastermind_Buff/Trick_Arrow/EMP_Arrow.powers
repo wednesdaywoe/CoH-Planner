@@ -1,0 +1,69 @@
+Power Mastermind_Buff.Trick_Arrow.EMP_Arrow
+{
+    Name                 "EMP_Arrow"                   
+    DisplayName          "P993615740"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                70
+    EnduranceCost        23.4
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         300
+    EffectArea           kLocation
+    Radius               35
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRecovery_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\TrickArrow_EMP_NoGeo.pfx"
+    include              menu\Powers\AnimFX\TrickArrow_EMP_NoGeo.pfx
+    DisplayShortHelp     "P2458771441"
+    DisplayHelp          "W5MV73ZLFHYKWNBVGXSVUATNMS"
+    IconName             "TrickArrow_Stun.tga"
+    MaxTargetsHit        16
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P799513638"
+    DisplayTargetHelp    "P3549109959"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume PseudoPet
+            Params EntCreate
+            {
+                DisplayName "EMP Field"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Trick_Arrow.EMP_Arrow
+                Power Redirects.Trick_Arrow.EMP_Arrow_Fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Trick_Arrow.EMP_Arrow_Burst
+            }
+            
+        }
+    }
+}

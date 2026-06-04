@@ -1,0 +1,46 @@
+Power Arachnos_Soldiers.Arachnos_Soldier.Frag_Grenade
+{
+    Name                 "Frag_Grenade"                
+    DisplayName          "P3315981163"
+    BuyRequires          Arachnos_Soldiers.Crab_Spider_Soldier.CS_Frag_Grenade !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.184
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_FragGrenade_Switchboard.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_FragGrenade_Switchboard.pfx
+    DisplayShortHelp     "A7ZAPEG2GANSYKXPVRKYX6WSY2"
+    DisplayHelp          "36PNXMMMAEE2YXMNTS4YW4MYQA"
+    IconName             "ArachnosSoldier_FragGrenade.tga"
+    MaxTargetsHit        10
+
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Crab_Frag_Grenade
+        Requires @CustomFX Crabpack eq Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Bane_Frag_Grenade
+        Requires @CustomFX NullifierMace eq Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor source.ownPower? &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Wolf_Frag_Grenade
+        Requires 1
+    }
+    
+}

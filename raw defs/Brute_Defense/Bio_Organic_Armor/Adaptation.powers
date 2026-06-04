@@ -1,0 +1,466 @@
+Power Brute_Defense.Bio_Organic_Armor.Adaptation
+{
+    Name                 "Adaptation"                  
+    DisplayName          "P825726357"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.26
+    TimeToActivate       2.93
+    TimeToRoot           2.93
+    RechargeTime         10
+    ActivatePeriod       1
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost, kTaunt_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\SymbioticArmor_EvolvingArmor.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\SymbioticArmor_EvolvingArmor.PFX
+    DisplayShortHelp     "P1440387098"
+    DisplayHelp          "JYNU5ZDTTT46WULT2QCXYGPUW3"
+    DisplayAttackerHit   "P101816504"
+    IconName             "BioOrganicArmor_Evolution.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+        Requires kOffensiveAdaptation source.Mode? ! kDefensiveAdaptation source.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Debuff_Res_Dmg"
+            Scale -1.0000
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kRestedAdaptation source.Mode?
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0600
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0300
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Requires kOffensiveAdaptation source.Mode?
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Debuff_Res_Dmg"
+            Scale -1.3300
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire kCold kEnergy kNegative_Energy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.3750
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.3000
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.5000
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kFire kCold kEnergy kNegative_Energy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.0380
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.0300
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.0500
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Requires kDefensiveAdaptation source.Mode?
+    
+        AttribMod
+        {
+            Attrib kFire kCold kEnergy kNegative_Energy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.1125
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.0900
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.1500
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kFire kCold kEnergy kNegative_Energy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.0114
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.0090
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.0150
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing_Attack kLethal_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.3750
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.2800
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.2000
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing_Attack kLethal_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.0450
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.0336
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.0240
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Tag "Taunt"
+    
+        Effect
+        {
+            Tag "StealthOn"
+            Requires Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&
+        
+            AttribMod
+            {
+                Attrib kTaunt
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_InherentTaunt"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kReplace
+                Flags CancelOnMiss
+            }
+        }
+    
+        Effect
+        {
+            Tag "StealthOn"
+            Requires Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&
+        
+            AttribMod
+            {
+                Attrib kTaunt
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_InherentTaunt"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kReplace
+                Flags CancelOnMiss
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "InherentTaunt"
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Inherents.Fury_Proc_Aura
+            }
+            
+        }
+    }
+}

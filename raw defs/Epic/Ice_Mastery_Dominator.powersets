@@ -1,0 +1,49 @@
+PowerSet Epic.Ice_Mastery_Dominator
+{
+    Name "Ice_Mastery_Dominator"
+    DisplayName "P3578212861"
+    DisplayShortHelp "P3578212861"
+    DisplayHelp "P2719733964"
+    IconName "Ice_Mastery_Dominator_set.ico"
+
+    Powers Epic.Ice_Mastery_Dominator.Ice_Blast
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Ice_Mastery_Dominator.Hibernate
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Ice_Mastery_Dominator.Frozen_Armor
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Ice_Mastery_Dominator.Frost_Breath
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Ice_Mastery_Dominator.Ice_Storm
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

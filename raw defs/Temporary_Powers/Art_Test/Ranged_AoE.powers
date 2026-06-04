@@ -1,0 +1,46 @@
+Power Temporary_Powers.Art_Test.Ranged_AoE
+{
+    Name                 "Ranged_AoE"                  
+    DisplayName          "P2670833372"
+    BuyRequires          accesslevel char> 9 >
+    ActivateRequires     accesslevel char> 9 >
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    TimeToActivate       1.2
+    TimeToRoot           1.2
+    RechargeTime         4
+    EffectArea           kSphere
+    Radius               15
+    IgnoreAttackTimeErrors floyd
+    DisplayShortHelp     "P2670833372"
+    DisplayHelp          "XDQVEEHJW5N8YBLHJ2822XUMPX"
+    IconName             "FireBlast_FireBall.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+        Requires accesslevel source> 9 >
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P793036068"
+                DisplayVictimHit "P834484945"
+            }
+            
+        }
+    }
+}

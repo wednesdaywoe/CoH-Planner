@@ -1,0 +1,57 @@
+Power Defender_Buff.Storm_Summoning.Fog
+{
+    Name                 "Fog"                         
+    DisplayName          "P1603587547"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        18.2
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         60
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_StormSummoning_Fog.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_StormSummoning_Fog.PFX
+    DisplayShortHelp     "P1355298513"
+    DisplayHelp          "MJA7V54QZYAWYGMNHQCA9A53CW"
+    IconName             "StormSummoning_FreezingRain.tga"
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P3124605688"
+    DisplayTargetHelp    "P3768531935"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts CopyCreatorMods PseudoPet
+            Messages
+            {
+                DisplayAttackerHit "P1985334123"
+            }
+            
+            Params EntCreate
+            {
+                DisplayName "Freezing Rain"
+                PriorityList "PL_StaticObject"
+                Power Pets.Freezing_Rain.FreezingRain
+                Power Pets.Freezing_Rain.Avoid
+            }
+            
+        }
+    }
+}

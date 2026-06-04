@@ -1,0 +1,53 @@
+#**************************************************************#
+# Power: Pets > Demons Ember Demon 3 > Abyssal Reconstruction  #
+# Info:  PBAoE, Demon Ally +Heal                               #
+#**************************************************************#
+
+Power Mastermind_Pets.Ember_Demon_3.Abyssal_Reconstruction
+{
+    Name                 "Abyssal_Reconstruction"      
+    DisplayName          "P2914187562"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kHealAlly
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        13
+    PreferenceMultiplier 5
+    TimeToActivate       2.03
+    RechargeTime         25
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kEnduranceDiscount_Boost, kHeal_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon3_AbyssalReconstruction.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon3_AbyssalReconstruction.pfx
+    DisplayShortHelp     "P3303876414"
+    DisplayHelp          "P1933064047"
+    IconName             "ThermalRadiation_Warmth.tga"
+    MaxTargetsHit        7
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

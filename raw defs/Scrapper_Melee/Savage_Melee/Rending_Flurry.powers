@@ -1,0 +1,43 @@
+Power Scrapper_Melee.Savage_Melee.Rending_Flurry
+{
+    Name                 "Rending_Flurry"              
+    DisplayName          "P858516965"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        13.52
+    TimeToActivate       2.17
+    TimeToRoot           2.17
+    RechargeTime         14
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    HighlightEval        Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker ownPowerNum? 5 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/SavageMelee_RendingFlurry.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/SavageMelee_RendingFlurry.pfx
+    DisplayShortHelp     "D442T6LQUW6SYNXH7VKJEV5DRX"
+    DisplayHelp          "YCTVKFSWFFUQY6V482RYC39QVA"
+    IconName             "SavageMelee_RendingFlurry.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2103286178"
+    DisplayTargetHelp    "P2734086620"
+
+    Redirect
+    {
+        Power Scrapper_Melee_Aux.Savage_Melee.Rending_Flurry_Large
+        Requires Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 ==
+    }
+    
+    Redirect
+    {
+        Power Scrapper_Melee_Aux.Savage_Melee.Rending_Flurry_Normal
+        Requires 1
+    }
+    
+}

@@ -1,0 +1,59 @@
+#*************************************************#
+# Power: Pets > Ninja Oni 3 > Rain of Fire        #
+# Info:  Ranged (Location AoE), DoT (Fire), -SPD  #
+#*************************************************#
+
+Power Mastermind_Pets.Oni_3.Rain_of_Fire
+{
+    Name                 "Rain_of_Fire"                
+    DisplayName          "P3251690108"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    EnduranceCost        26
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\Fire_Blast_RainOfFire.pfx"
+    include              menu\Powers\AnimFX\Fire_Blast_RainOfFire.pfx
+    DisplayShortHelp     "FBAPU3ZSQPC4WRZFQWWA7WVWTA"
+    DisplayHelp          "4X3UCCGRLFFJYAMFJUG6C77ARS"
+    IconName             "FireBlast_RainOfFire.tga"
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P3546334860"
+    DisplayTargetHelp    "P1437075981"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods KeepThroughDeath CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Oni's Rain of Fire"
+                PriorityList "PL_StaticObject"
+                Power Mastermind_Pets.Ninja_Pets.RainofFire
+                Power Mastermind_Pets.Ninja_Pets.Avoid
+            }
+            
+        }
+    }
+}

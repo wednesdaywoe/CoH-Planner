@@ -1,0 +1,206 @@
+#*****************************************************#
+# Power: Epic > Electricity Mastery > Shocking Field  #
+# Info:  Toggle: PBAoE, DoT(Energy), Foe -End         #
+#*****************************************************#
+
+Power Epic.Sentinel_Electricity_Mastery.Lightning_Field
+{
+    Name                 "Lightning_Field"             
+    DisplayName          "Q8UHECTW6MG8WLL2FYPW4VLPJX"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe, kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        1.04
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         20
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_ElectricityManipulation_LightningField.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_ElectricityManipulation_LightningField.PFX
+    DisplayShortHelp     "NMTRWNCQH8RFWTMSJ4Q6YK6AAX"
+    DisplayHelp          "E3HSSZLMCE2TW6C8TWC4UM8GX2"
+    IconName             "ElectricControl_LightningField.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1831456333"
+    DisplayTargetHelp    "P2516347203"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.0200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.1700
+                Duration 10.0000
+                Magnitude 1.0000
+                Period 2.1000
+                TickMultiplier 0.85
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "P59899910"
+                    DisplayVictimHit "P3210640873"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 0.1700
+                Duration 10.0000
+                Magnitude 1.0000
+                Period 2.1000
+                TickChance 0.0000
+                TickMultiplier 0.85
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "C9PYKVU83YLXY5VLF95X7QCKKS"
+                    DisplayVictimHit "2F2886DUMBDLYMLJJP7VTZCB6S"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_EndDrain"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.1700
+                Duration 10.0000
+                Magnitude 1.0000
+                Period 2.1000
+                TickMultiplier 0.85
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "P59899910"
+                    DisplayVictimHit "P3210640873"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.1700
+                Duration 10.0000
+                Magnitude 1.0000
+                Period 2.1000
+                TickChance 0.0000
+                TickMultiplier 0.85
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "C9PYKVU83YLXY5VLF95X7QCKKS"
+                    DisplayVictimHit "2F2886DUMBDLYMLJJP7VTZCB6S"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    }
+}

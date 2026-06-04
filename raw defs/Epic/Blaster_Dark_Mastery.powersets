@@ -1,0 +1,49 @@
+PowerSet Epic.Blaster_Dark_Mastery
+{
+    Name "Blaster_Dark_Mastery"
+    DisplayName "P3397489959"
+    DisplayShortHelp "P3397489959"
+    DisplayHelp "P1108646357"
+    IconName "Sentinel_Dark_Mastery_set.ico"
+
+    Powers Epic.Blaster_Dark_Mastery.Murky_Cloud
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Blaster_Dark_Mastery.Fearsome_Stare
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Blaster_Dark_Mastery.Possess
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Blaster_Dark_Mastery.Black_Hole
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Blaster_Dark_Mastery.Soul_Consumption
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

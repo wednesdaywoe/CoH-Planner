@@ -1,0 +1,211 @@
+#*********************************************************************#
+# Power: Ranged > Psychic Blast > Psionic Tornado                     #
+# Info:  Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback  #
+#*********************************************************************#
+
+Power Sentinel_Ranged.Psychic_Blast.Psionic_Tornado
+{
+    Name                 "Psionic_Tornado"             
+    DisplayName          "P1282813950"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                50
+    EnduranceCost        18.512
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         20
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Blaster_Ranged_Psychic_Blast_Psionic_Tornado.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Blaster_Ranged_Psychic_Blast_Psionic_Tornado.pfx
+    DisplayShortHelp     "P1737092425"
+    DisplayHelp          "QKKGKYX3HEJ9Y8LT9PFX7F4WE3"
+    IconName             "PsychicBlast_PsionicTornado.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P786987390"
+    DisplayTargetHelp    "P980783330"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Chance 0.5000
+        
+            AttribMod
+            {
+                Attrib kKnockup
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.4000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1780
+                Duration 4.1000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2287672660"
+                    DisplayVictimHit "P3092393664"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.1780
+                Duration 4.1000
+                Magnitude 1.0000
+                Period 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "EW78PELCT2HWYTZLN3F7GEE7T3"
+                    DisplayVictimHit "877FRJEF73RYYPV9AZ54HMXSJA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.3000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+            Chance 0.5000
+        
+            AttribMod
+            {
+                Attrib kKnockup
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.4000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.1241
+                Duration 4.1000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2287672660"
+                    DisplayVictimHit "P3092393664"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.1241
+                Duration 4.1000
+                Magnitude 1.0000
+                Period 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "EW78PELCT2HWYTZLN3F7GEE7T3"
+                    DisplayVictimHit "877FRJEF73RYYPV9AZ54HMXSJA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+}

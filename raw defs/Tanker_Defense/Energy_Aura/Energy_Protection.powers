@@ -1,0 +1,49 @@
+Power Tanker_Defense.Energy_Aura.Energy_Protection
+{
+    Name                 "Energy_Protection"           
+    DisplayName          "P1420895182"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "54BJKYX96R9MW8V74RYGME2UXA"
+    DisplayHelp          "QECDHJ3KUC3PWRVDG74676FRGW"
+    IconName             "EnergyAura_Protection.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 1.2500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight kRechargeTime
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

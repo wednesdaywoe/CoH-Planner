@@ -1,0 +1,76 @@
+Power Defender_Buff.Sonic_Debuff.Disruption_Field
+{
+    Name                 "Disruption_Field"            
+    DisplayName          "P2857326375"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFriend, kFoe
+    Target               kFriend
+    Range                70
+    EnduranceCost        0.26
+    TimeToActivate       2.7
+    TimeToRoot           2.7
+    RechargeTime         8
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               15
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_SonicDebuff_DisruptionField.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_SonicDebuff_DisruptionField.PFX
+    DisplayShortHelp     "P2877695354"
+    DisplayHelp          "GRNEY7FUBL8SYJNUYL78T7SUCA"
+    DisplayAttackerHit   "P2100668018"
+    IconName             "SonicDebuff_TeamDebuffDamRes.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3466742994"
+    DisplayTargetHelp    "P1058328827"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

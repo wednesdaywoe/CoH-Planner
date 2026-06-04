@@ -1,0 +1,176 @@
+Power Pool.Leadership.Victory_Rush
+{
+    Name                 "Victory_Rush"                
+    DisplayName          "P4278194753"
+    BuyRequires          Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Defense Pool.Leadership.Vengeance && || Pool.Leadership.Assault Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Vengeance && || Pool.Leadership.Tactics Pool.Leadership.Vengeance && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadFoe
+    EntsAutoHit          kDeadFoe
+    Target               kDeadFoe
+    Range                80
+    EnduranceCost        9.75
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         300
+    EffectArea           kCharacter
+    BoostsAllowed        kRange_Boost, kEnduranceDiscount_Boost, kRecovery_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Leadership_VictoryRush.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Leadership_VictoryRush.pfx
+    DisplayShortHelp     "P915162956"
+    DisplayHelp          "978TKKH4N6B7YXVHEWJ955GYSZ"
+    IconName             "Leadership_VictoryRush.tga"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Tag "AV_Target"
+            Requires rank target> Class_Boss_PraetorianArchvillain eq rank target> Class_Boss_PraetorianAVLowPerception eq || rank target> Class_Boss_Archvillain eq || rank target> Class_Boss_Monster eq || rank target> Class_Boss_Rularuu eq || rank target> Class_Boss_RularuuCoP eq || rank target> Class_Boss_RularuuFM eq || rank target> Class_Boss_Hamidon eq || rank target> Class_Boss_Archvillain_Flying eq || rank target> Class_Boss_Monster_Flying eq || rank target> Class_Boss_Reichsman eq ||
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kStr
+                Target kTarget
+                Table "Melee_Ones"
+                StackType kStack
+                Flags CopyBoosts
+                Params Power
+                {
+                    Power Pets.Pool_Leadership_VictoryRush.VictoryRush_AV
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags Fallback
+        
+            Effect
+            {
+                Tag "EB_Target"
+                Requires rank target> Class_Boss_PraetorianElite eq rank target> Class_Boss_Elite eq || rank target> Class_Boss_EliteTurret eq ||
+            
+                AttribMod
+                {
+                    Attrib kExecutePower
+                    Aspect kStr
+                    Target kTarget
+                    Table "Melee_Ones"
+                    StackType kStack
+                    Flags CopyBoosts
+                    Params Power
+                    {
+                        Power Pets.Pool_Leadership_VictoryRush.VictoryRush_EB
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Flags Fallback
+            
+                Effect
+                {
+                    Tag "Boss_Target"
+                    Requires enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || enttype target> player eq ||
+                
+                    AttribMod
+                    {
+                        Attrib kExecutePower
+                        Aspect kStr
+                        Target kTarget
+                        Table "Melee_Ones"
+                        StackType kStack
+                        Flags CopyBoosts
+                        Params Power
+                        {
+                            Power Pets.Pool_Leadership_VictoryRush.VictoryRush_BS
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Flags Fallback
+                
+                    Effect
+                    {
+                        Tag "Lt_Target"
+                        Requires rank target> Class_Lt_PraetorianGrunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Lt_Sniper eq || rank target> Class_Lt_Henchman eq || rank target> Class_Lt_LongRangeDrone eq || rank target> Class_Lt_Turret eq ||
+                    
+                        AttribMod
+                        {
+                            Attrib kExecutePower
+                            Aspect kStr
+                            Target kTarget
+                            Table "Melee_Ones"
+                            StackType kStack
+                            Flags CopyBoosts
+                            Params Power
+                            {
+                                Power Pets.Pool_Leadership_VictoryRush.VictoryRush_LT
+                            }
+                            
+                        }
+                    }
+                
+                    Effect
+                    {
+                        Flags Fallback
+                    
+                        Effect
+                        {
+                            Tag "Minion_Target"
+                            Requires rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Minion_Grunt eq ||
+                        
+                            AttribMod
+                            {
+                                Attrib kExecutePower
+                                Aspect kStr
+                                Target kTarget
+                                Table "Melee_Ones"
+                                StackType kStack
+                                Flags CopyBoosts
+                                Params Power
+                                {
+                                    Power Pets.Pool_Leadership_VictoryRush.VictoryRush_MN
+                                }
+                                
+                            }
+                        }
+                    
+                        Effect
+                        {
+                            Tag "Other_Targets"
+                            Flags Fallback
+                        
+                            AttribMod
+                            {
+                                Attrib kExecutePower
+                                Aspect kStr
+                                Target kTarget
+                                Table "Melee_Ones"
+                                StackType kStack
+                                Flags CopyBoosts
+                                Params Power
+                                {
+                                    Power Pets.Pool_Leadership_VictoryRush.VictoryRush_Base
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

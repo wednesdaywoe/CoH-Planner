@@ -1,0 +1,81 @@
+Power Temporary_Powers.Temporary_Powers.Grant_Invisibility
+{
+    Name                 "Grant_Invisibility"          
+    DisplayName          "P3917858559"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    UsageTime            5400
+    Deletable            kTrue
+    DisplayShortHelp     "P2048869501"
+    DisplayHelp          "P3550990194"
+    IconName             "Temporary_ResonanceDisrupter.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 25.0000
+            Duration 10.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 15 Always
+            Suppress MissionObjectClick 15 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 250.0000
+            Duration 10.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 15 Always
+            Suppress MissionObjectClick 15 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 10.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 15 Always
+            Suppress MissionObjectClick 15 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.8000
+            Duration 10.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

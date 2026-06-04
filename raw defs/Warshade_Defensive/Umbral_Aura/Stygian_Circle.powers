@@ -1,0 +1,157 @@
+Power Warshade_Defensive.Umbral_Aura.Stygian_Circle
+{
+    Name                 "Stygian_Circle"              
+    DisplayName          "P1048529385"
+    ModesDisallowed      kDisable_All, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kDeadFoe
+    EntsAutoHit          kDeadFoe
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       1.17
+    RechargeTime         30
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Regeneration.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Regeneration.pfx
+    DisplayShortHelp     "P2939871007"
+    DisplayHelp          "452LZ3GJW6ZTYJBMHH4MDFAGFZ"
+    IconName             "UmbralAura_StygianCircle.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 20.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P1197092217"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires arch target> Class_Lt_Grunt eq ! arch target> Class_Lt_Sniper eq ! && arch target> Class_Boss_Grunt eq ! && arch target> Class_Boss_Elite eq ! && arch target> Class_Boss_Archvillain eq ! && arch target> Class_Boss_Monster eq ! && enttype target> player eq ! &&
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 2.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires arch target> Class_Lt_Grunt eq arch target> Class_Lt_Sniper eq ||
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 3.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires arch target> Class_Boss_Grunt eq arch target> Class_Boss_Elite eq || enttype target> player eq ||
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 4.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires arch target> Class_Boss_Archvillain eq arch target> Class_Boss_Monster eq ||
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 5.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,69 @@
+Power Temporary_Powers.Temporary_Powers.V_Shivan_Bomb
+{
+    Name                 "V_Shivan_Bomb"               
+    DisplayName          "P227798767"
+    ModesRequired        kShivan_Mode
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.184
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               15
+    LifeTimeInGame       3600
+    VisualFX             "menu\Powers\AnimFX\RADIATION_Burst_RadiationBlast.pfx"
+    include              menu\Powers\AnimFX\RADIATION_Burst_RadiationBlast.pfx
+    DisplayShortHelp     "P3451728190"
+    DisplayHelp          "3LHRCU72ZFFVYKLAP6H3RMYZ7S"
+    IconName             "LuminousBlast_LuminousDetonation.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P324208689"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "FRSSJKC5PYCBYNNS2UGWW7LEFW"
+                DisplayVictimHit "G95KU877F7JQYNL5D339GMXRXZ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.0000
+            Duration 16.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/IrradiateContinuingFx.fx
+            }
+            
+        }
+    }
+}

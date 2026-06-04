@@ -1,0 +1,48 @@
+Power Temporary_Powers.Temporary_Powers.Dimensional_Grounding_Ray
+{
+    Name                 "Dimensional_Grounding_Ray"   
+    DisplayName          "P706329895"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.5
+    TimeToActivate       3.5
+    TimeToRoot           3.5
+    RechargeTime         4
+    EffectArea           kCharacter
+    NumCharges           10
+    ServerTrayRequires   mapname> reichsman_base eq
+    ServerTrayPriority   1
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_GroundingRay.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_GroundingRay.pfx
+    DisplayShortHelp     "P213551278"
+    DisplayHelp          "MA7422TPS3HRYPXS262XSUARVX"
+    IconName             "Temporary_RangeLightDamage.tga"
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P763730309"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 9999.0000
+            Magnitude kGrounded
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

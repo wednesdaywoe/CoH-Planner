@@ -1,0 +1,48 @@
+#************************************************#
+# Power: Melee > Fiery Melee > Assassin's Blaze  #
+# Info:  Melee, DMG(Fire)                        #
+#************************************************#
+
+Power Stalker_Melee.Fiery_Melee.Assassins_Blaze
+{
+    Name                 "Assassins_Blaze"             
+    DisplayName          "P1759598901"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3.67
+    TimeToRoot           1.6
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerMelee_FieryMelee_AssassinsBlaze.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerMelee_FieryMelee_AssassinsBlaze.PFX
+    DisplayShortHelp     "JAP4KZNGFJM4YANPGFKAGDR7JQ"
+    DisplayHelp          "XV8FL9F7JFCRYYVJX4P3YSLJEZ"
+    IconName             "FieryFray_Assassin.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Fiery_Melee_Assassins_Blaze.Assassins_Blaze_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Fiery_Melee_Assassins_Blaze.Assassins_Blaze_Stealth
+        Requires 1
+    }
+    
+}

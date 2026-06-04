@@ -1,0 +1,77 @@
+Power Temporary_Powers.Temporary_Powers.Cryonite_Armor
+{
+    Name                 "Cryonite_Armor"              
+    DisplayName          "P1024878462"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.1625
+    TimeToActivate       0.73
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            3600
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\ICE_ARMOR_ICE_ARMOR.pfx"
+    include              menu\Powers\AnimFX\ICE_ARMOR_ICE_ARMOR.pfx
+    DisplayShortHelp     "P2605655468"
+    DisplayHelp          "9RZNK5ZCR2UBW9BNFHSRT3F2UX"
+    DisplayAttackerHit   "P484090270"
+    IconName             "Temporary_CryoniteArmor.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing_Attack kLethal_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 1.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/ColdControl/IceArmor.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

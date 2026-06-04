@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Zombie_Minion
+{
+    Name "Zombie_Minion"
+    DisplayName "FNZ2DSUMEKWRY4LKB7Z9M7RHMA"
+    DisplayShortHelp "UCGW44R4NBKLWMZKUHAW8X9NJS"
+    DisplayHelp "SN2NMPCHT7WNYQNTAM4DM7MV8W"
+    IconName "Zombie_set.ico"
+
+    Powers Mastermind_Pets.Zombie_Minion.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Zombie_Minion.Zombie_Brawl
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Zombie_Minion.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Zombie_Minion.Fade
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Zombie_Minion.SummonArmor
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

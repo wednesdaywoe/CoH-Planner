@@ -1,0 +1,115 @@
+#*********************************************************#
+# Power: Buff > Electrical Affinity > Empowering Circuit  #
+# Info:  Ranged (Chain), Ally +DMG, +Tohit, Self +Static  #
+#*********************************************************#
+
+Power Mastermind_Buff.Shock_Therapy.Empowering_Circuit
+{
+    Name                 "Empowering_Circuit"          
+    DisplayName          "P2715776787"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kFriend
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       1
+    RechargeTime         15
+    EffectArea           kChain
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    ChainDelay           0.1
+    ChainFork            3
+    ChainEff             1 0.25 @ChainJump 1 - * - 0.5 1 minmax
+    ChainTarget          enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ShockTherapy_EmpoweringCircuit.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ShockTherapy_EmpoweringCircuit.PFX
+    DisplayShortHelp     "P3649005606"
+    DisplayHelp          "P3149308747"
+    IconName             "ShockTherapy_EmpoweringCircuit.tga"
+    MaxTargetsHit        5
+    MaxTargetsExpr       4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 3.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kSuppress
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 1.2000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kSuppress
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            Messages
+            {
+                DisplayVictimHit "P3078718220"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildStatic"
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Shock_Therapy_Static
+            }
+            
+        }
+    }
+}

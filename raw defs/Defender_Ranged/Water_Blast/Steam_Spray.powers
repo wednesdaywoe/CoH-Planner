@@ -1,0 +1,198 @@
+Power Defender_Ranged.Water_Blast.Steam_Spray
+{
+    Name                 "Steam_Spray"                 
+    DisplayName          "P2227657009"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        18.512
+    TimeToActivate       2.53
+    TimeToRoot           2.53
+    RechargeTime         20
+    EffectArea           kCone
+    Radius               40
+    Arc                  50
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_SteamSpray.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_SteamSpray.PFX
+    DisplayShortHelp     "MNGKNU66VGXHYJMFJ79KFLFTNS"
+    DisplayHelp          "U6F2YHUYJQQEY3BS97TN57CWPX"
+    IconName             "WaterBlast_SteamSpray.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1400554087"
+    DisplayTargetHelp    "P113744865"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.8350
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.6055
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1000
+            Duration 3.1000
+            Magnitude 1.0000
+            Period 1.0000
+            TickChance 0.8500
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "WetStatus"
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 8.0000
+                Magnitude kWet
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "9D4E9JJ6JUHHYRM48NFCQZWY4A"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.4855
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "TidalPower"
+        Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <=
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance NoHitDelay NoProjectileDelay
+            Messages
+            {
+                DisplayAttackerHit "P971765401"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Tidal_Power
+            }
+            
+        }
+    }
+}

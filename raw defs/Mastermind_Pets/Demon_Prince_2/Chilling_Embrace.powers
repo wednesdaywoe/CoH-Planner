@@ -1,0 +1,102 @@
+#*********************************************************#
+# Power: Pets > Demons Demon Prince 2 > Chilling Embrace  #
+# Info:  Toggle: PBAoE, Foe -Recharge, -Speed             #
+#*********************************************************#
+
+Power Mastermind_Pets.Demon_Prince_2.Chilling_Embrace
+{
+    Name                 "Chilling_Embrace"            
+    DisplayName          "P1650697981"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kEnduranceDiscount_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_DemonPrince_ChillingEmbrace.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_DemonPrince_ChillingEmbrace.pfx
+    DisplayShortHelp     "P1421789777"
+    DisplayHelp          "P467540810"
+    DisplayAttackerHit   "P3060559231"
+    DisplayVictimHit     "P3023101370"
+    IconName             "IceArmor_ChillingEmbrace.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P2256899132"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.7000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.4000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.7000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Melee_SpeedRunning"
+            Scale -1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength
+        }
+    }
+}

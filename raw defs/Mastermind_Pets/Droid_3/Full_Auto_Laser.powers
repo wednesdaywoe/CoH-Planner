@@ -1,0 +1,58 @@
+#************************************************#
+# Power: Pets > Robot Droid 3 > Full Auto Laser  #
+# Info:  DoT (Energy)                            #
+#************************************************#
+
+Power Mastermind_Pets.Droid_3.Full_Auto_Laser
+{
+    Name                 "Full_Auto_Laser"             
+    DisplayName          "P423136314"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAoE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.184
+    DontSetStance        1
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         16
+    EffectArea           kCone
+    Radius               80
+    Arc                  15
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\RobotArmy_FullAuto.pfx"
+    include              menu\Powers\AnimFX\RobotArmy_FullAuto.pfx
+    DisplayShortHelp     "P3607090884"
+    DisplayHelp          "M9QSY5445R9XYPZ2SJQZJV6MYZ"
+    IconName             "AssaultWeapons_ARFullAuto.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1210
+            Duration 5.0000
+            Magnitude 1.0000
+            Period 0.3000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    }
+}

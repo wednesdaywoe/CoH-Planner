@@ -1,0 +1,100 @@
+Power Defender_Buff.Force_Field.Refraction_Shield
+{
+    Name                 "Refraction_Shield"           
+    DisplayName          "P3517858636"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.4
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ForceField_RefractionShield.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ForceField_RefractionShield.PFX
+    DisplayShortHelp     "P3258422862"
+    DisplayHelp          "P3133522978"
+    IconName             "ForceField_RefractionShield.tga"
+    DisplayTargetShortHelp "P1145282425"
+    DisplayTargetHelp    "P1488189929"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kImmobilized kUntouchable kOnlyAffectsSelf
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 4.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2641364819"
+                DisplayVictimHit "P1053776284"
+                DisplayFloat "P3517858636"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kUntouchable kOnlyAffectsSelf
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Untouchable 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P2641364819"
+                DisplayVictimHit "P1053776284"
+                DisplayFloat "P3517858636"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Untouchable 15 WhenInactive
+            Flags IgnoreSuppressErrors
+        }
+    }
+}

@@ -1,0 +1,219 @@
+Power Blaster_Support.Ice_Manipulation.Shiver
+{
+    Name                 "Shiver"                      
+    DisplayName          "P575259887"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        10.4
+    TimeToActivate       2.17
+    TimeToRoot           2.17
+    RechargeTime         12
+    EffectArea           kCone
+    Radius               60
+    Arc                  135
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_IceManipulation_Shiver.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_IceManipulation_Shiver.PFX
+    DisplayShortHelp     "P3242282090"
+    DisplayHelp          "8GRWY3HF65D7WPVHBVCBJS2UFX"
+    IconName             "IceManipulation_Shiver.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P681339521"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.3250
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P2996323216"
+                DisplayVictimHit "P1239501892"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.3250
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P2996323216"
+                DisplayVictimHit "P1239501892"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.3250
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.3250
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Melee_SpeedRunning"
+            Scale -1.0000
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.3250
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P2996323216"
+                DisplayVictimHit "P1239501892"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.3250
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P2996323216"
+                DisplayVictimHit "P1239501892"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.6500
+            Duration 18.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P2996323216"
+                DisplayVictimHit "P1239501892"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

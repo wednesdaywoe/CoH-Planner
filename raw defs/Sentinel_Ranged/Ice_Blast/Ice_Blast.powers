@@ -1,0 +1,168 @@
+#************************************************#
+# Power: Ranged > Ice Blast > Ice Blast          #
+# Info:  Ranged, DMG(Cold), Foe -Recharge, -SPD  #
+#************************************************#
+
+Power Sentinel_Ranged.Ice_Blast.Ice_Blast
+{
+    Name                 "Ice_Blast"                   
+    DisplayName          "P1574051147"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        6.864
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_IceBlast_IceBlast.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_IceBlast_IceBlast.PFX
+    DisplayShortHelp     "7KB7P3REP2LSY5XZMQ9SNA5ZCZ"
+    DisplayHelp          "LRA2STWEHJX8WPVSEAKRQKU2JQ"
+    IconName             "IceBlast_IceBlast.tga"
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P1851895213"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 1.3200
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4173738004"
+                    DisplayVictimHit "P1163387325"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 1.3200
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3JG5HRUCJEFYDNKTKYT8NS6YZ"
+                    DisplayVictimHit "RSFS5JY5GJRWYDVQRKL8MVN2KW"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.8090
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4173738004"
+                    DisplayVictimHit "P1163387325"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.8090
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3JG5HRUCJEFYDNKTKYT8NS6YZ"
+                    DisplayVictimHit "RSFS5JY5GJRWYDVQRKL8MVN2KW"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

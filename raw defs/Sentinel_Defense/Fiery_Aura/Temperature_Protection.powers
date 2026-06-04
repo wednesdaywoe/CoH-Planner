@@ -1,0 +1,93 @@
+Power Sentinel_Defense.Fiery_Aura.Temperature_Protection
+{
+    Name                 "Temperature_Protection"      
+    DisplayName          "P2838192909"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "7JV9SAXDEVRSYJLNU2KF3PA3GZ"
+    DisplayHelp          "5AGS9BE49WQ7WJC56URUFBKYYQ"
+    IconName             "FlamingShield_TemperatureProtection.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 3.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight kRechargeTime
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kKnock kKnockup
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

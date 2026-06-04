@@ -1,0 +1,79 @@
+Power Temporary_Powers.Temporary_Powers.Nictus_Shadow_Step
+{
+    Name                 "Nictus_Shadow_Step"          
+    DisplayName          "P1870694975"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Teleport, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kTeleport
+    Range                300
+    EnduranceCost        13
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    EffectArea           kLocation
+    LifeTimeInGame       7200
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Teleport.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Teleport.pfx
+    DisplayShortHelp     "P2537599147"
+    DisplayHelp          "P74316506"
+    IconName             "Temporary_ManifoldResonator.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Duration 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.1700
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying kMovementControl kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

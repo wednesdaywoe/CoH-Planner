@@ -1,0 +1,67 @@
+Power Scrapper_Defense.Dark_Armor.Dark_Regeneration
+{
+    Name                 "Dark_Regeneration"           
+    DisplayName          "P1873199416"
+    BuyRequires          Scrapper_Defense.Dark_Armor.Obscure_Sustenance !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        33.8
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         30
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_DarkArmor_DarkRegeneration.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_DarkArmor_DarkRegeneration.PFX
+    DisplayShortHelp     "2UNDMLMP2T3MW3ZZBNL8A7SJ53"
+    DisplayHelp          "JYM2FWGCXBC7WVX73M6ADH2LJA"
+    IconName             "DarkArmor_DarkRegeneration.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 3.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,53 @@
+#****************************************#
+# Power: Pets > Thug Lieutenant > Brawl  #
+# Info:  Melee, Light DMG(Smash)         #
+#****************************************#
+
+Power Mastermind_Pets.Thug_Lt.Brawl
+{
+    Name                 "Brawl"                       
+    DisplayName          "P1212741494"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        4.368
+    TimeToActivate       0.67
+    TimeToRoot           0.67
+    RechargeTime         16
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    IgnoreStance         kTrue
+    VisualFX             "menu\Powers\AnimFX\Brawling_Brawling.pfx"
+    include              menu\Powers\AnimFX\Brawling_Brawling.pfx
+    DisplayShortHelp     "WDN22YTAPPTHW7N6JUDV5VV55X"
+    DisplayHelp          "H3E6FM8ZPXHFYVBTDUCUGVKBR2"
+    IconName             "Inherent_Brawl.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.8400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+}

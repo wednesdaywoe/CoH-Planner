@@ -1,0 +1,46 @@
+Power Temporary_Powers.Temporary_Powers.Alt_XP_Booster_Granter
+{
+    Name                 "Alt_XP_Booster_Granter"      
+    DisplayName          "P454760462"
+    ActivateRequires     temporary_powers.temporary_powers.Alt_XP_Booster_Auto ! temporary_powers.temporary_powers.Alt_50_percent_XP_Booster_1_hour ! && temporary_powers.temporary_powers.Alt_50_percent_XP_Booster_4_hour ! && temporary_powers.temporary_powers.Alt_50_percent_XP_Booster_8_hour ! && temporary_powers.temporary_powers.Alt_50_percent_Shared_XP_Booster_Auto_1_hour ! && temporary_powers.temporary_powers.Alt_50_percent_Shared_XP_Booster_Auto_4_hour ! && temporary_powers.temporary_powers.Alt_50_percent_Shared_XP_Booster_Auto_8_hour ! && temporary_powers.temporary_powers.Alt_Super_XP_Booster_1_hour ! && temporary_powers.temporary_powers.Alt_Super_XP_Booster_4_hour ! && temporary_powers.temporary_powers.Alt_Super_XP_Booster_8_hour ! &&
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       1.17
+    EffectArea           kCharacter
+    NumCharges           1
+    StackingUsage        kTrue
+    MaxNumCharges        99
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Inherent_Domination.pfx"
+    include              menu\Powers\AnimFX\Inherent_Domination.pfx
+    DisplayShortHelp     "P1361869443"
+    DisplayHelp          "27F2H4A3FRB2WPLRAV2ZZL7KCW"
+    IconName             "Temporary_XPBoost.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Alt_XP_Booster_Auto
+            }
+            
+        }
+    }
+}

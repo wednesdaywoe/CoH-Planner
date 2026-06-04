@@ -1,0 +1,48 @@
+Power Stalker_Defense.Willpower.Fast_Healing
+{
+    Name                 "Fast_Healing"                
+    DisplayName          "P3913785951"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kHeal_Boost
+    DisplayShortHelp     "P3584220347"
+    DisplayHelp          "P916349593"
+    IconName             "Willpower_FastHealing.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

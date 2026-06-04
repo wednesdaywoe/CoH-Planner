@@ -1,0 +1,99 @@
+Power Temporary_Powers.Temporary_Powers.PS_Antimatter_Enervating_Field
+{
+    Name                 "PS_Antimatter_Enervating_Field"
+    DisplayName          "P1082274496"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    AIGroups             kDebuff
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        5
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               15
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   993
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\RADIATION_Poisoning_Enervating_Field.pfx"
+    include              menu\Powers\AnimFX\RADIATION_Poisoning_Enervating_Field.pfx
+    DisplayShortHelp     "P448852652"
+    DisplayHelp          "R7C9TMCP3Q5AYDB3E6WLE5DJGS"
+    DisplayAttackerHit   "P2100668018"
+    IconName             "RadiationPoisoning_EnervatingField.tga"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P448852652"
+    DisplayTargetHelp    "P3082244571"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kFire kCold kEnergy kNegative_Energy kPsionic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 2.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss IgnoreStrength
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/EnervatingFieldContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 2.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -3.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -3.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss IgnoreStrength
+        }
+    }
+}

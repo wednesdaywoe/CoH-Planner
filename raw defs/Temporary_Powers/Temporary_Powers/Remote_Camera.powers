@@ -1,0 +1,216 @@
+Power Temporary_Powers.Temporary_Powers.Remote_Camera
+{
+    Name                 "Remote_Camera"               
+    DisplayName          "P443815016"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    DisplayShortHelp     "P190256210"
+    DisplayHelp          "P2155551924"
+    IconName             "Temporary_AntigravityMatrix.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 101.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedFlying"
+            Scale 1000.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kMax
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Control"
+            Scale 2.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Friction"
+            Scale 2.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1000.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1000.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -10.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kIntangible
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude kDisable_All
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude kDisable_Walk
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale -9.9000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            Period 0.7000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Arena_Camera
+                Priority 6
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Target kCastersOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            DelayedRequires enttype target> player eq Temporary_Powers.Temporary_Powers.Pet_Arena_HP target.ownPower? || !
+            StackType kReplace
+        }
+    }
+}

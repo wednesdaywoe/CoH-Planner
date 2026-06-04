@@ -1,0 +1,89 @@
+Power Epic.Arctic_Mastery.Shiver
+{
+    Name                 "Shiver"                      
+    DisplayName          "P575259887"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        12.48
+    TimeToActivate       2.17
+    TimeToRoot           2.17
+    RechargeTime         24
+    EffectArea           kCone
+    Radius               60
+    Arc                  135
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_IceControl_Shiver.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_IceControl_Shiver.PFX
+    DisplayShortHelp     "P3242282090"
+    DisplayHelp          "LE6MLBVRWQ76WBBRCEW5EQMKNZ"
+    IconName             "Ice_Mastery_Shiver"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P681339521"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.6500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P2996323216"
+                DisplayVictimHit "P1239501892"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.6500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_SpeedRunning"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

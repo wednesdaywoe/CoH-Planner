@@ -1,0 +1,80 @@
+Power Temporary_Powers.Temporary_Powers.ScriptDeath
+{
+    Name                 "ScriptDeath"                 
+    DisplayName          "4CPB4LULBDGGWAM3PQ7TENE8JS"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       3
+    EffectArea           kCharacter
+    AIReport             kNever
+    LifeTime             1
+    ProcAllowed          kNone
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "HDRRPJAAQXHVYTNJCP2D5LQ923"
+    DisplayHelp          "YJYL3GKTMW8SW6VA5Y4ASJ8TVW"
+    IconName             "Power_LabyrinthCoreFog.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.ScriptDeath
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kScriptNotify
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params ScriptNotify
+            {
+                Channel                        "ScriptedDeathPower"
+                Event                          FirstTick
+            }
+        }
+    }
+}

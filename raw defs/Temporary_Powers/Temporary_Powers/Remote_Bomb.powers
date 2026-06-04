@@ -1,0 +1,98 @@
+Power Temporary_Powers.Temporary_Powers.Remote_Bomb
+{
+    Name                 "Remote_Bomb"                 
+    DisplayName          "7RRFPJVL7QW2YAV87RCNWRL85W"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    LifeTime             360
+    CastableAfterDeath   kDeadOrAlive
+    ProcAllowed          kNone
+    DisplayShortHelp     "9ZDMSNCNW8WWYABGTT7EPBSM7A"
+    DisplayHelp          "QJ2JYYWWWRHFYGXVZ43QWKFZ5S"
+    IconName             "Gadgets_RemoteBomb.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    NumAllowed           48
+
+
+    Effect
+    {
+        Requires kHitPoints% source> 0 == !
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 2.5000
+            StackType kExtend
+            FX
+            {
+                ContinuingFX POWERS\Gadgets\Remote_Bomb_Attached.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 2.5000
+            StackType kExtend
+            FX
+            {
+                ContinuingFX WORLD/City/RedLight02.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kScriptNotify
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Params ScriptNotify
+            {
+                Channel                        "AttachedTracker"
+                Event                          FirstTick
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires kHitPoints% source> 0 ==
+    
+        AttribMod
+        {
+            Attrib kScriptNotify
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Params ScriptNotify
+            {
+                Channel                        "BombCarrierDefeated"
+                Event                          FirstTick
+            }
+        }
+    }
+}

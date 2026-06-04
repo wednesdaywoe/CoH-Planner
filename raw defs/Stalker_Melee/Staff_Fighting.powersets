@@ -1,0 +1,83 @@
+PowerSet Stalker_Melee.Staff_Fighting
+{
+    Name "Staff_Fighting"
+    DisplayName "P1671348127"
+    DisplayShortHelp "P1671348127"
+    DisplayHelp "P1860956183"
+    CostumeKeys CustomWeapon_LongStaff
+    CostumeParts LongStaff_Default
+    IconName "Staff_Fighting_set.ico"
+
+    Powers Stalker_Melee.Staff_Fighting.Mercurial_Blow
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Staff_Fighting.Precise_Strike
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Staff_Fighting.Guarded_Spin
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Staff_Fighting.Assassins_Staff
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Staff_Fighting.Build_Up
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Staff_Fighting.Placate
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Staff_Fighting.Eye_of_the_Storm
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Staff_Fighting.Serpents_Reach
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Staff_Fighting.Sky_Splitter
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

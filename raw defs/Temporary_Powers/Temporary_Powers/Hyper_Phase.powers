@@ -1,0 +1,173 @@
+Power Temporary_Powers.Temporary_Powers.Hyper_Phase
+{
+    Name                 "Hyper_Phase"                 
+    DisplayName          "P2952610040"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kDisable_Toggle, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kRest_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.975
+    TimeToActivate       3
+    RechargeTime         180
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            1800
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Invisibility_Phase_Shift.pfx"
+    include              menu\Powers\AnimFX\Invisibility_Phase_Shift.pfx
+    DisplayShortHelp     "P27970187"
+    DisplayHelp          "QBCN5UX8Q3XQYVXMTUVJWF6722"
+    DisplayAttackerHit   "P1409113320"
+    IconName             "Temporary_ResonanceDisrupter.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX Powers/Invisibility/InvisibilityPhaseShiftContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 20.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 222.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 10 Always
+            Suppress HitByFoe 10 Always
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kPhase
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Magnitude 3.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                CombatPhase Phased
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPhase
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Magnitude 3.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                CombatPhase NoPrime
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kIntangible
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Magnitude 3.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kThreatLevel
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.NoPhase
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,43 @@
+Power Temporary_Powers.Accolades.Scanalyzer
+{
+    Name                 "Scanalyzer"                  
+    DisplayName          "9QGKFGKPW73HW4C34RNQR588CW"
+    ModesDisallowed      kArena, kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                100
+    EnduranceCost        6.5
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         10
+    EffectArea           kCharacter
+    AIReport             kNever
+    StrengthsDisallowed  kRechargeTime
+    IgnoreLevelBought    kTrue
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_Training_Surveillance.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_Training_Surveillance.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "CJKYLGVMW782Y4XAWBEJMZFU2Z"
+    IconName             "Accolade_Weaver_Scanalyzer.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kViewAttrib
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

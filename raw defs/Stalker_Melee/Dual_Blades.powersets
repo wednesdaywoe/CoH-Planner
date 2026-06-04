@@ -1,0 +1,83 @@
+PowerSet Stalker_Melee.Dual_Blades
+{
+    Name "Dual_Blades"
+    DisplayName "P487059719"
+    DisplayShortHelp "P487059719"
+    DisplayHelp "P4154079533"
+    CostumeKeys CustomWeapon_DualBladeLeft CustomWeapon_DualBladeRight
+    CostumeParts DualBladeRight_Default DualBladeLeft_Default
+    IconName "Dual_Blades_set.ico"
+
+    Powers Stalker_Melee.Dual_Blades.Light_Opening
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Dual_Blades.Moderate_Opening
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Dual_Blades.Moderate_Bridge
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Dual_Blades.Assassins_Blades
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Dual_Blades.Build_Up
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Dual_Blades.Placate
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Dual_Blades.Special_1
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Dual_Blades.Special_2
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Dual_Blades.High_Low
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

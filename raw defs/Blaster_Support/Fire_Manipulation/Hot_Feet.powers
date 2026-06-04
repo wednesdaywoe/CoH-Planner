@@ -1,0 +1,131 @@
+Power Blaster_Support.Fire_Manipulation.Hot_Feet
+{
+    Name                 "Hot_Feet"                    
+    DisplayName          "P207060483"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        2.08
+    TimeToActivate       1.47
+    TimeToRoot           1.47
+    RechargeTime         20
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_FireManipulation_HotFeet.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_FireManipulation_HotFeet.PFX
+    DisplayShortHelp     "48BWZQCZ5LNKY7NMFFL793JSZ2"
+    DisplayHelp          "WUT3JLC9N93ZYBVL24PBCDSVY2"
+    IconName             "FireManipulation_HotFeet.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3546334860"
+    DisplayTargetHelp    "P8825400"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2500
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kAfraid
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 4.0000
+            Magnitude 3.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -10.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.7000
+            Duration 2.3000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags NearGround
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.2033
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+}

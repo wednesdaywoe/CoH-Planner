@@ -1,0 +1,85 @@
+Power Temporary_Powers.Temporary_Powers.KR_Submachine_Gun
+{
+    Name                 "KR_Submachine_Gun"           
+    DisplayName          "P2051109417"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.72
+    TimeToActivate       2.2
+    TimeToRoot           2.2
+    RechargeTime         3
+    EffectArea           kCharacter
+    ServerTrayPriority   2
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Temporary_Powers_Temporary_Powers_KR_Focused_Burst.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Temporary_Powers_Temporary_Powers_KR_Focused_Burst.pfx
+    DisplayShortHelp     "P1644306723"
+    DisplayHelp          "PV8HFCKCS7WCYTBNQMCTH5VCQA"
+    IconName             "AssaultWeapons_ARBurst.tga"
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P2205413119"
+    DisplayTargetHelp    "P919969351"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.4000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.4000
+            Duration 0.4000
+            Magnitude 1.0000
+            Delay 0.3000
+            Period 0.3000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

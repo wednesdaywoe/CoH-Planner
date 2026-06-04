@@ -1,0 +1,44 @@
+#************************************************#
+# Power: Ranged > Storm Blast > Direct Strike    #
+# Info:  Sniper, DMG(Energy), Foe -End, Special  #
+#************************************************#
+
+Power Blaster_Ranged.Storm_Blast.Direct_Strike
+{
+    Name                 "Direct_Strike"               
+    DisplayName          "6CRF7M4RV77YWEBJNCZ4AD6SSA"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kRecovery_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Redirects_StormBlast_LightningStrike_Quick.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\Redirects_StormBlast_LightningStrike_Quick.PFX
+    DisplayShortHelp     "KAR6MPNK4JFNYSBBF8XS75QMJZ"
+    DisplayHelp          "CSV4MXKR7S4KWACMNKPTSQLR72"
+    IconName             "StormBlast_DirectStrike.tga"
+
+    Redirect
+    {
+        Power Redirects.Storm_Blast.Direct_Strike_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Redirects.Storm_Blast.Direct_Strike_Normal
+        Requires 1
+    }
+    
+}

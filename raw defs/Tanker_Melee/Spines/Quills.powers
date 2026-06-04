@@ -1,0 +1,219 @@
+#***********************************************************#
+# Power: Melee > Spines > Quills                            #
+# Info:  Toggle: PBAoE, DoT(Lethal), Foe -Speed, -Recharge  #
+#***********************************************************#
+
+Power Tanker_Melee.Spines.Quills
+{
+    Name                 "Quills"                      
+    DisplayName          "P1082497966"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        1.04
+    TimeToActivate       0.73
+    TimeToRoot           0.73
+    RechargeTime         15
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kTaunt_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Quills_Quills.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Quills_Quills.PFX
+    DisplayShortHelp     "FKUARCHNJR3CW7VXWCRH6LF742"
+    DisplayHelp          "BTK6UXVBB5ZMY3VV6D5UKJRZFA"
+    IconName             "Quills_Quills.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P460077861"
+    DisplayTargetHelp    "P2034057112"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.1000
+            Duration 3.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CancelOnMiss IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 3.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CancelOnMiss
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 3.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CancelOnMiss IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Immobilize"
+            Scale 3.0000
+            Magnitude 0.3300
+            StackType kRefreshToCount
+            StackLimit 1
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 0.3300
+            StackType kRefreshToCount
+            StackLimit 1
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.0675
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "InherentTaunt"
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Inherents.Gauntlet_Proc_Aura
+            }
+            
+        }
+    }
+}

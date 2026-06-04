@@ -1,0 +1,423 @@
+#*************************************************************************#
+# Power: Epic > Mu Mastery > Thunder Strike                               #
+# Info:  Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End  #
+#*************************************************************************#
+
+Power Epic.Sentinel_Mu_Mastery.Thunder_Strike
+{
+    Name                 "Thunder_Strike"              
+    DisplayName          "P1363030893"
+    BuyRequires          $archetype @Class_Sentinel == SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 owned? || &&
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        18.512
+    TimeToActivate       2.53
+    TimeToRoot           2.53
+    RechargeTime         40
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost, kKnockback_Boost, kStunned_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_Charge_Mastery_Thunder_Strike.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_Charge_Mastery_Thunder_Strike.pfx
+    DisplayShortHelp     "STW3Q583ZWLCWCVD87DEALWQQS"
+    DisplayHelp          "XVK5NMZEPA7HY8LU9NF99K77ES"
+    IconName             "Arachnos_Patron_Thunderstrike"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.0700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        Effect
+        {
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kRecovery
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale -1.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+            }
+        
+            Effect
+            {
+                Chance 0.5000
+                Requires enttype target> critter eq
+            
+                AttribMod
+                {
+                    Attrib kStunned
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Melee_Stun"
+                    Scale 5.0000
+                    Magnitude 3.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P583235414"
+                        DisplayVictimHit "P3613904985"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/StunContinuing.fx
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 2.9800
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SentCrit" "SentCritST"
+                Flags MainTargetOnly
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_InherentDamage"
+                    Scale 2.9800
+                    Magnitude 1.0000
+                    TickChance 0.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                        DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                        DisplayFloat "P2440464263"
+                        DisplayInfo "P85281792"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Tag "Splash"
+            Flags SecondaryTargetsOnly
+        
+            Effect
+            {
+                Chance 0.8000
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6400
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 0.4200
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SentCrit" "SentCritAoE"
+                Flags SecondaryTargetsOnly
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_InherentDamage"
+                    Scale 0.4200
+                    Magnitude 1.0000
+                    TickChance 0.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                        DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                        DisplayFloat "P2440464263"
+                        DisplayInfo "P85281792"
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_EndDrain"
+            Scale -2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kRecovery
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale -1.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+            }
+        
+            Effect
+            {
+                Chance 0.5000
+            
+                AttribMod
+                {
+                    Attrib kStunned
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Melee_PvPMez"
+                    Scale 1.0000
+                    Magnitude 3.0000
+                    StackType kStack
+                    Suppress Stunned 15 WhenInactive
+                    Suppress Immobilized 15 WhenInactive
+                    Suppress Held 15 WhenInactive
+                    Suppress Sleep 15 WhenInactive
+                    Suppress Terrorized 15 WhenInactive
+                    Messages
+                    {
+                        DisplayAttackerHit "P583235414"
+                        DisplayVictimHit "P3613904985"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/StunContinuing.fx
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 2.9710
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SentCrit" "SentCritST"
+                Flags MainTargetOnly
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 2.9710
+                    Magnitude 1.0000
+                    TickChance 0.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                        DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                        DisplayFloat "P2440464263"
+                        DisplayInfo "P85281792"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Tag "Splash"
+            Requires enttype target> player eq
+            Flags SecondaryTargetsOnly
+        
+            Effect
+            {
+                Chance 0.8000
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6400
+                    Magnitude 1.0000
+                    StackType kStack
+                    Suppress Knocked 10 WhenInactive
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.3506
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SentCrit" "SentCritAoE"
+                Flags SecondaryTargetsOnly
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.3506
+                    Magnitude 1.0000
+                    TickChance 0.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                        DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                        DisplayFloat "P2440464263"
+                        DisplayInfo "P85281792"
+                    }
+                    
+                }
+            }
+        }
+    }
+}

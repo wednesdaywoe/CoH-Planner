@@ -1,0 +1,153 @@
+#*******************************************#
+# Power: Ranged > Dark Blast > Blackstar    #
+# Info:  PBAoE, DMG(Negative), Foe -To Hit  #
+#*******************************************#
+
+Power Sentinel_Ranged.Dark_Blast.Blackstar
+{
+    Name                 "Blackstar"                   
+    DisplayName          "P888501034"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.4
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       3
+    TimeToRoot           3
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_DarkBlast_Blackstar.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_DarkBlast_Blackstar.PFX
+    DisplayShortHelp     "GGT2RGJ6AWC4Y2Z3CL4BTBN6VZ"
+    DisplayHelp          "NFUGUJABTTDTYFZYSDF54SRUU2"
+    IconName             "DarkCast_Blackstar.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2190949330"
+    DisplayTargetHelp    "P1620961953"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 2.2530
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2637081052"
+                    DisplayVictimHit "P936402029"
+                    DisplayInfo "85NKYGU6W4RDWRMYAT3W8G3QFW"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            RadiusInner 0.0000
+            RadiusOuter 10.0000
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.9280
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2637081052"
+                    DisplayVictimHit "P936402029"
+                    DisplayInfo "P3P28LLZCYBBYGXF8CLQ2DPD72"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+            RadiusInner 10.0000
+            RadiusOuter 20.0000
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.9280
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MKNQB68MKQ4GWWBRPFD3WYFNQQ"
+                    DisplayVictimHit "3V64ZZSHFGUAWFNN3KA2TRDP2Q"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "5HAQ7Y3AF7P9WEMSHR8W3GKCYQ"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.5250
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 5.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

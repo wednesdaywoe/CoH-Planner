@@ -1,0 +1,43 @@
+Power Stalker_Melee.Dark_Melee.Assassins_Eclipse
+{
+    Name                 "Assassins_Eclipse"           
+    DisplayName          "P1555382042"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3
+    TimeToRoot           0.8
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerMelee_DarkMelee_AssassinsEclipse.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerMelee_DarkMelee_AssassinsEclipse.PFX
+    DisplayShortHelp     "4CN7VQEGGVQ4WGLTTYZWQCGU3Q"
+    DisplayHelp          "99X76UD8K8VJYPCZMTE5VQ4TTQ"
+    IconName             "ShadowFighting_AssassinStrike.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Dark_Melee_Assassins_Strike.Assassins_Eclipse_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Dark_Melee_Assassins_Strike.Assassins_Eclipse_Stealth
+        Requires 1
+    }
+    
+}

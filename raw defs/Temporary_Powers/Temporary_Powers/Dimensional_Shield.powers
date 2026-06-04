@@ -1,0 +1,67 @@
+Power Temporary_Powers.Temporary_Powers.Dimensional_Shield
+{
+    Name                 "Dimensional_Shield"          
+    DisplayName          "P3611437819"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    UsageTime            10800
+    Deletable            kTrue
+    DisplayShortHelp     "P1796005904"
+    DisplayHelp          "P2809627968"
+    IconName             "Temporary_VahzilokDiseaseSL3.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1000.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P268842212"
+            }
+            
+        }
+    }
+}

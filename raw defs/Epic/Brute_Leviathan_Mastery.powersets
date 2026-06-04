@@ -1,0 +1,49 @@
+PowerSet Epic.Brute_Leviathan_Mastery
+{
+    Name "Brute_Leviathan_Mastery"
+    DisplayName "P3487560968"
+    DisplayShortHelp "P3487560968"
+    DisplayHelp "P2525147091"
+    IconName "Brute_Leviathan_Mastery_set.ico"
+
+    Powers Epic.Brute_Leviathan_Mastery.Spirit_Shark
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Leviathan_Mastery.School_of_Sharks
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Leviathan_Mastery.Chum_Spray
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Leviathan_Mastery.Arctic_Breath
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Leviathan_Mastery.Summon_Guardian
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

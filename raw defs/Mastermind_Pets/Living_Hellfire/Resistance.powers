@@ -1,0 +1,59 @@
+#****************************************************#
+# Power: Pets > Demons Living Hellfire > Resistance  #
+# Info:  Auto: Res(Fire, Toxic)                      #
+#****************************************************#
+
+Power Mastermind_Pets.Living_Hellfire.Resistance
+{
+    Name                 "Resistance"                  
+    DisplayName          "P1196525362"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_LivingHellfire_Resistance.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_LivingHellfire_Resistance.pfx
+    DisplayShortHelp     "P1863625583"
+    DisplayHelp          "P2038900740"
+    IconName             "Invulnerability_TemporaryInvulnerabilty.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale -1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

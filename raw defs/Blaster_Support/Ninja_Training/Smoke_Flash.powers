@@ -1,0 +1,120 @@
+Power Blaster_Support.Ninja_Training.Smoke_Flash
+{
+    Name                 "Smoke_Flash"                 
+    DisplayName          "P3600193279"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.4
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        2.6
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               20
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kTaunt_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_SmokeFlash.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_SmokeFlash.PFX
+    DisplayShortHelp     "P4237320550"
+    DisplayHelp          "XMYNSSFMGR6UWRL83WZZ6CT7V2"
+    IconName             "NinjaTools_Placate"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1943041994"
+    DisplayTargetHelp    "P3904276739"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/PlacateHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 6.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Res_Dmg"
+            Scale -1.5000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamRes.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

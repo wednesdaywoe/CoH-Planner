@@ -1,0 +1,124 @@
+Power Blaster_Support.Martial_Manipulation.Burst_of_Speed
+{
+    Name                 "Burst_of_Speed"              
+    DisplayName          "P3935429061"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kTeleport
+    Range                200
+    EnduranceCost        13.52
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         90
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MartialManipulation_BurstOfSpeed.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MartialManipulation_BurstOfSpeed.PFX
+    DisplayShortHelp     "P1639268900"
+    DisplayHelp          "2ZX5R5TDYTAPWQN7D2PG234S5W"
+    IconName             "MartialManipulation_BurstofSpeed.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay -0.3000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            Delay -0.2000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Burst_of_Speed
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.0260
+            Duration 8.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Tag "SpeedRefresh"
+        Chance 2.0000
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Blaster_Support.Martial_Manipulation.Burst_of_Speed
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 2.0000
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Type kExpression
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 30.0000
+            MagnitudeExpr -1
+            Magnitude 1.0000
+            DurationExpr rechargetime power.boosted>
+            Delay 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            Params EffectFilter
+            {
+                Tag SpeedRefresh
+            }
+        }
+    }
+}

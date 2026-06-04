@@ -1,0 +1,43 @@
+Power Temporary_Powers.Temporary_Powers.PVP_Heal_Decay
+{
+    Name                 "PVP_Heal_Decay"              
+    DisplayName          "P2541719727"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    EffectArea           kCharacter
+    LifeTimeInGame       9999
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P3675645660"
+    DisplayHelp          "P2374134964"
+    IconName             "Temporary_HealSuppression.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    MaxBoosts            0
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires Healed Target.EventCount> 0 > isPVPMap? &&
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kRes
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 8.0000
+            MagnitudeExpr Healed target.EventCount> 0.2 * Res.kHeal source> + 0.0 0.8 minmax
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

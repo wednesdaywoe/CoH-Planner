@@ -1,0 +1,143 @@
+Power Temporary_Powers.Temporary_Powers.PS_Antimatter_Disintegration
+{
+    Name                 "PS_Antimatter_Disintegration"
+    DisplayName          "P3312606952"
+    Type                 kClick
+    Accuracy             1.3
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                150
+    EnduranceCost        5
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         30
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   999
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_AM_Disintegration.pfx"
+    include              menu\Powers\AnimFX\Villain_AM_Disintegration.pfx
+    DisplayShortHelp     "P3312606952"
+    DisplayHelp          "NKXVGDT9Q7GRWGXJLJC2C37H2W"
+    IconName             "Incarnate_Enemy_Anti-Matter_Disintegration.tga"
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P3312606952"
+    DisplayTargetHelp    "P3179983145"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kUnique1
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.1000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P3634219277"
+                DisplayVictimHit "P2261539067"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kUnique1
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.1500
+            Magnitude 1.0000
+            Delay 6.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2261539067"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kUnique1
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.2000
+            Magnitude 1.0000
+            Delay 10.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2261539067"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kUnique1
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.2500
+            Magnitude 1.0000
+            Delay 14.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2261539067"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX Events/EndGame/KeyesIsland/Disintegration_Continuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.2000
+            Magnitude 1.0000
+            Delay 15.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,162 @@
+Power Brute_Defense.Electric_Armor.Grounded
+{
+    Name                 "Grounded"                    
+    DisplayName          "P862969536"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EffectArea           kCharacter
+    BoostsAllowed        kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "73Q6SU9QBXX5W4X29LMCESAM2A"
+    DisplayHelp          "P7S352KBHDFXYLL4T5M75F6NKX"
+    IconName             "ElectricArmor_SelfResistEnergies.tga"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kSmashing kLethal kFire kCold
+                    Aspect kRes
+                    Target kSelf
+                    Table "Melee_Res_Dmg"
+                    Scale 0.8000
+                    Duration 1.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreResistance
+                }
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kRes
+                    Target kSelf
+                    Table "Melee_Res_Dmg"
+                    Scale 1.2500
+                    Duration 1.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreResistance
+                }
+            
+                AttribMod
+                {
+                    Attrib kNegative_Energy
+                    Aspect kRes
+                    Target kSelf
+                    Table "Melee_Res_Dmg"
+                    Scale 1.0000
+                    Duration 1.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreResistance
+                }
+            
+                AttribMod
+                {
+                    Attrib kEndurance
+                    Aspect kRes
+                    Target kSelf
+                    Table "Melee_Res_Boolean"
+                    Scale 2.0000
+                    Duration 1.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreStrength IgnoreResistance
+                }
+            }
+        
+            Effect
+            {
+                Requires NearGround source.EventTimeSince> 0.1 >
+            
+                AttribMod
+                {
+                    Attrib kKnockup
+                    Aspect kCur
+                    Target kSelf
+                    Table "Melee_Knockback"
+                    Scale -6.0000
+                    Duration 5.0000
+                    Magnitude 1.0000
+                    StackType kRefreshToCount
+                    StackLimit 1
+                    Flags IgnoreResistance
+                    Messages
+                    {
+                        DisplayAttackerHit "U5DHTBRAXP43YSZJRMCU245FKX"
+                        DisplayInfo "Y5AAXPUZY5CRYYXL7J2UNSP9HS"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kSelf
+                    Table "Melee_Knockback"
+                    Scale -6.0000
+                    Duration 5.0000
+                    Magnitude 1.0000
+                    StackType kRefreshToCount
+                    StackLimit 1
+                    Flags IgnoreResistance
+                    Messages
+                    {
+                        DisplayInfo "Y5AAXPUZY5CRYYXL7J2UNSP9HS"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale -6.0000
+                Duration 1.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags NearGround IgnoreResistance
+            }
+        }
+    
+        Effect
+        {
+            Flags PvPOnly
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale 6.0000
+                Duration 1.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+            }
+        }
+    }
+}

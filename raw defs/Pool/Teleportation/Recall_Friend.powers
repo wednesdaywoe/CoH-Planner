@@ -1,0 +1,45 @@
+Power Pool.Teleportation.Recall_Friend
+{
+    Name                 "Recall_Friend"               
+    DisplayName          "P3905802381"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Recall, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadOrAliveLeaguemate, kFoe
+    EntsAutoHit          kDeadOrAliveLeaguemate
+    Target               kAny
+    TargetVisibility     kNone
+    Range                10000
+    TargetSecondary      kTeleport
+    RangeSecondary       25
+    EnduranceCost        15
+    InterruptTime        4
+    TimeToActivate       5.93
+    TimeToRoot           1.866667
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost
+    FaceTarget           kFalse
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Teleportation_RecallFriend.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Teleportation_RecallFriend.pfx
+    DisplayShortHelp     "ZF38QCW692RHYUMBJYPS476HWS"
+    DisplayHelp          "Z6LSCJJ6LY88YCZW6UYBAQRMCX"
+    DisplayAttackerHit   "P3355628540"
+    DisplayVictimHit     "P2686822699"
+    IconName             "Teleportation_TeleportFoe.tga"
+    TimeToConfirm        10
+    DisplayConfirm       P1594673917
+
+    Redirect
+    {
+        Power Redirects.Pool_Teleportation.Recall_Friend
+        Requires target.isFriend?
+    }
+    
+    Redirect
+    {
+        Power Redirects.Pool_Teleportation.Teleport_Foe
+        Requires target.isFriend? !
+    }
+    
+}

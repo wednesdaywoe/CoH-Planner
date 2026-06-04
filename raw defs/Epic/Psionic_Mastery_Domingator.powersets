@@ -1,0 +1,49 @@
+PowerSet Epic.Psionic_Mastery_Domingator
+{
+    Name "Psionic_Mastery_Domingator"
+    DisplayName "P1773904258"
+    DisplayShortHelp "P1773904258"
+    DisplayHelp "P3673575170"
+    IconName "Psionic_Mastery_Domingator_set.ico"
+
+    Powers Epic.Psionic_Mastery_Domingator.Link_Minds
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psionic_Mastery_Domingator.Indomitable_Will
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psionic_Mastery_Domingator.Mind_Over_Body
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psionic_Mastery_Domingator.World_of_Confusion
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psionic_Mastery_Domingator.Psionic_Tornado
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

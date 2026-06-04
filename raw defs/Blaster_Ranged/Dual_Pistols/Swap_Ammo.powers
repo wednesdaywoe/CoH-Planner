@@ -1,0 +1,42 @@
+#*******************************************#
+# Power: Ranged > Dual Pistols > Swap Ammo  #
+# Info:  Change Secondary Damage/Effects    #
+#*******************************************#
+
+Power Blaster_Ranged.Dual_Pistols.Swap_Ammo
+{
+    Name                 "Swap_Ammo"                   
+    DisplayName          "P2191038984"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    DisplayShortHelp     "P580779526"
+    DisplayHelp          "NF48RQVVZ23NWDBP6UKYWL76MZ"
+    IconName             "DualPistols_SwapAmmo.tga"
+    ShowBuffIcon         kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 2.2500
+            Magnitude kLethalAmmo
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

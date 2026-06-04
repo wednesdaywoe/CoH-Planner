@@ -1,0 +1,234 @@
+Power Epic.Earth_Mastery.Stone_Prison
+{
+    Name                 "Stone_Prison"                
+    DisplayName          "P1247417221"
+    BuyRequires          $archetype @Class_Brute == $archetype @Class_Tanker == ||
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                50
+    EnduranceCost        7.8
+    TimeToActivate       1.23
+    TimeToRoot           1.23
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kImmobilized_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_EarthControl_StonePrison.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_EarthControl_StonePrison.PFX
+    DisplayShortHelp     "G9LS28BSB9QQY8ZPJLAT7AZB4W"
+    DisplayHelp          "5LSMEK5HAT2LYNZK9PCXVVGT9S"
+    IconName             "Earth_Mastery_StonePrison"
+    DisplayTargetShortHelp "P126905658"
+    DisplayTargetHelp    "P2307766235"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1724
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P1545979143"
+                DisplayVictimHit "P2876742505"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 15.0000
+            Magnitude 4.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        Effect
+        {
+            Chance 0.2000
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Immobilize"
+                Scale 10.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "P4257051740"
+                    DisplayVictimHit "P2588894681"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                    ConditionalFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.0776
+                Duration 9.2000
+                Magnitude 1.0000
+                Period 2.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                }
+                
+                FX
+                {
+                    ContinuingFX POWERS/FireControl/CindersHit.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.3162
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1545979143"
+                DisplayVictimHit "P2876742505"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

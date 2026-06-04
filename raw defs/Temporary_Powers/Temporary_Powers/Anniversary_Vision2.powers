@@ -1,0 +1,45 @@
+Power Temporary_Powers.Temporary_Powers.Anniversary_Vision2
+{
+    Name                 "Anniversary_Vision2"         
+    DisplayName          "P4050216819"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTime             1209600
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    Deletable            kTrue
+    DisplayShortHelp     "JTTJWW83ZZYFYJZ99KBQ3MQ6QA"
+    DisplayHelp          "L98M6UCU7U7DY2LP5EEXPZUYKW"
+    IconName             "Inherent_ScreenFX.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 0.6000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX WORLD\Events\Anniversary\Sepiatone_Screen_Filter.fx
+            }
+            
+        }
+    }
+}

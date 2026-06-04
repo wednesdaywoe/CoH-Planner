@@ -1,0 +1,49 @@
+#**********************************************#
+# Power: Buff > Thermal Radiation > Cauterize  #
+# Info:  Ally Heal                             #
+#**********************************************#
+
+Power Mastermind_Buff.Thermal_Radiation.Cauterize
+{
+    Name                 "Cauterize"                   
+    DisplayName          "P207511356"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       2.27
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ThermalRadiation_Cauterize.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ThermalRadiation_Cauterize.PFX
+    DisplayShortHelp     "P553708814"
+    DisplayHelp          "P3101905214"
+    IconName             "ThermalRadiation_Cauterize.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.7200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

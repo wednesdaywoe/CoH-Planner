@@ -1,0 +1,39 @@
+Power Dominator_Assault.Electricity_Manipulation.Lightning_Clap
+{
+    Name                 "Lightning_Clap"              
+    DisplayName          "P3017513223"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        18.512
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kRecovery_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_ElectricityManipulation_Zapp_Quick.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_ElectricityManipulation_Zapp_Quick.PFX
+    DisplayShortHelp     "P722481217"
+    DisplayHelp          "2Y5T6XAUX45EYDCA3S5F25GMTX"
+    IconName             "ElectricalAssault_Zapp.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Dominator_ElectricityAssault_Snipe.Lightning_Clap_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Dominator_ElectricityAssault_Snipe.Lightning_Clap_Normal
+        Requires 1
+    }
+    
+}

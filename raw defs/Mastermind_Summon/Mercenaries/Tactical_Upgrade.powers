@@ -1,0 +1,353 @@
+#*************************************************#
+# Power: Summon > Mercenaries > Tactical Upgrade  #
+# Info:  Ranged, Upgrade Mercenary Henchman       #
+#*************************************************#
+
+Power Mastermind_Summon.Mercenaries.Tactical_Upgrade
+{
+    Name                 "Tactical_Upgrade"            
+    DisplayName          "P1704568493"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kMastermindUpgrade2
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kMyPet
+    Range                50
+    EnduranceCost        11.375
+    TimeToActivate       2.03
+    RechargeTime         0.5
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRange_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    StrengthsDisallowed  kRechargeTime
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Paramilitary_Tactical_Upgrade.pfx"
+    include              menu\Powers\AnimFX\Paramilitary_Tactical_Upgrade.pfx
+    DisplayShortHelp     "P1142412802"
+    DisplayHelp          "FYXK8H92ZPBLYMZCKEV3LZWT3Q"
+    DisplayAttackerHit   "P838517376"
+    IconName             "Paramilitary_TacticalUpgrade.tga"
+    MaxTargetsHit        16
+    AnimMainTargetOnly   kTrue
+
+
+    Effect
+    {
+        Requires MastermindPets_Soldier target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Soldier_3.Assault_Rifle_Auto_Fire
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Soldier_3.Assault_Rifle_Burst
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Soldier_3.Tactical_Upgrade
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Soldier_3.Assault_Rifle_Heavy_Burst
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires MastermindPets_Medic target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 12.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Medic_3.Stimulant
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Medic_3.Frag_Grenade
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Medic_3.Tactical_Upgrade
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires MastermindPets_Spec_Ops target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Spec_Ops_3.SCAR_Snipe
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Spec_Ops_3.Tear_Gas
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Spec_Ops_3.Stealth
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Spec_Ops_3.Tactical_Upgrade
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires MastermindPets_Commando target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Commando_3.M30_Grenade
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Commando_3.Flamethrower
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Commando_3.LRM_Rocket
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Commando_3.Bulllet_Barrage
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Commando_3.Tactical_Upgrade
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 11.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingBits ANIM_HIT ANIM_MILITARYUPGRADE2
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,61 @@
+Power Temporary_Powers.Temporary_Powers.Vorpal_Suppression2
+{
+    Name                 "Vorpal_Suppression2"         
+    DisplayName          "4WXTQFFGU783WVVVYNQK3N3Y8Z"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTimeInGame       9999
+    ProcAllowed          kNone
+    DisplayShortHelp     "3Z7FX7HE682SWUBVVM6C8WAYSS"
+    DisplayHelp          "TEP6JBWJGYVEWXV9VMJSZEDXVX"
+    IconName             "Rikti_Spatial_Sickness.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    DisplayTargetShortHelp "3JSCGPNJS2USYKCGFLHBGZZ9KS"
+    DisplayTargetHelp    "TEP6JBWJGYVEWXV9VMJSZEDXVX"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude kDisable_Teleport
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath AlwaysPersist
+        }
+    }
+
+    Effect
+    {
+        Tag "SuppressFlight"
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kMax
+            Target kSelf
+            Table "Melee_SuppressFlight"
+            Scale 1.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,66 @@
+Power Temporary_Powers.Temporary_Powers.Street_Cred_Monitor
+{
+    Name                 "Street_Cred_Monitor"         
+    DisplayName          "EQHKGT89UE3LWKCECXC5JEMYNA"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    Range                80
+    TravelSuppression    3
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTime             300
+    ProcAllowed          kNone
+    IgnoreLevelBought    kTrue
+    DisplayShortHelp     "EQHKGT89UE3LWKCECXC5JEMYNA"
+    DisplayHelp          "XW3K56PQAEDUWMZUA4KC6AFSBW"
+    IconName             "Thugs_TargetedSummonMob.tga"
+    DoNotSave            kTrue
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+        Tag "StreetCredMonitor"
+        Chance -9.0000
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.0000
+            Magnitude kGangWar
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Tag "StreetCredActive"
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Street_Cred_Monitor
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,67 @@
+Power Temporary_Powers.Temporary_Powers.5th_Column_Uniform
+{
+    Name                 "5th_Column_Uniform"          
+    DisplayName          "P2120918500"
+    ModesDisallowed      kDisable_All, kHidden_Attack
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kStealth_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       1.83
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            900
+    StackingUsage        kTrue
+    MaxUsageTime         2250
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Holographic_Projector.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Holographic_Projector.pfx
+    DisplayShortHelp     "P3978072165"
+    DisplayHelp          "P3400028180"
+    IconName             "Temporary_ResonanceDisrupter.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume 5thUber_49
+                Priority 9
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1000.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,137 @@
+#***********************************************#
+# Power: Summon > Necromancy > Soul Extraction  #
+# Info:  Summon Ghost (Special)                 #
+#***********************************************#
+
+Power Mastermind_Summon.Necromancy.Soul_Extraction
+{
+    Name                 "Soul_Extraction"             
+    DisplayName          "P141167050"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kCaster
+    TargetVisibility     kNone
+    Range                60
+    EnduranceCost        15
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         150
+    EffectArea           kSphere
+    Radius               80
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kHold_Boost
+    TargetRequires       MastermindPets_Zombie target.VillainName> MastermindPets_Skeletal_Warrior target.VillainName> || MastermindPets_Lich target.VillainName> ||
+    HighlightRing        128 0 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_SoulExtraction.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_SoulExtraction.PFX
+    DisplayShortHelp     "P1068721542"
+    DisplayHelp          "TRQ2WF3LDAY7WCZYWX6PLGNA43"
+    IconName             "Necromancy_SoulExtraction.tga"
+
+
+    Effect
+    {
+        Tag "MainTarget"
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            TickChance 0.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P256533052"
+                DisplayVictimHit "P285457741"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+                ContinuingBits ANIM_DRAINED ANIM_HIT
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires MastermindPets_Lich target.VillainName>
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale -1.0000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+                Params EntCreate
+                {
+                    EntityDef MastermindPets_Ghost_Boss
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires MastermindPets_Skeletal_Warrior target.VillainName>
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale -1.0000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+                Params EntCreate
+                {
+                    EntityDef MastermindPets_Ghost_Lt
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires MastermindPets_Zombie target.VillainName>
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale -1.0000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+                Params EntCreate
+                {
+                    EntityDef MastermindPets_Ghost_Minion
+                    PriorityList "PL_FightPreferMelee"
+                }
+                
+            }
+        }
+    }
+}

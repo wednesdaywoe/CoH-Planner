@@ -1,0 +1,136 @@
+Power Sentinel_Defense.Ninjitsu.Kuji-In_Rin
+{
+    Name                 "Kuji-In_Rin"                 
+    DisplayName          "P4184330932"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       1.83
+    RechargeTime         200
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost, kJump_Boost, kSpeedRunning_Boost
+    GlobalStrengthsDisallowed kPsionic
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_KujiInRin.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_KujiInRin.PFX
+    DisplayShortHelp     "P1531949329"
+    DisplayHelp          "J5JXBHPBUPF5Y6CR4AULHVNJTX"
+    DisplayAttackerHit   "P1416335400"
+    IconName             "Ninjitsu_KujInRin.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    Cancelable           kTrue
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -30.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 3.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense kToHit kRechargeTime
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 3.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Tag "Speed"
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedJumping kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedRunning"
+            Scale 0.1000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

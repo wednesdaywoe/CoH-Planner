@@ -1,0 +1,95 @@
+#********************************************************#
+# Power: Pets > Demons Hellfire Gargoyle > Corruption    #
+# Info:  Ranged, DMG(Fire), Foe Minor DoT (Toxic), -Res  #
+#********************************************************#
+
+Power Mastermind_Pets.Hellfire_Gargoyle.Corruption
+{
+    Name                 "Corruption"                  
+    DisplayName          "P3377876385"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.5
+    PreferenceMultiplier 0.5
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_HellfireGargoyle_Corruption.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_HellfireGargoyle_Corruption.pfx
+    DisplayShortHelp     "7HB78CMRTGZ9W5LRT4GZ4G6P8W"
+    DisplayHelp          "UT6KWW2HVEPNWYBD29KF6YNT3A"
+    IconName             "DemonSummoning_Corruption.tga"
+    DisplayTargetShortHelp "P3237071411"
+    DisplayTargetHelp    "P695963167"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.7100
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1500
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Debuff_Res_Dmg"
+            Scale -2.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    }
+}

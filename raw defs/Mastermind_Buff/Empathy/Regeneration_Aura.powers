@@ -1,0 +1,57 @@
+#********************************************#
+# Power: Buff > Empathy > Regeneration Aura  #
+# Info:  PBAoE, Ally +Regeneration           #
+#********************************************#
+
+Power Mastermind_Buff.Empathy.Regeneration_Aura
+{
+    Name                 "Regeneration_Aura"           
+    DisplayName          "P2736170087"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        26
+    TimeToActivate       2.03
+    RechargeTime         500
+    EffectArea           kSphere
+    Radius               25
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Empathy_RegenerationAura.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Empathy_RegenerationAura.PFX
+    DisplayShortHelp     "P1723798362"
+    DisplayHelp          "P1271246294"
+    DisplayAttackerHit   "P345019805"
+    DisplayVictimHit     "P3274973399"
+    IconName             "Empathy_RegenerationAura.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P2594982000"
+    DisplayTargetHelp    "P625679156"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 5.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffMaxHPCont.fx
+            }
+            
+        }
+    }
+}

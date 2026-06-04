@@ -1,0 +1,81 @@
+#**********************************************************************#
+# Power: Pets > Ninja Genin 2 > Danger Sense                           #
+# Info:  Toggle: Self +DEF(Ranged, AoE), +Perception, Res(DeBuff DEF)  #
+#**********************************************************************#
+
+Power Mastermind_Pets.Genin_2.Danger_Sense
+{
+    Name                 "Danger_Sense"                
+    DisplayName          "P3260963519"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kBuff_Defense_Boost
+    DisplayShortHelp     "P2437793024"
+    DisplayHelp          "P4125263205"
+    DisplayAttackerHit   "P2707102790"
+    DisplayPowerDefenseFloat "P2514521623"
+    IconName             "Ninjitsu_DangerSense.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 1.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 2.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 0.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

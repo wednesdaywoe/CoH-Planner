@@ -1,0 +1,74 @@
+Power Dominator_Control.Plant_Control.Spirit_Tree
+{
+    Name                 "Spirit_Tree"                 
+    DisplayName          "P456354136"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                70
+    EnduranceCost        13
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         120
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kTaunt_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_SpiritTree.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_SpiritTree.PFX
+    DisplayShortHelp     "P1999456239"
+    DisplayHelp          "2Z58GQ3ZBKWBYKLVAFC5N5Z7RZ"
+    IconName             "PlantControl_SpiritTree.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P1734497484"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Spirit_Tree
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Spirit Tree"
+                PriorityList "PL_StaticObject"
+                Power Villain_Pets.Spirit_Tree_Aura.Spirit_Tree
+            }
+            
+        }
+    }
+}

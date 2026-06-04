@@ -1,0 +1,172 @@
+Power Temporary_Powers.Temporary_Powers.SC_Store_Web_Grenade
+{
+    Name                 "SC_Store_Web_Grenade"        
+    DisplayName          "P3189667928"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                50
+    EnduranceCost        9.75
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         4
+    EffectArea           kCharacter
+    NumCharges           6
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Gadgets_WebGrenade.pfx"
+    include              menu\Powers\AnimFX\Gadgets_WebGrenade.pfx
+    DisplayShortHelp     "P1642214998"
+    DisplayHelp          "9G9S3PQZ2GA3WGX3CHDEDRLHZZ"
+    IconName             "Temporary_FetteringNimbus.tga"
+    DisplayTargetShortHelp "P3505771407"
+    DisplayTargetHelp    "P1331007656"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 15.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX Powers/Gadgets/Webcage.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -500.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX Powers/Gadgets/Webcage.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Leap"
+            Scale -1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.5000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags NearGround IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.5000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags NearGround
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -10.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

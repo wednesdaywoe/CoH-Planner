@@ -1,0 +1,116 @@
+#*********************************************#
+# Power: Buff > Electrical Affinity > Amp Up  #
+# Info:  Ranged, Ally +Special, +Recharge     #
+#*********************************************#
+
+Power Defender_Buff.Shock_Therapy.Amp_Up
+{
+    Name                 "Amp_Up"                      
+    DisplayName          "P3504338375"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       2.57
+    RechargeTime         300
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ShockTherapy_AmpUp.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ShockTherapy_AmpUp.PFX
+    DisplayShortHelp     "P179645882"
+    DisplayHelp          "P916726472"
+    IconName             "ShockTherapy_AmpUp.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Shock_Therapy_Amp_Up
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "PowerBoostA"
+    
+        AttribMod
+        {
+            Attrib kHeal kAbsorb kEndurance kSpeedRunning kSpeedFlying kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 6.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            StackKey kPowerBoost
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "PowerBoostB"
+    
+        AttribMod
+        {
+            Attrib kDefense kToHit
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 3.6000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            StackKey kPowerBoost
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

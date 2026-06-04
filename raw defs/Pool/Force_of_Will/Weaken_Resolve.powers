@@ -1,0 +1,80 @@
+Power Pool.Force_of_Will.Weaken_Resolve
+{
+    Name                 "Weaken_Resolve"              
+    DisplayName          "P781112646"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         30
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/OriginPool_ForceOfWill_WeakenResolve.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/OriginPool_ForceOfWill_WeakenResolve.PFX
+    DisplayShortHelp     "P3280843876"
+    DisplayHelp          "QGJH4NNS93JZWRLFJSS5Y4CXP3"
+    IconName             "ForceofWill_WeakenResolve.tga"
+    DisplayTargetShortHelp "P1887861807"
+    DisplayTargetHelp    "P3495919092"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3206397245"
+                DisplayVictimHit "P1234105998"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.5000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

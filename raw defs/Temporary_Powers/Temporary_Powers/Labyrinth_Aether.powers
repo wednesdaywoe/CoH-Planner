@@ -1,0 +1,93 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_Aether
+{
+    Name                 "Labyrinth_Aether"            
+    DisplayName          "ET76WDZSX93HYGL2S5XNZ9GTL3"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    RefreshesOnActivePlayerChange kTrue
+    DisplayShortHelp     "N7WYZ2N2MMK3WHCU933K3SU7Q3"
+    DisplayHelp          "R5XFGRSYT7WNWMC3LCJJNL4CWX"
+    IconName             "Power_LabyrinthCoreFog.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P2619316312"
+
+
+    Effect
+    {
+        Requires InCoreFog source.inVolume> kIsFogCorrupted source.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.0125
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P849078207"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires InCoreFog source.inVolume> kIsFogCorrupted source.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.1250
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P341747546"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires InFontFog source.inVolume> kMechanicProtection source.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.2000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P341747546"
+            }
+            
+        }
+    }
+}

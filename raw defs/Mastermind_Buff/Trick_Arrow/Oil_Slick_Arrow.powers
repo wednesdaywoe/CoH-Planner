@@ -1,0 +1,49 @@
+Power Mastermind_Buff.Trick_Arrow.Oil_Slick_Arrow
+{
+    Name                 "Oil_Slick_Arrow"             
+    DisplayName          "P851023681"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                70
+    EnduranceCost        15.6
+    TimeToActivate       1.16
+    TimeToRoot           1.16
+    RechargeTime         180
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\TrickArrow_OilSlick_NoGeo.pfx"
+    include              menu\Powers\AnimFX\TrickArrow_OilSlick_NoGeo.pfx
+    DisplayShortHelp     "P2794896108"
+    DisplayHelp          "A32DAS6B9TRUWLN55DPPJFHZEX"
+    IconName             "TrickArrow_Knockdown.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_OilSlickOil
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

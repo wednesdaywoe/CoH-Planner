@@ -1,0 +1,61 @@
+Power Temporary_Powers.Temporary_Powers.Alt_Vahzilok_Eidolon_Costume
+{
+    Name                 "Alt_Vahzilok_Eidolon_Costume"
+    DisplayName          "P1765147864"
+    BuyRequires          0
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    DisplayShortHelp     "P3289133866"
+    DisplayHelp          "P2169575822"
+    IconName             "Temporary_FreakshowDisguise.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Alt_Vahzilok_Eidolon_Costume
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Prestige.Prestige_Costumes.Vahzilok_Eidolon
+            }
+            
+        }
+    }
+}

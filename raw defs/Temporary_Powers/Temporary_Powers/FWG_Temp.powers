@@ -1,0 +1,44 @@
+Power Temporary_Powers.Temporary_Powers.FWG_Temp
+{
+    Name                 "FWG_Temp"                    
+    DisplayName          "P890970882"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    TimeToActivate       0.875
+    TimeToRoot           0.875
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    DisplayShortHelp     "P834102750"
+    DisplayHelp          "P3224934110"
+    DisplayAttackerHit   "P631656156"
+    IconName             "Invulnerability_TemporaryInvulnerabilty.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+}

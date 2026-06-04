@@ -1,0 +1,51 @@
+Power Mastermind_Buff.Sonic_Resonance.Sonic_Siphon
+{
+    Name                 "Sonic_Siphon"                
+    DisplayName          "P646438851"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       2.17
+    TimeToRoot           2.17
+    RechargeTime         16
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_SonicResonance_SonicSiphon.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_SonicResonance_SonicSiphon.PFX
+    DisplayShortHelp     "P3255195607"
+    DisplayHelp          "9HPK6FHATDJVYULFJ499TVR4S2"
+    DisplayAttackerHit   "P3647738614"
+    DisplayVictimHit     "P290923559"
+    IconName             "SonicDebuff_DebuffDamRes.tga"
+    DisplayTargetShortHelp "P3466742994"
+    DisplayTargetHelp    "P290923559"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -3.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+}

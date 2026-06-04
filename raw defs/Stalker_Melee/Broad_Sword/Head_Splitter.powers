@@ -1,0 +1,53 @@
+#*************************************************#
+# Power: Melee > Broad Sword > Head Splitter      #
+# Info:  Melee, DMG(Lethal), Foe Knockback, -DEF  #
+#*************************************************#
+
+Power Stalker_Melee.Broad_Sword.Head_Splitter
+{
+    Name                 "Head_Splitter"               
+    DisplayName          "P1583216299"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                10
+    EnduranceCost        13.52
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         14
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    ProcMainTargetOnly   kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Scrapper_Melee_Broad_Sword_Head_Splitter.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Scrapper_Melee_Broad_Sword_Head_Splitter.pfx
+    DisplayShortHelp     "N4C46XGLB7QQWVC27TE73XFC5S"
+    DisplayHelp          "D5LTBVLXW7PWWGZ3L5657V75M3"
+    IconName             "Sword_HeadSplitter.tga"
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P2543120370"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay NoProjectileDelay CopyBoosts
+            Params Power
+            {
+                Power Redirects.Broad_Sword.Head_Splitter
+                Power Redirects.Broad_Sword.Head_Splitter_Glance
+            }
+            
+        }
+    }
+}

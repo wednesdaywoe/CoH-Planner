@@ -1,0 +1,37 @@
+Power Temporary_Powers.Temporary_Powers.Test_Death_Grip
+{
+    Name                 "Test_Death_Grip"             
+    DisplayName          "P1754246803"
+    ModesDisallowed      kDisable_All, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    TargetVisibility     kNone
+    Range                200
+    TargetSecondary      kPosition
+    EffectArea           kCharacter
+    AIReport             kNever
+    DisplayShortHelp     "P2368757613"
+    DisplayHelp          "P4241980350"
+    DisplayAttackerHit   "P892658489"
+    DisplayVictimHit     "P2686822699"
+    IconName             "Teleportation_TeleportFoe.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kForceMove
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 2.1000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

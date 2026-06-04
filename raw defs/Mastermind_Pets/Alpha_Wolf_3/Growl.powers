@@ -1,0 +1,80 @@
+#*******************************************#
+# Power: Pets > Beast Alpha Wolf 3 > Growl  #
+# Info:  PBAoE, Foes -Dmg, -To Hit          #
+#*******************************************#
+
+Power Mastermind_Pets.Alpha_Wolf_3.Growl
+{
+    Name                 "Growl"                       
+    DisplayName          "P2318816524"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kDebuff
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        13
+    PreferenceMultiplier 4
+    TimeToActivate       1.6
+    TimeToRoot           1.6
+    RechargeTime         45
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kEnduranceDiscount_Boost, kDebuff_ToHit_Boost
+    StrengthsDisallowed  kRechargeTime
+    ChainIntoPower       Mastermind_Pets.Alpha_Wolf_2.PM_Growl
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Wolf_Growl.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Wolf_Growl.pfx
+    DisplayShortHelp     "P379825151"
+    DisplayHelp          "PYPWG6GWJM6AW4C3MKKQB5RMLX"
+    IconName             "BeastMastery_PetGrowl.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 1.3300
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P230277108"
+                DisplayVictimHit "P407233489"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.6670
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    }
+}

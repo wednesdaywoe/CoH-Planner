@@ -1,0 +1,436 @@
+#****************************************************************#
+# Power: Melee > Sonic Melee > Sonic Thrust                      #
+# Info:  Melee, DMG(Energy/Smash), Foe Knockback, -Res(Debuffs)  #
+#****************************************************************#
+
+Power Stalker_Melee.Sonic_Melee.Sonic_Thrust
+{
+    Name                 "Sonic_Thrust"                
+    DisplayName          "P2734725700"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        3.952
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         2.5
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    HighlightEval        kSonicAtune1Self Mode? ! kSonicAtuneSelf Mode? && kSonicAtune1Self Mode? ! && kSonicAtune1FoeRefresh Mode? ||
+    HighlightRing        144 218 205 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Sonic_Melee_Sonic_Thrust.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Sonic_Melee_Sonic_Thrust.pfx
+    DisplayShortHelp     "5BY8UD2QJJY7Y8BJBQGUJCDSAQ"
+    DisplayHelp          "XYQTZXQ39UJXWFVZPWRNHHR6FX"
+    IconName             "SonicManipulation_SonicThrust"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            Effect
+            {
+                Tag "Unattuned"
+            
+                Effect
+                {
+                
+                    AttribMod
+                    {
+                        Attrib kSmashing
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_Damage"
+                        Scale 0.3800
+                        Magnitude 1.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P119576033"
+                            DisplayVictimHit "P1719855107"
+                        }
+                        
+                    }
+                
+                    AttribMod
+                    {
+                        Attrib kEnergy
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_Damage"
+                        Scale 0.3800
+                        Magnitude 1.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P2559786529"
+                            DisplayVictimHit "P377644626"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "StealthCrit"
+                    Requires kMeter source> 0 >
+                
+                    AttribMod
+                    {
+                        Attrib kEnergy
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_InherentDamage"
+                        Scale 0.7600
+                        Magnitude 1.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                            DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                            DisplayFloat "P2440464263"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "ASTeamCrit"
+                    Chance 0.0700
+                    Requires kMeter source> .9 <
+                
+                    AttribMod
+                    {
+                        Attrib kEnergy
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_InherentDamage"
+                        Scale 0.7600
+                        Magnitude 1.0000
+                        StackType kStack
+                        Flags HideZero
+                        Messages
+                        {
+                            DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                            DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                            DisplayFloat "P2440464263"
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kDefense kEndurance kToHit kSpeedRunning kSpeedFlying kSpeedJumping kRegeneration kRecovery kRechargeTime
+                    Aspect kRes
+                    Target kTarget
+                    Table "Melee_Debuff_Res_Dmg"
+                    Scale -0.8000
+                    Duration 15.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreStrength
+                    FX
+                    {
+                        ContinuingFX GenericContinuing/DamageResistance/DeBuffDebuffResContinuing.fx
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SoundBoost"
+                Chance 0.1000
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                        DisplayInfo "EJEXD5XBHL9ZW4X6NZCTN7WQ5W"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kSmashing
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.6000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P119576033"
+                        DisplayVictimHit "P1719855107"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.6000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "StealthCrit"
+                Requires kMeter source> 0 >
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 1.2000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                        DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.2000
+                Requires kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || &&
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 1.2000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                        DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kDefense kEndurance kToHit kSpeedRunning kSpeedFlying kSpeedJumping kRegeneration kRecovery kRechargeTime
+                    Aspect kRes
+                    Target kTarget
+                    Table "Melee_Debuff_Res_Dmg"
+                    Scale -0.8000
+                    Duration 15.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreStrength
+                    FX
+                    {
+                        ContinuingFX GenericContinuing/DamageResistance/DeBuffDebuffResContinuing.fx
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SoundBoost"
+                Chance 0.1000
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Suppress Knocked 10 WhenInactive
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                        DisplayInfo "EJEXD5XBHL9ZW4X6NZCTN7WQ5W"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Tag "AttuneBonus"
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 26.0000
+                Magnitude kSonicAtune1Foe
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 24.2500
+                Magnitude kSonicAtune1Self
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        }
+    
+        Effect
+        {
+            Tag "SMAttune"
+            Chance 0.0000
+            Requires kSonicAtuneSelf source.Mode? kSonicAtuneFoe target.Mode? &&
+        
+            Effect
+            {
+                Requires enttype target> critter eq
+            
+                AttribMod
+                {
+                    Attrib kExecutePower
+                    Aspect kStr
+                    Table "Melee_Ones"
+                    StackType kStack
+                    Flags NoHitDelay NoProjectileDelay CopyBoosts
+                    Params Power
+                    {
+                        Power Redirects.Sonic_Melee.Sonic_Thrust
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SMAttune"
+                Requires enttype target> player eq
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.2000
+                    Duration 25.8000
+                    Magnitude 1.0000
+                    Period 2.0000
+                    TickChance -0.8000
+                    StackType kSuppress
+                    RequiredEvent Held 0
+                    RequiredEvent Sleep 0
+                    Messages
+                    {
+                        DisplayAttackerHit "C9PYKVU83YLXY5VLF95X7QCKKS"
+                        DisplayVictimHit "2F2886DUMBDLYMLJJP7VTZCB6S"
+                        DisplayFloat "P2440464263"
+                        DisplayInfo "7S84CN2KTPU2WBZD4QJZBT27XS"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Tag "AssassinsFocus"
+            Chance 0.6250
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P3511654510"
+                }
+                
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Assassins_Focus
+                }
+                
+            }
+        }
+    }
+}

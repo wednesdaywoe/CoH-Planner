@@ -1,0 +1,81 @@
+PowerSet Dominator_Control.Symphony_Control
+{
+    Name "Symphony_Control"
+    DisplayName "8G9SKEGUVC8WY8ZRMBDYPK6R9Q"
+    DisplayShortHelp "8G9SKEGUVC8WY8ZRMBDYPK6R9Q"
+    DisplayHelp "8N5XZAQAVXB9Y3NBKC378QXB9Q"
+    IconName "Siren_set.ico"
+
+    Powers Dominator_Control.Symphony_Control.Melodic_Binding
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Symphony_Control.Hymn_of_Dissonance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Symphony_Control.Aria_of_Stasis
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Symphony_Control.Impassioned_Serenade
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Symphony_Control.Dreadful_Discord
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Symphony_Control.Enfeebling_Lullaby
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Symphony_Control.Confounding_Chant
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Symphony_Control.Chords_of_Despair
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Symphony_Control.Reverberant
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

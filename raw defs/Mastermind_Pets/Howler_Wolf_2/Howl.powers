@@ -1,0 +1,71 @@
+#*******************************************#
+# Power: Pets > Beast Howler Wolf 2 > Howl  #
+# Info:  PBAoE, Beast Ally +DMG, +To-Hit    #
+#*******************************************#
+
+Power Mastermind_Pets.Howler_Wolf_2.Howl
+{
+    Name                 "Howl"                        
+    DisplayName          "P404087185"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kBuff
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        13
+    PreferenceMultiplier 4
+    TimeToActivate       1.67
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_Wolf_Howl.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_Wolf_Howl.pfx
+    DisplayShortHelp     "P90182791"
+    DisplayHelp          "CZ56SWFRJ8LGYTBZ3BL49SF4KW"
+    DisplayAttackerHit   "P2446188453"
+    IconName             "BeastMastery_PetHowl.tga"
+    MaxTargetsHit        255
+
+
+    Effect
+    {
+        Requires MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 3.3000
+            Duration 15.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffToHitCont.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,48 @@
+Power Mastermind_Buff.Traps.Detonator
+{
+    Name                 "Detonator"                   
+    DisplayName          "P3069665139"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kMyPet
+    Range                100
+    EnduranceCost        16.31
+    TimeToActivate       2.03
+    RechargeTime         300
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    TargetRequires       Detonator target.HasTag?
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Traps_Detonator.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Traps_Detonator.PFX
+    DisplayShortHelp     "P293194417"
+    DisplayHelp          "RPZB4MQU4627YGVWPRMTEWNNAS"
+    DisplayAttackerHit   "P1821941840"
+    DisplayVictimHit     "ZCF73F44FDFJYLL2LMLX9EYNW2"
+    IconName             "Traps_AoEMassiveDamage.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Villain_Pets.Traps_Set_TimeBomb.Time_Bomb
+            }
+            
+        }
+    }
+}

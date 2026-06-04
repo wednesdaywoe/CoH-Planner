@@ -1,0 +1,83 @@
+PowerSet Blaster_Support.Tactical_Arrow
+{
+    Name "Tactical_Arrow"
+    DisplayName "P3984426605"
+    DisplayShortHelp "P3984426605"
+    DisplayHelp "SUCTNLU6GY7CWHZL9X9C9KXYTS"
+    CostumeKeys CustomWeapon_Bow
+    CostumeParts Bow_Default
+    IconName "Tactical_Arrow_set.ico"
+
+    Powers Blaster_Support.Tactical_Arrow.Electrified_Net_Arrow
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Support.Tactical_Arrow.Glue_Arrow
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Support.Tactical_Arrow.Ice_Arrow
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Support.Tactical_Arrow.Upshot
+    Available 9
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Support.Tactical_Arrow.Flash_Arrow
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Support.Tactical_Arrow.Eagle_Eye
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Support.Tactical_Arrow.Quickness
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Support.Tactical_Arrow.EMP_Arrow
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Support.Tactical_Arrow.Gymnastics
+    Available 29
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

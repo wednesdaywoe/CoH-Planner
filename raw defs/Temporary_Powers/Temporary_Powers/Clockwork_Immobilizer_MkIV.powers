@@ -1,0 +1,57 @@
+Power Temporary_Powers.Temporary_Powers.Clockwork_Immobilizer_MkIV
+{
+    Name                 "Clockwork_Immobilizer_MkIV"  
+    DisplayName          "P2174684276"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             5
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        9.75
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         100
+    EffectArea           kCharacter
+    NumCharges           1
+    ServerTrayRequires   mapname> clockwork_kingdom eq
+    ServerTrayPriority   1
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Clockwork_Imobilizer_IV.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Clockwork_Imobilizer_IV.pfx
+    DisplayShortHelp     "P4256113400"
+    DisplayHelp          "ALLL44FFXZQ4W8VDXPZQXQCPSW"
+    IconName             "Temporary_ClockworkImmobilizerMkIV.tga"
+
+
+    Effect
+    {
+        Requires group target> Clockwork eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 20.0000
+            Magnitude 100.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX POWERS/ItemsAndTempPowers/Psioniccage.fx
+                ConditionalBits ANIM_ElectroStun
+            }
+            
+        }
+    }
+}

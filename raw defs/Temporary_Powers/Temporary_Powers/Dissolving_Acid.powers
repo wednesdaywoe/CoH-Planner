@@ -1,0 +1,50 @@
+Power Temporary_Powers.Temporary_Powers.Dissolving_Acid
+{
+    Name                 "Dissolving_Acid"             
+    DisplayName          "P942906873"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         20
+    EffectArea           kCharacter
+    NumCharges           1
+    LifeTime             1800
+    TargetRequires       type target> Objects_Lambda_Reinforcement_Door eq
+    ServerTrayPriority   10
+    Tradeable            kTrue
+    Deletable            kTrue
+    ShootThroughUntouchable kTrue
+    InstanceLocked       kTrue
+    VisualFX             "menu\Powers\AnimFX\TemporaryPowers_CorrosiveAcid.pfx"
+    include              menu\Powers\AnimFX\TemporaryPowers_CorrosiveAcid.pfx
+    DisplayShortHelp     "P2495989700"
+    DisplayHelp          "HRJPWYUL353AWHVEGVJ2XDX68S"
+    DisplayAttackerHit   "P658933923"
+    IconName             "Temporary_TerraVoltaGlow.tga"
+    ShowInManage         kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

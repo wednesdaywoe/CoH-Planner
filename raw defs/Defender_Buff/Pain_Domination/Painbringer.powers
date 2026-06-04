@@ -1,0 +1,86 @@
+#**********************************************#
+# Power: Buff > Pain Domination > Painbringer  #
+# Info:  Ally, +Regeneration, +Recovery, +DMG  #
+#**********************************************#
+
+Power Defender_Buff.Pain_Domination.Painbringer
+{
+    Name                 "Painbringer"                 
+    DisplayName          "P3871125677"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       2.27
+    RechargeTime         300
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_PainDomination_Painbringer.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_PainDomination_Painbringer.PFX
+    DisplayShortHelp     "P1103158224"
+    DisplayHelp          "P3209306633"
+    DisplayAttackerHit   "P3378529597"
+    DisplayVictimHit     "P2474556352"
+    IconName             "PainDomination_Painbringer.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P2447182674"
+    DisplayTargetHelp    "P2733027807"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffEndContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 5.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffMaxHPCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 5.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

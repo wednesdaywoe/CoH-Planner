@@ -1,0 +1,40 @@
+Power Epic.Scrapper_Ice_Mastery.Frozen_Spear
+{
+    Name                 "Frozen_Spear"                
+    DisplayName          "SNVJB6YP89EWWSLU62JK8QK63W"
+    BuyRequires          $archetype @Class_Scrapper == $archetype @Class_Stalker == ||
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         24
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kSlow_Boost, kSleep_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Redirects_Epic_IceMastery_Snipe_Frozen_Spear_Quick.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Redirects_Epic_IceMastery_Snipe_Frozen_Spear_Quick.pfx
+    DisplayShortHelp     "BKBPWDMVHYBXWFLR6E49RJCVVA"
+    DisplayHelp          "GGATH9YE96P2WPVGB8VV9GXW6A"
+    IconName             "Ice_Mastery_FrozenSpear"
+
+    Redirect
+    {
+        Power Redirects.Epic_IceMastery.Frozen_Spear_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Redirects.Epic_IceMastery.Frozen_Spear_Normal
+        Requires 1
+    }
+    
+}

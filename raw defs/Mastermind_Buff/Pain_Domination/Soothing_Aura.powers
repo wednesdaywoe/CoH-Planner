@@ -1,0 +1,60 @@
+#************************************************#
+# Power: Buff > Pain Domination > Suppress Pain  #
+# Info:  Toggle: PBAoE, Ally +Regeneration       #
+#************************************************#
+
+Power Mastermind_Buff.Pain_Domination.Soothing_Aura
+{
+    Name                 "Soothing_Aura"               
+    DisplayName          "P1144181223"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        0.975
+    TimeToActivate       1.67
+    RechargeTime         10
+    ActivatePeriod       4
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_PainDomination_SoothingAura.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_PainDomination_SoothingAura.PFX
+    DisplayShortHelp     "P689862938"
+    DisplayHelp          "CY97CH7P6N5FY7VBBPB6UHHRSW"
+    DisplayAttackerHit   "P2279758055"
+    DisplayVictimHit     "P1343483540"
+    IconName             "PainDomination_SoothingAura.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P3481954157"
+    DisplayTargetHelp    "P1800862508"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 2.0000
+            Duration 4.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffMaxHPCont.fx
+            }
+            
+        }
+    }
+}

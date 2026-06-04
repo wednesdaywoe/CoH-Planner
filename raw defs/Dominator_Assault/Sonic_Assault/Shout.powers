@@ -1,0 +1,107 @@
+Power Dominator_Assault.Sonic_Assault.Shout
+{
+    Name                 "Shout"                       
+    DisplayName          "P27797857"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        13.52
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         14
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Assault_Sonic_Assault_Shout.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Assault_Sonic_Assault_Shout.pfx
+    DisplayShortHelp     "6RR3A5G9TC5JYRBQKXCTP5LNJX"
+    DisplayHelp          "KLCRD3A3Z8NVY8Z9QNJ3UM2PD2"
+    IconName             "SonicManipulation_Shout"
+    DisplayTargetShortHelp "P1315223086"
+    DisplayTargetHelp    "P1285358859"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.3000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.3000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 2.3603
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Sonic Vibrations"
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Sonic.Sonic_Vibrations_3_Dominator
+            }
+            
+        }
+    }
+}

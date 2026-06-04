@@ -1,0 +1,117 @@
+Power Temporary_Powers.Temporary_Powers.Infected_Syringe
+{
+    Name                 "Infected_Syringe"            
+    DisplayName          "P2805042158"
+    ModesDisallowed      kDisable_All, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                5
+    EnduranceCost        5
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         4
+    EffectArea           kCharacter
+    AIReport             kNever
+    StrengthsDisallowed  kRange
+    ServerTrayPriority   5
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Infected_Antidote.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Infected_Antidote.pfx
+    DisplayShortHelp     "P2805042158"
+    DisplayHelp          "VFSE5WY24HGGY4VBWGLPFZY3CS"
+    IconName             "Temporary_InfectedSyringe.tga"
+
+
+    Effect
+    {
+        Requires RogueIslandPolice_Guard_Sick target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Period 10.5000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1316846834"
+                DisplayVictimHit "P3617942190"
+            }
+            
+            FX
+            {
+                ContinuingBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.RIPInfected
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRewardSourceTeam
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params Reward
+            {
+                Reward MI_DW_M1Tokens
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires missionRIPInfected source.TokenVal> 10 >=
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Infected_Syringe
+            }
+            
+        }
+    }
+}

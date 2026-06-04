@@ -1,0 +1,41 @@
+Power Blaster_Support.Darkness_Manipulation.Touch_of_Fear
+{
+    Name                 "Touch_of_Fear"               
+    DisplayName          "P1818140369"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kLiterallyAnything
+    Range                80
+    EnduranceCost        5.2
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost, kDebuff_ToHit_Boost, kFear_Boost
+    StrengthsDisallowed  kRange
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Blaster_Support_Darkness_Manipulation_Touch_of_Fear.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Blaster_Support_Darkness_Manipulation_Touch_of_Fear.pfx
+    DisplayShortHelp     "P1067076648"
+    DisplayHelp          "WGKGQH4P5YM9WMCZDUTSTUBYEA"
+    IconName             "DarknessManipulation_TouchofFear.tga"
+    DisplayTargetShortHelp "P1128528124"
+    DisplayTargetHelp    "P793722308"
+
+    Redirect
+    {
+        Power Redirects.Darkness_Manipulation.Touch_of_the_Beyond_Foe
+        Requires target.isFriend? ! Distance 79 < &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Darkness_Manipulation.Touch_of_the_Beyond_Self
+        Requires 1
+    }
+    
+}

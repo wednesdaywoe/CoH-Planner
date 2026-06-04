@@ -1,0 +1,39 @@
+Power Blaster_Ranged.Seismic_Blast.Tombstone
+{
+    Name                 "Tombstone"                   
+    DisplayName          "P2955134848"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Tombstone.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Tombstone.pfx
+    DisplayShortHelp     "JQTV86XM8EF4W7CK9QNT5W28N2"
+    DisplayHelp          "32MY6G5RFUR2YPBD2BJ8P7PRLQ"
+    IconName             "SeismicBlast_Snipe"
+
+    Redirect
+    {
+        Power Redirects.Seismic_Blast.Blaster_Tombstone_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Redirects.Seismic_Blast.Blaster_Tombstone_Normal
+        Requires 1
+    }
+    
+}

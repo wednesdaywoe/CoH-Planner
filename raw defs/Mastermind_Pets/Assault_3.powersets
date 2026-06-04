@@ -1,0 +1,41 @@
+PowerSet Mastermind_Pets.Assault_3
+{
+    Name "Assault_3"
+    DisplayName "78PA6JK5QD36YAL2PD2ECTZR3Z"
+    DisplayShortHelp "P55898000"
+    DisplayHelp "P1779242559"
+    IconName "Assault_3_set.ico"
+
+    Powers Mastermind_Pets.Assault_3.Swarm_Missiles
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Assault_3.Incendiary_Swarm_Missiles
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Assault_3.Overcharged_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Assault_3.Upgrade
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

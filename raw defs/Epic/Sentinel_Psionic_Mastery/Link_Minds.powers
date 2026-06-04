@@ -1,0 +1,90 @@
+#********************************************************#
+# Power: Epic > Psionic Mastery > Link Minds             #
+# Info:  PBAoE Team +To Hit, +DEF (All), +RES (Psionic)  #
+#********************************************************#
+
+Power Epic.Sentinel_Psionic_Mastery.Link_Minds
+{
+    Name                 "Link_Minds"                  
+    DisplayName          "P2955500409"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kCaster
+    EnduranceCost        12.2304
+    TimeToActivate       3.67
+    RechargeTime         300
+    EffectArea           kSphere
+    Radius               35
+    AIReport             kNever
+    BoostsAllowed        kBuff_Defense_Boost, kBuff_ToHit_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_PsionicMastery_LinkMinds.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_PsionicMastery_LinkMinds.pfx
+    DisplayShortHelp     "P2190406988"
+    DisplayHelp          "5TPCWTG83BR8Y3BSYKDHXZLRBQ"
+    DisplayAttackerHit   "P3478802383"
+    DisplayVictimHit     "P2010842502"
+    IconName             "MentalControl_MindLink"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P925615151"
+    DisplayTargetHelp    "P701752453"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 0.3300
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 2.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 0.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

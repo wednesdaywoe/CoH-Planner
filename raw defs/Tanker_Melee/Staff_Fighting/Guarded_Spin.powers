@@ -1,0 +1,188 @@
+Power Tanker_Melee.Staff_Fighting.Guarded_Spin
+{
+    Name                 "Guarded_Spin"                
+    DisplayName          "P484186458"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAoE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                9
+    EnduranceCost        8.528
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         8
+    EffectArea           kCone
+    Radius               9
+    Arc                  90
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kBuff_Defense_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    HighlightEval        Temporary_Powers.Temporary_Powers.Combo_Level_3
+    HighlightRing        255 127 0 255
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/ScrapperMelee_LongStaff_GuardSpin.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/ScrapperMelee_LongStaff_GuardSpin.PFX
+    DisplayShortHelp     "3Y9QTHUKJGLMWTXG3WXCNBUUXZ"
+    DisplayHelp          "XAU3J6ZCF3EAYWCA585TN7JRPA"
+    IconName             "StaffFighting_GuardedSpin.tga"
+    MaxTargetsHit        5
+    MaxTargetsExpr       10 kDisable_GauntletTargetCap source.Mode? 5 * -
+    OverCapTrigger       5
+    OverCapMultiplier    0.3333
+    DisplayTargetShortHelp "P2646575536"
+    DisplayTargetHelp    "P3381731766"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.2417
+                Duration 1.5000
+                Magnitude 1.0000
+                Period 0.3000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1545979143"
+                    DisplayVictimHit "P2876742505"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.1043
+                Duration 1.5000
+                Magnitude 1.0000
+                Period 0.3000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                }
+                
+                FX
+                {
+                    ContinuingFX POWERS/FireControl/CindersHit.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.2949
+                Duration 1.5000
+                Magnitude 1.0000
+                Period 0.3000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1545979143"
+                    DisplayVictimHit "P2876742505"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "PVP_MainTargetOnly"
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.1053
+                Duration 1.5000
+                Magnitude 1.0000
+                Period 0.3000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1545979143"
+                    DisplayVictimHit "P2876742505"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kMelee_Attack kLethal_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 1.5000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDefContinuing.fx
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kCur
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay NoProjectileDelay
+            Params Power
+            {
+                Power Redirects.Staff_Melee.Perfection_Level
+            }
+            
+        }
+    }
+}

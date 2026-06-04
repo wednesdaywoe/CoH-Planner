@@ -1,0 +1,125 @@
+Power Stalker_Defense.Dark_Armor.Shadow_Dweller
+{
+    Name                 "Shadow_Dweller"              
+    DisplayName          "P2710481403"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kHeal_Boost, kBuff_Defense_Boost
+    DisplayShortHelp     "PVCHAF5P7HWKYXL3LLH8D4FGNQ"
+    DisplayHelp          "SNDLS7DTSN39WHL7RGNCR66S5S"
+    DisplayPowerDefenseFloat "P3802943013"
+    IconName             "DarkArmor_SelfBuffDefense.tga"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -4.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 1.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 5.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.2500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 1.2500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 1.2500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.3000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+}

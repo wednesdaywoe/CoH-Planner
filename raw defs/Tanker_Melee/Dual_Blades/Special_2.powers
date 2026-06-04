@@ -1,0 +1,313 @@
+Power Tanker_Melee.Dual_Blades.Special_2
+{
+    Name                 "Special_2"                   
+    DisplayName          "P2381566568"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        11.024
+    TimeToActivate       1.23
+    TimeToRoot           1.23
+    RechargeTime         11
+    EffectArea           kCone
+    Radius               7
+    Arc                  90
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    HighlightEval        kDD_BonusDoTMode_2 Mode?
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\DualBlades_SpecialAttack2_NoGeo.pfx"
+    include              menu\Powers\AnimFX\DualBlades_SpecialAttack2_NoGeo.pfx
+    DisplayShortHelp     "UX7TS542L8KTW7NSB8T24K5AJX"
+    DisplayHelp          "GREWR45RZB3HW2L8KABLSC48ZS"
+    IconName             "DualBlades_Special2.tga"
+    MaxTargetsHit        5
+    MaxTargetsExpr       10 kDisable_GauntletTargetCap source.Mode? 5 * -
+    OverCapTrigger       5
+    OverCapMultiplier    0.3333
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.7000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kDD_BonusDoTMode_2 source.Mode?
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2000
+            Duration 4.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "KVJX2N4CLAV9WVLB7PMAA9GF5Q"
+                DisplayVictimHit "EV5KGYBCGTYJWPCXATGKEBV84S"
+                DisplayFloat "P4015753434"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_BonusDoT2
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.3554
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "PVP_MainTargetOnly"
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.3684
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.7650
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+        Requires kDD_BonusDoTMode_2 source.Mode?
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.0899
+            Duration 4.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_Status1
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_Status2
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_Debuff1
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_Debuff2
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_BonusAoE1
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_BonusAoE2
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_BonusDoT1
+            }
+        }
+    }
+}

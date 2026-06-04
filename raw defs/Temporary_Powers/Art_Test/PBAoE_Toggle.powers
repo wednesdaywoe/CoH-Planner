@@ -1,0 +1,41 @@
+Power Temporary_Powers.Art_Test.PBAoE_Toggle
+{
+    Name                 "PBAoE_Toggle"                
+    DisplayName          "P107799213"
+    BuyRequires          accesslevel char> 9 >
+    ActivateRequires     accesslevel char> 9 >
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    TimeToActivate       1.2
+    TimeToRoot           1.2
+    RechargeTime         4
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               15
+    IgnoreAttackTimeErrors floyd
+    DisplayShortHelp     "P107799213"
+    DisplayHelp          "AHQ57LHNPK4SYTZHFEULXP86PX"
+    IconName             "StoneArmor_Clay.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+        Requires accesslevel source> 9 >
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

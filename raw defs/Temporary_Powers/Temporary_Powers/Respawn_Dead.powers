@@ -1,0 +1,50 @@
+Power Temporary_Powers.Temporary_Powers.Respawn_Dead
+{
+    Name                 "Respawn_Dead"                
+    DisplayName          "P3442078560"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTime             13
+    CastableAfterDeath   kDeadOnly
+    DisplayShortHelp     "P3267124548"
+    DisplayHelp          "P575690768"
+    IconName             "Invisibility_PhaseShift.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPhase
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX Powers/Invisibility/InvisibilityStealthContinuing.fx
+            }
+            
+            Params Phase
+            {
+                CombatPhase Friendly
+            }
+            
+        }
+    }
+}

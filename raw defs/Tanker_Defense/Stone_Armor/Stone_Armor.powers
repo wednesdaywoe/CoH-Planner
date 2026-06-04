@@ -1,0 +1,98 @@
+Power Tanker_Defense.Stone_Armor.Stone_Armor
+{
+    Name                 "Stone_Armor"                 
+    DisplayName          "P3037523170"
+    BuyRequires          Tanker_Melee.Claws !
+    ModesDisallowed      kDisable_All
+    ModesSuspended       kGranite_Mode
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kRock_Armor_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.104
+    TimeToActivate       0.73
+    RechargeTime         4
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_StoneArmor_RockArmor.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_StoneArmor_RockArmor.PFX
+    DisplayShortHelp     "P2609481580"
+    DisplayHelp          "UP997PQREMS2Y9LZY2E3LM6LKQ"
+    DisplayAttackerHit   "P484090270"
+    IconName             "StoneArmor_StoneArmor.tga"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing_Attack kLethal_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 1.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing_Attack kLethal_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 1.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing_Elude kLethal_Elude
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 0.4000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

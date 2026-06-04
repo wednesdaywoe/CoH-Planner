@@ -1,0 +1,54 @@
+Power Temporary_Powers.Temporary_Powers.The_I_Win_Button
+{
+    Name                 "The_I_Win_Button"            
+    DisplayName          "P3230582694"
+    BuyRequires          accesslevel char> 9 >
+    ActivateRequires     accesslevel char> 9 >
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    TargetVisibility     kNone
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    EffectArea           kMap
+    AIReport             kNever
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Ice_Melee_Buildup.pfx"
+    include              menu\Powers\AnimFX\Ice_Melee_Buildup.pfx
+    DisplayShortHelp     "P2736716315"
+    DisplayHelp          "6AX6CDA7WMUVYWZSZ99UULL68S"
+    IconName             "Temporary_Warburg_MassiveDamage.tga"
+    MaxTargetsHit        9999
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+
+
+    Effect
+    {
+        Requires enttype target> critter eq accesslevel source> 9 > &&
+    
+        AttribMod
+        {
+            Attrib kSpecial
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 40.0000
+            Duration 10.5000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2374901483"
+                DisplayFloat "P41851431"
+            }
+            
+        }
+    }
+}

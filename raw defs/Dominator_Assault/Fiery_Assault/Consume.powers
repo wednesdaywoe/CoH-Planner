@@ -1,0 +1,121 @@
+Power Dominator_Assault.Fiery_Assault.Consume
+{
+    Name                 "Consume"                     
+    DisplayName          "P4044677581"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.52
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         180
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_FieryAssault_Consume.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_FieryAssault_Consume.PFX
+    DisplayShortHelp     "MTNFVBFZAJHMWYXP623F23FB7Z"
+    DisplayHelp          "5JUMAWTQPNWVWEM3AQAX4XWTHZ"
+    IconName             "FireAssault_Consume.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 20.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P1197092217"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0500
+            Duration 15.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        Effect
+        {
+            Flags HitRollSuccess
+            DisplayInfo "ZBMY3B5T657MY5NBZK59QVKS63"
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.4000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        
+            Effect
+            {
+                Requires enttype target> player eq
+            
+                AttribMod
+                {
+                    Attrib kRage
+                    Aspect kAbs
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 8.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreStrength IgnoreResistance
+                }
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

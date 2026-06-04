@@ -1,0 +1,102 @@
+Power Tanker_Defense.Dark_Armor.Dark_Embrace
+{
+    Name                 "Dark_Embrace"                
+    DisplayName          "P3063295318"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.104
+    TimeToActivate       0.67
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerDefense_DarkArmor_DarkEmbrace.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerDefense_DarkArmor_DarkEmbrace.PFX
+    DisplayShortHelp     "P1918436433"
+    DisplayHelp          "87RS4KL5UR86W5NEJ4R57L92HA"
+    DisplayAttackerHit   "P295219657"
+    IconName             "DarkArmor_DarkEmbrace.tga"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,137 @@
+Power Temporary_Powers.Temporary_Powers.Summer_Event_Stealth
+{
+    Name                 "Summer_Event_Stealth"        
+    DisplayName          "P3250763099"
+    Type                 kClick
+    Accuracy             1
+    GroupMembership      kHide_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       0.73
+    RechargeTime         30
+    EffectArea           kCharacter
+    LifeTime             1800
+    IgnoreStrength       kTrue
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   2
+    IgnoreLevelBought    kTrue
+    Deletable            kTrue
+    ShootThroughUntouchable kTrue
+    InstanceLocked       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_Hide.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_Hide.PFX
+    DisplayShortHelp     "P884712908"
+    DisplayHelp          "M3SEA9YKS4M6YSVA7TY3WT3BJW"
+    IconName             "Ninjitsu_Hide.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    DisplayTargetShortHelp "P3194562733"
+    DisplayTargetHelp    "P1296372392"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 150.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 1
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P4123250438"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 500.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            Delay 12.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 1
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P1149882407"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.7500
+            Duration 24.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

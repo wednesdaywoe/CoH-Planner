@@ -1,0 +1,59 @@
+#**********************************************************************************************#
+# Power: Buff > Electrical Affinity > Faraday Cage                                             #
+# Info:  Location (PBAoE), Team +Res(All DMG but Toxic, Status, Knockback, -Rech, -Rec, -End)  #
+#**********************************************************************************************#
+
+Power Mastermind_Buff.Shock_Therapy.Faraday_Cage
+{
+    Name                 "Faraday_Cage"                
+    DisplayName          "P3475634603"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    Range                25
+    EnduranceCost        13
+    TimeToActivate       1.07
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ShockTherapy_FaradayCageCast.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ShockTherapy_FaradayCageCast.PFX
+    DisplayShortHelp     "P2446742781"
+    DisplayHelp          "P3350111851"
+    IconName             "ShockTherapy_FaradayCage.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Faraday Cage"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Shock_Therapy.FaradayCage
+                Power Redirects.Shock_Therapy.FaradayCageFx
+                Power Redirects.Shock_Therapy.FaradayStatic
+            }
+            
+        }
+    }
+}

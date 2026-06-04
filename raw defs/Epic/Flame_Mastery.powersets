@@ -1,0 +1,49 @@
+PowerSet Epic.Flame_Mastery
+{
+    Name "Flame_Mastery"
+    DisplayName "P1421554031"
+    DisplayShortHelp "P1421554031"
+    DisplayHelp "P2119179379"
+    IconName "Flame_Mastery_set.ico"
+
+    Powers Epic.Flame_Mastery.Bonfire
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Flame_Mastery.Char
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Flame_Mastery.Fire_Shield
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Flame_Mastery.Melt_Armor
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Flame_Mastery.Rise_of_the_Phoenix
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

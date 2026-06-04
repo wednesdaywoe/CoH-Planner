@@ -1,0 +1,122 @@
+Power Epic.Dominator_Dark_Mastery.Soul_Consumption
+{
+    Name                 "Soul_Consumption"            
+    DisplayName          "49V2EJYHMAJSYGMVYDQRZVD7GX"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    Range                15
+    EnduranceCost        0.52
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         600
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_DarkArmor_DarkRegeneration.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_DarkArmor_DarkRegeneration.PFX
+    DisplayShortHelp     "QLGCND2BMD6SYJLC7UCGNZ4SQA"
+    DisplayHelp          "8MW8BSBKRPXQW7LF2DD77C3MZX"
+    IconName             "Dark_Mastery_SoulConsumption"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kMax
+            Target kCaster
+            Table "Ranged_EndDrain"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.6000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kTarget
+            Table "Melee_HealSelf"
+            Scale -0.4000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 0.4000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 0.4000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,33 @@
+PowerSet Mastermind_Pets.Living_Hellfire
+{
+    Name "Living_Hellfire"
+    DisplayName "WJX7TC3B5CACWJMCVX7WT2HRQZ"
+    DisplayShortHelp "P3429684360"
+    DisplayHelp "P3429684360"
+    IconName "Living_Hellfire_set.ico"
+
+    Powers Mastermind_Pets.Living_Hellfire.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Living_Hellfire.Self_Destruct
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Living_Hellfire.Claw_Rake
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

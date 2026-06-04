@@ -1,0 +1,107 @@
+Power Temporary_Powers.Temporary_Powers.SC_Store_Low-G_Pack
+{
+    Name                 "SC_Store_Low-G_Pack"         
+    DisplayName          "P689781289"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Travel
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kSuppress_TravelToggles, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kLeap_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.2844
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTimeInGame       1800
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    StrengthsDisallowed  kEnduranceDiscount
+    Deletable            kTrue
+    DisplayShortHelp     "P741067350"
+    DisplayHelp          "ME95BKKAK7MVWQBFDPRVSBF5LZ"
+    IconName             "Temporary_JumpPack.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Leap"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            Flags IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX ENEMYFX/Malta/SapperFX/SapperPack.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kStr
+            Table "Melee_Ones"
+            Duration 0.7500
+            StackType kReplace
+            FX
+            {
+                ContinuingFX ENEMYFX/Malta/SapperFX/SapperPack.fx
+            }
+            
+        }
+    }
+}

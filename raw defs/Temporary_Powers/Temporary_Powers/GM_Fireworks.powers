@@ -1,0 +1,36 @@
+Power Temporary_Powers.Temporary_Powers.GM_Fireworks
+{
+    Name                 "GM_Fireworks"                
+    DisplayName          "P1943008855"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    Range                7
+    RechargeTime         0.5
+    EffectArea           kCharacter
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers/Temporary_Powers_Fireworks.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers/Temporary_Powers_Fireworks.pfx
+    DisplayShortHelp     "P2006939289"
+    DisplayHelp          "NKZWPG6ZDJ3DY3MRJ3T4ARJD2Q"
+    IconName             "Temporary_Powers_Fireworks.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

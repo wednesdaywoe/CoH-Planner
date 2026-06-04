@@ -1,0 +1,449 @@
+Power Pool.Speed.Flurry
+{
+    Name                 "Flurry"                      
+    DisplayName          "P189132002"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        4.368
+    TimeToActivate       3.07
+    TimeToRoot           3.07
+    RechargeTime         3
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Speed_Flurry.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Speed_Flurry.pfx
+    DisplayShortHelp     "YDNRHTFP6ZNUWNXKT58YE4V27Z"
+    DisplayHelp          "QNPQTG6VBNUKYUMMDZEM542BHW"
+    IconName             "SuperSpeed_Flurry.tga"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1430
+            Duration 1.8000
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1545979143"
+                DisplayVictimHit "P2876742505"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 4.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.3336
+            Duration 1.8000
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1545979143"
+                DisplayVictimHit "P2876742505"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> critter eq kStealth source> 0.5 > && arch source> Class_Dominator eq &&
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 6.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> player eq kStealth source> 0.5 > && arch source> Class_Dominator eq &&
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0500
+        Requires arch source> Class_Scrapper eq enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.1440
+            Magnitude 1.0000
+            Delay 1.8000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires kHeld target> 0 > kSleep target> 0 > || arch source> Class_Stalker eq && kMeter source> .9 < && enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.1440
+            Magnitude 1.0000
+            Delay 1.8000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires arch source> Class_Stalker eq kmeter source> 0 > && enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.1440
+            Magnitude 1.0000
+            Delay 1.8000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq && enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.1440
+            Magnitude 1.0000
+            Delay 1.8000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "7GFBNH4NKSGSWLLNB6SPLDPZRX"
+                DisplayVictimHit "WDRX37U9REAYWPMC6B3KN92GU3"
+                DisplayFloat "P111359259"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Containment"
+        Requires kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.hasTag? || arch source> Class_Controller eq && enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.1430
+            Duration 1.8000
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "444A38QG32TMYQLDSY7P6SXSG2"
+                DisplayVictimHit "3G76USFFKNXLYGX76TRMKTLG9Q"
+                DisplayFloat "P3070513493"
+                DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0500
+        Requires arch source> Class_Scrapper eq enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 2.6690
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Containment"
+        Requires kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller eq && enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.1668
+            Duration 1.8000
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "444A38QG32TMYQLDSY7P6SXSG2"
+                DisplayVictimHit "3G76USFFKNXLYGX76TRMKTLG9Q"
+                DisplayFloat "P3070513493"
+                DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires kHeld target> 0 > kSleep target> 0 > || arch source> Class_Stalker eq && kMeter source> .9 < && enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 2.6690
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires arch source> Class_Stalker eq kmeter source> 0 > && enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 2.6690
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq && enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 2.6690
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "7GFBNH4NKSGSWLLNB6SPLDPZRX"
+                DisplayVictimHit "WDRX37U9REAYWPMC6B3KN92GU3"
+                DisplayFloat "P111359259"
+            }
+            
+        }
+    }
+}

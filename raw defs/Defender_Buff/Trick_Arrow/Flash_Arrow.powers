@@ -1,0 +1,166 @@
+Power Defender_Buff.Trick_Arrow.Flash_Arrow
+{
+    Name                 "Flash_Arrow"                 
+    DisplayName          "P2538058937"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               35
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\TrickArrow_Flash_NoGeo.pfx"
+    include              menu\Powers\AnimFX\TrickArrow_Flash_NoGeo.pfx
+    DisplayShortHelp     "P2306152642"
+    DisplayHelp          "U6EXX9BSCX79Y9C2ZA74DSG44X"
+    IconName             "TrickArrow_Blind.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P2203852352"
+    DisplayTargetHelp    "P2650044405"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.9000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2345218607"
+                DisplayVictimHit "P2652110899"
+            }
+            
+            FX
+            {
+                ContinuingFX Weapons/Bow/TrickArrow/FlashHitContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.5000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2345218607"
+                DisplayVictimHit "P2652110899"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.5000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayAttackerHit "P2345218607"
+                DisplayVictimHit "P2652110899"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.9000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Damaged
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX Weapons/Bow/TrickArrow/FlashHitContinuing.fx
+            }
+            
+        }
+    }
+}

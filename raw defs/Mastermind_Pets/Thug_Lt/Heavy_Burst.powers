@@ -1,0 +1,68 @@
+#**********************************************#
+# Power: Pets > Thug Lieutenant > Heavy Burst  #
+# Info:  -Def                                  #
+#**********************************************#
+
+Power Mastermind_Pets.Thug_Lt.Heavy_Burst
+{
+    Name                 "Heavy_Burst"                 
+    DisplayName          "P358900709"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.864
+    DontSetStance        1
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Villain_SubmachineGun_Black_HeavyBurst.pfx"
+    include              menu\Powers\AnimFX\Villain_SubmachineGun_Black_HeavyBurst.pfx
+    DisplayShortHelp     "P3100956268"
+    DisplayHelp          "EW9BAGBR8N4VWLXWBYMGD5BCCZ"
+    IconName             "AssaultWeapons_ARBurst.tga"
+    DisplayTargetShortHelp "P3100956268"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2300
+            Duration 1.6000
+            Magnitude 1.0000
+            Period 0.3000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 0.5000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

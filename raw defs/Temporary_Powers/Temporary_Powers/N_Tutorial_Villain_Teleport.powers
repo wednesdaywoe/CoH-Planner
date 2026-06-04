@@ -1,0 +1,71 @@
+Power Temporary_Powers.Temporary_Powers.N_Tutorial_Villain_Teleport
+{
+    Name                 "N_Tutorial_Villain_Teleport" 
+    DisplayName          "P2187362754"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       999
+    EffectArea           kCharacter
+    TargetRequires       alignment source> rogue eq alignment source> villain eq || alignment source> vigilante eq || allyID source> villain eq && praetorianprogress source> normal eq praetorianprogress source> earth eq || &&
+    DisplayShortHelp     "P1055109695"
+    DisplayHelp          "P905077007"
+    IconName             "Teleportation_Wentworths.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 3.0000
+            Magnitude 1.0000
+            Delay 2.8300
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.5000
+            StackType kStack
+            Flags IgnoreResistance
+            Params Teleport
+            {
+                Destination 41.N_Tutorial_VillainSpawn
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 4.5000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.N_Tutorial_Villain_Teleport
+            }
+            
+        }
+    }
+}

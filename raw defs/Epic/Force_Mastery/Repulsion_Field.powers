@@ -1,0 +1,81 @@
+Power Epic.Force_Mastery.Repulsion_Field
+{
+    Name                 "Repulsion_Field"             
+    DisplayName          "P3240570147"
+    BuyRequires          $archetype @Class_Blaster ==
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.325
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         40
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               9
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kKnockback_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ForceField_RepulsionField.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ForceField_RepulsionField.PFX
+    DisplayShortHelp     "P2358627271"
+    DisplayHelp          "GRXY2LU882HEWKZE85WEX8Z73Z"
+    DisplayAttackerHit   "P662208976"
+    IconName             "ForceField_RepulsionField.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+        Tag "ReduceIfKD"
+        Chance 1.1000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 3.0000
+            Duration 0.5000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1153017445"
+                DisplayVictimHit "P4162104512"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 3.0000
+            Duration 0.5000
+            StackType kReplace
+            Suppress Knocked 10 WhenInactive
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1153017445"
+                DisplayVictimHit "P4162104512"
+            }
+            
+        }
+    }
+}

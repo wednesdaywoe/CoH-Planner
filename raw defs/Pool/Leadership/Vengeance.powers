@@ -1,0 +1,168 @@
+Power Pool.Leadership.Vengeance
+{
+    Name                 "Vengeance"                   
+    DisplayName          "P1379641621"
+    BuyRequires          Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Tactics && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kDeadLeaguemate
+    Range                60
+    TimeToActivate       1.17
+    RechargeTime         300
+    EffectArea           kSphere
+    Radius               100
+    BoostsAllowed        kRange_Boost, kHeal_Boost, kBuff_Defense_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Leadership_Vengeance.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Leadership_Vengeance.pfx
+    DisplayShortHelp     "P1099678166"
+    DisplayHelp          "GM447JJRXLZDWDNRCATCMQZNGS"
+    DisplayAttackerHit   "P233225542"
+    DisplayVictimHit     "P3298693331"
+    DisplayPowerDefenseFloat "P2514521623"
+    IconName             "Leadership_Vengence.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P760658812"
+    DisplayTargetHelp    "P2930513888"
+
+
+    Effect
+    {
+        Requires kVengeance_Mode target.mode? !
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Buff_Def"
+            Scale 2.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Buff_ToHit"
+            Scale 3.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -10.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTaunt kPlacate kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Res_Boolean"
+            Scale 2.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -100.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRepel
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -10.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Buff_Dmg"
+            Scale 3.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 120.0000
+            Magnitude kVengeance_Mode
+            Period 130.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Heal"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

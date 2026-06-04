@@ -1,0 +1,139 @@
+#************************************************#
+# Power: Melee > Psionic Melee > Boggle          #
+# Info:  Short Ranged, Target Confuse, +Special  #
+#************************************************#
+
+Power Stalker_Melee.Psionic_Melee.Boggle
+{
+    Name                 "Boggle"                      
+    DisplayName          "P4157163835"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        7.8
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         20
+    EffectArea           kCharacter
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kConfuse_Boost
+    HighlightEval        kDD_StatusMode_1 Mode? !
+    HighlightRing        255 192 255 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\PsionicMelee_Boggle.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\PsionicMelee_Boggle.PFX
+    DisplayShortHelp     "P3125615589"
+    DisplayHelp          "TFGBNHZUYGSWYMZHW38B3YAE8Q"
+    IconName             "PsionicMelee_Boggle.tga"
+    DisplayTargetShortHelp "P1116895679"
+    DisplayTargetHelp    "P2584848323"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1042998915"
+                DisplayVictimHit "P3936532274"
+                DisplayFloat "P1066618311"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Boggled
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude kDD_StatusMode_1
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 15.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Confused 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    }
+}

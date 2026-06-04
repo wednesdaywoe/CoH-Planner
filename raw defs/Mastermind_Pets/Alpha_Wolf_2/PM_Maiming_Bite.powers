@@ -1,0 +1,48 @@
+#************************************************************#
+# Power: Pets > Beast Alpha Wolf 2 > Pack Mentality Granter  #
+# Info:  Grants Pack Mentality                               #
+#************************************************************#
+
+Power Mastermind_Pets.Alpha_Wolf_2.PM_Maiming_Bite
+{
+    Name                 "PM_Maiming_Bite"             
+    DisplayName          "P3111718594"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kMyOwner
+    EntsAutoHit          kMyOwner
+    Target               kCaster
+    PreferenceMultiplier -1
+    EffectArea           kSphere
+    Radius               30
+    DisplayShortHelp     "P1771697811"
+    DisplayHelp          "P2692741157"
+    IconName             "BeastMastery_PetMaimingBite.tga"
+    MaxTargetsHit        1
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Chance 0.4235
+        Requires temporary_powers.temporary_powers.Pack_Mentality_Lock target.ownPower? !
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Pack_Mentality
+            }
+            
+        }
+    }
+}

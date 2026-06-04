@@ -1,0 +1,120 @@
+Power Brute_Defense.Bio_Organic_Armor.Genetic_Contamination
+{
+    Name                 "Genetic_Contamination"       
+    DisplayName          "P2368488805"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        1.04
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         4
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kTaunt_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\SymbioticArmor_GeneticContamination.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\SymbioticArmor_GeneticContamination.PFX
+    DisplayShortHelp     "P4185870052"
+    DisplayHelp          "FJE4VKDFG3Q7WNBURPVM96RKTW"
+    IconName             "BioOrganicArmor_GeneticContamination.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1759808529"
+    DisplayTargetHelp    "P1286364716"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2851307520"
+                DisplayVictimHit "P105122461"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kDefensiveAdaptation source.Mode? !
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Debuff_Dam"
+            Scale 1.5000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kDefensiveAdaptation source.Mode?
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Debuff_Dam"
+            Scale 1.9950
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "InherentTaunt"
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Inherents.Fury_Proc_Aura
+            }
+            
+        }
+    }
+}

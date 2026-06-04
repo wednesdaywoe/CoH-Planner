@@ -1,0 +1,38 @@
+Power Temporary_Powers.Day_Job_Powers.Grave_Digger_XP_Debt_Lesser
+{
+    Name                 "Grave_Digger_XP_Debt_Lesser" 
+    DisplayName          "P117467131"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       7200
+    Deletable            kTrue
+    DisplayShortHelp     "P3367619543"
+    DisplayHelp          "P2723526748"
+    IconName             "DayJob_DebtProtection.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kXPDebtProtection
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

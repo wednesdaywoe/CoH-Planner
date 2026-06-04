@@ -1,0 +1,292 @@
+#*********************************************************#
+# Power: Support > Atomic Manipulation > Positron Cell    #
+# Info:  Ranged, DoT(Energy), Foe Hold, -DEF, +Positrons  #
+#*********************************************************#
+
+Power Blaster_Support.Radiation_Manipulation.Positron_Cell
+{
+    Name                 "Positron_Cell"               
+    DisplayName          "P2432702228"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        11.388
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         16
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\RadiationControl_PositronCell.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\RadiationControl_PositronCell.PFX
+    DisplayShortHelp     "FLRXRQQEMHAYYHVAN4T3SMNYG2"
+    DisplayHelp          "5M8J9S4AQJ95YGNDGMKGQZA3FW"
+    IconName             "AtomicManipulation_Hold"
+    DisplayTargetShortHelp "P2998313093"
+    DisplayTargetHelp    "P693586527"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kHeld
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Immobilize"
+                Scale 10.0000
+                Magnitude 2.0000
+                StackType kReplace
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kHeld
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Immobilize"
+                Scale 6.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4134654113"
+                    DisplayVictimHit "P3642575485"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.2200
+                Duration 4.2000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P59899910"
+                    DisplayVictimHit "P3210640873"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kHeld
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P4134654113"
+                    DisplayVictimHit "P3642575485"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.4420
+                Duration 4.2000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P59899910"
+                    DisplayVictimHit "P3210640873"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Debuff_Def"
+                Scale 1.5000
+                Duration 10.0000
+                Magnitude 1.0000
+                StackType kStack
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "GammaBurst"
+            Requires Temporary_Powers.Temporary_Powers.Radiation_Control_Negatrons target.ownPower? Temporary_Powers.Temporary_Powers.Radiation_Control_GammaBurst target.ownPower? ! &&
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayFloat "P550990727"
+                }
+                
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Radiation_Control_GammaBurst
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kStr
+                Table "Melee_Ones"
+                StackType kStack
+                Flags CopyBoosts
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Radiation_Control_GammaBurstDebuff
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Polarize"
+            Requires Temporary_Powers.Temporary_Powers.Radiation_Control_GammaBurst target.ownPower? ! Temporary_Powers.Temporary_Powers.Radiation_Control_Negatrons target.ownPower? ! &&
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P1535757780"
+                    DisplayVictimHit "P2187640554"
+                }
+                
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Radiation_Control_Positrons
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Polarize"
+            Requires Temporary_Powers.Temporary_Powers.Radiation_Control_Negatrons target.ownPower?
+        
+            AttribMod
+            {
+                Attrib kRevokePower
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Radiation_Control_Positrons
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Defiance"
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kStr
+                Type kExpression
+                Target kCaster
+                Table "Ranged_Ones"
+                MagnitudeExpr 0.066 activatetime power.base> * areafactor power.base> /
+                DurationExpr activatetime power.base> 7.5 +
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayInfo "P3912192696"
+                }
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,498 @@
+Power Pool.Fighting.Kick
+{
+    Name                 "Kick"                        
+    DisplayName          "P3202838587"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        4.368
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         3
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Fighting_Kick.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Fighting_Kick.pfx
+    DisplayShortHelp     "2AM69N4C9P9LW9CTFDKVB3AFFA"
+    DisplayHelp          "W5KDCH3TTP3KY3L84ENV3XM7A3"
+    IconName             "Fighting_Kick.tga"
+    DisplayTargetShortHelp "P1074171825"
+    DisplayTargetHelp    "P1226120494"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.8400
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.8010
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Scrapper"
+        Chance 0.0500
+        Requires arch source> Class_Scrapper eq enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.8400
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Stalker"
+        Chance 0.2000
+        Requires kHeld target> 0 > kSleep target> 0 > || arch source> Class_Stalker eq && kMeter source> .9 < && enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.8400
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Stalker"
+        Requires arch source> Class_Stalker eq kmeter source> 0 > && enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.8400
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Corruptor"
+        Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq && enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.8400
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "7GFBNH4NKSGSWLLNB6SPLDPZRX"
+                DisplayVictimHit "WDRX37U9REAYWPMC6B3KN92GU3"
+                DisplayFloat "P111359259"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Containment" "Controller"
+        Requires kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.hasTag? || arch source> Class_Controller eq && enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.8400
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "S9FR3TM96YKDYHCGZKSUJV77C3"
+                DisplayVictimHit "D92Y25NZHTA8YUMVRU6CSTFZ7W"
+                DisplayFloat "P3070513493"
+                DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Scrapper"
+        Chance 0.0500
+        Requires arch source> Class_Scrapper eq enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.8010
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Containment" "Controller"
+        Requires kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller eq && enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.9005
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "S9FR3TM96YKDYHCGZKSUJV77C3"
+                DisplayVictimHit "D92Y25NZHTA8YUMVRU6CSTFZ7W"
+                DisplayFloat "P3070513493"
+                DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Stalker"
+        Chance 0.2000
+        Requires kHeld target> 0 > kSleep target> 0 > || arch source> Class_Stalker eq && kMeter source> .9 < && enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.8010
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Stalker"
+        Requires arch source> Class_Stalker eq kmeter source> 0 > && enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.8010
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Corruptor"
+        Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq && enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.8010
+            MagnitudeExpr @StdResult Pool.Fighting.Boxing source.ownPowerNum? .15 * Pool.Fighting.Cross_Punch source.ownPowerNum? .15 * + 1 + *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "7GFBNH4NKSGSWLLNB6SPLDPZRX"
+                DisplayVictimHit "WDRX37U9REAYWPMC6B3KN92GU3"
+                DisplayFloat "P111359259"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "SynergyKD"
+    
+        Effect
+        {
+            Requires Pool.Fighting.Boxing source.ownPower? !
+        
+            Effect
+            {
+                Chance 0.1500
+                Requires enttype target> critter eq
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                        DisplayInfo "JK4RNV39TWSJYPV5HZRL8B7WFZ"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.1500
+                Requires enttype target> player eq
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Suppress Knocked 10 WhenInactive
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                        DisplayInfo "JK4RNV39TWSJYPV5HZRL8B7WFZ"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Flags Fallback HideFromInfo
+        
+            Effect
+            {
+                Chance 0.4000
+                Requires enttype target> critter eq
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.4000
+                Requires enttype target> player eq
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Suppress Knocked 10 WhenInactive
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "SynergyFatigue"
+        Requires Pool.Fighting.Cross_Punch source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.0300
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+                DisplayInfo "3HSMUNEHTXLEWMLL7CMYGJRYWX"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.0500
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayVictimHit "P1298616021"
+                DisplayFloat "P3914765549"
+                DisplayInfo "3HSMUNEHTXLEWMLL7CMYGJRYWX"
+            }
+            
+        }
+    }
+}

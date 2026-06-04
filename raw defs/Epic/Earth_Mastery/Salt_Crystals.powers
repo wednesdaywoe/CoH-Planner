@@ -1,0 +1,207 @@
+Power Epic.Earth_Mastery.Salt_Crystals
+{
+    Name                 "Salt_Crystals"               
+    DisplayName          "P3437809167"
+    BuyRequires          $archetype @Class_Brute == $archetype @Class_Tanker == ||
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_EarthControl_SaltCrystals.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_EarthControl_SaltCrystals.PFX
+    DisplayShortHelp     "P2796164971"
+    DisplayHelp          "S8CNWZNM3DH3YDC2MQJSZFK62X"
+    IconName             "Earth_Mastery_SaltCrystals"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2772611963"
+    DisplayTargetHelp    "P1655816027"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 20.0000
+                Magnitude 3.0000
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        
+            Effect
+            {
+                Chance 0.5000
+            
+                AttribMod
+                {
+                    Attrib kSleep
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_Sleep"
+                    Scale 15.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P786700626"
+                        DisplayVictimHit "P2415654930"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/SleepContinuing.fx
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires Raid target.HasTag?
+            Flags HitRollSuccess
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 20.0000
+                Magnitude 3.0000
+                StackType kStack
+                Flags NearGround
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        
+            Effect
+            {
+                Chance 0.5000
+            
+                AttribMod
+                {
+                    Attrib kSleep
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_Sleep"
+                    Scale 15.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P786700626"
+                        DisplayVictimHit "P2415654930"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/SleepContinuing.fx
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+                ConditionalBits ANIM_LassoStun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+}

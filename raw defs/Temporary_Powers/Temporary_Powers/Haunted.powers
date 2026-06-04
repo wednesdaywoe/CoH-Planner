@@ -1,0 +1,41 @@
+Power Temporary_Powers.Temporary_Powers.Haunted
+{
+    Name                 "Haunted"                     
+    DisplayName          "P3259379007"
+    Type                 kAuto
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kSphere
+    Radius               60
+    LifeTime             60
+    DisplayShortHelp     "P3259379007"
+    DisplayHelp          "P3321471357"
+    IconName             "DarknessControl_Haunt.tga"
+    MaxTargetsHit        16
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P2029867648"
+    DisplayTargetHelp    "P4289463623"
+
+
+    Effect
+    {
+        Requires Pets_Shade target.VillainName> Drudges_Shade target.VillainName> || Pets_Maestro_Shade_Diminuendo target.VillainName> || Pets_Maestro_Shade_Cantata target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Taunt"
+            Scale 60.0000
+            Magnitude 50.0000
+            StackType kIgnore
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

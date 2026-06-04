@@ -1,0 +1,41 @@
+Power Tanker_Melee.Titan_Weapons.Sweeping_Strike
+{
+    Name                 "Sweeping_Strike"             
+    DisplayName          "P1827797673"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                15
+    EnduranceCost        10.4988
+    TimeToActivate       2.43
+    TimeToRoot           2.43
+    RechargeTime         10
+    EffectArea           kCone
+    Radius               15
+    Arc                  120
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TitanWeapon_SweepingStrike_Slow.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TitanWeapon_SweepingStrike_Slow.PFX
+    DisplayShortHelp     "FGDB45MTEXKAW4XLL2JZKAAPE2"
+    DisplayHelp          "8RAZ4SE2XWKYYLNJRXZBN7XJZ3"
+    IconName             "TitanWeapons_SweepingStrike.tga"
+    MaxTargetsHit        5
+
+    Redirect
+    {
+        Power Pets.Titan_Weapons_Tanker.Sweeping_Strike_Fast
+        Requires kFastMode source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Pets.Titan_Weapons_Tanker.Sweeping_Strike_Slow
+        Requires 1
+    }
+    
+}

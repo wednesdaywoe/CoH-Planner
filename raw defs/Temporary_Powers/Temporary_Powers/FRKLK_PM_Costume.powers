@@ -1,0 +1,120 @@
+Power Temporary_Powers.Temporary_Powers.FRKLK_PM_Costume
+{
+    Name                 "FRKLK_PM_Costume"            
+    DisplayName          "MF9ZVKRJ9UD6YRN86U7LB4AWC2"
+    Type                 kAuto
+    Accuracy             1.2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       3000
+    EffectArea           kCharacter
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P4105407047"
+    DisplayHelp          "4SFCHR9KHTSWYFCLNR3BR2PTVA"
+    IconName             "Regeneration_MomentOfGlory.tga"
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P4105407047"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 9999.0000
+            Magnitude kDisable_All
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 9999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            Params Costume
+            {
+                Costume FRKLK_Piecemeal
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.5000
+            Duration 9999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Duration 9999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback kRepel
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -100.0000
+            Duration 9999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback kRepel
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.9000
+            Duration 9999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep kOnlyAffectsSelf
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -50.0000
+            Duration 9999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    }
+}

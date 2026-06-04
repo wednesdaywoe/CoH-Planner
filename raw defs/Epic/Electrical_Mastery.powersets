@@ -1,0 +1,49 @@
+PowerSet Epic.Electrical_Mastery
+{
+    Name "Electrical_Mastery"
+    DisplayName "P590027019"
+    DisplayShortHelp "P590027019"
+    DisplayHelp "P4158469259"
+    IconName "Electrical_Mastery_set.ico"
+
+    Powers Epic.Electrical_Mastery.Static_Discharge
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Electrical_Mastery.Shocking_Bolt
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Electrical_Mastery.Charged_Armor
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Electrical_Mastery.Surge_of_Power
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Electrical_Mastery.EM_Pulse
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

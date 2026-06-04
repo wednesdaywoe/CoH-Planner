@@ -1,0 +1,206 @@
+Power Warshade_Defensive.Umbral_Aura.Shadow_Cloak
+{
+    Name                 "Shadow_Cloak"                
+    DisplayName          "P1233902469"
+    ModesDisallowed      kDisable_All
+    ModesSuspended       kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.13
+    TimeToActivate       1.17
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Stealth.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Stealth.pfx
+    DisplayShortHelp     "P1954811778"
+    DisplayHelp          "LZ3SJGADCHYTY3CBET9AU2WMFW"
+    DisplayAttackerHit   "P4234907424"
+    DisplayPowerDefenseFloat "P3802943013"
+    IconName             "UmbralAura_ShadowCloak.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude kHidden_Attack
+            StackType kStack
+            StackKey kStealthToggle
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -10.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires @CustomFX NoFade eq !
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 390.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Attacked HitByFoe Stunned Held Sleep MissionObjectClick
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Requires MissionObjectClick source.EventTimeSince> 10 >
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 35.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Attacked HitByFoe Stunned Held Sleep MissionObjectClick
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

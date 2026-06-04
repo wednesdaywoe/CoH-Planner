@@ -1,0 +1,73 @@
+Power Pool.Medicine.Resuscitate
+{
+    Name                 "Resuscitate"                 
+    DisplayName          "P1292134238"
+    BuyRequires          Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadPlayerFriend
+    EntsAutoHit          kDeadPlayerFriend
+    Target               kDeadPlayerFriend
+    Range                15
+    EnduranceCost        32.5
+    InterruptTime        4
+    TimeToActivate       7.33
+    RechargeTime         180
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Medicine_Resuscitate.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Medicine_Resuscitate.pfx
+    DisplayShortHelp     "P3144079514"
+    DisplayHelp          "ZY5V8YUP263UW3L52SPEAG73BX"
+    DisplayAttackerHit   "P771575161"
+    DisplayVictimHit     "P1594339728"
+    IconName             "Medicine_SmellingSalts.tga"
+    TimeToConfirm        15
+    DisplayConfirm       P4235897563
+    DisplayTargetShortHelp "P345555159"
+    DisplayTargetHelp    "P2307869758"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P256533052"
+                DisplayVictimHit "P285457741"
+            }
+            
+            FX
+            {
+                ContinuingBits ANIM_GETUP ANIM_HIT
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kXPDebtProtection
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

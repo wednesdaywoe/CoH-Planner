@@ -1,0 +1,76 @@
+#***************************************#
+# Power: Pets > Ninja Genin > Shuriken  #
+# Info:  Ranged, DMG(Lethal)            #
+#***************************************#
+
+Power Mastermind_Pets.Genin.Shuriken
+{
+    Name                 "Shuriken"                    
+    DisplayName          "P1845709286"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        5.2
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Villain_Shuriken.pfx"
+    include              menu\Powers\AnimFX\Villain_Shuriken.pfx
+    DisplayShortHelp     "NB2XU8MP3FUEW3ZHSEP8PG2N9A"
+    DisplayHelp          "AWKZDC7EJXZSYWBYXC8KVMDZJW"
+    IconName             "AssaultWeapons_ARBurst.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CriticalHit"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_InherentDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

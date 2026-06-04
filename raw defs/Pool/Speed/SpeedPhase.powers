@@ -1,0 +1,60 @@
+Power Pool.Speed.SpeedPhase
+{
+    Name                 "SpeedPhase"                  
+    DisplayName          "P1013352055"
+    BuyRequires          Pool.Speed.Super_Speed
+    ModesRequired        kSuperSpeedOn
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Teleport, kDisable_Travel
+    ModesSuspended       kSuppress_PoolToggles, kSuppress_RunToggles, kSuppress_TravelToggles
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.3333
+    TimeToActivate       0.5
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1000
+    IgnoreLevelBought    kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Concealment_PhaseShift.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Concealment_PhaseShift.pfx
+    DisplayShortHelp     "P3412643347"
+    DisplayHelp          "P748544876"
+    IconName             "SuperSpeed_SpeedPhase.tga"
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    AutoIssue            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kIntangible kOnlyAffectsSelf
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 4.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 4 Always
+            Suppress AttackedByOther 4 Always
+            Suppress Damaged 4 Always
+            Suppress MissionObjectClick 4 Always
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

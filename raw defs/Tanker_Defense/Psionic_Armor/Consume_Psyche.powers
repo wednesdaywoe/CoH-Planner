@@ -1,0 +1,33 @@
+Power Tanker_Defense.Psionic_Armor.Consume_Psyche
+{
+    Name                 "Consume_Psyche"              
+    DisplayName          "E6MZRP8JQJ32YTV9GEPQBLYNBZ"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        10.5
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Consume_Psyche.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Consume_Psyche.pfx
+    DisplayShortHelp     "LW9WAMW92T6RYQM3NRCKCA9D2X"
+    DisplayHelp          "7YDA9UWN2N65WSNDBWHXWY52P2"
+    IconName             "PsionicArmor_ConsumePsyche"
+    MaxTargetsHit        10
+
+    Redirect
+    {
+        Power Redirects.Psionic_Armor.Consume_Psyche
+        Requires 1
+    }
+    
+}

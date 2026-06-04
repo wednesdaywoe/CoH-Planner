@@ -1,0 +1,97 @@
+#****************************************************************#
+# Power: Pets > Demons Hellfire Gargoyle 2 > Breath of Hellfire  #
+# Info:  Close (Cone) DoT(Toxic), Foe -Res                       #
+#****************************************************************#
+
+Power Mastermind_Pets.Hellfire_Gargoyle_2.Breath_of_Hellfire
+{
+    Name                 "Breath_of_Hellfire"          
+    DisplayName          "P2343110619"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                15
+    EnduranceCost        10.192
+    PreferenceMultiplier 0.5
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         10
+    EffectArea           kCone
+    Radius               15
+    Arc                  30
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_HellfireGargoyle2_BreathOfHellfire.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_HellfireGargoyle2_BreathOfHellfire.pfx
+    DisplayShortHelp     "UFJWE35B33WAWHMASR767GCMRQ"
+    DisplayHelp          "A48X5L5C7LRJYHXQA8ZSXH465A"
+    IconName             "FieryFray_BreathingFire.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3450006853"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.3000
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.3000
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Debuff_Res_Dmg"
+            Scale -2.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    }
+}

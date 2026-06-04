@@ -1,0 +1,49 @@
+Power Pool.Fitness.Hurdle
+{
+    Name                 "Hurdle"                      
+    DisplayName          "P428080266"
+    BuyRequires          Inherent.Fitness.Hurdle !
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kJump_Boost
+    DisplayShortHelp     "P3535913378"
+    DisplayHelp          "ZA92LCP6EFS5Y5M2J4PVEWUHTQ"
+    IconName             "Fitness_Hurdle.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Leap"
+            Scale 0.0600
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 0.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

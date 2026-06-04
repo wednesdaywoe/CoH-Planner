@@ -1,0 +1,68 @@
+Power Temporary_Powers.Temporary_Powers.Magical_Burst
+{
+    Name                 "Magical_Burst"               
+    DisplayName          "P1526168955"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       3
+    TimeToRoot           3
+    RechargeTime         180
+    EffectArea           kSphere
+    Radius               25
+    NumCharges           10
+    LifeTime             432000
+    IgnoreLevelBought    kTrue
+    VisualFX             "menu\Powers\AnimFX\Tielekku_Blast_02.PFX"
+    include              menu\Powers\AnimFX\Tielekku_Blast_02.PFX
+    DisplayShortHelp     "P3106533958"
+    DisplayHelp          "8E2RRTL2T3BAYKXZ379BNA6JLS"
+    IconName             "PowerBlast_Explosion.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.8000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.9200
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,126 @@
+#********************************************************************#
+# Power: Buff > Radiation Emission > Accelerate Metabolism           #
+# Info:  PBAoE, Ally +SPD, +Recharge, +Recovery, +DMG +Res(Effects)  #
+#********************************************************************#
+
+Power Defender_Buff.Radiation_Emission.Accelerate_Metabolism
+{
+    Name                 "Accelerate_Metabolism"       
+    DisplayName          "P275167913"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       2.03
+    RechargeTime         422
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRecovery_Boost, kSpeedRunning_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_RadiationEmission_AccelerateMetabolism.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_RadiationEmission_AccelerateMetabolism.PFX
+    DisplayShortHelp     "P97385079"
+    DisplayHelp          "P2921647466"
+    DisplayAttackerHit   "P1550301107"
+    DisplayVictimHit     "P3547230991"
+    IconName             "RadiationPoisoning_AccelerateMetabolism.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P2942153168"
+    DisplayTargetHelp    "P2470092775"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 2.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 5.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.3000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance kRecovery
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 1.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.3000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Power_DisallowSpeedBoost target.TokenOwned? !
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.3000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

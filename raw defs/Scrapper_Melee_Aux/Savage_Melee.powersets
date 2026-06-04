@@ -1,0 +1,35 @@
+PowerSet Scrapper_Melee_Aux.Savage_Melee
+{
+    Name "Savage_Melee"
+    DisplayName "P3710716733"
+    DisplayShortHelp "P3710716733"
+    DisplayHelp "P3710716733"
+    ShowInInventory False
+    ShowInManage False
+    IconName "Savage_Melee_set.ico"
+
+    Powers Scrapper_Melee_Aux.Savage_Melee.Rending_Flurry_Normal
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Melee_Aux.Savage_Melee.Rending_Flurry_Large
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Melee_Aux.Savage_Melee.Savage_Leap_AoE
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

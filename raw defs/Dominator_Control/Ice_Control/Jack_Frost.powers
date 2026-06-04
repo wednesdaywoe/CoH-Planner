@@ -1,0 +1,48 @@
+Power Dominator_Control.Ice_Control.Jack_Frost
+{
+    Name                 "Jack_Frost"                  
+    DisplayName          "P4144432762"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        20.8
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         240
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kHold_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_IceControl_JackFrost.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_IceControl_JackFrost.PFX
+    DisplayShortHelp     "JCZHBTZWENVVWWXPPMENG6FWMZ"
+    DisplayHelp          "QSF2G482XFJBWWLVCEFYCBW5WZ"
+    IconName             "IceFormation_JackFrost.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_JackFrost
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,42 @@
+Power Temporary_Powers.Temporary_Powers.Winter_Login
+{
+    Name                 "Winter_Login"                
+    DisplayName          "P67880364"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    NumCharges           1
+    VisualFX             "menu\Powers\AnimFX\WinterEvent_Holiday_LoginPower.pfx"
+    include              menu\Powers\AnimFX\WinterEvent_Holiday_LoginPower.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P2327143887"
+    IconName             "Temporary_HolidayGift.tga"
+
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kReward
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params Reward
+            {
+                Reward Holiday2006_LogIn
+            }
+            
+        }
+    }
+}

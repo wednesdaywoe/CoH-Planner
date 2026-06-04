@@ -1,0 +1,320 @@
+#************************************************#
+# Power: Ranged > Storm Blast > Chain Lightning  #
+# Info:  Ranged Chain, DoT(Energy), Foe -End     #
+#************************************************#
+
+Power Defender_Ranged.Storm_Blast.Chain_Lightning
+{
+    Name                 "Chain_Lightning"             
+    DisplayName          "P2097240269"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.15
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.18
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         16
+    EffectArea           kChain
+    Radius               12
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost
+    ChainDelay           0.3
+    ChainFork            1, 1, 1, 1, 2
+    ChainEff             1 0.18 @ChainJump 1 - * - 0.64 1 minmax
+    ChainTarget          enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_StormBlast_ChainLightning.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_StormBlast_ChainLightning.pfx
+    DisplayShortHelp     "FEHD9QP6M6Z6W6XXEUBS6NL72W"
+    DisplayHelp          "D2GSP5658ZYBYWCTVVPK4HAWSZ"
+    IconName             "StormBlast_ChainLightning.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1831456333"
+    DisplayTargetHelp    "BLHAVLQMXHGZYRLMLYLD9Z4GY2"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoHitDelay
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+                DisplayInfo "UA46EKH47GJYYGNQ2V6F5LMQKW"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -0.0700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_EndDrain"
+                Scale -0.0350
+                Duration 4.4000
+                Magnitude 1.0000
+                Period 0.6000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1906782324"
+                    DisplayVictimHit "P2943139457"
+                    DisplayInfo "MKBHA5BLM6FJW4LYTDKMBLB84A"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.3240
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+                DisplayInfo "UA46EKH47GJYYGNQ2V6F5LMQKW"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.0400
+            Duration 2.2000
+            Magnitude 1.0000
+            Period 0.6000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -1.2500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_EndDrain"
+                Scale -0.6250
+                Duration 4.4000
+                Magnitude 1.0000
+                Period 0.6000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1906782324"
+                    DisplayVictimHit "P2943139457"
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.3527
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2559786529"
+                    DisplayVictimHit "P377644626"
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "IncreaseStormStrength"
+        Chance 0.4000
+        Requires kLightningCat5 source.Mode? !
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kCur
+            Target kCastersOwnerAndAllPets
+            Table "Melee_Ones"
+            DelayedRequires Redirects.Storm_Blast.StormCell_Tempest target.ownPower?
+            StackType kStack
+            Params Power
+            {
+                Power Redirects.Storm_Blast.StormCell_LightningAura
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude kLightningCat5
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "StormBrewing"
+            Chance 0.2500
+        
+            Effect
+            {
+                Tag "StormBrewing"
+                Chance 0.2500
+            
+                AttribMod
+                {
+                    Attrib kGrantPower
+                    Aspect kCur
+                    Target kCastersOwnerAndAllPets
+                    Table "Melee_Ones"
+                    DelayedRequires Redirects.Storm_Blast.StormCell_Tempest target.ownPower?
+                    StackType kReplace
+                    Params Power
+                    {
+                        Power Redirects.Storm_Blast.StormCell_WindSpeed
+                    }
+                    
+                }
+            }
+        }
+    }
+}

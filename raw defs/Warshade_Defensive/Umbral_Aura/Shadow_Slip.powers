@@ -1,0 +1,65 @@
+Power Warshade_Defensive.Umbral_Aura.Shadow_Slip
+{
+    Name                 "Shadow_Slip"                 
+    DisplayName          "P2164615232"
+    ModesDisallowed      kDisable_All, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    TargetSecondary      kPosition
+    EnduranceCost        10.5161
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               100
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost
+    PositionCenter       kFocus
+    PositionHeight       0.5
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_ShadowSlip.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_ShadowSlip.pfx
+    DisplayShortHelp     "P2800901833"
+    DisplayHelp          "EEVKLM4B745WY2ZCCMDMM4DDLS"
+    IconName             "UmbralAura_ShadowSlip.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.1000
+            Magnitude 3.0000
+            Delay 1.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3586768535"
+                DisplayVictimHit "P142628168"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            Delay 2.8000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,78 @@
+Power Temporary_Powers.Temporary_Powers.Alt_LP_Smoke_Flash
+{
+    Name                 "Alt_LP_Smoke_Flash"          
+    DisplayName          "P3600193279"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.4
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        3.25
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         240
+    EffectArea           kSphere
+    Radius               20
+    AIReport             kNever
+    NumCharges           10
+    StackingUsage        kTrue
+    MaxNumCharges        99
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_SmokeFlash.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_SmokeFlash.PFX
+    DisplayShortHelp     "P120571169"
+    DisplayHelp          "8BJMPVS8GEVUYCVVRS25VAGH7Q"
+    IconName             "Temporary_PBAOEPlacate.tga"
+    MaxTargetsHit        10
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P1943041994"
+    DisplayTargetHelp    "P2833281680"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 6.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+}

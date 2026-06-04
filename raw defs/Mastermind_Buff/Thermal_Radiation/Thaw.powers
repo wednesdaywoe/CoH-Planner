@@ -1,0 +1,177 @@
+#**********************************************************************************#
+# Power: Buff > Thermal Radiation > Thaw                                           #
+# Info:  Ally +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Cold, Slow)  #
+#**********************************************************************************#
+
+Power Mastermind_Buff.Thermal_Radiation.Thaw
+{
+    Name                 "Thaw"                        
+    DisplayName          "P2439537416"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                70
+    EnduranceCost        5.2
+    TimeToActivate       2.17
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ThermalRadiation_Thaw.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ThermalRadiation_Thaw.PFX
+    DisplayShortHelp     "P1756824576"
+    DisplayHelp          "9YQWDSMF33V9YQMZLUJNG43EN3"
+    DisplayAttackerHit   "P3821525765"
+    DisplayVictimHit     "P3585351638"
+    IconName             "ThermalRadiation_Thaw.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P1019438714"
+    DisplayTargetHelp    "P3238831788"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -30.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 5.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -30.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 3.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 8.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -25.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kSuppress
+            StackKey kPvPMezProt
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kRechargeTime
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.8000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

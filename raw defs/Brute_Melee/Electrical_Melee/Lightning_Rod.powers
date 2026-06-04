@@ -1,0 +1,69 @@
+#**************************************************#
+# Power: Melee > Electrical Melee > Lightning Rod  #
+# Info:  PBAoE, Foe Knockback; Self Teleport;      #
+#**************************************************#
+
+Power Brute_Melee.Electrical_Melee.Lightning_Rod
+{
+    Name                 "Lightning_Rod"               
+    DisplayName          "P775656620"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kTeleport
+    Range                60
+    EnduranceCost        13.52
+    TimeToActivate       2.57
+    TimeToRoot           2.57
+    RechargeTime         90
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kTaunt_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteMelee_ElectricalMelee_LightningRod.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteMelee_ElectricalMelee_LightningRod.PFX
+    DisplayShortHelp     "DTX74W7F6FB6Y8XRE9HNXA9CBQ"
+    DisplayHelp          "K9C5SYTXHE4RWRVDVXHSKH3Q23"
+    IconName             "ElectricMelee_PBAoETeleport.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            Delay 0.6250
+            StackType kReplace
+            Flags IgnoreCombatMods CopyBoosts CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Lightning Rod"
+                PriorityList "PL_StaticObject"
+                Power Pets.Lightning_Rod_Universal.Lightning_Rod_Center
+                Power Pets.Lightning_Rod_Universal.Lightning_Rod
+                Power Pets.ResistAll.ResistAll
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,75 @@
+Power Temporary_Powers.Temporary_Powers.EntangledInteractB
+{
+    Name                 "EntangledInteractB"          
+    DisplayName          "P628511049"
+    Type                 kAuto
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kPlayer
+    EntsAutoHit          kPlayer
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               15
+    LifeTimeInGame       16.8
+    TargetRequires       enttype target> player eq kEntangledA target.Mode? &&
+    DisplayShortHelp     "P628511049"
+    DisplayHelp          "P463915197"
+    IconName             "Incarnate_Enemy_Anti-Matter_Entanglement_B.tga"
+    MaxTargetsHit        999
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    DisplayTargetShortHelp "P1105086760"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.0800
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.2000
+            Duration 0.6000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.2000
+            Duration 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreCombatMods
+        }
+    }
+}

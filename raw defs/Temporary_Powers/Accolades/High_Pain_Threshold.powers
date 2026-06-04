@@ -1,0 +1,38 @@
+Power Temporary_Powers.Accolades.High_Pain_Threshold
+{
+    Name                 "High_Pain_Threshold"         
+    DisplayName          "P2472637382"
+    ActivateRequires     type char> villain eq
+    ModesDisallowed      kArena
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    DisplayShortHelp     "P2186260285"
+    DisplayHelp          "P3366959610"
+    IconName             "BA_Phalanx_Reserve.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.0000
+            Duration 10.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

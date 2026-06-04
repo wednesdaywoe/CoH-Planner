@@ -1,0 +1,105 @@
+PowerSet Tanker_Defense.Bio_Organic_Armor
+{
+    Name "Bio_Organic_Armor"
+    DisplayName "P459250528"
+    DisplayShortHelp "P459250528"
+    DisplayHelp "P946935354"
+    IconName "Bio_Organic_Armor_set.ico"
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Hardened_Carapace
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Inexhaustible
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Environmental_Adaptation
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Evolution
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Efficient_Adaptation
+    Available -1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Defensive_Adaptation
+    Available -1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Offensive_Adaptation
+    Available -1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Ablative_Carapace
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Adaptation
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.DNA_Siphon
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Genetic_Contamination
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Bio_Organic_Armor.Parasitic_Aura
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

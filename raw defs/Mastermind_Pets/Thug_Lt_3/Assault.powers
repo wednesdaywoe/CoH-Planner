@@ -1,0 +1,45 @@
+#********************************************#
+# Power: Pets > Thug Lieutenant 3 > Assault  #
+# Info:  +DMG                                #
+#********************************************#
+
+Power Mastermind_Pets.Thug_Lt_3.Assault
+{
+    Name                 "Assault"                     
+    DisplayName          "P55898000"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kSphere
+    Radius               30
+    AIReport             kNever
+    TargetRequires       MastermindPets_Thug target.VillainName> MastermindPets_Thug_Arsonist target.VillainName> || MastermindPets_Thug_Lt target.VillainName> || MastermindPets_Thug_Boss target.VillainName> ||
+    StrengthsDisallowed  kRechargeTime
+    DisplayShortHelp     "P2357933892"
+    DisplayHelp          "6PTSXQXVM4HMWMBFX28EMB4BSS"
+    DisplayVictimHit     "P1338507259"
+    IconName             "Leadership_Assault.tga"
+    MaxTargetsHit        255
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.0500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,83 @@
+PowerSet Dominator_Control.Arsenal_Control
+{
+    Name "Arsenal_Control"
+    DisplayName "S4QBXZTMQ8YUY6LSJQASJKPYT3"
+    DisplayShortHelp "S4QBXZTMQ8YUY6LSJQASJKPYT3"
+    DisplayHelp "YR485ARZJH53WRCA5QXY3J9582"
+    CostumeKeys CustomWeapon_AssaultRifle
+    CostumeParts AssaultRifle_Default
+    IconName "Assault_Rifle_set.ico"
+
+    Powers Dominator_Control.Arsenal_Control.Tranquilizer
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Arsenal_Control.Cryo_Freeze_Ray
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Arsenal_Control.Sleep_Grenade
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Arsenal_Control.Liquid_Nitrogen
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Arsenal_Control.Cloaking_Device
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Arsenal_Control.Smoke_Grenade
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Arsenal_Control.Flash_Bang
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Arsenal_Control.Tear_Gas
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Control.Arsenal_Control.Gun_Drone
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

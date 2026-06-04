@@ -1,0 +1,115 @@
+#**********************************************************************#
+# Power: Buff > Poison > Venomous Gas                                  #
+# Info:  Toggle: PBAoE, Foe -Res(All), -DMG(All), -Def(All), -To(Hit)  #
+#**********************************************************************#
+
+Power Defender_Buff.Poison.Venomous_Gas
+{
+    Name                 "Venomous_Gas"                
+    DisplayName          "P1986312287"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.26
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         8
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost, kDebuff_ToHit_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/ControllerBuff_PoisonDebuff_VenomousGas.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/ControllerBuff_PoisonDebuff_VenomousGas.PFX
+    DisplayShortHelp     "P1112704536"
+    DisplayHelp          "GP7XBEETRQ9TYWLSU92C58V9BZ"
+    DisplayAttackerHit   "P1577325525"
+    IconName             "Poison_VenomousGas.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3466742994"
+    DisplayTargetHelp    "P3288548701"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -2.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -2.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX V_COV\Powers\Poison\PoisonContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 1.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+}

@@ -1,0 +1,79 @@
+#***************************************************#
+# Power: Summon > Beast Mastery > Summon Dire Wolf  #
+# Info:  Summon Dire Wolf                           #
+#***************************************************#
+
+Power Mastermind_Summon.Beast_Mastery.Summon_Dire_Wolf
+{
+    Name                 "Summon_Dire_Wolf"            
+    DisplayName          "P2335021461"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        13.18
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         15
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kFear_Boost, kSpeedRunning_Boost
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_SummonDireWolf.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_SummonDireWolf.pfx
+    DisplayShortHelp     "P2335021461"
+    DisplayHelp          "DK5KR4Y2YDLHW4MMSUADSMFEU3"
+    IconName             "BeastMastery_SummonDireWolves.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Dire_Wolf
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 50.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kIgnore
+            Flags NoHitDelay SetTimer
+            Params Power
+            {
+                Power Mastermind_Summon.Beast_Mastery.Summon_Dire_Wolf
+            }
+            
+        }
+    }
+}

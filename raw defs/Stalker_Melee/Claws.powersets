@@ -1,0 +1,83 @@
+PowerSet Stalker_Melee.Claws
+{
+    Name "Claws"
+    DisplayName "P1223095199"
+    DisplayShortHelp "P1223095199"
+    DisplayHelp "P87869188"
+    CostumeKeys CustomWeapon_ClawsRight CustomWeapon_ClawsLeft
+    CostumeParts ClawsRight_VillainDefault ClawsLeft_VillainDefault
+    IconName "Claws_set.ico"
+
+    Powers Stalker_Melee.Claws.Swipe
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Claws.Strike
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Claws.Slash
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Claws.Assassins_Claw
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Claws.Build_Up
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Claws.Placate
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Claws.Focus
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Claws.Eviscerate
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Stalker_Melee.Claws.Shockwave
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

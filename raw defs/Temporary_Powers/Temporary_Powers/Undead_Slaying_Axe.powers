@@ -1,0 +1,118 @@
+Power Temporary_Powers.Temporary_Powers.Undead_Slaying_Axe
+{
+    Name                 "Undead_Slaying_Axe"          
+    DisplayName          "P2692264043"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.58
+    TimeToActivate       2.17
+    TimeToRoot           2.17
+    RechargeTime         6
+    EffectArea           kCharacter
+    NumCharges           75
+    LifeTimeInGame       10800
+    StrengthsDisallowed  kRange
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_UndeadSlaying_Axe.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_UndeadSlaying_Axe.pfx
+    DisplayShortHelp     "WKZ4QSY6JVXMWLVXDEM3X73YHQ"
+    DisplayHelp          "4Q47RHQZXTHGYYBWNATZM26VCZ"
+    IconName             "Temporary_UndeadSlayingAxe.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Undead target.HasTag?
+    
+        AttribMod
+        {
+            Attrib kUnique1
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "3ZXUH76CXVHPWNMUAPZH3WQTGS"
+                DisplayVictimHit "4TCBFS3HKZGSYDBKFG3X6UB783"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires group target> Vahzilok eq Vahzilok_Reaper target.VillainName> ! && Vahzilok_Lieutenant target.VillainName> ! &&
+    
+        AttribMod
+        {
+            Attrib kUnique1
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "37GXXTMHHJK5YGCUZ8MUNUVXCX"
+                DisplayVictimHit "78QV6D4NH5XUW5LGDDBRC3EJAS"
+                DisplayFloat "P2338895045"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0500
+        Requires arch source> Class_Scrapper eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

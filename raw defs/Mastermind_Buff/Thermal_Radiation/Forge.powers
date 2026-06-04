@@ -1,0 +1,68 @@
+#******************************************#
+# Power: Buff > Thermal Radiation > Forge  #
+# Info:  Ally +DMG, +To Hit                #
+#******************************************#
+
+Power Mastermind_Buff.Thermal_Radiation.Forge
+{
+    Name                 "Forge"                       
+    DisplayName          "P851798312"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       2.27
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ThermalRadiation_Forge.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ThermalRadiation_Forge.PFX
+    DisplayShortHelp     "P283127640"
+    DisplayHelp          "P3637402305"
+    DisplayAttackerHit   "P1211375038"
+    DisplayVictimHit     "P1510870276"
+    IconName             "ThermalRadiation_Forge.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P3901010973"
+    DisplayTargetHelp    "P1466346330"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 2.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 4.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

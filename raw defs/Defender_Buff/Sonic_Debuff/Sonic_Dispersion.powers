@@ -1,0 +1,106 @@
+Power Defender_Buff.Sonic_Debuff.Sonic_Dispersion
+{
+    Name                 "Sonic_Dispersion"            
+    DisplayName          "P134395228"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        1.04
+    TimeToActivate       2.03
+    RechargeTime         15
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_SonicDebuff_SonicDispersion.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_SonicDebuff_SonicDispersion.PFX
+    DisplayShortHelp     "P2105574571"
+    DisplayHelp          "HC72U3SKQJ7NYHVSREVWGXEPRQ"
+    DisplayAttackerHit   "P3939492490"
+    DisplayVictimHit     "P3477179037"
+    IconName             "SonicDebuff_BuffDamageRes.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P2481919485"
+    DisplayTargetHelp    "P1969680326"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.5000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kSelf
+            Table "Ranged_Res_Dmg"
+            Scale 1.5000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -20.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

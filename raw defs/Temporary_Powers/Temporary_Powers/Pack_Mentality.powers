@@ -1,0 +1,85 @@
+Power Temporary_Powers.Temporary_Powers.Pack_Mentality
+{
+    Name                 "Pack_Mentality"              
+    DisplayName          "P1249098934"
+    ActivateRequires     Temporary_Powers.Temporary_Powers.Pack_Mentality_Lock !
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kMyPet, kCaster
+    EntsAutoHit          kMyPet, kCaster
+    Target               kCaster
+    ActivatePeriod       600
+    EffectArea           kSphere
+    Radius               60
+    LifeTimeInGame       15
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P3891609361"
+    DisplayHelp          "P3897355724"
+    IconName             "BeastMastery_PetWilloftheWild.tga"
+    MaxTargetsHit        16
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    NumAllowed           10
+
+
+    Effect
+    {
+        Requires MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.0200
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.0200
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag CritActive
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> || entref source> entref target> eq || Temporary_Powers.Temporary_Powers.Pack_Mentality_Lock source.ownPower? ! &&
+    
+        AttribMod
+        {
+            Attrib kMeter
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.1000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

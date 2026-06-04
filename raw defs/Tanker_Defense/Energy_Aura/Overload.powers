@@ -1,0 +1,129 @@
+Power Tanker_Defense.Energy_Aura.Overload
+{
+    Name                 "Overload"                    
+    DisplayName          "P3310287998"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.5
+    TimeToActivate       3
+    RechargeTime         300
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kBuff_Defense_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_EnergyAura_Overload.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_EnergyAura_Overload.PFX
+    DisplayShortHelp     "FHWPJ7K8MTJPYUBZE75DZZJW2S"
+    DisplayHelp          "GP7C6BVTMLYQWCV9VXA6BHQV8Z"
+    DisplayAttackerHit   "P1581035138"
+    IconName             "EnergyAura_Overload.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 2.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 2.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 3.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing_Elude kLethal_Elude kFire_Elude kCold_Elude kEnergy_Elude kNegative_Energy_Elude kPsionic_Elude
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,50 @@
+Power Mastermind_Buff.Storm_Summoning.Tornado
+{
+    Name                 "Tornado"                     
+    DisplayName          "P2117529527"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.3
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        20.8
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         60
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kKnockback_Boost, kStunned_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_StormSummoning_Tornado.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_StormSummoning_Tornado.PFX
+    DisplayShortHelp     "P3544628265"
+    DisplayHelp          "Y39BZ9NSELZQWCVQPPHLSYM3L3"
+    IconName             "StormSummoning_Tornado.tga"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2919214753"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Tornado
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    }
+}

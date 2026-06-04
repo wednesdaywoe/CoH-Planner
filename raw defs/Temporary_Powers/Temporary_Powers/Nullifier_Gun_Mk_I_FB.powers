@@ -1,0 +1,66 @@
+Power Temporary_Powers.Temporary_Powers.Nullifier_Gun_Mk_I_FB
+{
+    Name                 "Nullifier_Gun_Mk_I_FB"       
+    DisplayName          "P2984054206"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    TimeToActivate       3.5
+    TimeToRoot           3.5
+    RechargeTime         6
+    EffectArea           kCharacter
+    NumCharges           5
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Malta_Sapper_sapper.pfx"
+    include              menu\Powers\AnimFX\Villain_Malta_Sapper_sapper.pfx
+    DisplayShortHelp     "P2651678694"
+    DisplayHelp          "3KVL2BNAETAMWNN6CHZVAU8L6W"
+    IconName             "Temporary_RangeLightDamage.tga"
+    DisplayTargetShortHelp "P3035366588"
+    DisplayTargetHelp    "P2069622259"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -50.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffEnd2Continuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.5000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreCombatMods
+        }
+    }
+}

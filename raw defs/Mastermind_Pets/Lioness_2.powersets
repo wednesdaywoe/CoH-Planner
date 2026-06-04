@@ -1,0 +1,41 @@
+PowerSet Mastermind_Pets.Lioness_2
+{
+    Name "Lioness_2"
+    DisplayName "6QFA6MKGZNXKYTZ6C7BMBFJQNS"
+    DisplayShortHelp "P4126288098"
+    DisplayHelp "P4126288098"
+    IconName "Lioness_2_set.ico"
+
+    Powers Mastermind_Pets.Lioness_2.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lioness_2.Lions_Roar
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lioness_2.Ferocious_Growl
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lioness_2.Train_Beasts
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

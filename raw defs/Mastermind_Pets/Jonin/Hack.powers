@@ -1,0 +1,91 @@
+#*************************************************#
+# Power: Pets > Ninja Jounin > Sting of the Wasp  #
+# Info:  -DEF                                     #
+#*************************************************#
+
+Power Mastermind_Pets.Jonin.Hack
+{
+    Name                 "Hack"                        
+    DisplayName          "P482956191"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        6.032
+    DontSetStance        1
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         5
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu/powers/AnimFX/Jounin_Jounin_Hack.pfx"
+    include              menu/powers/AnimFX/Jounin_Jounin_Hack.pfx
+    DisplayShortHelp     "P373215750"
+    DisplayHelp          "P2982196974"
+    IconName             "Katana_Hack.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.1600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 0.5000
+            Duration 10.0000
+            Magnitude 1.0000
+            TickChance 0.9980
+            StackType kStack
+            Flags CancelOnMiss
+        }
+    }
+
+    Effect
+    {
+        Tag "CriticalHit"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.1600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

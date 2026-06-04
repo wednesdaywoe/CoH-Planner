@@ -1,0 +1,103 @@
+Power Temporary_Powers.Temporary_Powers.Spirit_Snare
+{
+    Name                 "Spirit_Snare"                
+    DisplayName          "P538216584"
+    ModesDisallowed      kDisable_All, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        18.98
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         4
+    EffectArea           kCharacter
+    NumCharges           10
+    StackingUsage        kTrue
+    MaxNumCharges        10
+    TargetRequires       group target> ApparitionsPossessed eq group target> ApparitionsPossessedDUST eq ||
+    ServerTrayPriority   2
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Divining_Rod.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Divining_Rod.pfx
+    DisplayShortHelp     "P2284064994"
+    DisplayHelp          "M3F4JVWYQULBWJLLKTZLLN6AJ3"
+    IconName             "Temporary_SoulGem.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P3806802528"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kClearDamagers
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kRewardSourceTeam
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params Reward
+            {
+                Reward missionSpiritSnaredIncrement
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires missionSpiritSnaredToken source.TokenVal> 7 >=
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Spirit_Snare
+            }
+            
+        }
+    }
+}

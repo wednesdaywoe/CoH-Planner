@@ -1,0 +1,82 @@
+#***************************************#
+# Power: Buff > Empathy > Fortitude     #
+# Info:  Ally +DEF(All), +DMG, +To Hit  #
+#***************************************#
+
+Power Defender_Buff.Empathy.Fortitude
+{
+    Name                 "Fortitude"                   
+    DisplayName          "P3070419417"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       2.27
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Empathy_Fortitude.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Empathy_Fortitude.PFX
+    DisplayShortHelp     "P3476984041"
+    DisplayHelp          "P3879532713"
+    DisplayAttackerHit   "P2859236327"
+    DisplayVictimHit     "P3885102710"
+    DisplayPowerDefenseFloat "P2514521623"
+    IconName             "Empathy_Fortitude.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P3573385322"
+    DisplayTargetHelp    "P3614661954"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 1.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/ability/WillpowerContinuingRays.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 2.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 1.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,72 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_FX
+{
+    Name                 "Labyrinth_FX"                
+    DisplayName          "2RDPLT7VCNEGWWCYHA6X7HYWD2"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       5
+    EffectArea           kCharacter
+    ProcAllowed          kNone
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "UDJJMM9XKLPTWDX5K7V79HWHG3"
+    DisplayHelp          "7KMAKCKBNDGTYGNN2L862HEVTW"
+    IconName             "Temporary_LabyrinthCall.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "WPCG7W97AZFQWAXT624BYDXRDX"
+    DisplayTargetHelp    "NZKXJDE5842TWJNXY5X4TTZG8Z"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires FontVolume source.inVolume> !
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 5.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX ENEMYFX\Labyrinth\LabyrinthOfFog_Aura.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires arch target> Class_Boss_PraetorianArchvillain eq
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 5.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX ENEMYFX\Labyrinth\LabyrinthOfFog_AVAura.fx
+            }
+            
+        }
+    }
+}

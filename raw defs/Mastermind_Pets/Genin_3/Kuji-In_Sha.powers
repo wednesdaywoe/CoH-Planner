@@ -1,0 +1,52 @@
+#********************************************#
+# Power: Pets > Ninja Genin 3 > Kuji-In Sha  #
+# Info:  Self Heal                           #
+#********************************************#
+
+Power Mastermind_Pets.Genin_3.Kuji-In_Sha
+{
+    Name                 "Kuji-In_Sha"                 
+    DisplayName          "P1895928915"
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kHealSelf
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    PreferenceMultiplier 10000
+    TimeToActivate       1
+    RechargeTime         45
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost, kHeal_Boost
+    TargetRequires       kHitPoints% source> 75 <=
+    StrengthsDisallowed  kRechargeTime
+    GlobalStrengthsDisallowed kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Genin_3_Kuji-In_Sha.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Genin_3_Kuji-In_Sha.pfx
+    DisplayShortHelp     "P1324952732"
+    DisplayHelp          "P1316389530"
+    IconName             "Ninjitsu_KujInSha.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 2.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

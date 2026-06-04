@@ -1,0 +1,68 @@
+Power Temporary_Powers.Temporary_Powers.Arachnos_Submachine_Gun
+{
+    Name                 "Arachnos_Submachine_Gun"     
+    DisplayName          "P2836183077"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        5.46
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         5
+    EffectArea           kCharacter
+    NumCharges           10
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Arachnos_WolfSpider_SubMachinegun_HeavyBurst.pfx"
+    include              menu\Powers\AnimFX\Villain_Arachnos_WolfSpider_SubMachinegun_HeavyBurst.pfx
+    DisplayShortHelp     "P1563882773"
+    DisplayHelp          "4DFB52XZXS65WMVQ6JCH8UDZMQ"
+    IconName             "Temporary_RangeModerateDamage.tga"
+    DisplayTargetShortHelp "P3100956268"
+    DisplayTargetHelp    "P3267924344"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.1600
+            Duration 2.0000
+            Magnitude 1.0000
+            Period 0.3000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

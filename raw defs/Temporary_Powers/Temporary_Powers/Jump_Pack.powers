@@ -1,0 +1,51 @@
+Power Temporary_Powers.Temporary_Powers.Jump_Pack
+{
+    Name                 "Jump_Pack"                   
+    DisplayName          "P2133795618"
+    ModesDisallowed      kArena, kDisable_All, kDisable_FlyToggles, kDisable_Travel
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kSuppress_FlyToggles, kSuppress_TravelToggles, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kFlying_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.2844
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            300
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    StrengthsDisallowed  kEnduranceDiscount
+    Deletable            kTrue
+    DisplayShortHelp     "P1536342359"
+    DisplayHelp          "ZYTGRLYTBQULYXZ23QBEJHSDPQ"
+    DisplayAttackerHit   "P294363078"
+    IconName             "Temporary_JumpPack.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumppack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            Flags IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX ENEMYFX/Malta/SapperFX/SapperPack.fx
+            }
+            
+        }
+    }
+}

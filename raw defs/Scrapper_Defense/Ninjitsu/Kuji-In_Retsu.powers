@@ -1,0 +1,224 @@
+Power Scrapper_Defense.Ninjitsu.Kuji-In_Retsu
+{
+    Name                 "Kuji-In_Retsu"               
+    DisplayName          "P3602318660"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        2.6
+    TimeToActivate       1.83
+    RechargeTime         1000
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost, kRecovery_Boost, kSpeedRunning_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_KujiInRetsu.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_KujiInRetsu.PFX
+    DisplayShortHelp     "P2475738039"
+    DisplayHelp          "BV5VGDFG6UF5W6CP7FP4FUNEBW"
+    DisplayAttackerHit   "P3331472993"
+    DisplayPowerDefenseFloat "P2514521623"
+    IconName             "Ninjitsu_KujInZen.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 6.0000
+            Duration 180.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 180.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 180.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedRunning"
+            Scale 0.5000
+            Duration 180.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 1.0000
+            Duration 180.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -100.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            Delay 180.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P382045200"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffEnd2Continuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            Delay 180.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P657239359"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 170.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "N7LZRDKGMSVBWGVT8VQ9YT8TCQ"
+                DisplayFloat "N7LZRDKGMSVBWGVT8VQ9YT8TCQ"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 180.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 180.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Elude kMelee_Elude kAOE_Elude
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 180.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

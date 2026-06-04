@@ -1,0 +1,102 @@
+Power Defender_Buff.Time_Manipulation.Farsight
+{
+    Name                 "Farsight"                    
+    DisplayName          "P2926793761"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       2.03
+    RechargeTime         240
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_TimeManipulation_Farsight.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_TimeManipulation_Farsight.PFX
+    DisplayShortHelp     "P3803720508"
+    DisplayHelp          "8EAPXQD35BWLWVV296QQUTTLHQ"
+    DisplayAttackerHit   "P3619822295"
+    DisplayVictimHit     "P1389102462"
+    IconName             "TimeManipulation_Farsight.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P4278084149"
+    DisplayTargetHelp    "P53715087"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 1.2500
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDefContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 1.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 1.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+}

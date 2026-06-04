@@ -1,0 +1,60 @@
+Power Temporary_Powers.Temporary_Powers.Quills_of_Jocas
+{
+    Name                 "Quills_of_Jocas"             
+    DisplayName          "P2273234615"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    Range                60
+    TimeToActivate       3
+    TimeToRoot           3
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               20
+    LifeTime             1800
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   1
+    Tradeable            kTrue
+    Deletable            kTrue
+    ShootThroughUntouchable kTrue
+    InstanceLocked       kTrue
+    VisualFX             "menu\Powers\AnimFX\GREG_MAG_Quills_of_Jocas.pfx"
+    include              menu\Powers\AnimFX\GREG_MAG_Quills_of_Jocas.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "UU2EYYCHLEELWNZM3QD2Y5ULMQ"
+    IconName             "AssaultWeapons_ARM30grenade.tga"
+    MaxTargetsHit        16
+    ShowInManage         kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           10
+
+
+    Effect
+    {
+        Requires Tyrant_Light_of_the_Well target.villainname>
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P4280722138"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

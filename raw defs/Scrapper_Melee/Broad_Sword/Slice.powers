@@ -1,0 +1,339 @@
+#********************************************************#
+# Power: Melee > Broad Sword > Slice                     #
+# Info:  Melee (Cone), DMG(Lethal), Foe -DEF, -Res(Dmg)  #
+#********************************************************#
+
+Power Scrapper_Melee.Broad_Sword.Slice
+{
+    Name                 "Slice"                       
+    DisplayName          "P4235155361"
+    BuyRequires          Scrapper_Melee.Broad_Sword.Boomerang_Slice !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         8
+    EffectArea           kCone
+    Radius               7
+    Arc                  130
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    StrengthsDisallowed  kRange
+    HighlightEval        kRendingSliceCooldown Mode? !
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\Sword_Backhand_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Sword_Backhand_NoGeo.pfx
+    DisplayShortHelp     "AHYUAZYRTHTYY8CS627MVNCQ3Z"
+    DisplayHelp          "TX9DX7LRWBBJW7Z9BYWXULRRES"
+    IconName             "Sword_Slice.tga"
+    MaxTargetsHit        5
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P2543120370"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.2346
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires kRendingSliceCooldown source.Mode? 0 ==
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.8654
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "YXMKTRWJKP3RYFX7JQT9RWDSYA"
+                    DisplayVictimHit "6JB5FJ7N9UXQW4VW2XRXWJ98NX"
+                    DisplayFloat "F6T5D89BU5AQWELY44PK8J97AZ"
+                    DisplayInfo "7U3QUYR78MG9WXM3HUVAZ7TH7S"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 14.0000
+                Magnitude kRendingSliceCooldown
+                StackType kRefreshToCount
+                StackLimit 1
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritSmall" "ScrapperCrit_AoE"
+            Chance 0.0500
+            Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.2346
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritLarge" "ScrapperCrit_AoE"
+            Chance 0.1000
+            Requires arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.2346
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.5556
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+                FX
+                {
+                    ContinuingFX POWERS/FireControl/CindersHit.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.5064
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "PVP_MainTargetOnly"
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.4946
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3785438311"
+                    DisplayVictimHit "P1873832980"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires kRendingSliceCooldown source.Mode? 0 ==
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.7254
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "YXMKTRWJKP3RYFX7JQT9RWDSYA"
+                    DisplayVictimHit "6JB5FJ7N9UXQW4VW2XRXWJ98NX"
+                    DisplayFloat "F6T5D89BU5AQWELY44PK8J97AZ"
+                    DisplayInfo "7U3QUYR78MG9WXM3HUVAZ7TH7S"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 14.0000
+                Magnitude kRendingSliceCooldown
+                StackType kRefreshToCount
+                StackLimit 1
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritPlayer" "ScrapperCrit_AoE"
+            Chance 0.0500
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.5064
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                    DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 0.5000
+            Duration 15.0000
+            Magnitude 1.0000
+            TickChance 0.9980
+            StackType kReplace
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Debuff_Res_Dmg"
+            Scale -1.2000
+            Duration 15.0000
+            Magnitude 1.0000
+            TickChance 0.9980
+            StackType kReplace
+            Flags CancelOnMiss IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+}

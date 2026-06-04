@@ -1,0 +1,78 @@
+Power Temporary_Powers.Temporary_Powers.Power_of_the_Thorn
+{
+    Name                 "Power_of_the_Thorn"          
+    DisplayName          "P3072034135"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                40
+    EnduranceCost        32.5
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         60
+    EffectArea           kCharacter
+    LifeTime             18000
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayRequires   mapname> iom_capauvictorie eq
+    ServerTrayPriority   1
+    Deletable            kTrue
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_of_the_Thorn.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_of_the_Thorn.pfx
+    DisplayShortHelp     "P843530210"
+    DisplayHelp          "PK7MTF6RHF37YAMFWBYZCFXJ3A"
+    IconName             "Temporary_ScrollofRuin.tga"
+
+
+    Effect
+    {
+        Requires Arachnos_Dr_Aeon_SSF target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P315201362"
+            }
+            
+            Params Power
+            {
+                Power V_Arachnos.Temporal_Displacer.Temporal_Displacer
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Arachnos_Dr_Aeon_SSF target.VillainName> !
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P2338895045"
+            }
+            
+        }
+    }
+}

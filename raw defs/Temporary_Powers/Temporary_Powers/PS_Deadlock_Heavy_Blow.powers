@@ -1,0 +1,97 @@
+Power Temporary_Powers.Temporary_Powers.PS_Deadlock_Heavy_Blow
+{
+    Name                 "PS_Deadlock_Heavy_Blow"      
+    DisplayName          "P1523772661"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        5
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         5
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRange kRechargeTime
+    ServerTrayPriority   998
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Brawling_HeavyBlow.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Brawling_HeavyBlow.pfx
+    DisplayShortHelp     "4UNQGJPTL92UWNBN8GHAC6TJTX"
+    DisplayHelp          "U358CMT96MYRWQNAT58Y93EHLZ"
+    IconName             "Brawling_HeavyBlow.tga"
+    DoNotSave            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.3000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

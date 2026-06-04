@@ -1,0 +1,40 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_CoreLobby
+{
+    Name                 "Labyrinth_CoreLobby"         
+    DisplayName          "XDKRSVDDGTX2YKXBEL2XFHN5NA"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    ActivatePeriod       20
+    EffectArea           kMap
+    TargetRequires       Miscellaneous_Labyrinth_Nightmare_Gorger_Patroller target.VillainName>
+    DisplayShortHelp     "GLEADVTP9MMNY8NTAGUH4NV9QQ"
+    DisplayHelp          "U4QYZ5AD894WY3ZQ67TTCUWFLQ"
+    IconName             "Accolade_LabyrinthCore.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 10.0000
+            Magnitude 4.0000
+            StackType kReplace
+        }
+    }
+}

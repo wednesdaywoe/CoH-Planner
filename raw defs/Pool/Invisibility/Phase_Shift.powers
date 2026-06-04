@@ -1,0 +1,174 @@
+Power Pool.Invisibility.Phase_Shift
+{
+    Name                 "Phase_Shift"                 
+    DisplayName          "P3288641264"
+    BuyRequires          Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility && Pool.Invisibility.Stealth Pool.Invisibility.Invisibility && || Pool.Invisibility.Grant_Invisibility Pool.Invisibility.Invisibility && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Toggle, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kRest_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.325
+    TimeToActivate       0.5
+    RechargeTime         180
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Concealment_PhaseShift.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Concealment_PhaseShift.pfx
+    DisplayShortHelp     "P3923775585"
+    DisplayHelp          "94HPL5MH8T88W8BZJKGJT5BND3"
+    DisplayAttackerHit   "P1409113320"
+    IconName             "Invisibility_PhaseShift.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.3000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 20.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 222.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 10 Always
+            Suppress HitByFoe 10 Always
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPhase
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.7500
+            Magnitude 3.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+            Params Phase
+            {
+                CombatPhase Phased
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPhase
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.7500
+            Magnitude 3.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+            Params Phase
+            {
+                CombatPhase NoPrime
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kIntangible
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.7500
+            Magnitude 3.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3282672142"
+                DisplayVictimHit "P1918954866"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kThreatLevel
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.NoPhase
+            }
+            
+        }
+    }
+}

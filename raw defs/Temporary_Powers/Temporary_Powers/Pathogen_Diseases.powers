@@ -1,0 +1,201 @@
+Power Temporary_Powers.Temporary_Powers.Pathogen_Diseases
+{
+    Name                 "Pathogen_Diseases"           
+    DisplayName          "P1879617663"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10.5
+    EffectArea           kCharacter
+    LifeTimeInGame       10800
+    DisplayShortHelp     "P297596999"
+    DisplayHelp          "P1190172611"
+    IconName             "Temporary_VahzilokDiseaseSL3.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kCaster
+            Table "Melee_Ones"
+            Scale -0.2500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kCaster
+            Table "Melee_Heal"
+            Scale -1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kCaster
+            Table "Melee_Ones"
+            Scale -0.0750
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Tag "Viral_ToHit"
+        Chance 0.1000
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kCaster
+            Table "Melee_Ones"
+            Scale -0.0800
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P120774035"
+                DisplayFloat "P3299822313"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Viral_Haste"
+        Chance 0.1000
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kCaster
+            Table "Melee_Ones"
+            Scale -0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P3692216792"
+                DisplayFloat "P4125048695"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffSpeedAll.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Viral_Endurance"
+        Chance 0.1000
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kMax
+            Target kCaster
+            Table "Melee_Ones"
+            Scale -10.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P449546575"
+                DisplayFloat "P3923527811"
+            }
+            
+            FX
+            {
+                ContinuingFX EnemyFX/Malta/SapperFX/SapperHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kCaster
+            Table "Melee_Ones"
+            Scale -0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Tag "Viral_Barf"
+        Chance 0.0250
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1000.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P2560419877"
+                DisplayFloat "P1794416754"
+            }
+            
+            FX
+            {
+                ContinuingBits ANIM_BARFSTUN ANIM_STUN
+            }
+            
+        }
+    }
+}

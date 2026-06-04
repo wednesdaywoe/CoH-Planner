@@ -1,0 +1,70 @@
+Power Temporary_Powers.Temporary_Powers.PS_Antimatter_Irradiate
+{
+    Name                 "PS_Antimatter_Irradiate"     
+    DisplayName          "P3608202196"
+    Type                 kClick
+    Accuracy             1.3
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        5
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         10
+    EffectArea           kSphere
+    Radius               20
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   992
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\RADIATION_Burst_Irradiate.pfx"
+    include              menu\Powers\AnimFX\RADIATION_Burst_Irradiate.pfx
+    DisplayShortHelp     "P373215750"
+    DisplayHelp          "3NLQTEXZFBYPW9V9NXQEDHGVYX"
+    IconName             "RadiationBurst_Irradiate"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P2229564592"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.5000
+            Duration 4.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 3.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/IrradiateContinuingFx.fx
+            }
+            
+        }
+    }
+}

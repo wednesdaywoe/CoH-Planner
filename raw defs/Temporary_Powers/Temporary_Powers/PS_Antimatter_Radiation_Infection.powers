@@ -1,0 +1,66 @@
+Power Temporary_Powers.Temporary_Powers.PS_Antimatter_Radiation_Infection
+{
+    Name                 "PS_Antimatter_Radiation_Infection"
+    DisplayName          "P3091774412"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    AIGroups             kDebuff
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        5
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               15
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   994
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\RADIATION_Poisoning_Radiation_Infection.pfx"
+    include              menu\Powers\AnimFX\RADIATION_Poisoning_Radiation_Infection.pfx
+    DisplayShortHelp     "P987711590"
+    DisplayHelp          "FCWENZPUNBJ6WTX2YRCDUHDU6S"
+    DisplayAttackerHit   "P2574572377"
+    IconName             "RadiationPoisoning_RadiationInfection.tga"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P987711590"
+    DisplayTargetHelp    "P716005713"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_ToHit"
+            Scale 2.5000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/EnervatingFieldContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.5000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

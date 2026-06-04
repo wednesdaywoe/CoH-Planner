@@ -1,0 +1,69 @@
+Power Temporary_Powers.Temporary_Powers.Glowing_Lichen
+{
+    Name                 "Glowing_Lichen"              
+    DisplayName          "P1912002571"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         20
+    EffectArea           kCharacter
+    NumCharges           1
+    LifeTime             3600
+    TargetRequires       type target> PraetorianWarworksEndgame_SelfRepair_War_Walker eq kRoidedIDF target.Mode? ! &&
+    ServerTrayPriority   10
+    Tradeable            kTrue
+    Deletable            kTrue
+    InstanceLocked       kTrue
+    VisualFX             "menu\Powers\AnimFX\TemporaryPowers_PacificationGrenade.pfx"
+    include              menu\Powers\AnimFX\TemporaryPowers_PacificationGrenade.pfx
+    DisplayShortHelp     "P1912002571"
+    DisplayHelp          "WGS5KWRL6KTVYNMS3UCCQF9YLA"
+    DisplayAttackerHit   "P3271061335"
+    IconName             "Temporary_TerraVoltaGlow.tga"
+    ShowInManage         kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           100
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude kRoidedIDF
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Objects_Marauder_Debuff_Marker
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

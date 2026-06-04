@@ -1,0 +1,192 @@
+Power Sentinel_Defense.Ninjitsu.Shinobi-Iri
+{
+    Name                 "Shinobi-Iri"                 
+    DisplayName          "P3588116350"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.13
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_ShinobiIri.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_ShinobiIri.PFX
+    DisplayShortHelp     "6KDTKWVWN8DQYPZHSBLFY7W6DQ"
+    DisplayHelp          "7HBENCET8BSCWPL2C6P4H98D2A"
+    IconName             "Ninjitsu_Hide.tga"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.4500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.4500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude kHidden_Attack
+            StackType kStack
+            StackKey kStealthToggle
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Tag "StealthCrit"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 4.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 8 Always
+            Suppress Damaged 8 Always
+            Suppress MissionObjectClick 8 Always
+            Suppress PseudoPetAttacked 8 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Attacked source.EventTimeSince> 8 > Damaged source.EventTimeSince> 8 > && MissionObjectClick source.EventTimeSince> 8 > &&
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 35.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Attacked Damaged Stunned Held Sleep MissionObjectClick PseudoPetAttacked
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 390.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Attacked Damaged Stunned Held Sleep MissionObjectClick PseudoPetAttacked
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Attacked Damaged Stunned Held Sleep MissionObjectClick PseudoPetAttacked
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

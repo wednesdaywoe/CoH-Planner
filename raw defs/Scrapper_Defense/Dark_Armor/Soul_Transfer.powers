@@ -1,0 +1,41 @@
+Power Scrapper_Defense.Dark_Armor.Soul_Transfer
+{
+    Name                 "Soul_Transfer"               
+    DisplayName          "P4224542807"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         10
+    EffectArea           kSphere
+    Radius               25
+    CastableAfterDeath   kDeadOrAlive
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kHeal_Boost, kDamage_Boost, kRecovery_Boost, kStunned_Boost
+    HighlightEval        kHitPoints% auto> 0 >
+    HighlightIcon        DarkArmor_SoulTransferAlive
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_DarkArmor_SoulTransfer.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_DarkArmor_SoulTransfer.PFX
+    DisplayShortHelp     "EKC3NBKNZUTCYWCB5DP24CU3YQ"
+    DisplayHelp          "MJ8EQJ96NQPHWEBFXQAWLDRNPX"
+    IconName             "DarkArmor_SoulTransfer.tga"
+    MaxTargetsHit        10
+
+    Redirect
+    {
+        Power Redirects.Dark_Armor.Soul_Transfer
+        Requires cur.kHitPoints source> 0 >
+    }
+    
+    Redirect
+    {
+        Power Redirects.Dark_Armor.Soul_Transfer_Dead
+        Requires 1
+    }
+    
+}

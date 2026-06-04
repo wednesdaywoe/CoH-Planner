@@ -1,0 +1,175 @@
+Power Defender_Buff.Time_Manipulation.Chrono_Shift
+{
+    Name                 "Chrono_Shift"                
+    DisplayName          "P3129124653"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        20.8
+    TimeToActivate       2.03
+    RechargeTime         360
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_TimeManipulation_ChronoShift.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_TimeManipulation_ChronoShift.PFX
+    DisplayShortHelp     "P1350508662"
+    DisplayHelp          "FVEXKHLDK8R5Y2VGKLH4Y9Q7P3"
+    IconName             "TimeManipulation_ChronoShift.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? !
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.2000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 0.2000
+            Duration 30.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P256533052"
+                DisplayVictimHit "P285457741"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.8000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 0.3000
+            Duration 30.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P256533052"
+                DisplayVictimHit "P285457741"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.1500
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3426790094"
+                DisplayVictimHit "P3635132928"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.3000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

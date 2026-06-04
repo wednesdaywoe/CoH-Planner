@@ -1,0 +1,48 @@
+Power Arachnos_Soldiers.Arachnos_Soldier.Venom_Grenade
+{
+    Name                 "Venom_Grenade"               
+    DisplayName          "P1489982979"
+    BuyRequires          Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        11.856
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         24
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_VenomGrenade_Switchboard.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_VenomGrenade_Switchboard.pfx
+    DisplayShortHelp     "HXAHNSJPD62NY3BFGAHQLCG6YA"
+    DisplayHelp          "PVX48FH9535UY7MJXHDCKQCF4S"
+    IconName             "ArachnosSoldier_VenomGrenade.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1315223086"
+    DisplayTargetHelp    "P1667503160"
+
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Crab_Venom_Grenade
+        Requires @CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Bane_Venom_Grenade
+        Requires @CustomFX NullifierMace eq @CustomFX NullifierMaceTintable eq || Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor source.ownPower? &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Wolf_Venom_Grenade
+        Requires 1
+    }
+    
+}

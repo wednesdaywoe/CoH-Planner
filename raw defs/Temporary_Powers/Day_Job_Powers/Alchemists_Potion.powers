@@ -1,0 +1,46 @@
+Power Temporary_Powers.Day_Job_Powers.Alchemists_Potion
+{
+    Name                 "Alchemists_Potion"           
+    DisplayName          "P39485835"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       2.27
+    RechargeTime         20
+    EffectArea           kCharacter
+    NumCharges           30
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Empathy_HEAL.pfx"
+    include              menu\Powers\AnimFX\Empathy_HEAL.pfx
+    DisplayShortHelp     "P553708814"
+    DisplayHelp          "CYFZUWD4J84PY3BZG3ASMWJXR3"
+    IconName             "DayJob_SingleTargetHeal.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

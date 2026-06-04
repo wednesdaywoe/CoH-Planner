@@ -1,0 +1,34 @@
+Power Stalker_Defense.Psionic_Armor.Devour_Psyche
+{
+    Name                 "Devour_Psyche"               
+    DisplayName          "Z4BWNEZ592TVWDLS88HH4GS2WA"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                40
+    EnduranceCost        10.5
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         60
+    EffectArea           kCone
+    Radius               40
+    Arc                  90
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Devour_Psyche.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Devour_Psyche.pfx
+    DisplayShortHelp     "VDNU6KM7DTFKY5NJ7HMYXEU3TZ"
+    DisplayHelp          "YTSXQW6PBBR8WNZMPDLRMQXZLQ"
+    IconName             "PsionicArmor_DevourPsyche"
+    MaxTargetsHit        10
+
+    Redirect
+    {
+        Power Redirects.Psionic_Armor.Devour_Psyche
+        Requires 1
+    }
+    
+}

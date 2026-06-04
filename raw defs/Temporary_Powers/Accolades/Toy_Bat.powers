@@ -1,0 +1,73 @@
+Power Temporary_Powers.Accolades.Toy_Bat
+{
+    Name                 "Toy_Bat"                     
+    DisplayName          "TPQK68B5QYCZWNNET38K5XZ6DX"
+    ActivateRequires     mapname> City_02_04 eq !
+    ModesDisallowed      kDisable_All, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kAny
+    EntsAutoHit          kNone
+    Target               kAny
+    Range                7
+    EnduranceCost        3.25
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         3
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    StrengthsDisallowed  kRange
+    IgnoreLevelBought    kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_SillyBat_Accolade.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_SillyBat_Accolade.pfx
+    DisplayShortHelp     "44AQKMPST6BZYUVUYHJQ9KNS93"
+    DisplayHelp          "PCHK2NNQYABWYEC55ZDTUJSBNZ"
+    IconName             "Accolade_Excalibonk.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+        Requires enttype target> critter eq group target> MastermindPets eq ! && group target> Pets eq ! &&
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 0.0360
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P940528378"
+                DisplayVictimHit "P260398696"
+            }
+            
+        }
+    }
+}

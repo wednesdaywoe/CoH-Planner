@@ -1,0 +1,42 @@
+Power Scrapper_Melee.Titan_Weapons.Arc_of_Destruction
+{
+    Name                 "Arc_of_Destruction"          
+    DisplayName          "P3552304298"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                10
+    EnduranceCost        15.6395
+    TimeToActivate       2.7
+    TimeToRoot           2.7
+    RechargeTime         16
+    EffectArea           kCone
+    Radius               10
+    Arc                  120
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange kArc
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TitanWeapon_WaveofDestruction_Slow.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TitanWeapon_WaveofDestruction_Slow.PFX
+    DisplayShortHelp     "F43J5DA6HZBXWYX7APYP9AQY8Q"
+    DisplayHelp          "G46X9P2CHVN5W2CHMWUG3P5QFA"
+    IconName             "TitanWeapons_ArcofDestruction.tga"
+    MaxTargetsHit        5
+
+    Redirect
+    {
+        Power Pets.Titan_Weapons.Arc_of_Destruction_Fast
+        Requires kFastMode source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Pets.Titan_Weapons.Arc_of_Destruction_Slow
+        Requires 1
+    }
+    
+}

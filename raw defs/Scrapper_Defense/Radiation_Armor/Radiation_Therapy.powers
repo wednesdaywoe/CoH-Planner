@@ -1,0 +1,34 @@
+Power Scrapper_Defense.Radiation_Armor.Radiation_Therapy
+{
+    Name                 "Radiation_Therapy"           
+    DisplayName          "P1418028732"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       1.03
+    TimeToRoot           1.03
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kRecovery_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/RadiationArmor_RadiationTherapy.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/RadiationArmor_RadiationTherapy.PFX
+    DisplayShortHelp     "7K2G6NFAKGAZYGCJHRYZPEXYQQ"
+    DisplayHelp          "549NJ76PKWESY2LZERAEH675VQ"
+    IconName             "RadiationArmor_RadiationTherapy.tga"
+    MaxTargetsHit        10
+    OverCapExponential   kTrue
+
+    Redirect
+    {
+        Power Redirects.Rad_Armor.Radiation_Therapy
+        Requires 1
+    }
+    
+}

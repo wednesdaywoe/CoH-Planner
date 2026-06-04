@@ -1,0 +1,116 @@
+Power Temporary_Powers.Temporary_Powers.Venom_Grenade
+{
+    Name                 "Venom_Grenade"               
+    DisplayName          "P1489982979"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        19.5
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               10
+    NumCharges           3
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_TearGas_Grenades.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_TearGas_Grenades.pfx
+    DisplayShortHelp     "P4039533355"
+    DisplayHelp          "Y7M4MCNZL5BHY2ZQ4TD6R39EYS"
+    IconName             "Temporary_RangeAoEModerateDamage.tga"
+    MaxTargetsHit        16
+    DisplayTargetHelp    "P4154695595"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.1600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.2000
+            Duration 30.0000
+            Magnitude 1.0000
+            Period 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -3.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX Powers/Gadgets/TearGasGrenadeContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+}

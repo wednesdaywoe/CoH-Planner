@@ -1,0 +1,49 @@
+PowerSet Epic.Weapon_Mastery
+{
+    Name "Weapon_Mastery"
+    DisplayName "P1188616811"
+    DisplayShortHelp "P1188616811"
+    DisplayHelp "P3131182314"
+    IconName "Weapon_Mastery_set.ico"
+
+    Powers Epic.Weapon_Mastery.Web_Grenade
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Weapon_Mastery.Caltrops
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Weapon_Mastery.Shuriken
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Weapon_Mastery.Targeting_Drone
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Weapon_Mastery.Exploding_Shuriken
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

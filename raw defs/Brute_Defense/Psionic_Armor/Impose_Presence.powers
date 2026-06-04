@@ -1,0 +1,170 @@
+Power Brute_Defense.Psionic_Armor.Impose_Presence
+{
+    Name                 "Impose_Presence"             
+    DisplayName          "8K5KHJZAWMSGW4NUJNJBNL4B5Z"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.208
+    TimeToActivate       0.73
+    RechargeTime         10
+    ActivatePeriod       1
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost, kBuff_ToHit_Boost, kTaunt_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Impose_Presence.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Impose_Presence.pfx
+    DisplayShortHelp     "649WTBVK8EHQYGMVTPJWULSQ8Q"
+    DisplayHelp          "F8GQSUHBBR5UY4VZSETC5KL9YQ"
+    DisplayPowerDefenseFloat "P3802943013"
+    IconName             "PsionicArmor_ImposePresence"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 0.2000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.3000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.0750
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.7500
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayInfo "QRN8XHS475F7YHZX3RENVVEDL2"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "InherentTaunt"
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Inherents.Fury_Proc_Aura
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Taunt"
+    
+        Effect
+        {
+            Tag "StealthOn"
+            Requires Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&
+        
+            AttribMod
+            {
+                Attrib kTaunt
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_InherentTaunt"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kReplace
+                Flags CancelOnMiss
+            }
+        }
+    
+        Effect
+        {
+            Tag "StealthOn"
+            Requires Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&
+        
+            AttribMod
+            {
+                Attrib kTaunt
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_InherentTaunt"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kReplace
+                Flags CancelOnMiss
+            }
+        }
+    }
+}

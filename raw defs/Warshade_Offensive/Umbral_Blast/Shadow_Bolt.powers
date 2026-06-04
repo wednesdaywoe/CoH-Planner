@@ -1,0 +1,41 @@
+Power Warshade_Offensive.Umbral_Blast.Shadow_Bolt
+{
+    Name                 "Shadow_Bolt"                 
+    DisplayName          "P301782719"
+    ModesDisallowed      kDisable_All, kWarshade_Blaster_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        3.12
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         1.5
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    ServerTrayRequires   kWarshade_Tanker_Mode mode? Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? ! &&
+    ServerTrayPriority   1011
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_NightBolt.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_NightBolt.pfx
+    DisplayShortHelp     "P3090539366"
+    DisplayHelp          "D35UKQMRV77TWJN7KGL4HRABV3"
+    IconName             "UmbralBlast_ShadowBolt.tga"
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P1186591020"
+
+    Redirect
+    {
+        Power Kheldian_Pets.Umbral_Blast.Shadow_Bolt
+        Requires kWarshade_Tanker_Mode source.Mode? !
+    }
+    
+    Redirect
+    {
+        Power Kheldian_Pets.Umbral_Blast.Dwarf_Shadow_Bolt
+        Requires kWarshade_Tanker_Mode source.Mode?
+    }
+    
+}

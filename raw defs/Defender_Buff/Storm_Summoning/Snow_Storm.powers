@@ -1,0 +1,100 @@
+Power Defender_Buff.Storm_Summoning.Snow_Storm
+{
+    Name                 "Snow_Storm"                  
+    DisplayName          "P4107230931"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kDeadOrAliveFoe
+    Range                80
+    EnduranceCost        0.26
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         10
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kSlow_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_StormSummoning_SnowStorm.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_StormSummoning_SnowStorm.PFX
+    DisplayShortHelp     "P304532452"
+    DisplayHelp          "8C6GEWEYTQBWYRZF7GXZBCCJQZ"
+    DisplayAttackerHit   "P94096402"
+    DisplayVictimHit     "P4081415245"
+    IconName             "StormSummoning_SnowStorm.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P146324422"
+    DisplayTargetHelp    "P1154831319"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_SpeedRunning"
+            Scale -1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

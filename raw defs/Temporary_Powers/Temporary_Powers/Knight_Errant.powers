@@ -1,0 +1,51 @@
+Power Temporary_Powers.Temporary_Powers.Knight_Errant
+{
+    Name                 "Knight_Errant"               
+    DisplayName          "P1952446238"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         240
+    EffectArea           kLocation
+    NumCharges           5
+    IgnoreLevelBought    kTrue
+    Deletable            kTrue
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_ElectricControl_GenerateGremlins.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_ElectricControl_GenerateGremlins.PFX
+    DisplayShortHelp     "P3902045232"
+    DisplayHelp          "UDJ3PB2N46UEYLNEM82C52ANY3"
+    IconName             "Temporary_WarWolfWhistle.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef Pets_Knight_Errant
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,75 @@
+Power Temporary_Powers.Temporary_Powers.Alt_Restore
+{
+    Name                 "Alt_Restore"                 
+    DisplayName          "P1214912099"
+    ModesDisallowed      kDisable_All, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadPlayerFriend
+    EntsAutoHit          kDeadPlayerFriend
+    Target               kDeadPlayerFriend
+    Range                10
+    EnduranceCost        19.5
+    TimeToActivate       3.33
+    RechargeTime         60
+    EffectArea           kCharacter
+    NumCharges           1
+    StackingUsage        kTrue
+    MaxNumCharges        99
+    VisualFX             "menu\Powers\AnimFX\Medicine_Revive.pfx"
+    include              menu\Powers\AnimFX\Medicine_Revive.pfx
+    DisplayShortHelp     "P1673326674"
+    DisplayHelp          "8UBYHR7Y5H2JYKMBAJTX6AALEX"
+    DisplayAttackerHit   "P686189751"
+    DisplayVictimHit     "P1594339728"
+    IconName             "Temporary_ReviveTarget.tga"
+    TimeToConfirm        15
+    DisplayConfirm       P702712237
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P345555159"
+    DisplayTargetHelp    "P2645039395"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.3000
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P256533052"
+                DisplayVictimHit "P285457741"
+            }
+            
+            FX
+            {
+                ContinuingBits ANIM_GETUP ANIM_HIT
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kXPDebtProtection
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

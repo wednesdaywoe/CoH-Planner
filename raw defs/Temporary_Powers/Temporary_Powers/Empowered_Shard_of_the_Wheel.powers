@@ -1,0 +1,99 @@
+Power Temporary_Powers.Temporary_Powers.Empowered_Shard_of_the_Wheel
+{
+    Name                 "Empowered_Shard_of_the_Wheel"
+    DisplayName          "P403617704"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        5.46
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         3
+    EffectArea           kCharacter
+    LifeTimeInGame       5400
+    StrengthsDisallowed  kRange
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Fire_Melee_Scorch.PFX"
+    include              menu\Powers\AnimFX\Fire_Melee_Scorch.PFX
+    DisplayShortHelp     "5NZVLYK2AVLAYHLKY7383SW27X"
+    DisplayHelp          "UTNDVLH2AUMVY9LKZZRBDSS7LW"
+    IconName             "Temporary_ShardOfTheWheel.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 0.8400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 0.1000
+            Duration 2.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0500
+        Requires arch source> Class_Scrapper eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.8400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "VW85MT4UMEU8W4CGRC8YN7AXWX"
+                DisplayVictimHit "JMTY7ABEW2DCWAM7ENWKLHJCJA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

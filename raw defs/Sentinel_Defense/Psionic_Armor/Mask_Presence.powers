@@ -1,0 +1,227 @@
+Power Sentinel_Defense.Psionic_Armor.Mask_Presence
+{
+    Name                 "Mask_Presence"               
+    DisplayName          "P2134353020"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.104
+    TimeToActivate       0.73
+    RechargeTime         4
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Mask_Presence.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Mask_Presence.pfx
+    DisplayShortHelp     "LJ8C4XHWLH94YYVZBDD75L8KZ3"
+    DisplayHelp          "Y4MBFR2EKUQKWXC8YNSV4BSEDZ"
+    DisplayAttackerHit   "P4234907424"
+    DisplayPowerDefenseFloat "P3802943013"
+    IconName             "PsionicArmor_MaskPresence"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Tag "StealthCrit"
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kStr
+                Target kSelf
+                Table "Melee_Buff_Dmg"
+                Scale 4.0000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Suppress Attacked 8 Always
+                Suppress Damaged 8 Always
+                Suppress MissionObjectClick 8 Always
+                Suppress PseudoPetAttacked 8 Always
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayInfo "5LKHEZK6Y8VLYRVW7HHAPVKEHQ"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kRanged_Attack kMelee_Attack
+                    Aspect kCur
+                    Target kSelf
+                    Table "Melee_Buff_Def"
+                    Scale 0.5000
+                    Duration 0.7500
+                    Magnitude 1.0000
+                    StackType kReplace
+                    CancelEvents Stunned Held Sleep
+                    Flags IgnoreResistance
+                }
+            }
+        
+            Effect
+            {
+                Requires Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > && Helped source.EventTimeSince> 10 > && CommandedPet source.EventTimeSince> 10 > && PseudoPetAttacked source.EventTimeSince> 10 > && PseudoPetHelped source.EventTimeSince> 10 > &&
+            
+                AttribMod
+                {
+                    Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+                    Aspect kCur
+                    Target kSelf
+                    Table "Melee_Buff_Def"
+                    Scale 1.0000
+                    Duration 0.5500
+                    Magnitude 1.0000
+                    StackType kSuppress
+                    StackKey kStealthToggle
+                    CancelEvents Attacked Helped HitByFoe Stunned Held Sleep MissionObjectClick CommandedPet PseudoPetAttacked PseudoPetHelped
+                    Flags IgnoreResistance StackByAttribAndKey
+                    Messages
+                    {
+                        DisplayInfo "67HCUWGJ92BRY2LN8BAWCYB3JS"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Flags PvPOnly
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack
+                    Aspect kCur
+                    Target kSelf
+                    Table "Melee_Buff_Def"
+                    Scale 0.5000
+                    Duration 0.7500
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreResistance
+                }
+            }
+        
+            Effect
+            {
+                Requires Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > && Helped source.EventTimeSince> 10 > && CommandedPet source.EventTimeSince> 10 > && PseudoPetAttacked source.EventTimeSince> 10 > && PseudoPetHelped source.EventTimeSince> 10 > &&
+            
+                AttribMod
+                {
+                    Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+                    Aspect kCur
+                    Target kSelf
+                    Table "Melee_Buff_Def"
+                    Scale 1.0000
+                    Duration 0.5500
+                    Magnitude 1.0000
+                    StackType kSuppress
+                    StackKey kStealthToggle
+                    CancelEvents Attacked Helped HitByFoe Stunned Held Sleep MissionObjectClick CommandedPet PseudoPetAttacked PseudoPetHelped
+                    Flags IgnoreResistance StackByAttribAndKey
+                    Messages
+                    {
+                        DisplayInfo "67HCUWGJ92BRY2LN8BAWCYB3JS"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires MissionObjectClick source.EventTimeSince> 10 >
+        
+            AttribMod
+            {
+                Attrib kStealthRadius
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 35.5000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kSuppress
+                StackKey kStealthToggle
+                CancelEvents Attacked HitByFoe Stunned Held Sleep MissionObjectClick
+                Flags IgnoreResistance StackByAttribAndKey
+                Messages
+                {
+                    DisplayInfo "5LKHEZK6Y8VLYRVW7HHAPVKEHQ"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&
+        
+            AttribMod
+            {
+                Attrib kStealthRadiusPlayer
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 390.0000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kSuppress
+                StackKey kStealthToggle
+                CancelEvents Attacked HitByFoe Stunned Held Sleep MissionObjectClick
+                Flags IgnoreResistance StackByAttribAndKey
+                Messages
+                {
+                    DisplayInfo "5LKHEZK6Y8VLYRVW7HHAPVKEHQ"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kTranslucency
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.1500
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Attacked HitByFoe Stunned Held Sleep MissionObjectClick
+                Suppress Attacked 10 Always
+                Suppress Damaged 10 Always
+                Suppress MissionObjectClick 10 Always
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayInfo "5LKHEZK6Y8VLYRVW7HHAPVKEHQ"
+                }
+                
+            }
+        }
+    }
+}

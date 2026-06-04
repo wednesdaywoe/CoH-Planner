@@ -1,0 +1,39 @@
+Power Temporary_Powers.Temporary_Powers.Power_Siphon
+{
+    Name                 "Power_Siphon"                
+    DisplayName          "P3699860912"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       999
+    EffectArea           kCharacter
+    LifeTimeInGame       15
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P3412642376"
+    DisplayHelp          "HSHRUX372QHYYFCJVR3H76P55W"
+    IconName             "KineticAttack_PowerSiphon.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    NumAllowed           5
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

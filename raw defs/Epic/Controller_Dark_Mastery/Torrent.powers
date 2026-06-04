@@ -1,0 +1,181 @@
+Power Epic.Controller_Dark_Mastery.Torrent
+{
+    Name                 "Torrent"                     
+    DisplayName          "P2868465998"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        14.352
+    TimeToActivate       1.03
+    TimeToRoot           1.03
+    RechargeTime         30
+    EffectArea           kCone
+    Radius               60
+    Arc                  30
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kKnockback_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_DarkBlast_Torrent.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_DarkBlast_Torrent.PFX
+    DisplayShortHelp     "RKBCVDS784ZNW7X653YVKXBK8S"
+    DisplayHelp          "GXDSGH39C8KGYEX4EH3E8Y8Q4Q"
+    IconName             "Dark_Mastery_UmbralTorrent"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2190949330"
+    DisplayTargetHelp    "P1120184773"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Containment"
+            Requires enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.hasTag? || &&
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NFEAKSQQMXFSWRZNNAVEDP4E62"
+                    DisplayVictimHit "XJHU75VDB4T4WEV8PCER86HQYZ"
+                    DisplayFloat "P3070513493"
+                    DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.8471
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Containment"
+            Requires enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.hasTag? || &&
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.8471
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "NFEAKSQQMXFSWRZNNAVEDP4E62"
+                    DisplayVictimHit "XJHU75VDB4T4WEV8PCER86HQYZ"
+                    DisplayFloat "P3070513493"
+                    DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

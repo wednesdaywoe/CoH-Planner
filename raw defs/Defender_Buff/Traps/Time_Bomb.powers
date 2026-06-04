@@ -1,0 +1,48 @@
+Power Defender_Buff.Traps.Time_Bomb
+{
+    Name                 "Time_Bomb"                   
+    DisplayName          "GMB9SRAGVDL5WFCEL23778ANEW"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             2
+    EntsAffected         kNone
+    EntsAutoHit          kNone
+    Target               kLiterallyAnything
+    EffectArea           kCharacter
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost, kSlow_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    FaceTarget           kFalse
+    HighlightEval        kRemoteBomb Mode?
+    HighlightRing        255 0 0 255
+    HighlightIcon        Traps_AoEMassiveDamage
+    DisplayShortHelp     "6JFFW67F87WHWUCEBCPW37JLS2"
+    DisplayHelp          "R453EBEUAJH4YKCWZNA9VGCH4X"
+    IconName             "Traps_RemoteBomb.tga"
+
+    Redirect
+    {
+        Power Redirects.Gadgets.Remote_Bomb_Target
+        Requires kRemoteBomb source.Mode? ! target.isFriend? ! &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Gadgets.Remote_Bomb_Self
+        Requires kRemoteBomb source.Mode? !
+    }
+    
+    Redirect
+    {
+        Power Redirects.Gadgets.Temp_Bomb
+        Requires kRemoteBomb source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Redirects.Gadgets.Remote_Bomb_Info
+        Requires 0
+        ShowInInfo 1
+    }
+    
+}

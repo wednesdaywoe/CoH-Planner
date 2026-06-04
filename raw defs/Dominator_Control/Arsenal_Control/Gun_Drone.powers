@@ -1,0 +1,55 @@
+Power Dominator_Control.Arsenal_Control.Gun_Drone
+{
+    Name                 "Gun_Drone"                   
+    DisplayName          "UY7AK3XKNCDVW2BHLGR52Z6333"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                50
+    EnduranceCost        26
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         240
+    EffectArea           kLocation
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kTaunt_Boost
+    ProcAllowed          kNone
+    IgnoreStance         kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Arsenal_Control_Auto_Turre1.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Arsenal_Control_Auto_Turre1.pfx
+    DisplayShortHelp     "TH6WHSK2LZKDWSNGLBTZSW57A3"
+    DisplayHelp          "PJNFYKS8UXAXYXX2TF7E64EDEA"
+    IconName             "ArsenalControl_GunTurret"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P3912486950"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_GunDrone_Tri
+                PriorityList "PL_SpawnFlying"
+            }
+            
+        }
+    }
+}

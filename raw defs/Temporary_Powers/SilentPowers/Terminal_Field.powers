@@ -1,0 +1,109 @@
+Power Temporary_Powers.SilentPowers.Terminal_Field
+{
+    Name                 "Terminal_Field"              
+    DisplayName          "P491780887"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    AIReport             kNever
+    IgnoreStrength       kTrue
+    ShootThroughUntouchable kTrue
+    IsEnvironmentHit     kTrue
+    VisualFX             "menu\Powers\AnimFX\SonicPylon_Damage.pfx"
+    include              menu\Powers\AnimFX\SonicPylon_Damage.pfx
+    DisplayShortHelp     "P1316884769"
+    DisplayHelp          "P3320482205"
+    IconName             "DarkMiasma_TarPatch.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    NumAllowed           2
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.2500
+            Magnitude kDisable_Travel
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.2500
+            Magnitude kDisable_Teleport
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.2500
+            Magnitude kDisable_All
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale -0.0750
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires kHitPoints% target> 16 > enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kXPDebtProtection
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

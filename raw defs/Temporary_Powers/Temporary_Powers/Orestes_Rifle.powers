@@ -1,0 +1,75 @@
+Power Temporary_Powers.Temporary_Powers.Orestes_Rifle
+{
+    Name                 "Orestes_Rifle"               
+    DisplayName          "P844810460"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                40
+    EnduranceCost        32.5
+    TimeToActivate       3.5
+    TimeToRoot           3.5
+    RechargeTime         60
+    EffectArea           kCharacter
+    LifeTime             18000
+    StrengthsDisallowed  kRechargeTime
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Powers_OrestesRifle.pfx"
+    include              menu\Powers\AnimFX\Temporary_Powers_OrestesRifle.pfx
+    DisplayShortHelp     "P843530210"
+    DisplayHelp          "HMGSSJM5KCAQYFVAAU9DZ3YGQ2"
+    IconName             "Temporary_ScrollofRuin.tga"
+
+
+    Effect
+    {
+        Requires Vindicators_Ms_Liberty_Special target.VillainName> Vindicators_Ms_Liberty_Special_Original target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P315201362"
+            }
+            
+            Params Power
+            {
+                Power V_Vindicators.Liberty_Belt.Liberty_Belt
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Vindicators_Ms_Liberty_Special target.VillainName> Vindicators_Ms_Liberty_Special_Original target.VillainName> || !
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P2338895045"
+            }
+            
+        }
+    }
+}

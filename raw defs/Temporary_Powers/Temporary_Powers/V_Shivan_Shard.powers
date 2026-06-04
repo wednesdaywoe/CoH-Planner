@@ -1,0 +1,51 @@
+Power Temporary_Powers.Temporary_Powers.V_Shivan_Shard
+{
+    Name                 "V_Shivan_Shard"              
+    DisplayName          "P736775029"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    TimeToActivate       3.1
+    TimeToRoot           3.1
+    RechargeTime         240
+    EffectArea           kLocation
+    NumCharges           5
+    IgnoreLevelBought    kTrue
+    Deletable            kTrue
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Shivan_Summon.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Shivan_Summon.pfx
+    DisplayShortHelp     "P3529803329"
+    DisplayHelp          "6HKLJFUMT588WEXC9C9MK37SC2"
+    IconName             "Temporary_WarWolfWhistle.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Shivan_Decimator_Pet
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    }
+}

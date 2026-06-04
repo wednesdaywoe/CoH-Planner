@@ -1,0 +1,189 @@
+#************************************************#
+# Power: Pets > Mercenary Spec Ops 3 > Tear Gas  #
+# Info:  Choke, DoT (Toxic), -DMG                #
+#************************************************#
+
+Power Mastermind_Pets.Spec_Ops_3.Tear_Gas
+{
+    Name                 "Tear_Gas"                    
+    DisplayName          "P1299669084"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        7.8
+    PreferenceMultiplier 4
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         180
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\SpecOps_AssaultRifle_Gas.pfx"
+    include              menu\Powers\AnimFX\SpecOps_AssaultRifle_Gas.pfx
+    DisplayShortHelp     "JKGJU55FZW5FWYZATKJDCSB4W2"
+    DisplayHelp          "5TDW6WULGAEJYPMHU62J2D23HX"
+    DisplayAttackerHit   "P1040245024"
+    DisplayVictimHit     "P2245174206"
+    IconName             "Traps_DroppedAoEDebuffDamage.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P147015313"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 6.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX V_COV\Powers\Poison\PoisonTrapContinuing.fx
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX V_COV\Powers\Poison\PoisonTrapContinuing.fx
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 2.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+            }
+            
+        }
+    
+        Effect
+        {
+        
+            Effect
+            {
+                Requires kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && || kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && ||
+                Flags HideFromInfo
+            
+                AttribMod
+                {
+                    Attrib kToxic
+                    Aspect kAbs
+                    Type kExpression
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 0.1000
+                    Duration 20.1000
+                    MagnitudeExpr @StdResult kFocusFire_Burst target.Mode? kPersonalAttack1 source.Mode? && kFocusFire_Slug target.Mode? kPersonalAttack2 source.Mode? && + kFocusFire_M30 target.Mode? kPersonalAttack3 source.Mode? && + 0.0333 * 1 + *
+                    Magnitude 1.0000
+                    Delay 1.0000
+                    Period 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P4250172858"
+                        DisplayVictimHit "P1470793739"
+                    }
+                    
+                    FX
+                    {
+                        ContinuingFX POWERS/FireControl/CindersHit.fx
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Flags Fallback
+            
+                AttribMod
+                {
+                    Attrib kToxic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 0.1000
+                    Duration 20.1000
+                    Magnitude 1.0000
+                    Delay 1.0000
+                    Period 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P4250172858"
+                        DisplayVictimHit "P1470793739"
+                    }
+                    
+                    FX
+                    {
+                        ContinuingFX POWERS/FireControl/CindersHit.fx
+                    }
+                    
+                }
+            }
+        }
+    }
+}

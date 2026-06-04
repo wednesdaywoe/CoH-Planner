@@ -1,0 +1,96 @@
+Power Temporary_Powers.Temporary_Powers.Fettering_Nimbus
+{
+    Name                 "Fettering_Nimbus"            
+    DisplayName          "P1798828914"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        9.75
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         4
+    EffectArea           kCharacter
+    NumCharges           75
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Fettering_Nimbus.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Fettering_Nimbus.pfx
+    DisplayShortHelp     "P2512858669"
+    DisplayHelp          "PQMN7F8L5XE4W3CMEX97D5G6DW"
+    IconName             "Temporary_FetteringNimbus.tga"
+    DisplayTargetShortHelp "P1433855085"
+    DisplayTargetHelp    "P3708553442"
+
+
+    Effect
+    {
+        Requires group target> BlackSwan eq BlackSwan_BlackSwan target.VillainName> ! &&
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.2200
+            Duration 9.2000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 15.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX POWERS/ItemsandTempPowers/FetteringNimbusContinuingFx.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.2200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+}

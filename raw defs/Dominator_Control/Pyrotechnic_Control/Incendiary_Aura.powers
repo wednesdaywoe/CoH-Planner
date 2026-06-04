@@ -1,0 +1,104 @@
+Power Dominator_Control.Pyrotechnic_Control.Incendiary_Aura
+{
+    Name                 "Incendiary_Aura"             
+    DisplayName          "XRDJJZTNWDZSW9VQJQ44KNLE7Q"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.08
+    TimeToActivate       1.47
+    TimeToRoot           1.47
+    RechargeTime         20
+    ActivatePeriod       0.2
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost, kDebuff_ToHit_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Incendiary_Aura.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Incendiary_Aura.pfx
+    DisplayShortHelp     "MTWVF52M9PRJWNNDPKJUNXNMFX"
+    DisplayHelp          "ZJU9WV323MLSYGCL9QQW223XYX"
+    IconName             "Pyrotechnic_IncendiaryAura"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "YMQ5EMCA8LFYWPZRUWSCZDRZ82"
+    DisplayTargetHelp    "E9CV9NEMJ98XWJLW33V85JK8T2"
+
+
+    Effect
+    {
+        Chance 0.0300
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Pyrotechnic_Control.Blast_Off
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_ToHit"
+            Scale 1.2500
+            Duration 0.4500
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -500.0000
+            Duration 0.4500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 0.7500
+            Duration 0.4500
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,78 @@
+Power Sentinel_Defense.Electric_Armor.Charged_Shield
+{
+    Name                 "Charged_Shield"              
+    DisplayName          "P3137622985"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.104
+    TimeToActivate       0.67
+    RechargeTime         10
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_ElectricArmor_ChargedShield.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_ElectricArmor_ChargedShield.PFX
+    DisplayShortHelp     "DT6ZTSDSQEFAW2VPKVGKGDQDHW"
+    DisplayHelp          "863UQDHWV234W5X95A69YE6UHA"
+    DisplayAttackerHit   "P3586205903"
+    IconName             "ElectricArmor_ChargedShield"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kMax
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 0.6000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.5000
+            Duration 0.6000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 0.6000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

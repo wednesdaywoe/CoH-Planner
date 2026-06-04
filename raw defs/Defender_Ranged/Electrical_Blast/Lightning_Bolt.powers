@@ -1,0 +1,233 @@
+Power Defender_Ranged.Electrical_Blast.Lightning_Bolt
+{
+    Name                 "Lightning_Bolt"              
+    DisplayName          "P3269743464"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_ElectricalBlast_LightningBolt.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_ElectricalBlast_LightningBolt.PFX
+    DisplayShortHelp     "RAPSU8SFA9AVYFNUJ5H6LCMKQZ"
+    DisplayHelp          "JMQVM987Y6FRWBCXREZB985DVQ"
+    IconName             "ElectricalBolt_LightningBolt.tga"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Zapping"
+            Requires kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.3280
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QTS9W67UQLWVWAZJBSK4EPXC4Z"
+                    DisplayVictimHit "5XVFJ6RH3WZBYLZ2RVYN26X8WX"
+                    DisplayFloat "6P2EBR5PF37VWBZLBJVP2BJZBW"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kAbs
+                Target kSelf
+                Table "Ranged_EndDrain"
+                Scale 4.2650
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayVictimHit "P1197092217"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRecovery
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_EndDrain"
+                Scale -0.4000
+                Duration 5.0000
+                Magnitude 1.0000
+                StackType kStack
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.8889
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "Zapping"
+            Requires kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.3778
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QTS9W67UQLWVWAZJBSK4EPXC4Z"
+                    DisplayVictimHit "5XVFJ6RH3WZBYLZ2RVYN26X8WX"
+                    DisplayFloat "6P2EBR5PF37VWBZLBJVP2BJZBW"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kAbs
+                Target kSelf
+                Table "Ranged_EndDrain"
+                Scale 4.2650
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayVictimHit "P1197092217"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRecovery
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_EndDrain"
+                Scale -0.4000
+                Duration 5.0000
+                Magnitude 1.0000
+                StackType kStack
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildStatic"
+        Requires Defender_Ranged.Electrical_Blast.Tesla_Cage source.ownPower? Defender_Buff.Shock_Therapy source.ownPower? ||
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Shock_Therapy_Static
+            }
+            
+        }
+    }
+}

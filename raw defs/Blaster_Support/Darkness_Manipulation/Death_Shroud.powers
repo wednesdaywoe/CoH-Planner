@@ -1,0 +1,54 @@
+Power Blaster_Support.Darkness_Manipulation.Death_Shroud
+{
+    Name                 "Death_Shroud"                
+    DisplayName          "P2409137586"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        1.04
+    TimeToActivate       2.47
+    TimeToRoot           2.47
+    RechargeTime         4
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_DarkArmor_DeathShroud.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_DarkArmor_DeathShroud.PFX
+    DisplayShortHelp     "P2860844037"
+    DisplayHelp          "4URK4K728EL3YHV3PY677GKCTS"
+    IconName             "DarknessManipulation_DeathShroud.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P4289828464"
+    DisplayTargetHelp    "P2491757569"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+}

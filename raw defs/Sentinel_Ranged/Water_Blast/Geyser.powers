@@ -1,0 +1,657 @@
+#*********************************************************************************************************************#
+# Power: Ranged > Water Blast > Geyser                                                                                #
+# Info:  Ranged (Targeted AoE), DMG(Fire/Smash), Foe DoT(Fire), -Speed, Knock Up, Disorient, +Wet, Self -Tidal Power  #
+#*********************************************************************************************************************#
+
+Power Sentinel_Ranged.Water_Blast.Geyser
+{
+    Name                 "Geyser"                      
+    DisplayName          "P340579751"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.4
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        15.6
+    TimeToActivate       2.93
+    TimeToRoot           2.93
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kKnockback_Boost, kStunned_Boost
+    HighlightEval        temporary_powers.temporary_powers.tidal_power ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_Geyser.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_Geyser.PFX
+    DisplayShortHelp     "4PU3FPRGD2JEWTMM9K29JF2V9Z"
+    DisplayHelp          "YQ46QE9V5LGRYYMTEEXEADX3D2"
+    IconName             "WaterBlast_Geyser.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1509084345"
+    DisplayTargetHelp    "P890726005"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 1.1260
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                    DisplayInfo "85NKYGU6W4RDWRMYAT3W8G3QFW"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 0 ==
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1020
+                Duration 5.1000
+                Magnitude 1.0000
+                Delay 0.5000
+                Period 0.5000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                    DisplayInfo "85NKYGU6W4RDWRMYAT3W8G3QFW"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 1 ==
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1080
+                Duration 5.1000
+                Magnitude 1.0000
+                Delay 0.5000
+                Period 0.5000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                    DisplayInfo "85NKYGU6W4RDWRMYAT3W8G3QFW"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 ==
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1150
+                Duration 5.1000
+                Magnitude 1.0000
+                Delay 0.5000
+                Period 0.5000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                    DisplayInfo "85NKYGU6W4RDWRMYAT3W8G3QFW"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.1280
+                Duration 5.1000
+                Magnitude 1.0000
+                Delay 0.5000
+                Period 0.5000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                    DisplayInfo "85NKYGU6W4RDWRMYAT3W8G3QFW"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            RadiusInner 0.0000
+            RadiusOuter 8.0000
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.9280
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                    DisplayInfo "VXLP8CXAGFBDWACGBPPRBCE34S"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritAoE"
+            RadiusInner 8.0000
+            RadiusOuter 20.0000
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.9280
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                    DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "7HYA98X5UMZ4WZNRQGSND2T8ES"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.6700
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kKnockup
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.5000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.3300
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 1 ==
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale 5.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.6000
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 ==
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale 5.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale 5.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.4538
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 1.0589
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 1 ==
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.0756
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 ==
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.1815
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.3782
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.6700
+        
+            AttribMod
+            {
+                Attrib kKnockup
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.5000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.3300
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 1 ==
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.6000
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 ==
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 ==
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.3300
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.3300
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance RevokeAll
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Tidal_Power
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "WetStatus"
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 10.0000
+                Magnitude kWet
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "9D4E9JJ6JUHHYRM48NFCQZWY4A"
+                }
+                
+            }
+        }
+    }
+}

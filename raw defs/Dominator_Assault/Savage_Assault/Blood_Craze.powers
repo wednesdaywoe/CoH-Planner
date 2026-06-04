@@ -1,0 +1,67 @@
+Power Dominator_Assault.Savage_Assault.Blood_Craze
+{
+    Name                 "Blood_Craze"                 
+    DisplayName          "P2739178412"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        7.8
+    TimeToActivate       2
+    RechargeTime         180
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/SavageMelee_BloodThirst.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/SavageMelee_BloodThirst.pfx
+    DisplayShortHelp     "P463007641"
+    DisplayHelp          "3CFQJNVYKRY5YAX2KQFJUDMJFZ"
+    DisplayAttackerHit   "P2577623505"
+    IconName             "SavageMelee_BloodThirst.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P1078291878"
+    DisplayTargetHelp    "P2045207445"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 0.2500
+            Duration 9.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P606393157"
+            }
+            
+        }
+    }
+}

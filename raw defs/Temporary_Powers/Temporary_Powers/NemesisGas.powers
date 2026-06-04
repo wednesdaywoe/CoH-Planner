@@ -1,0 +1,82 @@
+Power Temporary_Powers.Temporary_Powers.NemesisGas
+{
+    Name                 "NemesisGas"                  
+    DisplayName          "GPZGVQ8KMQ3XWPNZ72CGNX7FEX"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       5
+    EffectArea           kCharacter
+    ProcAllowed          kNone
+    DisplayShortHelp     "6HYNSQ3JPJPGWMMLB4CKQ5K2DW"
+    DisplayHelp          "X69MKJAK5CW4YKCQMCVEVGHJXZ"
+    IconName             "Temporary_Nemesis_Gas.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    DisplayTargetShortHelp "6HYNSQ3JPJPGWMMLB4CKQ5K2DW"
+    DisplayTargetHelp    "DEBN8CX924XVWAXKAGQA8Q3E3X"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 5.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX ENEMYFX\Rikti\Death_Fields\MonkeyGas_Field.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires arch target> Class_Stalker eq ! Training_Gadgets.Bane_Spider_Training.Hide target.ownPower? ! || Teamwork.Widow_Teamwork.NW_Mask_Presence target.ownPower? ! ||
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Damage"
+            Scale 1.7500
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "BDE43XZT44F7Y3Z752UXCNAPCA"
+                DisplayVictimHit "JKJFBW2P6N5JWHMG4WD4KHF39X"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.5000
+            Duration 5.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

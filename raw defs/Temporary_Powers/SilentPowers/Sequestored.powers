@@ -1,0 +1,95 @@
+Power Temporary_Powers.SilentPowers.Sequestored
+{
+    Name                 "Sequestored"                 
+    DisplayName          "P4023342609"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    ActivatePeriod       75
+    EffectArea           kSphere
+    Radius               12
+    LifeTime             20
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_ArchVillain_MezRes.pfx"
+    include              menu\Powers\AnimFX\Villain_ArchVillain_MezRes.pfx
+    DisplayShortHelp     "P4023342609"
+    DisplayHelp          "P4023342609"
+    IconName             "Incarnate_StoryArc.tga"
+    MaxTargetsHit        16
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 5000.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ConditionalFX Events\EndGame\BAF\SequestrationField_Conditional.fx
+                ConditionalBits ANIM_SonicStun
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 20.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ConditionalFX Events\EndGame\BAF\SequestrationField_Conditional.fx
+                ConditionalBits ANIM_SonicStun
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 3.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX Events\EndGame\BAF\SequestrationField_Token3.fx
+                ConditionalFX Events\EndGame\BAF\SequestrationField_Conditional.fx
+                ConditionalBits ANIM_SonicStun
+            }
+            
+        }
+    }
+}

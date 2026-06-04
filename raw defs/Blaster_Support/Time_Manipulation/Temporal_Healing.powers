@@ -1,0 +1,165 @@
+Power Blaster_Support.Time_Manipulation.Temporal_Healing
+{
+    Name                 "Temporal_Healing"            
+    DisplayName          "P350494983"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       2.03
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRecovery_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TimeManipulation_TemporalHealing.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TimeManipulation_TemporalHealing.PFX
+    DisplayShortHelp     "HAB46L7H7NE4WDBC26NLSN5UHQ"
+    DisplayHelp          "UB3UNT5LEZK2Y4V7PR5MJWGWSA"
+    IconName             "TimeManipulation_TemporalHealing"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight kRechargeTime
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Res_Boolean"
+            Scale 0.5000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires @CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq ||
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Target kTarget
+            Table "Melee_HealSelf"
+            Scale 0.1500
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?
+        
+            AttribMod
+            {
+                Attrib kAbsorb
+                Aspect kMax
+                Target kTarget
+                Table "Melee_HealSelf"
+                Scale 0.0450
+                Duration 12.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires @CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq || !
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Target kTarget
+            Table "Melee_HealSelf"
+            Scale 0.1500
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoFloaters IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?
+        
+            AttribMod
+            {
+                Attrib kAbsorb
+                Aspect kMax
+                Target kTarget
+                Table "Melee_HealSelf"
+                Scale 0.0450
+                Duration 12.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags NoFloaters IgnoreCombatMods
+                Messages
+                {
+                    DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+                }
+                
+            }
+        }
+    }
+}

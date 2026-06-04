@@ -1,0 +1,43 @@
+Power Stalker_Melee.Savage_Melee.Assassins_Frenzy
+{
+    Name                 "Assassins_Frenzy"            
+    DisplayName          "P2958490367"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.35
+    InterruptTime        2
+    TimeToActivate       3
+    TimeToRoot           1
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        kDD_StatusMode_1 Mode? kDD_BonusAoEMode_1 Mode? || temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 == ||
+    HighlightRing        255 127 0 255
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/SavageMelee_AssassinsFrenzy.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/SavageMelee_AssassinsFrenzy.pfx
+    DisplayShortHelp     "KW6Y57SMLZ2ZWHCH6VFF29YYMA"
+    DisplayHelp          "9TENQBPTDN49YQVNUC3L52MHXS"
+    IconName             "SavageMelee_AssassinStrike.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Savage_Melee_Assassins_Strike.Assassins_Frenzy_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Savage_Melee_Assassins_Strike.Assassins_Frenzy_Stealth
+        Requires 1
+    }
+    
+}

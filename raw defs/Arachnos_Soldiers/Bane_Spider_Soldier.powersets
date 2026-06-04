@@ -1,0 +1,93 @@
+PowerSet Arachnos_Soldiers.Bane_Spider_Soldier
+{
+    Name "Bane_Spider_Soldier"
+    DisplayName "P1412051104"
+    DisplayShortHelp "P1412051104"
+    DisplayHelp "P2000049099"
+    CostumeKeys CustomWeapon_ArachnosMace
+    CostumeParts ArachnosMace_Default
+    SpecializeAt 23
+    SpecializeRequires Arachnos_Soldiers.Crab_Spider_Soldier powerset? Training_Gadgets.Crab_Spider_Training Powerset? || !
+    IconName "Bane_Spider_Soldier_set.ico"
+
+    Powers Arachnos_Soldiers.Bane_Spider_Soldier.BS_Bash
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Bane_Spider_Soldier.Mace_Beam
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Bane_Spider_Soldier.Mace_Beam_Blast
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Bane_Spider_Soldier.Build_Up
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Bane_Spider_Soldier.Mace_Beam_Volley
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Bane_Spider_Soldier.Pulverize
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Bane_Spider_Soldier.Poisonous_Ray
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Bane_Spider_Soldier.Shatter
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Bane_Spider_Soldier.Placate
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Arachnos_Soldiers.Bane_Spider_Soldier.Crowd_Control
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

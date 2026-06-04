@@ -1,0 +1,266 @@
+Power Temporary_Powers.Temporary_Powers.Phase_Flight
+{
+    Name                 "Phase_Flight"                
+    DisplayName          "P2034085528"
+    ModesDisallowed      kDisable_All, kDisable_FlyToggles, kDisable_Temp, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    ModesSuspended       kSuppress_FlyToggles, kSuppress_TravelToggles
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kFlying_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        3
+    RechargeTime         60
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            1800
+    IgnoreStrength       kTrue
+    StrengthsDisallowed  kEnduranceDiscount
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Peacebringer_QuantumFlight.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Peacebringer_QuantumFlight.pfx
+    DisplayShortHelp     "P2596392736"
+    DisplayHelp          "LPXQ5TZVR39HW4N9CGWSP899BA"
+    IconName             "Temporary_ResonanceDisrupter.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            Flags IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedFlying"
+            Scale 5.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Control"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Friction"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.NoPhase
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+            }
+            
+            Params EffectFilter
+            {
+                Tag FlightActive
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires kDisable_Toggle source.Mode? !
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 20.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 222.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 10 Always
+            Suppress HitByFoe 10 Always
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kPhase
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Magnitude 3.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+            Params Phase
+            {
+                CombatPhase Phased
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPhase
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Magnitude 3.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+            Params Phase
+            {
+                CombatPhase NoPrime
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kIntangible
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Magnitude 3.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3282672142"
+                DisplayVictimHit "P1918954866"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kThreatLevel
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

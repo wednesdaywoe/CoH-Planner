@@ -1,0 +1,83 @@
+PowerSet Sentinel_Ranged.Archery
+{
+    Name "Archery"
+    DisplayName "P1664484399"
+    DisplayShortHelp "P1664484399"
+    DisplayHelp "P91595018"
+    CostumeKeys CustomWeapon_Bow
+    CostumeParts Bow_Default
+    IconName "Archery_set.ico"
+
+    Powers Sentinel_Ranged.Archery.Snap_Shot
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Archery.Aimed_Shot
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Archery.Fistful_of_Arrows
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Archery.Stunning_Shot
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Archery.Aim
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Archery.Explosive_Arrow
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Archery.Blazing_Arrow
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Archery.Ranged_Shot
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Archery.Rain_of_Arrows
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

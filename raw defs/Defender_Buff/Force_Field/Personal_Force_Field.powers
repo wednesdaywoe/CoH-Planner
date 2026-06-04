@@ -1,0 +1,145 @@
+Power Defender_Buff.Force_Field.Personal_Force_Field
+{
+    Name                 "Personal_Force_Field"        
+    DisplayName          "P3978803010"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kRest_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.13
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         15
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ForceField_PersonalForceField.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ForceField_PersonalForceField.PFX
+    DisplayShortHelp     "P3032934705"
+    DisplayHelp          "234AW9Y6DN33YELJM9GMY35VR2"
+    DisplayAttackerHit   "P3782792257"
+    IconName             "ForceField_PersonalForceField.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kOnlyAffectsSelf
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Magnitude 100.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 7.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 4.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kElusivityBase
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 7.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 4.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

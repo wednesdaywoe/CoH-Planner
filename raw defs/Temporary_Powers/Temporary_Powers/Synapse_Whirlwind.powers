@@ -1,0 +1,93 @@
+Power Temporary_Powers.Temporary_Powers.Synapse_Whirlwind
+{
+    Name                 "Synapse_Whirlwind"           
+    DisplayName          "P1282519578"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.525
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               8
+    LifeTime             1200
+    ServerTrayPriority   1
+    VisualFX             "menu\Powers\AnimFX\Hero_Synapse_Whirlwind.pfx"
+    include              menu\Powers\AnimFX\Hero_Synapse_Whirlwind.pfx
+    DisplayShortHelp     "P3487441435"
+    DisplayHelp          "VK5D783HQAK5WCL3G3LGMXB3NZ"
+    IconName             "SuperSpeed_Whirlwind.tga"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Knockback"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,102 @@
+Power Dominator_Assault.Earth_Assault.Power_Boost
+{
+    Name                 "Power_Boost"                 
+    DisplayName          "P1690116925"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_EarthAssault_PowerBoost.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_EarthAssault_PowerBoost.PFX
+    DisplayShortHelp     "P3307698078"
+    DisplayHelp          "73YPZB7PJ3YCY5M975JAARKD62"
+    IconName             "EarthAssault_PowerBoost.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 4.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Table "Melee_Ones"
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3370152175"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "PowerBoostA"
+    
+        AttribMod
+        {
+            Attrib kHeal kAbsorb kEndurance kSpeedRunning kSpeedFlying kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.5000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            StackKey kPowerBoost
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "PowerBoostB"
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack kDefense kToHit
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.5000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            StackKey kPowerBoost
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

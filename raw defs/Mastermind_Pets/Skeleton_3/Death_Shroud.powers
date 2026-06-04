@@ -1,0 +1,53 @@
+#************************************************#
+# Power: Pets > Necro Skeleton 3 > Death Shroud  #
+# Info:  Toggle: PBAoE Minor DoT(Negative)       #
+#************************************************#
+
+Power Mastermind_Pets.Skeleton_3.Death_Shroud
+{
+    Name                 "Death_Shroud"                
+    DisplayName          "P2409137586"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    RechargeTime         4
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_DarkArmor_DeathShroud.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_DarkArmor_DeathShroud.PFX
+    DisplayShortHelp     "P2860844037"
+    DisplayHelp          "MCKQ35PES8G7WLXG8R9C2H54X3"
+    IconName             "DarkArmor_TouchOfDeath.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P4289828464"
+    DisplayTargetHelp    "P2491757569"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+}

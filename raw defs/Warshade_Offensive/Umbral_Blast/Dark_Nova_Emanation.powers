@@ -1,0 +1,111 @@
+Power Warshade_Offensive.Umbral_Blast.Dark_Nova_Emanation
+{
+    Name                 "Dark_Nova_Emanation"         
+    DisplayName          "P340077525"
+    BuyRequires          Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Emanation ! &&
+    ModesRequired        kWarshade_Blaster_Mode
+    ModesDisallowed      kDisable_All, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        11.856
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         12
+    EffectArea           kCone
+    Radius               60
+    Arc                  45
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kKnockback_Boost
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1008
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Blaster_Cone.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Blaster_Cone.pfx
+    DisplayShortHelp     "9Y7DAPVP84RTWDM7NYMPXFHUMZ"
+    DisplayHelp          "4HYCM2JCJ3BQYXVXQ33H7PXLBZ"
+    IconName             "UmbralBlast_GraviticEmanation.tga"
+    MaxTargetsHit        10
+    Free                 kTrue
+    AutoIssue            kTrue
+    DisplayTargetShortHelp "P1490875287"
+    DisplayTargetHelp    "P1993623101"
+
+
+    Effect
+    {
+        Tag "SSDamage"
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_InherentDamage"
+            Scale 0.9900
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.2000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Tag "SSDamage"
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_InherentDamage"
+            Scale 0.7544
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+}

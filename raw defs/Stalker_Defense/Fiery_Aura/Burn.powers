@@ -1,0 +1,112 @@
+Power Stalker_Defense.Fiery_Aura.Burn
+{
+    Name                 "Burn"                        
+    DisplayName          "P4116755002"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        5.2
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         25
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRadius
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_FieryAura_Burn.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_FieryAura_Burn.PFX
+    DisplayShortHelp     "E5T55V72AH8UYCVWKBKV85VULS"
+    DisplayHelp          "DLYJYG96GAEPY6M2APM4DSACXA"
+    IconName             "FlamingShield_Burn.tga"
+    MaxTargetsHit        5
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P2863027852"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.4400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Burn"
+                PriorityList "PL_StaticObject"
+                Power Pets.ResistAll.ResistAll
+                Power Redirects.Fiery_Aura.Burn
+            }
+            
+        }
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale -30.0000
+                Duration 100.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        }
+    
+        Effect
+        {
+            Flags PvPOnly
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale 3.0000
+                Duration 100.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        }
+    }
+}

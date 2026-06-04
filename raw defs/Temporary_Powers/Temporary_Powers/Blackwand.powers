@@ -1,0 +1,69 @@
+Power Temporary_Powers.Temporary_Powers.Blackwand
+{
+    Name                 "Blackwand"                   
+    DisplayName          "P3526765688"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.5
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         8
+    EffectArea           kCharacter
+    NumCharges           10
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_BlackWand.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_BlackWand.pfx
+    DisplayShortHelp     "CNNPEDD582TPY3M3YFHRX6TDGQ"
+    DisplayHelp          "8XTYNXXNW2JTWAB58PCXYCT3YA"
+    IconName             "Temporary_RangeHeavyDamage.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires origin source> Magic eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.8200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+}

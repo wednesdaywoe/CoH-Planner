@@ -1,0 +1,136 @@
+#**************************************************#
+# Power: Buff > Nature Affinity > Entangling Aura  #
+# Info:  Toggle, Foe Hold                          #
+#**************************************************#
+
+Power Mastermind_Buff.Nature_Affinity.Raging_Tempest
+{
+    Name                 "Raging_Tempest"              
+    DisplayName          "P3182344669"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        1.3
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         20
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHold_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_RagingTempest.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_RagingTempest.PFX
+    DisplayShortHelp     "P855044487"
+    DisplayHelp          "P3274092100"
+    DisplayAttackerHit   "P1153659952"
+    IconName             "NatureAffinity_RagingTempest.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P2993629167"
+    DisplayTargetHelp    "P4256842521"
+
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Magnitude 2.0000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_HIT ANIM_LASSOSTUN ANIM_STUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.8000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_HIT ANIM_LASSOSTUN ANIM_STUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.8000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kReplace
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_HIT ANIM_LASSOSTUN ANIM_STUN
+            }
+            
+        }
+    }
+}

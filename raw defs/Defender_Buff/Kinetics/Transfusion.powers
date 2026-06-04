@@ -1,0 +1,132 @@
+Power Defender_Buff.Kinetics.Transfusion
+{
+    Name                 "Transfusion"                 
+    DisplayName          "P2614747173"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Kinetics_Transfusion.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Kinetics_Transfusion.PFX
+    DisplayShortHelp     "P3141505437"
+    DisplayHelp          "X3DGCS9YUKU7WJM4TGMSWZGSMS"
+    IconName             "KineticBoost_Transfusion.tga"
+    DisplayTargetShortHelp "P977901485"
+    DisplayTargetHelp    "P2832674077"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P2780757799"
+                DisplayVictimHit "P2851875256"
+            }
+            
+            Params Power
+            {
+                Power Redirects.Kinetics.Transfusion
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.5000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -3.3300
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -11.5000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,47 @@
+Power Temporary_Powers.Temporary_Powers.Power_of_Ghost_Widow_Click
+{
+    Name                 "Power_of_Ghost_Widow_Click"  
+    DisplayName          "P3448950299"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kCaster
+    TimeToActivate       2.03
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               80
+    LifeTimeInGame       1200
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayRequires   mapname> reichsman_base eq
+    ServerTrayPriority   3
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Illusions_Group_Invisibility.pfx"
+    include              menu\Powers\AnimFX\Illusions_Group_Invisibility.pfx
+    DisplayShortHelp     "P2982891012"
+    DisplayHelp          "WAL6VJ9N8NSDYYNG4UPV7ACWJZ"
+    IconName             "PowerofGhostWidow.tga"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6600
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,33 @@
+PowerSet Mastermind_Pets.Medic_3
+{
+    Name "Medic_3"
+    DisplayName "2G7Z5NNTD6EVWXXAE8KVD59APA"
+    DisplayShortHelp "P3643806322"
+    DisplayHelp "P3643806322"
+    IconName "Medic_3_set.ico"
+
+    Powers Mastermind_Pets.Medic_3.Stimulant
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Medic_3.Frag_Grenade
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Medic_3.Tactical_Upgrade
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

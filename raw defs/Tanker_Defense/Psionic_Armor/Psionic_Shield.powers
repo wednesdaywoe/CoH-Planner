@@ -1,0 +1,165 @@
+Power Tanker_Defense.Psionic_Armor.Psionic_Shield
+{
+    Name                 "Psionic_Shield"              
+    DisplayName          "86EFMXK37BU2YSC4UMENAYYLRQ"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.104
+    TimeToActivate       1.17
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Psionic_Shield.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Psionic_Shield.pfx
+    DisplayShortHelp     "TVYB539ZPE8EWENE2D2L9B9SF3"
+    DisplayHelp          "CX5CZ26KDJ8WWZNFJUDM5QVWTS"
+    DisplayAttackerHit   "3UHBXTT942KPWBVLPSJPASQ6L2"
+    IconName             "PsionicArmor_PsionicShield"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kFire kCold kToxic
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Dmg"
+                Scale 2.0000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEnergy kNegative_Energy
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Dmg"
+                Scale 3.0000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Dmg"
+                Scale 0.7500
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale 0.7500
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreResistance
+            }
+        }
+    
+        Effect
+        {
+            Flags PvPOnly
+        
+            AttribMod
+            {
+                Attrib kFire kCold kToxic
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Dmg"
+                Scale 2.0000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEnergy kNegative_Energy
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Dmg"
+                Scale 3.0000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Dmg"
+                Scale 0.5000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale 0.7500
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        }
+    }
+}

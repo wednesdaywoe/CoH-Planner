@@ -1,0 +1,52 @@
+#************************************#
+# Power: Pets > Robot Droid > Smash  #
+# Info:  Melee, DMG(Smash)           #
+#************************************#
+
+Power Mastermind_Pets.Droid.Smash
+{
+    Name                 "Smash"                       
+    DisplayName          "P2125664144"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        5.2
+    TimeToActivate       0.67
+    TimeToRoot           0.67
+    RechargeTime         16
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu\Powers\AnimFX\BRAWLING_BRAWLING.pfx"
+    include              menu\Powers\AnimFX\BRAWLING_BRAWLING.pfx
+    DisplayShortHelp     "QMU8WKRZZH4UYYBZP9KR3WZ2XX"
+    DisplayHelp          "5C8VCWQF4N4RYVBZCKQFWER8AW"
+    IconName             "Sword_Hack.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.1600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+}

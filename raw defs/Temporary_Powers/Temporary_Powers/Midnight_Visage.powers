@@ -1,0 +1,77 @@
+Power Temporary_Powers.Temporary_Powers.Midnight_Visage
+{
+    Name                 "Midnight_Visage"             
+    DisplayName          "P3174334427"
+    ModesDisallowed      kDisable_All, kHidden_Attack
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kStealth_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       1.83
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            900
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_MidnightVisage.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_MidnightVisage.pfx
+    DisplayShortHelp     "P3978072165"
+    DisplayHelp          "P1156459930"
+    IconName             "Temporary_ResonanceDisrupter.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Midnight_Minion_Ruin_01
+                Priority 9
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 50.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude kMidnight_Disguise
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

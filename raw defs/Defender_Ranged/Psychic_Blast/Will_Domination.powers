@@ -1,0 +1,138 @@
+Power Defender_Ranged.Psychic_Blast.Will_Domination
+{
+    Name                 "Will_Domination"             
+    DisplayName          "P3818834986"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                100
+    EnduranceCost        11.856
+    TimeToActivate       1.1
+    TimeToRoot           1.1
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_PsychicBlast_WillDomination.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_PsychicBlast_WillDomination.PFX
+    DisplayShortHelp     "4M6YF9UTVHWEYZCSUTDKTZFC5S"
+    DisplayHelp          "RK5XV7QJ2W53YCVLXG85FZD2ZX"
+    IconName             "PsychicBlast_WillDomination.tga"
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "P3498727642"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 2.2800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        Effect
+        {
+            Chance 0.8000
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 16.0000
+                Magnitude 3.0000
+                Delay 0.2500
+                StackType kStack
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                    ConditionalBits ANIM_SLEEP
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.6499
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        Effect
+        {
+            Chance 0.8000
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                Delay 0.2500
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                    ConditionalBits ANIM_SLEEP
+                }
+                
+            }
+        }
+    }
+}

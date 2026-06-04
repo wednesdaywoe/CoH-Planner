@@ -1,0 +1,68 @@
+#********************************************#
+# Power: Pets > Robot Repair Drone > Repair  #
+# Info:  Heal Robot                          #
+#********************************************#
+
+Power Mastermind_Pets.Repair_Drone.Repair
+{
+    Name                 "Repair"                      
+    DisplayName          "P2303209751"
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kHealAlly
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    RechargeTime         2
+    ActivatePeriod       4
+    EffectArea           kCharacter
+    BoostsAllowed        kRange_Boost, kHeal_Boost
+    StrengthsDisallowed  kRechargeTime
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Repair_Drone_Repair.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Repair_Drone_Repair.pfx
+    DisplayShortHelp     "P4028681910"
+    DisplayHelp          "P705889423"
+    IconName             "Robotics_Repair.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Heal"
+            Scale -2.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kStack
+            Flags NoFloaters IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,43 @@
+Power Stalker_Melee.Dual_Blades.Assassins_Blades
+{
+    Name                 "Assassins_Blades"            
+    DisplayName          "P1533895691"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3
+    TimeToRoot           1
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        kDD_StatusMode_1 Mode? kDD_BonusAoEMode_1 Mode? || temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 == ||
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\DualBlades_AssassinsStrike_NoGeo.pfx"
+    include              menu\Powers\AnimFX\DualBlades_AssassinsStrike_NoGeo.pfx
+    DisplayShortHelp     "4R3HS6SGYQ4KW2NMFYFMJGEH2Q"
+    DisplayHelp          "8HDLZVR3GEJMW8VM73DEUGX9LW"
+    IconName             "DualBlades_AssassinBlades.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Dual_Blades_Assassins_Strike.Assassins_Blades_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Dual_Blades_Assassins_Strike.Assassins_Blades_Stealth
+        Requires 1
+    }
+    
+}

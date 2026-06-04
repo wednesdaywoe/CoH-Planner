@@ -1,0 +1,96 @@
+#***********************************************#
+# Power: Pets > Necro Lich 2 > Petrifying Gaze  #
+# Info:  Hold                                   #
+#***********************************************#
+
+Power Mastermind_Pets.Lich_2.Petrifying_Gaze
+{
+    Name                 "Petrifying_Gaze"             
+    DisplayName          "P799801114"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        3.64
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         16
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kHold_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_Lich_PetrifyingGaze.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_Lich_PetrifyingGaze.PFX
+    DisplayShortHelp     "P3220742713"
+    DisplayHelp          "NDWJVEW5LYV4Y4CRDN7YHKHGES"
+    DisplayAttackerHit   "P868710419"
+    DisplayVictimHit     "P1063217015"
+    IconName             "DarkMiasma_PetrifyingGaze.tga"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+        }
+    }
+}

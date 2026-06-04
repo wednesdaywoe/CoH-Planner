@@ -1,0 +1,133 @@
+#***************************************************#
+# Power: Buff > Radiation Emission > Choking Cloud  #
+# Info:  Toggle: PBAoE, Foe Hold                    #
+#***************************************************#
+
+Power Mastermind_Buff.Radiation_Emission.Choking_Cloud
+{
+    Name                 "Choking_Cloud"               
+    DisplayName          "P2196045966"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        1.3
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         20
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHold_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_RadiationEmission_ChokingCloud.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_RadiationEmission_ChokingCloud.PFX
+    DisplayShortHelp     "P1228973208"
+    DisplayHelp          "P3851553062"
+    IconName             "RadiationPoisoning_ChokingCloud.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3220742713"
+    DisplayTargetHelp    "P835496752"
+
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 4.0000
+            Magnitude 2.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.8000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 4.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.8000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kReplace
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+}

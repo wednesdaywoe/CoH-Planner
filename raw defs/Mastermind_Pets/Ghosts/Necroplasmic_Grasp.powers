@@ -1,0 +1,132 @@
+#**************************************************#
+# Power: Pets > Necro Ghosts > Necroplasmic Grasp  #
+# Info:  DoT (Negative), Hold                      #
+#**************************************************#
+
+Power Mastermind_Pets.Ghosts.Necroplasmic_Grasp
+{
+    Name                 "Necroplasmic_Grasp"          
+    DisplayName          "P3590311330"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    AIGroups             kRoot
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        6.24
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         15
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_NecroplasmicGrasp.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_NecroplasmicGrasp.pfx
+    DisplayShortHelp     "ZEHW7RM3ZAYUWMLWXALZRLBMMQ"
+    DisplayHelp          "MZFXDZSKBESVWLZ5G5VMVVBDQ3"
+    IconName             "ShadowFighting_MidnightGrasp.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.2800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1100
+            Duration 9.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1461699593"
+                DisplayVictimHit "P3815778435"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Immobilize"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+        }
+    }
+}

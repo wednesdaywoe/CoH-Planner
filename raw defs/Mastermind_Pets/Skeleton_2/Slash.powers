@@ -1,0 +1,68 @@
+#*****************************************#
+# Power: Pets > Necro Skeleton 2 > Slash  #
+# Info:  Melee, DMG(Lethal), Foe -DEF     #
+#*****************************************#
+
+Power Mastermind_Pets.Skeleton_2.Slash
+{
+    Name                 "Slash"                       
+    DisplayName          "P3322898677"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        2.6
+    DontSetStance        1
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu/powers/AnimFX/MastermindPet_GraveKnight_Sword_HorizontialSlash.pfx"
+    include              menu/powers/AnimFX/MastermindPet_GraveKnight_Sword_HorizontialSlash.pfx
+    DisplayShortHelp     "BHNVJKHZ6NXEWUV5YA62URYP7A"
+    DisplayHelp          "F9MLD4BCZ9MTWTLU7VZNYZVXS3"
+    IconName             "Sword_Slash.tga"
+    DisplayTargetShortHelp "P373215750"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 1.0000
+            Duration 6.0000
+            Magnitude 1.0000
+            TickChance 0.9980
+            StackType kStack
+            Flags CancelOnMiss
+        }
+    }
+}

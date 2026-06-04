@@ -1,0 +1,41 @@
+Power Stalker_Melee.Energy_Melee.Energy_Transfer
+{
+    Name                 "Energy_Transfer"             
+    DisplayName          "P2674318123"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kDamage_Boost, kStunned_Boost
+    StrengthsDisallowed  kRange
+    HighlightEval        Redirects.Energy_Melee.Energy_Store
+    HighlightRing        192 192 255 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerMelee_EnergyMelee_EnergyTransfer.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerMelee_EnergyMelee_EnergyTransfer.PFX
+    DisplayShortHelp     "743KQH9C7DAQYZVBFDW7UL3TWW"
+    DisplayHelp          "Z6F2FS9QRX76Y5VBSVMHMSMZ9W"
+    IconName             "PowerPunch_EnergyTransfer.tga"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+    Redirect
+    {
+        Power Redirects.Energy_Melee.Energy_Transfer_Slow_Stalker
+        Requires Redirects.Energy_Melee.Energy_Store source.ownPower? !
+    }
+    
+    Redirect
+    {
+        Power Redirects.Energy_Melee.Energy_Transfer_Fast_Stalker
+        Requires Redirects.Energy_Melee.Energy_Store source.ownPower?
+    }
+    
+}

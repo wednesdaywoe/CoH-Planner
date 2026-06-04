@@ -1,0 +1,231 @@
+Power Blaster_Support.Martial_Manipulation.Reaction_Time
+{
+    Name                 "Reaction_Time"               
+    DisplayName          "P2131858727"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe, kCaster
+    EntsAutoHit          kFoe, kCaster
+    Target               kCaster
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         10
+    ActivatePeriod       1
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRecovery_Boost, kSlow_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       kStealthRadius source> 36 < cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MartialManipulation_ReactionTime.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MartialManipulation_ReactionTime.PFX
+    DisplayShortHelp     "P1591276170"
+    DisplayHelp          "AZ8N7N4BZKFEYMZXQEY2E7WJVX"
+    DisplayAttackerHit   "P3060559231"
+    IconName             "MartialManipulation_ReactionTime.tga"
+    MaxTargetsHit        10
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DisplayTargetShortHelp "P3655213320"
+    DisplayTargetHelp    "P3232901028"
+
+
+    Effect
+    {
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.7000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.4000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.7000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Melee_SpeedRunning"
+            Scale -1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            ApplicationType kOnDeactivate
+            Target kSelf
+            Table "Melee_Slow"
+            Scale -0.7000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            ApplicationType kOnDeactivate
+            Target kSelf
+            Table "Melee_Slow"
+            Scale -0.4000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            ApplicationType kOnDeactivate
+            Target kSelf
+            Table "Melee_SpeedRunning"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            ApplicationType kOnDeactivate
+            Target kSelf
+            Table "Melee_Slow"
+            Scale -0.7000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Sustain"
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        Effect
+        {
+            Requires @CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq || !
+        
+            AttribMod
+            {
+                Attrib kAbsorb
+                Aspect kMax
+                Target kSelf
+                Table "Melee_HealSelf"
+                Scale 0.0750
+                Duration 12.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags NoFloaters IgnoreCombatMods
+                Messages
+                {
+                    DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires @CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq ||
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kAbsorb
+                Aspect kMax
+                Target kSelf
+                Table "Melee_HealSelf"
+                Scale 0.0750
+                Duration 12.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+                }
+                
+            }
+        }
+    }
+}

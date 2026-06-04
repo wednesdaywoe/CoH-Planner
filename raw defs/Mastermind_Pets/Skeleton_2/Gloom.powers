@@ -1,0 +1,72 @@
+#*****************************************#
+# Power: Pets > Necro Skeleton 2 > Gloom  #
+# Info:  DoT (Negative), -To Hit          #
+#*****************************************#
+
+Power Mastermind_Pets.Skeleton_2.Gloom
+{
+    Name                 "Gloom"                       
+    DisplayName          "P3488406895"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        4.16
+    TimeToActivate       1.1
+    TimeToRoot           1.1
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_GraveKnight_Gloom.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_GraveKnight_Gloom.pfx
+    DisplayShortHelp     "VZQSJXUFAK8EYNN3PQMTBZEXCZ"
+    DisplayHelp          "7TWF855TMRB5YWCJN3ELK6VG72"
+    IconName             "DarkCast_SoulDrain.tga"
+    DisplayTargetShortHelp "P2190949330"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2200
+            Duration 3.6000
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1461699593"
+                DisplayVictimHit "P3815778435"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

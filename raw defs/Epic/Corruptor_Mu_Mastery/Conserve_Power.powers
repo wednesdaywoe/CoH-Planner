@@ -1,0 +1,75 @@
+Power Epic.Corruptor_Mu_Mastery.Conserve_Power
+{
+    Name                 "Conserve_Power"              
+    DisplayName          "P218247840"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       1.17
+    RechargeTime         240
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_MuMastery_ConservePower.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_MuMastery_ConservePower.pfx
+    DisplayShortHelp     "P3200710885"
+    DisplayHelp          "VSNBJY8PH9HHY3XY78EYDJUZBS"
+    IconName             "Arachnos_Patron_ConservePower.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnduranceDiscount
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffEndContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 2.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,84 @@
+Power Temporary_Powers.Temporary_Powers.EMP_Blaster
+{
+    Name                 "EMP_Blaster"                 
+    DisplayName          "P2835029745"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        18.98
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               15
+    LifeTimeInGame       3600
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Electrical_Bolt_Ball_Lightning.pfx"
+    include              menu\Powers\AnimFX\Electrical_Bolt_Ball_Lightning.pfx
+    DisplayShortHelp     "P1546688455"
+    DisplayHelp          "DKF3LMBZZDTAW6CFRRX7PQ9FVQ"
+    IconName             "Temporary_EMPBlaster.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P184953375"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.5000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P3335036116"
+                DisplayVictimHit "P23407259"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.5000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX powers/ElectricityControl/ElectricityBoltHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.5000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+        }
+    }
+}

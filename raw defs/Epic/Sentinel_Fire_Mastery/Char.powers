@@ -1,0 +1,224 @@
+#*************************************#
+# Power: Epic > Fire Mastery > Char   #
+# Info:  Ranged, DoT(Fire), Foe Hold  #
+#*************************************#
+
+Power Epic.Sentinel_Fire_Mastery.Char
+{
+    Name                 "Char"                        
+    DisplayName          "P751630497"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        8.528
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         24
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_PyreMastery_Char.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_PyreMastery_Char.pfx
+    DisplayShortHelp     "FQTWUXWYPBN6Y2NCBDR5Y6TP9A"
+    DisplayHelp          "XKTLB3PDEKGTWAB79XH46RNCMZ"
+    IconName             "FireTrap_Hold"
+    DisplayTargetShortHelp "P3128198270"
+    DisplayTargetHelp    "P3211993838"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.1000
+                Duration 4.2000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 0.1000
+                Duration 4.2000
+                Magnitude 1.0000
+                Period 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "JLMQ5V7UYVUVYKLBA9TN9VE3PW"
+                    DisplayVictimHit "CJCUR3VLHW2EWEMG2G2AT57K33"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kHeld
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_Immobilize"
+                Scale 10.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4134654113"
+                    DisplayVictimHit "P3642575485"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_CHOKESTUN
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.4218
+                Duration 4.2000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1083355571"
+                    DisplayVictimHit "P3022741469"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.4218
+                Duration 4.2000
+                Magnitude 1.0000
+                Period 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "JLMQ5V7UYVUVYKLBA9TN9VE3PW"
+                    DisplayVictimHit "CJCUR3VLHW2EWEMG2G2AT57K33"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kHeld
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P4134654113"
+                    DisplayVictimHit "P3642575485"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_CHOKESTUN
+                }
+                
+            }
+        }
+    }
+}

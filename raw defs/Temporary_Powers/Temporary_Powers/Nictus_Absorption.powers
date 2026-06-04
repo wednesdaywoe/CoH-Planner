@@ -1,0 +1,39 @@
+Power Temporary_Powers.Temporary_Powers.Nictus_Absorption
+{
+    Name                 "Nictus_Absorption"           
+    DisplayName          "P3949211795"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       7200
+    IgnoreStrength       kTrue
+    Deletable            kTrue
+    DisplayShortHelp     "P1751429594"
+    DisplayHelp          "P2898219780"
+    IconName             "Temporary_SelfBuffDefense.tga"
+    DisplayTargetShortHelp "P1751429594"
+    DisplayTargetHelp    "P2023911723"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy kNegative_Energy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 1.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

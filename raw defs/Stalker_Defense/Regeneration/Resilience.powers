@@ -1,0 +1,85 @@
+Power Stalker_Defense.Regeneration.Resilience
+{
+    Name                 "Resilience"                  
+    DisplayName          "P2730750744"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P3958442584"
+    DisplayHelp          "P4048955995"
+    IconName             "Regeneration_Resist"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 5.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -15.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 6.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 1.2500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

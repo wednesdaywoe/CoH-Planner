@@ -1,0 +1,83 @@
+PowerSet Dominator_Assault.Arsenal_Assault
+{
+    Name "Arsenal_Assault"
+    DisplayName "7DR7SRGABJ9XYBLCKJMJDYYUY2"
+    DisplayShortHelp "7DR7SRGABJ9XYBLCKJMJDYYUY2"
+    DisplayHelp "TMQHX4JPM5Z3WFN76JRLQSJ7ZS"
+    CostumeKeys CustomWeapon_AssaultRifle
+    CostumeParts AssaultRifle_Default
+    IconName "Assault_Rifle_set.ico"
+
+    Powers Dominator_Assault.Arsenal_Assault.Burst
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Arsenal_Assault.Buttstroke
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Arsenal_Assault.Buckshot
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Arsenal_Assault.Heavy_Blow
+    Available 9
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Arsenal_Assault.Power_Up
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Arsenal_Assault.Trip_Mine
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Arsenal_Assault.Targeting_Drone
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Arsenal_Assault.Sniper_Rifle
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault.Arsenal_Assault.Ignite
+    Available 29
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

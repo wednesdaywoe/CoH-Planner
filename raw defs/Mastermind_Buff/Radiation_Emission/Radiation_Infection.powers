@@ -1,0 +1,74 @@
+#**********************************************************#
+# Power: Buff > Radiation Emission > Radiation Infection   #
+# Info:  Toggle: Ranged (Targeted AoE), Foe -DEF, -To Hit  #
+#**********************************************************#
+
+Power Mastermind_Buff.Radiation_Emission.Radiation_Infection
+{
+    Name                 "Radiation_Infection"         
+    DisplayName          "P3091774412"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kDeadOrAliveFoe
+    Range                70
+    EnduranceCost        0.26
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         8
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost, kDebuff_ToHit_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_RadiationEmission_RadiationInfection.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_RadiationEmission_RadiationInfection.PFX
+    DisplayShortHelp     "P1946311240"
+    DisplayHelp          "K7VRWYLESNT2YFCDSFUH5CLLFX"
+    DisplayAttackerHit   "P2082299063"
+    DisplayVictimHit     "P1779688497"
+    IconName             "RadiationPoisoning_EnervatingField.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P987711590"
+    DisplayTargetHelp    "P4112896100"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_ToHit"
+            Scale 2.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+}

@@ -1,0 +1,82 @@
+Power Temporary_Powers.Temporary_Powers.Hydra_Chemical_Recovery_Enhancer
+{
+    Name                 "Hydra_Chemical_Recovery_Enhancer"
+    DisplayName          "P3606267405"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       604800
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    DisplayShortHelp     "P2310678054"
+    DisplayHelp          "P1378930437"
+    IconName             "Temporary_Prometheus.tga"
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires level source> 22 >=
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Hydra_Chemical_Recovery_Enhancer
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Shivan_Exposure_Recovery_Enhancer source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Hydra_Chemical_Recovery_Enhancer
+            }
+            
+        }
+    }
+}

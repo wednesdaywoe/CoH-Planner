@@ -1,0 +1,81 @@
+PowerSet Defender_Buff.Pain_Domination
+{
+    Name "Pain_Domination"
+    DisplayName "P3134386314"
+    DisplayShortHelp "P3134386314"
+    DisplayHelp "P3463418581"
+    IconName "Pain_Domination_set.ico"
+
+    Powers Defender_Buff.Pain_Domination.Nullify_Pain
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Pain_Domination.Soothe
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Pain_Domination.Share_Pain
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Pain_Domination.Conduit_of_Pain
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Pain_Domination.Enforced_Morale
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Pain_Domination.Soothing_Aura
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Pain_Domination.World_of_Pain
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Pain_Domination.Anguishing_Cry
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Buff.Pain_Domination.Painbringer
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

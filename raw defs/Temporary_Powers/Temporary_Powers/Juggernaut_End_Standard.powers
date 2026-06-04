@@ -1,0 +1,114 @@
+Power Temporary_Powers.Temporary_Powers.Juggernaut_End_Standard
+{
+    Name                 "Juggernaut_End_Standard"     
+    DisplayName          "P3412877377"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             0
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99
+    EffectArea           kCharacter
+    LifeTimeInGame       61
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P2211841663"
+    IconName             "Temporary_Powers_Juggernaut_End_Standard_pow.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude kDisable_Juggernaut
+            Delay 60.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -0.9000
+            Magnitude 1.0000
+            Delay 60.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P657239359"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params EffectFilter
+            {
+                Tag PresenceHealHigh
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params EffectFilter
+            {
+                Tag PresenceHealLow
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires kHAC_Offense source.mode? kHAC_Defense source.mode? ||
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude kDisable_Juggernaut
+            Period 0.5000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

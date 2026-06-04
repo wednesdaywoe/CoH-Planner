@@ -1,0 +1,125 @@
+Power Temporary_Powers.Temporary_Powers.The_Lost_Cure
+{
+    Name                 "The_Lost_Cure"               
+    DisplayName          "P3222406035"
+    ModesDisallowed      kDisable_All, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    ActivateRequires     isMissionMap? !
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                30
+    TargetRequires       group target> TheLost eq
+    EnduranceCost        13
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         5
+    EffectArea           kCharacter
+    AIReport             kNever
+    NumCharges           50
+    StrengthsDisallowed  kRange
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_LostCureWand.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_LostCureWand.pfx
+    DisplayShortHelp     "P3222406035"
+    DisplayHelp          "WMBT2CEC7EU2WAZSG53BGD3H8Z"
+    IconName             "Temporary_MedKit.tga"
+
+
+    Effect
+    {
+        Requires group target> TheLost eq TheLost_Kurse target.VillainName> ! &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Period 10.5000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1316846834"
+                DisplayVictimHit "P3617942190"
+            }
+            
+            FX
+            {
+                ContinuingBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Cured
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRewardSourceTeam
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params Reward
+            {
+                Reward LostCuringToken
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires group target> TheLost eq !
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P2338895045"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires MissionLostCuredToken source.TokenVal> 20 >=
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.The_Lost_Cure
+            }
+            
+        }
+    }
+}

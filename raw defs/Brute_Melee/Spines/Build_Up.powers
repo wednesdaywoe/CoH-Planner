@@ -1,0 +1,68 @@
+#***********************************#
+# Power: Melee > Spines > Build Up  #
+# Info:  Self +DMG, +To Hit         #
+#***********************************#
+
+Power Brute_Melee.Spines.Build_Up
+{
+    Name                 "Build_Up"                    
+    DisplayName          "P3627278130"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        5.2
+    TimeToActivate       0.73
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Quills_BuildUp.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Quills_BuildUp.PFX
+    DisplayShortHelp     "P1254867148"
+    DisplayHelp          "P3606722774"
+    IconName             "Quills_Bristle.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 2.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1761228578"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 8.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

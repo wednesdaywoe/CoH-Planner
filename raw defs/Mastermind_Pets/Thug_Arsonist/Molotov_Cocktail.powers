@@ -1,0 +1,62 @@
+#*************************************************#
+# Power: Pets > Thug Arsonist > Molotov Cocktail  #
+# Info:  DoT (Fire)                               #
+#*************************************************#
+
+Power Mastermind_Pets.Thug_Arsonist.Molotov_Cocktail
+{
+    Name                 "Molotov_Cocktail"            
+    DisplayName          "P675900933"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        10.4
+    DontSetStance        1
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         6
+    EffectArea           kSphere
+    Radius               5
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Villain_MolotovCocktail.pfx"
+    include              menu\Powers\AnimFX\Villain_MolotovCocktail.pfx
+    DisplayShortHelp     "P2667539698"
+    DisplayHelp          "FTKLV8PYA72JYCCQPRQ3TA2WUQ"
+    IconName             "FireBlast_FireBall.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3423146141"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1000
+            Duration 7.7500
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

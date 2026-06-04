@@ -1,0 +1,55 @@
+#***********************************************#
+# Power: Pets > Thug Lieutenant 3 > Blast Clip  #
+# Info:  Moderate DoT(Lethal)                   #
+#***********************************************#
+
+Power Mastermind_Pets.Thug_Lt_3.Blast_Clip
+{
+    Name                 "Blast_Clip"                  
+    DisplayName          "P2138547038"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        15.184
+    DontSetStance        1
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         20
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Mastermind_Thugs_DualMguns_ShootClip.pfx"
+    include              menu\Powers\AnimFX\Mastermind_Thugs_DualMguns_ShootClip.pfx
+    DisplayShortHelp     "P1015499348"
+    DisplayHelp          "MQ8TN2ZY5JMCWHXXER8L4F96QA"
+    IconName             "AssaultWeapons_ARM30grenade.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.9000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+}

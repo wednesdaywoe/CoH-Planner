@@ -1,0 +1,113 @@
+Power Temporary_Powers.Temporary_Powers.PPD_Grenade_Launcher
+{
+    Name                 "PPD_Grenade_Launcher"        
+    DisplayName          "P2602336376"
+    ModesDisallowed      kDisable_All, kdisable_temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        7
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               15
+    LifeTime             72000
+    VisualFX             "menu\Powers\AnimFX\Villain_Grenade_Launcher.pfx"
+    include              menu\Powers\AnimFX\Villain_Grenade_Launcher.pfx
+    DisplayShortHelp     "P3790063829"
+    DisplayHelp          "G55YBN9527PAYRC7T92E8MP8RZ"
+    IconName             "AssaultWeapons_ARM30grenade.tga"
+    MaxTargetsHit        16
+    DisplayTargetHelp    "P2585179941"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Tempdamage"
+            Scale 0.3000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Tempdamage"
+            Scale 0.7000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2500
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2500
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

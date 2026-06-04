@@ -1,0 +1,225 @@
+Power Stalker_Defense.Shield_Defense.Hide
+{
+    Name                 "Hide"                        
+    DisplayName          "P78341141"
+    BuyRequires          Stalker_Melee.Claws Stalker_Melee.Ninja_Sword || Stalker_Melee.Dual_Blades || Stalker_Melee.Spines || Stalker_Melee.Staff_Fighting || !
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kHide_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       0.73
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kBuff_Defense_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ShieldDefense_Hide.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\ShieldDefense_Hide.pfx
+    DisplayShortHelp     "P3567599116"
+    DisplayHelp          "BUGW6P7WU7DVWFMHSFVC2R26LA"
+    DisplayAttackerHit   "P4234907424"
+    DisplayPowerDefenseFloat "P3802943013"
+    IconName             "ShieldDefense_Hide"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 150.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 8 Always
+            Suppress Damaged 8 Always
+            Suppress MissionObjectClick 8 Always
+            Suppress PseudoPetAttacked 8 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 500.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 8 Always
+            Suppress Damaged 8 Always
+            Suppress MissionObjectClick 8 Always
+            Suppress PseudoPetAttacked 8 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMeter
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 8 Always
+            Suppress Damaged 8 Always
+            Suppress MissionObjectClick 8 Always
+            Suppress PseudoPetAttacked 8 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 8 Always
+            Suppress Damaged 8 Always
+            Suppress MissionObjectClick 8 Always
+            Suppress PseudoPetAttacked 8 Always
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 8 Always
+            Suppress Damaged 8 Always
+            Suppress MissionObjectClick 8 Always
+            Suppress PseudoPetAttacked 8 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 5.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 8 Always
+            Suppress Damaged 8 Always
+            Suppress MissionObjectClick 8 Always
+            Suppress PseudoPetAttacked 8 Always
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 8 Always
+            Suppress Damaged 8 Always
+            Suppress MissionObjectClick 8 Always
+            Suppress PseudoPetAttacked 8 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 5.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Suppress Attacked 8 Always
+            Suppress Damaged 8 Always
+            Suppress MissionObjectClick 8 Always
+            Suppress PseudoPetAttacked 8 Always
+            Flags IgnoreResistance
+        }
+    }
+}

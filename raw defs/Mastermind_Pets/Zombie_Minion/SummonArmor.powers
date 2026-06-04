@@ -1,0 +1,68 @@
+#**************************************************************************************#
+# Power: Pets > Necro Enslaved Specter > SummonArmor                                   #
+# Info:  Auto Res Sleep, Fear, Disorient, Slow, Smash, Cold, Negative, Toxic, Psionic  #
+#**************************************************************************************#
+
+Power Mastermind_Pets.Zombie_Minion.SummonArmor
+{
+    Name                 "SummonArmor"                 
+    DisplayName          "R4C599BGP7A9WTL4UCVDL88RWZ"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       300
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_ZombieHorde_Resistance.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_ZombieHorde_Resistance.pfx
+    DisplayShortHelp     "UEQZ4NFJH83NYKVSBDJXHC2CBA"
+    DisplayHelp          "4Y4F8PTR6UC2WHCHEJQTW2RH7W"
+    IconName             "DarkArmor_DarkEmbrace.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            TickAdditive -0.0132
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "XTF8CBF4DJWNWLB3QF6GAMG6RA"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            TickAdditive -0.0132
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "XTF8CBF4DJWNWLB3QF6GAMG6RA"
+            }
+            
+        }
+    }
+}

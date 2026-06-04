@@ -1,0 +1,125 @@
+Power Temporary_Powers.Temporary_Powers.Arachnos_Disguise
+{
+    Name                 "Arachnos_Disguise"           
+    DisplayName          "P3203439514"
+    ModesDisallowed      kDisable_All, kDisable_Temp
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.39
+    TimeToActivate       1
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTimeInGame       3600
+    StackingUsage        kTrue
+    MaxLifeTimeInGame    9000
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_IRGoggle.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_IRGoggle.pfx
+    DisplayShortHelp     "P2934912060"
+    DisplayHelp          "FDFSV7JGETCRYAVFHTASN2G9KZ"
+    DisplayAttackerHit   "P1485529780"
+    IconName             "Temporary_WeddingBand.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires costume target> male eq
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Wolf_Huntsman_02
+                Priority 9
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> female eq
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Arachnos_Widow_05
+                Priority 9
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> huge eq
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Arachnos_Crab_03
+                Priority 9
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 80.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

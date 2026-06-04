@@ -1,0 +1,102 @@
+#*************************************************************************************#
+# Power: Summon > Beast Mastery > Fortify Pack                                        #
+# Info:  PBAoE, Pets +Defense, +Regeneration, consumes all charges of Pack Mentality  #
+#*************************************************************************************#
+
+Power Mastermind_Summon.Beast_Mastery.Fortify_Pack
+{
+    Name                 "Fortify_Pack"                
+    DisplayName          "P3839028926"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kCaster
+    EnduranceCost        16.25
+    TimeToActivate       2.27
+    RechargeTime         240
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kBuff_Defense_Boost
+    HighlightEval        Temporary_Powers.Temporary_Powers.Pack_Mentality ownPowerNum? 10 >=
+    HighlightRing        168 142 109 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_FortifyPack.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_FortifyPack.pfx
+    DisplayShortHelp     "P2398434204"
+    DisplayHelp          "NRCVDUSKHC9JY3NN5A5FGMXURA"
+    IconName             "BeastMastery_FortifyPack.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Duration 60.0000
+            MagnitudeExpr Cur.kMeter source> .1 * .05 + @Strength *
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Ones"
+            Duration 60.0000
+            MagnitudeExpr Cur.kMeter source> 2 * 1 + @Strength *
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance RevokeAll
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Pack_Mentality
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance RevokeAll
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Pack_Mentality
+            }
+            
+        }
+    }
+}

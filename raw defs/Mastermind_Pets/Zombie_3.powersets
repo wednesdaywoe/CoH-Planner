@@ -1,0 +1,25 @@
+PowerSet Mastermind_Pets.Zombie_3
+{
+    Name "Zombie_3"
+    DisplayName "Q9P5QN4KW946W6Z5NME6XX7B7A"
+    DisplayShortHelp "P206380807"
+    DisplayHelp "P4153155629"
+    IconName "Zombie_3_set.ico"
+
+    Powers Mastermind_Pets.Zombie_3.Siphon_Life
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Zombie_3.Empower
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

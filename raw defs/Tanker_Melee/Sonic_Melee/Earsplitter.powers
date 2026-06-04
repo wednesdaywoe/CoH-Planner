@@ -1,0 +1,342 @@
+#**********************************************************************#
+# Power: Melee > Sonic Melee > Earsplitter                             #
+# Info:  Melee, DMG(Energy/Smash), Foe -Res(Debuffs), Chance for Hold  #
+#**********************************************************************#
+
+Power Tanker_Melee.Sonic_Melee.Earsplitter
+{
+    Name                 "Earsplitter"                 
+    DisplayName          "P409953452"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        13.52
+    TimeToActivate       1.97
+    TimeToRoot           1.97
+    RechargeTime         14
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    HighlightRing        144 218 205 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Sonic_Melee_Earsplitter.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Sonic_Melee_Earsplitter.pfx
+    DisplayShortHelp     "E5YLMVQS96HQYDLSL8T2BEAM6Q"
+    DisplayHelp          "JKYGE6L5G32MWFNZQ2UY6Y24YS"
+    IconName             "SonicManipulation_Earsplitter"
+    DisplayTargetShortHelp "P3220742713"
+    DisplayTargetHelp    "P1457143947"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            Effect
+            {
+            
+                Effect
+                {
+                    Flags Fallback
+                
+                    Effect
+                    {
+                    
+                        AttribMod
+                        {
+                            Attrib kSmashing
+                            Aspect kAbs
+                            Target kTarget
+                            Table "Melee_Damage"
+                            Scale 1.3000
+                            Magnitude 1.0000
+                            StackType kStack
+                            Messages
+                            {
+                                DisplayAttackerHit "P119576033"
+                                DisplayVictimHit "P1719855107"
+                            }
+                            
+                        }
+                    
+                        AttribMod
+                        {
+                            Attrib kEnergy
+                            Aspect kAbs
+                            Target kTarget
+                            Table "Melee_Damage"
+                            Scale 1.3000
+                            Magnitude 1.0000
+                            StackType kStack
+                            Messages
+                            {
+                                DisplayAttackerHit "P2559786529"
+                                DisplayVictimHit "P377644626"
+                            }
+                            
+                        }
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "SMAttune"
+                    Chance 0.0000
+                    Requires kSonicAtuneSelf source.Mode? kSonicAtuneFoe target.Mode? &&
+                
+                    Effect
+                    {
+                    
+                        AttribMod
+                        {
+                            Attrib kSmashing
+                            Aspect kAbs
+                            Target kTarget
+                            Table "Melee_Damage"
+                            Scale 1.5600
+                            Magnitude 1.0000
+                            StackType kStack
+                            Messages
+                            {
+                                DisplayAttackerHit "P119576033"
+                                DisplayVictimHit "P1719855107"
+                            }
+                            
+                        }
+                    
+                        AttribMod
+                        {
+                            Attrib kEnergy
+                            Aspect kAbs
+                            Target kTarget
+                            Table "Melee_Damage"
+                            Scale 1.5600
+                            Magnitude 1.0000
+                            StackType kStack
+                            Messages
+                            {
+                                DisplayAttackerHit "P2559786529"
+                                DisplayVictimHit "P377644626"
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kDefense kEndurance kToHit kSpeedRunning kSpeedFlying kSpeedJumping kRegeneration kRecovery kRechargeTime
+                    Aspect kRes
+                    Target kTarget
+                    Table "Ranged_Debuff_Res_Dmg"
+                    Scale -0.8000
+                    Duration 15.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreStrength
+                    FX
+                    {
+                        ContinuingFX GenericContinuing/DamageResistance/DeBuffDebuffResContinuing.fx
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SoundBoost"
+                Chance 0.7500
+            
+                AttribMod
+                {
+                    Attrib kHeld
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Melee_Immobilize"
+                    Scale 5.0000
+                    Magnitude 1.0000
+                    StackType kRefreshToCount
+                    StackLimit 1
+                    Suppress Damaged 3 Always
+                    Messages
+                    {
+                        DisplayInfo "EJEXD5XBHL9ZW4X6NZCTN7WQ5W"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX PFX
+                        ConditionalBits ANIM_SonicStun
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kHeld
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Melee_Immobilize"
+                    Scale 5.0000
+                    Magnitude 3.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P4134654113"
+                        DisplayVictimHit "P3642575485"
+                        DisplayInfo "EJEXD5XBHL9ZW4X6NZCTN7WQ5W"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX PFX
+                        ConditionalBits ANIM_SonicStun
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "FieryEmbrace"
+                Chance 0.0000
+            
+                AttribMod
+                {
+                    Attrib kFire
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 1.1700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2798397535"
+                        DisplayVictimHit "P459143670"
+                    }
+                    
+                    FX
+                    {
+                        ContinuingFX POWERS/FireControl/CindersHit.fx
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kSmashing
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 1.1695
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P119576033"
+                        DisplayVictimHit "P1719855107"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 1.1695
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kDefense kEndurance kToHit kSpeedRunning kSpeedFlying kSpeedJumping kRegeneration kRecovery kRechargeTime
+                    Aspect kRes
+                    Target kTarget
+                    Table "Ranged_Debuff_Res_Dmg"
+                    Scale -0.8000
+                    Duration 15.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreStrength
+                    FX
+                    {
+                        ContinuingFX GenericContinuing/DamageResistance/DeBuffDebuffResContinuing.fx
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SoundBoost"
+                Chance 0.7500
+            
+                AttribMod
+                {
+                    Attrib kHeld
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Melee_PvPMez"
+                    Scale 1.0000
+                    Magnitude 3.0000
+                    StackType kStack
+                    Suppress Stunned 15 WhenInactive
+                    Suppress Immobilized 15 WhenInactive
+                    Suppress Held 15 WhenInactive
+                    Suppress Sleep 15 WhenInactive
+                    Suppress Terrorized 15 WhenInactive
+                    Messages
+                    {
+                        DisplayAttackerHit "P4134654113"
+                        DisplayVictimHit "P3642575485"
+                        DisplayInfo "EJEXD5XBHL9ZW4X6NZCTN7WQ5W"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX PFX
+                        ConditionalBits ANIM_SonicStun
+                    }
+                    
+                }
+            }
+        }
+    }
+}

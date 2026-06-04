@@ -1,0 +1,77 @@
+Power Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker
+{
+    Name                 "Savage_Melee_Blood_Frenzy_Stalker"
+    DisplayName          "P767725195"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1000
+    EffectArea           kCharacter
+    LifeTime             15
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "3R3BQGVARTKVYRZP48P3DLBT8Z"
+    DisplayHelp          "BZ9M26NGWUYDYWN5E77UFBGRQA"
+    IconName             "SavageMelee_BloodFrenzy.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    NumAllowed           5
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0400
+            Duration 15.1000
+            Magnitude 1.0000
+            StackType kStackThenIgnore
+            StackLimit 5
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEnduranceDiscount
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0600
+            Duration 15.1000
+            Magnitude 1.0000
+            StackType kStackThenIgnore
+            StackLimit 5
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 >
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 15.1000
+            Magnitude 1.0000
+            StackType kStackThenIgnore
+            StackLimit 5
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag ShredRecharge
+            }
+        }
+    }
+}

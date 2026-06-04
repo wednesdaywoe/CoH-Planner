@@ -1,0 +1,80 @@
+Power Epic.Munitions_Mastery.Surveillance
+{
+    Name                 "Surveillance"                
+    DisplayName          "P3645535907"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1.05
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         45
+    EffectArea           kCharacter
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost
+    IgnoreStance         kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_MunitionsMastery_Surveillance.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_MunitionsMastery_Surveillance.pfx
+    DisplayShortHelp     "P73799890"
+    DisplayHelp          "PHMPAJH83RP8YQV5M6ZL2VHGH3"
+    IconName             "MunitionsMastery_Surveillance.tga"
+    DisplayTargetShortHelp "P2811264289"
+    DisplayTargetHelp    "P1464825507"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kViewAttrib
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 100.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CancelOnMiss IgnoreStrength IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Debuff_Res_Dmg"
+            Scale -2.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 2.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

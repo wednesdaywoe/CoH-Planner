@@ -1,0 +1,39 @@
+Power Temporary_Powers.Temporary_Powers.LevelShift03
+{
+    Name                 "LevelShift03"                
+    DisplayName          "P1161611753"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    LifeTimeInGame       9999
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P2733517591"
+    DisplayHelp          "P2055081392"
+    IconName             "PowerofBlackScorpion.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kCombatModShift
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 3.0000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,54 @@
+Power Sentinel_Defense.Fiery_Aura.Cauterizing_Blaze
+{
+    Name                 "Cauterizing_Blaze"           
+    DisplayName          "P161436781"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.13
+    TimeToActivate       2.03
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_FieryAura_Cauterizing_Blaze.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_FieryAura_Cauterizing_Blaze.PFX
+    DisplayShortHelp     "P734007114"
+    DisplayHelp          "XZALLCFXSX3BYGX9HUZ6Q7JNKW"
+    IconName             "FlamingShield_Cauterizing"
+    DisplayTargetShortHelp "P1329660044"
+    DisplayTargetHelp    "P2047270427"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_HealSelf"
+            Scale 0.1500
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoFloaters
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

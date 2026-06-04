@@ -1,0 +1,97 @@
+Power Temporary_Powers.Temporary_Powers.Arachnoid_Gas
+{
+    Name                 "Arachnoid_Gas"               
+    DisplayName          "P1895074673"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        10.66
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         3
+    EffectArea           kSphere
+    Radius               15
+    NumCharges           10
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_TearGas_Grenades.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_TearGas_Grenades.pfx
+    DisplayShortHelp     "P2780353496"
+    DisplayHelp          "WWKRCRSTS9EUYXXF3PK3B9B27A"
+    IconName             "Temporary_RangeHeavyDamage.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2780353496"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2851307520"
+                DisplayVictimHit "P105122461"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires group target> Arachnoids eq
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 3.2800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2851307520"
+                DisplayVictimHit "P105122461"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX POWERS/FireControl/SmokeHit.fx
+                ConditionalBits ANIM_CHOKESTUN
+            }
+            
+        }
+    }
+}

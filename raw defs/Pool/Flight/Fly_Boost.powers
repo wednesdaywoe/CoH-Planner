@@ -1,0 +1,68 @@
+Power Pool.Flight.Fly_Boost
+{
+    Name                 "Fly_Boost"                   
+    DisplayName          "P3220913873"
+    BuyRequires          Pool.Flight.Fly
+    ModesRequired        kFlyOn
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Travel
+    ModesSuspended       kSuppress_FlyToggles, kSuppress_PoolToggles, kSuppress_TravelToggles
+    Type                 kToggle
+    Accuracy             1
+    RechargeGroup        kAfterburner_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.2275
+    MaxToggleTime        30
+    RechargeTime         60
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1000
+    IgnoreLevelBought    kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Flight_Afterburner.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Flight_Afterburner.pfx
+    DisplayShortHelp     "P3215309155"
+    DisplayHelp          "NX8QUJFSYEXAWNVGHQ4EULVH8Z"
+    IconName             "Flight_Afterburner.tga"
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    AutoIssue            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kMax
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelTurboMaxBuff
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kStr
+            Target kSelf
+            Table "Ranged_SpeedFlying"
+            Scale 0.3500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelTurboBuff
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    }
+}

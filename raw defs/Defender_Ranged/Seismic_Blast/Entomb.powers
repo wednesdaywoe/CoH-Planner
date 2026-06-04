@@ -1,0 +1,203 @@
+Power Defender_Ranged.Seismic_Blast.Entomb
+{
+    Name                 "Entomb"                      
+    DisplayName          "P476863768"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        11.024
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         11
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Entomb.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Entomb.pfx
+    DisplayShortHelp     "B6932R92ASMZY6VB854HVWYNT2"
+    DisplayHelp          "7QKK42ZXABK4WZV4KAXMY92KLZ"
+    IconName             "SeismicBlast_Entomb"
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P339710705CT"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 2.1200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 2.2889
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFly kJumppack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.6000
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping kJumpHeight
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 1.0000
+            Duration 12.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kSuppress
+            StackKey kTravelDebuff
+            Flags IgnoreStrength StackByAttribAndKey
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Seismic"
+        Requires NearGround source.EventTimeSince> 1 >=
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -1.0000
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Defender_Ranged.Seismic_Blast.Encase
+                Power Defender_Ranged.Seismic_Blast.Meteor
+                Power Defender_Ranged.Seismic_Blast.Rock_Shards
+                Power Defender_Ranged.Seismic_Blast.Shatter
+                Power Defender_Ranged.Seismic_Blast.Stalagmite
+                Power Defender_Ranged.Seismic_Blast.Tombstone
+                Power Defender_Ranged.Seismic_Blast.Upthrust
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "SeismicShockwaves"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods
+                Params Power
+                {
+                    Power Redirects.Seismic_Blast.Seismic_Stress_Release
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SeismicStress"
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods NoHitDelay NoProjectileDelay
+                Params Power
+                {
+                    Power Redirects.Seismic_Blast.Seismic_Stress
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods NoHitDelay NoProjectileDelay
+                Params Power
+                {
+                    Power Redirects.Seismic_Blast.Seismic_Stress
+                }
+                
+            }
+        }
+    }
+}

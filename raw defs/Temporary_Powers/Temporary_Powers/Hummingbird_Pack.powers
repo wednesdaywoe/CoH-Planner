@@ -1,0 +1,110 @@
+Power Temporary_Powers.Temporary_Powers.Hummingbird_Pack
+{
+    Name                 "Hummingbird_Pack"            
+    DisplayName          "P1102346043"
+    ModesRequired        kArena
+    ModesDisallowed      kDisable_All, kDisable_FlyToggles, kDisable_Travel
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kSuppress_FlyToggles, kSuppress_TravelToggles, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kFlying_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.2844
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            300
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    StrengthsDisallowed  kEnduranceDiscount
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\FLIGHT_Combat_FLIGHT.pfx"
+    include              menu\Powers\AnimFX\FLIGHT_Combat_FLIGHT.pfx
+    DisplayShortHelp     "P3537457746"
+    DisplayHelp          "SNBZ4R4MFH4PWZC7X67AW6P2L3"
+    IconName             "Temporary_AntigravityMatrix.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedFlying"
+            Scale 1.1000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Control"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Friction"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kStr
+            Table "Melee_Ones"
+            Duration 0.7500
+            StackType kReplace
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+}

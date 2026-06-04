@@ -1,0 +1,73 @@
+#************************************************************************************#
+# Power: Pets > Robot Protector 3 > Seeker Drones                                    #
+# Info:  Summon Seekers: Ranged Disorient, -DMG, -ACC, -Perception, Low DMG(Energy)  #
+#************************************************************************************#
+
+Power Mastermind_Pets.Protector_3.Seeker_Drones
+{
+    Name                 "Seeker_Drones"               
+    DisplayName          "P3542936972"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    EnduranceCost        13
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         180
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kStunned_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\RobotArmy_Protector_Summon.pfx"
+    include              menu\Powers\AnimFX\RobotArmy_Protector_Summon.pfx
+    DisplayShortHelp     "P4021184008"
+    DisplayHelp          "359SKBPRHJH9Y9BMZJTMPQMMK2"
+    IconName             "Traps_DroppedAoEDebuffDamage.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Levelminus"
+            Scale 1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Protector_Traps_Seeker1
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Levelminus"
+            Scale 1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Protector_Traps_Seeker2
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

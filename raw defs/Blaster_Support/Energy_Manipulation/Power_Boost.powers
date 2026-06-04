@@ -1,0 +1,95 @@
+Power Blaster_Support.Energy_Manipulation.Power_Boost
+{
+    Name                 "Power_Boost"                 
+    DisplayName          "P314575027"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    HighlightEval        kBoostPower Mode?
+    HighlightRing        200 200 200 100
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_EnergyManipulation_PowerBoost.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_EnergyManipulation_PowerBoost.PFX
+    DisplayShortHelp     "P3047510863"
+    DisplayHelp          "4UGQ8E6K44M7YCM9YSYQQWUFG3"
+    IconName             "EnergyManipulation_PowerBoost.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude kBoostPower
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3834136190"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "PowerBoostA"
+    
+        AttribMod
+        {
+            Attrib kHeal kAbsorb kEndurance kSpeedRunning kSpeedFlying kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.6600
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            StackKey kPowerBoost
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "PowerBoostB"
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kDefense kToHit
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.6600
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            StackKey kPowerBoost
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

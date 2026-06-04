@@ -1,0 +1,105 @@
+#*************************************************#
+# Power: Pets > Robot Assault 3 > Swarm Missiles  #
+# Info:  Ranged AoE Lethal, +KB                   #
+#*************************************************#
+
+Power Mastermind_Pets.Assault_3.Swarm_Missiles
+{
+    Name                 "Swarm_Missiles"              
+    DisplayName          "P3071288760"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.19
+    PreferenceMultiplier 2
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         10
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRechargeTime
+    ChainIntoPower       Mastermind_Pets.Assault.Conserve_Power
+    VisualFX             "menu\Powers\AnimFX\RobotArmy_16missile_frag.pfx"
+    include              menu\Powers\AnimFX\RobotArmy_16missile_frag.pfx
+    DisplayShortHelp     "P120194990"
+    DisplayHelp          "5YBUMZ8PTUGFYULDLTW73A9U63"
+    IconName             "AssaultWeapons_ARBurst.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.0612
+            Duration 3.1000
+            Magnitude 1.0000
+            Period 0.4000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.4000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.4000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,100 @@
+#********************************************#
+# Power: Pets > Thug Arsonist 3 > Fire Bomb  #
+# Info:  DoT(Fire)                           #
+#********************************************#
+
+Power Mastermind_Pets.Thug_Arsonist_3.Fire_Bomb
+{
+    Name                 "Fire_Bomb"                   
+    DisplayName          "P1733536873"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        7.8
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Villain_DynamiteBundle.pfx"
+    include              menu\Powers\AnimFX\Villain_DynamiteBundle.pfx
+    DisplayShortHelp     "P3423146141"
+    DisplayHelp          "5UJT2WFLGTELYTLS3JNHNAASJX"
+    IconName             "AssaultWeapons_ARM30grenade.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3423146141"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.0600
+            Duration 5.2500
+            Magnitude 1.0000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround IgnoreCombatMods KeepThroughDeath CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Arsonist's Fire Bomb"
+                PriorityList "PL_StaticObject"
+                Power Mastermind_Pets.Arsonist_Burn.Fire
+                Power Mastermind_Pets.Arsonist_Burn.Avoid
+            }
+            
+        }
+    }
+}

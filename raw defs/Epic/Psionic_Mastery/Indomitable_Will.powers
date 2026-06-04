@@ -1,0 +1,83 @@
+Power Epic.Psionic_Mastery.Indomitable_Will
+{
+    Name                 "Indomitable_Will"            
+    DisplayName          "P4268714550"
+    BuyRequires          $archetype @Class_Controller ==
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       0.73
+    RechargeTime         360
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_PsionicMastery_IndomitableWill.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_PsionicMastery_IndomitableWill.pfx
+    DisplayShortHelp     "R5YCZ5A8WKPVW8MZA46U7T3W5S"
+    DisplayHelp          "P2439106721"
+    DisplayAttackerHit   "P4005305938"
+    IconName             "PsionicMastery_IndomitableWill.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kStunned kSleep
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -10.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kStunned kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPsionic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 2.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

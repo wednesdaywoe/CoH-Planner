@@ -1,0 +1,95 @@
+#**************************************************#
+# Power: Pets > Beast Lioness 2 > Ferocious Growl  #
+# Info:  PBAoE, Foe Stun                           #
+#**************************************************#
+
+Power Mastermind_Pets.Lioness_2.Ferocious_Growl
+{
+    Name                 "Ferocious_Growl"             
+    DisplayName          "P2723419145"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kDebuff
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        13
+    PreferenceMultiplier 4
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kEnduranceDiscount_Boost, kStunned_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    ChainIntoPower       Mastermind_Pets.Lioness_3.PM_Ferocious_Growl
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Lioness_FerociousGrowl.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Lioness_FerociousGrowl.pfx
+    DisplayShortHelp     "P3392756777"
+    DisplayHelp          "US7R7LA7M4GGYULYPETQNF3X5S"
+    IconName             "BeastMastery_PetFerociousGrowl.tga"
+    MaxTargetsHit        6
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,82 @@
+Power Temporary_Powers.Temporary_Powers.PVP_Mode
+{
+    Name                 "PVP_Mode"                    
+    DisplayName          "P2884821080"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    DisplayShortHelp     "P1552457791"
+    DisplayHelp          "P998847769"
+    IconName             "Temporary_TerraVoltaGlow.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.8000
+            Magnitude kShivan_Mode
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.8000
+            Magnitude kArena
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.8000
+            Magnitude kDisable_Portals
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.8000
+            Magnitude kDisable_Incarnate
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    }
+}

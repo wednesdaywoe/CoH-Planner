@@ -1,0 +1,49 @@
+Power Temporary_Powers.Temporary_Powers.V_Ore_Extractor
+{
+    Name                 "V_Ore_Extractor"             
+    DisplayName          "P67899814"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                25
+    EnduranceCost        6.5
+    InterruptTime        4
+    TimeToActivate       6.93
+    RechargeTime         10
+    EffectArea           kCharacter
+    ServerTrayPriority   9
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Ore_Extractor.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Ore_Extractor.pfx
+    DisplayShortHelp     "P1055544019"
+    DisplayHelp          "NYC7U5PWVL9XY5LTTP68YJQAJQ"
+    IconName             "Temporary_OreExtractor.tga"
+    DoNotSave            kTrue
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires Meteor target.HasTag?
+    
+        AttribMod
+        {
+            Attrib kSpecial
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 3000.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoFloaters IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "V8ND2H63B27MYECNYX8SLH9V73"
+                DisplayVictimHit "75AP8BX3BDYDY8CUQHXWKZ4ZAA"
+            }
+            
+        }
+    }
+}

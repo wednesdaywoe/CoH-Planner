@@ -1,0 +1,104 @@
+#********************************************#
+# Power: Pets > Thug Boss 3 > Foot Stomp     #
+# Info:  PBAoE Melee, DMG(Smash), Knockback  #
+#********************************************#
+
+Power Mastermind_Pets.Thug_Boss_3.Foot_Stomp
+{
+    Name                 "Foot_Stomp"                  
+    DisplayName          "P3179772134"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        18.512
+    TimeToActivate       2.1
+    TimeToRoot           2.1
+    RechargeTime         20
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\SuperStrength_KnockBack.pfx"
+    include              menu\Powers\AnimFX\SuperStrength_KnockBack.pfx
+    DisplayShortHelp     "CGN9T43USYGTWWZKSXLZT4R4UZ"
+    DisplayHelp          "9VTCXM8WXUFLY8VAWU9QWGH3TZ"
+    IconName             "SuperStrength_FootStomp.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.4200
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.8000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.8000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

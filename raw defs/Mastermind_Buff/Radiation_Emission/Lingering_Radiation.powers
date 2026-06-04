@@ -1,0 +1,129 @@
+#**************************************************************#
+# Power: Buff > Radiation Emission > Lingering Radiation       #
+# Info:  Ranged (Targeted AoE), Foe -Speed, -Recharge, -Regen  #
+#**************************************************************#
+
+Power Mastermind_Buff.Radiation_Emission.Lingering_Radiation
+{
+    Name                 "Lingering_Radiation"         
+    DisplayName          "P3321233827"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.6
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_RadiationEmission_LingeringRadiation.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_RadiationEmission_LingeringRadiation.PFX
+    DisplayShortHelp     "P4020505167"
+    DisplayHelp          "P3808864313"
+    DisplayAttackerHit   "P417559069"
+    DisplayVictimHit     "P3696794210"
+    IconName             "RadiationPoisoning_LingeringRadiation.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P319543156"
+    DisplayTargetHelp    "P3611700118"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.6000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.6000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_SpeedRunning"
+            Scale -1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -5.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -20.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+            }
+            
+        }
+    }
+}

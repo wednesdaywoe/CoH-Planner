@@ -1,0 +1,58 @@
+Power Scrapper_Defense.Shield_Defense.Phalanx_Fighting
+{
+    Name                 "Phalanx_Fighting"            
+    DisplayName          "P1013475773"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kLeaguemate, kCaster
+    EntsAutoHit          kLeaguemate, kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kSphere
+    Radius               8
+    AIReport             kNever
+    BoostsAllowed        kBuff_Defense_Boost
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P417649711"
+    DisplayHelp          "P220201617"
+    DisplayPowerDefenseFloat "P367579676"
+    IconName             "ShieldDefense_PhalanxFighting.tga"
+    MaxTargetsHit        3
+
+
+    Effect
+    {
+        Requires entref target> entref source> eq ! enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.3000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.5000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

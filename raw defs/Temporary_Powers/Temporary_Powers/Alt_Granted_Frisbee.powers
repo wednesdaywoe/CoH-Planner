@@ -1,0 +1,56 @@
+Power Temporary_Powers.Temporary_Powers.Alt_Granted_Frisbee
+{
+    Name                 "Alt_Granted_Frisbee"         
+    DisplayName          "P2170899180"
+    BuyRequires          accesslevel char> 0 >=
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                70
+    TimeToActivate       1.07
+    RechargeTime         1
+    EffectArea           kCharacter
+    NumCharges           1
+    TargetRequires       enttype target> player eq inherent.inherent.alt_coyote_travel_power target.ToggleActive? ! && inherent.inherent.alt_cheetah_travel_power target.ToggleActive? ! && inherent.inherent.alt_panther_travel_power target.ToggleActive? ! &&
+    Deletable            kTrue
+    VisualFX             "menu/Powers/AnimFX/Temporary_Power_FlyingDisc.pfx"
+    include              menu/Powers/AnimFX/Temporary_Power_FlyingDisc.pfx
+    DisplayShortHelp     "P680179550"
+    DisplayHelp          "YQSK7F2T68GZWKLDBRFEQ8QV9A"
+    IconName             "Inherent_ThrowFrisbee.tga"
+    ShowInManage         kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires Inherent.Inherent.Alt_Frisbee_Granter target.ownPower? !
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P107679889"
+                DisplayVictimHit "P2291113423"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Alt_Granted_Frisbee
+            }
+            
+        }
+    }
+}

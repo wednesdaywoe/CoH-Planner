@@ -1,0 +1,42 @@
+Power Temporary_Powers.Temporary_Powers.Mod_Target_Focus_Test
+{
+    Name                 "Mod_Target_Focus_Test"       
+    DisplayName          "P801719149"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EffectArea           kSphere
+    Radius               10
+    AIReport             kNever
+    DisplayShortHelp     "P801719149"
+    DisplayHelp          "P801719149"
+    IconName             "Incarnate_StoryArc.tga"
+    MaxTargetsHit        16
+    Free                 kTrue
+    DisplayTargetShortHelp "P801719149"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kFocus
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+}

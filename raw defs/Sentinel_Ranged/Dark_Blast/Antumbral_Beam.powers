@@ -1,0 +1,155 @@
+#***********************************************#
+# Power: Ranged > Dark Blast > Antumbral Beam   #
+# Info:  Ranged, DMG(Negative), Target -To Hit  #
+#***********************************************#
+
+Power Sentinel_Ranged.Dark_Blast.Antumbral_Beam
+{
+    Name                 "Antumbral_Beam"              
+    DisplayName          "P1242182801"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        14.352
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         15
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_DarkBlast_AntumbralBeam.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_DarkBlast_AntumbralBeam.PFX
+    DisplayShortHelp     "SPCDPB2SS44MWQBD2EC89CM9F2"
+    DisplayHelp          "KU6LSPFG8HSHW4ZR35AEFVQFMA"
+    IconName             "DarkCast_Heavy"
+    DisplayTargetShortHelp "P2190949330"
+    DisplayTargetHelp    "P3433690975"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 2.7600
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2637081052"
+                    DisplayVictimHit "P936402029"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 2.7600
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MKNQB68MKQ4GWWBRPFD3WYFNQQ"
+                    DisplayVictimHit "3V64ZZSHFGUAWFNN3KA2TRDP2Q"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 2.4490
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2637081052"
+                    DisplayVictimHit "P936402029"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kNegative_Energy
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 2.4490
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MKNQB68MKQ4GWWBRPFD3WYFNQQ"
+                    DisplayVictimHit "3V64ZZSHFGUAWFNN3KA2TRDP2Q"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+}

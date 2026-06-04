@@ -1,0 +1,51 @@
+Power Dominator_Control.Earth_Control.Quicksand
+{
+    Name                 "Quicksand"                   
+    DisplayName          "P2550309372"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                90
+    EnduranceCost        7.8
+    TimeToActivate       3.1
+    TimeToRoot           3.1
+    RechargeTime         30
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kSlow_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_EarthControl_Quicksand.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_EarthControl_Quicksand.PFX
+    DisplayShortHelp     "P3983502767"
+    DisplayHelp          "P2474259180"
+    IconName             "EarthGrasp_Quicksand.tga"
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P2544749673"
+    DisplayTargetHelp    "P339426154"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Quicksand
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

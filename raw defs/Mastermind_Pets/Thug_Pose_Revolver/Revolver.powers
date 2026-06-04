@@ -1,0 +1,74 @@
+#**************************************#
+# Power: Pets > Thug Posse > Revolver  #
+# Info:  Ranged Light DMG(Lethal)      #
+#**************************************#
+
+Power Mastermind_Pets.Thug_Pose_Revolver.Revolver
+{
+    Name                 "Revolver"                    
+    DisplayName          "P3938162043"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        3.952
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         3.7
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Villain_Revolver.pfx"
+    include              menu\Powers\AnimFX\Villain_Revolver.pfx
+    DisplayShortHelp     "WZH57A5QK3Q8Y2MHAZMME25MHS"
+    DisplayHelp          "SVVGLPC8TJUYY7ZXRN5NBH4JN3"
+    IconName             "AssaultWeapons_ARBurst.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.9000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Raid target.HasTag? ! enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2043392969"
+                DisplayVictimHit "P2036629572"
+            }
+            
+        }
+    }
+}

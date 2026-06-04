@@ -1,0 +1,102 @@
+#**************************************************#
+# Power: Pets > Thug Minion 2 > Dual Wield         #
+# Info:  Ranged, Light DMG(Lethal), Foe Knockback  #
+#**************************************************#
+
+Power Mastermind_Pets.Thug_Minion_2.Dual_Wield
+{
+    Name                 "Dual_Wield"                  
+    DisplayName          "P2558716359"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        6.864
+    DontSetStance        1
+    TimeToActivate       1.2
+    TimeToRoot           1.2
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Villain_DualGuns_BigShot.pfx"
+    include              menu\Powers\AnimFX\Villain_DualGuns_BigShot.pfx
+    DisplayShortHelp     "8LW54JPL3DJKW7BJ6L879SMJHS"
+    DisplayHelp          "5BVMSCL383L2YQBNFANTW55WP3"
+    IconName             "Thugs_TargetedRangedHeavyDmg.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.6600
+            Duration 0.3000
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2500
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2500
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.6400
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

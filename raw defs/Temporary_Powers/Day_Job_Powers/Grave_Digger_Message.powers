@@ -1,0 +1,45 @@
+Power Temporary_Powers.Day_Job_Powers.Grave_Digger_Message
+{
+    Name                 "Grave_Digger_Message"        
+    DisplayName          "P2991637684"
+    ActivateRequires     DJ_Hospital inVolume> !
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    AIReport             kNever
+    IsEnvironmentHit     kTrue
+    DisplayShortHelp     "P2849507817"
+    DisplayHelp          "P1741000049"
+    IconName             "DayJob_LootBuff.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P2849507817"
+    NumAllowed           2
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,79 @@
+#***************************************#
+# Power: Summon > Thugs > Call Bruiser  #
+# Info:  Summon Bruiser                 #
+#***************************************#
+
+Power Mastermind_Summon.Thugs.Call_Bruiser
+{
+    Name                 "Call_Bruiser"                
+    DisplayName          "P937187544"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        13.18
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         15
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kStunned_Boost, kHold_Boost
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Mastermind_Thugs_Summon_Thugs.pfx"
+    include              menu\Powers\AnimFX\Mastermind_Thugs_Summon_Thugs.pfx
+    DisplayShortHelp     "P1608044293"
+    DisplayHelp          "KBW5CYYW4K5AYNBWQ3JMG86DCA"
+    IconName             "Thugs_EnlistBoss.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Thug_Boss
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 50.0000
+            Magnitude 1.0000
+            Delay 1.6700
+            StackType kIgnore
+            Flags NoHitDelay SetTimer
+            Params Power
+            {
+                Power Mastermind_Summon.Thugs.Call_Bruiser
+            }
+            
+        }
+    }
+}

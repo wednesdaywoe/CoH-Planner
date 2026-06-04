@@ -1,0 +1,44 @@
+Power Temporary_Powers.Art_Test.Melee
+{
+    Name                 "Melee"                       
+    DisplayName          "P237393061"
+    BuyRequires          accesslevel char> 9 >
+    ActivateRequires     accesslevel char> 9 >
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    TimeToActivate       1.2
+    TimeToRoot           1.2
+    RechargeTime         4
+    EffectArea           kCharacter
+    IgnoreAttackTimeErrors floyd
+    DisplayShortHelp     "P237393061"
+    DisplayHelp          "M4VGM74WMQEXYHV9JUZGUGSQYQ"
+    IconName             "Inherent_Brawl.tga"
+
+
+    Effect
+    {
+        Requires accesslevel source> 9 >
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P793036068"
+                DisplayVictimHit "P834484945"
+            }
+            
+        }
+    }
+}

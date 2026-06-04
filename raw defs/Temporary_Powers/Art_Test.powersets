@@ -1,0 +1,75 @@
+PowerSet Temporary_Powers.Art_Test
+{
+    Name "Art_Test"
+    DisplayName "P4086936293"
+    DisplayShortHelp "P4086936293"
+    DisplayHelp "P3413384259"
+    ShowInManage False
+    ShowInInfo False
+    IconName "Art_Test_set.ico"
+
+    Powers Temporary_Powers.Art_Test.Melee
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Temporary_Powers.Art_Test.Melee_PBAoE
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Temporary_Powers.Art_Test.Ranged
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Temporary_Powers.Art_Test.Ranged_AoE
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Temporary_Powers.Art_Test.Self_Toggle
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Temporary_Powers.Art_Test.Ranged_Snipe
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Temporary_Powers.Art_Test.Melee_Snipe
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Temporary_Powers.Art_Test.PBAoE_Toggle
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

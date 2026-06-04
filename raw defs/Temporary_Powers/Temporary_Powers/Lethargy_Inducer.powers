@@ -1,0 +1,63 @@
+Power Temporary_Powers.Temporary_Powers.Lethargy_Inducer
+{
+    Name                 "Lethargy_Inducer"            
+    DisplayName          "P263669454"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.58
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         6
+    EffectArea           kCharacter
+    NumCharges           20
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\RADIATION_Burst_NeutrinoBlast.pfx"
+    include              menu\Powers\AnimFX\RADIATION_Burst_NeutrinoBlast.pfx
+    DisplayShortHelp     "P171271829"
+    DisplayHelp          "Q5DAYPWLNEEFY2L2C56Y9BNKN2"
+    IconName             "Temporary_LethargyInducer.tga"
+    DisplayTargetShortHelp "P1722645486"
+    DisplayTargetHelp    "P2431075329"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.7000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.1000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/IrradiateContinuingFx.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,175 @@
+Power Pool.Experimentation.Jaunt
+{
+    Name                 "Jaunt"                       
+    DisplayName          "P2849472036"
+    BuyRequires          Pool.Experimentation.Speed_of_Sound
+    ModesRequired        kSpeedofSoundOn
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kTeleport
+    Range                200
+    EnduranceCost        13
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         10
+    EffectArea           kLocation
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1000
+    IgnoreLevelBought    kTrue
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/OriginPool_Experimentation_Jaunt.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/OriginPool_Experimentation_Jaunt.PFX
+    DisplayShortHelp     "P102559963"
+    DisplayHelp          "ZM2PYALD9Z9AYZMSCV8QSY7UAS"
+    IconName             "Experimentation_Jaunt.tga"
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    AutoIssue            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance NoHitDelay
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.3000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Tag "QuickJaunt"
+        Chance 2.0000
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Pool.Experimentation.Jaunt
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            Params EffectFilter
+            {
+                Tag QuickJaunt
+            }
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        Effect
+        {
+            Tag "QuickJaunt"
+            Chance 2.0000
+        
+            AttribMod
+            {
+                Attrib kRechargePower
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                Params Power
+                {
+                    Power Pool.Experimentation.Jaunt
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kGlobalChanceMod
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Ones"
+                Scale -1.0000
+                Duration 30.0000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+                Params EffectFilter
+                {
+                    Tag QuickJaunt
+                }
+            }
+        }
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kRechargePower
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Ones"
+                Scale 30.0000
+                Magnitude 1.0000
+                Delay 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance SetTimer
+                Params Power
+                {
+                    Power Pool.Experimentation.Jaunt
+                }
+                
+            }
+        }
+    }
+}

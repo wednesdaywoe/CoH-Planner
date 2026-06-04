@@ -1,0 +1,42 @@
+Power Temporary_Powers.Temporary_Powers.Ignite
+{
+    Name                 "Ignite"                      
+    DisplayName          "P1492322528"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       9999
+    EffectArea           kCharacter
+    LifeTime             5.5
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P234795542"
+    DisplayHelp          "P2797852553"
+    IconName             "AssaultWeapons_DOT"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           3
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

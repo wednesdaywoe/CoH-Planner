@@ -1,0 +1,42 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_MoteYellow
+{
+    Name                 "Labyrinth_MoteYellow"        
+    DisplayName          "53LVA5WZV5X8W9C3LNEMTT5ANW"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    ProcAllowed          kNone
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "3PBP3LYXBMBHYLM3CYXHWNXA8W"
+    DisplayHelp          "M7UR4WVA3YPAWZBM24FNN8R37X"
+    IconName             "Temporary_LabyrinthMoteYellow.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P4020331451"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Buff_ToHit"
+            Scale 0.5000
+            Duration 2.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

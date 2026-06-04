@@ -1,0 +1,81 @@
+PowerSet Sentinel_Defense.Regeneration
+{
+    Name "Regeneration"
+    DisplayName "P3132767435"
+    DisplayShortHelp "P3132767435"
+    DisplayHelp "P2837931668"
+    IconName "Regeneration_set.ico"
+
+    Powers Sentinel_Defense.Regeneration.Fast_Healing
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Defense.Regeneration.Reconstruction
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Defense.Regeneration.Quick_Recovery
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Defense.Regeneration.Dismiss_Pain
+    Available 9
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Defense.Regeneration.Integration
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Defense.Regeneration.Resilience
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Defense.Regeneration.Instant_Regeneration
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Defense.Regeneration.Second_Wind
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Defense.Regeneration.Moment_of_Glory
+    Available 29
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

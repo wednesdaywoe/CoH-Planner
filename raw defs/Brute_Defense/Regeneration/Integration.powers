@@ -1,0 +1,277 @@
+Power Brute_Defense.Regeneration.Integration
+{
+    Name                 "Integration"                 
+    DisplayName          "P2071323212"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.52
+    TimeToActivate       3.1
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kTaunt_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_Regeneration_Integration.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_Regeneration_Integration.PFX
+    DisplayShortHelp     "P2628598970"
+    DisplayHelp          "KXZKF8X3AKU5YLCP2AD49FCFT2"
+    DisplayAttackerHit   "P1336694971"
+    IconName             "Regeneration_Integration.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+        Tag "Taunt"
+    
+        Effect
+        {
+            Tag "StealthOn"
+            Requires Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&
+        
+            AttribMod
+            {
+                Attrib kTaunt
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_InherentTaunt"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kReplace
+                Flags CancelOnMiss
+            }
+        }
+    
+        Effect
+        {
+            Tag "StealthOn"
+            Requires Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&
+        
+            AttribMod
+            {
+                Attrib kTaunt
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_InherentTaunt"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kReplace
+                Flags CancelOnMiss
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "InherentTaunt"
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Inherents.Fury_Proc_Aura
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        Effect
+        {
+            Flags PvEOnly MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kKnockup kKnockback
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 100.0000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kKnockup kKnockback
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale -10.0000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kHeld kImmobilized kStunned kSleep
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale -30.0000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance IgnoreCombatMods
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.5000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreResistance IgnoreCombatMods
+            }
+        }
+    
+        Effect
+        {
+            Flags PvPOnly MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kKnockup kKnockback
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 100.0000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                FX
+                {
+                    ContinuingFX PFX2
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kKnockup kKnockback
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale -10.0000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kHeld kImmobilized kStunned kSleep
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale 3.0000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.5000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kDefense kToHit kRechargeTime
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.3000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.5000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        }
+    }
+}

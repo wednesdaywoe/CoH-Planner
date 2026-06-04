@@ -1,0 +1,71 @@
+Power Mastermind_Buff.Kinetics.Siphon_Power
+{
+    Name                 "Siphon_Power"                
+    DisplayName          "P1943804202"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       1.93
+    TimeToRoot           1.93
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Kinetics_SiphonPower.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Kinetics_SiphonPower.PFX
+    DisplayShortHelp     "P1215489231"
+    DisplayHelp          "J3CKMU2NUKF2WHMFB6L6AHWLBW"
+    DisplayAttackerHit   "P1315378451"
+    DisplayVictimHit     "P1776667997"
+    IconName             "KineticBoost_SiphonPower.tga"
+    DisplayTargetShortHelp "P2850056344"
+    DisplayTargetHelp    "P2043380143"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 2.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayVictimHit "P1557233358"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Kinetics.SiphonPower
+            }
+            
+        }
+    }
+}

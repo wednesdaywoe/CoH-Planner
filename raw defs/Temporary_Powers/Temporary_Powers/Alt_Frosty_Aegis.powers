@@ -1,0 +1,54 @@
+Power Temporary_Powers.Temporary_Powers.Alt_Frosty_Aegis
+{
+    Name                 "Alt_Frosty_Aegis"            
+    DisplayName          "P3833711361"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.1625
+    TimeToActivate       0.73
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            600
+    StackingUsage        kTrue
+    MaxUsageTime         600000
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\ICE_ARMOR_ICE_ARMOR.pfx"
+    include              menu\Powers\AnimFX\ICE_ARMOR_ICE_ARMOR.pfx
+    DisplayShortHelp     "P894228503"
+    DisplayHelp          "Q5KB4BK7MKVAYMZDHBGAYJ37ES"
+    DisplayAttackerHit   "P2461261291"
+    IconName             "Temp_FrozenAegis.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing_Attack kLethal_Attack kCold_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 1.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/ColdControl/IceArmor.fx
+            }
+            
+        }
+    }
+}

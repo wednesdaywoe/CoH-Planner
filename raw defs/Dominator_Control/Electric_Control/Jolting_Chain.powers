@@ -1,0 +1,174 @@
+Power Dominator_Control.Electric_Control.Jolting_Chain
+{
+    Name                 "Jolting_Chain"               
+    DisplayName          "P3186708883"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         8
+    EffectArea           kChain
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost, kKnockback_Boost
+    ChainDelay           0.7
+    ChainFork            1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+    ChainEff             1 0.25 @ChainJump 1 - * - 0.25 1 minmax
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_ElectricControl_JoltingChain.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_ElectricControl_JoltingChain.PFX
+    DisplayShortHelp     "A5658A5DECVKYVVCB27XBNSDNW"
+    DisplayHelp          "P4131334759"
+    IconName             "ElectricControl_JoltingChain.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P2213400709"
+
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.6600
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+                DisplayInfo "V3BL3P96JYHSYAZU7VGWDX95NQ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.7272
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+                DisplayInfo "V3BL3P96JYHSYAZU7VGWDX95NQ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_EndDrain"
+            Scale -2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+                DisplayInfo "V3BL3P96JYHSYAZU7VGWDX95NQ"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.6600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+                DisplayInfo "V3BL3P96JYHSYAZU7VGWDX95NQ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+                DisplayInfo "V3BL3P96JYHSYAZU7VGWDX95NQ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.2000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+                DisplayInfo "V3BL3P96JYHSYAZU7VGWDX95NQ"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.5000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayInfo "REZA422TTRPXYZXD6MZU9D7WNQ"
+            }
+            
+        }
+    }
+}

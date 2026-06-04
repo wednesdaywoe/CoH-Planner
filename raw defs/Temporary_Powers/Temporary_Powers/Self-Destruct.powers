@@ -1,0 +1,70 @@
+Power Temporary_Powers.Temporary_Powers.Self-Destruct
+{
+    Name                 "Self-Destruct"               
+    DisplayName          "P2168834753"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    RechargeTime         10
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Infected_Kamikaze.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Infected_Kamikaze.pfx
+    DisplayShortHelp     "P4076621249"
+    DisplayHelp          "P2860671490"
+    IconName             "FireBlast_Inferno.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Messages
+            {
+                DisplayVictimHit "P3540242200"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Infected_Explosion
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

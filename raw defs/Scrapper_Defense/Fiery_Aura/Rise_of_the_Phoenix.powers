@@ -1,0 +1,46 @@
+Power Scrapper_Defense.Fiery_Aura.Rise_of_the_Phoenix
+{
+    Name                 "Rise_of_the_Phoenix"         
+    DisplayName          "63XXN987U486YFLUL74DZ2W6HW"
+    ModesDisallowed      kDisable_All, kDisable_GiftOfThePhoenix
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         300
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kDamage_Boost, kRecovery_Boost, kStunned_Boost
+    HighlightEval        kHitPoints% auto> 0 >
+    HighlightIcon        FlamingShield_GiftOfThePhoenix
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_FieryAura_RiseofthePhoenix.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_FieryAura_RiseofthePhoenix.PFX
+    DisplayShortHelp     "P3228648468"
+    DisplayHelp          "9MQ6WZGJMDQNWWL4K329RFTWXW"
+    DisplayAttackerHit   "P3309961538"
+    IconName             "FlamingShield_RiseOfThePhoenix.tga"
+    DisplayTargetShortHelp "P2862738113"
+    DisplayTargetHelp    "P1011213513"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Fiery_Aura.Phoenix
+            }
+            
+        }
+    }
+}

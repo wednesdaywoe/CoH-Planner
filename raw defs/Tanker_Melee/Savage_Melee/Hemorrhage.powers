@@ -1,0 +1,281 @@
+Power Tanker_Melee.Savage_Melee.Hemorrhage
+{
+    Name                 "Hemorrhage"                  
+    DisplayName          "P723020678"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        13.52
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         14
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    ProcMainTargetOnly   kTrue
+    HighlightEval        Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker ownPowerNum? 5 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/SavageMelee_Hemorrhage.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/SavageMelee_Hemorrhage.pfx
+    DisplayShortHelp     "7A6Y2RGWVEDEY7X5JNYC2TF3LX"
+    DisplayHelp          "9SR7BC2HEMLCW2ZQVQL3P834AW"
+    IconName             "SavageMelee_Hemorrhage.tga"
+    AnimMainTargetOnly   kTrue
+    DisplayTargetShortHelp "P1433672180"
+    DisplayTargetHelp    "P2734086620"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.7600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.3430
+                Duration 5.1000
+                MagnitudeExpr Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *
+                Magnitude 1.0000
+                Delay 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3137354887"
+                    DisplayVictimHit "P130826600"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 < &&
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.3260
+                Duration 4.1000
+                MagnitudeExpr Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *
+                Magnitude 1.0000
+                Delay 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3137354887"
+                    DisplayVictimHit "P130826600"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 0.9747
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.1435
+                Duration 5.1000
+                MagnitudeExpr Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *
+                Magnitude 1.0000
+                Delay 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3137354887"
+                    DisplayVictimHit "P130826600"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 < &&
+        
+            AttribMod
+            {
+                Attrib kLethal
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.1364
+                Duration 4.1000
+                MagnitudeExpr Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *
+                Magnitude 1.0000
+                Delay 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3137354887"
+                    DisplayVictimHit "P130826600"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance RevokeAll
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 4 > &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2432555977"
+                DisplayFloat "P4236885904"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.3510
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1638
+            Duration 4.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    }
+}

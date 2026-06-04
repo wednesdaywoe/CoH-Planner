@@ -1,0 +1,109 @@
+Power Temporary_Powers.Temporary_Powers.Stun_Grenade
+{
+    Name                 "Stun_Grenade"                
+    DisplayName          "P994909197"
+    ModesRequired        kArena
+    ModesDisallowed      kDisable_All, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        13
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               15
+    NumCharges           6
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Malta_Ops_Grenade_stun.pfx"
+    include              menu\Powers\AnimFX\Villain_Malta_Ops_Grenade_stun.pfx
+    DisplayShortHelp     "P4207810426"
+    DisplayHelp          "VUS5BNFJZR5PWYNMCCT4MT5SYS"
+    IconName             "Temporary_ChromaticGrenades.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P1563157976"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 10.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+}

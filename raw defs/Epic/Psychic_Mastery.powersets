@@ -1,0 +1,49 @@
+PowerSet Epic.Psychic_Mastery
+{
+    Name "Psychic_Mastery"
+    DisplayName "P1773904258"
+    DisplayShortHelp "P1773904258"
+    DisplayHelp "P1392450528"
+    IconName "Psychic_Mastery_set.ico"
+
+    Powers Epic.Psychic_Mastery.Dominate
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psychic_Mastery.Mass_Hypnosis
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psychic_Mastery.Mind_Over_Body
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psychic_Mastery.World_of_Confusion
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Psychic_Mastery.Telekinesis
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

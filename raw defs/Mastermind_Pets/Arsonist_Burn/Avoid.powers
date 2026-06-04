@@ -1,0 +1,42 @@
+#*******************************************#
+# Power: Pets > Thug Arsonist Burn > Avoid  #
+# Info:  Avoid                              #
+#*******************************************#
+
+Power Mastermind_Pets.Arsonist_Burn.Avoid
+{
+    Name                 "Avoid"                       
+    DisplayName          "P1351516182"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               8
+    DisplayShortHelp     "P1351516182"
+    DisplayHelp          "P1984539263"
+    IconName             "FlamingShield_Burn.tga"
+    MaxTargetsHit        16
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kAfraid
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 50.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags NearGround IgnoreStrength IgnoreResistance
+        }
+    }
+}

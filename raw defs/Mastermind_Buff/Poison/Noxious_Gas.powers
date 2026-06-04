@@ -1,0 +1,52 @@
+#***************************************************************************#
+# Power: Buff > Poison > Noxious Gas                                        #
+# Info:  Ranged (Infect Henchman); Foe -RES, -DEF, -To Hit, -Res, +Special  #
+#***************************************************************************#
+
+Power Mastermind_Buff.Poison.Noxious_Gas
+{
+    Name                 "Noxious_Gas"                 
+    DisplayName          "P3018093279"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kMyPet
+    Range                30
+    EnduranceCost        22.75
+    TimeToActivate       2.07
+    RechargeTime         300
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_NoxiousGas.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_NoxiousGas.PFX
+    DisplayShortHelp     "P565430152"
+    DisplayHelp          "VPMR3K9KM76HYQCXGH3Y2QGJKS"
+    DisplayAttackerHit   "P3337240024"
+    IconName             "Poison_NoxiousGas.tga"
+
+
+    Effect
+    {
+        Requires group target> MastermindPets eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Villain_Pets.Noxious_Gas.Noxious_Gas
+            }
+            
+        }
+    }
+}

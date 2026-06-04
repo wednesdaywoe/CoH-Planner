@@ -1,0 +1,94 @@
+Power Pool.Leaping.Double_Jump
+{
+    Name                 "Double_Jump"                 
+    DisplayName          "P4130030696"
+    BuyRequires          Pool.Leaping.Long_Jump
+    ModesRequired        kSuperJumpOn
+    ModesDisallowed      kDisable_All, kDisable_JumpPack, kDisable_Pool, kDisable_Teleport, kDisable_Travel
+    ModesSuspended       kSuppress_JumpToggles, kSuppress_PoolToggles, kSuppress_TravelToggles
+    Type                 kToggle
+    Accuracy             1
+    RechargeGroup        kJumppack_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.1179
+    MaxToggleTime        30
+    RechargeTime         30
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1000
+    IgnoreLevelBought    kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Leaping_SuperJump.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Leaping_SuperJump.pfx
+    DisplayShortHelp     "P3788247886"
+    DisplayHelp          "5E9X8H7EK2HRYRN5PXP9G97G63"
+    IconName             "Jump_HighJump.tga"
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    AutoIssue            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumppack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Tag "Shutdown"
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 10.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance Cooldown
+            Params Power
+            {
+                Power Pool.Leaping.Double_Jump
+                Power Prestige.Prestige_Travel.prestige_Jump_Pack_Temp
+                Power Prestige.Prestige_Travel.Prestige_Steam_Jump
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            ApplicationType kOnDeactivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude kDisable_JumpPack
+            Period 35.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

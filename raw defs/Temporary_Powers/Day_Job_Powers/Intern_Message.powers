@@ -1,0 +1,44 @@
+Power Temporary_Powers.Day_Job_Powers.Intern_Message
+{
+    Name                 "Intern_Message"              
+    DisplayName          "P233825292"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    AIReport             kNever
+    IsEnvironmentHit     kTrue
+    DisplayShortHelp     "P1886784692"
+    DisplayHelp          "P1294940192"
+    IconName             "DayJob_LootBuff.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P1886784692"
+    NumAllowed           2
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

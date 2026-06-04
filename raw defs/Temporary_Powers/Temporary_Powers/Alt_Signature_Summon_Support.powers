@@ -1,0 +1,107 @@
+Power Temporary_Powers.Temporary_Powers.Alt_Signature_Summon_Support
+{
+    Name                 "Alt_Signature_Summon_Support"
+    DisplayName          "P988355531"
+    ActivateRequires     Temporary_Powers.Temporary_Powers.Alt_Signature_Summon_Lock ! level char> 4 >= &&
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    RechargeGroup        kSignatureSummon_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        9.75
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         240
+    EffectArea           kLocation
+    NumCharges           5
+    StackingUsage        kTrue
+    MaxNumCharges        100
+    StrengthsDisallowed  kRechargeTime
+    GlobalStrengthsDisallowed kRechargeTime
+    IgnoreLevelBought    kTrue
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Summon_Jumpbot.pfx"
+    include              menu\Powers\AnimFX\Villain_Summon_Jumpbot.pfx
+    DisplayShortHelp     "P925986476"
+    DisplayHelp          "234V8422D84JWQLC832B2KXWA3"
+    IconName             "Temporary_SignatureSummon.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires type source> hero eq
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            StackKey kSignatureSummon
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_SignatureSummon_Manticore
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires type source> villain eq
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            StackKey kSignatureSummon
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_SignatureSummon_GhostWidow
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance NoHitDelay NoProjectileDelay
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Alt_Signature_Summon_Lock
+            }
+            
+        }
+    }
+}

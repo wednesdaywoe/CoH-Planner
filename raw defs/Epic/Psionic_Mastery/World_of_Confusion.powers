@@ -1,0 +1,174 @@
+Power Epic.Psionic_Mastery.World_of_Confusion
+{
+    Name                 "World_of_Confusion"          
+    DisplayName          "P3752193437"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        0.52
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         15
+    ActivatePeriod       4
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kConfuse_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_MentalManipulation_WorldofConfusion.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_MentalManipulation_WorldofConfusion.PFX
+    DisplayShortHelp     "P8VMMAMKBAUTW4VDGMVAYZZGW3"
+    DisplayHelp          "ANGG4WKL2WUEY7M4A2T7ZSGWC3"
+    IconName             "PsionicMastery_WorldOfConfusion.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1116895679"
+    DisplayTargetHelp    "P4213198885"
+
+
+    Effect
+    {
+        Requires @ToHitRoll 0.25 + @ToHit < enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Suppress Confused 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing\ConfuseContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires @ToHitRoll 0.25 + @ToHit < enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.5000
+            Magnitude 2.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing\ConfuseContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Overpower"
+        Chance 0.2000
+        Requires @ToHitRoll 0.25 + @ToHit < enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Suppress Confused 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "VF6XP35PWRCSYYNE7SB4FHADH3"
+                DisplayVictimHit "7KBAEVVVN7SGWSME3JYT2F2Z3X"
+                DisplayFloat "P2144434522"
+                DisplayInfo "P2144434522"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        RadiusOuter 8.0000
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1200
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+                DisplayInfo "DACGSNBA3CA6WXLRMZKMB5V2RS"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Overpower"
+        Chance 0.2000
+        Requires @ToHitRoll 0.25 + @ToHit < enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Messages
+            {
+                DisplayAttackerHit "VF6XP35PWRCSYYNE7SB4FHADH3"
+                DisplayVictimHit "7KBAEVVVN7SGWSME3JYT2F2Z3X"
+                DisplayFloat "P2144434522"
+                DisplayInfo "P2144434522"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,202 @@
+Power Stalker_Melee.Ice_Melee.Placate
+{
+    Name                 "Placate"                     
+    DisplayName          "P1943041994"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    TimeToActivate       0.8
+    TimeToRoot           0.8
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               15
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kTaunt_Boost
+    ProcMainTargetOnly   kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerMelee_EnergyMelee_Placate.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerMelee_EnergyMelee_Placate.PFX
+    DisplayShortHelp     "P363396554"
+    DisplayHelp          "ZFZ6X24FNNQFYANVGTVQMTVPCS"
+    IconName             "IcyOnslaught_Placate.tga"
+    MaxTargetsHit        5
+    DisplayTargetShortHelp "P1943041994"
+    DisplayTargetHelp    "P2833281680"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Delay 0.0500
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kPlacate
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_Taunt"
+                Scale 10.0000
+                Magnitude 4.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3381081303"
+                    DisplayVictimHit "P2268423897"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Delay 0.0500
+            Requires enttype target> player eq
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kPlacate
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_Taunt"
+                Scale 6.0000
+                Magnitude 4.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3381081303"
+                    DisplayVictimHit "P2268423897"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Delay 0.0500
+        
+            AttribMod
+            {
+                Attrib kStealthRadius
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 150.0000
+                Duration 10.0000
+                Magnitude 1.0000
+                Delay 0.2500
+                StackType kReplace
+                CancelEvents Attacked Damaged MissionObjectClick
+                Flags IgnoreResistance
+                FX
+                {
+                    ContinuingFX V_COV\Powers\Ninjitsu\Hide.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kStealthRadiusPlayer
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 380.0000
+                Duration 10.0000
+                Magnitude 1.0000
+                Delay 0.2500
+                StackType kReplace
+                CancelEvents Attacked Damaged MissionObjectClick
+                Flags IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kMeter
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 10.0000
+                Magnitude 1.0000
+                Delay 0.2500
+                StackType kReplace
+                CancelEvents Attacked Damaged MissionObjectClick
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kTranslucency
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.2000
+                Duration 10.0000
+                Magnitude 1.0000
+                Delay 0.2500
+                StackType kReplace
+                CancelEvents Attacked Damaged MissionObjectClick
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 10.0000
+                Magnitude kPlacateFollowup
+                StackType kReplace
+                CancelEvents Attacked Damaged MissionObjectClick
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            Effect
+            {
+                Flags HideFromInfo
+            
+                AttribMod
+                {
+                    Attrib kMeter
+                    Aspect kCur
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Duration 5.0000
+                    Magnitude 1.0000
+                    Delay 0.2500
+                    StackType kReplace
+                    CancelEvents Attacked MissionObjectClick
+                    Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                }
+            
+                AttribMod
+                {
+                    Attrib kSetMode
+                    Aspect kCur
+                    Type kConstant
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Duration 5.0000
+                    Magnitude kPlacateFollowup
+                    StackType kReplace
+                    CancelEvents Attacked MissionObjectClick
+                    Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                }
+            }
+        }
+    }
+}

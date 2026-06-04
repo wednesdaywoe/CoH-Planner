@@ -1,0 +1,40 @@
+Power Sentinel_Defense.Regeneration.Second_Wind
+{
+    Name                 "Second_Wind"                 
+    DisplayName          "P4167089063"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       0.73
+    RechargeTime         360
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    HighlightEval        kHitPoints% auto> 0 > !
+    HighlightIcon        Regeneration_Revive.tga
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_Regeneration_Revive.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_Regeneration_Revive.PFX
+    DisplayShortHelp     "P4197834741"
+    DisplayHelp          "283U8HPR9YQ3YMBNZCEZ3LFJ8S"
+    DisplayAttackerHit   "P1268453332"
+    IconName             "Regeneration_DullPain.tga"
+    DisplayTargetShortHelp "P2015651842"
+    DisplayTargetHelp    "P1268453332"
+
+    Redirect
+    {
+        Power Redirects.Regeneration.Second_Wind_Defeated
+        Requires cur.kHitPoints source> 0 ==
+    }
+    
+    Redirect
+    {
+        Power Redirects.Regeneration.Second_Wind_Awake
+        Requires 1
+    }
+    
+}

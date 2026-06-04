@@ -1,0 +1,33 @@
+PowerSet Mastermind_Pets.Ninja_Pets
+{
+    Name "Ninja_Pets"
+    DisplayName "AQ6EV4H6HD69WNNB3VG6TEMUG2"
+    DisplayShortHelp "P1004628773"
+    DisplayHelp "P1004628773"
+    IconName "Jonin_set.ico"
+
+    Powers Mastermind_Pets.Ninja_Pets.Jounins_Caltrops
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ninja_Pets.RainofFire
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ninja_Pets.Avoid
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

@@ -1,0 +1,45 @@
+Power Temporary_Powers.Day_Job_Powers.Mender_Message
+{
+    Name                 "Mender_Message"              
+    DisplayName          "P1553513065"
+    ActivateRequires     DJ_Hospital inVolume> !
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    AIReport             kNever
+    IsEnvironmentHit     kTrue
+    DisplayShortHelp     "P4122064702"
+    DisplayHelp          "P3528319987"
+    IconName             "DayJob_LootBuff.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P4122064702"
+    NumAllowed           2
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

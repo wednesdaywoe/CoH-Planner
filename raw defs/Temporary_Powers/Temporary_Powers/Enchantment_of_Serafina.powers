@@ -1,0 +1,63 @@
+Power Temporary_Powers.Temporary_Powers.Enchantment_of_Serafina
+{
+    Name                 "Enchantment_of_Serafina"     
+    DisplayName          "P457819019"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        19.5
+    TimeToActivate       2.03
+    RechargeTime         422
+    EffectArea           kSphere
+    Radius               30
+    NumCharges           10
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_AmuletofSerafina.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_AmuletofSerafina.pfx
+    DisplayShortHelp     "P2800661100"
+    DisplayHelp          "PMGCYZSXGCUHW3LFRCVYWDEPAS"
+    DisplayAttackerHit   "P1550301107"
+    IconName             "Temporary_Warburg_MegaBuff.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P106951360"
+    DisplayTargetHelp    "P3660125145"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Res_Dmg"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/AccelerateMetabolismHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Buff_Dmg"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

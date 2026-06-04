@@ -1,0 +1,44 @@
+#**************************************************************#
+# Power: Buff > Nature Affinity > Rebirth                      #
+# Info:  Ranged, Ally Rez, +Heal Over Time, Special, +3 Bloom  #
+#**************************************************************#
+
+Power Mastermind_Buff.Nature_Affinity.Rebirth
+{
+    Name                 "Rebirth"                     
+    DisplayName          "P2341260299"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadOrAliveLeaguemate
+    EntsAutoHit          kDeadOrAliveLeaguemate
+    Target               kDeadOrAliveLeaguemate
+    Range                45
+    EnduranceCost        13
+    TimeToActivate       3
+    RechargeTime         180
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_Rebirth.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_Rebirth.PFX
+    DisplayShortHelp     "P1111403570"
+    DisplayHelp          "P1285172146"
+    IconName             "NatureAffinity_Rebirth.tga"
+    TimeToConfirm        15
+    DisplayConfirm       P1632988461
+    DisplayTargetShortHelp "P3842924699"
+    DisplayTargetHelp    "P3733423991"
+
+    Redirect
+    {
+        Power Pets.Nature_Affinity_Mastermind.Rebirth_Mastermind_Heal
+        Requires Cur.kHitPoints target> 0 >
+    }
+    
+    Redirect
+    {
+        Power Pets.Nature_Affinity_Mastermind.Rebirth_Mastermind_Rez
+        Requires 1
+    }
+    
+}

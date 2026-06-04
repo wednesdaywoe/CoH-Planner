@@ -1,0 +1,116 @@
+Power Scrapper_Defense.Bio_Organic_Armor.Offensive_Adaptation
+{
+    Name                 "Offensive_Adaptation"        
+    DisplayName          "P2164308101"
+    BuyRequires          Scrapper_Defense.Bio_Organic_Armor.Evolution
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kBio_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       0.67
+    RechargeTime         4
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\SymbioticArmor_OffensiveAdaptation.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\SymbioticArmor_OffensiveAdaptation.PFX
+    DisplayShortHelp     "P213290956"
+    DisplayHelp          "B4QXACX83RGTYRMKFPWBS4RV7Q"
+    IconName             "BioOrganicArmor_OffensiveAdaptation.tga"
+    ShowInManage         kFalse
+    Free                 kTrue
+    AutoIssue            kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.1000
+            Magnitude kOffensiveAdaptation
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Offensive_Adaptation_Proc
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Defensive_Adaptation_Proc
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnDeactivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Offensive_Adaptation_Proc
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -0.0750
+            Duration 1.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

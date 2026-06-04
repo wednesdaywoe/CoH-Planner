@@ -1,0 +1,76 @@
+Power Temporary_Powers.Temporary_Powers.Infected_Anti-Serum
+{
+    Name                 "Infected_Anti-Serum"         
+    DisplayName          "P324163747"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                7
+    EnduranceCost        13
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         4
+    EffectArea           kCharacter
+    LifeTimeInGame       900
+    StrengthsDisallowed  kRange
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Infected_Antidote.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Infected_Antidote.pfx
+    DisplayShortHelp     "P324163747"
+    DisplayHelp          "HNNR6MAS2SAXYSV6VE8C4ACEQA"
+    IconName             "Temporary_MeleeModerateDamage.tga"
+
+
+    Effect
+    {
+        Requires group target> Infected eq Infected_Lieutenant target.VillainName> ! && Infected_Boss target.VillainName> ! && Infected_Lieutenant_High target.VillainName> ! && Infected_Boss_High target.VillainName> ! &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1316846834"
+                DisplayVictimHit "P3617942190"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Self-Destruct
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires group target> Infected eq Infected_Lieutenant target.VillainName> ! && Infected_Boss target.VillainName> ! && Infected_Lieutenant_High target.VillainName> ! && Infected_Boss_High target.VillainName> ! && !
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P2338895045"
+            }
+            
+        }
+    }
+}

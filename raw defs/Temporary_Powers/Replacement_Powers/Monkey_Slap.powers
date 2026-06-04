@@ -1,0 +1,79 @@
+Power Temporary_Powers.Replacement_Powers.Monkey_Slap
+{
+    Name                 "Monkey_Slap"                 
+    DisplayName          "P3479434687"
+    ModesRequired        kDisable_All
+    Type                 kClick
+    Accuracy             1.5
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kAny
+    EntsAutoHit          kNone
+    Target               kAny
+    Range                7.5
+    EnduranceCost        4.76
+    TimeToActivate       0.67
+    TimeToRoot           0.67
+    RechargeTime         2
+    EffectArea           kCharacter
+    ServerTrayPriority   1001
+    VisualFX             "menu\Powers\AnimFX\Villain_Rikti_Monkey_BRAWLING.pfx"
+    include              menu\Powers\AnimFX\Villain_Rikti_Monkey_BRAWLING.pfx
+    DisplayShortHelp     "P942757861"
+    DisplayHelp          "4BAVB4FEZ4P7WBL6VKFNU53X9A"
+    IconName             "Devolution_Brawl"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P91908262"
+    DisplayTargetHelp    "P2896872023"
+
+
+    Effect
+    {
+        Requires target.isFriend? !
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "NoDamage"
+        Requires target.isFriend?
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P102149607"
+            }
+            
+        }
+    }
+}

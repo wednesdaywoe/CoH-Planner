@@ -1,0 +1,39 @@
+Power Temporary_Powers.Accolades.Challenge_VanguardDummy_Pet
+{
+    Name                 "Challenge_VanguardDummy_Pet" 
+    DisplayName          "BYL3V5GY6GN7YPVPXLCH8BCREQ"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EffectArea           kCharacter
+    IgnoreLevelBought    kTrue
+    DisplayShortHelp     "LXNWR2S6V9Q6YMZVHZWJEGBL9W"
+    DisplayHelp          "T4BZJENJ79KTY7ZZHG76BBGKLW"
+    IconName             "Challenge_VanguardDummy_Pet.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

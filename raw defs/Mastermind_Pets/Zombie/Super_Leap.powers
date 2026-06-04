@@ -1,0 +1,92 @@
+#******************************************#
+# Power: Pets > Necro Zombie > Super Leap  #
+# Info:  Self Leap                         #
+#******************************************#
+
+Power Mastermind_Pets.Zombie.Super_Leap
+{
+    Name                 "Super_Leap"                  
+    DisplayName          "P1247110959"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    AIGroups             kJump
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    RechargeTime         10
+    EffectArea           kCharacter
+    DisplayShortHelp     "P3583698820"
+    DisplayHelp          "P3737353831"
+    IconName             "Jump_LongJump.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Leap"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedRunning"
+            Scale 0.1000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Control"
+            Scale 10.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Friction"
+            Scale 10.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

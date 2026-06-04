@@ -1,0 +1,53 @@
+Power Temporary_Powers.Temporary_Powers.Power_of_Black_Scorpion_Click
+{
+    Name                 "Power_of_Black_Scorpion_Click"
+    DisplayName          "P822171080"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                100
+    TimeToActivate       1.97
+    TimeToRoot           1.97
+    RechargeTime         110
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       1200
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayRequires   mapname> reichsman_base eq
+    ServerTrayPriority   4
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Sonic_PBAOE.pfx"
+    include              menu\Powers\AnimFX\Sonic_PBAOE.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "NHP5KTF3YCAVYDM4EUMMCGMDTS"
+    IconName             "PowerofBlackScorpion.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power 5thColumn.ReichsmanVillainEncounter.Unbreakable
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,134 @@
+#***************************************************************#
+# Power: Buff > Nature Affinity > Spore Cloud                   #
+# Info:  Toggle (Targeted AoE), Foe -Dmg(All), -To Hit, -Regen  #
+#***************************************************************#
+
+Power Defender_Buff.Nature_Affinity.Spore_Cloud
+{
+    Name                 "Spore_Cloud"                 
+    DisplayName          "P4204855152"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kDeadOrAliveFoe
+    Range                70
+    EnduranceCost        0.26
+    TimeToActivate       3.1
+    TimeToRoot           3.1
+    RechargeTime         8
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_SporeCloud.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_SporeCloud.PFX
+    DisplayShortHelp     "P192731676"
+    DisplayHelp          "P3536701735"
+    DisplayAttackerHit   "P390210907"
+    DisplayVictimHit     "P2346930761"
+    IconName             "NatureAffinity_SporeCloud.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1954633259"
+    DisplayTargetHelp    "P3409640006"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_ToHit"
+            Scale 1.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 2.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 2.2500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+            }
+            
+        }
+    }
+}

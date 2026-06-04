@@ -1,0 +1,55 @@
+Power Temporary_Powers.Temporary_Powers.PS_Deadlock_Costume
+{
+    Name                 "PS_Deadlock_Costume"         
+    DisplayName          "P413808988"
+    Type                 kAuto
+    Accuracy             1.2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P3974706949"
+    IconName             "Tyrant_Resist.tga"
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P2211841663"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 11.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Devouring_Deadlock_01
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 11.0000
+            Magnitude kDisable_All
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

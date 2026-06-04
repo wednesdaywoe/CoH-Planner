@@ -1,0 +1,49 @@
+PowerSet Epic.Brute_Mu_Mastery
+{
+    Name "Brute_Mu_Mastery"
+    DisplayName "P219921951"
+    DisplayShortHelp "P219921951"
+    DisplayHelp "P2730572537"
+    IconName "Brute_Mu_Mastery_set.ico"
+
+    Powers Epic.Brute_Mu_Mastery.Mu_Lightning
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Mu_Mastery.Electrifying_Fences
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Mu_Mastery.Ball_Lightning
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Mu_Mastery.Static_Discharge
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Mu_Mastery.Summon_Striker
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

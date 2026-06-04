@@ -1,0 +1,38 @@
+Power Temporary_Powers.Temporary_Powers.Mayhem_Increase_Health
+{
+    Name                 "Mayhem_Increase_Health"      
+    DisplayName          "P3067521468"
+    ModesDisallowed      kArena, kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       86400
+    Deletable            kTrue
+    DisplayShortHelp     "P3772505757"
+    DisplayHelp          "P2344073835"
+    DisplayAttackerHit   "P2226385479"
+    IconName             "Temporary_Mayhem_SelfHeal.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

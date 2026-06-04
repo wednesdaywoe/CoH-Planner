@@ -1,0 +1,301 @@
+Power Blaster_Support.Radiation_Manipulation.Negatron_Slam
+{
+    Name                 "Negatron_Slam"               
+    DisplayName          "P2773450857"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        10.192
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\RadiationMelee_RadioactiveSmash.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\RadiationMelee_RadioactiveSmash.PFX
+    DisplayShortHelp     "YQF47WAKZ964YQZNSZ3X5GW77X"
+    DisplayHelp          "E7WHT4AZM2E3YYZQNRD9AM35FS"
+    IconName             "AtomicManipulation_WeakPunch"
+    DisplayTargetShortHelp "P3100956268"
+    DisplayTargetHelp    "P1550271624"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kSmashing
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 0.4900
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P119576033"
+                        DisplayVictimHit "P1719855107"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 1.4700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.3300
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kSmashing
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.4625
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P119576033"
+                        DisplayVictimHit "P1719855107"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 1.3874
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.3300
+            
+                AttribMod
+                {
+                    Attrib kKnockback
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale 0.6700
+                    Magnitude 1.0000
+                    StackType kStack
+                    Suppress Knocked 10 WhenInactive
+                    Messages
+                    {
+                        DisplayAttackerHit "P1956156720"
+                        DisplayVictimHit "P3390955917"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 1.5000
+                Duration 10.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags CancelOnMiss
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "GammaBurst"
+            Requires Temporary_Powers.Temporary_Powers.Radiation_Control_Positrons target.ownPower? Temporary_Powers.Temporary_Powers.Radiation_Control_GammaBurst target.ownPower? ! &&
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayFloat "P550990727"
+                }
+                
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Radiation_Control_GammaBurst
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kStr
+                Table "Melee_Ones"
+                StackType kStack
+                Flags CopyBoosts
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Radiation_Control_GammaBurstDebuff
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Polarize"
+            Requires Temporary_Powers.Temporary_Powers.Radiation_Control_GammaBurst target.ownPower? ! Temporary_Powers.Temporary_Powers.Radiation_Control_Positrons target.ownPower? ! &&
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P3173506143"
+                    DisplayVictimHit "P1691004769"
+                }
+                
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Radiation_Control_Negatrons
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Polarize"
+            Requires Temporary_Powers.Temporary_Powers.Radiation_Control_Positrons target.ownPower?
+        
+            AttribMod
+            {
+                Attrib kRevokePower
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Radiation_Control_Negatrons
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Defiance"
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kStr
+                Type kExpression
+                Target kCaster
+                Table "Ranged_Ones"
+                MagnitudeExpr 0.066 activatetime power.base> * areafactor power.base> /
+                DurationExpr activatetime power.base> 7.5 +
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayInfo "P3912192696"
+                }
+                
+            }
+        }
+    }
+}

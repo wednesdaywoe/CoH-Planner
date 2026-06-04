@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Ember_Demon
+{
+    Name "Ember_Demon"
+    DisplayName "Q97GCNXQ8GLMYVX8H34PUFQU8W"
+    DisplayShortHelp "P3429684360"
+    DisplayHelp "P3429684360"
+    IconName "Ember_Demon_set.ico"
+
+    Powers Mastermind_Pets.Ember_Demon.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ember_Demon.Fire_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ember_Demon.Shield_of_Hellfire
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ember_Demon.Ember_Shield_Owner
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Ember_Demon.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

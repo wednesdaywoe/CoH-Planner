@@ -1,0 +1,47 @@
+Power Temporary_Powers.Temporary_Powers.Alt_50_Percent_Shared_XP_Booster_Granter_1_hour
+{
+    Name                 "Alt_50_Percent_Shared_XP_Booster_Granter_1_hour"
+    DisplayName          "P3374972732"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                60
+    TimeToActivate       1.17
+    EffectArea           kCharacter
+    NumCharges           1
+    StackingUsage        kTrue
+    MaxNumCharges        9999
+    TargetRequires       temporary_powers.temporary_powers.Alt_XP_Booster_Auto target.ownPower? ! temporary_powers.temporary_powers.Alt_50_percent_XP_Booster_1_hour target.ownPower? ! && temporary_powers.temporary_powers.Alt_50_percent_XP_Booster_4_hour target.ownPower? ! && temporary_powers.temporary_powers.Alt_50_percent_XP_Booster_8_hour target.ownPower? ! && temporary_powers.temporary_powers.Alt_50_percent_Shared_XP_Booster_Auto_1_hour target.ownPower? ! && temporary_powers.temporary_powers.Alt_50_percent_Shared_XP_Booster_Auto_4_hour target.ownPower? ! && temporary_powers.temporary_powers.Alt_50_percent_Shared_XP_Booster_Auto_8_hour target.ownPower? ! && temporary_powers.temporary_powers.Alt_Super_XP_Booster_1_hour target.ownPower? ! && temporary_powers.temporary_powers.Alt_Super_XP_Booster_4_hour target.ownPower? ! && temporary_powers.temporary_powers.Alt_Super_XP_Booster_8_hour target.ownPower? ! && enttype target> player eq &&
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Generic_Flash_Target.pfx"
+    include              menu\Powers\AnimFX\Generic_Flash_Target.pfx
+    DisplayShortHelp     "P2654905412"
+    DisplayHelp          "BCGZT2GGA362WVBX3QFWG8X9QS"
+    IconName             "Temporary_XPBoostAlly.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Alt_50_Percent_Shared_XP_Booster_Auto_1_hour
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,116 @@
+#**************************************#
+# Power: Pets > Ninja Pets > Caltrops  #
+# Info:  -Speed, Low Lethal            #
+#**************************************#
+
+Power Mastermind_Pets.Ninja_Pets.Jounins_Caltrops
+{
+    Name                 "Jounins_Caltrops"            
+    DisplayName          "P4162546018"
+    Type                 kAuto
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kDamage_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_Caltrops_Caltrops.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_Caltrops_Caltrops.pfx
+    DisplayShortHelp     "P4268818282"
+    DisplayHelp          "P491082585"
+    IconName             "DarkMiasma_TarPatch.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.8000
+            Duration 1.3000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.0900
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 500.0000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kAfraid
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 50.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Melee_SpeedRunning"
+            Scale -1.0000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

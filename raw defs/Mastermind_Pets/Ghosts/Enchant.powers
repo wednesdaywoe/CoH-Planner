@@ -1,0 +1,49 @@
+#***************************************#
+# Power: Pets > Necro Ghosts > Enchant  #
+# Info:  Enchant                        #
+#***************************************#
+
+Power Mastermind_Pets.Ghosts.Enchant
+{
+    Name                 "Enchant"                     
+    DisplayName          "P2091019232"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_Enchant.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_Enchant.pfx
+    DisplayShortHelp     "P2091019232"
+    DisplayHelp          "P2077067635"
+    IconName             "Necromancy_EnchantUndead.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

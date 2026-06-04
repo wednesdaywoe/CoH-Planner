@@ -1,0 +1,57 @@
+#****************************************************************************#
+# Power: Pets > Mercenary Medic 3 > Stimulant                                #
+# Info:  Close, Ally Res(Disorient, Hold, Immobilize, Sleep, Fear, Confuse)  #
+#****************************************************************************#
+
+Power Mastermind_Pets.Medic_3.Stimulant
+{
+    Name                 "Stimulant"                   
+    DisplayName          "P2320078554"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kBuff
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                25
+    EnduranceCost        19.4435
+    TimeToActivate       1.9
+    RechargeTime         30
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Mercinary_Medic_Stimulant.pfx"
+    include              menu\Powers\AnimFX\Mercinary_Medic_Stimulant.pfx
+    DisplayShortHelp     "P712178432"
+    DisplayHelp          "HBMEU7VM9NREY5BZC8VPGGPY9Z"
+    DisplayAttackerHit   "P3616500569"
+    DisplayVictimHit     "58VF3J2B3T8LY4NCL8NMSYW3W2"
+    IconName             "Medicine_Stimulant.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P1399115484"
+    DisplayTargetHelp    "P410669498"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -20.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/ability/StrengthContinuing.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,60 @@
+PowerSet Pool.Utility_Belt
+{
+    Name "Utility_Belt"
+    DisplayName "P3709707102"
+    DisplayShortHelp "P3709707102"
+    DisplayHelp "P54062970"
+    SetRequires 0
+    SetBuyRequires Pool.Gadgetry.Nano_Net Pool.Gadgetry.Wrist_Blaster || Pool.Gadgetry.Jetpack || Pool.Experimentation.Experimental_Injection || Pool.Experimentation.Toxic_Dart || Pool.Experimentation.Speed_of_Sound || Pool.Force_of_Will.Weaken_Resolve || Pool.Force_of_Will.Project_Will || Pool.Force_of_Will.Mighty_Leap || Pool.Sorcery.Spirit_Ward || Pool.Sorcery.Arcane_Bolt || Pool.Sorcery.Mystic_Flight || !
+    SetBuyRequiresFailedText "You can only have one Specialized power pool in your build."
+    IconName "Utility_Belt_set.ico"
+
+    Powers Pool.Utility_Belt.Bolas
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Utility_Belt.Poisoned_Dagger
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Utility_Belt.Freerunning
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Utility_Belt.Athletics
+    Available -1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Utility_Belt.Flying_Kick
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Utility_Belt.Life_Support_System
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

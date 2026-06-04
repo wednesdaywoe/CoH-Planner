@@ -1,0 +1,57 @@
+Power Sentinel_Defense.Fiery_Aura.Healing_Flames
+{
+    Name                 "Healing_Flames"              
+    DisplayName          "P1655585835"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       0.73
+    RechargeTime         40
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_FieryAura_HealingFlames.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_FieryAura_HealingFlames.PFX
+    DisplayShortHelp     "P1713874157"
+    DisplayHelp          "B6BP44PVVZ4DW5XH766S27UCGQ"
+    IconName             "FlamingShield_HealingFlames.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 2.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

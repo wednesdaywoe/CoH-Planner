@@ -1,0 +1,470 @@
+Power Temporary_Powers.Temporary_Powers.Shadow_Shunt
+{
+    Name                 "Shadow_Shunt"                
+    DisplayName          "P3173575884"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         30
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    ServerTrayPriority   1000
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Teleportation_Recon_Teleport.pfx"
+    include              menu\Powers\AnimFX\Teleportation_Recon_Teleport.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "PXV4BRBP39XYWMVRL2CTU88FM3"
+    IconName             "CarnivalOfLight_Radiance.tga"
+    AnimMainTargetOnly   kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    DisplayTargetShortHelp "P2211841663"
+
+
+    Effect
+    {
+        Requires FWShunt1 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 52.NWShunt1
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires NWShunt1 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 49.FWShunt1
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires FWShunt2 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 52.NWShunt2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires NWShunt2 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 49.FWShunt2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires FWShunt3 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 52.NWShunt3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires NWShunt3 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 49.FWShunt3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires FWShunt4 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 52.NWShunt4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires NWShunt4 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 49.FWShunt4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires FWShunt5 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 52.NWShunt5
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires NWShunt5 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 49.FWShunt5
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires FWShunt6 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 52.NWShunt6
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires NWShunt6 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 49.FWShunt6
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires FWShunt7 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 52.NWShunt7
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires NWShunt7 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 49.FWShunt7
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires FWShunt8 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 52.NWShunt8
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires NWShunt8 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 49.FWShunt8
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires FWShunt9 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 52.NWShunt9
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires NWShunt9 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 49.FWShunt9
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires FWShunt10 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 52.NWShunt10
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires NWShunt10 source.inVolume>
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination 49.FWShunt10
+            }
+            
+        }
+    }
+}

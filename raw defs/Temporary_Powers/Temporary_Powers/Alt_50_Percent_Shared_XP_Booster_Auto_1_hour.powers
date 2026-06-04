@@ -1,0 +1,40 @@
+Power Temporary_Powers.Temporary_Powers.Alt_50_Percent_Shared_XP_Booster_Auto_1_hour
+{
+    Name                 "Alt_50_Percent_Shared_XP_Booster_Auto_1_hour"
+    DisplayName          "P3374972732"
+    ActivateRequires     atLevelCap? !
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTime             3600
+    MaxLifeTime          3600
+    Deletable            kTrue
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P3243207102"
+    IconName             "Temporary_XPBoostAlly.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kExperienceGain
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

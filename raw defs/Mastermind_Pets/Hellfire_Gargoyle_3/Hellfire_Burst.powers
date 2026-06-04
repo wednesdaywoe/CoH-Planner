@@ -1,0 +1,80 @@
+#************************************************************#
+# Power: Pets > Demons Hellfire Gargoyle 3 > Hellfire Burst  #
+# Info:  PBAoE, DoT(Toxic)                                   #
+#************************************************************#
+
+Power Mastermind_Pets.Hellfire_Gargoyle_3.Hellfire_Burst
+{
+    Name                 "Hellfire_Burst"              
+    DisplayName          "P2711754691"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       3
+    TimeToRoot           3
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_HellfireGargoyle3_HellfireBurst.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_HellfireGargoyle3_HellfireBurst.PFX
+    DisplayShortHelp     "Q5SKHTNEL3Y5WLX99XXZ7ZGACA"
+    DisplayHelp          "GU8K9USDK237WNZFUC7ZX8V98W"
+    IconName             "FieryFray_Combustion.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3014490551"
+    DisplayTargetHelp    "P3168769471"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2851307520"
+                DisplayVictimHit "P105122461"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1000
+            Duration 7.1000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,49 @@
+PowerSet Epic.Stone_Mastery
+{
+    Name "Stone_Mastery"
+    DisplayName "P2643949010"
+    DisplayShortHelp "P2643949010"
+    DisplayHelp "P3818619610"
+    IconName "Stone_Mastery_set.ico"
+
+    Powers Epic.Stone_Mastery.Hurl_Boulder
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Stone_Mastery.Fissure
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Stone_Mastery.Stone_Armor
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Stone_Mastery.Seismic_Smash
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Stone_Mastery.Earths_Embrace
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

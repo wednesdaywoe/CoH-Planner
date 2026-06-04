@@ -1,0 +1,98 @@
+Power Temporary_Powers.Temporary_Powers.Power_of_Scirocco_Click
+{
+    Name                 "Power_of_Scirocco_Click"     
+    DisplayName          "P2312817863"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    TimeToActivate       3.17
+    TimeToRoot           3.17
+    RechargeTime         150
+    ActivatePeriod       10
+    EffectArea           kSphere
+    Radius               80
+    LifeTimeInGame       1200
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayRequires   mapname> reichsman_base eq
+    ServerTrayPriority   1
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Scirocco_EMP.pfx"
+    include              menu\Powers\AnimFX\Villain_Scirocco_EMP.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "NVXRK2A5FT6KWRLPJVPSZAD4X3"
+    IconName             "PowerofScirocco.tga"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX V_COV\Powers\ElectricalBlast\ElectricityCage.fx
+                ConditionalBits ANIM_ElectroStun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 15.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Held 15 WhenInactive
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX V_COV\Powers\ElectricalBlast\ElectricityCage.fx
+                ConditionalBits ANIM_ElectroStun
+            }
+            
+        }
+    }
+}

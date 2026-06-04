@@ -1,0 +1,103 @@
+#**************************************************#
+# Power: Ranged > Storm Blast > Category Five      #
+# Info:  Ranged (Location AoE), DoT(Energy), +Wet  #
+#**************************************************#
+
+Power Sentinel_Ranged.Storm_Blast.Category_Five
+{
+    Name                 "Category_Five"               
+    DisplayName          "NWM8XM8EG8T7YSCD76QFWG4NP3"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                40
+    EnduranceCost        15.6
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         90
+    EffectArea           kLocation
+    Radius               25
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_StormBlast_CategoryFive.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_StormBlast_CategoryFive.PFX
+    DisplayShortHelp     "KCW79JPHRBZEYXMATV2E7X3F5Z"
+    DisplayHelp          "49XJNKLZD2TAW4CDENYHLF4A7X"
+    IconName             "StormBlast_CategoryFive.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags HideZero CopyBoosts CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Category Five"
+                PriorityList "PL_StaticObject"
+                Power Pets.ResistAll_NoFly.ResistAll
+                Power Redirects.Storm_Blast.Category_Five_Sentinel
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 13.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kReplace
+            Flags CopyBoosts CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Category Five Eye"
+                PriorityList "PL_StaticObject"
+                Power Pets.ResistAll_NoFly.ResistAll
+                Power Redirects.Storm_Blast.Nukenado_Skin
+                Power Redirects.Storm_Blast.Nukenado_Pulse_Sentinel
+                Power Redirects.Storm_Blast.Nukenado_SelfDestruct
+                Power Redirects.Storm_Blast.Category_Five_Lightning_Sentinel
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing
+            }
+            
+        }
+    }
+}

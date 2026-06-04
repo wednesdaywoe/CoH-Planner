@@ -1,0 +1,47 @@
+Power Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse
+{
+    Name                 "Kinetic_Assault_Impulse"     
+    DisplayName          "P631361175"
+    BuyRequires          accesslevel char> 0 >=
+    ActivateRequires     accesslevel char> 0 >=
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    LifeTime             30
+    MaxLifeTime          30
+    DisplayShortHelp     "P631361175"
+    DisplayHelp          "P3456082207"
+    IconName             "KineticAssault_Impulse.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    DisplayTargetShortHelp "P631361175"
+    NumAllowed           5
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTokenSet
+            Aspect kAbs
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params Token
+            {
+                Token KineticAssaultSecondaries
+            }
+        }
+    }
+}

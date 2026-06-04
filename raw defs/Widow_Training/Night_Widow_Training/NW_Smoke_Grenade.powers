@@ -1,0 +1,72 @@
+Power Widow_Training.Night_Widow_Training.NW_Smoke_Grenade
+{
+    Name                 "NW_Smoke_Grenade"            
+    DisplayName          "P810634828"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                110
+    EnduranceCost        7.8
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               35
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu\powers\AnimFX\ArachnosWidow_SmokeGrenade.pfx"
+    include              menu\powers\AnimFX\ArachnosWidow_SmokeGrenade.pfx
+    DisplayShortHelp     "P1118005641"
+    DisplayHelp          "GJA4ZT3CW2F9YSMR95X4PXN93W"
+    DisplayAttackerHit   "P3070891156"
+    DisplayVictimHit     "P503998744"
+    IconName             "NightWidowTraining_SmokeGrenade.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P2217246121"
+    DisplayTargetHelp    "P1010802951"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.9000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Damaged
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.5000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

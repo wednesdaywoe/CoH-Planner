@@ -1,0 +1,49 @@
+PowerSet Epic.Power_Mastery
+{
+    Name "Power_Mastery"
+    DisplayName "P2798743803"
+    DisplayShortHelp "P2798743803"
+    DisplayHelp "P147179706"
+    IconName "Power_Mastery_set.ico"
+
+    Powers Epic.Power_Mastery.Conserve_Power
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Power_Mastery.Power_Build_Up
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Power_Mastery.Temp_Invulnerability
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Power_Mastery.Force_of_Nature
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Power_Mastery.Total_Focus
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

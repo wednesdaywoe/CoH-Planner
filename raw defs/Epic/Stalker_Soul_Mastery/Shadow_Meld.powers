@@ -1,0 +1,60 @@
+Power Epic.Stalker_Soul_Mastery.Shadow_Meld
+{
+    Name                 "Shadow_Meld"                 
+    DisplayName          "P1505710939"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        4.16
+    TimeToActivate       3
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_SoulMastery_ShadowMeld.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_SoulMastery_ShadowMeld.pfx
+    DisplayShortHelp     "P612981919"
+    DisplayHelp          "HFL4GZQJ6ESSYANEBX4U85XHPX"
+    DisplayAttackerHit   "P3797997220"
+    IconName             "Arachnos_Patron_SelfBuffResistancePhysical.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P861244890"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 2.7000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

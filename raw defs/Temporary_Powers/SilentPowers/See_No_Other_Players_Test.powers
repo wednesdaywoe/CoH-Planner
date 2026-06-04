@@ -1,0 +1,46 @@
+Power Temporary_Powers.SilentPowers.See_No_Other_Players_Test
+{
+    Name                 "See_No_Other_Players_Test"   
+    DisplayName          "P1666653467"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P3899172876"
+    DisplayHelp          "P3899172876"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kExclusiveVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                ExclusiveVisionPhase SeeNoOtherPlayers
+            }
+            
+        }
+    }
+}

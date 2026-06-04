@@ -1,0 +1,259 @@
+Power Warshade_Offensive.Umbral_Blast.Dark_Nova
+{
+    Name                 "Dark_Nova"                   
+    DisplayName          "P3668171698"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kKheldian_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.13
+    RechargeTime         1
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost, kRecovery_Boost, kSpeedFlying_Boost
+    IgnoreAttackTimeErrors jhamilton
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    ToggleDroppable      kNever
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Blaster_Transform.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Blaster_Transform.pfx
+    DisplayShortHelp     "P2162812352"
+    DisplayHelp          "M8U2LKJXHAT3W3XLUPHKZPKVN3"
+    DisplayAttackerHit   "P2107100164"
+    IconName             "UmbralBlast_DarkNova.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 4.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedFlying"
+            Scale 1.5000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Control"
+            Scale 2.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Friction"
+            Scale 2.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kNegative_Energy
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 5.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy kNegative_Energy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude kSuppress_PoolToggles
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude kDisable_Walk
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude kWarshade_Blaster_Mode
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            Period 3.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+            Params Costume
+            {
+                Costume Kheldian_Nova_Warshade
+                Priority 9
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "HypersonicFly"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFly
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 2.0000
+                Duration 2.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        }
+    
+        Effect
+        {
+            Requires kWarshade_Blaster_Mode source.Mode?
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.5000
+                Duration 2.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX2
+                }
+                
+            }
+        }
+    }
+}

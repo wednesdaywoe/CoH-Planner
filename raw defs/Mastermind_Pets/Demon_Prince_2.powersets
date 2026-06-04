@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Demon_Prince_2
+{
+    Name "Demon_Prince_2"
+    DisplayName "ETD7SHS2LLYYWPZG9LY7HYQ4NW"
+    DisplayShortHelp "P3429684360"
+    DisplayHelp "P3429684360"
+    IconName "Demon_Prince_2_set.ico"
+
+    Powers Mastermind_Pets.Demon_Prince_2.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Demon_Prince_2.Chilling_Embrace
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Demon_Prince_2.Ice_Sword
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Demon_Prince_2.Block_of_Ice
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Demon_Prince_2.Enchant_Demon
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

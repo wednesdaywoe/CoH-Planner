@@ -1,0 +1,72 @@
+Power Temporary_Powers.Temporary_Powers.Freakshow_Gang_Sign
+{
+    Name                 "Freakshow_Gang_Sign"         
+    DisplayName          "P4256675083"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                30
+    EnduranceCost        3.25
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               50
+    NumCharges           5
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_FreakshowSign.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_FreakshowSign.pfx
+    DisplayShortHelp     "P3841617860"
+    DisplayHelp          "YPPA86F7WLU6WZNSRB4CE2WFH3"
+    IconName             "Temporary_AoEPlacate.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1943041994"
+
+
+    Effect
+    {
+        Requires group target> Freakshow eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 60.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2414085261"
+                DisplayVictimHit "P89862521"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires group target> Freakshow eq !
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayFloat "P2338895045"
+            }
+            
+        }
+    }
+}

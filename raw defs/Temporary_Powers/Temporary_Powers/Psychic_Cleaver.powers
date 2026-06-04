@@ -1,0 +1,48 @@
+Power Temporary_Powers.Temporary_Powers.Psychic_Cleaver
+{
+    Name                 "Psychic_Cleaver"             
+    DisplayName          "P3639897505"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                100
+    EnduranceCost        6.916
+    TimeToActivate       3
+    TimeToRoot           3
+    RechargeTime         6
+    EffectArea           kCharacter
+    NumCharges           500
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Psychic_Cleaver.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Psychic_Cleaver.pfx
+    DisplayShortHelp     "63TTGBPSGS27YWXC6ATQGRPRM2"
+    DisplayHelp          "J9YPG638RWU4W5L7KXYMC3AQHX"
+    IconName             "Temporary_EMPGlove.tga"
+
+
+    Effect
+    {
+        Requires Carnival_Madeleine_Casey target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kUnique1
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 3.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "3ZXUH76CXVHPWNMUAPZH3WQTGS"
+                DisplayVictimHit "4TCBFS3HKZGSYDBKFG3X6UB783"
+            }
+            
+        }
+    }
+}

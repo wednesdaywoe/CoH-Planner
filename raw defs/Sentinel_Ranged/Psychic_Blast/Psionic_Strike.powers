@@ -1,0 +1,156 @@
+#*********************************************************#
+# Power: Ranged > Psychic Blast > Psionic Strike          #
+# Info:  Ranged, Superior DMG(Psionic), Target -Recharge  #
+#*********************************************************#
+
+Power Sentinel_Ranged.Psychic_Blast.Psionic_Strike
+{
+    Name                 "Psionic_Strike"              
+    DisplayName          "P2462550234"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                75
+    EnduranceCost        13.52
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         14
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_PsychicBlast_MindDomination.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_PsychicBlast_MindDomination.PFX
+    DisplayShortHelp     "VFP4X8PR3W5MYGXFAJJRZPNDMX"
+    DisplayHelp          "TVF237HRNELGWWB7KFL2EP7FWZ"
+    IconName             "PsychicBlast_Heavy"
+    DisplayTargetShortHelp "P3214140212"
+    DisplayTargetHelp    "P3598113204"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 2.6000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P801507873"
+                    DisplayVictimHit "P3863231487"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 2.6000
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                    DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.1500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 2.8290
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P801507873"
+                    DisplayVictimHit "P3863231487"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 2.8290
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                    DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+}

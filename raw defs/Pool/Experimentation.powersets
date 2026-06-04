@@ -1,0 +1,59 @@
+PowerSet Pool.Experimentation
+{
+    Name "Experimentation"
+    DisplayName "P1197202075"
+    DisplayShortHelp "P1197202075"
+    DisplayHelp "P1857372852"
+    SetBuyRequires Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt || Pool.Sorcery.Mystic_Flight || Pool.Force_of_Will.Weaken_Resolve || Pool.Force_of_Will.Project_Will || Pool.Force_of_Will.Mighty_Leap || Pool.Gadgetry.Nano_Net || Pool.Gadgetry.Wrist_Blaster || Pool.Gadgetry.Jetpack || Pool.Utility_Belt.Bolas || Pool.Utility_Belt.Poisoned_Dagger || Pool.Utility_Belt.Freerunning || !
+    SetBuyRequiresFailedText "You can only have one Specialized power pool in your build."
+    IconName "Experimentation_set.ico"
+
+    Powers Pool.Experimentation.Experimental_Injection
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Experimentation.Toxic_Dart
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Experimentation.Speed_of_Sound
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Experimentation.Jaunt
+    Available -1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Experimentation.Corrosive_Vial
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Experimentation.Adrenal_Booster
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

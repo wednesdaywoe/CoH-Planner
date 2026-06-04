@@ -1,0 +1,265 @@
+#*****************************************************************************************************************#
+# Power: Buff > Pain Domination > Enforced Morale                                                                 #
+# Info:  Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception, +Recharge, +Speed, Light DMG  #
+#*****************************************************************************************************************#
+
+Power Defender_Buff.Pain_Domination.Enforced_Morale
+{
+    Name                 "Enforced_Morale"             
+    DisplayName          "P1482189927"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                70
+    EnduranceCost        5.2
+    TimeToActivate       1
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_PainDomination_EnforcedMorale.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_PainDomination_EnforcedMorale.PFX
+    DisplayShortHelp     "YWH8WDWKDDQTY9LTWR7XTN38HS"
+    DisplayHelp          "P361147681"
+    DisplayAttackerHit   "P1987621853"
+    DisplayVictimHit     "P2884066914"
+    IconName             "PainDomination_EnforcedMorale.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P1046625860"
+    DisplayTargetHelp    "P3640605281"
+
+
+    Effect
+    {
+        Requires kMeter target> 0.9 < isPVPMap? ! &&
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -30.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 5.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires kMeter target> 0.9 < isPVPMap? &&
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 3.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 8.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -25.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kSuppress
+            StackKey kPvPMezProt
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kMeter target> 0.9 < Cur.kHitPoints target> Max.kHitPoints target> 0.9 * > &&
+    
+        AttribMod
+        {
+            Attrib kSpecial
+            Aspect kAbs
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            MagnitudeExpr Max.kHitPoints target> 0.9 * Cur.kHitPoints target> -
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "V8ND2H63B27MYECNYX8SLH9V73"
+                DisplayVictimHit "75AP8BX3BDYDY8CUQHXWKZ4ZAA"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kMeter target> 0.9 < Str.kRechargeTime target> 1.21 < &&
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.0500
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires kMeter target> 0.9 < Cur.kRunSpeed target> 1.25 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_SpeedRunning"
+            Scale 0.0500
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires kMeter target> 0.9 < Cur.kFlySpeed target> 1.25 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_SpeedFlying"
+            Scale 0.0500
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires kMeter target> 0.9 < Cur.kSpeedJumping target> 1.25 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_SpeedJumping"
+            Scale 0.0500
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires kMeter target> 0.9 < Cur.kJumpHeight target> 1.12 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Leap"
+            Scale 0.0500
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

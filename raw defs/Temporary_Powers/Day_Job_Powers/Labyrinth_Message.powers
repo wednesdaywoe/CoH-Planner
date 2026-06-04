@@ -1,0 +1,45 @@
+Power Temporary_Powers.Day_Job_Powers.Labyrinth_Message
+{
+    Name                 "Labyrinth_Message"           
+    DisplayName          "PJE39ZLM64T9WXMFD23T27V3YQ"
+    ActivateRequires     DJ_Hospital inVolume> ! DJ_SuperGroupBase inVolume> ! &&
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    AIReport             kNever
+    IsEnvironmentHit     kTrue
+    DisplayShortHelp     "U863HN4E4G8VWYVXQGBBFC2X5Z"
+    DisplayHelp          "67VEZXE5F95EW4ZCTD9PH8LSWW"
+    IconName             "DayJob_LootBuff.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "U863HN4E4G8VWYVXQGBBFC2X5Z"
+    NumAllowed           2
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,58 @@
+Power Epic.Ice_Mastery_Dominator.Ice_Blast
+{
+    Name                 "Ice_Blast"                   
+    DisplayName          "P3382651313"
+    BuyRequires          $archetype @Class_Dominator ==
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        18.1272
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         120
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ColdDomination_Sleet.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ColdDomination_Sleet.PFX
+    DisplayShortHelp     "P1355298513"
+    DisplayHelp          "QJDCWR22C9K7WCNYNST6XZEKK2"
+    IconName             "Ice_Mastery_Sleet"
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P3124605688"
+    DisplayTargetHelp    "P2628796128"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts CopyCreatorMods PseudoPet
+            Messages
+            {
+                DisplayAttackerHit "P3955584513"
+            }
+            
+            Params EntCreate
+            {
+                DisplayName "Sleet"
+                PriorityList "PL_StaticObject"
+                Power Pets.Sleet_Epic.Sleet
+                Power Pets.Sleet_Epic.Avoid
+            }
+            
+        }
+    }
+}

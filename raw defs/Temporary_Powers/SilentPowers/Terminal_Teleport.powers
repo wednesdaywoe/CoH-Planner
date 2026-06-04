@@ -1,0 +1,102 @@
+Power Temporary_Powers.SilentPowers.Terminal_Teleport
+{
+    Name                 "Terminal_Teleport"           
+    DisplayName          "P4071851410"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    AIReport             kNever
+    IgnoreAttackTimeErrors floyd
+    IgnoreStrength       kTrue
+    ShootThroughUntouchable kTrue
+    IsEnvironmentHit     kTrue
+    DisplayShortHelp     "P508100013"
+    DisplayHelp          "P3540682958"
+    DisplayVictimHit     "P3540682958"
+    IconName             "Teleportation_TeleportFoe.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    NumAllowed           2
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Duration 1.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX WORLD\City\SonicPylons_Teleport.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.1700
+            StackType kStack
+            Flags IgnoreResistance
+            Params Teleport
+            {
+                Destination SonicFenceReject
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1000.0000
+            Duration 1.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kReward
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params Reward
+            {
+                Reward P_DenialofService
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,49 @@
+Power Temporary_Powers.Temporary_Powers.Extinguisher
+{
+    Name                 "Extinguisher"                
+    DisplayName          "P1172632720"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.1
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    TimeToActivate       3.33
+    TimeToRoot           3.33
+    RechargeTime         8
+    EffectArea           kCharacter
+    NumCharges           15
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_FireMarshall's_BackPack.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_FireMarshall's_BackPack.pfx
+    DisplayShortHelp     "P526474245"
+    DisplayHelp          "LXVU3UA2YAK7W4MDTMM7KZAV8Q"
+    IconName             "Temporary_PieceOfTheWheel.tga"
+    DisplayTargetShortHelp "P526474245"
+    DisplayTargetHelp    "P1469662115"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires Hellions_Arson_Hellion_Window_Fire target.VillainName> Hellions_Arson_Hellion_Roof_Fire target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.2000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3347500540"
+            }
+            
+        }
+    }
+}

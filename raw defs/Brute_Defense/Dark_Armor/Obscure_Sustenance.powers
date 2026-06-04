@@ -1,0 +1,156 @@
+Power Brute_Defense.Dark_Armor.Obscure_Sustenance
+{
+    Name                 "Obscure_Sustenance"          
+    DisplayName          "P3051037045"
+    BuyRequires          Brute_Defense.Dark_Armor.Dark_Regeneration !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             2
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       1.93
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_DarkArmor_ObscureRegeneration.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_DarkArmor_ObscureRegeneration.PFX
+    DisplayShortHelp     "KU7FDDD9VL6YYUNUZ6KUKSVSR3"
+    DisplayHelp          "KUPQTQXCKPEXWLN66TBZZD428S"
+    IconName             "DarkArmor_DarkRegeneration.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 2.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.7200
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P179235030"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.7200
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P179235030"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.6000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P179235030"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3800
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P179235030"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit kRegeneration
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 0.7500
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

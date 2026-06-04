@@ -1,0 +1,74 @@
+#******************************************#
+# Power: Pets > Thug Posse > Baseball Bat  #
+# Info:  Melee, Light DMG(Smash)           #
+#******************************************#
+
+Power Mastermind_Pets.Thug_Pose_Bat.Baseball_Bat
+{
+    Name                 "Baseball_Bat"                
+    DisplayName          "P1493495841"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        6.864
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu\Powers\AnimFX\Villain_Baseball_Bat.pfx"
+    include              menu\Powers\AnimFX\Villain_Baseball_Bat.pfx
+    DisplayShortHelp     "WDN22YTAPPTHW7N6JUDV5VV55X"
+    DisplayHelp          "MR7Z5FX47B4EYHN7CX724C9XMZ"
+    IconName             "AssaultWeapons_ARBurst.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Raid target.HasTag? ! enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 4.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2043392969"
+                DisplayVictimHit "P2036629572"
+            }
+            
+        }
+    }
+}

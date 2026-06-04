@@ -1,0 +1,117 @@
+Power Temporary_Powers.Temporary_Powers.Street_Cred
+{
+    Name                 "Street_Cred"                 
+    DisplayName          "EQHKGT89UE3LWKCECXC5JEMYNA"
+    BuyRequires          0
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    Range                80
+    TravelSuppression    3
+    EffectArea           kCharacter
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Thug_Boss_3_Street_Cred.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Thug_Boss_3_Street_Cred.pfx
+    DisplayShortHelp     "EQHKGT89UE3LWKCECXC5JEMYNA"
+    DisplayHelp          "XW3K56PQAEDUWMZUA4KC6AFSBW"
+    IconName             "Thugs_TargetedSummonMob.tga"
+
+
+    Effect
+    {
+        Tag "StreetCredCancel"
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0900
+            Duration 300.0000
+            Magnitude 1.0000
+            StackType kRefreshToCount
+            StackLimit 10
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params EffectFilter
+            {
+                Tag StreetCred
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 300.0000
+            Magnitude 1.0000
+            StackType kRefreshToCount
+            StackLimit 10
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params EffectFilter
+            {
+                Tag StreetCredMonitor
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 300.0000
+            Magnitude 1.0000
+            StackType kRefreshToCount
+            StackLimit 10
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params EffectFilter
+            {
+                Tag StreetCredActive
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -10.0000
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Mastermind_Summon.Thugs.Gang_War
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4254141574"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Street_Cred_Monitor
+            }
+            
+        }
+    }
+}

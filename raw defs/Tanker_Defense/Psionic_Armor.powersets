@@ -1,0 +1,81 @@
+PowerSet Tanker_Defense.Psionic_Armor
+{
+    Name "Psionic_Armor"
+    DisplayName "EXXF5G43NLXWWPXQZ7DDC6ZZNZ"
+    DisplayShortHelp "EXXF5G43NLXWWPXQZ7DDC6ZZNZ"
+    DisplayHelp "46DZPCMHDYVSWTLVE4CNDWJCJS"
+    IconName "Dark_Armor_set.ico"
+
+    Powers Tanker_Defense.Psionic_Armor.Psychic_Wall
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Psionic_Armor.Psionic_Shield
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Psionic_Armor.Impenetrable_Mind
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Psionic_Armor.Consume_Psyche
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Psionic_Armor.Impose_Presence
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Psionic_Armor.Fortify_Mind
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Psionic_Armor.Precognition
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Psionic_Armor.Aura_of_Insanity
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Tanker_Defense.Psionic_Armor.Memento_Mori
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

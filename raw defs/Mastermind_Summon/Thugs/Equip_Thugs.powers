@@ -1,0 +1,1311 @@
+#**************************************#
+# Power: Summon > Thugs > Equip Thugs  #
+# Info:  Ranged, Equip Thug Henchman   #
+#**************************************#
+
+Power Mastermind_Summon.Thugs.Equip_Thugs
+{
+    Name                 "Equip_Thugs"                 
+    DisplayName          "P3385639754"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kMastermindUpgrade1
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kMyPet
+    Range                50
+    EnduranceCost        11.375
+    TimeToActivate       1.3
+    RechargeTime         0.5
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    StrengthsDisallowed  kRechargeTime
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Paramilitary_BoostEquip.pfx"
+    include              menu\Powers\AnimFX\Paramilitary_BoostEquip.pfx
+    DisplayShortHelp     "P2662343781"
+    DisplayHelp          "WHR33UU5PSSGYTNFGPPEV5ZPYW"
+    DisplayAttackerHit   "P1077110670"
+    IconName             "Thugs_EquipThugs.tga"
+    MaxTargetsHit        16
+    AnimMainTargetOnly   kTrue
+
+
+    Effect
+    {
+        Tag "T1 Thugs"
+        Requires MastermindPets_Thug target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_2.Pistols
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_2.Dual_Wield
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_2.Equipped
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion.Pistol
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Minion_01_01 eq group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_2.Equip_1_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Minion_01_01 eq kMastermind_Upgrade_2 target.Mode? && group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_3.Upgrade_Equipment_1_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Minion_01_01 eq kMastermind_Upgrade_2 target.Mode? && group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_3.Upgrade_Equipment_1_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Minion_02_01 eq group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_2.Equip_2_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Minion_02_01 eq kMastermind_Upgrade_2 target.Mode? && group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_3.Upgrade_Equipment_2_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Minion_02_01 eq kMastermind_Upgrade_2 target.Mode? && group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_3.Upgrade_Equipment_2_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Minion_03_01 eq group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_2.Equip_3_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Minion_03_01 eq kMastermind_Upgrade_2 target.Mode? && group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_3.Upgrade_Equipment_3_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Minion_03_01 eq kMastermind_Upgrade_2 target.Mode? && group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_3.Upgrade_Equipment_3_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Minion_04_01 eq group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_2.Equip_4_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Minion_04_01 eq kMastermind_Upgrade_2 target.Mode? && group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_3.Upgrade_Equipment_4_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Minion_04_01 eq kMastermind_Upgrade_2 target.Mode? && group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_3.Upgrade_Equipment_4_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Minion_05_01 eq group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_2.Equip_5_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Minion_05_01 eq kMastermind_Upgrade_2 target.Mode? && group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_3.Upgrade_Equipment_5_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Minion_05_01 eq kMastermind_Upgrade_2 target.Mode? && group target> MastermindPets eq &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Minion_3.Upgrade_Equipment_5_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "T1 Arsonist"
+        Requires MastermindPets_Thug_Arsonist target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_2.Spit_Fire
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_2.Equipped
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Arsonist_01_01 eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_2.Equip_1_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Arsonist_01_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_1_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Arsonist_01_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_1_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Arsonist_02_01 eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_2.Equip_2_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Arsonist_02_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_2_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Arsonist_02_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_2_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Arsonist_03_01 eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_2.Equip_3_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Arsonist_03_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_3_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Arsonist_03_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Arsonist_3.Upgrade_Equipment_3_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "T2 Enforcers"
+        Requires MastermindPets_Thug_Lt target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_2.UZI_Burst
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_2.UZI_Heavy_Burst
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_2.UZI_Cone_Blast
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt.Burst
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt.Heavy_Burst
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantBoostedPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_2.Tactics
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_2.Equipped
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Lieutenant_01_01 eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_2.Equip_1_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Lieutenant_01_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_3.Upgrade_Equipment_1_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Lieutenant_02_01 eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_2.Equip_2_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Lieutenant_02_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_3.Upgrade_Equipment_2_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Lieutenant_03_01 eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_2.Equip_3_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Lieutenant_03_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_3.Upgrade_Equipment_3_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Lieutenant_04_01 eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_2.Equip_4_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Lieutenant_04_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Lt_3.Upgrade_Equipment_4_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "T3 Bruiser"
+        Requires MastermindPets_Thug_Boss target.VillainName>
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_2.Haymaker
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_2.Hand_Clap
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_2.Equipped
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Boss_01_01 eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_2.Equip_1_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Boss_01_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_3.Upgrade_Equipment_1_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Boss_01_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_3.Upgrade_Equipment_1_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Boss_02_01 eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_2.Equip_2_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Boss_02_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_3.Upgrade_Equipment_2_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Boss_02_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_3.Upgrade_Equipment_2_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Boss_03_01 eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_2.Equip_3_2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> Mastermind_Thug_Boss_03_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_3.Upgrade_Equipment_3_4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires costume target> Mastermind_Thug_Boss_03_01 eq kMastermind_Upgrade_2 target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Mastermind_Pets.Thug_Boss_3.Upgrade_Equipment_3_3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires MastermindPets_Thug target.VillainName> MastermindPets_Thug_Arsonist target.VillainName> || MastermindPets_Thug_Lt target.VillainName> || MastermindPets_Thug_Boss target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Duration 3.5000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingBits ANIM_BOOSTUP ANIM_EQUIP ANIM_HIT
+            }
+            
+        }
+    }
+}

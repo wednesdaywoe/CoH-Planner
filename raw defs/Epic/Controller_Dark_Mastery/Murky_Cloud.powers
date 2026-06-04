@@ -1,0 +1,90 @@
+Power Epic.Controller_Dark_Mastery.Murky_Cloud
+{
+    Name                 "Murky_Cloud"                 
+    DisplayName          "P2114757221"
+    BuyRequires          $archetype @Class_Controller ==
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.104
+    TimeToActivate       1.17
+    RechargeTime         8
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_Blaster_Dark_Mastery_Murky_Cloud.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_Blaster_Dark_Mastery_Murky_Cloud.pfx
+    DisplayShortHelp     "P1469679171"
+    DisplayHelp          "JBPRPDPMEHYCW9VBNG9PYF24XZ"
+    DisplayAttackerHit   "P1176803178"
+    IconName             "Dark_Mastery_MurkyCloud"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kFire kCold
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 2.7500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy kNegative_Energy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 1.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 2.7500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

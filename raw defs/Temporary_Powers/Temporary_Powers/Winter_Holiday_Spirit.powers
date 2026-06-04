@@ -1,0 +1,36 @@
+Power Temporary_Powers.Temporary_Powers.Winter_Holiday_Spirit
+{
+    Name                 "Winter_Holiday_Spirit"       
+    DisplayName          "P3798691711"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       172800
+    Deletable            kTrue
+    DisplayShortHelp     "P1265099495"
+    DisplayHelp          "P2661248884"
+    IconName             "Temporary_HolidayGift.tga"
+
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kXPDebtProtection
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2500
+            Duration 10.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,41 @@
+PowerSet Mastermind_Pets.Thug_Arsonist
+{
+    Name "Thug_Arsonist"
+    DisplayName "9FH6D7UL4ZH5Y3B7CTS9695XNZ"
+    DisplayShortHelp "P1151940263"
+    DisplayHelp "P1151940263"
+    IconName "Thug_Arsonist_set.ico"
+
+    Powers Mastermind_Pets.Thug_Arsonist.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Arsonist.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Arsonist.Brawl
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Thug_Arsonist.Molotov_Cocktail
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

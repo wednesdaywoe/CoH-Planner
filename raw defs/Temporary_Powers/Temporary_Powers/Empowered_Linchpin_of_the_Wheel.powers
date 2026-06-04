@@ -1,0 +1,60 @@
+Power Temporary_Powers.Temporary_Powers.Empowered_Linchpin_of_the_Wheel
+{
+    Name                 "Empowered_Linchpin_of_the_Wheel"
+    DisplayName          "P2489561767"
+    ModesDisallowed      kDisable_All, kDisable_Temp
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.1625
+    TimeToActivate       1.67
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTimeInGame       5400
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\FlamingShield_Flaming_Shield.pfx"
+    include              menu\Powers\AnimFX\FlamingShield_Flaming_Shield.pfx
+    DisplayShortHelp     "P88441133"
+    DisplayHelp          "MZJX7B27NXF3W5NVHG2NV8QXES"
+    DisplayAttackerHit   "P3569681516"
+    IconName             "Temporary_LinchpinOfTheWheel.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy kNegative_Energy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

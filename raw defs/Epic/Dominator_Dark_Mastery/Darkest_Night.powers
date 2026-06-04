@@ -1,0 +1,99 @@
+Power Epic.Dominator_Dark_Mastery.Darkest_Night
+{
+    Name                 "Darkest_Night"               
+    DisplayName          "P1936194933"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kDeadOrAliveFoe
+    Range                70
+    EnduranceCost        0.26
+    TimeToActivate       3.17
+    TimeToRoot           3.17
+    RechargeTime         20
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_DarkMiasma_DarkestNight.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_DarkMiasma_DarkestNight.PFX
+    DisplayShortHelp     "P515964094"
+    DisplayHelp          "4ZKZHB9A8H7EYSCR5V3VH6E9TW"
+    DisplayAttackerHit   "P4024386588"
+    DisplayVictimHit     "P295133987"
+    IconName             "Dark_Mastery_DarkestNight"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3286818350"
+    DisplayTargetHelp    "P3570112387"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 1.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 4.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

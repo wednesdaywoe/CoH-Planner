@@ -1,0 +1,39 @@
+Power Defender_Ranged.Beam_Rifle.Penetrating_Ray
+{
+    Name                 "Penetrating_Ray"             
+    DisplayName          "P1466089441"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kKnockback_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFx\BeamRifle_PenetratingRay_Quick.pfx"
+    include              menu\Powers\AnimFx\BeamRifle_PenetratingRay_Quick.pfx
+    DisplayShortHelp     "ZK2WKBRHNS7YWXC2ZKSYEPJX93"
+    DisplayHelp          "QPW6UPTG6S8CYFMHUDNXMMMGJX"
+    IconName             "BeamRifle_PenetratingRay.tga"
+
+    Redirect
+    {
+        Power Pets.Defender_BR_Snipe.Penetrating_Ray_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Pets.Defender_BR_Snipe.Penetrating_Ray_Normal
+        Requires 1
+    }
+    
+}

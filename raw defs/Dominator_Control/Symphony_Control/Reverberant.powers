@@ -1,0 +1,48 @@
+Power Dominator_Control.Symphony_Control.Reverberant
+{
+    Name                 "Reverberant"                 
+    DisplayName          "W2HFX7W5589HY5NA79TRUWNKK2"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        20.8
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         240
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kImmobilized_Boost, kSleep_Boost, kFear_Boost, kConfuse_Boost, kStunned_Boost, kHold_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Symphony_Control_Reverberant.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Symphony_Control_Reverberant.pfx
+    DisplayShortHelp     "W6D668HHJ6RMYHZM2B9X5NVVVQ"
+    DisplayHelp          "EH4F8A7AD8W6Y8VKZJ9J6ERWP3"
+    IconName             "SymphonyControl_Pet"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Reverberant
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    }
+}

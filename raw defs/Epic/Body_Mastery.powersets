@@ -1,0 +1,49 @@
+PowerSet Epic.Body_Mastery
+{
+    Name "Body_Mastery"
+    DisplayName "P2798743803"
+    DisplayShortHelp "P2798743803"
+    DisplayHelp "P2754365290"
+    IconName "Body_Mastery_set.ico"
+
+    Powers Epic.Body_Mastery.Conserve_Power
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Body_Mastery.Focused_Accuracy
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Body_Mastery.Laser_Beam_Eyes
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Body_Mastery.Physical_Perfection
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Body_Mastery.Energy_Torrent
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

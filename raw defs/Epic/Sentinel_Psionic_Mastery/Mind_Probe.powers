@@ -1,0 +1,158 @@
+#***********************************************#
+# Power: Epic > Psionic Mastery > Mind Probe    #
+# Info:  Melee, DMG(Psionic), Target -Recharge  #
+#***********************************************#
+
+Power Epic.Sentinel_Psionic_Mastery.Mind_Probe
+{
+    Name                 "Mind_Probe"                  
+    DisplayName          "P361216995"
+    BuyRequires          $archetype @Class_Sentinel ==
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        10.192
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_PsionicAssault_MindProbe.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_PsionicAssault_MindProbe.PFX
+    DisplayShortHelp     "EZG6MCSLHNJCYLN6GMG4D43P5Q"
+    DisplayHelp          "VA2Z7CFH3AV6Y4MH677P3GA7S2"
+    IconName             "MentalControl_MindProbe"
+    DisplayTargetShortHelp "P3214140212"
+    DisplayTargetHelp    "P3434442888"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.9600
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P801507873"
+                    DisplayVictimHit "P3863231487"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.9600
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                    DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.4000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 2.0190
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P801507873"
+                    DisplayVictimHit "P3863231487"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 2.0190
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                    DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+}

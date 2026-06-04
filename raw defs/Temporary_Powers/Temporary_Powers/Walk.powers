@@ -1,0 +1,64 @@
+Power Temporary_Powers.Temporary_Powers.Walk
+{
+    Name                 "Walk"                        
+    DisplayName          "P765711723"
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kSprint_Group, kSprintRoot_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    DisplayShortHelp     "P3182950312"
+    DisplayHelp          "P1640605205"
+    DisplayAttackerHit   "P4146090612"
+    IconName             "Inherent_Sprint.tga"
+
+
+    Effect
+    {
+        Tag "SuppressRunSpeed"
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kSelf
+            Table "Melee_SuppressRunSpeed"
+            Scale 1.4000
+            Duration 0.8000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingBits ANIM_WALK
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "SuppressJump"
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kMax
+            Target kSelf
+            Table "Melee_SuppressJump"
+            Scale 1.4000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+}

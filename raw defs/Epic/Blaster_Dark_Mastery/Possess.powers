@@ -1,0 +1,117 @@
+Power Epic.Blaster_Dark_Mastery.Possess
+{
+    Name                 "Possess"                     
+    DisplayName          "P65084755"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         24
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kConfuse_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_DarknessControl_Possess.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_DarknessControl_Possess.PFX
+    DisplayShortHelp     "NAUARYXTNXFQYWLVQ5MS86VBS3"
+    DisplayHelp          "B6DQLD2X3E4KW7NPRKMPSUD33A"
+    IconName             "Dark_Mastery_Possess"
+    DisplayTargetShortHelp "P1116895679"
+    DisplayTargetHelp    "P2584848323"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.3000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            RequiredEvent Confused 1
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayInfo "G7Q8MEM82ZYXYLMMM43Y75TS9Q"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack kDefense kAbsorb kEndurance kToHit kSpeedRunning kSpeedFlying kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.3000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Confused 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+}

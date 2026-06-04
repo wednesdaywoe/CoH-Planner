@@ -1,0 +1,116 @@
+Power Warshade_Defensive.Umbral_Aura.Black_Dwarf_Step
+{
+    Name                 "Black_Dwarf_Step"            
+    DisplayName          "P2258620009"
+    BuyRequires          Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Step ! &&
+    ModesRequired        kWarshade_Tanker_Mode
+    ModesDisallowed      kDisable_All, kDisable_Teleport, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kTeleport
+    Range                300
+    EnduranceCost        13
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    EffectArea           kLocation
+    BoostsAllowed        kRange_Boost, kEnduranceDiscount_Boost
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1005
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Tanker_Teleport.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Tanker_Teleport.pfx
+    DisplayShortHelp     "P2537599147"
+    DisplayHelp          "P2755309550"
+    IconName             "UmbralAura_TeleportSelf.tga"
+    Free                 kTrue
+    AutoIssue            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Duration 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.1700
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Tag "TeleHover"
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.5000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedFlying"
+            Scale 500.0000
+            Duration 1.5000
+            Delay 1.1700
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl kMovementFriction kIntangible
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 8.0000
+            Duration 1.5000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            Delay 1.5000
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Pool_Teleportation.Teleport_Hover
+            }
+            
+        }
+    }
+}

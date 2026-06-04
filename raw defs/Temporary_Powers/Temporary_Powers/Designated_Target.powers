@@ -1,0 +1,56 @@
+Power Temporary_Powers.Temporary_Powers.Designated_Target
+{
+    Name                 "Designated_Target"           
+    DisplayName          "P820114686"
+    Type                 kAuto
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EffectArea           kSphere
+    Radius               20
+    LifeTime             4
+    DisplayShortHelp     "P537447525"
+    DisplayHelp          "P3265282338"
+    IconName             "SuperStrength_Taunt.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1871791596"
+    DisplayTargetHelp    "P218666672"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Taunt"
+            Scale 4.0000
+            Magnitude 10.0000
+            Period 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 4.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Designated_Target
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,137 @@
+Power Temporary_Powers.Temporary_Powers.OBSOLETE_Temporal_Disruption
+{
+    Name                 "OBSOLETE_Temporal_Disruption"
+    DisplayName          "P422041185"
+    BuyRequires          accesslevel char> 9 >
+    ActivateRequires     accesslevel char> 9 >
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    DisplayShortHelp     "P3923775585"
+    DisplayHelp          "P3682158694"
+    DisplayAttackerHit   "P3947861858"
+    IconName             "Temporary_ResonanceDisrupter.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.8000
+            Duration 10.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude kTemporal_Disruption
+            Period 11.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires kTemporal_Disruption target.Mode?
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1000
+            Duration 10.5000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX Powers/Invisibility/InvisibilityPhaseShiftContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 20.0000
+            Duration 10.5000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 222.0000
+            Duration 10.5000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kUntouchable kIntangible kOnlyAffectsSelf
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.5000
+            Magnitude 3.0000
+            Delay 0.5000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kThreatLevel
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 10.5000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

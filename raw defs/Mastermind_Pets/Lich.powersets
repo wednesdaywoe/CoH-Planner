@@ -1,0 +1,33 @@
+PowerSet Mastermind_Pets.Lich
+{
+    Name "Lich"
+    DisplayName "X3V9GDB474AWWXLQRMD3DZHDH3"
+    DisplayShortHelp "P3124304184"
+    DisplayHelp "DZAGQ5BKAUW7WWV8EV536J5VC2"
+    IconName "Lich_set.ico"
+
+    Powers Mastermind_Pets.Lich.Dark_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lich.Torrent
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lich.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

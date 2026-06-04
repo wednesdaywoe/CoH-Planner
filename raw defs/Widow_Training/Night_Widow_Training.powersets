@@ -1,0 +1,61 @@
+PowerSet Widow_Training.Night_Widow_Training
+{
+    Name "Night_Widow_Training"
+    DisplayName "P2053292841"
+    DisplayShortHelp "P2053292841"
+    DisplayHelp "P33894811"
+    CostumeKeys CustomWeapon_ArachnosClawsRight CustomWeapon_ArachnosClawsLeft
+    CostumeParts ArachnosClawsLeft_Default ArachnosClawsRight_Default
+    SpecializeAt 23
+    SpecializeRequires Widow_Training.Fortunata_Training powerset? Teamwork.Fortunata_Teamwork powerset? || !
+    IconName "Night_Widow_Training_set.ico"
+
+    Powers Widow_Training.Night_Widow_Training.NW_Mental_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Night_Widow_Training.Build_Up
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Night_Widow_Training.NW_Smoke_Grenade
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Night_Widow_Training.NW_Slash
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Night_Widow_Training.NW_Eviscerate
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Widow_Training.Night_Widow_Training.NW_Psychic_Scream
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

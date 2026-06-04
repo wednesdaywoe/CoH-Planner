@@ -1,0 +1,44 @@
+Power Temporary_Powers.Art_Test.Ranged_Snipe
+{
+    Name                 "Ranged_Snipe"                
+    DisplayName          "P3692460304"
+    BuyRequires          accesslevel char> 9 >
+    ActivateRequires     accesslevel char> 9 >
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    InterruptTime        3
+    TimeToActivate       4.67
+    RechargeTime         4
+    EffectArea           kCharacter
+    IgnoreAttackTimeErrors floyd
+    DisplayShortHelp     "P3692460304"
+    DisplayHelp          "SBHDW8LXSRV5WBM94Y8SCLUWDW"
+    IconName             "Archery_SniperArrow.tga"
+
+
+    Effect
+    {
+        Requires accesslevel source> 9 >
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1416051728"
+                DisplayVictimHit "P1447313556"
+            }
+            
+        }
+    }
+}

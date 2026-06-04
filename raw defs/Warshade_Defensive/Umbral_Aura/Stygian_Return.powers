@@ -1,0 +1,125 @@
+Power Warshade_Defensive.Umbral_Aura.Stygian_Return
+{
+    Name                 "Stygian_Return"              
+    DisplayName          "P1297486751"
+    ModesDisallowed      kDisable_All, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         300
+    EffectArea           kSphere
+    Radius               25
+    CastableAfterDeath   kDeadOnly
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Revive.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Revive.pfx
+    DisplayShortHelp     "P3228648468"
+    DisplayHelp          "RXBHJ72E9J4WW3MWQTQW88G3UA"
+    IconName             "UmbralAura_StygianReturn.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2862738113"
+    DisplayTargetHelp    "P1601124334"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Heal"
+            Scale 3.0000
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P606393157"
+            }
+            
+            FX
+            {
+                ContinuingBits ANIM_RAISEDEAD
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 30.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P1197092217"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 4.0000
+            Magnitude 50.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Comeback.Comeback
+				Power Redirects.Comeback.Debt_Protection
+            }
+            
+        }
+    }
+}

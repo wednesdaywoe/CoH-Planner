@@ -1,0 +1,127 @@
+#***********************************************#
+# Power: Summon > Robotics > Pulse Rifle Blast  #
+# Info:  Ranged, DMG(Energy), -Regen            #
+#***********************************************#
+
+Power Mastermind_Summon.Robotics.Pulse_Rifle_Blast
+{
+    Name                 "Pulse_Rifle_Blast"           
+    DisplayName          "P2390537843"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        5.2
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    HighlightEval        kPersonalAttack1 Mode? !
+    HighlightRing        94 113 102 255
+    VisualFX             "menu\Powers\AnimFX\Robotics_LazerRifle_Small_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Robotics_LazerRifle_Small_NoGeo.pfx
+    DisplayShortHelp     "KV3UGD8Q4AMFY3NS7UX4YFDMUZ"
+    DisplayHelp          "AW723LB2WRKDWGMV87QAJ9P4JS"
+    IconName             "Robotics_LaserRifleBurst.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -2.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.2600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires @ToHitRoll @ToHit / 0.3 <=
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale -4.0000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "RefreshReminder"
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kCaster
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude kPersonalAttack1
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

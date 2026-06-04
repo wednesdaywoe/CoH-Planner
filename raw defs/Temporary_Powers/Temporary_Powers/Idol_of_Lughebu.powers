@@ -1,0 +1,109 @@
+Power Temporary_Powers.Temporary_Powers.Idol_of_Lughebu
+{
+    Name                 "Idol_of_Lughebu"             
+    DisplayName          "P3203627492"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        19.5
+    TimeToActivate       1.93
+    TimeToRoot           1.93
+    RechargeTime         15
+    EffectArea           kCharacter
+    LifeTimeInGame       86400
+    StrengthsDisallowed  kRange
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\V_ShadowFighting_Siphon_Life.pfx"
+    include              menu\Powers\AnimFX\V_ShadowFighting_Siphon_Life.pfx
+    DisplayShortHelp     "9G9WG4L6EV5LWTBZRKVMCX9X3X"
+    DisplayHelp          "V7UTJ3GPH7UUYJMKZHZ7TT9UAX"
+    IconName             "Temporary_IdolOfLughebu.tga"
+    DisplayTargetShortHelp "P2190949330"
+    DisplayTargetHelp    "P278813324"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX POWERS/DarknessControl/ChillOfNightHitContnuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0500
+        Requires arch source> Class_Scrapper eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "MKNQB68MKQ4GWWBRPFD3WYFNQQ"
+                DisplayVictimHit "3V64ZZSHFGUAWFNN3KA2TRDP2Q"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

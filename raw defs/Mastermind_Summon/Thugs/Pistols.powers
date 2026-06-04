@@ -1,0 +1,154 @@
+#**********************************#
+# Power: Summon > Thugs > Pistols  #
+# Info:  Ranged, DMG(Lethal)       #
+#**********************************#
+
+Power Mastermind_Summon.Thugs.Pistols
+{
+    Name                 "Pistols"                     
+    DisplayName          "P2292338111"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        5.2
+    TimeToActivate       1.2
+    TimeToRoot           1.2
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    HighlightEval        kPersonalAttack1 Mode? ! Mastermind_Summon.Thugs.Gang_War && combatlevel auto> 18 >= &&
+    HighlightRing        192 192 0 255
+    VisualFX             "menu\Powers\AnimFX\Mastermind_Thugs_DualGuns_SingleShot_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Mastermind_Thugs_DualGuns_SingleShot_NoGeo.pfx
+    DisplayShortHelp     "NB2XU8MP3FUEW3ZHSEP8PG2N9A"
+    DisplayHelp          "3W9ZMKLSM9KVY6B8FAMDKRCY3S"
+    IconName             "Thugs_TargetedRangedMinorDmg.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.4000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "StreetCred1"
+        Requires Mastermind_Summon.Thugs.Gang_War source.ownPower? combatlevel source> 18 >= &&
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -100.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Params EffectFilter
+            {
+                Tag StreetCred1
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kCaster
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude kPersonalAttack1
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        Effect
+        {
+            Tag "StreetCred"
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Street_Cred
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEntCreate
+                Aspect kCur
+                Target kSelf
+                Table "Ranged_Level"
+                Scale 1.0000
+                Duration 35.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts
+                Params EntCreate
+                {
+                    EntityDef Pets_Thug_Pose_06
+                    PriorityList "PL_FightPreferRanged"
+                }
+                
+            }
+        }
+    }
+}

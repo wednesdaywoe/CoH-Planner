@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Commando_3
+{
+    Name "Commando_3"
+    DisplayName "MRVB47F9WDL2WCB5ZF9HWTRGXA"
+    DisplayShortHelp "P3643806322"
+    DisplayHelp "P3643806322"
+    IconName "Commando_3_set.ico"
+
+    Powers Mastermind_Pets.Commando_3.Bulllet_Barrage
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Commando_3.M30_Grenade
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Commando_3.Flamethrower
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Commando_3.LRM_Rocket
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Commando_3.Tactical_Upgrade
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

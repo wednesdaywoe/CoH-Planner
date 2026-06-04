@@ -1,0 +1,39 @@
+Power Blaster_Ranged.Electrical_Blast.Zapp
+{
+    Name                 "Zapp"                        
+    DisplayName          "P3017513223"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kRecovery_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_ElectricalBlast_Zapp_Quick.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_ElectricalBlast_Zapp_Quick.PFX
+    DisplayShortHelp     "M62GHE2J3KY5WGX9BMSGYGFCNW"
+    DisplayHelp          "CTHCC35ZR77CW6LG6XC5A49E2Z"
+    IconName             "ElectricalBolt_Zapp.tga"
+
+    Redirect
+    {
+        Power Pets.Blaster_Electric_Snipe.Zapp_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Pets.Blaster_Electric_Snipe.Zapp_Normal
+        Requires 1
+    }
+    
+}

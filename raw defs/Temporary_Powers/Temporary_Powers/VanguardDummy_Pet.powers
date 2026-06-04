@@ -1,0 +1,52 @@
+Power Temporary_Powers.Temporary_Powers.VanguardDummy_Pet
+{
+    Name                 "VanguardDummy_Pet"           
+    DisplayName          "DZJHHCWGDQGVYJMKZMHGCD5T7Z"
+    ActivateRequires     mapname> City_02_04 eq ! isMissionMap? ! &&
+    ModesDisallowed      kArena, kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                40
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         600
+    EffectArea           kLocation
+    NumCharges           1
+    StackingUsage        kTrue
+    MaxNumCharges        10
+    StrengthsDisallowed  kRechargeTime
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Summon_Jumpbot.pfx"
+    include              menu\Powers\AnimFX\Villain_Summon_Jumpbot.pfx
+    DisplayShortHelp     "9BQZVE82GR3CYULLVTFDDPZN7Q"
+    DisplayHelp          "YLDUG67S8HFNYXMRJSTPTV6HHX"
+    IconName             "Temporary_WarWolfWhistle.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 600.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            Flags NearGround IgnoreStrength IgnoreResistance
+            Params EntCreate
+            {
+                EntityDef PracticeRobots_Trigger_VanguardDummy
+                PriorityList "DoNotAggroCritters(1),StaticObject"
+            }
+            
+        }
+    }
+}

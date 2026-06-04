@@ -1,0 +1,75 @@
+#***********************************#
+# Power: Pets > Thug Posse > Brawl  #
+# Info:  Melee Smash                #
+#***********************************#
+
+Power Mastermind_Pets.Thug_Pose_Brawl.Brawl
+{
+    Name                 "Brawl"                       
+    DisplayName          "P1212741494"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        3.536
+    TimeToActivate       0.67
+    TimeToRoot           0.67
+    RechargeTime         2
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    IgnoreStance         kTrue
+    VisualFX             "menu\Powers\AnimFX\Brawling_Brawling.pfx"
+    include              menu\Powers\AnimFX\Brawling_Brawling.pfx
+    DisplayShortHelp     "P91908262"
+    DisplayHelp          "DT2RHCQXJB79Y6N9JFCRVLSJE2"
+    IconName             "Inherent_Brawl.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.6800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Raid target.HasTag? ! enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 4.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2043392969"
+                DisplayVictimHit "P2036629572"
+            }
+            
+        }
+    }
+}

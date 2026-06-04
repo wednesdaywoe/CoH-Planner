@@ -1,0 +1,132 @@
+Power Temporary_Powers.Temporary_Powers.PS_Deadlock_Initial_Strike
+{
+    Name                 "PS_Deadlock_Initial_Strike"  
+    DisplayName          "P3807885890"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        5
+    TimeToActivate       0.8
+    TimeToRoot           0.8
+    RechargeTime         3
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRange kRechargeTime
+    ServerTrayPriority   999
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Brawling_InitialStrike.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Brawling_InitialStrike.pfx
+    DisplayShortHelp     "DVP3L8BRK2SBWCXUU2DUASRZLA"
+    DisplayHelp          "WX4YW84XWRSHYRV8FCLYRLPEPS"
+    IconName             "Brawling_InitialStrike.tga"
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.6000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.6000
+            Magnitude 1.0000
+            Delay 0.3300
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 6.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreStrength IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,49 @@
+PowerSet Epic.Fire_Mastery_Dominator
+{
+    Name "Fire_Mastery_Dominator"
+    DisplayName "P1421554031"
+    DisplayShortHelp "P1421554031"
+    DisplayHelp "P1679897252"
+    IconName "Fire_Mastery_Dominator_set.ico"
+
+    Powers Epic.Fire_Mastery_Dominator.Fire_Blast
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Fire_Mastery_Dominator.Fire_Ball
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Fire_Mastery_Dominator.Fire_Shield
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Fire_Mastery_Dominator.Rise_of_the_Phoenix
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Fire_Mastery_Dominator.Consume
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

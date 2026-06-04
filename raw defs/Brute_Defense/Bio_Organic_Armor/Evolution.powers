@@ -1,0 +1,38 @@
+Power Brute_Defense.Bio_Organic_Armor.Evolution
+{
+    Name                 "Evolution"                   
+    DisplayName          "P3162589495"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    DisplayShortHelp     "P925797529"
+    DisplayHelp          "P706676989"
+    IconName             "BioOrganicArmor_Adaptation.tga"
+    ShowInManage         kFalse
+    ShowBuffIcon         kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

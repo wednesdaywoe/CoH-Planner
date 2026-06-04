@@ -1,0 +1,51 @@
+Power Pool.Experimentation.Corrosive_Vial
+{
+    Name                 "Corrosive_Vial"              
+    DisplayName          "P175884314"
+    BuyRequires          Pool.Experimentation.Experimental_Injection Pool.Experimentation.Toxic_Dart && Pool.Experimentation.Experimental_Injection Pool.Experimentation.Speed_of_Sound && || Pool.Experimentation.Toxic_Dart Pool.Experimentation.Speed_of_Sound && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        20.8
+    TimeToActivate       1.53
+    TimeToRoot           1.53
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/OriginPool_Experimentation_CorrosiveVial.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/OriginPool_Experimentation_CorrosiveVial.PFX
+    DisplayShortHelp     "P2083644558"
+    DisplayHelp          "5Z4WH59BXRDNY9ZDBCYW98PC4Z"
+    IconName             "Experimentation_CorrosiveVial.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 14.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags NearGround IgnoreCombatMods KeepThroughDeath CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Corrosive Vial"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Pool_Experimentation.Corrosive_Vial_Splat
+            }
+            
+        }
+    }
+}

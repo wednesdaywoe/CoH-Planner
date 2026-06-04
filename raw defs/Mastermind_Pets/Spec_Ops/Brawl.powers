@@ -1,0 +1,54 @@
+#*******************************************#
+# Power: Pets > Mercenary Spec Ops > Brawl  #
+# Info:  Melee, DMG(Smash)                  #
+#*******************************************#
+
+Power Mastermind_Pets.Spec_Ops.Brawl
+{
+    Name                 "Brawl"                       
+    DisplayName          "P1212741494"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        4.368
+    PreferenceMultiplier 0.25
+    TimeToActivate       0.67
+    TimeToRoot           0.67
+    RechargeTime         16
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    IgnoreStance         kTrue
+    VisualFX             "menu\Powers\AnimFX\Brawling_Brawling.pfx"
+    include              menu\Powers\AnimFX\Brawling_Brawling.pfx
+    DisplayShortHelp     "QMU8WKRZZH4UYYBZP9KR3WZ2XX"
+    DisplayHelp          "PY8ARRRXM8WKWGLQ79Q89YYB8A"
+    IconName             "Inherent_Brawl.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.8400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+}

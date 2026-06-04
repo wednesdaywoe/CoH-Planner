@@ -1,0 +1,75 @@
+Power Temporary_Powers.Temporary_Powers.I24_RogueArc_Summon_SecondMeasure
+{
+    Name                 "I24_RogueArc_Summon_SecondMeasure"
+    DisplayName          "P2855840741"
+    ActivateRequires     alignment char> hero eq alignment char> vigilante eq || alignment char> rogue eq || alignment char> paragon eq || Temporary_Powers.Temporary_Powers.I24_RogueArc_Summon_Lock ownPower? ! && level char> 30 >= &&
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        9.75
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         240
+    EffectArea           kLocation
+    NumCharges           1
+    IgnoreLevelBought    kTrue
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Summon_Jumpbot.pfx"
+    include              menu\Powers\AnimFX\Villain_Summon_Jumpbot.pfx
+    DisplayShortHelp     "P3840077923"
+    DisplayHelp          "223PYL7D76CCYQMM877ZPX5YFX"
+    IconName             "Temporary_SignatureSummon.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 300.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            Flags CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P1700128817"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_I24_RogueSummon_SecondMeasure
+                PriorityList "Combat"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.I24_RogueArc_Summon_Lock
+            }
+            
+        }
+    }
+}

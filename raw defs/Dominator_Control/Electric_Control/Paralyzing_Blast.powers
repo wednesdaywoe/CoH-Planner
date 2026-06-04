@@ -1,0 +1,68 @@
+Power Dominator_Control.Electric_Control.Paralyzing_Blast
+{
+    Name                 "Paralyzing_Blast"            
+    DisplayName          "P321933285"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.6
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         240
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost, kHold_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/DominatorControl_ElectricControl_ParalyzingBlast.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/DominatorControl_ElectricControl_ParalyzingBlast.PFX
+    DisplayShortHelp     "QVLTZNU27LB6W7CFQ8W4JM9LT3"
+    DisplayHelp          "UWQM6APXA2NYWHBKCAQ24XN3RQ"
+    IconName             "ElectricControl_ParalyzingBlastPatch"
+    DisplayTargetShortHelp "P830967228"
+    DisplayTargetHelp    "P1220245880"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods CopyBoosts CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Tesla Coil"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Electric_Control.Tesla_Coil_Pulse
+                Power Redirects.Electric_Control.Tesla_Coil_Debuff
+                Power Redirects.Electric_Control.Tesla_Coil_OneShot
+                Power Redirects.Electric_Control.Self_Destruct
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            DelayedRequires Redirects.Electric_Control.Tesla_Coil_OneShot target.ownPower?
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods NoHitDelay NoProjectileDelay
+        }
+    }
+}

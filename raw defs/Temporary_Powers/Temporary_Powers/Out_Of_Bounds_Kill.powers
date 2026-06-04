@@ -1,0 +1,50 @@
+Power Temporary_Powers.Temporary_Powers.Out_Of_Bounds_Kill
+{
+    Name                 "Out_Of_Bounds_Kill"          
+    DisplayName          "GZVVWEJVQBVAYPLVNDND6CZN22"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    RefreshesOnActivePlayerChange kTrue
+    DisplayShortHelp     "3FCAT8QMTVCRWGBUKWAWNQU983"
+    DisplayHelp          "CQKSE6JNV5RRYVNBH2M5Y5BNTZ"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "FUSRVGRCW5TMW6LRQUG5M92TF3"
+            }
+            
+        }
+    }
+}

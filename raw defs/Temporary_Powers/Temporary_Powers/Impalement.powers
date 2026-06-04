@@ -1,0 +1,50 @@
+Power Temporary_Powers.Temporary_Powers.Impalement
+{
+    Name                 "Impalement"                  
+    DisplayName          "YGVH6C9GG5WWWQZNJ5WEC4BCPZ"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    RefreshesOnActivePlayerChange kTrue
+    VisualFX             "menu\Powers\AnimFX\Impalement.pfx"
+    include              menu\Powers\AnimFX\Impalement.pfx
+    DisplayShortHelp     "79QAMG6LRKAQY2XSF5Z4BXKTYW"
+    DisplayHelp          "GK47STPEXURAYTXYFU52UGJ5Y3"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P144339891"
+            }
+            
+        }
+    }
+}

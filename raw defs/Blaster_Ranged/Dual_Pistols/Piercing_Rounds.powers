@@ -1,0 +1,449 @@
+#***************************************************************************#
+# Power: Ranged > Dual Pistols > Piercing Rounds                            #
+# Info:  Narrow Ranged (Cone), DMG(Lethal/Special), Foes -Res(All)/Special  #
+#***************************************************************************#
+
+Power Blaster_Ranged.Dual_Pistols.Piercing_Rounds
+{
+    Name                 "Piercing_Rounds"             
+    DisplayName          "P1233880528"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        14.352
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         15
+    EffectArea           kCone
+    Radius               80
+    Arc                  5
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    HighlightEval        kPiercing Mode? !
+    HighlightRing        139 155 102 255
+    VisualFX             "menu\Powers\AnimFX\DualPistols_PiercingRounds.pfx"
+    include              menu\Powers\AnimFX\DualPistols_PiercingRounds.pfx
+    DisplayShortHelp     "XBHLVCNZKKN5WBCZUS6N3CP49W"
+    DisplayHelp          "WNXHJLQH2QAFY9CC4VCA7TSR9Z"
+    IconName             "DualPistols_PiercingRounds.tga"
+    MaxTargetsHit        3
+    DisplayTargetShortHelp "P2211841663"
+    DisplayTargetHelp    "P1210405978"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            Effect
+            {
+                Tag "Lethal"
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 2.3000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3785438311"
+                        DisplayVictimHit "P1873832980"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "FireDamage"
+                Chance 0.0000
+            
+                Effect
+                {
+                    Tag "FireDamage"
+                    Chance 0.0000
+                
+                    AttribMod
+                    {
+                        Attrib kFire
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_Damage"
+                        Scale 2.3000
+                        Magnitude 1.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P2798397535"
+                            DisplayVictimHit "P459143670"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "FireDamageDoT"
+                
+                    AttribMod
+                    {
+                        Attrib kFire
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_Damage"
+                        Scale 0.1690
+                        Duration 2.1000
+                        Magnitude 1.0000
+                        Delay 0.5000
+                        Period 1.0000
+                        TickChance 0.0000
+                        StackType kStack
+                        Flags CancelOnMiss
+                        Messages
+                        {
+                            DisplayAttackerHit "P1083355571"
+                            DisplayVictimHit "P3022741469"
+                        }
+                        
+                        FX
+                        {
+                            ContinuingFX POWERS/FireControl/CindersHit.fx
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Tag "ColdDamage"
+                Chance 0.0000
+            
+                AttribMod
+                {
+                    Attrib kCold
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 2.3000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P4173738004"
+                        DisplayVictimHit "P1163387325"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+                    Aspect kCur
+                    Target kTarget
+                    Table "Ranged_Slow"
+                    Scale 0.1500
+                    Duration 8.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                }
+            
+                AttribMod
+                {
+                    Attrib kJumpHeight kRechargeTime
+                    Aspect kStr
+                    Target kTarget
+                    Table "Ranged_Slow"
+                    Scale 0.1500
+                    Duration 8.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Flags IgnoreStrength
+                }
+            }
+        
+            Effect
+            {
+                Tag "ToxicDamage"
+                Chance 0.0000
+            
+                AttribMod
+                {
+                    Attrib kToxic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 2.3000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2851307520"
+                        DisplayVictimHit "P105122461"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                    Aspect kStr
+                    Target kTarget
+                    Table "Ranged_Debuff_Dam"
+                    Scale 1.0000
+                    Duration 6.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreStrength
+                    FX
+                    {
+                        ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            Effect
+            {
+                Tag "Lethal"
+            
+                AttribMod
+                {
+                    Attrib kLethal
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 2.2907
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P3785438311"
+                        DisplayVictimHit "P1873832980"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "FireDamage"
+                Chance 0.0000
+            
+                Effect
+                {
+                    Tag "FireDamage"
+                    Chance 0.0000
+                
+                    AttribMod
+                    {
+                        Attrib kFire
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_PvPDamage"
+                        Scale 2.2907
+                        Magnitude 1.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "P2798397535"
+                            DisplayVictimHit "P459143670"
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Tag "FireDamageDoT"
+                
+                    AttribMod
+                    {
+                        Attrib kFire
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Ranged_PvPDamage"
+                        Scale 0.1375
+                        Duration 2.1000
+                        Magnitude 1.0000
+                        Delay 0.5000
+                        Period 1.0000
+                        TickChance 0.0000
+                        StackType kStack
+                        Flags CancelOnMiss
+                        Messages
+                        {
+                            DisplayAttackerHit "P1083355571"
+                            DisplayVictimHit "P3022741469"
+                        }
+                        
+                        FX
+                        {
+                            ContinuingFX POWERS/FireControl/CindersHit.fx
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Tag "ColdDamage"
+                Chance 0.0000
+            
+                AttribMod
+                {
+                    Attrib kCold
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 2.2907
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P4173738004"
+                        DisplayVictimHit "P1163387325"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+                    Aspect kCur
+                    Target kTarget
+                    Table "Ranged_Slow"
+                    Scale 0.1500
+                    Duration 8.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                }
+            
+                AttribMod
+                {
+                    Attrib kJumpHeight kRechargeTime
+                    Aspect kStr
+                    Target kTarget
+                    Table "Ranged_Slow"
+                    Scale 0.1500
+                    Duration 8.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Flags IgnoreStrength
+                }
+            }
+        
+            Effect
+            {
+                Tag "ToxicDamage"
+                Chance 0.0000
+            
+                AttribMod
+                {
+                    Attrib kToxic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 2.2907
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2851307520"
+                        DisplayVictimHit "P105122461"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                    Aspect kStr
+                    Target kTarget
+                    Table "Ranged_Debuff_Dam"
+                    Scale 1.0000
+                    Duration 6.0000
+                    Magnitude 1.0000
+                    StackType kReplace
+                    Flags IgnoreStrength
+                    FX
+                    {
+                        ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kRes
+                Target kTarget
+                Table "Ranged_Res_Dmg"
+                Scale -2.0000
+                Duration 15.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+                FX
+                {
+                    ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kSelf
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 13.0000
+                Magnitude kPiercing
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

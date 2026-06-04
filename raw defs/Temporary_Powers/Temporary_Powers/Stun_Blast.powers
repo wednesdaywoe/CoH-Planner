@@ -1,0 +1,54 @@
+Power Temporary_Powers.Temporary_Powers.Stun_Blast
+{
+    Name                 "Stun_Blast"                  
+    DisplayName          "P1843336971"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        6.5
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         4
+    EffectArea           kCharacter
+    LifeTimeInGame       3600
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\ENERGY_BLAST_Sniper_BLAST.pfx"
+    include              menu\Powers\AnimFX\ENERGY_BLAST_Sniper_BLAST.pfx
+    DisplayShortHelp     "RTTQG6ZBVEVDWSNMPVFD399ANZ"
+    DisplayHelp          "45W4ZF37YMDDWFZL99HEUA78T2"
+    IconName             "Temporary_StunBlast.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            Period 1.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+}

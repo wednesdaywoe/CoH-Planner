@@ -1,0 +1,368 @@
+Power Stalker_Melee.Dual_Blades.Placate
+{
+    Name                 "Placate"                     
+    DisplayName          "P1943041994"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                60
+    TimeToActivate       0.8
+    TimeToRoot           0.8
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               15
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kTaunt_Boost
+    ProcMainTargetOnly   kTrue
+    HighlightEval        kDD_StatusMode_2 Mode?
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\DualBlades_Placate_NoGeo.pfx"
+    include              menu\Powers\AnimFX\DualBlades_Placate_NoGeo.pfx
+    DisplayShortHelp     "P363396554"
+    DisplayHelp          "ST4H2VYV8ZDVWEZQYCUE2XVVD3"
+    IconName             "DualBlades_Placate.tga"
+    MaxTargetsHit        5
+    DisplayTargetShortHelp "P1943041994"
+    DisplayTargetHelp    "P2833281680"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Delay 0.0500
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kPlacate
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_Taunt"
+                Scale 10.0000
+                Magnitude 4.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3381081303"
+                    DisplayVictimHit "P2268423897"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Delay 0.0500
+            Requires enttype target> player eq
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kPlacate
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_Taunt"
+                Scale 6.0000
+                Magnitude 4.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3381081303"
+                    DisplayVictimHit "P2268423897"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Delay 0.0500
+        
+            AttribMod
+            {
+                Attrib kStealthRadius
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 150.0000
+                Duration 10.0000
+                Magnitude 1.0000
+                Delay 0.2500
+                StackType kReplace
+                CancelEvents Attacked Damaged MissionObjectClick
+                Flags IgnoreResistance
+                FX
+                {
+                    ContinuingFX V_COV\Powers\Ninjitsu\Hide.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kStealthRadiusPlayer
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 380.0000
+                Duration 10.0000
+                Magnitude 1.0000
+                Delay 0.2500
+                StackType kReplace
+                CancelEvents Attacked Damaged MissionObjectClick
+                Flags IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kMeter
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 10.0000
+                Magnitude 1.0000
+                Delay 0.2500
+                StackType kReplace
+                CancelEvents Attacked Damaged MissionObjectClick
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            AttribMod
+            {
+                Attrib kTranslucency
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.2000
+                Duration 10.0000
+                Magnitude 1.0000
+                Delay 0.2500
+                StackType kReplace
+                CancelEvents Attacked Damaged MissionObjectClick
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 10.0000
+                Magnitude kPlacateFollowup
+                StackType kReplace
+                CancelEvents Attacked Damaged MissionObjectClick
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            }
+        
+            Effect
+            {
+                Flags HideFromInfo
+            
+                AttribMod
+                {
+                    Attrib kMeter
+                    Aspect kCur
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Duration 5.0000
+                    Magnitude 1.0000
+                    Delay 0.2500
+                    StackType kReplace
+                    CancelEvents Attacked MissionObjectClick
+                    Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                }
+            
+                AttribMod
+                {
+                    Attrib kSetMode
+                    Aspect kCur
+                    Type kConstant
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Duration 5.0000
+                    Magnitude kPlacateFollowup
+                    StackType kReplace
+                    CancelEvents Attacked MissionObjectClick
+                    Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "ClearCombo"
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_Status1
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_Debuff1
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_Debuff2
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_BonusAoE1
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_BonusAoE2
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_BonusDoT1
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_BonusDoT2
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires kDD_StatusMode_2 source.Mode?
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 1.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            Delay 0.2000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1133349"
+                DisplayFloat "P2739231675"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 2.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            Delay 0.2000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag DB_Status2
+            }
+        }
+    }
+}

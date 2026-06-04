@@ -1,0 +1,70 @@
+#***************************************************#
+# Power: Pets > Demons Fiery Demonling > Claw Rake  #
+# Info:  Melee, DMG(Lethal/Fire)                    #
+#***************************************************#
+
+Power Mastermind_Pets.Fiery_Demonling.Claw_Rake
+{
+    Name                 "Claw_Rake"                   
+    DisplayName          "P4021652017"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        5.2
+    DontSetStance        1
+    TimeToActivate       0.83
+    TimeToRoot           0.83
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_FieryDemonling_ClawRake.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_FieryDemonling_ClawRake.pfx
+    DisplayShortHelp     "FQDWT268FZVFWRNEH6ANVCZYV3"
+    DisplayHelp          "XLKJL924Q74QWRZSMC4UBEBXW2"
+    IconName             "Claws_ClawsSwipe.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.7000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.3000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    }
+}

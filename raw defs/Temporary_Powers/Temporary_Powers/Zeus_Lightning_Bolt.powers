@@ -1,0 +1,50 @@
+Power Temporary_Powers.Temporary_Powers.Zeus_Lightning_Bolt
+{
+    Name                 "Zeus_Lightning_Bolt"         
+    DisplayName          "P3004747879"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        5
+    TimeToActivate       3.67
+    TimeToRoot           3.67
+    RechargeTime         20
+    EffectArea           kSphere
+    Radius               60
+    ServerTrayPriority   1000
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Hero_Statesman_ZeusLightningBolts.pfx"
+    include              menu\Powers\AnimFX\Hero_Statesman_ZeusLightningBolts.pfx
+    DisplayShortHelp     "P2642434242"
+    DisplayHelp          "YWUBG4ZZC6STYAXLRX8K7VSVMZ"
+    IconName             "Tyrant_Lightning.tga"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P2642434242"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 16.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "FRSSJKC5PYCBYNNS2UGWW7LEFW"
+                DisplayVictimHit "G95KU877F7JQYNL5D339GMXRXZ"
+            }
+            
+        }
+    }
+}

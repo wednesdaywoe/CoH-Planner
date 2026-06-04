@@ -1,0 +1,62 @@
+Power Temporary_Powers.Temporary_Powers.Box_of_Fireworks
+{
+    Name                 "Box_of_Fireworks"            
+    DisplayName          "P3846455118"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    Range                1
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    NumCharges           1
+    LifeTime             172800
+    MaxNumCharges        1
+    MaxLifeTime          172800
+    VisualFX             "menu\Powers\AnimFX\WinterEvent_Holiday_LoginPower.pfx"
+    include              menu\Powers\AnimFX\WinterEvent_Holiday_LoginPower.pfx
+    DisplayShortHelp     "P1399577341"
+    DisplayHelp          "P1864725538"
+    IconName             "Temporary_Powers_Fireworks.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Fireworks
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Friendly_Fireworks
+            }
+            
+        }
+    }
+}

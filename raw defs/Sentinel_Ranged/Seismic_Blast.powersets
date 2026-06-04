@@ -1,0 +1,89 @@
+PowerSet Sentinel_Ranged.Seismic_Blast
+{
+    Name "Seismic_Blast"
+    DisplayName "P2884920251"
+    DisplayShortHelp "P2884920251"
+    DisplayHelp "JVAN9WMEH4N2YCV7EGH3BL98MA"
+    IconName "Archery_set.ico"
+
+    Powers Sentinel_Ranged.Seismic_Blast.Encase
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Seismic_Blast.Shatter
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Seismic_Blast.Rock_Shards
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Seismic_Blast.Entomb
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Seismic_Blast.Seismic_Force
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Seismic_Blast.Upthrust
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Seismic_Blast.Gravestone
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Seismic_Blast.Stalagmite
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Seismic_Blast.Meteor
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Seismic_Blast.Shockwaves
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

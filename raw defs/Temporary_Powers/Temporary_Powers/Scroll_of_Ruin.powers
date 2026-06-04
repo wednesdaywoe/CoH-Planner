@@ -1,0 +1,50 @@
+Power Temporary_Powers.Temporary_Powers.Scroll_of_Ruin
+{
+    Name                 "Scroll_of_Ruin"              
+    DisplayName          "P4124485360"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.5
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                70
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         1000
+    EffectArea           kSphere
+    Radius               20
+    NumCharges           1
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_ScrollOfRuin.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_ScrollOfRuin.pfx
+    DisplayShortHelp     "P289624453"
+    DisplayHelp          "Q66VPANHHUZPYKCP22ZG58DJ8W"
+    DisplayAttackerHit   "P3965985002"
+    IconName             "Temporary_ScrollofRuin.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 10.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX Powers/DarknessControl/PetrifyingGazeHitContinuing.fx
+            }
+            
+        }
+    }
+}

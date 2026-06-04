@@ -1,0 +1,88 @@
+Power Blaster_Support.Radiation_Manipulation.Beta_Decay
+{
+    Name                 "Beta_Decay"                  
+    DisplayName          "P3546528178"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.208
+    TimeToActivate       0.67
+    RechargeTime         10
+    ActivatePeriod       1
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost, kDebuff_ToHit_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/RadiationArmor_BetaDecay.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/RadiationArmor_BetaDecay.PFX
+    DisplayShortHelp     "3LXVJ4K888D2WRM39NFQTGF8QX"
+    DisplayHelp          "P1354811279"
+    IconName             "AtomicManipulation_Decay"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 1.5000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1000
+            Duration 1.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0250
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

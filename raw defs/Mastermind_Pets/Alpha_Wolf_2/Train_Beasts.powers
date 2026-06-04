@@ -1,0 +1,48 @@
+#**************************************************#
+# Power: Pets > Beast Alpha Wolf 2 > Train Beasts  #
+# Info:  Train Beasts                              #
+#**************************************************#
+
+Power Mastermind_Pets.Alpha_Wolf_2.Train_Beasts
+{
+    Name                 "Train_Beasts"                
+    DisplayName          "P1659836107"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_TrainBeast_Resistance.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_TrainBeast_Resistance.pfx
+    DisplayShortHelp     "P1659836107"
+    DisplayHelp          "P4110431938"
+    IconName             "BeastMastery_TrainBeasts.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

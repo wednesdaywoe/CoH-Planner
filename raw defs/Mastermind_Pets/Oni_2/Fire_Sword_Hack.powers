@@ -1,0 +1,122 @@
+#**********************************************#
+# Power: Pets > Ninja Oni 2 > Fire Sword Hack  #
+# Info:  Melee, DMG(Lethal/Fire), DoT          #
+#**********************************************#
+
+Power Mastermind_Pets.Oni_2.Fire_Sword_Hack
+{
+    Name                 "Fire_Sword_Hack"             
+    DisplayName          "P2497729146"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        6.864
+    DontSetStance        1
+    TimeToActivate       3
+    TimeToRoot           3
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu\Powers\AnimFX\Oni_Fire_Sword_Heavy.pfx"
+    include              menu\Powers\AnimFX\Oni_Fire_Sword_Heavy.pfx
+    DisplayShortHelp     "J3BXUG74X4ZJY3XH4XBYKF7Z92"
+    DisplayHelp          "AS7TD9E77SEHWYMBSXFEE8PTDQ"
+    IconName             "Katana_Hack.tga"
+    DisplayTargetShortHelp "P3423146141"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1000
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CriticalHit"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "VW85MT4UMEU8W4CGRC8YN7AXWX"
+                DisplayVictimHit "JMTY7ABEW2DCWAM7ENWKLHJCJA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,43 @@
+Power Temporary_Powers.Temporary_Powers.Assassins_Focus
+{
+    Name                 "Assassins_Focus"             
+    DisplayName          "P4280036843"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTime             10
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P3345015441"
+    DisplayHelp          "P1713678125"
+    IconName             "AssassinsFocus.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    NumAllowed           3
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3330
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag ASCrit
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+Power Temporary_Powers.Temporary_Powers.Electromagnetic_Grenades
+{
+    Name                 "Electromagnetic_Grenades"    
+    DisplayName          "P319800412"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        18.98
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               15
+    NumCharges           30
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_EMP_Grenades.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_EMP_Grenades.pfx
+    DisplayShortHelp     "UPF335NAW6NZWYVVYB8965TS3Z"
+    DisplayHelp          "NDUGPD7HEV5BYAVEK259L2FLBZ"
+    IconName             "Temporary_ElectromagneticGrenades.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Electronic target.HasTag?
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.6400
+            Duration 2.0000
+            Magnitude 1.0000
+            Period 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+            FX
+            {
+                ContinuingFX Powers/ElectricityControl/ElectricityShaklesHit.fx
+                ContinuingBits ANIM_ElectroStun
+            }
+            
+        }
+    }
+}

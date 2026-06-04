@@ -1,0 +1,89 @@
+#********************************************************#
+# Power: Pets > Mercenary Commando 3 > Tactical Upgrade  #
+# Info:  Tactical Upgrade                                #
+#********************************************************#
+
+Power Mastermind_Pets.Commando_3.Tactical_Upgrade
+{
+    Name                 "Tactical_Upgrade"            
+    DisplayName          "P1704568493"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kBuff_Defense_Boost
+    DisplayShortHelp     "P1704568493"
+    DisplayHelp          "GGQLKLNRNTXKYXNHPXJ9NRM5XS"
+    IconName             "Paramilitary_TacticalUpgrade.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            Delay 1.5000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX V_COV\Mastermind_Pets\Mercenaries\2ndComandoUpgrade.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kMax
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 5.0000
+            Duration 10.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Tag "Defenses"
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 0.0250
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 0.0150
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

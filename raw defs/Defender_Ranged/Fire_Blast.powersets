@@ -1,0 +1,81 @@
+PowerSet Defender_Ranged.Fire_Blast
+{
+    Name "Fire_Blast"
+    DisplayName "P4178945378"
+    DisplayShortHelp "P4178945378"
+    DisplayHelp "P516947913"
+    IconName "Fire_Blast_set.ico"
+
+    Powers Defender_Ranged.Fire_Blast.Flares
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Fire_Blast.Fire_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Fire_Blast.Fire_Ball
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Fire_Blast.Rain_of_Fire
+    Available 9
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Fire_Blast.Fire_Breath
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Fire_Blast.Aim
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Fire_Blast.Blaze
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Fire_Blast.Blazing_Bolt
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Fire_Blast.Inferno
+    Available 29
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

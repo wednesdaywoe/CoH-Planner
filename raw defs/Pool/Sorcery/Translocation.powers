@@ -1,0 +1,59 @@
+Power Pool.Sorcery.Translocation
+{
+    Name                 "Translocation"               
+    DisplayName          "P2731593863"
+    BuyRequires          Pool.Sorcery.Mystic_Flight
+    ModesRequired        kMysticFlightOn
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Teleport, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kTeleport
+    Range                350
+    EnduranceCost        9.75
+    TimeToActivate       1.57
+    TimeToRoot           1.57
+    EffectArea           kLocation
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1000
+    IgnoreLevelBought    kTrue
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/OriginPool_Sorcery_Translocation.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/OriginPool_Sorcery_Translocation.PFX
+    DisplayShortHelp     "P102559963"
+    DisplayHelp          "P3306118522"
+    IconName             "SorceryPool_Translocation.tga"
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    AutoIssue            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Duration 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance NoHitDelay
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

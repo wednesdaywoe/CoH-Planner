@@ -1,0 +1,189 @@
+Power Blaster_Support.Earth_Manipulation.Salt_Crystals
+{
+    Name                 "Salt_Crystals"               
+    DisplayName          "P3437809167"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        15.6
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         20
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Blaster_Support_Earth_Manipulation_Salt_Crystals.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Blaster_Support_Earth_Manipulation_Salt_Crystals.pfx
+    DisplayShortHelp     "P2796164971"
+    DisplayHelp          "Z2TUEFY2FTG3WKX6VM8J7AEM6W"
+    IconName             "EarthManip_SaltCrystals"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2772611963"
+    DisplayTargetHelp    "P4245533176"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 12.0000
+                Magnitude 3.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires Raid target.HasTag?
+            Flags HitRollSuccess
+        
+            AttribMod
+            {
+                Attrib kSleep
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Sleep"
+                Scale 12.0000
+                Magnitude 3.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "P786700626"
+                    DisplayVictimHit "P2415654930"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                    ConditionalBits ANIM_LassoStun
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kReplace
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Defiance"
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Seismic"
+        Requires NearGround source.EventTimeSince> 1 >= Blaster_Ranged.Seismic_Blast source.ownPower? &&
+        Flags HideFromInfo
+    
+        Effect
+        {
+            Tag "SeismicStress"
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods
+                Params Power
+                {
+                    Power Redirects.Seismic_Blast.Seismic_Stress
+                }
+                
+            }
+        }
+    }
+}

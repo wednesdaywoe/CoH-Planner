@@ -1,0 +1,138 @@
+Power Temporary_Powers.Temporary_Powers.Nemesis_Staff_ZTF
+{
+    Name                 "Nemesis_Staff_ZTF"           
+    DisplayName          "B9S2JSQAZFFCW8NEVR2EY37CUA"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                100
+    EnduranceCost        10.66
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         8
+    EffectArea           kCharacter
+    ServerTrayPriority   1
+    HighlightEval        1
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\Villain_Nemesis_Staff_Bolt.pfx"
+    include              menu\Powers\AnimFX\Villain_Nemesis_Staff_Bolt.pfx
+    DisplayShortHelp     "5TLBKQVLY49FWWVLV322RMBRGZ"
+    DisplayHelp          "ZU9MPT8NVQRAW3CTTCA26GR2BS"
+    IconName             "Temporary_NemesisStaff.tga"
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq kMechanicProtection target.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 9.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.2000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq kMechanicProtection target.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "X287MCJHZ3Y6Y7NTQQE5S8VDKA"
+                DisplayVictimHit "4A8D4PB5RYDEWWMEFQM8VSY8QQ"
+                DisplayFloat "RHYAD4KWWHP4WZMPX7FHR2SXMA"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Nemesis_Nemesis target.VillainName> Hardmode Challenge? ! && kMechanicProtection target.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Res_Dmg"
+            Scale -2.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

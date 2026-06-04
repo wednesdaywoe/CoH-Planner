@@ -1,0 +1,220 @@
+Power Temporary_Powers.Temporary_Powers.Power_Cell
+{
+    Name                 "Power_Cell"                  
+    DisplayName          "P1803890574"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kAny
+    EntsAutoHit          kAny
+    Target               kAny
+    Range                10
+    RechargeTime         10
+    EffectArea           kCharacter
+    AIReport             kNever
+    NumCharges           1
+    LifeTime             1801
+    IgnoreAttackTimeErrors cbehrens
+    TargetRequires       Objects_Keyes_Island_Terminal target.VillainName> kThreePowerCell target.Mode? ! && kEnraged target.Mode? &&
+    ServerTrayPriority   10
+    Tradeable            kTrue
+    Deletable            kTrue
+    ShootThroughUntouchable kTrue
+    InstanceLocked       kTrue
+    VisualFX             "menu/Powers/AnimFX/Revive_Police_Drone.pfx"
+    include              menu/Powers/AnimFX/Revive_Police_Drone.pfx
+    DisplayShortHelp     "P690677664"
+    DisplayHelp          "9E5PB7KFS7CFW7VXGTFY4P9C5X"
+    IconName             "Gadgets_TargetingDrone.tga"
+    DoNotSave            kTrue
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P690677664"
+    DisplayTargetHelp    "P3460166471"
+    NumAllowed           30
+
+
+    Effect
+    {
+        Requires kOnePowerCell target.Mode? !
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 9999.0000
+            Magnitude kOnePowerCell
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1794324015"
+                DisplayFloat "P1498363937"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 9999.0000
+            Magnitude kEnraged
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P501464488"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.3500
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P3426790094"
+                DisplayVictimHit "P3635132928"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kOnePowerCell target.Mode? kTwoPowerCell target.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 9999.0000
+            Magnitude kTwoPowerCell
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P4160618588"
+                DisplayFloat "P1750731512"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.3500
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P3426790094"
+                DisplayVictimHit "P3635132928"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kTwoPowerCell target.Mode? kThreePowerCell target.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 9999.0000
+            Magnitude kThreePowerCell
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P2780381940"
+                DisplayFloat "P2566085316"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.3500
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P3426790094"
+                DisplayVictimHit "P3635132928"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Objects_Keyes_Island_Marker
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 4.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayFloat "P2204589526"
+            }
+            
+        }
+    }
+}

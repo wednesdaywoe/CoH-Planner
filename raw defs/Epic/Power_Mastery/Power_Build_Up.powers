@@ -1,0 +1,117 @@
+Power Epic.Power_Mastery.Power_Build_Up
+{
+    Name                 "Power_Build_Up"              
+    DisplayName          "P1665022061"
+    BuyRequires          $archetype @Class_Defender == $archetype @Class_Corruptor == ||
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       1.17
+    RechargeTime         240
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_PowerMastery_BuildUp.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_PowerMastery_BuildUp.PFX
+    DisplayShortHelp     "P2834370322"
+    DisplayHelp          "SP5NR8ZRWB24WCVHSULNBK5SBA"
+    IconName             "PowerMastery_PowerBuildUp.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 1.0000
+            Duration 12.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 8.0000
+            Duration 12.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "PowerBoostA"
+    
+        AttribMod
+        {
+            Attrib kHeal kAbsorb kEndurance kSpeedRunning kSpeedFlying kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.6600
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            StackKey kPowerBoost
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            Messages
+            {
+                DisplayAttackerHit "P3834136190"
+            }
+            
+            FX
+            {
+                ContinuingFX Powers\Ability\PowerBoostContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "PowerBoostB"
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack kDefense kToHit
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Stun"
+            Scale 0.6600
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            StackKey kPowerBoost
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            Messages
+            {
+                DisplayAttackerHit "P3834136190"
+            }
+            
+            FX
+            {
+                ContinuingFX Powers\Ability\PowerBoostContinuing.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,43 @@
+Power Temporary_Powers.Temporary_Powers.Knockback_Cutscene
+{
+    Name                 "Knockback_Cutscene"          
+    DisplayName          "XMRGB297JKHSW2NWVYHZMBZKPX"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    TargetVisibility     kNone
+    RechargeTime         50
+    ActivatePeriod       0.25
+    EffectArea           kSphere
+    Radius               5
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P2211841663"
+    IconName             "RadiationBurst_ElectronHaze.tga"
+    MaxTargetsHit        32
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 80.0000
+            Duration 0.3000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

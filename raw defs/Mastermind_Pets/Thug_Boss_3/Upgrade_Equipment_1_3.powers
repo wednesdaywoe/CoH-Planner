@@ -1,0 +1,50 @@
+#**************************************************#
+# Power: Pets > Thug Boss 3 > Upgrade Equipment 1  #
+# Info:  Upgrade Equipment 1                       #
+#**************************************************#
+
+Power Mastermind_Pets.Thug_Boss_3.Upgrade_Equipment_1_3
+{
+    Name                 "Upgrade_Equipment_1_3"       
+    DisplayName          "P2479333563"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    DisplayShortHelp     "P2479333563"
+    DisplayHelp          "P238310660"
+    IconName             "Paramilitary_EquipSoldier.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 11.0000
+            Magnitude 1.0000
+            Period 12.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Mastermind_Thug_Boss_01_03
+                Priority 7
+            }
+            
+        }
+    }
+}

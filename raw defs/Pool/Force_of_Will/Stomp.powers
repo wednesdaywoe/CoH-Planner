@@ -1,0 +1,120 @@
+Power Pool.Force_of_Will.Stomp
+{
+    Name                 "Stomp"                       
+    DisplayName          "P3216575257"
+    BuyRequires          Pool.Force_of_Will.Mighty_Leap
+    ModesRequired        kMightyLeapOn
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    ModesSuspended       kSuppress_TravelToggles
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    Target               kCaster
+    EnduranceCost        6.5
+    TimeToActivate       2.1
+    TimeToRoot           2.1
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               10
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1000
+    IgnoreLevelBought    kTrue
+    NearGround           kTrue
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/OriginPool_ForceOfWill_Stomp.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/OriginPool_ForceOfWill_Stomp.PFX
+    DisplayShortHelp     "P1570767224"
+    DisplayHelp          "46F3ALJWASPKYSVDUWWQESJ8N2"
+    IconName             "ForceofWill_Stomp.tga"
+    MaxTargetsHit        10
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+    Cancelable           kTrue
+    Free                 kTrue
+    AutoIssue            kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kStr
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 0.2450
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelTurboBuff
+            CancelEvents Stunned Held Sleep
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping
+            Aspect kMax
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.6000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelTurboMaxBuff
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    }
+}

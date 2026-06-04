@@ -1,0 +1,64 @@
+Power Temporary_Powers.Temporary_Powers.ZE_Katana
+{
+    Name                 "ZE_Katana"                   
+    DisplayName          "P535707029"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        13.78
+    TimeToActivate       1.23
+    TimeToRoot           1.23
+    RechargeTime         10
+    EffectArea           kCone
+    Radius               7
+    Arc                  90
+    NumCharges           15
+    Deletable            kTrue
+    VisualFX             "menu/Powers/AnimFX/DualBlades_Syndicate_TempPower.pfx"
+    include              menu/Powers/AnimFX/DualBlades_Syndicate_TempPower.pfx
+    DisplayShortHelp     "VHQMK7TDQULQWPL54BJ78SMQ92"
+    DisplayHelp          "SPAPTGKTBK6CW5NJ8H5GU79ZAW"
+    IconName             "Temporary_FlashingSteel.tga"
+    MaxTargetsHit        6
+    DisplayTargetShortHelp "P957033269"
+    DisplayTargetHelp    "P2076346076"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 1.5700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

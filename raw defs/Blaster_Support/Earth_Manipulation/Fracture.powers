@@ -1,0 +1,169 @@
+Power Blaster_Support.Earth_Manipulation.Fracture
+{
+    Name                 "Fracture"                    
+    DisplayName          "P2186418631"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        10.4
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost, kStunned_Boost
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Blaster_Support_Earth_Manipulation_Fracture.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Blaster_Support_Earth_Manipulation_Fracture.pfx
+    DisplayShortHelp     "SGLZ3P759PD9Y6C25SVNYEXLVS"
+    DisplayHelp          "2J4KAD3YG67ZWCMK8VVW32QYU3"
+    IconName             "EarthManip_Fracture"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P788279074"
+    DisplayTargetHelp    "P1759839650"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 8.0000
+            Magnitude 2.0000
+            StackType kReplace
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Defiance"
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Seismic"
+        Requires NearGround source.EventTimeSince> 1 >= Blaster_Ranged.Seismic_Blast source.ownPower? &&
+        Flags HideFromInfo
+    
+        Effect
+        {
+            Tag "SeismicStress"
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods
+                Params Power
+                {
+                    Power Redirects.Seismic_Blast.Seismic_Stress
+                }
+                
+            }
+        }
+    }
+}

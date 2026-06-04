@@ -1,0 +1,102 @@
+Power Tanker_Melee.Dark_Melee.Dark_Consumption
+{
+    Name                 "Dark_Consumption"            
+    DisplayName          "P3604985100"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        0.52
+    TimeToActivate       1.03
+    TimeToRoot           1.03
+    RechargeTime         180
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerMelee_DarkMelee_DarkConsumption.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerMelee_DarkMelee_DarkConsumption.PFX
+    DisplayShortHelp     "Z9ZGVCZAG89WW5LUYQVP8J5EJA"
+    DisplayHelp          "NQ5DYD965ZTFYNV7NY4M44D4XZ"
+    IconName             "ShadowFighting_DarkConsumption.tga"
+    MaxTargetsHit        10
+    MaxTargetsExpr       16 kDisable_GauntletTargetCap source.Mode? 6 * -
+    OverCapTrigger       10
+    OverCapMultiplier    0.3333
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.6154
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 25.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P1197092217"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "FieryEmbrace"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.2769
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

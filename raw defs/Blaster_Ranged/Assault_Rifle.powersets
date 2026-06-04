@@ -1,0 +1,83 @@
+PowerSet Blaster_Ranged.Assault_Rifle
+{
+    Name "Assault_Rifle"
+    DisplayName "P4220708536"
+    DisplayShortHelp "P4220708536"
+    DisplayHelp "P2701318582"
+    CostumeKeys CustomWeapon_AssaultRifle
+    CostumeParts AssaultRifle_Default
+    IconName "Assault_Rifle_set.ico"
+
+    Powers Blaster_Ranged.Assault_Rifle.Burst
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Assault_Rifle.Tranquilizer_Dart
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Assault_Rifle.Buckshot
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Assault_Rifle.M30_Grenade
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Assault_Rifle.Beanbag
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Assault_Rifle.Sniper_Rifle
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Assault_Rifle.Flamethrower
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Assault_Rifle.Ignite
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Assault_Rifle.Full_Auto
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

@@ -1,0 +1,86 @@
+Power Dominator_Assault.Martial_Assault.Trick_Shot
+{
+    Name                 "Trick_Shot"                  
+    DisplayName          "P1901682939"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        10.192
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         10
+    EffectArea           kChain
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    ChainDelay           0.1
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MartialAssault_TrickShot.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MartialAssault_TrickShot.pfx
+    DisplayShortHelp     "6NV8ZY5W6LFMYUBE3ZXTXCLJYW"
+    DisplayHelp          "VS56PKM372REYXVV77QVF6V95A"
+    IconName             "MartialAssault_TrickShot.tga"
+    MaxTargetsHit        5
+    DisplayTargetHelp    "P3371105139"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.1000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.4000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

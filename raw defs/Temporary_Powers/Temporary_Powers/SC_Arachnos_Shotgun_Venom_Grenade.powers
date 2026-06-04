@@ -1,0 +1,84 @@
+Power Temporary_Powers.Temporary_Powers.SC_Arachnos_Shotgun_Venom_Grenade
+{
+    Name                 "SC_Arachnos_Shotgun_Venom_Grenade"
+    DisplayName          "P922122632"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        6.5
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         24
+    EffectArea           kSphere
+    Radius               10
+    NumCharges           6
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Arachnos_WolfSpider_GrenadeLauncher_PoisonGrenade.pfx"
+    include              menu\Powers\AnimFX\Villain_Arachnos_WolfSpider_GrenadeLauncher_PoisonGrenade.pfx
+    DisplayShortHelp     "MWB88DJ8F4XMYGZFY2GMVKEZUA"
+    DisplayHelp          "89QQ2DZMSG3TWHMPGLPW3JKWKW"
+    IconName             "Temporary_HolyShotgunShells.tga"
+    MaxTargetsHit        16
+    DisplayTargetHelp    "P4154695595"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.1964
+            Duration 4.2500
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -2.0000
+            Duration 16.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DebuffDamResContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -4.0000
+            Duration 16.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

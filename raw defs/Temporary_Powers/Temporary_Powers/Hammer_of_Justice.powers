@@ -1,0 +1,51 @@
+Power Temporary_Powers.Temporary_Powers.Hammer_of_Justice
+{
+    Name                 "Hammer_of_Justice"           
+    DisplayName          "P518026661"
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                5
+    EnduranceCost        5
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         10
+    EffectArea           kSphere
+    Radius               35
+    ServerTrayPriority   999
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Hero_Statesman_HammerJustice.pfx"
+    include              menu\Powers\AnimFX\Hero_Statesman_HammerJustice.pfx
+    DisplayShortHelp     "P777593458"
+    DisplayHelp          "6534Q9QCFT5LY4C2UBQQ5NTGHQ"
+    IconName             "Tyrant_Hammer.tga"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P777593458"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "VQPQ8F9DJYDRY8BTH53BKBMFP2"
+                DisplayVictimHit "953BBVA8BQNZWULCPGUU8L6YYX"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,39 @@
+Power Temporary_Powers.Day_Job_Powers.Demagogue_Influence_Lesser
+{
+    Name                 "Demagogue_Influence_Lesser"  
+    DisplayName          "P3203043433"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       50000
+    EffectArea           kCharacter
+    LifeTimeInGame       7200
+    Deletable            kTrue
+    DisplayShortHelp     "P505598145"
+    DisplayHelp          "P841173034"
+    IconName             "DayJob_InfBoost.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

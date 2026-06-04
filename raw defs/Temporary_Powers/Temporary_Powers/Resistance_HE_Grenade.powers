@@ -1,0 +1,89 @@
+Power Temporary_Powers.Temporary_Powers.Resistance_HE_Grenade
+{
+    Name                 "Resistance_HE_Grenade"       
+    DisplayName          "P127542854"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        17.94
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               15
+    NumCharges           6
+    LifeTimeInGame       1500
+    VisualFX             "menu\Powers\AnimFX\Villain_Malta_Ops_Grenade_frag.pfx"
+    include              menu\Powers\AnimFX\Villain_Malta_Ops_Grenade_frag.pfx
+    DisplayShortHelp     "5UNXXTUYA8PQYQZPH22PFXVBT3"
+    DisplayHelp          "32H3XE65EYL4WWMFCP9F39B9AZ"
+    IconName             "AssaultWeapons_ARM30grenade.tga"
+    MaxTargetsHit        16
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P2926425017"
+    DisplayTargetHelp    "P3009432464"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Tempdamage"
+            Scale 0.4300
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Tempdamage"
+            Scale 0.4200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Tempdamage"
+            Scale 0.0500
+            Duration 0.9100
+            Magnitude 1.0000
+            Period 0.3000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    }
+}

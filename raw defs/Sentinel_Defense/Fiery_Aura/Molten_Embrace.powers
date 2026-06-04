@@ -1,0 +1,81 @@
+Power Sentinel_Defense.Fiery_Aura.Molten_Embrace
+{
+    Name                 "Molten_Embrace"              
+    DisplayName          "P2369847406"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.208
+    TimeToActivate       0.73
+    RechargeTime         10
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_FieryAura_MoltenEmbrace.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_FieryAura_MoltenEmbrace.PFX
+    DisplayShortHelp     "P4221874360"
+    DisplayHelp          "KEKHKP26J8DMYYMWLCP7PD9YRS"
+    DisplayAttackerHit   "P1441942137"
+    IconName             "FlamingShield_FieryEmbrace.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 1.0000
+            Duration 1.2000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Molten_Embrace_Proc
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnDeactivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Molten_Embrace_Proc
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,65 @@
+Power Temporary_Powers.Temporary_Powers.OurPortalVillain
+{
+    Name                 "OurPortalVillain"            
+    DisplayName          "P2113393922"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P2353155363"
+    DisplayHelp          "P1145026840"
+    IconName             "Teleportation_Ouroboros.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.OurPortalHero source.ownPower? !
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.OurPortalHero
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.OurPortalHero source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.OurPortalVillain
+            }
+            
+        }
+    }
+}

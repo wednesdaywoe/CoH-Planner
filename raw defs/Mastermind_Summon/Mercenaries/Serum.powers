@@ -1,0 +1,141 @@
+#*****************************************************************************#
+# Power: Summon > Mercenaries > Serum                                         #
+# Info:  Buff Mercenaries +DMG, +RES(All except Psionic), +To Hit, +Recovery  #
+#*****************************************************************************#
+
+Power Mastermind_Summon.Mercenaries.Serum
+{
+    Name                 "Serum"                       
+    DisplayName          "P2203543903"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kMyPet
+    TargetVisibility     kNone
+    Range                100
+    EnduranceCost        15
+    TimeToActivate       1.3
+    RechargeTime         250
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost, kBuff_ToHit_Boost, kRecovery_Boost
+    IgnoreStrength       kTrue
+    TargetRequires       MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||
+    VisualFX             "menu\Powers\AnimFX\Paramilitary_BoostSerum.pfx"
+    include              menu\Powers\AnimFX\Paramilitary_BoostSerum.pfx
+    DisplayShortHelp     "RL43N3EU7TMZY3CVT8KM4EXW2Z"
+    DisplayHelp          "BQVHFKWQTFCAYQVLQ4KF99QDBS"
+    IconName             "Paramilitary_Serum.tga"
+
+
+    Effect
+    {
+        Tag "Resistances"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kToxic
+            Aspect kRes
+            Target kTargetsOwnerAndAllPets
+            Table "Ranged_Res_Dmg"
+            Scale 4.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            TickAdditive -0.0088
+            DelayedRequires MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "XTF8CBF4DJWNWLB3QF6GAMG6RA"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned kSleep kKnockup kKnockback kRepel
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Ranged_Res_Boolean"
+            Scale -30.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            TickAdditive 0.066
+            DelayedRequires MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayInfo "XTF8CBF4DJWNWLB3QF6GAMG6RA"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Offensive"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic kRadiation kElectrical kSonic kQuantum
+            Aspect kStr
+            Target kTargetsOwnerAndAllPets
+            Table "Ranged_Buff_Dmg"
+            Scale 10.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            TickAdditive -0.022
+            DelayedRequires MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayInfo "XTF8CBF4DJWNWLB3QF6GAMG6RA"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Ranged_Buff_ToHit"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            TickAdditive -0.0022
+            DelayedRequires MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "XTF8CBF4DJWNWLB3QF6GAMG6RA"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            TickAdditive -0.0022
+            DelayedRequires MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayInfo "XTF8CBF4DJWNWLB3QF6GAMG6RA"
+            }
+            
+        }
+    }
+}

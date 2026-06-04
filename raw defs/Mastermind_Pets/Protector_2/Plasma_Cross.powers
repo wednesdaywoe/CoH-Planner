@@ -1,0 +1,56 @@
+#*************************************************#
+# Power: Pets > Robot Protector 2 > Plasma Cross  #
+# Info:  Ranged DoT (Energy)                      #
+#*************************************************#
+
+Power Mastermind_Pets.Protector_2.Plasma_Cross
+{
+    Name                 "Plasma_Cross"                
+    DisplayName          "L4KRA2JGFVQXW6CTGV973VB7PS"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        11.856
+    PreferenceMultiplier 2.5
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Protector_2_Plasma_Cross.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Mastermind_Pets_Protector_2_Plasma_Cross.pfx
+    DisplayShortHelp     "S77NWLQAD8XRWAMEHHVABS6YPX"
+    DisplayHelp          "KT3N78NQRENKYVL57CVTJVSQ9S"
+    IconName             "Robotics_LaserRifleBlast.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.3257
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    }
+}

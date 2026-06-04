@@ -1,0 +1,40 @@
+Power Brute_Melee.Titan_Weapons.Shatter_Armor
+{
+    Name                 "Shatter_Armor"               
+    DisplayName          "P1299120964"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                9
+    EnduranceCost        15.6395
+    TimeToActivate       2.3
+    TimeToRoot           2.3
+    RechargeTime         16
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TitanWeapon_ShatterArmor_Slow.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TitanWeapon_ShatterArmor_Slow.PFX
+    DisplayShortHelp     "2E9T2RLFHHW4YGNLP62CRP23KQ"
+    DisplayHelp          "3842WZUE2U7MW7MBTV3WZPBHZW"
+    IconName             "TitanWeapons_ShatterArmor.tga"
+    DisplayTargetShortHelp "P1870741899"
+    DisplayTargetHelp    "P3101919881"
+
+    Redirect
+    {
+        Power Villain_Pets.Titan_Weapons_Brute.Shatter_Armor_Fast
+        Requires kFastMode source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Titan_Weapons_Brute.Shatter_Armor_Slow
+        Requires 1
+    }
+    
+}

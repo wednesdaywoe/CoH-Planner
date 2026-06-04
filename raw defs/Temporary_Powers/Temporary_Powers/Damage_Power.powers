@@ -1,0 +1,39 @@
+Power Temporary_Powers.Temporary_Powers.Damage_Power
+{
+    Name                 "Damage_Power"                
+    DisplayName          "P512626512"
+    BuyRequires          accesslevel char> 9 >
+    ActivateRequires     accesslevel char> 9 >
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                200
+    TimeToActivate       1
+    TimeToRoot           1
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\Brawl_Natural.pfx"
+    include              menu\Powers\AnimFX\Brawl_Natural.pfx
+    DisplayShortHelp     "P3569103979"
+    DisplayHelp          "P3569103979"
+    IconName             "Temporary_RangeModerateDamage.tga"
+    DisplayTargetShortHelp "P3569103979"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kUnique1
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.2500
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

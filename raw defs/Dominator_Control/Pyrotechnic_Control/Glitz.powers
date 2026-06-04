@@ -1,0 +1,269 @@
+Power Dominator_Control.Pyrotechnic_Control.Glitz
+{
+    Name                 "Glitz"                       
+    DisplayName          "H65BVBJTMRPCWQZMMHKEU4ZWBS"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kDeadOrAliveFoe
+    EntsAutoHit          kNone
+    Target               kDeadOrAliveFoe
+    Range                70
+    TargetSecondary      kTeleport
+    RangeSecondary       70
+    EnduranceCost        15.6
+    TimeToActivate       1.67
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kFear_Boost, kStunned_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Glitz.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Glitz.PFX
+    DisplayShortHelp     "MRERZ5JSGE79YLZ3GPUMEBEZRZ"
+    DisplayHelp          "7C4R2W29DK52YHXHWW6A597XZW"
+    IconName             "Pyrotechnic_MultipurposeMissiles"
+    MaxTargetsHit        8
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2501905848"
+
+
+    Effect
+    {
+        Requires Cur.kHitPoints target> 0 >
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale 8.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.1625
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.1625
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2559786529"
+                    DisplayVictimHit "P377644626"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 4.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.1019
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 0.1019
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2559786529"
+                    DisplayVictimHit "P377644626"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale 12.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "669UCY84RP2TWAVP7J9K5QG86X"
+                    DisplayVictimHit "AS5CAMWDSKCTYQX4LKUFFDVXKW"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Domination"
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Flags IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "669UCY84RP2TWAVP7J9K5QG86X"
+                    DisplayVictimHit "AS5CAMWDSKCTYQX4LKUFFDVXKW"
+                    DisplayFloat "P2610687982"
+                    DisplayInfo "U7NP23XXSKF8YLLFTXFFDPAN63"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/StunContinuing.fx
+                }
+                
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "GlitzBurst"
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            StackType kStack
+            Flags KeepThroughDeath CopyBoosts
+            Params Power
+            {
+                Power Redirects.Pyrotechnic_Control.Glitz_Burst
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,167 @@
+Power Temporary_Powers.Temporary_Powers.Mutation:_Devolution
+{
+    Name                 "Mutation:_Devolution"        
+    DisplayName          "P2787787983"
+    ModesDisallowed      kArena
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       60
+    StackingUsage        kTrue
+    MaxLifeTimeInGame    150
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\TemporaryPowers_SecondaryMutation_Devolution.pfx"
+    include              menu\Powers\AnimFX\TemporaryPowers_SecondaryMutation_Devolution.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P857516479"
+    IconName             "SecondaryMutation.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude kDisable_All
+            StackType kOverlap
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude kDisable_Walk
+            StackType kOverlap
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            Delay 0.6000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Rikti_Monkey_06
+                Priority 6
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            ApplicationType kOnDeactivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Prestige.Prestige_Utility.Secondary_Mutation
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Replacement_Powers.Monkey_Slap
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Replacement_Powers.Monkey_Gas
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnDeactivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Replacement_Powers.Monkey_Slap
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnDeactivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Replacement_Powers.Monkey_Gas
+            }
+            
+        }
+    }
+}

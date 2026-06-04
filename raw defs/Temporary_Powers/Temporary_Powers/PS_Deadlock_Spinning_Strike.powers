@@ -1,0 +1,185 @@
+Power Temporary_Powers.Temporary_Powers.PS_Deadlock_Spinning_Strike
+{
+    Name                 "PS_Deadlock_Spinning_Strike" 
+    DisplayName          "P4288055952"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        5
+    TimeToActivate       1.8
+    TimeToRoot           1.8
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               6
+    StrengthsDisallowed  kRange kRechargeTime
+    ServerTrayPriority   996
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Brawling_SpinningStrike.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Brawling_SpinningStrike.pfx
+    DisplayShortHelp     "WS35WJ65CLDZWJZ4XMSUF2HXRX"
+    DisplayHelp          "N2EK5246D8YQYKMCDCZY23ZUGX"
+    IconName             "Brawling_SpinningStrike.tga"
+    MaxTargetsHit        10
+    DoNotSave            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.9000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.9000
+            Magnitude 1.0000
+            Delay 0.4000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            Delay 0.4000
+            StackType kStack
+            Flags NearGround IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.5000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            Delay 0.4000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Flags NearGround IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        RadiusOuter 10.0000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Fear"
+            Scale 6.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P508540991"
+                DisplayVictimHit "P1197143274"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/AfraidContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        RadiusOuter 10.0000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 3.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreStrength IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P508540991"
+                DisplayVictimHit "P1197143274"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/AfraidContinuing.fx
+            }
+            
+        }
+    }
+}

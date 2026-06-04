@@ -1,0 +1,127 @@
+#**********************************************************************#
+# Power: Buff > Marine Affinity > Toroidal Bubble                      #
+# Info:  PBAoE, Team +Res(All DMG, End Drain), +End, +Recovery, +Jump  #
+#**********************************************************************#
+
+Power Mastermind_Buff.Marine_Affinity.Toroidal_Bubble
+{
+    Name                 "Toroidal_Bubble"             
+    DisplayName          "2UPTZKDVUQN3YTL7H6W5AWRWDA"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        8
+    TimeToActivate       1.77
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               40
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost, kRecovery_Boost, kJump_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Toroidal_Bubble.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Toroidal_Bubble.pfx
+    DisplayShortHelp     "TTWQQLJC2ARBW7L5ZMEJZ3763Q"
+    DisplayHelp          "JPK342FX4MBPWGVMKLGMCKPLP3"
+    DisplayAttackerHit   "XBXAFU265L7SYBVYJDDASCH8UW"
+    DisplayVictimHit     "TC32R4L25R4GYHVX9J72FGDE6W"
+    IconName             "MarineAffinity_ToroidalBubble.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "453H2UNLNRUGYLZEKC4L7FKWZX"
+    DisplayTargetHelp    "2XUH89B6RZ79YRC5YRKT38JNHS"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Leap"
+            Scale 0.2500
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kFire
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 2.5000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance kRecovery
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 1.5000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P3426790094"
+                DisplayVictimHit "P3635132928"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.2500
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

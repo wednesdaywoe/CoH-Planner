@@ -1,0 +1,43 @@
+Power Stalker_Melee.Martial_Arts.Assassins_Blow
+{
+    Name                 "Assassins_Blow"              
+    DisplayName          "P3551718562"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3
+    TimeToRoot           0.8
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerMelee_MartialArts_AssassinsBlow.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerMelee_MartialArts_AssassinsBlow.PFX
+    DisplayShortHelp     "3Q9FAEXAWJHJWQBMEJCY5MXXAW"
+    DisplayHelp          "UNFABAETT35JY6NW6M69JAZ9DA"
+    IconName             "MartialArts_AssassinStrike.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Martial_Arts_Assassins_Strike.Assassins_Blow_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Martial_Arts_Assassins_Strike.Assassins_Blow_Stealth
+        Requires 1
+    }
+    
+}

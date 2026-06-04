@@ -1,0 +1,60 @@
+Power Temporary_Powers.Temporary_Powers.Napalm_Projector
+{
+    Name                 "Napalm_Projector"            
+    DisplayName          "P3870055544"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        12.74
+    TimeToActivate       6
+    TimeToRoot           6
+    RechargeTime         12
+    EffectArea           kCone
+    Radius               40
+    Arc                  45
+    NumCharges           30
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Napalm_Projector.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Napalm_Projector.pfx
+    DisplayShortHelp     "P1415637740"
+    DisplayHelp          "EW4KBRVSGGDHW4C45LPWV8UEVW"
+    IconName             "Temporary_NapalmProjector.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2667539698"
+    DisplayTargetHelp    "P4070965755"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.2050
+            Duration 7.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

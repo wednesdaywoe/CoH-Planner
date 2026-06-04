@@ -1,0 +1,94 @@
+#****************************************************************************************#
+# Power: Pets > Necro Lich 2 > Resistance                                                #
+# Info:  Auto Res Sleep, Fear, Disorient, Immobilize, Hold, Slow, Negative, Toxic, Cold  #
+#****************************************************************************************#
+
+Power Mastermind_Pets.Lich_2.Resistance
+{
+    Name                 "Resistance"                  
+    DisplayName          "P1196525362"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "5UNW85EYZNFAYYMSTF68ZEV4JW"
+    DisplayHelp          "A4LG4EJ6A34UYNZ2FMRFWJT9QA"
+    IconName             "DarkArmor_DarkEmbrace.tga"
+    DisplayTargetShortHelp "P4046217852"
+    DisplayTargetHelp    "P3325273173"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kCold kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_DMG"
+            Scale 2.7000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTerrorized kSleep
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -4.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kRechargeTime
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

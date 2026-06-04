@@ -1,0 +1,70 @@
+#***********************************************#
+# Power: Buff > Thermal Radiation > Melt Armor  #
+# Info:  Ranged (Targeted AoE), Foe -Res, -DEF  #
+#***********************************************#
+
+Power Mastermind_Buff.Thermal_Radiation.Melt_Armor
+{
+    Name                 "Melt_Armor"                  
+    DisplayName          "P3190899346"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        18.2
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         100
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ThermalRadiation_MeltArmor.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ThermalRadiation_MeltArmor.PFX
+    DisplayShortHelp     "P883673132"
+    DisplayHelp          "QSRW7MNXC5W8YVM2QPL4PPZP6W"
+    DisplayAttackerHit   "P1591168787"
+    DisplayVictimHit     "P503219343"
+    IconName             "ThermalRadiation_MeltArmor.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1874250117"
+    DisplayTargetHelp    "P397266516"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.0000
+            Duration 40.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Debuff_Res_Dmg"
+            Scale -3.0000
+            Duration 40.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

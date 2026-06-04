@@ -1,0 +1,43 @@
+Power Stalker_Melee.Brawling.Assassins_Strike
+{
+    Name                 "Assassins_Strike"            
+    DisplayName          "P3813972619"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3.17
+    TimeToRoot           1.1
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerMelee_Brawling_AssassinsStrike.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerMelee_Brawling_AssassinsStrike.pfx
+    DisplayShortHelp     "5YADPYMUHC8NWTZYWR9LUXVCW2"
+    DisplayHelp          "U33R8225SU7JYCZ6J6EZXLC25Q"
+    IconName             "Brawling_AssassinsStrike.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Street_Justice_Assassins_Strike.Assassins_Strike_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Street_Justice_Assassins_Strike.Assassins_Strike_Stealth
+        Requires 1
+    }
+    
+}

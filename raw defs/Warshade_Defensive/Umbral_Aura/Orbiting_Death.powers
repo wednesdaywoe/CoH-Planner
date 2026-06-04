@@ -1,0 +1,78 @@
+Power Warshade_Defensive.Umbral_Aura.Orbiting_Death
+{
+    Name                 "Orbiting_Death"              
+    DisplayName          "P2429842395"
+    ModesDisallowed      kDisable_All
+    ModesSuspended       kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        1.56
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         4
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_PBAoE_Damage_Toggle.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_PBAoE_Damage_Toggle.pfx
+    DisplayShortHelp     "P2860844037"
+    DisplayHelp          "HQ64UEXCRR9EWSVVLRJ2DY5GBW"
+    IconName             "UmbralAura_OrbitingDeath.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.1700
+            Duration 2.5000
+            Magnitude 1.0000
+            Period 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1461699593"
+                DisplayVictimHit "P3815778435"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.5000
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    }
+}

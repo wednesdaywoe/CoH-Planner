@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Howler_Wolf
+{
+    Name "Howler_Wolf"
+    DisplayName "M36UJ69ZYMFGYUBWS4F72VKMTZ"
+    DisplayShortHelp "P4126288098"
+    DisplayHelp "P4126288098"
+    IconName "Howler_Wolf_set.ico"
+
+    Powers Mastermind_Pets.Howler_Wolf.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Howler_Wolf.Vicious_Bite
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Howler_Wolf.PM_Vicious_Bite
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Howler_Wolf.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Howler_Wolf.Wild_Charge
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

@@ -1,0 +1,46 @@
+Power Temporary_Powers.Temporary_Powers.Power_Analyzer
+{
+    Name                 "Power_Analyzer"              
+    DisplayName          "P2519402028"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                100
+    EnduranceCost        6.5
+    InterruptTime        1
+    TimeToActivate       3.93
+    TimeToRoot           1.466667
+    RechargeTime         10
+    EffectArea           kCharacter
+    AIReport             kNever
+    NumCharges           20
+    StackingUsage        kTrue
+    MaxNumCharges        200
+    Deletable            kTrue
+    VisualFX             "menu/Powers/AnimFX/Temporary_Power_PowerAnalyzer.pfx"
+    include              menu/Powers/AnimFX/Temporary_Power_PowerAnalyzer.pfx
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "K548GQNSCJQGYECEB994YKEPBX"
+    IconName             "Temporary_PowerAnalyzer.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kViewAttrib
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 100.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

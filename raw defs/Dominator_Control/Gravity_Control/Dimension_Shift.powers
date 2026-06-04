@@ -1,0 +1,132 @@
+Power Dominator_Control.Gravity_Control.Dimension_Shift
+{
+    Name                 "Dimension_Shift"             
+    DisplayName          "P3572177719"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                80
+    EnduranceCost        15.6
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         60
+    ActivatePeriod       35
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kImmobilized_Boost
+    IgnoreToggleMaxDistance kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_GravityControl_DimensionShift.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_GravityControl_DimensionShift.PFX
+    DisplayShortHelp     "P1706696841"
+    DisplayHelp          "SUPLX2298AWFWRCGFD6B6XRXSW"
+    IconName             "GravityControl_DimensionShift2.tga"
+    DisplayTargetShortHelp "P4032697821"
+    DisplayTargetHelp    "P2844454079"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kIgnore
+            Flags CopyBoosts
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Dimension_Shift
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kIgnore
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Dimension_Shift_Phased
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 3.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kIgnore
+            Flags CopyBoosts
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Dimension_Shift
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 3.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kIgnore
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Dimension_Shift_Phased
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

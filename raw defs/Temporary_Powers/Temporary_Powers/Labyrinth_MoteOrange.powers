@@ -1,0 +1,42 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_MoteOrange
+{
+    Name                 "Labyrinth_MoteOrange"        
+    DisplayName          "S7AKTS87B73QY4VQ7Z4ZDKE4S2"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    ProcAllowed          kNone
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "C7VCHGG35TSXY7CSNZJUE7VBGQ"
+    DisplayHelp          "AK96QLNCT74DYXCM32NTXUPZ3Q"
+    IconName             "Temporary_LabyrinthMoteOrange.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    Free                 kTrue
+    MaxBoosts            0
+    DisplayTargetShortHelp "P3182966104"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Res_Dmg"
+            Scale 0.5000
+            Duration 2.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

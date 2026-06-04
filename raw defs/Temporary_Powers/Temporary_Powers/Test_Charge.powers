@@ -1,0 +1,34 @@
+Power Temporary_Powers.Temporary_Powers.Test_Charge
+{
+    Name                 "Test_Charge"                 
+    DisplayName          "P1503824185"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                200
+    TargetSecondary      kPosition
+    EffectArea           kCharacter
+    DisplayShortHelp     "P579280320"
+    DisplayHelp          "SNKVBSMLV3Z5WYMX6CJCC4UJMQ"
+    IconName             "ShieldDefense_ShieldCharge.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kForceMove
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+}

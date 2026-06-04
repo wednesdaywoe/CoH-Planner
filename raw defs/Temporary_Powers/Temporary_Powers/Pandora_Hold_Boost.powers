@@ -1,0 +1,64 @@
+Power Temporary_Powers.Temporary_Powers.Pandora_Hold_Boost
+{
+    Name                 "Pandora_Hold_Boost"          
+    DisplayName          "P1130125072"
+    ModesDisallowed      kDisable_All
+    Type                 kGlobalBoost
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    BoostsAllowed        kScience_Boost, kTechnology_Boost, kMagic_Boost, kMutation_Boost, kNatural_Boost, kHold_Boost
+    IgnoreStrength       kTrue
+    BoostIgnoreEffectiveness kTrue
+    BoostCombinable      kFalse
+    DisplayShortHelp     "P167137732"
+    DisplayHelp          "P1409773620"
+    IconName             "Incarnate_Hybrid_Control_VeryRare.tga"
+    DoNotSave            kTrue
+    Free                 kTrue
+    DisplayTargetShortHelp "P167137732"
+
+
+    Effect
+    {
+        Tag "HybridWeaken"
+        Requires target.isFriend? ! temporary_powers.temporary_powers.Pandora_Buff source.ownPowerNum? 14 > &&
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 10.3000
+            Magnitude 1.0000
+            Period 15.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Tag "HybridWeaken"
+        Requires target.isFriend? ! temporary_powers.temporary_powers.Pandora_Buff source.ownPowerNum? 29 > &&
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.3000
+            Magnitude 1.0000
+            Period 15.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreCombatMods
+        }
+    }
+}

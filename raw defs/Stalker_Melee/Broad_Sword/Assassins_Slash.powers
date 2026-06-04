@@ -1,0 +1,54 @@
+#************************************************#
+# Power: Melee > Broad Sword > Assassin's Slash  #
+# Info:  Melee, DMG(Lethal)                      #
+#************************************************#
+
+Power Stalker_Melee.Broad_Sword.Assassins_Slash
+{
+    Name                 "Assassins_Slash"             
+    DisplayName          "P2584879347"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3.67
+    TimeToRoot           1.2
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\Sword_AssassinsStrike_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Sword_AssassinsStrike_NoGeo.pfx
+    DisplayShortHelp     "4R3HS6SGYQ4KW2NMFYFMJGEH2Q"
+    DisplayHelp          "ACUF53QW62VGWBCDUDKWTRXBKW"
+    IconName             "Sword_AssassinsSlash.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Broad_Sword_Assassins_Strike.Assassins_Slash_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Broad_Sword_Assassins_Strike.Assassins_Slash_Placate
+        Requires kMeter source> .9 >= kPlacate source.Mode? && enttype target> critter eq && 0 &&
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Broad_Sword_Assassins_Strike.Assassins_Slash_Stealth
+        Requires 1
+    }
+    
+}

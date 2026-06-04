@@ -1,0 +1,63 @@
+#*************************************************#
+# Power: Pets > Beast Alpha Wolf 3 > Lick Wounds  #
+# Info:  Self, +HP, +Regen                        #
+#*************************************************#
+
+Power Mastermind_Pets.Alpha_Wolf_3.Lick_Wounds
+{
+    Name                 "Lick_Wounds"                 
+    DisplayName          "P1630129436"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kHealSelf
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        8
+    PreferenceMultiplier 5
+    TimeToActivate       1.6
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kHeal_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_Wolf_LickWound.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_Wolf_LickWound.pfx
+    DisplayShortHelp     "P920987404"
+    DisplayHelp          "PDNY54BEFU74Y4BE3FHXW5M5TQ"
+    IconName             "BeastMastery_PetLickWounds.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_HealSelf"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,49 @@
+PowerSet Epic.Corruptor_Soul_Mastery
+{
+    Name "Corruptor_Soul_Mastery"
+    DisplayName "P1724566754"
+    DisplayShortHelp "P1724566754"
+    DisplayHelp "P2339177401"
+    IconName "Corruptor_Soul_Mastery_set.ico"
+
+    Powers Epic.Corruptor_Soul_Mastery.Soul_Storm
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Corruptor_Soul_Mastery.Dark_Embrace
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Corruptor_Soul_Mastery.Power_Boost
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Corruptor_Soul_Mastery.Soul_Drain
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Corruptor_Soul_Mastery.Summon_Mistress
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

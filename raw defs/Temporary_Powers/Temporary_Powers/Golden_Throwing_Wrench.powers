@@ -1,0 +1,140 @@
+Power Temporary_Powers.Temporary_Powers.Golden_Throwing_Wrench
+{
+    Name                 "Golden_Throwing_Wrench"      
+    DisplayName          "2E8GLPXVPPNCWWL4NL48JCZQF2"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        9.24
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         6
+    EffectArea           kCharacter
+    LifeTimeInGame       259200
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Enemies\Goldbrickers\Villain_ThrowingWrench.pfx"
+    include              menu\Powers\AnimFX\Enemies\Goldbrickers\Villain_ThrowingWrench.pfx
+    DisplayShortHelp     "NV444ZCGGKE2WGNZVLNSVDFZ72"
+    DisplayHelp          "C9ZST4FY6VW8WRMH2V4SNQHQ2A"
+    IconName             "Temp_Ranged_Moderate.tga"
+    DisplayTargetShortHelp "ZE9QP4SQDWBCW8ZZ92TPSSYRDW"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.4000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+        Requires group target> GoldBrickers eq
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 6.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/ConfuseContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Goldbrickers_AU_Boss_Elite target.villainname> Goldbrickers_AU_Boss_Elite_HMSpawn target.villainname> ||
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude kGrounded
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

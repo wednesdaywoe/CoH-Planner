@@ -1,0 +1,43 @@
+Power Temporary_Powers.Temporary_Powers.Cupid_Love
+{
+    Name                 "Cupid_Love"                  
+    DisplayName          "P1590243515"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kAny
+    EntsAutoHit          kAny
+    Target               kAny
+    Range                80
+    EnduranceCost        5
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         20
+    EffectArea           kCharacter
+    AIReport             kNever
+    NumCharges           5
+    StackingUsage        kTrue
+    MaxNumCharges        99
+    IgnoreAttackTimeErrors tsweeney
+    Deletable            kTrue
+    VisualFX             "menu\powers\animfx\Archery_Cupid.pfx"
+    include              menu\powers\animfx\Archery_Cupid.pfx
+    DisplayShortHelp     "P3423084025"
+    DisplayHelp          "SYQLMA9LL6U8YALZL2R9KMNY5W"
+    IconName             "Temporary_RangeModerateDamage.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+    Redirect
+    {
+        Power Temporary_Powers.Temporary_Powers.Cupid_Love_Friend
+        Requires target.isFriend?
+    }
+    
+    Redirect
+    {
+        Power Temporary_Powers.Temporary_Powers.Cupid_Love_Foe
+        Requires 1
+    }
+    
+}

@@ -1,0 +1,60 @@
+PowerSet Pool.Gadgetry
+{
+    Name "Gadgetry"
+    DisplayName "P3088883852"
+    DisplayShortHelp "P3367822178"
+    DisplayHelp "P2294980969"
+    SetRequires 0
+    SetBuyRequires Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt || Pool.Sorcery.Mystic_Flight || Pool.Experimentation.Experimental_Injection || Pool.Experimentation.Toxic_Dart || Pool.Experimentation.Speed_of_Sound || Pool.Force_of_Will.Weaken_Resolve || Pool.Force_of_Will.Project_Will || Pool.Force_of_Will.Mighty_Leap || Pool.Utility_Belt.Bolas || Pool.Utility_Belt.Poisoned_Dagger || Pool.Utility_Belt.Freerunning || !
+    SetBuyRequiresFailedText "You can only have one Specialized power pool in your build."
+    IconName "Gadgetry_set.ico"
+
+    Powers Pool.Gadgetry.Nano_Net
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Gadgetry.Wrist_Blaster
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Gadgetry.Jetpack
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Gadgetry.Turbo_Boost
+    Available -1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Gadgetry.Blaster_Barrage
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Gadgetry.Force_Barrier
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

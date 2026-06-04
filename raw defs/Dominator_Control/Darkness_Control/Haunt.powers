@@ -1,0 +1,83 @@
+Power Dominator_Control.Darkness_Control.Haunt
+{
+    Name                 "Haunt"                       
+    DisplayName          "P3541511492"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         210
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kFear_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_DarknessControl_Haunt.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_DarknessControl_Haunt.PFX
+    DisplayShortHelp     "P3340232153"
+    DisplayHelp          "YYNJSYYVK34SYNZNDZMABTUCSA"
+    IconName             "DarknessControl_Haunt.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Shade
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Shade
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Haunted
+            }
+            
+        }
+    }
+}

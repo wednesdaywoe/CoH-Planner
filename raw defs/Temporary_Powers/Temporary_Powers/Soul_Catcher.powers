@@ -1,0 +1,105 @@
+Power Temporary_Powers.Temporary_Powers.Soul_Catcher
+{
+    Name                 "Soul_Catcher"                
+    DisplayName          "P3549612740"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                100
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         2.5
+    EffectArea           kCharacter
+    NumCharges           1
+    TargetRequires       FreedomPhalanx_Numina_I20 target.VillainName> Incarnate_I20.Numina.Falter target.ownPower? &&
+    ServerTrayRequires   mapname> i20_VSF_Oranbega eq
+    ServerTrayPriority   10
+    IgnoreLevelBought    kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_SoulCatcher.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_SoulCatcher.pfx
+    DisplayShortHelp     "P2278946378"
+    DisplayHelp          "DNFAW5WGY4FWWCLT2KEVC9CZYW"
+    IconName             "Temporary_SoulGem.tga"
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.1000
+            Duration 10000.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kUntouchable kIntangible kOnlyAffectsSelf
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 10000.0000
+            Duration 10000.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 10000.0000
+            Duration 10000.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods IgnoreSuppressErrors
+            FX
+            {
+                ContinuingFX POWERS\ItemsAndTempPowers\SoulCatcher\SoulCatcher_Beam.fx
+                ContinuingBits ANIM_LASSOSTUN ANIM_STRONG
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kClearDamagers
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

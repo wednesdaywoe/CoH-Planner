@@ -1,0 +1,63 @@
+Power Temporary_Powers.Temporary_Powers.HM_LGTF_RangedPrescience
+{
+    Name                 "HM_LGTF_RangedPrescience"    
+    DisplayName          "2JDF8YGSPMBZYPNXUSWCDVGL8S"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    ProcAllowed          kNone
+    DisplayShortHelp     "ZAB2LPRWYNLDW5LZVCREB2K98W"
+    DisplayHelp          "Z34YZRQC2622WKZV2VNPKNZP9X"
+    IconName             "Rikti_Ranged_Prescience.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    DisplayTargetShortHelp "WMYVWQW9BED6YBNEZDBJQLKHBQ"
+    DisplayTargetHelp    "R5F847WQXJZQWCZNQ8AEH8QQ2X"
+    NumAllowed           20
+
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale -1.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale -0.2500
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

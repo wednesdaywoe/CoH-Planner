@@ -1,0 +1,94 @@
+Power Widow_Training.Fortunata_Training.FRT_Total_Domination
+{
+    Name                 "FRT_Total_Domination"        
+    DisplayName          "P1372864868"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.6
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         240
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHold_Boost
+    VisualFX             "menu\powers\AnimFX\ArachnosWidow_TotalDomination.pfx"
+    include              menu\powers\AnimFX\ArachnosWidow_TotalDomination.pfx
+    DisplayShortHelp     "P3095732666"
+    DisplayHelp          "P3302140026"
+    DisplayAttackerHit   "P3541759805"
+    DisplayVictimHit     "P558192329"
+    IconName             "FortunataTraining_TotalDomination.tga"
+    MaxTargetsHit        12
+    DisplayTargetShortHelp "P3220742713"
+    DisplayTargetHelp    "P2697171271"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Immobilize"
+            Scale 12.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing\StunContinuing.fx
+                ConditionalBits ANIM_SonicStun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4134654113"
+                DisplayVictimHit "P3642575485"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing\StunContinuing.fx
+                ConditionalBits ANIM_SonicStun
+            }
+            
+        }
+    }
+}

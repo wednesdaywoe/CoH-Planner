@@ -1,0 +1,49 @@
+PowerSet Epic.Arctic_Mastery
+{
+    Name "Arctic_Mastery"
+    DisplayName "P3578212861"
+    DisplayShortHelp "P3578212861"
+    DisplayHelp "P2203857032"
+    IconName "Arctic_Mastery_set.ico"
+
+    Powers Epic.Arctic_Mastery.Chilblain
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Arctic_Mastery.Block_of_Ice
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Arctic_Mastery.Ice_Blast
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Arctic_Mastery.Shiver
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Arctic_Mastery.Ice_Storm
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

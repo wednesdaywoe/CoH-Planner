@@ -1,0 +1,87 @@
+#******************************************#
+# Power: Pets > Necro Lich 3 > Life Drain  #
+# Info:  -To Hit                           #
+#******************************************#
+
+Power Mastermind_Pets.Lich_3.Life_Drain
+{
+    Name                 "Life_Drain"                  
+    DisplayName          "P1678761175"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        7.8
+    TimeToActivate       1.93
+    TimeToRoot           1.93
+    RechargeTime         15
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\CorruptorRanged_DarkBlast_LifeDrain.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\CorruptorRanged_DarkBlast_LifeDrain.PFX
+    DisplayShortHelp     "P2190949330"
+    DisplayHelp          "E9KARDTUVGMHWBXYUP26NWAAA3"
+    IconName             "DarkCast_LifeDrain.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_HealSelf"
+            Scale 2.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

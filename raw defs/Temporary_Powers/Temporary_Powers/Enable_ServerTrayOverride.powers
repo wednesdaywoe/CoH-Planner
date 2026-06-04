@@ -1,0 +1,39 @@
+Power Temporary_Powers.Temporary_Powers.Enable_ServerTrayOverride
+{
+    Name                 "Enable_ServerTrayOverride"   
+    DisplayName          "P154964841"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    IgnoreLevelBought    kTrue
+    DisplayShortHelp     "P2800140083"
+    DisplayHelp          "P2800140083"
+    IconName             "Temporary_Prometheus.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration kUntilShutOff
+            Magnitude kServerTrayOverride
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,230 @@
+#**********************************************#
+# Power: Buff > Radiation Emission > Mutation  #
+# Info:  Close, Ally Rez, Special              #
+#**********************************************#
+
+Power Mastermind_Buff.Radiation_Emission.Mutation
+{
+    Name                 "Mutation"                    
+    DisplayName          "P3057588896"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadPlayerFriend
+    EntsAutoHit          kDeadPlayerFriend
+    Target               kDeadPlayerFriend
+    Range                60
+    EnduranceCost        5.2
+    TimeToActivate       1.83
+    RechargeTime         120
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_RadiationEmission_Mutation.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_RadiationEmission_Mutation.PFX
+    DisplayShortHelp     "P2944072660"
+    DisplayHelp          "DGUXV3P5ANTYWPL24F2PRGJFBQ"
+    IconName             "RadiationPoisoning_Mutation.tga"
+    TimeToConfirm        15
+    DisplayConfirm       P2790445096
+    DisplayTargetShortHelp "P1832549363"
+    DisplayTargetHelp    "P4243034196"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kHeal
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P256533052"
+                    DisplayVictimHit "P285457741"
+                }
+                
+                FX
+                {
+                    ContinuingBits ANIM_RAISEDEAD
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P3426790094"
+                    DisplayVictimHit "P3635132928"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRecovery
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 2.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRechargeTime
+                Aspect kStr
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kStr
+                Target kTarget
+                Table "Ranged_Buff_Dmg"
+                Scale 4.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kToHit
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Buff_ToHit"
+                Scale 3.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+            }
+        }
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kStealthRadius
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 300.0000
+                Duration 15.0000
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Attacked Stunned Held Sleep
+                Suppress Attacked 8 Always
+                Suppress Damaged 8 Always
+                Suppress MissionObjectClick 8 Always
+                Flags IgnoreResistance KeepThroughDeath
+            }
+        }
+    
+        Effect
+        {
+            Tag "Crash"
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                Delay 90.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayVictimHit "P3161843313"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kStr
+                Target kTarget
+                Table "Ranged_Debuff_Dam"
+                Scale 4.0000
+                Duration 45.0000
+                Magnitude 1.0000
+                Delay 90.0000
+                StackType kStack
+                Flags IgnoreStrength
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kToHit
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Debuff_ToHit"
+                Scale 3.0000
+                Duration 45.0000
+                Magnitude 1.0000
+                Delay 90.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kXPDebtProtection
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+            }
+        }
+    }
+}

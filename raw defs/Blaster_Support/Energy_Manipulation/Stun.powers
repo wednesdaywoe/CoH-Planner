@@ -1,0 +1,54 @@
+Power Blaster_Support.Energy_Manipulation.Stun
+{
+    Name                 "Stun"                        
+    DisplayName          "P1397128752"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        10.192
+    TimeToActivate       1.8
+    TimeToRoot           1.8
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost
+    StrengthsDisallowed  kRange
+    HighlightEval        kBoostRange Mode? kBoostPower Mode? ||
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_EnergyManipulation_Stun.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_EnergyManipulation_Stun.PFX
+    DisplayShortHelp     "P1871670579"
+    DisplayHelp          "2PXSLZUCCVBGYZV59ZWJ62VSX3"
+    IconName             "EnergyManipulation_Stun.tga"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+    Redirect
+    {
+        Power Redirects.Blaster_Energy_Manipulation.Stun_Ranged_AoE
+        Requires kBoostRange source.Mode? kBoostPower source.Mode? &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Blaster_Energy_Manipulation.Stun_Ranged
+        Requires kBoostRange source.Mode? distance 7 > &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Blaster_Energy_Manipulation.Stun_Melee_AoE
+        Requires kBoostPower source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Redirects.Blaster_Energy_Manipulation.Stun_Melee
+        Requires 1
+    }
+    
+}

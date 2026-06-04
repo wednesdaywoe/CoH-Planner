@@ -1,0 +1,85 @@
+Power Stalker_Melee.Stone_Melee.Fault
+{
+    Name                 "Fault"                       
+    DisplayName          "P1578234279"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                20
+    EnduranceCost        10.192
+    TimeToActivate       2.1
+    TimeToRoot           2.1
+    RechargeTime         20
+    EffectArea           kCharacter
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kStunned_Boost
+    ProcAllowed          kNone
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteMelee_StoneMelee_Fault.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteMelee_StoneMelee_Fault.PFX
+    DisplayShortHelp     "SJFCM76KM629YJCVQCSYZW35GQ"
+    DisplayHelp          "EMG6MUPS4MJHY5ZSQ6MXRMH4KW"
+    IconName             "StoneMelee_Fault.tga"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay CopyBoosts ProcSeparately
+            Params Power
+            {
+                Power Redirects.Stone_Melee.Fault_Stalker
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay CopyBoosts ProcSeparately
+            Params Power
+            {
+                Power Redirects.Stone_Melee.Fault_Cone_Stalker
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3511654510"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Assassins_Focus
+            }
+            
+        }
+    }
+}

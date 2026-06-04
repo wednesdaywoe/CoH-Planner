@@ -1,0 +1,39 @@
+Power Blaster_Ranged.Energy_Blast.Sniper_Blast
+{
+    Name                 "Sniper_Blast"                
+    DisplayName          "P1111427260"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kKnockback_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_EnergyBlast_SniperBlast_Quick.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_EnergyBlast_SniperBlast_Quick.PFX
+    DisplayShortHelp     "566AEEZS4ZAJY3VM94D8QYHZS2"
+    DisplayHelp          "VAXLGF7CFTBBYXCML54YKEC79X"
+    IconName             "PowerBlast_SniperBlast.tga"
+
+    Redirect
+    {
+        Power Pets.Blaster_Energy_Snipe.Sniper_Blast_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Pets.Blaster_Energy_Snipe.Sniper_Blast_Normal
+        Requires 1
+    }
+    
+}

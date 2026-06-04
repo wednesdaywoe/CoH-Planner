@@ -1,0 +1,116 @@
+#*********************************************************************#
+# Power: Epic > Mace Mastery > Coordinated Targeting                  #
+# Info:  Toggle: Team +To Hit, +ACC, +Perception, Res(DeBuff To Hit)  #
+#*********************************************************************#
+
+Power Epic.Sentinel_Mace_Mastery.Focused_Accuracy
+{
+    Name                 "Focused_Accuracy"            
+    DisplayName          "P3249770905"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kCaster
+    EnduranceCost        0.312
+    TimeToActivate       1.17
+    RechargeTime         10
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_BodyMastery_FocusedAccuracy.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_BodyMastery_FocusedAccuracy.pfx
+    DisplayShortHelp     "P2558647171"
+    DisplayHelp          "JQAFN2PZ8GGSYGM2L5GGQXYUF2"
+    DisplayAttackerHit   "P2534745051"
+    IconName             "Arachnos_Patron_TeamToHitBuff"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P585774605"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags CancelOnMiss IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kAccuracy
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags CancelOnMiss IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kRes
+            Target kSelf
+            Table "Ranged_Res_Boolean"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Buff_ToHit"
+            Scale 5.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    }
+}

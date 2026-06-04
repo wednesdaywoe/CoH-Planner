@@ -1,0 +1,51 @@
+#****************************************#
+# Power: Pets > Necro Lich 2 > Costume1  #
+# Info:  Enchant                         #
+#****************************************#
+
+Power Mastermind_Pets.Lich_2.Costume1
+{
+    Name                 "Costume1"                    
+    DisplayName          "P1804634126"
+    ModesDisallowed      kMastermind_Upgrade_2
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRechargeTime kRange
+    DisplayShortHelp     "P2091019232"
+    DisplayHelp          "PLWZE7JM3D8HWWZC5L3APEW8CX"
+    IconName             "Necromancy_EnchantUndead.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 11.0000
+            Magnitude 1.0000
+            Period 12.0000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Necromancy_Litch_01_U1
+            }
+            
+        }
+    }
+}

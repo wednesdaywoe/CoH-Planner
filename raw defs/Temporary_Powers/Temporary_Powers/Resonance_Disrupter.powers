@@ -1,0 +1,110 @@
+Power Temporary_Powers.Temporary_Powers.Resonance_Disrupter
+{
+    Name                 "Resonance_Disrupter"         
+    DisplayName          "P1881056142"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kHidden_Attack
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kStealth_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       0.73
+    RechargeTime         5
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            1800
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Invisibility_Invisibility.pfx"
+    include              menu\Powers\AnimFX\Invisibility_Invisibility.pfx
+    DisplayShortHelp     "P3162452319"
+    DisplayHelp          "ZHMFTC465YBTY3MQ426TE6GB7X"
+    DisplayAttackerHit   "P3430542905"
+    DisplayPowerDefenseFloat "P3802943013"
+    IconName             "Temporary_ResonanceDisrupter.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 200.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress MissionObjectClick 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX Powers/Invisibility/InvisibilityContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpecial
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale -0.0500
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "V8ND2H63B27MYECNYX8SLH9V73"
+                DisplayVictimHit "75AP8BX3BDYDY8CUQHXWKZ4ZAA"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

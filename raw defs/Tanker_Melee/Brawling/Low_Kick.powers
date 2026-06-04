@@ -1,0 +1,288 @@
+Power Tanker_Melee.Brawling.Low_Kick
+{
+    Name                 "Low_Kick"                    
+    DisplayName          "P1060578758"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost, kTaunt_Boost
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Brawling_ShinBreaker.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperMelee_Brawling_ShinBreaker.pfx
+    DisplayShortHelp     "HHF78B5582QVWBXVK7F74H98TZ"
+    DisplayHelp          "GY3ZZC2974D6Y3XJKSKYZ4FLFQ"
+    IconName             "Brawling_LowKick.tga"
+    DisplayTargetShortHelp "P1900140634"
+    DisplayTargetHelp    "P3556295630"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.5000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.6000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.5000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSmashing
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.6400
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P119576033"
+                    DisplayVictimHit "P1719855107"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "FieryEmbrace"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.7380
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+                FX
+                {
+                    ContinuingFX POWERS/FireControl/CindersHit.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_PvPDamage"
+            Scale 1.6510
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "ComboBuild"
+    
+        Effect
+        {
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P4254141574"
+                }
+                
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Combo_Level_2
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRevokePower
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Combo_Level_1
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P3602669381"
+                }
+                
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Combo_Level_1
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower?
+        
+            AttribMod
+            {
+                Attrib kRevokePower
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Combo_Level_2
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ||
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P3834265031"
+                }
+                
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Combo_Level_3
+                }
+                
+            }
+        }
+    }
+}

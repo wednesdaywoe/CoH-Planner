@@ -1,0 +1,63 @@
+Power Temporary_Powers.Temporary_Powers.prestige_Base_Teleport
+{
+    Name                 "prestige_Base_Teleport"      
+    DisplayName          "P4253624125"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    DisplayShortHelp     "P2146958267"
+    DisplayHelp          "P1852767747"
+    IconName             "Veteran_TeleportBase"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires Temporary_Powers.SilentPowers.prestige_Base_Teleport source.ownPower? !
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Type kExpression
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            MagnitudeExpr prestige_Base_Teleport target.TokenTime> 600 + now - 0 600 minmax
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance SetTimer
+            Params Power
+            {
+                Power Prestige.Prestige_Travel.prestige_Base_Teleport
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.prestige_Base_Teleport
+            }
+            
+        }
+    }
+}

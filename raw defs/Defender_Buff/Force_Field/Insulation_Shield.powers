@@ -1,0 +1,108 @@
+Power Defender_Buff.Force_Field.Insulation_Shield
+{
+    Name                 "Insulation_Shield"           
+    DisplayName          "P4034787409"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       2.07
+    RechargeTime         2
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ForceField_InsulationShield.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ForceField_InsulationShield.PFX
+    DisplayShortHelp     "P3550036896"
+    DisplayHelp          "99EQUHWW8AX3W4LS2J7EUCS9WS"
+    DisplayAttackerHit   "P1217548023"
+    DisplayVictimHit     "P2372394357"
+    IconName             "ForceField_InsulationShield.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P346136420"
+    DisplayTargetHelp    "P3977068540"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kAOE_Attack kFire_Attack kEnergy_Attack kNegative_Energy_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 1.5000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCold_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 1.5000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance kRecovery
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -25.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kSuppress
+            StackKey kPvPMezProt
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

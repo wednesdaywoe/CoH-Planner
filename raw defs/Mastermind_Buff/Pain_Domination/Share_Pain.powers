@@ -1,0 +1,164 @@
+#************************************************************#
+# Power: Buff > Pain Domination > Share Pain                 #
+# Info:  Ally Strong Heal, Self Moderate DMG(Special), +DMG  #
+#************************************************************#
+
+Power Mastermind_Buff.Pain_Domination.Share_Pain
+{
+    Name                 "Share_Pain"                  
+    DisplayName          "P879858767"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        0.52
+    TimeToActivate       2.27
+    RechargeTime         15
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_PainDomination_SharePain.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_PainDomination_SharePain.PFX
+    DisplayShortHelp     "P744337357"
+    DisplayHelp          "6FE2ZWWL8LSFY9ZSKKYQ8LFX7A"
+    IconName             "PainDomination_SharePain.tga"
+    DisplayTargetShortHelp "P1263567590"
+    DisplayTargetHelp    "P1903189231"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 4.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreResistance NoHitDelay NoProjectileDelay
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kRes
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 4.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -0.5000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kRes
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.5000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpecial
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Damage"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "V8ND2H63B27MYECNYX8SLH9V73"
+                DisplayVictimHit "75AP8BX3BDYDY8CUQHXWKZ4ZAA"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Ranged_Buff_Dmg"
+            Scale 2.5000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

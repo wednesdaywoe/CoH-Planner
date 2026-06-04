@@ -1,0 +1,49 @@
+Power Scrapper_Melee.Radiation_Melee.Irradiated_Ground
+{
+    Name                 "Irradiated_Ground"           
+    DisplayName          "P2615246092"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        2.6
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         4
+    ActivatePeriod       5
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\RadiationMelee_IrradiatedGround.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\RadiationMelee_IrradiatedGround.PFX
+    DisplayShortHelp     "NB3A3ZQZUUJCY8VL48PTRVBXWX"
+    DisplayHelp          "28RFSJUF2SHNWXBMGXCATPP7ZX"
+    IconName             "RadiationMelee_IrradiatedGround.tga"
+    MaxTargetsHit        10
+
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Radiation_Melee_Irradiated_Ground_Pet
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,104 @@
+#*****************************************#
+# Power: Summon > Mercenaries > Spec Ops  #
+# Info:  Summon Spec Ops                  #
+#*****************************************#
+
+Power Mastermind_Summon.Mercenaries.Spec_Ops
+{
+    Name                 "Spec_Ops"                    
+    DisplayName          "P3918484640"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        9.62
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         10
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kDebuff_ToHit_Boost, kImmobilized_Boost, kStunned_Boost, kHold_Boost
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Paramilitary_SummonSoldiers.pfx"
+    include              menu\Powers\AnimFX\Paramilitary_SummonSoldiers.pfx
+    DisplayShortHelp     "P3683112981"
+    DisplayHelp          "VXM7DMZ9AEGYYVV6X4BN3Q57WS"
+    IconName             "Paramilitary_EnlistSpecialForces.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Spec_Ops
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires combatlevel source> 23 >
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            Delay 3.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef MastermindPets_Spec_Ops
+                PriorityList "Pet"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 35.0000
+            Magnitude 1.0000
+            Delay 2.0300
+            StackType kIgnore
+            Flags NoHitDelay SetTimer
+            Params Power
+            {
+                Power Mastermind_Summon.Mercenaries.Spec_Ops
+            }
+            
+        }
+    }
+}

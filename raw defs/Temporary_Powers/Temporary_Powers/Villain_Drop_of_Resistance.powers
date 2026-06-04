@@ -1,0 +1,113 @@
+Power Temporary_Powers.Temporary_Powers.Villain_Drop_of_Resistance
+{
+    Name                 "Villain_Drop_of_Resistance"  
+    DisplayName          "P3599685702"
+    ActivateRequires     type char> villain eq
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kLeaguemate
+    EntsAutoHit          kLeaguemate
+    Target               kLeaguemate
+    Range                40
+    TimeToActivate       2.17
+    RechargeTime         60
+    EffectArea           kCharacter
+    NumCharges           4
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_DimensionDrop_Purple.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_DimensionDrop_Purple.pfx
+    DisplayShortHelp     "P4188843745"
+    DisplayHelp          "AGGLYRFLH84CW2LZBMFCPB4YDW"
+    DisplayAttackerHit   "P623416755"
+    DisplayVictimHit     "P2419558209"
+    IconName             "Temporary_TargetedBuffDefense.tga"
+    DisplayTargetShortHelp "P3182966104"
+    DisplayTargetHelp    "P179602398"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires type target> villain eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.0500
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/BuffDamResContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            Period 200.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX Events\Valentines\DimensionDropHitPurpleSmall.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires type target> hero eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.5000
+            Duration 180.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX Events\Valentines\StarGlowBodyPurple.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            Period 200.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX Events\Valentines\DimensionDropHitPurple.fx
+            }
+            
+        }
+    }
+}

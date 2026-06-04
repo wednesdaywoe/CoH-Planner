@@ -1,0 +1,73 @@
+Power Temporary_Powers.SilentPowers.Summer_Event_Heist_Grifter
+{
+    Name                 "Summer_Event_Heist_Grifter"  
+    DisplayName          "P906160339"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       2
+    EffectArea           kMap
+    AIReport             kNever
+    IgnoreStrength       kTrue
+    TargetRequires       enttype target> player eq
+    IgnoreLevelBought    kTrue
+    ShootThroughUntouchable kTrue
+    IsEnvironmentHit     kTrue
+    InstanceLocked       kTrue
+    DisplayShortHelp     "P2554079095"
+    DisplayHelp          "P859590271"
+    IconName             "DarkMiasma_TarPatch.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    DisplayTargetShortHelp "P906160339"
+    DisplayTargetHelp    "P82710288"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude kTurretStage3
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 2.5000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P906160339"
+            }
+            
+        }
+    }
+}

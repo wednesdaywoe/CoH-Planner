@@ -1,0 +1,62 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_Armor
+{
+    Name                 "Labyrinth_Armor"             
+    DisplayName          "P2406307679"
+    ModesRequired        kInLabyrinth
+    ModesDisallowed      kDisable_All, kDisable_Temp
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.1625
+    RechargeTime         2
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    UsageTime            1800
+    StackingUsage        kTrue
+    MaxUsageTime         18000
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Enemies\Event\DungeonLabyrinth\DungeonLabyrinth_Soulbound_Armor.PFX"
+    include              menu\Powers\AnimFX\Enemies\Event\DungeonLabyrinth\DungeonLabyrinth_Soulbound_Armor.PFX
+    DisplayShortHelp     "JE4BCPVBQ43WYACZTVQDSN6S9X"
+    DisplayHelp          "8KW9L5GAFJKYYFN7UD7JCPZH63"
+    DisplayAttackerHit   "SWJD5QL3WMXUWUV2PVLZL2YUPZ"
+    IconName             "Temporary_NegativeShield.tga"
+    DisplayTargetShortHelp "GPEK6ZBC6M4MYDXJJXTJQWDJ3Z"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 1.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

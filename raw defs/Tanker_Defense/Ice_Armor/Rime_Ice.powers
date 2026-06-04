@@ -1,0 +1,79 @@
+Power Tanker_Defense.Ice_Armor.Rime_Ice
+{
+    Name                 "Rime_Ice"                    
+    DisplayName          "ZEBPT5PNT59WW3MGDS6VJ85KXQ"
+    BuyRequires          Tanker_Defense.Ice_Armor.Hoarfrost !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        10.4
+    TimeToActivate       0.73
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerDefense_IceArmor_Hoarfrost.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerDefense_IceArmor_Hoarfrost.PFX
+    DisplayShortHelp     "574QQ9VFZK3WWVC5SEWP5BN59S"
+    DisplayHelp          "86NEN8VLU7DUWRLECW8M7BMD8W"
+    DisplayAttackerHit   "P3809918813"
+    IconName             "IceArmor_Rime"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 3.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

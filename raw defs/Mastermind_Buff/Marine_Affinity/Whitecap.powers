@@ -1,0 +1,65 @@
+#***********************************************************************************************#
+# Power: Buff > Marine Affinity > Whitecap                                                      #
+# Info:  Ranged (Targeted AoE), DMG(Cold), Foe Knockdown, -Resist(All), Self Teleport, Special  #
+#***********************************************************************************************#
+
+Power Mastermind_Buff.Marine_Affinity.Whitecap
+{
+    Name                 "Whitecap"                    
+    DisplayName          "P3418056251"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kLocation
+    EntsAutoHit          kCaster
+    Target               kTeleport
+    Range                80
+    EnduranceCost        14.352
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         15
+    EffectArea           kLocation
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Whitecap.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Whitecap.pfx
+    DisplayShortHelp     "AJFWSC64S2TNY4VPSZ9X83VJ2W"
+    DisplayHelp          "YA2RLQHNVKD3YYVLTWWER6FSW3"
+    IconName             "MarineAffinity_Whitecap.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Delay 0.8500
+            StackType kStack
+            Flags CopyBoosts ProcSeparately
+            Params Power
+            {
+                Power Redirects.Marine_Affinity.Whitecap_Arrive
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.6000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

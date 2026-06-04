@@ -1,0 +1,234 @@
+Power Brute_Defense.Ice_Armor.Hibernate
+{
+    Name                 "Hibernate"                   
+    DisplayName          "P475979982"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.1085
+    MaxToggleTime        30
+    RechargeTime         300
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kRes_Damage_Boost, kRecovery_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Brute_Defense_Ice_Armor_Hibernate.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Brute_Defense_Ice_Armor_Hibernate.pfx
+    DisplayShortHelp     "74CYQA57NREXWNX3RV3UR5RRFZ"
+    DisplayHelp          "F94D9BDQ7ZLHW6X5V52FBPHF4Q"
+    DisplayAttackerHit   "P2677645364"
+    IconName             "IceArmor_Hybernate.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+
+
+    Effect
+    {
+        Flags Fallback
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 6.0000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreResistance
+                Messages
+                {
+                    DisplayInfo "AFX7NMYNH3GKYKBWSAW6W6CPTW"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRecovery
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 2.0000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreResistance
+                Messages
+                {
+                    DisplayInfo "AFX7NMYNH3GKYKBWSAW6W6CPTW"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kStr
+                ApplicationType kOnActivate
+                Target kSelf
+                Table "Melee_Ones"
+                StackType kStack
+                Flags CopyBoosts
+                Params Power
+                {
+                    Power Redirects.Ice_Armor.Icy_Bastion_NoCast
+                }
+                
+            }
+        
+            Effect
+            {
+                Requires Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !
+            
+                AttribMod
+                {
+                    Attrib kGrantPower
+                    Aspect kAbs
+                    Target kSelf
+                    Table "Melee_Ones"
+                    Scale 1.0000
+                    Magnitude 1.0000
+                    StackType kIgnore
+                    Flags IgnoreStrength IgnoreResistance
+                    Params Power
+                    {
+                        Power Temporary_Powers.Temporary_Powers.NoPhase
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Tag "HybernateRoot"
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kFly
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale -10000.0000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance StackByAttribAndKey
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kImmobilized kUntouchable kOnlyAffectsSelf
+                Aspect kCur
+                Type kDuration
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.7500
+                Magnitude 1000.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires kDisable_Toggle source.Mode?
+        
+            AttribMod
+            {
+                Attrib kRechargePower
+                Aspect kCur
+                ApplicationType kOnActivate
+                Target kSelf
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                Delay 0.1000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance Cooldown
+                Params Power
+                {
+                    Power Tanker_Defense.Ice_Armor.Hibernate
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires kDisable_Toggle source.Mode?
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Delay 0.1000
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Ice_Armor.Icy_Bastion
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance NoHitDelay Cooldown
+            Params Power
+            {
+                Power Tanker_Defense.Ice_Armor.Hibernate
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,169 @@
+Power Dominator_Assault.Savage_Assault.Feral_Charge
+{
+    Name                 "Feral_Charge"                
+    DisplayName          "P2538644110"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    TargetSecondary      kPosition
+    EnduranceCost        10.19
+    TimeToActivate       1.166667
+    TimeToRoot           1.166667
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    PositionCenter       kFocus
+    PositionDistance     -0.5
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/SavageMelee_SavageLeap.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/SavageMelee_SavageLeap.pfx
+    DisplayShortHelp     "QCVQ5FNA2CBPYAC6HH2QCX2GW2"
+    DisplayHelp          "XU3W5ZFLWFNVYVXUP8BUJ7WUXZ"
+    IconName             "SavageMelee_FeralCharge"
+    DisplayTargetShortHelp "P2103286178"
+    DisplayTargetHelp    "P2734086620"
+
+
+    Effect
+    {
+        Requires Distance 7 >
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildFrenzy"
+        Requires Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Distance 0 >= && Distance 20 < &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2296391595"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildFrenzy"
+        Requires Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Distance 20 >= && Distance 40 < &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2663588066"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker
+                Count 2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildFrenzy"
+        Requires Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? ! Distance 40 >= &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P994619628"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker
+                Count 3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Dominator_Assault_Aux.Savage_Assault.Feral_Charge_Hit
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

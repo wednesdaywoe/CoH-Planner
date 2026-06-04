@@ -1,0 +1,78 @@
+#***************************************************#
+# Power: Pets > Ninja Genin 3 > Exploding Shuriken  #
+# Info:  Ranged (Targeted AoE), DMG(Lethal)         #
+#***************************************************#
+
+Power Mastermind_Pets.Genin_3.Aimed_Shot
+{
+    Name                 "Aimed_Shot"                  
+    DisplayName          "P2060741548"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        15.184
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Villain_Exploding_Shuriken.pfx"
+    include              menu\Powers\AnimFX\Villain_Exploding_Shuriken.pfx
+    DisplayShortHelp     "CWN4NR5AUTPEYMBCV9LRL2BBRA"
+    DisplayHelp          "HFGEMFWHAPPQWCZC5QU55QACHZ"
+    IconName             "WeaponMastery_ExplodingShuriken.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CriticalHit"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NUJ4EZCF39NFWTZC5YAF9VEVHZ"
+                DisplayVictimHit "HHXU3UPTQJMFWWNJBNHD95SXZA"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

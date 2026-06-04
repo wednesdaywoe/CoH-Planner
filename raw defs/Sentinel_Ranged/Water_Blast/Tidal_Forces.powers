@@ -1,0 +1,122 @@
+#**********************************************#
+# Power: Ranged > Water Blast > Tidal Forces   #
+# Info:  Self +To Hit, +DMG, +Range, +Special  #
+#**********************************************#
+
+Power Sentinel_Ranged.Water_Blast.Tidal_Forces
+{
+    Name                 "Tidal_Forces"                
+    DisplayName          "P748558787"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        5.2
+    TimeToActivate       1.17
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_TidalForces.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_TidalForces.PFX
+    DisplayShortHelp     "P3093614629"
+    DisplayHelp          "LB229C2778GJWUZUDA99FBZ4G2"
+    IconName             "WaterBlast_TidalForces.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 5.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P950277378"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRange
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3330
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 2.5000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance RevokeAll
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Tidal_Power
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.1000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance NoHitDelay
+            Messages
+            {
+                DisplayAttackerHit "P860734396"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Tidal_Power
+                Count 3
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,63 @@
+Power Temporary_Powers.Temporary_Powers.Alt_Base_Teleporter
+{
+    Name                 "Alt_Base_Teleporter"         
+    DisplayName          "P1239539082"
+    ActivateRequires     isTutorialMap? !
+    ModesDisallowed      kDisable_All, kDisable_Teleport, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        13
+    InterruptTime        10
+    TimeToActivate       12
+    TimeToRoot           1.766667
+    RechargeTime         600
+    EffectArea           kCharacter
+    NumCharges           5
+    StackingUsage        kTrue
+    MaxNumCharges        99
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Prestige_Prestige_Travel_Long_Range_Teleport.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Prestige_Prestige_Travel_Long_Range_Teleport.pfx
+    DisplayShortHelp     "P352054599"
+    DisplayHelp          "XEKB3LS85DZSWCVWSSFVNYKZEW"
+    IconName             "Temporary_ManifoldResonator.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.1700
+            StackType kStack
+            Flags IgnoreResistance
+            Params Teleport
+            {
+                Destination Base
+            }
+            
+        }
+    }
+}

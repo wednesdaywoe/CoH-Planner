@@ -1,0 +1,89 @@
+PowerSet Scrapper_Defense.Fiery_Aura
+{
+    Name "Fiery_Aura"
+    DisplayName "P3637570535"
+    DisplayShortHelp "P3637570535"
+    DisplayHelp "P4001030623"
+    IconName "Fiery_Aura_set.ico"
+
+    Powers Scrapper_Defense.Fiery_Aura.Fire_Shield
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Defense.Fiery_Aura.Blazing_Aura
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Defense.Fiery_Aura.Healing_Flames
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Defense.Fiery_Aura.Temperature_Protection
+    Available 9
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Defense.Fiery_Aura.Plasma_Shield
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Defense.Fiery_Aura.Consume
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Defense.Fiery_Aura.Burn
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Defense.Fiery_Aura.Fiery_Embrace
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Defense.Fiery_Aura.Rise_of_the_Phoenix
+    Available 29
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Scrapper_Defense.Fiery_Aura.Phoenix_Rising
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

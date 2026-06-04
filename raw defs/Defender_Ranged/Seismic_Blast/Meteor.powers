@@ -1,0 +1,51 @@
+Power Defender_Ranged.Seismic_Blast.Meteor
+{
+    Name                 "Meteor"                      
+    DisplayName          "P2784565588"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kSmashing_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                90
+    EnduranceCost        27.7316
+    TimeToActivate       2.57
+    TimeToRoot           2.57
+    RechargeTime         170
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Meteor.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Meteor.pfx
+    DisplayShortHelp     "YQE7UZGFG8XZYCVXGB4XMB2CJ3"
+    DisplayHelp          "QXQCHXELGXUZY2V86RGGVV9JW3"
+    IconName             "SeismicBlast_Meteor"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoHitDelay CopyBoosts CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Meteor"
+                PriorityList "PL_StaticObject"
+                Power Pets.ResistAll.ResistAll
+                Power Redirects.Seismic_Blast.Meteor
+            }
+            
+        }
+    }
+}

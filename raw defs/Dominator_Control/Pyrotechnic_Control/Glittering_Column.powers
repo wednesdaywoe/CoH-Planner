@@ -1,0 +1,54 @@
+Power Dominator_Control.Pyrotechnic_Control.Glittering_Column
+{
+    Name                 "Glittering_Column"           
+    DisplayName          "JXHE3V54PR36YPM99D3X2N8GRX"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         40
+    EffectArea           kLocation
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kTaunt_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Incandescence.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Pyrotechnic_Control_Incandescence.pfx
+    DisplayShortHelp     "REZNMWJTWUE9WRV35KUMDG7EK2"
+    DisplayHelp          "MG5Y82LXJBE5YFVQC8ELKJ38FW"
+    IconName             "Pyrotechnic_GlitteringColumn"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 7.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Glittering Column"
+                PriorityList "PL_FightPreferMelee"
+                Power Redirects.Pyrotechnic_Control.GlitteringColumn_Skin
+                Power Redirects.Pyrotechnic_Control.GlitteringColumn_Aura
+                Power Redirects.Pyrotechnic_Control.GlitteringColumn_ToHitAura
+                Power Redirects.Pyrotechnic_Control.GlitteringColumn_SelfDestruct
+            }
+            
+        }
+    }
+}

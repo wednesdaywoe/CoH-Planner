@@ -1,0 +1,53 @@
+Power Dominator_Control.Plant_Control.Carrion_Creepers
+{
+    Name                 "Carrion_Creepers"            
+    DisplayName          "P3728825099"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                80
+    EnduranceCost        26
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         360
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kKnockback_Boost, kImmobilized_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_CarrionCreepers.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_CarrionCreepers.PFX
+    DisplayShortHelp     "P1677778155"
+    DisplayHelp          "P1862401709"
+    IconName             "PlantControl_CarrionCreeper.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Carrion Creeper"
+                PriorityList "PL_Untargetable_FightPreferRanged"
+                Power Pets.ResistAll.ResistAll
+                Power Villain_Pets.Creeper_Patch.Carrion_Creepers
+                Power Villain_Pets.Creeper_Patch.Vines
+                Power Villain_Pets.Creeper_Patch.Bramble
+                Power Villain_Pets.Creeper_Patch.FX
+            }
+            
+        }
+    }
+}

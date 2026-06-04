@@ -1,0 +1,156 @@
+Power Defender_Buff.Cold_Domination.Arctic_Fog
+{
+    Name                 "Arctic_Fog"                  
+    DisplayName          "P505098763"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kLeaguemate, kCaster
+    EntsAutoHit          kLeaguemate, kCaster
+    Target               kCaster
+    EnduranceCost        0.26
+    TimeToActivate       1.87
+    RechargeTime         15
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               40
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost, kBuff_Defense_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ColdDomination_ArcticFog.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ColdDomination_ArcticFog.PFX
+    DisplayShortHelp     "P4208830341"
+    DisplayHelp          "K9N3749CXJ92W3VDPUY5P9CZY3"
+    DisplayAttackerHit   "P1701765549"
+    DisplayVictimHit     "P3391829817"
+    DisplayPowerDefenseFloat "P3802943013"
+    IconName             "ColdDomination_ArcticFog.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P305615217"
+    DisplayTargetHelp    "P440343330"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 0.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.7000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFire kCold kEnergy
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight kRechargeTime
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.6000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Attacked target.EventTimeSince> 10 > HitByFoe target.EventTimeSince> 10 > && MissionObjectClick target.EventTimeSince> 10 > &&
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 390.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Attacked HitByFoe Stunned Held Sleep MissionObjectClick
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Requires MissionObjectClick target.EventTimeSince> 10 >
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 35.5000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kStealthToggle
+            CancelEvents Stunned Held Sleep MissionObjectClick
+            Flags IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude kHidden_Attack
+            StackType kStack
+            StackKey kStealthToggle
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    }
+}

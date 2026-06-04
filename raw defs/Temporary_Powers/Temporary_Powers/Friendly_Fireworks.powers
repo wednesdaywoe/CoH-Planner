@@ -1,0 +1,42 @@
+Power Temporary_Powers.Temporary_Powers.Friendly_Fireworks
+{
+    Name                 "Friendly_Fireworks"          
+    DisplayName          "P3919735499"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kAny
+    EntsAutoHit          kFriend
+    Target               kAny
+    Range                40
+    EnduranceCost        5
+    TimeToActivate       1.25
+    TimeToRoot           1.25
+    RechargeTime         10
+    EffectArea           kCharacter
+    LifeTime             172800
+    MaxLifeTime          172800
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers/Temporary_Powers_Friendly_Fireworks.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers/Temporary_Powers_Friendly_Fireworks.pfx
+    DisplayShortHelp     "P3279993712"
+    DisplayHelp          "VJ6PLC4B4UG4YPLBFZG2C3JUNQ"
+    IconName             "Temporary_Powers_Friendly_Fireworks.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

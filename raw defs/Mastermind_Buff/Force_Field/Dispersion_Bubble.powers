@@ -1,0 +1,91 @@
+Power Mastermind_Buff.Force_Field.Dispersion_Bubble
+{
+    Name                 "Dispersion_Bubble"           
+    DisplayName          "P3137523235"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        1.04
+    TimeToActivate       1.07
+    RechargeTime         15
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ForceField_DispersionBubble.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ForceField_DispersionBubble.PFX
+    DisplayShortHelp     "P2876428248"
+    DisplayHelp          "Y47H3LUW2C8NY5B6B3Q8WMW6ZA"
+    DisplayAttackerHit   "P1309444121"
+    DisplayVictimHit     "P2704196223"
+    IconName             "ForceField_DispersionBubble.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P3780623979"
+    DisplayTargetHelp    "P1240327833"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -20.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kHeld kImmobilized kStunned
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 2.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

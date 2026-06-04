@@ -1,0 +1,117 @@
+Power Blaster_Support.Mental_Manipulation.World_of_Confusion
+{
+    Name                 "World_of_Confusion"          
+    DisplayName          "P3752193437"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        0.52
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         10
+    ActivatePeriod       4
+    EffectArea           kSphere
+    Radius               12
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kConfuse_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_MentalManipulation_WorldofConfusion.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_MentalManipulation_WorldofConfusion.PFX
+    DisplayShortHelp     "P1307556126"
+    DisplayHelp          "JPMXAGSHV23HYJZXDQBT2NJDA3"
+    IconName             "MentalControl_WorldOfConfusion.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1116895679"
+    DisplayTargetHelp    "P4213198885"
+
+
+    Effect
+    {
+        Requires @ToHitRoll 0.25 + @ToHit < enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Suppress Confused 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing\ConfuseContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires @ToHitRoll 0.25 + @ToHit < enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kConfused
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.5000
+            Magnitude 2.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Messages
+            {
+                DisplayAttackerHit "P4049735792"
+                DisplayVictimHit "P553075930"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing\ConfuseContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        RadiusOuter 8.0000
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.0943
+            Magnitude 1.0000
+            Period 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+                DisplayInfo "DACGSNBA3CA6WXLRMZKMB5V2RS"
+            }
+            
+        }
+    }
+}

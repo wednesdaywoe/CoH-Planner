@@ -1,0 +1,70 @@
+Power Temporary_Powers.Temporary_Powers.PS_Antimatter_Neutron_Bomb
+{
+    Name                 "PS_Antimatter_Neutron_Bomb"  
+    DisplayName          "P1608951300"
+    Type                 kClick
+    Accuracy             1.3
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    AIGroups             kSecondaryTarget
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        5
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         6
+    EffectArea           kSphere
+    Radius               20
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   998
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\RADIATION_Burst_RadiationBlast.pfx"
+    include              menu\Powers\AnimFX\RADIATION_Burst_RadiationBlast.pfx
+    DisplayShortHelp     "P373215750"
+    DisplayHelp          "CPQDXSCSVGD9WCB4MUEM8YTFYW"
+    IconName             "RadiationBurst_RadiationBlast"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P2593598054"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.0000
+            Duration 16.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/IrradiateContinuingFx.fx
+            }
+            
+        }
+    }
+}

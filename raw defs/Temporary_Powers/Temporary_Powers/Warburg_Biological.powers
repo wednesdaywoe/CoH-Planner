@@ -1,0 +1,66 @@
+Power Temporary_Powers.Temporary_Powers.Warburg_Biological
+{
+    Name                 "Warburg_Biological"          
+    DisplayName          "P3300045479"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kNoNukes, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        19.5
+    TimeToActivate       2.03
+    RechargeTime         5
+    EffectArea           kSphere
+    Radius               60
+    NumCharges           1
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Warburg_Missile_Biological.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Warburg_Missile_Biological.pfx
+    DisplayShortHelp     "P784108591"
+    DisplayHelp          "3L9XJPPVSEAZWPZY6YFBMLBHKW"
+    DisplayAttackerHit   "P1550301107"
+    IconName             "Temporary_Warburg_MegaBuff.tga"
+    MaxTargetsHit        20
+    DisplayTargetShortHelp "P3685778456"
+    DisplayTargetHelp    "P996442270"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.5000
+            Duration 300.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX V_COV\Powers\Poison\NoxiousGasContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 4.0000
+            Duration 300.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

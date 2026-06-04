@@ -1,0 +1,550 @@
+Power Blaster_Ranged.Psychic_Blast.Scramble_Thoughts
+{
+    Name                 "Scramble_Thoughts"           
+    DisplayName          "467CQ9APKRDWYRZCVSQ3DM36ZZ"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                100
+    EnduranceCost        13.52
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         14
+    EffectArea           kChain
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost
+    ChainDelay           0.2
+    ChainFork            2 2 2
+    ChainEff             1 0.25 @ChainJump 1 - * - 0.5 1 minmax
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_PsychicBlast_ScrambleThoughts.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_PsychicBlast_ScrambleThoughts.PFX
+    DisplayShortHelp     "KFC6C6XJLUBRWCM4Q7UBR37ZQQ"
+    DisplayHelp          "9VMMA882UKJTYGVRURH75A58F2"
+    IconName             "PsychicBlast_ScrambleMinds"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        Effect
+        {
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale 10.0000
+                Magnitude 3.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags SecondaryTargetsOnly
+        
+            Effect
+            {
+                Chance 0.5000
+            
+                AttribMod
+                {
+                    Attrib kSleep
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_Stun"
+                    Scale 10.0000
+                    Magnitude 3.0000
+                    Delay 0.1000
+                    StackType kStack
+                    Flags IgnoreStrength
+                    Messages
+                    {
+                        DisplayAttackerHit "P786700626"
+                        DisplayVictimHit "P2415654930"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX PFX2
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Flags Fallback
+            
+                Effect
+                {
+                    Chance 0.5000
+                
+                    AttribMod
+                    {
+                        Attrib kImmobilized
+                        Aspect kCur
+                        Type kDuration
+                        Target kTarget
+                        Table "Ranged_Stun"
+                        Scale 10.0000
+                        Magnitude 3.0000
+                        StackType kStack
+                        Flags IgnoreStrength
+                        Messages
+                        {
+                            DisplayAttackerHit "P4257051740"
+                            DisplayVictimHit "P2588894681"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX PFX4
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Flags Fallback
+                
+                    Effect
+                    {
+                        Chance 0.5000
+                    
+                        AttribMod
+                        {
+                            Attrib kPlacate
+                            Aspect kCur
+                            Type kDuration
+                            Target kTarget
+                            Table "Ranged_Stun"
+                            Scale 10.0000
+                            Magnitude 3.0000
+                            Delay 0.1000
+                            StackType kStack
+                            Flags IgnoreStrength
+                            Messages
+                            {
+                                DisplayAttackerHit "P3381081303"
+                                DisplayVictimHit "P2268423897"
+                            }
+                            
+                            FX
+                            {
+                                ConditionalFX GenericContinuing\PlacateHit.fx
+                            }
+                            
+                        }
+                    }
+                
+                    Effect
+                    {
+                        Flags Fallback
+                    
+                        Effect
+                        {
+                            Chance 0.5000
+                        
+                            AttribMod
+                            {
+                                Attrib kTerrorized
+                                Aspect kCur
+                                Type kDuration
+                                Target kTarget
+                                Table "Ranged_Stun"
+                                Scale 10.0000
+                                Magnitude 3.0000
+                                StackType kStack
+                                Flags IgnoreStrength
+                                Messages
+                                {
+                                    DisplayAttackerHit "P508540991"
+                                    DisplayVictimHit "P1197143274"
+                                }
+                                
+                                FX
+                                {
+                                    ConditionalFX PFX3
+                                }
+                                
+                            }
+                        }
+                    
+                        Effect
+                        {
+                            Flags Fallback
+                        
+                            Effect
+                            {
+                                Chance 0.5000
+                            
+                                AttribMod
+                                {
+                                    Attrib kHeld
+                                    Aspect kCur
+                                    Type kDuration
+                                    Target kTarget
+                                    Table "Ranged_Immobilize"
+                                    Scale 8.0000
+                                    Magnitude 3.0000
+                                    StackType kStack
+                                    Flags IgnoreStrength
+                                    Messages
+                                    {
+                                        DisplayAttackerHit "P4134654113"
+                                        DisplayVictimHit "P3642575485"
+                                    }
+                                    
+                                    FX
+                                    {
+                                        ConditionalFX PFX
+                                        ConditionalBits ANIM_SonicStun
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.7262
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        Effect
+        {
+            Flags SecondaryTargetsOnly
+        
+            Effect
+            {
+                Chance 0.5000
+            
+                AttribMod
+                {
+                    Attrib kSleep
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Ranged_PvPMez"
+                    Scale 1.0000
+                    Magnitude 3.0000
+                    Delay 0.1000
+                    StackType kStack
+                    Suppress Stunned 15 WhenInactive
+                    Suppress Immobilized 15 WhenInactive
+                    Suppress Held 15 WhenInactive
+                    Suppress Sleep 15 WhenInactive
+                    Suppress Terrorized 15 WhenInactive
+                    Flags IgnoreStrength
+                    Messages
+                    {
+                        DisplayAttackerHit "P786700626"
+                        DisplayVictimHit "P2415654930"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/SleepContinuing.fx
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Flags Fallback
+            
+                Effect
+                {
+                    Chance 0.5000
+                
+                    AttribMod
+                    {
+                        Attrib kImmobilized
+                        Aspect kCur
+                        Type kDuration
+                        Target kTarget
+                        Table "Ranged_PvPMez"
+                        Scale 1.0000
+                        Magnitude 3.0000
+                        StackType kStack
+                        Suppress Stunned 15 WhenInactive
+                        Suppress Immobilized 15 WhenInactive
+                        Suppress Held 15 WhenInactive
+                        Suppress Sleep 15 WhenInactive
+                        Suppress Terrorized 15 WhenInactive
+                        Flags IgnoreStrength
+                        Messages
+                        {
+                            DisplayAttackerHit "P4257051740"
+                            DisplayVictimHit "P2588894681"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX PFX4
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Flags Fallback
+                
+                    Effect
+                    {
+                        Chance 0.5000
+                    
+                        AttribMod
+                        {
+                            Attrib kPlacate
+                            Aspect kCur
+                            Type kDuration
+                            Target kTarget
+                            Table "Ranged_PvPMez"
+                            Scale 1.0000
+                            Magnitude 3.0000
+                            Delay 0.1000
+                            StackType kStack
+                            Flags IgnoreStrength
+                            Messages
+                            {
+                                DisplayAttackerHit "P3381081303"
+                                DisplayVictimHit "P2268423897"
+                            }
+                            
+                            FX
+                            {
+                                ConditionalFX GenericContinuing\PlacateHit.fx
+                            }
+                            
+                        }
+                    }
+                
+                    Effect
+                    {
+                        Flags Fallback
+                    
+                        Effect
+                        {
+                            Chance 0.5000
+                        
+                            AttribMod
+                            {
+                                Attrib kTerrorized
+                                Aspect kCur
+                                Type kDuration
+                                Target kTarget
+                                Table "Ranged_PvPMez"
+                                Scale 1.0000
+                                Magnitude 3.0000
+                                StackType kStack
+                                Suppress Stunned 15 WhenInactive
+                                Suppress Immobilized 15 WhenInactive
+                                Suppress Held 15 WhenInactive
+                                Suppress Sleep 15 WhenInactive
+                                Suppress Terrorized 15 WhenInactive
+                                Flags IgnoreStrength
+                                Messages
+                                {
+                                    DisplayAttackerHit "P508540991"
+                                    DisplayVictimHit "P1197143274"
+                                }
+                                
+                                FX
+                                {
+                                    ConditionalFX PFX3
+                                }
+                                
+                            }
+                        }
+                    
+                        Effect
+                        {
+                            Flags Fallback
+                        
+                            Effect
+                            {
+                                Chance 0.5000
+                            
+                                AttribMod
+                                {
+                                    Attrib kHeld
+                                    Aspect kCur
+                                    Type kDuration
+                                    Target kTarget
+                                    Table "Ranged_PvPMez"
+                                    Scale 1.0000
+                                    Magnitude 3.0000
+                                    StackType kStack
+                                    Suppress Stunned 15 WhenInactive
+                                    Suppress Immobilized 15 WhenInactive
+                                    Suppress Held 15 WhenInactive
+                                    Suppress Sleep 15 WhenInactive
+                                    Suppress Terrorized 15 WhenInactive
+                                    Flags IgnoreStrength
+                                    Messages
+                                    {
+                                        DisplayAttackerHit "P4134654113"
+                                        DisplayVictimHit "P3642575485"
+                                    }
+                                    
+                                    FX
+                                    {
+                                        ConditionalFX PFX
+                                        ConditionalBits ANIM_SonicStun
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 2.3600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        Effect
+        {
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kStunned
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Ranged_PvPMez"
+                Scale 1.0000
+                Magnitude 3.0000
+                StackType kStack
+                Suppress Stunned 15 WhenInactive
+                Suppress Immobilized 15 WhenInactive
+                Suppress Held 15 WhenInactive
+                Suppress Sleep 15 WhenInactive
+                Suppress Terrorized 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P583235414"
+                    DisplayVictimHit "P3613904985"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayInfo "P3912192696"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,188 @@
+#**********************************************************#
+# Power: Buff > Poison > Weaken                            #
+# Info:  Ranged (Targeted AoE) Foe -DMG -To Hit, -Special  #
+#**********************************************************#
+
+Power Defender_Buff.Poison.Weaken
+{
+    Name                 "Weaken"                      
+    DisplayName          "P2214790859"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        10.4
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_Weaken.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_Weaken.PFX
+    DisplayShortHelp     "P3098322516"
+    DisplayHelp          "6GSML5KYNF93WQZ6GVDHVT5C63"
+    DisplayAttackerHit   "P4213374470"
+    DisplayVictimHit     "P1094182561"
+    IconName             "Poison_WeakenAoE.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1749202183"
+    DisplayTargetHelp    "P870938078"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 3.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 1.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "ScheduleA"
+        
+            AttribMod
+            {
+                Attrib kHeal kEndurance kSpeedRunning kSpeedFlying kConfused kTerrorized kHeld kImmobilized kStunned kSleep kKnockup kKnockback kRepel
+                Aspect kStr
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale -0.5000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+            }
+        }
+    
+        Effect
+        {
+            Tag "ScheduleB"
+        
+            AttribMod
+            {
+                Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack kDefense kToHit
+                Aspect kStr
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale -0.5000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+            }
+        }
+    }
+
+    Effect
+    {
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 1.5000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "ScheduleA"
+        
+            AttribMod
+            {
+                Attrib kHeal kEndurance kSpeedRunning kSpeedFlying kConfused kTerrorized kHeld kImmobilized kStunned kSleep kKnockup kKnockback kRepel
+                Aspect kStr
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale -0.2500
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+            }
+        }
+    
+        Effect
+        {
+            Tag "ScheduleB"
+        
+            AttribMod
+            {
+                Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack kDefense kToHit
+                Aspect kStr
+                Target kTarget
+                Table "Ranged_Stun"
+                Scale -0.2500
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+            }
+        }
+    }
+}

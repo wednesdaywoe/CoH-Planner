@@ -1,0 +1,114 @@
+Power Temporary_Powers.Temporary_Powers.Hand_Clap
+{
+    Name                 "Hand_Clap"                   
+    DisplayName          "P4070616617"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        5
+    TimeToActivate       1.23
+    TimeToRoot           1.23
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               35
+    ServerTrayPriority   996
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\SuperStrength_Melee_HandClap.pfx"
+    include              menu\Powers\AnimFX\SuperStrength_Melee_HandClap.pfx
+    DisplayShortHelp     "P3753683648"
+    DisplayHelp          "X9MQ98MX3CLUYTCDMY7TG387RA"
+    IconName             "Tyrant_Handclap.tga"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "VQPQ8F9DJYDRY8BTH53BKBMFP2"
+                DisplayVictimHit "953BBVA8BQNZWULCPGUU8L6YYX"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 10.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 8.0000
+            Magnitude 10.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+}

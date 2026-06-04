@@ -1,0 +1,69 @@
+Power Temporary_Powers.Temporary_Powers.I22_MissionReward_BoonSunXiong
+{
+    Name                 "I22_MissionReward_BoonSunXiong"
+    DisplayName          "P3544706139"
+    ActivateRequires     combatlevel char> 15 >= level char> 15 >= &&
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        14
+    TimeToActivate       3
+    RechargeTime         240
+    EffectArea           kCharacter
+    NumCharges           10
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_Willpower_RisetotheChallenge.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_Willpower_RisetotheChallenge.PFX
+    DisplayShortHelp     "P3698239441"
+    DisplayHelp          "JT24QN44UERBY5NZT4YJ4BKT2A"
+    IconName             "Temporary_Prometheus.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1025412420"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing\DeBuffDefContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

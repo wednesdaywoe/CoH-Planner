@@ -1,0 +1,147 @@
+Power Temporary_Powers.Temporary_Powers.Villain_Drop_of_Vitality
+{
+    Name                 "Villain_Drop_of_Vitality"    
+    DisplayName          "P2960965119"
+    ActivateRequires     type char> villain eq
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kLeaguemate
+    EntsAutoHit          kLeaguemate
+    Target               kLeaguemate
+    Range                40
+    TimeToActivate       2.17
+    RechargeTime         60
+    EffectArea           kCharacter
+    NumCharges           4
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_DimensionDrop_Blue.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_DimensionDrop_Blue.pfx
+    DisplayShortHelp     "P2269246306"
+    DisplayHelp          "KPVRRYQCSM6BWDZLS35GSC5QUX"
+    DisplayAttackerHit   "P337450381"
+    DisplayVictimHit     "P2498434366"
+    IconName             "Temporary_TargetedHeal.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires type target> villain eq
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.1500
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3426790094"
+                DisplayVictimHit "P3635132928"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            Period 200.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX Events\Valentines\DimensionDropHitBlueSmall.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires type target> hero eq
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3426790094"
+                DisplayVictimHit "P3635132928"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            Period 200.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX Events\Valentines\DimensionDropHitBlue.fx
+            }
+            
+        }
+    }
+}

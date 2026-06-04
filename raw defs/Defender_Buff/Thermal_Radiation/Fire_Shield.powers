@@ -1,0 +1,70 @@
+#******************************************************#
+# Power: Buff > Thermal Radiation > Thermal Shield     #
+# Info:  Ranged, Ally +Res(Fire, Lethal, Smash, Cold)  #
+#******************************************************#
+
+Power Defender_Buff.Thermal_Radiation.Fire_Shield
+{
+    Name                 "Fire_Shield"                 
+    DisplayName          "P576070762"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    RechargeTime         2
+    EffectArea           kSphere
+    Radius               30
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ThermalRadiation_FireShield.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ThermalRadiation_FireShield.PFX
+    DisplayShortHelp     "P1684799313"
+    DisplayHelp          "P2448174988"
+    DisplayAttackerHit   "P2577444705"
+    DisplayVictimHit     "P2842680320"
+    IconName             "ThermalRadiation_FireShield.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 2.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

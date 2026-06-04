@@ -1,0 +1,69 @@
+#****************************************************#
+# Power: Pets > Necro Tortured Soul > Ghastly Blast  #
+# Info:  -To Hit                                     #
+#****************************************************#
+
+Power Mastermind_Pets.Ghosts_1.Ghastly_Blast
+{
+    Name                 "Ghastly_Blast"               
+    DisplayName          "P1879799442"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                310
+    EnduranceCost        2.6
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_GhastlyBlast.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_GhastlyBlast.pfx
+    DisplayShortHelp     "P2190949330"
+    DisplayHelp          "X3YNZ2RHT2D4YDVDLZAB8GGSCW"
+    IconName             "DarkCast_DarkBlast.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,41 @@
+Power Temporary_Powers.Temporary_Powers.Suppression_Test_Power_B
+{
+    Name                 "Suppression_Test_Power_B"    
+    DisplayName          "P778604508"
+    BuyRequires          accesslevel char> 0 >
+    ActivateRequires     accesslevel char> 0 >
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    RechargeTime         1
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    DisplayShortHelp     "P778604508"
+    DisplayHelp          "L3DQU8G4MUHCYUZ6FXRCZARTAS"
+    IconName             "Temporary_XPBoost.tga"
+    ShowInManage         kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 0.2000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTestStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

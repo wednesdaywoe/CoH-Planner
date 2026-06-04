@@ -1,0 +1,100 @@
+Power Temporary_Powers.Temporary_Powers.Mapserver_Costume
+{
+    Name                 "Mapserver_Costume"           
+    DisplayName          "BCUHRMKZGSD3YTMSMG4W5E5PNS"
+    Type                 kAuto
+    Accuracy             1.2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    Deletable            kTrue
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "L5L2PT4M6SB9YCX8V77N4L6VBX"
+    DisplayHelp          "K298ULMD6FYQY6CYVJLRPU9TEW"
+    IconName             "Temporary_FreakshowDisguise.tga"
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "L5L2PT4M6SB9YCX8V77N4L6VBX"
+    DisplayTargetHelp    "MBJS4C9UUC3ZWGNGMZTFRV7KZS"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires costume target> female eq
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.7000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            Params Costume
+            {
+                Costume Blobby_F
+                Priority 9
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> male eq
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.7000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            Params Costume
+            {
+                Costume Blobby_M
+                Priority 9
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires costume target> huge eq
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.7000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            Params Costume
+            {
+                Costume Blobby_H
+                Priority 9
+            }
+            
+        }
+    }
+}

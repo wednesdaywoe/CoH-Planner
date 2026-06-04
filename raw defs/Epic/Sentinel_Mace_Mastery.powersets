@@ -1,0 +1,51 @@
+PowerSet Epic.Sentinel_Mace_Mastery
+{
+    Name "Sentinel_Mace_Mastery"
+    DisplayName "P1468440306"
+    DisplayShortHelp "P1468440306"
+    DisplayHelp "P3357882437"
+    CostumeKeys CustomWeapon_ArachnosMace
+    CostumeParts ArachnosMace_Default
+    IconName "Sentinel_Mace_Mastery_set.ico"
+
+    Powers Epic.Sentinel_Mace_Mastery.Web_Envelope
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Mace_Mastery.Pulverize
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Mace_Mastery.Web_Cocoon
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Mace_Mastery.Focused_Accuracy
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Mace_Mastery.Summon_Tarantula
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

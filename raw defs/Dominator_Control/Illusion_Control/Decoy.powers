@@ -1,0 +1,200 @@
+Power Dominator_Control.Illusion_Control.Decoy
+{
+    Name                 "Decoy"                       
+    DisplayName          "P2854556052"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                80
+    EnduranceCost        26
+    TimeToActivate       3.1
+    TimeToRoot           3.1
+    RechargeTime         240
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_IllusionControl_Decoy.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_IllusionControl_Decoy.PFX
+    DisplayShortHelp     "U83QN7SG5GULWFB8MSZQPETRF3"
+    DisplayHelp          "NU4XPJGTFHXGW6XKRVDPGS5Y3W"
+    IconName             "Illusions_PhantomArmy2"
+
+
+    Effect
+    {
+        Tag "PhantomArmy"
+        Requires @CustomFX Mirror eq @CustomFX PhantomMirror eq || !
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P998401764"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Decoy_Dominator
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Decoy_Dominator
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Decoy_Dominator
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoHitDelay
+            Params EffectFilter
+            {
+                Tag MirrorArmy
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "MirrorArmy"
+        Requires @CustomFX Mirror eq @CustomFX PhantomMirror eq ||
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            Delay 0.1000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume CopyCreatorCostume
+            Messages
+            {
+                DisplayAttackerHit "P998401764"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Decoy_Dominator
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume CopyCreatorCostume
+            Params EntCreate
+            {
+                EntityDef Pets_Decoy_Dominator
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume CopyCreatorCostume
+            Params EntCreate
+            {
+                EntityDef Pets_Decoy_Dominator
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoHitDelay
+            Params EffectFilter
+            {
+                Tag PhantomArmy
+            }
+        }
+    }
+}

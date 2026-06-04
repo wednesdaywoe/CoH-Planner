@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Alpha_Wolf
+{
+    Name "Alpha_Wolf"
+    DisplayName "4ZXQ352H4YNXWZMPPQ74BFBZLA"
+    DisplayShortHelp "P4126288098"
+    DisplayHelp "P4126288098"
+    IconName "Alpha_Wolf_set.ico"
+
+    Powers Mastermind_Pets.Alpha_Wolf.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Alpha_Wolf.Vicious_Bite
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Alpha_Wolf.PM_Vicious_Bite
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Alpha_Wolf.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Alpha_Wolf.Wild_Charge
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

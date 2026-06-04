@@ -1,0 +1,236 @@
+Power Warshade_Defensive.Umbral_Aura.Black_Dwarf_Strike
+{
+    Name                 "Black_Dwarf_Strike"          
+    DisplayName          "P3973217115"
+    BuyRequires          Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Strike ! &&
+    ModesRequired        kWarshade_Tanker_Mode
+    ModesDisallowed      kDisable_All, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        4.368
+    TimeToActivate       1.2
+    TimeToRoot           1.2
+    RechargeTime         3
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRange
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1010
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Tanker_MediumPunch.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Tanker_MediumPunch.pfx
+    DisplayShortHelp     "ED3GPDVRTDUVYUMEQWHPZ5V3W3"
+    DisplayHelp          "AC2QQQDMYFHKYZBD5W6NWFEE3S"
+    IconName             "UmbralAura_BlackDwarfStrike.tga"
+    Free                 kTrue
+    AutoIssue            kTrue
+    DisplayTargetShortHelp "P3643653994"
+    DisplayTargetHelp    "P3843410386"
+
+
+    Effect
+    {
+        Tag "SSDamage"
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.3400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        Effect
+        {
+            Chance 0.3000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 0.6700
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires Raid target.HasTag? !
+        
+            AttribMod
+            {
+                Attrib kTaunt
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_InherentTaunt"
+                Scale 1.0000
+                Magnitude 4.0000
+                StackType kStack
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "P2043392969"
+                    DisplayVictimHit "P2036629572"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&
+        
+            AttribMod
+            {
+                Attrib kTaunt
+                Aspect kAbs
+                Type kDuration
+                Target kTarget
+                Table "Melee_InherentTaunt"
+                Scale 1.0000
+                Magnitude 4.0000
+                StackType kStack
+                Flags CancelOnMiss
+                Messages
+                {
+                    DisplayAttackerHit "P2043392969"
+                    DisplayVictimHit "P2036629572"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "SSDamage"
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 0.5435
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.0885
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        Effect
+        {
+            Chance 0.3000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 0.6700
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+}

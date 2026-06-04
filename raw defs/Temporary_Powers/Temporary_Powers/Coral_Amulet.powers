@@ -1,0 +1,51 @@
+Power Temporary_Powers.Temporary_Powers.Coral_Amulet
+{
+    Name                 "Coral_Amulet"                
+    DisplayName          "P4180783011"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        6.5
+    TimeToActivate       2.17
+    TimeToRoot           2.17
+    RechargeTime         3000
+    EffectArea           kLocation
+    LifeTimeInGame       259200
+    IgnoreLevelBought    kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Summon_CoralWarder.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Summon_CoralWarder.pfx
+    DisplayShortHelp     "P3770431498"
+    DisplayHelp          "VUEZ4JGVA6USYMC3YAPX4BNL9X"
+    DisplayAttackerHit   "P147909183"
+    IconName             "Temporary_WarWolfWhistle.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Coralax_Coral_Guardian_Lt_Pet
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

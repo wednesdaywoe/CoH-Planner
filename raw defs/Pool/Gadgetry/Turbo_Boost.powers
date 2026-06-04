@@ -1,0 +1,64 @@
+Power Pool.Gadgetry.Turbo_Boost
+{
+    Name                 "Turbo_Boost"                 
+    DisplayName          "P3570326344"
+    BuyRequires          accesslevel char> 0 >= Pool.Gadgetry.Jetpack &&
+    ModesRequired        kJetpackOn
+    ModesDisallowed      kDisable_All
+    ModesSuspended       kSuppress_PoolToggles
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        1
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    StrengthsDisallowed  kEnduranceDiscount
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1000
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Flight_Afterburner.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Flight_Afterburner.pfx
+    DisplayShortHelp     "P252644093"
+    DisplayHelp          "99WURAQ6K5TWWGNJ9MMHJSCUUZ"
+    IconName             "Gadgetry_TurboBoost.tga"
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    AutoIssue            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kMax
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0238
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelTurboMaxBuff
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_SpeedFlying"
+            Scale 10.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kTravelTurboBuff
+            Suppress ActivateAttackClick 4 Always
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    }
+}

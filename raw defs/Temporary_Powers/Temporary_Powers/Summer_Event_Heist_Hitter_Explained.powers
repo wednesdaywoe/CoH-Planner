@@ -1,0 +1,53 @@
+Power Temporary_Powers.Temporary_Powers.Summer_Event_Heist_Hitter_Explained
+{
+    Name                 "Summer_Event_Heist_Hitter_Explained"
+    DisplayName          "P3749199936"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    RechargeTime         1
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    ServerTrayPriority   1
+    IgnoreLevelBought    kTrue
+    ShootThroughUntouchable kTrue
+    InstanceLocked       kTrue
+    DisplayShortHelp     "P2376094840"
+    DisplayHelp          "BHKQFM9HYJ76YCLLZ8M9854TLQ"
+    IconName             "Temporary_ScrollofRuin.tga"
+    TimeToConfirm        30
+    DisplayConfirm       P3570487805
+    SelfConfirm          1
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    DisplayTargetShortHelp "P2376094840"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

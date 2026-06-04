@@ -1,0 +1,41 @@
+Power Defender_Ranged.Psychic_Blast.Psionic_Lance
+{
+    Name                 "Psionic_Lance"               
+    DisplayName          "P2540702184"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                175
+    EnduranceCost        14.352
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_PsychicBlast_PsionicLance_Quick.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_PsychicBlast_PsionicLance_Quick.PFX
+    DisplayShortHelp     "84NRDFD47J5ZYLZHB2YTQGJ6U3"
+    DisplayHelp          "LDEX9GG6JRQHY9CVH77BUY733Z"
+    IconName             "PsychicBlast_PsionicLance.tga"
+    DisplayTargetShortHelp "P3214140212"
+    DisplayTargetHelp    "P3598113204"
+
+    Redirect
+    {
+        Power Pets.Defender_Psychic_Snipe.Psionic_Lance_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Pets.Defender_Psychic_Snipe.Psionic_Lance_Normal
+        Requires 1
+    }
+    
+}

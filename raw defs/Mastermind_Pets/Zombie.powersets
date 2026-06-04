@@ -1,0 +1,25 @@
+PowerSet Mastermind_Pets.Zombie
+{
+    Name "Zombie"
+    DisplayName "FZF4BAUB9JA4Y7BKXKKV66BX8A"
+    DisplayShortHelp "P206380807"
+    DisplayHelp "P3522329310"
+    IconName "Zombie_set.ico"
+
+    Powers Mastermind_Pets.Zombie.Zombie_Brawl
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Zombie.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

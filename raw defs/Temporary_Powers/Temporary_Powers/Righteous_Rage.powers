@@ -1,0 +1,69 @@
+Power Temporary_Powers.Temporary_Powers.Righteous_Rage
+{
+    Name                 "Righteous_Rage"              
+    DisplayName          "P95069899"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.75
+    EffectArea           kCharacter
+    LifeTime             60
+    DisplayShortHelp     "P1290855196"
+    DisplayHelp          "P2454161812"
+    DisplayAttackerHit   "P1566763685"
+    IconName             "Inspiration_Damage_Lvl_3.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    DisplayTargetShortHelp "P1290855196"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires isPvPMap? Veteran72 source.owned? ! ||
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires isPvPMap? ! Veteran72 source.owned? &&
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5250
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

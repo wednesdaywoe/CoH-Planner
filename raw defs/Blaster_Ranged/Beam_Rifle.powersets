@@ -1,0 +1,83 @@
+PowerSet Blaster_Ranged.Beam_Rifle
+{
+    Name "Beam_Rifle"
+    DisplayName "P579523066"
+    DisplayShortHelp "P579523066"
+    DisplayHelp "P2828438103"
+    CostumeKeys CustomWeapon_BeamRifle
+    CostumeParts BeamRifle_VillainDefault
+    IconName "Beam_Rifle_set.ico"
+
+    Powers Blaster_Ranged.Beam_Rifle.Single_Shot
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Beam_Rifle.Charged_Shot
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Beam_Rifle.Cutting_Beam
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Beam_Rifle.Disintegrate
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Beam_Rifle.Aim
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Beam_Rifle.Lancer_Shot
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Beam_Rifle.Penetrating_Ray
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Beam_Rifle.Piercing_Beam
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Blaster_Ranged.Beam_Rifle.Overcharge
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

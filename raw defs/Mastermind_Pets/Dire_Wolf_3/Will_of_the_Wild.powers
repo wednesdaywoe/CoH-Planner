@@ -1,0 +1,90 @@
+#********************************************************#
+# Power: Pets > Beast Dire Wolf 3 > Will of the Wild     #
+# Info:  Self, +Max HP, +Res(Lethal, Smash, Fire, Cold)  #
+#********************************************************#
+
+Power Mastermind_Pets.Dire_Wolf_3.Will_of_the_Wild
+{
+    Name                 "Will_of_the_Wild"            
+    DisplayName          "P3251859872"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kHealSelf
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        8
+    PreferenceMultiplier 5
+    TimeToActivate       1.6
+    RechargeTime         120
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost, kHeal_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Wolf_WillOfWild.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Wolf_WillOfWild.pfx
+    DisplayShortHelp     "P2151143074"
+    DisplayHelp          "NXSW6QUWZ45UYHVAPPJH8CJ3AS"
+    IconName             "BeastMastery_PetWilloftheWild.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Ranged_HealSelf"
+            Scale 2.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Ranged_HealSelf"
+            Scale 2.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_HealSelf"
+            Scale 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold
+            Aspect kRes
+            Target kSelf
+            Table "Ranged_SpeedJumping"
+            Scale 0.1500
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

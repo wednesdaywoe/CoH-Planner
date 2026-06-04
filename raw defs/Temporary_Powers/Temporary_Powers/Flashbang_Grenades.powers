@@ -1,0 +1,64 @@
+Power Temporary_Powers.Temporary_Powers.Flashbang_Grenades
+{
+    Name                 "Flashbang_Grenades"          
+    DisplayName          "P1610448640"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        18.98
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               15
+    NumCharges           6
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Flashbang_Grenades.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Flashbang_Grenades.pfx
+    DisplayShortHelp     "P1860197200"
+    DisplayHelp          "JGMQ9CPU3PFCY9X95FCUNCN8WS"
+    IconName             "Temporary_FlashbangGrenades.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2083939504"
+    DisplayTargetHelp    "P3483763325"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 5.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX POWERS\Illusions\IllusBlindContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 5.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+        }
+    }
+}

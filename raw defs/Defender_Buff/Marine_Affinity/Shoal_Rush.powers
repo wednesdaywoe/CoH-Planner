@@ -1,0 +1,108 @@
+#********************************************************#
+# Power: Buff > Marine Affinity > Shoal Rush             #
+# Info:  Ranged (Targeted AoE), Foe -DEF, -SPD, Special  #
+#********************************************************#
+
+Power Defender_Buff.Marine_Affinity.Shoal_Rush
+{
+    Name                 "Shoal_Rush"                  
+    DisplayName          "TP2FG92LJYWFWMLYKMXTDLMLCZ"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.4
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               20
+    Arc                  90
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Shoal_Rush.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Shoal_Rush.pfx
+    DisplayShortHelp     "FK95RNVPTSF2YLV953QYP5QHHQ"
+    DisplayHelp          "LJA9MRLKZYF2YVLN3GK9ZNUM2W"
+    DisplayAttackerHit   "S557RG77CERYW4MLDNKE6ALBLW"
+    DisplayVictimHit     "JX8LTUWE2GJ4W8LBVD3NPKHJDS"
+    IconName             "MarineAffinity_ShoalRush.tga"
+    MaxTargetsHit        16
+    AnimMainTargetOnly   kTrue
+    DisplayTargetShortHelp "H2SFUZ9SUWVHYANJJ4YVQYD24A"
+    DisplayTargetHelp    "NYHH8ED779USW5VTTDWZ6QRVNQ"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 1.6000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NBTTB6GZ9T8TWYZEMVUARFUMAS"
+                DisplayVictimHit "BCG6SMQE36R9Y4LNJ9383J8Q2W"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.4480
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            StackType kIgnore
+            Params Power
+            {
+                Power Redirects.Marine_Affinity.TidePool_WateryDomain
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq target.isFriend? ! &&
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_SpeedRunning"
+            Scale -1.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

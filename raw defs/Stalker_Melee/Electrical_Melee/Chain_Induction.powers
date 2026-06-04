@@ -1,0 +1,328 @@
+#****************************************************#
+# Power: Melee > Electrical Melee > Chain Induction  #
+# Info:  Melee, DMG(Energy), Foe -End +Special       #
+#****************************************************#
+
+Power Stalker_Melee.Electrical_Melee.Chain_Induction
+{
+    Name                 "Chain_Induction"             
+    DisplayName          "P1045457615"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        10.192
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         14
+    EffectArea           kChain
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost
+    StrengthsDisallowed  kRange
+    ChainDelay           0.7
+    ChainEff             1 0.20 @ChainJump 1 - * - 0.20 1 minmax
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerMelee_ElectricalMelee_ChainInduction.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerMelee_ElectricalMelee_ChainInduction.PFX
+    DisplayShortHelp     "VK4NWSHFLVZDWMVATDP63UUTDA"
+    DisplayHelp          "REVZ7EQEAP8UWKN5DCWBPYNMA3"
+    IconName             "ElectricMelee_TargetedChainInduction.tga"
+    MaxTargetsHit        5
+    DisplayTargetShortHelp "P1988226113"
+    DisplayTargetHelp    "P211370863"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 1.3200
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "StealthCrit"
+                Requires kMeter source> 0 > enttype target> critter eq &&
+                Flags MainTargetOnly
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_InherentDamage"
+                    Scale 1.3200
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                        DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "ASTeamCrit"
+                Chance 0.0700
+                Requires enttype target> critter eq kMeter source> .9 < &&
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_InherentDamage"
+                    Scale 1.3200
+                    Magnitude 1.0000
+                    StackType kStack
+                    Flags HideZero
+                    Messages
+                    {
+                        DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                        DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "FieryEmbrace"
+                Chance 0.0000
+            
+                AttribMod
+                {
+                    Attrib kFire
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 0.5940
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2798397535"
+                        DisplayVictimHit "P459143670"
+                    }
+                    
+                    FX
+                    {
+                        ContinuingFX POWERS/FireControl/CindersHit.fx
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kEndurance
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale -0.1000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P626718221"
+                        DisplayVictimHit "P453378455"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.3000
+            
+                AttribMod
+                {
+                    Attrib kRecovery
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale -1.0000
+                    Duration 4.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 1.6599
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "StealthCrit"
+                Requires kMeter source> 0 > enttype target> player eq &&
+                Flags MainTargetOnly
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 1.6600
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                        DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Requires enttype target> player eq
+            
+                Effect
+                {
+                    Chance 0.2000
+                    Requires kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&
+                
+                    AttribMod
+                    {
+                        Attrib kEnergy
+                        Aspect kAbs
+                        Target kTarget
+                        Table "Melee_PvPDamage"
+                        Scale 1.6600
+                        Magnitude 1.0000
+                        StackType kStack
+                        Messages
+                        {
+                            DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                            DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                            DisplayFloat "P2440464263"
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kEndurance
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_EndDrain"
+                    Scale -2.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P626718221"
+                        DisplayVictimHit "P453378455"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.3000
+            
+                AttribMod
+                {
+                    Attrib kRecovery
+                    Aspect kCur
+                    Target kTarget
+                    Table "Melee_Ones"
+                    Scale -1.0000
+                    Duration 4.0000
+                    Magnitude 1.0000
+                    StackType kStack
+                }
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kGrantPower
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kIgnore
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P3511654510"
+                }
+                
+                Params Power
+                {
+                    Power Temporary_Powers.Temporary_Powers.Assassins_Focus
+                }
+                
+            }
+        }
+    }
+}

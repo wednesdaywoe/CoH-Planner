@@ -1,0 +1,49 @@
+PowerSet Epic.Scrapper_Ice_Mastery
+{
+    Name "Scrapper_Ice_Mastery"
+    DisplayName "P3578212861"
+    DisplayShortHelp "P3578212861"
+    DisplayHelp "P2203857032"
+    IconName "Arctic_Mastery_set.ico"
+
+    Powers Epic.Scrapper_Ice_Mastery.Ice_Bolt
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Scrapper_Ice_Mastery.Frozen_Spear
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Scrapper_Ice_Mastery.Shiver
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Scrapper_Ice_Mastery.Frigid_Wind
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Scrapper_Ice_Mastery.Ice_Elemental
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

@@ -1,0 +1,124 @@
+Power Brute_Defense.Regeneration.Instant_Regeneration
+{
+    Name                 "Instant_Regeneration"        
+    DisplayName          "R8QGE5MPF6FRWAMJBVZGTJD9PX"
+    BuyRequires          Brute_Defense.Regeneration.Instant_Healing !
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.52
+    TimeToActivate       1.17
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_Regeneration_InstantHealing.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_Regeneration_InstantHealing.PFX
+    DisplayShortHelp     "EGE7L6SYXJ4EYEZLS5G8RQRNCZ"
+    DisplayHelp          "QW2V9BXP7P4RY6B2RM42RG568S"
+    DisplayAttackerHit   "P2198838236"
+    IconName             "Regeneration_InstantHealing.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 2.0000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kRefresh
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags PvPOnly
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.8000
+                Duration 2.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kRefresh
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX2
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires MissByOther source.EventTimeSince> 2 <= kRegenerationMoG source.Mode? && Damaged source.EventTimeSince> 2 <= ||
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Table "Melee_Ones"
+                StackType kStack
+                Flags CopyBoosts
+                Params Power
+                {
+                    Power Redirects.Regeneration.Instant_Regeneration
+                }
+                
+            }
+        }
+    }
+}

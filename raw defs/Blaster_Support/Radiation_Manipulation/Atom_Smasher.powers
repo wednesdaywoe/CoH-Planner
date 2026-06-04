@@ -1,0 +1,228 @@
+Power Blaster_Support.Radiation_Manipulation.Atom_Smasher
+{
+    Name                 "Atom_Smasher"                
+    DisplayName          "P1905585298"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        20.176
+    TimeToActivate       2.93
+    TimeToRoot           2.93
+    RechargeTime         22
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kStunned_Boost
+    StrengthsDisallowed  kRange
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\RadiationMelee_AtomSmasher.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\RadiationMelee_AtomSmasher.PFX
+    DisplayShortHelp     "SY3WF4UK72WMY6V9Q8JLZ2HZ4X"
+    DisplayHelp          "SFRQZKKW2WX5WNN8MT97JW9W5Q"
+    IconName             "AtomicManipulation_AtomSmasher"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3100956268"
+    DisplayTargetHelp    "P3783777"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 0.3880
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kToxic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_Damage"
+                    Scale 1.1640
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2851307520"
+                        DisplayVictimHit "P105122461"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.2500
+            
+                AttribMod
+                {
+                    Attrib kStunned
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Melee_Immobilize"
+                    Scale 6.0000
+                    Magnitude 2.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P583235414"
+                        DisplayVictimHit "P3613904985"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/StunContinuing.fx
+                        ConditionalBits Anim_Stun
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kEnergy
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.3331
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2559786529"
+                        DisplayVictimHit "P377644626"
+                    }
+                    
+                }
+            
+                AttribMod
+                {
+                    Attrib kToxic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.9992
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P2851307520"
+                        DisplayVictimHit "P105122461"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.2500
+            
+                AttribMod
+                {
+                    Attrib kStunned
+                    Aspect kCur
+                    Type kDuration
+                    Target kTarget
+                    Table "Melee_PvPMez"
+                    Scale 1.0000
+                    Magnitude 2.0000
+                    StackType kStack
+                    Suppress Stunned 15 WhenInactive
+                    Suppress Immobilized 15 WhenInactive
+                    Suppress Held 15 WhenInactive
+                    Suppress Sleep 15 WhenInactive
+                    Suppress Terrorized 15 WhenInactive
+                    Messages
+                    {
+                        DisplayAttackerHit "P583235414"
+                        DisplayVictimHit "P3613904985"
+                    }
+                    
+                    FX
+                    {
+                        ConditionalFX GenericContinuing/StunContinuing.fx
+                        ConditionalBits Anim_Stun
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 1.2000
+                Duration 10.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags CancelOnMiss
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Defiance"
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kStr
+                Type kExpression
+                Target kCaster
+                Table "Ranged_Ones"
+                MagnitudeExpr 0.066 activatetime power.base> * areafactor power.base> /
+                DurationExpr activatetime power.base> 7.5 +
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayInfo "P3912192696"
+                }
+                
+            }
+        }
+    }
+}

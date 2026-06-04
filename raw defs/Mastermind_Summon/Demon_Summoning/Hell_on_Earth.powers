@@ -1,0 +1,285 @@
+#***********************************************************#
+# Power: Summon > Demon Summoning > Hell on Earth           #
+# Info:  Ranged, Pet +Dmg, +To Hit, Summon Living Hellfire  #
+#***********************************************************#
+
+Power Mastermind_Summon.Demon_Summoning.Hell_on_Earth
+{
+    Name                 "Hell_on_Earth"               
+    DisplayName          "P3536278430"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kMyPet
+    Range                60
+    EnduranceCost        16.25
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         600
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_DemonSummoning_HellOnEarth.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_DemonSummoning_HellOnEarth.pfx
+    DisplayShortHelp     "P297969047"
+    DisplayHelp          "P1560572758"
+    IconName             "DemonSummoning_HellonEarth.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 5.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Living_Hellfire
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 10.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Living_Hellfire
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 20.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Living_Hellfire
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 30.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Living_Hellfire
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.9500
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 40.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Living_Hellfire
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.9000
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 50.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Living_Hellfire
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.8500
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 60.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Living_Hellfire
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.8000
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 70.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Living_Hellfire
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.7500
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 80.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Living_Hellfire
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.7000
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 90.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Living_Hellfire
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,51 @@
+Power Temporary_Powers.Temporary_Powers.Invention_Revolver
+{
+    Name                 "Invention_Revolver"          
+    DisplayName          "P3938162043"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                50
+    EnduranceCost        4.94
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         5.35
+    EffectArea           kCharacter
+    NumCharges           30
+    StackingUsage        kTrue
+    MaxNumCharges        300
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temp_Revolver.pfx"
+    include              menu\Powers\AnimFX\Temp_Revolver.pfx
+    DisplayShortHelp     "P1152063585"
+    DisplayHelp          "MBBYDDHJEK7TY3VE4P7QLSYANX"
+    IconName             "Temporary_RangeLightDamage.tga"
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P2279400821"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.2160
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+}

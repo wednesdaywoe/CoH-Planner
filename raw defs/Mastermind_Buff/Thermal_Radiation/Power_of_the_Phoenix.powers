@@ -1,0 +1,161 @@
+#*********************************************************#
+# Power: Buff > Thermal Radiation > Power of the Phoenix  #
+# Info:  Ally Rez, Special                                #
+#*********************************************************#
+
+Power Mastermind_Buff.Thermal_Radiation.Power_of_the_Phoenix
+{
+    Name                 "Power_of_the_Phoenix"        
+    DisplayName          "P4203838221"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadPlayerFriend
+    EntsAutoHit          kDeadPlayerFriend
+    Target               kDeadPlayerFriend
+    Range                60
+    EnduranceCost        10.4
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         300
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kRecovery_Boost, kStunned_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ThermalRadiation_PowerofthePhoenix.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ThermalRadiation_PowerofthePhoenix.PFX
+    DisplayShortHelp     "P3997289450"
+    DisplayHelp          "452VKKHDFKYRW9LTX7N2WWQKSX"
+    DisplayAttackerHit   "P3686639660"
+    DisplayVictimHit     "P1384260762"
+    IconName             "ThermalRadiation_Phoenix.tga"
+    TimeToConfirm        15
+    DisplayConfirm       P3164885895
+    DisplayTargetShortHelp "P2862738113"
+    DisplayTargetHelp    "P1011213513"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_HealSelf"
+            Scale 7.0000
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P256533052"
+                DisplayVictimHit "P285457741"
+            }
+            
+            FX
+            {
+                ContinuingBits ANIM_RAISEDEAD
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods KeepThroughDeath CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P297828065"
+                DisplayVictimHit "P2874174058"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Phoenix
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kUntouchable
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayFloat "P2901365799"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kXPDebtProtection
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 70.0000
+            Magnitude 1.0000
+            Delay 0.1250
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3426790094"
+                DisplayVictimHit "P3635132928"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 300.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Attacked Stunned Held Sleep
+            Suppress Attacked 8 Always
+            Suppress Damaged 8 Always
+            Suppress MissionObjectClick 8 Always
+            Flags IgnoreResistance KeepThroughDeath
+        }
+    }
+}

@@ -1,0 +1,115 @@
+Power Mastermind_Buff.Sonic_Resonance.Sonic_Repulsion
+{
+    Name                 "Sonic_Repulsion"             
+    DisplayName          "P217190461"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kLeaguemate
+    Target               kLeaguemate
+    Range                70
+    EnduranceCost        0.325
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         8
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kKnockback_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_SonicResonance_SonicRepulsion.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_SonicResonance_SonicRepulsion.PFX
+    DisplayShortHelp     "P2989681105"
+    DisplayHelp          "J8THMKYWTMBSWTXFYFLAYUEUTW"
+    DisplayAttackerHit   "P2100668018"
+    IconName             "SonicDebuff_TeamKnockback.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P2211841663"
+    DisplayTargetHelp    "P3932749949"
+
+
+    Effect
+    {
+        Tag "ReduceIfKD"
+        Chance 1.1000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 3.0000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P657239359"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 3.0000
+            Duration 0.5000
+            StackType kReplace
+            Suppress Knocked 10 WhenInactive
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1153017445"
+                DisplayVictimHit "P4162104512"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P657239359"
+            }
+            
+        }
+    }
+}

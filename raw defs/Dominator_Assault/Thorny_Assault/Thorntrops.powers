@@ -1,0 +1,51 @@
+Power Dominator_Assault.Thorny_Assault.Thorntrops
+{
+    Name                 "Thorntrops"                  
+    DisplayName          "P2630912946"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                25
+    EnduranceCost        7.8
+    TimeToActivate       1.63
+    TimeToRoot           1.63
+    RechargeTime         45
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_ThornyAssault_Thorntrops.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_ThornyAssault_Thorntrops.PFX
+    DisplayShortHelp     "P3697396555"
+    DisplayHelp          "ZST3CL4ZHB7QYTVQ4934W62DKX"
+    IconName             "ThornyAssault_Thorntrops.tga"
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P1637966331"
+    DisplayTargetHelp    "P1306558302"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Thorntrops
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

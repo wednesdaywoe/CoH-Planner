@@ -1,0 +1,138 @@
+Power Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade
+{
+    Name                 "CS_Venom_Grenade"            
+    DisplayName          "P1489982979"
+    BuyRequires          Arachnos_Soldiers.Arachnos_Soldier.Venom_Grenade !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        11.856
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         24
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_Crab_VenomGrenade.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_Crab_VenomGrenade.pfx
+    DisplayShortHelp     "P234226024"
+    DisplayHelp          "9XAD36BFR542Y8NGBV72AJGP43"
+    IconName             "CrabSpider_VenomGrenade.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1315223086"
+    DisplayTargetHelp    "P1667503160"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1964
+            Duration 4.1250
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_DMG"
+            Scale -2.0000
+            Duration 16.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_DMG"
+            Scale -4.0000
+            Duration 16.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.1264
+            Duration 4.1250
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "PVP_MainTargetOnly"
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kToxic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.3793
+                Duration 4.1250
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P4250172858"
+                    DisplayVictimHit "P1470793739"
+                }
+                
+            }
+        }
+    }
+}

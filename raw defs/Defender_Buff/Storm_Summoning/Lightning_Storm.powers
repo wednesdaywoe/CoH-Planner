@@ -1,0 +1,51 @@
+Power Defender_Buff.Storm_Summoning.Lightning_Storm
+{
+    Name                 "Lightning_Storm"             
+    DisplayName          "P741247010"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.4
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        31.2
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost, kKnockback_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_StormSummoning_LightningStorm.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_StormSummoning_LightningStorm.PFX
+    DisplayShortHelp     "P3390340215"
+    DisplayHelp          "CMQ6UFV3NGYTYBVKLDQXYT7S52"
+    IconName             "StormSummoning_LightningStorm.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P1985334123"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_LightningStorm
+                PriorityList "PL_Untargetable_SpawnFlying"
+            }
+            
+        }
+    }
+}

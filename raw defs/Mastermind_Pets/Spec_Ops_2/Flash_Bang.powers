@@ -1,0 +1,160 @@
+#**************************************************#
+# Power: Pets > Mercenary Spec Ops 2 > Flash Bang  #
+# Info:  Disorient, -To Hit, -Perception           #
+#**************************************************#
+
+Power Mastermind_Pets.Spec_Ops_2.Flash_Bang
+{
+    Name                 "Flash_Bang"                  
+    DisplayName          "P2122196722"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                70
+    EnduranceCost        7.8
+    PreferenceMultiplier 3
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kStunned_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\SpecOps_AssaultRifle_FlashBang.pfx"
+    include              menu\Powers\AnimFX\SpecOps_AssaultRifle_FlashBang.pfx
+    DisplayShortHelp     "P1967335478"
+    DisplayHelp          "763SREH57CDFYWBJNZCVL4MTJW"
+    DisplayAttackerHit   "P3414506727"
+    DisplayVictimHit     "P4163177905"
+    IconName             "AssaultWeapons_ShotgunBeanbag.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_Stun"
+            Scale 6.0000
+            Magnitude 2.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX POWERS\Illusions\IllusBlindContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.9000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX POWERS\Illusions\IllusBlindContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -0.9000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Damaged
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.5000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.4240
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    }
+}

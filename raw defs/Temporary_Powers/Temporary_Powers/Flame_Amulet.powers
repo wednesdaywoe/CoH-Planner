@@ -1,0 +1,76 @@
+Power Temporary_Powers.Temporary_Powers.Flame_Amulet
+{
+    Name                 "Flame_Amulet"                
+    DisplayName          "P3448925286"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.66
+    TimeToActivate       1.2
+    TimeToRoot           1.2
+    RechargeTime         4
+    EffectArea           kCharacter
+    LifeTimeInGame       3600
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Fire_Blast.pfx"
+    include              menu\Powers\AnimFX\Fire_Blast.pfx
+    DisplayShortHelp     "P4256319665"
+    DisplayHelp          "7ELZK22W57PYYSZCZXYCYSCVBQ"
+    IconName             "Temporary_FlameAmulet.tga"
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P2887589423"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.0700
+            Duration 3.1000
+            Magnitude 1.0000
+            Delay 0.5000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

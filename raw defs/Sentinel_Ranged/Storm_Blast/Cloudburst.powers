@@ -1,0 +1,425 @@
+#*******************************************#
+# Power: Ranged > Storm Blast > Cloudburst  #
+# Info:  Ranged, DoT(Cold), +Wet, Special   #
+#*******************************************#
+
+Power Sentinel_Ranged.Storm_Blast.Cloudburst
+{
+    Name                 "Cloudburst"                  
+    DisplayName          "VZCCUUCJM8KKWJCN6ZGD59NTQZ"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        11.024
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         11
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_StormBlast_Cloudburst.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_StormBlast_Cloudburst.PFX
+    DisplayShortHelp     "WPYP5X6BUBQBWLCMUD5GGEDS3Q"
+    DisplayHelp          "T5VPWNB3WQUFWDBKAHEGFSZRXQ"
+    IconName             "StormBlast_Cloudburst.tga"
+    DisplayTargetShortHelp "P786987390"
+    DisplayTargetHelp    "P980783330"
+
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?
+        
+            AttribMod
+            {
+                Attrib kRechargeTime
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Slow"
+                Scale 0.1000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+                Messages
+                {
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kJumpHeight
+                Aspect kStr
+                Target kTarget
+                Table "Melee_Slow"
+                Scale 0.2000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+                Messages
+                {
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Slow"
+                Scale 0.2000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kToHit
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_DeBuff_ToHit"
+                Scale 1.0000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "WetStatus"
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 8.0000
+                Magnitude kWet
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "9D4E9JJ6JUHHYRM48NFCQZWY4A"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 0.2275
+                Duration 2.9000
+                Magnitude 1.0000
+                Period 0.3000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3556385711"
+                    DisplayVictimHit "P658755009"
+                    DisplayInfo "79V32J4YEYQPWSXYE7RAFYGDW2"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 0.2275
+                Duration 2.9000
+                Magnitude 1.0000
+                Period 0.3000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MQ4YDWQFCSEBWXXQUC6NJBDXVQ"
+                    DisplayVictimHit "GDQ7FR7X93TTY7X3UPT8P9J7B3"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        Effect
+        {
+            Requires temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?
+        
+            AttribMod
+            {
+                Attrib kRechargeTime
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Slow"
+                Scale 0.1000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+                Messages
+                {
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kJumpHeight
+                Aspect kStr
+                Target kTarget
+                Table "Melee_Slow"
+                Scale 0.2000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+                Messages
+                {
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Slow"
+                Scale 0.2000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kToHit
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_DeBuff_ToHit"
+                Scale 1.0000
+                Duration 8.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayInfo "67DAA4BVF2RHWPXD3VPZKZXQW2"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.2010
+                Duration 2.9000
+                Magnitude 1.0000
+                Period 0.3000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P3556385711"
+                    DisplayVictimHit "P658755009"
+                    DisplayInfo "79V32J4YEYQPWSXYE7RAFYGDW2"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+            Flags PvPOnly
+        
+            AttribMod
+            {
+                Attrib kCold
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.2010
+                Duration 2.9000
+                Magnitude 1.0000
+                Period 0.3000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "MQ4YDWQFCSEBWXXQUC6NJBDXVQ"
+                    DisplayVictimHit "GDQ7FR7X93TTY7X3UPT8P9J7B3"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "IncreaseStormStrength"
+        Chance 0.5000
+        Requires kLightningCat5 source.Mode? !
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kCur
+            Target kCastersOwnerAndAllPets
+            Table "Melee_Ones"
+            DelayedRequires Redirects.Storm_Blast.StormCell_Tempest_Sentinel target.ownPower?
+            StackType kStack
+            Params Power
+            {
+                Power Redirects.Storm_Blast.StormCell_LightningAura
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude kLightningCat5
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "StormBrewing"
+            Chance 0.2500
+        
+            Effect
+            {
+                Tag "StormBrewing"
+                Chance 0.2500
+            
+                AttribMod
+                {
+                    Attrib kGrantPower
+                    Aspect kCur
+                    Target kCastersOwnerAndAllPets
+                    Table "Melee_Ones"
+                    DelayedRequires Redirects.Storm_Blast.StormCell_Tempest_Sentinel target.ownPower?
+                    StackType kReplace
+                    Params Power
+                    {
+                        Power Redirects.Storm_Blast.StormCell_WindSpeed_Sentinel
+                    }
+                    
+                }
+            }
+        }
+    }
+}

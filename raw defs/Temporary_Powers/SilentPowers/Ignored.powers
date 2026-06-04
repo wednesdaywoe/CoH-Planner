@@ -1,0 +1,50 @@
+Power Temporary_Powers.SilentPowers.Ignored
+{
+    Name                 "Ignored"                     
+    DisplayName          "P426342610"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    ActivatePeriod       75
+    EffectArea           kSphere
+    Radius               20
+    LifeTime             20
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_ArchVillain_MezRes.pfx"
+    include              menu\Powers\AnimFX\Villain_ArchVillain_MezRes.pfx
+    DisplayShortHelp     "P4023342609"
+    DisplayHelp          "P4023342609"
+    IconName             "Incarnate_StoryArc.tga"
+    MaxTargetsHit        16
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 5000.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

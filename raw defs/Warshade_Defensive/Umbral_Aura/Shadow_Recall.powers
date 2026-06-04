@@ -1,0 +1,47 @@
+Power Warshade_Defensive.Umbral_Aura.Shadow_Recall
+{
+    Name                 "Shadow_Recall"               
+    DisplayName          "P3415254202"
+    BuyRequires          Inherent.Inherent.Shadow_Recall !
+    ModesDisallowed      kDisable_All, kDisable_Recall, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kDeadOrAliveLeaguemate, kFoe
+    EntsAutoHit          kDeadOrAliveLeaguemate
+    Target               kAny
+    TargetVisibility     kNone
+    Range                10000
+    TargetSecondary      kTeleport
+    RangeSecondary       25
+    EnduranceCost        15
+    InterruptTime        4
+    TimeToActivate       5.93
+    TimeToRoot           1.866667
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_TeleportOther.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_TeleportOther.pfx
+    DisplayShortHelp     "P3320333735"
+    DisplayHelp          "Z6LSCJJ6LY88YCZW6UYBAQRMCX"
+    DisplayAttackerHit   "P3355628540"
+    IconName             "UmbralAura_ShadowRecall"
+    TimeToConfirm        10
+    DisplayConfirm       P1594673917
+    Free                 kTrue
+    AutoIssue            kTrue
+
+    Redirect
+    {
+        Power Kheldian_Pets.Umbral_Blast.Shadow_Recall
+        Requires target.isFriend?
+    }
+    
+    Redirect
+    {
+        Power Kheldian_Pets.Umbral_Blast.Starless_Step
+        Requires target.isFriend? !
+    }
+    
+}

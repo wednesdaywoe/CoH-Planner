@@ -1,0 +1,37 @@
+Power Temporary_Powers.Temporary_Powers.Mayhem_Increase_Movement_Speed
+{
+    Name                 "Mayhem_Increase_Movement_Speed"
+    DisplayName          "P129347674"
+    ModesDisallowed      kArena, kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       259200
+    Deletable            kTrue
+    DisplayShortHelp     "P3510857472"
+    DisplayHelp          "P3132606796"
+    IconName             "Temporary_Mayhem_SelfBuffSpeed.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

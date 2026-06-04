@@ -1,0 +1,33 @@
+PowerSet Temporary_Powers.Replacement_Powers
+{
+    Name "Replacement_Powers"
+    DisplayName "P0"
+    DisplayShortHelp "P469686830"
+    DisplayHelp "P469686830"
+    IconName "Replacement_Powers_set.ico"
+
+    Powers Temporary_Powers.Replacement_Powers.Monkey_Gas
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Temporary_Powers.Replacement_Powers.Monkey_Slap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Temporary_Powers.Replacement_Powers.Panther_Stealth
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

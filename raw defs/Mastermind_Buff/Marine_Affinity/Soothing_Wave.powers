@@ -1,0 +1,67 @@
+#***************************************************#
+# Power: Buff > Marine Affinity > Soothing Wave     #
+# Info:  Ranged (Facing Cone), Foe -DMG, Team Heal  #
+#***************************************************#
+
+Power Mastermind_Buff.Marine_Affinity.Soothing_Wave
+{
+    Name                 "Soothing_Wave"               
+    DisplayName          "6QEPH3Y4KUN5W8CPUDYU76J4ZX"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    Range                45
+    EnduranceCost        13.52
+    TimeToActivate       2
+    RechargeTime         10
+    EffectArea           kCone
+    Radius               45
+    Arc                  90
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Soothing_Wave.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Soothing_Wave.pfx
+    DisplayShortHelp     "48C2VDBEL7WWY7MT9GG8BYKQPA"
+    DisplayHelp          "RG2NHHJG4R9PWCZ3WTEB44ARKZ"
+    IconName             "MarineAffinity_SoothingWave.tga"
+    MaxTargetsHit        255
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Marine_Affinity.Soothing_Wave
+            }
+            
+        }
+    }
+}

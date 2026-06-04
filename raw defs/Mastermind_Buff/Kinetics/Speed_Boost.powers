@@ -1,0 +1,135 @@
+Power Mastermind_Buff.Kinetics.Speed_Boost
+{
+    Name                 "Speed_Boost"                 
+    DisplayName          "P3686758356"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                50
+    EnduranceCost        7.8
+    TimeToActivate       1
+    RechargeTime         2
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRecovery_Boost, kSpeedRunning_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Kinetics_SpeedBoost.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Kinetics_SpeedBoost.PFX
+    DisplayShortHelp     "BJS75SZ2P7LAYNLKKF5L2GCAMZ"
+    DisplayHelp          "ZKDUTXGT79ZLYFXMRL4ZMEPB4Q"
+    DisplayAttackerHit   "P1930511113"
+    DisplayVictimHit     "P2717324833"
+    IconName             "KineticBoost_SpeedBoost.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P922167688"
+    DisplayTargetHelp    "P3672661646"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kRes
+            Target kTarget
+            Table "Melee_SpeedRunning"
+            Scale 0.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kRes
+            Target kTarget
+            Table "Melee_SpeedFlying"
+            Scale 0.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Power_DisallowSpeedBoost target.TokenOwned? !
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kCur
+            Target kTarget
+            Table "Melee_SpeedRunning"
+            Scale 0.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kTarget
+            Table "Melee_SpeedFlying"
+            Scale 0.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

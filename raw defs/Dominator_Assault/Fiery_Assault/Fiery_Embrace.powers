@@ -1,0 +1,64 @@
+Power Dominator_Assault.Fiery_Assault.Fiery_Embrace
+{
+    Name                 "Fiery_Embrace"               
+    DisplayName          "P1281662857"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        7.8
+    TimeToActivate       0.73
+    RechargeTime         180
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_FieryAssault_FieryEmbrace.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_FieryAssault_FieryEmbrace.PFX
+    DisplayShortHelp     "P3412642376"
+    DisplayHelp          "A732UEZ9R8YWWDCBEF6AZBPQPA"
+    DisplayAttackerHit   "P3331256427"
+    IconName             "FireAssault_FieryEmbrace.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 10.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 8.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

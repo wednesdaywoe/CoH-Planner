@@ -1,0 +1,43 @@
+Power Temporary_Powers.Temporary_Powers.HM_LGTF_Kraken
+{
+    Name                 "HM_LGTF_Kraken"              
+    DisplayName          "GCM86RN7U8PMYBZT48LFVTKGLA"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    TargetVisibility     kNone
+    ActivatePeriod       5
+    EffectArea           kMap
+    TargetRequires       Rikti_DeltaMonkey_LGTF_HM target.VillainName> Rikti_DeltaShieldMonkey_LGTF_HM target.VillainName> || Rikti_Rikti_Entangler_Drone_HM_LGTF target.VillainName> ||
+    ProcAllowed          kNone
+    DisplayShortHelp     "64MBXRRB6M9RWYXV68LRRHUMS3"
+    DisplayHelp          "KDBZQB9NKDKYWCZPVDXMTPVCFS"
+    IconName             "Rikti_DeathAura.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "B32GNY2B6HJ5YJC3NSKL4AC42X"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Duration 5.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

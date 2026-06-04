@@ -1,0 +1,99 @@
+#*******************************************************#
+# Power: Buff > Radiation Emission > Enervating Field   #
+# Info:  Toggle: Ranged (Targeted AoE), Foe -DMG, -Res  #
+#*******************************************************#
+
+Power Mastermind_Buff.Radiation_Emission.Enervating_Field
+{
+    Name                 "Enervating_Field"            
+    DisplayName          "P1082274496"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kDeadOrAliveFoe
+    Range                70
+    EnduranceCost        0.26
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         8
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_RadiationEmission_EnervatingField.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_RadiationEmission_EnervatingField.PFX
+    DisplayShortHelp     "P2214322243"
+    DisplayHelp          "P3634320051"
+    DisplayAttackerHit   "P2100668018"
+    DisplayVictimHit     "P3850825758"
+    IconName             "RadiationPoisoning_RadiationInfection.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3022714566"
+    DisplayTargetHelp    "P3774123069"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 2.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -3.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -4.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

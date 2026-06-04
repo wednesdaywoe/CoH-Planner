@@ -1,0 +1,291 @@
+Power Temporary_Powers.Phasing.FirstWardPhase
+{
+    Name                 "FirstWardPhase"              
+    DisplayName          "P945367312"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    RefreshesOnActivePlayerChange kTrue
+    DisplayShortHelp     "P3899172876"
+    DisplayHelp          "P3899172876"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Requires Phasing_FW_NadiaStoryArcFinish source.TokenOwned? ! Phasing_FW_FB_NadiaStoryArcStart source.TokenOwned? ||
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact1
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_FW_NadiaStoryArcFinish source.TokenOwned? Phasing_FW_FB_NadiaStoryArcStart source.TokenOwned? ! && Phasing_FW_FB_PalatineStoryArcStart source.TokenOwned? || Phasing_FW_FB_NobleSavageStoryArcStart source.TokenOwned? ||
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_FW_NadiaVisitsHelix source.TokenOwned? ! Phasing_FW_FB_PalatineStoryArcStart source.TokenOwned? Phasing_FW_FB_NadiaVisitsHelix source.TokenOwned? ! && || Phasing_FW_FB_MasterMidnightStoryArcStart source.TokenOwned? ||
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact3
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_FW_AnnaCultCompound source.TokenOwned? Phasing_FW_FB_NadiaStoryArcStart source.TokenOwned? ! && Phasing_FW_FB_NadiaStoryArcStart source.TokenOwned? Phasing_FW_FB_AnnaCultCompound source.TokenOwned? && ||
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact4
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_FW_PalatineStoryArcFinish source.TokenOwned? ! Phasing_FW_FB_NadiaStoryArcStart source.TokenOwned? || Phasing_FW_FB_PalatineStoryArcStart source.TokenOwned? ||
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact5
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_FW_PalatineStoryArcFinish source.TokenOwned? Phasing_FW_FB_NadiaStoryArcStart source.TokenOwned? ! && Phasing_FW_FB_PalatineStoryArcStart source.TokenOwned? ! && Phasing_FW_FB_NobleSavageStoryArcStart source.TokenOwned? || Phasing_FW_FB_VanessaDeVoreStoryArcStart source.TokenOwned? ||
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact6
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_FW_NobleSavageStoryArcFinish source.TokenOwned? Phasing_FW_KatieDouglasReintegrated source.TokenOwned? ! && Phasing_FW_VanessaDeVoreStoryArcFinish source.TokenOwned? ! && Phasing_FW_FB_NobleSavageStoryArcStart source.TokenOwned? ! && Phasing_FW_FB_KatieDouglasStoryArcStart source.TokenOwned? || Phasing_FW_FB_CeruleanStoryArcStart source.TokenOwned? || Phasing_FW_FB_VanessaDeVoreStoryArcStart source.TokenOwned? Phasing_FW_FB_KatieDouglasReintegrated source.TokenOwned? ! && || Phasing_NW_VanessaDeVoreStoryArc2Unintegrated source.TokenOwned? || Phasing_NW_FB_TheMagicianStart source.TokenOwned? || Phasing_NW_FB_VanessaDeVoreStoryArc2Unintegrated source.TokenOwned? || Phasing_NW_FB_VanessaDeVoreStoryArc2Start source.TokenOwned? ! && Phasing_NW_FB_VanessaDeVoreStoryArc2Unintegrated source.TokenOwned? ||
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact7
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_FW_BlindMakwaStoryArcFinish source.TokenOwned? Phasing_FW_FB_BlindMakwaStoryArcStart source.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact8
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_FW_CeruleanStoryArcFinish source.TokenOwned? ! Phasing_FW_VanessaDeVoreStoryArcFinish source.TokenOwned? || Phasing_FW_FB_MasterMidnightStoryArcStart source.TokenOwned? ! && Phasing_FW_FB_VanessaDeVoreStoryArcStart source.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact9
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_FW_CeruleanStoryArcFinish source.TokenOwned? Phasing_FW_MasterMidnightBetrayal source.TokenOwned? ! && Phasing_FW_VanessaDeVoreStoryArcFinish source.TokenOwned? ! && Phasing_FW_FB_VanessaDeVoreStoryArcStart source.TokenOwned? Phasing_FW_FB_MasterMidnightBetrayal source.TokenOwned? ! && || Phasing_FW_FB_MasterMidnightStoryArcStart source.TokenOwned? ||
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact10
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Phasing_FW_MasterMidnightStoryArcFinish source.TokenOwned? Phasing_FW_CeruleanBetrayal source.TokenOwned? || ! Phasing_FW_FB_BlindMakwaStoryArcStart source.TokenOwned? || Phasing_FW_FB_MasterMidnightStoryArcStart source.TokenOwned? || Phasing_FW_FB_CeruleanStoryArcStart source.TokenOwned? || Phasing_FW_FB_CeruleanBetrayal source.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact11
+            }
+            
+        }
+    }
+}

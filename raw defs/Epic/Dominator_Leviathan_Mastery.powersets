@@ -1,0 +1,49 @@
+PowerSet Epic.Dominator_Leviathan_Mastery
+{
+    Name "Dominator_Leviathan_Mastery"
+    DisplayName "P3487560968"
+    DisplayShortHelp "P3487560968"
+    DisplayHelp "P2525147091"
+    IconName "Dominator_Leviathan_Mastery_set.ico"
+
+    Powers Epic.Dominator_Leviathan_Mastery.Water_Spout
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Dominator_Leviathan_Mastery.Chum_Spray
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Dominator_Leviathan_Mastery.Hibernate
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Dominator_Leviathan_Mastery.Shark_Skin
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Dominator_Leviathan_Mastery.Summon_Coralax
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

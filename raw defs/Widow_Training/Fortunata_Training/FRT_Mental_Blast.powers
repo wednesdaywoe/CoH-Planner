@@ -1,0 +1,93 @@
+Power Widow_Training.Fortunata_Training.FRT_Mental_Blast
+{
+    Name                 "FRT_Mental_Blast"            
+    DisplayName          "P2292978182"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        7.232
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu/powers/AnimFX/ArachnosWidow_MentalBlast_NoClaws.pfx"
+    include              menu/powers/AnimFX/ArachnosWidow_MentalBlast_NoClaws.pfx
+    DisplayShortHelp     "ZQAVEZF5W482YGN4FV5EWZGSTA"
+    DisplayHelp          "4J83HWH5JNLAYRV253TLXHJ95Q"
+    IconName             "FortunataTraining_MentalBlast.tga"
+    DisplayTargetShortHelp "P3214140212"
+    DisplayTargetHelp    "P3199664469"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.3908
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.3000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.8089
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    }
+}

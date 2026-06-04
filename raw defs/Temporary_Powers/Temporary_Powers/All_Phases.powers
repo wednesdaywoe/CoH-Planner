@@ -1,0 +1,311 @@
+Power Temporary_Powers.Temporary_Powers.All_Phases
+{
+    Name                 "All_Phases"                  
+    DisplayName          "P3241883456"
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       5
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P2211841663"
+    IconName             "Inherent_BlasterDesperation.tga"
+    ShowInManage         kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact1
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact3
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact4
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact5
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact6
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact7
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact8
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact9
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact10
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact11
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact12
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact13
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase Friendly
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase Marker
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 5.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase ShadowedPaths
+            }
+            
+        }
+    }
+}

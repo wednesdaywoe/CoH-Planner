@@ -1,0 +1,65 @@
+#***************************************************#
+# Power: Pets > Demons Ember Demon 2 > Fire Breath  #
+# Info:  Close (Cone), DoT(Fire)                    #
+#***************************************************#
+
+Power Mastermind_Pets.Ember_Demon_2.Fire_Breath
+{
+    Name                 "Fire_Breath"                 
+    DisplayName          "P2101271196"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        15.184
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         16
+    EffectArea           kCone
+    Radius               40
+    Arc                  30
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon2_FireBreath.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon2_FireBreath.pfx
+    DisplayShortHelp     "A5DLBUFDPD65W9BTXEP3Z5CZU2"
+    DisplayHelp          "MXDMPZR7LRQQYXMTAZZ9JKAMT3"
+    IconName             "FireBlast_ArcOfFire.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P1437075981"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.5850
+            Duration 2.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

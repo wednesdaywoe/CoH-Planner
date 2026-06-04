@@ -1,0 +1,63 @@
+Power Tanker_Melee.Stone_Melee.Fault
+{
+    Name                 "Fault"                       
+    DisplayName          "P1578234279"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                20
+    EnduranceCost        10.192
+    TimeToActivate       2.1
+    TimeToRoot           2.1
+    RechargeTime         20
+    EffectArea           kCharacter
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kStunned_Boost, kTaunt_Boost
+    ProcAllowed          kNone
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerMelee_StoneMelee_Fault.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerMelee_StoneMelee_Fault.PFX
+    DisplayShortHelp     "E4M7QSKGRPHPWPLN2EVJ3EXWT3"
+    DisplayHelp          "AUZSMJ3WYBXHWEMBVKQ3F8RTUX"
+    IconName             "StoneMelee_Fault.tga"
+    DisplayTargetShortHelp "P2848422893"
+    DisplayTargetHelp    "P2366756416"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay CopyBoosts ProcSeparately
+            Params Power
+            {
+                Power Redirects.Stone_Melee.Fault_Tanker
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay CopyBoosts ProcSeparately
+            Params Power
+            {
+                Power Redirects.Stone_Melee.Fault_Cone_Tanker
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,103 @@
+#******************************************************#
+# Power: Pets > Robot Protector 3 > Overcharged Burst  #
+# Info:  Ranged, DoT (Energy), Foe Knockback           #
+#******************************************************#
+
+Power Mastermind_Pets.Protector_3.Overcharged_Burst
+{
+    Name                 "Overcharged_Burst"           
+    DisplayName          "RWA9VBG228RWYDVCUTRB3WPLWS"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                90
+    EnduranceCost        15.184
+    PreferenceMultiplier 3
+    DontSetStance        1
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         16
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\RobotArmy_2ndMech_Lazer_Blast.pfx"
+    include              menu\Powers\AnimFX\RobotArmy_2ndMech_Lazer_Blast.pfx
+    DisplayShortHelp     "ZDWETB2UBMKQY8L5BBYXAU4PAZ"
+    DisplayHelp          "XDS97JYJ8XF2W4BJQPMPZX47EW"
+    IconName             "Robotics_LaserRifleBlast.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.9733
+            Duration 0.5100
+            Magnitude 1.0000
+            Period 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P59899910"
+                DisplayVictimHit "P3210640873"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,111 @@
+Power Blaster_Ranged.Assault_Rifle.Flamethrower
+{
+    Name                 "Flamethrower"                
+    DisplayName          "P514829104"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.3
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        18.512
+    TimeToActivate       2.33
+    TimeToRoot           2.33
+    RechargeTime         20
+    EffectArea           kCone
+    Radius               40
+    Arc                  45
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\AssaultWep_AR_Player_Flamethrower_NoGeo.pfx"
+    include              menu\Powers\AnimFX\AssaultWep_AR_Player_Flamethrower_NoGeo.pfx
+    DisplayShortHelp     "CTTBYUDBEPTTYNX2S83T8Z97CS"
+    DisplayHelp          "ANTKZSGJSCW3WUZL599W2HQM9X"
+    IconName             "AssaultWeapons_ARFlamethrower.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P106624625"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.3872
+            Duration 4.7000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.2379
+            Duration 4.7000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayInfo "P3912192696"
+            }
+            
+        }
+    }
+}

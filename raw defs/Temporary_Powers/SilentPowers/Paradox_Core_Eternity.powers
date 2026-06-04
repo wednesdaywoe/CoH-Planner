@@ -1,0 +1,39 @@
+Power Temporary_Powers.SilentPowers.Paradox_Core_Eternity
+{
+    Name                 "Paradox_Core_Eternity"       
+    DisplayName          "P377668751"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P3739757007"
+    DisplayHelp          "P511682056"
+    IconName             "Incarnate_StoryArc.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kUntouchable
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration 10.3000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

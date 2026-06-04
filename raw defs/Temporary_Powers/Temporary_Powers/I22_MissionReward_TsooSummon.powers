@@ -1,0 +1,52 @@
+Power Temporary_Powers.Temporary_Powers.I22_MissionReward_TsooSummon
+{
+    Name                 "I22_MissionReward_TsooSummon"
+    DisplayName          "P3675113922"
+    ActivateRequires     combatlevel char> 15 >= level char> 15 >= &&
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        9.75
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         240
+    EffectArea           kLocation
+    NumCharges           5
+    IgnoreLevelBought    kTrue
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Summon_Jumpbot.pfx"
+    include              menu\Powers\AnimFX\Villain_Summon_Jumpbot.pfx
+    DisplayShortHelp     "P3675113922"
+    DisplayHelp          "ANF9R8NKV7G7YYM5RRD3SV2PP2"
+    IconName             "Temporary_Prometheus.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 180.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Tsoo_CoV_Sorcerer_SpanPet
+                PriorityList "PL_UseAIConfig"
+            }
+            
+        }
+    }
+}

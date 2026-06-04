@@ -1,0 +1,66 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_Recall
+{
+    Name                 "Labyrinth_Recall"            
+    DisplayName          "2RCD96E7G7LGWPM32HYPUSA5MX"
+    ActivateRequires     Lobby1 inVolume> !
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    InterruptTime        2
+    TimeToActivate       3.17
+    TimeToRoot           1.17
+    RechargeTime         1
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRechargeTime
+    GlobalStrengthsDisallowed kRechargeTime
+    ServerTrayPriority   1
+    VisualFX             "menu\Powers\AnimFX\Enemies\Event\DungeonLabyrinth\DungeonLabyrinth_EscapeFromFog.pfx"
+    include              menu\Powers\AnimFX\Enemies\Event\DungeonLabyrinth\DungeonLabyrinth_EscapeFromFog.pfx
+    DisplayShortHelp     "MM5RZ6BB4XWMWTNP4YDYUCTB9W"
+    DisplayHelp          "RCTED9QK67LJWVCV7QC3K24BAW"
+    IconName             "Temporary_LabyrinthRecall.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kScriptNotify
+            Aspect kCur
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            Params ScriptNotify
+            {
+                Channel                        "EntranceRecall"
+                Event                          FirstTick
+            }
+        }
+    }
+}

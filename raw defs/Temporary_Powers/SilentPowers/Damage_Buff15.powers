@@ -1,0 +1,38 @@
+Power Temporary_Powers.SilentPowers.Damage_Buff15
+{
+    Name                 "Damage_Buff15"               
+    DisplayName          "P3107250575"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P3059597889"
+    DisplayHelp          "P2018386084"
+    IconName             "Temporary_PVP_BuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

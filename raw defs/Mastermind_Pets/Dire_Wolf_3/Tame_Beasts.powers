@@ -1,0 +1,48 @@
+#************************************************#
+# Power: Pets > Beast Dire Wolf 3 > Tame Beasts  #
+# Info:  Tame Beasts                             #
+#************************************************#
+
+Power Mastermind_Pets.Dire_Wolf_3.Tame_Beasts
+{
+    Name                 "Tame_Beasts"                 
+    DisplayName          "P594479349"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_TameBeast_Resistance.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_BeastMastery_TameBeast_Resistance.pfx
+    DisplayShortHelp     "P594479349"
+    DisplayHelp          "P3748669899"
+    IconName             "BeastMastery_TameBeasts.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

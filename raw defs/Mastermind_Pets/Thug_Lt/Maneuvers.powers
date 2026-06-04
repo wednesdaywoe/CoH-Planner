@@ -1,0 +1,45 @@
+#********************************************#
+# Power: Pets > Thug Lieutenant > Maneuvers  #
+# Info:  +DEF(All)                           #
+#********************************************#
+
+Power Mastermind_Pets.Thug_Lt.Maneuvers
+{
+    Name                 "Maneuvers"                   
+    DisplayName          "P3009043276"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kSphere
+    Radius               30
+    AIReport             kNever
+    BoostsAllowed        kBuff_Defense_Boost
+    TargetRequires       MastermindPets_Thug target.VillainName> MastermindPets_Thug_Arsonist target.VillainName> || MastermindPets_Thug_Lt target.VillainName> || MastermindPets_Thug_Boss target.VillainName> ||
+    DisplayShortHelp     "P2623971958"
+    DisplayHelp          "P3056526287"
+    DisplayVictimHit     "P836189985"
+    IconName             "Leadership_Defense.tga"
+    MaxTargetsHit        255
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_SpeedJumping"
+            Scale 0.0340
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

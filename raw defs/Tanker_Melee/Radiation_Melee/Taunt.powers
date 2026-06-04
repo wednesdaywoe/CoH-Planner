@@ -1,0 +1,116 @@
+Power Tanker_Melee.Radiation_Melee.Taunt
+{
+    Name                 "Taunt"                       
+    DisplayName          "P1980192711"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                70
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         10
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kTaunt_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteMelee_SuperStrength_Taunt.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteMelee_SuperStrength_Taunt.PFX
+    DisplayShortHelp     "P45218014"
+    DisplayHelp          "SWQ8WBJEJMM4YRNZWD2PJ87FJS"
+    IconName             "RadiationMelee_Taunt.tga"
+    MaxTargetsHit        5
+    OverCapTrigger       10
+    OverCapMultiplier    0.3333
+    DisplayTargetShortHelp "P1980192711"
+    DisplayTargetHelp    "P4173113734"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 20.0000
+            Magnitude 4.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayAttackerHit "P2043392969"
+                DisplayVictimHit "P2036629572"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 5.0000
+            Magnitude 4.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayAttackerHit "P2043392969"
+                DisplayVictimHit "P2036629572"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq @ToHitRoll @ToHit >= @ForceHit || &&
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1479558089"
+                DisplayVictimHit "P4215765545"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRange
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    }
+}

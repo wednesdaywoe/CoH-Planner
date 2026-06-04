@@ -1,0 +1,116 @@
+#**************************************************************************************#
+# Power: Pets > Necro Tortured Soul > Resistance                                       #
+# Info:  Auto Res Sleep, Fear, Immobilize, Slow, Smash, Lethal, Cold, Negative, Toxic  #
+#**************************************************************************************#
+
+Power Mastermind_Pets.Ghosts_1.Resistance
+{
+    Name                 "Resistance"                  
+    DisplayName          "P1196525362"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_Resistance.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_Ghost_Resistance.pfx
+    DisplayShortHelp     "EYCNWR6NG2DSWENMLGTR6LF7T2"
+    DisplayHelp          "P3827938742"
+    IconName             "DarkArmor_DarkEmbrace.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kImmobilized kSleep
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -4.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTerrorized
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -2.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kCold kNegative_Energy kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 0.1050
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedJumping"
+            Scale 0.0525
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX CustomizeablePowers\Necromancy\Villain_Pirate.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,62 @@
+Power Temporary_Powers.Day_Job_Powers.Marketeer_Teleporter_Greater
+{
+    Name                 "Marketeer_Teleporter_Greater"
+    DisplayName          "P1116698571"
+    ActivateRequires     isTutorialMap? !
+    ModesDisallowed      kDisable_All, kDisable_Teleport, kDisable_Temp, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    InterruptTime        10
+    TimeToActivate       12
+    TimeToRoot           1.766667
+    RechargeTime         30
+    EffectArea           kCharacter
+    NumCharges           30
+    TargetRequires       praetorianprogress source> normal eq praetorianprogress source> earth eq ||
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Prestige_Prestige_Travel_Long_Range_Teleport.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Prestige_Prestige_Travel_Long_Range_Teleport.pfx
+    DisplayShortHelp     "P3390294693"
+    DisplayHelp          "BYSJGN8MBY2LYKVBSN8ECJSYHQ"
+    IconName             "DayJob_BlackMarketTeleport.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.1700
+            StackType kStack
+            Flags IgnoreResistance
+            Params Teleport
+            {
+                Destination MONORAIL.BlackMarketTeleporter
+            }
+            
+        }
+    }
+}

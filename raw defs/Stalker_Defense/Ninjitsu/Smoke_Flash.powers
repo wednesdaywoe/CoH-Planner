@@ -1,0 +1,74 @@
+Power Stalker_Defense.Ninjitsu.Smoke_Flash
+{
+    Name                 "Smoke_Flash"                 
+    DisplayName          "P3600193279"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.4
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        2.6
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               20
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kTaunt_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_SmokeFlash.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_SmokeFlash.PFX
+    DisplayShortHelp     "P120571169"
+    DisplayHelp          "E9NRZCH6D9PYYTXRHYALH78YUX"
+    IconName             "Ninjitsu_SmokeFlash.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1943041994"
+    DisplayTargetHelp    "P2833281680"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 8.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 6.0000
+            Magnitude 3.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+}

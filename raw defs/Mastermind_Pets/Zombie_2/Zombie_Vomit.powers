@@ -1,0 +1,76 @@
+#**********************************************#
+# Power: Pets > Necro Zombie 2 > Zombie Vomit  #
+# Info:  DoT (Toxic)                           #
+#**********************************************#
+
+Power Mastermind_Pets.Zombie_2.Zombie_Vomit
+{
+    Name                 "Zombie_Vomit"                
+    DisplayName          "P1592855932"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kToxic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                8
+    EnduranceCost        6.864
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         12
+    EffectArea           kSphere
+    Radius               7
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_ZombieHorde_Vomit.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_ZombieHorde_Vomit.pfx
+    DisplayShortHelp     "P1861415682"
+    DisplayHelp          "79P52752Z99JY3BGAMG4LEXWMS"
+    IconName             "FieryFray_Incinerate.tga"
+    MaxTargetsHit        5
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.1268
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2851307520"
+                DisplayVictimHit "P105122461"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.0427
+            Duration 15.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            TickChance 0.8000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P4250172858"
+                DisplayVictimHit "P1470793739"
+            }
+            
+        }
+    }
+}

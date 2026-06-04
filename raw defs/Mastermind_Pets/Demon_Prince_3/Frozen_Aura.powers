@@ -1,0 +1,122 @@
+#****************************************************#
+# Power: Pets > Demons Demon Prince 3 > Frozen Aura  #
+# Info:  PBAoE, DMG(Cold), Foe Sleep                 #
+#****************************************************#
+
+Power Mastermind_Pets.Demon_Prince_3.Frozen_Aura
+{
+    Name                 "Frozen_Aura"                 
+    DisplayName          "P1695746557"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        18.512
+    TimeToActivate       2.1
+    TimeToRoot           2.1
+    RechargeTime         20
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kSleep_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_DemonPrince3_FrozenAura.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_DemonPrince3_FrozenAura.pfx
+    DisplayShortHelp     "4CFZ2PP3JUYHW7VYCQKBLBJ2KZ"
+    DisplayHelp          "FB7LGQXE9JZAYJCDETXH5K5TYA"
+    DisplayAttackerHit   "P1784789294"
+    IconName             "IcyOnslaught_FrozenAura.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "P1742153832"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Sleep"
+            Scale 10.0000
+            Magnitude 2.0000
+            Delay 0.3300
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+                ConditionalBits ANIM_LassoStun
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.4200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4173738004"
+                DisplayVictimHit "P1163387325"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+                ConditionalBits ANIM_LassoStun
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,118 @@
+Power Stalker_Defense.Energy_Aura.Repulse
+{
+    Name                 "Repulse"                     
+    DisplayName          "P1476019430"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        0.78
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         8
+    ActivatePeriod       4
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kStunned_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > && kMeter source> .9 < &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_EnergyAura_Repulse.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_EnergyAura_Repulse.PFX
+    DisplayShortHelp     "P1212185476"
+    DisplayHelp          "Q49XG5K94EW2W4ZP4Q56G3MC4Z"
+    DisplayAttackerHit   "P1461880598"
+    IconName             "EnergyAura_Disrupt.tga"
+    MaxTargetsHit        5
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Stun"
+            Scale 4.0000
+            Magnitude 2.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kStunned
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P583235414"
+                DisplayVictimHit "P3613904985"
+            }
+            
+            FX
+            {
+                ConditionalFX GenericContinuing/StunContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P657239359"
+            }
+            
+        }
+    }
+}

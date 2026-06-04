@@ -1,0 +1,130 @@
+Power Blaster_Support.Gadgets.Smoke_Grenade
+{
+    Name                 "Smoke_Grenade"               
+    DisplayName          "P810634828"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               35
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_Gadgets_SmokeGrenade.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_Gadgets_SmokeGrenade.PFX
+    DisplayShortHelp     "P1118005641"
+    DisplayHelp          "SX6Y8UPE5FHSY9CUYASGS9F7WZ"
+    DisplayAttackerHit   "P3070891156"
+    DisplayVictimHit     "P503998744"
+    IconName             "Gadgets_SmokeGrenade.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P2217246121"
+    DisplayTargetHelp    "P1010802951"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.7000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.9000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.7000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.9000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            CancelEvents Damaged
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

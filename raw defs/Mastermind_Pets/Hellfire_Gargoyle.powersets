@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Hellfire_Gargoyle
+{
+    Name "Hellfire_Gargoyle"
+    DisplayName "H4U9AACFP437YTLZZ467M6C7ZQ"
+    DisplayShortHelp "P3429684360"
+    DisplayHelp "P3429684360"
+    IconName "Hellfire_Gargoyle_set.ico"
+
+    Powers Mastermind_Pets.Hellfire_Gargoyle.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Hellfire_Gargoyle.Claw_Rake
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Hellfire_Gargoyle.Claw_Slash
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Hellfire_Gargoyle.Corruption
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Hellfire_Gargoyle.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

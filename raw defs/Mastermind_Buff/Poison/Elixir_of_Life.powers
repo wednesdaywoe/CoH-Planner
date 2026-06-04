@@ -1,0 +1,271 @@
+#****************************************#
+# Power: Buff > Poison > Elixir of Life  #
+# Info:  Close, Ally Rez, Special        #
+#****************************************#
+
+Power Mastermind_Buff.Poison.Elixir_of_Life
+{
+    Name                 "Elixir_of_Life"              
+    DisplayName          "P2164945405"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadPlayerFriend
+    EntsAutoHit          kDeadPlayerFriend
+    Target               kDeadPlayerFriend
+    Range                15
+    EnduranceCost        5.2
+    TimeToActivate       1.83
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost, kRecovery_Boost
+    GlobalStrengthsDisallowed kSmashing kLethal kFire kCold kEnergy kNegative_Energy kToxic kPsionic
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_ElixirofLife.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Poison_ElixirofLife.PFX
+    DisplayShortHelp     "P2944072660"
+    DisplayHelp          "JZ7XYDJHFW3TYXLLL8YYF9DKCZ"
+    IconName             "Poison_ElixirOfLife.tga"
+    TimeToConfirm        15
+    MaxTargetsHit        5
+    DisplayConfirm       P100097354
+    DisplayTargetShortHelp "P2211841663"
+    DisplayTargetHelp    "P2346481796"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kHeal
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                Period 1.0000
+                StackType kStack
+                Flags IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P256533052"
+                    DisplayVictimHit "P285457741"
+                }
+                
+                FX
+                {
+                    ContinuingBits ANIM_GETUP ANIM_HIT
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreResistance
+                Messages
+                {
+                    DisplayAttackerHit "P3426790094"
+                    DisplayVictimHit "P3635132928"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRecovery
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 2.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRechargeTime
+                Aspect kStr
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kStr
+                Target kTarget
+                Table "Ranged_Buff_Dmg"
+                Scale 4.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kToHit
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Buff_ToHit"
+                Scale 3.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kToxic
+                Aspect kRes
+                Target kTarget
+                Table "Ranged_Res_Dmg"
+                Scale 2.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kXPDebtProtection
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Duration 90.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+            }
+        }
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kStealthRadius
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 300.0000
+                Duration 15.0000
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Attacked Stunned Held Sleep
+                Suppress Attacked 8 Always
+                Suppress Damaged 8 Always
+                Suppress MissionObjectClick 8 Always
+                Flags IgnoreResistance KeepThroughDeath
+            }
+        }
+    
+        Effect
+        {
+            Tag "Crash"
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1.0000
+                Magnitude 1.0000
+                Delay 90.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayVictimHit "P3379169905"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kHeld
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 1000.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                Delay 90.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingBits ANIM_BARFSTUN ANIM_STUN
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kStr
+                Target kTarget
+                Table "Ranged_Debuff_Dam"
+                Scale 4.0000
+                Duration 45.0000
+                Magnitude 1.0000
+                Delay 90.0000
+                StackType kStack
+                Flags IgnoreStrength
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffDamageContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kToHit
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Debuff_ToHit"
+                Scale 3.0000
+                Duration 45.0000
+                Magnitude 1.0000
+                Delay 90.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+                }
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+PowerSet Mastermind_Pets.Soldier_2
+{
+    Name "Soldier_2"
+    DisplayName "TEL4FWMHC5AFWHZZV2QJSPJA7A"
+    DisplayShortHelp "P3643806322"
+    DisplayHelp "P3643806322"
+    IconName "Soldier_2_set.ico"
+
+    Powers Mastermind_Pets.Soldier_2.ASMG_Heavy_Burst
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Soldier_2.Assault_Rifle_Quick_Burst
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Soldier_2.Equip
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

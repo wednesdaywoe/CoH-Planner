@@ -1,0 +1,366 @@
+Power Pool.Force_of_Will.Project_Will
+{
+    Name                 "Project_Will"                
+    DisplayName          "P3891688846"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        7.54
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         5
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/OriginPool_ForceOfWill_ProjectWill.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/OriginPool_ForceOfWill_ProjectWill.PFX
+    DisplayShortHelp     "YU7L3YBXJPFZYKLG58G7MT7NTW"
+    DisplayHelp          "4H8RK5CPW5TKWAMHRXZDUZX2W3"
+    IconName             "ForceofWill_ProjectWill.tga"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.1600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires arch source> Class_Stalker eq
+        
+            Effect
+            {
+                Requires kmeter source> 0 >
+            
+                AttribMod
+                {
+                    Attrib kPsionic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_InherentDamage"
+                    Scale 1.1600
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                        DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.2000
+                Requires kHeld target> 0 > kSleep target> 0 > || kMeter source> .9 < &&
+            
+                AttribMod
+                {
+                    Attrib kPsionic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_InherentDamage"
+                    Scale 1.1600
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                        DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq &&
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 1.1600
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "XUUX8GNZJXPGW6XAK7WZEB5Q6A"
+                    DisplayVictimHit "MQU5YL8SVKZVW2CXKKKQZ4XQXQ"
+                    DisplayFloat "P111359259"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Containment"
+            Requires kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.hasTag? || arch source> Class_Controller eq &&
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 1.1600
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "TGUW3FFW4KHLYLXPA2S3F2R4RX"
+                    DisplayVictimHit "Z8ULP8SLGS57W3ZK9CBPD8VXVW"
+                    DisplayFloat "P3070513493"
+                    DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritSmall" "ScrapperCrit_ST"
+            Chance 0.0500
+            Requires arch source> Class_Scrapper eq
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 1.1600
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                    DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.2500
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 0.6700
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 2.0490
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        Effect
+        {
+            Requires arch source> Class_Stalker eq
+        
+            Effect
+            {
+                Requires arch source> Class_Stalker eq kmeter source> 0 > &&
+            
+                AttribMod
+                {
+                    Attrib kPsionic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 2.0491
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                        DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Chance 0.2000
+                Requires kHeld target> 0 > kSleep target> 0 > || arch source> Class_Stalker eq && kMeter source> .9 < &&
+            
+                AttribMod
+                {
+                    Attrib kPsionic
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 2.0491
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                        DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                        DisplayFloat "P2440464263"
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq &&
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 2.0489
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "XUUX8GNZJXPGW6XAK7WZEB5Q6A"
+                    DisplayVictimHit "MQU5YL8SVKZVW2CXKKKQZ4XQXQ"
+                    DisplayFloat "P111359259"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "Containment"
+            Requires kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller eq &&
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 2.0491
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "TGUW3FFW4KHLYLXPA2S3F2R4RX"
+                    DisplayVictimHit "Z8ULP8SLGS57W3ZK9CBPD8VXVW"
+                    DisplayFloat "P3070513493"
+                    DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "CritSmall" "ScrapperCrit_ST"
+            Chance 0.0500
+            Requires arch source> Class_Scrapper eq
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 2.0489
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "SCX6SX53ABX8YTZ9FT623VS5QX"
+                    DisplayVictimHit "L22NBH9BREETYRLGKMQQGFR3A2"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Chance 0.2500
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 0.6700
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    }
+}

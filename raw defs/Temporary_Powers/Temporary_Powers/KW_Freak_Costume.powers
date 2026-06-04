@@ -1,0 +1,44 @@
+Power Temporary_Powers.Temporary_Powers.KW_Freak_Costume
+{
+    Name                 "KW_Freak_Costume"           
+    DisplayName          "P1671583939"
+	ModesDisallowed      kDisable_All, kHidden_Attack, kShivan_Mode
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1.2
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P455342195"
+    DisplayHelp          "P1286367996"
+    DisplayAttackerHit   "P3430542905"
+    IconName             "Temporary_FreakshowDisguise.tga"
+    DoNotSave            kTrue
+
+
+     Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 55.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/ITEMSANDTEMPPOWERS/FREAKSHOWPARTS.FX
+            }
+            
+        }
+    }
+}

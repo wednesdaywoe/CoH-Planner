@@ -1,0 +1,67 @@
+Power Temporary_Powers.Temporary_Powers.V_Shivan_Beam
+{
+    Name                 "V_Shivan_Beam"               
+    DisplayName          "P1007565220"
+    ModesRequired        kShivan_Mode
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        5.2
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         4
+    EffectArea           kCharacter
+    LifeTimeInGame       3600
+    VisualFX             "menu\Powers\AnimFX\RADIATION_Burst_X-RayBeam.pfx"
+    include              menu\Powers\AnimFX\RADIATION_Burst_X-RayBeam.pfx
+    DisplayShortHelp     "P4021409771"
+    DisplayHelp          "8LAK55G2Z365YMMBFEJPV68KCQ"
+    IconName             "LuminousBlast_GlintingEye.tga"
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P1979858085"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "FRSSJKC5PYCBYNNS2UGWW7LEFW"
+                DisplayVictimHit "G95KU877F7JQYNL5D339GMXRXZ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 2.0000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/IrradiateContinuingFx.fx
+            }
+            
+        }
+    }
+}

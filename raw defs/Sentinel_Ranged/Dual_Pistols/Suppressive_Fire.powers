@@ -1,0 +1,44 @@
+#************************************************************#
+# Power: Ranged > Dual Pistols > Suppressive Fire            #
+# Info:  Ranged, DMG(Lethal/Special), Foe Disorient/Special  #
+#************************************************************#
+
+Power Sentinel_Ranged.Dual_Pistols.Suppressive_Fire
+{
+    Name                 "Suppressive_Fire"            
+    DisplayName          "P1434775102"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        10.192
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\DualPistols_SuppressiveFire.pfx"
+    include              menu\Powers\AnimFX\DualPistols_SuppressiveFire.pfx
+    DisplayShortHelp     "7FGDVZW5Z8LZWUZXTVLS9MAD83"
+    DisplayHelp          "AEMHJAAW6EUHWXBDM29HUQ9J6A"
+    IconName             "DualPistols_SuppressiveFire.tga"
+    DisplayTargetShortHelp "P2211841663"
+    DisplayTargetHelp    "P2335811152"
+
+    Redirect
+    {
+        Power Redirects.Dual_Pistols.Suppressive_Fire_Lethal
+        Requires kIceAmmo source.Mode? kFireAmmo source.Mode? || kToxicAmmo source.Mode? || !
+    }
+    
+    Redirect
+    {
+        Power Redirects.Dual_Pistols.Suppressive_Fire
+        Requires 1
+    }
+    
+}

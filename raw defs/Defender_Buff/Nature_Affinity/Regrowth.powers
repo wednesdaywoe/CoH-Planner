@@ -1,0 +1,90 @@
+#****************************************************************************************#
+# Power: Buff > Nature Affinity > Regrowth                                               #
+# Info:  Ranged Facing Cone, Minor Ally Heal, Ally Moderate Healing Over Time, +1 Bloom  #
+#****************************************************************************************#
+
+Power Defender_Buff.Nature_Affinity.Regrowth
+{
+    Name                 "Regrowth"                    
+    DisplayName          "P126683333"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    Range                45
+    EnduranceCost        13.52
+    TimeToActivate       2
+    RechargeTime         10
+    EffectArea           kCone
+    Radius               45
+    Arc                  90
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_Regrowth.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_Regrowth.PFX
+    DisplayShortHelp     "P2237303032"
+    DisplayHelp          "P3588797750"
+    IconName             "NatureAffinity_Regrowth.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P969877394"
+    DisplayTargetHelp    "P132748708"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 0.7500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Bloom
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 0.1500
+            Duration 4.1000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P256533052"
+                DisplayVictimHit "P285457741"
+            }
+            
+        }
+    }
+}

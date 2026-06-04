@@ -1,0 +1,48 @@
+#***************************************************#
+# Power: Melee > Kinetic Melee > Assassin's Strike  #
+# Info:  Melee, DMG(Smashing, Energy)               #
+#***************************************************#
+
+Power Stalker_Melee.Kinetic_Attack.Assassins_Strike
+{
+    Name                 "Assassins_Strike"            
+    DisplayName          "P3813972619"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       2.67
+    TimeToRoot           0.6666667
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/StalkerMelee_KineticMelee_AssassinsStrike.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/StalkerMelee_KineticMelee_AssassinsStrike.PFX
+    DisplayShortHelp     "XA9AFG9PG8FUW3CDNQJZBY7NA2"
+    DisplayHelp          "DY65FDP3VSDQW9BNTRCBS3VSBS"
+    IconName             "KineticAttack_AssassinsStrike.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Kinetic_Melee_Assassins_Strike.Assassins_Strike_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Kinetic_Melee_Assassins_Strike.Assassins_Strike_Stealth
+        Requires 1
+    }
+    
+}

@@ -1,0 +1,41 @@
+PowerSet Mastermind_Pets.Demon_Prince
+{
+    Name "Demon_Prince"
+    DisplayName "L5KZ4KLLXUS5Y7LWQAKWSQ8MMX"
+    DisplayShortHelp "P3429684360"
+    DisplayHelp "P3429684360"
+    IconName "Demon_Prince_set.ico"
+
+    Powers Mastermind_Pets.Demon_Prince.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Demon_Prince.Ice_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Demon_Prince.Shiver
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Demon_Prince.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

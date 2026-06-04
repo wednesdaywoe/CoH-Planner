@@ -1,0 +1,267 @@
+Power Temporary_Powers.Phasing.TrainingATPhase
+{
+    Name                 "TrainingATPhase"             
+    DisplayName          "P3350265551"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    RefreshesOnActivePlayerChange kTrue
+    DisplayShortHelp     "P3899172876"
+    DisplayHelp          "P3899172876"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Requires archetype source> class_blaster eq
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires archetype source> class_corruptor eq
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact2
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires archetype source> class_controller eq
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact5
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires archetype source> class_dominator eq
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact5
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires archetype source> class_defender eq
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact6
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires archetype source> class_scrapper eq
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact7
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires archetype source> class_tanker eq
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact8
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires archetype source> class_brute eq
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact8
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires archetype source> class_mastermind eq
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact9
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires archetype source> class_stalker eq
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact10
+            }
+            
+        }
+    }
+}

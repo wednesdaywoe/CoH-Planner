@@ -1,0 +1,34 @@
+Power Temporary_Powers.Temporary_Powers.Pet_Arena_HP
+{
+    Name                 "Pet_Arena_HP"                
+    DisplayName          "P328800147"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    DisplayShortHelp     "P1167900703"
+    DisplayHelp          "P1656431682"
+    IconName             "Invulnerability_DullPain.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMax
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 30.0000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

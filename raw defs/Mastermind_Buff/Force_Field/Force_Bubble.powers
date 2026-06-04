@@ -1,0 +1,53 @@
+Power Mastermind_Buff.Force_Field.Force_Bubble
+{
+    Name                 "Force_Bubble"                
+    DisplayName          "VXK86J74Y35MYKCUFWLVHMBBUX"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        5.2
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         90
+    ActivatePeriod       0.25
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ForceField_ForceBubble.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ForceField_ForceBubble.PFX
+    DisplayShortHelp     "5UEWP4BV2MAHYKZWMXHZCXVDHW"
+    DisplayHelp          "DEHZKBJT5GHYYRLU48J8VF4TAS"
+    DisplayAttackerHit   "S475XHQ7357XYGZ3VRMEUK3PAZ"
+    IconName             "ForceField_DampeningBubble"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Dampening Bubble"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Force_Field.Dampening_Bubble
+                Power Redirects.Force_Field.Dampening_Bubble_Debuff
+                Power Redirects.Force_Field.Dampening_BubbleFX
+            }
+            
+        }
+    }
+}

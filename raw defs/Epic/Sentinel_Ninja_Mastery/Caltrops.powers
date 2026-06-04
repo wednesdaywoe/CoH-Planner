@@ -1,0 +1,57 @@
+#********************************************************#
+# Power: Epic > Weapon Mastery > Tashibishi              #
+# Info:  Ranged (Location AoE), DoT(Lethal), Foe -Speed  #
+#********************************************************#
+
+Power Epic.Sentinel_Ninja_Mastery.Caltrops
+{
+    Name                 "Caltrops"                    
+    DisplayName          "P3341902654"
+    BuyRequires          $archetype @Class_Sentinel ==
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                25
+    EnduranceCost        7.8
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         45
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Traps_Caltrops.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_Traps_Caltrops.PFX
+    DisplayShortHelp     "CJJGWNTAVXH6WPB9WSJPXGDLDZ"
+    DisplayHelp          "8UCPYPDRHUEWY7LQWMXFPTMUKW"
+    IconName             "NinjaTools_Slow"
+    DisplayTargetShortHelp "P1637966331"
+    DisplayTargetHelp    "P1293295007"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Caltrops
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

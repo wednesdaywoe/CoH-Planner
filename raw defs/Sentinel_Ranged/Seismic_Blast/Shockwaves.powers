@@ -1,0 +1,106 @@
+#*****************************************************#
+# Power: Ranged > Seismic Blast > Seismic Shockwaves  #
+# Info:  Foe Knock Down, Self Special                 #
+#*****************************************************#
+
+Power Sentinel_Ranged.Seismic_Blast.Shockwaves
+{
+    Name                 "Shockwaves"                  
+    DisplayName          "KW59QN8W57ANYJNXYF3DPK4AEZ"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    ActivatePeriod       0.2
+    EffectArea           kSphere
+    Radius               15
+    LifeTime             45
+    LifeTimeInGame       45
+    MaxLifeTime          45
+    MaxLifeTimeInGame    45
+    TargetRequires       Knocked target.EventTimeSince> 10 > cur.kSleep target> 0 <= &&
+    ProcAllowed          kNone
+    IgnoreLevelBought    kTrue
+    NearGround           kTrue
+    AutoIssueSaveLevel   kFalse
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Redirects_Seismic_Blast_Shockwaves.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Redirects_Seismic_Blast_Shockwaves.pfx
+    DisplayShortHelp     "TNU4QDLPCJE3WZBRADRAGBWQX3"
+    DisplayHelp          "R2EHPL5VLVAHYWN9K3UAVT6ZR3"
+    IconName             "Seismic_Power"
+    MaxTargetsHit        1
+    ShowInManage         kFalse
+    ShowInInventory      kIfOwned
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Chance 0.0500
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnock
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kIgnore
+            Suppress Knocked 10 Always
+            Flags NearGround IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+            Params Knock
+            {
+                VecStart                       Target
+                VecEnd                         Down
+                Vel                            0.0000
+                VelMag                         0.1000
+            }
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0500
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnock
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kIgnore
+            Suppress Knocked 10 WhenInactive
+            Flags NearGround
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+            Params Knock
+            {
+                VecStart                       Target
+                VecEnd                         Down
+                Vel                            0.0000
+                VelMag                         0.1000
+            }
+        }
+    }
+}

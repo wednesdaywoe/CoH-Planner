@@ -1,0 +1,83 @@
+Power Temporary_Powers.Temporary_Powers.Labyrinth_Rally
+{
+    Name                 "Labyrinth_Rally"             
+    DisplayName          "AEWZUCB7JRR4YLCGES85H7FGNZ"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadOrAliveLeaguemate
+    EntsAutoHit          kDeadOrAliveLeaguemate
+    Target               kDeadOrAliveLeaguemate
+    TargetVisibility     kNone
+    Range                100000
+    TargetSecondary      kDeadOrAliveLeaguemate
+    InterruptTime        2
+    TimeToActivate       3.17
+    TimeToRoot           1.17
+    RechargeTime         1
+    EffectArea           kCharacter
+    TargetRequires       enttype target> player eq
+    StrengthsDisallowed  kRechargeTime
+    GlobalStrengthsDisallowed kRechargeTime
+    ServerTrayPriority   2
+    VisualFX             "menu\Powers\AnimFX\Enemies\Event\DungeonLabyrinth\DungeonLabyrinth_EscapeFromFog.pfx"
+    include              menu\Powers\AnimFX\Enemies\Event\DungeonLabyrinth\DungeonLabyrinth_EscapeFromFog.pfx
+    DisplayShortHelp     "H8FGVDRXKW7DYWXRU3RSZBLY2Z"
+    DisplayHelp          "JMH58GGQB6BEWYLUW3HC9LN572"
+    DisplayAttackerHit   "3HK5ZXMQKE8MW7XWG43KBAAWRX"
+    IconName             "Temporary_LabyrinthRally.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kCaster
+            Table "Ranged_Ones"
+            Duration 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kScriptNotify
+            Aspect kCur
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kStack
+            Flags IgnoreStrength
+            Params ScriptNotify
+            {
+                Channel                        "FogTeleportal"
+                Event                          FirstTick
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Table "Melee_Ones"
+            Scale 200.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Attacked HitByFoe
+            Flags IgnoreResistance
+        }
+    }
+}

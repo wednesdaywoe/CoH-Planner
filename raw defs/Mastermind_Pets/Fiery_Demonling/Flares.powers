@@ -1,0 +1,75 @@
+#************************************************#
+# Power: Pets > Demons Fiery Demonling > Flares  #
+# Info:  Ranged, DMG(Fire)                       #
+#************************************************#
+
+Power Mastermind_Pets.Fiery_Demonling.Flares
+{
+    Name                 "Flares"                      
+    DisplayName          "P828916130"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        4.368
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         3
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_FieryDemonling_Flares.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_FieryDemonling_Flares.pfx
+    DisplayShortHelp     "TWT6UAF9EHRFW6ZRH3V32NM983"
+    DisplayHelp          "P3674953599"
+    IconName             "FireBlast_Flare.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.5880
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.2898
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2798397535"
+                DisplayVictimHit "P459143670"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

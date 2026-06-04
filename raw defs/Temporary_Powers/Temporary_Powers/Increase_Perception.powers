@@ -1,0 +1,36 @@
+Power Temporary_Powers.Temporary_Powers.Increase_Perception
+{
+    Name                 "Increase_Perception"         
+    DisplayName          "P791734594"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    UsageTime            5400
+    Deletable            kTrue
+    DisplayShortHelp     "P2109813787"
+    DisplayHelp          "P3664150364"
+    IconName             "Temporary_WeddingBand.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 10.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,224 @@
+Power Blaster_Ranged.Seismic_Blast.Encase
+{
+    Name                 "Encase"                      
+    DisplayName          "P2434381128"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        5.2
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         4
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Shatter.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Shatter.pfx
+    DisplayShortHelp     "B6932R92ASMZY6VB854HVWYNT2"
+    DisplayHelp          "QPP956EMY4UKWDVDT9ZPR2ZZWW"
+    IconName             "SeismicBlast_Shatter"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.2600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 0.5000
+            Duration 3.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CancelOnMiss
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFly kJumppack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.6000
+            Duration 3.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedJumping kJumpHeight
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 1.0000
+            Duration 3.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kSuppress
+            StackKey kTravelDebuff
+            Flags IgnoreStrength StackByAttribAndKey
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Defiance"
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Seismic"
+        Requires NearGround source.EventTimeSince> 1 >=
+        Flags HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -1.0000
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Blaster_Ranged.Seismic_Blast.Entomb
+                Power Blaster_Ranged.Seismic_Blast.Meteor
+                Power Blaster_Ranged.Seismic_Blast.Rock_Shards
+                Power Blaster_Ranged.Seismic_Blast.Shatter
+                Power Blaster_Ranged.Seismic_Blast.Stalagmite
+                Power Blaster_Ranged.Seismic_Blast.Tombstone
+                Power Blaster_Ranged.Seismic_Blast.Upthrust
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "SeismicShockwaves"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods
+                Params Power
+                {
+                    Power Redirects.Seismic_Blast.Seismic_Stress_Release
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SeismicStress"
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods NoHitDelay NoProjectileDelay
+                Params Power
+                {
+                    Power Redirects.Seismic_Blast.Seismic_Stress
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kExecutePower
+                Aspect kCur
+                Table "Melee_Ones"
+                StackType kStack
+                Flags IgnoreCombatMods NoHitDelay NoProjectileDelay
+                Params Power
+                {
+                    Power Redirects.Seismic_Blast.Seismic_Stress
+                }
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,154 @@
+Power Epic.Fire_Mastery.Consume
+{
+    Name                 "Consume"                     
+    DisplayName          "P4044677581"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.52
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         360
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_FieryAura_Consume.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ScrapperDefense_FieryAura_Consume.PFX
+    DisplayShortHelp     "W6DQSHP7VWQHWBVJRZH52FA5QA"
+    DisplayHelp          "26A7TUMQGD53YJX4M3D5TYHVS2"
+    IconName             "FireMastery_Consume.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 20.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P1197092217"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0500
+            Duration 15.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        Effect
+        {
+            Flags HitRollSuccess
+            DisplayInfo "ZBMY3B5T657MY5NBZK59QVKS63"
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.4000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        
+            Effect
+            {
+                Tag "Containment"
+                Requires enttype target> critter eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.hasTag? || && arch source> class_controller == &&
+            
+                AttribMod
+                {
+                    Attrib kFire
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_InherentDamage"
+                    Scale 0.4000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "4W6KJMSQ4VPBWDLGLWS4MLAKVW"
+                        DisplayVictimHit "4UU7SNYGNEW3Y8VCH44399MWMA"
+                        DisplayFloat "P3070513493"
+                        DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "Containment"
+                Requires enttype target> player eq kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || && arch source> class_controller == &&
+            
+                AttribMod
+                {
+                    Attrib kFire
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Melee_PvPDamage"
+                    Scale 0.4000
+                    Magnitude 1.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "4W6KJMSQ4VPBWDLGLWS4MLAKVW"
+                        DisplayVictimHit "4UU7SNYGNEW3Y8VCH44399MWMA"
+                        DisplayFloat "P3070513493"
+                        DisplayInfo "CG3LFBJLN6GHW7LHEMVUMY3E4W"
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    ActivationEffect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 120.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

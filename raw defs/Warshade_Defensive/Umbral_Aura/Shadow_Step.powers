@@ -1,0 +1,38 @@
+Power Warshade_Defensive.Umbral_Aura.Shadow_Step
+{
+    Name                 "Shadow_Step"                 
+    DisplayName          "P1065735556"
+    BuyRequires          Inherent.Inherent.Shadow_Step !
+    ModesDisallowed      kDisable_All, kDisable_Teleport, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kTeleport
+    Range                350
+    EnduranceCost        13
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    EffectArea           kLocation
+    BoostsAllowed        kRange_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Teleport.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Teleport.pfx
+    DisplayShortHelp     "P2537599147"
+    DisplayHelp          "P6MK7MKTLFAWWTZ6EDHMGHRXX3"
+    IconName             "UmbralAura_TeleportSelf.tga"
+    Free                 kTrue
+    AutoIssue            kTrue
+
+    Redirect
+    {
+        Power Redirects.Pool_Teleportation.Shadow_Step_LowEnd
+        Requires kChainTeleport source.Mode?
+    }
+    
+    Redirect
+    {
+        Power Redirects.Pool_Teleportation.Shadow_Step
+        Requires 1
+    }
+    
+}

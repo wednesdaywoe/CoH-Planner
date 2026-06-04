@@ -1,0 +1,47 @@
+Power Temporary_Powers.Temporary_Powers.Bow_and_Arrow
+{
+    Name                 "Bow_and_Arrow"               
+    DisplayName          "P970959154"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.155
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.66
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         8
+    EffectArea           kCharacter
+    NumCharges           75
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_AimedShot.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_AimedShot.pfx
+    DisplayShortHelp     "P1091487416"
+    DisplayHelp          "5UQFLKP624TJYXN9T42WH4RPHX"
+    IconName             "Temp_Ranged_Moderate.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+}

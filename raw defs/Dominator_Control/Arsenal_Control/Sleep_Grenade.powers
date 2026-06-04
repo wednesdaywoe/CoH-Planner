@@ -1,0 +1,55 @@
+Power Dominator_Control.Arsenal_Control.Sleep_Grenade
+{
+    Name                 "Sleep_Grenade"               
+    DisplayName          "P2982505770"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAOE_Attack, kToxic_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                80
+    EnduranceCost        15.6
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         45
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kSleep_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Controller_Control_Arsenal_Control_Sleep_Grenade.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Controller_Control_Arsenal_Control_Sleep_Grenade.pfx
+    DisplayShortHelp     "SE46AV7WVVW7Y8VHJA383R3QA2"
+    DisplayHelp          "V8PC8LC8HBMFW9L84Q6AD9ZFKX"
+    IconName             "ArsenalControl_SleepGrenade"
+    DisplayTargetShortHelp "P3472027048"
+    DisplayTargetHelp    "P3338491291"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume CopyCreatorMods
+            Params EntCreate
+            {
+                Class Class_Minion_Pets
+                DisplayName "Sleep Grenade"
+                PriorityList "PL_StaticObject"
+                Power Pets.ResistAll.ResistAll
+                Power Redirects.Assault_Rifle.Sleep_Grenade
+                Power Redirects.Assault_Rifle.Sleep_Grenade_Damage
+            }
+            
+        }
+    }
+}

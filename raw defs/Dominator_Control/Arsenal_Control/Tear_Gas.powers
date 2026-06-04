@@ -1,0 +1,58 @@
+Power Dominator_Control.Arsenal_Control.Tear_Gas
+{
+    Name                 "Tear_Gas"                    
+    DisplayName          "P1299669084"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kToxic_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                80
+    EnduranceCost        15.6
+    PreferenceMultiplier 4
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         240
+    EffectArea           kLocation
+    Radius               20
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kHold_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Arsenal_Control_Tear_Gas.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Arsenal_Control_Tear_Gas.pfx
+    DisplayShortHelp     "CQYATLWNAPBWWPNF67KHPCSTUZ"
+    DisplayHelp          "9HBGT4NJ45P5YLZXV4VQ6RW6Y2"
+    DisplayAttackerHit   "P1040245024"
+    DisplayVictimHit     "P2245174206"
+    IconName             "ArsenalControl_TearGas"
+    DisplayTargetShortHelp "P147015313"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Tear Gas"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Assault_Rifle.Tear_Gas
+                Power Redirects.Assault_Rifle.Tear_Gas_Debuff
+                Power Redirects.Assault_Rifle.Tear_Gas_OneShot
+                Power Pets.ResistAll.ResistAll
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,25 @@
+PowerSet Mastermind_Pets.Medic_2
+{
+    Name "Medic_2"
+    DisplayName "67WUFAERDSDEWWVT3WQ5LXE3P3"
+    DisplayShortHelp "P3643806322"
+    DisplayHelp "P3643806322"
+    IconName "Medic_2_set.ico"
+
+    Powers Mastermind_Pets.Medic_2.SMG_Heavy_Burst
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Medic_2.Equip
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

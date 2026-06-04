@@ -1,0 +1,59 @@
+#*********************************#
+# Power: Pets > Thug Boss > Fury  #
+# Info:  Self +DMG, Special       #
+#*********************************#
+
+Power Mastermind_Pets.Thug_Boss.Fury_Buff
+{
+    Name                 "Fury_Buff"                   
+    DisplayName          "P4191264938"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P677038171"
+    DisplayHelp          "P1320621657"
+    IconName             "Inherent_BlasterDesperation.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 3.0000
+            MagnitudeExpr kRage source> .01 *
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMeter
+            Aspect kCur
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Duration 3.0000
+            MagnitudeExpr kRage source> .01 *
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

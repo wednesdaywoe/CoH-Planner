@@ -1,0 +1,49 @@
+PowerSet Epic.Energy_Mastery
+{
+    Name "Energy_Mastery"
+    DisplayName "P2798743803"
+    DisplayShortHelp "P2798743803"
+    DisplayHelp "P1859858019"
+    IconName "Energy_Mastery_set.ico"
+
+    Powers Epic.Energy_Mastery.Conserve_Power
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Energy_Mastery.Focused_Accuracy
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Energy_Mastery.Laser_Beam_Eyes
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Energy_Mastery.Physical_Perfection
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Energy_Mastery.Energy_Torrent
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

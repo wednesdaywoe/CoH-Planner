@@ -1,0 +1,149 @@
+#*****************************************#
+# Power: Pets > Ninja Jounin 2 > Placate  #
+# Info:  Placate                          #
+#*****************************************#
+
+Power Mastermind_Pets.Jonin_2.Placate
+{
+    Name                 "Placate"                     
+    DisplayName          "P1943041994"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                7
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kTaunt_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu/powers/AnimFX/Jounin_Jounin_Placate.pfx"
+    include              menu/powers/AnimFX/Jounin_Jounin_Placate.pfx
+    DisplayShortHelp     "P1943041994"
+    DisplayHelp          "4UGWX4C2C2X2YGNWHBDBLNGDFS"
+    IconName             "Claws_Taunt.tga"
+    MaxTargetsHit        5
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 10.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_Taunt"
+            Scale 6.0000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3381081303"
+                DisplayVictimHit "P2268423897"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 54.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kReplace
+            CancelEvents Attacked Damaged
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX V_COV\Powers\Ninjitsu\Hide.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 500.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kReplace
+            CancelEvents Attacked Damaged
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kReplace
+            CancelEvents Attacked Damaged
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Attacked Damaged
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag CriticalHit
+            }
+        }
+    }
+}

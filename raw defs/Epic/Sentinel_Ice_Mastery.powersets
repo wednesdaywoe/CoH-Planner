@@ -1,0 +1,49 @@
+PowerSet Epic.Sentinel_Ice_Mastery
+{
+    Name "Sentinel_Ice_Mastery"
+    DisplayName "P3578212861"
+    DisplayShortHelp "P3578212861"
+    DisplayHelp "P2203857032"
+    IconName "Sentinel_Ice_Mastery_set.ico"
+
+    Powers Epic.Sentinel_Ice_Mastery.Frostbite
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Ice_Mastery.Ice_Sword
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Ice_Mastery.Block_of_Ice
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Ice_Mastery.Frozen_Aura
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Ice_Mastery.Snow_Storm
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

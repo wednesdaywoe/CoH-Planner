@@ -1,0 +1,52 @@
+Power Dominator_Control.Arsenal_Control.Smoke_Grenade
+{
+    Name                 "Smoke_Grenade"               
+    DisplayName          "K5EX3ZT8AXZEYLV4ABXDB3BMHS"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.05
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                80
+    EnduranceCost        16.64
+    TimeToActivate       1.4
+    TimeToRoot           1.4
+    RechargeTime         90
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost, kConfuse_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Arsenal_Control_Smoke_Grenade.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Dominator_Control_Arsenal_Control_Smoke_Grenade.pfx
+    DisplayShortHelp     "H5QAEEFVDVV9W7BCFMAVC7SVAA"
+    DisplayHelp          "E6ZJ3U63QCFLYGVZUQW9QPSTYW"
+    IconName             "ArsenalControl_SmokeGrenade"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods KeepThroughDeath CopyBoosts DoNotTintCostume CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                Class Class_Minion_Pets
+                DisplayName "Smoke Grenade"
+                PriorityList "PL_StaticObject"
+                Power Pets.ResistAll.ResistAll
+                Power Redirects.Assault_Rifle.Smoke_Grenade
+                Power Redirects.Assault_Rifle.Smoke_Confusion
+            }
+            
+        }
+    }
+}

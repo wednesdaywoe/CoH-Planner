@@ -1,0 +1,236 @@
+Power Defender_Ranged.Seismic_Blast.Seismic_Force
+{
+    Name                 "Seismic_Force"               
+    DisplayName          "V823VSMNLST2WMMMWMCNY8EUTZ"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        5.2
+    TimeToActivate       1.17
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    HighlightEval        kSeismicPower Mode?
+    HighlightRing        192 64 0 255
+    HighlightIcon        SeismicBlast_Aim_Mega
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Aim.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Seismic_Blast_Aim.pfx
+    DisplayShortHelp     "SNQG4FVQR42QYEZTDJQ33ND662"
+    DisplayHelp          "FPZ3X4VA2UUPW6B45KR5WBXYVA"
+    IconName             "SeismicBlast_Aim"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 5.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            StackKey kSeismicForceBuff
+            Flags IgnoreResistance StackByAttribAndKey
+            Messages
+            {
+                DisplayAttackerHit "P194443417"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 5.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            StackKey kSeismicForceBuff
+            Flags IgnoreStrength IgnoreResistance StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Requires kSeismicPower source.Mode?
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -1.0000
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Defender_Ranged.Seismic_Blast.Encase
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -1.7500
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Defender_Ranged.Seismic_Blast.Shatter
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -2.0000
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Defender_Ranged.Seismic_Blast.Rock_Shards
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -2.7500
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Defender_Ranged.Seismic_Blast.Entomb
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -4.0000
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Defender_Ranged.Seismic_Blast.Upthrust
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -3.0000
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Defender_Ranged.Seismic_Blast.Tombstone
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -2.0000
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Defender_Ranged.Seismic_Blast.Stalagmite
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Table "Melee_Ones"
+            Scale -25.0000
+            StackType kStack
+            Flags AdjustTimer
+            Params Power
+            {
+                Power Defender_Ranged.Seismic_Blast.Meteor
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kCur
+            Target kCaster
+            Table "Melee_Ones"
+            StackType kStack
+            Params Power
+            {
+                Power Defender_Ranged.Seismic_Blast.Shockwaves
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kCur
+            Target kCaster
+            Table "Melee_Ones"
+            StackType kStack
+            Params Power
+            {
+                Power Redirects.Seismic_Blast.Shockwaves_Buff
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCancelMods
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Params EffectFilter
+            {
+                Tag SeismicShockwaves
+            }
+        }
+    }
+}

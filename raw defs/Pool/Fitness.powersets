@@ -1,0 +1,43 @@
+PowerSet Pool.Fitness
+{
+    Name "Fitness"
+    DisplayName "P3253011688"
+    DisplayShortHelp "P3253011688"
+    DisplayHelp "P1178549424"
+    SpecializeAt 6
+    SpecializeRequires Inherent.Fitness.Swift ! Inherent.Fitness.Hurdle ! || level char> 2 > &&
+    IconName "Fitness_set.ico"
+
+    Powers Pool.Fitness.Quick
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Fitness.Hurdle
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Fitness.Health
+    Available 13
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Pool.Fitness.Stamina
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

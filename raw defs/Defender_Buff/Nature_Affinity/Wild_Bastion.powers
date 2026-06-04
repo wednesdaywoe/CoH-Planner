@@ -1,0 +1,92 @@
+#********************************************************#
+# Power: Buff > Nature Affinity > Wild Bastion           #
+# Info:  PBAoE, Team +Absorb, +Heal Over Time, +3 Bloom  #
+#********************************************************#
+
+Power Defender_Buff.Nature_Affinity.Wild_Bastion
+{
+    Name                 "Wild_Bastion"                
+    DisplayName          "P1861703090"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster, kFriend
+    EntsAutoHit          kCaster, kFriend
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       2.27
+    RechargeTime         240
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_WildBastion.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_NatureAffinity_WildBastion.PFX
+    DisplayShortHelp     "P3735022757"
+    DisplayHelp          "P141333906"
+    DisplayAttackerHit   "P3519958972"
+    DisplayVictimHit     "P914100211"
+    IconName             "NatureAffinity_WildBastion.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 60.0000
+            MagnitudeExpr Max.kHitPoints source> 0.25 * @Strength *
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 0.2727
+            Duration 10.1000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P606393157"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Bloom
+                Count 3
+            }
+            
+        }
+    }
+}

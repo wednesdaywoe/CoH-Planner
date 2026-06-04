@@ -1,0 +1,56 @@
+Power Blaster_Support.Sonic_Manipulation.Disruption_Aura
+{
+    Name                 "Disruption_Aura"             
+    DisplayName          "P3114832554"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        1.04
+    TimeToActivate       1.97
+    TimeToRoot           1.97
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_SonicManipulation_DisruptionAura.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_SonicManipulation_DisruptionAura.PFX
+    DisplayShortHelp     "SPDS3AES7YT6YRV8ZR6QYMH643"
+    DisplayHelp          "7GCH83632LL8Y2BE3A89KXMYLX"
+    IconName             "SonicManipulation_DisruptionAura"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1315223086"
+    DisplayTargetHelp    "P4076804952"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Debuff_Res_Dmg"
+            Scale -2.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,126 @@
+Power Pool.Sorcery.Spirit_Ward
+{
+    Name                 "Spirit_Ward"                 
+    DisplayName          "P1700949919"
+    ModesDisallowed      kDisable_All, kDisable_Pool
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        0.78
+    TimeToActivate       2
+    RechargeTime         15
+    ActivatePeriod       2
+    EffectArea           kSphere
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    ProcMainTargetOnly   kTrue
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/OriginPool_Sorcery_SpiritWard.PFX"
+    include              menu/Powers/AnimFX/PlayerPowers/OriginPool_Sorcery_SpiritWard.PFX
+    DisplayShortHelp     "GMSBG6GZNJBBWWZJQ5DPL9H5MW"
+    DisplayHelp          "VP4SBXF2J8VGY3VAK2C7RCTEQW"
+    DisplayAttackerHit   "P1198948630"
+    IconName             "SorceryPool_SpiritWard.tga"
+    MaxTargetsHit        1
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P3790511748"
+    DisplayTargetHelp    "P341749779"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 0.2000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "LAZMHA5H7UY6W2CD6AFZPAGRUW"
+                DisplayVictimHit "YQRNBJS9LQWHWXL26N2T8NWK6W"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            StackType kContinuous
+            FX
+            {
+                ContinuingFX PFX1
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 9999.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kOverlap
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath
+            Params EffectFilter
+            {
+                Tag initAbsorb
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "InitAbsorb"
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "LAZMHA5H7UY6W2CD6AFZPAGRUW"
+                DisplayVictimHit "YQRNBJS9LQWHWXL26N2T8NWK6W"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Table "Melee_Ones"
+            Duration 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

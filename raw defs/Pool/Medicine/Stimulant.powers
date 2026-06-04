@@ -1,0 +1,199 @@
+Power Pool.Medicine.Stimulant
+{
+    Name                 "Stimulant"                   
+    DisplayName          "P318795767"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend, kFoe
+    EntsAutoHit          kFriend
+    Target               kAny
+    Range                40
+    EnduranceCost        13
+    TimeToActivate       2.93
+    TimeToRoot           2.93
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Medicine_Stimulant.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Medicine_Stimulant.pfx
+    DisplayShortHelp     "P1913008537"
+    DisplayHelp          "6CBQ8YGMBTPZYDL53FVRV6MQR2"
+    IconName             "Medicine_Injection.tga"
+    DisplayTargetShortHelp "P1988279693"
+    DisplayTargetHelp    "P2272198144"
+
+
+    Effect
+    {
+        Requires target.isFriend?
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -30.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3625688781"
+                DisplayVictimHit "P346663008"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/ability/StrengthContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires target.isFriend?
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kConfused kTerrorized kHeld kImmobilized kStunned kSleep
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale 3.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1826984151"
+                DisplayVictimHit "P2690098810"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq target.isFriend? ! &&
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P3219803828"
+                DisplayVictimHit "P1542844764"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing\DeBuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.1000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq target.isFriend? ! &&
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Debuff_Dam"
+            Scale 1.5000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "P3219803828"
+                DisplayVictimHit "P1542844764"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing\DeBuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.1000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 1.5000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    }
+}

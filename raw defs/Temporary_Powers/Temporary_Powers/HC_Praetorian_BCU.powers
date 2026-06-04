@@ -1,0 +1,64 @@
+Power Temporary_Powers.Temporary_Powers.HC_Praetorian_BCU
+{
+    Name                 "HC_Praetorian_BCU"           
+    DisplayName          "825Z5VRFYZEGYWBFGN6UYHD9P2"
+    ModesDisallowed      kDisable_All, kShivan_Mode
+    ModesSuspended       kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kCostume_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTime             1209600
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    Deletable            kTrue
+    DisplayShortHelp     "P3289133866"
+    DisplayHelp          "GBC78KR7Q7DJWLN2FMN4YJ3BBX"
+    IconName             "Temporary_FreakshowDisguise.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude 1.0000
+            Period 0.7000
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Reward_Praetorian_BCU
+                Priority 6
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.6000
+            Magnitude kInCostume
+            StackType kExtend
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

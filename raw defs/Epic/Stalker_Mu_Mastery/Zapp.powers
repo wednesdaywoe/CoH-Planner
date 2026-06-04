@@ -1,0 +1,40 @@
+Power Epic.Stalker_Mu_Mastery.Zapp
+{
+    Name                 "Zapp"                        
+    DisplayName          "P3017513223"
+    BuyRequires          $archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 owned? || &&
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         24
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kRecovery_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_MuMastery_Zapp_Quick.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_MuMastery_Zapp_Quick.pfx
+    DisplayShortHelp     "C8JY4PTCJLFTYTXTSNX5AA556Q"
+    DisplayHelp          "LDFJJ246YJ3WW3NQRDKCC566TW"
+    IconName             "Arachnos_Patron_TargetedRangedSnipe.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Stalker_EpicMuMastery_Snipe.Zapp_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Stalker_EpicMuMastery_Snipe.Zapp_Normal
+        Requires 1
+    }
+    
+}

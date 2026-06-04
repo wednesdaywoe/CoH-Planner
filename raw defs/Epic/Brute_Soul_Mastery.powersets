@@ -1,0 +1,49 @@
+PowerSet Epic.Brute_Soul_Mastery
+{
+    Name "Brute_Soul_Mastery"
+    DisplayName "P1724566754"
+    DisplayShortHelp "P1724566754"
+    DisplayHelp "P2339177401"
+    IconName "Brute_Soul_Mastery_set.ico"
+
+    Powers Epic.Brute_Soul_Mastery.Gloom
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Soul_Mastery.Soul_Tentacles
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Soul_Mastery.Darkest_Night
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Soul_Mastery.Dark_Obliteration
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Brute_Soul_Mastery.Summon_Widow
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

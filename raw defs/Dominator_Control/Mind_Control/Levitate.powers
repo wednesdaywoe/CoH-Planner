@@ -1,0 +1,149 @@
+Power Dominator_Control.Mind_Control.Levitate
+{
+    Name                 "Levitate"                    
+    DisplayName          "P1342451600"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kPsionic_Attack
+    EntsAffected         kFoe, kDeadFoe
+    EntsAutoHit          kDeadFoe
+    Target               kDeadOrAliveFoe
+    Range                80
+    EnduranceCost        6.864
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    TargetRequires       kLevitated target.Mode? kHitPoints% target> 0 > ||
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_MindControl_Levitate.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_MindControl_Levitate.PFX
+    DisplayShortHelp     "G5DTWMH33DWQYTCHV78GUS924A"
+    DisplayHelp          "43BX99J5VBUEYYX5MQTEDBRTHQ"
+    IconName             "MentalControl_Levitate.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.6000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 2.0000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockup
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags KeepThroughDeath
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.3200
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockup
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Flags KeepThroughDeath
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.9491
+            Magnitude 1.0000
+            Delay 1.5000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "MassLevitate"
+        Chance 0.0000
+        Requires kLevitated target.Mode?
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            StackType kStack
+            Flags NoHitDelay CopyBoosts
+            Params Power
+            {
+                Power Redirects.Mind_Control.Levitate
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,88 @@
+Power Temporary_Powers.Temporary_Powers.Ghostslayer_Bomb
+{
+    Name                 "Ghostslayer_Bomb"            
+    DisplayName          "P1131445065"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        19.5
+    TimeToActivate       1.37
+    TimeToRoot           1.37
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               10
+    NumCharges           6
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Ghostslayer_Bomb.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Ghostslayer_Bomb.pfx
+    DisplayShortHelp     "P1514554189"
+    DisplayHelp          "3V9DJVF9KBGXYNZT7JSEQHY5QA"
+    IconName             "Temporary_GhostlayerBomb.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.4000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Ghost target.HasTag?
+    
+        AttribMod
+        {
+            Attrib kSpecial
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P943663967"
+                DisplayVictimHit "P4055702145"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,86 @@
+Power Temporary_Powers.Accolades.MarkRecall
+{
+    Name                 "MarkRecall"                  
+    DisplayName          "6A4B4GKT6YN9WTN2GAHJL397HQ"
+    ActivateRequires     NoRecall inVolume> ! Accolades.NoRecall ScriptMessage> ! && Axp inVolume> ! && Bxp inVolume> ! && ABxp inVolume> ! && Cxp inVolume> ! &&
+    ModesDisallowed      kArena, kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kPosition
+    PositionCenter       kCaster
+    Range                10
+    RechargeTime         600
+    ActivatePeriod       1
+    EffectArea           kLocation
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    StrengthsDisallowed  kRechargeTime
+    IgnoreToggleMaxDistance kTrue
+    FaceTarget           kFalse
+    IgnoreLevelBought    kTrue
+    HighlightEval        kMarkPlaced Mode?
+    HighlightRing        255 102 153 255
+    HighlightIcon        Accolade_Recall
+    DisplayShortHelp     "P6FCUFKCGMXLYLZGTR2BR555TS"
+    DisplayHelp          "EQVGWHQ98LWKYSNCNZZHQYKXHA"
+    IconName             "Accolade_Mark.tga"
+    ShowInManage         kFalse
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params EntCreate
+            {
+                EntityDef Pets_Recall_Marker
+                PriorityList "DoNotGoToSleep(1),NoPhysics(1),DoNotMove(1),DoNotAggroCritters(1),SpawnPosIsSelf,StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 1.5000
+            Magnitude kMarkPlaced
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kScriptNotify
+            Aspect kCur
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength
+            Params ScriptNotify
+            {
+                Channel                        "MarkPlaced"
+                Event                          FirstTick
+            }
+        }
+    }
+}

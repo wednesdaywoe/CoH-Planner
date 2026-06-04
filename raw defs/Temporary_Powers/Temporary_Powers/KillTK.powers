@@ -1,0 +1,41 @@
+Power Temporary_Powers.Temporary_Powers.KillTK
+{
+    Name                 "KillTK"                      
+    DisplayName          "P4240667083"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       27
+    EffectArea           kCharacter
+    LifeTimeInGame       27
+    DisplayShortHelp     "P1025126404"
+    DisplayHelp          "P4232109826"
+    IconName             "Temporary_CryoniteArmor.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 27.0000
+            Magnitude kDefiant
+            Delay 12.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

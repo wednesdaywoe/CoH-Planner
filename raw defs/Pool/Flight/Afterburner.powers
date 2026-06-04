@@ -1,0 +1,211 @@
+Power Pool.Flight.Afterburner
+{
+    Name                 "Afterburner"                 
+    DisplayName          "P4171704391"
+    BuyRequires          Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Travel
+    ModesSuspended       kSuppress_PoolToggles, kSuppress_TravelToggles
+    Type                 kToggle
+    Accuracy             1
+    GroupMembership      kAfterburner_Group
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        0.052
+    RechargeTime         10
+    ActivatePeriod       0.2
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost, kBuff_Defense_Boost, kSpeedFlying_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Flight_Fly.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Flight_Fly.pfx
+    DisplayShortHelp     "QNECZ39F5BR4W6B2M3WFFGZ27Q"
+    DisplayHelp          "5VKMMPVV2256W7ZJMKVXJA43HS"
+    IconName             "Flight_EvasiveManeuvers.tga"
+
+
+    Effect
+    {
+        Tag "FlightActive"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 4.0000
+            Duration 0.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Control"
+            Scale 15.0000
+            Duration 0.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Friction"
+            Scale 15.0000
+            Duration 0.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kSelf
+            Table "Melee_SpeedFlying"
+            Scale 0.4000
+            Duration 0.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+        }
+    
+        Effect
+        {
+            Flags PvEOnly
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale -30.0000
+                Duration 0.2500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kKnockup kKnockback
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale 1.7500
+                Duration 0.2500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreStrength IgnoreResistance
+            }
+        }
+    
+        Effect
+        {
+            Flags PvPOnly
+        
+            AttribMod
+            {
+                Attrib kImmobilized
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale 3.0000
+                Duration 0.2500
+                Magnitude 1.0000
+                StackType kReplace
+                CancelEvents Stunned Held Sleep
+                Flags IgnoreStrength IgnoreResistance
+            }
+        
+            AttribMod
+            {
+                Attrib kKnockup kKnockback
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Res_Boolean"
+                Scale 1.7500
+                Duration 0.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance
+            }
+        }
+    
+        Effect
+        {
+            Tag "HypersonicFly"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFly
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 2.0000
+                Duration 0.2500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_Def"
+            Scale 1.5000
+            Duration 0.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Attacked 10 Always
+            Suppress Helped 10 Always
+            Suppress MissionObjectClick 10 Always
+            Suppress CommandedPet 10 Always
+            Suppress PseudoPetAttacked 10 Always
+            Suppress PseudoPetHelped 10 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kStr
+            Table "Melee_Ones"
+            Duration 0.2500
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+}

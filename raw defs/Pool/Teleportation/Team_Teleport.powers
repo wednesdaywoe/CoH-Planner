@@ -1,0 +1,90 @@
+Power Pool.Teleportation.Team_Teleport
+{
+    Name                 "Team_Teleport"               
+    DisplayName          "P98004820"
+    BuyRequires          Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool, kDisable_Teleport, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    ModesSuspended       kSuppress_TravelToggles
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadOrAliveTeammate, kCaster
+    EntsAutoHit          kDeadOrAliveTeammate, kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    Range                25
+    TargetSecondary      kTeleport
+    RangeSecondary       225
+    EnduranceCost        16
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         1.5
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Teleportation_TeamTeleport.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Teleportation_TeamTeleport.pfx
+    DisplayShortHelp     "P3645308931"
+    DisplayHelp          "SGDD8Z8SHBLUY6Z2XP8CJ9FB6W"
+    DisplayAttackerHit   "P4018568147"
+    DisplayVictimHit     "P2686822699"
+    IconName             "Teleportation_GroupTeleport.tga"
+    MaxTargetsHit        255
+
+
+    Effect
+    {
+        Requires Power_DisallowTeamTeleport target.TokenOwned? !
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Duration 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 3.1000
+            Magnitude 1.0000
+            Delay 1.1700
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying kMovementControl kMovementFriction
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

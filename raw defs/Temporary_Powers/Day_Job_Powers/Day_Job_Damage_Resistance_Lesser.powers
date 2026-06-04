@@ -1,0 +1,39 @@
+Power Temporary_Powers.Day_Job_Powers.Day_Job_Damage_Resistance_Lesser
+{
+    Name                 "Day_Job_Damage_Resistance_Lesser"
+    DisplayName          "P488955213"
+    ModesDisallowed      kArena, kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTimeInGame       7200
+    IgnoreStrength       kTrue
+    Deletable            kTrue
+    DisplayShortHelp     "P2712936591"
+    DisplayHelp          "P929651871"
+    IconName             "DayJob_ResistBoost.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 0.3000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

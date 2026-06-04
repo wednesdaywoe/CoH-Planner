@@ -1,0 +1,90 @@
+#***********************************************#
+# Power: Pets > Robot Protector > Force Shield  #
+# Info:  +DEF(All)                              #
+#***********************************************#
+
+Power Mastermind_Pets.Protector.Force_Shield
+{
+    Name                 "Force_Shield"                
+    DisplayName          "P264159099"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kBuff
+    EntsAffected         kMyOwner
+    EntsAutoHit          kMyOwner
+    Target               kMyOwner
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       2.07
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Forcefield_DeflectionShield.pfx"
+    include              menu\Powers\AnimFX\Forcefield_DeflectionShield.pfx
+    DisplayShortHelp     "P2623971958"
+    DisplayHelp          "XGWPDVFYUK3HW3N46A4ZWR2NXW"
+    DisplayVictimHit     "P2294535218"
+    IconName             "ForceField_DeflectionShield.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Ranged_Buff_Def"
+            Scale 1.3000
+            Duration 240.0000
+            Magnitude 1.0000
+            DelayedRequires arch target> Class_Lt_Henchman eq arch target> Class_Boss_Henchman eq || arch target> Class_Minion_Henchman eq || arch target> Class_Henchman_Lt eq || arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq || enttype target> player eq || mod.kUntouchable target> 0 <= &&
+            CasterStackType kCollective
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX Powers/ForceField/DeflectionShield.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 240.0000
+            DelayedRequires arch target> Class_Lt_Henchman eq arch target> Class_Boss_Henchman eq || arch target> Class_Minion_Henchman eq || enttype target> player eq || mod.kUntouchable target> 0 <= && entref source> entref target> eq ! &&
+            StackType kStack
+            FX
+            {
+                ContinuingFX Powers/Forcefield/ForceFieldGeometryContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 240.0000
+            DelayedRequires arch target> Class_Lt_Henchman eq arch target> Class_Boss_Henchman eq || arch target> Class_Minion_Henchman eq || enttype target> player eq || mod.kUntouchable target> 0 <= && entref source> entref target> eq ! &&
+            StackType kStack
+            FX
+            {
+                ContinuingFX Powers/ForceField/InsulationShield.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,73 @@
+Power Temporary_Powers.Temporary_Powers.High_Explosive
+{
+    Name                 "High_Explosive"              
+    DisplayName          "P3389011485"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        16.25
+    InterruptTime        4
+    TimeToActivate       4
+    RechargeTime         20
+    EffectArea           kCharacter
+    NumCharges           10
+    IgnoreAttackTimeErrors jyoo
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\Gadgets_Mine.pfx"
+    include              menu\Powers\AnimFX\Gadgets_Mine.pfx
+    DisplayShortHelp     "P1515350353"
+    DisplayHelp          "7ZWSM7L87557WRCULTMYQH2TPX"
+    IconName             "Temporary_GhostlayerBomb.tga"
+
+
+    Effect
+    {
+        Requires origin source> Technology eq !
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 260.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_High_Explosives
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires origin source> Technology eq
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 260.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_High_Explosives_Tech
+                PriorityList "PL_Untargetable_FightPreferRanged"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,143 @@
+#*********************************************************#
+# Power: Summon > Necromancy > Life Drain                 #
+# Info:  Ranged, DMG(Negative), Target -To Hit, Self +HP  #
+#*********************************************************#
+
+Power Mastermind_Summon.Necromancy.Life_Drain
+{
+    Name                 "Life_Drain"                  
+    DisplayName          "P1678761175"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        8.528
+    TimeToActivate       1.93
+    TimeToRoot           1.93
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    HighlightEval        kPersonalAttack3 Mode? !
+    HighlightRing        128 0 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_LifeDrain.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindSummon_Necromancy_LifeDrain.PFX
+    DisplayShortHelp     "ANN8AKQ54EMCYYLDYE85E3U8ZS"
+    DisplayHelp          "VAE2AWTYJYJ4WSL52ME27JYYYQ"
+    IconName             "Necromancy_LifeDrain.tga"
+    ShowBuffIcon         kFalse
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P2190949330"
+    DisplayTargetHelp    "P2299365496"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 2.0710
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_HealSelf"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "UndeadForces"
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef Pets_Enslaved_Specter3
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

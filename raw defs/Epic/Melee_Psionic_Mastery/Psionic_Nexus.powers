@@ -1,0 +1,54 @@
+Power Epic.Melee_Psionic_Mastery.Psionic_Nexus
+{
+    Name                 "Psionic_Nexus"               
+    DisplayName          "P2452951707"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kSummon
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                80
+    EnduranceCost        20.8
+    TimeToActivate       2
+    TimeToRoot           2
+    RechargeTime         900
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost, kImmobilized_Boost, kSleep_Boost, kStunned_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_Melee_Psionic_Mastery_Psionic_Nexus.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_Melee_Psionic_Mastery_Psionic_Nexus.pfx
+    DisplayShortHelp     "5Q5369VDT5ERYLLAP7RMKVPHHQ"
+    DisplayHelp          "8WYLZLB2MQD7YFNDG3YN7RJ4R3"
+    IconName             "Psionic_Mastery_PsionicNexus"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kFocus
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Messages
+            {
+                DisplayVictimHit "P1984608796"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Psionic_Nexus
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    }
+}

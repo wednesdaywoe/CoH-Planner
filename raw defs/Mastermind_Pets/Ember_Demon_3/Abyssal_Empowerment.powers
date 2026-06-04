@@ -1,0 +1,61 @@
+#***********************************************************#
+# Power: Pets > Demons Ember Demon 3 > Abyssal Empowerment  #
+# Info:  Empower                                            #
+#***********************************************************#
+
+Power Mastermind_Pets.Ember_Demon_3.Abyssal_Empowerment
+{
+    Name                 "Abyssal_Empowerment"         
+    DisplayName          "P2014736395"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon3_Empower.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon3_Empower.pfx
+    DisplayShortHelp     "P1386049433"
+    DisplayHelp          "P96932622"
+    IconName             "DemonSummoning_AbyssalEmpowerment.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kMeter
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 11.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

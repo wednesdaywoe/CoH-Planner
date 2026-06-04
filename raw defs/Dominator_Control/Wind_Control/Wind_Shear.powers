@@ -1,0 +1,119 @@
+Power Dominator_Control.Wind_Control.Wind_Shear
+{
+    Name                 "Wind_Shear"                  
+    DisplayName          "P4167447611"
+    BuyRequires          accesslevel char> 0 >=
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        2.6
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         15
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               20
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost, kSlow_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_IceControl_ArticAir.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_IceControl_ArticAir.PFX
+    DisplayShortHelp     "P3059995404"
+    DisplayHelp          "Y8GSV3VMR9L8Y4XEJQDXLF4F4Q"
+    IconName             "WindControl_WindShear.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P1939163005"
+    DisplayTargetHelp    "P151966397"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_ToHit"
+            Scale 0.7500
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.6500
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.6500
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Debuff_Dam"
+            Scale 1.2500
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -2.0000
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Melee_SpeedRunning"
+            Scale -1.0000
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

@@ -1,0 +1,171 @@
+Power Temporary_Powers.Temporary_Powers.GrantVigilanteAlignmentPower
+{
+    Name                 "GrantVigilanteAlignmentPower"
+    DisplayName          "P2962112344"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTime             604800
+    DisplayShortHelp     "P3712874081"
+    DisplayHelp          "P2231994764"
+    IconName             "AlignmentPower_FearIncarnate.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+        Requires Temporary_Powers.Temporary_Powers.GrantHeroAlignmentPower target.ownPower? ! Temporary_Powers.Temporary_Powers.GrantRogueAlignmentPower target.ownPower? ! && Temporary_Powers.Temporary_Powers.GrantVillainAlignmentPower target.ownPower? ! && Temporary_Powers.Temporary_Powers.GRHeroAlignmentPower target.ownPower? ! && Temporary_Powers.Temporary_Powers.GRVigilanteAlignmentPower target.ownPower? ! && Temporary_Powers.Temporary_Powers.GRRogueAlignmentPower target.ownPower? ! && Temporary_Powers.Temporary_Powers.GRVillainAlignmentPower target.ownPower? ! &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            ApplicationType kOnExpire
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.GRVigilanteAlignmentPower
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kReward
+            Aspect kCur
+            ApplicationType kOnExpire
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Reward
+            {
+                Reward P_VigilanteAlignmentPower
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.GrantHeroAlignmentPower
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.GrantRogueAlignmentPower
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.GrantVillainAlignmentPower
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.GRHeroAlignmentPower
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.GRRogueAlignmentPower
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.GRVillainAlignmentPower
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,199 @@
+Power Dominator_Control.Gravity_Control.Propel
+{
+    Name                 "Propel"                      
+    DisplayName          "P1432627055"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        9.36
+    TimeToActivate       2.07
+    TimeToRoot           2.07
+    RechargeTime         8
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    ProcMainTargetOnly   kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_GravityControl_Propel.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_GravityControl_Propel.PFX
+    DisplayShortHelp     "KCNQXP7K458WWTVE7RWFK932UA"
+    DisplayHelp          "W5LHF9352YP6YGCHQRP9DQH59A"
+    IconName             "GravityControl_Propel.tga"
+    MaxTargetsHit        4
+    AnimMainTargetOnly   kTrue
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.9600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        RadiusInner 0.0000
+        RadiusOuter 15.0000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnock
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength Boost
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+            Params Knock
+            {
+                VecStart                       Target
+                VecEnd                         Down
+                Vel                            0.0000
+                VelMag                         0.1000
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 0.7690
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        RadiusInner 0.0000
+        RadiusOuter 15.0000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnock
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Flags IgnoreStrength Boost
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+            Params Knock
+            {
+                VecStart                       Target
+                VecEnd                         Down
+                Vel                            0.0000
+                VelMag                         0.1000
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires now GravityDistortion target.TokenTime> - 12 <
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.4900
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "5XWLSFBBSXZ6WWXZSURSSXKEHX"
+                DisplayVictimHit "8J57Y65243D6YCN7JRXE83MKDW"
+                DisplayFloat "P3480640044"
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,42 @@
+Power Dominator_Assault.Radioactive_Assault.Proton_Volley
+{
+    Name                 "Proton_Volley"               
+    DisplayName          "P3151809303"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        18.512
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_RadiationBlast_ProtonVolley_Quick.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_RadiationBlast_ProtonVolley_Quick.PFX
+    DisplayShortHelp     "ZMR9S25D35JMW3CX7ABHBW2SSS"
+    DisplayHelp          "WPW3EW6A4DSLWBXWJQVN9RRBF3"
+    IconName             "RadioactiveAssault_ProtonVolley"
+    AnimMainTargetOnly   kTrue
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P1072986576"
+
+    Redirect
+    {
+        Power Villain_Pets.Dominator_RadioactiveAssault_Snipe.Proton_Volley_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Dominator_RadioactiveAssault_Snipe.Proton_Volley_Normal
+        Requires 1
+    }
+    
+}

@@ -1,0 +1,95 @@
+#************************************************************#
+# Power: Buff > Electrical Affinity > Energizing Circuit     #
+# Info:  Ranged (Chain), Ally +End, +Recharge, Self +Static  #
+#************************************************************#
+
+Power Defender_Buff.Shock_Therapy.Energizing_Circuit
+{
+    Name                 "Energizing_Circuit"          
+    DisplayName          "P743690549"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kFriend
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       1.67
+    RechargeTime         35
+    EffectArea           kChain
+    Radius               25
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRecovery_Boost
+    ChainDelay           0.1
+    ChainFork            3
+    ChainEff             1 0.25 @ChainJump 1 - * - 0.5 1 minmax
+    ChainTarget          101 kEndurance% target> - enttype maintarget> enttype target> eq 99 * 1 + * 1 prevdistance / +
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ShockTherapy_EnergizingCircuit.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ShockTherapy_EnergizingCircuit.PFX
+    DisplayShortHelp     "P2793712352"
+    DisplayHelp          "P2913890508"
+    IconName             "ShockTherapy_EnergizingCircuit.tga"
+    MaxTargetsHit        5
+    MaxTargetsExpr       4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 25.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P3426790094"
+                DisplayVictimHit "P3635132928"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 1.2500
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Tag "BuildStatic"
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Redirects.Shock_Therapy.Shock_Therapy_Static
+            }
+            
+        }
+    }
+}

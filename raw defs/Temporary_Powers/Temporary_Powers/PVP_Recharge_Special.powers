@@ -1,0 +1,192 @@
+Power Temporary_Powers.Temporary_Powers.PVP_Recharge_Special
+{
+    Name                 "PVP_Recharge_Special"        
+    DisplayName          "P3194102239"
+    ModesRequired        kArena
+    ModesDisallowed      kDisable_All, kDisable_Travel, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        9.75
+    TimeToActivate       3.67
+    RechargeTime         360
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRechargeTime
+    IgnoreLevelBought    kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\AlignmentPower_Frenzy.pfx"
+    include              menu\Powers\AnimFX\AlignmentPower_Frenzy.pfx
+    DisplayShortHelp     "P3393912398"
+    DisplayHelp          "7DWPP5ZWG83JWEZS63FV3BAYZX"
+    DisplayAttackerHit   "P3207966633"
+    IconName             "AlignmentPower_Frenzy.tga"
+    ShowInManage         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/SuperSpeed/AccelerateCombat.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance Cooldown
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.GRHeroAlignmentPower
+                Power Temporary_Powers.Temporary_Powers.GRVillainAlignmentPower
+                Power Temporary_Powers.Temporary_Powers.PVP_Damage_ToHit
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires arch source> Class_Brute eq arch source> Class_Dominator eq || arch source> Class_Stalker eq || !
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.6000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires arch source> Class_Stalker eq
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.4000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 150.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kReplace
+            CancelEvents Attacked Damaged MissionObjectClick
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 380.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kReplace
+            CancelEvents Attacked Damaged MissionObjectClick
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kMeter
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kReplace
+            CancelEvents Attacked Damaged MissionObjectClick
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2000
+            Duration 10.0000
+            Magnitude 1.0000
+            Delay 0.2500
+            StackType kReplace
+            CancelEvents Attacked Damaged MissionObjectClick
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires arch source> Class_Brute eq arch source> Class_Dominator eq ||
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 100.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    }
+}

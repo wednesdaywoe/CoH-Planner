@@ -1,0 +1,41 @@
+Power Temporary_Powers.Temporary_Powers.Cured_Counter
+{
+    Name                 "Cured_Counter"               
+    DisplayName          "P1230023009"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    RechargeTime         999
+    ActivatePeriod       999
+    EffectArea           kCharacter
+    LifeTime             2
+    DisplayShortHelp     "P2211841663"
+    DisplayHelp          "P2327143887"
+    IconName             "Temporary_HolidayGift.tga"
+
+
+    Effect
+    {
+        Chance 0.0000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P3578301293"
+            }
+            
+        }
+    }
+}

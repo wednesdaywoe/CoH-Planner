@@ -1,0 +1,92 @@
+Power Temporary_Powers.Temporary_Powers.Bracers_of_Astrape
+{
+    Name                 "Bracers_of_Astrape"          
+    DisplayName          "P2759977671"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAoE_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         8
+    EffectArea           kCone
+    Radius               7
+    Arc                  50
+    NumCharges           30
+    StrengthsDisallowed  kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Temporary_Powers_Bracers_of_Astrape.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\Temporary_Powers_Bracers_of_Astrape.PFX
+    DisplayShortHelp     "GQQP7F3PQNBWY2NSH9ZFQSHYGW"
+    DisplayHelp          "7UQDQWQU6Q9HYALP2JF78FEWJW"
+    IconName             "bracers_of_astrape.tga"
+    MaxTargetsHit        5
+    MaxBoosts            0
+    DisplayTargetShortHelp "P4204814252"
+    DisplayTargetHelp    "P3025545224"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Tempdamage"
+            Scale 1.3075
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.0700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P626718221"
+                DisplayVictimHit "P453378455"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

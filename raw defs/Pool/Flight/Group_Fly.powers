@@ -1,0 +1,232 @@
+Power Pool.Flight.Group_Fly
+{
+    Name                 "Group_Fly"                   
+    DisplayName          "P1509433155"
+    BuyRequires          Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && ||
+    ModesDisallowed      kDisable_All, kDisable_FlyToggles, kDisable_Pool, kDisable_Travel
+    ModesSuspended       kSuppress_FlyToggles, kSuppress_PoolToggles, kSuppress_TravelToggles
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kCaster
+    EnduranceCost        1.3
+    TimeToActivate       2.03
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               60
+    BoostsAllowed        kEnduranceDiscount_Boost, kSpeedFlying_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Flight_GroupFly.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Flight_GroupFly.pfx
+    DisplayShortHelp     "P324172164"
+    DisplayHelp          "57BXGNB864HSWLZ589DTXPPRGS"
+    DisplayAttackerHit   "P2708193995"
+    DisplayVictimHit     "P2461148565"
+    IconName             "Flight_GroupFly.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P3156923765"
+    DisplayTargetHelp    "P44104590"
+
+
+    Effect
+    {
+        Requires Power_DisallowGroupFly target.TokenOwned? !
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods StackByAttribAndKey
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kTarget
+            Table "Melee_SpeedFlying"
+            Scale 0.5000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Control"
+            Scale 10.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Friction"
+            Scale 10.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods StackByAttribAndKey
+        }
+    }
+
+    Effect
+    {
+        Tag "SelfAndPets"
+        Flags MainTargetOnly HideFromInfo
+    
+        AttribMod
+        {
+            Attrib kFly
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            DelayedRequires Power_DisallowGroupFly target.TokenOwned? !
+            StackType kSuppress
+            StackKey kTravelBuff
+            Flags IgnoreResistance IgnoreCombatMods StackByAttribAndKey
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedFlying
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_SpeedFlying"
+            Scale 0.5000
+            Duration 2.2500
+            Magnitude 1.0000
+            DelayedRequires Power_DisallowGroupFly target.TokenOwned? !
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementControl
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Control"
+            Scale 10.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            DelayedRequires Power_DisallowGroupFly target.TokenOwned? !
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kMovementFriction
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Friction"
+            Scale 10.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            DelayedRequires Power_DisallowGroupFly target.TokenOwned? !
+            StackType kSuppress
+            StackKey kTravelBuff
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance IgnoreCombatMods StackByAttribAndKey
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 2.0000
+            Magnitude 1.0000
+            DelayedRequires Power_DisallowGroupFly target.TokenOwned? !
+            StackType kContinuous
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag FlightActive
+            }
+        }
+    
+        Effect
+        {
+            Tag "Backup"
+            Flags MainTargetOnly HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kFly
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.1000
+                Duration 2.2500
+                Magnitude 1.0000
+                DelayedRequires Power_DisallowGroupFly target.TokenOwned? !
+                StackType kReplace
+                Flags IgnoreResistance StackByAttribAndKey
+            }
+        }
+    
+        Effect
+        {
+            Tag "HypersonicFly"
+            Chance 0.0000
+        
+            AttribMod
+            {
+                Attrib kFly
+                Aspect kCur
+                Target kSelfsOwnerAndAllPets
+                Table "Melee_Ones"
+                Scale 2.0000
+                Duration 2.2500
+                Magnitude 1.0000
+                DelayedRequires Power_DisallowGroupFly target.TokenOwned? !
+                StackType kReplace
+                Flags IgnoreResistance
+            }
+        }
+    }
+}

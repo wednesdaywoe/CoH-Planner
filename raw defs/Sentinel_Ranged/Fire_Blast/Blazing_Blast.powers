@@ -1,0 +1,368 @@
+#************************************************************#
+# Power: Ranged > Fire Blast > Blazing Blast                 #
+# Info:  Ranged, DMG(Fire), DoT(Fire), Foe Knockback, Repel  #
+#************************************************************#
+
+Power Sentinel_Ranged.Fire_Blast.Blazing_Blast
+{
+    Name                 "Blazing_Blast"               
+    DisplayName          "P3128725756"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        11.856
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         12
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_FireBlast_BlazingBolt.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_FireBlast_BlazingBolt.PFX
+    DisplayShortHelp     "PS3K8LWVVXVLWMZ93QVG7SYUPX"
+    DisplayHelp          "STTU76NU9QBBY5C9AYQMXRF42A"
+    IconName             "FireBlast_Heavy"
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P1437075981"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kRepel
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Duration 0.6100
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P2050677964"
+                DisplayVictimHit "P2548965752"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_BEAM ANIM_PLAYER ANIM_STUN
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 4.0000
+            Duration 0.6100
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CancelOnMiss IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 2.0000
+            Magnitude 1.0000
+            Delay 0.6000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "FireBlastBonusDoT"
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kFire
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_Damage"
+                    Scale 0.0985
+                    Duration 2.5000
+                    Magnitude 2.0000
+                    Period 0.2000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P1083355571"
+                        DisplayVictimHit "P3022741469"
+                    }
+                    
+                    FX
+                    {
+                        ContinuingFX PFX
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SentCrit" "SentCritST"
+            
+                AttribMod
+                {
+                    Attrib kFire
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_InherentDamage"
+                    Scale 0.0985
+                    Duration 2.5000
+                    Magnitude 2.0000
+                    Period 0.2000
+                    TickChance 0.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "JLMQ5V7UYVUVYKLBA9TN9VE3PW"
+                        DisplayVictimHit "CJCUR3VLHW2EWEMG2G2AT57K33"
+                        DisplayFloat "P2440464263"
+                        DisplayInfo "P85281792"
+                    }
+                    
+                    FX
+                    {
+                        ContinuingFX PFX
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_Damage"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_InherentDamage"
+                Scale 1.0000
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "VW85MT4UMEU8W4CGRC8YN7AXWX"
+                    DisplayVictimHit "JMTY7ABEW2DCWAM7ENWKLHJCJA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kRepel
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 2.0000
+            Duration 0.6000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P2050677964"
+                DisplayVictimHit "P2548965752"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeld
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 8.0000
+            Duration 0.6000
+            Magnitude 1.0000
+            StackType kReplace
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Flags CancelOnMiss IgnoreStrength
+        }
+    
+        Effect
+        {
+            Tag "FireBlastBonusDoT"
+        
+            Effect
+            {
+            
+                AttribMod
+                {
+                    Attrib kFire
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 0.0946
+                    Duration 2.5000
+                    Magnitude 2.0000
+                    Period 0.2000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "P1083355571"
+                        DisplayVictimHit "P3022741469"
+                    }
+                    
+                    FX
+                    {
+                        ContinuingFX PFX
+                    }
+                    
+                }
+            }
+        
+            Effect
+            {
+                Tag "SentCrit" "SentCritST"
+            
+                AttribMod
+                {
+                    Attrib kFire
+                    Aspect kAbs
+                    Target kTarget
+                    Table "Ranged_PvPDamage"
+                    Scale 0.0946
+                    Duration 2.5000
+                    Magnitude 2.0000
+                    Period 0.2000
+                    TickChance 0.0000
+                    StackType kStack
+                    Messages
+                    {
+                        DisplayAttackerHit "JLMQ5V7UYVUVYKLBA9TN9VE3PW"
+                        DisplayVictimHit "CJCUR3VLHW2EWEMG2G2AT57K33"
+                        DisplayFloat "P2440464263"
+                        DisplayInfo "P85281792"
+                    }
+                    
+                    FX
+                    {
+                        ContinuingFX PFX
+                    }
+                    
+                }
+            }
+        }
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.8196
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2798397535"
+                    DisplayVictimHit "P459143670"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "SentCrit" "SentCritST"
+        
+            AttribMod
+            {
+                Attrib kFire
+                Aspect kAbs
+                Target kTarget
+                Table "Ranged_PvPDamage"
+                Scale 0.8196
+                Magnitude 1.0000
+                TickChance 0.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "VW85MT4UMEU8W4CGRC8YN7AXWX"
+                    DisplayVictimHit "JMTY7ABEW2DCWAM7ENWKLHJCJA"
+                    DisplayFloat "P2440464263"
+                    DisplayInfo "P85281792"
+                }
+                
+            }
+        }
+    }
+}

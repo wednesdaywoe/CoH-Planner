@@ -1,0 +1,45 @@
+Power Temporary_Powers.Temporary_Powers.Kuji-In_Toh_Ninjas
+{
+    Name                 "Kuji-In_Toh_Ninjas"          
+    DisplayName          "P1121168565"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    RechargeTime         200
+    ActivatePeriod       300
+    EffectArea           kCharacter
+    LifeTime             15
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Temporary_Powers_Temporary_Powers_Kuji-In_Toh_Ninjas.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Temporary_Powers_Temporary_Powers_Kuji-In_Toh_Ninjas.pfx
+    DisplayShortHelp     "P204829960"
+    DisplayHelp          "3YFEVVUUR4Z2WAV5BJBDXC7WES"
+    IconName             "Ninjitsu_KujInSha.tga"
+    NumAllowed           5
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRegeneration kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0500
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P84075995"
+            }
+            
+        }
+    }
+}

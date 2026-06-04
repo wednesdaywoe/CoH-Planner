@@ -1,0 +1,40 @@
+Power Temporary_Powers.Temporary_Powers.Enable_Arena_Temp
+{
+    Name                 "Enable_Arena_Temp"           
+    DisplayName          "P695548341"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    DisplayShortHelp     "P2499550716"
+    DisplayHelp          "P2511412829"
+    IconName             "Temporary_TerraVoltaGlow.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.8000
+            Magnitude kArena
+            Period 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

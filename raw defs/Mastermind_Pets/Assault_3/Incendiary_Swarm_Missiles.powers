@@ -1,0 +1,78 @@
+#************************************************************#
+# Power: Pets > Robot Assault 3 > Incendiary Swarm Missiles  #
+# Info:  Ranged AoE Lethal, +Burn                            #
+#************************************************************#
+
+Power Mastermind_Pets.Assault_3.Incendiary_Swarm_Missiles
+{
+    Name                 "Incendiary_Swarm_Missiles"   
+    DisplayName          "P694686112"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.184
+    PreferenceMultiplier 3
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         16
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    ChainIntoPower       Mastermind_Pets.Assault.Conserve_Power
+    VisualFX             "menu\Powers\AnimFX\RobotArmy_16missile_fire.pfx"
+    include              menu\Powers\AnimFX\RobotArmy_16missile_fire.pfx
+    DisplayShortHelp     "P68614821"
+    DisplayHelp          "P3FUEJ3RZCCWYFL9Y6DB8EZXGS"
+    IconName             "AssaultWeapons_ARBurst.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.1250
+            Duration 3.1000
+            Magnitude 1.0000
+            Period 0.4000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods KeepThroughDeath CopyBoosts PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Assault Bot's Incendiary Swarm Missiles"
+                PriorityList "PL_StaticObject"
+                Power Mastermind_Pets.Robot_Pets.Burn
+            }
+            
+        }
+    }
+}

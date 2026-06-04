@@ -1,0 +1,128 @@
+#********************************************#
+# Power: Pets > Thug Arsonist 2 > Spit Fire  #
+# Info:  Close (Cone), Moderate DoT(Fire)    #
+#********************************************#
+
+Power Mastermind_Pets.Thug_Arsonist_2.Spit_Fire
+{
+    Name                 "Spit_Fire"                   
+    DisplayName          "P2540890245"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        15.184
+    TimeToActivate       2.83
+    TimeToRoot           2.83
+    RechargeTime         16
+    EffectArea           kCone
+    Radius               40
+    Arc                  30
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\Mastermind_Thugs_LighterBlow.pfx"
+    include              menu\Powers\AnimFX\Mastermind_Thugs_LighterBlow.pfx
+    DisplayShortHelp     "P1663310391"
+    DisplayHelp          "3DPNQPZUUKSRWWZ2DMVX9SWCPW"
+    IconName             "FireBlast_ArcOfFire.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P1437075981"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.5850
+            Duration 2.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_InherentDamage"
+            Scale 0.5850
+            Duration 2.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "NGLXN5H6VM3DWBZKS7G5SR6WTW"
+                DisplayVictimHit "Q59A8FXCR6Y7WYX983WA3P7KC2"
+                DisplayFloat "P111359259"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_InherentDamage"
+            Scale 0.5850
+            Duration 2.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "645PTZVQHPKHWXN4TKHMCEXRZZ"
+                DisplayVictimHit "JE3HR9VHSRMWWUX2V3GS5QT7VX"
+                DisplayFloat "P111359259"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

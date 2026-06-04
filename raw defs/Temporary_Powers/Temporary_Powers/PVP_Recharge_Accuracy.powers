@@ -1,0 +1,109 @@
+Power Temporary_Powers.Temporary_Powers.PVP_Recharge_Accuracy
+{
+    Name                 "PVP_Recharge_Accuracy"       
+    DisplayName          "P1628035150"
+    ModesRequired        kArena
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       0.73
+    RechargeTime         600
+    EffectArea           kCharacter
+    StrengthsDisallowed  kRechargeTime
+    IgnoreLevelBought    kTrue
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Powers_GeasTheKindOnes.pfx"
+    include              menu\Powers\AnimFX\Temporary_Powers_GeasTheKindOnes.pfx
+    DisplayShortHelp     "P259622302"
+    DisplayHelp          "6UM3EQK8ZH8EYVV7ZTFZGMAD6Q"
+    IconName             "BA_Geas_Of_Kind_Ones.tga"
+    ShowInManage         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 8.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P4180699681"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2500
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX Powers/Invisibility/GeasTheKindOnesContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -0.1000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance Cooldown
+            Params Power
+            {
+                Power Temporary_Powers.Accolades.Force_of_Nature
+                Power Temporary_Powers.Accolades.Geas_of_the_Kind_Ones
+            }
+            
+        }
+    }
+}

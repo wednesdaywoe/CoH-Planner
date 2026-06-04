@@ -1,0 +1,84 @@
+Power Temporary_Powers.Temporary_Powers.Thermite_Cannon
+{
+    Name                 "Thermite_Cannon"             
+    DisplayName          "P118878082"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        12.74
+    TimeToActivate       6
+    TimeToRoot           6
+    RechargeTime         12
+    EffectArea           kCone
+    Radius               40
+    Arc                  30
+    NumCharges           100
+    LifeTimeInGame       5400
+    ServerTrayRequires   mapname> trial_01_01_room eq
+    ServerTrayPriority   1
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\TempPower_RiktiBlasterShot02.pfx"
+    include              menu\Powers\AnimFX\TempPower_RiktiBlasterShot02.pfx
+    DisplayShortHelp     "P3170618329"
+    DisplayHelp          "3WKHDEEPKEXNYQVJZ9SHA6AR6X"
+    IconName             "Temporary_NapalmProjector.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P4031153465"
+    NumAllowed           10
+
+
+    Effect
+    {
+        Requires group target> Hydra eq
+    
+        AttribMod
+        {
+            Attrib kUnique1
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.3100
+            Duration 7.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "APPZSEYY3T8FWBB72U8UT53FPS"
+                DisplayVictimHit "ZTHRC4H5KCXQWBZMQ2FKAX28VW"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.1000
+            Duration 7.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+        }
+    }
+}

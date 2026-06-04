@@ -1,0 +1,33 @@
+PowerSet Mastermind_Pets.Cold_Demonling_2
+{
+    Name "Cold_Demonling_2"
+    DisplayName "PCXKLG7QJ6Q6W6M4HPSQBL553A"
+    DisplayShortHelp "P3429684360"
+    DisplayHelp "P3429684360"
+    IconName "Cold_Demonling_2_set.ico"
+
+    Powers Mastermind_Pets.Cold_Demonling_2.Resistance
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Cold_Demonling_2.Ice_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Cold_Demonling_2.Enchant_Demon
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

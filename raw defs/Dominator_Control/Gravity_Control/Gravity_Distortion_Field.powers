@@ -1,0 +1,70 @@
+Power Dominator_Control.Gravity_Control.Gravity_Distortion_Field
+{
+    Name                 "Gravity_Distortion_Field"    
+    DisplayName          "P3577978297"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.6
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         240
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kHold_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_GravityControl_GravityDistortionField.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_GravityControl_GravityDistortionField.PFX
+    DisplayShortHelp     "NQX75YBMSDK2WSBZ3XUA7QBYH2"
+    DisplayHelp          "XE4W8YFK9C97WYBNY6C2Z5RYN2"
+    DisplayAttackerHit   "P1398717329"
+    DisplayVictimHit     "P1172480868"
+    IconName             "GravityControl_GravityDistortionField.tga"
+    DisplayTargetShortHelp "P3220742713"
+    DisplayTargetHelp    "P169853037"
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Level"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreCombatMods CopyBoosts CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Gravity Distortion Field"
+                PriorityList "PL_StaticObject"
+                Power Redirects.Gravity_Control.Gravity_Distortion_Field_Pulse
+                Power Redirects.Gravity_Control.Gravity_Distortion_Field_Slow
+                Power Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot
+                Power Redirects.Gravity_Control.Self_Destruct
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSilentKill
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            DelayedRequires Redirects.Gravity_Control.Gravity_Distortion_Field_Pulse target.ownPower?
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods NoHitDelay NoProjectileDelay
+        }
+    }
+}

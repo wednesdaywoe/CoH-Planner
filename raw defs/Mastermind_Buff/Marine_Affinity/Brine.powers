@@ -1,0 +1,153 @@
+#******************************************#
+# Power: Buff > Marine Affinity > Brine    #
+# Info:  Ranged, Foe -Resist(All), -MaxHP  #
+#******************************************#
+
+Power Mastermind_Buff.Marine_Affinity.Brine
+{
+    Name                 "Brine"                       
+    DisplayName          "SKGHA68T4DYDYCZKDNMRS9DUJW"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        7
+    TimeToActivate       1.33
+    TimeToRoot           1.1
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    HighlightEval        Temporary_Powers.Temporary_Powers.Rising_Tide ownPowerNum? 3 >=
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Brine.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defender_Buff_Marine_Affinity_Brine.pfx
+    DisplayShortHelp     "PJH63G9PXSDBWCLVHN3B373NRZ"
+    DisplayHelp          "E8CGSMJFJRVRWLXVGKJFZBYBFX"
+    DisplayAttackerHit   "G566FQMX534MY6V5SBJW3RUST2"
+    DisplayVictimHit     "3QMDHLHDWQPXYXZK4WJFLMXF4Q"
+    IconName             "MarineAffinity_Brine.tga"
+    DisplayTargetShortHelp "FD89QWJ3R5LJWSMNH23PBJTFPS"
+    DisplayTargetHelp    "VDBZAZTFTZJEWELNLNL2LQVQZW"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -3.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        Effect
+        {
+            Tag "WetStatus"
+        
+            AttribMod
+            {
+                Attrib kSetMode
+                Aspect kCur
+                Type kConstant
+                Target kTarget
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 60.0000
+                Magnitude kWet
+                StackType kRefresh
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "9D4E9JJ6JUHHYRM48NFCQZWY4A"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMaximum
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale -2.0000
+            Duration 60.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QSFBHV8KZLMEYAVTE3AZ4V2BG3"
+                DisplayVictimHit "GXM8JKW7MSGVYHMHDZ7B99AADX"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kHitPoints
+            Aspect kMaximum
+            Type kExpression
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale -1.0000
+            Duration 60.0000
+            MagnitudeExpr Max.kHitPoints target> -0.08 * @Strength *
+            Magnitude 1.0000
+            StackType kReplace
+            Messages
+            {
+                DisplayAttackerHit "QSFBHV8KZLMEYAVTE3AZ4V2BG3"
+                DisplayVictimHit "GXM8JKW7MSGVYHMHDZ7B99AADX"
+                DisplayInfo "ZSFMGDHTR2MTYDBRYE8Z7DFU83"
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Requires Temporary_Powers.Temporary_Powers.Rising_Tide source.ownPowerNum? 1 >=
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.8000
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Marine_Affinity.Rising_Tide
+            }
+            
+        }
+    }
+}

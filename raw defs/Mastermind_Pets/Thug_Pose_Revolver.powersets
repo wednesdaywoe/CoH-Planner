@@ -1,0 +1,17 @@
+PowerSet Mastermind_Pets.Thug_Pose_Revolver
+{
+    Name "Thug_Pose_Revolver"
+    DisplayName "P770229284"
+    DisplayShortHelp "P1151940263"
+    DisplayHelp "P1151940263"
+    IconName "Thug_Pose_Revolver_set.ico"
+
+    Powers Mastermind_Pets.Thug_Pose_Revolver.Revolver
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

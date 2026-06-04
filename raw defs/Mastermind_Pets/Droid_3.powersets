@@ -1,0 +1,33 @@
+PowerSet Mastermind_Pets.Droid_3
+{
+    Name "Droid_3"
+    DisplayName "WF8LU6BQYKWSWYCRC6WRMG4NNA"
+    DisplayShortHelp "P386701361"
+    DisplayHelp "P1779242559"
+    IconName "Droid_3_set.ico"
+
+    Powers Mastermind_Pets.Droid_3.Full_Auto_Laser
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Droid_3.Overcharged_Burst
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Droid_3.Upgrade
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

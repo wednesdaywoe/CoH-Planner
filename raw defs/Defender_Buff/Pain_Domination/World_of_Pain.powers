@@ -1,0 +1,101 @@
+#**********************************************************#
+# Power: Buff > Pain Domination > World of Pain            #
+# Info:  PBAoE Team +To Hit, +DMG, +RES(All DMG, Placate)  #
+#**********************************************************#
+
+Power Defender_Buff.Pain_Domination.World_of_Pain
+{
+    Name                 "World_of_Pain"               
+    DisplayName          "P1251538091"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kCaster
+    EnduranceCost        10.192
+    TimeToActivate       2.03
+    RechargeTime         240
+    EffectArea           kSphere
+    Radius               35
+    BoostsAllowed        kRecharge_Boost, kRes_Damage_Boost, kBuff_ToHit_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_PainDomination_WorldofPain.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_PainDomination_WorldofPain.PFX
+    DisplayShortHelp     "P1014532193"
+    DisplayHelp          "P2903785182"
+    DisplayAttackerHit   "P1535041317"
+    DisplayVictimHit     "P2486205930"
+    IconName             "PainDomination_WorldOfPain.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P594937242"
+    DisplayTargetHelp    "P3663275347"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_ToHit"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPlacate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Res_Boolean"
+            Scale -30.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Buff_Dmg"
+            Scale 1.6000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDamageContinuing.fx
+            }
+            
+        }
+    }
+}

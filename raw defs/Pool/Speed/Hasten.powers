@@ -1,0 +1,63 @@
+Power Pool.Speed.Hasten
+{
+    Name                 "Hasten"                      
+    DisplayName          "P1852402460"
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       0.73
+    RechargeTime         450
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Speed_Hasten.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Speed_Hasten.pfx
+    DisplayShortHelp     "P1776881406"
+    DisplayHelp          "EW4RMSZ5GLXTWHZ2XAXR34TY43"
+    DisplayAttackerHit   "P3207966633"
+    IconName             "SuperSpeed_AcceleratedCombat.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kSuppress
+            StackKey kHasteBuff
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -15.0000
+            Magnitude 1.0000
+            Delay 120.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P657239359"
+            }
+            
+        }
+    }
+}

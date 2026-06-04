@@ -1,0 +1,42 @@
+Power Epic.Stalker_Soul_Mastery.Moonbeam
+{
+    Name                 "Moonbeam"                    
+    DisplayName          "P3845271994"
+    BuyRequires          $archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 owned? || &&
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        14.352
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         24
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_SoulMastery_MoonBeam_Quick.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_SoulMastery_MoonBeam_Quick.pfx
+    DisplayShortHelp     "9DXCC5M4SLQNYACQX2M2E5P29W"
+    DisplayHelp          "A26LZFLNVACWWZVAJ4K7UA95JA"
+    IconName             "Arachnos_Patron_TargetedRangedSnipe.tga"
+    DisplayTargetShortHelp "P918897636"
+    DisplayTargetHelp    "P3277401711"
+
+    Redirect
+    {
+        Power Villain_Pets.Stalker_EpicSoulMastery_Snipe.Moonbeam_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Stalker_EpicSoulMastery_Snipe.Moonbeam_Normal
+        Requires 1
+    }
+    
+}

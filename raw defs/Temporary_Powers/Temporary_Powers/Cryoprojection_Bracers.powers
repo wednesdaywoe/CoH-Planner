@@ -1,0 +1,85 @@
+Power Temporary_Powers.Temporary_Powers.Cryoprojection_Bracers
+{
+    Name                 "Cryoprojection_Bracers"      
+    DisplayName          "P453916825"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.66
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         8
+    EffectArea           kCharacter
+    NumCharges           30
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Ice_Shards.pfx"
+    include              menu\Powers\AnimFX\Ice_Shards.pfx
+    DisplayShortHelp     "P1636677769"
+    DisplayHelp          "GBW6F8EVQNZ9YHBLQ48MJBSU7S"
+    IconName             "Temporary_CryoprojectionBracers.tga"
+    DisplayTargetShortHelp "P3214140212"
+    DisplayTargetHelp    "P593231296"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P4173738004"
+                DisplayVictimHit "P1163387325"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.3000
+            Duration 6.0000
+            Magnitude 1.0000
+            TickChance 0.9990
+            StackType kStack
+            Flags CancelOnMiss IgnoreStrength
+            FX
+            {
+                ContinuingFX Powers/coldcontrol/IceHitContinuing.fx
+            }
+            
+        }
+    }
+}

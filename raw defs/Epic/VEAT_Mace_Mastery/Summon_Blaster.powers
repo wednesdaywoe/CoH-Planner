@@ -1,0 +1,49 @@
+Power Epic.VEAT_Mace_Mastery.Summon_Blaster
+{
+    Name                 "Summon_Blaster"              
+    DisplayName          "P3381607634"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        20.8
+    TimeToActivate       3.03
+    TimeToRoot           3.03
+    RechargeTime         900
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost, kKnockback_Boost, kImmobilized_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Patron_MaceMastery_Summon.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Patron_MaceMastery_Summon.pfx
+    DisplayShortHelp     "JBPCB7XDHEXZYMMRVB96CH38JZ"
+    DisplayHelp          "X2ZDX6ZGCC9XY4L38XMMHW9TS3"
+    IconName             "Arachnos_Patron_SummonOnePet.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance CopyBoosts DoNotTintCostume
+            Params EntCreate
+            {
+                EntityDef Pets_Patron_Powers_Arachnobot_Blaster
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    }
+}

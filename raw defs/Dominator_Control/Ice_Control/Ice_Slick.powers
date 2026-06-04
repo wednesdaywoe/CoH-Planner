@@ -1,0 +1,52 @@
+Power Dominator_Control.Ice_Control.Ice_Slick
+{
+    Name                 "Ice_Slick"                   
+    DisplayName          "P3381390693"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        10.4
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         90
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_IceControl_IceSlick.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_IceControl_IceSlick.PFX
+    DisplayShortHelp     "H8XQBMVTGKMRWEMD8WSRAPSBXX"
+    DisplayHelp          "2R229D4NTYJ2YCXTMCZS69P3UW"
+    IconName             "IceFormation_IceSlick.tga"
+    ShowBuffIcon         kFalse
+    DisplayTargetShortHelp "P3605848267"
+    DisplayTargetHelp    "P902485759"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_IceSlick
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+}

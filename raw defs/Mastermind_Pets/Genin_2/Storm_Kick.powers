@@ -1,0 +1,76 @@
+#*******************************************#
+# Power: Pets > Ninja Genin 2 > Storm Kick  #
+# Info:  Melee, DMG(Smash)                  #
+#*******************************************#
+
+Power Mastermind_Pets.Genin_2.Storm_Kick
+{
+    Name                 "Storm_Kick"                  
+    DisplayName          "P2228365398"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        6.864
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         6
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu\Powers\AnimFX\MartialArts_TigersFury.pfx"
+    include              menu\Powers\AnimFX\MartialArts_TigersFury.pfx
+    DisplayShortHelp     "QMU8WKRZZH4UYYBZP9KR3WZ2XX"
+    DisplayHelp          "PMSXHDYHZHYSWZZUE8UUFC9VKQ"
+    IconName             "MartialArts_StormKick.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "CriticalHit"
+        Chance 0.0000
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.3200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "QKRC753ZRCHKY4X2H5UATEHRCW"
+                DisplayVictimHit "UXQ3B33BY98LYSNYME7JP6QK72"
+                DisplayFloat "P2440464263"
+            }
+            
+        }
+    }
+}

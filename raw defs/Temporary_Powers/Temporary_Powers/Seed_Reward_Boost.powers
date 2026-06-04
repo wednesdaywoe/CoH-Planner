@@ -1,0 +1,41 @@
+Power Temporary_Powers.Temporary_Powers.Seed_Reward_Boost
+{
+    Name                 "Seed_Reward_Boost"           
+    DisplayName          "P2054626590"
+    ActivateRequires     atLevelCap? !
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    LifeTime             1800
+    StackingUsage        kTrue
+    MaxLifeTime          1800
+    Deletable            kTrue
+    DisplayShortHelp     "P15913861"
+    DisplayHelp          "P186825573"
+    IconName             "Temporary_XPBoost.tga"
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P15913861"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kExperienceGain kInfluenceGain
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

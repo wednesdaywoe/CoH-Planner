@@ -1,0 +1,97 @@
+Power Mastermind_Buff.Cold_Domination.Ice_Shield
+{
+    Name                 "Ice_Shield"                  
+    DisplayName          "P461379651"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1.17
+    RechargeTime         2
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost, kBuff_Defense_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ColdDomination_IceShield.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerBuff_ColdDomination_IceShield.PFX
+    DisplayShortHelp     "P157648600"
+    DisplayHelp          "PAEN29FF3HPFY4C9S58CKVQS3A"
+    DisplayAttackerHit   "P1958975515"
+    DisplayVictimHit     "P3084486850"
+    IconName             "ColdDomination_IceShield.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P3286670589"
+    DisplayTargetHelp    "P3084486850"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kMelee_Attack kSmashing_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 1.5000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 1.5000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.2500
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

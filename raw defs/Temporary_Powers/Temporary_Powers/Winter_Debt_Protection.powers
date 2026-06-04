@@ -1,0 +1,42 @@
+Power Temporary_Powers.Temporary_Powers.Winter_Debt_Protection
+{
+    Name                 "Winter_Debt_Protection"      
+    DisplayName          "P3798691711"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EffectArea           kCharacter
+    NumCharges           1
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\WinterEvent_MysteryGift.pfx"
+    include              menu\Powers\AnimFX\WinterEvent_MysteryGift.pfx
+    DisplayShortHelp     "P1265099495"
+    DisplayHelp          "P1548003581"
+    IconName             "Temporary_HolidayGift.tga"
+
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Winter_Holiday_Spirit
+            }
+            
+        }
+    }
+}

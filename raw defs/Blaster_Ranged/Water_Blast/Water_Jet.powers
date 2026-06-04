@@ -1,0 +1,41 @@
+Power Blaster_Ranged.Water_Blast.Water_Jet
+{
+    Name                 "Water_Jet"                   
+    DisplayName          "P3182087333"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        10.192
+    TimeToActivate       1.43
+    TimeToRoot           1.43
+    RechargeTime         10
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kSlow_Boost
+    HighlightEval        temporary_powers.temporary_powers.tidal_power ownPowerNum? 3 == temporary_powers.temporary_powers.enhanced_water_jet_lock ownPower? ! &&
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_WaterJet_Long.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_WaterJet_Long.PFX
+    DisplayShortHelp     "AYYXGZZ9CHKGY6VSBYW7S6QUHA"
+    DisplayHelp          "VCLS3RX5CZPPYRBKVK3BD4NY53"
+    IconName             "WaterBlast_WaterJet.tga"
+    DisplayTargetShortHelp "P37065124"
+    DisplayTargetHelp    "P2896240755"
+
+    Redirect
+    {
+        Power Pets.Water_Blast_Blaster.Water_Jet_Fast
+        Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 == temporary_powers.temporary_powers.enhanced_water_jet_lock source.ownPower? ! &&
+    }
+    
+    Redirect
+    {
+        Power Pets.Water_Blast_Blaster.Water_Jet_Normal
+        Requires 1
+    }
+    
+}

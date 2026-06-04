@@ -1,0 +1,64 @@
+#*****************************************#
+# Power: Pets > Thug Posse > Fireman Axe  #
+# Info:  -Def                             #
+#*****************************************#
+
+Power Mastermind_Pets.Thug_Pose_Axe.Fireman_Axe
+{
+    Name                 "Fireman_Axe"                 
+    DisplayName          "P977870432"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        8.528
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu\Powers\AnimFX\Villain_Axe.pfx"
+    include              menu\Powers\AnimFX\Villain_Axe.pfx
+    DisplayShortHelp     "P3100956268"
+    DisplayHelp          "MKAE2PPGSZ3NWQLZ4LE2KC2H8Z"
+    IconName             "Claws_Slash.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 0.5000
+            Duration 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround
+        }
+    }
+}

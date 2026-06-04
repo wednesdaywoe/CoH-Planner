@@ -1,0 +1,54 @@
+Power Dominator_Control.Wind_Control.Vortex
+{
+    Name                 "Vortex"                      
+    DisplayName          "P2767021218"
+    BuyRequires          accesslevel char> 0 >=
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        26
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         240
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_ToHit_Boost, kSlow_Boost, kStunned_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_IceControl_JackFrost.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_IceControl_JackFrost.PFX
+    DisplayShortHelp     "P615366471"
+    DisplayHelp          "GURVSDMDNF9VWUM2EMF2A46BDZ"
+    IconName             "WindControl_Vortex.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P3876726645"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_WindControl_Vortex
+                PriorityList "PL_FightPreferMelee"
+            }
+            
+        }
+    }
+}

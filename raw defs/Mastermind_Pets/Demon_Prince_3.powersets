@@ -1,0 +1,33 @@
+PowerSet Mastermind_Pets.Demon_Prince_3
+{
+    Name "Demon_Prince_3"
+    DisplayName "XH6U8AY9JHFPW6VYDER3CG4L5W"
+    DisplayShortHelp "P3429684360"
+    DisplayHelp "P3429684360"
+    IconName "Demon_Prince_3_set.ico"
+
+    Powers Mastermind_Pets.Demon_Prince_3.Ice_Slash
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Demon_Prince_3.Frozen_Aura
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Demon_Prince_3.Abyssal_Empowerment
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

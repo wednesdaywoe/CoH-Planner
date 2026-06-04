@@ -1,0 +1,53 @@
+Power Defender_Buff.Sonic_Debuff.Sonic_Haven
+{
+    Name                 "Sonic_Haven"                 
+    DisplayName          "P1160094573"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1.33
+    RechargeTime         2
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_SonicDebuff_SonicHaven.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_SonicDebuff_SonicHaven.PFX
+    DisplayShortHelp     "P3358878122"
+    DisplayHelp          "DQA999A8EYXFY4LMJCYUJN8JHQ"
+    DisplayAttackerHit   "P2959881722"
+    DisplayVictimHit     "P3976820757"
+    IconName             "SonicDebuff_ProtectElements.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P321411657"
+    DisplayTargetHelp    "P246186843"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire kCold kEnergy kNegative_Energy
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 2.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

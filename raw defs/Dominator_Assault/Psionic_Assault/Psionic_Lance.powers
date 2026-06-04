@@ -1,0 +1,41 @@
+Power Dominator_Assault.Psionic_Assault.Psionic_Lance
+{
+    Name                 "Psionic_Lance"               
+    DisplayName          "P2540702184"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                175
+    EnduranceCost        18.512
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_PsionicAssault_PsionicLance_Quick.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_PsionicAssault_PsionicLance_Quick.PFX
+    DisplayShortHelp     "P1206759608"
+    DisplayHelp          "CZF5QMJPKMXUWDNPTUJPGGZEEZ"
+    IconName             "PsionicAssault_PsionicLance.tga"
+    DisplayTargetShortHelp "P3214140212"
+    DisplayTargetHelp    "P3598113204"
+
+    Redirect
+    {
+        Power Villain_Pets.Dominator_PsionicAssault_Snipe.Psionic_Lance_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Dominator_PsionicAssault_Snipe.Psionic_Lance_Normal
+        Requires 1
+    }
+    
+}

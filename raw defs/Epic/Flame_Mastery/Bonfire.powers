@@ -1,0 +1,50 @@
+Power Epic.Flame_Mastery.Bonfire
+{
+    Name                 "Bonfire"                     
+    DisplayName          "P3905034590"
+    BuyRequires          $archetype @Class_Blaster ==
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                70
+    EnduranceCost        13
+    TimeToActivate       3.07
+    TimeToRoot           3.07
+    RechargeTime         120
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_FireControl_Bonfire.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_FireControl_Bonfire.PFX
+    DisplayShortHelp     "KK6VHXAN75ZWW7Z7QZWGADEYFX"
+    DisplayHelp          "P2618340367"
+    IconName             "FlameMastery_Bonfire.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CopyBoosts CopyCreatorMods PseudoPet
+            Params EntCreate
+            {
+                DisplayName "Bonfire"
+                PriorityList "PL_StaticObject"
+                Power Pets.Bonfire_Epic.Bonfire
+            }
+            
+        }
+    }
+}

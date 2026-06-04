@@ -1,0 +1,325 @@
+Power Epic.Body_Mastery_Stalker.Laser_Beam_Eyes
+{
+    Name                 "Laser_Beam_Eyes"             
+    DisplayName          "P29026730"
+    BuyRequires          Epic ownPowerNum? 0 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                80
+    EnduranceCost        5.2
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_EnergyMastery_LaserBeamEyes.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_EnergyMastery_LaserBeamEyes.PFX
+    DisplayShortHelp     "NJCCUJA5UHEQYHBHUQBA8X6ZVQ"
+    DisplayHelp          "ETXSB4HR6Y8GYNZKFEH9ZEMY7A"
+    IconName             "BodyMastery_LaserBeamEyes.tga"
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P3421292544"
+
+
+    Effect
+    {
+        Tag "StalkerOnly"
+        Requires arch source> class_stalker ==
+        Flags HitRollSuccess
+    
+        Effect
+        {
+            Tag "ASTeamCrit"
+            Chance 0.0700
+            Requires enttype target> critter eq kMeter source> .9 < &&
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                    DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "StealthCrit"
+            Requires kMeter source> 0 > enttype target> critter eq &&
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_InherentDamage"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                    DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "PvPCrit"
+            Chance 0.2000
+            Requires kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.8890
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                    DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Tag "PvPStealthCrit"
+            Requires kMeter source> 0 > enttype target> player eq &&
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.8890
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "H4EEXDSNE72WYUM9CJFMQEU4CS"
+                    DisplayVictimHit "R639TQFA2VBHYLZET9FVTXATS2"
+                    DisplayFloat "P2440464263"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.0000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2559786529"
+                    DisplayVictimHit "P377644626"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 2.0000
+                Duration 6.0000
+                Magnitude 1.0000
+                StackType kStack
+                FX
+                {
+                    ContinuingFX GenericContinuing\DeBuffDefContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 1.0000
+                MagnitudeExpr 1 1 @ToHit - @ToHitRoll * - @StdResult *
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2559786529"
+                    DisplayVictimHit "P377644626"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Type kExpression
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 2.0000
+                Duration 6.0000
+                MagnitudeExpr 1 1 @ToHit - @ToHitRoll * - @StdResult *
+                Magnitude 1.0000
+                StackType kStack
+                FX
+                {
+                    ContinuingFX GenericContinuing\DeBuffDefContinuing.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        Effect
+        {
+            Flags Fallback
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.8890
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2559786529"
+                    DisplayVictimHit "P377644626"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 2.0000
+                Duration 6.0000
+                Magnitude 1.0000
+                StackType kStack
+                FX
+                {
+                    ContinuingFX GenericContinuing\DeBuffDefContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags HideFromInfo
+        
+            AttribMod
+            {
+                Attrib kEnergy
+                Aspect kAbs
+                Type kExpression
+                Target kTarget
+                Table "Melee_PvPDamage"
+                Scale 1.8890
+                MagnitudeExpr 1 1 @ToHit - @ToHitRoll * - @StdResult *
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P2559786529"
+                    DisplayVictimHit "P377644626"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Type kExpression
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 2.0000
+                Duration 6.0000
+                MagnitudeExpr 1 1 @ToHit - @ToHitRoll * - @StdResult *
+                Magnitude 1.0000
+                StackType kStack
+                FX
+                {
+                    ContinuingFX GenericContinuing\DeBuffDefContinuing.fx
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Flags HitRollFail
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kCur
+            Table "Melee_Ones"
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "4NB6ETYKN4LLWCZ6NTMWJSKCJW"
+            }
+            
+        }
+    }
+}

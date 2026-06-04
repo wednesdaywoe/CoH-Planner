@@ -1,0 +1,49 @@
+Power Dominator_Control.Plant_Control.Fly_Trap
+{
+    Name                 "Fly_Trap"                    
+    DisplayName          "P349392526"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                50
+    EnduranceCost        26
+    TimeToActivate       1.17
+    TimeToRoot           1.17
+    RechargeTime         240
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kImmobilized_Boost
+    ProcAllowed          kNone
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_FlyTrap.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorControl_PlantControl_FlyTrap.PFX
+    DisplayShortHelp     "P3041632272"
+    DisplayHelp          "P1127688670"
+    IconName             "PlantControl_VenusFlytrap.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Fly_Trap
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    }
+}

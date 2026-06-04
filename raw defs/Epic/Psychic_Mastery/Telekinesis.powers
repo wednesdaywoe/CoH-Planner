@@ -1,0 +1,282 @@
+Power Epic.Psychic_Mastery.Telekinesis
+{
+    Name                 "Telekinesis"                 
+    DisplayName          "P289841888"
+    BuyRequires          Epic ownPowerNum? 1 >
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kPsionic_Attack
+    EntsAffected         kFoe
+    Target               kDeadOrAliveFoe
+    Range                50
+    EnduranceCost        0.26
+    MaxToggleTime        10
+    TimeToActivate       1.13
+    TimeToRoot           1.13
+    RechargeTime         180
+    ActivatePeriod       0.5
+    EffectArea           kSphere
+    Radius               10
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kImmobilized_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\ControllerControl_MindControl_Telekinesis.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\ControllerControl_MindControl_Telekinesis.PFX
+    DisplayShortHelp     "75S8Y7U4BKS2WDVGNK2TNBZU9W"
+    DisplayHelp          "KHZUB9C8N4ZBYDNM9HBKTQ9FL3"
+    DisplayAttackerHit   "P4182303717"
+    DisplayVictimHit     "P1128839865"
+    IconName             "MentalControl_Telekinesis.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3220742713"
+    DisplayTargetHelp    "P2335203856"
+
+
+    Effect
+    {
+        Tag "Telekinesis"
+    
+        AttribMod
+        {
+            Attrib kKnockup kKnockback
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 100.0000
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        Effect
+        {
+            Requires distance 40 <
+            Flags HideFromInfo MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kRepel
+                Aspect kCur
+                Type kExpression
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                MagnitudeExpr 40 distance -
+                Magnitude 1.0000
+                StackType kContinuous
+                RequiredEvent Immobilized 1
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "HX5CXW9ZCKVPY3LMB779QHF7QZ"
+                }
+                
+                Params Knock
+                {
+                    VecEnd                         Target
+                    Vel                            1.0000
+                    VelMag                         0.1000
+                }
+            }
+        
+            AttribMod
+            {
+                Attrib kIntangible
+                Aspect kCur
+                Table "Melee_Ones"
+                Scale 4.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                StackType kContinuous
+                Suppress Attacked 4 Always
+                Suppress AttackedByOther 4 Always
+                Suppress Damaged 4 Always
+                Suppress MissionObjectClick 4 Always
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires distance 60 >
+            Flags HideFromInfo MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kRepel
+                Aspect kCur
+                Type kExpression
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                MagnitudeExpr distance 60 -
+                Magnitude 1.0000
+                StackType kContinuous
+                RequiredEvent Immobilized 1
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "MPNSAVLRQVVUWVZFQKTPZGBZRS"
+                }
+                
+                Params Knock
+                {
+                    VecStart                       Target
+                    Vel                            1.0000
+                    VelMag                         0.1000
+                }
+            }
+        
+            AttribMod
+            {
+                Attrib kIntangible
+                Aspect kCur
+                Table "Melee_Ones"
+                Scale 4.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                StackType kContinuous
+                Suppress Attacked 4 Always
+                Suppress AttackedByOther 4 Always
+                Suppress Damaged 4 Always
+                Suppress MissionObjectClick 4 Always
+                Flags IgnoreStrength IgnoreResistance
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags SecondaryTargetsOnly
+        
+            AttribMod
+            {
+                Attrib kRepel
+                Aspect kCur
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.5000
+                Magnitude 1.0000
+                StackType kContinuous
+                RequiredEvent Immobilized 1
+                Flags IgnoreCombatMods
+                Params Knock
+                {
+                    VecStart                       Target
+                    VecEnd                         MainTarget
+                    Vel                            1.0000
+                    VelMag                         1.0000
+                }
+            }
+        }
+    
+        Effect
+        {
+            Tag "Telekinesis"
+            Requires kHitPoints% target> 0 >
+            Flags HitRollSuccess
+        
+            AttribMod
+            {
+                Attrib kFly
+                Aspect kCur
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 1.5000
+                Magnitude 1.0000
+                StackType kRefreshToCount
+                StackLimit 1
+                RequiredEvent Immobilized 1
+                Flags IgnoreResistance IgnoreCombatMods
+                FX
+                {
+                    ConditionalBits ANIM_fly
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSpeedFlying
+                Aspect kCur
+                Table "Melee_SpeedFlying"
+                Scale 1.1788
+                Duration 1.5000
+                Magnitude 1.0000
+                StackType kRefreshToCount
+                StackLimit 1
+                RequiredEvent Immobilized 1
+                Flags IgnoreResistance IgnoreCombatMods
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Table "Ranged_Immobilize"
+            Scale 5.0000
+            Magnitude 4.0000
+            StackType kRefresh
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Type kDuration
+            Table "Ranged_PvPMez"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kRefresh
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P4257051740"
+                DisplayVictimHit "P2588894681"
+            }
+            
+        }
+    }
+}

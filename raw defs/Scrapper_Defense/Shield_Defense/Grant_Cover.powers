@@ -1,0 +1,89 @@
+Power Scrapper_Defense.Shield_Defense.Grant_Cover
+{
+    Name                 "Grant_Cover"                 
+    DisplayName          "P2102485145"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kCaster
+    EnduranceCost        0.312
+    TimeToActivate       2.5
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu/powers/AnimFX/Player_Shield_GrantCover.pfx"
+    include              menu/powers/AnimFX/Player_Shield_GrantCover.pfx
+    DisplayShortHelp     "P2467171386"
+    DisplayHelp          "PYU5F9PGGYPCWMB7VYZWKR63MW"
+    DisplayAttackerHit   "P1441487133"
+    DisplayVictimHit     "P516004032"
+    DisplayPowerDefenseFloat "P367579676"
+    IconName             "ShieldDefense_GrantCover.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P2623971958"
+    DisplayTargetHelp    "P3577266256"
+
+
+    Effect
+    {
+        Requires entref target> entref source> eq !
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Buff_Def"
+            Scale 1.1250
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS\Shields\GrantCover_Continuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Res_Boolean"
+            Scale 0.4000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.3000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Stunned Held Sleep
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

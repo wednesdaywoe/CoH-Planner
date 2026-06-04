@@ -1,0 +1,71 @@
+Power Blaster_Support.Gadgets.Auto_Turret
+{
+    Name                 "Auto_Turret"                 
+    DisplayName          "P2366053991"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        39
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         180
+    EffectArea           kLocation
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kTaunt_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_Gadgets_AutoTurret.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_Gadgets_AutoTurret.PFX
+    DisplayShortHelp     "P645443609"
+    DisplayHelp          "VX6UNHMV5UQ4WSMGTK67K9BFX3"
+    IconName             "Gadgets_Turret.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P3912486950"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Turret
+                PriorityList "PL_SpawnFlying"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Tag "Defiance"
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Type kExpression
+            Target kCaster
+            Table "Ranged_Ones"
+            MagnitudeExpr .066 activatetime power.base> * areafactor power.base> /
+            DurationExpr activatetime power.base> 7.5 +
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

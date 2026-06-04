@@ -1,0 +1,46 @@
+#******************************************#
+# Power: Pets > Robot Assault 3 > Upgrade  #
+# Info:  Upgrade                           #
+#******************************************#
+
+Power Mastermind_Pets.Assault_3.Upgrade
+{
+    Name                 "Upgrade"                     
+    DisplayName          "P2027638150"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    DisplayShortHelp     "P2027638150"
+    DisplayHelp          "P198877964"
+    IconName             "Robotics_UpgradeRobot.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX V_COV\Powers\Robotics\Robot_Army_MechThreeUpgrade2_Weapon.fx
+            }
+            
+        }
+    }
+}

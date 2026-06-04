@@ -1,0 +1,171 @@
+Power Stalker_Defense.Ice_Armor.Energy_Absorption
+{
+    Name                 "Energy_Absorption"           
+    DisplayName          "P1195620424"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kCold_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\TankerDefense_IceArmor_EnergyAbsorption.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\TankerDefense_IceArmor_EnergyAbsorption.PFX
+    DisplayShortHelp     "D8M62HQPYFLDYWC8CUCQUH4X9W"
+    DisplayHelp          "3F6PMJFZBLMZYVZ2NLZGG65TLA"
+    DisplayPowerDefenseFloat "P3537408735"
+    IconName             "IceArmor_EnergyAbsorption.tga"
+    MaxTargetsHit        10
+
+
+    Effect
+    {
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSpeedRunning kSpeedFlying kSpeedJumping kJumpHeight kRechargeTime
+                Aspect kRes
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.2000
+                Duration 45.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayInfo "QNU7T3UA7XMWWZX6F2ES4U3KTS"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Buff_Def"
+                Scale 0.4500
+                Duration 45.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayInfo "QNU7T3UA7XMWWZX6F2ES4U3KTS"
+                }
+                
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Buff_Def"
+                Scale 0.0250
+                Duration 45.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreResistance IgnoreCombatMods
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 15.0000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayVictimHit "P1197092217"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kNull
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                StackType kStack
+                Messages
+                {
+                    DisplayVictimHit "P3842703125"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale -0.3500
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "P626718221"
+                    DisplayVictimHit "P453378455"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kEndurance
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_EndDrain"
+                Scale -16.5000
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "P626718221"
+                    DisplayVictimHit "P453378455"
+                }
+                
+            }
+        }
+    }
+}

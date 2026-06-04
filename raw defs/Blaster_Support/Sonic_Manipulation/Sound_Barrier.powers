@@ -1,0 +1,158 @@
+Power Blaster_Support.Sonic_Manipulation.Sound_Barrier
+{
+    Name                 "Sound_Barrier"               
+    DisplayName          "P3939469954"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TimeToActivate       2.7
+    RechargeTime         10
+    ActivatePeriod       2
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRes_Damage_Boost, kRecovery_Boost
+    IgnoreStrength       kTrue
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterSupport_SonicManipulation_SoundBarrier.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterSupport_SonicManipulation_SoundBarrier.PFX
+    DisplayShortHelp     "P3204894649"
+    DisplayHelp          "ZTMDQBNCGZGAWPLGASD5F5PTTW"
+    DisplayAttackerHit   "P2100668018"
+    IconName             "SonicManipulation_SoundBarrier"
+    DisplayTargetHelp    "P3523821495"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kEnergy
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Dmg"
+            Scale 1.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires @CustomFX ShowFloaters eq !
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Target kTarget
+            Table "Melee_HealSelf"
+            Scale 0.1500
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags NoFloaters IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 3.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvEOnly
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale -30.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Flags PvPOnly
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kRes
+            Target kSelf
+            Table "Melee_Res_Boolean"
+            Scale 3.0000
+            Duration 2.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires @CustomFX ShowFloaters eq
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Target kTarget
+            Table "Melee_HealSelf"
+            Scale 0.1500
+            Duration 12.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 3.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

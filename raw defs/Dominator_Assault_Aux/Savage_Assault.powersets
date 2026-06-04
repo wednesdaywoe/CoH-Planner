@@ -1,0 +1,35 @@
+PowerSet Dominator_Assault_Aux.Savage_Assault
+{
+    Name "Savage_Assault"
+    DisplayName "P1092120812"
+    DisplayShortHelp "P3710716733"
+    DisplayHelp "P3710716733"
+    ShowInInventory False
+    ShowInManage False
+    IconName "Savage_Assault_set.ico"
+
+    Powers Dominator_Assault_Aux.Savage_Assault.Rending_Flurry_Normal
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault_Aux.Savage_Assault.Rending_Flurry_Large
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Dominator_Assault_Aux.Savage_Assault.Feral_Charge_Hit
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

@@ -1,0 +1,132 @@
+Power Temporary_Powers.Temporary_Powers.V_Shivan_Strike
+{
+    Name                 "V_Shivan_Strike"             
+    DisplayName          "P3217671950"
+    ModesRequired        kShivan_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        5.46
+    TimeToActivate       1.2
+    TimeToRoot           1.2
+    RechargeTime         3
+    EffectArea           kCharacter
+    LifeTimeInGame       3600
+    VisualFX             "menu\Powers\AnimFX\Villain_Shivan_MediumPunch.pfx"
+    include              menu\Powers\AnimFX\Villain_Shivan_MediumPunch.pfx
+    DisplayShortHelp     "HAZTXBV4BT5BW9ZJHTR4LUEHKA"
+    DisplayHelp          "3HGJYB4PWJVDW7XGAEUMJ3WCQA"
+    IconName             "LuminousAura_WhiteDwarfStrike.tga"
+    DisplayTargetShortHelp "P373215750"
+    DisplayTargetHelp    "P3870140893"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 0.5000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "22G9RMSTRE95WGZGTGM7C8J7RS"
+                DisplayVictimHit "AJT22MZBRY9NWJMEJT3UDH6PYX"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 0.7500
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "FRSSJKC5PYCBYNNS2UGWW7LEFW"
+                DisplayVictimHit "G95KU877F7JQYNL5D339GMXRXZ"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Debuff_Def"
+            Scale 1.0000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/IrradiateContinuingFx.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.1000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 0.6700
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

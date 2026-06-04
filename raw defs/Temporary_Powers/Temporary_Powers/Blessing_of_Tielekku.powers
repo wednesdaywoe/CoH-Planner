@@ -1,0 +1,39 @@
+Power Temporary_Powers.Temporary_Powers.Blessing_of_Tielekku
+{
+    Name                 "Blessing_of_Tielekku"        
+    DisplayName          "P422380502"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    UsageTime            432000
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    DisplayShortHelp     "P1417125596"
+    DisplayHelp          "P1846506671"
+    IconName             "Temporary_Prometheus.tga"
+    ShowInManage         kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0281
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

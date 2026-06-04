@@ -1,0 +1,52 @@
+#*******************************************#
+# Power: Pets > Robot Protector 3 > Repair  #
+# Info:  Heal Robot                         #
+#*******************************************#
+
+Power Mastermind_Pets.Protector_3.Repair
+{
+    Name                 "Repair"                      
+    DisplayName          "P2303209751"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kHealAlly
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        13
+    TimeToActivate       1.83
+    RechargeTime         30
+    EffectArea           kCharacter
+    BoostsAllowed        kEnduranceDiscount_Boost, kHeal_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu\Powers\AnimFX\RobotArmy_Protector_Repair.pfx"
+    include              menu\Powers\AnimFX\RobotArmy_Protector_Repair.pfx
+    DisplayShortHelp     "P4028681910"
+    DisplayHelp          "P1677344462"
+    IconName             "Empathy_HealOther.tga"
+
+
+    Effect
+    {
+        Requires MastermindPets_Droid target.VillainName> MastermindPets_Protector_Bot target.VillainName> || MastermindPets_Assault_Bot target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Heal"
+            Scale 1.9600
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+        }
+    }
+}

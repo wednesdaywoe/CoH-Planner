@@ -1,0 +1,63 @@
+#**********************************************#
+# Power: Pets > Beast Lioness 3 > Lick Wounds  #
+# Info:  Click, Self Minor Heal, +Regen        #
+#**********************************************#
+
+Power Mastermind_Pets.Lioness_3.Lick_Wounds
+{
+    Name                 "Lick_Wounds"                 
+    DisplayName          "P1630129436"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kHealSelf
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        8
+    PreferenceMultiplier 5
+    TimeToActivate       1.53
+    RechargeTime         60
+    EffectArea           kCharacter
+    BoostsAllowed        kHeal_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Lioness_LickWound.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Lioness_LickWound.pfx
+    DisplayShortHelp     "P3940928652"
+    DisplayHelp          "PDNY54BEFU74Y4BE3FHXW5M5TQ"
+    IconName             "BeastMastery_PetLickWounds.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_HealSelf"
+            Scale 2.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 2.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

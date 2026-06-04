@@ -1,0 +1,89 @@
+Power Temporary_Powers.Temporary_Powers.Opportunity_Lock
+{
+    Name                 "Opportunity_Lock"            
+    DisplayName          "P85281792"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1
+    EffectArea           kCharacter
+    LifeTime             15
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P85281792"
+    DisplayHelp          "P2830065189"
+    IconName             "Inherent_TargetLock"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+        Chance 0.0000
+        Requires kOpportunitySustain target.Mode?
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 2.5000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P3506624782"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.0000
+        Requires kOpportunitySustain target.Mode? !
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 2.5000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P541531985"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1000.0000
+            Magnitude 1.0000
+            Delay 14.9000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

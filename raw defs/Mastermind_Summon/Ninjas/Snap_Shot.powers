@@ -1,0 +1,114 @@
+#*************************************#
+# Power: Summon > Ninjas > Snap Shot  #
+# Info:  Ranged, DMG(Lethal)          #
+#*************************************#
+
+Power Mastermind_Summon.Ninjas.Snap_Shot
+{
+    Name                 "Snap_Shot"                   
+    DisplayName          "P2783200921"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.155
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        3.536
+    TimeToActivate       1
+    TimeToRoot           1
+    RechargeTime         2
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    HighlightEval        kPersonalAttack1 Mode? !
+    HighlightRing        136 117 140 255
+    VisualFX             "menu\Powers\AnimFX\Archery_Quick_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Archery_Quick_NoGeo.pfx
+    DisplayShortHelp     "NB2XU8MP3FUEW3ZHSEP8PG2N9A"
+    DisplayHelp          "ARPFQJE8HRWMYQNQBYXSRHD7LW"
+    IconName             "Ninjas_QuickShot.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 0.6800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.1800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Sensei's Guidance"
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 0.0300
+            Duration 30.0000
+            Magnitude 1.0000
+            DelayedRequires arch target> Class_Lt_Henchman eq arch target> Class_Boss_Henchman eq || arch target> Class_Minion_Henchman eq || arch target> Class_Henchman_Lt eq || arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq ||
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag CriticalHit
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kCaster
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude kPersonalAttack1
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

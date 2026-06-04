@@ -1,0 +1,225 @@
+Power Sentinel_Defense.Bio_Organic_Armor.Parasitic_Leech
+{
+    Name                 "Parasitic_Leech"             
+    DisplayName          "P1722969041"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.5
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        18.2
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         270
+    EffectArea           kCone
+    Radius               90
+    Arc                  90
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kHeal_Boost, kRecovery_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\SymbioticArmor_ParasiticAura.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\SymbioticArmor_ParasiticAura.PFX
+    DisplayShortHelp     "P3416933254"
+    DisplayHelp          "8VY5QUL2ZRDGYEBZCXA7LNLSKZ"
+    IconName             "BioOrganicArmor_ParasiticLeech"
+    MaxTargetsHit        5
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.4290
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "P1388191023"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.7140
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1430
+            Duration 45.0000
+            MagnitudeExpr Max.kHitPoints source> @StdResult *
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq kOffensiveAdaptation source.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq kOffensiveAdaptation source.Mode? ! &&
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Res_Boolean"
+            Scale -2.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq kOffensiveAdaptation source.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -1.3000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq kOffensiveAdaptation source.Mode? &&
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Res_Boolean"
+            Scale -2.6000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires kRestedAdaptation source.Mode?
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1290
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2140
+            Duration 45.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+
+    Effect
+    {
+        Requires kDefensiveAdaptation source.Mode?
+    
+        AttribMod
+        {
+            Attrib kAbsorb
+            Aspect kMax
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0430
+            Duration 45.0000
+            MagnitudeExpr Max.kHitPoints source> @StdResult *
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "Z862FFXA8EUMYVC3P5CW8KKY3S"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Debuff_Dam"
+            Scale 2.6600
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+}

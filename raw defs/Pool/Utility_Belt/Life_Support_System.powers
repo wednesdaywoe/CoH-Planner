@@ -1,0 +1,69 @@
+Power Pool.Utility_Belt.Life_Support_System
+{
+    Name                 "Life_Support_System"         
+    DisplayName          "P938032644"
+    BuyRequires          Pool.Utility_Belt.Bolas Pool.Utility_Belt.Poisoned_Dagger && Pool.Utility_Belt.Bolas Pool.Utility_Belt.Freerunning && || Pool.Utility_Belt.Poisoned_Dagger Pool.Utility_Belt.Freerunning && || accesslevel char> 0 >= &&
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        7.8
+    TimeToActivate       1.27
+    RechargeTime         240
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\OriginPool_UtilityBelt_LifeSupportSystem.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\OriginPool_UtilityBelt_LifeSupportSystem.PFX
+    DisplayShortHelp     "P1512163257"
+    DisplayHelp          "N29NJWD4W4XDWDBUMPZPNFQFZX"
+    DisplayAttackerHit   "P1970443106"
+    IconName             "UtilityBelt_LifeSupportSystem.tga"
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P1264138763"
+    DisplayTargetHelp    "P3026115748"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Type kExpression
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.0000
+            MagnitudeExpr 100 kHitPoints% source> - 100 / 1 + @StdResult *
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Type kExpression
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.0000
+            Duration 9.1000
+            MagnitudeExpr 100 kHitPoints% source> - 1000 / .1 + @StdResult *
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayVictimHit "P606393157"
+            }
+            
+        }
+    }
+}

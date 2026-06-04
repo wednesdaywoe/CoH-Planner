@@ -1,0 +1,83 @@
+Power Mastermind_Buff.Force_Field.Deflection_Shield
+{
+    Name                 "Deflection_Shield"           
+    DisplayName          "P1823934049"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       2.07
+    RechargeTime         2
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ForceField_DeflectionShield.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_ForceField_DeflectionShield.PFX
+    DisplayShortHelp     "P1152404173"
+    DisplayHelp          "P3719633861"
+    DisplayAttackerHit   "P737094794"
+    DisplayVictimHit     "P2660225500"
+    IconName             "ForceField_DeflectionShield.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P2240545096"
+    DisplayTargetHelp    "P1096740762"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kMelee_Attack kSmashing_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 1.5000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kLethal_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 1.5000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX2
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 4.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,98 @@
+Power Temporary_Powers.Temporary_Powers.Sawed-off_Shotgun
+{
+    Name                 "Sawed-off_Shotgun"           
+    DisplayName          "P4011404600"
+    ModesDisallowed      kDisable_All, kdisable_temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        13.12
+    TimeToActivate       1.87
+    TimeToRoot           1.87
+    RechargeTime         60
+    EffectArea           kCone
+    Radius               40
+    Arc                  20
+    LifeTime             72000
+    VisualFX             "menu\Powers\AnimFX\Villain_Shotgun.pfx"
+    include              menu\Powers\AnimFX\Villain_Shotgun.pfx
+    DisplayShortHelp     "P130790662"
+    DisplayHelp          "PV54Y4P5KSH2W8X624CM8YMQLQ"
+    IconName             "AssaultWeapons_ShotgunBuckShot.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P130790662"
+    DisplayTargetHelp    "P2585179941"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Tempdamage"
+            Scale 0.8200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3785438311"
+                DisplayVictimHit "P1873832980"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.7500
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Chance 0.3000
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockback
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Knockback"
+            Scale 0.7500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

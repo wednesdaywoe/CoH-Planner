@@ -1,0 +1,51 @@
+PowerSet Epic.Munitions_Mastery
+{
+    Name "Munitions_Mastery"
+    DisplayName "V8TDQM45Q897W2XJVTGYEJFQBW"
+    DisplayShortHelp "V8TDQM45Q897W2XJVTGYEJFQBW"
+    DisplayHelp "9MJEZHRFTDH5W2MUW3NQANHWJQ"
+    CostumeKeys CustomWeapon_EpicRifle
+    CostumeParts EpicRifle_Default
+    IconName "Munitions_Mastery_set.ico"
+
+    Powers Epic.Munitions_Mastery.Body_Armor
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Munitions_Mastery.Cryo_Freeze_Ray
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Munitions_Mastery.Sleep_Grenade
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Munitions_Mastery.Surveillance
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Munitions_Mastery.LRM_Rocket
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

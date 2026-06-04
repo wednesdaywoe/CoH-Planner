@@ -1,0 +1,48 @@
+#******************************************************************#
+# Power: Pets > Demons Hellfire Demonling 3 > Abyssal Empowerment  #
+# Info:  Abyssal Empowerment                                       #
+#******************************************************************#
+
+Power Mastermind_Pets.Hellfire_Demonling_3.Abyssal_Empowerment
+{
+    Name                 "Abyssal_Empowerment"         
+    DisplayName          "P2014736395"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_HellfireDemonling3_Empower.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_HellfireDemonling3_Empower.pfx
+    DisplayShortHelp     "P2014736395"
+    DisplayHelp          "P3549962908"
+    IconName             "DemonSummoning_AbyssalEmpowerment.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,93 @@
+Power Temporary_Powers.Temporary_Powers.Rising_Tide
+{
+    Name                 "Rising_Tide"                 
+    DisplayName          "N7DZF6XK5DGEWLLJ283CLAEH9S"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    RechargeTime         3
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               60
+    AIReport             kNever
+    LifeTime             10
+    BoostsAllowed        kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Redirects_Marine_Affinity_Rising_Tide.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Redirects_Marine_Affinity_Rising_Tide.pfx
+    DisplayShortHelp     "36DMQHGB3FVTYTBAG376NMY8C2"
+    DisplayHelp          "4Y2UK6LHKSTSYHBDRNPY48C7V3"
+    IconName             "MarineAffinity_ShiftingTidesBuff.tga"
+    MaxTargetsHit        255
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    NumAllowed           10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Table "Ranged_Buff_Dmg"
+            Scale 0.2400
+            Duration 2.2500
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 10
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Table "Ranged_Buff_ToHit"
+            Scale 0.0800
+            Duration 2.2500
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 10
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Table "Melee_Ones"
+            Scale 0.0200
+            Duration 2.2500
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 10
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.0250
+            Duration 2.2500
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 10
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag RisingTide
+            }
+        }
+    }
+}

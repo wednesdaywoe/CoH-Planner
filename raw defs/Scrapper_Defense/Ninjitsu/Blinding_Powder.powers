@@ -1,0 +1,220 @@
+Power Scrapper_Defense.Ninjitsu.Blinding_Powder
+{
+    Name                 "Blinding_Powder"             
+    DisplayName          "P521479399"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                25
+    EnduranceCost        7.8
+    TimeToActivate       1.07
+    TimeToRoot           1.07
+    RechargeTime         120
+    EffectArea           kCone
+    Radius               25
+    Arc                  45
+    AIReport             kNever
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDebuff_ToHit_Boost, kConfuse_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_BlindingPowder.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerDefense_Ninjitsu_BlindingPowder.PFX
+    DisplayShortHelp     "P714432003"
+    DisplayHelp          "THW3KMS5ZCDLY7X3WAJQ7MWKZ2"
+    IconName             "Ninjitsu_BlindingPowder.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3017616644"
+    DisplayTargetHelp    "P2964975662"
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_Sleep"
+            Scale 10.0000
+            Magnitude 2.0000
+            Delay 0.2500
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_SonicStun
+            }
+            
+        }
+    
+        Effect
+        {
+            Chance 0.5000
+            Requires enttype target> critter eq
+        
+            AttribMod
+            {
+                Attrib kConfused
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_Immobilize"
+                Scale 20.0000
+                Magnitude 2.0000
+                StackType kReplace
+                Messages
+                {
+                    DisplayAttackerHit "P4049735792"
+                    DisplayVictimHit "P553075930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Flags HitRollSuccess
+        
+            AttribMod
+            {
+                Attrib kPerceptionRadius
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale -0.9000
+                Duration 20.0000
+                Magnitude 1.0000
+                StackType kReplace
+            }
+        
+            AttribMod
+            {
+                Attrib kToHit
+                Aspect kCur
+                Target kTarget
+                Table "Melee_DeBuff_ToHit"
+                Scale 1.0000
+                Duration 15.0000
+                Magnitude 1.0000
+                StackType kReplace
+                FX
+                {
+                    ContinuingFX PFX
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+        Flags HitRollSuccess
+    
+        AttribMod
+        {
+            Attrib kSleep
+            Aspect kCur
+            Type kDuration
+            Target kTarget
+            Table "Melee_PvPMez"
+            Scale 1.0000
+            Magnitude 2.0000
+            Delay 0.2500
+            StackType kStack
+            Suppress Stunned 15 WhenInactive
+            Suppress Immobilized 15 WhenInactive
+            Suppress Held 15 WhenInactive
+            Suppress Sleep 15 WhenInactive
+            Suppress Terrorized 15 WhenInactive
+            Messages
+            {
+                DisplayAttackerHit "P786700626"
+                DisplayVictimHit "P2415654930"
+            }
+            
+            FX
+            {
+                ConditionalFX PFX
+                ConditionalBits ANIM_SonicStun
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPerceptionRadius
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.9000
+            Duration 20.0000
+            Magnitude 1.0000
+            StackType kReplace
+            CancelEvents Damaged
+        }
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        Effect
+        {
+            Chance 0.5000
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kConfused
+                Aspect kCur
+                Type kDuration
+                Target kTarget
+                Table "Melee_PvPMez"
+                Scale 1.0000
+                Magnitude 2.0000
+                StackType kReplace
+                Suppress Confused 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P4049735792"
+                    DisplayVictimHit "P553075930"
+                }
+                
+                FX
+                {
+                    ConditionalFX GenericContinuing/ConfuseContinuing.fx
+                }
+                
+            }
+        }
+    }
+}

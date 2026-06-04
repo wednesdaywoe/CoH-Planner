@@ -1,0 +1,51 @@
+Power Temporary_Powers.Phasing.DrWeberMission3Phase
+{
+    Name                 "DrWeberMission3Phase"        
+    DisplayName          "P3350265551"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       99999
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    RefreshesOnActivePlayerChange kTrue
+    DisplayShortHelp     "P3899172876"
+    DisplayHelp          "P3899172876"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Requires Phasing_DrWeberMission1Complete Target.TokenOwned? Phasing_FB_DrWeberMission1Complete Target.TokenOwned? || Phasing_FB_DrWeberStoryArcStart Target.TokenOwned? ! &&
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            ApplicationType kOnActivate
+            Target kSelfsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 10.0000
+            Duration kUntilShutOff
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase AliveContact3
+            }
+            
+        }
+    }
+}

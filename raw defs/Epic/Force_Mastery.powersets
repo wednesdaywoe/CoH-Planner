@@ -1,0 +1,49 @@
+PowerSet Epic.Force_Mastery
+{
+    Name "Force_Mastery"
+    DisplayName "P4249991108"
+    DisplayShortHelp "P4249991108"
+    DisplayHelp "P3163183056"
+    IconName "Force_Mastery_set.ico"
+
+    Powers Epic.Force_Mastery.Personal_Force_Field
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Force_Mastery.Repulsion_Field
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Force_Mastery.Temp_Invulnerability
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Force_Mastery.Repulsion_Bomb
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Force_Mastery.Foce_of_Nature
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

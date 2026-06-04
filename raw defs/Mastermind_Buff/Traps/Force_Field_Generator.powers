@@ -1,0 +1,48 @@
+Power Mastermind_Buff.Traps.Force_Field_Generator
+{
+    Name                 "Force_Field_Generator"       
+    DisplayName          "P1946739647"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                20
+    EnduranceCost        13
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         15
+    EffectArea           kLocation
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_Defense_Boost
+    TargetNearGround     kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Traps_ForceFieldGenerator.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\MastermindBuff_Traps_ForceFieldGenerator.PFX
+    DisplayShortHelp     "P1025502389"
+    DisplayHelp          "D8SYEVR6ACCMYUM8YN4AWQD7R2"
+    IconName             "Traps_DroppedAoEBuffDefense.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Traps_FF_Generator
+                PriorityList "Pet.Follow"
+            }
+            
+        }
+    }
+}

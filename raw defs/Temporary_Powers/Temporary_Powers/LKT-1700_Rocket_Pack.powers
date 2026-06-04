@@ -1,0 +1,44 @@
+Power Temporary_Powers.Temporary_Powers.LKT-1700_Rocket_Pack
+{
+    Name                 "LKT-1700_Rocket_Pack"        
+    DisplayName          "P1731331132"
+    BuyRequires          0
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    DisplayShortHelp     "P3537457746"
+    DisplayHelp          "P1167240478"
+    IconName             "Temporary_AntigravityMatrix.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    MaxBoosts            0
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.LKT-1700_Rocket_Pack
+            }
+            
+        }
+    }
+}

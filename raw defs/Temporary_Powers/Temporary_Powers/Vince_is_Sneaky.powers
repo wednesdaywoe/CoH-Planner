@@ -1,0 +1,38 @@
+Power Temporary_Powers.Temporary_Powers.Vince_is_Sneaky
+{
+    Name                 "Vince_is_Sneaky"             
+    DisplayName          "P2322483388"
+    BuyRequires          accesslevel char> 9 >
+    ActivateRequires     accesslevel char> 9 >
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    UsageTime            43200
+    Deletable            kTrue
+    DisplayShortHelp     "P2268636547"
+    DisplayHelp          "P3553289329"
+    IconName             "Inherent_Brawl.tga"
+
+
+    Effect
+    {
+        Requires accesslevel source> 9 >
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.6000
+            Duration 10.5000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

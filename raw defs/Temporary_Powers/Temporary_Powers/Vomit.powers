@@ -1,0 +1,46 @@
+Power Temporary_Powers.Temporary_Powers.Vomit
+{
+    Name                 "Vomit"                       
+    DisplayName          "P2976651163"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kCaster
+    EnduranceCost        16.25
+    TimeToActivate       2.17
+    RechargeTime         15
+    EffectArea           kSphere
+    Radius               25
+    LifeTime             259200
+    NearGround           kTrue
+    VisualFX             "menu\Powers\AnimFX\Temporary_Power_Vomit.pfx"
+    include              menu\Powers\AnimFX\Temporary_Power_Vomit.pfx
+    DisplayShortHelp     "P3088124383"
+    DisplayHelp          "THM9Q5XCQYD6YDZ4WQS6HJRN3Q"
+    IconName             "Temporary_Sick.tga"
+    MaxTargetsHit        16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Magnitude 1.0000
+            StackType kStack
+            Flags NearGround IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2041433266"
+                DisplayVictimHit "P2773969969"
+            }
+            
+        }
+    }
+}

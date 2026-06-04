@@ -1,0 +1,85 @@
+Power Temporary_Powers.Temporary_Powers.PS_Antimatter_Lingering_Radiation
+{
+    Name                 "PS_Antimatter_Lingering_Radiation"
+    DisplayName          "P3321233827"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kEnergy_Attack
+    AIGroups             kDebuff
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        5
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         25
+    EffectArea           kSphere
+    Radius               25
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   991
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\RADIATION_Poisoning_Lingering_Radiation.pfx"
+    include              menu\Powers\AnimFX\RADIATION_Poisoning_Lingering_Radiation.pfx
+    DisplayShortHelp     "P3095982155"
+    DisplayHelp          "WHBHYME6SNJSY2XWBYTZFPMF7W"
+    DisplayAttackerHit   "P3060559231"
+    IconName             "RadiationPoisoning_LingeringRadiation.tga"
+    MaxTargetsHit        16
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P3095982155"
+    DisplayTargetHelp    "P1594885071"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.6000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX POWERS/RadiationControl/LingeringRadiationContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.6000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+            }
+            
+        }
+    }
+}

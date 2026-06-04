@@ -1,0 +1,49 @@
+Power Temporary_Powers.Phasing.Winter_Forest
+{
+    Name                 "Winter_Forest"               
+    DisplayName          "P444147029"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       30
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOrAlive
+    IgnoreStrength       kTrue
+    IgnoreLevelBought    kTrue
+    DisplayShortHelp     "P3899172876"
+    DisplayHelp          "P3899172876"
+    IconName             "Temporary_PVP_DebuffDamage.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+    MaxBoosts            0
+
+
+    Effect
+    {
+        Requires WinterEventContacts MapTokenVal system> 1 ==
+    
+        AttribMod
+        {
+            Attrib kVisionPhase
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 10.0000
+            Duration 30.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Phase
+            {
+                VisionPhase Friendly
+            }
+            
+        }
+    }
+}

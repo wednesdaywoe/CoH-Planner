@@ -1,0 +1,93 @@
+Power Temporary_Powers.Temporary_Powers.Mayhem_Wave_Scrambler
+{
+    Name                 "Mayhem_Wave_Scrambler"       
+    DisplayName          "P1603596331"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                60
+    EnduranceCost        14.82
+    TimeToActivate       2.67
+    TimeToRoot           2.67
+    RechargeTime         12
+    EffectArea           kCone
+    Radius               60
+    Arc                  30
+    NumCharges           30
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\PSIONIC_BLAST_Psychic_Scream.pfx"
+    include              menu\Powers\AnimFX\PSIONIC_BLAST_Psychic_Scream.pfx
+    DisplayShortHelp     "L3ZETYV4T944YJMVZU4U8S6ZXX"
+    DisplayHelp          "3N97TN9TYEZSYZCKYUVZ5LZDFS"
+    IconName             "Temporary_WaveScrambler.tga"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P3214140212"
+    DisplayTargetHelp    "P575277321"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.7500
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Ranged_Slow"
+            Scale 0.3000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX Powers/Psionics/TealHitContnuing.fx
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires group target> Clockwork eq
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 1.5000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P801507873"
+                DisplayVictimHit "P3863231487"
+            }
+            
+        }
+    }
+}

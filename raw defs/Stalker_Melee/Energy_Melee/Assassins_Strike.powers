@@ -1,0 +1,43 @@
+Power Stalker_Melee.Energy_Melee.Assassins_Strike
+{
+    Name                 "Assassins_Strike"            
+    DisplayName          "P3813972619"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3
+    TimeToRoot           0.8
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\StalkerMelee_EnergyMelee_AssassinsStrike.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\StalkerMelee_EnergyMelee_AssassinsStrike.PFX
+    DisplayShortHelp     "44537U46UPUVW2B5Q6Y9LECS9Q"
+    DisplayHelp          "DY65FDP3VSDQW9BNTRCBS3VSBS"
+    IconName             "PowerPunch_AssassinStrike.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Energy_Melee_Assassins_Strike.Assassins_Strike_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Energy_Melee_Assassins_Strike.Assassins_Strike_Stealth
+        Requires 1
+    }
+    
+}

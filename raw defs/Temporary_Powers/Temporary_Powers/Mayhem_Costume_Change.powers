@@ -1,0 +1,40 @@
+Power Temporary_Powers.Temporary_Powers.Mayhem_Costume_Change
+{
+    Name                 "Mayhem_Costume_Change"       
+    DisplayName          "P4245151130"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EffectArea           kCharacter
+    NumCharges           1
+    Deletable            kTrue
+    DisplayShortHelp     "P2671857407"
+    DisplayHelp          "P2881142484"
+    DisplayAttackerHit   "P2523044256"
+    IconName             "Jump_Acrobatics.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kReward
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Reward
+            {
+                Reward FreeCostumeChange
+            }
+            
+        }
+    }
+}

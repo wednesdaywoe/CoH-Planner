@@ -1,0 +1,129 @@
+#***************************************#
+# Power: Summon > Ninjas > Smoke Flash  #
+# Info:  Hide Ninja                     #
+#***************************************#
+
+Power Mastermind_Summon.Ninjas.Smoke_Flash
+{
+    Name                 "Smoke_Flash"                 
+    DisplayName          "P3600193279"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kMyPet
+    EntsAutoHit          kMyPet
+    Target               kCaster
+    TargetVisibility     kNone
+    Range                100
+    EnduranceCost        15
+    TimeToActivate       1.17
+    RechargeTime         90
+    EffectArea           kSphere
+    Radius               100
+    AIReport             kNever
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    TargetRequires       MastermindPets_Genin target.VillainName> MastermindPets_Jonin target.VillainName> || MastermindPets_Oni target.VillainName> ||
+    VisualFX             "menu\Powers\AnimFX\Mastermind_Ninja_Stealth_Buff.pfx"
+    include              menu\Powers\AnimFX\Mastermind_Ninja_Stealth_Buff.pfx
+    DisplayShortHelp     "P1386723968"
+    DisplayHelp          "THUX7DK8S4YJW6LFDA4TCBEAW2"
+    IconName             "Ninjas_KujiKiri.tga"
+    MaxTargetsHit        1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Scale 54.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            Delay 1.1700
+            DelayedRequires arch target> Class_Lt_Henchman eq arch target> Class_Boss_Henchman eq || arch target> Class_Minion_Henchman eq || arch target> Class_Henchman_Lt eq || arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq ||
+            StackType kReplace
+            Suppress Attacked 15 Always
+            Suppress Damaged 15 Always
+            Suppress MissionObjectClick 15 Always
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX V_COV\Powers\Ninjitsu\Hide.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadiusPlayer
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Scale 500.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            Delay 1.1700
+            DelayedRequires arch target> Class_Lt_Henchman eq arch target> Class_Boss_Henchman eq || arch target> Class_Minion_Henchman eq || arch target> Class_Henchman_Lt eq || arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq ||
+            StackType kReplace
+            Suppress Attacked 15 Always
+            Suppress Damaged 15 Always
+            Suppress MissionObjectClick 15 Always
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kTranslucency
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Ranged_Ones"
+            Scale 0.2000
+            Duration 4.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            DelayedRequires arch target> Class_Lt_Henchman eq arch target> Class_Boss_Henchman eq || arch target> Class_Minion_Henchman eq || arch target> Class_Henchman_Lt eq || arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq ||
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kGlobalChanceMod
+            Aspect kCur
+            Target kTargetsOwnerAndAllPets
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 4.0000
+            Magnitude 1.0000
+            Delay 1.0000
+            DelayedRequires arch target> Class_Lt_Henchman eq arch target> Class_Boss_Henchman eq || arch target> Class_Minion_Henchman eq || arch target> Class_Henchman_Lt eq || arch target> Class_Henchman_Boss eq || arch target> Class_Henchman_Minion eq ||
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params EffectFilter
+            {
+                Tag CriticalHit
+            }
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Villain_Pets.Kuji_Kiri.Smoke_Bomb
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,49 @@
+PowerSet Epic.Sentinel_Dark_Mastery
+{
+    Name "Sentinel_Dark_Mastery"
+    DisplayName "P3397489959"
+    DisplayShortHelp "P3397489959"
+    DisplayHelp "P1108646357"
+    IconName "Sentinel_Dark_Mastery_set.ico"
+
+    Powers Epic.Sentinel_Dark_Mastery.Netherworld_Tentacles
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Dark_Mastery.Smite
+    Available 34
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Dark_Mastery.Netherworld_Grasp
+    Available 37
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Dark_Mastery.Engulfing_Darkness
+    Available 40
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Epic.Sentinel_Dark_Mastery.Darkest_Night
+    Available 43
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

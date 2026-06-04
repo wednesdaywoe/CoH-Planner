@@ -1,0 +1,41 @@
+PowerSet Mastermind_Pets.Assault
+{
+    Name "Assault"
+    DisplayName "QEWLD7CJLUSMYLB3BHSLGB4FAX"
+    DisplayShortHelp "P55898000"
+    DisplayHelp "P1779242559"
+    IconName "Assault_set.ico"
+
+    Powers Mastermind_Pets.Assault.Plasma_Blast
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Assault.Smash
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Assault.Conserve_Power
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon 0
+    AIMaxRankCon 9999
+    MinDifficulty 1
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Assault.Super_Leap
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

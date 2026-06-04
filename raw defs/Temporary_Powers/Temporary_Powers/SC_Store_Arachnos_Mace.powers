@@ -1,0 +1,66 @@
+Power Temporary_Powers.Temporary_Powers.SC_Store_Arachnos_Mace
+{
+    Name                 "SC_Store_Arachnos_Mace"      
+    DisplayName          "P1285854810"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        7.54
+    TimeToActivate       2.5
+    TimeToRoot           2.5
+    RechargeTime         8
+    EffectArea           kCharacter
+    LifeTimeInGame       1800
+    StrengthsDisallowed  kRange
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Arachnos_WolfSpider_Mace_MeleeHeavy.pfx"
+    include              menu\Powers\AnimFX\Villain_Arachnos_WolfSpider_Mace_MeleeHeavy.pfx
+    DisplayShortHelp     "JUPRFXS5PMZJWRM4VK6PGP459Q"
+    DisplayHelp          "232DYVTB24BLYZVDUVQ46ZRSKW"
+    IconName             "Temporary_MeleeModerateDamage.tga"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 0.8200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P119576033"
+                DisplayVictimHit "P1719855107"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kToxic
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 0.8200
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2851307520"
+                DisplayVictimHit "P105122461"
+            }
+            
+        }
+    }
+}

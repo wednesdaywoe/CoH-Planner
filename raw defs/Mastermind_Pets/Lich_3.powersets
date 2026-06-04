@@ -1,0 +1,49 @@
+PowerSet Mastermind_Pets.Lich_3
+{
+    Name "Lich_3"
+    DisplayName "4LMSNYQAP48AYWCHLVBZWLHZW2"
+    DisplayShortHelp "P3124304184"
+    DisplayHelp "P1636314069"
+    IconName "Lich_3_set.ico"
+
+    Powers Mastermind_Pets.Lich_3.Fearsome_Stare
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lich_3.Costume2
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lich_3.Mode2
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lich_3.Empower
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Mastermind_Pets.Lich_3.Life_Drain
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

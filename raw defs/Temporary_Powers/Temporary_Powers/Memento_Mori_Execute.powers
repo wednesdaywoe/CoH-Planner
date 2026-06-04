@@ -1,0 +1,134 @@
+Power Temporary_Powers.Temporary_Powers.Memento_Mori_Execute
+{
+    Name                 "Memento_Mori_Execute"        
+    DisplayName          "5424BLSXV9UZYBMT6M5J4PBT4A"
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kPostDeath
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    RechargeTime         9999
+    ActivatePeriod       1000
+    EffectArea           kCharacter
+    CastableAfterDeath   kDeadOnly
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRecovery_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Temporary_Powers_Temporary_Powers_Memento_Mori_Execute.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Temporary_Powers_Temporary_Powers_Memento_Mori_Execute.pfx
+    DisplayShortHelp     "P1762744290"
+    DisplayHelp          "LA2835GUURGZWWMUN45FEF8DZX"
+    DisplayAttackerHit   "6QHDT2K5M27JWEXUNSRECVD2R3"
+    IconName             "DarkArmor_SoulTransfer.tga"
+    DisplayConfirm       94DKM47W2LPMW7ZEHXZBXEMTSS
+    DoNotSave            kTrue
+    DisplayTargetShortHelp "P345555159"
+    DisplayTargetHelp    "P46542041"
+    NumAllowed           5
+    PointValue           3
+    PointMultiplier      0.083
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRevokePower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            DelayedRequires cur.kHitPoints source> 0 ==
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance DelayEval RevokeAll
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Memento_Mori
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 4.5000
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            DelayedRequires cur.kHitPoints source> 0 ==
+            StackType kStack
+            Flags IgnoreResistance DelayEval
+            Messages
+            {
+                DisplayVictimHit "P606393157"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ContinuingBits ANIM_GETUP ANIM_HIT
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 45.0000
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            DelayedRequires cur.kHitPoints source> 0 ==
+            StackType kStack
+            Flags IgnoreResistance DelayEval
+            Messages
+            {
+                DisplayVictimHit "P75405246"
+            }
+            
+            FX
+            {
+                ContinuingFX PFX
+                ContinuingBits ANIM_GETUP ANIM_HIT
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kImmobilized
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 50.0000
+            Duration 4.0000
+            Magnitude 50.0000
+            DelayedRequires cur.kHitPoints source> 0 ==
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance KeepThroughDeath DelayEval
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Comeback.Comeback
+                Power Redirects.Comeback.Debt_Protection
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,76 @@
+Power Defender_Ranged.Electrical_Blast.Aim
+{
+    Name                 "Aim"                         
+    DisplayName          "Q53PP8X5HSRHWSNLFAT4XPKLKA"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    EnduranceCost        5.2
+    TimeToActivate       1.17
+    RechargeTime         90
+    EffectArea           kCharacter
+    BoostsAllowed        kRecharge_Boost, kEnduranceDiscount_Boost, kBuff_ToHit_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderRanged_ElectricalBlast_Aim.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderRanged_ElectricalBlast_Aim.PFX
+    DisplayShortHelp     "NNH8Z4BZRP6PW9VPKLXYZ7UFYZ"
+    DisplayHelp          "P9TVXWKU76X2YXXLKK53Y9YSH3"
+    IconName             "ElectricalBolt_Aim.tga"
+    Cancelable           kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Buff_ToHit"
+            Scale 4.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P194443417"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 4.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kEndurance
+            Aspect kStr
+            Target kSelf
+            Table "Ranged_EndDrain"
+            Scale 0.2500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

@@ -1,0 +1,151 @@
+Power Warshade_Defensive.Umbral_Aura.Black_Dwarf_Drain
+{
+    Name                 "Black_Dwarf_Drain"           
+    DisplayName          "P658698346"
+    BuyRequires          Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Drain ! &&
+    ModesRequired        kWarshade_Tanker_Mode
+    ModesDisallowed      kDisable_All, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        15.6
+    TimeToActivate       1.93
+    TimeToRoot           1.93
+    RechargeTime         15
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kSlow_Boost
+    StrengthsDisallowed  kRange
+    ServerTrayRequires   Temporary_Powers.Temporary_Powers.Hide_Kheldian_Server_Tray ownPower? !
+    ServerTrayPriority   1006
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Warshadow_Tanker_Melee_SiphonLife.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Warshadow_Tanker_Melee_SiphonLife.pfx
+    DisplayShortHelp     "EVJJEVTGYHHEW3M9JCVEU6U5YS"
+    DisplayHelp          "L2979S7G5SD2YWCXDR6G5A29E3"
+    IconName             "UmbralAura_EssenceDrain.tga"
+    Free                 kTrue
+    AutoIssue            kTrue
+    DisplayTargetShortHelp "P3643653994"
+    DisplayTargetHelp    "P2769134689"
+
+
+    Effect
+    {
+        Tag "SSDamage"
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_InherentDamage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.7500
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight kRechargeTime
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedFlying kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.2000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kStack
+        }
+    }
+
+    Effect
+    {
+        Requires Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_InherentTaunt"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P2043392969"
+                DisplayVictimHit "P2036629572"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Raid target.HasTag? ! enttype target> critter eq &&
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_InherentTaunt"
+            Scale 1.0000
+            Magnitude 4.0000
+            StackType kStack
+            Flags CancelOnMiss
+            Messages
+            {
+                DisplayAttackerHit "P2043392969"
+                DisplayVictimHit "P2036629572"
+            }
+            
+        }
+    }
+}

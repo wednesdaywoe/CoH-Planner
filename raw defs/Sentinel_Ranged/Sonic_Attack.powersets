@@ -1,0 +1,81 @@
+PowerSet Sentinel_Ranged.Sonic_Attack
+{
+    Name "Sonic_Attack"
+    DisplayName "P2894411835"
+    DisplayShortHelp "P2894411835"
+    DisplayHelp "P4028661361"
+    IconName "Sonic_Attack_set.ico"
+
+    Powers Sentinel_Ranged.Sonic_Attack.Shriek
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Sonic_Attack.Scream
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Sonic_Attack.Howl
+    Available 1
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Sonic_Attack.Shout
+    Available 5
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Sonic_Attack.Amplify
+    Available 7
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Sonic_Attack.Shockwave
+    Available 11
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Sonic_Attack.Sirens_Song
+    Available 17
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Sonic_Attack.Screech
+    Available 21
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Sentinel_Ranged.Sonic_Attack.Dreadful_Wail
+    Available 25
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

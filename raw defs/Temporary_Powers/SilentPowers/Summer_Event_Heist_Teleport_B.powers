@@ -1,0 +1,123 @@
+Power Temporary_Powers.SilentPowers.Summer_Event_Heist_Teleport_B
+{
+    Name                 "Summer_Event_Heist_Teleport_B"
+    DisplayName          "P909125787"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       20
+    EffectArea           kCharacter
+    AIReport             kNever
+    LifeTime             10
+    IgnoreStrength       kTrue
+    TargetRequires       enttype target> player eq
+    IgnoreLevelBought    kTrue
+    ShootThroughUntouchable kTrue
+    IsEnvironmentHit     kTrue
+    InstanceLocked       kTrue
+    DisplayShortHelp     "P674890031"
+    DisplayHelp          "P3887526463"
+    IconName             "DarkMiasma_TarPatch.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    ShowBuffIcon         kFalse
+    Free                 kTrue
+
+
+    Effect
+    {
+        Requires Temporary_Powers.SilentPowers.Summer_Event_Heist_Hitter source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination marker:HitterHeistB
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.SilentPowers.Summer_Event_Heist_Hacker source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination marker:HackerHeistB
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.SilentPowers.Summer_Event_Heist_Grifter source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination marker:GrifterHeistB
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires Temporary_Powers.SilentPowers.Summer_Event_Heist_Thief source.ownPower?
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 99999.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Params Teleport
+            {
+                Destination marker:ThiefHeistB
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,54 @@
+#*********************************************************#
+# Power: Buff > Electrical Affinity > Galvanic Sentinel   #
+# Info:  Summon Galvanic Sentinel: Ranged Debuff Special  #
+#*********************************************************#
+
+Power Defender_Buff.Shock_Therapy.Discharge
+{
+    Name                 "Discharge"                   
+    DisplayName          "P3551042096"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                80
+    EnduranceCost        25
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         60
+    EffectArea           kLocation
+    Radius               15
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kRecovery_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ShockTherapy_Discharge.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_ShockTherapy_Discharge.PFX
+    DisplayShortHelp     "P1486271060"
+    DisplayHelp          "RYPC4MLLTFGCWQCQ2GPSBBQ32X"
+    IconName             "ShockTherapy_GalvanicSentinel.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 120.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags CopyBoosts VanishEntOnTimeout
+            Params EntCreate
+            {
+                EntityDef Pets_GalvanicSentinel
+                PriorityList "PL_FightPreferRanged"
+            }
+            
+        }
+    }
+}

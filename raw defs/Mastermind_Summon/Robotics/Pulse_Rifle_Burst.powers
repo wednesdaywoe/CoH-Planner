@@ -1,0 +1,172 @@
+#****************************************************#
+# Power: Summon > Robotics > Pulse Rifle Burst       #
+# Info:  Ranged, DMG(Energy), Foe Knockback, -Regen  #
+#****************************************************#
+
+Power Mastermind_Summon.Robotics.Pulse_Rifle_Burst
+{
+    Name                 "Pulse_Rifle_Burst"           
+    DisplayName          "P3171791695"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kEnergy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        8.528
+    TimeToActivate       1.1
+    TimeToRoot           1.1
+    RechargeTime         8
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    HighlightEval        kPersonalAttack2 Mode? !
+    HighlightRing        94 113 102 255
+    VisualFX             "menu\Powers\AnimFX\Robotics_LazerRifle_Heavy_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Robotics_LazerRifle_Heavy_NoGeo.pfx
+    DisplayShortHelp     "RA975GCLGXYSWCNT49H6WG9SWX"
+    DisplayHelp          "6K2KMYTKHE82W9XULFQGW76R3Q"
+    IconName             "Robotics_LaserRifleBlast.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Damage"
+            Scale 1.6400
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -2.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    
+        Effect
+        {
+            Chance 0.4000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Knockback"
+                Scale 1.5000
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kEnergy
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_PvPDamage"
+            Scale 1.4900
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2559786529"
+                DisplayVictimHit "P377644626"
+            }
+            
+        }
+    
+        Effect
+        {
+            Chance 0.4000
+        
+            AttribMod
+            {
+                Attrib kKnockback
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Knockback"
+                Scale 1.5000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Knocked 10 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1956156720"
+                    DisplayVictimHit "P3390955917"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires @ToHitRoll @ToHit / 0.3 <=
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale -4.0000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreStrength
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "RefreshReminder"
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kCaster
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude kPersonalAttack2
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

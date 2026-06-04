@@ -1,0 +1,143 @@
+Power Temporary_Powers.Temporary_Powers.Nemesis_Vengeance
+{
+    Name                 "Nemesis_Vengeance"           
+    DisplayName          "6VTCDWHE2FYHYQMUV92VBAMMNZ"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       30
+    EffectArea           kCharacter
+    LifeTime             30
+    ProcAllowed          kNone
+    ShootThroughUntouchable kTrue
+    DisplayShortHelp     "P4208816067"
+    DisplayHelp          "P2958615739"
+    DisplayVictimHit     "P3298693331"
+    IconName             "Leadership_Vengence.tga"
+    TrayPlacement        None
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    DisplayTargetShortHelp "P4208816067"
+    NumAllowed           10
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1750
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX POWERS/Leadership/LeadershipVengeanceContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1750
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Hardmode0 Challenge?
+    
+        AttribMod
+        {
+            Attrib kCombatModShift
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 1
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Hardmode1 Challenge?
+    
+        AttribMod
+        {
+            Attrib kCombatModShift
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 2
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Hardmode2 Challenge?
+    
+        AttribMod
+        {
+            Attrib kCombatModShift
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 3
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires Hardmode3 Challenge?
+    
+        AttribMod
+        {
+            Attrib kCombatModShift
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            CasterStackType kCollective
+            StackType kStackThenIgnore
+            StackLimit 4
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

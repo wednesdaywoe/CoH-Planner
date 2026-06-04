@@ -1,0 +1,94 @@
+#***********************************************#
+# Power: Pets > Necro Skeleton 3 > Siphon Life  #
+# Info:  -To Hit                                #
+#***********************************************#
+
+Power Mastermind_Pets.Skeleton_3.Siphon_Life
+{
+    Name                 "Siphon_Life"                 
+    DisplayName          "P1123970646"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        7.8
+    TimeToActivate       1.93
+    TimeToRoot           1.93
+    RechargeTime         30
+    EffectArea           kSphere
+    Radius               7
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kHeal_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteMelee_DarkMelee_SiphonLife.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteMelee_DarkMelee_SiphonLife.PFX
+    DisplayShortHelp     "P2190949330"
+    DisplayHelp          "YE3D884FFNUYW3XCGQ8LNWXEB2"
+    IconName             "ShadowFighting_SiphonLife.tga"
+    MaxTargetsHit        5
+
+
+    Effect
+    {
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 2.0000
+            Magnitude 1.0000
+            Delay 0.5000
+            StackType kStack
+            Flags IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.7500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    }
+}

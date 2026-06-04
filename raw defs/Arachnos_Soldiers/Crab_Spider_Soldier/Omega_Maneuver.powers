@@ -1,0 +1,48 @@
+Power Arachnos_Soldiers.Crab_Spider_Soldier.Omega_Maneuver
+{
+    Name                 "Omega_Maneuver"              
+    DisplayName          "P2901031018"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        13
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         240
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kStunned_Boost, kTaunt_Boost
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_Crab_OmegaManeuver.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_Crab_OmegaManeuver.pfx
+    DisplayShortHelp     "PQQGCRKDVPGUWWLMJNK8DXPTJ2"
+    DisplayHelp          "7E6R93X9XDCZYLLU5FTSWT5XGQ"
+    IconName             "CrabSpider_OmegaManeuver.tga"
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Pets_Omega_Bomb
+                PriorityList "PL_SpawnFlying"
+            }
+            
+        }
+    }
+}

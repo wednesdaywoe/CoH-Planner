@@ -1,0 +1,43 @@
+Power Stalker_Melee.Ninja_Sword.Assassins_Blade
+{
+    Name                 "Assassins_Blade"             
+    DisplayName          "P3164628714"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kMelee_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                7
+    EnduranceCost        14.352
+    InterruptTime        2
+    TimeToActivate       3.67
+    TimeToRoot           1
+    RechargeTime         15
+    EffectArea           kCharacter
+    AIReport             kHitOnly
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRange
+    InterruptLikeSleep   kTrue
+    HighlightEval        temporary_powers.temporary_powers.assassins_focus ownPowerNum? 3 ==
+    HighlightRing        255 127 0 255
+    VisualFX             "menu\Powers\AnimFX\Ninja_Katana_Backstab_NoGeo.pfx"
+    include              menu\Powers\AnimFX\Ninja_Katana_Backstab_NoGeo.pfx
+    DisplayShortHelp     "4R3HS6SGYQ4KW2NMFYFMJGEH2Q"
+    DisplayHelp          "ACUF53QW62VGWBCDUDKWTRXBKW"
+    IconName             "Katana_AssassinBlade.tga"
+
+    Redirect
+    {
+        Power Villain_Pets.Ninja_Blade_Assassins_Strike.Assassins_Blade_Quick
+        Requires kMeter source> .9 <
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Ninja_Blade_Assassins_Strike.Assassins_Blade_Stealth
+        Requires 1
+    }
+    
+}

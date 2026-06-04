@@ -1,0 +1,45 @@
+#********************************************#
+# Power: Pets > Thug Lieutenant 2 > Tactics  #
+# Info:  +ACC, Res(Confuse), +Perception     #
+#********************************************#
+
+Power Mastermind_Pets.Thug_Lt_2.Tactics
+{
+    Name                 "Tactics"                     
+    DisplayName          "P1934302270"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kSphere
+    Radius               30
+    AIReport             kNever
+    BoostsAllowed        kBuff_ToHit_Boost
+    TargetRequires       MastermindPets_Thug target.VillainName> MastermindPets_Thug_Arsonist target.VillainName> || MastermindPets_Thug_Lt target.VillainName> || MastermindPets_Thug_Boss target.VillainName> ||
+    DisplayShortHelp     "P2609127575"
+    DisplayHelp          "P252755982"
+    DisplayVictimHit     "P1496011758"
+    IconName             "Leadership_Tactics.tga"
+    MaxTargetsHit        255
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.0250
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    }
+}

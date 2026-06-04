@@ -1,0 +1,81 @@
+PowerSet Defender_Ranged.Storm_Blast
+{
+    Name "Storm_Blast"
+    DisplayName "MS36MJUB2GXWYANABNRL9AHGCA"
+    DisplayShortHelp "MS36MJUB2GXWYANABNRL9AHGCA"
+    DisplayHelp "WYDCN7NNM4GCWSMATSFW9CBYQQ"
+    IconName "Storm_Summoning_set.ico"
+
+    Powers Defender_Ranged.Storm_Blast.Gust
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Storm_Blast.Hailstones
+    Available 0
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Storm_Blast.Jet_Stream
+    Available 3
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Storm_Blast.Storm_Cell
+    Available 9
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Storm_Blast.Aim
+    Available 15
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Storm_Blast.Direct_Strike
+    Available 19
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Storm_Blast.Chain_Lightning
+    Available 23
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Storm_Blast.Cloudburst
+    Available 27
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+    Powers Defender_Ranged.Storm_Blast.Category_Five
+    Available 29
+    AIMaxLevel 0
+    AIMinRankCon -9999
+    AIMaxRankCon 9999
+    MinDifficulty 2
+    MaxDifficulty 9999
+
+}

@@ -1,0 +1,48 @@
+#*****************************************************#
+# Power: Pets > Demons Ember Demon 2 > Enchant Demon  #
+# Info:  Enchant Demon                                #
+#*****************************************************#
+
+Power Mastermind_Pets.Ember_Demon_2.Enchant_Demon
+{
+    Name                 "Enchant_Demon"               
+    DisplayName          "P1571431181"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon2_Enchant.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon2_Enchant.pfx
+    DisplayShortHelp     "P1571431181"
+    DisplayHelp          "P4241600601"
+    IconName             "DemonSummoning_EnchantDemon.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNullBool
+            Aspect kCur
+            Type kDuration
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 10.2500
+            Magnitude 10.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

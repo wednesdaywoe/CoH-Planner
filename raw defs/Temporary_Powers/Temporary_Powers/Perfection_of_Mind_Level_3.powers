@@ -1,0 +1,71 @@
+Power Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3
+{
+    Name                 "Perfection_of_Mind_Level_3"  
+    DisplayName          "P3089074949"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       0.5
+    EffectArea           kCharacter
+    LifeTime             10
+    StackingUsage        kTrue
+    MaxLifeTime          10
+    DisplayShortHelp     "P3431570110"
+    DisplayHelp          "P3501359536"
+    IconName             "StaffFighting_PerfectionofMindLevel3.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kRechargeTime
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 0.7500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kSetMode
+            Aspect kCur
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 0.7500
+            Magnitude kFormOfTheMind
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kDesignerStatus
+            Aspect kAbs
+            Target kSelf
+            Table "Melee_Ones"
+            Scale -1.0000
+            Duration 6.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayVictimHit "P3089074949"
+            }
+            
+        }
+    }
+}

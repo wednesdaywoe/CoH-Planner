@@ -1,0 +1,74 @@
+#*************************************************#
+# Power: Buff > Pain Domination > Anguishing Cry  #
+# Info:  PBAoE, Foe -RES(All), -DEF(All)          #
+#*************************************************#
+
+Power Defender_Buff.Pain_Domination.Anguishing_Cry
+{
+    Name                 "Anguishing_Cry"              
+    DisplayName          "P747186998"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    EnduranceCost        13
+    TimeToActivate       1.97
+    TimeToRoot           1.97
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kEnduranceDiscount_Boost, kDebuff_Defense_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_PainDomination_AnguishingCry.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\CorruptorBuff_PainDomination_AnguishingCry.PFX
+    DisplayShortHelp     "P2417726038"
+    DisplayHelp          "P2543905602"
+    DisplayAttackerHit   "P3615526159"
+    DisplayVictimHit     "P2170765780"
+    IconName             "PainDomination_AnguishingCry.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P2811264289"
+    DisplayTargetHelp    "P3000401342"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Debuff_Def"
+            Scale 3.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale -3.0000
+            Duration 30.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    }
+}

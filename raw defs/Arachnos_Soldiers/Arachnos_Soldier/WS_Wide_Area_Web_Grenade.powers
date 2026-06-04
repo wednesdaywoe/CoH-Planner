@@ -1,0 +1,49 @@
+Power Arachnos_Soldiers.Arachnos_Soldier.WS_Wide_Area_Web_Grenade
+{
+    Name                 "WS_Wide_Area_Web_Grenade"    
+    DisplayName          "P3612864817"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.6
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         20
+    EffectArea           kSphere
+    Radius               25
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kImmobilized_Boost
+    VisualFX             "menu\Powers\AnimFX\ArachnosSoldier_WebGrenade_Switchboard.pfx"
+    include              menu\Powers\AnimFX\ArachnosSoldier_WebGrenade_Switchboard.pfx
+    DisplayShortHelp     "45LJK8RY7G9JWNB4J9NLCB38JX"
+    DisplayHelp          "P1228446371"
+    DisplayAttackerHit   "P121374218"
+    DisplayVictimHit     "P135233688"
+    IconName             "ArachnosSoldier_WideAreaWebGrenade.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3505771407"
+    DisplayTargetHelp    "P1331007656"
+
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Crab_WAWG
+        Requires @CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Bane_WAWG
+        Requires @CustomFX NullifierMace eq @CustomFX NullifierMaceTintable eq || Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor source.ownPower? &&
+    }
+    
+    Redirect
+    {
+        Power Redirects.Arachnos_Soldier.Wolf_WAWG
+        Requires 1
+    }
+    
+}

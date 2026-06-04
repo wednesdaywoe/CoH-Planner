@@ -1,0 +1,119 @@
+Power Blaster_Support.Earth_Manipulation.Mud_Bath
+{
+    Name                 "Mud_Bath"                    
+    DisplayName          "3XVT8YM9UB9AYPBB9Q97QHHVSS"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         4
+    ActivatePeriod       2
+    EffectArea           kSphere
+    Radius               12
+    BoostsAllowed        kRecharge_Boost, kHeal_Boost, kRecovery_Boost, kSlow_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       kStealthRadius source> 36 < cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Blaster_Support_Earth_Manipulation_Mud_Bath.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Blaster_Support_Earth_Manipulation_Mud_Bath.pfx
+    DisplayShortHelp     "MXCHQKPTB8Y9WCXCAMEKEP4X2S"
+    DisplayHelp          "GDAK9QYH3X55YYV99TL4SSLU63"
+    DisplayAttackerHit   "P3184577122"
+    IconName             "EarthManip_MudBath"
+    MaxTargetsHit        10
+    DisplayTargetShortHelp "P1503949059"
+    DisplayTargetHelp    "P59337628"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning kSpeedJumping
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.5000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kJumpHeight
+            Aspect kStr
+            Target kTarget
+            Table "Melee_Slow"
+            Scale 0.5000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kSpeedRunning
+            Aspect kMax
+            Target kTarget
+            Table "Melee_SpeedRunning"
+            Scale -1.0000
+            Duration 5.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "Sustain"
+    
+        AttribMod
+        {
+            Attrib kRecovery
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.5000
+            Duration 2.1000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        Effect
+        {
+            Requires kHitPoints% target> 100 <
+        
+            AttribMod
+            {
+                Attrib kHeal
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_HealSelf"
+                Scale 0.1500
+                Magnitude 1.0000
+                StackType kStack
+                Messages
+                {
+                    DisplayVictimHit "P2405956756"
+                }
+                
+            }
+        }
+    }
+}

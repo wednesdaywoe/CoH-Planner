@@ -1,0 +1,51 @@
+Power Temporary_Powers.Temporary_Powers.Pandora_Heal
+{
+    Name                 "Pandora_Heal"                
+    DisplayName          "P1079951250"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "P3750000744"
+    DisplayHelp          "P1236831883"
+    IconName             "Temporary_SelfBuffDamage.tga"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Free                 kTrue
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kAbs
+            Type kExpression
+            Target kSelf
+            Table "Melee_HealSelf"
+            Scale 1.0000
+            MagnitudeExpr Temporary_Powers.Temporary_Powers.Pandora_Buff source.ownPowerNum? .11 * @StdResult *
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayVictimHit "P2405956756"
+            }
+            
+        }
+    }
+}

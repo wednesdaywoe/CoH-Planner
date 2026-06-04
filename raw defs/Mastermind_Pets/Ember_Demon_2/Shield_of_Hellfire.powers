@@ -1,0 +1,126 @@
+#*****************************************************************#
+# Power: Pets > Demons Ember Demon 2 > Ember Shield               #
+# Info:  Auto PBAoE, Ally +Res(Fire, Lethal, Smash, Cold, Toxic)  #
+#*****************************************************************#
+
+Power Mastermind_Pets.Ember_Demon_2.Shield_of_Hellfire
+{
+    Name                 "Shield_of_Hellfire"          
+    DisplayName          "P42341402"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    AIGroups             kBuff
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kCaster
+    ActivatePeriod       10
+    EffectArea           kSphere
+    Radius               60
+    AIReport             kNever
+    BoostsAllowed        kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon_ShieldOfHellfire.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pets_EmberDemon_ShieldOfHellfire.pfx
+    DisplayShortHelp     "P514230873"
+    DisplayHelp          "P2234968661"
+    DisplayAttackerHit   "P2833984066"
+    DisplayVictimHit     "P1631997812"
+    IconName             "ThermalRadiation_FireShield.tga"
+    MaxTargetsHit        255
+    DisplayTargetShortHelp "P1300212996"
+    DisplayTargetHelp    "P522162355"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 0.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kOverlap
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX V_COV\Powers\DemonSummoning\ShieldOfHellfire.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 0.6660
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kOverlap
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 0.3330
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kOverlap
+            Flags IgnoreResistance
+        }
+    }
+
+    Effect
+    {
+        Requires MastermindPets_Fiery_Demonling target.VillainName> MastermindPets_Cold_Demonling target.VillainName> || MastermindPets_Hellfire_Demonling target.VillainName> || MastermindPets_Hellfire_Gargoyle target.VillainName> || MastermindPets_Ember_Demon target.VillainName> || MastermindPets_Demon_Prince target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 0.5000
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kOverlap
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 0.6660
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kOverlap
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kCold
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 0.3330
+            Duration 10.2500
+            Magnitude 1.0000
+            StackType kOverlap
+            Flags IgnoreResistance
+        }
+    }
+}

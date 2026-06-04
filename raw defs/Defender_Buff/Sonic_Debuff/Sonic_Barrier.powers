@@ -1,0 +1,53 @@
+Power Defender_Buff.Sonic_Debuff.Sonic_Barrier
+{
+    Name                 "Sonic_Barrier"               
+    DisplayName          "P3785736125"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                80
+    EnduranceCost        7.8
+    TimeToActivate       1.33
+    RechargeTime         2
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kRes_Damage_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_SonicDebuff_SonicBarrier.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_SonicDebuff_SonicBarrier.PFX
+    DisplayShortHelp     "P2639635747"
+    DisplayHelp          "RZZFD8V8BP78YQCR2PRWXWMUP3"
+    DisplayAttackerHit   "P2959881722"
+    DisplayVictimHit     "P3976820757"
+    IconName             "SonicDebuff_ProtectPhysical.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P3556417710"
+    DisplayTargetHelp    "P961837590"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kToxic
+            Aspect kRes
+            Target kTarget
+            Table "Ranged_Res_Dmg"
+            Scale 2.0000
+            Duration 240.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    }
+}

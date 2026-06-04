@@ -1,0 +1,85 @@
+Power Epic.Psionic_Mastery_Domingator.Link_Minds
+{
+    Name                 "Link_Minds"                  
+    DisplayName          "P2955500409"
+    BuyRequires          $archetype @Class_Dominator ==
+    ModesDisallowed      kDisable_All, kDisable_Epic, kDisable_Pool
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kTeammate, kCaster
+    EntsAutoHit          kTeammate, kCaster
+    Target               kCaster
+    EnduranceCost        12.2304
+    TimeToActivate       3.67
+    RechargeTime         300
+    EffectArea           kSphere
+    Radius               35
+    AIReport             kNever
+    BoostsAllowed        kBuff_Defense_Boost, kBuff_ToHit_Boost
+    IgnoreStrength       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Epic_PsionicMastery_LinkMinds.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Epic_PsionicMastery_LinkMinds.pfx
+    DisplayShortHelp     "P2190406988"
+    DisplayHelp          "P2374660232"
+    DisplayAttackerHit   "P3478802383"
+    DisplayVictimHit     "P2010842502"
+    IconName             "PsionicMastery_LinkMinds.tga"
+    MaxTargetsHit        255
+    Cancelable           kTrue
+    DisplayTargetShortHelp "P925615151"
+    DisplayTargetHelp    "P701752453"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Buff_ToHit"
+            Scale 0.3300
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffToHitCont.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Res_Dmg"
+            Scale 2.0000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Buff_Def"
+            Scale 0.5000
+            Duration 90.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing\BuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

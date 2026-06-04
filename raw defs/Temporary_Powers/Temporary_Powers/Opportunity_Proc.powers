@@ -1,0 +1,113 @@
+Power Temporary_Powers.Temporary_Powers.Opportunity_Proc
+{
+    Name                 "Opportunity_Proc"            
+    DisplayName          "P85281792"
+    BuyRequires          $archetype @Class_Sentinel ==
+    ActivateRequires     $archetype @Class_Sentinel ==
+    ModesDisallowed      kDisable_All
+    Type                 kGlobalBoost
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       1000
+    EffectArea           kCharacter
+    BoostsAllowed        kScience_Boost, kTechnology_Boost, kMagic_Boost, kMutation_Boost, kNatural_Boost, kDamage_Boost
+    BoostIgnoreEffectiveness kTrue
+    BoostCombinable      kFalse
+    DisplayShortHelp     "P4120648694"
+    DisplayHelp          "UKU9WNFXVQT9YRXSMRK6A2Q7A2"
+    IconName             "Inherent_TargetLock"
+    CastThroughHold      kTrue
+    CastThroughSleep     kTrue
+    CastThroughStun      kTrue
+    CastThroughTerrorize kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowInInfo           kFalse
+    Cancelable           kTrue
+    AutoIssue            kTrue
+    MaxBoosts            0
+    NumAllowed           1
+
+
+    Effect
+    {
+        Chance 0.0000
+        Requires target.isFriend? ! CategoryName power.base> Judgement eq ! &&
+        Flags MainTargetOnly
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic kEndurance kToHit kConfused kTerrorized kHeld kImmobilized kStunned kSleep kRegeneration kRecovery kRechargeTime kEnduranceDiscount
+            Aspect kRes
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.0500
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Flags IgnoreStrength
+        }
+    
+        AttribMod
+        {
+            Attrib kDefense
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -0.0375
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Flags IgnoreStrength
+            Messages
+            {
+                DisplayAttackerHit "5KHJNFNGZL2DWPNPUTYRURPCJ3"
+                DisplayVictimHit "GPU69GD4AC8LW6NCJCNAWPR7EW"
+            }
+            
+            FX
+            {
+                ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kStealthRadius
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale -50.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kRefreshToCount
+            StackLimit 1
+            Flags IgnoreStrength
+        }
+    }
+
+    ActivationEffect
+    {
+        Chance 0.0000
+        Requires Temporary_Powers.Temporary_Powers.Opportunity_Lock source.ownPower? !
+    
+        AttribMod
+        {
+            Attrib kRage
+            Aspect kAbs
+            Type kExpression
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 5.0000
+            MagnitudeExpr activatetime power.base> 0.132 + @StdResult *
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    }
+}

@@ -1,0 +1,59 @@
+Power Pool.Leaping.Spring_Attack
+{
+    Name                 "Spring_Attack"               
+    DisplayName          "P1683889127"
+    BuyRequires          Pool.Leaping.Jump_Kick Pool.Leaping.Combat_Jumping && Pool.Leaping.Jump_Kick Pool.Leaping.Long_Jump && || Pool.Leaping.Combat_Jumping Pool.Leaping.Long_Jump && ||
+    ModesDisallowed      kDisable_All, kDisable_Pool, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kTeleport
+    Range                60
+    EnduranceCost        13.52
+    TimeToActivate       1.5
+    TimeToRoot           1.5
+    RechargeTime         120
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kKnockback_Boost
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Pools_Leaping_SpringAttack.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Pools_Leaping_SpringAttack.pfx
+    DisplayShortHelp     "YL8XUYUELUW6YMB3WLLCMUP3FX"
+    DisplayHelp          "WZQVG3E5MJJZY8ZWL4442REE83"
+    IconName             "Jump_SpringAttack.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kTeleport
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            Delay 0.7000
+            StackType kStack
+            Flags IgnoreResistance
+        }
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kCur
+            Target kCaster
+            Table "Melee_Ones"
+            Delay 1.3000
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Pool_Leaping.Spring_Attack
+            }
+            
+        }
+    }
+}

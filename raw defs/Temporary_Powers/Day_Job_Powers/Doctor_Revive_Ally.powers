@@ -1,0 +1,74 @@
+Power Temporary_Powers.Day_Job_Powers.Doctor_Revive_Ally
+{
+    Name                 "Doctor_Revive_Ally"          
+    DisplayName          "P2754785057"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kDeadPlayerFriend
+    EntsAutoHit          kDeadPlayerFriend
+    Target               kDeadPlayerFriend
+    Range                15
+    EnduranceCost        32.5
+    InterruptTime        4
+    TimeToActivate       7.33
+    RechargeTime         180
+    EffectArea           kCharacter
+    NumCharges           30
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Medicine_Revive.pfx"
+    include              menu\Powers\AnimFX\Medicine_Revive.pfx
+    DisplayShortHelp     "P1673326674"
+    DisplayHelp          "M45FSJHDUH5JY8ZQRKXWQ6TMX2"
+    DisplayAttackerHit   "P686189751"
+    DisplayVictimHit     "P1594339728"
+    IconName             "DayJob_ResurrectOther.tga"
+    TimeToConfirm        15
+    DisplayConfirm       P392225715
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P345555159"
+    DisplayTargetHelp    "P2645039395"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.3000
+            Duration 0.5000
+            Magnitude 1.0000
+            Period 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P256533052"
+                DisplayVictimHit "P285457741"
+            }
+            
+            FX
+            {
+                ContinuingBits ANIM_GETUP ANIM_HIT
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kXPDebtProtection
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

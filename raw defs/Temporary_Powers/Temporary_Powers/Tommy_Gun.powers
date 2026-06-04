@@ -1,0 +1,51 @@
+Power Temporary_Powers.Temporary_Powers.Tommy_Gun
+{
+    Name                 "Tommy_Gun"                   
+    DisplayName          "P1192292427"
+    ModesDisallowed      kDisable_All, kdisable_temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1.2
+    AttackTypes          kRanged_Attack, kLethal_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                80
+    EnduranceCost        15.68
+    TimeToActivate       6
+    TimeToRoot           6
+    RechargeTime         90
+    EffectArea           kCharacter
+    LifeTimeInGame       72000
+    VisualFX             "menu\Powers\AnimFX\Villain_TommyGun.pfx"
+    include              menu\Powers\AnimFX\Villain_TommyGun.pfx
+    DisplayShortHelp     "P3278563378"
+    DisplayHelp          "A9NEVNHEY5B5YRCAL9STX5Q7Y3"
+    IconName             "Temporary_TommyGun.tga"
+    DisplayTargetShortHelp "P3278563378"
+    DisplayTargetHelp    "P793567951"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kLethal
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.0400
+            Duration 5.0000
+            Magnitude 1.0000
+            Period 0.1000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P3137354887"
+                DisplayVictimHit "P130826600"
+            }
+            
+        }
+    }
+}

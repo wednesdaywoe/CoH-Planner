@@ -1,0 +1,269 @@
+#***********************************************#
+# Power: Buff > Dark Miasma > Black Hole        #
+# Info:  Ranged (Targeted AoE), Foe Intangible  #
+#***********************************************#
+
+Power Defender_Buff.Dark_Miasma.Black_Hole
+{
+    Name                 "Black_Hole"                  
+    DisplayName          "P801416744"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                50
+    EnduranceCost        13
+    TimeToActivate       1.03
+    TimeToRoot           1.03
+    RechargeTime         120
+    EffectArea           kSphere
+    Radius               30
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DefenderBuff_DarkMiasma_BlackHole.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DefenderBuff_DarkMiasma_BlackHole.PFX
+    DisplayShortHelp     "P36099885"
+    DisplayHelp          "7LEQ77FUUNPYYQZBWMPMZ67FR2"
+    IconName             "DarkMiasma_BlackHole.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P4032697821"
+    DisplayTargetHelp    "P2465675986"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kRepel
+                Aspect kCur
+                Table "Melee_Ones"
+                Scale 1.0000
+                Duration 0.7500
+                Magnitude 1.0000
+                StackType kReplace
+                Flags IgnoreCombatMods
+                Params Knock
+                {
+                    VecStart                       Target
+                    VecEnd                         MainTarget
+                    Vel                            1.0000
+                    VelMag                         1.0000
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+            Flags MainTargetOnly
+        
+            AttribMod
+            {
+                Attrib kImmobilized kIntangible
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 3.0000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kStack
+                CancelEvents Repelled
+                Messages
+                {
+                    DisplayAttackerHit "P1379755693"
+                    DisplayVictimHit "P77179303"
+                    DisplayInfo "4ZHT57JXQFE7YRCXF9A9MULCEQ"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kPhase
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 3.0000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kStack
+                CancelEvents Repelled
+                Messages
+                {
+                    DisplayInfo "4ZHT57JXQFE7YRCXF9A9MULCEQ"
+                }
+                
+                Params Phase
+                {
+                    CombatPhase Phased
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kPhase
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 3.0000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kStack
+                CancelEvents Repelled
+                Messages
+                {
+                    DisplayInfo "4ZHT57JXQFE7YRCXF9A9MULCEQ"
+                }
+                
+                Params Phase
+                {
+                    CombatPhase NoPrime
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kThreatLevel
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale -1.0000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kStack
+                CancelEvents Repelled
+                Messages
+                {
+                    DisplayInfo "4ZHT57JXQFE7YRCXF9A9MULCEQ"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kTranslucency
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.1000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kStack
+                CancelEvents Repelled
+                Flags IgnoreStrength IgnoreResistance
+                Messages
+                {
+                    DisplayFloat "P801416744"
+                    DisplayInfo "4ZHT57JXQFE7YRCXF9A9MULCEQ"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            AttribMod
+            {
+                Attrib kImmobilized kIntangible
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 2.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Untouchable 15 WhenInactive
+                Messages
+                {
+                    DisplayAttackerHit "P1379755693"
+                    DisplayVictimHit "P2721477646"
+                    DisplayFloat "P801416744"
+                }
+                
+                FX
+                {
+                    ConditionalFX PFX
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kPhase
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 2.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Untouchable 15 WhenInactive
+                Params Phase
+                {
+                    CombatPhase Phased
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kPhase
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale 2.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Untouchable 15 WhenInactive
+                Params Phase
+                {
+                    CombatPhase NoPrime
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kThreatLevel
+                Aspect kCur
+                Target kTarget
+                Table "Ranged_Ones"
+                Scale -1.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+                Suppress Untouchable 15 WhenInactive
+            }
+        
+            AttribMod
+            {
+                Attrib kTranslucency
+                Aspect kCur
+                Target kSelf
+                Table "Melee_Ones"
+                Scale 0.1000
+                Duration 30.0000
+                Magnitude 1.0000
+                StackType kStack
+                CancelEvents Repelled
+                Flags IgnoreStrength IgnoreResistance
+            }
+        }
+    }
+}

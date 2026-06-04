@@ -1,0 +1,61 @@
+Power Temporary_Powers.Temporary_Powers.SC_Flamethrower
+{
+    Name                 "SC_Flamethrower"             
+    DisplayName          "P514829104"
+    ModesDisallowed      kDisable_All, kDisable_Temp, kPeacebringer_Blaster_Mode, kPeacebringer_Tanker_Mode, kWarshade_Blaster_Mode, kWarshade_Tanker_Mode
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kAOE_Attack, kFire_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                40
+    EnduranceCost        12.74
+    TimeToActivate       3.5
+    TimeToRoot           3.5
+    RechargeTime         8
+    EffectArea           kCone
+    Radius               40
+    Arc                  45
+    NumCharges           15
+    Deletable            kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Flamethrower.pfx"
+    include              menu\Powers\AnimFX\Villain_Flamethrower.pfx
+    DisplayShortHelp     "P3423146141"
+    DisplayHelp          "9JB5ZH2K35PMYDLQQSC7RVJ7TS"
+    IconName             "Temporary_ConeRangeModerateDamage.tga"
+    MaxTargetsHit        16
+    DisplayTargetShortHelp "P3423146141"
+    DisplayTargetHelp    "P3780686599"
+    NumAllowed           1
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kFire
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_TempDamage"
+            Scale 0.2050
+            Duration 7.1000
+            Magnitude 1.0000
+            Delay 1.0000
+            Period 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P1083355571"
+                DisplayVictimHit "P3022741469"
+            }
+            
+            FX
+            {
+                ContinuingFX POWERS/FireControl/CindersHit.fx
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,76 @@
+Power Temporary_Powers.Temporary_Powers.Reach_for_the_Limit
+{
+    Name                 "Reach_for_the_Limit"         
+    DisplayName          "P1108051021"
+    ModesDisallowed      kDisable_All
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       20
+    EffectArea           kCharacter
+    LifeTime             15
+    StackingUsage        kTrue
+    MaxLifeTime          45
+    DisplayShortHelp     "P1254867148"
+    DisplayHelp          "P4017978372"
+    IconName             "MartialManipulation_ReachfortheLimit.tga"
+    ShowInManage         kFalse
+    DisplayTargetShortHelp "P1254867148"
+    DisplayTargetHelp    "P2405091729"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.1500
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P3319085777"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 3.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            FX
+            {
+                ContinuingFX PFX
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kPsionic kToxic
+            Aspect kStr
+            Target kSelf
+            Table "Melee_Buff_Dmg"
+            Scale 3.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

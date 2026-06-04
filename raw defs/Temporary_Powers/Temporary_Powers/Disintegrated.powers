@@ -1,0 +1,49 @@
+Power Temporary_Powers.Temporary_Powers.Disintegrated
+{
+    Name                 "Disintegrated"               
+    DisplayName          "P4234719348"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    TargetVisibility     kNone
+    ActivatePeriod       999
+    EffectArea           kMap
+    LifeTime             22
+    CastableAfterDeath   kDeadOnly
+    TargetRequires       Antimatter_P_Antimatter_Final target.VillainName>
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\GREG_KeyesIsland_Disintegration_Heal.PFX"
+    include              menu\Powers\AnimFX\GREG_KeyesIsland_Disintegration_Heal.PFX
+    DisplayShortHelp     "P4234719348"
+    DisplayHelp          "P1014613474"
+    IconName             "Gadgets_TargetingDrone.tga"
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    ShowBuffIcon         kFalse
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 0.2500
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+            Messages
+            {
+                DisplayAttackerHit "J2FZKZCJBJZHW4XWUPRG5AJ2D2"
+                DisplayVictimHit "CETNT5NKHHUKW8M974A36HJUH3"
+                DisplayFloat "P2516602434"
+            }
+            
+        }
+    }
+}

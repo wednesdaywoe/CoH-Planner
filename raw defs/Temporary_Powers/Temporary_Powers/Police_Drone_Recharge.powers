@@ -1,0 +1,129 @@
+Power Temporary_Powers.Temporary_Powers.Police_Drone_Recharge
+{
+    Name                 "Police_Drone_Recharge"       
+    DisplayName          "P2541158994"
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kFriend
+    EntsAutoHit          kFriend
+    Target               kFriend
+    Range                40
+    TimeToActivate       2.93
+    TimeToRoot           2.93
+    RechargeTime         25
+    EffectArea           kCharacter
+    TargetRequires       Objects_Police_Drone_AlphaStrike target.VillainName> Incarnate_AlphaStrike.Guard.TransLocation_Beam target.ownPower? ! &&
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   10
+    Deletable            kTrue
+    VisualFX             "menu/Powers/AnimFX/Revive_Police_Drone.pfx"
+    include              menu/Powers/AnimFX/Revive_Police_Drone.pfx
+    DisplayShortHelp     "P1171507453"
+    DisplayHelp          "DWGPRKMP23PGWHMR5A87JU5YQ3"
+    IconName             "Temporary_PoliceDroneActivate.tga"
+    DoNotSave            kTrue
+
+
+    Effect
+    {
+        Requires Objects_Police_Drone_AlphaStrike target.VillainName> Incarnate_AlphaStrike.Guard.TransLocation_Beam target.ownPower? ! &&
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Incarnate_AlphaStrike.Guard.TransLocation_Beam
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Power
+            {
+                Power Incarnate_AlphaStrike.Guard.Disabled
+            }
+            
+        }
+    }
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kHeal
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P2246424807"
+                DisplayVictimHit "P3870760094"
+            }
+            
+            FX
+            {
+                ConditionalBits ANIM_RAISEDEAD
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale -1.0000
+            Duration 10.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance CopyBoosts
+            Params EntCreate
+            {
+                EntityDef Objects_Achievement_Marker_SelfDestruct_A
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kSetCostume
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Duration 99999.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Params Costume
+            {
+                Costume Police_Drone
+            }
+            
+        }
+    }
+}

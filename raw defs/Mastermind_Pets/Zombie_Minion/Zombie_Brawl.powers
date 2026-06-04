@@ -1,0 +1,71 @@
+#*******************************************************#
+# Power: Pets > Necro Enslaved Specter > Spectral Rake  #
+# Info:  Melee Negative                                 #
+#*******************************************************#
+
+Power Mastermind_Pets.Zombie_Minion.Zombie_Brawl
+{
+    Name                 "Zombie_Brawl"                
+    DisplayName          "NPLMNQD4CJRKW3NA53U4NLV6X3"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1.1
+    AttackTypes          kMelee_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kCaster
+    Target               kFoe
+    Range                7
+    EnduranceCost        4
+    TimeToActivate       0.67
+    TimeToRoot           0.67
+    RechargeTime         2
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kEnduranceDiscount_Boost, kDamage_Boost
+    StrengthsDisallowed  kRechargeTime kRange
+    ProcAllowed          kNone
+    VisualFX             "menu\Powers\AnimFX\Brawling_Brawling.pfx"
+    include              menu\Powers\AnimFX\Brawling_Brawling.pfx
+    DisplayShortHelp     "KW9DCC4BY4VJYBM9UH7Z4H64BZ"
+    DisplayHelp          "BD6BFRWAUZDCY9C47K93KUNBFX"
+    IconName             "Inherent_Brawl.tga"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNegative_Energy
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_Damage"
+            Scale 0.6800
+            Magnitude 1.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2637081052"
+                DisplayVictimHit "P936402029"
+            }
+            
+        }
+    
+        AttribMod
+        {
+            Attrib kTaunt
+            Aspect kAbs
+            Type kDuration
+            Target kTarget
+            Table "Melee_InherentTaunt"
+            Scale 0.5000
+            Magnitude 4.0000
+            StackType kStack
+            Messages
+            {
+                DisplayAttackerHit "P2043392969"
+                DisplayVictimHit "P2036629572"
+            }
+            
+        }
+    }
+}

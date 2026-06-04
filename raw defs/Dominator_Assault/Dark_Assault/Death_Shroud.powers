@@ -1,0 +1,41 @@
+Power Dominator_Assault.Dark_Assault.Death_Shroud
+{
+    Name                 "Death_Shroud"                
+    DisplayName          "P2117788085"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kRanged_Attack, kNegative_Energy_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kFoe
+    Range                150
+    EnduranceCost        18.512
+    TimeToActivate       1.33
+    TimeToRoot           1.33
+    RechargeTime         20
+    EffectArea           kCharacter
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kInterrupt_Boost, kDamage_Boost, kDebuff_ToHit_Boost
+    HighlightEval        kEngaged Mode? Set_Bonus.Global_Bonus.Experienced_Marksman ownPower? ||
+    HighlightRing        255 255 0 255
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\DominatorAssault_DarknessAssault_Moonbeam_Quick.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\DominatorAssault_DarknessAssault_Moonbeam_Quick.PFX
+    DisplayShortHelp     "P3128760442"
+    DisplayHelp          "U9EAE3Z34K7PWHXY9N2LZTA7BZ"
+    IconName             "DarknessAssault_Moonbeam.tga"
+    DisplayTargetShortHelp "P2190949330"
+    DisplayTargetHelp    "P3433690975"
+
+    Redirect
+    {
+        Power Villain_Pets.Dominator_DarkAssault_Snipe.Death_Shroud_Quick
+        Requires kEngaged source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||
+    }
+    
+    Redirect
+    {
+        Power Villain_Pets.Dominator_DarkAssault_Snipe.Death_Shroud_Normal
+        Requires 1
+    }
+    
+}

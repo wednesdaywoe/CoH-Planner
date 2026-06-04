@@ -1,0 +1,56 @@
+#**********************************************#
+# Power: Pets > Beast Lioness 2 > Lion's Roar  #
+# Info:  Click, Ally Beasts +Def(All)          #
+#**********************************************#
+
+Power Mastermind_Pets.Lioness_2.Lions_Roar
+{
+    Name                 "Lions_Roar"                  
+    DisplayName          "P2056503097"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    AIGroups             kBuff
+    EntsAffected         kFriend, kCaster
+    EntsAutoHit          kFriend, kCaster
+    Target               kCaster
+    EnduranceCost        13
+    PreferenceMultiplier 4
+    TimeToActivate       2
+    RechargeTime         60
+    EffectArea           kSphere
+    Radius               15
+    BoostsAllowed        kEnduranceDiscount_Boost
+    StrengthsDisallowed  kRechargeTime
+    VisualFX             "menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Lioness_LionRoar.pfx"
+    include              menu/Powers/AnimFX/PlayerPowers/MastermindSummon_BeastMastery_Lioness_LionRoar.pfx
+    DisplayShortHelp     "P1034666788"
+    DisplayHelp          "BZWKPQZL2LPMWJM7KRHNDRRYJX"
+    DisplayAttackerHit   "P3860773513"
+    IconName             "BeastMastery_PetLionsRoar.tga"
+    MaxTargetsHit        255
+
+
+    Effect
+    {
+        Requires MastermindPets_Howler_Wolf target.VillainName> MastermindPets_Howler_Wolf_Alpha target.VillainName> || MastermindPets_Lioness target.VillainName> || MastermindPets_Dire_Wolf target.VillainName> ||
+    
+        AttribMod
+        {
+            Attrib kRanged_Attack kMelee_Attack kAOE_Attack kSmashing_Attack kLethal_Attack kFire_Attack kCold_Attack kEnergy_Attack kNegative_Energy_Attack kPsionic_Attack kToxic_Attack
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Buff_Def"
+            Scale 0.6000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance
+            FX
+            {
+                ContinuingFX GenericContinuing/BuffDefContinuing.fx
+            }
+            
+        }
+    }
+}

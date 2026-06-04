@@ -1,0 +1,39 @@
+Power Temporary_Powers.Temporary_Powers.Mental_Superiority
+{
+    Name                 "Mental_Superiority"          
+    DisplayName          "9WNQRUGHUJGPYMXMWZFTSJFQJ3"
+    Type                 kAuto
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kCaster
+    ActivatePeriod       9999
+    EffectArea           kCharacter
+    IgnoreStrength       kTrue
+    DisplayShortHelp     "8HSLGNCQGCMLYTNECWXA4NSDKW"
+    DisplayHelp          "P2797852553"
+    IconName             "MentalControl_Confuse.tga"
+    DoNotSave            kTrue
+    ShowInManage         kFalse
+    ShowInInventory      kFalse
+    NumAllowed           16
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kNull
+            Aspect kAbs
+            ApplicationType kOnActivate
+            Type kConstant
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreStrength IgnoreResistance
+        }
+    }
+}

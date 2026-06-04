@@ -1,0 +1,95 @@
+Power Temporary_Powers.Temporary_Powers.Energy_Smash
+{
+    Name                 "Energy_Smash"                
+    DisplayName          "P617569847"
+    Type                 kClick
+    Accuracy             1
+    AttackTypes          kMelee_Attack, kSmashing_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kFoe
+    Range                5
+    EnduranceCost        5
+    TimeToActivate       1.83
+    TimeToRoot           1.83
+    RechargeTime         4
+    EffectArea           kCharacter
+    ServerTrayPriority   997
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\Villain_Arachnos_LordRecluse_Mele_KnockUp.pfx"
+    include              menu\Powers\AnimFX\Villain_Arachnos_LordRecluse_Mele_KnockUp.pfx
+    DisplayShortHelp     "P4145247847"
+    DisplayHelp          "R8MQKXTYME5DYLNMR4LWA434ZQ"
+    IconName             "Tyrant_PowerPunch.tga"
+    DoNotSave            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kSmashing
+            Aspect kAbs
+            Target kTarget
+            Table "Melee_TempDamage"
+            Scale 8.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "VQPQ8F9DJYDRY8BTH53BKBMFP2"
+                DisplayVictimHit "953BBVA8BQNZWULCPGUU8L6YYX"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> player eq
+    
+        AttribMod
+        {
+            Attrib kKnockup
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Suppress Knocked 10 WhenInactive
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+
+    Effect
+    {
+        Requires enttype target> critter eq
+    
+        AttribMod
+        {
+            Attrib kKnockup
+            Aspect kCur
+            Target kTarget
+            Table "Melee_Ones"
+            Scale 20.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags IgnoreStrength IgnoreResistance
+            Messages
+            {
+                DisplayAttackerHit "P1956156720"
+                DisplayVictimHit "P3390955917"
+            }
+            
+        }
+    }
+}

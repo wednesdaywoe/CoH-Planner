@@ -1,0 +1,1153 @@
+Power Brute_Defense.Psionic_Armor.Aura_of_Insanity
+{
+    Name                 "Aura_of_Insanity"            
+    DisplayName          "73RRTZA5XEJGYLB9S9JPATZRVW"
+    ModesDisallowed      kDisable_All
+    Type                 kToggle
+    Accuracy             0.8
+    AttackTypes          kAOE_Attack, kPsionic_Attack
+    EntsAffected         kFoe
+    EntsAutoHit          kNone
+    Target               kCaster
+    TimeToActivate       1.67
+    TimeToRoot           1.67
+    RechargeTime         10
+    ActivatePeriod       4
+    EffectArea           kSphere
+    Radius               8
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kDamage_Boost, kSleep_Boost, kFear_Boost, kConfuse_Boost, kStunned_Boost, kHold_Boost, kTaunt_Boost
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    ShuffleTargets       kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Aura_of_Insanity.pfx"
+    include              menu\Powers\AnimFX\PlayerPowers\Defense_Psionic_Armor_Aura_of_Insanity.pfx
+    DisplayShortHelp     "H3KAHHGPSFV2YCNWQK8LAMRFB2"
+    DisplayHelp          "XLDV7LPVHVU8Y7VFFJET7YQS43"
+    IconName             "PsionicArmor_WorldOfConfusion"
+    MaxTargetsHit        10
+    OverCapTrigger       1
+    OverCapMultiplier    0.9
+    OverCapExponential   kTrue
+    DisplayTargetShortHelp "P1116895679"
+    DisplayTargetHelp    "P4213198885"
+
+
+    Effect
+    {
+    
+        Effect
+        {
+        
+            AttribMod
+            {
+                Attrib kSpecial
+                Aspect kAbs
+                Target kSelf
+                Table "Melee_HealSelf"
+                Scale -0.0500
+                Magnitude 1.0000
+                StackType kStack
+                Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+                Messages
+                {
+                    DisplayAttackerHit "V8ND2H63B27MYECNYX8SLH9V73"
+                    DisplayVictimHit "75AP8BX3BDYDY8CUQHXWKZ4ZAA"
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kRegeneration
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Ones"
+                Scale -0.7500
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+                RequiredEvent Stunned 4
+                Flags IgnoreStrength
+                Messages
+                {
+                    DisplayAttackerHit "P1072721133"
+                    DisplayInfo "AYVXQHUCBLCZYXN5RZ8Y7UZDUA"
+                }
+                
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffMaxHPContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kSmashing kLethal kFire kCold kEnergy kNegative_Energy kPsionic kToxic
+                Aspect kRes
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 1.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+                RequiredEvent Sleep 4
+                Flags IgnoreStrength
+                Messages
+                {
+                    DisplayInfo "98QCP5EAENHHWMCL29FRSNMFWZ"
+                }
+                
+                FX
+                {
+                    ContinuingFX GenericContinuing/DamageResistance/DeBuffDamResContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kDefense
+                Aspect kCur
+                Target kTarget
+                Table "Melee_Debuff_Def"
+                Scale 1.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+                RequiredEvent Held 4
+                Flags IgnoreStrength
+                Messages
+                {
+                    DisplayInfo "8U9NM69Y7KHYYEZ7AWERUQ6FN3"
+                }
+                
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffDefContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kToHit
+                Aspect kCur
+                Target kTarget
+                Table "Melee_DeBuff_ToHit"
+                Scale 1.0000
+                Duration 4.0000
+                Magnitude 1.0000
+                StackType kStack
+                RequiredEvent Terrorized 4
+                Flags IgnoreStrength
+                Messages
+                {
+                    DisplayInfo "NHQZDPZMUJKEWCLG27QKDWJ4U3"
+                }
+                
+                FX
+                {
+                    ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+                }
+                
+            }
+        
+            AttribMod
+            {
+                Attrib kPsionic
+                Aspect kAbs
+                Target kTarget
+                Table "Melee_Damage"
+                Scale 0.0500
+                Duration 3.7500
+                Magnitude 1.0000
+                Delay 0.2000
+                Period 1.0000
+                StackType kStack
+                Suppress Stunned 0.5 Always
+                Suppress Held 0.5 Always
+                Suppress Sleep 0.5 Always
+                Suppress Terrorized 0.5 Always
+                Suppress Confused 0.5 Always
+                Messages
+                {
+                    DisplayAttackerHit "P2287672660"
+                    DisplayVictimHit "P3092393664"
+                    DisplayInfo "Y6BH9B32Q7N9YQZSAVXDYNRE2X"
+                }
+                
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> critter eq
+        
+            Effect
+            {
+                Tag "Display"
+                Requires 0
+                Flags Fallback
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kConfused
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.0000
+                        Duration 4.0000
+                        Magnitude 2.0000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P4049735792"
+                            DisplayVictimHit "P553075930"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing\ConfuseContinuing.fx
+                        }
+                        
+                    }
+                
+                    AttribMod
+                    {
+                        Attrib kConfused
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 0.5000
+                        Duration 4.0000
+                        Magnitude 0.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreStrength IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P4049735792"
+                            DisplayVictimHit "P553075930"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing\ConfuseContinuing.fx
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kStunned
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.0000
+                        Duration 4.0000
+                        Magnitude 2.0000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P583235414"
+                            DisplayVictimHit "P3613904985"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing/StunContinuing.fx
+                        }
+                        
+                    }
+                
+                    AttribMod
+                    {
+                        Attrib kStunned
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 0.5000
+                        Duration 4.0000
+                        Magnitude 0.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreStrength IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P583235414"
+                            DisplayVictimHit "P3613904985"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing/StunContinuing.fx
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kSleep
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.0000
+                        Duration 4.0000
+                        Magnitude 2.0000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P786700626"
+                            DisplayVictimHit "P2415654930"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing/StunContinuing.fx
+                        }
+                        
+                    }
+                
+                    AttribMod
+                    {
+                        Attrib kSleep
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 0.5000
+                        Duration 4.0000
+                        Magnitude 0.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreStrength IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P786700626"
+                            DisplayVictimHit "P2415654930"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing/StunContinuing.fx
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kHeld
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.0000
+                        Duration 4.0000
+                        Magnitude 2.0000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P4134654113"
+                            DisplayVictimHit "P3642575485"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalBits ANIM_SonicStun
+                        }
+                        
+                    }
+                
+                    AttribMod
+                    {
+                        Attrib kHeld
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 0.5000
+                        Duration 4.0000
+                        Magnitude 0.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreStrength IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P4134654113"
+                            DisplayVictimHit "P3642575485"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalBits ANIM_SonicStun
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kTerrorized
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.0000
+                        Duration 4.0000
+                        Magnitude 2.0000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P508540991"
+                            DisplayVictimHit "P1197143274"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing/AfraidContinuing.fx
+                        }
+                        
+                    }
+                
+                    AttribMod
+                    {
+                        Attrib kTerrorized
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 0.5000
+                        Duration 4.0000
+                        Magnitude 0.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreStrength IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P508540991"
+                            DisplayVictimHit "P1197143274"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing/AfraidContinuing.fx
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Flags HideFromInfo
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kConfused
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.0000
+                        Duration 4.0000
+                        Magnitude 2.0000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P4049735792"
+                            DisplayVictimHit "P553075930"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing\ConfuseContinuing.fx
+                        }
+                        
+                    }
+                
+                    AttribMod
+                    {
+                        Attrib kConfused
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 0.5000
+                        Duration 4.0000
+                        Magnitude 0.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreStrength IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P4049735792"
+                            DisplayVictimHit "P553075930"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing\ConfuseContinuing.fx
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Flags Fallback
+                
+                    Effect
+                    {
+                        Chance 0.2500
+                    
+                        AttribMod
+                        {
+                            Attrib kStunned
+                            Aspect kCur
+                            Target kTarget
+                            Table "Melee_Ones"
+                            Scale 2.0000
+                            Duration 4.0000
+                            Magnitude 2.0000
+                            StackType kRefreshToCount
+                            StackLimit 1
+                            Flags IgnoreResistance
+                            Messages
+                            {
+                                DisplayAttackerHit "P583235414"
+                                DisplayVictimHit "P3613904985"
+                            }
+                            
+                            FX
+                            {
+                                ConditionalFX GenericContinuing/StunContinuing.fx
+                            }
+                            
+                        }
+                    
+                        AttribMod
+                        {
+                            Attrib kStunned
+                            Aspect kCur
+                            Target kTarget
+                            Table "Melee_Ones"
+                            Scale 0.5000
+                            Duration 4.0000
+                            Magnitude 0.5000
+                            StackType kRefreshToCount
+                            StackLimit 1
+                            Flags IgnoreStrength IgnoreResistance
+                            Messages
+                            {
+                                DisplayAttackerHit "P583235414"
+                                DisplayVictimHit "P3613904985"
+                            }
+                            
+                            FX
+                            {
+                                ConditionalFX GenericContinuing/StunContinuing.fx
+                            }
+                            
+                        }
+                    }
+                
+                    Effect
+                    {
+                        Flags Fallback
+                    
+                        Effect
+                        {
+                            Chance 0.3333
+                        
+                            AttribMod
+                            {
+                                Attrib kSleep
+                                Aspect kCur
+                                Target kTarget
+                                Table "Melee_Ones"
+                                Scale 2.0000
+                                Duration 4.0000
+                                Magnitude 2.0000
+                                StackType kRefreshToCount
+                                StackLimit 1
+                                Flags IgnoreResistance
+                                Messages
+                                {
+                                    DisplayAttackerHit "P786700626"
+                                    DisplayVictimHit "P2415654930"
+                                }
+                                
+                                FX
+                                {
+                                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                                }
+                                
+                            }
+                        
+                            AttribMod
+                            {
+                                Attrib kSleep
+                                Aspect kCur
+                                Target kTarget
+                                Table "Melee_Ones"
+                                Scale 0.5000
+                                Duration 4.0000
+                                Magnitude 0.5000
+                                StackType kRefreshToCount
+                                StackLimit 1
+                                Flags IgnoreStrength IgnoreResistance
+                                Messages
+                                {
+                                    DisplayAttackerHit "P786700626"
+                                    DisplayVictimHit "P2415654930"
+                                }
+                                
+                                FX
+                                {
+                                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                                }
+                                
+                            }
+                        }
+                    
+                        Effect
+                        {
+                            Flags Fallback
+                        
+                            Effect
+                            {
+                                Chance 0.5000
+                            
+                                AttribMod
+                                {
+                                    Attrib kHeld
+                                    Aspect kCur
+                                    Target kTarget
+                                    Table "Melee_Ones"
+                                    Scale 2.0000
+                                    Duration 4.0000
+                                    Magnitude 2.0000
+                                    StackType kRefreshToCount
+                                    StackLimit 1
+                                    Flags IgnoreResistance
+                                    Messages
+                                    {
+                                        DisplayAttackerHit "P4134654113"
+                                        DisplayVictimHit "P3642575485"
+                                    }
+                                    
+                                    FX
+                                    {
+                                        ConditionalFX GenericContinuing/StunContinuing.fx
+                                        ConditionalBits ANIM_SonicStun
+                                    }
+                                    
+                                }
+                            
+                                AttribMod
+                                {
+                                    Attrib kHeld
+                                    Aspect kCur
+                                    Target kTarget
+                                    Table "Melee_Ones"
+                                    Scale 0.5000
+                                    Duration 4.0000
+                                    Magnitude 0.5000
+                                    StackType kRefreshToCount
+                                    StackLimit 1
+                                    Flags IgnoreStrength IgnoreResistance
+                                    Messages
+                                    {
+                                        DisplayAttackerHit "P4134654113"
+                                        DisplayVictimHit "P3642575485"
+                                    }
+                                    
+                                    FX
+                                    {
+                                        ConditionalFX GenericContinuing/StunContinuing.fx
+                                        ConditionalBits ANIM_SonicStun
+                                    }
+                                    
+                                }
+                            }
+                        
+                            Effect
+                            {
+                                Flags Fallback
+                            
+                                AttribMod
+                                {
+                                    Attrib kTerrorized
+                                    Aspect kCur
+                                    Target kTarget
+                                    Table "Melee_Ones"
+                                    Scale 2.0000
+                                    Duration 4.0000
+                                    Magnitude 2.0000
+                                    StackType kRefreshToCount
+                                    StackLimit 1
+                                    Flags IgnoreResistance
+                                    Messages
+                                    {
+                                        DisplayAttackerHit "P508540991"
+                                        DisplayVictimHit "P1197143274"
+                                    }
+                                    
+                                    FX
+                                    {
+                                        ConditionalFX GenericContinuing/AfraidContinuing.fx
+                                    }
+                                    
+                                }
+                            
+                                AttribMod
+                                {
+                                    Attrib kTerrorized
+                                    Aspect kCur
+                                    Target kTarget
+                                    Table "Melee_Ones"
+                                    Scale 0.5000
+                                    Duration 4.0000
+                                    Magnitude 1.2500
+                                    StackType kRefreshToCount
+                                    StackLimit 1
+                                    Flags IgnoreStrength IgnoreResistance
+                                    Messages
+                                    {
+                                        DisplayAttackerHit "P508540991"
+                                        DisplayVictimHit "P1197143274"
+                                    }
+                                    
+                                    FX
+                                    {
+                                        ConditionalFX GenericContinuing/AfraidContinuing.fx
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        Effect
+        {
+            Requires enttype target> player eq
+        
+            Effect
+            {
+                Tag "Display"
+                Requires 0
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kConfused
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.5000
+                        Duration 4.0000
+                        Magnitude 2.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Suppress Confused 15 WhenInactive
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P4049735792"
+                            DisplayVictimHit "P553075930"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing\ConfuseContinuing.fx
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kStunned
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.5000
+                        Duration 4.0000
+                        Magnitude 2.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Suppress Helped 15 WhenInactive
+                        Suppress Stunned 15 WhenInactive
+                        Suppress Stunned 15 WhenInactive
+                        Suppress Immobilized 15 WhenInactive
+                        Suppress Terrorized 15 WhenInactive
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P583235414"
+                            DisplayVictimHit "P3613904985"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing/StunContinuing.fx
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kSleep
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.5000
+                        Duration 4.0000
+                        Magnitude 2.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Suppress Helped 15 WhenInactive
+                        Suppress Stunned 15 WhenInactive
+                        Suppress Stunned 15 WhenInactive
+                        Suppress Immobilized 15 WhenInactive
+                        Suppress Terrorized 15 WhenInactive
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P786700626"
+                            DisplayVictimHit "P2415654930"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing/StunContinuing.fx
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kHeld
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.5000
+                        Duration 4.0000
+                        Magnitude 2.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P4134654113"
+                            DisplayVictimHit "P3642575485"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalBits ANIM_SonicStun
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kTerrorized
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.5000
+                        Duration 4.0000
+                        Magnitude 2.5000
+                        StackType kRefreshToCount
+                        StackLimit 1
+                        Suppress Helped 15 WhenInactive
+                        Suppress Stunned 15 WhenInactive
+                        Suppress Stunned 15 WhenInactive
+                        Suppress Immobilized 15 WhenInactive
+                        Suppress Terrorized 15 WhenInactive
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P508540991"
+                            DisplayVictimHit "P1197143274"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing/AfraidContinuing.fx
+                        }
+                        
+                    }
+                }
+            }
+        
+            Effect
+            {
+                Flags HideFromInfo
+            
+                Effect
+                {
+                    Chance 0.2000
+                
+                    AttribMod
+                    {
+                        Attrib kConfused
+                        Aspect kCur
+                        Target kTarget
+                        Table "Melee_Ones"
+                        Scale 2.5000
+                        Duration 4.0000
+                        Magnitude 2.5000
+                        StackType kStack
+                        Suppress Confused 15 WhenInactive
+                        Flags IgnoreResistance
+                        Messages
+                        {
+                            DisplayAttackerHit "P4049735792"
+                            DisplayVictimHit "P553075930"
+                        }
+                        
+                        FX
+                        {
+                            ConditionalFX GenericContinuing\ConfuseContinuing.fx
+                        }
+                        
+                    }
+                }
+            
+                Effect
+                {
+                    Flags Fallback
+                
+                    Effect
+                    {
+                        Chance 0.2500
+                    
+                        AttribMod
+                        {
+                            Attrib kStunned
+                            Aspect kCur
+                            Target kTarget
+                            Table "Melee_Ones"
+                            Scale 2.5000
+                            Duration 4.0000
+                            Magnitude 2.5000
+                            StackType kStack
+                            Suppress Stunned 15 WhenInactive
+                            Suppress Immobilized 15 WhenInactive
+                            Suppress Held 15 WhenInactive
+                            Suppress Sleep 15 WhenInactive
+                            Suppress Terrorized 15 WhenInactive
+                            Flags IgnoreResistance
+                            Messages
+                            {
+                                DisplayAttackerHit "P583235414"
+                                DisplayVictimHit "P3613904985"
+                            }
+                            
+                            FX
+                            {
+                                ConditionalFX GenericContinuing/StunContinuing.fx
+                            }
+                            
+                        }
+                    }
+                
+                    Effect
+                    {
+                        Flags Fallback
+                    
+                        Effect
+                        {
+                            Chance 0.3333
+                        
+                            AttribMod
+                            {
+                                Attrib kSleep
+                                Aspect kCur
+                                Target kTarget
+                                Table "Melee_Ones"
+                                Scale 2.5000
+                                Duration 4.0000
+                                Magnitude 2.5000
+                                StackType kStack
+                                Suppress Stunned 15 WhenInactive
+                                Suppress Immobilized 15 WhenInactive
+                                Suppress Held 15 WhenInactive
+                                Suppress Sleep 15 WhenInactive
+                                Suppress Terrorized 15 WhenInactive
+                                Flags IgnoreResistance
+                                Messages
+                                {
+                                    DisplayAttackerHit "P786700626"
+                                    DisplayVictimHit "P2415654930"
+                                }
+                                
+                                FX
+                                {
+                                    ConditionalFX GenericContinuing/SleepContinuing.fx
+                                }
+                                
+                            }
+                        }
+                    
+                        Effect
+                        {
+                            Flags Fallback
+                        
+                            Effect
+                            {
+                                Chance 0.5000
+                            
+                                AttribMod
+                                {
+                                    Attrib kHeld
+                                    Aspect kCur
+                                    Target kTarget
+                                    Table "Melee_Ones"
+                                    Scale 2.5000
+                                    Duration 4.0000
+                                    Magnitude 2.5000
+                                    StackType kStack
+                                    Suppress Stunned 15 WhenInactive
+                                    Suppress Immobilized 15 WhenInactive
+                                    Suppress Held 15 WhenInactive
+                                    Suppress Sleep 15 WhenInactive
+                                    Suppress Terrorized 15 WhenInactive
+                                    Flags IgnoreResistance
+                                    Messages
+                                    {
+                                        DisplayAttackerHit "P4134654113"
+                                        DisplayVictimHit "P3642575485"
+                                    }
+                                    
+                                    FX
+                                    {
+                                        ConditionalFX GenericContinuing/StunContinuing.fx
+                                        ConditionalBits ANIM_SonicStun
+                                    }
+                                    
+                                }
+                            }
+                        
+                            Effect
+                            {
+                                Flags Fallback
+                            
+                                AttribMod
+                                {
+                                    Attrib kTerrorized
+                                    Aspect kCur
+                                    Target kTarget
+                                    Table "Melee_Ones"
+                                    Scale 2.5000
+                                    Duration 4.0000
+                                    Magnitude 2.5000
+                                    StackType kStack
+                                    Suppress Stunned 15 WhenInactive
+                                    Suppress Immobilized 15 WhenInactive
+                                    Suppress Held 15 WhenInactive
+                                    Suppress Sleep 15 WhenInactive
+                                    Suppress Terrorized 15 WhenInactive
+                                    Flags IgnoreResistance
+                                    Messages
+                                    {
+                                        DisplayAttackerHit "P508540991"
+                                        DisplayVictimHit "P1197143274"
+                                    }
+                                    
+                                    FX
+                                    {
+                                        ConditionalFX GenericContinuing/AfraidContinuing.fx
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    Effect
+    {
+        Tag "InherentTaunt"
+        Flags SecondaryTargetsOnly
+    
+        AttribMod
+        {
+            Attrib kExecutePower
+            Aspect kStr
+            Table "Melee_Ones"
+            StackType kStack
+            Flags CopyBoosts
+            Params Power
+            {
+                Power Redirects.Inherents.Fury_Proc_Aura
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,82 @@
+Power Defender_Ranged.Water_Blast.Whirlpool
+{
+    Name                 "Whirlpool"                   
+    DisplayName          "P2045233717"
+    ModesDisallowed      kDisable_All
+    Type                 kClick
+    Accuracy             1
+    EntsAffected         kCaster
+    EntsAutoHit          kCaster
+    Target               kLocation
+    Range                60
+    EnduranceCost        15.6
+    TimeToActivate       2.03
+    TimeToRoot           2.03
+    RechargeTime         60
+    EffectArea           kLocation
+    BoostsAllowed        kAccuracy_Boost, kRecharge_Boost, kRange_Boost, kEnduranceDiscount_Boost, kDamage_Boost, kDebuff_Defense_Boost, kSlow_Boost
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_Whirlpool.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BlasterRanged_WaterBlast_Whirlpool.PFX
+    DisplayShortHelp     "CASSTVWDCKD5Y3MPFUAUN2N5N3"
+    DisplayHelp          "N8L8GRZPKTZBW4VXTZ9TJT4EQ3"
+    IconName             "WaterBlast_Whirlpool.tga"
+    DisplayTargetShortHelp "P2062852600"
+    DisplayTargetHelp    "P401526092"
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kEntCreate
+            Aspect kCur
+            Target kTarget
+            Table "Ranged_Level"
+            Scale 1.0000
+            Duration 15.0000
+            Magnitude 1.0000
+            StackType kStack
+            Flags CopyBoosts
+            Messages
+            {
+                DisplayAttackerHit "P2995632953"
+            }
+            
+            Params EntCreate
+            {
+                EntityDef Pets_Whirlpool_Defender
+                PriorityList "PL_StaticObject"
+            }
+            
+        }
+    }
+
+    ActivationEffect
+    {
+        Tag "TidalPower"
+        Requires temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <=
+    
+        AttribMod
+        {
+            Attrib kGrantPower
+            Aspect kAbs
+            Target kSelf
+            Table "Ranged_Ones"
+            Scale 1.0000
+            Magnitude 1.0000
+            StackType kIgnore
+            Flags IgnoreStrength IgnoreResistance NoHitDelay NoProjectileDelay
+            Messages
+            {
+                DisplayAttackerHit "P971765401"
+            }
+            
+            Params Power
+            {
+                Power Temporary_Powers.Temporary_Powers.Tidal_Power
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,79 @@
+Power Temporary_Powers.Temporary_Powers.PS_Deadlock_Rise_to_the_Challenge
+{
+    Name                 "PS_Deadlock_Rise_to_the_Challenge"
+    DisplayName          "P2822771638"
+    Type                 kToggle
+    Accuracy             1
+    EntsAffected         kFoe
+    EntsAutoHit          kFoe
+    Target               kCaster
+    EnduranceCost        0.2
+    TimeToActivate       3
+    TimeToRoot           3
+    RechargeTime         10
+    ActivatePeriod       1
+    EffectArea           kSphere
+    Radius               8
+    ToggleIgnoreHold     kTrue
+    ToggleIgnoreSleep    kTrue
+    ToggleIgnoreStun     kTrue
+    TargetRequires       Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&
+    StrengthsDisallowed  kRechargeTime
+    ServerTrayPriority   993
+    ShootThroughUntouchable kTrue
+    VisualFX             "menu\Powers\AnimFX\PlayerPowers\BruteDefense_Willpower_RisetotheChallenge.PFX"
+    include              menu\Powers\AnimFX\PlayerPowers\BruteDefense_Willpower_RisetotheChallenge.PFX
+    DisplayShortHelp     "P3744674280"
+    DisplayHelp          "3SVRF8Z6NNUDY6LZW2FL3KFJFQ"
+    IconName             "Willpower_RiseToTheChallenge.tga"
+    MaxTargetsHit        10
+    DoNotSave            kTrue
+
+
+    Effect
+    {
+    
+        AttribMod
+        {
+            Attrib kToHit
+            Aspect kCur
+            Target kTarget
+            Table "Melee_DeBuff_ToHit"
+            Scale 0.5000
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kReplace
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 0.2500
+            Duration 1.0000
+            Magnitude 1.0000
+            StackType kContinuous
+            Flags IgnoreResistance IgnoreCombatMods
+        }
+    
+        AttribMod
+        {
+            Attrib kRegeneration
+            Aspect kCur
+            Target kSelf
+            Table "Melee_Ones"
+            Scale 1.0000
+            Duration 1.1250
+            Magnitude 1.0000
+            StackType kReplace
+            Flags IgnoreResistance IgnoreCombatMods
+            FX
+            {
+                ContinuingFX GenericContinuing/DeBuffToHitContinuing.fx
+            }
+            
+        }
+    }
+}
