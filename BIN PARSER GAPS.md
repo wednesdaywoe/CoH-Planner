@@ -6,6 +6,38 @@ with diagnoses and recommended fixes. Newest entries at top.
 
 ---NEW ISSUES---
 
+## ⚠️ OPEN — Kheldian form-variant converter drops real knockback (do NOT regenerate)
+
+`scripts/generate-kheldian-variants.cjs` currently produces **worse** output than
+what's committed in `src/data/datasets/rebirth/kheldian-form-variants.ts`. A regen
+**drops the real knockback effects** from Nova/Dwarf attacks and **adds a spurious
+`rechargeDebuff` (Ranged_Slow, scale 0.2)**. Verified against source: e.g.
+`exported_powers/rebirth/kheldian_pets/bright_nova/*.json` for **Bright Nova Blast**
+has knockback (`Ranged_Knockback`) and **no** slow — the committed file matches that,
+the regen does not. So the committed data is correct and the converter regressed at
+some point (likely in the effect-extraction path the kheldian script shares).
+
+**Until fixed:** do not commit a kheldian-form-variants regen. The regen-diff CI guard
+is intentionally scoped to `generated/` and does **not** cover this file, so it won't
+force the regression in — but `npm run regen` (full) will dirty it locally; leave it
+reverted. Display-only impact (the file feeds `InfoPanel`'s Nova/Dwarf info via
+`KHELDIAN_FORM_VARIANT_POWERS`), so no calc effect, but the displayed effects are wrong
+after a naive regen.
+
+Related minor: `homecoming/kheldian-form-variants.ts` is dead output — `InfoPanel`
+imports the **rebirth** map unconditionally (`@/data/datasets/rebirth/kheldian-form-variants`),
+so HC's variant data is never consumed (and was never committed). A proper fix would
+make the kheldian-info lookup dataset-aware; for now the HC file is left ungenerated.
+
+## ✅ Rebirth Blaster ToHit-buff AT modifiers were stale (FIXED 2026-06-03)
+
+`rebirth/at-tables.ts` carried Homecoming's Blaster ToHit-buff base modifiers (0.10)
+instead of Rebirth's rebalanced `Melee_Buff_ToHit` 0.075 / `Ranged_Buff_ToHit` 0.07
+(verified against `exported_powers/rebirth/tables/blaster.json`; HC source is 0.10, so
+it's a genuine Rebirth divergence, not a parse bug). The planner was overstating Rebirth
+Blaster ToHit buffs (Aim/Tactics/Build Up). Regenerated; no other AT table drifted.
+Surfaced by the full `npm run regen` while validating the regen-diff guard.
+
 ## 🎯 GOAL (deferred) — commit the converter input so CI can regenerate + byte-diff
 
 **Shipped now (the lightweight half):** [converter-invariants.test.ts](src/data/converter-invariants.test.ts)
