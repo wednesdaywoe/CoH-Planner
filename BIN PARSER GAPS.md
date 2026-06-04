@@ -82,9 +82,31 @@ needs a real `.powers`↔export attrib name-map before its numbers mean anything
 `null_bool`. (Note: Energy Torrent is faithful at the effect-group level — 5 vs 5,
 not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
 
+### Progress
+- ✅ **`cast_through` (Blaster Defiance — "Cast While Mez'd")** surfaced
+  (`418f3ec82`). Was already in the export, just unused — a Phase-2 captured-but-
+  unused gap. Converter→model→display, 177 powers. No parser/re-export needed.
+- ✅ **`toggle_ignore` ("Stays On While Mez'd")** captured (`542c9baea`). DID need
+  parser work: `_parse_cast_flags` read `cast_through` then skipped the next 6
+  bools — now reads the 3 `toggle_ignore_*` ones (alignment preserved). Re-exported
+  both datasets (de-risked: `toggle_ignore`-only, no drift; sole incidental change
+  was Rest gaining `allowed_set_categories ['Rest Buff']`). 784 powers. This proved
+  the full parser→export→converter→model→display path and the re-export workflow.
+- ⏸️ **`IgnoreStrength` — RECLASSIFIED, deferred.** It is *not* a missing-field
+  capture: the bin parser already extracts it into `template.flags`, and it's
+  mostly moot (4,482 "real" cases are dominated by attribs nothing strength-
+  enhances — `Grant_Power`/`Create_Entity`/`Set_Mode`/`Null` — or proc/pseudopet
+  paths) or already handled (regen → `regenBuffUnenhanced`/`effects.n`). The naïve
+  "mark all IgnoreStrength unenhanceable" is *dangerous*: ~1,600 attacks carry it
+  only on the `aspect=Strength, scale=0` damage **meta-template** (the engine's
+  strength-definition row), so doing so would wrongly de-enhance their damage. The
+  residual is a careful **per-attrib calc-correctness audit**, not the opener.
+
 ### Next steps (priority order)
-1. **Capture the mez-interaction fields + `IgnoreStrength`** (parser + converter) —
-   highest build-relevant value; `IgnoreStrength` also reduces the CoD2 dependency.
+1. **Other clean power-field captures** (same pattern as the mez fields):
+   `TimeToRoot` (2,340 — animation lock, affects DPS/rotation), `ModesDisallowed`
+   (3,475), `StrengthsDisallowed` (951), `BuyRequires` (631). All genuinely absent,
+   distinct names. Need parser reads + re-export (the toggle_ignore workflow).
 2. **Add the `.powers`↔export attrib name-map** to `audit.py` → produce a clean
    attrib-gap list → then close the genuinely-dropped exotic attribs.
 3. **Phase 2 — converter completeness**: diff `exported_powers` vs `generated` (the
@@ -92,7 +114,9 @@ not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
    ensure every mechanically-relevant template/field incl. `requires_expression`
    gating is emitted. Also fold in the un-parsed template tail (`suppress_events`,
    `flags`, `fx`).
-4. **Later**: a `.powers ⊆ extraction` guard, once the sweep backlog is worked down.
+4. **`IgnoreStrength` calc-correctness audit** (the reclassified item above): a
+   careful per-attrib pass on which real effects should be unenhanceable.
+5. **Later**: a `.powers ⊆ extraction` guard, once the sweep backlog is worked down.
 
 ## ✅ Rebirth Blaster ToHit-buff AT modifiers were stale (FIXED 2026-06-03)
 
