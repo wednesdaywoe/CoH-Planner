@@ -40,7 +40,18 @@ export const PhoenixAwakening: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 0.54,
+    "table": "Ranged_Heal",
+    "duration": 10.1,
+    "tickRate": 1
+  },
   "effects": {
+    "enduranceDrain": {
+      "scale": 24,
+      "table": "Melee_Ones"
+    },
     "summon": {
       "isPseudoPet": false,
       "duration": 5,

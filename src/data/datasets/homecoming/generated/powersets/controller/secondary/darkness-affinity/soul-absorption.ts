@@ -45,6 +45,14 @@ export const SoulAbsorption: Power = {
       "isPseudoPet": false,
       "entity": "P4006859605",
       "duration": 1
-    }
+    },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

@@ -59,9 +59,29 @@ export const Glitz: Power = {
       "type": "Energy",
       "scale": 0.1019,
       "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1625,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1019,
+      "table": "Melee_PvPDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1019,
+      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    },
     "fear": {
       "mag": 3,
       "scale": 15,

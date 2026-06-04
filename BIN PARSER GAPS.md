@@ -146,13 +146,25 @@ not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
     IgnoreStrength heal with a 0.075 enhanceable one — the old "take first entry" logic
     showed only 0.075; now 0.15 with enh on half). Runtime-only (the entries were
     already in `generated`), tsc + 84 tests.
-  - ⚠️ **OPEN — DNA Siphon / Rebuild DNA heal is *conditional* and dropped entirely.**
-    Their heal templates carry a `requires_expression` (`Cur.kHitPoints target> 0 >`,
-    and the 0.375 portion additionally `kDefensiveAdaptation Source.Mode?`), so
-    `extractDamage` drops them — these powers show **no heal at all** in the planner.
-    That's a bigger "conditional heal not captured" gap (distinct from IgnoreStrength):
-    conditional heals should likely route through the `conditionalEffects` mechanism.
-    Not fixed here.
+  - ✅ **FIXED — per-target HP-state leech effects (DNA Siphon etc.) were dropped.**
+    Distinct from IgnoreStrength: leech powers gate effects on the *target's* HP state
+    — `Cur.kHitPoints target> 0 >` (per **living** foe) / `... ==` (per **defeated**
+    foe). The converter's conditional-gate filter treated these as positive-state
+    gates and dropped the effects, so DNA Siphon showed **no heal/+End/+Regen/
+    +Recovery**, Phoenix Awakening no Heal-over-Time, Glitz no damage, Soul Absorption
+    no -ToHit. Per-case analysis showed they're the powers' **advertised base effects**
+    (DNA Siphon's "Self +HP, +End, +Special"), NOT toggle conditions. Fix: add the
+    `Cur.kHitPoints target> 0 (>|==)` clause to `_stripIgnoredClauses`, so pure HP-state
+    gates fold into the base display (with `perTarget` preserving the per-foe scaling)
+    while a trailing **mode** clause (`kDefensiveAdaptation Source.Mode?`) survives and
+    keeps that portion an Adaptation conditional. Self-rez (`kHitPoints == 0`, no
+    `target>`) untouched. 15 generated files (the ~9 leech/state powers × datasets);
+    tsc + 84 tests. (The Warshade dead-enemy mechanic the user flagged — Stygian Circle
+    — uses a *different* gate and isn't affected here.)
+    - *Minor remaining:* DNA Siphon's mode-gated **heal** bonus (Defensive +0.375),
+      being a heal-via-`damage` entry, doesn't surface in the Adaptation
+      `conditionalEffects` (the heal-from-damage / mode-conditional paths don't meet).
+      Base heal is correct; only the mode bonus is under-shown.
   - ✅ **`activation_effects` drop — verified harmless (no action).** Audited every
     non-regen `IgnoreStrength` self template the filter drops: **0** are real
     enhanceable buffs (aspect=Current/Absolute on recovery/tohit/heal/defense/etc.).
@@ -164,10 +176,10 @@ not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
     — the earlier "duplicate-vs-genuine" worry didn't survive verification.
 
 ### Next steps (priority order)
-1. **`IgnoreStrength` is DONE** — Recovery, ToHit, Heal (single + both-portions) fixed;
-   Defense + `activation_effects` drop verified non-issues. New unrelated gap surfaced:
-   **conditional heals dropped** (DNA Siphon / Rebuild DNA show no heal — their heal
-   templates are `requires_expression`-gated; route through `conditionalEffects`).
+1. **`IgnoreStrength` DONE**; **per-target HP-state leech effects DONE** (DNA Siphon /
+   Phoenix Awakening / Glitz / Soul Absorption now surface their advertised effects).
+   Minor leftover: DNA Siphon's mode-gated *heal* bonus (heal-via-damage + mode) doesn't
+   reach the Adaptation conditionalEffects — needs the heal/mode-conditional paths joined.
 2. **Other clean power-field captures** (same pattern as the mez fields):
    `TimeToRoot` (2,340 — animation lock, affects DPS/rotation), `ModesDisallowed`
    (3,475), `StrengthsDisallowed` (951), `BuyRequires` (631). All genuinely absent,

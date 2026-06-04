@@ -1265,6 +1265,16 @@ function _stripIgnoredClauses(req) {
     // Match both casings (Parse6 lowercase, Parse7 capital). Consume an
     // immediately-following `!` so the strip leaves a clean RPN.
     .replace(/@customFX\s+\S+\s+eq(\s+!)?/gi, '')
+    // `Cur.kHitPoints target> 0 >` (target alive) / `... ==` (target defeated) —
+    // per-target HP-state gates on leech powers: DNA Siphon heals per LIVING foe
+    // hit and gains +Regen/+Recovery per DEFEATED foe; the gated effect IS the
+    // power's purpose (its shortHelp advertises "Self +HP, +End, +Special"), so
+    // strip the state clause and let the effect fold into the base display.
+    // A trailing mode clause (`kDefensiveAdaptation Source.Mode?` etc.) survives
+    // and keeps that portion conditional — so DNA Siphon's mode bonuses and all of
+    // Rebuild DNA (entirely mode-gated) correctly stay as Adaptation conditionals,
+    // not folded. Self-rez (`kHitPoints == 0`, no `target>`) is unaffected.
+    .replace(/Cur\.kHitPoints\s+target>\s+0\s+(?:>|==)/gi, '')
     // Collapse runs of whitespace introduced by the strips.
     .replace(/\s+/g, ' ')
     // Strip dangling boolean operators left behind. Repeat to handle
