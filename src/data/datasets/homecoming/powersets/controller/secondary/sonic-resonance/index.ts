@@ -16,7 +16,6 @@ import { SonicCage as SonicCage } from './sonic-cage';
 import { DisruptionField as DisruptionField } from './disruption-field';
 import { SonicDispersion as SonicDispersion } from './sonic-dispersion';
 import { SonicRepulsion as SonicRepulsion } from './sonic-repulsion';
-import { SonicRepulsion as SonicRepulsion2 } from './sonic-repulsion';
 import { Clarity as Clarity } from './clarity';
 import { Liquefy as Liquefy } from './liquefy';
 
@@ -35,7 +34,6 @@ export const powerset: Powerset = {
     DisruptionField,
     SonicDispersion,
     SonicRepulsion,
-    SonicRepulsion2,
     Clarity,
     Liquefy,
   ],

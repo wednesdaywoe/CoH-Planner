@@ -13,7 +13,6 @@ import { RadiationEmission as RadiationEmission } from './radiation-emission';
 import { RadiationInfection as RadiationInfection } from './radiation-infection';
 import { AccelerateMetabolism as AccelerateMetabolism } from './accelerate-metabolism';
 import { EnervatingField as EnervatingField } from './enervating-field';
-import { EnervatingField as EnervatingField2 } from './enervating-field';
 import { Mutation as Mutation } from './mutation';
 import { Lingeringradiation as Lingeringradiation } from './lingering-radiation';
 import { ChokingCloud as ChokingCloud } from './choking-cloud';
@@ -32,7 +31,6 @@ export const powerset: Powerset = {
     RadiationInfection,
     AccelerateMetabolism,
     EnervatingField,
-    EnervatingField2,
     Mutation,
     Lingeringradiation,
     ChokingCloud,
