@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Hibernate && Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Frozen_Armor && || Epic.Ice_Mastery.Hibernate Epic.Ice_Mastery.Frozen_Armor && || Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Hibernate && || Epic.Ice_Mastery.Ice_Blast Epic.Ice_Mastery.Frost_Breath && || Epic.Ice_Mastery.Hibernate Epic.Ice_Mastery.Frost_Breath && ||",
   "activate_requires": "",

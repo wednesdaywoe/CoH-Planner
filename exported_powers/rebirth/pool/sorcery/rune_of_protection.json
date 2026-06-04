@@ -39,6 +39,7 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt && Pool.Sorcery.Spirit_Ward Pool.Sorcery.Mystic_Flight && || Pool.Sorcery.Arcane_Bolt Pool.Sorcery.Mystic_Flight && ||",
   "activate_requires": "",

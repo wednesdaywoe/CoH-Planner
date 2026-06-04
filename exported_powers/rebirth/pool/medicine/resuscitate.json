@@ -42,6 +42,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant && Pool.Medicine.Aid_Other Pool.Medicine.Aid_Self && || Pool.Medicine.Stimulant Pool.Medicine.Aid_Self && ||",
   "activate_requires": "",

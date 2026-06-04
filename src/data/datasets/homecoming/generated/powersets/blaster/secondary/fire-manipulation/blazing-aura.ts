@@ -24,6 +24,11 @@ export const BlazingAura: Power = {
     "stun",
     "terror"
   ],
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,

@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Conserve_Power && Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Temp_Invulnerability && || Epic.primal_forces_mastery_Dominator.Conserve_Power Epic.primal_forces_mastery_Dominator.Temp_Invulnerability && || Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Conserve_Power && || Epic.primal_forces_mastery_Dominator.Energy_Transfer Epic.primal_forces_mastery_Dominator.Energy_Torrent && || Epic.primal_forces_mastery_Dominator.Conserve_Power Epic.primal_forces_mastery_Dominator.Energy_Torrent && ||",
   "activate_requires": "",

@@ -45,6 +45,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Mastermind_Leviathan_Mastery.School_of_Sharks Epic.Mastermind_Leviathan_Mastery.Chum_Spray && Epic.Mastermind_Leviathan_Mastery.School_of_Sharks Epic.Mastermind_Leviathan_Mastery.Knockout_Blow && || Epic.Mastermind_Leviathan_Mastery.School_of_Sharks Epic.Mastermind_Leviathan_Mastery.Shark_Skin && || Epic.Mastermind_Leviathan_Mastery.Chum_Spray Epic.Mastermind_Leviathan_Mastery.Knockout_Blow && || Epic.Mastermind_Leviathan_Mastery.Chum_Spray Epic.Mastermind_Leviathan_Mastery.Shark_Skin && || &&",
   "activate_requires": "",

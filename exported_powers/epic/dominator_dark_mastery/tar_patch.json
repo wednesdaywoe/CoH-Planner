@@ -41,6 +41,7 @@
     "Slow Movement"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "$archetype @Class_Dominator ==",
   "activate_requires": "",

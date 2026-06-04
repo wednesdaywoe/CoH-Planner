@@ -38,6 +38,7 @@
     "stun",
     "terror"
   ],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Dominator_Control.Wind_Control.Vortex Dominator_Control.Wind_Control.Vacuum &&",
   "activate_requires": "",

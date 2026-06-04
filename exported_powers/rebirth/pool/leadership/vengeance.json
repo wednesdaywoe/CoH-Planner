@@ -44,6 +44,7 @@
     "To Hit Buff"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Leadership.Defense Pool.Leadership.Assault && Pool.Leadership.Defense Pool.Leadership.Tactics && || Pool.Leadership.Assault Pool.Leadership.Tactics && ||",
   "activate_requires": "",

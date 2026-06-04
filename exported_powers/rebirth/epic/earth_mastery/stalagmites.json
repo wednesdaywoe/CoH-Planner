@@ -45,6 +45,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Salt_Crystals && Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Fossilize && || Epic.Earth_Mastery.Salt_Crystals Epic.Earth_Mastery.Fossilize && || Epic.Earth_Mastery.Stone_Prison Epic.Earth_Mastery.Quick_Sand && || Epic.Earth_Mastery.Salt_Crystals Epic.Earth_Mastery.Quick_Sand && ||",
   "activate_requires": "",

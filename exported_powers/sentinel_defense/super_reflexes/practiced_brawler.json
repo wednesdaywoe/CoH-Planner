@@ -41,6 +41,7 @@
     "stun",
     "terror"
   ],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Sentinel_Defense.Super_Reflexes.Master_Brawler !",
   "activate_requires": "",

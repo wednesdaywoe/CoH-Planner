@@ -18,6 +18,11 @@ export const DisruptionField: Power = {
   "powerType": "Toggle",
   "targetType": "Ally (Alive)",
   "effectArea": "AoE",
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

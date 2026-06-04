@@ -37,6 +37,11 @@
   ],
   "allowed_set_categories": null,
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Psionic_Mastery_Domingator.Link_Minds Epic.Psionic_Mastery_Domingator.Indomitable_Will ||",
   "activate_requires": "",

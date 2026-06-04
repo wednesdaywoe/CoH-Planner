@@ -39,6 +39,11 @@
     "To Hit Buff"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mace_Mastery.Web_Envelope Epic.Corruptor_Mace_Mastery.Scorpion_Shield || &&",
   "activate_requires": "",

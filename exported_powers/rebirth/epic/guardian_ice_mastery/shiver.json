@@ -42,6 +42,7 @@
     "To Hit Debuff"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Guardian_Ice_Mastery.Chilblain Epic.Guardian_Ice_Mastery.Frozen_Aura && Epic.Guardian_Ice_Mastery.Chilblain Epic.Guardian_Ice_Mastery.Freezing_Touch && || Epic.Guardian_Ice_Mastery.Chilblain Epic.Guardian_Ice_Mastery.Ice_Storm && || Epic.Guardian_Ice_Mastery.Frozen_Aura Epic.Guardian_Ice_Mastery.Ice_Storm && || Epic.Guardian_Ice_Mastery.Frozen_Aura Epic.Guardian_Ice_Mastery.Freezing_Touch && ||",
   "activate_requires": "",

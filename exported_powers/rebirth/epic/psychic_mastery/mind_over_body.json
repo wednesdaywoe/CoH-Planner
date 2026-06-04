@@ -39,6 +39,11 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Psychic_Mastery.Dominate Epic.Psychic_Mastery.Mass_Hypnosis ||",
   "activate_requires": "",

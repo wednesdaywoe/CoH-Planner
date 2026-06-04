@@ -41,6 +41,7 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Fissure && Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Stone_Armor && || Epic.Stone_Mastery.Fissure Epic.Stone_Mastery.Stone_Armor && || Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Fissure && || Epic.Stone_Mastery.Hurl_Boulder Epic.Stone_Mastery.Seismic_Smash && || Epic.Stone_Mastery.Fissure Epic.Stone_Mastery.Seismic_Smash && ||",
   "activate_requires": "",

@@ -41,6 +41,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Frost_Mastery.Block_of_Ice Epic.Frost_Mastery.Frostbite && Epic.Frost_Mastery.Block_of_Ice Epic.Frost_Mastery.Hoarfrost && || Epic.Frost_Mastery.Frostbite Epic.Frost_Mastery.Hoarfrost && || Epic.Frost_Mastery.Block_of_Ice Epic.Frost_Mastery.Frozen_Armor && || Epic.Frost_Mastery.Frostbite Epic.Frost_Mastery.Frozen_Armor && ||",
   "activate_requires": "",

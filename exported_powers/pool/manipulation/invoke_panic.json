@@ -40,6 +40,7 @@
     "Fear"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Manipulation.Challenge Pool.Manipulation.Provoke && Pool.Manipulation.Challenge Pool.Manipulation.Intimidate && || Pool.Manipulation.Provoke Pool.Manipulation.Intimidate && ||",
   "activate_requires": "",

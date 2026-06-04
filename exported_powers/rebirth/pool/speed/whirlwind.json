@@ -46,6 +46,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Speed.Flurry Pool.Speed.Hasten && Pool.Speed.Flurry Pool.Speed.Super_Speed && || Pool.Speed.Hasten Pool.Speed.Super_Speed && || Pool.Leaping.Spring_Attack ! Pool.Teleportation.Team_Teleport ! && Pool.Flight.Afterburner ! && Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration ! && Warshade_Offensive.Umbral_Blast.Starless_Step ! && &&",
   "activate_requires": "",

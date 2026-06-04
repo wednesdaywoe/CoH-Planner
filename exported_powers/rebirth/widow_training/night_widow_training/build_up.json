@@ -39,6 +39,7 @@
     "To Hit Buff"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Widow_Training.Widow_Training.Follow_Up !",
   "activate_requires": "",

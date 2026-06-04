@@ -39,6 +39,11 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Leviathan_Mastery.Water_Spout Epic.Dominator_Leviathan_Mastery.Chum_Spray || &&",
   "activate_requires": "",

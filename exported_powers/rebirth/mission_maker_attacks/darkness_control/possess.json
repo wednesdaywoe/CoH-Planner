@@ -39,6 +39,7 @@
   ],
   "allowed_set_categories": null,
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Mission_Maker_Secondary.Darkness_Control.Shadowy_Binds Mission_Maker_Secondary.Darkness_Control.Dark_Grasp || !",
   "activate_requires": "",

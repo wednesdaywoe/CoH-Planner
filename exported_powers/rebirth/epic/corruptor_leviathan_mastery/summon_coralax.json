@@ -49,6 +49,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Shark_Skin && Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Hibernate && || Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Spirit_Shark_Jaws && || Epic.Corruptor_Leviathan_Mastery.Shark_Skin Epic.Corruptor_Leviathan_Mastery.Hibernate && || Epic.Corruptor_Leviathan_Mastery.Shark_Skin Epic.Corruptor_Leviathan_Mastery.Spirit_Shark_Jaws && || &&",
   "activate_requires": "",

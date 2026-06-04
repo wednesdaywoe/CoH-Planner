@@ -39,6 +39,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast && Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Energy_Torrent && || Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Focused_Accuracy && || Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast Epic.Guardian_Primal_Forces_Mastery.Focused_Accuracy && || Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast Epic.Guardian_Primal_Forces_Mastery.Energy_Torrent && ||",
   "activate_requires": "",

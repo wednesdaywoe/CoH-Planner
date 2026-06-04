@@ -24,6 +24,11 @@ export const WhiteDwarf: Power = {
     "stun",
     "terror"
   ],
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 1,

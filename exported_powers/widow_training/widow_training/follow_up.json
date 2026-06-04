@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Widow_Training.Night_Widow_Training.Build_Up !",
   "activate_requires": "",

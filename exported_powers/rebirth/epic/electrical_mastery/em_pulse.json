@@ -43,6 +43,7 @@
     "Universal Control Duration"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Shocking_Bolt && Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Charged_Armor && || Epic.Electrical_Mastery.Shocking_Bolt Epic.Electrical_Mastery.Charged_Armor && || Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Shocking_Bolt && || Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Surge_of_Power && || Epic.Electrical_Mastery.Shocking_Bolt Epic.Electrical_Mastery.Surge_of_Power && ||",
   "activate_requires": "",

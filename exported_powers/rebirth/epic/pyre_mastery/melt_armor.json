@@ -43,6 +43,7 @@
     "To Hit Debuff"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Pyre_Mastery.Ring_of_Fire Epic.Pyre_Mastery.Char ||",
   "activate_requires": "",

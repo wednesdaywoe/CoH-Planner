@@ -39,6 +39,11 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Electrical_Mastery.Static_Discharge Epic.Electrical_Mastery.Shocking_Bolt ||",
   "activate_requires": "",

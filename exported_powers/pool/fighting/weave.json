@@ -39,6 +39,11 @@
     "Defense Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Pool.Fighting.Boxing Pool.Fighting.Kick && Pool.Fighting.Boxing Pool.Fighting.Tough && || Pool.Fighting.Kick Pool.Fighting.Tough && ||",
   "activate_requires": "",

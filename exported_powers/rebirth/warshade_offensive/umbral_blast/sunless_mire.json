@@ -47,6 +47,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Warshade_Defensive.Umbral_Aura.Black_Dwarf_Mire ! && Inherent.Inherent.Black_Dwarf_Mire ! &&",
   "activate_requires": "",

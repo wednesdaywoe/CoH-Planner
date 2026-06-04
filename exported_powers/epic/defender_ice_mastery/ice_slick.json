@@ -39,6 +39,7 @@
     "To Hit Buff"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic ownPowerNum? 0 >",
   "activate_requires": "",

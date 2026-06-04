@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Flight.Combat_Flight Pool.Flight.Air_Superiority && Pool.Flight.Combat_Flight Pool.Flight.Fly && || Pool.Flight.Air_Superiority Pool.Flight.Fly && || Pool.Speed.Whirlwind ! Pool.Teleportation.Team_Teleport ! && Pool.Leaping.Spring_Attack ! && Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration ! && Warshade_Offensive.Umbral_Blast.Starless_Step ! && &&",
   "activate_requires": "",

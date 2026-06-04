@@ -48,6 +48,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Leviathan_Mastery.Spirit_Shark Epic.VEAT_Leviathan_Mastery.School_of_Sharks || &&",
   "activate_requires": "",

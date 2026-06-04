@@ -41,6 +41,7 @@
     "Confuse"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Mastermind_Dark_Mastery.Murky_Cloud Epic.Mastermind_Dark_Mastery.Shadowy_Binds + 0 >",
   "activate_requires": "",

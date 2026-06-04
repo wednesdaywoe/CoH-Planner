@@ -40,6 +40,7 @@
     "To Hit Debuff"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Martial_Mastery_Stalker.Warriors_Mark Epic.Martial_Mastery_Stalker.Entangling_Arrow ||",
   "activate_requires": "",

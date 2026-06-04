@@ -48,6 +48,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Inferno_Mastery.Char Epic.Inferno_Mastery.Consume && Epic.Inferno_Mastery.Char Epic.Inferno_Mastery.Fire_Shield && || Epic.Inferno_Mastery.Consume Epic.Inferno_Mastery.Fire_Shield && || Epic.Inferno_Mastery.Char Epic.Inferno_Mastery.Bonfire && || Epic.Inferno_Mastery.Consume Epic.Inferno_Mastery.Bonfire && ||",
   "activate_requires": "",

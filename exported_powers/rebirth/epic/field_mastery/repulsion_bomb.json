@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Field_Mastery.Personal_Force_Field Epic.Field_Mastery.Power_Blast ||",
   "activate_requires": "",

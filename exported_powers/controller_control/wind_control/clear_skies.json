@@ -38,6 +38,7 @@
     "stun",
     "terror"
   ],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "accesslevel char> 0 >= Controller_Control.Wind_Control.Vortex && Controller_Control.Wind_Control.Vacuum &&",
   "activate_requires": "",

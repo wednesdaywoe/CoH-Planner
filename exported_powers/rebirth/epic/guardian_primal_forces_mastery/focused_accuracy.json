@@ -39,6 +39,11 @@
     "To Hit Buff"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast ||",
   "activate_requires": "",

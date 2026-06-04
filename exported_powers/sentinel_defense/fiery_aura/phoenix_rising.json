@@ -35,6 +35,7 @@
   ],
   "allowed_set_categories": null,
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Sentinel_Defense.Fiery_Aura.Rise_of_the_Phoenix",
   "activate_requires": "",

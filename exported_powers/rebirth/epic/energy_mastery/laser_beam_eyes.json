@@ -46,6 +46,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Energy_Mastery.Conserve_Power Epic.Energy_Mastery.Focused_Accuracy ||",
   "activate_requires": "",

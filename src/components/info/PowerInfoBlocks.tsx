@@ -49,6 +49,7 @@ export function TagsBlock({ power }: TagsBlockProps) {
   const targetLabel = formatTargetType(power.targetType);
   const allowedEnh = formatAllowedEnhancements(power);
   const castThroughMez = power.castThroughMez?.length ? formatCastThroughMez(power.castThroughMez) : null;
+  const toggleIgnoreMez = power.toggleIgnoreMez?.length ? formatCastThroughMez(power.toggleIgnoreMez) : null;
   return (
     <div className="bg-slate-800/40 rounded p-2 space-y-0.5">
       <KvRow label="Power Type" value={power.powerType} />
@@ -59,6 +60,14 @@ export function TagsBlock({ power }: TagsBlockProps) {
           value={castThroughMez}
           valueClass="text-amber-300"
           title={`This power can still be activated while ${castThroughMez} (e.g. Blaster Defiance).`}
+        />
+      )}
+      {toggleIgnoreMez && (
+        <KvRow
+          label="Stays On While Mez'd"
+          value={toggleIgnoreMez}
+          valueClass="text-amber-300"
+          title={`This power keeps running (does not detoggle) while ${toggleIgnoreMez}.`}
         />
       )}
       {allowedEnh && <KvRow label="Allowed Enh" value={allowedEnh} valueClass="text-slate-300 truncate" title={allowedEnh} />}

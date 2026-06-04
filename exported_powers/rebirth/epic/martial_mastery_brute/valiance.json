@@ -41,6 +41,11 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Martial_Mastery_Brute.Bodkin_Bolt Epic.Martial_Mastery_Brute.Throwing_Dagger && Epic.Martial_Mastery_Brute.Bodkin_Bolt Epic.Martial_Mastery_Brute.Battle_Hardened && || Epic.Martial_Mastery_Brute.Throwing_Dagger Epic.Martial_Mastery_Brute.Battle_Hardened && || Epic.Martial_Mastery_Brute.Reckless_Abandon Epic.Martial_Mastery_Brute.Battle_Hardened && || Epic.Martial_Mastery_Brute.Bodkin_Bolt Epic.Martial_Mastery_Brute.Reckless_Abandon && || Epic.Martial_Mastery_Brute.Throwing_Dagger Epic.Martial_Mastery_Brute.Reckless_Abandon && ||",
   "activate_requires": "",

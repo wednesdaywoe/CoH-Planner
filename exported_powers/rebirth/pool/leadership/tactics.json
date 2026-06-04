@@ -41,6 +41,11 @@
     "To Hit Buff"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Pool.Leadership.Defense Pool.Leadership.Assault ||",
   "activate_requires": "",

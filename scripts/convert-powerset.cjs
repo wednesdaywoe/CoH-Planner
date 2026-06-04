@@ -3227,6 +3227,14 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     power.castThroughMez = powerJson.cast_through;
   }
 
+  // Toggle-ignore-mez: mez states that DON'T detoggle this power — the toggle
+  // keeps running while you're Held/Slept/Stunned (e.g. mez-protection toggles
+  // that must survive the very mez they guard against). Captured by the bin
+  // parser as `toggle_ignore`. Omit when empty.
+  if (Array.isArray(powerJson.toggle_ignore) && powerJson.toggle_ignore.length) {
+    power.toggleIgnoreMez = powerJson.toggle_ignore;
+  }
+
   // Basic stats
   power.stats = {
     accuracy: powerJson.accuracy,

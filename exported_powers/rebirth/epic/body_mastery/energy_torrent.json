@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Body_Mastery.Conserve_Power Epic.Body_Mastery.Focused_Accuracy && Epic.Body_Mastery.Conserve_Power Epic.Body_Mastery.Laser_Beam_Eyes && || Epic.Body_Mastery.Conserve_Power Epic.Body_Mastery.Physical_Perfection && || Epic.Body_Mastery.Focused_Accuracy Epic.Body_Mastery.Physical_Perfection && || Epic.Body_Mastery.Focused_Accuracy Epic.Body_Mastery.Laser_Beam_Eyes && ||",
   "activate_requires": "",

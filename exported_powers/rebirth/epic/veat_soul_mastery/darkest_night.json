@@ -40,6 +40,7 @@
     "To Hit Debuff"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Soul_Tentacles || &&",
   "activate_requires": "",

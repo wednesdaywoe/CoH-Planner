@@ -39,6 +39,11 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Thunder_Strike ||",
   "activate_requires": "",

@@ -47,6 +47,7 @@
     "Universal Travel"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Leaping.Jump_Kick Pool.Leaping.Combat_Jumping && Pool.Leaping.Jump_Kick Pool.Leaping.Long_Jump && || Pool.Leaping.Combat_Jumping Pool.Leaping.Long_Jump && || Pool.Speed.Whirlwind ! Pool.Teleportation.Team_Teleport ! && Pool.Flight.Afterburner ! && Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration ! && Warshade_Offensive.Umbral_Blast.Starless_Step ! && &&",
   "activate_requires": "",

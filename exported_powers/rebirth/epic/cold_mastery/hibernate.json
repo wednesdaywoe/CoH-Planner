@@ -41,6 +41,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Flash_Freeze && Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Hoarfrost && || Epic.Cold_Mastery.Flash_Freeze Epic.Cold_Mastery.Hoarfrost && || Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Flash_Freeze && || Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Frozen_Armor && || Epic.Cold_Mastery.Flash_Freeze Epic.Cold_Mastery.Frozen_Armor && ||",
   "activate_requires": "",

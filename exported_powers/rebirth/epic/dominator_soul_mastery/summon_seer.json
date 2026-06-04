@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Dark_Embrace && Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Dark_Obliteration && || Epic.Dominator_Soul_Mastery.Dark_Consumption Epic.Dominator_Soul_Mastery.Soul_Drain && || Epic.Dominator_Soul_Mastery.Dark_Embrace Epic.Dominator_Soul_Mastery.Dark_Obliteration && || Epic.Dominator_Soul_Mastery.Dark_Embrace Epic.Dominator_Soul_Mastery.Soul_Drain && || &&",
   "activate_requires": "",

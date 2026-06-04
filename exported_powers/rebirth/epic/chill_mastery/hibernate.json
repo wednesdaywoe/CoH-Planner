@@ -41,6 +41,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Chill_Mastery.Ice_Blast Epic.Chill_Mastery.Flash_Freeze && Epic.Chill_Mastery.Ice_Blast Epic.Chill_Mastery.Hoarfrost && || Epic.Chill_Mastery.Ice_Blast Epic.Chill_Mastery.Snow_Storm && || Epic.Chill_Mastery.Flash_Freeze Epic.Chill_Mastery.Snow_Storm && || Epic.Chill_Mastery.Flash_Freeze Epic.Chill_Mastery.Hoarfrost && || Epic.Chill_Mastery.Hoarfrost Epic.Chill_Mastery.Snow_storm && ||",
   "activate_requires": "",

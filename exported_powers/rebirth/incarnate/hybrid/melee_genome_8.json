@@ -44,6 +44,11 @@
     "stun",
     "terror"
   ],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "",
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! ||",

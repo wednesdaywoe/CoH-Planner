@@ -43,6 +43,11 @@
     "Universal Travel"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Pool.Leaping.Jump_Kick Pool.Leaping.Combat_Jumping && Pool.Leaping.Jump_Kick Pool.Leaping.Long_Jump && || Pool.Leaping.Combat_Jumping Pool.Leaping.Long_Jump && ||",
   "activate_requires": "",

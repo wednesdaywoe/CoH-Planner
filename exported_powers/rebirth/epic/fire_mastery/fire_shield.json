@@ -39,6 +39,11 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Fire_Ball ||",
   "activate_requires": "",

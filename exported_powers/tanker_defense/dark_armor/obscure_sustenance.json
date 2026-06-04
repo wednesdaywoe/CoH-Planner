@@ -39,6 +39,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Tanker_Defense.Dark_Armor.Dark_Regeneration !",
   "activate_requires": "",

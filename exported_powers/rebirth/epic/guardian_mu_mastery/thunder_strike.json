@@ -49,6 +49,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Mu_Mastery.Electric_Shackles Epic.Guardian_Mu_Mastery.Ball_Lightning || &&",
   "activate_requires": "",

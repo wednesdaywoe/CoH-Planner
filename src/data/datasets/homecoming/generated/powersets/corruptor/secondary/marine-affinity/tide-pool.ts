@@ -18,6 +18,11 @@ export const TidePool: Power = {
   "powerType": "Click",
   "targetType": "Location",
   "effectArea": "Location",
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

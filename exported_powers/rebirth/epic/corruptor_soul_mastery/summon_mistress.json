@@ -48,6 +48,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Soul_Mastery.Soul_Drain Epic.Corruptor_Soul_Mastery.Dark_Embrace && Epic.Corruptor_Soul_Mastery.Soul_Drain Epic.Corruptor_Soul_Mastery.Power_Boost && || Epic.Corruptor_Soul_Mastery.Soul_Drain Epic.Corruptor_Soul_Mastery.Soul_Storm && || Epic.Corruptor_Soul_Mastery.Dark_Embrace Epic.Corruptor_Soul_Mastery.Power_Boost && || Epic.Corruptor_Soul_Mastery.Dark_Embrace Epic.Corruptor_Soul_Mastery.Soul_Storm && || &&",
   "activate_requires": "",

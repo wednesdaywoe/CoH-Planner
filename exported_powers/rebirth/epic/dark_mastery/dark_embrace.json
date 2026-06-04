@@ -39,6 +39,11 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Dark_Mastery.Oppressive_Gloom Epic.Dark_Mastery.Dark_Consumption ||",
   "activate_requires": "",

@@ -41,6 +41,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic ownPowerNum? 1 >",
   "activate_requires": "",

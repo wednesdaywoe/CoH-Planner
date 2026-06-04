@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "$archetype @Class_Corruptor == $archetype @Class_Defender == ||",
   "activate_requires": "",

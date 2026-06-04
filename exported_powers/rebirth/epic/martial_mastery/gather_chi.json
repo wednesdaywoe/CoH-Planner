@@ -41,6 +41,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Martial_Mastery.Aimed_Shot Epic.Martial_Mastery.Entangling_Arrow && Epic.Martial_Mastery.Aimed_Shot Epic.Martial_Mastery.Warriors_Mark && || Epic.Martial_Mastery.Entangling_Arrow Epic.Martial_Mastery.Warriors_Mark && || Epic.Martial_Mastery.Shukuchi Epic.Martial_Mastery.Warriors_Mark && || Epic.Martial_Mastery.Aimed_Shot Epic.Martial_Mastery.Shukuchi && || Epic.Martial_Mastery.Entangling_Arrow Epic.Martial_Mastery.Shukuchi && ||",
   "activate_requires": "",

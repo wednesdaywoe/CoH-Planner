@@ -18,6 +18,11 @@ export const DampeningField: Power = {
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "castTime": 0.5,

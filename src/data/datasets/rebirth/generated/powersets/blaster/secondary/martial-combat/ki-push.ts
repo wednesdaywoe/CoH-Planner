@@ -24,6 +24,11 @@ export const KiPush: Power = {
     "stun",
     "terror"
   ],
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

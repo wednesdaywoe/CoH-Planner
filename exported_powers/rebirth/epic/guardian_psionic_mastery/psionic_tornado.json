@@ -45,6 +45,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Guardian_Psionic_Mastery.Boggle Epic.Guardian_Psionic_Mastery.Greater_Psi_Blade ||",
   "activate_requires": "",

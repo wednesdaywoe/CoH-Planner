@@ -40,6 +40,7 @@
     "Threat Duration"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "0",
   "activate_requires": "",

@@ -18,6 +18,11 @@ export const RadiationInfection: Power = {
   "powerType": "Toggle",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

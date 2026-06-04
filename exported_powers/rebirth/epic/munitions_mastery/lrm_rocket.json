@@ -45,6 +45,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Munitions_Mastery.Body_Armor Epic.Munitions_Mastery.Cryo_Freeze_Ray && Epic.Munitions_Mastery.Body_Armor Epic.Munitions_Mastery.Sleep_Grenade && || Epic.Munitions_Mastery.Cryo_Freeze_Ray Epic.Munitions_Mastery.Sleep_Grenade && || Epic.Munitions_Mastery.Body_Armor Epic.Munitions_Mastery.Cryo_Freeze_Ray && || Epic.Munitions_Mastery.Body_Armor Epic.Munitions_Mastery.Surveillance && || Epic.Munitions_Mastery.Cryo_Freeze_Ray Epic.Munitions_Mastery.Surveillance && ||",
   "activate_requires": "",

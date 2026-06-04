@@ -41,6 +41,11 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Chill_Mastery.Ice_Blast Epic.Chill_Mastery.Flash_Freeze ||",
   "activate_requires": "",

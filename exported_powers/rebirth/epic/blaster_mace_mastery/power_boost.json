@@ -47,6 +47,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Blaster_Mace_Mastery.Web_Envelope Epic.Blaster_Mace_Mastery.Scorpion_Shield || &&",
   "activate_requires": "",

@@ -39,6 +39,7 @@
     "Universal Travel"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Teleportation.Teleport Pets.Pool_Teleportation.Teleport_Enhanced && Pets.Pool_Teleportation.Teleport_Efficient &&",
   "activate_requires": "",

@@ -36,6 +36,7 @@
   ],
   "allowed_set_categories": null,
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mu_Mastery.Power_Sink Epic.Corruptor_Mu_Mastery.Charged_Armor || &&",
   "activate_requires": "",

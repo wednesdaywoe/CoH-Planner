@@ -43,6 +43,7 @@
     "stun",
     "terror"
   ],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Sorcery.Spirit_Ward Pool.Sorcery.Arcane_Bolt + Pool.Sorcery.Mystic_Flight + 1 >",
   "activate_requires": "",

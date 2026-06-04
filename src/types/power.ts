@@ -545,6 +545,13 @@ export interface Power {
    * through any mez (the common case).
    */
   castThroughMez?: Array<'hold' | 'sleep' | 'stun' | 'terror'>;
+  /**
+   * Mez states that do NOT detoggle this power — it keeps running while you're
+   * Held/Slept/Stunned (e.g. mez-protection toggles that must survive the mez
+   * they guard against). Values: 'hold' | 'sleep' | 'stun'. Absent when the
+   * power detoggles normally on any mez (the common case).
+   */
+  toggleIgnoreMez?: Array<'hold' | 'sleep' | 'stun'>;
   /** Prerequisite power(s) - logical expression */
   requires?: string;
   /**

@@ -47,6 +47,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Mace_Mastery.Poisonous_Ray Epic.Dominator_Mace_Mastery.Scorpion_Shield && Epic.Dominator_Mace_Mastery.Poisonous_Ray Epic.Dominator_Mace_Mastery.Disruptor_Blast && || Epic.Dominator_Mace_Mastery.Poisonous_Ray Epic.Dominator_Mace_Mastery.Personal_Force_Field && || Epic.Dominator_Mace_Mastery.Scorpion_Shield Epic.Dominator_Mace_Mastery.Disruptor_Blast && || Epic.Dominator_Mace_Mastery.Scorpion_Shield Epic.Dominator_Mace_Mastery.Personal_Force_Field && || &&",
   "activate_requires": "",

@@ -40,6 +40,11 @@
     "Stuns"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic ownPowerNum? 0 >",
   "activate_requires": "",

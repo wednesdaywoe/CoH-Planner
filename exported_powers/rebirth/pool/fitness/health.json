@@ -37,6 +37,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Inherent.Fitness.Health ! Pool.Fitness.Quick Pool.Fitness.Hurdle || &&",
   "activate_requires": "",

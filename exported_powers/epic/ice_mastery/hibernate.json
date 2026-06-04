@@ -41,6 +41,11 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "$archetype @Class_Controller ==",
   "activate_requires": "",

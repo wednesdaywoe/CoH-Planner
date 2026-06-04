@@ -18,6 +18,11 @@ export const DangerSense: Power = {
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 4,

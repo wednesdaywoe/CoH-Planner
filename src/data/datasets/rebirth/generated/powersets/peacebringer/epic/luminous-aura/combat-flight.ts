@@ -18,6 +18,11 @@ export const CombatFlight: Power = {
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "endurance": 0.0813,

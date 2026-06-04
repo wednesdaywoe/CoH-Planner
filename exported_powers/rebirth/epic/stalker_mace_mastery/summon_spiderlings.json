@@ -47,6 +47,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Stalker_Mace_Mastery.Mace_Blast Epic.Stalker_Mace_Mastery.Mace_Beam && Epic.Stalker_Mace_Mastery.Mace_Blast Epic.Stalker_Mace_Mastery.Disruptor_Blast && || Epic.Stalker_Mace_Mastery.Mace_Blast Epic.Stalker_Mace_Mastery.Web_Cocoon && || Epic.Stalker_Mace_Mastery.Mace_Beam Epic.Stalker_Mace_Mastery.Disruptor_Blast && || Epic.Stalker_Mace_Mastery.Mace_Beam Epic.Stalker_Mace_Mastery.Web_Cocoon && || &&",
   "activate_requires": "",

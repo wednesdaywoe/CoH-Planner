@@ -41,6 +41,11 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Frost_Mastery.Block_of_Ice Epic.Frost_Mastery.Frostbite ||",
   "activate_requires": "",

@@ -45,6 +45,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Scrapper_Melee.Broad_Sword.Boomerang_Slice !",
   "activate_requires": "",

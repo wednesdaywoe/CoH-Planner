@@ -41,6 +41,11 @@
     "Universal Travel"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Inherent.Inherent.Combat_Flight !",
   "activate_requires": "",

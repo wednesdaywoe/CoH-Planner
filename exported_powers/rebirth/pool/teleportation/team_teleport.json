@@ -46,6 +46,7 @@
     "Universal Travel"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe && Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport && || Pool.Teleportation.Teleport_Foe Pool.Teleportation.Teleport && || Pool.Speed.Whirlwind ! Pool.Leaping.Spring_Attack ! && Pool.Flight.Afterburner ! && Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration ! && Warshade_Offensive.Umbral_Blast.Starless_Step ! && &&",
   "activate_requires": "",

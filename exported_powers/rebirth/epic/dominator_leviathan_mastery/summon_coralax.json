@@ -47,6 +47,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Leviathan_Mastery.Water_Spout Epic.Dominator_Leviathan_Mastery.Chum_Spray && Epic.Dominator_Leviathan_Mastery.Water_Spout Epic.Dominator_Leviathan_Mastery.Hibernate && || Epic.Dominator_Leviathan_Mastery.Water_Spout Epic.Dominator_Leviathan_Mastery.Shark_Skin && || Epic.Dominator_Leviathan_Mastery.Chum_Spray Epic.Dominator_Leviathan_Mastery.Hibernate && || Epic.Dominator_Leviathan_Mastery.Chum_Spray Epic.Dominator_Leviathan_Mastery.Shark_Skin && || &&",
   "activate_requires": "",

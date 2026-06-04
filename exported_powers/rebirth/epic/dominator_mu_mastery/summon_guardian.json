@@ -46,6 +46,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Dominator_Mu_Mastery.Power_Sink Epic.Dominator_Mu_Mastery.Charged_Armor && Epic.Dominator_Mu_Mastery.Power_Sink Epic.Dominator_Mu_Mastery.Ball_Lightning && || Epic.Dominator_Mu_Mastery.Power_Sink Epic.Dominator_Mu_Mastery.Surge_of_Power && || Epic.Dominator_Mu_Mastery.Charged_Armor Epic.Dominator_Mu_Mastery.Ball_Lightning && || Epic.Dominator_Mu_Mastery.Charged_Armor Epic.Dominator_Mu_Mastery.Surge_of_Power && || &&",
   "activate_requires": "",

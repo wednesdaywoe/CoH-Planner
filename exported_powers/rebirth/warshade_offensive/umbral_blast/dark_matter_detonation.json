@@ -48,6 +48,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Detonation ! && Inherent.Inherent.Dark_Nova_Detonation ! &&",
   "activate_requires": "",

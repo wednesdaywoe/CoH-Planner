@@ -37,8 +37,15 @@
     "Recharge",
     "Heal"
   ],
-  "allowed_set_categories": null,
+  "allowed_set_categories": [
+    "Rest Buff"
+  ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "",
   "activate_requires": "",

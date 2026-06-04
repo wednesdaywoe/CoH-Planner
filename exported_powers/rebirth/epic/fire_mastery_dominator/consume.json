@@ -43,6 +43,7 @@
     "To Hit Debuff"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Fire_Mastery_Dominator.Fire_Blast Epic.Fire_Mastery_Dominator.Fire_Ball && Epic.Fire_Mastery_Dominator.Fire_Blast Epic.Fire_Mastery_Dominator.Fire_Shield && || Epic.Fire_Mastery_Dominator.Fire_Blast Epic.Fire_Mastery_Dominator.Rise_of_the_Phoenix && || Epic.Fire_Mastery_Dominator.Fire_Ball Epic.Fire_Mastery_Dominator.Fire_Shield && || Epic.Fire_Mastery_Dominator.Fire_Ball Epic.Fire_Mastery_Dominator.Rise_of_the_Phoenix && ||",
   "activate_requires": "",

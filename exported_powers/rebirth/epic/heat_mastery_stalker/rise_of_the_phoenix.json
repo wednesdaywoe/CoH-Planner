@@ -48,6 +48,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Heat_Mastery_Stalker.Bonfire Epic.Heat_Mastery_Stalker.Fire_Blast && Epic.Heat_Mastery_Stalker.Bonfire Epic.Heat_Mastery_Stalker.Fire_Ball && || Epic.Heat_Mastery_Stalker.Bonfire Epic.Heat_Mastery_Stalker.Melt_Armor && || Epic.Heat_Mastery_Stalker.Fire_Blast Epic.Heat_Mastery_Stalker.Fire_Ball && || Epic.Heat_Mastery_Stalker.Fire_Blast Epic.Heat_Mastery_Stalker.Melt_Armor && ||",
   "activate_requires": "",

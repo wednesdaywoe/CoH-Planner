@@ -43,6 +43,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Fire_Ball && Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Fire_Shield && || Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Rise_of_the_Phoenix && || Epic.Fire_Mastery.Fire_Ball Epic.Fire_Mastery.Fire_Shield && || Epic.Fire_Mastery.Fire_Ball Epic.Fire_Mastery.Rise_of_the_Phoenix && ||",
   "activate_requires": "",

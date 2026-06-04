@@ -43,6 +43,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Experimentation.Experimental_Injection Pool.Experimentation.Toxic_Dart && Pool.Experimentation.Experimental_Injection Pool.Experimentation.Speed_of_Sound && || Pool.Experimentation.Toxic_Dart Pool.Experimentation.Speed_of_Sound && ||",
   "activate_requires": "",

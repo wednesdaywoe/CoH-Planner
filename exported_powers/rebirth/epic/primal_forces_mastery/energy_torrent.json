@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Primal_Forces_Mastery.Power_Blast Epic.Primal_Forces_Mastery.Conserve_Power ||",
   "activate_requires": "",

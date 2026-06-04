@@ -48,6 +48,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Fire_Mastery.Fire_Blast Epic.Fire_Mastery.Fire_Ball ||",
   "activate_requires": "",

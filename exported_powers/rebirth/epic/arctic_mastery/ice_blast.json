@@ -45,6 +45,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Arctic_Mastery.Chilblain Epic.Arctic_Mastery.Block_of_Ice ||",
   "activate_requires": "",

@@ -42,6 +42,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Guardian_Fire_Mastery.Ring_of_Fire Epic.Guardian_Fire_Mastery.Fire_Ball && Epic.Guardian_Fire_Mastery.Ring_of_Fire Epic.Guardian_Fire_Mastery.Char && || Epic.Guardian_Fire_Mastery.Ring_of_Fire Epic.Guardian_Fire_Mastery.Rain_of_Fire && || Epic.Guardian_Fire_Mastery.Fire_Ball Epic.Guardian_Fire_Mastery.Rain_of_Fire && || Epic.Guardian_Fire_Mastery.Fire_Ball Epic.Guardian_Fire_Mastery.Char && ||",
   "activate_requires": "",

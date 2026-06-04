@@ -45,6 +45,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Guardian_Primal_Forces_Mastery.Energy_Transfer Epic.Guardian_Primal_Forces_Mastery.Explosive_Blast ||",
   "activate_requires": "",

@@ -39,6 +39,11 @@
     "To Hit Buff"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Weapon_Mastery_Stalker.Web_Grenade Epic.Weapon_Mastery_Stalker.Caltrops ||",
   "activate_requires": "",

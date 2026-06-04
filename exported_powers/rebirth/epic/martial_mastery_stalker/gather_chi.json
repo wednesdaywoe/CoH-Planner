@@ -41,6 +41,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Martial_Mastery_Stalker.Aimed_Shot Epic.Martial_Mastery_Stalker.Entangling_Arrow && Epic.Martial_Mastery_Stalker.Aimed_Shot Epic.Martial_Mastery_Stalker.Warriors_Mark && || Epic.Martial_Mastery_Stalker.Entangling_Arrow Epic.Martial_Mastery_Stalker.Warriors_Mark && || Epic.Martial_Mastery_Stalker.War_Cry Epic.Martial_Mastery_Stalker.Warriors_Mark && || Epic.Martial_Mastery_Stalker.Aimed_Shot Epic.Martial_Mastery_Stalker.War_Cry && || Epic.Martial_Mastery_Stalker.Entangling_Arrow Epic.Martial_Mastery_Stalker.War_Cry && ||",
   "activate_requires": "",

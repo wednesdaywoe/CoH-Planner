@@ -39,6 +39,11 @@
     "Defense Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Pool.Invisibility.Stealth Pool.Invisibility.Grant_Invisibility ||",
   "activate_requires": "",

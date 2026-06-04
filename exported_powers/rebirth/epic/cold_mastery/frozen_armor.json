@@ -41,6 +41,11 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Cold_Mastery.Snow_Storm Epic.Cold_Mastery.Flash_Freeze ||",
   "activate_requires": "",

@@ -41,6 +41,7 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Force_Mastery.Personal_Force_Field Epic.Force_Mastery.Repulsion_Field && Epic.Force_Mastery.Personal_Force_Field Epic.Force_Mastery.Temp_Invulnerability && || Epic.Force_Mastery.Personal_Force_Field Epic.Force_Mastery.Repulsion_Bomb && || Epic.Force_Mastery.Repulsion_Field Epic.Force_Mastery.Temp_Invulnerability && || Epic.Force_Mastery.Repulsion_Field Epic.Force_Mastery.Repulsion_Bomb && ||",
   "activate_requires": "",

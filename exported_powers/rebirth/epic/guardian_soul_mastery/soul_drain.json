@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Soul_Mastery.Soul_Storm Epic.Guardian_Soul_Mastery.Dark_Obliteration || &&",
   "activate_requires": "",

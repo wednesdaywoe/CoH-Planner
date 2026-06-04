@@ -158,6 +158,7 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
             set_cats_index.get(pw.full_name) if set_cats_index else None
         ),
         'cast_through': pw.cast_through,
+        'toggle_ignore': pw.toggle_ignore,
         'num_allowed': pw.num_allowed,
         'requires': pw.requires,
         'activate_requires': pw.activate_requires,

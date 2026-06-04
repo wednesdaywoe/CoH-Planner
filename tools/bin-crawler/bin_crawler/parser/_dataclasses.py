@@ -110,6 +110,7 @@ class PowerRecord:
     boosts_allowed: list[str]
     allowed_boostset_cats: list[str]
     cast_through: list[str]
+    toggle_ignore: list[str]  # mez states that don't detoggle this power
     # Slot-requires expression. Empty for most powers. Boost (IO piece)
     # records carry per-piece "BoostsSlotted>X <= 0" constraints here when
     # the piece is unique within a slot pool — this is how the game enforces

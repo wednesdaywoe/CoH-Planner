@@ -40,6 +40,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Medicine.Aid_Other Pool.Medicine.Stimulant ||",
   "activate_requires": "",

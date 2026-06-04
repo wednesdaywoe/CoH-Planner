@@ -47,6 +47,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Electric_Shackles ||",
   "activate_requires": "",

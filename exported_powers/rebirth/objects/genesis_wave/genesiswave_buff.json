@@ -38,6 +38,7 @@
     "stun",
     "terror"
   ],
+  "toggle_ignore": [],
   "num_allowed": 5,
   "requires": "",
   "activate_requires": "",

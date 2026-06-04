@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Psionic_Mastery.Mental_Blast Epic.Psionic_Mastery.Indomitable_Will && Epic.Psionic_Mastery.Mental_Blast Epic.Psionic_Mastery.Mind_Over_Body && || Epic.Psionic_Mastery.Mental_Blast Epic.Psionic_Mastery.World_of_Confusion && || Epic.Psionic_Mastery.Indomitable_Will Epic.Psionic_Mastery.Mind_Over_Body && || Epic.Psionic_Mastery.Indomitable_Will Epic.Psionic_Mastery.World_of_Confusion && ||",
   "activate_requires": "",

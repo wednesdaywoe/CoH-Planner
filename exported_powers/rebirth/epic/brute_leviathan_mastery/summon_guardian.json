@@ -47,6 +47,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Brute_Leviathan_Mastery.Spirit_Shark Epic.Brute_Leviathan_Mastery.School_of_Sharks && Epic.Brute_Leviathan_Mastery.Spirit_Shark Epic.Brute_Leviathan_Mastery.Chum_Spray && || Epic.Brute_Leviathan_Mastery.Spirit_Shark Epic.Brute_Leviathan_Mastery.Arctic_Breath && || Epic.Brute_Leviathan_Mastery.School_of_Sharks Epic.Brute_Leviathan_Mastery.Chum_Spray && || Epic.Brute_Leviathan_Mastery.School_of_Sharks Epic.Brute_Leviathan_Mastery.Arctic_Breath && || &&",
   "activate_requires": "",

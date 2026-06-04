@@ -39,6 +39,7 @@
     "Endurance Modification"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Thunder_Strike && Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Charged_Armor && || Epic.Electricity_Mastery.Thunder_Strike Epic.Electricity_Mastery.Charged_Armor && || Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Thunder_Strike && || Epic.Electricity_Mastery.Electric_Fence Epic.Electricity_Mastery.Shocking_Bolt && || Epic.Electricity_Mastery.Thunder_Strike Epic.Electricity_Mastery.Shocking_Bolt && ||",
   "activate_requires": "",

@@ -41,6 +41,7 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Ice_Mastery_Dominator.Ice_Blast Epic.Ice_Mastery_Dominator.Hibernate ||",
   "activate_requires": "",

@@ -18,6 +18,11 @@ export const RagingTempest: Power = {
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

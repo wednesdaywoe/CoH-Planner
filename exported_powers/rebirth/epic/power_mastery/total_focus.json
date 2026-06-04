@@ -44,6 +44,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Power_Mastery.Conserve_Power Epic.Power_Mastery.Power_Build_Up && Epic.Power_Mastery.Conserve_Power Epic.Power_Mastery.Temp_Invulnerability && || Epic.Power_Mastery.Conserve_Power Epic.Power_Mastery.Force_of_Nature && || Epic.Power_Mastery.Power_Build_Up Epic.Power_Mastery.Force_of_Nature && || Epic.Power_Mastery.Power_Build_Up Epic.Power_Mastery.Temp_Invulnerability && ||",
   "activate_requires": "",

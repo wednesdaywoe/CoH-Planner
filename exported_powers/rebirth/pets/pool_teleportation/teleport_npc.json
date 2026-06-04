@@ -42,6 +42,7 @@
     "Universal Travel"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Teleportation.Recall_Friend Pool.Teleportation.Teleport_Foe &&",
   "activate_requires": "",

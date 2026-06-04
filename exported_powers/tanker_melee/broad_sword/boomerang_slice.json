@@ -47,6 +47,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Tanker_Melee.Broad_Sword.Slice !",
   "activate_requires": "",

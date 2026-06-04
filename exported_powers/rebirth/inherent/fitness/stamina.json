@@ -37,6 +37,7 @@
     "Endurance Modification"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Pool.Fitness.Quick Pool.Fitness.Hurdle || Pool.Fitness.Health || Pool.Fitness.Stamina || !",
   "activate_requires": "Pool.Fitness.Quick Pool.Fitness.Hurdle || Pool.Fitness.Health || Pool.Fitness.Stamina || !",

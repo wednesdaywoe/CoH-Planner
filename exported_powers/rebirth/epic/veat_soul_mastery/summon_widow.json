@@ -43,6 +43,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Soul_Tentacles && Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Darkest_Night && || Epic.VEAT_Soul_Mastery.Gloom Epic.VEAT_Soul_Mastery.Dark_Obliteration && || Epic.VEAT_Soul_Mastery.Soul_Tentacles Epic.VEAT_Soul_Mastery.Darkest_Night && || Epic.VEAT_Soul_Mastery.Soul_Tentacles Epic.VEAT_Soul_Mastery.Dark_Obliteration && || &&",
   "activate_requires": "",

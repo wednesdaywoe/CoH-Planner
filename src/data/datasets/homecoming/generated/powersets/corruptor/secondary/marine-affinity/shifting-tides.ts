@@ -18,6 +18,11 @@ export const ShiftingTides: Power = {
   "powerType": "Toggle",
   "targetType": "Ally",
   "effectArea": "AoE",
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

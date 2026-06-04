@@ -42,6 +42,7 @@
     "Threat Duration"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "$archetype @Class_Tanker ==",
   "activate_requires": "$archetype @Class_Tanker ==",

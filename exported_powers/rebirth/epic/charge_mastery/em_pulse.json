@@ -43,6 +43,7 @@
     "Universal Control Duration"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Electric_Shackles && Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Thunder_Strike && || Epic.Charge_Mastery.Electric_Shackles Epic.Charge_Mastery.Thunder_Strike && || Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Electric_Shackles && || Epic.Charge_Mastery.Static_Discharge Epic.Charge_Mastery.Surge_of_Power && || Epic.Charge_Mastery.Electric_Shackles Epic.Charge_Mastery.Surge_of_Power && ||",
   "activate_requires": "",

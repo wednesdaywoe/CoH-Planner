@@ -46,6 +46,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Corruptor_Mace_Mastery.Web_Envelope Epic.Corruptor_Mace_Mastery.Scorpion_Shield && Epic.Corruptor_Mace_Mastery.Web_Envelope Epic.Corruptor_Mace_Mastery.Focused_Accuracy && || Epic.Corruptor_Mace_Mastery.Web_Envelope Epic.Corruptor_Mace_Mastery.Web_Cocoon && || Epic.Corruptor_Mace_Mastery.Scorpion_Shield Epic.Corruptor_Mace_Mastery.Focused_Accuracy && || Epic.Corruptor_Mace_Mastery.Scorpion_Shield Epic.Corruptor_Mace_Mastery.Web_Cocoon && || &&",
   "activate_requires": "",

@@ -41,6 +41,11 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Martial_Mastery_Tanker.Bodkin_Bolt Epic.Martial_Mastery_Tanker.Throwing_Dagger && Epic.Martial_Mastery_Tanker.Bodkin_Bolt Epic.Martial_Mastery_Tanker.Battle_Hardened && || Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Battle_Hardened && || Epic.Martial_Mastery_Tanker.Art_Of_War Epic.Martial_Mastery_Tanker.Battle_Hardened && || Epic.Martial_Mastery_Tanker.Bodkin_Bolt Epic.Martial_Mastery_Tanker.Art_Of_War && || Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Art_Of_War && ||",
   "activate_requires": "",

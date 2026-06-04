@@ -45,6 +45,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Martial_Mastery_Brute.Throwing_Dagger Epic.Martial_Mastery_Brute.Battle_Hardened ||",
   "activate_requires": "",

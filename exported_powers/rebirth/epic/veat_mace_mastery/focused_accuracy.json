@@ -41,6 +41,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.VEAT_Mace_Mastery.Mace_Blast Epic.VEAT_Mace_Mastery.Web_Envelope || &&",
   "activate_requires": "",

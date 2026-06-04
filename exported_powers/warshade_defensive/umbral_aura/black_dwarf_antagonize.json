@@ -40,6 +40,7 @@
     "Threat Duration"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Antagonize ! &&",
   "activate_requires": "",

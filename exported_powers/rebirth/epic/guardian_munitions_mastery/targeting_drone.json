@@ -39,6 +39,11 @@
     "To Hit Buff"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic.Guardian_Munitions_Mastery.Taser_Jolt Epic.Guardian_Munitions_Mastery.Attack_Munitions ||",
   "activate_requires": "",

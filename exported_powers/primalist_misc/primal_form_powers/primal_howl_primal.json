@@ -43,6 +43,7 @@
     "Healing"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "accesslevel char> 0 >=",
   "activate_requires": "",

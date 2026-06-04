@@ -48,6 +48,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Flame_Mastery.Bonfire Epic.Flame_Mastery.Char && Epic.Flame_Mastery.Bonfire Epic.Flame_Mastery.Fire_Shield && || Epic.Flame_Mastery.Bonfire Epic.Flame_Mastery.Melt_Armor && || Epic.Flame_Mastery.Char Epic.Flame_Mastery.Fire_Shield && || Epic.Flame_Mastery.Char Epic.Flame_Mastery.Melt_Armor && ||",
   "activate_requires": "",

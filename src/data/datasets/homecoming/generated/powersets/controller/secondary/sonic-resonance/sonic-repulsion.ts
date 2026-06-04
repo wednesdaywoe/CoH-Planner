@@ -18,6 +18,11 @@ export const SonicRepulsion: Power = {
   "powerType": "Toggle",
   "targetType": "Teammate",
   "effectArea": "AoE",
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

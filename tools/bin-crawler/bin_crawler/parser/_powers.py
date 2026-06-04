@@ -771,8 +771,13 @@ def _parse_effects(r: BinReader) -> tuple[list[EffectGroup], list[EffectGroup]]:
     return effects, activation_effects
 
 
-def _parse_cast_flags(r: BinReader) -> list[str]:
-    """Parse cast_flags structure (52 bytes) and return cast-through list."""
+def _parse_cast_flags(r: BinReader) -> tuple[list[str], list[str]]:
+    """Parse cast_flags structure (52 bytes); return (cast_through, toggle_ignore).
+
+    cast_through  = mez states the power can be ACTIVATED through (Blaster Defiance).
+    toggle_ignore = mez states that DON'T detoggle the power (the toggle keeps
+                    running while you're Held/Slept/Stunned).
+    """
     # Layout: near_ground(4) + target_near_ground(4) + 1+3 bytes bitfield
     #   + cast_through_hold(4) + cast_through_sleep(4) + cast_through_stun(4)
     #   + cast_through_terrorize(4) + toggle_ignore_hold(4) + toggle_ignore_sleep(4)
@@ -785,14 +790,21 @@ def _parse_cast_flags(r: BinReader) -> list[str]:
     cast_through_sleep = r.read_bool()
     cast_through_stun = r.read_bool()
     cast_through_terrorize = r.read_bool()
-    r.skip(24)  # 6 remaining bools: toggle_ignore_* + ignore_level_bought + shoot_through + interrupt_like_sleep
+    toggle_ignore_hold = r.read_bool()
+    toggle_ignore_sleep = r.read_bool()
+    toggle_ignore_stun = r.read_bool()
+    r.skip(12)  # 3 remaining bools: ignore_level_bought + shoot_through + interrupt_like_sleep
 
     cast_through = []
     if cast_through_hold: cast_through.append("hold")
     if cast_through_sleep: cast_through.append("sleep")
     if cast_through_stun: cast_through.append("stun")
     if cast_through_terrorize: cast_through.append("terror")
-    return cast_through
+    toggle_ignore = []
+    if toggle_ignore_hold: toggle_ignore.append("hold")
+    if toggle_ignore_sleep: toggle_ignore.append("sleep")
+    if toggle_ignore_stun: toggle_ignore.append("stun")
+    return cast_through, toggle_ignore
 
 
 def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: bool = False) -> PowerRecord:
@@ -871,7 +883,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # 33. accuracy (f4)
     accuracy = r.read_f4()
     # 34. cast_flags (52 bytes)
-    cast_through = _parse_cast_flags(r)
+    cast_through, toggle_ignore = _parse_cast_flags(r)
     # 35. ai_report (u4)
     r.read_u4()
     # 35b. HC extra field (u4)
@@ -1056,6 +1068,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         boosts_allowed=boosts_allowed,
         allowed_boostset_cats=allowed_boostset_cats,
         cast_through=cast_through,
+        toggle_ignore=toggle_ignore,
         slot_requires=slot_requires,
         effects=effects,
         activation_effects=activation_effects,
@@ -1436,7 +1449,7 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False) -> PowerRecor
     r.read_string_array()  # 31
     r.read_string()  # 32
     accuracy = r.read_f4()  # 33
-    cast_through = _parse_cast_flags(r)  # 34
+    cast_through, toggle_ignore = _parse_cast_flags(r)  # 34
     r.read_u4()  # 35 ai_report
     # (NO 35b in Parse6)
     effect_area = r.read_u4()  # 36
@@ -1556,6 +1569,7 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False) -> PowerRecor
         boosts_allowed=boosts_allowed,
         allowed_boostset_cats=allowed_boostset_cats,
         cast_through=cast_through,
+        toggle_ignore=toggle_ignore,
         slot_requires=slot_requires,
         effects=effects,
         activation_effects=activation_effects,

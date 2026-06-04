@@ -40,6 +40,11 @@
     "To Hit Debuff"
   ],
   "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "num_allowed": 1,
   "requires": "Epic ownPowerNum? 1 >",
   "activate_requires": "",

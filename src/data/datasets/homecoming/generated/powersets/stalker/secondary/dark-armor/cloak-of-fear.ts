@@ -18,6 +18,11 @@ export const CloakofFear: Power = {
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "AoE",
+  "toggleIgnoreMez": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
   "stats": {
     "accuracy": 0.8,
     "radius": 15,

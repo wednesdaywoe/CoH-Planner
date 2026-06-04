@@ -43,6 +43,7 @@
     "To Hit Debuff"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Flame_Mastery.Bonfire Epic.Flame_Mastery.Char ||",
   "activate_requires": "",

@@ -41,6 +41,7 @@
     "Resist Damage"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Field_Mastery.Personal_Force_Field Epic.Field_Mastery.Power_Blast && Epic.Field_Mastery.Personal_Force_Field Epic.Field_Mastery.Energy_Torrent && || Epic.Field_Mastery.Personal_Force_Field Epic.Field_Mastery.Repulsion_Bomb && || Epic.Field_Mastery.Power_Blast Epic.Field_Mastery.Energy_Torrent && || Epic.Field_Mastery.Power_Blast Epic.Field_Mastery.Repulsion_Bomb && ||",
   "activate_requires": "",

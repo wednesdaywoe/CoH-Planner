@@ -42,6 +42,7 @@
     "To Hit Debuff"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "Epic.Guardian_Munitions_Mastery.Attack_Munitions Epic.Guardian_Munitions_Mastery.Taser_Jolt && Epic.Guardian_Munitions_Mastery.Attack_Munitions Epic.Guardian_Munitions_Mastery.Targeting_Drone && || Epic.Guardian_Munitions_Mastery.Attack_Munitions Epic.Guardian_Munitions_Mastery.Superior_Conditioning && || Epic.Guardian_Munitions_Mastery.Taser_Jolt Epic.Guardian_Munitions_Mastery.Superior_Conditioning && || Epic.Guardian_Munitions_Mastery.Taser_Jolt Epic.Guardian_Munitions_Mastery.Targeting_Drone && ||",
   "activate_requires": "",

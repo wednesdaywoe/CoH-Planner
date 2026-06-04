@@ -50,6 +50,7 @@
     "Universal Damage Sets"
   ],
   "cast_through": [],
+  "toggle_ignore": [],
   "num_allowed": 1,
   "requires": "SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Epic.Guardian_Leviathan_Mastery.Spirit_Shark_Jaws Epic.Guardian_Leviathan_Mastery.Arctic_Breath || &&",
   "activate_requires": "",
