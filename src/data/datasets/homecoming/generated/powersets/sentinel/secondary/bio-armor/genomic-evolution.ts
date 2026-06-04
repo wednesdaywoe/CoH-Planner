@@ -85,8 +85,7 @@ export const GenomicEvolution: Power = {
         },
         "buffDuration": 5.25
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "defensiveadaptation",
@@ -133,8 +132,7 @@ export const GenomicEvolution: Power = {
         },
         "buffDuration": 5.25
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     }
   ],
   "mechanicType": "parentMechanic"

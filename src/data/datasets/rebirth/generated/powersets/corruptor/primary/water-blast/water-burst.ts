@@ -74,8 +74,7 @@ export const WaterBurst: Power = {
           "table": "Ranged_Ones"
         }
       },
-      "group": "tidal_power-stacks",
-      "mode": "replace"
+      "group": "tidal_power-stacks"
     },
     {
       "id": "tidal_power-2",
@@ -93,8 +92,7 @@ export const WaterBurst: Power = {
           "table": "Ranged_Ones"
         }
       },
-      "group": "tidal_power-stacks",
-      "mode": "replace"
+      "group": "tidal_power-stacks"
     },
     {
       "id": "tidal_power-3",
@@ -112,8 +110,7 @@ export const WaterBurst: Power = {
           "table": "Ranged_Ones"
         }
       },
-      "group": "tidal_power-stacks",
-      "mode": "replace"
+      "group": "tidal_power-stacks"
     },
     {
       "id": "tidal_power-0",
@@ -126,8 +123,7 @@ export const WaterBurst: Power = {
           "table": "Ranged_Ones"
         }
       },
-      "group": "tidal_power-stacks",
-      "mode": "replace"
+      "group": "tidal_power-stacks"
     }
   ],
   "specialEffects": [

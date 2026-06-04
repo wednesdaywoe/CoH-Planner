@@ -255,6 +255,8 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const vigilanceTeamSize = useUIStore((state) => state.vigilanceTeamSize);
   const furyLevel = useUIStore((state) => state.furyLevel);
   const combatMode = useUIStore((state) => state.combatMode);
+  const globalAdjusters = useUIStore((state) => state.globalAdjusters);
+  const mechanicAdjusters = useUIStore((state) => state.mechanicAdjusters);
 
   // When master Proc toggle is off, disable all proc categories
   const effectiveProcSettings = procsEnabled ? procSettings : ALL_PROCS_DISABLED;
@@ -269,8 +271,10 @@ export function useCharacterCalculation(): CharacterCalculationResult {
       furyLevel,
       incarnateLevelShiftActive,
       combatMode,
+      globalAdjusters,
+      mechanicAdjusters,
     });
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters]);
 }
 
 /**
@@ -288,6 +292,8 @@ export function useCalculatedStats(): CalculatedStats {
   const vigilanceTeamSize = useUIStore((state) => state.vigilanceTeamSize);
   const furyLevel = useUIStore((state) => state.furyLevel);
   const combatMode = useUIStore((state) => state.combatMode);
+  const globalAdjusters = useUIStore((state) => state.globalAdjusters);
+  const mechanicAdjusters = useUIStore((state) => state.mechanicAdjusters);
 
   // When master Proc toggle is off, disable all proc categories
   const effectiveProcSettings = procsEnabled ? procSettings : ALL_PROCS_DISABLED;
@@ -301,9 +307,11 @@ export function useCalculatedStats(): CalculatedStats {
       furyLevel,
       incarnateLevelShiftActive,
       combatMode,
+      globalAdjusters,
+      mechanicAdjusters,
     });
     return convertToLegacyStats(result.stats, result);
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, vigilanceTeamSize, furyLevel, combatMode]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters]);
 }
 
 /**

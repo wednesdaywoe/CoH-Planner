@@ -82,8 +82,7 @@ export const Inexhaustible: Power = {
         },
         "buffDuration": 5.25
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "restedadaptation",
@@ -105,8 +104,7 @@ export const Inexhaustible: Power = {
         },
         "buffDuration": 5.25
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     }
   ],
   "mechanicType": "parentMechanic"

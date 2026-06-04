@@ -101,8 +101,7 @@ export const Geyser: Power = {
           "table": "Ranged_Stun"
         }
       },
-      "group": "tidal_power-stacks",
-      "mode": "replace"
+      "group": "tidal_power-stacks"
     },
     {
       "id": "tidal_power-2",
@@ -130,8 +129,7 @@ export const Geyser: Power = {
           "table": "Ranged_Stun"
         }
       },
-      "group": "tidal_power-stacks",
-      "mode": "replace"
+      "group": "tidal_power-stacks"
     },
     {
       "id": "tidal_power-3",
@@ -159,8 +157,7 @@ export const Geyser: Power = {
           "table": "Ranged_Stun"
         }
       },
-      "group": "tidal_power-stacks",
-      "mode": "replace"
+      "group": "tidal_power-stacks"
     },
     {
       "id": "tidal_power-0",
@@ -174,8 +171,7 @@ export const Geyser: Power = {
         "duration": 5.1,
         "tickRate": 0.5
       },
-      "group": "tidal_power-stacks",
-      "mode": "replace"
+      "group": "tidal_power-stacks"
     }
   ],
   "specialEffects": [

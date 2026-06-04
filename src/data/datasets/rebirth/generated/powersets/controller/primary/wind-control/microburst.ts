@@ -85,8 +85,7 @@ export const Microburst: Power = {
         },
         "buffDuration": 12
       },
-      "group": "wind_control_pressure-stacks",
-      "mode": "replace"
+      "group": "wind_control_pressure-stacks"
     },
     {
       "id": "wind_control_pressure-6",
@@ -103,8 +102,7 @@ export const Microburst: Power = {
         },
         "buffDuration": 12
       },
-      "group": "wind_control_pressure-stacks",
-      "mode": "replace"
+      "group": "wind_control_pressure-stacks"
     }
   ],
   "specialEffects": [

@@ -4,13 +4,13 @@
  * Row 2 (conditional): AT-specific mechanic toggles/sliders
  */
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { useNavigate, useLocation } from '@tanstack/react-router';
 import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import { useHistoryStore } from '@/stores/historyStore';
 import { useOnboardingStore, useOnboardingCurrentStep } from '@/stores/onboardingStore';
 import { supabase } from '@/lib/supabase';
-import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel } from '@/data';
+import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel, ADAPTATION_MODES, ADAPTATION_MODE_IDS, isAdaptationModeId } from '@/data';
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import type { BadgeVariant } from '@/components/ui';
@@ -260,6 +260,7 @@ export function Header() {
 
         {archetypeId && <ATMechanics archetypeId={archetypeId} />}
         <KheldianFormSelector />
+        <AdaptationModeSelector />
       </div>
 
       {/* Confirmation modals */}
@@ -1426,6 +1427,63 @@ function KheldianFormSelector() {
         {button('human', 'Human')}
         {button('nova', novaLabel)}
         {button('dwarf', dwarfLabel)}
+      </div>
+    </Tooltip>
+  );
+}
+
+/**
+ * Global Bio Armor Adaptation stance selector. Shows only when the build's
+ * primary or secondary powerset carries adaptation-mode conditionals (Bio
+ * Armor). Selecting a mode flips the shared `globalAdjusters` state (mutually
+ * exclusive via the registry's mode ids), which drives every Bio Armor power's
+ * mode-gated bonuses AND the dashboard totals (see character-totals
+ * `expandActiveConditionals`). Re-clicking the active mode clears it (no stance).
+ */
+function AdaptationModeSelector() {
+  const build = useBuildStore((s) => s.build);
+  const globalAdjusters = useUIStore((s) => s.globalAdjusters);
+  const setGlobalAdjusterGroup = useUIStore((s) => s.setGlobalAdjusterGroup);
+
+  const hasAdaptation = useMemo(() => {
+    for (const id of [build.primary?.id, build.secondary?.id]) {
+      if (!id) continue;
+      const ps = getPowerset(id);
+      if (ps?.powers?.some((p) => p.conditionalEffects?.some((c) => isAdaptationModeId(c.id)))) {
+        return true;
+      }
+    }
+    return false;
+  }, [build.primary?.id, build.secondary?.id]);
+
+  if (!hasAdaptation) return null;
+
+  const activeId = ADAPTATION_MODES.find((m) => globalAdjusters[m.id])?.id ?? null;
+
+  const button = (mode: (typeof ADAPTATION_MODES)[number]) => {
+    const active = activeId === mode.id;
+    return (
+      <button
+        key={mode.id}
+        type="button"
+        onClick={() => setGlobalAdjusterGroup(active ? null : mode.id, ADAPTATION_MODE_IDS)}
+        title={`${mode.label}${active ? ' — active (click to turn off)' : ''}`}
+        className={`px-2 py-0.5 text-xs rounded border transition-colors ${
+          active
+            ? 'bg-emerald-700/50 border-emerald-500 text-emerald-100'
+            : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
+        }`}
+      >
+        {mode.short}
+      </button>
+    );
+  };
+
+  return (
+    <Tooltip content="Bio Armor stance. Selecting a mode applies its mode-gated bonuses (Defensive +Def/+HP, Offensive +ToHit/-Regen, Efficient +Regen/+Recovery) across every Bio Armor power and the dashboard totals. Mutually exclusive — re-click to clear.">
+      <div className="flex items-center gap-1 px-2 py-1 rounded border bg-slate-700/50 border-slate-600">
+        <span className="text-xs text-slate-400 mr-1">Adaptation:</span>
+        {ADAPTATION_MODES.map(button)}
       </div>
     </Tooltip>
   );

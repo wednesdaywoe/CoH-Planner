@@ -1713,15 +1713,22 @@ function _annotateConditionalGroups(entries) {
     }
   }
 
-  // Grouped conditionals are inherently mutex (the radio enforces a
-  // single active member). When the active member's effects collide
-  // with base effect keys, replacement is the correct semantics — the
-  // selected mode swaps in for whatever default the base carried. Mark
-  // any grouped entry without an explicit mode as 'replace' unless an
-  // earlier pass already classified it.
-  for (const e of entries) {
-    if (e.group && !e.mode) e.mode = 'replace';
-  }
+  // NOTE: grouping (mutual-exclusivity between siblings) and `mode` (whether an
+  // active member REPLACES or ADDS TO the base power's effects) are orthogonal.
+  // We intentionally do NOT force grouped entries to `mode: 'replace'`.
+  //
+  // The genuine replace case is detected earlier via `baseNegated`: a base
+  // template that negates the conditional's own predicate (Suffocate's -Def:
+  // base "if NOT drowning", conditional "if drowning"). Those mutex *variants*
+  // correctly overwrite the base.
+  //
+  // Bio Armor's adaptation modes are the counter-example that proved the old
+  // blanket rule wrong: the raw `.powers` def shows the base armor mods have NO
+  // `Requires` (always-on) and each mode mod is `Requires k<Mode>Adaptation
+  // source.Mode?` — they ADD on top (base +Def 1.5 plus mode +Def 0.45 = 1.95).
+  // Forcing `replace` made the InfoPanel drop the always-on base. Grouped
+  // conditionals therefore default to additive (mode omitted) unless the
+  // negated-base detection found a real replace.
 }
 
 /**

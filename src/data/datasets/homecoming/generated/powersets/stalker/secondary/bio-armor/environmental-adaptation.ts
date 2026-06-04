@@ -148,8 +148,7 @@ export const EnvironmentalAdaptation: Power = {
         },
         "buffDuration": 0.75
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "offensiveadaptation",
@@ -166,8 +165,7 @@ export const EnvironmentalAdaptation: Power = {
         },
         "buffDuration": 0.75
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     }
   ]
 };

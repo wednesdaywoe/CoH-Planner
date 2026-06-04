@@ -12,8 +12,9 @@
  * - Global Bonuses → Dashboard Stats (with breakdown tracking)
  */
 
-import type { Build, Accolade, Enhancement, EnhancementStatType, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
+import type { Build, Accolade, ConditionalEffect, Enhancement, EnhancementStatType, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
+import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
@@ -656,6 +657,10 @@ interface PowerWithToggle {
   /** Used by `combineWithAlphaED` to gate Alpha bonuses by what the power
    * actually accepts as enhancements. See enhancement-values.ts. */
   allowedEnhancements?: EnhancementStatType[];
+  /** Mode-/state-gated contributions (Bio Armor adaptation modes, Hide, …)
+   *  carried from the powerset definition. The active ones are expanded into
+   *  synthetic active-power contributions by `expandActiveConditionals`. */
+  conditionalEffects?: ConditionalEffect[];
 }
 
 /** targetType values where the power cannot be cast on self — the buff goes
@@ -3007,7 +3012,7 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
   // into the caster's totals.
   const enrich = (
     power: { internalName?: string; isActive?: boolean; slots?: unknown },
-    def?: { targetType?: string; powerType?: string; effectArea?: string; effects?: unknown },
+    def?: { targetType?: string; powerType?: string; effectArea?: string; effects?: unknown; conditionalEffects?: unknown },
   ): PowerWithToggle => {
     if (!def) return power as unknown as PowerWithToggle;
     return {
@@ -3017,6 +3022,9 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
       powerType: def.powerType,
       effectArea: def.effectArea,
       effects: def.effects ?? (power as { effects?: unknown }).effects,
+      // Carry mode-/state-gated contributions so the calc can apply the
+      // active ones (Bio Armor adaptation modes, …) — see expandActiveConditionals.
+      conditionalEffects: def.conditionalEffects ?? (power as { conditionalEffects?: unknown }).conditionalEffects,
     } as unknown as PowerWithToggle;
   };
 
@@ -3045,6 +3053,80 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
   }
 
   return powers;
+}
+
+/**
+ * Expand the *active* mode-/state-gated conditionalEffects of the build's
+ * active powers into synthetic active-power contributions.
+ *
+ * Bio Armor's adaptation modes (and similar mechanics) layer extra effects on
+ * top of a power's always-on base — e.g. Environmental Modification's base
+ * +Def(Fire) 1.5 plus an *additional* +Def(Fire) 0.45 while Defensive
+ * Adaptation is active (confirmed against the raw `.powers` def: the base mod
+ * has no `Requires`; the mode mod is `Requires kDefensiveAdaptation source.Mode?`).
+ *
+ * Rather than merge the conditional into the base power (which would force a
+ * lossy replace-or-separate-row choice on colliding keys like `defenseBuff`),
+ * each active conditional becomes its own synthetic active power. Feeding it
+ * through the same `applyActivePowerBonuses` machinery makes collisions **sum**
+ * naturally at the global-totals level (base 1.5 + mode 0.45 = 1.95).
+ *
+ * The synthetic carries **no slots** and is applied with **no Alpha / no
+ * strength buffs** (see the call site) — these mode bonuses are flagged
+ * IgnoreStrength in the binary ("these special bonuses are unenhanceable"), so
+ * they must bypass enhancement and Power Boost.
+ *
+ * Default-safe: a build with no adjuster toggles selected (the common case)
+ * produces zero synthetics, so the dashboard totals are byte-identical to
+ * before this pass existed. Behavior only appears once the user picks a mode.
+ *
+ * AT-inherent gated conditionals (Domination, …) are skipped — they already
+ * have dedicated total handling and would otherwise double-count.
+ */
+function expandActiveConditionals(
+  powers: PowerWithToggle[],
+  globalAdjusters: Record<string, boolean>,
+  mechanicAdjusters: Record<string, boolean>,
+): PowerWithToggle[] {
+  const synthetics: PowerWithToggle[] = [];
+  for (const power of powers) {
+    // The parent must itself be active for its gated effects to apply.
+    const isAuto = power.powerType?.toLowerCase() === 'auto';
+    if (!(isAuto || power.isActive)) continue;
+
+    const conds = power.conditionalEffects;
+    if (!conds || conds.length === 0) continue;
+
+    for (const c of conds) {
+      // Driven elsewhere in the calc — skip to avoid double-counting.
+      if (AT_INHERENT_CONDITIONAL_IDS.has(c.id)) continue;
+      // Damage-only conditionals affect attack output, not dashboard totals.
+      if (!c.effects || Object.keys(c.effects).length === 0) continue;
+
+      const def = !!c.defaultActive;
+      let on: boolean;
+      if (c.scope === 'global') {
+        const v = globalAdjusters[c.id];
+        on = v === undefined ? def : v;
+      } else {
+        const v = mechanicAdjusters[`${power.internalName}:${c.id}`];
+        on = v === undefined ? def : v;
+      }
+      if (!on) continue;
+
+      synthetics.push({
+        name: `${power.name} (${c.label})`,
+        internalName: power.internalName,
+        powerType: power.powerType,
+        targetType: power.targetType,
+        effectArea: power.effectArea,
+        isActive: true,
+        effects: c.effects as unknown as ActivePowerEffect,
+        // Intentionally no slots / allowedEnhancements → unenhanced.
+      });
+    }
+  }
+  return synthetics;
 }
 
 /**
@@ -3077,6 +3159,15 @@ export interface CalculationOptions {
   incarnateLevelShiftActive?: boolean;
   /** Combat mode: suppress defenseBuffSuppressible from stealth/travel powers */
   combatMode?: boolean;
+  /** Active global Mechanic Adjuster state — caster-state toggles shared across
+   *  powers (Bio Armor adaptation modes, Hide, In Combat, …), keyed by the bare
+   *  conditional `id`. Drives mode-gated conditionalEffects into the dashboard
+   *  totals. Default `{}` → no conditionals applied, so totals are unchanged
+   *  from a build with no toggles selected. */
+  globalAdjusters?: Record<string, boolean>;
+  /** Active per-power Mechanic Adjuster state — target-state toggles keyed
+   *  `<internalName>:<id>` (drowning, Disintegrating, …). Default `{}`. */
+  mechanicAdjusters?: Record<string, boolean>;
 }
 
 /**
@@ -3213,6 +3304,22 @@ export function calculateCharacterTotals(
   globalBonuses.strengthMovement = strengthBuffs.movement;
   globalBonuses.strengthMez = strengthBuffs.mez;
   applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs);
+
+  // Step 7.1: Apply active mode-/state-gated conditional contributions (Bio
+  // Armor adaptation modes, …). Each active conditional is a synthetic active
+  // power so its effects SUM onto the base power's at the totals level (e.g.
+  // Defensive Adaptation's +Def adds to Environmental Modification's base +Def).
+  // Applied with NO Alpha / NO strength buffs and no slots → unenhanced, because
+  // these mode bonuses are IgnoreStrength ("special bonuses are unenhanceable").
+  // Default-safe: no toggles selected → no synthetics → totals unchanged.
+  const conditionalPowers = expandActiveConditionals(
+    allPowers,
+    options?.globalAdjusters ?? {},
+    options?.mechanicAdjusters ?? {},
+  );
+  if (conditionalPowers.length > 0) {
+    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode);
+  }
   if (_debug) debugGroupEnd();
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)

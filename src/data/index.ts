@@ -329,6 +329,16 @@ export type { PowerLookupResult } from './power-lookup';
 // Stat/effect color palette (single source of truth)
 export { STAT_COLORS } from './stat-colors';
 
+// Bio Armor Adaptation mode registry (single source of truth for the mutually
+// exclusive Defensive/Offensive/Efficient stances and their cross-power gating)
+export {
+  ADAPTATION_MODES,
+  ADAPTATION_MODE_IDS,
+  isAdaptationModeId,
+  getActiveAdaptationModeId,
+} from './adaptation-modes';
+export type { AdaptationMode } from './adaptation-modes';
+
 // Effect registry for data-driven power effect display
 export {
   EFFECT_REGISTRY,

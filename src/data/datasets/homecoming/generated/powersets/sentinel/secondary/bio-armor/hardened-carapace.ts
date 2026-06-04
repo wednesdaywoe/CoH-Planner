@@ -98,8 +98,7 @@ export const HardenedCarapace: Power = {
         },
         "buffDuration": 0.75
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "offensiveadaptation",
@@ -116,8 +115,7 @@ export const HardenedCarapace: Power = {
         },
         "buffDuration": 0.75
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "restedadaptation",
@@ -134,8 +132,7 @@ export const HardenedCarapace: Power = {
         },
         "buffDuration": 0.75
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     }
   ]
 };

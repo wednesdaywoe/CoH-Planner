@@ -90,8 +90,7 @@ export const ParasiticLeech: Power = {
         },
         "buffDuration": 30
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "restedadaptation",
@@ -113,8 +112,7 @@ export const ParasiticLeech: Power = {
         },
         "buffDuration": 45
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "defensiveadaptation",
@@ -132,8 +130,7 @@ export const ParasiticLeech: Power = {
         },
         "buffDuration": 45
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     }
   ]
 };

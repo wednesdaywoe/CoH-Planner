@@ -198,8 +198,7 @@ export const Adaptation: Power = {
         },
         "buffDuration": 1
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "offensiveadaptation",
@@ -246,8 +245,7 @@ export const Adaptation: Power = {
         },
         "buffDuration": 1.12
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "defensiveadaptation",
@@ -325,8 +323,7 @@ export const Adaptation: Power = {
         },
         "buffDuration": 1
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     }
   ]
 };

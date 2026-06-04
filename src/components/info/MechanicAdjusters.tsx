@@ -26,6 +26,11 @@ import {
   useGlobalAdjuster,
 } from '@/stores';
 import {
+  ADAPTATION_MODES,
+  ADAPTATION_MODE_IDS,
+  isAdaptationModeId,
+} from '@/data';
+import {
   AT_INHERENT_CONDITIONAL_IDS,
   describeAdjusterContribution,
   prettifyEffectKey,
@@ -46,12 +51,22 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
   const surfaceable = conditional.filter((c) => !AT_INHERENT_CONDITIONAL_IDS.has(c.id));
   if (surfaceable.length === 0) return null;
 
-  // Partition entries into groups (by `group` key) and singletons. Within
-  // a group, entries render as a radio set; singletons render as
-  // independent checkboxes.
+  // Bio Armor adaptation modes are pulled out first and rendered as one
+  // canonical 3-mode selector (Defensive / Offensive / Efficient) driven by the
+  // app-side registry — regardless of how many modes *this* power happens to
+  // carry. Bio Armor spreads the modes one-or-two per power (DNA Siphon only
+  // gates Offensive; Environmental Modification gates Defensive + Offensive),
+  // but the stance is a global caster state, so every Bio Armor power should
+  // offer the same complete picker. See `@/data/adaptation-modes`.
+  const adaptationEntries = surfaceable.filter((c) => isAdaptationModeId(c.id));
+  const rest = surfaceable.filter((c) => !isAdaptationModeId(c.id));
+
+  // Partition the remaining entries into groups (by `group` key) and
+  // singletons. Within a group, entries render as a radio set; singletons
+  // render as independent checkboxes.
   const groups = new Map<string, ConditionalEffect[]>();
   const singletons: ConditionalEffect[] = [];
-  for (const c of surfaceable) {
+  for (const c of rest) {
     if (c.group) {
       const arr = groups.get(c.group) ?? [];
       arr.push(c);
@@ -64,6 +79,9 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
   return (
     <div className="bg-slate-800/40 rounded p-2">
       <div className="flex flex-col gap-1">
+        {adaptationEntries.length > 0 && (
+          <AdaptationModeGroup power={power} entries={adaptationEntries} />
+        )}
         {Array.from(groups.entries()).map(([groupId, members]) => (
           <RadioGroup
             key={groupId}
@@ -80,6 +98,53 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+// ----------------------------------------------------------------------
+// Bio Armor Adaptation — always renders the full Defensive/Offensive/
+// Efficient picker from the registry, even if `entries` only carries some
+// of the modes. Selection is global + mutually exclusive across every Bio
+// Armor power (and the dashboard calc) via `setGlobalAdjusterGroup` keyed by
+// the registry's `ADAPTATION_MODE_IDS`.
+// ----------------------------------------------------------------------
+
+function AdaptationModeGroup({ power, entries }: { power: Power; entries: ConditionalEffect[] }) {
+  const globalAdjusters = useUIStore((s) => s.globalAdjusters);
+  const setGlobalAdjusterGroup = useUIStore((s) => s.setGlobalAdjusterGroup);
+  const byId = new Map(entries.map((e) => [e.id, e] as const));
+  const activeMode = ADAPTATION_MODES.find((m) => globalAdjusters[m.id]);
+  const activeId = activeMode?.id ?? null;
+
+  return (
+    <div className="space-y-0.5">
+      <GroupHeader label="Adaptation" isGlobal />
+      {ADAPTATION_MODES.map((mode) => {
+        // Use this power's real conditional entry when it carries this mode
+        // (so the contribution hint reflects what THIS power actually grants);
+        // otherwise a minimal placeholder so the row still renders.
+        const entry = byId.get(mode.id) ?? {
+          id: mode.id,
+          label: mode.label,
+          scope: 'global' as const,
+          group: 'adaptation',
+        };
+        return (
+          <RadioRow
+            key={mode.id}
+            power={power}
+            entry={entry}
+            labelOverride={mode.label}
+            name={`group-${power.internalName}-adaptation`}
+            checked={activeId === mode.id}
+            onSelect={() => setGlobalAdjusterGroup(mode.id, ADAPTATION_MODE_IDS)}
+          />
+        );
+      })}
+      {activeId !== null && (
+        <ClearButton onClick={() => setGlobalAdjusterGroup(null, ADAPTATION_MODE_IDS)} />
+      )}
     </div>
   );
 }
@@ -221,9 +286,13 @@ interface RadioRowProps {
   name: string;
   checked: boolean;
   onSelect: () => void;
+  /** Display label override — used by the Adaptation picker to show the
+   *  in-game stance name ("Efficient Adaptation") rather than the data's
+   *  internal "Rested Adaptation". */
+  labelOverride?: string;
 }
 
-function RadioRow({ power, entry, name, checked, onSelect }: RadioRowProps) {
+function RadioRow({ power, entry, name, checked, onSelect, labelOverride }: RadioRowProps) {
   return (
     <div className="flex flex-col">
       <label
@@ -237,7 +306,7 @@ function RadioRow({ power, entry, name, checked, onSelect }: RadioRowProps) {
           onChange={onSelect}
           className="accent-cyan-500 w-3 h-3"
         />
-        <span className={checked ? 'text-slate-100' : 'text-slate-300'}>{entry.label}</span>
+        <span className={checked ? 'text-slate-100' : 'text-slate-300'}>{labelOverride ?? entry.label}</span>
       </label>
       <ContributionHint power={power} entry={entry} indent="ml-9" />
     </div>

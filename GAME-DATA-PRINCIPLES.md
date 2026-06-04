@@ -67,6 +67,19 @@ These are why a naïve `flags.includes('X')` or attrib match over-fires:
   aspect matter.
 - **Mez tables: prefer PvE over PvP.** A power's mez may exist on both `*_PvPMez` and a
   PvE table; prefer the PvE one. A small allowlist grandfathers genuinely PvP-only powers.
+- **Conditional `group` ≠ `mode` (mutual-exclusivity is not "replace base").** A
+  conditionalEffect's `group` makes siblings mutually exclusive (one Bio Armor adaptation
+  stance at a time); its `mode` controls whether the active member *replaces* or *adds to*
+  the base power's effects. These are **orthogonal**. The converter once force-tagged every
+  grouped conditional `mode: 'replace'`, which silently dropped always-on base values: the
+  raw `.powers` def for Environmental Modification shows the base +Def(Fire 1.5) mod has **no
+  `Requires`** (always-on) while each stance is a separate `Requires k<Mode>Adaptation
+  source.Mode?` mod that **adds** +Def(Fire 0.45) on top (total 1.95). A genuine `replace`
+  exists only when a base template *negates the conditional's own predicate* (Suffocate:
+  base "if NOT drowning", conditional "if drowning") — that's detected via `baseNegated`.
+  Grouped conditionals otherwise default to **additive**. The dashboard calc applies the
+  active mode as a *synthetic active power* (`expandActiveConditionals`) so colliding effect
+  keys SUM at the totals level instead of forcing a lossy merge.
 
 **The validated discriminator for "the player's own enhanceable stat":**
 `aspect ∈ {Current, Absolute, Magnitude}`, non-proc, non-pet, and positive scale where

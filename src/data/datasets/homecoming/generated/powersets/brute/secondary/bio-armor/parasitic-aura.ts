@@ -96,8 +96,7 @@ export const ParasiticAura: Power = {
         },
         "buffDuration": 45
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "defensiveadaptation",
@@ -115,8 +114,7 @@ export const ParasiticAura: Power = {
         },
         "buffDuration": 45
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     }
   ]
 };

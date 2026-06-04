@@ -56,8 +56,7 @@ export const AblativeCarapace: Power = {
         },
         "buffDuration": 30
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "restedadaptation",
@@ -74,8 +73,7 @@ export const AblativeCarapace: Power = {
         },
         "buffDuration": 30
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     }
   ]
 };

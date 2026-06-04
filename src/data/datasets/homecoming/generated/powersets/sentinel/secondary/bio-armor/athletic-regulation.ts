@@ -68,8 +68,7 @@ export const AthleticRegulation: Power = {
         },
         "buffDuration": 2.25
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "offensiveadaptation",
@@ -92,8 +91,7 @@ export const AthleticRegulation: Power = {
         },
         "buffDuration": 2.25
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     },
     {
       "id": "restedadaptation",
@@ -112,8 +110,7 @@ export const AthleticRegulation: Power = {
         },
         "buffDuration": 2.25
       },
-      "group": "adaptation",
-      "mode": "replace"
+      "group": "adaptation"
     }
   ],
   "mechanicType": "parentMechanic"
