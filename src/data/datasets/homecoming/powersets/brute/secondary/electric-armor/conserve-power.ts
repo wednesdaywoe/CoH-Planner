@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Energize as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/electric-armor/conserve-power';
+import { ConservePower as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/electric-armor/conserve-power';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/electric-armor/conserve-power';
 
-export const Energize: Power = withOverrides(base, overrides);
+export const ConservePower: Power = withOverrides(base, overrides);

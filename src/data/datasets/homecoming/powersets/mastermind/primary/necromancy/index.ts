@@ -14,7 +14,7 @@ import { ZombieHorde as ZombieHorde } from './zombie-horde';
 import { Gloom as Gloom } from './gloom';
 import { EnchantUndead as EnchantUndead } from './enchant-undead';
 import { LifeDrain as LifeDrain } from './life-drain';
-import { GraveKnight as GraveKnight } from './skeletal-warriors';
+import { SkeletalWarriors as SkeletalWarriors } from './skeletal-warriors';
 import { SoulExtraction as SoulExtraction } from './soul-extraction';
 import { Lich as Lich } from './lich';
 import { DarkEmpowerment as DarkEmpowerment } from './dark-empowerment';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     Gloom,
     EnchantUndead,
     LifeDrain,
-    GraveKnight,
+    SkeletalWarriors,
     SoulExtraction,
     Lich,
     DarkEmpowerment,

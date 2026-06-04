@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ShadowSlip: Power = {
+export const ShadowSlipping: Power = {
   "name": "Shadow Slip",
   "internalName": "Shadow_Slipping",
   "available": 23,

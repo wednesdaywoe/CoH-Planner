@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { CallSwarm as CallSwarm } from './call-swarm';
 import { MaimingSlash as MaimingSlash } from './maiming-slash';
 import { ViciousSlash as ViciousSlash } from './vicious-slash';
-import { Unkindness as Unkindness } from './call-ravens';
+import { CallRavens as CallRavens } from './call-ravens';
 import { SpotPrey as SpotPrey } from './spot-prey';
 import { RendingFlurry as RendingFlurry } from './rending-flurry';
 import { BloodCraze as BloodCraze } from './blood-craze';
@@ -30,7 +30,7 @@ export const powerset: Powerset = {
     CallSwarm,
     MaimingSlash,
     ViciousSlash,
-    Unkindness,
+    CallRavens,
     SpotPrey,
     RendingFlurry,
     BloodCraze,

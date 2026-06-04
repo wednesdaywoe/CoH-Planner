@@ -10,10 +10,10 @@
 import type { Powerset } from '@/types';
 
 import { FateSealed as FateSealed } from './fate-sealed';
-import { MaskPresence as MaskPresence } from './frt-mask-presence';
-import { MindLink as MindLink } from './frt-mind-link';
+import { FRTMaskPresence as FRTMaskPresence } from './frt-mask-presence';
+import { FRTMindLink as FRTMindLink } from './frt-mind-link';
 import { Confuse as Confuse } from './confuse';
-import { TacticalTrainingVengeance as TacticalTrainingVengeance } from './frt-tactical-training-vengeance';
+import { FRTTacticalTrainingVengeance as FRTTacticalTrainingVengeance } from './frt-tactical-training-vengeance';
 import { AuraofConfusion as AuraofConfusion } from './aura-of-confusion';
 
 export const powerset: Powerset = {
@@ -25,10 +25,10 @@ export const powerset: Powerset = {
   category: 'epic',
   powers: [
     FateSealed,
-    MaskPresence,
-    MindLink,
+    FRTMaskPresence,
+    FRTMindLink,
     Confuse,
-    TacticalTrainingVengeance,
+    FRTTacticalTrainingVengeance,
     AuraofConfusion,
   ],
 };

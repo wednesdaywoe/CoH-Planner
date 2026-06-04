@@ -14,7 +14,7 @@ import { Soothe as Soothe } from './soothe';
 import { SharePain as SharePain } from './share-pain';
 import { ConduitofPain as ConduitofPain } from './conduit-of-pain';
 import { EnforcedMorale as EnforcedMorale } from './enforced-morale';
-import { SuppressPain as SuppressPain } from './soothing-aura';
+import { SoothingAura as SoothingAura } from './soothing-aura';
 import { WorldofPain as WorldofPain } from './world-of-pain';
 import { AnguishingCry as AnguishingCry } from './anguishing-cry';
 import { Painbringer as Painbringer } from './painbringer';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     SharePain,
     ConduitofPain,
     EnforcedMorale,
-    SuppressPain,
+    SoothingAura,
     WorldofPain,
     AnguishingCry,
     Painbringer,

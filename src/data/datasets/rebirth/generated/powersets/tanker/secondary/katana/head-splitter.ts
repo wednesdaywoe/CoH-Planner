@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const GoldenDragonfly: Power = {
+export const HeadSplitter: Power = {
   "name": "Golden Dragonfly",
   "internalName": "Head_Splitter",
   "available": 37,

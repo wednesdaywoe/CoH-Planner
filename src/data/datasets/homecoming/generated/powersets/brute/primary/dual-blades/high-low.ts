@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const OneThousandCuts: Power = {
+export const HighLow: Power = {
   "name": "One Thousand Cuts",
   "internalName": "High_Low",
   "available": 25,

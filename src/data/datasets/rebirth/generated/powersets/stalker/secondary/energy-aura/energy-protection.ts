@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const KineticDampening: Power = {
+export const EnergyProtection: Power = {
   "name": "Kinetic Dampening",
   "internalName": "Energy_Protection",
   "available": 15,

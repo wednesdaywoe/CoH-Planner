@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AxeCyclone as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/battle-axe/whirling-axe';
+import { WhirlingAxe as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/battle-axe/whirling-axe';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/battle-axe/whirling-axe';
 
-export const AxeCyclone: Power = withOverrides(base, overrides);
+export const WhirlingAxe: Power = withOverrides(base, overrides);

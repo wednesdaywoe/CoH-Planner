@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Confront as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/claws/taunt';
+import { Taunt as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/claws/taunt';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/claws/taunt';
 
-export const Confront: Power = withOverrides(base, overrides);
+export const Taunt: Power = withOverrides(base, overrides);

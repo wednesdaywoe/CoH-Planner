@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DetentionField as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/force-field/refraction-shield';
+import { RefractionShield as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/force-field/refraction-shield';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/force-field/refraction-shield';
 
-export const DetentionField: Power = withOverrides(base, overrides);
+export const RefractionShield: Power = withOverrides(base, overrides);

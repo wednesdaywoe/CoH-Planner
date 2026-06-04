@@ -13,9 +13,9 @@ import { SpectralWounds as SpectralWounds } from './spectral-wounds';
 import { Blind as Blind } from './blind';
 import { Deceive as Deceive } from './deceive';
 import { Flash as Flash } from './flash';
-import { SuperiorInvisibility as SuperiorInvisibility } from './invisibility';
+import { Invisibility as Invisibility } from './invisibility';
 import { GroupInvisibility as GroupInvisibility } from './group-invisibility';
-import { PhantomArmy as PhantomArmy } from './decoy';
+import { Decoy as Decoy } from './decoy';
 import { SpectralTerror as SpectralTerror } from './spectral-terror';
 import { Phantasm as Phantasm } from './phantasm';
 
@@ -31,9 +31,9 @@ export const powerset: Powerset = {
     Blind,
     Deceive,
     Flash,
-    SuperiorInvisibility,
+    Invisibility,
     GroupInvisibility,
-    PhantomArmy,
+    Decoy,
     SpectralTerror,
     Phantasm,
   ],

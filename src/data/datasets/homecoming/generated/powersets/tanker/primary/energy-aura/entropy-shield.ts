@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const EntropicAura: Power = {
+export const EntropyShield: Power = {
   "name": "Entropic Aura",
   "internalName": "Entropy_Shield",
   "available": 5,

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Rime: Power = {
+export const RimeIce: Power = {
   "name": "Rime",
   "internalName": "Rime_Ice",
   "available": 0,

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SeismicMallet as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/stone-melee/heavy-mallet';
+import { HeavyMallet as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/stone-melee/heavy-mallet';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/stone-melee/heavy-mallet';
 
-export const SeismicMallet: Power = withOverrides(base, overrides);
+export const HeavyMallet: Power = withOverrides(base, overrides);

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Resilience: Power = {
+export const ResistDisorientation: Power = {
   "name": "Resilience",
   "internalName": "Resist_Disorientation",
   "available": 19,

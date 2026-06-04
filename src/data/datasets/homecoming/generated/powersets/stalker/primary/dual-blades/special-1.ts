@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const VengefulSlice: Power = {
+export const Special1: Power = {
   "name": "Vengeful Slice",
   "internalName": "Special_1",
   "available": 17,
@@ -81,6 +81,12 @@ export const VengefulSlice: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
+  "effects": {
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
+  },
   "conditionalEffects": [
     {
       "id": "dd_bonusdotmode_2",

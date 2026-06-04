@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const MindLink: Power = {
+export const NWMindLink: Power = {
   "name": "Mind Link",
   "internalName": "NW_Mind_Link",
   "available": 23,

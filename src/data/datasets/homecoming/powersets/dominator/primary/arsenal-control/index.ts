@@ -14,10 +14,10 @@ import { CryoFreezeRay as CryoFreezeRay } from './cryo-freeze-ray';
 import { SleepGrenade as SleepGrenade } from './sleep-grenade';
 import { LiquidNitrogen as LiquidNitrogen } from './liquid-nitrogen';
 import { CloakingDevice as CloakingDevice } from './cloaking-device';
-import { SmokeCanister as SmokeCanister } from './smoke-grenade';
+import { SmokeGrenade as SmokeGrenade } from './smoke-grenade';
 import { FlashBang as FlashBang } from './flash-bang';
 import { TearGas as TearGas } from './tear-gas';
-import { TriCannon as TriCannon } from './gun-drone';
+import { GunDrone as GunDrone } from './gun-drone';
 
 export const powerset: Powerset = {
   id: 'dominator/arsenal-control',
@@ -32,10 +32,10 @@ export const powerset: Powerset = {
     SleepGrenade,
     LiquidNitrogen,
     CloakingDevice,
-    SmokeCanister,
+    SmokeGrenade,
     FlashBang,
     TearGas,
-    TriCannon,
+    GunDrone,
   ],
 };
 

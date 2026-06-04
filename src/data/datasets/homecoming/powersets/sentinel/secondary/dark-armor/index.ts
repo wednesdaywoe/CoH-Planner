@@ -10,7 +10,7 @@
 import type { Powerset } from '@/types';
 
 import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
-import { ShadowDweller as ShadowDweller } from './tenebrous-regeneration';
+import { TenebrousRegeneration as TenebrousRegeneration } from './tenebrous-regeneration';
 import { MurkyCloud as MurkyCloud } from './murky-cloud';
 import { ObsidianShield as ObsidianShield } from './obsidian-shield';
 import { DarkRegeneration as DarkRegeneration } from './dark-regeneration';
@@ -29,7 +29,7 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     DarkEmbrace,
-    ShadowDweller,
+    TenebrousRegeneration,
     MurkyCloud,
     ObsidianShield,
     DarkRegeneration,

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ContainmentShell as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/force-field/repulsion-field';
+import { RepulsionField as base } from '@/data/datasets/rebirth/generated/powersets/controller/secondary/force-field/repulsion-field';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/controller/secondary/force-field/repulsion-field';
 
-export const ContainmentShell: Power = withOverrides(base, overrides);
+export const RepulsionField: Power = withOverrides(base, overrides);

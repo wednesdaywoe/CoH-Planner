@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const BrilliantBarrage: Power = {
+export const Glitz: Power = {
   "name": "Brilliant Barrage",
   "internalName": "Glitz",
   "available": 11,

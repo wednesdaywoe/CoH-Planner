@@ -17,7 +17,7 @@ import { SoulSearing as SoulSearing } from './soul-searing';
 import { HellfireBurst as HellfireBurst } from './hellfire-burst';
 import { Lash as Lash } from './lash';
 import { HellfireBlaze as HellfireBlaze } from './hellfire-blaze';
-import { WrathofHell as WrathofHell } from './wrath-of-hell';
+import { WrathOfHell as WrathOfHell } from './wrath-of-hell';
 
 export const powerset: Powerset = {
   id: 'guardian/hellfire-assault',
@@ -35,7 +35,7 @@ export const powerset: Powerset = {
     HellfireBurst,
     Lash,
     HellfireBlaze,
-    WrathofHell,
+    WrathOfHell,
   ],
 };
 

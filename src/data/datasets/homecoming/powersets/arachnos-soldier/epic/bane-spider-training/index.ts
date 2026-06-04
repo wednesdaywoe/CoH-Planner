@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { BaneSpiderArmorUpgrade as BaneSpiderArmorUpgrade } from './bane-spider-armor';
-import { CloakingDevice as CloakingDevice } from './hide';
+import { BaneSpiderArmor as BaneSpiderArmor } from './bane-spider-armor';
+import { Hide as Hide } from './hide';
 import { Surveillance as Surveillance } from './surveillance';
 import { WebCocoon as WebCocoon } from './web-cocoon';
 
@@ -22,8 +22,8 @@ export const powerset: Powerset = {
   archetype: 'arachnos-soldier',
   category: 'epic',
   powers: [
-    BaneSpiderArmorUpgrade,
-    CloakingDevice,
+    BaneSpiderArmor,
+    Hide,
     Surveillance,
     WebCocoon,
   ],

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const TelekineticBlast: Power = {
+export const Telekineticblast: Power = {
   "name": "Telekinetic Blast",
   "internalName": "Telekinetic_blast",
   "available": 3,

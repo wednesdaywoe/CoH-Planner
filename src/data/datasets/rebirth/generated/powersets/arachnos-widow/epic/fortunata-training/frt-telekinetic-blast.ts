@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const TelekineticBlast: Power = {
+export const FRTTelekineticBlast: Power = {
   "name": "Telekinetic Blast",
   "internalName": "FRT_Telekinetic_Blast",
   "available": 0,

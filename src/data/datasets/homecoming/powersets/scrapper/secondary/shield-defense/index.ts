@@ -9,11 +9,11 @@
 
 import type { Powerset } from '@/types';
 
-import { Deflection as Deflection } from './active-defense';
-import { BattleAgility as BattleAgility } from './deflection';
+import { ActiveDefense as ActiveDefense } from './active-defense';
+import { Deflection as Deflection } from './deflection';
 import { TrueGrit as TrueGrit } from './true-grit';
-import { ActiveDefense as ActiveDefense } from './battle-agility';
-import { AgainstAllOdds as AgainstAllOdds } from './against-all-odds';
+import { BattleAgility as BattleAgility } from './battle-agility';
+import { AgainstallOdds as AgainstallOdds } from './against-all-odds';
 import { PhalanxFighting as PhalanxFighting } from './phalanx-fighting';
 import { GrantCover as GrantCover } from './grant-cover';
 import { ShieldCharge as ShieldCharge } from './shield-charge';
@@ -27,11 +27,11 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'secondary',
   powers: [
-    Deflection,
-    BattleAgility,
-    TrueGrit,
     ActiveDefense,
-    AgainstAllOdds,
+    Deflection,
+    TrueGrit,
+    BattleAgility,
+    AgainstallOdds,
     PhalanxFighting,
     GrantCover,
     ShieldCharge,

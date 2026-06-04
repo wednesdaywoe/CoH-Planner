@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { SingleShot as SingleShot } from './single-shot';
 import { Pummel as Pummel } from './pummel';
 import { Burst as Burst } from './burst';
-import { WideAreaWebGrenade as WideAreaWebGrenade } from './ws-wide-area-web-grenade';
+import { WSWideAreaWebGrenade as WSWideAreaWebGrenade } from './ws-wide-area-web-grenade';
 import { HeavyBurst as HeavyBurst } from './heavy-burst';
 import { Bayonet as Bayonet } from './bayonet';
 import { VenomGrenade as VenomGrenade } from './venom-grenade';
@@ -29,7 +29,7 @@ export const powerset: Powerset = {
     SingleShot,
     Pummel,
     Burst,
-    WideAreaWebGrenade,
+    WSWideAreaWebGrenade,
     HeavyBurst,
     Bayonet,
     VenomGrenade,

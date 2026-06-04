@@ -10,7 +10,7 @@
 import type { Powerset } from '@/types';
 
 import { FrozenArmor as FrozenArmor } from './frozen-armor';
-import { Rime as Rime } from './rime-ice';
+import { RimeIce as RimeIce } from './rime-ice';
 import { Hoarfrost as Hoarfrost } from './hoarfrost';
 import { WetIce as WetIce } from './wet-ice';
 import { FrigidShield as FrigidShield } from './frigid-shield';
@@ -29,7 +29,7 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     FrozenArmor,
-    Rime,
+    RimeIce,
     Hoarfrost,
     WetIce,
     FrigidShield,

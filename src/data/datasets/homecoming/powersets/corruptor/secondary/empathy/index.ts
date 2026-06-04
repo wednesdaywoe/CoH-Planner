@@ -9,7 +9,7 @@
 
 import type { Powerset } from '@/types';
 
-import { HealingAura as HealingAura } from './siphon-energy';
+import { SiphonEnergy as SiphonEnergy } from './siphon-energy';
 import { HealOther as HealOther } from './heal-other';
 import { AbsorbPain as AbsorbPain } from './absorb-pain';
 import { Resurrect as Resurrect } from './resurrect';
@@ -27,7 +27,7 @@ export const powerset: Powerset = {
   archetype: 'corruptor',
   category: 'secondary',
   powers: [
-    HealingAura,
+    SiphonEnergy,
     HealOther,
     AbsorbPain,
     Resurrect,

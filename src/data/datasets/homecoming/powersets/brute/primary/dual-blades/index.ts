@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { NimbleSlash as NimbleSlash } from './light-opening';
-import { PowerSlice as PowerSlice } from './moderate-opening';
-import { AblatingStrike as AblatingStrike } from './moderate-bridge';
-import { TyphoonsEdge as TyphoonsEdge } from './aoe-bridge';
-import { BlindingFeint as BlindingFeint } from './follow-up';
+import { LightOpening as LightOpening } from './light-opening';
+import { ModerateOpening as ModerateOpening } from './moderate-opening';
+import { ModerateBridge as ModerateBridge } from './moderate-bridge';
+import { AoEBridge as AoEBridge } from './aoe-bridge';
+import { FollowUp as FollowUp } from './follow-up';
 import { Taunt as Taunt } from './taunt';
-import { VengefulSlice as VengefulSlice } from './special-1';
-import { SweepingStrike as SweepingStrike } from './special-2';
-import { OneThousandCuts as OneThousandCuts } from './high-low';
+import { Special1 as Special1 } from './special-1';
+import { Special2 as Special2 } from './special-2';
+import { HighLow as HighLow } from './high-low';
 
 export const powerset: Powerset = {
   id: 'brute/dual-blades',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    NimbleSlash,
-    PowerSlice,
-    AblatingStrike,
-    TyphoonsEdge,
-    BlindingFeint,
+    LightOpening,
+    ModerateOpening,
+    ModerateBridge,
+    AoEBridge,
+    FollowUp,
     Taunt,
-    VengefulSlice,
-    SweepingStrike,
-    OneThousandCuts,
+    Special1,
+    Special2,
+    HighLow,
   ],
 };
 

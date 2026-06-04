@@ -241,6 +241,14 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     enhancementAspect: 'tohitDebuff',
     priority: 1,
   },
+  accuracyDebuff: {
+    label: '-Accuracy',
+    category: 'debuff',
+    colorClass: STAT_COLORS.accuracy,
+    format: 'percent',
+    calculation: 'debuff',
+    priority: 1,
+  },
   defenseDebuff: {
     label: '-Defense',
     category: 'debuff',

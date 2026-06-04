@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Deflection as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/shield-defense/active-defense';
+import { ActiveDefense as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/shield-defense/active-defense';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/shield-defense/active-defense';
 
-export const Deflection: Power = withOverrides(base, overrides);
+export const ActiveDefense: Power = withOverrides(base, overrides);

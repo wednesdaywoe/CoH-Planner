@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ReactiveRegeneration: Power = {
+export const InstantRegeneration: Power = {
   "name": "Reactive Regeneration",
   "internalName": "Instant_Regeneration",
   "available": 23,

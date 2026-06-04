@@ -13,7 +13,7 @@ import { PowerThrust as PowerThrust } from './power-thrust';
 import { EnergyPunch as EnergyPunch } from './energy-punch';
 import { BuildUp as BuildUp } from './build-up';
 import { BoneSmasher as BoneSmasher } from './bone-smasher';
-import { Energize as Energize } from './conserve-power';
+import { ConservePower as ConservePower } from './conserve-power';
 import { Stun as Stun } from './stun';
 import { PowerBoost as PowerBoost } from './power-boost';
 import { BoostRange as BoostRange } from './boost-range';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     EnergyPunch,
     BuildUp,
     BoneSmasher,
-    Energize,
+    ConservePower,
     Stun,
     PowerBoost,
     BoostRange,

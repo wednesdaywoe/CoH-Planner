@@ -14,10 +14,10 @@ import { Caltrops as Caltrops } from './caltrops';
 import { Taser as Taser } from './taser';
 import { TargetingDrone as TargetingDrone } from './targeting-drone';
 import { SmokeGrenade as SmokeGrenade } from './smoke-grenade';
-import { FieldOperative as FieldOperative } from './cloaking-device';
+import { CloakingDevice as CloakingDevice } from './cloaking-device';
 import { TripMine as TripMine } from './trip-mine';
 import { TimeBomb as TimeBomb } from './time-bomb';
-import { GunDrone as GunDrone } from './auto-turret';
+import { AutoTurret as AutoTurret } from './auto-turret';
 
 export const powerset: Powerset = {
   id: 'blaster/devices',
@@ -32,10 +32,10 @@ export const powerset: Powerset = {
     Taser,
     TargetingDrone,
     SmokeGrenade,
-    FieldOperative,
+    CloakingDevice,
     TripMine,
     TimeBomb,
-    GunDrone,
+    AutoTurret,
   ],
 };
 

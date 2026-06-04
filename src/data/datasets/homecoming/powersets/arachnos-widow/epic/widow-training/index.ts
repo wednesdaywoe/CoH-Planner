@@ -11,11 +11,11 @@ import type { Powerset } from '@/types';
 
 import { PoisonDart as PoisonDart } from './poison-dart';
 import { Swipe as Swipe } from './swipe';
-import { Strike as Strike } from './lunge';
+import { Lunge as Lunge } from './lunge';
 import { DartBurst as DartBurst } from './dart-burst';
 import { FollowUp as FollowUp } from './follow-up';
 import { Spin as Spin } from './spin';
-import { Lunge as Lunge } from './strike';
+import { Strike as Strike } from './strike';
 import { Confront as Confront } from './confront';
 
 export const powerset: Powerset = {
@@ -28,11 +28,11 @@ export const powerset: Powerset = {
   powers: [
     PoisonDart,
     Swipe,
-    Strike,
+    Lunge,
     DartBurst,
     FollowUp,
     Spin,
-    Lunge,
+    Strike,
     Confront,
   ],
 };

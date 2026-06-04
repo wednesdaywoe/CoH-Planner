@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { MentalBlast as MentalBlast } from './frt-mental-blast';
-import { TelekineticBlast as TelekineticBlast } from './frt-telekinetic-blast';
-import { Subdue as Subdue } from './frt-subdue';
-import { Aim as Aim } from './frt-aim';
-import { PsychicScream as PsychicScream } from './frt-psychic-scream';
-import { Dominate as Dominate } from './frt-dominate';
-import { PsionicTornado as PsionicTornado } from './frt-psionic-lance';
-import { ScrambleThoughts as ScrambleThoughts } from './frt-scramble-thoughts';
-import { TotalDomination as TotalDomination } from './frt-total-domination';
-import { PsychicWail as PsychicWail } from './frt-psychic-wail';
+import { FRTMentalBlast as FRTMentalBlast } from './frt-mental-blast';
+import { FRTTelekineticBlast as FRTTelekineticBlast } from './frt-telekinetic-blast';
+import { FRTSubdue as FRTSubdue } from './frt-subdue';
+import { FRTAim as FRTAim } from './frt-aim';
+import { FRTPsychicScream as FRTPsychicScream } from './frt-psychic-scream';
+import { FRTDominate as FRTDominate } from './frt-dominate';
+import { FRTPsionicLance as FRTPsionicLance } from './frt-psionic-lance';
+import { FRTScrambleThoughts as FRTScrambleThoughts } from './frt-scramble-thoughts';
+import { FRTTotalDomination as FRTTotalDomination } from './frt-total-domination';
+import { FRTPsychicWail as FRTPsychicWail } from './frt-psychic-wail';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/fortunata-training',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'arachnos-widow',
   category: 'epic',
   powers: [
-    MentalBlast,
-    TelekineticBlast,
-    Subdue,
-    Aim,
-    PsychicScream,
-    Dominate,
-    PsionicTornado,
-    ScrambleThoughts,
-    TotalDomination,
-    PsychicWail,
+    FRTMentalBlast,
+    FRTTelekineticBlast,
+    FRTSubdue,
+    FRTAim,
+    FRTPsychicScream,
+    FRTDominate,
+    FRTPsionicLance,
+    FRTScrambleThoughts,
+    FRTTotalDomination,
+    FRTPsychicWail,
   ],
 };
 

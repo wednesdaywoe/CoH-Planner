@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const BarrierField: Power = {
+export const RefractionShield: Power = {
   "name": "Barrier Field",
   "internalName": "Refraction_Shield",
   "available": 7,

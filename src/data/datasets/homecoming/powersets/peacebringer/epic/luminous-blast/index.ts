@@ -19,7 +19,7 @@ import { BrightNovaScatter as BrightNovaScatter } from './bright-nova-scatter';
 import { BrightNovaDetonation as BrightNovaDetonation } from './bright-nova-detonation';
 import { RadiantStrike as RadiantStrike } from './radiant-strike';
 import { ProtonScatter as ProtonScatter } from './proton-scatter';
-import { InnerLight as InnerLight } from './build-up';
+import { BuildUp as BuildUp } from './build-up';
 import { LuminousDetonation as LuminousDetonation } from './luminous-detonation';
 import { IncandescentStrike as IncandescentStrike } from './incandescent-strike';
 import { Pulsar as Pulsar } from './pulsar';
@@ -46,7 +46,7 @@ export const powerset: Powerset = {
     BrightNovaDetonation,
     RadiantStrike,
     ProtonScatter,
-    InnerLight,
+    BuildUp,
     LuminousDetonation,
     IncandescentStrike,
     Pulsar,

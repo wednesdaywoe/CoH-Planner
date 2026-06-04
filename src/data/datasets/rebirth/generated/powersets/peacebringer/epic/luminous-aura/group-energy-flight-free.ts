@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const GroupEnergyFlight: Power = {
+export const GroupEnergyFlightFree: Power = {
   "name": "Group Energy Flight",
   "internalName": "Group_Energy_Flight_Free",
   "available": 15,

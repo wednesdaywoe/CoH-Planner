@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ToxicWebGrenade: Power = {
+export const WebGrenade: Power = {
   "name": "Toxic Web Grenade",
   "internalName": "Web_Grenade",
   "available": 0,

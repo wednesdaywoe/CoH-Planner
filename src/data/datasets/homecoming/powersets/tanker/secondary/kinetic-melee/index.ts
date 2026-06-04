@@ -17,7 +17,7 @@ import { RepulsingTorrent as RepulsingTorrent } from './repulsing-torrent';
 import { PowerSiphon as PowerSiphon } from './power-siphon';
 import { Burst as Burst } from './burst';
 import { FocusedBurst as FocusedBurst } from './focused-burst';
-import { ConcentratedStrike as ConcentratedStrike } from './total-focus';
+import { TotalFocus as TotalFocus } from './total-focus';
 
 export const powerset: Powerset = {
   id: 'tanker/kinetic-melee',
@@ -35,7 +35,7 @@ export const powerset: Powerset = {
     PowerSiphon,
     Burst,
     FocusedBurst,
-    ConcentratedStrike,
+    TotalFocus,
   ],
 };
 

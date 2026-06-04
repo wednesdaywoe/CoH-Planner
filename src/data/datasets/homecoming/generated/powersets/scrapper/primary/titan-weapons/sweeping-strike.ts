@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const TitanSweep: Power = {
+export const SweepingStrike: Power = {
   "name": "Titan Sweep",
   "internalName": "Sweeping_Strike",
   "available": 1,

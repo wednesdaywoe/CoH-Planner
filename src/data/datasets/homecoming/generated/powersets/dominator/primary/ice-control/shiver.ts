@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ColdSnap: Power = {
+export const Shiver: Power = {
   "name": "Cold Snap",
   "internalName": "Shiver",
   "available": 7,

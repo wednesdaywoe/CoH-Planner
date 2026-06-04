@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BrilliantBarrage as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/pyrotechnic-control/glitz';
+import { Glitz as base } from '@/data/datasets/homecoming/generated/powersets/dominator/primary/pyrotechnic-control/glitz';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/primary/pyrotechnic-control/glitz';
 
-export const BrilliantBarrage: Power = withOverrides(base, overrides);
+export const Glitz: Power = withOverrides(base, overrides);

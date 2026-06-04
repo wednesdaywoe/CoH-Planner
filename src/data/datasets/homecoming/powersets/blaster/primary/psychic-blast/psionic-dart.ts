@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PsionicDarts as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/psychic-blast/psionic-dart';
+import { PsionicDart as base } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/psychic-blast/psionic-dart';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/primary/psychic-blast/psionic-dart';
 
-export const PsionicDarts: Power = withOverrides(base, overrides);
+export const PsionicDart: Power = withOverrides(base, overrides);

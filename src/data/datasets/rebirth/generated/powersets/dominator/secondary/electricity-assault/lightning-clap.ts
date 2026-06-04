@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Zapp: Power = {
+export const LightningClap: Power = {
   "name": "Zapp",
   "internalName": "Lightning_Clap",
   "available": 19,

@@ -17,7 +17,7 @@ import { CrushingField as CrushingField } from './crushing-field';
 import { DimensionShift as DimensionShift } from './dimension-shift';
 import { GravityDistortionField as GravityDistortionField } from './gravity-distortion-field';
 import { Wormhole as Wormhole } from './wormhole';
-import { Singularity as Singularity } from './fold-space';
+import { FoldSpace as FoldSpace } from './fold-space';
 
 export const powerset: Powerset = {
   id: 'controller/gravity-control',
@@ -35,7 +35,7 @@ export const powerset: Powerset = {
     DimensionShift,
     GravityDistortionField,
     Wormhole,
-    Singularity,
+    FoldSpace,
   ],
 };
 

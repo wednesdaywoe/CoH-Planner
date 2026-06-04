@@ -13,7 +13,7 @@ import { Gale as Gale } from './gale';
 import { O2Boost as O2Boost } from './o2-boost';
 import { SnowStorm as SnowStorm } from './snow-storm';
 import { SteamyMist as SteamyMist } from './steamy-mist';
-import { FreezingRain as FreezingRain } from './fog';
+import { Fog as Fog } from './fog';
 import { Hurricane as Hurricane } from './hurricane';
 import { ThunderClap as ThunderClap } from './thunder-clap';
 import { Tornado as Tornado } from './tornado';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     O2Boost,
     SnowStorm,
     SteamyMist,
-    FreezingRain,
+    Fog,
     Hurricane,
     ThunderClap,
     Tornado,

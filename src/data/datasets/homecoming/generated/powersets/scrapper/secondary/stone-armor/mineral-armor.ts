@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Minerals: Power = {
+export const MineralArmor: Power = {
   "name": "Minerals",
   "internalName": "Mineral_Armor",
   "available": 23,

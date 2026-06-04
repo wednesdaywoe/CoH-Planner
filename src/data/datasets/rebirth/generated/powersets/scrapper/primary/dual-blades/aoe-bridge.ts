@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const TyphoonsEdge: Power = {
+export const AoEBridge: Power = {
   "name": "Typhoon's Edge",
   "internalName": "AoE_Bridge",
   "available": 5,

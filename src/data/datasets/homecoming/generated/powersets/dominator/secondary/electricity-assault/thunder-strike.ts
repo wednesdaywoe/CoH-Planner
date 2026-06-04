@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const StaticDischarge: Power = {
+export const ThunderStrike: Power = {
   "name": "Static Discharge",
   "internalName": "Thunder_Strike",
   "available": 23,

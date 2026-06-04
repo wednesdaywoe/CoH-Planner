@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const PsychicFocus: Power = {
+export const Aim: Power = {
   "name": "Psychic Focus",
   "internalName": "Aim",
   "available": 7,
@@ -55,6 +55,7 @@ export const PsychicFocus: Power = {
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",
+      "specialBuff",
       "tohitBuff"
     ]
   }

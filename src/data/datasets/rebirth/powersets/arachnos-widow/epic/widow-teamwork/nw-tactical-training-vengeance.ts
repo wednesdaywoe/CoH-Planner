@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TacticalTrainingVengeance as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/widow-teamwork/nw-tactical-training-vengeance';
+import { NWTacticalTrainingVengeance as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/widow-teamwork/nw-tactical-training-vengeance';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-widow/epic/widow-teamwork/nw-tactical-training-vengeance';
 
-export const TacticalTrainingVengeance: Power = withOverrides(base, overrides);
+export const NWTacticalTrainingVengeance: Power = withOverrides(base, overrides);

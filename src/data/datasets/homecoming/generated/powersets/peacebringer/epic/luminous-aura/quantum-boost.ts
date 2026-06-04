@@ -8,10 +8,10 @@
 
 import type { Power } from '@/types';
 
-export const QuantumAcceleration: Power = {
+export const QuantumBoost: Power = {
   "name": "Quantum Acceleration",
   "internalName": "Quantum_Boost",
-  "available": 4294967295,
+  "available": -1,
   "description": "Quantum Acceleration greatly increases your fly speed and maximum fly speed for a short period of time.Notes: Quantum Acceleration is unaffected by Recharge Time changes.Recharge: Slow.",
   "shortHelp": "Self +FlySpeed (Special)",
   "icon": "luminousaura_quantumacceleration.png",

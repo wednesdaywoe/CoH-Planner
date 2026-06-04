@@ -14,7 +14,7 @@ import { FireSword as FireSword } from './fire-sword';
 import { Combustion as Combustion } from './combustion';
 import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
 import { BuildUp as BuildUp } from './build-up';
-import { CauterizingAura as CauterizingAura } from './blazing-aura';
+import { BlazingAura as BlazingAura } from './blazing-aura';
 import { Consume as Consume } from './consume';
 import { Burn as Burn } from './burn';
 import { HotFeet as HotFeet } from './hot-feet';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     Combustion,
     FireSwordCircle,
     BuildUp,
-    CauterizingAura,
+    BlazingAura,
     Consume,
     Burn,
     HotFeet,

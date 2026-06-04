@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const NimbleSlash: Power = {
+export const LightOpening: Power = {
   "name": "Nimble Slash",
   "internalName": "Light_Opening",
   "available": 0,

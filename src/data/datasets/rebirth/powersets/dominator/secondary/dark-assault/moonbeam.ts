@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EngulfingDarkness as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/dark-assault/moonbeam';
+import { Moonbeam as base } from '@/data/datasets/rebirth/generated/powersets/dominator/secondary/dark-assault/moonbeam';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/secondary/dark-assault/moonbeam';
 
-export const EngulfingDarkness: Power = withOverrides(base, overrides);
+export const Moonbeam: Power = withOverrides(base, overrides);

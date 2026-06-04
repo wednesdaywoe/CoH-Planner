@@ -16,7 +16,7 @@ import { DispersionBubble as DispersionBubble } from './dispersion-bubble';
 import { ForceBarrier as ForceBarrier } from './force-barrier';
 import { ContainmentShell as ContainmentShell } from './containment-shell';
 import { RepulsionBomb as RepulsionBomb } from './repulsion-bomb';
-import { ForceShielding as ForceShielding } from './force-skin';
+import { ForceSkin as ForceSkin } from './force-skin';
 import { SuppressionField as SuppressionField } from './suppression-field';
 
 export const powerset: Powerset = {
@@ -34,7 +34,7 @@ export const powerset: Powerset = {
     ForceBarrier,
     ContainmentShell,
     RepulsionBomb,
-    ForceShielding,
+    ForceSkin,
     SuppressionField,
   ],
 };

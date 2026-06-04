@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Energize as base } from '@/data/datasets/rebirth/generated/powersets/stalker/secondary/energy-aura/conserve-power';
+import { ConservePower as base } from '@/data/datasets/rebirth/generated/powersets/stalker/secondary/energy-aura/conserve-power';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/secondary/energy-aura/conserve-power';
 
-export const Energize: Power = withOverrides(base, overrides);
+export const ConservePower: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CallingtheWolf as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/katana/taunt';
+import { Taunt as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/katana/taunt';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/katana/taunt';
 
-export const CallingtheWolf: Power = withOverrides(base, overrides);
+export const Taunt: Power = withOverrides(base, overrides);

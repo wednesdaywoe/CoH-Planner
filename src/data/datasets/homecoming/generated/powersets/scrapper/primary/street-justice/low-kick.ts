@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ShinBreaker: Power = {
+export const LowKick: Power = {
   "name": "Shin Breaker",
   "internalName": "Low_Kick",
   "available": 21,

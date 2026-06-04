@@ -9,6 +9,9 @@
 
 import type { Powerset } from '@/types';
 
+import { CryoAmmunition as CryoAmmunition } from './cryo-ammunition';
+import { IncendiaryAmmunition as IncendiaryAmmunition } from './incendiary-ammunition';
+import { ChemicalAmmunition as ChemicalAmmunition } from './chemical-ammunition';
 import { Pistols as Pistols } from './pistols';
 import { DualWield as DualWield } from './dual-wield';
 import { EmptyClips as EmptyClips } from './empty-clips';
@@ -18,9 +21,6 @@ import { BulletRain as BulletRain } from './bullet-rain';
 import { ExecutionersShot as ExecutionersShot } from './executioners-shot';
 import { PiercingRounds as PiercingRounds } from './piercing-rounds';
 import { HailofBullets as HailofBullets } from './hail-of-bullets';
-import { CryoAmmunition as CryoAmmunition } from './cryo-ammunition';
-import { IncendiaryAmmunition as IncendiaryAmmunition } from './incendiary-ammunition';
-import { ChemicalAmmunition as ChemicalAmmunition } from './chemical-ammunition';
 
 export const powerset: Powerset = {
   id: 'sentinel/dual-pistols',
@@ -30,6 +30,9 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
+    CryoAmmunition,
+    IncendiaryAmmunition,
+    ChemicalAmmunition,
     Pistols,
     DualWield,
     EmptyClips,
@@ -39,9 +42,6 @@ export const powerset: Powerset = {
     ExecutionersShot,
     PiercingRounds,
     HailofBullets,
-    CryoAmmunition,
-    IncendiaryAmmunition,
-    ChemicalAmmunition,
   ],
 };
 

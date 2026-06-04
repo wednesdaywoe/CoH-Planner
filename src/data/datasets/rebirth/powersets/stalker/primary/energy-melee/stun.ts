@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StaggeringBurst as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/energy-melee/stun';
+import { Stun as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/energy-melee/stun';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/energy-melee/stun';
 
-export const StaggeringBurst: Power = withOverrides(base, overrides);
+export const Stun: Power = withOverrides(base, overrides);

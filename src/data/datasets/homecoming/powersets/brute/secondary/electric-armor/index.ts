@@ -15,7 +15,7 @@ import { ConductiveShield as ConductiveShield } from './conductive-shield';
 import { StaticShield as StaticShield } from './static-shield';
 import { Grounded as Grounded } from './grounded';
 import { LightningReflexes as LightningReflexes } from './lightning-reflexes';
-import { Energize as Energize } from './conserve-power';
+import { ConservePower as ConservePower } from './conserve-power';
 import { PowerSink as PowerSink } from './power-sink';
 import { PowerSurge as PowerSurge } from './power-surge';
 
@@ -33,7 +33,7 @@ export const powerset: Powerset = {
     StaticShield,
     Grounded,
     LightningReflexes,
-    Energize,
+    ConservePower,
     PowerSink,
     PowerSurge,
   ],

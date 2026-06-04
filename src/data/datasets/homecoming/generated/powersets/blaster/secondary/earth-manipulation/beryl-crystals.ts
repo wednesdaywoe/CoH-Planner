@@ -40,7 +40,8 @@ export const BerylCrystals: Power = {
     "durations": {
       "confuse": 0.75,
       "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
+      "perceptionBuff": 0.75,
+      "accuracyBuff": 0.75
     },
     "debuffResistance": {
       "perception": {
@@ -54,6 +55,10 @@ export const BerylCrystals: Power = {
     },
     "perceptionBuff": {
       "scale": 0.6,
+      "table": "Melee_Ones"
+    },
+    "accuracyBuff": {
+      "scale": 0.33,
       "table": "Melee_Ones"
     },
     "buffDuration": 0.75

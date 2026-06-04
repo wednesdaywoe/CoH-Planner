@@ -13,7 +13,7 @@ import { ThornyDarts as ThornyDarts } from './thorny-darts';
 import { Skewer as Skewer } from './skewer';
 import { FlingThorns as FlingThorns } from './fling-thorns';
 import { Impale as Impale } from './impale';
-import { BuildUp as BuildUp } from './aim';
+import { Aim as Aim } from './aim';
 import { ThornBurst as ThornBurst } from './thorn-burst';
 import { Thorntrops as Thorntrops } from './thorntrops';
 import { Ripper as Ripper } from './ripper';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     Skewer,
     FlingThorns,
     Impale,
-    BuildUp,
+    Aim,
     ThornBurst,
     Thorntrops,
     Ripper,

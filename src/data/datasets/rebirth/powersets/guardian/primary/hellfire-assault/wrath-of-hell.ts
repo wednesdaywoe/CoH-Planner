@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { WrathofHell as base } from '@/data/datasets/rebirth/generated/powersets/guardian/primary/hellfire-assault/wrath-of-hell';
+import { WrathOfHell as base } from '@/data/datasets/rebirth/generated/powersets/guardian/primary/hellfire-assault/wrath-of-hell';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/guardian/primary/hellfire-assault/wrath-of-hell';
 
-export const WrathofHell: Power = withOverrides(base, overrides);
+export const WrathOfHell: Power = withOverrides(base, overrides);

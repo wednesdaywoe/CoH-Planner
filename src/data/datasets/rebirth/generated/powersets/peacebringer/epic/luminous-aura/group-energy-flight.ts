@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const SolarGlide: Power = {
+export const GroupEnergyFlight: Power = {
   "name": "Solar Glide",
   "internalName": "Group_Energy_Flight",
   "available": 15,

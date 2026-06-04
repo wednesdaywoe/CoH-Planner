@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const MurkyCloud: Power = {
+export const Defractingcloud: Power = {
   "name": "Murky Cloud",
   "internalName": "Defracting_cloud",
   "available": 3,

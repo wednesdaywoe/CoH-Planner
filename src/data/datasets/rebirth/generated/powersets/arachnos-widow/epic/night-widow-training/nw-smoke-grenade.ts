@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const SmokeGrenade: Power = {
+export const NWSmokeGrenade: Power = {
   "name": "Smoke Grenade",
   "internalName": "NW_Smoke_Grenade",
   "available": 11,

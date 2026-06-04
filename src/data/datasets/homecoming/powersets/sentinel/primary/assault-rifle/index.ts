@@ -10,13 +10,13 @@
 import type { Powerset } from '@/types';
 
 import { Burst as Burst } from './burst';
-import { DisorientingShot as DisorientingShot } from './beanbag';
+import { Beanbag as Beanbag } from './beanbag';
 import { Buckshot as Buckshot } from './buckshot';
 import { Slug as Slug } from './slug';
 import { Aim as Aim } from './aim';
 import { M30Grenade as M30Grenade } from './m30-grenade';
 import { Flamethrower as Flamethrower } from './flamethrower';
-import { Ignite as Ignite } from './incinerator';
+import { Incinerator as Incinerator } from './incinerator';
 import { FullAuto as FullAuto } from './full-auto';
 
 export const powerset: Powerset = {
@@ -28,13 +28,13 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Burst,
-    DisorientingShot,
+    Beanbag,
     Buckshot,
     Slug,
     Aim,
     M30Grenade,
     Flamethrower,
-    Ignite,
+    Incinerator,
     FullAuto,
   ],
 };

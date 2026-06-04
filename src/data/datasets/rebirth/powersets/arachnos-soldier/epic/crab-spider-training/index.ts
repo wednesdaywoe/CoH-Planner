@@ -9,7 +9,7 @@
 
 import type { Powerset } from '@/types';
 
-import { CrabSpiderArmorUpgrade as CrabSpiderArmorUpgrade } from './crab-spider-armor';
+import { CrabSpiderArmor as CrabSpiderArmor } from './crab-spider-armor';
 import { Fortification as Fortification } from './fortification';
 import { Serum as Serum } from './serum';
 import { SummonSpiderlings as SummonSpiderlings } from './summon-spiderlings';
@@ -22,7 +22,7 @@ export const powerset: Powerset = {
   archetype: 'arachnos-soldier',
   category: 'epic',
   powers: [
-    CrabSpiderArmorUpgrade,
+    CrabSpiderArmor,
     Fortification,
     Serum,
     SummonSpiderlings,

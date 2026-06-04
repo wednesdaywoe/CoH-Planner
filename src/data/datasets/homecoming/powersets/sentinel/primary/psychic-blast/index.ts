@@ -13,7 +13,7 @@ import { MentalBlast as MentalBlast } from './mental-blast';
 import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
 import { PsychicScream as PsychicScream } from './psychic-scream';
 import { WillDomination as WillDomination } from './will-domination';
-import { PsychicFocus as PsychicFocus } from './aim';
+import { Aim as Aim } from './aim';
 import { PsionicStrike as PsionicStrike } from './psionic-strike';
 import { PsionicTornado as PsionicTornado } from './psionic-tornado';
 import { ScrambleThoughts as ScrambleThoughts } from './scramble-thoughts';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     TelekineticBlast,
     PsychicScream,
     WillDomination,
-    PsychicFocus,
+    Aim,
     PsionicStrike,
     PsionicTornado,
     ScrambleThoughts,

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BlindingFeint as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/dual-blades/follow-up';
+import { FollowUp as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/dual-blades/follow-up';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/dual-blades/follow-up';
 
-export const BlindingFeint: Power = withOverrides(base, overrides);
+export const FollowUp: Power = withOverrides(base, overrides);

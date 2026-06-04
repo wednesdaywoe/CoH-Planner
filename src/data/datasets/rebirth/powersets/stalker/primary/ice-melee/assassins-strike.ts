@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AssassinsIcicle as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/ice-melee/assassins-strike';
+import { AssassinsStrike as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/ice-melee/assassins-strike';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/ice-melee/assassins-strike';
 
-export const AssassinsIcicle: Power = withOverrides(base, overrides);
+export const AssassinsStrike: Power = withOverrides(base, overrides);

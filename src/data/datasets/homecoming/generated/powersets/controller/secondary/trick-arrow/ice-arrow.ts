@@ -46,14 +46,13 @@ export const IceArrow: Power = {
       "table": "Ranged_Immobilize"
     },
     "damageDebuff": {
-      "scale": 0.45,
-      "table": "Ranged_Special"
+      "scale": 1.6,
+      "table": "Ranged_Debuff_Dam"
     },
     "durations": {
-      "damageDebuff": 10,
+      "damageDebuff": 60,
       "specialBuff": 10,
-      "defenseDebuff": 10,
-      "tohitDebuff": 10,
+      "specialDebuff": 10,
       "rechargeDebuff": 10
     },
     "specialBuff": {
@@ -92,15 +91,61 @@ export const IceArrow: Power = {
       "sleep": {
         "scale": 0.45,
         "table": "Ranged_Special"
+      },
+      "tohit": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
       }
     },
-    "defenseDebuff": {
-      "scale": 0.45,
-      "table": "Ranged_Special"
-    },
-    "tohitDebuff": {
-      "scale": 0.45,
-      "table": "Ranged_Special"
+    "specialDebuff": {
+      "ranged": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "melee": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "aoe": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "smashing": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "lethal": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "fire": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "cold": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "energy": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "negative": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "psionic": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "toxic": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "defense": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      }
     },
     "rechargeDebuff": {
       "scale": 0.2,

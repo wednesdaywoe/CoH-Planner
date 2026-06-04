@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const BarrierReef: Power = {
+export const Wellspring: Power = {
   "name": "Barrier Reef",
   "internalName": "Wellspring",
   "available": 21,

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const CauterizingAura: Power = {
+export const BlazingAura: Power = {
   "name": "Cauterizing Aura",
   "internalName": "Blazing_Aura",
   "available": 19,

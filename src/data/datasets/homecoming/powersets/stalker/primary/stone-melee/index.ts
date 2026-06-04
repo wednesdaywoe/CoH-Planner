@@ -12,10 +12,10 @@ import type { Powerset } from '@/types';
 import { StoneFist as StoneFist } from './stone-fist';
 import { StoneMallet as StoneMallet } from './stone-mallet';
 import { Fault as Fault } from './fault';
-import { AssassinsSmash as AssassinsSmash } from './assassins-rockslide';
+import { AssassinsRockslide as AssassinsRockslide } from './assassins-rockslide';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
-import { SeismicMallet as SeismicMallet } from './heavy-mallet';
+import { HeavyMallet as HeavyMallet } from './heavy-mallet';
 import { HurlBoulder as HurlBoulder } from './hurl-boulder';
 import { Tremor as Tremor } from './tremor';
 
@@ -30,10 +30,10 @@ export const powerset: Powerset = {
     StoneFist,
     StoneMallet,
     Fault,
-    AssassinsSmash,
+    AssassinsRockslide,
     BuildUp,
     Placate,
-    SeismicMallet,
+    HeavyMallet,
     HurlBoulder,
     Tremor,
   ],

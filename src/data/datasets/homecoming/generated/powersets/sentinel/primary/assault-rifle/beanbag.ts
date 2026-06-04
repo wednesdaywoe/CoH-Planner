@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const DisorientingShot: Power = {
+export const Beanbag: Power = {
   "name": "Disorienting Shot",
   "internalName": "Beanbag",
   "available": 0,

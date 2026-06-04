@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const VenomGrenade: Power = {
+export const CSVenomGrenade: Power = {
   "name": "Venom Grenade",
   "internalName": "CS_Venom_Grenade",
   "available": 11,

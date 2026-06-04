@@ -11,12 +11,12 @@ import type { Powerset } from '@/types';
 
 import { DefensiveSweep as DefensiveSweep } from './defensive-sweep';
 import { CrushingBlow as CrushingBlow } from './crushing-blow';
-import { TitanSweep as TitanSweep } from './sweeping-strike';
-import { BuildMomentum as BuildMomentum } from './build-up';
+import { SweepingStrike as SweepingStrike } from './sweeping-strike';
+import { BuildUp as BuildUp } from './build-up';
 import { FollowThrough as FollowThrough } from './follow-through';
 import { Taunt as Taunt } from './taunt';
-import { RendArmor as RendArmor } from './shatter-armor';
-import { WhirlingSmash as WhirlingSmash } from './whirling-slice';
+import { ShatterArmor as ShatterArmor } from './shatter-armor';
+import { WhirlingSlice as WhirlingSlice } from './whirling-slice';
 import { ArcofDestruction as ArcofDestruction } from './arc-of-destruction';
 
 export const powerset: Powerset = {
@@ -29,12 +29,12 @@ export const powerset: Powerset = {
   powers: [
     DefensiveSweep,
     CrushingBlow,
-    TitanSweep,
-    BuildMomentum,
+    SweepingStrike,
+    BuildUp,
     FollowThrough,
     Taunt,
-    RendArmor,
-    WhirlingSmash,
+    ShatterArmor,
+    WhirlingSlice,
     ArcofDestruction,
   ],
 };

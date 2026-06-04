@@ -13,7 +13,7 @@ import { Scorch as Scorch } from './scorch';
 import { FireSword as FireSword } from './fire-sword';
 import { Combustion as Combustion } from './combustion';
 import { Taunt as Taunt } from './taunt';
-import { FieryBreath as FieryBreath } from './breath-of-fire';
+import { BreathofFire as BreathofFire } from './breath-of-fire';
 import { BuildUp as BuildUp } from './build-up';
 import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
 import { Incinerate as Incinerate } from './incinerate';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     FireSword,
     Combustion,
     Taunt,
-    FieryBreath,
+    BreathofFire,
     BuildUp,
     FireSwordCircle,
     Incinerate,

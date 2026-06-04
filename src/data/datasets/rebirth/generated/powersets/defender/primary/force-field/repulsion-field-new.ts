@@ -8,10 +8,10 @@
 
 import type { Power } from '@/types';
 
-export const RepulsionField: Power = {
+export const RepulsionFieldNew: Power = {
   "name": "Repulsion Field",
   "internalName": "Repulsion_Field_New",
-  "available": 4294967295,
+  "available": -1,
   "description": "This Toggle power creates a field that repels nearby foes. If Force Bubble is also active, then when Repulsion Field is active it grants a Repel effect to Force Bubble, but has no effects itself. If used on its own, Repulsion Field violently flings away any foes that get too close, at the cost of some Endurance for each foe repelled. Repulsion Field's knockback can still affect a target that has been captured by Barrier Field. Repulsion Field costs no endurance to run, and is automatically granted by purchasing the Force Bubble power. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE Knockback OR Repel (Special)",
   "icon": "forcefield_repulsionfield.png",

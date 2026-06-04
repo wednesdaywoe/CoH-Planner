@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ActiveDefense as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/shield-defense/battle-agility';
+import { BattleAgility as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/shield-defense/battle-agility';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/shield-defense/battle-agility';
 
-export const ActiveDefense: Power = withOverrides(base, overrides);
+export const BattleAgility: Power = withOverrides(base, overrides);

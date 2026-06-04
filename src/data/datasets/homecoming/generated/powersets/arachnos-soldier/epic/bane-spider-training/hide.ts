@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const CloakingDevice: Power = {
+export const Hide: Power = {
   "name": "Cloaking Device",
   "internalName": "Hide",
   "available": 23,

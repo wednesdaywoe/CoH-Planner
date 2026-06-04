@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MentalBlast as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/fortunata-training/frt-mental-blast';
+import { FRTMentalBlast as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/fortunata-training/frt-mental-blast';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/fortunata-training/frt-mental-blast';
 
-export const MentalBlast: Power = withOverrides(base, overrides);
+export const FRTMentalBlast: Power = withOverrides(base, overrides);

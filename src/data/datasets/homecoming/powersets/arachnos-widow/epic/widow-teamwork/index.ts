@@ -10,11 +10,11 @@
 import type { Powerset } from '@/types';
 
 import { PainTolerance as PainTolerance } from './pain-tolerance';
-import { MaskPresence as MaskPresence } from './nw-mask-presence';
+import { NWMaskPresence as NWMaskPresence } from './nw-mask-presence';
 import { MentalTraining as MentalTraining } from './mental-training';
-import { MindLink as MindLink } from './nw-mind-link';
+import { NWMindLink as NWMindLink } from './nw-mind-link';
 import { Placate as Placate } from './placate';
-import { TacticalTrainingVengeance as TacticalTrainingVengeance } from './nw-tactical-training-vengeance';
+import { NWTacticalTrainingVengeance as NWTacticalTrainingVengeance } from './nw-tactical-training-vengeance';
 import { Elude as Elude } from './elude';
 
 export const powerset: Powerset = {
@@ -26,11 +26,11 @@ export const powerset: Powerset = {
   category: 'epic',
   powers: [
     PainTolerance,
-    MaskPresence,
+    NWMaskPresence,
     MentalTraining,
-    MindLink,
+    NWMindLink,
     Placate,
-    TacticalTrainingVengeance,
+    NWTacticalTrainingVengeance,
     Elude,
   ],
 };

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ExtinguishLight: Power = {
+export const StarlessStep: Power = {
   "name": "Extinguish Light",
   "internalName": "Starless_Step",
   "available": 11,

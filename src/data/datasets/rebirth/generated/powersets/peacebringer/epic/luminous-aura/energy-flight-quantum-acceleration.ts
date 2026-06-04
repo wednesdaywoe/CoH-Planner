@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const QuantumAcceleration: Power = {
+export const EnergyFlightQuantumAcceleration: Power = {
   "name": "Quantum Acceleration",
   "internalName": "Energy_Flight_Quantum_Acceleration",
   "available": 23,

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Slash as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/night-widow-training/nw-slash';
+import { NWSlash as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/night-widow-training/nw-slash';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-widow/epic/night-widow-training/nw-slash';
 
-export const Slash: Power = withOverrides(base, overrides);
+export const NWSlash: Power = withOverrides(base, overrides);

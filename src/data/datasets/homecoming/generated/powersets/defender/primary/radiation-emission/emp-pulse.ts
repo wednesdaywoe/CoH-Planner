@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const EMPulse: Power = {
+export const EMPPulse: Power = {
   "name": "EM Pulse",
   "internalName": "EMP_Pulse",
   "available": 25,

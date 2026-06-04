@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AilmentResistance as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/regeneration/revive';
+import { Revive as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/regeneration/revive';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/regeneration/revive';
 
-export const AilmentResistance: Power = withOverrides(base, overrides);
+export const Revive: Power = withOverrides(base, overrides);

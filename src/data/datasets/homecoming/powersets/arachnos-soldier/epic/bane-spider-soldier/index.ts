@@ -9,7 +9,7 @@
 
 import type { Powerset } from '@/types';
 
-import { Bash as Bash } from './bs-bash';
+import { BSBash as BSBash } from './bs-bash';
 import { MaceBeam as MaceBeam } from './mace-beam';
 import { MaceBeamBlast as MaceBeamBlast } from './mace-beam-blast';
 import { BuildUp as BuildUp } from './build-up';
@@ -28,7 +28,7 @@ export const powerset: Powerset = {
   archetype: 'arachnos-soldier',
   category: 'epic',
   powers: [
-    Bash,
+    BSBash,
     MaceBeam,
     MaceBeamBlast,
     BuildUp,

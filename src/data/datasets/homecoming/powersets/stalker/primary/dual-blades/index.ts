@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { NimbleSlash as NimbleSlash } from './light-opening';
-import { PowerSlice as PowerSlice } from './moderate-opening';
-import { AblatingStrike as AblatingStrike } from './moderate-bridge';
+import { LightOpening as LightOpening } from './light-opening';
+import { ModerateOpening as ModerateOpening } from './moderate-opening';
+import { ModerateBridge as ModerateBridge } from './moderate-bridge';
 import { AssassinsBlades as AssassinsBlades } from './assassins-blades';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
-import { VengefulSlice as VengefulSlice } from './special-1';
-import { SweepingStrike as SweepingStrike } from './special-2';
-import { OneThousandCuts as OneThousandCuts } from './high-low';
+import { Special1 as Special1 } from './special-1';
+import { Special2 as Special2 } from './special-2';
+import { HighLow as HighLow } from './high-low';
 
 export const powerset: Powerset = {
   id: 'stalker/dual-blades',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    NimbleSlash,
-    PowerSlice,
-    AblatingStrike,
+    LightOpening,
+    ModerateOpening,
+    ModerateBridge,
     AssassinsBlades,
     BuildUp,
     Placate,
-    VengefulSlice,
-    SweepingStrike,
-    OneThousandCuts,
+    Special1,
+    Special2,
+    HighLow,
   ],
 };
 

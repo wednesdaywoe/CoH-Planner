@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const MoonBeam: Power = {
+export const DeathShroud: Power = {
   "name": "Moon Beam",
   "internalName": "Death_Shroud",
   "available": 34,

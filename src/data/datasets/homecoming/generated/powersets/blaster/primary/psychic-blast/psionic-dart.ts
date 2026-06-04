@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const PsionicDarts: Power = {
+export const PsionicDart: Power = {
   "name": "Psionic Darts",
   "internalName": "Psionic_Dart",
   "available": 5,

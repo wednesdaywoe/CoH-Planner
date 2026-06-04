@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { Beheader as Beheader } from './gash';
+import { Gash as Gash } from './gash';
 import { Chop as Chop } from './chop';
-import { Gash as Gash } from './beheader';
+import { Beheader as Beheader } from './beheader';
 import { Taunt as Taunt } from './taunt';
 import { BuildUp as BuildUp } from './build-up';
 import { Pendulum as Pendulum } from './pendulum';
 import { Swoop as Swoop } from './swoop';
-import { AxeCyclone as AxeCyclone } from './whirling-axe';
+import { WhirlingAxe as WhirlingAxe } from './whirling-axe';
 import { Cleave as Cleave } from './cleave';
 
 export const powerset: Powerset = {
@@ -27,14 +27,14 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    Beheader,
-    Chop,
     Gash,
+    Chop,
+    Beheader,
     Taunt,
     BuildUp,
     Pendulum,
     Swoop,
-    AxeCyclone,
+    WhirlingAxe,
     Cleave,
   ],
 };

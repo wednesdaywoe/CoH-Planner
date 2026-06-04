@@ -11,10 +11,10 @@ import type { Powerset } from '@/types';
 
 import { SparklingCage as SparklingCage } from './sparkling-cage';
 import { Dazzle as Dazzle } from './dazzle';
-import { SparklingChain as SparklingChain } from './sparkling-field';
+import { SparklingField as SparklingField } from './sparkling-field';
 import { GlitteringColumn as GlitteringColumn } from './glittering-column';
 import { HypnotizingLights as HypnotizingLights } from './hypnotizing-lights';
-import { BrilliantBarrage as BrilliantBarrage } from './glitz';
+import { Glitz as Glitz } from './glitz';
 import { IncendiaryAura as IncendiaryAura } from './incendiary-aura';
 import { ExplosiveBouquet as ExplosiveBouquet } from './explosive-bouquet';
 import { CatherineWheel as CatherineWheel } from './catherine-wheel';
@@ -29,10 +29,10 @@ export const powerset: Powerset = {
   powers: [
     SparklingCage,
     Dazzle,
-    SparklingChain,
+    SparklingField,
     GlitteringColumn,
     HypnotizingLights,
-    BrilliantBarrage,
+    Glitz,
     IncendiaryAura,
     ExplosiveBouquet,
     CatherineWheel,

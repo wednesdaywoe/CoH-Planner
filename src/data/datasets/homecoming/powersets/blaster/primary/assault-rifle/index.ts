@@ -10,7 +10,7 @@
 import type { Powerset } from '@/types';
 
 import { Burst as Burst } from './burst';
-import { Slug as Slug } from './tranquilizer-dart';
+import { TranquilizerDart as TranquilizerDart } from './tranquilizer-dart';
 import { Buckshot as Buckshot } from './buckshot';
 import { M30Grenade as M30Grenade } from './m30-grenade';
 import { Beanbag as Beanbag } from './beanbag';
@@ -28,7 +28,7 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Burst,
-    Slug,
+    TranquilizerDart,
     Buckshot,
     M30Grenade,
     Beanbag,

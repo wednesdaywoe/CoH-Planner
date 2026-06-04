@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { StingoftheWasp as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/katana/hack';
+import { Hack as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/katana/hack';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/katana/hack';
 
-export const StingoftheWasp: Power = withOverrides(base, overrides);
+export const Hack: Power = withOverrides(base, overrides);

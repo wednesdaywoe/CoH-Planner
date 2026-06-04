@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const DetentionField: Power = {
+export const RefractionShield: Power = {
   "name": "Detention Field",
   "internalName": "Refraction_Shield",
   "available": 15,

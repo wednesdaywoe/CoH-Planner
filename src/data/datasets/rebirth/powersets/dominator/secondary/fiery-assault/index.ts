@@ -13,7 +13,7 @@ import { Flares as Flares } from './flares';
 import { Incinerate as Incinerate } from './incinerate';
 import { FireBreath as FireBreath } from './fire-breath';
 import { FireBlast as FireBlast } from './fire-blast';
-import { EmbraceofFire as EmbraceofFire } from './fiery-embrace';
+import { FieryEmbrace as FieryEmbrace } from './fiery-embrace';
 import { Combustion as Combustion } from './combustion';
 import { Consume as Consume } from './consume';
 import { BlazingBolt as BlazingBolt } from './blazing-bolt';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     Incinerate,
     FireBreath,
     FireBlast,
-    EmbraceofFire,
+    FieryEmbrace,
     Combustion,
     Consume,
     BlazingBolt,

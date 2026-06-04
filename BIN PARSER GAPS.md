@@ -6,32 +6,66 @@ with diagnoses and recommended fixes. Newest entries at top.
 
 ---NEW ISSUES---
 
-## ⚠️ Powerset/pool layer still needs the accuracy + mez-PvE fixes; a regen surfaces broad stale drift (found 2026-06-03)
+## ✅ Powerset/pool deep regen — converter `specialBuff` regression fixed, layers brought current (FIXED 2026-06-03)
 
-The accuracy fix and the mez-PvE fix below were materialized for **epic-pools**
-(clean regen, see ✅ entries). The same two converter fixes also apply to the
-**powerset and pool** layers, but those generated files are stale across *many*
-unrelated categories, so a blanket regen is not safe to ship without review.
+Brought the stale `generated/powersets` + `generated/power-pools` layers current for
+both datasets, materializing the accuracy + mez-PvE fixes and every other accumulated
+converter improvement — after root-causing and fixing the converter regression that
+blocked it.
 
-- **Accuracy still dropped** on these non-epic powers (raw has `Accuracy /
-  aspect=Strength`, no `accuracyBuff` in any committed powerset/pool file):
-  Combat Training: Offensive (Arachnos Soldier/Widow), Eagle Eye, Terra Firma
-  (Stone Armor), Beryl Crystals, Debilitating Spores, Defiance Buff, and the
-  Devices-pool Targeting Drone. These show no +Accuracy until fixed.
-- **Mez `PvPMez` staleness** in HC powersets is tiny — 4 files (Scramble Thoughts
-  ×3 ATs, Arctic Air). Rebirth powersets: 0 (already current).
-- **But a full `convert-all-powersets.cjs --force` regen drifts broadly** — e.g.
-  bio-armor's generated export renames `Adaptation` → `Evolving Armor` (would
-  break the name-keyed override + any `import { Adaptation }`), amp-up restructures
-  `specialBuff/defenseBuff/tohitBuff` → `specialBuff` + `defense`/`tohit`
-  (Ranged_Buff_Dmg), beta-decay reshapes its `specialBuff`, etc. These are
-  accumulated converter improvements since the powerset files were last built;
-  each category needs its own verification (like the epic-pools mez check below).
+**The blocker (now fixed):** a full regen emitted a **malformed bare `specialBuff`**
+(`{ scale, table, perTarget }` instead of the keyed `{ <statKey>: … }`) for a handful
+of powers (entropy-shield, beta-decay, Dual Blades combos, geode), breaking `tsc` and
+threatening to drop those powers' buffs. Root cause: **`classifyTemplateForStacking`**
+(stacking/perTarget patch keys) routed **`RechargeTime aspect=Strength`** to
+`specialBuff`, but `extractEffects` keeps recharge on the flat `rechargeBuff` key — so
+the perTarget patch was mis-keyed onto the `specialBuff` container and corrupted it
+(and would have lost e.g. Entropy Shield's real +recharge-per-foe buff). Fix in
+[convert-powerset.cjs](scripts/convert-powerset.cjs): (1) exclude `RechargeTime` from
+the blanket `strength → specialBuff` in `classifyTemplateForStacking` (mirrors the
+existing damage/accuracy exclusions, so it falls through to `rechargeBuff` and matches
+`extractEffects`); (2) defensive guard in `mergeStackingPatches` — never apply a flat
+patch to a keyed container (`specialBuff`/`specialDebuff`); the dropped `perTarget` is
+calc-irrelevant there (`collectStrengthBuffs` uses `stacksLinear`/`maxStacks`, not
+`perTarget` on specialBuff values). Plus the `accuracyDebuff` type gap (Geode's self
+`-Accuracy`, raw `-999`) — added to `PowerEffects` + effect-registry.
 
-**Recommended next step:** either (a) surgical `accuracyBuff` overrides for the ~7
-powerset/pool accuracy powers above (zero-drift, mirrors the old epic-pools
-stopgap), or (b) a deliberate full powerset/pool regen with a category-by-category
-diff review (bigger, also picks up the mez-PvE fix + every other latent improvement).
+**What shipped (verified):**
+- **HC powersets:** 100 generated files — 54 `specialBuff` consolidation (strength
+  buffs into the keyed container the calc consumes), 22 sentinel `4294967295 → -1`,
+  5 `accuracyBuff` (Combat Training: Offensive, Eagle Eye, Terra Firma, Beryl Crystals,
+  Targeting Drone…), the PvE-mez fixes, etc.
+- **Rebirth powersets:** 52 files (sentinel + accuracy, mostly).
+- **Pools:** Rebirth `power-pools` gained the accuracy fix; HC pools already current.
+- **Safety checks:** `tsc` clean, **0** bare-`specialBuff`, **0** silently-lost buffs
+  (scripted check: no buff key removed without a `specialBuff` replacement),
+  entropy-shield & beta-decay restored to exact HEAD (recharge preserved), 79/79 tests.
+
+**✅ Bio-armor root-fixed (the recurring naming problem) — module identifiers now
+derive from the internal name.** The persistent bio-armor breakage was a symptom of a
+latent fragility affecting ~1,234 powers whose internal name ≠ display name: the
+generated **export const was derived from the mutable *display* name** (`power.name`),
+while the file is named from the stable *internal* name. For bio-armor the two are
+*crossed within the set* (internal "Adaptation" displays "Evolving Armor", and vice-
+versa) **and** its display name keeps getting corrected (pigg/override history) — so
+each correction flipped the export const, and `convert-powerset` scaffolded the
+composed per-power files *only-if-missing*, leaving their imports stranded.
+
+Fix ([convert-powerset.cjs](scripts/convert-powerset.cjs)): (1) derive the export const
+**and** the index imports from `power.internalName` (= the file name) instead of the
+display name — so file name === export name, stable forever, regardless of display-name
+changes; (2) always-regenerate the composed per-power files (verified 100% mechanical,
+0 hand-edits across 6,170 files — hand-edits live in the parallel override files), so a
+rename can never strand them again. The display name now lives only in the power's
+`name` data field, freely overridable without touching module structure.
+
+This was a one-time re-derivation of export consts across the whole powerset layer
+(~1,200 crossed powers × generated/composed/index, both datasets). **Audit:** zero
+hand-written imports of power export consts exist (only the auto-regenerated
+composed/index/kheldian layers consume them), so nothing external broke. **Verified:**
+`tsc` clean, 79/79 tests, 0 bare-`specialBuff`, 0 lost buffs, non-crossed powers'
+composed files byte-unchanged, bio-armor now `adaptation.ts → export const Adaptation`
+(file = export) with "Evolving Armor" in `.name`. Bio-armor is included in this regen.
 
 ---
 

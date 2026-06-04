@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TacticalTrainingVengeance as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/fortunata-teamwork/frt-tactical-training-vengeance';
+import { FRTTacticalTrainingVengeance as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-widow/epic/fortunata-teamwork/frt-tactical-training-vengeance';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-widow/epic/fortunata-teamwork/frt-tactical-training-vengeance';
 
-export const TacticalTrainingVengeance: Power = withOverrides(base, overrides);
+export const FRTTacticalTrainingVengeance: Power = withOverrides(base, overrides);

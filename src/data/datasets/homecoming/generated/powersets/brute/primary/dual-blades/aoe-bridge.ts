@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const TyphoonsEdge: Power = {
+export const AoEBridge: Power = {
   "name": "Typhoon's Edge",
   "internalName": "AoE_Bridge",
   "available": 5,
@@ -56,6 +56,12 @@ export const TyphoonsEdge: Power = {
       "tickRate": 0.4000000059604645
     }
   ],
+  "effects": {
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
+  },
   "conditionalEffects": [
     {
       "id": "dd_debuffmode_2",

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ContainmentShell: Power = {
+export const RepulsionField: Power = {
   "name": "Containment Shell",
   "internalName": "Repulsion_Field",
   "available": 17,

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FreezingRain as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/storm-summoning/fog';
+import { Fog as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/storm-summoning/fog';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/storm-summoning/fog';
 
-export const FreezingRain: Power = withOverrides(base, overrides);
+export const Fog: Power = withOverrides(base, overrides);

@@ -19,7 +19,7 @@ import { KeeningWinds as KeeningWinds } from './keening-winds';
 import { Vacuum as Vacuum } from './vacuum';
 import { Vortex as Vortex } from './vortex';
 import { ClearSkies as ClearSkies } from './clear-skies';
-import { ClearSkies as ClearSkies2 } from './clear-skies-text';
+import { ClearSkiesText as ClearSkiesText } from './clear-skies-text';
 
 export const powerset: Powerset = {
   id: 'controller/wind-control',
@@ -39,7 +39,7 @@ export const powerset: Powerset = {
     Vacuum,
     Vortex,
     ClearSkies,
-    ClearSkies2,
+    ClearSkiesText,
   ],
 };
 

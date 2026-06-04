@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EntanglingAura as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/nature-affinity/raging-tempest';
+import { RagingTempest as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/nature-affinity/raging-tempest';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/nature-affinity/raging-tempest';
 
-export const EntanglingAura: Power = withOverrides(base, overrides);
+export const RagingTempest: Power = withOverrides(base, overrides);

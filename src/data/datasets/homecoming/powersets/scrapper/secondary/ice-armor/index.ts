@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { FrozenArmor as FrozenArmor } from './ice-armor';
-import { Rime as Rime } from './rime-ice';
+import { IceArmor as IceArmor } from './ice-armor';
+import { RimeIce as RimeIce } from './rime-ice';
 import { Hoarfrost as Hoarfrost } from './hoarfrost';
 import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
 import { WetIce as WetIce } from './wet-ice';
@@ -28,8 +28,8 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'secondary',
   powers: [
-    FrozenArmor,
-    Rime,
+    IceArmor,
+    RimeIce,
     Hoarfrost,
     ChillingEmbrace,
     WetIce,

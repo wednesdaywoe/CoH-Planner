@@ -14,7 +14,7 @@ import { FireSword as FireSword } from './fire-sword';
 import { Cremate as Cremate } from './cremate';
 import { BuildUp as BuildUp } from './build-up';
 import { BreathofFire as BreathofFire } from './breath-of-fire';
-import { Confront as Confront } from './provoke';
+import { Provoke as Provoke } from './provoke';
 import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
 import { Incinerate as Incinerate } from './incinerate';
 import { GreaterFireSword as GreaterFireSword } from './greater-fire-sword';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     Cremate,
     BuildUp,
     BreathofFire,
-    Confront,
+    Provoke,
     FireSwordCircle,
     Incinerate,
     GreaterFireSword,

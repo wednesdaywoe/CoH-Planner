@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AssassinsWhisper as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/sonic-melee/assassins-resonance';
+import { AssassinsResonance as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/sonic-melee/assassins-resonance';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/sonic-melee/assassins-resonance';
 
-export const AssassinsWhisper: Power = withOverrides(base, overrides);
+export const AssassinsResonance: Power = withOverrides(base, overrides);

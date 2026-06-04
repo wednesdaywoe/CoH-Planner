@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const MaskPresence: Power = {
+export const FRTMaskPresence: Power = {
   "name": "Mask Presence",
   "internalName": "FRT_Mask_Presence",
   "available": 19,

@@ -15,8 +15,8 @@ import { Longfang as Longfang } from './longfang';
 import { Aim as Aim } from './aim';
 import { Suppression as Suppression } from './suppression';
 import { ArmLash as ArmLash } from './arm-lash';
-import { VenomGrenade as VenomGrenade } from './cs-venom-grenade';
-import { FragGrenade as FragGrenade } from './cs-frag-grenade';
+import { CSVenomGrenade as CSVenomGrenade } from './cs-venom-grenade';
+import { CSFragGrenade as CSFragGrenade } from './cs-frag-grenade';
 import { Frenzy as Frenzy } from './frenzy';
 import { OmegaManeuver as OmegaManeuver } from './omega-maneuver';
 
@@ -34,8 +34,8 @@ export const powerset: Powerset = {
     Aim,
     Suppression,
     ArmLash,
-    VenomGrenade,
-    FragGrenade,
+    CSVenomGrenade,
+    CSFragGrenade,
     Frenzy,
     OmegaManeuver,
   ],

@@ -13,7 +13,7 @@ import { PowerBolt as PowerBolt } from './power-bolt';
 import { BoneSmasher as BoneSmasher } from './bone-smasher';
 import { PowerPush as PowerPush } from './power-push';
 import { PowerBlast as PowerBlast } from './power-blast';
-import { PowerUp as PowerUp } from './power-boost';
+import { PowerBoost as PowerBoost } from './power-boost';
 import { WhirlingHands as WhirlingHands } from './whirling-hands';
 import { TotalFocus as TotalFocus } from './total-focus';
 import { SniperBlast as SniperBlast } from './sniper-blast';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     BoneSmasher,
     PowerPush,
     PowerBlast,
-    PowerUp,
+    PowerBoost,
     WhirlingHands,
     TotalFocus,
     SniperBlast,

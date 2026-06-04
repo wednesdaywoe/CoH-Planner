@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Chronos: Power = {
+export const ChronologicalSelection: Power = {
   "name": "Chronos",
   "internalName": "Chronological_Selection",
   "available": 9,

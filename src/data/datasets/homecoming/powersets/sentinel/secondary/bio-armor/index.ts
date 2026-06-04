@@ -9,6 +9,9 @@
 
 import type { Powerset } from '@/types';
 
+import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
+import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
+import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
 import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { Inexhaustible as Inexhaustible } from './inexhaustible';
 import { EnvironmentalAdaptation as EnvironmentalAdaptation } from './environmental-adaptation';
@@ -18,9 +21,6 @@ import { RebuildDNA as RebuildDNA } from './rebuild-dna';
 import { AthleticRegulation as AthleticRegulation } from './athletic-regulation';
 import { GenomicEvolution as GenomicEvolution } from './genomic-evolution';
 import { ParasiticLeech as ParasiticLeech } from './parasitic-leech';
-import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
-import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
-import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
 
 export const powerset: Powerset = {
   id: 'sentinel/bio-armor',
@@ -30,6 +30,9 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
+    OffensiveAdaptation,
+    DefensiveAdaptation,
+    EfficientAdaptation,
     HardenedCarapace,
     Inexhaustible,
     EnvironmentalAdaptation,
@@ -39,9 +42,6 @@ export const powerset: Powerset = {
     AthleticRegulation,
     GenomicEvolution,
     ParasiticLeech,
-    OffensiveAdaptation,
-    DefensiveAdaptation,
-    EfficientAdaptation,
   ],
 };
 

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const RenewEnergy: Power = {
+export const ConserveEnergy: Power = {
   "name": "Renew Energy",
   "internalName": "Conserve_Energy",
   "available": 23,

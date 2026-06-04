@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const DampingBubble: Power = {
+export const ForceBubble: Power = {
   "name": "Damping Bubble",
   "internalName": "Force_Bubble",
   "available": 25,

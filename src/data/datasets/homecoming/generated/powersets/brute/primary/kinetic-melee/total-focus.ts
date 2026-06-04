@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ConcentratedStrike: Power = {
+export const TotalFocus: Power = {
   "name": "Concentrated Strike",
   "internalName": "Total_Focus",
   "available": 25,

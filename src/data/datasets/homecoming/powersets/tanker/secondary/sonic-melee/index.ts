@@ -14,7 +14,7 @@ import { StridentEcho as StridentEcho } from './strident-echo';
 import { Attune as Attune } from './attune';
 import { Taunt as Taunt } from './taunt';
 import { SonicClap as SonicClap } from './sonic-clap';
-import { SoundBooster as SoundBooster } from './build-up';
+import { BuildUp as BuildUp } from './build-up';
 import { SandmansWhisper as SandmansWhisper } from './sandmans-whisper';
 import { DeafeningWave as DeafeningWave } from './deafening-wave';
 import { Earsplitter as Earsplitter } from './earsplitter';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     Attune,
     Taunt,
     SonicClap,
-    SoundBooster,
+    BuildUp,
     SandmansWhisper,
     DeafeningWave,
     Earsplitter,

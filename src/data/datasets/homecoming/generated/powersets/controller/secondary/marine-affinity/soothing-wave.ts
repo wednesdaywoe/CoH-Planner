@@ -51,6 +51,10 @@ export const SoothingWave: Power = {
     "durations": {
       "damageDebuff": 10
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
   }
 };

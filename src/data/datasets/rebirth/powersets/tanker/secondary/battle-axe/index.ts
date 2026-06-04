@@ -9,9 +9,9 @@
 
 import type { Powerset } from '@/types';
 
-import { Beheader as Beheader } from './gash';
+import { Gash as Gash } from './gash';
 import { Chop as Chop } from './chop';
-import { Gash as Gash } from './beheader';
+import { Beheader as Beheader } from './beheader';
 import { Taunt as Taunt } from './taunt';
 import { BuildUp as BuildUp } from './build-up';
 import { Swoop as Swoop } from './swoop';
@@ -27,9 +27,9 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    Beheader,
-    Chop,
     Gash,
+    Chop,
+    Beheader,
     Taunt,
     BuildUp,
     Swoop,

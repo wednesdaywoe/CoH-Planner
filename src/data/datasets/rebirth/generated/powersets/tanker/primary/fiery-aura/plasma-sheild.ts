@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const PlasmaShield: Power = {
+export const PlasmaSheild: Power = {
   "name": "Plasma Shield",
   "internalName": "Plasma_Sheild",
   "available": 11,

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const AblatingStrike: Power = {
+export const ModerateBridge: Power = {
   "name": "Ablating Strike",
   "internalName": "Moderate_Bridge",
   "available": 1,
@@ -64,7 +64,11 @@ export const AblatingStrike: Power = {
     "durations": {
       "defenseDebuff": 10
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
   },
   "specialEffects": [
     {

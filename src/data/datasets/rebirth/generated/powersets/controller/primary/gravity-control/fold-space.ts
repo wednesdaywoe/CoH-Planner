@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Singularity: Power = {
+export const FoldSpace: Power = {
   "name": "Singularity",
   "internalName": "Fold_Space",
   "available": 31,

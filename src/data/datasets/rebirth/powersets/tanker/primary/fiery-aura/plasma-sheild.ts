@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PlasmaShield as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/fiery-aura/plasma-sheild';
+import { PlasmaSheild as base } from '@/data/datasets/rebirth/generated/powersets/tanker/primary/fiery-aura/plasma-sheild';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/primary/fiery-aura/plasma-sheild';
 
-export const PlasmaShield: Power = withOverrides(base, overrides);
+export const PlasmaSheild: Power = withOverrides(base, overrides);

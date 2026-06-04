@@ -14,7 +14,7 @@ import { IceSword as IceSword } from './ice-sword';
 import { Frost as Frost } from './frost';
 import { BuildUp as BuildUp } from './build-up';
 import { GreaterIceSword as GreaterIceSword } from './greater-ice-sword';
-import { Confront as Confront } from './taunt';
+import { Taunt as Taunt } from './taunt';
 import { IcePatch as IcePatch } from './ice-patch';
 import { FreezingTouch as FreezingTouch } from './freezing-touch';
 import { FrozenAura as FrozenAura } from './frozen-aura';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     Frost,
     BuildUp,
     GreaterIceSword,
-    Confront,
+    Taunt,
     IcePatch,
     FreezingTouch,
     FrozenAura,

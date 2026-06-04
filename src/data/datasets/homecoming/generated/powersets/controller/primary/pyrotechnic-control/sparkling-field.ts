@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const SparklingChain: Power = {
+export const SparklingField: Power = {
   "name": "Sparkling Chain",
   "internalName": "Sparkling_Field",
   "available": 1,

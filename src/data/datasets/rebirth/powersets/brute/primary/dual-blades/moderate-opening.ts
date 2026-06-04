@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerSlice as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/dual-blades/moderate-opening';
+import { ModerateOpening as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/dual-blades/moderate-opening';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/dual-blades/moderate-opening';
 
-export const PowerSlice: Power = withOverrides(base, overrides);
+export const ModerateOpening: Power = withOverrides(base, overrides);

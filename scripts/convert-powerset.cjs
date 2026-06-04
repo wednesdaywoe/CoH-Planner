@@ -2747,7 +2747,13 @@ function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
     // buff to `accuracyBuff` (not the specialBuff strength container), so let it
     // fall through to the combat-modifier mapping below for matching metadata.
     const isAccuracy = template.attribs.some(a => a?.toLowerCase() === 'accuracy');
-    if (!isDamageStrength && !isAccuracy) return [{ effectKey: 'specialBuff' }];
+    // RechargeTime is likewise a Strength-aspect stat whose buff extractEffects
+    // keeps on the flat `rechargeBuff` key (the rechargeTime branch has no
+    // specialBuff routing) — e.g. Entropy Shield's per-foe +recharge. Routing it
+    // to specialBuff here would mis-key the stacking/perTarget patch and drop the
+    // (calc-relevant) recharge buff. Let it fall through to rechargeBuff.
+    const isRecharge = template.attribs.some(a => a?.toLowerCase() === 'rechargetime');
+    if (!isDamageStrength && !isAccuracy && !isRecharge) return [{ effectKey: 'specialBuff' }];
   }
 
   const results = [];
@@ -3104,8 +3110,21 @@ function mergeStackingPatches(effects, stackingResult) {
         }
       }
     } else {
-      // Simple effect patch (e.g., tohitBuff, damageBuff, regenBuff)
+      // Simple effect patch (e.g., tohitBuff, damageBuff, regenBuff).
       const existing = effects[key];
+      // `specialBuff`/`specialDebuff` are KEYED strength containers
+      // ({ recharge, defense, tohit, … }), but classifyTemplateForStacking
+      // returns 'specialBuff' WITHOUT a subKey, so the patch arrives shapeless.
+      // Applying it flat would clobber the container (or create a bare
+      // { scale, table } — breaking the NumberOrScaled type and dropping the
+      // strength buff in the calc). The patch only adds perTarget scaling, which
+      // collectStrengthBuffs doesn't read off specialBuff values anyway (it uses
+      // stacksLinear/maxStacks), so skip it and keep extractEffects' keyed
+      // container authoritative.
+      if (key === 'specialBuff' || key === 'specialDebuff'
+          || (existing && typeof existing === 'object' && !('scale' in existing))) {
+        continue;
+      }
       if (existing && typeof existing === 'object' && 'scale' in existing) {
         // For redirect stacking: add perTarget to existing base scale
         if (patchValue.scale === 0 && existing.scale) {
@@ -3520,7 +3539,14 @@ function convertPowerset(category, powersetName) {
   // Re-running convert-powerset never clobbers hand-edited overrides/composed.
   for (const { power, file } of powers) {
     const powerFileName = toKebabCase(power.internalName) + '.ts';
-    const exportName = power.name.replace(/[^a-zA-Z0-9]/g, '');
+    // The exported const identifier is derived from the INTERNAL name (which also
+    // names the file), NOT the display name. The display name is mutable (pigg
+    // patches, overrides) and can be crossed within a set — e.g. Bio Armor's
+    // internal "Adaptation" displays "Evolving Armor" and vice-versa. Tying the
+    // module identifier to the volatile display name made the export const flip on
+    // every display-name correction, stranding the composed/index imports. Internal
+    // names are stable, so file name === export name, forever.
+    const exportName = power.internalName.replace(/[^a-zA-Z0-9]/g, '');
     // The composed file's absolute imports point at this dataset's own
     // `generated/` and `overrides/` trees under `@/data/datasets/<id>/`.
     const importRoot = `@/data/datasets/${datasetId}`;
@@ -3576,8 +3602,14 @@ export const overrides: Partial<Power> = {};
 `;
       fs.writeFileSync(overridePath, overrideContent);
     }
-    if (!composedExists) {
-      const composedContent = `/**
+    // The composed file is purely mechanical (import base + overrides →
+    // withOverrides) — all hand-edits live in the parallel override file — so it
+    // is ALWAYS rewritten. This keeps its import/export identifier in sync with
+    // the generated export const; previously, scaffolding it only-if-missing left
+    // a rename stranded (the composed kept importing the old name). `composedExists`
+    // is retained only to log new scaffolds.
+    void composedExists;
+    const composedContent = `/**
  * ${power.name} — COMPOSED EXPORT
  *
  * The planner imports from here. Composes the auto-generated power object
@@ -3594,16 +3626,17 @@ import { overrides } from '${ovrRel}';
 
 export const ${exportName}: Power = withOverrides(base, overrides);
 `;
-      fs.writeFileSync(composedPath, composedContent);
-    }
+    fs.writeFileSync(composedPath, composedContent);
 
     console.log(`  - ${power.name}`);
   }
 
-  // Generate unique variable names (handle duplicates)
+  // Local aliases for the index imports — derived from the INTERNAL name (the
+  // stable module identifier, matching each composed file's export const). The
+  // dedup guard is kept defensively, though internal names are unique within a set.
   const usedNames = new Map(); // name -> count
   const powerVarNames = powers.map(({ power: p }) => {
-    const baseName = p.name.replace(/[^a-zA-Z0-9]/g, '');
+    const baseName = p.internalName.replace(/[^a-zA-Z0-9]/g, '');
     const count = usedNames.get(baseName) || 0;
     usedNames.set(baseName, count + 1);
     return count > 0 ? `${baseName}${count + 1}` : baseName;
@@ -3621,7 +3654,7 @@ export const ${exportName}: Power = withOverrides(base, overrides);
 
 import type { Powerset } from '@/types';
 
-${powers.map(({ power: p }, i) => `import { ${p.name.replace(/[^a-zA-Z0-9]/g, '')} as ${powerVarNames[i]} } from './${toKebabCase(p.internalName)}';`).join('\n')}
+${powers.map(({ power: p }, i) => `import { ${p.internalName.replace(/[^a-zA-Z0-9]/g, '')} as ${powerVarNames[i]} } from './${toKebabCase(p.internalName)}';`).join('\n')}
 
 export const powerset: Powerset = {
   id: '${categoryInfo.archetype}/${toKebabCase(indexJson.display_name)}',

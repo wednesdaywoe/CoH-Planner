@@ -47,10 +47,15 @@ export const EagleEye: Power = {
     },
     "durations": {
       "debuffResistance": 0.75,
+      "accuracyBuff": 0.75,
       "perceptionBuff": 0.75,
       "regenBuff": 0.75,
       "regenBuffUnenhanced": 0.75,
       "recoveryBuff": 0.75
+    },
+    "accuracyBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
     },
     "perceptionBuff": {
       "scale": 0.6,

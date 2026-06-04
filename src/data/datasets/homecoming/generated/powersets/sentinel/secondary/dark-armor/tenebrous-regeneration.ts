@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ShadowDweller: Power = {
+export const TenebrousRegeneration: Power = {
   "name": "Shadow Dweller",
   "internalName": "Tenebrous_Regeneration",
   "available": 0,

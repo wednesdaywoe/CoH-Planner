@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GamblersCut as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/katana/slash';
+import { Slash as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/katana/slash';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/katana/slash';
 
-export const GamblersCut: Power = withOverrides(base, overrides);
+export const Slash: Power = withOverrides(base, overrides);

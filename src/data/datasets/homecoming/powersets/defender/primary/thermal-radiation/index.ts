@@ -10,7 +10,7 @@
 import type { Powerset } from '@/types';
 
 import { Warmth as Warmth } from './warmth';
-import { ThermalShield as ThermalShield } from './fire-shield';
+import { FireShield as FireShield } from './fire-shield';
 import { Cauterize as Cauterize } from './cauterize';
 import { PlasmaShield as PlasmaShield } from './plasma-shield';
 import { PowerofthePhoenix as PowerofthePhoenix } from './power-of-the-phoenix';
@@ -28,7 +28,7 @@ export const powerset: Powerset = {
   category: 'primary',
   powers: [
     Warmth,
-    ThermalShield,
+    FireShield,
     Cauterize,
     PlasmaShield,
     PowerofthePhoenix,

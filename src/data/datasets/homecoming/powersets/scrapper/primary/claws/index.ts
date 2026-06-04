@@ -14,7 +14,7 @@ import { Strike as Strike } from './strike';
 import { Slash as Slash } from './slash';
 import { Spin as Spin } from './spin';
 import { FollowUp as FollowUp } from './follow-up';
-import { Confront as Confront } from './taunt';
+import { Taunt as Taunt } from './taunt';
 import { Focus as Focus } from './focus';
 import { Eviscerate as Eviscerate } from './eviscerate';
 import { Shockwave as Shockwave } from './shockwave';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     Slash,
     Spin,
     FollowUp,
-    Confront,
+    Taunt,
     Focus,
     Eviscerate,
     Shockwave,

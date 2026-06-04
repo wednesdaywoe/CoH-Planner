@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { Chilblain as Chilblain } from './chilblain';
 import { BlockofIce as BlockofIce } from './block-of-ice';
 import { Frostbite as Frostbite } from './frostbite';
-import { ArcticAir as ArcticAir } from './artic-air';
+import { ArticAir as ArticAir } from './artic-air';
 import { Shiver as Shiver } from './shiver';
 import { IceSlick as IceSlick } from './ice-slick';
 import { FlashFreeze as FlashFreeze } from './flash-freeze';
@@ -30,7 +30,7 @@ export const powerset: Powerset = {
     Chilblain,
     BlockofIce,
     Frostbite,
-    ArcticAir,
+    ArticAir,
     Shiver,
     IceSlick,
     FlashFreeze,

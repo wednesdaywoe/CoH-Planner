@@ -10,11 +10,11 @@
 import type { Powerset } from '@/types';
 
 import { Hide as Hide } from './hide';
-import { Deflection as Deflection } from './active-defense';
-import { BattleAgility as BattleAgility } from './deflection';
+import { ActiveDefense as ActiveDefense } from './active-defense';
+import { Deflection as Deflection } from './deflection';
 import { TrueGrit as TrueGrit } from './true-grit';
-import { ActiveDefense as ActiveDefense } from './battle-agility';
-import { AgainstAllOdds as AgainstAllOdds } from './against-all-odds';
+import { BattleAgility as BattleAgility } from './battle-agility';
+import { AgainstallOdds as AgainstallOdds } from './against-all-odds';
 import { GrantCover as GrantCover } from './grant-cover';
 import { ShieldCharge as ShieldCharge } from './shield-charge';
 import { OnewiththeShield as OnewiththeShield } from './one-with-the-shield';
@@ -28,11 +28,11 @@ export const powerset: Powerset = {
   category: 'secondary',
   powers: [
     Hide,
-    Deflection,
-    BattleAgility,
-    TrueGrit,
     ActiveDefense,
-    AgainstAllOdds,
+    Deflection,
+    TrueGrit,
+    BattleAgility,
+    AgainstallOdds,
     GrantCover,
     ShieldCharge,
     OnewiththeShield,

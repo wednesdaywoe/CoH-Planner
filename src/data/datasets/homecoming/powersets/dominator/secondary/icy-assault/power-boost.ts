@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { PowerUp as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/icy-assault/power-boost';
+import { PowerBoost as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/icy-assault/power-boost';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/icy-assault/power-boost';
 
-export const PowerUp: Power = withOverrides(base, overrides);
+export const PowerBoost: Power = withOverrides(base, overrides);

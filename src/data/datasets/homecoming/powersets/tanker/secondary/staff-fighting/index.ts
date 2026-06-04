@@ -9,6 +9,9 @@
 
 import type { Powerset } from '@/types';
 
+import { FormoftheBody as FormoftheBody } from './form-of-the-body';
+import { FormoftheMind as FormoftheMind } from './form-of-the-mind';
+import { FormoftheSoul as FormoftheSoul } from './form-of-the-soul';
 import { MercurialBlow as MercurialBlow } from './mercurial-blow';
 import { PreciseStrike as PreciseStrike } from './precise-strike';
 import { GuardedSpin as GuardedSpin } from './guarded-spin';
@@ -18,9 +21,6 @@ import { StaffMastery as StaffMastery } from './staff-mastery';
 import { SerpentsReach as SerpentsReach } from './serpents-reach';
 import { InnocuousStrikes as InnocuousStrikes } from './innocuous-strikes';
 import { SkySplitter as SkySplitter } from './sky-splitter';
-import { FormoftheBody as FormoftheBody } from './form-of-the-body';
-import { FormoftheMind as FormoftheMind } from './form-of-the-mind';
-import { FormoftheSoul as FormoftheSoul } from './form-of-the-soul';
 
 export const powerset: Powerset = {
   id: 'tanker/staff-fighting',
@@ -30,6 +30,9 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
+    FormoftheBody,
+    FormoftheMind,
+    FormoftheSoul,
     MercurialBlow,
     PreciseStrike,
     GuardedSpin,
@@ -39,9 +42,6 @@ export const powerset: Powerset = {
     SerpentsReach,
     InnocuousStrikes,
     SkySplitter,
-    FormoftheBody,
-    FormoftheMind,
-    FormoftheSoul,
   ],
 };
 

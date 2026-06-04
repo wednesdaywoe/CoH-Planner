@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { FrozenArmor as FrozenArmor } from './ice-armor';
-import { Rime as Rime } from './rime-ice';
+import { IceArmor as IceArmor } from './ice-armor';
+import { RimeIce as RimeIce } from './rime-ice';
 import { Hoarfrost as Hoarfrost } from './hoarfrost';
 import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
 import { WetIce as WetIce } from './wet-ice';
@@ -18,7 +18,7 @@ import { GlacialArmor as GlacialArmor } from './glacial-armor';
 import { EnergyAbsorption as EnergyAbsorption } from './energy-absorption';
 import { Permafrost as Permafrost } from './permafrost';
 import { Icicles as Icicles } from './icicles';
-import { IcyBastion as IcyBastion } from './hibernate';
+import { Hibernate as Hibernate } from './hibernate';
 
 export const powerset: Powerset = {
   id: 'brute/ice-armor',
@@ -28,8 +28,8 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'secondary',
   powers: [
-    FrozenArmor,
-    Rime,
+    IceArmor,
+    RimeIce,
     Hoarfrost,
     ChillingEmbrace,
     WetIce,
@@ -37,7 +37,7 @@ export const powerset: Powerset = {
     EnergyAbsorption,
     Permafrost,
     Icicles,
-    IcyBastion,
+    Hibernate,
   ],
 };
 

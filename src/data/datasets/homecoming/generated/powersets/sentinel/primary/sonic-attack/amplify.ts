@@ -56,6 +56,7 @@ export const Amplify: Power = {
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",
+      "specialBuff",
       "tohitBuff"
     ]
   }

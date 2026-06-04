@@ -11,7 +11,7 @@ import type { Powerset } from '@/types';
 
 import { Scorch as Scorch } from './scorch';
 import { FireSword as FireSword } from './fire-sword';
-import { Cremate as Cremate } from './combustion';
+import { Combustion as Combustion } from './combustion';
 import { BuildUp as BuildUp } from './build-up';
 import { BreathofFire as BreathofFire } from './breath-of-fire';
 import { Taunt as Taunt } from './taunt';
@@ -29,7 +29,7 @@ export const powerset: Powerset = {
   powers: [
     Scorch,
     FireSword,
-    Cremate,
+    Combustion,
     BuildUp,
     BreathofFire,
     Taunt,

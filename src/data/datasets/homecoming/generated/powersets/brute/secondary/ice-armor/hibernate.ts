@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const IcyBastion: Power = {
+export const Hibernate: Power = {
   "name": "Icy Bastion",
   "internalName": "Hibernate",
   "available": 29,
@@ -152,6 +152,10 @@ export const IcyBastion: Power = {
       "scale": 0.75,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30
+    "buffDuration": 30,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
   }
 };

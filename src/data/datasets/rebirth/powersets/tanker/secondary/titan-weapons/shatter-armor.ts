@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RendArmor as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/titan-weapons/shatter-armor';
+import { ShatterArmor as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/titan-weapons/shatter-armor';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/titan-weapons/shatter-armor';
 
-export const RendArmor: Power = withOverrides(base, overrides);
+export const ShatterArmor: Power = withOverrides(base, overrides);

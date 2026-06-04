@@ -17,7 +17,7 @@ import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { Burst as Burst } from './burst';
 import { FocusedBurst as FocusedBurst } from './focused-burst';
-import { ConcentratedStrike as ConcentratedStrike } from './total-focus';
+import { TotalFocus as TotalFocus } from './total-focus';
 
 export const powerset: Powerset = {
   id: 'stalker/kinetic-melee',
@@ -35,7 +35,7 @@ export const powerset: Powerset = {
     Placate,
     Burst,
     FocusedBurst,
-    ConcentratedStrike,
+    TotalFocus,
   ],
 };
 

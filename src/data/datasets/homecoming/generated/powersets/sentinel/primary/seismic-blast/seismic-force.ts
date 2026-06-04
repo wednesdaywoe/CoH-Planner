@@ -51,6 +51,10 @@ export const SeismicForce: Power = {
       "scale": 0.333,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
   }
 };

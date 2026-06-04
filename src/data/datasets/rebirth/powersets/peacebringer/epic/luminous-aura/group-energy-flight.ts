@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SolarGlide as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-aura/group-energy-flight';
+import { GroupEnergyFlight as base } from '@/data/datasets/rebirth/generated/powersets/peacebringer/epic/luminous-aura/group-energy-flight';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/peacebringer/epic/luminous-aura/group-energy-flight';
 
-export const SolarGlide: Power = withOverrides(base, overrides);
+export const GroupEnergyFlight: Power = withOverrides(base, overrides);

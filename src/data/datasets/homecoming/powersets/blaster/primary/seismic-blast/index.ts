@@ -11,7 +11,7 @@ import type { Powerset } from '@/types';
 
 import { Encase as Encase } from './encase';
 import { Shatter as Shatter } from './shatter';
-import { SeismicShockwaves as SeismicShockwaves } from './shockwaves';
+import { Shockwaves as Shockwaves } from './shockwaves';
 import { RockShards as RockShards } from './rock-shards';
 import { Entomb as Entomb } from './entomb';
 import { SeismicForce as SeismicForce } from './seismic-force';
@@ -30,7 +30,7 @@ export const powerset: Powerset = {
   powers: [
     Encase,
     Shatter,
-    SeismicShockwaves,
+    Shockwaves,
     RockShards,
     Entomb,
     SeismicForce,

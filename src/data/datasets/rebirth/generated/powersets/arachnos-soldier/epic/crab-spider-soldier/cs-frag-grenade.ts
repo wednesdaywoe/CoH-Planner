@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const FragGrenade: Power = {
+export const CSFragGrenade: Power = {
   "name": "Frag Grenade",
   "internalName": "CS_Frag_Grenade",
   "available": 17,

@@ -17,7 +17,7 @@ import { RepulsingTorrent as RepulsingTorrent } from './repulsing-torrent';
 import { Taunt as Taunt } from './taunt';
 import { Burst as Burst } from './burst';
 import { FocusedBurst as FocusedBurst } from './focused-burst';
-import { ConcentratedStrike as ConcentratedStrike } from './total-focus';
+import { TotalFocus as TotalFocus } from './total-focus';
 
 export const powerset: Powerset = {
   id: 'brute/kinetic-melee',
@@ -35,7 +35,7 @@ export const powerset: Powerset = {
     Taunt,
     Burst,
     FocusedBurst,
-    ConcentratedStrike,
+    TotalFocus,
   ],
 };
 

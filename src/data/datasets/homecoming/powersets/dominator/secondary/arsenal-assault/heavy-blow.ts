@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ElbowStrike as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/arsenal-assault/heavy-blow';
+import { HeavyBlow as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/arsenal-assault/heavy-blow';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/arsenal-assault/heavy-blow';
 
-export const ElbowStrike: Power = withOverrides(base, overrides);
+export const HeavyBlow: Power = withOverrides(base, overrides);

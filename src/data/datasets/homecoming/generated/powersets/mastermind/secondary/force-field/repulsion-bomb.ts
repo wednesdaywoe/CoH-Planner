@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ForceBomb: Power = {
+export const RepulsionBomb: Power = {
   "name": "Force Bomb",
   "internalName": "Repulsion_Bomb",
   "available": 27,

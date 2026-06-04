@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const MentalBlast: Power = {
+export const FRTMentalBlast: Power = {
   "name": "Mental Blast",
   "internalName": "FRT_Mental_Blast",
   "available": 0,

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { RepulsionBolt as RepulsionBolt } from './force-bolt';
+import { ForceBolt as ForceBolt } from './force-bolt';
 import { DeflectionShield as DeflectionShield } from './deflection-shield';
 import { InsulationShield as InsulationShield } from './insulation-shield';
 import { DetentionField as DetentionField } from './detention-field';
 import { PersonalForceField as PersonalForceField } from './personal-force-field';
 import { DispersionBubble as DispersionBubble } from './dispersion-bubble';
 import { RepulsionField as RepulsionField } from './repulsion-field';
-import { ForceBomb as ForceBomb } from './repulsion-bomb';
-import { DampingBubble as DampingBubble } from './force-bubble';
+import { RepulsionBomb as RepulsionBomb } from './repulsion-bomb';
+import { ForceBubble as ForceBubble } from './force-bubble';
 
 export const powerset: Powerset = {
   id: 'mastermind/force-field',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    RepulsionBolt,
+    ForceBolt,
     DeflectionShield,
     InsulationShield,
     DetentionField,
     PersonalForceField,
     DispersionBubble,
     RepulsionField,
-    ForceBomb,
-    DampingBubble,
+    RepulsionBomb,
+    ForceBubble,
   ],
 };
 

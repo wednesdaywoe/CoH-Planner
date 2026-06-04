@@ -13,7 +13,7 @@ import { StoneSpears as StoneSpears } from './stone-spears';
 import { StoneMallet as StoneMallet } from './stone-mallet';
 import { Tremor as Tremor } from './tremor';
 import { HurlBoulder as HurlBoulder } from './hurl-boulder';
-import { PowerUp as PowerUp } from './power-boost';
+import { PowerBoost as PowerBoost } from './power-boost';
 import { HeavyMallet as HeavyMallet } from './heavy-mallet';
 import { SeismicSmash as SeismicSmash } from './seismic-smash';
 import { MudPots as MudPots } from './mud-pots';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     StoneMallet,
     Tremor,
     HurlBoulder,
-    PowerUp,
+    PowerBoost,
     HeavyMallet,
     SeismicSmash,
     MudPots,

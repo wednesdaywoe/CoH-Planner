@@ -15,7 +15,7 @@ import { PulseRifleBurst as PulseRifleBurst } from './pulse-rifle-burst';
 import { EquipRobot as EquipRobot } from './equip-robot';
 import { PhotonGrenade as PhotonGrenade } from './photon-grenade';
 import { ProtectorBots as ProtectorBots } from './protector-bots';
-import { MaintenanceDrone as MaintenanceDrone } from './repair';
+import { Repair as Repair } from './repair';
 import { AssaultBot as AssaultBot } from './assault-bot';
 import { UpgradeRobot as UpgradeRobot } from './upgrade-robot';
 
@@ -33,7 +33,7 @@ export const powerset: Powerset = {
     EquipRobot,
     PhotonGrenade,
     ProtectorBots,
-    MaintenanceDrone,
+    Repair,
     AssaultBot,
     UpgradeRobot,
   ],

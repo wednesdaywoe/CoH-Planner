@@ -11,12 +11,12 @@ import type { Powerset } from '@/types';
 
 import { Subdue as Subdue } from './subdue';
 import { MentalBlast as MentalBlast } from './mental-blast';
-import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
+import { Telekineticblast as Telekineticblast } from './telekinetic-blast';
 import { PsychicScream as PsychicScream } from './psychic-scream';
 import { WillDomination as WillDomination } from './will-domination';
 import { PsionicLance as PsionicLance } from './psionic-lance';
 import { PsionicTornado as PsionicTornado } from './psionic-tornado';
-import { ScrambleMinds as ScrambleMinds } from './scramble-thoughts';
+import { ScrambleThoughts as ScrambleThoughts } from './scramble-thoughts';
 import { PsychicWail as PsychicWail } from './psychic-wail';
 
 export const powerset: Powerset = {
@@ -29,12 +29,12 @@ export const powerset: Powerset = {
   powers: [
     Subdue,
     MentalBlast,
-    TelekineticBlast,
+    Telekineticblast,
     PsychicScream,
     WillDomination,
     PsionicLance,
     PsionicTornado,
-    ScrambleMinds,
+    ScrambleThoughts,
     PsychicWail,
   ],
 };

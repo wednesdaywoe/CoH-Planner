@@ -38,9 +38,7 @@ export const AmpUp: Power = {
     },
     "durations": {
       "rechargeBuff": 90,
-      "specialBuff": 90,
-      "defenseBuff": 90,
-      "tohitBuff": 90
+      "specialBuff": 90
     },
     "specialBuff": {
       "heal": {
@@ -78,15 +76,15 @@ export const AmpUp: Power = {
       "sleep": {
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
+      },
+      "defense": {
+        "scale": 3.6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "tohit": {
+        "scale": 3.6,
+        "table": "Ranged_Buff_Dmg"
       }
-    },
-    "defenseBuff": {
-      "scale": 3.6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuff": {
-      "scale": 3.6,
-      "table": "Ranged_Buff_Dmg"
     },
     "buffDuration": 90
   }

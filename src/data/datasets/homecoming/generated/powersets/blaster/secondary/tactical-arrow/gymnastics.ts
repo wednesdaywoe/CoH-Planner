@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const OilSlickArrow: Power = {
+export const Gymnastics: Power = {
   "name": "Oil Slick Arrow",
   "internalName": "Gymnastics",
   "available": 29,

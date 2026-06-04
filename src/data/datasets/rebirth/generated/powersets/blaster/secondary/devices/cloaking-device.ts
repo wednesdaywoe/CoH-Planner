@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const FieldOperative: Power = {
+export const CloakingDevice: Power = {
   "name": "Field Operative",
   "internalName": "Cloaking_Device",
   "available": 19,

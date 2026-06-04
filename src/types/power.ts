@@ -358,6 +358,8 @@ export interface PowerEffects {
   // === DEBUFF EFFECTS ===
   /** ToHit debuff value (scale or {scale, table}) */
   tohitDebuff?: NumberOrScaled;
+  /** Accuracy debuff value — e.g. Geode's self -Accuracy while petrified */
+  accuracyDebuff?: NumberOrScaled;
   /** Defense debuff value - can be single value or by type */
   defenseDebuff?: NumberOrScaled | DefenseByType;
   /** Resistance debuff value - can be single value or by type */

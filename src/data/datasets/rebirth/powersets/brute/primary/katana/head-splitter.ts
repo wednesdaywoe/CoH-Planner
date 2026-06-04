@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GoldenDragonfly as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/katana/head-splitter';
+import { HeadSplitter as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/katana/head-splitter';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/katana/head-splitter';
 
-export const GoldenDragonfly: Power = withOverrides(base, overrides);
+export const HeadSplitter: Power = withOverrides(base, overrides);

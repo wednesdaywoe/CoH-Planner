@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const AgainstAllOdds: Power = {
+export const AgainstallOdds: Power = {
   "name": "Against All Odds",
   "internalName": "Against_all_Odds",
   "available": 15,

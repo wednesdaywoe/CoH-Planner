@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const MaskPresence: Power = {
+export const NWMaskPresence: Power = {
   "name": "Mask Presence",
   "internalName": "NW_Mask_Presence",
   "available": 19,

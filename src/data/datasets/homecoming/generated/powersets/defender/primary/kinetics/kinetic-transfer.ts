@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const FulcrumShift: Power = {
+export const KineticTransfer: Power = {
   "name": "Fulcrum Shift",
   "internalName": "Kinetic_Transfer",
   "available": 25,

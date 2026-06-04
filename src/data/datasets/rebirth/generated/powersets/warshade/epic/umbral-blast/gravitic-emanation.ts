@@ -53,6 +53,14 @@ export const GraviticEmanation: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "accuracyBuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "accuracyBuff": 8,
+      "rechargeDebuff": 10
+    },
     "stun": {
       "mag": 3,
       "scale": 8,
@@ -61,9 +69,6 @@ export const GraviticEmanation: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 10
     },
     "buffDuration": 10
   },

@@ -1,5 +1,5 @@
 /**
- * Evolving Armor — COMPOSED EXPORT
+ * Adaptation — COMPOSED EXPORT
  *
  * The planner imports from here. Composes the auto-generated power object
  * with hand-written overrides via `withOverrides`. See src/data/README.md
@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EvolvingArmor as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/bio-armor/evolution';
+import { Evolution as base } from '@/data/datasets/rebirth/generated/powersets/brute/secondary/bio-armor/evolution';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/secondary/bio-armor/evolution';
 
-export const EvolvingArmor: Power = withOverrides(base, overrides);
+export const Evolution: Power = withOverrides(base, overrides);

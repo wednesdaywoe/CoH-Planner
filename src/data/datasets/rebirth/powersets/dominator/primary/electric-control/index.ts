@@ -13,7 +13,7 @@ import { ElectricFence as ElectricFence } from './electric-fence';
 import { TeslaCage as TeslaCage } from './tesla-cage';
 import { ChainFences as ChainFences } from './chain-fences';
 import { JoltingChain as JoltingChain } from './jolting-chain';
-import { ConductiveAura as ConductiveAura } from './stunning-aura';
+import { StunningAura as StunningAura } from './stunning-aura';
 import { StaticField as StaticField } from './static-field';
 import { ParalyzingBlast as ParalyzingBlast } from './paralyzing-blast';
 import { SynapticOverload as SynapticOverload } from './synaptic-overload';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     TeslaCage,
     ChainFences,
     JoltingChain,
-    ConductiveAura,
+    StunningAura,
     StaticField,
     ParalyzingBlast,
     SynapticOverload,

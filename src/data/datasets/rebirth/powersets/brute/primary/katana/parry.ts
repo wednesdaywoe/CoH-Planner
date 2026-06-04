@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { DivineAvalanche as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/katana/parry';
+import { Parry as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/katana/parry';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/katana/parry';
 
-export const DivineAvalanche: Power = withOverrides(base, overrides);
+export const Parry: Power = withOverrides(base, overrides);

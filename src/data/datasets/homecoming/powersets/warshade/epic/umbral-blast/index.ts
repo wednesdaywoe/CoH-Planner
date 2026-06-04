@@ -20,7 +20,7 @@ import { DarkNovaDetonation as DarkNovaDetonation } from './dark-nova-detonation
 import { ShadowBlast as ShadowBlast } from './shadow-blast';
 import { StarlessStep as StarlessStep } from './starless-step';
 import { SunlessMire as SunlessMire } from './sunless-mire';
-import { DarkDetonation as DarkDetonation } from './dark-matter-detonation';
+import { DarkMatterDetonation as DarkMatterDetonation } from './dark-matter-detonation';
 import { GravityWell as GravityWell } from './gravity-well';
 import { EssenceDrain as EssenceDrain } from './essence-drain';
 import { GraviticEmanation as GraviticEmanation } from './gravitic-emanation';
@@ -47,7 +47,7 @@ export const powerset: Powerset = {
     ShadowBlast,
     StarlessStep,
     SunlessMire,
-    DarkDetonation,
+    DarkMatterDetonation,
     GravityWell,
     EssenceDrain,
     GraviticEmanation,

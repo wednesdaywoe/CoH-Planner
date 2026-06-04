@@ -62,6 +62,14 @@ export const GravimetricSnare: Power = {
     }
   ],
   "effects": {
+    "accuracyBuff": {
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "accuracyBuff": 15,
+      "rechargeDebuff": 6
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
@@ -71,9 +79,6 @@ export const GravimetricSnare: Power = {
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
-    "durations": {
-      "rechargeDebuff": 6
-    },
-    "buffDuration": 6
+    "buffDuration": 15
   }
 };

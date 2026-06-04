@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { PsionicDart as PsionicDart } from './psionic-dart';
 import { MentalBlast as MentalBlast } from './mental-blast';
 import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
-import { PsychicFocus as PsychicFocus } from './aim';
+import { Aim as Aim } from './aim';
 import { WillDomination as WillDomination } from './will-domination';
 import { PsionicLance as PsionicLance } from './psionic-lance';
 import { PsionicTornado as PsionicTornado } from './psionic-tornado';
@@ -30,7 +30,7 @@ export const powerset: Powerset = {
     PsionicDart,
     MentalBlast,
     TelekineticBlast,
-    PsychicFocus,
+    Aim,
     WillDomination,
     PsionicLance,
     PsionicTornado,

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { LightningBolt as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/electricity-assault/lightning-field';
+import { LightningField as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/electricity-assault/lightning-field';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/electricity-assault/lightning-field';
 
-export const LightningBolt: Power = withOverrides(base, overrides);
+export const LightningField: Power = withOverrides(base, overrides);

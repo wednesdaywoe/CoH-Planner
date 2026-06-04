@@ -17,7 +17,7 @@ import { ForceFieldGenerator as ForceFieldGenerator } from './force-field-genera
 import { PoisonTrap as PoisonTrap } from './poison-trap';
 import { SeekerDrones as SeekerDrones } from './seeker-drones';
 import { TripMine as TripMine } from './trip-mine';
-import { TemporalBomb as TemporalBomb } from './time-bomb';
+import { TimeBomb as TimeBomb } from './time-bomb';
 
 export const powerset: Powerset = {
   id: 'corruptor/traps',
@@ -35,7 +35,7 @@ export const powerset: Powerset = {
     PoisonTrap,
     SeekerDrones,
     TripMine,
-    TemporalBomb,
+    TimeBomb,
   ],
 };
 

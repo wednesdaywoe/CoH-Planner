@@ -14,7 +14,7 @@ import { IceBlast as IceBlast } from './ice-blast';
 import { FrostBreath as FrostBreath } from './frost-breath';
 import { Aim as Aim } from './aim';
 import { FreezeRay as FreezeRay } from './freeze-ray';
-import { IceStorm as IceStorm } from './freezing-rain';
+import { FreezingRain as FreezingRain } from './freezing-rain';
 import { BitterIceBlast as BitterIceBlast } from './bitter-ice-blast';
 import { BitterFreezeRay as BitterFreezeRay } from './bitter-freeze-ray';
 import { Blizzard as Blizzard } from './blizzard';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     FrostBreath,
     Aim,
     FreezeRay,
-    IceStorm,
+    FreezingRain,
     BitterIceBlast,
     BitterFreezeRay,
     Blizzard,

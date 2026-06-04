@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Confront as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/ice-melee/taunt';
+import { Taunt as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/ice-melee/taunt';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/ice-melee/taunt';
 
-export const Confront: Power = withOverrides(base, overrides);
+export const Taunt: Power = withOverrides(base, overrides);

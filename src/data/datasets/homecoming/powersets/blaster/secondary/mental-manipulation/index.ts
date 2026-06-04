@@ -13,7 +13,7 @@ import { Subdual as Subdual } from './subdual';
 import { MindProbe as MindProbe } from './mind-probe';
 import { WorldofConfusion as WorldofConfusion } from './world-of-confusion';
 import { PsychicScream as PsychicScream } from './psychic-scream';
-import { Concentration as Concentration } from './build-up';
+import { BuildUp as BuildUp } from './build-up';
 import { DrainPsyche as DrainPsyche } from './drain-psyche';
 import { Scare as Scare } from './scare';
 import { PsychicShockwave as PsychicShockwave } from './psychic-shockwave';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     MindProbe,
     WorldofConfusion,
     PsychicScream,
-    Concentration,
+    BuildUp,
     DrainPsyche,
     Scare,
     PsychicShockwave,

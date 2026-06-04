@@ -34,14 +34,13 @@ export const Benumb: Power = {
   "maxSlots": 6,
   "effects": {
     "damageDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Stun"
+      "scale": 5,
+      "table": "Ranged_Debuff_Dam"
     },
     "durations": {
       "damageDebuff": 30,
       "specialBuff": 30,
-      "defenseDebuff": 30,
-      "tohitDebuff": 30,
+      "specialDebuff": 30,
       "regenDebuff": 30
     },
     "specialBuff": {
@@ -72,15 +71,61 @@ export const Benumb: Power = {
       "sleep": {
         "scale": 0.5,
         "table": "Ranged_Stun"
+      },
+      "tohit": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
       }
     },
-    "defenseDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Stun"
+    "specialDebuff": {
+      "ranged": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "aoe": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "cold": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "psionic": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "toxic": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "defense": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      }
     },
     "regenDebuff": {
       "scale": 20,

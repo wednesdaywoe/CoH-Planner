@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { FlashingSteel as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/ninja-blade/slice';
+import { Slice as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/ninja-blade/slice';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/ninja-blade/slice';
 
-export const FlashingSteel: Power = withOverrides(base, overrides);
+export const Slice: Power = withOverrides(base, overrides);

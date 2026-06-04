@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const PsychicScream: Power = {
+export const NWPsychicScream: Power = {
   "name": "Psychic Scream",
   "internalName": "NW_Psychic_Scream",
   "available": 31,

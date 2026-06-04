@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const RepulsionBolt: Power = {
+export const ForceBolt: Power = {
   "name": "Repulsion Bolt",
   "internalName": "Force_Bolt",
   "available": 0,

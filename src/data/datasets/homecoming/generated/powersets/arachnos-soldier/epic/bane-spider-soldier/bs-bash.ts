@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Bash: Power = {
+export const BSBash: Power = {
   "name": "Bash",
   "internalName": "BS_Bash",
   "available": 0,

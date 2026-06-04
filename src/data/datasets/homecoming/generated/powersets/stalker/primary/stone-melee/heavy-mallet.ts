@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const SeismicMallet: Power = {
+export const HeavyMallet: Power = {
   "name": "Seismic Mallet",
   "internalName": "Heavy_Mallet",
   "available": 17,

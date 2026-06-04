@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const PhoenixRising: Power = {
+export const RiseofthePhoenix: Power = {
   "name": "Phoenix Rising",
   "internalName": "Rise_of_the_Phoenix",
   "available": 25,

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const BuildUp: Power = {
+export const Aim: Power = {
   "name": "Build Up",
   "internalName": "Aim",
   "available": 15,

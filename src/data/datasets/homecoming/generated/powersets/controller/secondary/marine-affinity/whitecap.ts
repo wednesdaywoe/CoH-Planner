@@ -94,6 +94,10 @@ export const Whitecap: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30
+    "buffDuration": 30,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
   }
 };

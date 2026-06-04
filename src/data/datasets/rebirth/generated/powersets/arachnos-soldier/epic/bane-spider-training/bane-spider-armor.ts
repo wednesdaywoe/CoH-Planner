@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const BaneSpiderArmorUpgrade: Power = {
+export const BaneSpiderArmor: Power = {
   "name": "Bane Spider Armor Upgrade",
   "internalName": "Bane_Spider_Armor",
   "available": 0,

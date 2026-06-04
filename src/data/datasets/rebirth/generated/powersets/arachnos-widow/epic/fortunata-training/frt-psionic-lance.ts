@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const PsionicTornado: Power = {
+export const FRTPsionicLance: Power = {
   "name": "Psionic Tornado",
   "internalName": "FRT_Psionic_Lance",
   "available": 11,

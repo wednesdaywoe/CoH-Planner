@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { VengefulSlice as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/dual-blades/special-1';
+import { Special1 as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/dual-blades/special-1';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/dual-blades/special-1';
 
-export const VengefulSlice: Power = withOverrides(base, overrides);
+export const Special1: Power = withOverrides(base, overrides);

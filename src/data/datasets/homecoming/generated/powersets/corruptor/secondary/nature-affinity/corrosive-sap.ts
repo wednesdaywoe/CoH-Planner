@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const CorrosiveEnzymes: Power = {
+export const CorrosiveSap: Power = {
   "name": "Corrosive Enzymes",
   "internalName": "Corrosive_Sap",
   "available": 0,

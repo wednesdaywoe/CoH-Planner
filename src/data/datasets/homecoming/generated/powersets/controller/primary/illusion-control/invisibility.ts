@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const SuperiorInvisibility: Power = {
+export const Invisibility: Power = {
   "name": "Superior Invisibility",
   "internalName": "Invisibility",
   "available": 7,

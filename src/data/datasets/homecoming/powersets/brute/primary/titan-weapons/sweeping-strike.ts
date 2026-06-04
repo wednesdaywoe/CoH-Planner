@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TitanSweep as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/titan-weapons/sweeping-strike';
+import { SweepingStrike as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/titan-weapons/sweeping-strike';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/titan-weapons/sweeping-strike';
 
-export const TitanSweep: Power = withOverrides(base, overrides);
+export const SweepingStrike: Power = withOverrides(base, overrides);

@@ -13,7 +13,7 @@ import { Absorption as Absorption } from './absorption';
 import { ShadowStep as ShadowStep } from './shadow-step';
 import { GravityShield as GravityShield } from './gravity-shield';
 import { OrbitingDeath as OrbitingDeath } from './orbiting-death';
-import { StarlessRecall as StarlessRecall } from './shadow-recall';
+import { ShadowRecall as ShadowRecall } from './shadow-recall';
 import { PenumbralShield as PenumbralShield } from './penumbral-shield';
 import { ShadowCloak as ShadowCloak } from './shadow-cloak';
 import { TwilightShield as TwilightShield } from './twilight-shield';
@@ -26,8 +26,8 @@ import { BlackDwarfStep as BlackDwarfStep } from './black-dwarf-step';
 import { BlackDwarfAntagonize as BlackDwarfAntagonize } from './black-dwarf-antagonize';
 import { StygianCircle as StygianCircle } from './stygian-circle';
 import { NebulousForm as NebulousForm } from './nebulous-form';
-import { StarlessGateway as StarlessGateway } from './shadow-slip';
-import { ShadowSlip as ShadowSlip } from './shadow-slipping';
+import { ShadowSlip as ShadowSlip } from './shadow-slip';
+import { ShadowSlipping as ShadowSlipping } from './shadow-slipping';
 import { InkyAspect as InkyAspect } from './inky-aspect';
 import { StygianReturn as StygianReturn } from './stygian-return';
 import { Eclipse as Eclipse } from './eclipse';
@@ -44,7 +44,7 @@ export const powerset: Powerset = {
     ShadowStep,
     GravityShield,
     OrbitingDeath,
-    StarlessRecall,
+    ShadowRecall,
     PenumbralShield,
     ShadowCloak,
     TwilightShield,
@@ -57,8 +57,8 @@ export const powerset: Powerset = {
     BlackDwarfAntagonize,
     StygianCircle,
     NebulousForm,
-    StarlessGateway,
     ShadowSlip,
+    ShadowSlipping,
     InkyAspect,
     StygianReturn,
     Eclipse,

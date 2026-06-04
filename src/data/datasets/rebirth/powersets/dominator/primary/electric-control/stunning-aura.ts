@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ConductiveAura as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/electric-control/stunning-aura';
+import { StunningAura as base } from '@/data/datasets/rebirth/generated/powersets/dominator/primary/electric-control/stunning-aura';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/dominator/primary/electric-control/stunning-aura';
 
-export const ConductiveAura: Power = withOverrides(base, overrides);
+export const StunningAura: Power = withOverrides(base, overrides);

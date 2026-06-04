@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GunDrone as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/devices/auto-turret';
+import { AutoTurret as base } from '@/data/datasets/rebirth/generated/powersets/blaster/secondary/devices/auto-turret';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/blaster/secondary/devices/auto-turret';
 
-export const GunDrone: Power = withOverrides(base, overrides);
+export const AutoTurret: Power = withOverrides(base, overrides);

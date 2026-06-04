@@ -9,18 +9,18 @@
 
 import type { Powerset } from '@/types';
 
+import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
+import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
+import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { Inexhaustible as Inexhaustible } from './inexhaustible';
-import { EnvironmentalModification as EnvironmentalModification } from './environmental-adaptation';
-import { EvolvingArmor as EvolvingArmor } from './evolution';
+import { EnvironmentalAdaptation as EnvironmentalAdaptation } from './environmental-adaptation';
+import { Evolution as Evolution } from './evolution';
 import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
 import { Adaptation as Adaptation } from './adaptation';
 import { DNASiphon as DNASiphon } from './dna-siphon';
 import { GeneticContamination as GeneticContamination } from './genetic-contamination';
 import { ParasiticAura as ParasiticAura } from './parasitic-aura';
-import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
-import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
-import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 
 export const powerset: Powerset = {
   id: 'tanker/bio-armor',
@@ -30,18 +30,18 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'primary',
   powers: [
+    EfficientAdaptation,
+    DefensiveAdaptation,
+    OffensiveAdaptation,
     HardenedCarapace,
     Inexhaustible,
-    EnvironmentalModification,
-    EvolvingArmor,
+    EnvironmentalAdaptation,
+    Evolution,
     AblativeCarapace,
     Adaptation,
     DNASiphon,
     GeneticContamination,
     ParasiticAura,
-    EfficientAdaptation,
-    DefensiveAdaptation,
-    OffensiveAdaptation,
   ],
 };
 

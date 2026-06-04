@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const PowerSlice: Power = {
+export const ModerateOpening: Power = {
   "name": "Power Slice",
   "internalName": "Moderate_Opening",
   "available": 0,

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const PsychokineticBarrier: Power = {
+export const FortifyMind: Power = {
   "name": "Psychokinetic Barrier",
   "internalName": "Fortify_Mind",
   "available": 19,

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ActiveDefense as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/shield-defense/battle-agility';
+import { BattleAgility as base } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/shield-defense/battle-agility';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/primary/shield-defense/battle-agility';
 
-export const ActiveDefense: Power = withOverrides(base, overrides);
+export const BattleAgility: Power = withOverrides(base, overrides);

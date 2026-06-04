@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const RadiantAura: Power = {
+export const RadiationEmission: Power = {
   "name": "Radiant Aura",
   "internalName": "Radiation_Emission",
   "available": 0,

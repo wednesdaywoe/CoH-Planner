@@ -11,7 +11,7 @@ import type { Powerset } from '@/types';
 
 import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
 import { DeathShroud as DeathShroud } from './death-shroud';
-import { MurkyCloud as MurkyCloud } from './defracting-cloud';
+import { Defractingcloud as Defractingcloud } from './defracting-cloud';
 import { ObsidianShield as ObsidianShield } from './obsidian-shield';
 import { DarkRegeneration as DarkRegeneration } from './dark-regeneration';
 import { ObscureSustenance as ObscureSustenance } from './obscure-sustenance';
@@ -30,7 +30,7 @@ export const powerset: Powerset = {
   powers: [
     DarkEmbrace,
     DeathShroud,
-    MurkyCloud,
+    Defractingcloud,
     ObsidianShield,
     DarkRegeneration,
     ObscureSustenance,

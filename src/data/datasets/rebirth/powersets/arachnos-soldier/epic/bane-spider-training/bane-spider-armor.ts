@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BaneSpiderArmorUpgrade as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/bane-spider-training/bane-spider-armor';
+import { BaneSpiderArmor as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-soldier/epic/bane-spider-training/bane-spider-armor';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-soldier/epic/bane-spider-training/bane-spider-armor';
 
-export const BaneSpiderArmorUpgrade: Power = withOverrides(base, overrides);
+export const BaneSpiderArmor: Power = withOverrides(base, overrides);

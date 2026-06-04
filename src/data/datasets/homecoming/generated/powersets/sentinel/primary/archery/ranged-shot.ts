@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const PerfectShot: Power = {
+export const RangedShot: Power = {
   "name": "Perfect Shot",
   "internalName": "Ranged_Shot",
   "available": 21,

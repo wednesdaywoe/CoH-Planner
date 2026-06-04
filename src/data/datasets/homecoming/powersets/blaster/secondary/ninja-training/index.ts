@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { ImmobilizingDart as ImmobilizingDart } from './immobilizing-dart';
 import { StingoftheWasp as StingoftheWasp } from './sting-of-the-wasp';
 import { ChokingPowder as ChokingPowder } from './choking-powder';
-import { Shinobi as Shinobi } from './kyokan';
+import { Kyokan as Kyokan } from './kyokan';
 import { TheLotusDrops as TheLotusDrops } from './the-lotus-drops';
 import { KujiInToh as KujiInToh } from './kuji-in-toh';
 import { SmokeFlash as SmokeFlash } from './smoke-flash';
@@ -30,7 +30,7 @@ export const powerset: Powerset = {
     ImmobilizingDart,
     StingoftheWasp,
     ChokingPowder,
-    Shinobi,
+    Kyokan,
     TheLotusDrops,
     KujiInToh,
     SmokeFlash,

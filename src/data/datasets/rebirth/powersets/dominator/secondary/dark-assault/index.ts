@@ -14,9 +14,9 @@ import { Smite as Smite } from './smite';
 import { Gloom as Gloom } from './gloom';
 import { NightFall as NightFall } from './night-fall';
 import { GatherShadows as GatherShadows } from './gather-shadows';
-import { EngulfingDarkness as EngulfingDarkness } from './moonbeam';
+import { Moonbeam as Moonbeam } from './moonbeam';
 import { LifeDrain as LifeDrain } from './life-drain';
-import { MoonBeam as MoonBeam } from './death-shroud';
+import { DeathShroud as DeathShroud } from './death-shroud';
 import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';
 
 export const powerset: Powerset = {
@@ -32,9 +32,9 @@ export const powerset: Powerset = {
     Gloom,
     NightFall,
     GatherShadows,
-    EngulfingDarkness,
+    Moonbeam,
     LifeDrain,
-    MoonBeam,
+    DeathShroud,
     MidnightGrasp,
   ],
 };

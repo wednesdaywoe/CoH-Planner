@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ESDArrow: Power = {
+export const EMPArrow: Power = {
   "name": "ESD Arrow",
   "internalName": "EMP_Arrow",
   "available": 27,

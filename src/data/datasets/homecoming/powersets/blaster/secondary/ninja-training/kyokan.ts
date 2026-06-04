@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Shinobi as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/ninja-training/kyokan';
+import { Kyokan as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/ninja-training/kyokan';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/ninja-training/kyokan';
 
-export const Shinobi: Power = withOverrides(base, overrides);
+export const Kyokan: Power = withOverrides(base, overrides);

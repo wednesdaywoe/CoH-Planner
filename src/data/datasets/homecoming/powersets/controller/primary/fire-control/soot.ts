@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Char as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/fire-control/soot';
+import { Soot as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/fire-control/soot';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/fire-control/soot';
 
-export const Char: Power = withOverrides(base, overrides);
+export const Soot: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AssassinsSmash as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/stone-melee/assassins-rockslide';
+import { AssassinsRockslide as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/stone-melee/assassins-rockslide';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/stone-melee/assassins-rockslide';
 
-export const AssassinsSmash: Power = withOverrides(base, overrides);
+export const AssassinsRockslide: Power = withOverrides(base, overrides);

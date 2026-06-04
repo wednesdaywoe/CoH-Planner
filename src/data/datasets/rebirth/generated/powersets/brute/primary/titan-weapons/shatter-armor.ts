@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const RendArmor: Power = {
+export const ShatterArmor: Power = {
   "name": "Rend Armor",
   "internalName": "Shatter_Armor",
   "available": 17,

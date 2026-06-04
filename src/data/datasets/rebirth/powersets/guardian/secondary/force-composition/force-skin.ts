@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ForceShielding as base } from '@/data/datasets/rebirth/generated/powersets/guardian/secondary/force-composition/force-skin';
+import { ForceSkin as base } from '@/data/datasets/rebirth/generated/powersets/guardian/secondary/force-composition/force-skin';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/guardian/secondary/force-composition/force-skin';
 
-export const ForceShielding: Power = withOverrides(base, overrides);
+export const ForceSkin: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AilmentResistance as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/regeneration/dismiss-pain';
+import { DismissPain as base } from '@/data/datasets/homecoming/generated/powersets/sentinel/secondary/regeneration/dismiss-pain';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/sentinel/secondary/regeneration/dismiss-pain';
 
-export const AilmentResistance: Power = withOverrides(base, overrides);
+export const DismissPain: Power = withOverrides(base, overrides);

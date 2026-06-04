@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { StingoftheWasp as StingoftheWasp } from './hack';
-import { GamblersCut as GamblersCut } from './slash';
-import { FlashingSteel as FlashingSteel } from './slice';
-import { DragonsRoar as DragonsRoar } from './taunt';
+import { Hack as Hack } from './hack';
+import { Slash as Slash } from './slash';
+import { Slice as Slice } from './slice';
+import { Taunt as Taunt } from './taunt';
 import { BuildUp as BuildUp } from './build-up';
-import { DivineAvalanche as DivineAvalanche } from './parry';
-import { TheLotusDrops as TheLotusDrops } from './whirling-sword';
-import { SoaringDragon as SoaringDragon } from './disembowel';
-import { GoldenDragonfly as GoldenDragonfly } from './head-splitter';
+import { Parry as Parry } from './parry';
+import { WhirlingSword as WhirlingSword } from './whirling-sword';
+import { Disembowel as Disembowel } from './disembowel';
+import { HeadSplitter as HeadSplitter } from './head-splitter';
 
 export const powerset: Powerset = {
   id: 'tanker/katana',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    StingoftheWasp,
-    GamblersCut,
-    FlashingSteel,
-    DragonsRoar,
+    Hack,
+    Slash,
+    Slice,
+    Taunt,
     BuildUp,
-    DivineAvalanche,
-    TheLotusDrops,
-    SoaringDragon,
-    GoldenDragonfly,
+    Parry,
+    WhirlingSword,
+    Disembowel,
+    HeadSplitter,
   ],
 };
 

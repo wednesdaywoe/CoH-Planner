@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const SeismicShockwaves: Power = {
+export const Shockwaves: Power = {
   "name": "Seismic Shockwaves",
   "internalName": "Shockwaves",
   "available": 0,

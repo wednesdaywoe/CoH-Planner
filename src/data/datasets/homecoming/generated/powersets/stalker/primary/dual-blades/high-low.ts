@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const OneThousandCuts: Power = {
+export const HighLow: Power = {
   "name": "One Thousand Cuts",
   "internalName": "High_Low",
   "available": 25,
@@ -73,6 +73,12 @@ export const OneThousandCuts: Power = {
       "table": "Melee_PvPDamage"
     }
   ],
+  "effects": {
+    "maxStacks": 2,
+    "stacksLinear": [
+      "specialBuff"
+    ]
+  },
   "conditionalEffects": [
     {
       "id": "dd_debuffmode_2",

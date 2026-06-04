@@ -16,7 +16,7 @@ import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { SpinningStrike as SpinningStrike } from './spinning-strike';
-import { ShinBreaker as ShinBreaker } from './low-kick';
+import { LowKick as LowKick } from './low-kick';
 import { CrushingUppercut as CrushingUppercut } from './crushing-uppercut';
 
 export const powerset: Powerset = {
@@ -34,7 +34,7 @@ export const powerset: Powerset = {
     BuildUp,
     Placate,
     SpinningStrike,
-    ShinBreaker,
+    LowKick,
     CrushingUppercut,
   ],
 };

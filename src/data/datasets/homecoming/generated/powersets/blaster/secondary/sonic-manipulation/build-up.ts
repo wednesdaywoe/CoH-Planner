@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const SoundBooster: Power = {
+export const BuildUp: Power = {
   "name": "Sound Booster",
   "internalName": "Build_Up",
   "available": 9,

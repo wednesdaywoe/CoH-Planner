@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AgainstAllOdds as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/shield-defense/against-all-odds';
+import { AgainstallOdds as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/secondary/shield-defense/against-all-odds';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/secondary/shield-defense/against-all-odds';
 
-export const AgainstAllOdds: Power = withOverrides(base, overrides);
+export const AgainstallOdds: Power = withOverrides(base, overrides);

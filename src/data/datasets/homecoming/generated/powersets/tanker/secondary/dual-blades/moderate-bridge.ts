@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const AblatingStrike: Power = {
+export const ModerateBridge: Power = {
   "name": "Ablating Strike",
   "internalName": "Moderate_Bridge",
   "available": 3,

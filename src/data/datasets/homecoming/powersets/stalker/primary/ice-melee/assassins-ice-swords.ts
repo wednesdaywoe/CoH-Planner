@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { AssassinsIceSword as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/ice-melee/assassins-ice-swords';
+import { AssassinsIceSwords as base } from '@/data/datasets/homecoming/generated/powersets/stalker/primary/ice-melee/assassins-ice-swords';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/stalker/primary/ice-melee/assassins-ice-swords';
 
-export const AssassinsIceSword: Power = withOverrides(base, overrides);
+export const AssassinsIceSwords: Power = withOverrides(base, overrides);

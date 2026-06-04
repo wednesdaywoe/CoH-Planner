@@ -14,7 +14,7 @@ import { PsionicShield as PsionicShield } from './psionic-shield';
 import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
 import { ConsumePsyche as ConsumePsyche } from './consume-psyche';
 import { ImposePresence as ImposePresence } from './impose-presence';
-import { PsychokineticBarrier as PsychokineticBarrier } from './fortify-mind';
+import { FortifyMind as FortifyMind } from './fortify-mind';
 import { Precognition as Precognition } from './precognition';
 import { AuraofInsanity as AuraofInsanity } from './aura-of-insanity';
 import { MementoMori as MementoMori } from './memento-mori';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     ImpenetrableMind,
     ConsumePsyche,
     ImposePresence,
-    PsychokineticBarrier,
+    FortifyMind,
     Precognition,
     AuraofInsanity,
     MementoMori,

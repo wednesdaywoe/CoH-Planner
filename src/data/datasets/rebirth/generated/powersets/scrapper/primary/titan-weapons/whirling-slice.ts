@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const WhirlingSmash: Power = {
+export const WhirlingSlice: Power = {
   "name": "Whirling Smash",
   "internalName": "Whirling_Slice",
   "available": 25,

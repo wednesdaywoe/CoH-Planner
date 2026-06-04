@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { MentalBlast as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/night-widow-training/nw-mental-blast';
+import { NWMentalBlast as base } from '@/data/datasets/rebirth/generated/powersets/arachnos-widow/epic/night-widow-training/nw-mental-blast';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/arachnos-widow/epic/night-widow-training/nw-mental-blast';
 
-export const MentalBlast: Power = withOverrides(base, overrides);
+export const NWMentalBlast: Power = withOverrides(base, overrides);

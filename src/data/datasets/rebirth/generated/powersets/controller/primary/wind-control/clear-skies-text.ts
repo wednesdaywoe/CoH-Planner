@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ClearSkies: Power = {
+export const ClearSkiesText: Power = {
   "name": "Clear Skies",
   "internalName": "Clear_Skies_Text",
   "available": 31,

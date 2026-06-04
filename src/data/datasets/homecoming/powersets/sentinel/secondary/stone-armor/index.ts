@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { RockArmor as RockArmor } from './stone-armor';
+import { StoneArmor as StoneArmor } from './stone-armor';
 import { StoneSkin as StoneSkin } from './stone-skin';
 import { EarthsEmbrace as EarthsEmbrace } from './earths-embrace';
 import { TerraFirma as TerraFirma } from './terra-firma';
 import { Rooted as Rooted } from './rooted';
 import { CrystalArmor as CrystalArmor } from './crystal-armor';
 import { BrimstoneArmor as BrimstoneArmor } from './brimstone-armor';
-import { Minerals as Minerals } from './mineral-armor';
+import { MineralArmor as MineralArmor } from './mineral-armor';
 import { Geode as Geode } from './geode';
 
 export const powerset: Powerset = {
@@ -27,14 +27,14 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    RockArmor,
+    StoneArmor,
     StoneSkin,
     EarthsEmbrace,
     TerraFirma,
     Rooted,
     CrystalArmor,
     BrimstoneArmor,
-    Minerals,
+    MineralArmor,
     Geode,
   ],
 };

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { OilSlickArrow as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/tactical-arrow/gymnastics';
+import { Gymnastics as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/tactical-arrow/gymnastics';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/tactical-arrow/gymnastics';
 
-export const OilSlickArrow: Power = withOverrides(base, overrides);
+export const Gymnastics: Power = withOverrides(base, overrides);

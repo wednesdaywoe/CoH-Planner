@@ -12,10 +12,10 @@ import type { Powerset } from '@/types';
 import { FastHealing as FastHealing } from './fast-healing';
 import { Reconstruction as Reconstruction } from './reconstruction';
 import { QuickRecovery as QuickRecovery } from './quick-recovery';
-import { AilmentResistance as AilmentResistance } from './dismiss-pain';
+import { DismissPain as DismissPain } from './dismiss-pain';
 import { Integration as Integration } from './integration';
 import { Resilience as Resilience } from './resilience';
-import { ReactiveRegeneration as ReactiveRegeneration } from './instant-regeneration';
+import { InstantRegeneration as InstantRegeneration } from './instant-regeneration';
 import { SecondWind as SecondWind } from './second-wind';
 import { MomentofGlory as MomentofGlory } from './moment-of-glory';
 
@@ -30,10 +30,10 @@ export const powerset: Powerset = {
     FastHealing,
     Reconstruction,
     QuickRecovery,
-    AilmentResistance,
+    DismissPain,
     Integration,
     Resilience,
-    ReactiveRegeneration,
+    InstantRegeneration,
     SecondWind,
     MomentofGlory,
   ],

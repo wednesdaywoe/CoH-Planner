@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const TeslaCoil: Power = {
+export const ParalyzingBlast: Power = {
   "name": "Tesla Coil",
   "internalName": "Paralyzing_Blast",
   "available": 17,

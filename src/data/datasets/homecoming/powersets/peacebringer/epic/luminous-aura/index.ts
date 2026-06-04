@@ -9,6 +9,7 @@
 
 import type { Powerset } from '@/types';
 
+import { QuantumBoost as QuantumBoost } from './quantum-boost';
 import { Incandescence as Incandescence } from './incandescence';
 import { EnergyFlight as EnergyFlight } from './energy-flight';
 import { ShiningShield as ShiningShield } from './shining-shield';
@@ -26,11 +27,10 @@ import { WhiteDwarfStep as WhiteDwarfStep } from './white-dwarf-step';
 import { WhiteDwarfAntagonize as WhiteDwarfAntagonize } from './white-dwarf-antagonize';
 import { ReformEssence as ReformEssence } from './reform-essence';
 import { ConserveEnergy as ConserveEnergy } from './conserve-energy';
-import { QuantumManeuvers as QuantumManeuvers } from './quantum-acceleration';
+import { QuantumAcceleration as QuantumAcceleration } from './quantum-acceleration';
 import { QuantumFlight as QuantumFlight } from './quantum-flight';
 import { RestoreEssence as RestoreEssence } from './restore-essence';
 import { LightForm as LightForm } from './light-form';
-import { QuantumAcceleration as QuantumAcceleration } from './quantum-boost';
 
 export const powerset: Powerset = {
   id: 'peacebringer/luminous-aura',
@@ -40,6 +40,7 @@ export const powerset: Powerset = {
   archetype: 'peacebringer',
   category: 'epic',
   powers: [
+    QuantumBoost,
     Incandescence,
     EnergyFlight,
     ShiningShield,
@@ -57,11 +58,10 @@ export const powerset: Powerset = {
     WhiteDwarfAntagonize,
     ReformEssence,
     ConserveEnergy,
-    QuantumManeuvers,
+    QuantumAcceleration,
     QuantumFlight,
     RestoreEssence,
     LightForm,
-    QuantumAcceleration,
   ],
 };
 

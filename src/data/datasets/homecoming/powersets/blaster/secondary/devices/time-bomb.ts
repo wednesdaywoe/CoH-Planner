@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { RemoteBomb as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/devices/time-bomb';
+import { TimeBomb as base } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/devices/time-bomb';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/blaster/secondary/devices/time-bomb';
 
-export const RemoteBomb: Power = withOverrides(base, overrides);
+export const TimeBomb: Power = withOverrides(base, overrides);

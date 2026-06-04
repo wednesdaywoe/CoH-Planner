@@ -13,7 +13,7 @@ import { ChargedBolts as ChargedBolts } from './charged-bolts';
 import { LightningBolt as LightningBolt } from './lightning-bolt';
 import { BallLightning as BallLightning } from './ball-lightning';
 import { ZappingBolt as ZappingBolt } from './zapping-bolt';
-import { ChargeUp as ChargeUp } from './aim';
+import { Aim as Aim } from './aim';
 import { TeslaCage as TeslaCage } from './tesla-cage';
 import { VoltaicSentinel as VoltaicSentinel } from './voltaic-sentinel';
 import { ShortCircuit as ShortCircuit } from './short-circuit';
@@ -31,7 +31,7 @@ export const powerset: Powerset = {
     LightningBolt,
     BallLightning,
     ZappingBolt,
-    ChargeUp,
+    Aim,
     TeslaCage,
     VoltaicSentinel,
     ShortCircuit,

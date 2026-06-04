@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Subdue: Power = {
+export const FRTSubdue: Power = {
   "name": "Subdue",
   "internalName": "FRT_Subdue",
   "available": 1,

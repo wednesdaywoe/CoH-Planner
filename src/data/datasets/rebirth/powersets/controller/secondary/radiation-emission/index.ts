@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { RadiantAura as RadiantAura } from './radiation-emission';
+import { RadiationEmission as RadiationEmission } from './radiation-emission';
 import { RadiationInfection as RadiationInfection } from './radiation-infection';
 import { AccelerateMetabolism as AccelerateMetabolism } from './accelerate-metabolism';
 import { EnervatingField as EnervatingField } from './enervating-field';
 import { EnervatingField as EnervatingField2 } from './enervating-field';
 import { Mutation as Mutation } from './mutation';
-import { LingeringRadiation as LingeringRadiation } from './lingering-radiation';
+import { Lingeringradiation as Lingeringradiation } from './lingering-radiation';
 import { ChokingCloud as ChokingCloud } from './choking-cloud';
 import { Fallout as Fallout } from './fallout';
-import { EMPulse as EMPulse } from './emp-pulse';
+import { EMPPulse as EMPPulse } from './emp-pulse';
 
 export const powerset: Powerset = {
   id: 'controller/radiation-emission',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    RadiantAura,
+    RadiationEmission,
     RadiationInfection,
     AccelerateMetabolism,
     EnervatingField,
     EnervatingField2,
     Mutation,
-    LingeringRadiation,
+    Lingeringradiation,
     ChokingCloud,
     Fallout,
-    EMPulse,
+    EMPPulse,
   ],
 };
 

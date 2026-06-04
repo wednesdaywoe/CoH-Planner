@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const StarlessRecall: Power = {
+export const ShadowRecall: Power = {
   "name": "Starless Recall",
   "internalName": "Shadow_Recall",
   "available": 8,

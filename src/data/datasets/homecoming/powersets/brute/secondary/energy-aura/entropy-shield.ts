@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { EntropicAura as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/energy-aura/entropy-shield';
+import { EntropyShield as base } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/energy-aura/entropy-shield';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/secondary/energy-aura/entropy-shield';
 
-export const EntropicAura: Power = withOverrides(base, overrides);
+export const EntropyShield: Power = withOverrides(base, overrides);

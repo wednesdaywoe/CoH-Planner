@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { HealingAura as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/empathy/siphon-energy';
+import { SiphonEnergy as base } from '@/data/datasets/homecoming/generated/powersets/defender/primary/empathy/siphon-energy';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/defender/primary/empathy/siphon-energy';
 
-export const HealingAura: Power = withOverrides(base, overrides);
+export const SiphonEnergy: Power = withOverrides(base, overrides);

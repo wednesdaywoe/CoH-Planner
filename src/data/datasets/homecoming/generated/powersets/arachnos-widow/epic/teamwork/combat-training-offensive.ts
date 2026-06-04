@@ -28,14 +28,19 @@ export const CombatTrainingOffensive: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "accuracyBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    },
+    "durations": {
+      "accuracyBuff": 0.75,
+      "debuffResistance": 0.75
+    },
     "debuffResistance": {
       "tohit": {
         "scale": 0.33,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "debuffResistance": 0.75
     },
     "buffDuration": 0.75
   },

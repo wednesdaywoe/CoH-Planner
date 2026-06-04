@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const TacticalTrainingVengeance: Power = {
+export const NWTacticalTrainingVengeance: Power = {
   "name": "Tactical Training: Vengeance",
   "internalName": "NW_Tactical_Training:_Vengeance",
   "available": 27,

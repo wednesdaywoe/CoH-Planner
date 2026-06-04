@@ -15,7 +15,7 @@ import { Slice as Slice } from './slice';
 import { BoomerangSlice as BoomerangSlice } from './boomerang-slice';
 import { BuildUp as BuildUp } from './build-up';
 import { Parry as Parry } from './parry';
-import { Confront as Confront } from './taunt';
+import { Taunt as Taunt } from './taunt';
 import { WhirlingSword as WhirlingSword } from './whirling-sword';
 import { Disembowel as Disembowel } from './disembowel';
 import { HeadSplitter as HeadSplitter } from './head-splitter';
@@ -34,7 +34,7 @@ export const powerset: Powerset = {
     BoomerangSlice,
     BuildUp,
     Parry,
-    Confront,
+    Taunt,
     WhirlingSword,
     Disembowel,
     HeadSplitter,

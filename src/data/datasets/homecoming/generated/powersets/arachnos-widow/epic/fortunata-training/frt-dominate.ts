@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Dominate: Power = {
+export const FRTDominate: Power = {
   "name": "Dominate",
   "internalName": "FRT_Dominate",
   "available": 11,

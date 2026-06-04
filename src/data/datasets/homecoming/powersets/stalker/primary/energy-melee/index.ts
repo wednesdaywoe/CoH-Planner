@@ -15,7 +15,7 @@ import { BoneSmasher as BoneSmasher } from './bone-smasher';
 import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
-import { PowerCrash as PowerCrash } from './stun';
+import { Stun as Stun } from './stun';
 import { TotalFocus as TotalFocus } from './total-focus';
 import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
 
@@ -33,7 +33,7 @@ export const powerset: Powerset = {
     AssassinsStrike,
     BuildUp,
     Placate,
-    PowerCrash,
+    Stun,
     TotalFocus,
     EnergyTransfer,
   ],

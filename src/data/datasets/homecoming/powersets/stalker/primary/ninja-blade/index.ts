@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { StingoftheWasp as StingoftheWasp } from './hack';
-import { GamblersCut as GamblersCut } from './slash';
-import { FlashingSteel as FlashingSteel } from './slice';
+import { Hack as Hack } from './hack';
+import { Slash as Slash } from './slash';
+import { Slice as Slice } from './slice';
 import { AssassinsBlade as AssassinsBlade } from './assassins-blade';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
-import { DivineAvalanche as DivineAvalanche } from './parry';
-import { SoaringDragon as SoaringDragon } from './disembowel';
-import { GoldenDragonfly as GoldenDragonfly } from './head-splitter';
+import { Parry as Parry } from './parry';
+import { Disembowel as Disembowel } from './disembowel';
+import { HeadSplitter as HeadSplitter } from './head-splitter';
 
 export const powerset: Powerset = {
   id: 'stalker/ninja-blade',
@@ -27,15 +27,15 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    StingoftheWasp,
-    GamblersCut,
-    FlashingSteel,
+    Hack,
+    Slash,
+    Slice,
     AssassinsBlade,
     BuildUp,
     Placate,
-    DivineAvalanche,
-    SoaringDragon,
-    GoldenDragonfly,
+    Parry,
+    Disembowel,
+    HeadSplitter,
   ],
 };
 

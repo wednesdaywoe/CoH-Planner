@@ -11,7 +11,7 @@ import type { Powerset } from '@/types';
 
 import { Shock as Shock } from './shock';
 import { RejuvenatingCircuit as RejuvenatingCircuit } from './rejuvenating-circuit';
-import { GalvanicSentinel as GalvanicSentinel } from './discharge';
+import { Discharge as Discharge } from './discharge';
 import { EnergizingCircuit as EnergizingCircuit } from './energizing-circuit';
 import { FaradayCage as FaradayCage } from './faraday-cage';
 import { EmpoweringCircuit as EmpoweringCircuit } from './empowering-circuit';
@@ -29,7 +29,7 @@ export const powerset: Powerset = {
   powers: [
     Shock,
     RejuvenatingCircuit,
-    GalvanicSentinel,
+    Discharge,
     EnergizingCircuit,
     FaradayCage,
     EmpoweringCircuit,

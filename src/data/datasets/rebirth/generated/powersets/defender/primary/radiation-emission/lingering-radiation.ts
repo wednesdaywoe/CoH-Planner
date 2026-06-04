@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const LingeringRadiation: Power = {
+export const Lingeringradiation: Power = {
   "name": "Lingering Radiation",
   "internalName": "Lingering_radiation",
   "available": 11,

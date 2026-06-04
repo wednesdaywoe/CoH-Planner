@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CrabSpiderArmorUpgrade as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/crab-spider-training/crab-spider-armor';
+import { CrabSpiderArmor as base } from '@/data/datasets/homecoming/generated/powersets/arachnos-soldier/epic/crab-spider-training/crab-spider-armor';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/arachnos-soldier/epic/crab-spider-training/crab-spider-armor';
 
-export const CrabSpiderArmorUpgrade: Power = withOverrides(base, overrides);
+export const CrabSpiderArmor: Power = withOverrides(base, overrides);

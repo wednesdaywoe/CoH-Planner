@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ChargeUp: Power = {
+export const Aim: Power = {
   "name": "Charge Up",
   "internalName": "Aim",
   "available": 7,
@@ -62,7 +62,7 @@ export const ChargeUp: Power = {
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",
-      "enduranceGain",
+      "specialBuff",
       "tohitBuff"
     ]
   }

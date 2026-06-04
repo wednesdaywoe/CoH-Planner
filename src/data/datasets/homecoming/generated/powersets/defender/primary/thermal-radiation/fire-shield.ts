@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const ThermalShield: Power = {
+export const FireShield: Power = {
   "name": "Thermal Shield",
   "internalName": "Fire_Shield",
   "available": 0,

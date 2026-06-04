@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { SonicThrust as SonicThrust } from './sonic-thrust';
 import { StridentEcho as StridentEcho } from './strident-echo';
 import { Attune as Attune } from './attune';
-import { SoundBooster as SoundBooster } from './build-up';
+import { BuildUp as BuildUp } from './build-up';
 import { SonicClap as SonicClap } from './sonic-clap';
 import { Taunt as Taunt } from './taunt';
 import { SandmansWhisper as SandmansWhisper } from './sandmans-whisper';
@@ -30,7 +30,7 @@ export const powerset: Powerset = {
     SonicThrust,
     StridentEcho,
     Attune,
-    SoundBooster,
+    BuildUp,
     SonicClap,
     Taunt,
     SandmansWhisper,

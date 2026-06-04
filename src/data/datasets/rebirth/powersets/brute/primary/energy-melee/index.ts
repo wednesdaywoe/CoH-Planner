@@ -16,7 +16,7 @@ import { BuildUp as BuildUp } from './build-up';
 import { WhirlingHands as WhirlingHands } from './whirling-hands';
 import { Taunt as Taunt } from './taunt';
 import { TotalFocus as TotalFocus } from './total-focus';
-import { StaggeringBurst as StaggeringBurst } from './stun';
+import { Stun as Stun } from './stun';
 import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
 
 export const powerset: Powerset = {
@@ -34,7 +34,7 @@ export const powerset: Powerset = {
     WhirlingHands,
     Taunt,
     TotalFocus,
-    StaggeringBurst,
+    Stun,
     EnergyTransfer,
   ],
 };

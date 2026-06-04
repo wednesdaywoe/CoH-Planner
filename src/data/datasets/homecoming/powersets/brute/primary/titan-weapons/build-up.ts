@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { BuildMomentum as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/titan-weapons/build-up';
+import { BuildUp as base } from '@/data/datasets/homecoming/generated/powersets/brute/primary/titan-weapons/build-up';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/brute/primary/titan-weapons/build-up';
 
-export const BuildMomentum: Power = withOverrides(base, overrides);
+export const BuildUp: Power = withOverrides(base, overrides);

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { OneThousandCuts as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/dual-blades/high-low';
+import { HighLow as base } from '@/data/datasets/rebirth/generated/powersets/brute/primary/dual-blades/high-low';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/brute/primary/dual-blades/high-low';
 
-export const OneThousandCuts: Power = withOverrides(base, overrides);
+export const HighLow: Power = withOverrides(base, overrides);

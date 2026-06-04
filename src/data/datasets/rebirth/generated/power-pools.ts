@@ -3701,6 +3701,14 @@ export const POWER_POOLS_RAW = {
             "scale": 0.15,
             "table": "Ranged_Damage"
           },
+          "accuracyBuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "accuracyBuff": 3.05,
+            "slow": 3
+          },
           "summon": {
             "isPseudoPet": false,
             "entity": "Pets_Whirlwind_Lightning_Jump1",
@@ -3722,14 +3730,11 @@ export const POWER_POOLS_RAW = {
             }
           },
           "selfPenalty": true,
-          "durations": {
-            "slow": 3
-          },
           "enduranceDrain": {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "buffDuration": 3
+          "buffDuration": 3.05
         }
       },
       {

@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SpineBurst as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/spines/fling-quills';
+import { FlingQuills as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/spines/fling-quills';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/primary/spines/fling-quills';
 
-export const SpineBurst: Power = withOverrides(base, overrides);
+export const FlingQuills: Power = withOverrides(base, overrides);

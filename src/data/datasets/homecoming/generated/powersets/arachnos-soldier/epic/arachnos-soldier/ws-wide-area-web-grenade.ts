@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const WideAreaWebGrenade: Power = {
+export const WSWideAreaWebGrenade: Power = {
   "name": "Wide Area Web Grenade",
   "internalName": "WS_Wide_Area_Web_Grenade",
   "available": 5,

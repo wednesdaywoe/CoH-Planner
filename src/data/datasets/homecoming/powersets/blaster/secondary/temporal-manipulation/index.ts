@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { TimeWall as TimeWall } from './time-wall';
 import { AgingTouch as AgingTouch } from './aging-touch';
 import { TimeStop as TimeStop } from './time-stop';
-import { Chronos as Chronos } from './chronological-selection';
+import { ChronologicalSelection as ChronologicalSelection } from './chronological-selection';
 import { EndofTime as EndofTime } from './end-of-time';
 import { TemporalHealing as TemporalHealing } from './temporal-healing';
 import { FuturePain as FuturePain } from './future-pain';
@@ -30,7 +30,7 @@ export const powerset: Powerset = {
     TimeWall,
     AgingTouch,
     TimeStop,
-    Chronos,
+    ChronologicalSelection,
     EndofTime,
     TemporalHealing,
     FuturePain,

@@ -38,6 +38,7 @@ export const TerraFirma: Power = {
     "durations": {
       "tohitBuff": 0.75,
       "debuffResistance": 0.75,
+      "accuracyBuff": 0.75,
       "rangeBuff": 0.75
     },
     "debuffResistance": {
@@ -45,6 +46,10 @@ export const TerraFirma: Power = {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "accuracyBuff": {
+      "scale": 0.1,
+      "table": "Melee_Ones"
     },
     "rangeBuff": {
       "scale": 0.15,

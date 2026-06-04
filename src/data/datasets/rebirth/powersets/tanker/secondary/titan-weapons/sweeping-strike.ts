@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TitanSweep as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/titan-weapons/sweeping-strike';
+import { SweepingStrike as base } from '@/data/datasets/rebirth/generated/powersets/tanker/secondary/titan-weapons/sweeping-strike';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/tanker/secondary/titan-weapons/sweeping-strike';
 
-export const TitanSweep: Power = withOverrides(base, overrides);
+export const SweepingStrike: Power = withOverrides(base, overrides);

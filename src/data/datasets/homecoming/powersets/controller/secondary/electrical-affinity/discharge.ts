@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GalvanicSentinel as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/electrical-affinity/discharge';
+import { Discharge as base } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/electrical-affinity/discharge';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/secondary/electrical-affinity/discharge';
 
-export const GalvanicSentinel: Power = withOverrides(base, overrides);
+export const Discharge: Power = withOverrides(base, overrides);

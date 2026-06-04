@@ -14,7 +14,7 @@ import { EnergyPunch as EnergyPunch } from './energy-punch';
 import { BoneSmasher as BoneSmasher } from './bone-smasher';
 import { Taunt as Taunt } from './taunt';
 import { WhirlingHands as WhirlingHands } from './whirling-hands';
-import { StaggeringBurst as StaggeringBurst } from './stun';
+import { Stun as Stun } from './stun';
 import { BuildUp as BuildUp } from './build-up';
 import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
 import { TotalFocus as TotalFocus } from './total-focus';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     BoneSmasher,
     Taunt,
     WhirlingHands,
-    StaggeringBurst,
+    Stun,
     BuildUp,
     EnergyTransfer,
     TotalFocus,

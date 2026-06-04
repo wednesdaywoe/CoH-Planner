@@ -12,9 +12,9 @@ import type { Powerset } from '@/types';
 import { BlazingAura as BlazingAura } from './blazing-aura';
 import { FireShield as FireShield } from './fire-shield';
 import { HealingFlames as HealingFlames } from './healing-flames';
-import { TemperatureProtection as TemperatureProtection } from './temperature-protection';
+import { Temperatureprotection as Temperatureprotection } from './temperature-protection';
 import { Consume as Consume } from './consume';
-import { PlasmaShield as PlasmaShield } from './plasma-sheild';
+import { PlasmaSheild as PlasmaSheild } from './plasma-sheild';
 import { Burn as Burn } from './burn';
 import { FieryEmbrace as FieryEmbrace } from './fiery-embrace';
 import { RiseofthePhoenix as RiseofthePhoenix } from './rise-of-the-phoenix';
@@ -30,9 +30,9 @@ export const powerset: Powerset = {
     BlazingAura,
     FireShield,
     HealingFlames,
-    TemperatureProtection,
+    Temperatureprotection,
     Consume,
-    PlasmaShield,
+    PlasmaSheild,
     Burn,
     FieryEmbrace,
     RiseofthePhoenix,

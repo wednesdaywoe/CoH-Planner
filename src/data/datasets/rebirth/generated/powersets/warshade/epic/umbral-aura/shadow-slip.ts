@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const StarlessGateway: Power = {
+export const ShadowSlip: Power = {
   "name": "Starless Gateway",
   "internalName": "Shadow_Slip",
   "available": 23,

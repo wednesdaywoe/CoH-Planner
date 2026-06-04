@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { CorrosiveEnzymes as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/nature-affinity/corrosive-sap';
+import { CorrosiveSap as base } from '@/data/datasets/rebirth/generated/powersets/defender/primary/nature-affinity/corrosive-sap';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/defender/primary/nature-affinity/corrosive-sap';
 
-export const CorrosiveEnzymes: Power = withOverrides(base, overrides);
+export const CorrosiveSap: Power = withOverrides(base, overrides);

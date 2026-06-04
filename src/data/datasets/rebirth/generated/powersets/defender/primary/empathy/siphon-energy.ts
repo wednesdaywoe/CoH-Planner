@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const HealingAura: Power = {
+export const SiphonEnergy: Power = {
   "name": "Healing Aura",
   "internalName": "Siphon_Energy",
   "available": 0,

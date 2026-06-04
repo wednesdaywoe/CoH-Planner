@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Confront: Power = {
+export const Provoke: Power = {
   "name": "Confront",
   "internalName": "Provoke",
   "available": 11,

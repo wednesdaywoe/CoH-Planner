@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { GamblersCut as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/ninja-blade/slash';
+import { Slash as base } from '@/data/datasets/rebirth/generated/powersets/stalker/primary/ninja-blade/slash';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/stalker/primary/ninja-blade/slash';
 
-export const GamblersCut: Power = withOverrides(base, overrides);
+export const Slash: Power = withOverrides(base, overrides);

@@ -12,9 +12,9 @@ import type { Powerset } from '@/types';
 import { KineticShield as KineticShield } from './kinetic-shield';
 import { DampeningField as DampeningField } from './dampening-field';
 import { PowerShield as PowerShield } from './power-shield';
-import { EntropicAura as EntropicAura } from './entropy-shield';
+import { EntropyShield as EntropyShield } from './entropy-shield';
 import { EnergyProtection as EnergyProtection } from './energy-protection';
-import { PowerArmor as PowerArmor } from './energy-reserve';
+import { EnergyReserve as EnergyReserve } from './energy-reserve';
 import { Energize as Energize } from './energize';
 import { EnergyDrain as EnergyDrain } from './energy-drain';
 import { Overload as Overload } from './overload';
@@ -30,9 +30,9 @@ export const powerset: Powerset = {
     KineticShield,
     DampeningField,
     PowerShield,
-    EntropicAura,
+    EntropyShield,
     EnergyProtection,
-    PowerArmor,
+    EnergyReserve,
     Energize,
     EnergyDrain,
     Overload,

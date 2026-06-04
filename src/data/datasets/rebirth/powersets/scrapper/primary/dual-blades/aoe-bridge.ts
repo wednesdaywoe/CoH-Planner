@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TyphoonsEdge as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/dual-blades/aoe-bridge';
+import { AoEBridge as base } from '@/data/datasets/rebirth/generated/powersets/scrapper/primary/dual-blades/aoe-bridge';
 import { overrides } from '@/data/datasets/rebirth/overrides/powersets/scrapper/primary/dual-blades/aoe-bridge';
 
-export const TyphoonsEdge: Power = withOverrides(base, overrides);
+export const AoEBridge: Power = withOverrides(base, overrides);

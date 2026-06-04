@@ -50,7 +50,8 @@ export const Geode: Power = {
       "slow": 0.2,
       "untouchable": 0.2,
       "damageDebuff": 0.2,
-      "taunt": 0.2
+      "taunt": 0.2,
+      "accuracyDebuff": 0.2
     },
     "recoveryBuff": {
       "scale": 4,
@@ -99,6 +100,10 @@ export const Geode: Power = {
       "table": "Melee_Ones"
     },
     "taunt": {
+      "scale": 999,
+      "table": "Melee_Ones"
+    },
+    "accuracyDebuff": {
       "scale": 999,
       "table": "Melee_Ones"
     },

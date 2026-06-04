@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Dynamo: Power = {
+export const LightningClap: Power = {
   "name": "Dynamo",
   "internalName": "Lightning_Clap",
   "available": 19,

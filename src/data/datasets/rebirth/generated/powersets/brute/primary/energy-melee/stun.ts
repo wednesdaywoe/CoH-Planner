@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const StaggeringBurst: Power = {
+export const Stun: Power = {
   "name": "Staggering Burst",
   "internalName": "Stun",
   "available": 25,

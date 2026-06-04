@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { SeismicShockwaves as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/seismic-blast/shockwaves';
+import { Shockwaves as base } from '@/data/datasets/homecoming/generated/powersets/corruptor/primary/seismic-blast/shockwaves';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/corruptor/primary/seismic-blast/shockwaves';
 
-export const SeismicShockwaves: Power = withOverrides(base, overrides);
+export const Shockwaves: Power = withOverrides(base, overrides);

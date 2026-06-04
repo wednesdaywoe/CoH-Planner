@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Slash: Power = {
+export const NWSlash: Power = {
   "name": "Slash",
   "internalName": "NW_Slash",
   "available": 17,

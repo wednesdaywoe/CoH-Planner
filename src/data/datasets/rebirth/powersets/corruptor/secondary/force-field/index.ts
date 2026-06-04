@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
+import { RepulsionFieldNew as RepulsionFieldNew } from './repulsion-field-new';
 import { PersonalForceField as PersonalForceField } from './personal-force-field';
 import { DeflectionShield as DeflectionShield } from './deflection-shield';
 import { ForceBolt as ForceBolt } from './force-bolt';
 import { InsulationShield as InsulationShield } from './insulation-shield';
-import { BarrierField as BarrierField } from './refraction-shield';
+import { RefractionShield as RefractionShield } from './refraction-shield';
 import { DispersionBubble as DispersionBubble } from './dispersion-bubble';
-import { ContainmentShell as ContainmentShell } from './repulsion-field';
+import { RepulsionField as RepulsionField } from './repulsion-field';
 import { RepulsionBomb as RepulsionBomb } from './repulsion-bomb';
 import { ForceBubble as ForceBubble } from './force-bubble';
-import { RepulsionField as RepulsionField } from './repulsion-field-new';
 
 export const powerset: Powerset = {
   id: 'corruptor/force-field',
@@ -28,16 +28,16 @@ export const powerset: Powerset = {
   archetype: 'corruptor',
   category: 'secondary',
   powers: [
+    RepulsionFieldNew,
     PersonalForceField,
     DeflectionShield,
     ForceBolt,
     InsulationShield,
-    BarrierField,
+    RefractionShield,
     DispersionBubble,
-    ContainmentShell,
+    RepulsionField,
     RepulsionBomb,
     ForceBubble,
-    RepulsionField,
   ],
 };
 

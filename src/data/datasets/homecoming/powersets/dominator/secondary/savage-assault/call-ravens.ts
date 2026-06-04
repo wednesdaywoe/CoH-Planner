@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { Unkindness as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/savage-assault/call-ravens';
+import { CallRavens as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/savage-assault/call-ravens';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/savage-assault/call-ravens';
 
-export const Unkindness: Power = withOverrides(base, overrides);
+export const CallRavens: Power = withOverrides(base, overrides);

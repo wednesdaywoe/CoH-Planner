@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { FrozenFists as FrozenFists } from './frozen-fists';
 import { IceSword as IceSword } from './ice-sword';
 import { Frost as Frost } from './frost';
-import { AssassinsIcicle as AssassinsIcicle } from './assassins-strike';
+import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { GreaterIceSword as GreaterIceSword } from './greater-ice-sword';
@@ -30,7 +30,7 @@ export const powerset: Powerset = {
     FrozenFists,
     IceSword,
     Frost,
-    AssassinsIcicle,
+    AssassinsStrike,
     BuildUp,
     Placate,
     GreaterIceSword,

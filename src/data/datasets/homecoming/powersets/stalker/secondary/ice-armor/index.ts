@@ -11,7 +11,7 @@ import type { Powerset } from '@/types';
 
 import { Hide as Hide } from './hide';
 import { FrozenArmor as FrozenArmor } from './frozen-armor';
-import { Rime as Rime } from './rime-ice';
+import { RimeIce as RimeIce } from './rime-ice';
 import { Hoarfrost as Hoarfrost } from './hoarfrost';
 import { WetIce as WetIce } from './wet-ice';
 import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
@@ -30,7 +30,7 @@ export const powerset: Powerset = {
   powers: [
     Hide,
     FrozenArmor,
-    Rime,
+    RimeIce,
     Hoarfrost,
     WetIce,
     ChillingEmbrace,

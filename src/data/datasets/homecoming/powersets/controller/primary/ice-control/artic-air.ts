@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { ArcticAir as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/ice-control/artic-air';
+import { ArticAir as base } from '@/data/datasets/homecoming/generated/powersets/controller/primary/ice-control/artic-air';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/controller/primary/ice-control/artic-air';
 
-export const ArcticAir: Power = withOverrides(base, overrides);
+export const ArticAir: Power = withOverrides(base, overrides);

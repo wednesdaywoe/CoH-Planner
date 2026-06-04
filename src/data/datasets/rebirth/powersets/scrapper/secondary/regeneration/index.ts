@@ -14,7 +14,7 @@ import { Reconstruction as Reconstruction } from './reconstruction';
 import { QuickRecovery as QuickRecovery } from './quick-recovery';
 import { DullPain as DullPain } from './dull-pain';
 import { Integration as Integration } from './integration';
-import { Resilience as Resilience } from './resist-disorientation';
+import { ResistDisorientation as ResistDisorientation } from './resist-disorientation';
 import { InstantHealing as InstantHealing } from './instant-healing';
 import { Revive as Revive } from './revive';
 import { MomentofGlory as MomentofGlory } from './moment-of-glory';
@@ -32,7 +32,7 @@ export const powerset: Powerset = {
     QuickRecovery,
     DullPain,
     Integration,
-    Resilience,
+    ResistDisorientation,
     InstantHealing,
     Revive,
     MomentofGlory,

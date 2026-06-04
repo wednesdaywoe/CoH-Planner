@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const EnvironmentalModification: Power = {
+export const EnvironmentalAdaptation: Power = {
   "name": "Environmental Modification",
   "internalName": "Environmental_Adaptation",
   "available": 1,

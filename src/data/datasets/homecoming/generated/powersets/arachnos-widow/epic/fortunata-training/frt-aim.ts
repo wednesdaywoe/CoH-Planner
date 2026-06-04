@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Aim: Power = {
+export const FRTAim: Power = {
   "name": "Aim",
   "internalName": "FRT_Aim",
   "available": 5,

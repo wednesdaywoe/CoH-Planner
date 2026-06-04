@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const Eviscerate: Power = {
+export const NWEviscerate: Power = {
   "name": "Eviscerate",
   "internalName": "NW_Eviscerate",
   "available": 21,

@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const HavocPunch: Power = {
+export const HavokPunch: Power = {
   "name": "Havoc Punch",
   "internalName": "Havok_Punch",
   "available": 9,

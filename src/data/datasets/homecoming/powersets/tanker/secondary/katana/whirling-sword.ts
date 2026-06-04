@@ -10,7 +10,7 @@
  */
 import type { Power } from '@/types';
 import { withOverrides } from '@/data/_layer';
-import { TheLotusDrops as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/katana/whirling-sword';
+import { WhirlingSword as base } from '@/data/datasets/homecoming/generated/powersets/tanker/secondary/katana/whirling-sword';
 import { overrides } from '@/data/datasets/homecoming/overrides/powersets/tanker/secondary/katana/whirling-sword';
 
-export const TheLotusDrops: Power = withOverrides(base, overrides);
+export const WhirlingSword: Power = withOverrides(base, overrides);

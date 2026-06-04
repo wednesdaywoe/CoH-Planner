@@ -13,10 +13,10 @@ import { IceBolt as IceBolt } from './ice-bolt';
 import { IceSword as IceSword } from './ice-sword';
 import { IceSwordCircle as IceSwordCircle } from './ice-sword-circle';
 import { IceBlast as IceBlast } from './ice-blast';
-import { PowerUp as PowerUp } from './power-boost';
+import { PowerBoost as PowerBoost } from './power-boost';
 import { FrostBreath as FrostBreath } from './frost-breath';
 import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
-import { IceSlash as IceSlash } from './greater-ice-sword';
+import { GreaterIceSword as GreaterIceSword } from './greater-ice-sword';
 import { BitterIceBlast as BitterIceBlast } from './bitter-ice-blast';
 
 export const powerset: Powerset = {
@@ -31,10 +31,10 @@ export const powerset: Powerset = {
     IceSword,
     IceSwordCircle,
     IceBlast,
-    PowerUp,
+    PowerBoost,
     FrostBreath,
     ChillingEmbrace,
-    IceSlash,
+    GreaterIceSword,
     BitterIceBlast,
   ],
 };

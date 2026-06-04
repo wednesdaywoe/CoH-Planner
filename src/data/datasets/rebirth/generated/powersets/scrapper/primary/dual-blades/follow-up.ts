@@ -8,7 +8,7 @@
 
 import type { Power } from '@/types';
 
-export const BlindingFeint: Power = {
+export const FollowUp: Power = {
   "name": "Blinding Feint",
   "internalName": "Follow_Up",
   "available": 7,

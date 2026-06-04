@@ -88,26 +88,66 @@ export const EMPArrow: Power = {
       "sleep": {
         "scale": 2,
         "table": "Ranged_Res_Boolean"
+      },
+      "tohit": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
       }
     },
     "durations": {
       "specialBuff": 45,
-      "defenseDebuff": 45,
-      "damageDebuff": 45,
-      "tohitDebuff": 45,
+      "specialDebuff": 45,
       "regenDebuff": 45
     },
-    "defenseDebuff": {
-      "scale": 1.2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "damageDebuff": {
-      "scale": 1.2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "tohitDebuff": {
-      "scale": 1.2,
-      "table": "Ranged_Res_Boolean"
+    "specialDebuff": {
+      "ranged": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "melee": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "aoe": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "smashing": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "lethal": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "fire": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "cold": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "energy": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "negative": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "psionic": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "toxic": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "defense": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "enduranceDrain": {
       "scale": 16.67,
