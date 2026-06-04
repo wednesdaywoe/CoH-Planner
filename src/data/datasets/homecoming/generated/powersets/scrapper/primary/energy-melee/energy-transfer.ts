@@ -46,7 +46,8 @@ export const EnergyTransfer: Power = {
     {
       "type": "Heal",
       "scale": 1,
-      "table": "Melee_HealSelf"
+      "table": "Melee_HealSelf",
+      "ignoreStrength": true
     },
     {
       "type": "Energy",
@@ -66,7 +67,8 @@ export const EnergyTransfer: Power = {
     {
       "type": "Heal",
       "scale": 1,
-      "table": "Melee_HealSelf"
+      "table": "Melee_HealSelf",
+      "ignoreStrength": true
     },
     {
       "type": "Energy",

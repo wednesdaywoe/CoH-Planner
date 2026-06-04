@@ -503,6 +503,9 @@ export interface ScaledDamageEntry {
   duration?: number;
   /** Tick rate for DoT entries */
   tickRate?: number;
+  /** For `type: 'Heal'` entries flagged IgnoreStrength — the heal is not boosted
+   *  by Healing enhancement or global +Heal. */
+  ignoreStrength?: boolean;
 }
 
 // ============================================

@@ -33,6 +33,7 @@ import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDam
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
+import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
@@ -799,20 +800,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
   // Extract healing from damage field (e.g., Life Drain, Reconstruction)
   // Handles both single object { type: "Heal", scale, table } and array entries
-  let healFromDamage: { scale: number; table?: string } | undefined;
-  if (!baseEffects?.healing) {
-    const dmg = effectivePower.damage ?? effectivePower.effects?.damage;
-    if (!Array.isArray(dmg) && typeof dmg === 'object' && dmg && 'type' in dmg && (dmg as { type: string }).type === 'Heal') {
-      const entry = dmg as { scale: number; table?: string };
-      healFromDamage = { scale: entry.scale, table: entry.table };
-    } else if (Array.isArray(dmg)) {
-      const healEntry = (dmg as Array<{ type: string; scale: number; table?: string }>)
-        .find(e => e.type === 'Heal');
-      if (healEntry) {
-        healFromDamage = { scale: healEntry.scale, table: healEntry.table };
-      }
-    }
-  }
+  const healFromDamage = baseEffects?.healing
+    ? undefined
+    : extractHealingFromDamage(effectivePower.damage ?? effectivePower.effects?.damage);
 
   // Use effective stats (quickSnipe-aware) for display
   const effectiveStats = effectivePower.stats;

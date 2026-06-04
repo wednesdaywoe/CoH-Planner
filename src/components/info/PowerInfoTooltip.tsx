@@ -51,6 +51,7 @@ import {
   type EnhancementBonuses,
 } from '@/utils/calculations';
 import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult } from '@/utils/calculations/pet-damage';
+import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import type { ArchetypeId } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import {
@@ -198,23 +199,10 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
   // Extract healing from damage field (e.g., Life Drain, Dark Regeneration, Reconstruction)
   // Powers can define healing as { type: "Heal", scale, table } either as a single object or array entry
-  const healFromDamageArray = useMemo(() => {
-    const dmg = basePower?.damage ?? basePower?.effects?.damage;
-    if (!dmg) return undefined;
-    // Single object: { type: "Heal", scale, table }
-    if (!Array.isArray(dmg) && typeof dmg === 'object' && 'type' in dmg && (dmg as { type: string }).type === 'Heal') {
-      const entry = dmg as { scale: number; table?: string };
-      return { scale: entry.scale, table: entry.table };
-    }
-    // Array: find Heal entry
-    if (Array.isArray(dmg)) {
-      const healEntry = (dmg as Array<{ type: string; scale: number; table?: string }>)
-        .find(e => e.type === 'Heal');
-      if (!healEntry) return undefined;
-      return { scale: healEntry.scale, table: healEntry.table };
-    }
-    return undefined;
-  }, [basePower?.damage, basePower?.effects?.damage]);
+  const healFromDamageArray = useMemo(
+    () => extractHealingFromDamage(basePower?.damage ?? basePower?.effects?.damage),
+    [basePower?.damage, basePower?.effects?.damage],
+  );
 
   // Calculate aggregate pet damage (supports multi-entity summons)
   const petDamageAggregate = useMemo<{ results: PetDamageResult[]; base: number; enhanced: number; final: number } | null>(() => {

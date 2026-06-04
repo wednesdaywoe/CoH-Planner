@@ -238,9 +238,11 @@ function calculateComplexStat(
   }
 
   if (aspect === 'healing' && isScaleObject(baseObject)) {
-    // Healing with scale
-    const enhBonus = enhBonuses.heal || 0;
-    const globalBonus = globalBonuses.healing || 0;
+    // Healing with scale. IgnoreStrength heals (Inner Will, DNA Siphon, Restore
+    // Essence, …) are not boosted by Healing enh or global +Heal.
+    const ignoresStrength = (baseObject as { ignoreStrength?: boolean }).ignoreStrength === true;
+    const enhBonus = ignoresStrength ? 0 : (enhBonuses.heal || 0);
+    const globalBonus = ignoresStrength ? 0 : (globalBonuses.healing || 0);
 
     const baseScale = baseObject.scale;
     const enhancedScale = baseScale * (1 + enhBonus);

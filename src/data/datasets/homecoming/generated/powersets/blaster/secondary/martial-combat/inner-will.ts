@@ -41,7 +41,8 @@ export const InnerWill: Power = {
     {
       "type": "Heal",
       "scale": 0.075,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "ignoreStrength": true
     },
     {
       "type": "Heal",

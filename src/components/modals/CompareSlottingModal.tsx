@@ -13,6 +13,7 @@ import { lookupPower, getIOSet, getPowerIconPath } from '@/data';
 import { getArchetype } from '@/data';
 import { calculatePowerEnhancementBonuses } from '@/utils/calculations/enhancement-values';
 import { calculatePowerDamage } from '@/utils/calculations/damage';
+import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import { getAlphaEnhancementBonuses, calculateCharacterTotals } from '@/utils/calculations/character-totals';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { getBaselineHealth } from '@/utils/calculations/stats';
@@ -143,20 +144,9 @@ export function CompareSlottingModal() {
     const baseEffects = power.effects;
 
     // Extract healing from damage field (e.g. Life Drain)
-    let healFromDamage: { scale: number; table?: string } | undefined;
-    if (!baseEffects?.healing) {
-      const dmg = power.damage;
-      if (!Array.isArray(dmg) && typeof dmg === 'object' && dmg && 'type' in dmg && (dmg as { type: string }).type === 'Heal') {
-        const entry = dmg as { scale: number; table?: string };
-        healFromDamage = { scale: entry.scale, table: entry.table };
-      } else if (Array.isArray(dmg)) {
-        const healEntry = (dmg as Array<{ type: string; scale: number; table?: string }>)
-          .find(e => e.type === 'Heal');
-        if (healEntry) {
-          healFromDamage = { scale: healEntry.scale, table: healEntry.table };
-        }
-      }
-    }
+    const healFromDamage = baseEffects?.healing
+      ? undefined
+      : extractHealingFromDamage(power.damage);
 
     return {
       ...baseEffects,

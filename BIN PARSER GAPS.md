@@ -130,26 +130,34 @@ not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
       (−1000), Vulnerability (−0.1125) are negative-scale self-crashes already routed
       to `defenseDebuff`. No genuine defense **buff** carries `IgnoreStrength`. The
       earlier "Defense (10)" count was debuffs caught by a too-loose filter.
-  - ⬜ **Heal (7) — real but deferred (entangled path).** Genuine self-heals (Inner
-    Will, DNA Siphon, Restore Essence, Rebuild DNA) carry `IgnoreStrength` and ARE
-    enhanced by Healing IOs, so they're over-counted. But heal doesn't go through the
-    buff-effects path — it flows `extractDamage` → a `type:'Heal'` damage entry →
-    re-extracted into a `healing` effect in **three duplicated places**
-    (`InfoPanel.tsx`, `PowerInfoTooltip.tsx`, `CompareSlottingModal.tsx`) → enhanced.
-    Right fix: **consolidate that triplicated heal-from-damage extraction into one
-    helper first**, then thread an `ignoreStrength` flag once (the data is already in
-    `exported_powers` `template.flags`, so nothing is lost meanwhile). Not worth
-    triplicating the fix for 7 powers.
+  - ✅ **Heal FIXED** (single-portion heals). Heal flows `extractDamage` → a
+    `type:'Heal'` damage entry → re-extracted into a `healing` effect, which was
+    duplicated in three places. Consolidated into one helper
+    (`src/utils/calculations/healing.ts` `extractHealingFromDamage`, replacing the
+    copies in `InfoPanel.tsx`, `PowerInfoTooltip.tsx`, `CompareSlottingModal.tsx`),
+    then threaded `IgnoreStrength`: the converter tags `Heal` entries with
+    `ignoreStrength`, the helper carries it, and `power-stats.ts` skips Healing enh /
+    global +Heal for it. Fixed the genuine single-IgnoreStrength-heal powers —
+    **Inner Will, Restore Essence (7.5), Energy Transfer** — no longer over-enhanced.
+  - 🔎 **DNA Siphon / Rebuild DNA = a *different* (pre-existing) issue.** They have
+    **two** Heal templates — an enhanceable portion (e.g. 1.25, no flag) AND an
+    unenhanceable one (0.375, IgnoreStrength). The heal extraction takes the **first**
+    entry (the enhanceable one), so the displayed heal is correctly enhanced — these
+    have **no over-enhance bug**. They have a separate **under-count**: the second
+    (unenhanceable) Heal portion is dropped entirely. Fixing that means summing
+    multiple `type:'Heal'` entries (applying enh only to the non-IgnoreStrength ones)
+    — a distinct "both-portions heal" task, not the over-enhance one. Tracked here.
   - ⬜ **Still open:** the `activation_effects` **drop** of non-regen `IgnoreStrength`
     templates — nuanced because some are genuine unenhanceable-only effects (keep) and
     some are enhanceable-copy duplicates (drop); needs the duplicate-vs-genuine
     discriminator before touching.
 
 ### Next steps (priority order)
-1. **`IgnoreStrength` remainder** (Recovery + ToHit done; Defense verified non-bug):
-   (a) consolidate the triplicated heal-from-damage extraction, then thread
-   `IgnoreStrength` for the 7 heal powers; (b) resolve the `activation_effects` drop
-   (duplicate-vs-genuine). Both are bounded — not blockers.
+1. **`IgnoreStrength` remainder** (Recovery + ToHit + single-portion Heal done;
+   Defense verified non-bug): (a) the `activation_effects` **drop** of non-regen
+   IgnoreStrength templates (duplicate-vs-genuine); (b) the **both-portions heal**
+   under-count (DNA Siphon / Rebuild DNA — sum multiple `type:'Heal'` entries).
+   Both bounded — not blockers.
 2. **Other clean power-field captures** (same pattern as the mez fields):
    `TimeToRoot` (2,340 — animation lock, affects DPS/rotation), `ModesDisallowed`
    (3,475), `StrengthsDisallowed` (951), `BuyRequires` (631). All genuinely absent,

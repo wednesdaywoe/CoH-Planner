@@ -1856,6 +1856,11 @@ function extractDamage(templates) {
         type: damageType,
         scale: template.scale,
         table: template.table,
+        // IgnoreStrength heals (Inner Will, DNA Siphon, Restore Essence, etc.) must
+        // not be boosted by Healing enh / global +heal. Tag only `Heal` entries so
+        // the heal calc can skip enhancement; tagging attack damage would be dead
+        // data (the damage calc doesn't read it, and that's a separate question).
+        ...(damageType === 'Heal' && template.flags?.includes('IgnoreStrength') ? { ignoreStrength: true } : {}),
       };
 
       // Check for DoT

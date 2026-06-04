@@ -35,6 +35,7 @@ export const RestoreEssence: Power = {
     "type": "Heal",
     "scale": 7.5,
     "table": "Melee_HealSelf",
+    "ignoreStrength": true,
     "duration": 0.5,
     "tickRate": 1
   },
