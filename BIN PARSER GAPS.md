@@ -109,18 +109,32 @@ not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
   - **Dropped entirely** (`activation_effects` toggles/autos): the converter drops
     non-regen `IgnoreStrength` templates there (`isDropForActivationEffects`) — the
     very "missing data" pattern we keep getting bitten by.
-  **Fix:** generalize the unenhanceable handling beyond regen — mark these effects so
-  the calc skips their `enhancementAspect` (and stop dropping them in
-  `activation_effects`). Calc-affecting; needs care (the meta-template / resistance
-  traps above show how a naïve `flags.includes('IgnoreStrength')` over-fires). Scope
-  with the `aspect ∈ {Current,Absolute,Magnitude}` + non-proc discriminator validated
-  here. The discipline: the data was never the problem — our *use* of it was.
+  **Fix:** generalize the unenhanceable handling beyond regen — route the effect to a
+  `…Unenhanced` key and add it to its global total WITHOUT the enhancement multiplier.
+  Calc-affecting; needs care (the meta-template / resistance traps above show how a
+  naïve `flags.includes('IgnoreStrength')` over-fires). Scope with the
+  `aspect ∈ {Current,Absolute,Magnitude}` + non-proc discriminator validated here.
+  The discipline: the data was never the problem — our *use* of it was.
+
+  **Status (2026-06-04):**
+  - ✅ **Recovery + ToHit FIXED** (`940d89dbb`): `recoveryBuffUnenhanced` /
+    `tohitBuffUnenhanced` keys; 65 powers reclassified; confirmed Env Adaptation +ToHit
+    no longer enhanced. tsc + 84 tests.
+  - 🔎 **Refinement** — the original "288" over-counted: `recharge`, `absorb`, and
+    `endurance` (`enduranceGain`) carry `IgnoreStrength` but are **not enhanced in the
+    calc** (a +recharge buff isn't boosted by Recharge IOs, etc.), so there's **no
+    over-enhance bug** for them — correctly left as-is (splitting would have created
+    dead keys / a new drop). The genuine over-enhance set is Recovery + ToHit (done)
+    plus **Defense (10, Record-shaped) and Heal (7)** — still open.
+  - ⬜ **Still open:** Defense/Heal over-enhance; and the `activation_effects` **drop**
+    of non-regen `IgnoreStrength` templates — nuanced because some are genuine
+    unenhanceable-only effects (keep) and some are enhanceable-copy duplicates (drop);
+    needs the duplicate-vs-genuine discriminator before touching.
 
 ### Next steps (priority order)
-1. **Fix the `IgnoreStrength` calc gap** (confirmed above): generalize the
-   regen-only unenhanceable handling to the 288 player effects (Endurance/Recovery/
-   ToHit/Defense/Heal/Absorb/Recharge), and stop dropping them in
-   `activation_effects`. Calc-affecting — scope with the validated discriminator.
+1. **Finish the `IgnoreStrength` calc gap** (Recovery + ToHit done): handle the
+   remaining over-enhance types — **Defense** (Record-shaped `defenseBuff`) and
+   **Heal** — and resolve the `activation_effects` drop (duplicate-vs-genuine).
 2. **Other clean power-field captures** (same pattern as the mez fields):
    `TimeToRoot` (2,340 — animation lock, affects DPS/rotation), `ModesDisallowed`
    (3,475), `StrengthsDisallowed` (951), `BuyRequires` (631). All genuinely absent,
