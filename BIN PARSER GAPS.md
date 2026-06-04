@@ -49,14 +49,50 @@ combat-text message IDs, icon internals).
 
 Oracle: the HC dev's authoritative `.powers` source defs (`raw defs/`, 4,943 powers,
 same category structure, gitignored). Confirmed OK to use (public game data, anon source).
-Plan: **build an audit framework + one-time sweep first**, then decide on a guard.
-- Phase 1 — export completeness: diff each `.powers` def vs our `exported_powers` JSON;
-  flag missing effect groups (e.g. Energy Torrent: 6 raw `Effect` blocks vs our 5),
-  missing AttribMods/fields, the un-parsed template tail (`suppress_events`, `flags`,
-  `fx`), unmapped exotic attribs. Fix the parser to close structural gaps.
-- Phase 2 — converter completeness: diff `exported_powers` vs `generated`; ensure every
-  mechanically-relevant template/field (incl. `requires_expression` gating) is emitted.
-- Later: consider a `.powers ⊆ extraction` guard once the sweep backlog is worked down.
+
+**Framework built + one-time sweep done (2026-06-04):** `tools/extraction-audit/` —
+`parse_powers.py` (parses the brace-nested `.powers` format) + `audit.py` (Phase-1
+comparator: `.powers` vs `exported_powers`). Sweep covered 4,943 raw defs — **3,686
+audited**, 1,257 skipped (no export; NPC/Temporary_Powers categories we don't extract).
+Report snapshot: `tools/extraction-audit/gap-report.json`.
+
+### Sweep findings — Phase 1 (parser/export gaps)
+
+**Power-level fields genuinely absent from our export (clean signal — distinct names,
+no normalization ambiguity). Several are mechanically relevant:**
+
+| `.powers` field | # powers | relevance |
+|---|---|---|
+| `ModesDisallowed` | 3,475 | power disabled in certain modes (mez'd/phased/etc.) |
+| `TimeToRoot` | 2,340 | animation root/lock time — affects DPS & rotation |
+| `StrengthsDisallowed` | 951 | which enhancement aspects can't affect the power |
+| `BuyRequires` | 631 | power prerequisites — build legality |
+| `ToggleIgnoreHold/Sleep/Stun` | 524 | **toggle persists through mez** |
+| `IgnoreStrength` | 438 | effect unaffected by enh strength — **currently sourced from CoD2**; capturing natively closes that dependency |
+| `CastThroughHold/Sleep/Stun/Terrorize` | ~48+ | **power usable while mez'd** |
+
+**Attrib comparison is NOT yet trustworthy** — its top entries are *normalization
+artifacts*, not gaps. Verified: `.powers` `kDefense` = our `Base_Defense`,
+`kSpeedFlying/Running/Jumping` = `FlyingSpeed`/`RunningSpeed`/`JumpingSpeed`,
+`kEntCreate` = `Create_Entity`, the damage types = `*_Dmg`. `audit.py`'s `norm_attrib`
+needs a real `.powers`↔export attrib name-map before its numbers mean anything. The
+*real* attrib gaps underneath match the known unmapped-exotic class (CLAUDE.md ~7%):
+`*_Elusivity` (`*elude`), `revoke_power`, `grant_power`/`grant_boosted_power`,
+`silent_kill`, `cancel_mods`, `set_costume`, `jump_pack`, `xp_debt_protection`,
+`null_bool`. (Note: Energy Torrent is faithful at the effect-group level — 5 vs 5,
+not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
+
+### Next steps (priority order)
+1. **Capture the mez-interaction fields + `IgnoreStrength`** (parser + converter) —
+   highest build-relevant value; `IgnoreStrength` also reduces the CoD2 dependency.
+2. **Add the `.powers`↔export attrib name-map** to `audit.py` → produce a clean
+   attrib-gap list → then close the genuinely-dropped exotic attribs.
+3. **Phase 2 — converter completeness**: diff `exported_powers` vs `generated` (the
+   class the knockback bug belonged to — parser captured it, converter dropped it);
+   ensure every mechanically-relevant template/field incl. `requires_expression`
+   gating is emitted. Also fold in the un-parsed template tail (`suppress_events`,
+   `flags`, `fx`).
+4. **Later**: a `.powers ⊆ extraction` guard, once the sweep backlog is worked down.
 
 ## ✅ Rebirth Blaster ToHit-buff AT modifiers were stale (FIXED 2026-06-03)
 
