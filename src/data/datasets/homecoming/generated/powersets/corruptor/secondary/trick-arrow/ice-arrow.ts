@@ -39,15 +39,34 @@ export const IceArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
+    "slow": {
+      "runSpeed": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "flySpeed": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      }
     },
     "durations": {
+      "slow": 10,
       "rechargeDebuff": 10,
       "damageDebuff": 60,
       "specialBuff": 10,
       "specialDebuff": 10
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
     },
     "hold": {
       "mag": 3,

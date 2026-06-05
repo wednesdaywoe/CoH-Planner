@@ -65,9 +65,16 @@ export const RingofFire: Power = {
       "table": "Ranged_Ones"
     },
     "durations": {
-      "damageBuff": 8.67
+      "damageBuff": 8.67,
+      "slow": 10
     },
-    "buffDuration": 8.67,
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

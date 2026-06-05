@@ -59,7 +59,14 @@ export const StonePrison: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 15
+      "defenseDebuff": 15,
+      "slow": 15
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
     },
     "buffDuration": 15
   },

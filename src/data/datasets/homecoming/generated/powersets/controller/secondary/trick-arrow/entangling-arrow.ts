@@ -40,6 +40,28 @@ export const EntanglingArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "slow": {
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
+      },
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "jumpHeight": {
+        "scale": 2.5,
+        "table": "Melee_Leap"
+      }
+    },
+    "durations": {
+      "slow": 15,
+      "resistanceDebuff": 30
+    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 2,
@@ -73,9 +95,6 @@ export const EntanglingArrow: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 30
     },
     "immobilize": {
       "mag": 3,

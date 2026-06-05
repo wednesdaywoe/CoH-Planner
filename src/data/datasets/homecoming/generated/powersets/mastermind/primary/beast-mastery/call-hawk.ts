@@ -66,7 +66,14 @@ export const CallHawk: Power = {
     },
     "durations": {
       "tohitDebuff": 10,
+      "slow": 10,
       "maxHPBuff": 30
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
     },
     "knockback": {
       "scale": 1.34,
@@ -76,7 +83,7 @@ export const CallHawk: Power = {
       "scale": 0.4,
       "table": "Melee_HealSelf"
     },
-    "buffDuration": 30
+    "buffDuration": 10
   },
   "specialEffects": [
     {

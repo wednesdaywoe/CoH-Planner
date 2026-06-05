@@ -47,12 +47,31 @@ export const Glacier: Power = {
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 18,
+      "rechargeDebuff": 18
+    },
     "rechargeDebuff": {
       "scale": 0.5,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 18
     },
     "buffDuration": 18
   },

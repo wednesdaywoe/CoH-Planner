@@ -73,12 +73,31 @@ export const ScorpionsSting: Power = {
       "scale": 5,
       "table": "Ranged_Immobilize"
     },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 15,
+      "damageDebuff": 15
+    },
     "damageDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 15
     },
     "buffDuration": 15
   },

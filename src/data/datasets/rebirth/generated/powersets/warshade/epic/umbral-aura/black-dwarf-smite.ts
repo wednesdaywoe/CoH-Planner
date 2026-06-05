@@ -62,12 +62,35 @@ export const BlackDwarfSmite: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Melee_Ones"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 10,
+      "rechargeDebuff": 10
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 10
     },
     "stun": {
       "mag": 2,

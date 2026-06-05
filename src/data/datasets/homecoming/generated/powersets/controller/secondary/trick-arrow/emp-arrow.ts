@@ -96,8 +96,19 @@ export const EMPArrow: Power = {
     },
     "durations": {
       "specialBuff": 45,
+      "slow": 45,
       "specialDebuff": 45,
       "regenDebuff": 45
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "flySpeed": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "specialDebuff": {
       "ranged": {

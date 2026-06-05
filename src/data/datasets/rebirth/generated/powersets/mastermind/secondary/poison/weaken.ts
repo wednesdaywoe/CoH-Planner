@@ -48,6 +48,7 @@ export const Weaken: Power = {
       "damageDebuff": 30,
       "tohitDebuff": 30,
       "specialBuff": 30,
+      "slow": 30,
       "specialDebuff": 30
     },
     "tohitDebuff": {
@@ -88,6 +89,16 @@ export const Weaken: Power = {
         "table": "Ranged_Stun"
       },
       "endurance": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      }
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "flySpeed": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       }

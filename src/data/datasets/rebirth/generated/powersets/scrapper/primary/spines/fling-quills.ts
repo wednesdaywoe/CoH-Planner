@@ -56,19 +56,38 @@ export const FlingQuills: Power = {
     }
   ],
   "effects": {
+    "slow": {
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 10,
+      "rechargeDebuff": 8
+    },
     "rechargeDebuff": {
       "scale": 0.1,
       "table": "Melee_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 8
     },
     "immobilize": {
       "mag": 0.33000001311302185,
       "scale": 10,
       "table": "Melee_Immobilize"
     },
-    "buffDuration": 8
+    "buffDuration": 10
   },
   "specialEffects": [
     {

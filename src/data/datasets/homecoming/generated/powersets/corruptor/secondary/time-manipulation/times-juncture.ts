@@ -50,7 +50,30 @@ export const TimesJuncture: Power = {
     },
     "durations": {
       "tohitDebuff": 1,
+      "slow": 1,
       "damageDebuff": 1
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
     },
     "damageDebuff": {
       "scale": 2,
@@ -72,7 +95,30 @@ export const TimesJuncture: Power = {
         },
         "durations": {
           "tohitDebuff": 1,
+          "slow": 1,
           "damageDebuff": 1
+        },
+        "slow": {
+          "runSpeed": {
+            "scale": 1.2,
+            "table": "Ranged_SpeedRunning"
+          },
+          "flySpeed": {
+            "scale": 0.36,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.36,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.36,
+            "table": "Ranged_Slow"
+          },
+          "fly": {
+            "scale": 1.92,
+            "table": "Ranged_Ones"
+          }
         },
         "damageDebuff": {
           "scale": 2.4,

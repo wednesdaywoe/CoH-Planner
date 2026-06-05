@@ -53,7 +53,8 @@ export const IncreaseDensity: Power = {
       "stun": 60,
       "hold": 60,
       "immobilize": 60,
-      "mezResistance": 60
+      "mezResistance": 60,
+      "slow": 60
     },
     "stun": {
       "mag": 1,
@@ -75,6 +76,24 @@ export const IncreaseDensity: Power = {
       "teleport": {
         "scale": 1,
         "table": "Ranged_Ones"
+      }
+    },
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
       }
     },
     "buffDuration": 60

@@ -37,14 +37,33 @@ export const SiphonSpeed: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      }
     },
     "durations": {
+      "slow": 60,
       "rechargeDebuff": 60,
       "movement": 60,
       "rechargeBuff": 60
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
     },
     "movement": {
       "runSpeed": {

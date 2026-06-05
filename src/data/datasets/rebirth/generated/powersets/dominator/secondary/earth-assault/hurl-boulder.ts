@@ -48,7 +48,17 @@ export const HurlBoulder: Power = {
     "knockback": {
       "scale": 3,
       "table": "Ranged_Knockback"
-    }
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 15
+    },
+    "buffDuration": 15
   },
   "specialEffects": [
     {

@@ -46,7 +46,26 @@ export const Shiver: Power = {
       "table": "Ranged_Slow"
     },
     "durations": {
-      "rechargeDebuff": 18
+      "rechargeDebuff": 18,
+      "slow": 18
+    },
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      }
     },
     "buffDuration": 18
   }

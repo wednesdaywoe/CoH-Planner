@@ -49,5 +49,17 @@ export const Gust: Power = {
       "scale": 1,
       "table": "Ranged_InherentDamage"
     }
-  ]
+  ],
+  "effects": {
+    "slow": {
+      "fly": {
+        "scale": 2.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 4
+    },
+    "buffDuration": 4
+  }
 };

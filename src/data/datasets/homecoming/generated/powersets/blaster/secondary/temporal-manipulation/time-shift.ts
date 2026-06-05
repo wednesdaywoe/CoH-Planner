@@ -55,7 +55,26 @@ export const TimeShift: Power = {
     },
     "durations": {
       "tohitDebuff": 20,
+      "slow": 20,
       "damageBuff": 9.53
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      },
+      "jumpHeight": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      }
     },
     "damageBuff": {
       "scale": 0.033,

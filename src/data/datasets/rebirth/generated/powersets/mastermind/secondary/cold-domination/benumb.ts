@@ -41,6 +41,7 @@ export const Benumb: Power = {
       "damageDebuff": 30,
       "regenDebuff": 30,
       "specialBuff": 30,
+      "slow": 30,
       "specialDebuff": 30
     },
     "regenDebuff": {
@@ -77,6 +78,16 @@ export const Benumb: Power = {
         "table": "Ranged_Stun"
       },
       "tohit": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      }
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Stun"
+      },
+      "flySpeed": {
         "scale": 0.5,
         "table": "Ranged_Stun"
       }

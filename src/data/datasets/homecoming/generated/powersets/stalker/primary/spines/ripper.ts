@@ -83,9 +83,28 @@ export const Ripper: Power = {
       "table": "Melee_Slow"
     },
     "durations": {
-      "rechargeDebuff": 10
+      "rechargeDebuff": 10,
+      "slow": 15
     },
-    "buffDuration": 10
+    "slow": {
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    },
+    "buffDuration": 15
   },
   "specialEffects": [
     {

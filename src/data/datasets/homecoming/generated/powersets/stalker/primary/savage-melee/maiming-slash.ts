@@ -65,6 +65,26 @@ export const MaimingSlash: Power = {
       "tickRate": 1
     }
   ],
+  "effects": {
+    "slow": {
+      "runSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 10
+    },
+    "buffDuration": 10
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -49,7 +49,26 @@ export const WebGrenade: Power = {
       "table": "Ranged_Slow"
     },
     "durations": {
-      "rechargeDebuff": 15
+      "rechargeDebuff": 15,
+      "slow": 15
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      },
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      }
     },
     "buffDuration": 15
   }

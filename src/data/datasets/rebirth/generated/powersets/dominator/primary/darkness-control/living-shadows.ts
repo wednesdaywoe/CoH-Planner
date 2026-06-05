@@ -60,14 +60,21 @@ export const LivingShadows: Power = {
       "table": "Ranged_DeBuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 8
+      "tohitDebuff": 8,
+      "slow": 15
     },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "buffDuration": 8
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "buffDuration": 15
   },
   "conditionalEffects": [
     {

@@ -561,5 +561,14 @@ This is the same kind of bug the kExpression branch had originally; that one was
 
 Why key-based and not tag-based: **HC/Parse7 tags the ammo groups, but Rebirth/Thunderspy uses Parse6** (`_parse_effects_parse6`), which has **no `EffectGroup` wrapper at all** — it stores flat AttribMods (each wrapped in a synthetic single-template group), so there's no group-level `Tag`. Both formats land the same effect KEYS in base, so attributing by key fixes **both servers** with no Rebirth re-export and no Parse6 parser work. (The HC `Tag` capture still earns its keep — the dormant tag-aware stacking + the Defiance fix above.)
 
-**Known follow-up (not blocking):**
-- **Foe movement-slow not extracted.** Cryo's slow surfaces only its `-Recharge` half; the `-Movement` (RunningSpeed/FlyingSpeed/JumpingSpeed) foe-debuff has no effect-key mapping in `extractEffects` (movement handling there is buff/resistance only). A broader gap affecting any -movement debuff power (Caltrops, Ice Slick, …), worth a dedicated foe-movement-debuff effect type.
+**Follow-up — RESOLVED (2026-06-05): foe movement-slow now extracted.** The
+converter's MOVEMENT block used to `continue` (drop) any non-self movement effect
+("enemy slows like Time's Juncture"), so a Slow surfaced only its `-Recharge` half
+(`rechargeDebuff`) and the `-Movement` half was lost. Now a foe movement mod on a
+`*_Slow` table (or negative/debuff) is emitted as a foe `slow` (`MovementByType`,
+**no `selfPenalty`** → the calc treats it as a foe debuff, not a self-slow; the
+effect-registry already renders `slow` as "-Speed"). Broad fix — `slow` went from
+94 → 1536 across ~676 powers (Ice/Cold/Time/Arachnos/Widow/…) plus Cryo ammo, which
+now carries both halves of its slow in the `cryoammunition` conditional. Purely
+additive (every other effect key net-preserved; self-penalty Granite-style slows
+unchanged).

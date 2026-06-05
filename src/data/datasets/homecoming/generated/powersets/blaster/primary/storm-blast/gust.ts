@@ -49,6 +49,18 @@ export const Gust: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "slow": {
+      "fly": {
+        "scale": 2.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 4
+    },
+    "buffDuration": 4
+  },
   "conditionalEffects": [
     {
       "id": "stormblast_instormcell",

@@ -75,6 +75,16 @@ export const Entangle: Power = {
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 15
+    },
+    "buffDuration": 15
   }
 };

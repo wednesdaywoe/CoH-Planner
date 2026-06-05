@@ -43,12 +43,35 @@ export const SnowStorm: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "slow": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 0.75,
+      "rechargeDebuff": 0.75
+    },
     "rechargeDebuff": {
       "scale": 0.5,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 0.75
     },
     "buffDuration": 0.75
   }

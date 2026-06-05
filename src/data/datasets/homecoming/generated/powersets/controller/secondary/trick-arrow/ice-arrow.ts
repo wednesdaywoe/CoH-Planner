@@ -52,6 +52,7 @@ export const IceArrow: Power = {
     "durations": {
       "damageDebuff": 60,
       "specialBuff": 10,
+      "slow": 10,
       "specialDebuff": 10,
       "rechargeDebuff": 10
     },
@@ -95,6 +96,24 @@ export const IceArrow: Power = {
       "tohit": {
         "scale": 0.45,
         "table": "Ranged_Special"
+      }
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "flySpeed": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
       }
     },
     "specialDebuff": {

@@ -68,7 +68,22 @@ export const Upthrust: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 16
+      "defenseDebuff": 16,
+      "slow": 16
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      },
+      "jumpSpeed": {
+        "scale": 1,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 1,
+        "table": "Ranged_Slow"
+      }
     },
     "knockback": {
       "scale": 0.66,

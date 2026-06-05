@@ -70,12 +70,31 @@ export const BitterFreezeRay: Power = {
       "scale": 6.4,
       "table": "Ranged_Immobilize"
     },
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 18,
+      "rechargeDebuff": 18
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 18
     },
     "buffDuration": 18
   }

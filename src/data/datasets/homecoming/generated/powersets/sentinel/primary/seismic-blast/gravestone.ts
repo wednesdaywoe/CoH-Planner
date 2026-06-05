@@ -59,5 +59,25 @@ export const Gravestone: Power = {
       "scale": 2.049,
       "table": "Ranged_PvPDamage"
     }
-  ]
+  ],
+  "effects": {
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      },
+      "jumpSpeed": {
+        "scale": 1,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 1,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 16
+    },
+    "buffDuration": 16
+  }
 };

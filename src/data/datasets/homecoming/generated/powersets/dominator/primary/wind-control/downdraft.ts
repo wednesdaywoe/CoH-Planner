@@ -60,12 +60,35 @@ export const Downdraft: Power = {
       "scale": 12,
       "table": "Ranged_Immobilize"
     },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "fly": {
+        "scale": 2,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 12,
+      "rechargeDebuff": 12
+    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 12
     },
     "buffDuration": 12
   },

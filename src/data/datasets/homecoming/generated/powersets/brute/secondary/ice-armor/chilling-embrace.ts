@@ -44,13 +44,32 @@ export const ChillingEmbrace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 5,
+      "rechargeDebuff": 5,
+      "damageDebuff": 5
+    },
     "rechargeDebuff": {
       "scale": 0.4,
       "table": "Melee_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 5,
-      "damageDebuff": 5
     },
     "damageDebuff": {
       "scale": 2,

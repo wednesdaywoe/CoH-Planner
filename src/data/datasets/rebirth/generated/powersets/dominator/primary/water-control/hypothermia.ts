@@ -51,7 +51,26 @@ export const Hypothermia: Power = {
     },
     "effectDuration": 15.1,
     "durations": {
-      "sleep": 15.1
+      "sleep": 15.1,
+      "slow": 15
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      }
     },
     "buffDuration": 15.1
   },
@@ -88,7 +107,26 @@ export const Hypothermia: Power = {
         },
         "effectDuration": 15.1,
         "durations": {
-          "sleep": 15.1
+          "sleep": 15.1,
+          "slow": 15
+        },
+        "slow": {
+          "runSpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "flySpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          }
         },
         "buffDuration": 15.1
       }

@@ -46,7 +46,26 @@ export const NeurotoxicBreath: Power = {
       "table": "Ranged_Slow"
     },
     "durations": {
-      "rechargeDebuff": 20
+      "rechargeDebuff": 20,
+      "slow": 20
+    },
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      }
     },
     "hold": {
       "mag": 2,

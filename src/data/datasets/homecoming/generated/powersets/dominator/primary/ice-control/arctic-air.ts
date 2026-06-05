@@ -51,8 +51,27 @@ export const ArcticAir: Power = {
     },
     "durations": {
       "rechargeDebuff": 2.25,
+      "slow": 2.25,
       "stealth": 2.25,
       "fear": 2
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      }
     },
     "stealth": {
       "stealthPvE": {

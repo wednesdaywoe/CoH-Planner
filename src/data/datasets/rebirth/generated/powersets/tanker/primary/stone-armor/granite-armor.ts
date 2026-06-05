@@ -152,6 +152,10 @@ export const GraniteArmor: Power = {
         "scale": 0.7,
         "table": "Melee_Ones"
       },
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Melee_Ones"
+      },
       "fly": {
         "scale": 10,
         "table": "Melee_Ones"

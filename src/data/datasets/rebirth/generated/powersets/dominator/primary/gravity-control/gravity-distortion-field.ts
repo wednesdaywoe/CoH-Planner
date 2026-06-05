@@ -48,7 +48,29 @@ export const GravityDistortionField: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 12
+    },
+    "buffDuration": 12
   },
   "conditionalEffects": [
     {

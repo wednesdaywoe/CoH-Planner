@@ -50,12 +50,31 @@ export const InertialSiphon: Power = {
       "entity": "Pets_Guardian_InertialSiphonBuff",
       "duration": 1
     },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 45,
+      "rechargeDebuff": 45
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "rechargeDebuff": 45
     },
     "buffDuration": 45
   }

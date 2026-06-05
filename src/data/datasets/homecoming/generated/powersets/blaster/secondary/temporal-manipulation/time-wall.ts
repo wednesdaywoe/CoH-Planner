@@ -61,14 +61,33 @@ export const TimeWall: Power = {
     }
   ],
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.6,
-      "table": "Ranged_Slow"
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      }
     },
     "durations": {
+      "slow": 20,
       "rechargeDebuff": 20,
       "regenDebuff": 20,
       "damageBuff": 9.1
+    },
+    "rechargeDebuff": {
+      "scale": 0.6,
+      "table": "Ranged_Slow"
     },
     "immobilize": {
       "mag": 3,

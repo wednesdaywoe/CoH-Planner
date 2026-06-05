@@ -52,9 +52,19 @@ export const Levitate: Power = {
     }
   ],
   "effects": {
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 10
+    },
     "knockup": {
       "scale": 12,
       "table": "Ranged_Knockback"
-    }
+    },
+    "buffDuration": 10
   }
 };

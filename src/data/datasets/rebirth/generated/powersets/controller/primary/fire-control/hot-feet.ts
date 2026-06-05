@@ -46,7 +46,29 @@ export const HotFeet: Power = {
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Ones"
-    }
+    },
+    "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "jumpHeight": {
+        "scale": 0.7,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.7,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 2.25
+    },
+    "buffDuration": 2.25
   },
   "specialEffects": [
     {

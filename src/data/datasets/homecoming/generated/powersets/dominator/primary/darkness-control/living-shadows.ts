@@ -73,8 +73,15 @@ export const LivingShadows: Power = {
       "table": "Ranged_Debuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 8
+      "tohitDebuff": 8,
+      "slow": 15
     },
-    "buffDuration": 8
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "buffDuration": 15
   }
 };

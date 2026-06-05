@@ -61,7 +61,26 @@ export const BitterIceBlast: Power = {
     },
     "durations": {
       "tohitDebuff": 6,
+      "slow": 12,
       "rechargeDebuff": 12
+    },
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
     },
     "rechargeDebuff": {
       "scale": 0.2,

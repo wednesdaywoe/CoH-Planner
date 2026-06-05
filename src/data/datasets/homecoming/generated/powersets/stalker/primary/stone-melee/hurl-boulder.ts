@@ -53,10 +53,20 @@ export const HurlBoulder: Power = {
     }
   ],
   "effects": {
+    "slow": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "slow": 15
+    },
     "knockback": {
       "scale": 6,
       "table": "Melee_Knockback"
-    }
+    },
+    "buffDuration": 15
   },
   "specialEffects": [
     {

@@ -1515,47 +1515,66 @@ function extractConditionalEffects(rawEffects, powerJson) {
 }
 
 // Dual Pistols "Swap Ammo": each attack's SECONDARY effect changes with the
-// loaded ammo, and only one ammo is loaded at a time. The secondary lands in
-// base as a fixed effect key per ammo — Standard -Def (`defenseDebuff`), Cryo
-// -Recharge (`rechargeDebuff`), Chemical -Damage (`damageDebuff`) — so we move
-// those keys out of base into mutually-exclusive `swap-ammo` conditionals.
+// loaded ammo, and only one ammo is loaded at a time. Each secondary lands in
+// base as fixed effect key(s) per ammo — Standard -Def (`defenseDebuff`), Cryo
+// Slow (`rechargeDebuff` + `slow`, the two halves of the slow), Chemical -Damage
+// (`damageDebuff`) — so we move those keys out of base into mutually-exclusive
+// `swap-ammo` conditionals (one per ammo, carrying all of that ammo's keys).
 // (Incendiary's secondary is a fire DoT — already a damage entry, no debuff;
 // the secondary DAMAGE-type swap is handled by the existing damageConversion.)
 //
 // Key-based (not tag-based) so it works on BOTH binary formats: HC/Parse7 tags
 // the ammo groups, but Rebirth/Parse6 has no EffectGroup `Tag` (it stores flat
 // AttribMods with the same effect keys). Knockback and other core effects keep
-// their own keys and stay in base. Order = Standard, Cryo, Chemical.
-const DP_AMMO_BY_KEY = [
-  ['defenseDebuff', 'lethalammo', 'Standard Ammo'],
-  ['rechargeDebuff', 'cryoammunition', 'Cryo Ammo'],
-  ['damageDebuff', 'chemicalammunition', 'Chemical Ammo'],
-];
+// their own keys and stay in base.
+const DP_AMMO_BY_KEY = {
+  defenseDebuff: 'lethalammo',
+  rechargeDebuff: 'cryoammunition',
+  slow: 'cryoammunition',
+  damageDebuff: 'chemicalammunition',
+};
+const DP_AMMO_LABELS = { lethalammo: 'Standard Ammo', cryoammunition: 'Cryo Ammo', chemicalammunition: 'Chemical Ammo' };
+const DP_AMMO_ORDER = ['lethalammo', 'cryoammunition', 'chemicalammunition'];
 
 function extractDualPistolsAmmo(powerJson, baseEffects) {
   const psKey = (powerJson.powerset || powerJson.full_name || '').toLowerCase();
   if (!psKey.includes('dual_pistols')) return undefined;
   if (!baseEffects) return undefined;
 
+  // Group the present ammo-secondary keys by their ammo (Cryo carries two).
+  const byAmmo = new Map();
+  for (const [key, id] of Object.entries(DP_AMMO_BY_KEY)) {
+    if (baseEffects[key] === undefined) continue;
+    if (!byAmmo.has(id)) byAmmo.set(id, { effects: {}, durations: {}, keys: [] });
+    const slot = byAmmo.get(id);
+    slot.effects[key] = baseEffects[key];
+    slot.keys.push(key);
+    const dur = baseEffects.durations ? baseEffects.durations[key] : undefined;
+    if (dur !== undefined) slot.durations[key] = dur;
+  }
+  if (byAmmo.size === 0) return undefined;
+
   const conditionals = [];
   const baseKeysToRemove = [];
-  for (const [key, id, label] of DP_AMMO_BY_KEY) {
-    if (baseEffects[key] === undefined) continue;
-    const dur = baseEffects.durations ? baseEffects.durations[key] : undefined;
-    const effects = { [key]: baseEffects[key] };
-    if (dur !== undefined) effects.durations = { [key]: dur };
-    const buffDuration = dur !== undefined ? dur : baseEffects.buffDuration;
+  for (const id of DP_AMMO_ORDER) {
+    const slot = byAmmo.get(id);
+    if (!slot) continue;
+    const effects = { ...slot.effects };
+    const durKeys = Object.keys(slot.durations);
+    if (durKeys.length) effects.durations = slot.durations;
+    // The keys of one ammo share a duration (both halves of a Slow); reuse it.
+    const buffDuration = durKeys.length ? slot.durations[durKeys[0]] : baseEffects.buffDuration;
     if (buffDuration !== undefined) effects.buffDuration = buffDuration;
     conditionals.push({
       id,
-      label,
+      label: DP_AMMO_LABELS[id],
       scope: 'global',
       // Standard ammo is the default secondary (applies with no ammo loaded).
       defaultActive: id === 'lethalammo',
       group: 'swap-ammo',
       effects,
     });
-    baseKeysToRemove.push(key);
+    baseKeysToRemove.push(...slot.keys);
   }
   if (conditionals.length === 0) return undefined;
   return { conditionals, baseKeysToRemove };
@@ -2406,6 +2425,10 @@ function extractEffects(templates, powerName) {
       // ========== MOVEMENT ==========
       if (MOVEMENT_TYPES[attrib]) {
         const moveType = MOVEMENT_TYPES[attrib];
+        // A movement "slow" reads as a Current-aspect mod on a *_Slow table with
+        // positive scale (the table encodes the reduction), so detect it by the
+        // table too — not just negative scale / isDebuff.
+        const isSlow = isDebuff || scale < 0 || (table || '').toLowerCase().includes('slow');
         if (aspect === 'resistance') {
           // Resistance to movement debuffs (slow resistance)
           if (!effects.debuffResistance) effects.debuffResistance = {};
@@ -2420,7 +2443,7 @@ function extractEffects(templates, powerName) {
           if (!effects.specialBuff) effects.specialBuff = {};
           effects.specialBuff.movement = makeEffect();
           recordDuration('specialBuff');
-        } else if (isSelfTargeting && (isDebuff || scale < 0)) {
+        } else if (isSelfTargeting && isSlow) {
           // Self-targeting movement penalty (e.g., Granite Armor -70% run speed)
           if (!effects.slow) effects.slow = {};
           effects.slow[moveType] = makeEffect();
@@ -2431,8 +2454,18 @@ function extractEffects(templates, powerName) {
           if (!effects.movement) effects.movement = {};
           effects.movement[moveType] = makeEffect();
           recordDuration('movement');
+        } else if (isSlow) {
+          // FOE movement slow — the -Run/Fly/Jump-speed half of a Slow (Cryo
+          // ammo, Caltrops, Ice Slick, Time's Juncture, …). Its matching
+          // -Recharge half is already captured as `rechargeDebuff`; this is the
+          // movement half, which used to be dropped. No `selfPenalty`, so the
+          // calc treats it as a foe debuff (doesn't slow the player) — it's a
+          // first-class debuff for display. (Foe movement *buffs* — rare/ally —
+          // still fall through and are skipped.)
+          if (!effects.slow) effects.slow = {};
+          effects.slow[moveType] = makeEffect();
+          recordDuration('slow');
         }
-        // Skip non-self movement effects (enemy slows like Time's Juncture)
         continue;
       }
 

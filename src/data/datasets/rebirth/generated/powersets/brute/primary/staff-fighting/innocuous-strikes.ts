@@ -61,10 +61,32 @@ export const InnocuousStrikes: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 10
+    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "buffDuration": 10
   },
   "specialEffects": [
     {

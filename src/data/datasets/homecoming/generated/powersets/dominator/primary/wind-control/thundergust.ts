@@ -65,7 +65,14 @@ export const Thundergust: Power = {
       "table": "Ranged_Debuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 12
+      "tohitDebuff": 12,
+      "slow": 12
+    },
+    "slow": {
+      "fly": {
+        "scale": 3,
+        "table": "Ranged_Ones"
+      }
     },
     "buffDuration": 12
   },

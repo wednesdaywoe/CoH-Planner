@@ -55,10 +55,32 @@ export const Deluge: Power = {
     }
   ],
   "effects": {
+    "slow": {
+      "runSpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 15
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
-    }
+    },
+    "buffDuration": 15
   },
   "conditionalEffects": [
     {
@@ -73,6 +95,30 @@ export const Deluge: Power = {
         "table": "Ranged_Damage",
         "duration": 1.1,
         "tickRate": 0.5
+      },
+      "effects": {
+        "slow": {
+          "runSpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "flySpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
+          }
+        },
+        "durations": {
+          "slow": 15
+        },
+        "buffDuration": 15
       }
     }
   ],

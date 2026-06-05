@@ -59,7 +59,26 @@ export const Frost: Power = {
       "table": "Melee_Slow"
     },
     "durations": {
-      "rechargeDebuff": 8
+      "rechargeDebuff": 8,
+      "slow": 8
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
     },
     "taunt": {
       "scale": 1,

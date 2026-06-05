@@ -54,12 +54,31 @@ export const WaterJet: Power = {
     }
   ],
   "effects": {
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 8,
+      "damageBuff": 8.93
+    },
     "damageBuff": {
       "scale": 0.094,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.93
     },
     "buffDuration": 8.93,
     "maxStacks": 2,

@@ -56,12 +56,31 @@ export const BlackDwarfDrain: Power = {
     }
   ],
   "effects": {
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 6,
+      "rechargeDebuff": 6
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 6
     },
     "taunt": {
       "scale": 1,

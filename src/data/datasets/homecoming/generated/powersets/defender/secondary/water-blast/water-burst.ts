@@ -66,6 +66,30 @@ export const WaterBurst: Power = {
       "table": "Ranged_PvPDamage"
     }
   ],
+  "effects": {
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 10
+    },
+    "buffDuration": 10
+  },
   "conditionalEffects": [
     {
       "id": "tidal_power-1",

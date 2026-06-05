@@ -64,7 +64,17 @@ export const SkySplitter: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "slow": 10
+    },
+    "buffDuration": 10
   },
   "conditionalEffects": [
     {

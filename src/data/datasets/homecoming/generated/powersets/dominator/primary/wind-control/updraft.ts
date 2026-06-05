@@ -55,7 +55,17 @@ export const Updraft: Power = {
     "knockup": {
       "scale": 12,
       "table": "Ranged_Knockback"
-    }
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.5,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 10
+    },
+    "buffDuration": 10
   },
   "requires": "accesslevel char> 0 >="
 };

@@ -46,13 +46,32 @@ export const EntanglingArrow: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "slow": {
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      },
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 0.75,
+      "rechargeDebuff": 15,
+      "damageDebuff": 15
+    },
     "rechargeDebuff": {
       "scale": 0.4,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 15,
-      "damageDebuff": 15
     },
     "damageDebuff": {
       "scale": 2.5,
@@ -72,7 +91,18 @@ export const EntanglingArrow: Power = {
           "table": "Ranged_Slow"
         },
         "durations": {
-          "rechargeDebuff": 15
+          "rechargeDebuff": 15,
+          "slow": 15
+        },
+        "slow": {
+          "runSpeed": {
+            "scale": 0.08,
+            "table": "Ranged_Slow"
+          },
+          "flySpeed": {
+            "scale": 0.08,
+            "table": "Ranged_Slow"
+          }
         },
         "buffDuration": 15
       }

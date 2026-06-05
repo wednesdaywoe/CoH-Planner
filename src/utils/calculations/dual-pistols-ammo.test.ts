@@ -28,7 +28,9 @@ describe('Dual Pistols Swap Ammo (homecoming)', () => {
 
     expect(byId.lethalammo?.effects?.defenseDebuff).toBeDefined(); // Standard -Def
     expect(byId.lethalammo?.defaultActive).toBe(true);
-    expect(byId.cryoammunition?.effects?.rechargeDebuff).toBeDefined(); // Cryo -Recharge
+    // Cryo carries BOTH halves of its Slow in one conditional: -Recharge + -Movement.
+    expect(byId.cryoammunition?.effects?.rechargeDebuff).toBeDefined();
+    expect((byId.cryoammunition?.effects as Record<string, unknown> | undefined)?.slow).toBeDefined();
     expect(byId.chemicalammunition?.effects?.damageDebuff).toBeDefined(); // Chemical -Damage
 
     for (const id of ['lethalammo', 'cryoammunition', 'chemicalammunition']) {

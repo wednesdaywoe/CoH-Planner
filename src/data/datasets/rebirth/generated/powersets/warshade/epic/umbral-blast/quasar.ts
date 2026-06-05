@@ -53,12 +53,31 @@ export const Quasar: Power = {
       "scale": 10,
       "table": "Ranged_Knockback"
     },
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 20,
+      "rechargeDebuff": 20
+    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 20
     },
     "buffDuration": 20
   },

@@ -53,12 +53,23 @@ export const ShadowBolt: Power = {
     }
   ],
   "effects": {
+    "slow": {
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 4,
+      "rechargeDebuff": 4
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 4
     },
     "buffDuration": 4
   }

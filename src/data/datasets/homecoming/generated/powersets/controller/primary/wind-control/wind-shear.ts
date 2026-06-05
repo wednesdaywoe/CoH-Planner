@@ -51,7 +51,30 @@ export const WindShear: Power = {
     },
     "durations": {
       "tohitDebuff": 2.1,
+      "slow": 2.1,
       "damageDebuff": 2.1
+    },
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.65,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.65,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.65,
+        "table": "Melee_Slow"
+      },
+      "fly": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      }
     },
     "damageDebuff": {
       "scale": 1.25,

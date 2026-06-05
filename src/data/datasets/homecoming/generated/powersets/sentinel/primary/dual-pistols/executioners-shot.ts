@@ -146,7 +146,7 @@ export const ExecutionersShot: Power = {
       "scale": 2,
       "table": "Ranged_Knockback"
     },
-    "buffDuration": 8
+    "buffDuration": 10
   },
   "specialEffects": [
     {
@@ -184,8 +184,27 @@ export const ExecutionersShot: Power = {
           "scale": 0.15,
           "table": "Ranged_Slow"
         },
+        "slow": {
+          "runSpeed": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          },
+          "flySpeed": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          }
+        },
         "durations": {
-          "rechargeDebuff": 10
+          "rechargeDebuff": 10,
+          "slow": 10
         },
         "buffDuration": 10
       }

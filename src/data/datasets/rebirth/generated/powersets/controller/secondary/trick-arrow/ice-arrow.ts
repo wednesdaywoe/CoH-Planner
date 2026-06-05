@@ -47,12 +47,31 @@ export const IceArrow: Power = {
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 10,
+      "rechargeDebuff": 10
+    },
     "rechargeDebuff": {
       "scale": 0.4,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 10
     },
     "buffDuration": 10
   },
@@ -63,12 +82,31 @@ export const IceArrow: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
+        "slow": {
+          "runSpeed": {
+            "scale": 0.08,
+            "table": "Ranged_Slow"
+          },
+          "flySpeed": {
+            "scale": 0.08,
+            "table": "Ranged_Slow"
+          },
+          "jumpHeight": {
+            "scale": 0.08,
+            "table": "Ranged_Slow"
+          },
+          "jumpSpeed": {
+            "scale": 0.08,
+            "table": "Ranged_Slow"
+          }
+        },
+        "durations": {
+          "slow": 10,
+          "rechargeDebuff": 10
+        },
         "rechargeDebuff": {
           "scale": 0.08,
           "table": "Ranged_Slow"
-        },
-        "durations": {
-          "rechargeDebuff": 10
         },
         "buffDuration": 10
       }

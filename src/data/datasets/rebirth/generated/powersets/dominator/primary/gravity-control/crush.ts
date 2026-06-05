@@ -56,7 +56,33 @@ export const Crush: Power = {
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 10
+    },
+    "buffDuration": 10
   },
   "conditionalEffects": [
     {

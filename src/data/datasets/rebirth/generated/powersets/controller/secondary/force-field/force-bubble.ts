@@ -44,11 +44,30 @@ export const ForceBubble: Power = {
     },
     "durations": {
       "repel": 0.25,
+      "slow": 0.3,
       "damageDebuff": 0.3
     },
     "knockback": {
       "scale": 0.1,
       "table": "Ranged_Ones"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      }
     },
     "damageDebuff": {
       "scale": 2.5,

@@ -47,6 +47,20 @@ export const HotFeet: Power = {
       "mag": 3,
       "scale": 4,
       "table": "Melee_Ones"
-    }
+    },
+    "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 2.3
+    },
+    "buffDuration": 2.3
   }
 };

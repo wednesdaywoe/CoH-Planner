@@ -78,19 +78,38 @@ export const QuillThrowing: Power = {
     }
   ],
   "effects": {
+    "slow": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 15,
+      "rechargeDebuff": 10
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 10
     },
     "immobilize": {
       "mag": 0.6700000166893005,
       "scale": 10,
       "table": "Melee_Immobilize"
     },
-    "buffDuration": 10
+    "buffDuration": 15
   },
   "specialEffects": [
     {

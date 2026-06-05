@@ -44,13 +44,28 @@ export const MudBath: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
+      }
+    },
+    "durations": {
+      "slow": 5,
+      "recoveryBuff": 2.1
+    },
     "recoveryBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "recoveryBuff": 2.1
-    },
-    "buffDuration": 2.1
+    "buffDuration": 5
   }
 };

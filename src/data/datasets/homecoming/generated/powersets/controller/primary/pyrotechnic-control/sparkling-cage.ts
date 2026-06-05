@@ -76,6 +76,16 @@ export const SparklingCage: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 10,
+      "resistanceDebuff": 5
+    },
     "knockback": {
       "scale": 20,
       "table": "Ranged_Ones"
@@ -118,10 +128,7 @@ export const SparklingCage: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 5
-    },
-    "buffDuration": 5
+    "buffDuration": 10
   },
   "specialEffects": [
     {

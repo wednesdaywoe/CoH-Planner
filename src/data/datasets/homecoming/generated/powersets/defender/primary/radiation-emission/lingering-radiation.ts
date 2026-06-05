@@ -39,13 +39,32 @@ export const Lingeringradiation: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.6,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.6,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.6,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 30,
+      "rechargeDebuff": 30,
+      "regenDebuff": 30
+    },
     "rechargeDebuff": {
       "scale": 0.6,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 30,
-      "regenDebuff": 30
     },
     "regenDebuff": {
       "scale": 20,

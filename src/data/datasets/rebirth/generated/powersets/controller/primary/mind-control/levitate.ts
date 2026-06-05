@@ -48,6 +48,16 @@ export const Levitate: Power = {
     "knockup": {
       "scale": 6,
       "table": "Ranged_Knockback"
-    }
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 10
+    },
+    "buffDuration": 10
   }
 };

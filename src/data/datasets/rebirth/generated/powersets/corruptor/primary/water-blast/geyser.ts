@@ -61,10 +61,32 @@ export const Geyser: Power = {
     }
   ],
   "effects": {
+    "slow": {
+      "jumpHeight": {
+        "scale": 0.33,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.33,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.33,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.33,
+        "table": "Ranged_Slow"
+      }
+    },
+    "durations": {
+      "slow": 10
+    },
     "knockup": {
       "scale": 1.5,
       "table": "Ranged_Ones"
-    }
+    },
+    "buffDuration": 10
   },
   "conditionalEffects": [
     {

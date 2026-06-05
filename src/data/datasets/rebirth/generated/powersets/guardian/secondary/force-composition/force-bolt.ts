@@ -43,5 +43,17 @@ export const ForceBolt: Power = {
     "Universal Control Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "slow": 15
+    },
+    "buffDuration": 15
+  }
 };

@@ -70,7 +70,14 @@ export const ShadowyBinds: Power = {
       "table": "Ranged_Debuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 15
+      "tohitDebuff": 15,
+      "slow": 15
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
     },
     "buffDuration": 15
   },
