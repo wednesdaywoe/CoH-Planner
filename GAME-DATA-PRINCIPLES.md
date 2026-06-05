@@ -165,17 +165,45 @@ deterministic across platforms:
 
 ## 9. Guard rails already in place
 
+- **CI type-check + tests** (`.github/workflows/ci.yml`): `npm run lint`
+  (`tsc --noEmit`) then `npm test` (`vitest run`). The type-check catches calc/type
+  breakage (new effect keys, changed signatures); the test suite includes both the
+  structural invariant scan and focused data tests that re-read a specific fix from
+  the dataset (adaptation-modes, dual-pistols-ammo, effective-level, …).
+  **Pattern: when you fix a data/extraction bug, add a focused test that loads the
+  power from the dataset and asserts the fixed shape** — it's the cheapest guard
+  against a future regen silently undoing it.
 - **regen-diff CI** (`.github/workflows/regen-diff.yml`): rebuilds `generated/` from
-  committed `exported_powers/` and asserts byte-equality. Scoped to `generated/`; the
-  layered `at-tables`/`pet-entities`/`kheldian`/`index` files are not covered.
+  committed `exported_powers/` and asserts byte-equality. **Known blind spot:** scoped
+  to `generated/` only — the layered `at-tables`/`pet-entities`/`kheldian`/`index`
+  outputs are NOT covered (this is where the at-tables/kheldian drift slipped through;
+  diff those by hand after touching them).
 - **converter-invariants test** (`src/data/converter-invariants.test.ts`): structural
   scan (export-name === internalName, no bare `specialBuff`, no `0xFFFFFFFF` sentinels,
   no new PvP-mez).
+- **Committed `exported_powers/` + `raw defs/`** — a deliberate safety measure, not just
+  data. Committing the export makes regen-diff (and any local regen) reproducible
+  **without** the `.pigg`/Python pipeline, so a converter/calc gap is a pure source fix;
+  committing the `.powers` oracle means §5's verify-against-ground-truth is always
+  available to every session, local *and* remote.
 - **`npm run regen`** rebuilds everything; `npm run regen:generated` rebuilds only
   `generated/` (what the guard checks).
 
-  ## 9. Foe-facing effects are important, don't dismiss as lower value or less important than stat-enhancing effects
-  - **In CoH, debuffs are first-class power effects, and play a role in determining how players build their characters. Many attacks have debuff effects and users expect to see those effects displayed, even if its purely informational and doesn't materially affect the stats of their character. Dark Melee applies small amounts of -toHit to enemies, but they stack up. A player building for defense will likely want to account for that in calculating how much defense they need. If a small debuff componenent is missing from an attack, don't defer as a low-priorty.
+## 10. Foe-facing effects are first-class — don't deprioritize debuffs by "stat impact"
+
+Debuffs are core to how players build characters, and players expect to see every
+effect an attack applies — even purely informational ones that don't change their
+own dashboard. Dark Melee's small -ToHit stacks up fast; a defense-focused player
+wants to count it toward how much defense they actually need. Same for
+-Resistance, -Regen, -Recharge/slow, -Damage, -Defense (the very Cryo-ammo -Slow
+we just chased).
+
+**How to apply:** weight a gap by the *completeness and correctness of the power's
+advertised behavior*, **not** by whether it changes the player's own stats. The
+trap isn't forgetting debuffs matter — it's quietly down-ranking a gap because
+"it doesn't move the dashboard." A missing foe-debuff component is not
+low-priority. (Radiation Infection does *nothing but* debuff and is top-tier.)
+Prefer the principled root fix — capture a dropped field (§1) — over a heuristic.
 
 ---
 
