@@ -186,7 +186,7 @@ function StanceModeGroup({
             labelOverride={option.label}
             name={`stance-${power.internalName}-${group.key}`}
             checked={active}
-            onSelect={() => setActiveSubPower(parent.internalName, active ? null : option.subPower)}
+            onSelect={() => setActiveSubPower(parent.internalName, active ? null : (option.subPower ?? null))}
           />
         );
       })}

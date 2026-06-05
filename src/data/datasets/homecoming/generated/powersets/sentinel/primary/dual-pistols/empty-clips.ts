@@ -177,26 +177,9 @@ export const EmptyClips: Power = {
     }
   ],
   "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8,
-      "rechargeDebuff": 8,
-      "damageDebuff": 6
-    },
     "knockback": {
       "scale": 0.8,
       "table": "Ranged_Knockback"
-    },
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
-    "damageDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Dam"
     },
     "buffDuration": 8
   },
@@ -205,6 +188,59 @@ export const EmptyClips: Power = {
       "kind": "effect-proc",
       "chance": 0.10000000149011612,
       "label": "Knockback"
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "lethalammo",
+      "label": "Standard Ammo",
+      "scope": "global",
+      "defaultActive": true,
+      "group": "swap-ammo",
+      "effects": {
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 8
+        },
+        "buffDuration": 8
+      }
+    },
+    {
+      "id": "cryoammunition",
+      "label": "Cryo Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.15,
+          "table": "Ranged_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 8
+        },
+        "buffDuration": 8
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 6
+        },
+        "buffDuration": 6
+      }
     }
   ]
 };

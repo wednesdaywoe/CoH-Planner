@@ -215,22 +215,48 @@ export const HailofBullets: Power = {
     },
     "durations": {
       "defenseBuff": 5,
-      "rechargeDebuff": 10,
-      "damageDebuff": 8,
       "knockback": 2.3
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
     },
     "knockback": {
       "scale": 1.6,
       "table": "Ranged_Ones"
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "cryoammunition",
+      "label": "Cryo Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 10
+        },
+        "buffDuration": 10
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 2,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 8
+        },
+        "buffDuration": 8
+      }
+    }
+  ]
 };

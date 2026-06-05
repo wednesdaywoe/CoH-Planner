@@ -548,3 +548,17 @@ This is the same kind of bug the kExpression branch had originally; that one was
 - [scripts/convert-powerset.cjs](scripts/convert-powerset.cjs) wraps the lookup in a three-stage `resolvePetLifespan` cascade: (1) entity_def in pet-lifespans, (2) any `*.Self_Destruct` in params.redirects → self-destruct-delays, (3) priority_list in pet-lifespans. First hit wins; returns 0 if nothing matches (matches pre-fix behavior).
 
 **Verified live.** All four powers now ship with `summon.duration` set, and the perma-tracker eligibility check includes them.
+
+## ✅ Dual Pistols Swap Ammo — per-ammo secondary effects (FIXED 2026-06-04)
+
+**Symptom.** Every Dual Pistols attack showed all three ammo secondary effects at once, always-on in base `effects`: -Def (Standard), -Recharge (Cryo), -Damage (Chemical). In-game these are **mutually exclusive** — the loaded ammo selects exactly one (Standard -Def by default; Incendiary's is a fire DoT, already a damage entry).
+
+**Root mechanism.** Unlike Bio Armor / Staff (`Source.Mode?` gates), Dual Pistols ammo uses **`Effect.Tag` + global-chance-mod**: each attack carries `Lethal`/`ColdDamage`/`ToxicDamage`/`FireDamage` tag groups (the non-Standard ones at `chance 0`), and the ammo toggle flips the tags' fire-chance. There is **no `requires_expression`** — so the conditional-gate path never saw them, and the base collector folded them all in.
+
+**Blocker + parser fix.** The export **dropped the `Tag` field** (the parser read it only to advance the binary, then discarded it). Captured it in `_dataclasses.py` / `_powers.py` / `export_powers.py` and re-exported homecoming (purely additive: +41,222 lines, 0 deletions). Bonus: this activated the converter's dormant tag-aware stacking (`collectTemplatesWithMeta`), correctly separating the **Defiance** inherent (`aspect=Strength`, tagged `Defiance`) from 5 Blaster powers' per-target buffs (Soul Drain, etc.).
+
+**Converter fix.** `extractDualPistolsAmmo` (DP-scoped, tag-driven) maps each ammo tag → its ammo, extracts ONLY the ammo-secondary keys (`defenseDebuff`/`rechargeDebuff`/`damageDebuff` — a whitelist, so core effects like **knockback stay in base**), emits mutually-exclusive `swap-ammo` conditionals (`lethalammo` is `defaultActive`), and strips them from base. Driven by the build-scoped `Swap_Ammo.activeSubPower` via the stance-group system (with a new `defaultOptionId` so Standard applies when no ammo is loaded — even with no Swap Ammo power).
+
+**Known follow-ups (not blocking):**
+- **Rebirth.** Not re-exported (its `.pigg` source isn't on this machine), so rebirth DP keeps the old always-on behavior via graceful fallback (no tags → extractor no-ops). Re-export rebirth when its source is available.
+- **Foe movement-slow not extracted.** Cryo's slow surfaces only its `-Recharge` half; the `-Movement` (RunningSpeed/FlyingSpeed/JumpingSpeed) foe-debuff has no effect-key mapping in `extractEffects` (movement handling there is buff/resistance only). A broader gap affecting any -movement debuff power (Caltrops, Ice Slick, …), worth a dedicated foe-movement-debuff effect type.

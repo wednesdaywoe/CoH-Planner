@@ -177,18 +177,6 @@ export const BulletRain: Power = {
       "scale": 4,
       "table": "Ranged_Knockback"
     },
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 10,
-      "damageDebuff": 8
-    },
-    "damageDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Dam"
-    },
     "buffDuration": 10
   },
   "specialEffects": [
@@ -196,6 +184,42 @@ export const BulletRain: Power = {
       "kind": "effect-proc",
       "chance": 0.5,
       "label": "Knockback"
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "cryoammunition",
+      "label": "Cryo Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.15,
+          "table": "Ranged_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 10
+        },
+        "buffDuration": 10
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 8
+        },
+        "buffDuration": 8
+      }
     }
   ]
 };

@@ -1472,7 +1472,7 @@ function StanceSelector({ group }: { group: StanceGroup }) {
             <button
               key={option.id}
               type="button"
-              onClick={() => setActiveSubPower(parent.internalName, active ? null : option.subPower)}
+              onClick={() => setActiveSubPower(parent.internalName, active ? null : (option.subPower ?? null))}
               title={`${option.label}${active ? ' — active (click to turn off)' : ''}`}
               className={`px-2 py-0.5 text-xs rounded border transition-colors ${
                 active

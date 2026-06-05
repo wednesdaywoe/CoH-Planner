@@ -33,8 +33,10 @@ export interface StanceOption {
   /** Short label for the header button. */
   short: string;
   /** The parent's `activeSubPower` value that selects this stance — the
-   *  auto-granted sub-power's internalName (see `GRANTED_POWER_GROUPS`). */
-  subPower: string;
+   *  auto-granted sub-power's internalName (see `GRANTED_POWER_GROUPS`).
+   *  Omitted for a group's *default* option (the state with no sub-power
+   *  selected — e.g. Dual Pistols Standard ammo), which clears `activeSubPower`. */
+  subPower?: string;
 }
 
 export interface StanceGroup {
@@ -54,6 +56,11 @@ export interface StanceGroup {
    *  available iff one of these is in the build, and selecting a stance writes
    *  that parent's `activeSubPower`. */
   parents: readonly string[];
+  /** Option id that is active when no sub-power is selected (the default state).
+   *  Dual Pistols' Standard ammo applies its -Def whenever no special ammo is
+   *  loaded — even with no Swap Ammo power taken. Groups without a default
+   *  (adaptation, staff) have no stance until one is explicitly chosen. */
+  defaultOptionId?: string;
 }
 
 export const STANCE_GROUPS: readonly StanceGroup[] = [
@@ -83,6 +90,21 @@ export const STANCE_GROUPS: readonly StanceGroup[] = [
       { id: 'perfection_of_soul_level_3', label: 'Perfection of Soul', short: 'Soul', subPower: 'Form_of_the_Soul' },
     ],
   },
+  {
+    key: 'swap-ammo',
+    headerLabel: 'Ammo',
+    tooltip:
+      "Dual Pistols loaded ammo. Each attack's secondary effect changes with the ammo: Standard -Def, Cryo -Recharge, Chemical -Damage, Incendiary fire DoT (and the secondary damage type converts). Mutually exclusive; Standard is the default when no ammo is loaded.",
+    activeClass: 'bg-sky-700/50 border-sky-500 text-sky-100',
+    parents: ['Swap_Ammo'],
+    defaultOptionId: 'lethalammo',
+    options: [
+      { id: 'lethalammo', label: 'Standard Ammo', short: 'Standard' },
+      { id: 'cryoammunition', label: 'Cryo Ammo', short: 'Cryo', subPower: 'Cryo_Ammunition' },
+      { id: 'chemicalammunition', label: 'Chemical Ammo', short: 'Chemical', subPower: 'Chemical_Ammunition' },
+      { id: 'incendiaryammunition', label: 'Incendiary Ammo', short: 'Incendiary', subPower: 'Incendiary_Ammunition' },
+    ],
+  },
 ] as const;
 
 /** Minimal shape the derive/lookup helpers need from a build power. */
@@ -106,15 +128,20 @@ export function findStanceParent(
   return powers.find((p) => group.parents.includes(p.internalName));
 }
 
-/** The active option id for a group given the build's powers (read from the
- *  parent's `activeSubPower`), or null when no stance is selected. */
+/** The active option id for a group given the build's powers. Reads the
+ *  selected sub-power from the parent's `activeSubPower`; when nothing is
+ *  selected, falls back to the group's `defaultOptionId` (so Dual Pistols'
+ *  Standard ammo applies even with no Swap Ammo power), or null for groups
+ *  with no default (adaptation, staff). */
 export function activeStanceOptionId(
   powers: readonly StancePowerLike[],
   group: StanceGroup,
 ): string | null {
   const parent = findStanceParent(powers, group);
-  if (!parent?.activeSubPower) return null;
-  return group.options.find((o) => o.subPower === parent.activeSubPower)?.id ?? null;
+  const selected = parent?.activeSubPower
+    ? group.options.find((o) => o.subPower && o.subPower === parent.activeSubPower)?.id ?? null
+    : null;
+  return selected ?? group.defaultOptionId ?? null;
 }
 
 /**

@@ -1514,6 +1514,113 @@ function extractConditionalEffects(rawEffects, powerJson) {
   return out;
 }
 
+// Dual Pistols "Swap Ammo": each attack's secondary effect changes with the
+// loaded ammo (Standard -Def → Cryo slow/-Rech, Chemical -Dmg, Incendiary DoT),
+// implemented in the binary via Tag + global-chance-mod (one ammo's tag fires,
+// the others are chance 0). The base collector folds all of them in as
+// always-on; this maps each tag-gated SECONDARY (non-damage) effect to its ammo
+// and emits them as mutually-exclusive `swap-ammo` conditionals, reporting which
+// base keys to strip. The DAMAGE-type swap is handled separately by the existing
+// `damageConversion` path, so we deliberately ignore damage templates here.
+const DP_AMMO_BY_TAG = {
+  Lethal: 'lethalammo',            // Standard / default — the -Def secondary
+  ColdDamage: 'cryoammunition',    // slow + -Recharge
+  ToxicDamage: 'chemicalammunition', // -Damage
+  // FireDamage/FireDamageDoT: the Incendiary secondary IS damage (a DoT), left
+  // in the damage array — no debuff conditional.
+};
+const DP_AMMO_LABELS = {
+  lethalammo: 'Standard Ammo',
+  cryoammunition: 'Cryo Ammo',
+  chemicalammunition: 'Chemical Ammo',
+};
+// Only these effect keys are the ammo "secondary effect" that swaps with the
+// loaded ammo (the slot the help text describes: -Def ↔ slow ↔ -Dmg). A tag
+// group can also carry CORE effects (knockback, damage) that are NOT
+// ammo-specific — those must stay in base, so we keep only this whitelist.
+const DP_AMMO_SECONDARY_KEYS = new Set([
+  'defenseDebuff',   // Standard
+  'rechargeDebuff',  // Cryo (-Recharge half of the slow)
+  'slow', 'movement', // Cryo (-Movement half of the slow), if/when mapped
+  'damageDebuff',    // Chemical
+]);
+
+function extractDualPistolsAmmo(powerJson) {
+  const psKey = (powerJson.powerset || powerJson.full_name || '').toLowerCase();
+  if (!psKey.includes('dual_pistols')) return undefined;
+  if (!powerJson.effects?.length) return undefined;
+
+  // Tag-aware walk that — unlike collectTemplatesWithMeta — KEEPS chance-0
+  // groups: the non-Standard ammo tags (ColdDamage/ToxicDamage) sit at chance 0
+  // until their ammo's global-chance-mod enables them. Propagate tags through
+  // children and across the PvE/PvP (`enttype`) branches (deduped below).
+  const tagged = [];
+  const walk = (effects, parentTags) => {
+    for (const effect of effects || []) {
+      if (effect.is_pvp === 'PVP_ONLY') continue;
+      const tags = [...parentTags, ...(effect.tags || [])];
+      for (const t of effect.templates || []) tagged.push({ template: t, tags });
+      walk(effect.child_effects || [], tags);
+    }
+  };
+  walk(powerJson.effects, []);
+
+  // Group ammo-tagged templates by ammo, de-duplicating the parallel PvE/PvP
+  // copies — keep the first (PvE) of each attribs+aspect+table signature.
+  const byAmmo = new Map();
+  const seen = new Map();
+  for (const { template, tags } of tagged) {
+    const tag = (tags || []).find((t) => DP_AMMO_BY_TAG[t]);
+    if (!tag) continue;
+    const id = DP_AMMO_BY_TAG[tag];
+    const sig = JSON.stringify([template.attribs, template.aspect, template.table]);
+    if (!seen.has(id)) seen.set(id, new Set());
+    if (seen.get(id).has(sig)) continue;
+    seen.get(id).add(sig);
+    if (!byAmmo.has(id)) byAmmo.set(id, []);
+    byAmmo.get(id).push(template);
+  }
+  if (byAmmo.size === 0) return undefined;
+
+  const conditionals = [];
+  const baseKeysToRemove = new Set();
+  // Stable order: Standard, Cryo, Chemical.
+  for (const id of ['lethalammo', 'cryoammunition', 'chemicalammunition']) {
+    const templates = byAmmo.get(id);
+    if (!templates) continue;
+    // extractEffects yields the debuff keys for these templates; keep only the
+    // ammo-secondary slot (the tag group may also carry knockback/other core
+    // effects that aren't ammo-specific — those stay in base).
+    const extracted = extractEffects(templates, powerJson.name);
+    if (!extracted) continue;
+    const keys = Object.keys(extracted).filter((k) => DP_AMMO_SECONDARY_KEYS.has(k));
+    if (keys.length === 0) continue;
+    const effects = {};
+    for (const k of keys) {
+      effects[k] = extracted[k];
+      baseKeysToRemove.add(k);
+    }
+    // Carry the matching duration metadata for the kept keys.
+    if (extracted.durations) {
+      const d = {};
+      for (const k of keys) if (extracted.durations[k] !== undefined) d[k] = extracted.durations[k];
+      if (Object.keys(d).length) effects.durations = d;
+    }
+    if (extracted.buffDuration !== undefined) effects.buffDuration = extracted.buffDuration;
+    conditionals.push({
+      id,
+      label: DP_AMMO_LABELS[id],
+      scope: 'global',
+      // Standard ammo is the default secondary (applies with no ammo loaded).
+      defaultActive: id === 'lethalammo',
+      group: 'swap-ammo',
+      effects,
+    });
+  }
+  if (conditionals.length === 0) return undefined;
+  return { conditionals, baseKeysToRemove: [...baseKeysToRemove] };
+}
+
 /**
  * Walk the effect tree for chance-bearing templates (chance < 1 and != 0)
  * and emit them as `specialEffects` for the InfoPanel's SPECIAL section.
@@ -3493,6 +3600,26 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     // rather than a generic "trigger".
     const special = extractSpecialEffects(powerJson.effects, conditional);
     if (special) power.specialEffects = special;
+  }
+
+  // Dual Pistols Swap Ammo: pull the per-ammo secondary effects out of base into
+  // mutually-exclusive `swap-ammo` conditionals (only one ammo loaded at a time).
+  const ammo = extractDualPistolsAmmo(powerJson);
+  if (ammo) {
+    if (power.effects) {
+      for (const key of ammo.baseKeysToRemove) {
+        delete power.effects[key];
+        if (power.effects.durations) delete power.effects.durations[key];
+      }
+      if (power.effects.durations && Object.keys(power.effects.durations).length === 0) {
+        delete power.effects.durations;
+      }
+      // If only duration/stacking metadata remains (the real effects all moved
+      // to ammo conditionals), drop the now-meaningless base effects object.
+      const META_ONLY = new Set(['durations', 'buffDuration', 'effectDuration', 'maxStacks', 'stacksLinear']);
+      if (Object.keys(power.effects).every((k) => META_ONLY.has(k))) delete power.effects;
+    }
+    power.conditionalEffects = [...(power.conditionalEffects || []), ...ammo.conditionals];
   }
 
   // Snipe powers ship two redirect targets — Normal (charged, slower cast,
