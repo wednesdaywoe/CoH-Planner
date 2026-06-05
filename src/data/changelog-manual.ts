@@ -22,7 +22,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
     date: '2026-06-5',
-    items: [\
+    items: [
       { message: 'Increased the rate-limit of builds saved to the server (10 per hour, up from 5 per hour) and added some messaging to help make the limit more transparent instead of letting users hit the wall unknowingly', type: 'update' },
       { message: 'Lots of under-the-hood work to address missing/dropped data', type: 'fix' },
       { message: 'Rebirth: Fix a bug causing the planner to overstate Blaster ToHit buffs (Aim/Tactics/Build Up).', type: 'fix' },
