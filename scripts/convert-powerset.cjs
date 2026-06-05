@@ -2379,7 +2379,7 @@ function extractEffects(templates, powerName) {
           // which is encoded as aspect=Resistance (+100) paired with a negative
           // aspect=Current (-100) on the *_Ones table. Neither is offensive KB.
           // (Modeling that foe KB-protection as its own effect is a separate gap;
-          // see BIN PARSER GAPS.md.)
+          // see BIN-PARSER-LOG.md.)
           if (aspect === 'resistance' || scale <= 0) continue;
           if (effects[kbType] && effects[kbType].table === table) {
             effects[kbType].scale += Math.abs(scale);

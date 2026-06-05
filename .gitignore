@@ -43,7 +43,7 @@ raw_data_homecoming-raw_data_homecoming-20251209_7415/
 # exported_powers/ (repo root) is now COMMITTED — it's the converter input, so a fresh
 # clone / CI can regenerate generated/ from it without the gitignored .pigg source.
 # The exporter's raw output copy under tools/bin-crawler/exported_powers/ stays ignored
-# (re-ignored further down). See the "commit the converter input" GOAL in BIN PARSER GAPS.md.
+# (re-ignored further down). See the "commit the converter input" GOAL in BIN-PARSER-LOG.md.
 exported_powers_BETA/
 texture_library/
 raw_data_homecoming-20251209_7415/

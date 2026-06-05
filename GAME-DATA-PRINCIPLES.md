@@ -5,7 +5,7 @@ the principles and the specific gotchas that keep biting us. Read this before
 touching the bin parser, the converters, or the calc when game data looks wrong.
 
 This is the **principles reference**. The chronological issue log lives in
-[BIN PARSER GAPS.md](BIN%20PARSER%20GAPS.md); project setup is in CLAUDE.md.
+[BIN-PARSER-LOG.md](BIN-PARSER-LOG.md); project setup is in CLAUDE.md.
 
 ---
 
@@ -151,7 +151,7 @@ silently no-ops on Rebirth.
 Both formats land the same effect **keys** in base, so attribute by key when a
 feature must work on both. Worked example: Dual Pistols Swap Ammo keys on
 `defenseDebuff`/`rechargeDebuff`/`damageDebuff`, not HC ammo `Tag`s — see the DP
-entry in [BIN PARSER GAPS.md](BIN%20PARSER%20GAPS.md).
+entry in [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md).
 
 ## 8. Determinism (committed `generated/` must be reproducible)
 

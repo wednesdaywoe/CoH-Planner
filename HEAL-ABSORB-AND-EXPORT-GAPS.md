@@ -96,5 +96,5 @@ and wired; ❌ = still legacy/hand-curated; ⚠️ = partial.
 4. **Incarnate salvage/recipe costs (LOW).** Likely a crafting/recipe bin not yet explored;
    may be fine to keep hand-curated since costs rarely change.
 
-See [BIN PARSER GAPS.md](BIN%20PARSER%20GAPS.md) for the running parser to-do log
+See [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md) for the running parser to-do log
 (an entry pointing here has been added).
