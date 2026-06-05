@@ -9,6 +9,11 @@ This doc tracks three related Rebirth data quality issues:
 2. [Missing Rebirth-unique power pools](#2-missing-rebirth-unique-power-pools) — Rebirth ships pools we don't have generated yet
 3. [Warshade / Peacebringer overhaul not captured](#3-warshade--peacebringer-overhaul-not-captured) — Rebirth substantially reworked Kheldians; our data still reflects an earlier shape
 
+> **See also** [HEAL-ABSORB-AND-EXPORT-GAPS.md](HEAL-ABSORB-AND-EXPORT-GAPS.md) for Rebirth-relevant
+> export gaps surfaced 2026-06-05: IO-set aspects/bonuses are only partially binary-derived
+> (`extract-rebirth-io-sets-v2.py`) and drop Absorb from Heal pieces; and the Guardian AT
+> (Rebirth-only) is missing from `extract-at-tables.cjs`'s `PLAYER_ARCHETYPES` allow-list.
+
 ---
 
 ## 1. `boosts_allowed` Extraction Bug — **FIXED 2026-05-04**

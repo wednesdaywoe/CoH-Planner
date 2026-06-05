@@ -4,7 +4,7 @@
 
 Prefer fixing root problems properly over quick fixes. The planner handles complex game mechanics with many interacting systems (AT tables, enhancement calculations, power effects, set bonuses). Band-aid fixes create compounding issues that are harder to debug later. When a bug surfaces, investigate whether it's a symptom of a deeper systemic issue before patching the surface behavior. This is essential for making the app reliable and maintainable.
 
-**Before touching game data (bin parser, converters, calc), read [GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md)** — the durable principles and the specific gotchas (strength meta-templates, resistance-aspect traps, proc/pet exclusions, the verify-don't-assume discipline, the re-export de-risk workflow). The running issue log is [BIN PARSER GAPS.md](BIN%20PARSER%20GAPS.md).
+**Before touching game data (bin parser, converters, calc), read [GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md)** — the durable principles and the specific gotchas (strength meta-templates, resistance-aspect traps, proc/pet exclusions, the verify-don't-assume discipline, the re-export de-risk workflow). The running issue log is [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md).
 
 ## Source Data
 

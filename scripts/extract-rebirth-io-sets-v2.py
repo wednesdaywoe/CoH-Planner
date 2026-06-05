@@ -241,7 +241,15 @@ ATTRIB_TO_ASPECT = {
     'Confused':           'Confuse',
     'Terrorized':         'Fear',
     'Immobilized':        'Immobilize',
-    'HitPoints':          'Healing',
+    'HitPoints':          'Heal',
+    # In CoH every Heal-boosting enhancement also boosts Absorb, and the binary
+    # encodes Absorb as its OWN Strength attrib on healing pieces (verified:
+    # Panacea/Numina/etc. each carry HitPoints AND a distinct Absorb attrib).
+    # The planner treats Heal and Absorb as separate value-diluting aspects, so
+    # map the real attrib through rather than dropping it — otherwise a healing
+    # piece looks like 1 aspect (Heal) and over-values, and a regen would strip
+    # the Absorb the hand-data carries.
+    'Absorb':             'Absorb',
     'Endurance':          'Endurance Modification',
     'ToHit':              'ToHit Buff',
     'DamageType':         'Damage',
@@ -305,7 +313,10 @@ def _collapse_aspects(attribs: list[str], set_category: str = '') -> tuple[list[
 # `_collapse_aspects` so a piece carrying {Damage, Accuracy} surfaces
 # as "Accuracy/Damage" — matching how HC's hand-curated data names
 # them and how players reference them in Mids exports.
-_ASPECT_CANONICAL_ORDER = ['Accuracy', 'Damage', 'Damage Resistance', 'Endurance', 'Recharge']
+# Heal/Absorb sit between Endurance and Recharge, and Heal precedes Absorb, to
+# match HC's hand-curated healing-piece names (e.g. "Endurance/Heal/Absorb",
+# "Heal/Absorb/Recharge", "Accuracy/Endurance/Heal/Absorb").
+_ASPECT_CANONICAL_ORDER = ['Accuracy', 'Damage', 'Damage Resistance', 'Endurance', 'Heal', 'Absorb', 'Recharge']
 
 
 def _sort_aspects_canonical(aspects: list[str]) -> list[str]:

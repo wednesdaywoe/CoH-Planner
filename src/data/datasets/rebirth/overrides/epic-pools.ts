@@ -11,5 +11,5 @@ import type { Power } from '@/types';
 
 // The Focused Accuracy / Targeting Drone / Personal Force Field +Accuracy buffs
 // now come straight from the generated layer after a deliberate epic-pools regen
-// — no overrides needed. See BIN PARSER GAPS.md.
+// — no overrides needed. See BIN-PARSER-LOG.md.
 export const EPIC_POOL_OVERRIDES: Record<string, Partial<Power>> = {};
