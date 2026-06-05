@@ -1148,7 +1148,15 @@ function _isUntoggleableGate(req) {
 
 function _classifyConditionalGate(req, powersetKey) {
   if (!_isConditionalGate(req)) return null;
-  if (_isUntoggleableGate(req)) return null;
+  // Test untoggleability on the STRIPPED expression so a strippable game-state
+  // clause (per-target HP-state, PvE/PvP enttype) chained with a real toggle
+  // doesn't sink the whole gate. DNA Siphon's Defensive/Efficient leech bonuses
+  // gate on `Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&` —
+  // the HP clause alone would (correctly) read as untoggleable game-state, but
+  // the surviving `kDefensiveAdaptation Source.Mode?` is the real Adaptation
+  // toggle and must classify. (`_stripIgnoredClauses` already drops the HP and
+  // enttype clauses; the remaining truly-untoggleable patterns still match.)
+  if (_isUntoggleableGate(_stripIgnoredClauses(req))) return null;
 
   // Power-presence check: `<dotted.power.name> <side>.ownPower?` or
   // `<dotted.power.name> <side>.ownPowerNum? N ==` (stack-count form).

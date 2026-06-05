@@ -97,6 +97,40 @@ export const DNASiphon: Power = {
   },
   "conditionalEffects": [
     {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Heal",
+        "scale": 0.375,
+        "table": "Melee_HealSelf"
+      },
+      "group": "adaptation"
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "regenBuff": {
+          "scale": 0.06,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "regenBuff": 30,
+          "recoveryBuff": 30
+        },
+        "recoveryBuff": {
+          "scale": 0.09375,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 30
+      },
+      "group": "adaptation"
+    },
+    {
       "id": "offensiveadaptation",
       "label": "Offensive Adaptation",
       "scope": "global",
@@ -110,7 +144,8 @@ export const DNASiphon: Power = {
           "regenDebuff": 30
         },
         "buffDuration": 30
-      }
+      },
+      "group": "adaptation"
     }
   ],
   "specialEffects": [

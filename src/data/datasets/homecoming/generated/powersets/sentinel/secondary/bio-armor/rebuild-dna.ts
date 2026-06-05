@@ -49,5 +49,57 @@ export const RebuildDNA: Power = {
     "stacksLinear": [
       "enduranceGain"
     ]
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Heal",
+        "scale": 0.9,
+        "table": "Melee_HealSelf",
+        "ignoreStrength": true
+      },
+      "group": "adaptation"
+    },
+    {
+      "id": "restedadaptation",
+      "label": "Rested Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "enduranceGain": {
+          "scale": 7.5,
+          "table": "Melee_Ones"
+        }
+      },
+      "group": "adaptation"
+    },
+    {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "debuffResistance": {
+          "perception": {
+            "scale": 0.6,
+            "table": "Melee_Ones"
+          }
+        },
+        "durations": {
+          "debuffResistance": 30,
+          "perceptionBuff": 30
+        },
+        "perceptionBuff": {
+          "scale": 0.6,
+          "table": "Melee_Ones"
+        },
+        "buffDuration": 30
+      },
+      "group": "adaptation"
+    }
+  ]
 };

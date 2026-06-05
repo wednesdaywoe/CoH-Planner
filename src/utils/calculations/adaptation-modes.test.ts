@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
+import { getPowerset } from '@/data/powersets';
 import { createEmptyBuild } from '@/types/build';
 import { calculateCharacterTotals } from './character-totals';
 
@@ -88,5 +89,31 @@ describe('Bio Armor Adaptation modes on the dashboard (homecoming)', () => {
     // And the base Environmental Modification defense is unaffected (still applies).
     const baseOnly = totals(undefined, false);
     expect(gated.defFire).toBeCloseTo(baseOnly.defFire, 4);
+  });
+
+  // DNA Siphon's Defensive (+HP per living foe) and Efficient (+Regen/+Rec per
+  // defeated foe) bonuses gate on a COMPOUND `Cur.kHitPoints target> 0 > k<Mode>
+  // Source.Mode? &&` expression. The converter used to reject the whole gate as
+  // untoggleable (the HP clause), dropping both bonuses — only Offensive (a
+  // plain enttype+mode gate) survived. The fix tests untoggleability on the
+  // stripped expression so the surviving mode clause classifies.
+  it('extracts all three DNA Siphon mode bonuses (compound HP+mode gate)', () => {
+    const ps = getPowerset('tanker/bio-armor');
+    const dna = ps?.powers.find((p) => p.internalName === 'DNA_Siphon');
+    expect(dna).toBeDefined();
+    const conds = dna!.conditionalEffects ?? [];
+    expect([...conds.map((c) => c.id)].sort()).toEqual([
+      'defensiveadaptation',
+      'offensiveadaptation',
+      'restedadaptation',
+    ]);
+    // Defensive → bonus self-heal (per living target).
+    const def = conds.find((c) => c.id === 'defensiveadaptation')!;
+    const dmg = Array.isArray(def.damage) ? def.damage : def.damage ? [def.damage] : [];
+    expect(dmg.some((d) => d?.type === 'Heal')).toBe(true);
+    // Efficient (rested) → bonus regen/recovery (per defeated target).
+    const rested = conds.find((c) => c.id === 'restedadaptation')!;
+    expect(rested.effects?.regenBuffUnenhanced ?? rested.effects?.regenBuff).toBeDefined();
+    expect(rested.effects?.recoveryBuffUnenhanced ?? rested.effects?.recoveryBuff).toBeDefined();
   });
 });

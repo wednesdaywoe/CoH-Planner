@@ -80,6 +80,15 @@ These are why a naïve `flags.includes('X')` or attrib match over-fires:
   Grouped conditionals otherwise default to **additive**. The dashboard calc applies the
   active mode as a *synthetic active power* (`expandActiveConditionals`) so colliding effect
   keys SUM at the totals level instead of forcing a lossy merge.
+- **Compound gates: test "untoggleable" on the STRIPPED expression, not the raw.** A
+  conditional's `requires_expression` can chain a *strippable* game-state clause (per-target
+  HP-state `Cur.kHitPoints target> 0 >`, PvE/PvP `enttype`) with a *real* toggle (`k<Mode>
+  Source.Mode?`). `_classifyConditionalGate` must run `_isUntoggleableGate` on
+  `_stripIgnoredClauses(req)` — checking the raw req rejects the whole gate because the HP
+  clause reads as untoggleable game-state, silently dropping the mode bonus. This bit DNA
+  Siphon: its Defensive (+HP per living foe) and Efficient (+Regen/+Rec per defeated foe)
+  bonuses were dropped while Offensive (a plain `enttype`+mode gate) survived. The general
+  rule: strip the ignored clauses first, then classify what remains.
 
 **The validated discriminator for "the player's own enhanceable stat":**
 `aspect ∈ {Current, Absolute, Magnitude}`, non-proc, non-pet, and positive scale where
