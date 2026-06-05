@@ -117,7 +117,8 @@ export const SkySplitter: Power = {
           "resistance": 15
         },
         "buffDuration": 15
-      }
+      },
+      "group": "staff-form"
     },
     {
       "id": "perfection_of_mind_level_3",
@@ -139,7 +140,8 @@ export const SkySplitter: Power = {
           "tohitBuff": 15
         },
         "buffDuration": 15
-      }
+      },
+      "group": "staff-form"
     },
     {
       "id": "perfection_of_soul_level_3",
@@ -166,7 +168,8 @@ export const SkySplitter: Power = {
           "table": "Melee_Ones"
         },
         "buffDuration": 15
-      }
+      },
+      "group": "staff-form"
     }
   ]
 };

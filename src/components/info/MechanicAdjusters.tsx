@@ -18,10 +18,12 @@
  * rows (no chunky `Toggle` switch which dominates vertical space).
  */
 
+import { useMemo } from 'react';
 import type { ConditionalEffect, Power } from '@/types';
 import { Toggle } from '@/components/ui/Toggle';
 import {
   useUIStore,
+  useBuildStore,
   useMechanicAdjuster,
   useGlobalAdjuster,
 } from '@/stores';
@@ -29,6 +31,8 @@ import {
   ADAPTATION_MODES,
   ADAPTATION_MODE_IDS,
   isAdaptationModeId,
+  stanceGroupForConditionalId,
+  buildHasStanceEnabler,
 } from '@/data';
 import {
   AT_INHERENT_CONDITIONAL_IDS,
@@ -41,14 +45,34 @@ interface MechanicAdjustersProps {
 }
 
 export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
+  // Power internalNames in the build — used to gate "stance" conditionals
+  // (Bio Armor adaptation, Staff Perfection) on the enabling power being taken.
+  const build = useBuildStore((s) => s.build);
+  const presentPowerNames = useMemo(() => {
+    const names = new Set<string>();
+    const add = (powers?: { internalName: string }[]) => powers?.forEach((p) => names.add(p.internalName));
+    add(build.primary?.powers);
+    add(build.secondary?.powers);
+    build.pools?.forEach((pool) => add(pool.powers));
+    add(build.epicPool?.powers);
+    return names;
+  }, [build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
+
   const conditional = power.conditionalEffects;
   if (!conditional || conditional.length === 0) return null;
 
-  // AT-inherent mechanics (Domination, etc.) are already controlled by
-  // the Header's dashboard. Filter them out of the per-power section so
-  // the user has one canonical place to toggle them — the merger reads
-  // the existing dashboard state for these ids.
-  const surfaceable = conditional.filter((c) => !AT_INHERENT_CONDITIONAL_IDS.has(c.id));
+  // Drop two classes of conditionals:
+  //  - AT-inherent mechanics (Domination, etc.) — already controlled by the
+  //    Header's dashboard; the merger reads that existing state for these ids.
+  //  - Stance options (adaptation / perfection) whose enabling power isn't taken
+  //    — without Adaptation / Staff Mastery the mechanic isn't available, so the
+  //    selector would be a no-op (and the dashboard calc already ignores it).
+  const surfaceable = conditional.filter((c) => {
+    if (AT_INHERENT_CONDITIONAL_IDS.has(c.id)) return false;
+    const stanceGroup = stanceGroupForConditionalId(c.id);
+    if (stanceGroup && !buildHasStanceEnabler(stanceGroup, presentPowerNames)) return false;
+    return true;
+  });
   if (surfaceable.length === 0) return null;
 
   // Bio Armor adaptation modes are pulled out first and rendered as one

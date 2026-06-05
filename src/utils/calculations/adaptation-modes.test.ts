@@ -27,20 +27,26 @@ describe('Bio Armor Adaptation modes on the dashboard (homecoming)', () => {
   });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function bioBuild(): any {
+  function bioBuild(withEnabler = true): any {
     const b = createEmptyBuild();
     b.level = 50;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     b.archetype = { id: 'tanker', name: 'Tanker', stats: null, inherent: null } as any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    b.primary = { id: 'tanker/bio-armor', name: 'Bio Armor', powers: [
+    const powers = [
       { internalName: 'Environmental_Adaptation', name: 'Environmental Modification', isActive: true, slots: [] },
-    ] } as any;
+      // Taking Bio Armor's Adaptation toggle auto-grants the stance sub-powers;
+      // their presence is what makes the modes available (the enabler gate).
+      ...(withEnabler
+        ? [{ internalName: 'Defensive_Adaptation', name: 'Defensive Adaptation', isActive: false, slots: [] }]
+        : []),
+    ];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    b.primary = { id: 'tanker/bio-armor', name: 'Bio Armor', powers } as any;
     return b;
   }
 
-  function totals(globalAdjusters: Record<string, boolean>) {
-    return calculateCharacterTotals(bioBuild(), false, undefined, { globalAdjusters }).globalBonuses;
+  function totals(globalAdjusters: Record<string, boolean>, withEnabler = true) {
+    return calculateCharacterTotals(bioBuild(withEnabler), false, undefined, { globalAdjusters }).globalBonuses;
   }
 
   it('adds the active mode\'s mode-gated +Def to the dashboard, summed onto base', () => {
@@ -69,5 +75,15 @@ describe('Bio Armor Adaptation modes on the dashboard (homecoming)', () => {
     const offensive = totals({ offensiveadaptation: true });
     expect(offensive.defSmashing).toBe(0);
     expect(off.defSmashing).toBe(0);
+  });
+
+  it('does NOT apply modes when the enabling power (Adaptation) is not taken', () => {
+    // Same Defensive selection, but the build lacks the Adaptation stance
+    // sub-powers — the mechanic is unavailable, so no mode bonus may leak in.
+    const gated = totals({ defensiveadaptation: true }, /* withEnabler */ false);
+    expect(gated.defSmashing).toBe(0);
+    // And the base Environmental Modification defense is unaffected (still applies).
+    const baseOnly = totals({}, false);
+    expect(gated.defFire).toBeCloseTo(baseOnly.defFire, 4);
   });
 });

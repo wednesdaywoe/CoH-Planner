@@ -339,6 +339,17 @@ export {
 } from './adaptation-modes';
 export type { AdaptationMode } from './adaptation-modes';
 
+// Global "stance" selector descriptors (Bio Armor Adaptation + Staff Fighting
+// Form/Perfection) — one shared header control gives them identical treatment.
+export {
+  STANCE_GROUPS,
+  STAFF_PERFECTION_MODES,
+  stanceOptionIds,
+  stanceGroupForConditionalId,
+  buildHasStanceEnabler,
+} from './stance-groups';
+export type { StanceGroup, StanceOption } from './stance-groups';
+
 // Effect registry for data-driven power effect display
 export {
   EFFECT_REGISTRY,

@@ -129,7 +129,8 @@ export const EyeoftheStorm: Power = {
           "resistanceDebuff": 6
         },
         "buffDuration": 6
-      }
+      },
+      "group": "staff-form"
     },
     {
       "id": "perfection_of_mind_level_3",
@@ -157,7 +158,8 @@ export const EyeoftheStorm: Power = {
           "rechargeDebuff": 8
         },
         "buffDuration": 8
-      }
+      },
+      "group": "staff-form"
     },
     {
       "id": "perfection_of_soul_level_3",
@@ -185,7 +187,8 @@ export const EyeoftheStorm: Power = {
           "defenseDebuff": 8
         },
         "buffDuration": 8
-      }
+      },
+      "group": "staff-form"
     }
   ],
   "specialEffects": [

@@ -15,6 +15,7 @@
 import type { Build, Accolade, ConditionalEffect, Enhancement, EnhancementStatType, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
+import { stanceGroupForConditionalId } from '@/data';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
@@ -3089,6 +3090,11 @@ function expandActiveConditionals(
   mechanicAdjusters: Record<string, boolean>,
 ): PowerWithToggle[] {
   const synthetics: PowerWithToggle[] = [];
+  // Which power internalNames are in the build — used to gate "stance" mechanics
+  // (Bio Armor adaptation, Staff Perfection) on the enabling power actually
+  // being taken. Without it, a stale global toggle would apply mode bonuses to a
+  // build that can't access them.
+  const presentPowers = new Set(powers.map((p) => p.internalName));
   for (const power of powers) {
     // The parent must itself be active for its gated effects to apply.
     const isAuto = power.powerType?.toLowerCase() === 'auto';
@@ -3102,6 +3108,11 @@ function expandActiveConditionals(
       if (AT_INHERENT_CONDITIONAL_IDS.has(c.id)) continue;
       // Damage-only conditionals affect attack output, not dashboard totals.
       if (!c.effects || Object.keys(c.effects).length === 0) continue;
+
+      // Stance gate: adaptation/perfection bonuses require the enabling power
+      // (Adaptation / Staff Mastery) to be taken. No enabler → no stance.
+      const stanceGroup = stanceGroupForConditionalId(c.id);
+      if (stanceGroup && !stanceGroup.requiredPowers.some((n) => presentPowers.has(n))) continue;
 
       const def = !!c.defaultActive;
       let on: boolean;

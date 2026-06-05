@@ -1713,6 +1713,18 @@ function _annotateConditionalGroups(entries) {
     }
   }
 
+  // 4. Staff Fighting "Perfection of <form>" family. The finisher bonuses on
+  //    Sky Splitter / Eye of the Storm are gated on Perfection of Body / Mind /
+  //    Soul (`perfection_of_body_level_3`, …). You fight in one Staff form at a
+  //    time, so the perfection tracks are mutually exclusive — but each form is
+  //    a distinct level-stem with a single member, so pass 3 leaves them
+  //    ungrouped. Group the whole family together so the InfoPanel renders one
+  //    mutually-exclusive radio (consistent with Bio Armor's adaptation modes).
+  const perfectionMembers = entries.filter(e => !e.group && /^perfection_of_/.test(e.id));
+  if (perfectionMembers.length >= 2) {
+    for (const e of perfectionMembers) e.group = 'staff-form';
+  }
+
   // NOTE: grouping (mutual-exclusivity between siblings) and `mode` (whether an
   // active member REPLACES or ADDS TO the base power's effects) are orthogonal.
   // We intentionally do NOT force grouped entries to `mode: 'replace'`.

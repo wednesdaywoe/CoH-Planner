@@ -10,7 +10,8 @@ import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import { useHistoryStore } from '@/stores/historyStore';
 import { useOnboardingStore, useOnboardingCurrentStep } from '@/stores/onboardingStore';
 import { supabase } from '@/lib/supabase';
-import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel, ADAPTATION_MODES, ADAPTATION_MODE_IDS, isAdaptationModeId } from '@/data';
+import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel, STANCE_GROUPS, stanceOptionIds } from '@/data';
+import type { StanceGroup } from '@/data';
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import type { BadgeVariant } from '@/components/ui';
@@ -260,7 +261,9 @@ export function Header() {
 
         {archetypeId && <ATMechanics archetypeId={archetypeId} />}
         <KheldianFormSelector />
-        <AdaptationModeSelector />
+        {STANCE_GROUPS.map((group) => (
+          <StanceSelector key={group.key} group={group} />
+        ))}
       </div>
 
       {/* Confirmation modals */}
@@ -1433,57 +1436,62 @@ function KheldianFormSelector() {
 }
 
 /**
- * Global Bio Armor Adaptation stance selector. Shows only when the build's
- * primary or secondary powerset carries adaptation-mode conditionals (Bio
- * Armor). Selecting a mode flips the shared `globalAdjusters` state (mutually
- * exclusive via the registry's mode ids), which drives every Bio Armor power's
- * mode-gated bonuses AND the dashboard totals (see character-totals
- * `expandActiveConditionals`). Re-clicking the active mode clears it (no stance).
+ * Generic global "stance" selector (Bio Armor Adaptation, Staff Fighting Form).
+ * Shows only when the build's primary or secondary powerset carries one of the
+ * group's gated conditionals. Selecting an option flips the shared
+ * `globalAdjusters` state (mutually exclusive via the group's option ids), which
+ * drives every gated power's bonuses AND — for armor toggles — the dashboard
+ * totals (see character-totals `expandActiveConditionals`). Re-clicking the
+ * active option clears it (no stance). One descriptor per set keeps Bio Armor
+ * and Staff visually and behaviorally identical (see `@/data/stance-groups`).
  */
-function AdaptationModeSelector() {
+function StanceSelector({ group }: { group: StanceGroup }) {
   const build = useBuildStore((s) => s.build);
   const globalAdjusters = useUIStore((s) => s.globalAdjusters);
   const setGlobalAdjusterGroup = useUIStore((s) => s.setGlobalAdjusterGroup);
 
-  const hasAdaptation = useMemo(() => {
-    for (const id of [build.primary?.id, build.secondary?.id]) {
-      if (!id) continue;
-      const ps = getPowerset(id);
-      if (ps?.powers?.some((p) => p.conditionalEffects?.some((c) => isAdaptationModeId(c.id)))) {
-        return true;
-      }
-    }
-    return false;
-  }, [build.primary?.id, build.secondary?.id]);
+  const optionIds = stanceOptionIds(group);
 
-  if (!hasAdaptation) return null;
+  // Only available once the build has actually taken the enabling power that
+  // grants the stances (Adaptation / Staff Mastery). Those parents auto-grant
+  // the stance/form sub-powers listed in `requiredPowers`, so we look for them
+  // among the build's selected primary/secondary powers.
+  const hasStance = useMemo(() => {
+    const required = new Set(group.requiredPowers);
+    const taken =
+      build.primary?.powers?.some((p) => required.has(p.internalName)) ||
+      build.secondary?.powers?.some((p) => required.has(p.internalName));
+    return !!taken;
+    // requiredPowers is derived from the static `group` prop, so it's stable.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [build.primary?.powers, build.secondary?.powers, group.key]);
 
-  const activeId = ADAPTATION_MODES.find((m) => globalAdjusters[m.id])?.id ?? null;
+  if (!hasStance) return null;
 
-  const button = (mode: (typeof ADAPTATION_MODES)[number]) => {
-    const active = activeId === mode.id;
-    return (
-      <button
-        key={mode.id}
-        type="button"
-        onClick={() => setGlobalAdjusterGroup(active ? null : mode.id, ADAPTATION_MODE_IDS)}
-        title={`${mode.label}${active ? ' — active (click to turn off)' : ''}`}
-        className={`px-2 py-0.5 text-xs rounded border transition-colors ${
-          active
-            ? 'bg-emerald-700/50 border-emerald-500 text-emerald-100'
-            : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
-        }`}
-      >
-        {mode.short}
-      </button>
-    );
-  };
+  const activeId = group.options.find((o) => globalAdjusters[o.id])?.id ?? null;
 
   return (
-    <Tooltip content="Bio Armor stance. Selecting a mode applies its mode-gated bonuses (Defensive +Def/+HP, Offensive +ToHit/-Regen, Efficient +Regen/+Recovery) across every Bio Armor power and the dashboard totals. Mutually exclusive — re-click to clear.">
+    <Tooltip content={group.tooltip}>
       <div className="flex items-center gap-1 px-2 py-1 rounded border bg-slate-700/50 border-slate-600">
-        <span className="text-xs text-slate-400 mr-1">Adaptation:</span>
-        {ADAPTATION_MODES.map(button)}
+        <span className="text-xs text-slate-400 mr-1">{group.headerLabel}:</span>
+        {group.options.map((option) => {
+          const active = activeId === option.id;
+          return (
+            <button
+              key={option.id}
+              type="button"
+              onClick={() => setGlobalAdjusterGroup(active ? null : option.id, optionIds)}
+              title={`${option.label}${active ? ' — active (click to turn off)' : ''}`}
+              className={`px-2 py-0.5 text-xs rounded border transition-colors ${
+                active
+                  ? group.activeClass
+                  : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
+              }`}
+            >
+              {option.short}
+            </button>
+          );
+        })}
       </div>
     </Tooltip>
   );
