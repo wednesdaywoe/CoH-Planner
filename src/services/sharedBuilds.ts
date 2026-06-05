@@ -12,6 +12,52 @@ const OWNER_TOKENS_KEY = 'coh-planner-owner-tokens';
 const FAVORITES_KEY = 'coh-planner-favorites';
 const QUICK_SHARE_CACHE_KEY = 'coh-planner-quick-share';
 
+/**
+ * Hourly save/share limits. **Mirrors `supabase/functions/share-build/index.ts`.**
+ * The server is authoritative and returns the live values on every response; these
+ * are used for the proactive hint shown *before* any call, and as a fallback when
+ * the response is the older plain shape (function not yet redeployed).
+ */
+export const RATE_LIMITS = {
+  share: 10, // public shares per hour
+  vault: 50, // saved (private library) builds per hour
+  windowHours: 1,
+} as const;
+
+export type RateLimitAction = 'share' | 'vault';
+
+/** Rate-limit counters returned by the edge function on a successful save. */
+export interface RateLimitInfo {
+  action: RateLimitAction;
+  limit: number;
+  remaining: number;
+}
+
+/** Thrown when a save/share hits the hourly limit. Carries the bucket, the limit,
+ *  and how long until a slot frees up (so the UI can show a precise countdown). */
+export class RateLimitError extends Error {
+  readonly action: RateLimitAction;
+  readonly limit: number;
+  /** Seconds until the oldest request ages out (0 when the server is the older
+   *  build that doesn't report it — UI then says "within the hour"). */
+  readonly retryAfterSeconds: number;
+  readonly resetAt: string | null;
+  constructor(opts: {
+    action: RateLimitAction;
+    limit: number;
+    retryAfterSeconds: number;
+    resetAt: string | null;
+    message?: string;
+  }) {
+    super(opts.message || 'Rate limit exceeded. Please try again later.');
+    this.name = 'RateLimitError';
+    this.action = opts.action;
+    this.limit = opts.limit;
+    this.retryAfterSeconds = opts.retryAfterSeconds;
+    this.resetAt = opts.resetAt;
+  }
+}
+
 // ---- Favorites management (localStorage) ----
 
 function getFavoriteIds(): string[] {
@@ -112,8 +158,29 @@ export function isShareEnabled(): boolean {
   return supabase !== null;
 }
 
+function rateLimitLabel(action: RateLimitAction): string {
+  return action === 'vault' ? 'saved builds' : 'public shares';
+}
+
+/** Friendly message for a hit rate limit — a precise countdown when the server
+ *  reports `retryAfterSeconds`, else a generic "within the hour". */
+export function formatRateLimitMessage(err: RateLimitError): string {
+  const base = `You've hit the hourly limit (${err.limit} ${rateLimitLabel(err.action)}).`;
+  if (err.retryAfterSeconds > 0) {
+    const mins = Math.max(1, Math.ceil(err.retryAfterSeconds / 60));
+    return `${base} Try again in ~${mins} min${mins === 1 ? '' : 's'}.`;
+  }
+  return `${base} Please try again within the hour.`;
+}
+
+/** Proactive one-liner for the save/share UI (shown before any limit is hit). */
+export function rateLimitHint(action: RateLimitAction): string {
+  const limit = action === 'vault' ? RATE_LIMITS.vault : RATE_LIMITS.share;
+  return `Up to ${limit} ${rateLimitLabel(action)} per hour.`;
+}
+
 /** Share a build to the public repository (create or update) */
-export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; url: string; updated?: boolean }> {
+export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; url: string; updated?: boolean; rateLimit?: RateLimitInfo }> {
   if (!supabase) throw new Error('Sharing is not configured');
 
   const buildData = input.build_json;
@@ -161,18 +228,37 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
   });
 
   if (error) {
-    let msg = 'Failed to share build';
+    // Pull the JSON body from the failed Response (supabase-js stashes it on
+    // `error.context`). Used both for the message and to detect rate limiting.
+    let body: { error?: string; code?: string; action?: string; limit?: number; retryAfterSeconds?: number; resetAt?: string } | null = null;
+    let status: number | undefined;
     try {
       if (error.context && typeof error.context.json === 'function') {
-        const body = await error.context.json();
-        msg = body?.error || msg;
-      } else {
-        msg = error.message || msg;
+        status = error.context.status;
+        body = await error.context.json();
       }
     } catch {
-      msg = error.message || msg;
+      /* non-JSON body */
     }
-    throw new Error(msg);
+
+    // Rate limit (HTTP 429). New server sends a structured body; older builds
+    // (function not yet redeployed) send only `{ error }` at status 429 — fall
+    // back to the mirrored constants so the message is still useful.
+    const isRateLimited = status === 429 || body?.code === 'rate_limited' || /rate limit/i.test(body?.error || '');
+    if (isRateLimited) {
+      const action: RateLimitAction = body?.action === 'vault' || body?.action === 'share'
+        ? body.action
+        : (input.is_public === false ? 'vault' : 'share');
+      throw new RateLimitError({
+        action,
+        limit: body?.limit ?? (action === 'vault' ? RATE_LIMITS.vault : RATE_LIMITS.share),
+        retryAfterSeconds: body?.retryAfterSeconds ?? 0,
+        resetAt: body?.resetAt ?? null,
+        message: body?.error,
+      });
+    }
+
+    throw new Error(body?.error || error.message || 'Failed to share build');
   }
   if (data?.error) throw new Error(data.error);
 
@@ -185,6 +271,7 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
     id: data.id,
     url: `${window.location.origin}/builds/${data.id}`,
     updated: data.updated ?? false,
+    rateLimit: data.rateLimit as RateLimitInfo | undefined,
   };
 }
 
@@ -279,8 +366,11 @@ export async function quickShareBuild(buildExport: BuildExport): Promise<{ url: 
       const result = await shareBuild({ ...shareInput, existingId: cached.shareId });
       writeQuickShareCache({ shareId: result.id, fingerprint });
       return { url: result.url };
-    } catch {
-      // fall through to create
+    } catch (e) {
+      // A rate limit means a retry-as-create would just burn a second slot and
+      // fail again — surface it now. Other failures (stale cache, lost
+      // ownership) fall through to create a fresh row.
+      if (e instanceof RateLimitError) throw e;
     }
   }
 

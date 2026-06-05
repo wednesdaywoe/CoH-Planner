@@ -13,8 +13,8 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { nanoid } from 'https://esm.sh/nanoid@5';
 
-const SHARE_RATE_LIMIT = 5;  // max public shares per hour
-const VAULT_RATE_LIMIT = 20; // max vault saves per hour
+const SHARE_RATE_LIMIT = 10;  // max public shares per hour
+const VAULT_RATE_LIMIT = 50;  // max vault saves per hour (private library — more generous)
 const RATE_WINDOW_HOURS = 1;
 
 const corsHeaders = {
@@ -64,8 +64,14 @@ Deno.serve(async (req: Request) => {
 
     const isUpdate = !!(body.existing_id && (body.owner_token || authUserId));
 
-    // is_public defaults to true; only authenticated users may create private builds
-    const isPublic: boolean = body.is_public === false ? (authUserId !== null) : true;
+    // is_public defaults to true; a build is private ONLY when an *authenticated*
+    // user asked for it (is_public === false). An anonymous private request is
+    // forced public — they have no library to keep it in. (Previously inverted:
+    // `authUserId !== null` made logged-in "private" saves PUBLIC and metered
+    // them against the public-share bucket, which is why vault rows never
+    // appeared and library saves hit the strict share limit.)
+    const isPrivateRequest = body.is_public === false;
+    const isPublic: boolean = isPrivateRequest ? (authUserId === null) : true;
 
     // ---- Validate required fields ----
     const { name, archetype, archetype_name, primary_set, primary_name, secondary_set, secondary_name, level, build_json } = body;
@@ -113,15 +119,55 @@ Deno.serve(async (req: Request) => {
       .eq('action', rateLimitAction)
       .gte('created_at', windowStart);
 
-    if ((count ?? 0) >= rateLimit) {
+    const used = count ?? 0;
+    if (used >= rateLimit) {
+      // Rolling window: a slot frees up when the OLDEST in-window request ages
+      // out (its created_at + window). Surface that so the client can show a
+      // precise "try again in ~N min" instead of a vague "try later".
+      const { data: oldest } = await supabase
+        .from('rate_limits')
+        .select('created_at')
+        .eq('ip', clientIp)
+        .eq('action', rateLimitAction)
+        .gte('created_at', windowStart)
+        .order('created_at', { ascending: true })
+        .limit(1)
+        .single();
+      const resetAt = new Date(
+        (oldest?.created_at ? new Date(oldest.created_at).getTime() : Date.now())
+          + RATE_WINDOW_HOURS * 60 * 60 * 1000,
+      );
+      const retryAfterSeconds = Math.max(0, Math.ceil((resetAt.getTime() - Date.now()) / 1000));
       return new Response(
-        JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
-        { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        JSON.stringify({
+          error: 'Rate limit exceeded. Please try again later.',
+          code: 'rate_limited',
+          action: rateLimitAction,        // 'share' (public) | 'vault' (saved)
+          limit: rateLimit,
+          remaining: 0,
+          retryAfterSeconds,
+          resetAt: resetAt.toISOString(),
+        }),
+        {
+          status: 429,
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+            'Retry-After': String(retryAfterSeconds),
+          },
+        }
       );
     }
 
     // Record this request for rate limiting
     await supabase.from('rate_limits').insert({ ip: clientIp, action: rateLimitAction });
+
+    // Returned on success so the client can show "N of LIMIT used this hour".
+    const rateLimitInfo = {
+      action: rateLimitAction,
+      limit: rateLimit,
+      remaining: Math.max(0, rateLimit - (used + 1)),
+    };
 
     const tags = Array.isArray(body.tags)
       ? body.tags.filter((t: unknown) => typeof t === 'string').slice(0, 10)
@@ -191,7 +237,7 @@ Deno.serve(async (req: Request) => {
       }
 
       return new Response(
-        JSON.stringify({ id: body.existing_id, url: `/builds/${body.existing_id}`, updated: true }),
+        JSON.stringify({ id: body.existing_id, url: `/builds/${body.existing_id}`, updated: true, rateLimit: rateLimitInfo }),
         { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
@@ -217,7 +263,7 @@ Deno.serve(async (req: Request) => {
     }
 
     return new Response(
-      JSON.stringify({ id, url: `/builds/${id}`, owner_token: ownerToken }),
+      JSON.stringify({ id, url: `/builds/${id}`, owner_token: ownerToken, rateLimit: rateLimitInfo }),
       { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (e) {

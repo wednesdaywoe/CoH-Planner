@@ -17,7 +17,7 @@ import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui'
 import type { BadgeVariant } from '@/components/ui';
 import { getActiveDataset } from '@/data/dataset';
 import { buildShareUrl } from '@/utils/url-build-sync';
-import { quickShareBuild } from '@/services/sharedBuilds';
+import { quickShareBuild, RateLimitError, formatRateLimitMessage } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
 import type { DatasetId } from '@/data/dataset';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
@@ -799,6 +799,7 @@ function ActionMenu({
   const currentOnboardingStep2 = useOnboardingCurrentStep();
   const [linkCopied, setLinkCopied] = useState(false);
   const [shortLinkState, setShortLinkState] = useState<'idle' | 'loading' | 'copied' | 'error'>('idle');
+  const [shortLinkError, setShortLinkError] = useState<string | null>(null);
   const [showSignInForShortLink, setShowSignInForShortLink] = useState(false);
 
   const handleCopyLiveLink = async () => {
@@ -819,6 +820,7 @@ function ActionMenu({
       return;
     }
     setShortLinkState('loading');
+    setShortLinkError(null);
     try {
       const exportJson = useBuildStore.getState().exportBuild();
       const exportData = JSON.parse(exportJson) as BuildExport;
@@ -828,6 +830,10 @@ function ActionMenu({
       setTimeout(() => setShortLinkState('idle'), 1500);
     } catch (err) {
       console.error('Failed to create short link:', err);
+      // Surface a real reason — the rate limit especially, which is otherwise
+      // invisible. Held until the next attempt rather than auto-cleared.
+      setShortLinkError(err instanceof RateLimitError ? formatRateLimitMessage(err)
+        : err instanceof Error ? err.message : 'Failed to create short link.');
       setShortLinkState('error');
       setTimeout(() => setShortLinkState('idle'), 2000);
     }
@@ -925,6 +931,9 @@ function ActionMenu({
               : shortLinkState === 'error' ? 'Failed — try again'
               : 'Copy Short Link'}
           </button>
+          {shortLinkError && (
+            <p className="px-3 pb-1 -mt-1 text-xs text-red-400">{shortLinkError}</p>
+          )}
           <button
             onClick={handleCopyLiveLink}
             className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2"

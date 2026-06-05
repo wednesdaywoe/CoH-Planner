@@ -15,7 +15,7 @@ import { importGameExport } from '@/utils/game-importer';
 import type { GameImportResult } from '@/utils/game-importer';
 import { importExternalBuild } from '@/utils/external-import';
 import type { ExternalImportResult } from '@/utils/external-import';
-import { shareBuild, getOwnedBuildIds, getOwnerToken, getMyBuilds } from '@/services/sharedBuilds';
+import { shareBuild, getOwnedBuildIds, getOwnerToken, getMyBuilds, RateLimitError, formatRateLimitMessage, rateLimitHint } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
 import type { SharedBuild } from '@/types/shared';
 import { generatePopmenu } from '@/utils/export-popmenu';
@@ -109,6 +109,10 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [vaultSaveSuccess, setVaultSaveSuccess] = useState(false);
   const [vaultSaveError, setVaultSaveError] = useState<string | null>(null);
   const [vaultSaveLoading, setVaultSaveLoading] = useState(false);
+
+  // Last-known remaining quota for this hour (from the server, after a save).
+  const [vaultRemaining, setVaultRemaining] = useState<number | null>(null);
+  const [shareRemaining, setShareRemaining] = useState<number | null>(null);
 
   const { exportBuild, importBuild, importMidsBuild: applyMidsBuild, build } = useBuildStore();
   const setVaultId = useBuildStore((s) => s.setVaultId);
@@ -215,9 +219,13 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
       // Link the in-memory build to the (new or updated) entry so a
       // follow-up Save continues to update in place.
       if (result?.id) setVaultId(result.id);
+      if (result?.rateLimit) setVaultRemaining(result.rateLimit.remaining);
       setVaultSaveSuccess(true);
     } catch (e) {
-      setVaultSaveError(e instanceof Error ? e.message : 'Failed to save to library');
+      setVaultSaveError(
+        e instanceof RateLimitError ? formatRateLimitMessage(e)
+          : e instanceof Error ? e.message : 'Failed to save to library',
+      );
     } finally {
       setVaultSaveLoading(false);
     }
@@ -575,8 +583,12 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
       setShareUrl(result.url);
       setShareUpdated(result.updated ?? false);
       setSharedBuildId(result.id);
+      if (result.rateLimit) setShareRemaining(result.rateLimit.remaining);
     } catch (e) {
-      setShareError(e instanceof Error ? e.message : 'Failed to share build');
+      setShareError(
+        e instanceof RateLimitError ? formatRateLimitMessage(e)
+          : e instanceof Error ? e.message : 'Failed to share build',
+      );
     } finally {
       setShareLoading(false);
     }
@@ -870,6 +882,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                           Save as new copy
                         </Button>
                       )}
+                      <p className="text-xs text-gray-500">
+                        {vaultRemaining !== null
+                          ? `${vaultRemaining} save${vaultRemaining === 1 ? '' : 's'} left this hour.`
+                          : rateLimitHint('vault')}
+                      </p>
                       {vaultSaveError && (
                         <div className="bg-red-900/20 border border-red-700/50 rounded p-3 text-sm text-red-300">
                           {vaultSaveError}
@@ -1437,6 +1454,12 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                         maxLength={200}
                       />
                     </div>
+
+                    <p className="text-xs text-gray-500">
+                      {shareRemaining !== null
+                        ? `${shareRemaining} public share${shareRemaining === 1 ? '' : 's'} left this hour.`
+                        : rateLimitHint('share')}
+                    </p>
 
                     {shareError && (
                       <div className="bg-red-900/20 border border-red-700/50 rounded p-3 text-sm text-red-300">
