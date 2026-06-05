@@ -312,6 +312,12 @@ export function PoolPowers() {
             />
           )}
 
+          {/* Archetype inherent group: the AT inherent (Cosmic Balance /
+              Defiance / …) plus auto-granted archetype powers such as the
+              Kheldian travel toggles (Energy/Combat Flight, Shadow Step/Recall).
+              Kept EXPANDED (no defaultCollapsed) so these always-on powers stay
+              discoverable — hiding them behind a collapsed header was the
+              "missing Energy Flight" bug. */}
           {inherentGroups.archetype.length > 0 && (
             <InherentPowerGroup
               title={`${build.archetype.name || 'Archetype'} Inherent`}
@@ -333,7 +339,6 @@ export function PoolPowers() {
                   lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
                 }
               }}
-              defaultCollapsed
             />
           )}
         </>

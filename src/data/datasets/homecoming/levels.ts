@@ -746,7 +746,10 @@ const PEACEBRINGER_INHERENT_POWERS: InherentPowerDef[] = [
     allowedEnhancements: ['EnduranceReduction', 'Fly'],
     allowedSetCategories: ['Flight', 'Universal Travel'],
     isLocked: true,
-    category: 'basic',
+    // Kheldian travel inherents render under the expanded "<AT> Inherent"
+    // group (alongside Cosmic Balance), not the Basic group which is collapsed
+    // by default — otherwise these auto-granted powers are undiscoverable.
+    category: 'archetype',
     stats: {
       endurance: 0.2275,
     },
@@ -773,7 +776,7 @@ const PEACEBRINGER_INHERENT_POWERS: InherentPowerDef[] = [
     allowedEnhancements: ['EnduranceReduction', 'Fly', 'Defense'],
     allowedSetCategories: ['Defense Sets', 'Flight', 'Universal Travel'],
     isLocked: true,
-    category: 'basic',
+    category: 'archetype', // Kheldian travel inherent → expanded "<AT> Inherent" group
     stats: {
       endurance: 0.0975,
       castTime: 0.5,
@@ -819,7 +822,7 @@ const WARSHADE_INHERENT_POWERS: InherentPowerDef[] = [
     allowedEnhancements: ['EnduranceReduction', 'Range'],
     allowedSetCategories: ['Teleport', 'Universal Travel'],
     isLocked: true,
-    category: 'basic',
+    category: 'archetype', // Kheldian travel inherent → expanded "<AT> Inherent" group
     stats: {
       range: 300,
       endurance: 13.0,
@@ -842,7 +845,7 @@ const WARSHADE_INHERENT_POWERS: InherentPowerDef[] = [
     allowedEnhancements: ['Interrupt', 'EnduranceReduction', 'Range', 'Recharge', 'Accuracy'],
     allowedSetCategories: ['Teleport', 'Universal Travel'],
     isLocked: true,
-    category: 'basic',
+    category: 'archetype', // Kheldian travel inherent → expanded "<AT> Inherent" group
     stats: {
       accuracy: 1,
       range: 10000,
