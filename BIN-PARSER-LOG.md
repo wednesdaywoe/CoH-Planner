@@ -1,12 +1,9 @@
 # Bin Parser Log
 
-Use this space to document to-dos when we run into data gaps that require refining the bin parser. When complete, please mark completed. Please put new issues at the top, move old issues below.
-
 Running log of bugs and gaps in the binary parser → JSON conversion pipeline
-(`tools/bin-crawler/` + `scripts/convert-powerset.cjs` + `scripts/convert-epic-pools.cjs`),
-with diagnoses and recommended fixes. Newest entries at top.
+(`tools/bin-crawler/` + `scripts/convert-powerset.cjs` + `scripts/convert-epic-pools.cjs`), with diagnoses and recommended fixes. Newest entries at top, in the "NEW ISSUES/UNRESOLVED" section. When completed, move the entry to the top of "RESOLVED" section with details of the fix or any other relevant information.
 
----NEW ISSUES---
+> --- NEW ISSUES / UNRESOLVED ---
 
 ## ⬜ IO-set generators drop Absorb from Heal pieces (regen will undo hand-fix) — 2026-06-05
 
@@ -18,6 +15,8 @@ the deleted-legacy-backed `convert-io-sets.js`. The data was hand-fixed in
 Fix needs the PC binary — see full write-up + step list in
 [HEAL-ABSORB-AND-EXPORT-GAPS.md](HEAL-ABSORB-AND-EXPORT-GAPS.md) (also covers the broader
 "IO-set aspects/bonuses still legacy-sourced" gap).
+
+> ---RESOLVED ---
 
 ## ✅ Offensive knockback was dropped from ALL attacks (FIXED 2026-06-04)
 
