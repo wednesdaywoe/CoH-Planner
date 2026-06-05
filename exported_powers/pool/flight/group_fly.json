@@ -59,6 +59,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Power_DisallowGroupFly target.TokenOwned? !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -211,6 +212,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "SelfAndPets"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 1,
@@ -393,6 +397,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "Backup"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 1,
@@ -436,6 +443,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "HypersonicFly"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 1,

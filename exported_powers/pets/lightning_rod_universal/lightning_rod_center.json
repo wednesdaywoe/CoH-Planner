@@ -55,6 +55,7 @@
       "radius_inner": -1.0,
       "radius_outer": 3.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -94,6 +95,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Scrapper eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -106,6 +108,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",
+          "tags": [
+            "CritLarge",
+            "ScrapperCrit_AoE"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -145,6 +151,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",
+          "tags": [
+            "CritSmall",
+            "ScrapperCrit_AoE"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -186,6 +196,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Stalker eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -198,6 +209,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kMeter source.owner> 0 > enttype target> critter eq &&",
+          "tags": [
+            "StealthCrit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -237,6 +251,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> critter eq kMeter source.owner> .9 < &&",
+          "tags": [
+            "ASTeamCrit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

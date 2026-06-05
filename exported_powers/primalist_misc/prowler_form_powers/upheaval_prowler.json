@@ -65,6 +65,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -107,6 +108,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -149,6 +151,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq kProwlerCloakMode Source.Mode? &&",
+      "tags": [
+        "NBProwlerCloakCritActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -188,6 +193,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -260,6 +266,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&",
+      "tags": [
+        "NBProwlerCritActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -299,6 +308,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -338,6 +348,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq kProwlerMode Source.Mode? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -377,6 +388,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq kProwlerCloakMode Source.Mode? ! &&",
+      "tags": [
+        "NBProwlerCritActive"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -416,6 +430,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kProwlerCloakMode Source.Mode? !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -458,6 +473,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kProwlerCloakMode Source.Mode?",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -497,6 +513,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [
+        "NBProwlerPrimalStrikeStun"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -539,6 +558,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [
+        "NBProwlerPrimalStrikeStun"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

@@ -65,6 +65,12 @@ class EffectGroup:
     flags: list[str] = field(default_factory=list)
     is_pvp: str = "EITHER"   # "EITHER", "PVE_ONLY", "PVP_ONLY"
     eval_flags: int = 0
+    # Effect `Tag`(s) — the named bucket the engine's global chance-mod system
+    # flips on/off (Dual Pistols ammo: an attack's ColdDamage/ToxicDamage/
+    # FireDamage tag groups carry chance 0 until the matching ammo enables them).
+    # Captured so the converter can attribute tag-gated effects to their mode
+    # (e.g. ammo) instead of folding them into base. Usually 0 or 1 entry.
+    tags: list[str] = field(default_factory=list)
     templates: list[EffectTemplate] = field(default_factory=list)
     child_groups: list["EffectGroup"] = field(default_factory=list)
 

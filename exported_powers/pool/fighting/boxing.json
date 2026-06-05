@@ -60,6 +60,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -99,6 +100,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -138,6 +140,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Scrapper eq enttype target> critter eq &&",
+      "tags": [
+        "Scrapper"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -177,6 +182,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHeld target> 0 > kSleep target> 0 > || arch source> Class_Stalker eq && kMeter source> .9 < && enttype target> critter eq &&",
+      "tags": [
+        "Stalker"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -216,6 +224,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Stalker eq kMeter source> 0 > && enttype target> critter eq &&",
+      "tags": [
+        "Stalker"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -255,6 +266,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq && enttype target> critter eq &&",
+      "tags": [
+        "Corruptor"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -294,6 +308,10 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || arch source> Class_Controller eq && enttype target> critter eq &&",
+      "tags": [
+        "Containment",
+        "Controller"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -333,6 +351,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Scrapper eq enttype target> player eq &&",
+      "tags": [
+        "Scrapper"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -372,6 +393,10 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller eq && enttype target> player eq &&",
+      "tags": [
+        "Containment",
+        "Controller"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -411,6 +436,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHeld target> 0 > kSleep target> 0 > || arch source> Class_Stalker eq && kMeter source> .9 < && enttype target> player eq &&",
+      "tags": [
+        "Stalker"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -450,6 +478,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Stalker eq kMeter source> 0 > && enttype target> player eq &&",
+      "tags": [
+        "Stalker"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -489,6 +520,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq && enttype target> player eq &&",
+      "tags": [
+        "Corruptor"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
@@ -528,6 +562,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "SynergyStun"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -540,6 +577,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Pool.Fighting.Kick source.ownPower? !",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -552,6 +590,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "enttype target> critter eq",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -594,6 +633,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "enttype target> player eq",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -670,6 +710,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -682,6 +723,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "enttype target> critter eq",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -724,6 +766,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "enttype target> player eq",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -802,6 +845,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Pool.Fighting.Cross_Punch source.ownPower?",
+      "tags": [
+        "SynergyFatigue"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

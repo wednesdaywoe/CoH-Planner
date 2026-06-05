@@ -61,6 +61,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -100,6 +101,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch source> Class_Scrapper eq",
+          "tags": [
+            "Scrapper"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -139,6 +143,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq &&",
+          "tags": [
+            "Corruptor"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -178,6 +185,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? || arch source> Class_Controller eq &&",
+          "tags": [
+            "Containment",
+            "Controller"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -217,6 +228,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -256,6 +268,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch source> Class_Stalker eq",
+          "tags": [
+            "Stalker"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -268,6 +283,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "kMeter source> 0 >",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -307,6 +323,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "kHeld target> 0 > kSleep target> 0 > || kMeter source> .9 < &&",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -348,6 +365,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kArcaneBolt Source.Mode?",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -446,6 +464,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -485,6 +504,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || arch source> Class_Controller eq &&",
+          "tags": [
+            "Containment",
+            "Controller"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -524,6 +547,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq &&",
+          "tags": [
+            "Corruptor"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -563,6 +589,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch source> Class_Scrapper eq",
+          "tags": [
+            "Scrapper"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -602,6 +631,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch source> Class_Stalker eq",
+          "tags": [
+            "Stalker"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -614,6 +646,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "kMeter source> 0 >",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -653,6 +686,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "kHeld target> 0 > kSleep target> 0 > || kMeter source> .9 < &&",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -694,6 +728,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> player eq",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -741,6 +776,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kArcaneBolt Source.Mode?",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

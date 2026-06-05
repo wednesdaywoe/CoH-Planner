@@ -57,6 +57,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [
         "PVEOnly"
       ],
@@ -144,6 +145,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [
         "PVPOnly"
       ],
@@ -221,6 +223,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -266,6 +269,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "StealthCrit"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -347,6 +353,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Attacked source.EventTimeSince> 8 > Damaged source.EventTimeSince> 8 > && MissionObjectClick source.EventTimeSince> 8 > &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

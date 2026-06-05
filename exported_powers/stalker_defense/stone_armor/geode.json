@@ -59,6 +59,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -175,6 +176,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 1,
@@ -224,6 +226,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [
             "PVPOnly"
           ],
@@ -273,6 +276,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [
             "PVEOnly"
           ],
@@ -325,6 +329,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "GeodeRoot"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -508,6 +515,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Stalker_Defense.Stone_Armor.Brimstone_Armor source.ownPower?",
+          "tags": [
+            "GrantThermalBoost"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -581,6 +591,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "RepositionGeode"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

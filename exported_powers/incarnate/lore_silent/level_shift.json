@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Axp source.inVolume> Bxp source.inVolume> || ABxp source.inVolume> || Temporary_Powers.Temporary_Powers.Incarnate_Reward_Dark_Astoria source.ownPower? || Cxp source.inVolume> ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

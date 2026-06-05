@@ -154,6 +154,9 @@ deterministic across platforms:
 - **`npm run regen`** rebuilds everything; `npm run regen:generated` rebuilds only
   `generated/` (what the guard checks).
 
+  ## 9. Foe-facing effects are important, don't dismiss as lower value or less important than stat-enhancing effects
+  - **In CoH, debuffs are first-class power effects, and play a role in determining how players build their characters. Many attacks have debuff effects and users expect to see those effects displayed, even if its purely informational and doesn't materially affect the stats of their character. Dark Melee applies small amounts of -toHit to enemies, but they stack up. A player building for defense will likely want to account for that in determinding how much defense they need. If a small debuff componenent is missing from an attack, don't defer as a low-priorty.
+
 ---
 
 *When you learn a new gotcha or principle, add it here — not just to a commit message —

@@ -61,6 +61,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -100,6 +101,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -139,6 +141,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",
+          "tags": [
+            "CritLarge",
+            "ScrapperCrit_AoE"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -178,6 +184,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",
+          "tags": [
+            "CritSmall",
+            "ScrapperCrit_AoE"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -217,6 +227,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "FieryEmbrace"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -258,6 +271,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -297,6 +311,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -344,6 +359,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> player eq",
+          "tags": [
+            "CritPlayer",
+            "ScrapperCrit_AoE"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -383,6 +402,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "PVP_MainTargetOnly"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

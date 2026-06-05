@@ -46,8 +46,7 @@ export const DarkPit: Power = {
     },
     "damageBuff": {
       "scale": 0.018,
-      "table": "Ranged_Ones",
-      "perTarget": 0.018
+      "table": "Ranged_Ones"
     },
     "durations": {
       "damageBuff": 8.57

@@ -61,6 +61,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -100,6 +101,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kMeter source> 0 > enttype target> critter eq &&",
+          "tags": [
+            "StealthCrit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -139,6 +143,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> critter eq kMeter source> .9 < &&",
+          "tags": [
+            "ASTeamCrit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -181,6 +188,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> critter eq",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -225,6 +233,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -264,6 +273,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kMeter source> 0 > enttype target> player eq &&",
+          "tags": [
+            "StealthCrit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -303,6 +315,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -342,6 +355,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> player eq",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -418,6 +432,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

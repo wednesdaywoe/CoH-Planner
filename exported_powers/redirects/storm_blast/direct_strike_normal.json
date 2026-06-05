@@ -66,6 +66,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [
         "PVEOnly"
       ],
@@ -80,6 +81,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -145,6 +147,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq &&",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -184,6 +187,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch source> Class_Sentinel eq",
+          "tags": [
+            "SentCrit",
+            "SentCritST"
+          ],
           "flags": [
             "PVEOnly"
           ],
@@ -225,6 +232,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -269,6 +277,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [
         "PVPOnly"
       ],
@@ -283,6 +292,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -348,6 +358,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq &&",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -387,6 +398,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -463,6 +475,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Blaster eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -509,6 +522,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Blaster eq",
+      "tags": [
+        "Defiance"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -560,6 +576,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kLightningCat5 Source.Mode? !",
+      "tags": [
+        "IncreaseStormStrength"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 1,
@@ -636,6 +655,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -685,6 +705,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "StormBrewing"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -697,6 +720,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "StormBrewing"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 1,

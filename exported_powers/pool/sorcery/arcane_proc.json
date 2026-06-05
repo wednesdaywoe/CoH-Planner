@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "EndActivateClick target.EventCount> 0 > EndActivateInsp target.EventCount> 0 > + kArcaneBolt Source.Mode? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -59,6 +60,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "ArcanePower"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -139,6 +143,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "ArcanePower",
+            "ArcanePowerBoost"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

@@ -58,6 +58,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kSonicAtuneSelf Source.Mode?",
+      "tags": [
+        "SMAttune"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -70,6 +73,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -109,6 +113,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch source> Class_Stalker eq",
+          "tags": [
+            "Stalker"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -121,6 +128,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "enttype target> critter eq",
+              "tags": [
+                "SMAttune"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -160,6 +170,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "enttype target> player eq",
+              "tags": [
+                "SMAttune"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -213,6 +226,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch source> Class_Scrapper eq",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -225,6 +239,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",
+              "tags": [
+                "SMAttune"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -264,6 +281,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",
+              "tags": [
+                "SMAttune"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -303,6 +323,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "enttype target> player eq",
+              "tags": [
+                "SMAttune"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -344,6 +367,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "AttuneBonus"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

@@ -50,6 +50,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -172,6 +173,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "WetStatus"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -218,6 +222,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -259,6 +264,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 2 <=",
+      "tags": [
+        "TidalPower"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

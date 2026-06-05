@@ -57,6 +57,7 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -162,6 +163,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower? ! &&",
+      "tags": [
+        "PerfectionofBody"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -211,6 +215,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",
+      "tags": [
+        "PerfectionofBody"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -296,6 +303,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower? ||",
+      "tags": [
+        "PerfectionofBody"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -345,6 +355,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower?",
+      "tags": [
+        "PerfectionofBody"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -394,6 +407,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower? ! &&",
+      "tags": [
+        "PerfectionofMind"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -443,6 +459,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower?",
+      "tags": [
+        "PerfectionofMind"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -528,6 +547,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower? ||",
+      "tags": [
+        "PerfectionofMind"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -577,6 +599,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower?",
+      "tags": [
+        "PerfectionofMind"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -626,6 +651,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower? ! &&",
+      "tags": [
+        "PerfectionofSoul"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -675,6 +703,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower?",
+      "tags": [
+        "PerfectionofSoul"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -760,6 +791,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower? ||",
+      "tags": [
+        "PerfectionofSoul"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -809,6 +843,9 @@
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower?",
+      "tags": [
+        "PerfectionofSoul"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

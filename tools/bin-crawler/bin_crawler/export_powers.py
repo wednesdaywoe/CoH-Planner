@@ -176,6 +176,10 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
             'radius_inner': eg.radius_inner,
             'radius_outer': eg.radius_outer,
             'requires_expression': eg.requires_expression,
+            # Effect Tag(s) — the global-chance-mod bucket (Dual Pistols ammo
+            # tag groups, etc.). Captured so the converter can attribute
+            # tag-gated effects to their mode instead of folding into base.
+            'tags': getattr(eg, 'tags', []),
             'flags': eg.flags,
             'is_pvp': eg.is_pvp,
             'eval_flags': eg.eval_flags,

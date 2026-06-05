@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "type target> Rikti_Transponder_Armoured_Rikti_Boss_Soldier_HM eq type target> Rikti_Transponder_Armoured_Rikti_Mentalist_HM eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

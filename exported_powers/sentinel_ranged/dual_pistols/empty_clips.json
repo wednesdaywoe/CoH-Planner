@@ -67,6 +67,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -79,6 +80,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> critter eq",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -91,6 +93,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "Lethal"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -103,6 +108,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "Lethal"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -142,6 +150,9 @@
                       "radius_inner": -1.0,
                       "radius_outer": -1.0,
                       "requires_expression": "",
+                      "tags": [
+                        "Lethal"
+                      ],
                       "flags": [],
                       "is_pvp": "EITHER",
                       "eval_flags": 0,
@@ -181,6 +192,10 @@
                       "radius_inner": -1.0,
                       "radius_outer": -1.0,
                       "requires_expression": "",
+                      "tags": [
+                        "SentCrit",
+                        "SentCritAoE"
+                      ],
                       "flags": [],
                       "is_pvp": "EITHER",
                       "eval_flags": 0,
@@ -222,6 +237,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "LethalKB10"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -263,6 +281,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "FireDamage"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -275,6 +296,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "FireDamage"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -287,6 +311,9 @@
                       "radius_inner": -1.0,
                       "radius_outer": -1.0,
                       "requires_expression": "",
+                      "tags": [
+                        "FireDamage"
+                      ],
                       "flags": [],
                       "is_pvp": "EITHER",
                       "eval_flags": 0,
@@ -326,6 +353,10 @@
                       "radius_inner": -1.0,
                       "radius_outer": -1.0,
                       "requires_expression": "",
+                      "tags": [
+                        "SentCrit",
+                        "SentCritAoE"
+                      ],
                       "flags": [],
                       "is_pvp": "EITHER",
                       "eval_flags": 0,
@@ -367,6 +398,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "FireDamageDoT"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -411,6 +445,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "ColdDamage"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -482,6 +519,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "ColdDamage"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -521,6 +561,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "SentCrit",
+                    "SentCritAoE"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -562,6 +606,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "ToxicDamage"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -611,6 +658,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "ToxicDamage"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -650,6 +700,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "SentCrit",
+                    "SentCritAoE"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -693,6 +747,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> player eq",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -705,6 +760,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "Lethal"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -717,6 +775,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "Lethal"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -756,6 +817,9 @@
                       "radius_inner": -1.0,
                       "radius_outer": -1.0,
                       "requires_expression": "",
+                      "tags": [
+                        "Lethal"
+                      ],
                       "flags": [],
                       "is_pvp": "EITHER",
                       "eval_flags": 0,
@@ -795,6 +859,10 @@
                       "radius_inner": -1.0,
                       "radius_outer": -1.0,
                       "requires_expression": "",
+                      "tags": [
+                        "SentCrit",
+                        "SentCritAoE"
+                      ],
                       "flags": [],
                       "is_pvp": "EITHER",
                       "eval_flags": 0,
@@ -836,6 +904,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "LethalKB10"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -885,6 +956,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "FireDamage"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -897,6 +971,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "FireDamage"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -909,6 +986,9 @@
                       "radius_inner": -1.0,
                       "radius_outer": -1.0,
                       "requires_expression": "",
+                      "tags": [
+                        "FireDamage"
+                      ],
                       "flags": [],
                       "is_pvp": "EITHER",
                       "eval_flags": 0,
@@ -948,6 +1028,10 @@
                       "radius_inner": -1.0,
                       "radius_outer": -1.0,
                       "requires_expression": "",
+                      "tags": [
+                        "SentCrit",
+                        "SentCritAoE"
+                      ],
                       "flags": [],
                       "is_pvp": "EITHER",
                       "eval_flags": 0,
@@ -989,6 +1073,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "FireDamageDoT"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -1033,6 +1120,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "ColdDamage"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -1104,6 +1194,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "ColdDamage"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -1143,6 +1236,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "SentCrit",
+                    "SentCritAoE"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -1184,6 +1281,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "ToxicDamage"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -1233,6 +1333,9 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "ToxicDamage"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,
@@ -1272,6 +1375,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "",
+                  "tags": [
+                    "SentCrit",
+                    "SentCritAoE"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 0,

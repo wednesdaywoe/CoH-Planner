@@ -54,6 +54,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "cur.kHeld target> 0 > cur.kStun target> 0 > || cur.kSleep target> 0 > || cur.kImmobilize target> 0 > || cur.kConfused target> 0 > || cur.kTerrorized target> 0 > || target.isFriend? ! &&",
+      "tags": [
+        "ControlProc"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -66,6 +69,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Axp source.inVolume> Bxp source.inVolume> || ABxp source.inVolume> || Cxp source.inVolume> || Temporary_Powers.Temporary_Powers.Incarnate_Reward_Dark_Astoria source.ownPower? || kIncarnateRewards Source.Mode? ||",
+          "tags": [
+            "IncarnateContent"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -109,6 +115,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

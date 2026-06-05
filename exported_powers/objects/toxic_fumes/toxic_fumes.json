@@ -50,6 +50,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> Vahzilok eq group target> DecayingEidolons eq || !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

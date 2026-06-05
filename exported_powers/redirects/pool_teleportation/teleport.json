@@ -53,6 +53,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -125,6 +126,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "NoPhase"
+      ],
       "flags": [
         "PVPOnly"
       ],
@@ -176,6 +180,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "TeleHover"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -344,6 +351,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

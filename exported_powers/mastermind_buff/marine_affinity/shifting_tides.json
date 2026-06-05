@@ -61,6 +61,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! target.isFriend? ! && Redirects.Marine_Affinity.Shifting_Tides target.ownPower? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -109,6 +110,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -273,6 +275,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower?",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -315,6 +318,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! target.isFriend? ! && kShiftingTides target.mode? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -365,6 +369,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kWet target.mode? !",
+          "tags": [
+            "WetStatus"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -409,6 +416,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower? !",
+          "tags": [
+            "RisingTide"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

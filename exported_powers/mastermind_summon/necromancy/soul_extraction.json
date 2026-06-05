@@ -66,6 +66,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "MainTarget"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -108,6 +111,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "MastermindPets_Lich target.VillainName>",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -157,6 +161,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "MastermindPets_Skeletal_Warrior target.VillainName>",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -206,6 +211,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "MastermindPets_Zombie target.VillainName>",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

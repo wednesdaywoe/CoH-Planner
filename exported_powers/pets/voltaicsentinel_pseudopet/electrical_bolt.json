@@ -55,6 +55,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -120,6 +121,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kEndurance% target> 10 - 100 * 100 10 - / 0 100 minmax rand 100 * <",
+          "tags": [
+            "Zapping"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -185,6 +189,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source.owner> Class_Corruptor eq &&",
+          "tags": [
+            "Scourge"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -224,6 +231,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch source.owner> Class_Sentinel eq",
+          "tags": [
+            "SentCrit",
+            "SentCritST"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

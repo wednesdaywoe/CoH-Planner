@@ -61,6 +61,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype source> player eq target.isFriend? ! && PowerSetName power.base> Incarnate.Judgement eq ! && PowerSetName power.base> Incarnate.Ion_Judgement eq ! && activateperiod power.base> 0 == &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -73,6 +74,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> critter eq",
+          "tags": [
+            "Damage"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 4,
@@ -116,6 +120,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> player eq",
+          "tags": [
+            "Damage"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 4,

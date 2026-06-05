@@ -51,6 +51,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHeld source> 0 <= kStunned source> 0 <= && kSleep source> 0 <= &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

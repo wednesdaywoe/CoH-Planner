@@ -61,6 +61,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype source> player eq target.isFriend? ! && PowerSetName power.base> Incarnate.Judgement eq ! && PowerSetName power.base> Incarnate.Ion_Judgement eq ! && activateperiod power.base> 0 == &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -106,6 +107,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "@CustomFX *null* eq",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 8,
@@ -118,6 +120,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "Range power.base> 20 >",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 4,
@@ -161,6 +164,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq ||",
+                  "tags": [
+                    "CritSmall",
+                    "ScrapperCrit_ST"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 4,
@@ -204,6 +211,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",
+                  "tags": [
+                    "CritLarge",
+                    "ScrapperCrit_ST"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 4,
@@ -249,6 +260,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 4,
@@ -292,6 +304,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq ||",
+                  "tags": [
+                    "CritSmall",
+                    "ScrapperCrit_ST"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 4,
@@ -335,6 +351,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",
+                  "tags": [
+                    "CritLarge",
+                    "ScrapperCrit_ST"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 4,
@@ -382,6 +402,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "@CustomFX *null* eq !",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 8,
@@ -394,6 +415,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "Range power.base> 20 >",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 4,
@@ -437,6 +459,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq ||",
+                  "tags": [
+                    "CritSmall",
+                    "ScrapperCrit_ST"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 4,
@@ -480,6 +506,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",
+                  "tags": [
+                    "CritLarge",
+                    "ScrapperCrit_ST"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 4,
@@ -525,6 +555,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 4,
@@ -568,6 +599,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq ||",
+                  "tags": [
+                    "CritSmall",
+                    "ScrapperCrit_ST"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 4,
@@ -611,6 +646,10 @@
                   "radius_inner": -1.0,
                   "radius_outer": -1.0,
                   "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",
+                  "tags": [
+                    "CritLarge",
+                    "ScrapperCrit_ST"
+                  ],
                   "flags": [],
                   "is_pvp": "EITHER",
                   "eval_flags": 4,

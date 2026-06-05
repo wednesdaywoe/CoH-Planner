@@ -63,6 +63,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -75,6 +76,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -114,6 +116,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower?",
+          "tags": [
+            "Body"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -249,6 +254,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -302,6 +308,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower?",
+          "tags": [
+            "Mind"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -462,6 +471,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -515,6 +525,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower?",
+          "tags": [
+            "Soul"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -644,6 +657,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -697,6 +711,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -736,6 +751,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "FieryEmbrace"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -777,6 +795,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -789,6 +808,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -828,6 +848,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower?",
+          "tags": [
+            "Body"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -963,6 +986,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -1016,6 +1040,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower?",
+          "tags": [
+            "Mind"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -1176,6 +1203,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -1229,6 +1257,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower?",
+          "tags": [
+            "Soul"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -1358,6 +1389,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -1411,6 +1443,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -1462,6 +1495,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

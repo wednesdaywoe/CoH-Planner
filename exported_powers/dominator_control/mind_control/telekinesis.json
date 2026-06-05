@@ -64,6 +64,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq kHitPoints% target> 0 > &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -106,6 +107,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "Domination"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -150,6 +154,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq kHitPoints% target> 0 > &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -224,6 +229,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "Telekinesis"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -271,6 +279,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "distance 40 < kHitPoints% target> 0 > &&",
+          "tags": [
+            "Telekinesis"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -378,6 +389,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "distance 60 > kHitPoints% target> 0 > &&",
+          "tags": [
+            "Telekinesis"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -485,6 +499,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kHitPoints% target> 0 >",
+          "tags": [
+            "Telekinesis"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -536,6 +553,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kHitPoints% target> 0 >",
+          "tags": [
+            "Telekinesis"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -621,6 +641,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "Telekinesis"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -670,6 +693,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

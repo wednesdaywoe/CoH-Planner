@@ -62,6 +62,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -104,6 +105,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [
         "PVEOnly"
       ],
@@ -145,6 +147,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -184,6 +187,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -223,6 +227,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "SentCrit",
+            "SentCritAoE"
+          ],
           "flags": [
             "PVEOnly"
           ],
@@ -266,6 +274,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [
         "PVPOnly"
       ],
@@ -307,6 +316,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -319,6 +329,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -358,6 +369,10 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "SentCrit",
+                "SentCritST"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -397,6 +412,7 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 0,
@@ -438,6 +454,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -503,6 +520,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "SentCrit",
+            "SentCritAoE"
+          ],
           "flags": [
             "PVPOnly"
           ],
@@ -574,6 +595,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kLightningCat5 Source.Mode? !",
+      "tags": [
+        "IncreaseStormStrength"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 1,
@@ -650,6 +674,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -699,6 +724,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "StormBrewing"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -711,6 +739,9 @@
               "radius_inner": -1.0,
               "radius_outer": -1.0,
               "requires_expression": "",
+              "tags": [
+                "StormBrewing"
+              ],
               "flags": [],
               "is_pvp": "EITHER",
               "eval_flags": 1,

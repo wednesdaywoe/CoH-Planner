@@ -54,6 +54,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Axp source.inVolume> Bxp source.inVolume> || ABxp source.inVolume> || Cxp source.inVolume> || Temporary_Powers.Temporary_Powers.Incarnate_Reward_Dark_Astoria source.ownPower? || kIncarnateRewards Source.Mode? ||",
+      "tags": [
+        "IncarnateContent"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -66,6 +69,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "target.isFriend? ! PowerSetName power.base> Incarnate.Judgement eq ! && PowerSetName power.base> Incarnate.Ion_Judgement eq ! && activateperiod power.base> 0 == && enttype target> critter eq &&",
+          "tags": [
+            "Doublehit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 4,
@@ -109,6 +115,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "target.isFriend? ! PowerSetName power.base> Incarnate.Judgement eq ! && PowerSetName power.base> Incarnate.Ion_Judgement eq ! && activateperiod power.base> 0 == && enttype target> player eq &&",
+          "tags": [
+            "Doublehit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 4,
@@ -152,6 +161,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "target.isFriend? ! PowerSetName power.base> Incarnate.Judgement eq ! && PowerSetName power.base> Incarnate.Ion_Judgement eq ! && activateperiod power.base> 0 == ! &&",
+          "tags": [
+            "Doublehit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 4,
@@ -197,6 +209,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -209,6 +222,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "target.isFriend? ! PowerSetName power.base> Incarnate.Judgement eq ! && PowerSetName power.base> Incarnate.Ion_Judgement eq ! && activateperiod power.base> 0 == && enttype target> critter eq &&",
+          "tags": [
+            "Doublehit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 4,
@@ -252,6 +268,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "target.isFriend? ! PowerSetName power.base> Incarnate.Judgement eq ! && PowerSetName power.base> Incarnate.Ion_Judgement eq ! && activateperiod power.base> 0 == && enttype target> player eq &&",
+          "tags": [
+            "Doublehit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 4,
@@ -295,6 +314,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "target.isFriend? ! PowerSetName power.base> Incarnate.Judgement eq ! && PowerSetName power.base> Incarnate.Ion_Judgement eq ! && activateperiod power.base> 0 == ! &&",
+          "tags": [
+            "Doublehit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 4,

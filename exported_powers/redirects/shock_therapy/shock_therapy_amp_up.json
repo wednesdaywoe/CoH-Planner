@@ -54,6 +54,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "target.isFriend? ! PowerSetName power.base> Incarnate.Judgement eq ! && PowerSetName power.base> Incarnate.Ion_Judgement eq ! && activateperiod power.base> 0 == && enttype target> critter eq &&",
+      "tags": [
+        "GrantFriendlyDoom"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -103,6 +106,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> critter eq",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -145,6 +149,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> player eq",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -197,6 +202,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "target.isFriend? !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

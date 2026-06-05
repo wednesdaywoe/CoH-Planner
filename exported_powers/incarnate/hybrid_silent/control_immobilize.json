@@ -54,6 +54,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "target.isFriend? ! enttype target> critter eq &&",
+      "tags": [
+        "HybridCC"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -97,6 +100,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "target.isFriend? ! enttype target> player eq &&",
+      "tags": [
+        "HybridCC"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

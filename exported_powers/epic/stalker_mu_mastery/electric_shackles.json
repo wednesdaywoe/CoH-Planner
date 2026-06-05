@@ -63,6 +63,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -157,6 +158,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -283,6 +285,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -322,6 +325,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -364,6 +368,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Scrapper ==",
+      "tags": [
+        "ScrapperOnly"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -376,6 +383,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || ! arch source> Class_Scrapper == &&",
+          "tags": [
+            "CritLarge",
+            "ScrapperCrit_ST"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -415,6 +426,10 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || arch source> Class_Scrapper == &&",
+          "tags": [
+            "CritSmall",
+            "ScrapperCrit_ST"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -454,6 +469,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> player eq arch source> Class_Scrapper == &&",
+          "tags": [
+            "PvPCrit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -493,6 +511,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "FieryEmbrace"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -534,6 +555,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Stalker ==",
+      "tags": [
+        "StalkerOnly"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -546,6 +570,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "enttype target> critter eq kMeter source> .9 < &&",
+          "tags": [
+            "ASTeamCrit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -585,6 +612,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kMeter source> 0 > enttype target> critter eq &&",
+          "tags": [
+            "StealthCrit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -624,6 +654,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",
+          "tags": [
+            "PvPCrit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -663,6 +696,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kMeter source> 0 > enttype target> player eq &&",
+          "tags": [
+            "PvPStealthCrit"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

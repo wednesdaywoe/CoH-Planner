@@ -50,6 +50,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -115,6 +116,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -157,6 +159,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Redirects.Energy_Melee.Energy_Store source.ownPower?",
+      "tags": [
+        "EnergyRelease"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -235,6 +240,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "ScheduleA"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -288,6 +296,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "ScheduleB"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -345,6 +356,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kStunned target> 0 > Redirects.Energy_Melee.Energy_Store source.ownPower? ! &&",
+      "tags": [
+        "EnergyStore"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

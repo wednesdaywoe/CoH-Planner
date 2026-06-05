@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -231,6 +232,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -243,6 +245,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "Lieutenant level 23 or lower"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 1,
@@ -287,6 +292,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "Minion level 17 or lower but higher than 5"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 1,
@@ -331,6 +339,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "",
+          "tags": [
+            "Minion lvl 5 or lower"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 1,
@@ -377,6 +388,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [
         "PVEOnly"
       ],

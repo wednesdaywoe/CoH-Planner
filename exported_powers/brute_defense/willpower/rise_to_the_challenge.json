@@ -64,6 +64,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -116,6 +117,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [
         "PVEOnly"
       ],
@@ -191,6 +193,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [
         "PVPOnly"
       ],
@@ -266,6 +269,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "Taunt"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -278,6 +284,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Raid target.HasTag? ! enttype target> critter eq &&",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -321,6 +328,7 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",
+          "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 2,
@@ -366,6 +374,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "InherentTaunt"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

@@ -64,6 +64,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -129,6 +130,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",
+          "tags": [
+            "Zapping"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -226,6 +230,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -291,6 +296,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",
+          "tags": [
+            "Zapping"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -387,6 +395,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -431,6 +440,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Blaster_Ranged.Electrical_Blast.Tesla_Cage source.ownPower?",
+      "tags": [
+        "BuildStatic"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -518,6 +530,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "Defiance"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

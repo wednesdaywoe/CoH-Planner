@@ -669,6 +669,7 @@ def _parse_effect_group(r: BinReader) -> EffectGroup:
         flags=flags,
         is_pvp=is_pvp,
         eval_flags=eval_flags,
+        tags=tags,
         templates=templates,
         child_groups=child_groups,
     )

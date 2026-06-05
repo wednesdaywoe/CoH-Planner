@@ -63,6 +63,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",
+      "tags": [
+        "NormalDebuffGC"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -106,6 +109,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",
+      "tags": [
+        "NormalDebuffGC"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -181,6 +187,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",
+      "tags": [
+        "OffensiveAdaptationGC"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -224,6 +233,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",
+      "tags": [
+        "OffensiveAdaptationGC"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -299,6 +311,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq kRestedAdaptation Source.Mode? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -342,6 +355,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -431,6 +445,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -480,6 +495,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

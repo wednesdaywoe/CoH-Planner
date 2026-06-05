@@ -47,6 +47,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "Uniqueness"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -98,6 +101,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "0.0 source.TeamSize> 1 >",
+      "tags": [
+        "Uniqueness"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -149,6 +155,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "0.0 source.TeamSize> 2 >",
+      "tags": [
+        "Uniqueness"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -200,6 +209,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "0.0 source.TeamSize> 3 >",
+      "tags": [
+        "Uniqueness"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

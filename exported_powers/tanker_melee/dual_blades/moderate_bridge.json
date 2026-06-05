@@ -64,6 +64,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -103,6 +104,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -142,6 +144,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "FieryEmbrace"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -181,6 +186,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -222,6 +228,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -313,6 +320,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kDD_StatusMode_1 Source.Mode?",
+          "tags": [
+            "DB_Status2"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -383,6 +393,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kDD_DebuffMode_1 Source.Mode?",
+          "tags": [
+            "DB_Debuff2"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
@@ -453,6 +466,9 @@
           "radius_inner": -1.0,
           "radius_outer": -1.0,
           "requires_expression": "kDD_StatusMode_1 Source.Mode? ! kDD_DebuffMode_1 Source.Mode? ! ||",
+          "tags": [
+            "DB_BonusDoT1"
+          ],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,

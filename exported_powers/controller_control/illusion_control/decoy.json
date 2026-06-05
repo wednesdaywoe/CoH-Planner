@@ -57,6 +57,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "@CustomFX Mirror eq @CustomFX PhantomMirror eq || !",
+      "tags": [
+        "PhantomArmy"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 8,
@@ -204,6 +207,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "@CustomFX Mirror eq @CustomFX PhantomMirror eq ||",
+      "tags": [
+        "MirrorArmy"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 8,

@@ -55,6 +55,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "RestBuffs"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -136,6 +139,9 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [
+        "RestPenalties"
+      ],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
