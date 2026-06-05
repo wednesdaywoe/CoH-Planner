@@ -220,6 +220,24 @@ const SO_STAT_MAP: Record<string, string> = {
   'Run': 'Run Speed',
 };
 
+/**
+ * Resolve a stat key against one or more maps: exact match across all maps
+ * first, then a case-insensitive fallback. External tools titleCase stat
+ * names inconsistently ("Tohit_Buff" vs "ToHit_Buff", "EndMod" vs "Endmod"),
+ * so an exact-only lookup silently drops otherwise-valid enhancements.
+ */
+function lookupStat(key: string, ...maps: Record<string, string>[]): string | undefined {
+  for (const map of maps) {
+    if (map[key] !== undefined) return map[key];
+  }
+  const lower = key.toLowerCase();
+  for (const map of maps) {
+    const hit = Object.entries(map).find(([k]) => k.toLowerCase() === lower);
+    if (hit) return hit[1];
+  }
+  return undefined;
+}
+
 interface ParsedSO {
   /** The stat suffix after origin prefixes are stripped (e.g. "Accuracy", "Run"). */
   stat: string;
@@ -873,8 +891,7 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
   if (genericPrefix && !hasIOSetPieceSuffix(uid)) {
     const statPart = uid.slice(genericPrefix.length);
     // Case-insensitive lookup (external tool titleCase may differ: "Tohit_Buff" vs "ToHit_Buff")
-    const stat = GENERIC_STAT_MAP[statPart]
-      ?? Object.entries(GENERIC_STAT_MAP).find(([k]) => k.toLowerCase() === statPart.toLowerCase())?.[1];
+    const stat = lookupStat(statPart, GENERIC_STAT_MAP);
     if (stat) {
       const enhancement = createGenericIOEnhancement(
         stat as any,
@@ -896,7 +913,7 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
   // SOs/DOs have an origin prefix but no _[A-F] piece suffix.
   const soResult = parseSOEnhancement(uid);
   if (soResult !== null) {
-    const stat = SO_STAT_MAP[soResult.stat] ?? GENERIC_STAT_MAP[soResult.stat];
+    const stat = lookupStat(soResult.stat, SO_STAT_MAP, GENERIC_STAT_MAP);
     if (stat) {
       const enhancement = createOriginEnhancement(
         stat as any,
