@@ -76,24 +76,57 @@ export const Pistols: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
+  "conditionalEffects": [
+    {
+      "id": "lethalammo",
+      "label": "Standard Ammo",
+      "scope": "global",
+      "defaultActive": true,
+      "group": "swap-ammo",
+      "effects": {
+        "defenseDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 8
+        },
+        "buffDuration": 8
+      }
     },
-    "durations": {
-      "defenseDebuff": 8,
-      "rechargeDebuff": 8,
-      "damageDebuff": 5
+    {
+      "id": "cryoammunition",
+      "label": "Cryo Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.12,
+          "table": "Ranged_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 8
+        },
+        "buffDuration": 8
+      }
     },
-    "rechargeDebuff": {
-      "scale": 0.12,
-      "table": "Ranged_Slow"
-    },
-    "damageDebuff": {
-      "scale": 0.8,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "buffDuration": 8
-  }
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 0.8,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 5
+        },
+        "buffDuration": 5
+      }
+    }
+  ]
 };

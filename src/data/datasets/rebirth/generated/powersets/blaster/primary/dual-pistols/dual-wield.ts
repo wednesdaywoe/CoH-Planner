@@ -88,18 +88,8 @@ export const DualWield: Power = {
       "scale": 0.75,
       "table": "Ranged_Knockback"
     },
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
     "durations": {
-      "rechargeDebuff": 8,
-      "damageDebuff": 6,
       "damageBuff": 9.17
-    },
-    "damageDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Dam"
     },
     "damageBuff": {
       "scale": 0.11,
@@ -116,6 +106,42 @@ export const DualWield: Power = {
       "kind": "effect-proc",
       "chance": 0.25,
       "label": "Knockback"
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "cryoammunition",
+      "label": "Cryo Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.15,
+          "table": "Ranged_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 8
+        },
+        "buffDuration": 8
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 6
+        },
+        "buffDuration": 6
+      }
     }
   ]
 };

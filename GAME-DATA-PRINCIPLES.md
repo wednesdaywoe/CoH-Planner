@@ -133,7 +133,27 @@ committing.
 - Adding a universal field (e.g. `toggle_ignore`) touches ~every power JSON — a large but
   expected diff. Confirm the *only* non-field change is benign before committing.
 
-## 7. Determinism (committed `generated/` must be reproducible)
+## 7. Cross-server binary formats: HC Parse7 vs Rebirth/Thunderspy Parse6
+
+Two structurally different formats. **Design converter features key-based, not
+structure-based** — anything keyed off `Tag`s or the `EffectGroup` wrapper
+silently no-ops on Rebirth.
+
+- **HC = Parse7.** Effects are nested `EffectGroup`s carrying group-level `Tag`,
+  `chance`, `is_pvp`.
+- **Rebirth / Thunderspy = Parse6** (`_parse_effects_parse6`): **no `EffectGroup`
+  wrapper** — flat AttribMods, each wrapped in a *synthetic* single-template
+  group. So **no group-level `Tag`** (HC's tag capture comes back empty for
+  Rebirth), `chance` is derived from the template `tick_chance` (with a `0 → 1.0`
+  default that hides HC's chance-0 gating), and `is_pvp` is synthesized from the
+  `enttype` clause in the per-template requires.
+
+Both formats land the same effect **keys** in base, so attribute by key when a
+feature must work on both. Worked example: Dual Pistols Swap Ammo keys on
+`defenseDebuff`/`rechargeDebuff`/`damageDebuff`, not HC ammo `Tag`s — see the DP
+entry in [BIN PARSER GAPS.md](BIN%20PARSER%20GAPS.md).
+
+## 8. Determinism (committed `generated/` must be reproducible)
 
 `generated/` is committed and CI re-derives it (regen-diff guard). So converters must be
 deterministic across platforms:
@@ -143,7 +163,7 @@ deterministic across platforms:
 - Stale duplicate source files (e.g. `enervating__field.json` double-underscore) cause
   non-determinism and phantom duplicate powers — clean them up.
 
-## 8. Guard rails already in place
+## 9. Guard rails already in place
 
 - **regen-diff CI** (`.github/workflows/regen-diff.yml`): rebuilds `generated/` from
   committed `exported_powers/` and asserts byte-equality. Scoped to `generated/`; the
@@ -155,7 +175,7 @@ deterministic across platforms:
   `generated/` (what the guard checks).
 
   ## 9. Foe-facing effects are important, don't dismiss as lower value or less important than stat-enhancing effects
-  - **In CoH, debuffs are first-class power effects, and play a role in determining how players build their characters. Many attacks have debuff effects and users expect to see those effects displayed, even if its purely informational and doesn't materially affect the stats of their character. Dark Melee applies small amounts of -toHit to enemies, but they stack up. A player building for defense will likely want to account for that in determinding how much defense they need. If a small debuff componenent is missing from an attack, don't defer as a low-priorty.
+  - **In CoH, debuffs are first-class power effects, and play a role in determining how players build their characters. Many attacks have debuff effects and users expect to see those effects displayed, even if its purely informational and doesn't materially affect the stats of their character. Dark Melee applies small amounts of -toHit to enemies, but they stack up. A player building for defense will likely want to account for that in calculating how much defense they need. If a small debuff componenent is missing from an attack, don't defer as a low-priorty.
 
 ---
 

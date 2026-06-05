@@ -110,18 +110,44 @@ export const PiercingRounds: Power = {
       }
     },
     "durations": {
-      "resistanceDebuff": 10,
-      "rechargeDebuff": 8,
-      "damageDebuff": 6
-    },
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
-    "damageDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Dam"
+      "resistanceDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "cryoammunition",
+      "label": "Cryo Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.15,
+          "table": "Ranged_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 8
+        },
+        "buffDuration": 8
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 6
+        },
+        "buffDuration": 6
+      }
+    }
+  ]
 };

@@ -93,13 +93,7 @@ export const HailofBullets: Power = {
     },
     "durations": {
       "knockback": 3.5,
-      "rechargeDebuff": 10,
-      "defenseBuff": 5,
-      "damageDebuff": 8
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
+      "defenseBuff": 5
     },
     "defenseBuff": {
       "melee": {
@@ -115,10 +109,6 @@ export const HailofBullets: Power = {
         "table": "Ranged_Buff_Def"
       }
     },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
     "buffDuration": 10
   },
   "specialEffects": [
@@ -131,6 +121,42 @@ export const HailofBullets: Power = {
       "kind": "effect-proc",
       "chance": 0.10000000149011612,
       "label": "Knockback"
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "cryoammunition",
+      "label": "Cryo Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "rechargeDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "durations": {
+          "rechargeDebuff": 10
+        },
+        "buffDuration": 10
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 2,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 8
+        },
+        "buffDuration": 8
+      }
     }
   ]
 };
