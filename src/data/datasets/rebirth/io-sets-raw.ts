@@ -17490,12 +17490,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Damage",
+          "Heal",
+          "Absorb",
           "Endurance Modification",
-          "Healing",
           "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Endurance Modification/Healing/Mez/ToHit Buff",
+        "name": "Damage/Heal/Absorb/Endurance Modification/Mez/ToHit Buff",
         "num": 1,
         "proc": false,
         "unique": true
@@ -17503,12 +17504,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Damage",
+          "Heal",
+          "Absorb",
           "Recharge",
           "Endurance Modification",
-          "Healing",
           "Mez"
         ],
-        "name": "Damage/Recharge/Endurance Modification/Healing/Mez",
+        "name": "Damage/Heal/Absorb/Recharge/Endurance Modification/Mez",
         "num": 2,
         "proc": false,
         "unique": true
@@ -17527,12 +17529,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage",
           "Endurance",
+          "Heal",
+          "Absorb",
           "Endurance Modification",
-          "Healing",
           "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Endurance/Endurance Modification/Healing/Mez/ToHit Buff",
+        "name": "Damage/Endurance/Heal/Absorb/Endurance Modification/Mez/ToHit Buff",
         "num": 4,
         "proc": false,
         "unique": true
@@ -17541,13 +17544,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage",
           "Endurance",
+          "Heal",
+          "Absorb",
           "Recharge",
           "Endurance Modification",
-          "Healing",
           "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Endurance/Recharge/Endurance Modification/Healing/Mez/ToHit Buff",
+        "name": "Damage/Endurance/Heal/Absorb/Recharge/Endurance Modification/Mez/ToHit Buff",
         "num": 5,
         "proc": false,
         "unique": true
@@ -23886,12 +23890,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Damage",
+          "Heal",
+          "Absorb",
           "Endurance Modification",
-          "Healing",
           "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Endurance Modification/Healing/Mez/ToHit Buff",
+        "name": "Damage/Heal/Absorb/Endurance Modification/Mez/ToHit Buff",
         "num": 1,
         "proc": false,
         "unique": true
@@ -23899,12 +23904,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "aspects": [
           "Damage",
+          "Heal",
+          "Absorb",
           "Recharge",
           "Endurance Modification",
-          "Healing",
           "Mez"
         ],
-        "name": "Damage/Recharge/Endurance Modification/Healing/Mez",
+        "name": "Damage/Heal/Absorb/Recharge/Endurance Modification/Mez",
         "num": 2,
         "proc": false,
         "unique": true
@@ -23923,12 +23929,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage",
           "Endurance",
+          "Heal",
+          "Absorb",
           "Endurance Modification",
-          "Healing",
           "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Endurance/Endurance Modification/Healing/Mez/ToHit Buff",
+        "name": "Damage/Endurance/Heal/Absorb/Endurance Modification/Mez/ToHit Buff",
         "num": 4,
         "proc": false,
         "unique": true
@@ -23937,13 +23944,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage",
           "Endurance",
+          "Heal",
+          "Absorb",
           "Recharge",
           "Endurance Modification",
-          "Healing",
           "Mez",
           "ToHit Buff"
         ],
-        "name": "Damage/Endurance/Recharge/Endurance Modification/Healing/Mez/ToHit Buff",
+        "name": "Damage/Endurance/Heal/Absorb/Recharge/Endurance Modification/Mez/ToHit Buff",
         "num": 5,
         "proc": false,
         "unique": true

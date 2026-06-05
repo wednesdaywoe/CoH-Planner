@@ -41,60 +41,106 @@ Schedule A, same as `heal`). **Full test suite: 98/98 pass.**
 > `exported_powers/` are absent here. Relied on in-repo precedent (Triage + HamiOs)
 > + user confirmation. Worth a spot-check against the binary on the PC.
 
-### ⚠️ Regen will silently undo this — needs a PC fix
-`io-sets-raw.ts` is generated. A re-run of the generators drops Absorb again because
-their attrib→aspect maps have no `Absorb` entry:
-- `scripts/extract-rebirth-io-sets-v2.py` → `ATTRIB_TO_ASPECT` maps `HitPoints: 'Healing'` only (line ~244)
-- `scripts/convert-io-sets.js` (HC) reads the now-deleted `legacy/js/data/io-sets.js`
+### ✅ Regen-safety — RESOLVED on the PC (2026-06-05)
 
-**To fix properly on the PC (needs the binary):**
-1. Inspect a healing boost power's effect templates (e.g. Panacea's `Boosts.*` records)
-   and determine how Absorb is represented:
-   - **(a)** a distinct `Absorb` attrib (#21) alongside `HitPoints` → add `'Absorb': 'Absorb'` to `ATTRIB_TO_ASPECT`, OR
-   - **(b)** only `HitPoints` present and Absorb is implied → make the `HitPoints` mapping emit **both** `Heal` and `Absorb`.
-2. Force `Heal/Absorb` adjacency. `_sort_aspects_canonical` would otherwise alphabetize
-   to `Absorb/Heal`; add both to the canonical order right after each other (Heal then Absorb).
-3. Reconcile the label: generator emits `Healing`, hand data uses `Heal` — confirm which
-   the planner's `normalizeAspectName` expects (both map to `heal`, so functionally fine,
-   but keep names consistent with existing entries).
-4. Re-run regen, diff against this hand-edit to confirm parity.
+The laptop fear ("a regen silently drops Absorb") turned out **not** to fire for the
+9 hand-fixed healing sets, and the binary path is now fixed for everything else.
+Verified against the live bins on the PC:
 
-Until then: re-apply by hand, or with the scoped transform used this session
-(insert `"Absorb"` after each standalone `"Heal"` aspect line + after the `Heal`
-segment of the piece name, scoped to the 9 sets above).
+**Why the 9 healing sets are already safe**
+- `scripts/convert-io-sets.js` (HC) reads `legacy/js/data/io-sets.js`, which **no longer
+  exists** — the script can't run. HC's `io-sets-raw.ts` is effectively hand-maintained,
+  so nothing regenerates over the hand-fix.
+- `scripts/extract-rebirth-io-sets-v2.py` (Rebirth) **reuses HC's entry verbatim for any
+  set that exists on both servers** (`_load_hc_sets` → `out_sets[set_id] = dict(hc_entry)`).
+  All 9 healing sets are shared, so Rebirth copies HC's Absorb-correct data. Empirically:
+  re-running the extractor left the Absorb count unchanged (**83 → 83**, no Absorb lines
+  removed).
+
+**Binary verification of how Absorb is encoded** — it's **option (a)**: every healing
+piece carries a **distinct `Absorb` Strength attrib** alongside `HitPoints` (`Heal_Dmg`,
+`Regeneration`, `HitPoints`, `Absorb`, …). Confirmed on Panacea/Numina/Miracle/Doctored
+Wounds/Theft of Essence/etc. via the bin parser. The planner's two-aspect Heal/Absorb
+model matches the binary exactly.
+
+**Generator now future-proofed** (`extract-rebirth-io-sets-v2.py`):
+1. `ATTRIB_TO_ASPECT`: `HitPoints → 'Heal'` (was `'Healing'`) **and** added `'Absorb' → 'Absorb'`.
+2. `_ASPECT_CANONICAL_ORDER`: inserted `Heal`, `Absorb` between `Endurance` and `Recharge`
+   (Heal precedes Absorb) so names match HC's hand data ("Endurance/Heal/Absorb",
+   "Heal/Absorb/Recharge", "Accuracy/Endurance/Heal/Absorb").
+
+With these, the binary path **reproduces HC's healing-piece names exactly** (Heal_Dmg /
+Regeneration are intentionally unmapped, so the heal family collapses to a single `Heal`
+plus the real `Absorb`). So if HC IO sets are ever binary-sourced (Part 2 #1) or a
+healing set becomes Rebirth-only, the data stays correct automatically.
+
+**Bonus fix:** the generator change added Absorb to two **Rebirth-only** event sets the
+hand-fix never touched — `return_from_the_grave` / `superior_return_from_the_grave`
+(multi-aspect: now `Damage/Heal/Absorb/…` with the `Healing`→`Heal` label normalized).
+These carry the real `Absorb` attrib in the binary, so the addition is faithful.
+
+**Guard in CI:** `src/data/io-sets-heal-absorb.test.ts` asserts the invariant across BOTH
+datasets — every piece with `Heal` also has `Absorb`, immediately adjacent. Catches any
+future regression from a hand-edit or a regen. Full suite **101/101**.
+
+> One unrelated pre-existing drift surfaced during the regen: the Rebirth-only
+> `inexhaustibility` event set's single proc piece now parses as `name:"Empty", proc:false`
+> instead of the curated `name:"Inexhaustibility", proc:true`. Reverted that one piece to
+> keep this change focused; the lost-proc-marker parse is a separate bin-parser to-do.
 
 ---
 
 ## Part 2 — What other raw data still isn't binary-sourced
 
-Audit of `tools/bin-crawler/` export vs. what `src/data/` consumes. ✅ = binary-sourced
-and wired; ❌ = still legacy/hand-curated; ⚠️ = partial.
+_Re-audited on the PC against the live bins + `git ls-files`, 2026-06-05. The earlier
+"only powers are exported" hunch was too pessimistic — **more is committed than it
+looked** — but three real legacy hand-ports remain._
 
-| Data | Export emits? | Planner source | Status |
+The distinction that matters is **"reproducible on a machine WITHOUT the bins?"** —
+i.e. is the raw data committed to `exported_powers/` (the gitignored exception that IS
+checked in), or does the converter read `*.bin` directly (PC-only) / a deleted
+`legacy/js/data/*` file (un-reproducible)?
+
+### ✅ Already binary-sourced AND committed (reproducible anywhere)
+
+| Domain | Binary source | Committed export | Converter |
 |---|---|---|---|
-| Powers / powersets / categories | yes | `exported_powers/<cat>/<ps>/` | ✅ |
-| AT modifier tables (Melee/Ranged/AoE/Pet dmg, heal, etc.) | yes | `at-tables.ts` via `extract-at-tables.cjs` | ✅ |
-| Incarnate **powers** + effects | yes | `generated/incarnate-effects.ts` via `convert-incarnate-effects.cjs` | ✅ |
-| Pet entities | yes | `exported_powers/entities/` | ✅ |
-| **IO-set piece aspects + set-bonus values** | ⚠️ Rebirth only (`boostsets.json`); HC none | `io-sets-raw.ts` (legacy Mids/CoD2) | ❌ **biggest gap** |
-| **Non-IO enhancements** (Hamidon, origin SO/DO/TO base %) | no | `enhancements.ts` (legacy port) | ❌ |
-| Incarnate salvage / components / recipes (thread & empyrean costs) | no | `incarnate-salvage.ts` etc. (ported from CoH-Incarnate-Calculator) | ❌ |
-| Guardian AT tables (Rebirth-only AT) | n/a | `extract-at-tables.cjs` hardcodes `PLAYER_ARCHETYPES` w/o Guardian | ⚠️ Rebirth |
+| Powers / powersets / categories | `powers.bin` | `exported_powers/<cat>/<ps>/` | `convert-powerset.cjs` etc. |
+| **AT modifier tables** (Melee/Ranged/AoE/Pet dmg, Heal, hit_points…) | `classes.bin` | `exported_powers/tables/` (71 HC) + `rebirth/tables/` (59) — **committed** | `export_classes.py` → `extract-at-tables.cjs` |
+| Pet entities | entities | `exported_powers/entities/` | `export_entities.py` → `convert-pet-entities.cjs` |
+| Incarnate powers + effects | `powers.bin` | `exported_powers/incarnate/` | `convert-incarnate-effects.cjs` |
 
-### Priority gaps to close (each needs the PC binary)
-1. **IO-set aspects + bonuses → binary (HIGH).** This is the same family as the Heal/Absorb
-   bug: as long as `io-sets-raw.ts` is hand/legacy data, these inconsistencies keep recurring.
-   `_boostsets.py` already parses set metadata, piece refs (`Boosts.X.Y`) and bonus refs
-   (`Set_Bonus.X.Y`); `extract-rebirth-io-sets-v2.py` partially turns those into aspects +
-   bonus values for **Rebirth only**. Generalizing that to Homecoming (and getting Absorb
-   right per Part 1) would make the whole IO-set dataset binary-derived and self-healing.
-2. **Non-IO enhancement base values (MED).** Confirm whether HC stores SO/DO/TO/Hamidon
-   schedules in a bin table; if so, export to replace the legacy `enhancements.ts` constants.
-   (No binary source confirmed yet — needs investigation on PC.)
-3. **Guardian AT table (MED, Rebirth).** Add Guardian to the AT extraction allow-list if
+> So the AT **modifiers** ARE exported and committed; entities + incarnate too.
+
+### ❌/⚠️ Still legacy hand-ports — the real gaps
+
+| Domain | Why it's a gap | Binary source available? |
+|---|---|---|
+| **IO sets** (piece aspects + set bonuses) | HC `convert-io-sets.js` reads the **deleted** `legacy/js/data/io-sets.js` (dead). Rebirth `extract-rebirth-io-sets-v2.py` reads `boostsets.bin` **directly** (PC-only) and reuses HC's hand-data for shared sets. Nothing flows through a committed export. | **Yes — HC `boostsets.bin` present.** Generalizing the Rebirth extractor to HC is feasible now. |
+| **Archetype definitions** (`archetypes.ts`: baseHP, damageModifier, caps, inherents) | Legacy hand-port ("Migrated from `legacy/js/data/archetypes.js`"). The raw `classes.bin` IS exported to `tables/`, but `archetypes.ts` doesn't consume it — values are hand-typed and can silently drift from the game. | **Yes — `classes.bin` already exported to `tables/`.** Derivation, not new extraction. |
+| **Non-IO enhancements** (SO/DO/TO/Hamidon base schedules) | `enhancements.ts` legacy hand-port; **no exporter exists**. | Maybe — `origins.bin` present (candidate, unconfirmed). |
+| Incarnate salvage / components / recipes | `incarnate-salvage.ts` ported from CoH-Incarnate-Calculator | Unknown bin; rarely changes |
+| Guardian AT table (Rebirth-only AT) | `extract-at-tables.cjs` allow-list omits Guardian | `classes.bin` may carry it |
+
+### Prioritized backlog (when we pick this back up)
+
+1. **IO sets → binary, both servers (HIGH).** Same family as the Heal/Absorb bug — while
+   `io-sets-raw.ts` is hand/legacy, these keep recurring. HC `boostsets.bin` is present, the
+   Rebirth extractor already works (and now emits Heal/Absorb correctly per Part 1), and it
+   already reuses HC entries for shared sets. Generalizing it to HC retires the dead
+   `convert-io-sets.js` + the legacy hand-data and makes the whole IO-set dataset
+   self-healing. **Biggest win.**
+2. **Archetype defs → derive from committed `classes.bin`/`tables` (MED).** The planner's
+   core stat math (HP, damage, caps) currently rides on a legacy hand-port that can drift.
+   The raw data is already committed — this is wiring `archetypes.ts` to consume `tables/`
+   rather than a new extraction.
+3. **Non-IO enhancement base values (MED).** Investigate `origins.bin` for the
+   SO/DO/TO/Hamidon schedules; add an exporter + converter to replace the legacy constants.
+   Lower urgency — these are stable game constants.
+4. **Guardian AT table (MED, Rebirth).** Add Guardian to the AT extraction allow-list if
    `classes.bin` carries it.
-4. **Incarnate salvage/recipe costs (LOW).** Likely a crafting/recipe bin not yet explored;
-   may be fine to keep hand-curated since costs rarely change.
+5. **Incarnate salvage/recipe costs (LOW).** Likely a crafting/recipe bin not yet explored;
+   fine to keep hand-curated since costs rarely change.
 
 See [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md) for the running parser to-do log
 (an entry pointing here has been added).
