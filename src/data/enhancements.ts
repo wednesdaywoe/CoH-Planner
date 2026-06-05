@@ -78,6 +78,7 @@ export const HAMIDON_ENHANCEMENTS: HamidonRegistry = {
     name: 'Golgi Exposure',
     aspects: [
       { stat: 'Healing', value: 33.33 },
+      { stat: 'Absorb', value: 33.33 },
       { stat: 'EnduranceReduction', value: 33.33 },
     ],
   },

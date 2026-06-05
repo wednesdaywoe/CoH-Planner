@@ -6,6 +6,17 @@ with diagnoses and recommended fixes. Newest entries at top.
 
 ---NEW ISSUES---
 
+## ⬜ IO-set generators drop Absorb from Heal pieces (regen will undo hand-fix) — 2026-06-05
+
+Healing / Accurate-Healing enhancement pieces must list `Heal/Absorb` (separate
+diluting aspects), but the generators' attrib→aspect maps have no `Absorb`:
+`extract-rebirth-io-sets-v2.py` (`ATTRIB_TO_ASPECT`, `HitPoints: 'Healing'` only) and
+the deleted-legacy-backed `convert-io-sets.js`. The data was hand-fixed in
+`io-sets-raw.ts` (HC + Rebirth) + Golgi HamiO in `enhancements.ts`, but a regen drops it.
+Fix needs the PC binary — see full write-up + step list in
+[HEAL-ABSORB-AND-EXPORT-GAPS.md](HEAL-ABSORB-AND-EXPORT-GAPS.md) (also covers the broader
+"IO-set aspects/bonuses still legacy-sourced" gap).
+
 ## ✅ Offensive knockback was dropped from ALL attacks (FIXED 2026-06-04)
 
 Root cause of the kheldian "drops knockback" symptom: in `extractEffects`
