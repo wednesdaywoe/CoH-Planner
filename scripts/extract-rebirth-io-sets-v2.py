@@ -228,6 +228,25 @@ RESISTANCE_ATTRIBS = DAMAGE_ATTRIBS
 # enhancement-values.ts).
 MEZ_ATTRIBS = {'Held', 'Stunned', 'Sleep', 'Confused', 'Terrorized', 'Immobilized'}
 
+# Defense attribs — a Defense BUFF piece carries Base_Defense plus the typed +
+# positional defense scalars; a Defense DEBUFF piece carries Base_Defense alone.
+# Both collapse to a single aspect, distinguished by the set's EC* category
+# (verified against HC's hand-curated Aegis / Achilles' Heel / etc.).
+DEFENSE_ATTRIBS = {
+    'Base_Defense', 'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy',
+    'Negative_Energy', 'Psionic', 'Toxic', 'Melee', 'Ranged', 'Area',
+}
+DEFENSE_DEBUFF_CATEGORIES = {'ECDefenseDebuff', 'ECAccurateDefenseDebuff'}
+
+# Movement-speed attribs. A Slow set debuffs ALL movement, so its pieces carry
+# all three speeds → single "Slow" aspect. Travel sets buff one mode → Run /
+# Fly / Jump individually (JumpHeight rides along with JumpingSpeed).
+MOVEMENT_SPEED_ATTRIBS = {'RunningSpeed', 'FlyingSpeed', 'JumpingSpeed'}
+
+# ToHit is one binary attrib; the set category decides buff vs debuff label,
+# matching HC's hand data ("ToHit" for buff sets, "ToHit Debuff" for debuff).
+TOHIT_DEBUFF_CATEGORIES = {'ECToHitDeBuff', 'ECAccurateToHitDebuff'}
+
 # Map of bin attrib → planner aspect label (for boost pieces).
 ATTRIB_TO_ASPECT = {
     'Accuracy':           'Accuracy',
@@ -239,7 +258,7 @@ ATTRIB_TO_ASPECT = {
     'Held':               'Hold',
     'Sleep':              'Sleep',
     'Confused':           'Confuse',
-    'Terrorized':         'Fear',
+    'Terrorized':         'Terrorize',
     'Immobilized':        'Immobilize',
     'HitPoints':          'Heal',
     # In CoH every Heal-boosting enhancement also boosts Absorb, and the binary
@@ -250,9 +269,20 @@ ATTRIB_TO_ASPECT = {
     # piece looks like 1 aspect (Heal) and over-values, and a regen would strip
     # the Absorb the hand-data carries.
     'Absorb':             'Absorb',
-    'Endurance':          'Endurance Modification',
-    'ToHit':              'ToHit Buff',
+    'Endurance':          'EndMod',
     'DamageType':         'Damage',
+    # Travel-speed buffs (single mode). All three speeds present = a Slow set
+    # instead ('Slow'), handled in _collapse_aspects.
+    'RunningSpeed':       'Run',
+    'FlyingSpeed':        'Fly',
+    'JumpingSpeed':       'Jump',
+    'JumpHeight':         'Jump',
+    # Taunt/placate enhancement → Threat (Mocking Beratement, Perfect Zinger…).
+    'Taunt':              'Threat',
+    'Placate':            'Threat',
+    'Unknown(91)':        'InterruptTime',
+    # 'ToHit' is intentionally absent — mapped contextually in
+    # _collapse_aspects (buff vs debuff by set category).
     # Unknown indices we've seen in boost pieces — map to the most common
     # CoH boost-type meaning. These are heuristics; refine when the
     # binary parser maps them properly.
@@ -295,6 +325,24 @@ def _collapse_aspects(attribs: list[str], set_category: str = '') -> tuple[list[
         aspects.append('Mez')
         distinct -= MEZ_ATTRIBS
 
+    # Defense buff/debuff — Base_Defense marks a defense piece (buffs also carry
+    # the typed + positional scalars). One aspect, labelled by set category.
+    if 'Base_Defense' in distinct:
+        aspects.append('Defense Debuff' if set_category in DEFENSE_DEBUFF_CATEGORIES else 'Defense')
+        distinct -= DEFENSE_ATTRIBS
+
+    # Slow — a Slow set debuffs all movement, so all three speeds are present.
+    # (Single-mode travel buffs fall through to Run/Fly/Jump via the map below.)
+    if MOVEMENT_SPEED_ATTRIBS.issubset(distinct):
+        aspects.append('Slow')
+        distinct -= MOVEMENT_SPEED_ATTRIBS
+        distinct.discard('JumpHeight')
+
+    # ToHit — one binary attrib; the set category decides buff vs debuff label.
+    if 'ToHit' in distinct:
+        aspects.append('ToHit Debuff' if set_category in TOHIT_DEBUFF_CATEGORIES else 'ToHit')
+        distinct.discard('ToHit')
+
     for a in sorted(distinct):
         mapped = ATTRIB_TO_ASPECT.get(a)
         if mapped is None:
@@ -313,10 +361,24 @@ def _collapse_aspects(attribs: list[str], set_category: str = '') -> tuple[list[
 # `_collapse_aspects` so a piece carrying {Damage, Accuracy} surfaces
 # as "Accuracy/Damage" — matching how HC's hand-curated data names
 # them and how players reference them in Mids exports.
-# Heal/Absorb sit between Endurance and Recharge, and Heal precedes Absorb, to
-# match HC's hand-curated healing-piece names (e.g. "Endurance/Heal/Absorb",
-# "Heal/Absorb/Recharge", "Accuracy/Endurance/Heal/Absorb").
-_ASPECT_CANONICAL_ORDER = ['Accuracy', 'Damage', 'Damage Resistance', 'Endurance', 'Heal', 'Absorb', 'Recharge']
+# Full aspect ordering, derived from HC's hand-curated piece names (the order
+# players see in Mids exports). Recharge is always last; Accuracy first; the
+# "type" aspects (Damage/Resistance/Defense) and EndMod precede Endurance;
+# Heal/Absorb sit just after Endurance; mez/movement/utility aspects follow,
+# before Recharge. Any aspect NOT listed falls to the end alphabetically, so
+# this list must stay comprehensive.
+_ASPECT_CANONICAL_ORDER = [
+    'Accuracy', 'Damage', 'Damage Resistance', 'Defense', 'Defense Debuff',
+    'EndMod', 'Endurance', 'Heal', 'Absorb',
+    'Hold', 'Mez', 'Confuse', 'Immobilize',
+    'Knockback', 'KnockToKnockDown', 'Range',
+    'Recharge',
+    # HC's hand-naming places these AFTER Recharge (e.g. "Recharge/Stun",
+    # "Accuracy/Recharge/Sleep", "Endurance/Recharge/ToHit Debuff").
+    'Stun', 'Sleep', 'Terrorize', 'Fear',
+    'Run', 'Fly', 'Jump', 'Slow', 'Move Speed',
+    'Threat', 'ToHit', 'ToHit Debuff', 'ToHit Buff', 'Interrupt', 'InterruptTime',
+]
 
 
 def _sort_aspects_canonical(aspects: list[str]) -> list[str]:

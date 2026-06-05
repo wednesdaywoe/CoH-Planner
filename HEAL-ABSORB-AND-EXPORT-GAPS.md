@@ -124,7 +124,10 @@ checked in), or does the converter read `*.bin` directly (PC-only) / a deleted
 
 ### Prioritized backlog (when we pick this back up)
 
-1. **IO sets → binary, both servers (HIGH).** Same family as the Heal/Absorb bug — while
+1. **IO sets → binary, both servers (HIGH).** 🚧 **IN PROGRESS** — bin parser fixed + aspect
+   convergence at 88%; see **[HC-IO-SETS-BINARY-SOURCING.md](HC-IO-SETS-BINARY-SOURCING.md)**
+   for resume notes (uncommitted parser + extractor changes, remaining build-out).
+   Same family as the Heal/Absorb bug — while
    `io-sets-raw.ts` is hand/legacy, these keep recurring. HC `boostsets.bin` is present, the
    Rebirth extractor already works (and now emits Heal/Absorb correctly per Part 1), and it
    already reuses HC entries for shared sets. Generalizing it to HC retires the dead

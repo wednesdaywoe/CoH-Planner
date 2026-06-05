@@ -191,6 +191,77 @@ def _rarity_is_present(sub: Parse6BinReader) -> bool:
     return (0x41 <= first <= 0x5a) or (0x61 <= first <= 0x7a)
 
 
+def _parse_trailing_block(
+    sub,
+) -> tuple[list[BoostListEntry], list[BoostBonusEntry], int, int]:
+    """Parse the BoostLists (pieces) + Bonuses (set bonus tiers) + level data
+    that follow a boostset record's power list.
+
+    `sub` must be a reader positioned at the trailing block (i.e. just after
+    the allowed-powers list). The block uses inline pascal strings and the
+    SAME layout in both Parse6 (Rebirth) and Parse7 (HC), so both branches
+    share this code:
+
+        u4 bl_count
+        per boostlist: u4 block_size, [u4 boost_count, boost_count × string]
+        u4 bn_count
+        per bonus:     u4 block_size, [u4 unk, u4 min, u4 max, u4 unk,
+                                        u4 ap_count, ap_count × string]
+        u4 min_level, u4 max_level
+
+    Layout hand-decoded from Bonesnap's Parse6 record (2026-05-03) and
+    re-confirmed against HC's Parse7 records (Panacea/Aegis, 2026-06-05).
+    Each entry is length-prefixed via a u4 block_size, so unknown trailing
+    fields per block are skipped via sub_reader. Wrapped in try/except so any
+    oddball record (Inexhaustibility-style) still surfaces its header.
+
+    Returns ([], [], 0, 0) on any layout deviation.
+    """
+    boostlists: list[BoostListEntry] = []
+    bonuses: list[BoostBonusEntry] = []
+    min_level = 0
+    max_level = 0
+    try:
+        bl_count = sub.read_u4()
+        if bl_count <= 100:  # sanity bound — sets typically have 3-6
+            for _ in range(bl_count):
+                block_size = sub.read_u4()
+                bl_sub = sub.sub_reader(block_size)
+                boost_count = bl_sub.read_u4()
+                if 0 < boost_count <= 100:
+                    boosts = [bl_sub.read_string() for _ in range(boost_count)]
+                    boostlists.append(BoostListEntry(boosts=boosts))
+                sub.skip(block_size)
+            bn_count = sub.read_u4()
+            if bn_count <= 100:
+                for _ in range(bn_count):
+                    block_size = sub.read_u4()
+                    bn_sub = sub.sub_reader(block_size)
+                    bn_sub.read_u4()              # unknown leading u4 (always 0 in samples)
+                    min_b = bn_sub.read_u4()
+                    max_b = bn_sub.read_u4()
+                    bn_sub.read_u4()              # unknown (always 0 in samples)
+                    ap_count = bn_sub.read_u4()
+                    auto_powers: list[str] = []
+                    if 0 < ap_count <= 20:
+                        auto_powers = [bn_sub.read_string() for _ in range(ap_count)]
+                    bonuses.append(BoostBonusEntry(
+                        min_boosts=min_b, max_boosts=max_b,
+                        auto_powers=auto_powers,
+                    ))
+                    sub.skip(block_size)
+                # Trailing level data: u4 min_level, u4 max_level. Verified
+                # against Bonesnap (L10-25 in boostsets.def) — first u4 after
+                # the last bonus block holds MinLevel directly.
+                if sub.remaining() >= 8:
+                    min_level = sub.read_u4()
+                    max_level = sub.read_u4()
+    except (ValueError, IndexError):
+        # Layout deviation — keep what we got and continue.
+        pass
+    return boostlists, bonuses, min_level, max_level
+
+
 def _parse_boostsets_parse6(r: Parse6BinReader) -> list[BoostSetRecord]:
     """Parse6 (Rebirth/retail) layout. Same record schema as Parse7 but with
     inline pascal strings in place of string-table offsets.
@@ -234,54 +305,9 @@ def _parse_boostsets_parse6(r: Parse6BinReader) -> list[BoostSetRecord]:
         else:
             powers = [sub.read_string() for _ in range(power_count)]
 
-        # Trailing block: BoostLists (pieces) + Bonuses (set bonuses) +
-        # level data. Hand-decoded from Bonesnap's record (2026-05-03).
-        # Each BoostList and Bonus entry is length-prefixed via a u4
-        # block_size, so unknown trailing fields per block can be safely
-        # skipped via sub_reader. Wrapped in try/except so any oddball
-        # layout (Inexhaustibility-style) still surfaces the header.
-        boostlists: list[BoostListEntry] = []
-        bonuses: list[BoostBonusEntry] = []
-        min_level = 0
-        max_level = 0
-        try:
-            bl_count = sub.read_u4()
-            if bl_count <= 100:  # sanity bound — sets typically have 3-6
-                for _ in range(bl_count):
-                    block_size = sub.read_u4()
-                    bl_sub = sub.sub_reader(block_size)
-                    boost_count = bl_sub.read_u4()
-                    if 0 < boost_count <= 100:
-                        boosts = [bl_sub.read_string() for _ in range(boost_count)]
-                        boostlists.append(BoostListEntry(boosts=boosts))
-                    sub.skip(block_size)
-                bn_count = sub.read_u4()
-                if bn_count <= 100:
-                    for _ in range(bn_count):
-                        block_size = sub.read_u4()
-                        bn_sub = sub.sub_reader(block_size)
-                        bn_sub.read_u4()              # unknown leading u4 (always 0 in samples)
-                        min_b = bn_sub.read_u4()
-                        max_b = bn_sub.read_u4()
-                        bn_sub.read_u4()              # unknown (always 0 in samples)
-                        ap_count = bn_sub.read_u4()
-                        auto_powers: list[str] = []
-                        if 0 < ap_count <= 20:
-                            auto_powers = [bn_sub.read_string() for _ in range(ap_count)]
-                        bonuses.append(BoostBonusEntry(
-                            min_boosts=min_b, max_boosts=max_b,
-                            auto_powers=auto_powers,
-                        ))
-                        sub.skip(block_size)
-                # Trailing level data: u4 min_level, u4 max_level. Verified
-                # against Bonesnap (L10-25 in boostsets.def) — first u4 after
-                # the last bonus block holds MinLevel directly.
-                if sub.remaining() >= 8:
-                    min_level = sub.read_u4()
-                    max_level = sub.read_u4()
-        except (ValueError, IndexError):
-            # Layout deviation — keep what we got and continue.
-            pass
+        # Trailing block: BoostLists (pieces) + Bonuses + level data.
+        # Shared with the Parse7 (HC) branch via _parse_trailing_block.
+        boostlists, bonuses, min_level, max_level = _parse_trailing_block(sub)
 
         raw.append({
             "name": name,
@@ -449,7 +475,15 @@ def parse_boostsets(bin_path_or_data) -> list[BoostSetRecord]:
             power_count = struct.unpack_from("<I", buf, 24)[0]
             list_start  = 28
 
-        powers, _ = _parse_power_list(buf, list_start, power_count)
+        powers, pl_end = _parse_power_list(buf, list_start, power_count)
+        # BoostLists (pieces) + Bonuses + levels follow the power list in the
+        # same inline-string layout as Parse6, so parse them with the shared
+        # helper over a Parse6 reader on the remaining record bytes. (The
+        # Parse7 branch historically stopped here, which is why HC IO-set
+        # pieces/bonuses were never binary-sourced.)
+        boostlists, bonuses, min_level, max_level = _parse_trailing_block(
+            Parse6BinReader(buf[pl_end:])
+        )
         raw.append({
             "name": name,
             "display_name": display_name,
@@ -457,6 +491,10 @@ def parse_boostsets(bin_path_or_data) -> list[BoostSetRecord]:
             "rarity": rarity,
             "category": category,
             "powers": powers,
+            "boostlists": boostlists,
+            "bonuses": bonuses,
+            "min_level": min_level,
+            "max_level": max_level,
         })
 
     # Second pass: resolve purple categories by matching their allowed-powers
@@ -486,6 +524,10 @@ def parse_boostsets(bin_path_or_data) -> list[BoostSetRecord]:
             rarity=r["rarity"],
             category=r["category"],
             allowed_powers=r["powers"],
+            boostlists=r.get("boostlists", []),
+            bonuses=r.get("bonuses", []),
+            min_level=r.get("min_level", 0),
+            max_level=r.get("max_level", 0),
         )
         for r in raw
     ]
