@@ -15,7 +15,7 @@
 import type { Build, Accolade, ConditionalEffect, Enhancement, EnhancementStatType, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
-import { stanceGroupForConditionalId } from '@/data';
+import { stanceAdjusterOverrides } from '@/data';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
@@ -662,6 +662,10 @@ interface PowerWithToggle {
    *  carried from the powerset definition. The active ones are expanded into
    *  synthetic active-power contributions by `expandActiveConditionals`. */
   conditionalEffects?: ConditionalEffect[];
+  /** Selected stance sub-power for parents with mutually exclusive stances
+   *  (Bio Armor Adaptation, Staff Mastery) — the single source of truth for
+   *  which stance is active. Carried through from the stored power. */
+  activeSubPower?: string;
 }
 
 /** targetType values where the power cannot be cast on self — the buff goes
@@ -3090,11 +3094,11 @@ function expandActiveConditionals(
   mechanicAdjusters: Record<string, boolean>,
 ): PowerWithToggle[] {
   const synthetics: PowerWithToggle[] = [];
-  // Which power internalNames are in the build — used to gate "stance" mechanics
-  // (Bio Armor adaptation, Staff Perfection) on the enabling power actually
-  // being taken. Without it, a stale global toggle would apply mode bonuses to a
-  // build that can't access them.
-  const presentPowers = new Set(powers.map((p) => p.internalName));
+  // Stance conditionals (Bio Armor adaptation, Staff Perfection) read their
+  // on/off from `globalAdjusters` here, but the caller has already overlaid the
+  // build's `activeSubPower`-derived state onto that map (see
+  // `stanceAdjusterOverrides`), so the stance is build-scoped and the
+  // enabler-taken gate is implicit (no parent → no activeSubPower → off).
   for (const power of powers) {
     // The parent must itself be active for its gated effects to apply.
     const isAuto = power.powerType?.toLowerCase() === 'auto';
@@ -3108,11 +3112,6 @@ function expandActiveConditionals(
       if (AT_INHERENT_CONDITIONAL_IDS.has(c.id)) continue;
       // Damage-only conditionals affect attack output, not dashboard totals.
       if (!c.effects || Object.keys(c.effects).length === 0) continue;
-
-      // Stance gate: adaptation/perfection bonuses require the enabling power
-      // (Adaptation / Staff Mastery) to be taken. No enabler → no stance.
-      const stanceGroup = stanceGroupForConditionalId(c.id);
-      if (stanceGroup && !stanceGroup.requiredPowers.some((n) => presentPowers.has(n))) continue;
 
       const def = !!c.defaultActive;
       let on: boolean;
@@ -3323,9 +3322,17 @@ export function calculateCharacterTotals(
   // Applied with NO Alpha / NO strength buffs and no slots → unenhanced, because
   // these mode bonuses are IgnoreStrength ("special bonuses are unenhanceable").
   // Default-safe: no toggles selected → no synthetics → totals unchanged.
+  // Overlay the build's `activeSubPower`-derived stance state onto the UI
+  // global adjusters so Bio Armor adaptation / Staff Perfection are driven by
+  // the build-scoped stance (single source of truth), with `activeSubPower`
+  // winning over any stale UI toggle.
+  const effectiveGlobalAdjusters = {
+    ...(options?.globalAdjusters ?? {}),
+    ...stanceAdjusterOverrides(allPowers),
+  };
   const conditionalPowers = expandActiveConditionals(
     allPowers,
-    options?.globalAdjusters ?? {},
+    effectiveGlobalAdjusters,
     options?.mechanicAdjusters ?? {},
   );
   if (conditionalPowers.length > 0) {

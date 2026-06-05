@@ -2104,12 +2104,10 @@ export const useBuildStore = create<BuildStore>()(
         // exclusive with itself.
         const altRunPair = new Set(['Ninja_Run', 'Beast_Run']);
         const isAltRunToggle = altRunPair.has(powerName);
-        // Staff Fighting's three Form toggles (Form of the Body / Mind / Soul)
-        // are mutually exclusive in-game — you fight in one form at a time,
-        // each building its own Perfection track. Enabling one drops the other
-        // two (same pattern as the Kheldian forms above).
-        const staffForms = new Set(['Form_of_the_Body', 'Form_of_the_Mind', 'Form_of_the_Soul']);
-        const isStaffForm = staffForms.has(powerName);
+        // NOTE: Staff Fighting's forms (Body/Mind/Soul) are NOT toggle powers —
+        // they're non-slottable stance sub-powers selected via the parent's
+        // `activeSubPower` (single-valued, so mutual exclusivity is inherent).
+        // Same for Bio Armor adaptation stances. They never flow through here.
         const wasActive = found.power.isActive ?? false;
         const willBeActive = !wasActive;
 
@@ -2129,10 +2127,6 @@ export const useBuildStore = create<BuildStore>()(
               }
               // Ninja Run ↔ Beast Run mutual exclusivity.
               if (isAltRunToggle && p.internalName && p.internalName !== powerName && altRunPair.has(p.internalName)) {
-                return { ...p, isActive: false };
-              }
-              // Staff Fighting form mutual exclusivity (Body/Mind/Soul).
-              if (isStaffForm && p.internalName && p.internalName !== powerName && staffForms.has(p.internalName)) {
                 return { ...p, isActive: false };
               }
             }

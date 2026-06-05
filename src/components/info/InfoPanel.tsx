@@ -42,7 +42,7 @@ import { getActiveIncarnateDamageProcs, computeIncarnateProcContributions } from
 import { resolvePath } from '@/utils/paths';
 import { resolveKheldianRedirect } from '@/data/datasets/rebirth/kheldian-redirects';
 import { KHELDIAN_FORM_VARIANT_POWERS } from '@/data/datasets/rebirth/kheldian-form-variants';
-import { getPowerset } from '@/data';
+import { getPowerset, stanceAdjusterOverrides } from '@/data';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
 import { MechanicAdjusters } from './MechanicAdjusters';
 import { DamageBlock } from './DamageBlock';
@@ -443,15 +443,26 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const globalAdjusters = useUIStore((s) => s.globalAdjusters);
   const conditionalMerge = useMemo(() => {
     if (!snipeAdjustedPower) return { power: snipeAdjustedPower, extraInstances: {} };
+    // Overlay the build's `activeSubPower`-derived stance state so the merge
+    // reflects the selected Bio Armor adaptation / Staff form (build-scoped),
+    // matching the dashboard calc. activeSubPower wins over stale UI toggles.
+    const stancePowers: { internalName: string; activeSubPower?: string }[] = [];
+    const addStance = (powers?: { internalName: string; activeSubPower?: string }[]) =>
+      powers?.forEach((p) => stancePowers.push({ internalName: p.internalName, activeSubPower: p.activeSubPower }));
+    addStance(build.primary?.powers);
+    addStance(build.secondary?.powers);
+    build.pools?.forEach((pool) => addStance(pool.powers));
+    addStance(build.epicPool?.powers);
+    const effectiveGlobalAdjusters = { ...globalAdjusters, ...stanceAdjusterOverrides(stancePowers) };
     const active = selectActiveConditionals(
       snipeAdjustedPower,
       mechanicAdjusters,
-      globalAdjusters,
+      effectiveGlobalAdjusters,
       { dominationActive },
     );
     if (active.length === 0) return { power: snipeAdjustedPower, extraInstances: {} };
     return applyActiveConditionals(snipeAdjustedPower, active);
-  }, [snipeAdjustedPower, mechanicAdjusters, globalAdjusters, dominationActive]);
+  }, [snipeAdjustedPower, mechanicAdjusters, globalAdjusters, dominationActive, build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
   const effectivePower = conditionalMerge.power;
   const extraInstances = conditionalMerge.extraInstances;
 

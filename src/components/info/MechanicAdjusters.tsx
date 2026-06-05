@@ -28,12 +28,12 @@ import {
   useGlobalAdjuster,
 } from '@/stores';
 import {
-  ADAPTATION_MODES,
-  ADAPTATION_MODE_IDS,
-  isAdaptationModeId,
+  STANCE_GROUPS,
+  findStanceParent,
+  activeStanceOptionId,
   stanceGroupForConditionalId,
-  buildHasStanceEnabler,
 } from '@/data';
+import type { StanceGroup, StancePowerLike } from '@/data';
 import {
   AT_INHERENT_CONDITIONAL_IDS,
   describeAdjusterContribution,
@@ -45,49 +45,56 @@ interface MechanicAdjustersProps {
 }
 
 export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
-  // Power internalNames in the build — used to gate "stance" conditionals
-  // (Bio Armor adaptation, Staff Perfection) on the enabling power being taken.
+  // All build powers (flat) — used to resolve the stance parent (Adaptation /
+  // Staff Mastery) and read its `activeSubPower`, the single source of truth
+  // for which stance is active.
   const build = useBuildStore((s) => s.build);
-  const presentPowerNames = useMemo(() => {
-    const names = new Set<string>();
-    const add = (powers?: { internalName: string }[]) => powers?.forEach((p) => names.add(p.internalName));
+  const buildPowers = useMemo(() => {
+    const out: StancePowerLike[] = [];
+    const add = (powers?: { internalName: string; activeSubPower?: string }[]) =>
+      powers?.forEach((p) => out.push({ internalName: p.internalName, activeSubPower: p.activeSubPower }));
     add(build.primary?.powers);
     add(build.secondary?.powers);
     build.pools?.forEach((pool) => add(pool.powers));
     add(build.epicPool?.powers);
-    return names;
+    return out;
   }, [build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
 
   const conditional = power.conditionalEffects;
   if (!conditional || conditional.length === 0) return null;
 
-  // Drop two classes of conditionals:
-  //  - AT-inherent mechanics (Domination, etc.) — already controlled by the
-  //    Header's dashboard; the merger reads that existing state for these ids.
-  //  - Stance options (adaptation / perfection) whose enabling power isn't taken
-  //    — without Adaptation / Staff Mastery the mechanic isn't available, so the
-  //    selector would be a no-op (and the dashboard calc already ignores it).
-  const surfaceable = conditional.filter((c) => {
-    if (AT_INHERENT_CONDITIONAL_IDS.has(c.id)) return false;
-    const stanceGroup = stanceGroupForConditionalId(c.id);
-    if (stanceGroup && !buildHasStanceEnabler(stanceGroup, presentPowerNames)) return false;
-    return true;
-  });
+  // AT-inherent mechanics (Domination, etc.) are already controlled by the
+  // Header's dashboard — the merger reads that existing state for these ids.
+  const surfaceable = conditional.filter((c) => !AT_INHERENT_CONDITIONAL_IDS.has(c.id));
   if (surfaceable.length === 0) return null;
 
-  // Bio Armor adaptation modes are pulled out first and rendered as one
-  // canonical 3-mode selector (Defensive / Offensive / Efficient) driven by the
-  // app-side registry — regardless of how many modes *this* power happens to
-  // carry. Bio Armor spreads the modes one-or-two per power (DNA Siphon only
-  // gates Offensive; Environmental Modification gates Defensive + Offensive),
-  // but the stance is a global caster state, so every Bio Armor power should
-  // offer the same complete picker. See `@/data/adaptation-modes`.
-  const adaptationEntries = surfaceable.filter((c) => isAdaptationModeId(c.id));
-  const rest = surfaceable.filter((c) => !isAdaptationModeId(c.id));
+  // Pull out stance options (Bio Armor adaptation, Staff Perfection) and route
+  // them to a single canonical picker per stance group, driven by the parent's
+  // `activeSubPower`. The picker always offers the full set of options from the
+  // registry (a power may only carry some), and is hidden entirely when the
+  // enabling parent isn't in the build (no Adaptation / Staff Mastery → no
+  // stance). Each group's entries on THIS power are kept for contribution hints.
+  const stanceEntries = new Map<string, ConditionalEffect[]>();
+  const rest: ConditionalEffect[] = [];
+  for (const c of surfaceable) {
+    const group = stanceGroupForConditionalId(c.id);
+    if (group) {
+      const arr = stanceEntries.get(group.key) ?? [];
+      arr.push(c);
+      stanceEntries.set(group.key, arr);
+    } else {
+      rest.push(c);
+    }
+  }
+  const stanceRenders = STANCE_GROUPS.map((group) => {
+    const entries = stanceEntries.get(group.key);
+    if (!entries || entries.length === 0) return null;
+    const parent = findStanceParent(buildPowers, group);
+    if (!parent) return null; // enabling parent not taken → stance unavailable
+    return { group, parent, entries };
+  }).filter((r): r is { group: StanceGroup; parent: StancePowerLike; entries: ConditionalEffect[] } => r !== null);
 
-  // Partition the remaining entries into groups (by `group` key) and
-  // singletons. Within a group, entries render as a radio set; singletons
-  // render as independent checkboxes.
+  // Partition the remaining (non-stance) entries into groups and singletons.
   const groups = new Map<string, ConditionalEffect[]>();
   const singletons: ConditionalEffect[] = [];
   for (const c of rest) {
@@ -100,12 +107,20 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
     }
   }
 
+  if (stanceRenders.length === 0 && groups.size === 0 && singletons.length === 0) return null;
+
   return (
     <div className="bg-slate-800/40 rounded p-2">
       <div className="flex flex-col gap-1">
-        {adaptationEntries.length > 0 && (
-          <AdaptationModeGroup power={power} entries={adaptationEntries} />
-        )}
+        {stanceRenders.map(({ group, parent, entries }) => (
+          <StanceModeGroup
+            key={group.key}
+            power={power}
+            group={group}
+            parent={parent}
+            entries={entries}
+          />
+        ))}
         {Array.from(groups.entries()).map(([groupId, members]) => (
           <RadioGroup
             key={groupId}
@@ -127,47 +142,56 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
 }
 
 // ----------------------------------------------------------------------
-// Bio Armor Adaptation — always renders the full Defensive/Offensive/
-// Efficient picker from the registry, even if `entries` only carries some
-// of the modes. Selection is global + mutually exclusive across every Bio
-// Armor power (and the dashboard calc) via `setGlobalAdjusterGroup` keyed by
-// the registry's `ADAPTATION_MODE_IDS`.
+// Stance picker (Bio Armor Adaptation, Staff Fighting Form). Always renders
+// the full set of stances from the registry, even if `entries` only carries
+// some. Selection is the parent power's `activeSubPower` (build-scoped, shared
+// with the power-list stance chips and the header selector), written via
+// `setActiveSubPower`. Mutually exclusive by construction (one activeSubPower).
 // ----------------------------------------------------------------------
 
-function AdaptationModeGroup({ power, entries }: { power: Power; entries: ConditionalEffect[] }) {
-  const globalAdjusters = useUIStore((s) => s.globalAdjusters);
-  const setGlobalAdjusterGroup = useUIStore((s) => s.setGlobalAdjusterGroup);
+function StanceModeGroup({
+  power,
+  group,
+  parent,
+  entries,
+}: {
+  power: Power;
+  group: StanceGroup;
+  parent: StancePowerLike;
+  entries: ConditionalEffect[];
+}) {
+  const setActiveSubPower = useBuildStore((s) => s.setActiveSubPower);
   const byId = new Map(entries.map((e) => [e.id, e] as const));
-  const activeMode = ADAPTATION_MODES.find((m) => globalAdjusters[m.id]);
-  const activeId = activeMode?.id ?? null;
+  const activeId = activeStanceOptionId([parent], group);
 
   return (
     <div className="space-y-0.5">
-      <GroupHeader label="Adaptation" isGlobal />
-      {ADAPTATION_MODES.map((mode) => {
-        // Use this power's real conditional entry when it carries this mode
-        // (so the contribution hint reflects what THIS power actually grants);
-        // otherwise a minimal placeholder so the row still renders.
-        const entry = byId.get(mode.id) ?? {
-          id: mode.id,
-          label: mode.label,
+      <GroupHeader label={group.headerLabel} isGlobal />
+      {group.options.map((option) => {
+        // Use this power's real conditional entry when it carries this stance
+        // (so the contribution hint reflects what THIS power grants); otherwise
+        // a minimal placeholder so the row still renders.
+        const entry = byId.get(option.id) ?? {
+          id: option.id,
+          label: option.label,
           scope: 'global' as const,
-          group: 'adaptation',
+          group: group.key,
         };
+        const active = activeId === option.id;
         return (
           <RadioRow
-            key={mode.id}
+            key={option.id}
             power={power}
             entry={entry}
-            labelOverride={mode.label}
-            name={`group-${power.internalName}-adaptation`}
-            checked={activeId === mode.id}
-            onSelect={() => setGlobalAdjusterGroup(mode.id, ADAPTATION_MODE_IDS)}
+            labelOverride={option.label}
+            name={`stance-${power.internalName}-${group.key}`}
+            checked={active}
+            onSelect={() => setActiveSubPower(parent.internalName, active ? null : option.subPower)}
           />
         );
       })}
       {activeId !== null && (
-        <ClearButton onClick={() => setGlobalAdjusterGroup(null, ADAPTATION_MODE_IDS)} />
+        <ClearButton onClick={() => setActiveSubPower(parent.internalName, null)} />
       )}
     </div>
   );

@@ -329,26 +329,18 @@ export type { PowerLookupResult } from './power-lookup';
 // Stat/effect color palette (single source of truth)
 export { STAT_COLORS } from './stat-colors';
 
-// Bio Armor Adaptation mode registry (single source of truth for the mutually
-// exclusive Defensive/Offensive/Efficient stances and their cross-power gating)
-export {
-  ADAPTATION_MODES,
-  ADAPTATION_MODE_IDS,
-  isAdaptationModeId,
-  getActiveAdaptationModeId,
-} from './adaptation-modes';
-export type { AdaptationMode } from './adaptation-modes';
-
 // Global "stance" selector descriptors (Bio Armor Adaptation + Staff Fighting
 // Form/Perfection) — one shared header control gives them identical treatment.
+// The stance lives in the parent's `activeSubPower` (build-scoped); these are
+// the descriptors + derive helpers all consumers share.
 export {
   STANCE_GROUPS,
-  STAFF_PERFECTION_MODES,
-  stanceOptionIds,
   stanceGroupForConditionalId,
-  buildHasStanceEnabler,
+  findStanceParent,
+  activeStanceOptionId,
+  stanceAdjusterOverrides,
 } from './stance-groups';
-export type { StanceGroup, StanceOption } from './stance-groups';
+export type { StanceGroup, StanceOption, StancePowerLike } from './stance-groups';
 
 // Effect registry for data-driven power effect display
 export {

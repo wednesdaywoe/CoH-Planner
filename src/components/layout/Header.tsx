@@ -10,7 +10,7 @@ import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import { useHistoryStore } from '@/stores/historyStore';
 import { useOnboardingStore, useOnboardingCurrentStep } from '@/stores/onboardingStore';
 import { supabase } from '@/lib/supabase';
-import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel, STANCE_GROUPS, stanceOptionIds } from '@/data';
+import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES, getPowerPicksAtLevel, getTotalSlotsAtLevel, getNextGrantLevel, getProgressionLevel, getPicksGrantedAtLevel, getSlotsGrantedAtLevel, STANCE_GROUPS, findStanceParent, activeStanceOptionId } from '@/data';
 import type { StanceGroup } from '@/data';
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
@@ -1437,38 +1437,30 @@ function KheldianFormSelector() {
 
 /**
  * Generic global "stance" selector (Bio Armor Adaptation, Staff Fighting Form).
- * Shows only when the build's primary or secondary powerset carries one of the
- * group's gated conditionals. Selecting an option flips the shared
- * `globalAdjusters` state (mutually exclusive via the group's option ids), which
- * drives every gated power's bonuses AND — for armor toggles — the dashboard
- * totals (see character-totals `expandActiveConditionals`). Re-clicking the
- * active option clears it (no stance). One descriptor per set keeps Bio Armor
- * and Staff visually and behaviorally identical (see `@/data/stance-groups`).
+ * Shows only when the build has taken the enabling parent power (Adaptation /
+ * Evolution / Staff Mastery). The stance lives in that parent's `activeSubPower`
+ * (build-scoped, persisted) — the single source of truth shared with the power-
+ * list stance chips, the InfoPanel picker, and the dashboard calc. Selecting an
+ * option writes `setActiveSubPower`; re-clicking the active one clears it. One
+ * descriptor per set keeps Bio Armor and Staff identical (see `@/data/stance-groups`).
  */
 function StanceSelector({ group }: { group: StanceGroup }) {
   const build = useBuildStore((s) => s.build);
-  const globalAdjusters = useUIStore((s) => s.globalAdjusters);
-  const setGlobalAdjusterGroup = useUIStore((s) => s.setGlobalAdjusterGroup);
+  const setActiveSubPower = useBuildStore((s) => s.setActiveSubPower);
 
-  const optionIds = stanceOptionIds(group);
-
-  // Only available once the build has actually taken the enabling power that
-  // grants the stances (Adaptation / Staff Mastery). Those parents auto-grant
-  // the stance/form sub-powers listed in `requiredPowers`, so we look for them
-  // among the build's selected primary/secondary powers.
-  const hasStance = useMemo(() => {
-    const required = new Set(group.requiredPowers);
-    const taken =
-      build.primary?.powers?.some((p) => required.has(p.internalName)) ||
-      build.secondary?.powers?.some((p) => required.has(p.internalName));
-    return !!taken;
-    // requiredPowers is derived from the static `group` prop, so it's stable.
+  // The enabling parent in the build (primary or secondary), if taken.
+  const parent = useMemo(() => {
+    return (
+      findStanceParent(build.primary?.powers ?? [], group) ??
+      findStanceParent(build.secondary?.powers ?? [], group)
+    );
+    // group.parents is static; recompute only when the build's powers change.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [build.primary?.powers, build.secondary?.powers, group.key]);
 
-  if (!hasStance) return null;
+  if (!parent) return null;
 
-  const activeId = group.options.find((o) => globalAdjusters[o.id])?.id ?? null;
+  const activeId = activeStanceOptionId([parent], group);
 
   return (
     <Tooltip content={group.tooltip}>
@@ -1480,7 +1472,7 @@ function StanceSelector({ group }: { group: StanceGroup }) {
             <button
               key={option.id}
               type="button"
-              onClick={() => setGlobalAdjusterGroup(active ? null : option.id, optionIds)}
+              onClick={() => setActiveSubPower(parent.internalName, active ? null : option.subPower)}
               title={`${option.label}${active ? ' — active (click to turn off)' : ''}`}
               className={`px-2 py-0.5 text-xs rounded border transition-colors ${
                 active
