@@ -1,10 +1,46 @@
-# HC IO-set binary sourcing — resume notes
+# HC IO-set binary sourcing — ✅ COMPLETE (2026-06-05)
 
-_In-progress as of 2026-06-05. Closes Part 2 #1 of [HEAL-ABSORB-AND-EXPORT-GAPS.md](HEAL-ABSORB-AND-EXPORT-GAPS.md):
-make Homecoming's `io-sets-raw.ts` binary-derived from `boostsets.bin`, retiring the
-dead `convert-io-sets.js` + the legacy hand-data._
+_Closes Part 2 #1 of [HEAL-ABSORB-AND-EXPORT-GAPS.md](HEAL-ABSORB-AND-EXPORT-GAPS.md):
+both HC and Rebirth `io-sets-raw.ts` are now binary-derived from `boostsets.bin` +
+`powers.bin`; the dead `convert-io-sets.js` and superseded `extract-rebirth-io-sets.cjs`
+are retired. Durable mechanics live in [GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md) §11._
 
-## TL;DR status
+## What shipped (beyond the original "88% piece aspects" plan)
+
+Verifying the data (per GAME-DATA-PRINCIPLES §2) surfaced that the resume plan's premise —
+"pieces 88%, bonuses correct, just parameterize + override" — was too optimistic on BOTH
+axes; the prior trial only compared aspect *sets* and bonus tier *counts*, never bonus
+keys/values or effective aspect counts. The full fix:
+
+1. **Set bonuses, rewritten (the part that was actually wrong).** Canonical planner stat
+   keys (`damage_resistance_(cold)`, `maximum_hitpoints`, `mez_resistance_(all)`, …) — the
+   binary's `cold_resistance`/`maxhp`/per-type-mez keys were silently dropped by the calc.
+   Correct per-attrib value scaling (damage ×250, max HP ×10, max end ×1, else ×100) — the
+   flat `×100` over-valued max HP 10× and under-valued damage. Paired-stat de-dup
+   (planner re-pairs S/L, F/C, E/N, P/T + recharge-debuff↔slow → emit one member). All-mez
+   / all-damage / all-resistance family collapses. **Fixed ≈196 silently-dropped bonus
+   entries on Rebirth-only sets.** Validated tier-by-tier vs the trusted HC hand-data: only
+   diffs are 20 damage display-rounding fixes (1.5→1.525, the true game value) + 1 Aegis
+   psi/tox de-dup (hand double-counted).
+2. **Piece effective-aspect count, derived from the enhancement scale.** The binary stores
+   the diluted magnitude (`scale = multiAspectModifier(count) × rarity`); inverting it gives
+   the authoritative `totalAspects`, fixing the 62 ATO/purple "#6" proc pieces and the 14
+   global pieces (LotG +Recharge = 2 aspects, confirmed by scale) that name/aspect-list
+   counting got wrong. Proc detection via chance/ppm groups; negative-scale Strength
+   templates excluded as proc debuffs (removed spurious Slow/Knockback). Result: 0 aspect-set
+   diffs, 0 aspect-count regressions vs HC hand-data.
+3. **Parameterized** `extract-rebirth-io-sets-v2.py` for `--dataset homecoming|rebirth`
+   (`build_sets` + per-dataset override passes). HC targeted overrides: cupids_crush /
+   overwhelming_force whole-set, unique-global + PvP set bonuses (hand-sourced), 4 travel/
+   KB piece-aspect fixes; icons preserved from the prior curated file.
+4. Retired the dead converters; added `io-sets-bonus-keys.test.ts`. Full suite green
+   (tsc + 110 vitest).
+
+_Original in-progress notes preserved below for history._
+
+---
+
+## (historical) TL;DR status
 
 The hard part is **done and verified-safe**: the bin parser now reads HC's IO-set
 pieces+bonuses, and the extractor's aspect logic is converged to **88% exact-match**

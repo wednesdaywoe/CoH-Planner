@@ -205,6 +205,45 @@ trap isn't forgetting debuffs matter — it's quietly down-ranking a gap because
 low-priority. (Radiation Infection does *nothing but* debuff and is top-tier.)
 Prefer the principled root fix — capture a dropped field (§1) — over a heuristic.
 
+## 11. IO sets: bonus values and piece dilution are derivable from the binary
+
+Both servers' `io-sets-raw.ts` are now generated from `boostsets.bin` + `powers.bin`
+by `scripts/extract-rebirth-io-sets-v2.py --dataset <id>` (the old
+`convert-io-sets.js` / `extract-rebirth-io-sets.cjs` are retired). The non-obvious
+parts that bit us:
+
+- **Set-bonus value = `scale × a per-attrib multiplier`, not flat `scale × 100`.**
+  The binary stores the raw scale; the displayed % multiplies by an attrib-specific
+  modifier: **damage buff ×250, max HP ×10, max endurance ×1 (scale is already the %),
+  everything else ×100.** A flat ×100 over-values max HP 10× (1.125% → 11.25%) and
+  under-values damage (2% → 0.8%). Multipliers were derived and cross-validated against
+  all 225 shared HC hand sets.
+- **Bonus `stat` keys must be planner-canonical or they're silently DROPPED.** The calc's
+  `normalizeStatName` (STAT_NAME_MAP in set-bonuses.ts) is the only normalization — the
+  transformer passes `stat` through verbatim. Emit `damage_resistance_(cold)` /
+  `maximum_hitpoints` / `mez_resistance_(all)`, NOT `cold_resistance` / `maxhp` / per-type
+  mez resistance. The early binary output used the latter and the planner dropped every
+  resistance/maxHP/mez-res bonus (≈196 entries on Rebirth-only sets). Guarded by
+  `io-sets-bonus-keys.test.ts`.
+- **Paired stats: emit ONE member, the planner re-pairs the other.** PAIRED_STATS auto-
+  applies a bonus to both members of S/L, F/C, E/N, P/T resistance (and S/L, F/C, E/N
+  defense, and recharge-debuff↔slow). Emitting both halves double-counts. The extractor
+  keeps the alpha-first member (cold/energy/lethal/psionic), matching the hand convention.
+- **A piece's effective aspect count is recoverable from its enhancement scale** —
+  authoritative, where the aspect-list length and name-segment count under-count. The
+  binary stores the already-diluted magnitude: `scale = getMultiAspectModifier(count) ×
+  rarity(1.25 for purple/Superior)`. So Luck of the Gambler's "Defense/+Recharge" reads
+  Defense at 0.625 (the 2-aspect modifier) — its +Recharge global DOES dilute, scale
+  proves it; ATO "#6" Recharge/Chance pieces read 0.4375 (4 aspects). Invert the modifier
+  to set `totalAspects`. (Exception: the planner deliberately splits Heal into Heal+Absorb,
+  so healing pieces' list length intentionally exceeds the scale-derived count — don't
+  override those; emit `totalAspects` only when derived > list length.)
+- **Enhancement aspects are `aspect=Strength` with POSITIVE non-zero scale.** Negative-
+  scale Strength templates are proc debuffs/conversions (Winter's Bite -Recharge/-Slow,
+  Sudden Acceleration / Imperial Might #6's -Knockback KB→knockdown) — §3 sign rule. The
+  old extraction counted them as enhancement aspects (spurious Slow/Knockback). Proc
+  pieces are detected by chance<1 / ppm>0 groups (§3), cross-server.
+
 ---
 
 *When you learn a new gotcha or principle, add it here — not just to a commit message —

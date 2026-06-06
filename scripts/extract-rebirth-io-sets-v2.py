@@ -1,20 +1,25 @@
-"""Extract Rebirth's full IO set library from the live game's bin files.
+"""Extract a full IO set library from the live game's bin files — both
+Homecoming and Rebirth.
 
-Replaces the older HC-filter approach (extract-rebirth-io-sets.cjs) with a
-direct read from Rebirth's boostsets.bin + powers.bin. Produces
-src/data/datasets/rebirth/io-sets-raw.ts.
+Reads boostsets.bin + powers.bin directly from the .pigg archives and emits
+src/data/datasets/<dataset>/io-sets-raw.ts. Supersedes the retired
+convert-io-sets.js (HC, hand-data) and extract-rebirth-io-sets.cjs (Rebirth).
 
 Pipeline:
   1. Parse boostsets.bin → set metadata + BoostLists + Bonuses + levels
   2. For each piece (Boost power), look up powers.bin → derive aspects from
-     effect-template attribs (damage types collapse to "Damage", etc.)
-  3. For each bonus (Set_Bonus power), look up powers.bin → derive
-     effects[] entries (stat key + value + display description)
+     effect-template attribs (damage types collapse to "Damage", etc.) and
+     recover the effective aspect count from the enhancement scale.
+  3. For each bonus (Set_Bonus power), look up powers.bin → derive effects[]
+     entries: planner-canonical stat key + value (scale × per-attrib multiplier)
   4. Resolve display strings via clientmessages-en.bin
-  5. Emit TypeScript io-sets-raw
+  5. Apply the per-dataset override pass (Rebirth: reuse HC for shared sets;
+     HC: targeted hand overrides for what the binary can't reproduce)
+  6. Emit TypeScript io-sets-raw
 
 Usage:
-    py -3 scripts/extract-rebirth-io-sets-v2.py
+    py -3 scripts/extract-rebirth-io-sets-v2.py --dataset homecoming
+    py -3 scripts/extract-rebirth-io-sets-v2.py --dataset rebirth   # default
 """
 from __future__ import annotations
 
@@ -34,6 +39,7 @@ from bin_crawler.parser._powers import parse_powers, PowerRecord
 from bin_crawler.parser._messages import load_messages
 
 REBIRTH_ASSETS = r'G:/Thunderspy Gaming/Sweet Tea/rebirth'
+HC_ASSETS = r'G:/Homecoming/assets/live'
 OUTPUT_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'rebirth' / 'io-sets-raw.ts'
 HC_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'homecoming' / 'io-sets-raw.ts'
 
@@ -178,6 +184,83 @@ REBIRTH_PIECE_RENAMES = {
 REBIRTH_PIECE_ASPECT_OVERRIDES: dict[str, dict[int, list[str]]] = {
     'forced_indoctrination': {
         5: ['Accuracy', 'Damage', 'Recharge', 'Mez'],
+    },
+}
+
+# Patch specific fields on a Rebirth-only piece the binary can't characterize.
+# Format: set_id → {piece_num: {field: value}}.
+#   Inexhaustibility's single piece carries only a `Set_Mode` marker template
+#   (no real attribs, no chance/ppm group), so it extracts as name="Empty",
+#   proc=false. It's a special Rest enhancement; restore the curated name +
+#   proc flag. (Surfacing the Set_Mode special piece properly is a separate
+#   bin-parser to-do — see BIN-PARSER-LOG.md.)
+REBIRTH_PIECE_PATCHES: dict[str, dict[int, dict]] = {
+    'inexhaustibility': {
+        1: {'name': 'Inexhaustibility', 'proc': True},
+    },
+}
+
+# ---------------------------------------------------------------------
+# Homecoming-only overrides (HC IS the source for shared sets, so the
+# Rebirth shared-set reuse / Rebirth piece curation above do NOT apply).
+# These cover the handful of cases the binary genuinely can't reproduce;
+# the bonus/whole-set data is taken from HC's existing hand-curated
+# io-sets-raw.ts (parsed by _load_hc_sets), which is correct for them.
+# ---------------------------------------------------------------------
+
+# Sets whose set-bonus tiers can't be fully binary-sourced — keep HC's
+# hand-curated `bonuses` array verbatim:
+#   - Unique global IOs encode their signature global (e.g. Steadfast +3% Def,
+#     Kismet +Acc, Karma/BotZ +KB protection) as a slottable PIECE, not a
+#     Set_Bonus auto-power, so the binary has no bonus to resolve for it.
+#   - PvP sets carry a second, PvP-only value for each tier that boostsets.bin
+#     references with an empty auto-power list (the binary can't reach it). The
+#     PvE bonuses extract correctly, but we keep the hand entry so the planner
+#     still shows the PvP-mode values (which the calc skips in PvE anyway).
+HC_UNIQUE_GLOBAL_SETS = {
+    'gift_of_the_ancients', 'shield_wall', 'karma', 'kheldians_grace',
+    'superior_kheldians_grace', 'impervious_skin', 'unbreakable_guard',
+    'gladiators_armor', 'rectified_reticle', 'synapses_shock',
+    'steadfast_protection', 'blessing_of_the_zephyr',
+}
+HC_PVP_SETS = {
+    'gladiators_strike', 'gladiators_javelin', 'javelin_volley',
+    'fury_of_the_gladiator', 'shield_wall', 'gladiators_armor', 'panacea',
+    'gladiators_net', 'experienced_marksman',
+}
+HC_HAND_BONUS_SETS = HC_UNIQUE_GLOBAL_SETS | HC_PVP_SETS
+
+# Sets the binary skips entirely (rarity=ECUniversalDamage has its own
+# multi-thousand-power pool and no planner rarity mapping) — copy the whole
+# hand entry. These wide-pool universal-damage sets slot into nearly every
+# attack power.
+HC_WHOLESET_SETS = {'cupids_crush', 'overwhelming_force'}
+
+# Per-piece aspect overrides for the handful of pieces the binary mis-extracts
+# (kept matching HC's curated names). Each replaces the parsed aspect list and
+# regenerates the piece name from the canonical ordering.
+#   - hypersonic #4: a "+Fly Magnitude" special aspect alongside Fly the binary
+#     template doesn't surface.
+#   - blessing_of_the_zephyr / winters_gift: the all-three-movement-speeds
+#     collapse mislabels these travel BUFF pieces as a Slow debuff (plus a
+#     spurious Range); the curated single "Move Speed" aspect is correct.
+#   - sudden_acceleration #6: the KB→Knockdown converter is a single negative-
+#     scale Knockback template (correctly excluded as a non-enhancement), but
+#     the curated data names the special "KnockToKnockDown" aspect.
+HC_PIECE_ASPECT_OVERRIDES: dict[str, dict[int, list[str]]] = {
+    'hypersonic': {
+        4: ['Fly', '+Fly Magnitude'],
+    },
+    'blessing_of_the_zephyr': {
+        1: ['Move Speed'],
+        2: ['Endurance', 'Move Speed'],
+    },
+    'winters_gift': {
+        1: ['Move Speed'],
+        2: ['Endurance', 'Move Speed'],
+    },
+    'sudden_acceleration': {
+        6: ['KnockToKnockDown'],
     },
 }
 
@@ -442,31 +525,93 @@ def _piece_name_from_aspects(aspects: list[str]) -> str:
     return '/'.join(aspects)
 
 
+# Multi-aspect dilution modifier — mirrors getMultiAspectModifier() in
+# src/utils/calculations/enhancement-values.ts: an IO that enhances N aspects
+# delivers each at this fraction of the single-aspect base.
+_MULTI_ASPECT_MODIFIER = {1: 1.0, 2: 0.625, 3: 0.5, 4: 0.4375}
+
+
+def _derive_effective_aspect_count(enh_scales: list[float], rarity_mult: float) -> int | None:
+    """Recover a piece's effective aspect count from its enhancement scale.
+
+    The binary stores the already-diluted enhancement magnitude:
+    `scale = getMultiAspectModifier(count) × set-rarity-multiplier`. So a piece
+    whose Recharge enhancement reads scale 0.4375 is a 4-aspect IO (0.4375 is
+    the 4-aspect modifier); Luck of the Gambler's Defense at 0.625 is a 2-aspect
+    IO. Inverting this is the *authoritative* effective count — more reliable
+    than counting aspect-list entries or name segments, which under-count proc/
+    global pieces (the LotG +Recharge global, ATO "#6" Recharge/Chance pieces).
+
+    `rarity_mult` is 1.25 for purple/Superior sets (matching getSetRarityMultiplier),
+    else 1.0. Returns the count, or None when no enhancement scale cleanly matches
+    a modifier (pure-proc or odd-scale global pieces).
+
+    Try the set's rarity multiplier first, then fall back to 1.0: a few Superior
+    ATO "#6" proc pieces store their incidental Recharge at the un-scaled 0.4375
+    (the proc, not the enhancement, carries the rarity bonus), so dividing by
+    1.25 would miss the modifier. 1.0 is only reached when 1.25 finds no match,
+    so a genuine ×1.25 piece (e.g. 0.78125→2) is never misread.
+    """
+    mults = [rarity_mult, 1.0] if rarity_mult != 1.0 else [1.0]
+    for mult in mults:
+        best = None
+        for sc in enh_scales:
+            m = sc / mult
+            for count, mod in _MULTI_ASPECT_MODIFIER.items():
+                if abs(m - mod) < 0.02:
+                    best = count if best is None else max(best, count)
+        if best is not None:
+            return best
+    return None
+
+
 # ---------------------------------------------------------------------
 # Set_Bonus power → planner bonus effect entry
 # ---------------------------------------------------------------------
-# Stat key: planner uses snake_case names (defense, recharge, regen, etc.).
-# We collapse multi-EG Set_Bonus powers into one effects[] entry per
-# distinct (stat, scale) tuple, with a description built from the bin data.
+# A Set_Bonus power grants a buff via effect templates of (attrib, aspect,
+# scale). We turn each into the planner's {stat, value} entry, where:
+#   - `stat` is the planner-canonical key the set-bonus calc understands
+#     (see STAT_NAME_MAP in src/utils/calculations/set-bonuses.ts). It is
+#     NOT a free-form name: a key the planner doesn't recognise is silently
+#     dropped from the build's totals, so these MUST match.
+#   - `value` is the displayed percentage, = scale × a per-attrib multiplier
+#     (see _bonus_multiplier). The binary stores `scale`; the game multiplies
+#     it by an attrib-specific modifier to get the % shown in Mids.
+#
+# Two conventions matter for matching the planner's expectations exactly:
+#   1. Paired damage types (S/L, F/C, E/N, P/T) — the planner auto-applies a
+#      bonus to BOTH members of a pair (PAIRED_STATS). So a "+6% Fire/Cold"
+#      bonus must emit ONLY ONE member (the alphabetically-first, e.g. cold),
+#      or the value double-counts. Same for typed defence (S/L, F/C, E/N).
+#   2. "All resistance"/"all mez resistance" collapse to a single
+#      damage_resistance_(all) / mez_resistance_(all) key.
+# Both are handled in _resolve_bonus_effects below.
 
+# Damage-type Strength attribs that collapse to one "damage" bonus (the
+# binary encodes "+X% Damage" as 8 parallel per-type templates).
+_DMG_STRENGTH = {(a, 'Strength') for a in DAMAGE_ATTRIBS}
+# All-8 damage Resistance → damage_resistance_(all).
+_DMG_RESIST = {(a, 'Resistance') for a in DAMAGE_ATTRIBS}
+# All-6 mez Resistance → mez_resistance_(all). The planner has no per-type mez
+# resistance key, so individual mez resistance is intentionally NOT mapped —
+# only the all-6 collapse produces a recognised key.
+_MEZ_RESIST = {(m, 'Resistance') for m in MEZ_ATTRIBS}
+
+# (attrib, aspect) → planner-canonical bonus stat key. Keys match
+# STAT_NAME_MAP in set-bonuses.ts. Paired members are emitted as their own
+# key here (e.g. both Fire_Dmg and Cold_Dmg → damage_resistance_(fire/cold));
+# the de-dup in _resolve_bonus_effects keeps only the alpha-first of a pair.
 ATTRIB_TO_BONUS_STAT = {
-    # Damage attribs with aspect=Resistance → resistance to that type
-    ('Fire_Dmg',           'Resistance'): 'fire_resistance',
-    ('Cold_Dmg',           'Resistance'): 'cold_resistance',
-    ('Smashing_Dmg',       'Resistance'): 'smashing_resistance',
-    ('Lethal_Dmg',         'Resistance'): 'lethal_resistance',
-    ('Energy_Dmg',         'Resistance'): 'energy_resistance',
-    ('Negative_Energy_Dmg','Resistance'): 'negative_resistance',
-    ('Psionic_Dmg',        'Resistance'): 'psionic_resistance',
-    ('Toxic_Dmg',          'Resistance'): 'toxic_resistance',
-    # Mez attribs with aspect=Resistance → mez resistance
-    ('Held',         'Resistance'): 'hold_resistance',
-    ('Stunned',      'Resistance'): 'stun_resistance',
-    ('Sleep',        'Resistance'): 'sleep_resistance',
-    ('Immobilized',  'Resistance'): 'immobilize_resistance',
-    ('Terrorized',   'Resistance'): 'fear_resistance',
-    ('Confused',     'Resistance'): 'confuse_resistance',
-    # Defense by position (aspect=Current with table)
+    # Damage resistance, per type.
+    ('Smashing_Dmg',       'Resistance'): 'damage_resistance_(smashing)',
+    ('Lethal_Dmg',         'Resistance'): 'damage_resistance_(lethal)',
+    ('Fire_Dmg',           'Resistance'): 'damage_resistance_(fire)',
+    ('Cold_Dmg',           'Resistance'): 'damage_resistance_(cold)',
+    ('Energy_Dmg',         'Resistance'): 'damage_resistance_(energy)',
+    ('Negative_Energy_Dmg','Resistance'): 'damage_resistance_(negative)',
+    ('Psionic_Dmg',        'Resistance'): 'damage_resistance_(psionic)',
+    ('Toxic_Dmg',          'Resistance'): 'damage_resistance_(toxic)',
+    # Defense by position / type (aspect=Current).
     ('Melee',        'Current'): 'defense_(melee)',
     ('Ranged',       'Current'): 'defense_(ranged)',
     ('Area',         'Current'): 'defense_(area)',
@@ -477,23 +622,29 @@ ATTRIB_TO_BONUS_STAT = {
     ('Energy',       'Current'): 'defense_(energy)',
     ('Negative_Energy', 'Current'): 'defense_(negative)',
     ('Psionic',      'Current'): 'defense_(psionic)',
-    # Common bonus stats
-    ('HitPoints',    'Maximum'):  'maxhp',
-    ('Endurance',    'Maximum'):  'maxendurance',
+    ('Toxic',        'Current'): 'defense_(toxic)',
+    # HP / Endurance maximums.
+    ('HitPoints',    'Maximum'):  'maximum_hitpoints',
+    ('Endurance',    'Maximum'):  'maximum_endurance',
+    # Recovery / Regeneration. HC encodes via Strength on Endurance/HitPoints;
+    # Rebirth via the dedicated Recovery/Regeneration attribs (Current). Both
+    # map to the same planner stats.
     ('Endurance',    'Strength'): 'recovery',
     ('HitPoints',    'Strength'): 'regeneration',
     ('Recovery',     'Strength'): 'recovery',
     ('Regeneration', 'Strength'): 'regeneration',
+    ('Recovery',     'Current'):  'recovery',
+    ('Regeneration', 'Current'):  'regeneration',
+    # Common offensive / utility stats.
     ('RechargeTime', 'Strength'): 'recharge',
-    ('Damage',       'Strength'): 'damage',
     ('ToHit',        'Strength'): 'tohit',
     ('Accuracy',     'Strength'): 'accuracy',
     ('Range',        'Strength'): 'range',
     ('PerceptionRadius', 'Current'): 'perception',
-    # ----- All 8 damage types × Strength collapse to a single "+X% Damage" bonus.
-    # Rebirth (and HC) encode "+X% Damage" as 8 parallel templates, one per
-    # damage type, all aspect=Strength. Dedup in _resolve_bonus_effects
-    # squashes the 8 entries into one "damage" effect.
+    ('EnduranceDiscount', 'Strength'): 'endurance_discount',
+    ('Heal_Dmg',     'Strength'): 'healing_strength',
+    # All 8 damage types × Strength → a single "damage" bonus (the dedup in
+    # _resolve_bonus_effects squashes the 8 identical entries into one).
     ('Smashing_Dmg',        'Strength'): 'damage',
     ('Lethal_Dmg',          'Strength'): 'damage',
     ('Fire_Dmg',            'Strength'): 'damage',
@@ -502,27 +653,16 @@ ATTRIB_TO_BONUS_STAT = {
     ('Negative_Energy_Dmg', 'Strength'): 'damage',
     ('Toxic_Dmg',           'Strength'): 'damage',
     ('Psionic_Dmg',         'Strength'): 'damage',
-    # Healing-strength bonus (Heal_Dmg attrib carries healing-buff scale).
-    ('Heal_Dmg',     'Strength'): 'healing_strength',
-    # Rebirth's alternate Recovery/Regen encoding. HC uses
-    # ('Endurance','Strength') / ('HitPoints','Strength'); Rebirth's
-    # Set_Bonus powers carry them as the dedicated Recovery/Regeneration
-    # attribs with aspect=Current. Both map to the same planner stats.
-    ('Recovery',     'Current'):  'recovery',
-    ('Regeneration', 'Current'):  'regeneration',
-    # Endurance reduction buff (rare but present on some Rebirth sets).
-    ('EnduranceDiscount', 'Strength'): 'endurance_discount',
-    # Mez duration buffs — extend the duration of YOUR mez attacks on
-    # enemies. Per-type (no collapse): each maps to a distinct stat.
+    # Mez duration buffs — extend the duration of YOUR mez attacks on enemies.
+    # Per-type (no collapse): each maps to a distinct stat.
     ('Confused',     'Strength'): 'confuse_duration',
     ('Held',         'Strength'): 'hold_duration',
     ('Stunned',      'Strength'): 'stun_duration',
     ('Immobilized',  'Strength'): 'immobilize_duration',
     ('Sleep',        'Strength'): 'sleep_duration',
     ('Terrorized',   'Strength'): 'terror_duration',
-    # All 4 movement-speed attribs collapse to a single "+X% Increased
-    # Movement" bonus (Rebirth, like HC, encodes this as 4 parallel
-    # templates). Both Current and Strength aspects appear.
+    # Movement-speed buffs collapse to a single "increased_movement" bonus
+    # (encoded as up to 4 parallel templates; Current and Strength both seen).
     ('RunningSpeed', 'Current'):  'increased_movement',
     ('FlyingSpeed',  'Current'):  'increased_movement',
     ('JumpingSpeed', 'Current'):  'increased_movement',
@@ -536,13 +676,51 @@ ATTRIB_TO_BONUS_STAT = {
     ('FlyingSpeed',  'Resistance'): '+res(slow)',
     # Recharge debuff resistance.
     ('RechargeTime', 'Resistance'): '+res(recharge_debuff)',
-    # Knockback protection (magnitude points).
+    # Knockback protection (magnitude points) and knockback strength buff.
     ('Knockback',    'Current'):  'knockback_protection',
     ('Knockup',      'Current'):  'knockback_protection',
-    # Knockback strength buff.
     ('Knockback',    'Strength'): 'knockback_strength',
     ('Knockup',      'Strength'): 'knockback_strength',
 }
+
+# Paired stats the planner's PAIRED_STATS auto-expands to BOTH members. When
+# both members of a pair appear in one tier we keep only the alpha-first key
+# (matching HC's hand-data convention) so the value isn't double-counted.
+_BONUS_STAT_PAIRS = [
+    ('damage_resistance_(cold)',    'damage_resistance_(fire)'),
+    ('damage_resistance_(lethal)',  'damage_resistance_(smashing)'),
+    ('damage_resistance_(energy)',  'damage_resistance_(negative)'),
+    ('damage_resistance_(psionic)', 'damage_resistance_(toxic)'),
+    ('defense_(cold)',   'defense_(fire)'),
+    ('defense_(lethal)', 'defense_(smashing)'),
+    ('defense_(energy)', 'defense_(negative)'),
+    # The planner pairs recharge-debuff resistance with slow resistance
+    # (PAIRED_STATS: debuffresistrecharge → [recharge, slow]). A bonus that
+    # buffs both (e.g. Avalanche: RunningSpeed+FlyingSpeed+RechargeTime all
+    # Resistance) must emit only +res(recharge_debuff) so slow isn't doubled.
+    ('+res(recharge_debuff)', '+res(slow)'),
+]
+
+# Per-attrib scale→value multiplier. Empirically derived and cross-validated
+# against all 225 shared HC hand-data sets (scripts: see HC-IO-SETS-BINARY-
+# SOURCING.md): every shared tier reproduces the hand value within float
+# rounding. The game multiplies the stored `scale` by an attrib-specific
+# modifier to get the displayed %:
+#   - damage buff (damage-type attribs, aspect=Strength) → ×250
+#   - max HP (HitPoints/Maximum)                         → ×10
+#   - max endurance (Endurance/Maximum)                  → ×1 (scale is already %)
+#   - everything else (resistance, defence, recharge,
+#     recovery, regen, movement, mez-res, durations, …)  → ×100
+def _bonus_multiplier(attrib: str, aspect: str) -> float:
+    if aspect == 'Strength' and attrib in DAMAGE_ATTRIBS:
+        return 250.0
+    if aspect == 'Maximum':
+        if attrib == 'HitPoints':
+            return 10.0
+        if attrib == 'Endurance':
+            return 1.0
+    return 100.0
+
 
 # (attrib, aspect) tuples that should be ignored entirely — not bonuses,
 # just power-state metadata that happens to appear in Set_Bonus effect
@@ -556,51 +734,69 @@ _BONUS_LOOKUP_IGNORE: set[tuple[str, str]] = {
 # silently-dropped bonus surfaces immediately instead of vanishing.
 _UNMAPPED_BONUS_PAIRS: dict[tuple[str, str], int] = {}
 
+# Pieces where the scale-derived effective aspect count is BELOW the extracted
+# aspect-list length — a signal that the binary surfaced a spurious enhancement
+# aspect (e.g. travel sets where the movement-speed collapse mislabels a buff).
+# Printed at end-of-run as override candidates; not silently emitted.
+_ASPECT_COUNT_UNDERSHOOTS: list[str] = []
+
 
 def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
     """Build the planner's bonus effects[] list from a Set_Bonus power's
     effect templates.
 
-    Multi-template Set_Bonus powers (e.g. an 8-resistance Mez bonus) are
-    grouped: identical scale + matching attrib categories collapse into
-    a single description ("+2.5% Mez Res (Hold, Stun, ...)").
+    Templates are grouped by computed value (scale × per-attrib multiplier).
+    Within a value group the all-resistance / all-mez / all-damage families
+    collapse to a single key, the remainder map per-attrib, and paired
+    resistance/defence members are de-duped to the alpha-first key so the
+    planner's PAIRED_STATS expansion doesn't double-count.
     """
-    by_scale: dict[float, list[tuple[str, str]]] = {}  # scale → [(attrib, aspect), ...]
+    # value → set of (attrib, aspect) producing that value.
+    by_value: dict[float, set[tuple[str, str]]] = {}
     for eg in set_bonus_power.effects:
         for t in eg.templates:
+            aspect = t.aspect or ''
             for a in (t.attribs or []):
-                by_scale.setdefault(round(t.scale, 6), []).append((a, t.aspect or ''))
+                value = round(abs(t.scale) * _bonus_multiplier(a, aspect), 4)
+                by_value.setdefault(value, set()).add((a, aspect))
 
     out: list[dict] = []
-    for scale, pairs in by_scale.items():
-        # Try to resolve the (attrib, aspect) → planner stat key
-        stats = []
-        for a, aspect in pairs:
+    for value, pairs in by_value.items():
+        attset = set(pairs)
+        keys: list[str] = []
+
+        # Family collapses (only when the full family is present at this value).
+        if _DMG_STRENGTH.issubset(attset):
+            keys.append('damage'); attset -= _DMG_STRENGTH
+        if _DMG_RESIST.issubset(attset):
+            keys.append('damage_resistance_(all)'); attset -= _DMG_RESIST
+        if _MEZ_RESIST.issubset(attset):
+            keys.append('mez_resistance_(all)'); attset -= _MEZ_RESIST
+
+        # Map the remainder per-attrib.
+        for a, aspect in attset:
             key = ATTRIB_TO_BONUS_STAT.get((a, aspect))
-            if key:
-                stats.append(key)
-        if not stats:
-            # Diagnostic: record what we dropped so a missing mapping
-            # doesn't silently swallow a real bonus tier next time.
-            for a, aspect in pairs:
-                if (a, aspect) in _BONUS_LOOKUP_IGNORE:
-                    continue
-                _UNMAPPED_BONUS_PAIRS[(a, aspect)] = _UNMAPPED_BONUS_PAIRS.get((a, aspect), 0) + 1
-            continue
-        # Dedup, preserve order
-        seen = set()
-        unique_stats = [s for s in stats if not (s in seen or seen.add(s))]
-        # Use the first stat as the primary; emit one effect per distinct stat.
-        for stat in unique_stats:
-            value_pct = round(scale * 100, 4)
-            # Knockback protection is stored as a negative-magnitude attrib
-            # in the binary (-3 scale = +3 mag of resistance to KB). The
-            # planner's calc engine expects the positive "+400 = 4 mag"
-            # convention HC's hand-curated data uses, so flip the sign here.
-            if stat == 'knockback_protection':
-                value_pct = abs(value_pct)
-            desc = f'+{value_pct}% {stat.replace("_", " ").title()}'
-            out.append({'stat': stat, 'value': value_pct, 'desc': desc})
+            if key is None:
+                if (a, aspect) not in _BONUS_LOOKUP_IGNORE:
+                    _UNMAPPED_BONUS_PAIRS[(a, aspect)] = _UNMAPPED_BONUS_PAIRS.get((a, aspect), 0) + 1
+                continue
+            keys.append(key)
+
+        # Drop the alpha-later member of any present pair (planner re-pairs it).
+        for keep, drop in _BONUS_STAT_PAIRS:
+            if keep in keys and drop in keys:
+                keys = [k for k in keys if k != drop]
+
+        # Emit one effect per distinct key, in a stable order.
+        seen: set[str] = set()
+        for key in keys:
+            if key in seen:
+                continue
+            seen.add(key)
+            if key == 'knockback_protection':
+                value = abs(value)
+            desc = f'+{value}% {key.replace("_", " ").title()}'
+            out.append({'stat': key, 'value': value, 'desc': desc})
     return out
 
 
@@ -608,26 +804,21 @@ def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
 # Main extraction
 # ---------------------------------------------------------------------
 
-def main() -> int:
-    print(f'Loading Rebirth bins from {REBIRTH_ASSETS}…')
-    resolver = BinResolver(REBIRTH_ASSETS)
-    msgs_path = resolver.read_to_tempfile('clientmessages-en.bin')
-    msgs = load_messages(msgs_path)
-    print(f'  {len(msgs)} client messages loaded')
+def build_sets(
+    msgs,
+    sets: list[BoostSetRecord],
+    power_index: dict[str, PowerRecord],
+    hc_sets: dict[str, dict],
+) -> tuple[dict[str, dict], list[str]]:
+    """Build the raw binary io-sets shape (one entry per boostset) from the
+    parsed bins. Dataset-agnostic: the per-set extraction is identical for HC
+    and Rebirth — the differences live entirely in the post-build override
+    passes (_apply_rebirth_overrides / _apply_homecoming_overrides).
 
-    sets = parse_boostsets(resolver.read('boostsets.bin'))
-    print(f'  {len(sets)} boostsets parsed')
-
-    print('Parsing powers.bin (large, ~30s)…')
-    powers = parse_powers(resolver.read('powers.bin'))
-    power_index: dict[str, PowerRecord] = {p.full_name: p for p in powers}
-    print(f'  {len(powers)} power records indexed')
-
-    hc_sets = _load_hc_sets()
-    print(f'  {len(hc_sets)} HC sets loaded for shared-set fallback')
-
-    # Build the io-sets-raw shape.
-    # Match what's in src/data/datasets/homecoming/io-sets-raw.ts.
+    `hc_sets` is HC's hand-curated io-sets-raw (parsed by _load_hc_sets); it is
+    consulted only for the icon fallback here (icons aren't in the binary).
+    Returns (out_sets, skipped).
+    """
     out_sets: dict[str, dict] = {}
     skipped: list[str] = []
     for s in sets:
@@ -678,8 +869,16 @@ def main() -> int:
             # the template level instead.
             attribs: list[str] = []
             proc_effect_attribs: list[str] = []  # Attribs from proc-effect templates (used for piece naming)
+            enh_scales: list[float] = []  # scales of the enhancement (Strength, +scale) templates
             is_proc_marker = False
+            has_proc_group = False
             for eg in piece_power.effects:
+                # A chance-gated or PPM effect group is a proc (GAME-DATA-
+                # PRINCIPLES §3) — the cross-server signal, since group `chance`
+                # and `ppm` are populated for both Parse7 (HC) and Parse6
+                # (Rebirth, derived from tick_chance).
+                if (eg.ppm or 0) > 0 or (eg.chance is not None and eg.chance < 0.999):
+                    has_proc_group = True
                 for t in eg.templates:
                     if not t.attribs:
                         continue
@@ -691,14 +890,19 @@ def main() -> int:
                         if a0 == 'Null' and t.aspect == 'Absolute':
                             is_proc_marker = True
                             continue
-                    # Enhancement aspects use Strength. Templates with other
-                    # aspects (Current/Absolute) are proc effects.
-                    if t.aspect == 'Strength':
+                    # Enhancement aspects are aspect=Strength with a POSITIVE,
+                    # non-zero scale. Excluded (→ proc effects): aspect≠Strength
+                    # (proc payload, Current/Absolute), negative-scale Strength
+                    # (proc debuffs — e.g. Winter's Bite's -Recharge/-Slow; sign
+                    # distinguishes buff from debuff, §3), and scale==0 Strength
+                    # meta-templates (the engine's strength-definition rows, §3).
+                    if t.aspect == 'Strength' and t.scale > 0.001:
                         attribs.extend(t.attribs)
+                        enh_scales.append(round(t.scale, 4))
                     else:
                         proc_effect_attribs.extend(t.attribs)
             aspects, is_proc = _collapse_aspects(attribs, s.category)
-            is_proc = is_proc or is_proc_marker
+            is_proc = is_proc or is_proc_marker or has_proc_group
             # Fallback proc detection: when the piece has NO Strength
             # templates (no enhancement aspects to collapse) but DOES carry
             # Current/Absolute templates with damage-type attribs, it's a
@@ -729,29 +933,57 @@ def main() -> int:
             # piece is freely slottable across multiple powers.
             slot_req = (piece_power.slot_requires or '').lower()
             is_unique = 'boostsslotted>' in slot_req
-            pieces.append({
+            # Effective aspect count, recovered from the enhancement scale (the
+            # game's authoritative dilution). Emit `totalAspects` only when it
+            # exceeds the aspect-list length — i.e. the piece carries hidden
+            # global/proc segments that dilute its named aspect (LotG +Recharge,
+            # ATO "#6" Recharge/Chance). When it's <= len(aspects) the aspect
+            # list already accounts for the dilution, so no override is needed;
+            # a derived count BELOW the list length signals a spurious extracted
+            # aspect (logged for review, not emitted as a misleading override).
+            rarity_mult = 1.25 if (rarity == 'purple' or display.startswith('Superior')) else 1.0
+            eff_count = _derive_effective_aspect_count(enh_scales, rarity_mult)
+            total_aspects = None
+            if eff_count is not None and eff_count > len(aspects):
+                total_aspects = eff_count
+            elif eff_count is not None and eff_count < len(aspects):
+                _ASPECT_COUNT_UNDERSHOOTS.append(
+                    f'{s.name}#{i + 1}: derived {eff_count} < {len(aspects)} aspects {aspects}')
+            piece = {
                 'num': i + 1,
                 'name': piece_display,
                 'aspects': aspects,
                 'proc': is_proc,
                 'unique': is_unique,
-            })
+            }
+            if total_aspects is not None:
+                piece['totalAspects'] = total_aspects
+            pieces.append(piece)
 
-        # Build bonuses.
+        # Build bonuses. A tier may reference MULTIPLE auto-powers (e.g. the
+        # six per-mez-type duration powers behind a "+Mez Duration" ATO bonus,
+        # each a separate Set_Bonus.* power at a different scale); their effects
+        # are additive, so aggregate across ALL of them — not just the first —
+        # de-duping identical (stat, value) entries.
         bonuses_out = []
         for bn in s.bonuses:
+            tier_effects: list[dict] = []
+            seen_effects: set[tuple[str, float]] = set()
             for ap in bn.auto_powers:
                 ap_power = power_index.get(ap) or power_index.get(f'Set_Bonus.Set_Bonus.{ap}')
                 if not ap_power:
                     continue
-                effects = _resolve_bonus_effects(ap_power)
-                if effects:
-                    # Use min_boosts as the threshold.
-                    bonuses_out.append({
-                        'pieces': bn.min_boosts,
-                        'effects': effects,
-                    })
-                    break  # first matching auto-power per bonus tier
+                for eff in _resolve_bonus_effects(ap_power):
+                    key = (eff['stat'], eff['value'])
+                    if key in seen_effects:
+                        continue
+                    seen_effects.add(key)
+                    tier_effects.append(eff)
+            if tier_effects:
+                bonuses_out.append({
+                    'pieces': bn.min_boosts,
+                    'effects': tier_effects,
+                })
 
         # Build the set entry.
         set_id = s.name.lower().replace('-', '').replace('__', '_')
@@ -766,6 +998,12 @@ def main() -> int:
             'icon': ICON_OVERRIDES.get(set_id) or (hc_sets.get(set_id, {}).get('icon')) or f's{set_id}.png',
         }
 
+    return out_sets, skipped
+
+
+def _apply_rebirth_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict]) -> dict:
+    """Rebirth post-build passes: reuse HC's hand entry for shared sets, then
+    layer the Rebirth-only piece curation. Returns a small stats dict."""
     # Override shared sets with HC's hand-curated entry. HC piece names
     # match Mids exports verbatim (e.g. "Accuracy/Damage"); the binary
     # extraction loses Accuracy aspects on many pieces and produces
@@ -812,49 +1050,112 @@ def main() -> int:
                 p['aspects'] = _sort_aspects_canonical(list(new_aspects))
                 p['name'] = '/'.join(p['aspects'])
 
-    print(f'\nExtracted {len(out_sets)} sets ({len(skipped)} skipped)')
-    print(f'  {shared_overridden} shared sets overridden with HC data')
-    print(f'  {pieces_overridden} Rebirth-only sets received curated piece data')
-    print(f'  {len(out_sets) - shared_overridden} Rebirth-only sets total')
-    for sk in skipped[:8]:
-        print(f'  skip: {sk}')
+    # Apply field-level patches for pieces the binary can't characterize.
+    for set_id, patches in REBIRTH_PIECE_PATCHES.items():
+        entry = out_sets.get(set_id)
+        if not entry:
+            continue
+        for p in entry.get('pieces', []):
+            patch = patches.get(p.get('num'))
+            if patch:
+                p.update(patch)
 
-    if _UNMAPPED_BONUS_PAIRS:
-        print(f'\n!! Dropped {sum(_UNMAPPED_BONUS_PAIRS.values())} bonus tiers due to unmapped (attrib, aspect) pairs:')
-        for (attrib, aspect), n in sorted(_UNMAPPED_BONUS_PAIRS.items(), key=lambda kv: -kv[1]):
-            print(f'   ({attrib!r}, {aspect!r}) x {n}  -> add to ATTRIB_TO_BONUS_STAT')
+    return {'shared_overridden': shared_overridden, 'pieces_overridden': pieces_overridden}
 
-    # Verify Guardian ATOs are present
-    print('\nGuardian ATOs:')
-    for k in ('guardians_gift', 'superior_guardians_gift', 'absolute_resolution', 'superior_absolute_resolution'):
-        v = out_sets.get(k)
-        if v:
-            print(f'  {k}: {len(v["pieces"])} pieces, {len(v["bonuses"])} bonus tiers, type={v["type"]!r}')
+
+def _apply_homecoming_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict]) -> dict:
+    """Homecoming post-build passes. HC IS the source, so there's no shared-set
+    reuse — only the targeted overrides for what the binary can't reproduce:
+      - whole-set: cupids_crush / overwhelming_force (binary skips them).
+      - bonuses-from-hand: unique-global + PvP sets (see HC_HAND_BONUS_SETS).
+      - per-piece aspect: hypersonic #4 (+Fly Magnitude special).
+    All hand data is read from the existing HC io-sets-raw (hc_sets)."""
+    stats = {'wholeset': 0, 'hand_bonuses': 0, 'pieces_overridden': 0, 'missing': []}
+
+    # Whole-set: bring in sets the binary doesn't yield at all.
+    for set_id in HC_WHOLESET_SETS:
+        hand = hc_sets.get(set_id)
+        if hand:
+            out_sets[set_id] = dict(hand)
+            stats['wholeset'] += 1
         else:
-            print(f'  {k}: MISSING')
+            stats['missing'].append(f'{set_id} (wholeset)')
 
-    # Emit TS file
-    header = f'''/**
- * Rebirth IO Set data — extracted from live Rebirth bins.
+    # Bonuses-from-hand: keep binary pieces/icon, swap in the hand bonuses.
+    for set_id in HC_HAND_BONUS_SETS:
+        entry = out_sets.get(set_id)
+        hand = hc_sets.get(set_id)
+        if entry and hand:
+            entry['bonuses'] = hand.get('bonuses', [])
+            stats['hand_bonuses'] += 1
+        elif not entry:
+            stats['missing'].append(f'{set_id} (hand-bonus target absent from binary)')
+
+    # Per-piece aspect overrides.
+    for set_id, piece_overrides in HC_PIECE_ASPECT_OVERRIDES.items():
+        entry = out_sets.get(set_id)
+        if not entry:
+            stats['missing'].append(f'{set_id} (piece override target absent)')
+            continue
+        for p in entry.get('pieces', []):
+            new_aspects = piece_overrides.get(p.get('num'))
+            if new_aspects:
+                p['aspects'] = _sort_aspects_canonical(list(new_aspects))
+                p['name'] = '/'.join(p['aspects'])
+                stats['pieces_overridden'] += 1
+
+    return stats
+
+
+# Per-dataset wiring: assets dir, output path, source description for the file
+# header, and which override pass to run after build_sets().
+DATASET_CONFIG = {
+    'rebirth': {
+        'assets': REBIRTH_ASSETS,
+        'output': OUTPUT_PATH,
+        'pigg': 'G:/Thunderspy Gaming/Sweet Tea/rebirth/z_rebirth_bin.pigg',
+        'server': 'Rebirth',
+        'apply_overrides': _apply_rebirth_overrides,
+        'extra_notes': (
+            ' * Includes Rebirth-only sets (Guardian\'s Gift, Absolute Resolution,\n'
+            ' * Halloween + Winter event sets, Liberty\'s Belt, etc.) that aren\'t in\n'
+            ' * HC\'s curated io-sets-raw. Shared sets reuse HC\'s hand-curated entry.\n'
+        ),
+    },
+    'homecoming': {
+        'assets': HC_ASSETS,
+        'output': HC_IO_SETS_PATH,
+        'pigg': 'G:/Homecoming/assets/live/bin*.pigg',
+        'server': 'Homecoming',
+        'apply_overrides': _apply_homecoming_overrides,
+        'extra_notes': (
+            ' * Targeted hand overrides (from the prior curated io-sets-raw) cover\n'
+            ' * what the binary can\'t reproduce: the cupids_crush / overwhelming_force\n'
+            ' * universal-damage sets, and the unique-global + PvP set bonuses.\n'
+        ),
+    },
+}
+
+
+def _file_header(cfg: dict, total: int) -> str:
+    return f'''/**
+ * {cfg['server']} IO Set data — extracted from live {cfg['server']} bins.
  *
- * Auto-generated by `scripts/extract-rebirth-io-sets-v2.py`. Do not hand-edit.
+ * Auto-generated by `scripts/extract-rebirth-io-sets-v2.py --dataset {cfg['_id']}`.
+ * Do not hand-edit.
  *
- * Source: G:/Thunderspy Gaming/Sweet Tea/rebirth/z_rebirth_bin.pigg
+ * Source: {cfg['pigg']}
  *   - boostsets.bin → set metadata + piece refs + bonus refs + levels
  *   - powers.bin    → boost-piece aspects (via Boosts.X.X power records)
  *                     and bonus values (via Set_Bonus.X.X power records)
  *   - clientmessages-en.bin → display name resolution
  *
- * Total sets: {len(out_sets)}
- * Includes Rebirth-only sets (Guardian's Gift, Absolute Resolution,
- * Halloween + Winter event sets, Liberty's Belt, etc.) that aren't in
- * HC's curated io-sets-raw.
- *
- * Bonus values are best-effort from the binary effect templates; some
- * descriptions are auto-generated and may need refinement to match the
- * in-game Mids/wiki phrasing exactly. Aspect / piece-name extraction is
- * heuristic — proc pieces show as "Chance" until we resolve their
- * specific labels via the chance-trigger attribs.
+ * Total sets: {total}
+{cfg['extra_notes']} *
+ * Set-bonus values are scale × a per-attrib multiplier (damage ×250, max HP
+ * ×10, max endurance ×1, everything else ×100) and use the planner-canonical
+ * stat keys (see STAT_NAME_MAP in set-bonuses.ts). Proc-piece names are
+ * heuristic and may read "Chance" until resolved via the trigger attribs.
  */
 
 interface LegacyIOSetPiece {{
@@ -892,9 +1193,73 @@ interface LegacyIOSet {{
 type LegacyIOSetRegistry = Record<string, LegacyIOSet>;
 
 export const IO_SETS_RAW: LegacyIOSetRegistry = '''
+
+
+def _parse_dataset_arg(argv: list[str]) -> str:
+    """`--dataset <id>` / `--dataset=<id>`; defaults to rebirth (the historical
+    behaviour, since the script is named extract-rebirth-io-sets)."""
+    for i, a in enumerate(argv):
+        if a == '--dataset' and i + 1 < len(argv):
+            return argv[i + 1]
+        if a.startswith('--dataset='):
+            return a.split('=', 1)[1]
+    return 'rebirth'
+
+
+def main(dataset: str | None = None) -> int:
+    dataset = dataset or _parse_dataset_arg(sys.argv[1:])
+    cfg = DATASET_CONFIG.get(dataset)
+    if not cfg:
+        print(f'Unknown dataset {dataset!r}; choose from {sorted(DATASET_CONFIG)}')
+        return 2
+    cfg = {**cfg, '_id': dataset}
+
+    print(f'[{dataset}] Loading bins from {cfg["assets"]}…')
+    resolver = BinResolver(cfg['assets'])
+    msgs_path = resolver.read_to_tempfile('clientmessages-en.bin')
+    msgs = load_messages(msgs_path)
+    print(f'  {len(msgs)} client messages loaded')
+
+    sets = parse_boostsets(resolver.read('boostsets.bin'))
+    print(f'  {len(sets)} boostsets parsed')
+
+    print('Parsing powers.bin (large, ~30s)…')
+    powers = parse_powers(resolver.read('powers.bin'))
+    power_index: dict[str, PowerRecord] = {p.full_name: p for p in powers}
+    print(f'  {len(powers)} power records indexed')
+
+    # HC's hand-curated io-sets-raw — used for icon fallback (both datasets),
+    # Rebirth shared-set reuse, and HC's targeted bonus/whole-set overrides.
+    hc_sets = _load_hc_sets()
+    print(f'  {len(hc_sets)} HC hand sets loaded')
+
+    out_sets, skipped = build_sets(msgs, sets, power_index, hc_sets)
+    stats = cfg['apply_overrides'](out_sets, hc_sets)
+
+    print(f'\n[{dataset}] Extracted {len(out_sets)} sets ({len(skipped)} skipped)')
+    for k, v in stats.items():
+        if k == 'missing':
+            continue
+        print(f'  {k}: {v}')
+    if stats.get('missing'):
+        print(f'  !! override targets missing: {stats["missing"]}')
+    for sk in skipped[:8]:
+        print(f'  skip: {sk}')
+
+    if _UNMAPPED_BONUS_PAIRS:
+        print(f'\n!! Dropped {sum(_UNMAPPED_BONUS_PAIRS.values())} bonus entries due to unmapped (attrib, aspect) pairs:')
+        for (attrib, aspect), n in sorted(_UNMAPPED_BONUS_PAIRS.items(), key=lambda kv: -kv[1]):
+            print(f'   ({attrib!r}, {aspect!r}) x {n}  -> add to ATTRIB_TO_BONUS_STAT')
+
+    if _ASPECT_COUNT_UNDERSHOOTS:
+        print(f'\n!! {len(_ASPECT_COUNT_UNDERSHOOTS)} pieces: scale-derived count < extracted aspects (spurious-aspect candidates):')
+        for u in _ASPECT_COUNT_UNDERSHOOTS:
+            print(f'   {u}')
+
+    header = _file_header(cfg, len(out_sets))
     body = json.dumps(out_sets, indent=2, sort_keys=True)
-    OUTPUT_PATH.write_text(header + body + ';\n', encoding='utf-8')
-    print(f'\nWrote {OUTPUT_PATH}')
+    cfg['output'].write_text(header + body + ';\n', encoding='utf-8')
+    print(f'\nWrote {cfg["output"]}')
     return 0
 
 

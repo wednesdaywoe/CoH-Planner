@@ -5,18 +5,43 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-## ⬜ IO-set generators drop Absorb from Heal pieces (regen will undo hand-fix) — 2026-06-05
+## ⬜ Inexhaustibility piece + perception/knockback_strength bonuses — minor IO-set gaps — 2026-06-05
 
-Healing / Accurate-Healing enhancement pieces must list `Heal/Absorb` (separate
-diluting aspects), but the generators' attrib→aspect maps have no `Absorb`:
-`extract-rebirth-io-sets-v2.py` (`ATTRIB_TO_ASPECT`, `HitPoints: 'Healing'` only) and
-the deleted-legacy-backed `convert-io-sets.js`. The data was hand-fixed in
-`io-sets-raw.ts` (HC + Rebirth) + Golgi HamiO in `enhancements.ts`, but a regen drops it.
-Fix needs the PC binary — see full write-up + step list in
-[HEAL-ABSORB-AND-EXPORT-GAPS.md](HEAL-ABSORB-AND-EXPORT-GAPS.md) (also covers the broader
-"IO-set aspects/bonuses still legacy-sourced" gap).
+Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
+- **Inexhaustibility** (Rebirth challenge set): its single piece carries only a
+  `Set_Mode`/Strength marker template — no real attribs, no chance/ppm group — so it
+  extracts as `name:"Empty", proc:false`. Worked around with a curated field-patch
+  (`REBIRTH_PIECE_PATCHES`) → `"Inexhaustibility"/proc:true`. A proper fix would recognise
+  the `Set_Mode` special-piece shape in the extractor.
+- **`perception` / `knockback_strength`** set bonuses are emitted (present in the source)
+  but absent from `STAT_NAME_MAP` (set-bonuses.ts), so the calc drops them. Pre-existing
+  (the hand data had them too); add the keys + global stats to model them.
 
 > ---RESOLVED ---
+
+## ✅ IO sets are binary-sourced for both servers; bonuses fixed (2026-06-05)
+
+`io-sets-raw.ts` (HC + Rebirth) now generates from `boostsets.bin` + `powers.bin` via
+`extract-rebirth-io-sets-v2.py --dataset <id>`; dead `convert-io-sets.js` +
+`extract-rebirth-io-sets.cjs` retired. Subsumes the old "generators drop Absorb" gap —
+the Heal/Absorb attribs flow from the binary correctly.
+
+Verifying the data (GAME-DATA-PRINCIPLES §2) caught two bug classes the prior trial missed
+(it compared only aspect *sets* + bonus tier *counts*):
+- **Bonus stat keys / value scaling.** The binary's `cold_resistance` / `maxhp` /
+  per-type-mez keys aren't in `normalizeStatName` → the calc silently dropped them (≈196
+  entries on Rebirth-only sets). Rewrote to canonical keys + per-attrib value multiplier
+  (damage ×250, max HP ×10, max end ×1, else ×100; flat ×100 was 10× off on max HP),
+  paired-stat de-dup, family collapses.
+- **Piece effective-aspect count.** Recovered from the enhancement scale
+  (`= multiAspectModifier(count) × rarity`) instead of name/aspect-list counting — fixes
+  LotG +Recharge (2 aspects) and ATO "#6" proc pieces (4). Proc detection via chance/ppm;
+  negative-scale Strength templates excluded as proc debuffs (dropped spurious Slow/KB).
+
+Validated tier-by-tier vs the trusted HC hand-data: only diffs are 20 damage display-
+rounding fixes + 1 Aegis psi/tox de-dup, 0 aspect-count regressions. Durable mechanics in
+[GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md) §11; guarded by `io-sets-bonus-keys.test.ts`
++ `io-sets-heal-absorb.test.ts`. tsc clean, 110/110 tests.
 
 ## ✅ Offensive knockback was dropped from ALL attacks (FIXED 2026-06-04)
 
