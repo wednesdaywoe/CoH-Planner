@@ -41,6 +41,7 @@ const datasets = (() => {
 //   convert-pool-powers    -> generated/power-pools.ts
 //   convert-epic-pools     -> generated/epic-pools.ts
 //   convert-incarnate      -> generated/incarnate-effects.ts
+//   convert-salvage        -> generated/invention-salvage.generated.ts (salvage.bin)
 //   extract-at-tables      -> at-tables.ts            (layered, not generated/)
 //   convert-archetypes     -> generated/archetype-stats.generated.ts (HP/cap/resCap)
 //   generate-powerset-index-> powersets/index.ts      (needs powersets first)
@@ -55,6 +56,7 @@ const STEPS = [
   { script: 'convert-pool-powers.cjs',        args: [],          generated: true },
   { script: 'convert-epic-pools.cjs',         args: [],          generated: true },
   { script: 'convert-incarnate-effects.cjs',  args: [],          generated: true },
+  { script: 'convert-salvage.cjs',            args: [],          generated: true },
   { script: 'convert-pet-entities.cjs',       args: [],          generated: false },
 ];
 

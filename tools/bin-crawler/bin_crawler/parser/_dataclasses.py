@@ -212,3 +212,13 @@ class ClassRecord:
     # levels 1-50) and "resistance_cap" (scalar). Empty when the format/record
     # doesn't expose them (e.g. pet classes, unrecognized layout).
     attribs: dict[str, object] = field(default_factory=dict)
+
+
+@dataclass
+class SalvageRecord:
+    """One salvage item from salvage.bin (invention / incarnate / base / reward)."""
+    name: str            # internal name, e.g. "S_ArcaneCantrip"
+    display_name: str    # resolved English name, e.g. "Arcane Cantrip"
+    icon: str            # e.g. "salvage_ArcaneCantrip.tga"
+    rarity: str          # "common" | "uncommon" | "rare" | "very-rare"
+    category: str        # "invention" | "base" | "reward" | "incarnate" | "unknown"
