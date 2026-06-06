@@ -74,6 +74,34 @@ optimistic-or-pessimistic backlog line — verify):
   all ATs); `baseRecovery` (1.67) has **0 literal hits** (derived). No value in
   sourcing — kept hand-curated.
 
+### Why the hand-curated modifier scalars are NOT a drift risk (verified)
+
+`damageModifier` and `buffDebuffModifier` aren't single binary quantities at all
+— they're planner **abstractions** that each collapse the game's *many*
+per-category AT modifier tables (`Melee_Buff_Def`, `Ranged_Heal`,
+`Melee_Debuff_ToHit`, `Ranged_Damage`, …) into one hand-picked number. So there
+is nothing in the bin to "source" them from. **But that's fine — the calc barely
+uses them.** Both are **fallbacks only**:
+
+- **Damage:** `calculateActualDamage` consults `damageModifier` *only* when a
+  power has no `table` field. The canonical path `calculateDamageWithATTable`
+  uses the per-AT modifier table directly (`damage.ts` comment confirms).
+- **Buff/debuff:** `effect-registry.ts` `calculateEffectValue` prefers the
+  binary table (`getTableValue(at, value.table, 50) * value.scale`) whenever the
+  effect carries a `{scale, table}` pair, and only falls back to
+  `buffDebuffModifier` for table-less (legacy/utility) effects.
+
+The load-bearing per-AT modifier data is the **`named_tables`** — which ARE
+binary-sourced and **current** (re-exported from the live piggs; `at-tables.ts`
+re-extracts with no diff). In the HC generated data **18,946** scaled effects
+carry a `table` ref (support categories: `Melee_Buff_Def` 1489×, `Melee_Res_Dmg`
+1221×, `Ranged_Heal` 128×, …). So support-AT buff/debuff magnitudes come from the
+current binary tables and pick up HC's modifier patches on re-export — **CoD2
+staleness is irrelevant to them.** The hand scalars only colour rare table-less
+fallbacks; sourcing them would mean *routing those fallbacks through the
+per-category tables too* (a calc change, not a data-sourcing one) — tracked as a
+possible follow-up, low impact.
+
 Guarded by `archetype-stats.test.ts` (baseThreat assertion + invariant added);
 full suite **184 passing**, tsc clean.
 
