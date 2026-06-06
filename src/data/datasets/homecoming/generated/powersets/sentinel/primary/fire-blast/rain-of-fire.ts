@@ -41,7 +41,7 @@ export const RainofFire: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P1985334123",
+      "entity": "PL_StaticObject",
       "displayName": "Rain of Fire",
       "powers": [
         "Pets.RainofFire_Sentinel.Avoid",

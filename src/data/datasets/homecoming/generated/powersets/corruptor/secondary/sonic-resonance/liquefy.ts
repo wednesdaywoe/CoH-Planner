@@ -50,7 +50,7 @@ export const Liquefy: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P258400189",
+      "entity": "Liquefy",
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Pets.Liquefy.Liquefy"

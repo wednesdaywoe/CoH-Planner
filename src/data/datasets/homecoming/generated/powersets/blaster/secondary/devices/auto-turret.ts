@@ -42,7 +42,7 @@ export const AutoTurret: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P3912486950",
+      "entity": "Pets_Turret",
       "duration": 90
     }
   }

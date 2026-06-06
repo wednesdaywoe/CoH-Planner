@@ -42,7 +42,7 @@ export const GunDrone: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P3912486950",
+      "entity": "Pets_GunDrone_Tri_Controller",
       "duration": 99999
     }
   }

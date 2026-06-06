@@ -41,7 +41,7 @@ export const CatherineWheel: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P1712748702",
+      "entity": "Pets_CatherineWheel",
       "duration": 99999
     }
   }

@@ -44,7 +44,7 @@ export const AnimateStone: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P388854299",
+      "entity": "Pets_Stone_Controller",
       "duration": 99999
     }
   }

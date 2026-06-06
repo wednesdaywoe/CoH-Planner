@@ -43,7 +43,7 @@ export const ShadowField: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P4284718959",
+      "entity": "Pets_Shadow_Field_Dominator",
       "duration": 45,
       "entityCount": 2
     }

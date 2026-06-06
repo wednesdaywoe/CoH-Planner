@@ -46,7 +46,7 @@ export const FoldSpace: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P857968679",
+      "entity": "Pets_Singularity_Controller",
       "duration": 99999
     }
   }

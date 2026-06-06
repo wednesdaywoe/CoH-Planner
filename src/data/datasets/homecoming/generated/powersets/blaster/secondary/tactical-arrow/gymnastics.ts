@@ -42,7 +42,7 @@ export const Gymnastics: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P4100491214",
+      "entity": "Pets_OilSlickOil_Blaster",
       "duration": 30
     }
   }

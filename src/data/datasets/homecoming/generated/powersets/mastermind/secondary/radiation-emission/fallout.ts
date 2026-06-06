@@ -47,7 +47,7 @@ export const Fallout: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P2158078059",
+      "entity": "P2416771117",
       "duration": 1
     }
   }

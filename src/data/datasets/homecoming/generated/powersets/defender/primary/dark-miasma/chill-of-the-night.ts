@@ -46,7 +46,7 @@ export const ChilloftheNight: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P4241331532",
+      "entity": "Pets_DarkServant",
       "duration": 240
     }
   }
