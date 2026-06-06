@@ -400,6 +400,10 @@ const STAT_TO_GLOBAL: Record<string, keyof GlobalBonuses> = {
 
   // Knockback Resistance (from IO set bonuses)
   kbresistance: 'mezResistKnockback',
+
+  // Perception radius buff (from IO set bonuses — Rectified Reticle), same
+  // % global as in-power +Perception buffs.
+  perceptionradius: 'perceptionRadius',
 };
 
 /**

@@ -22,15 +22,17 @@ import { normalizeStatName } from '@/utils/calculations/set-bonuses';
  *     ×100 over-valued max HP 10× (1.125% → 11.25%) and under-valued damage.
  *     The range checks below would catch a re-introduction of that bug.
  *
- * `perception` and `knockback_strength` are real bonuses the planner does not
- * yet model (absent from STAT_NAME_MAP). They were already present-but-dropped
- * in the hand data, so they're an accepted pre-existing gap, not a regression.
+ * Every emitted stat key must now resolve through normalizeStatName — either to
+ * an internal key (modeled) or to `null` (explicitly ignored, e.g.
+ * knockback_strength, which has no offensive-KB-strength stat yet). An
+ * `undefined` result means the planner silently drops the bonus, which is the
+ * regression this guards against.
  */
 type Effect = { stat: string; value: number };
 type Bonus = { pieces: number; effects?: Effect[] };
 type Registry = Record<string, { bonuses?: Bonus[]; pieces?: Array<{ num: number; aspects?: string[]; proc?: boolean; name?: string; totalAspects?: number }> }>;
 
-const KNOWN_UNMODELLED = new Set(['perception', 'knockback_strength']);
+const KNOWN_UNMODELLED = new Set<string>();
 
 function effects(reg: Registry): Array<{ setId: string; pieces: number; stat: string; value: number }> {
   const out: Array<{ setId: string; pieces: number; stat: string; value: number }> = [];
@@ -53,6 +55,15 @@ describe.each([
       if (normalizeStatName(stat) === undefined) unknown.add(stat);
     }
     expect([...unknown].sort()).toEqual([]);
+  });
+});
+
+describe('IO-set bonus key handling', () => {
+  it('perception is modeled (Rectified Reticle → perceptionRadius global)', () => {
+    expect(normalizeStatName('perception')).toBe('perceptionradius');
+  });
+  it('knockback_strength is explicitly ignored (no offensive-KB-strength stat yet)', () => {
+    expect(normalizeStatName('knockback_strength')).toBeNull();
   });
 });
 
