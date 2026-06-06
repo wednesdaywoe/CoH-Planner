@@ -351,7 +351,10 @@ const ED_THRESHOLDS: Record<EnhancementSchedule, { t1: number; t2: number; t3: n
  * - Tier 3 (t2 to t3): 70% effective
  * - Tier 4 (beyond t3): 15% effective
  *
- * These values match Homecoming/i25+ game behavior (confirmed via Mids Reborn source).
+ * These values match Homecoming/i25+ game behavior. VERIFIED against the HC
+ * binary `dim_returns.bin` (2026-06-06): its 8 ED schedule records carry exactly
+ * these four distinct threshold sets (A 0.7/0.9/1.0, B 0.4/0.5/0.6, C 0.8/1.0/1.2,
+ * D 1.2/1.5/1.8) and the 0.9 / 0.7 / 0.15 tier multipliers — no drift.
  */
 export function applyED(value: number, schedule: EnhancementSchedule = 'A'): number {
   const { t1, t2, t3 } = ED_THRESHOLDS[schedule];
