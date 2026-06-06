@@ -4,6 +4,7 @@ A character build planner for City of Heroes, built as a gift to the CoH communi
 
 CoH Sidekick is designed to stay free and community-maintained for as long as the game endures.
 
+
 ## The Sidekick Suite
 
 CoH Sidekick is the main feature of a small suite of community tools for the CoH data ecosystem:
@@ -39,3 +40,6 @@ City of Heroes and all related assets are the property of their respective right
 ## Contributing
 
 Contributions are welcome. By submitting a pull request, you agree that your contribution will be licensed under AGPL-3.0-or-later on the same terms as the rest of the project. Please include a `Signed-off-by` line in your commits (Developer Certificate of Origin).
+
+## A Word About Agentic Development
+Development and continued maintenance of the planner is aided by LLM tools. This is the best way to avoid the otherwise inevitable future when the developer loses interest in the game, or is unable to devote time to maintaining the app. As it stands now, anyone could clone the project and take over development just using something like Github's Copilot. That is a better outcome than having another planner fall into disrepair, or be inaccessible to a significant portion of the player base who are on MacOS or Linux. The reality is that the CoH playerbase includes capable programmers and developers, but in multi-decade history of the game, only one full-featured planner has ever existed. That's because making a CoH planner is really really hard.
