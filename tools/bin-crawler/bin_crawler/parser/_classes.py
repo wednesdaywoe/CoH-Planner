@@ -282,9 +282,16 @@ def _parse_classes_parse6(r: Parse6BinReader) -> list[ClassRecord]:
 # shifts these fails loudly.
 #   parse7 (Homecoming): 105-entry level tables (50 + combat/incarnate extension)
 #   parse6 (Rebirth):    50-entry level tables (level cap 50, no incarnate)
+# `dmg_cap_delta` lands on the first damage-type StrengthMax array — a per-level
+# curve whose L50 value is the AT's damage buff cap (Blaster 5.0=500%, Brute
+# 7.0=700% HC / 7.75=775% Rebirth, etc.). Verified against the HC 2020-01-23
+# Tanker/Brute patch notes (Tanker 400->500%, Brute 775->700%) and the live
+# forum (Scrapper 500%). NB: there is a second, STALE copy of the cap elsewhere
+# in the HC record (pre-2020 values) — do NOT read that one. Per-server: Rebirth
+# kept the older Tanker 400% / Brute 775%.
 _ATTRIB_LAYOUT = {
-    "parse7": {"count": 105, "cap_delta": 44656, "res_value_delta": 112744, "threat_delta": -4040},
-    "parse6": {"count": 50,  "cap_delta": 15472, "res_value_delta": 46420, "threat_delta": -4004},
+    "parse7": {"count": 105, "cap_delta": 44656, "res_value_delta": 112744, "threat_delta": -4040, "dmg_cap_delta": 74872},
+    "parse6": {"count": 50,  "cap_delta": 15472, "res_value_delta": 46420, "threat_delta": -4004, "dmg_cap_delta": 30944},
 }
 _PLAYER_LEVELS = 50             # planner uses levels 1-50
 
@@ -338,6 +345,13 @@ def _extract_attribs(data, rec_start, rec_len, layout):
         v = struct.unpack_from("<f", data, rec_start + threat_off)[0]
         if 0 < v <= 20:  # sane per-AT threat multiplier (player ATs span 1..4)
             out["base_threat"] = v
+    # damage_cap: L50 of the first damage-type StrengthMax curve.
+    dc_off = hp_off + layout["dmg_cap_delta"]
+    if rec_start + dc_off + 4 + (_PLAYER_LEVELS - 1) * 4 + 4 <= rec_start + rec_len \
+            and struct.unpack_from("<I", data, rec_start + dc_off)[0] == cnt:
+        v = struct.unpack_from("<f", data, rec_start + dc_off + 4 + (_PLAYER_LEVELS - 1) * 4)[0]
+        if 3 <= v <= 10:  # sane damage buff cap (player ATs span 400%..775%)
+            out["damage_cap"] = v
     return out
 
 

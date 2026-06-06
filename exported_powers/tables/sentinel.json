@@ -11990,6 +11990,7 @@
       2088.24853515625
     ],
     "resistance_cap": 0.75,
-    "base_threat": 2.5
+    "base_threat": 2.5,
+    "damage_cap": 5.0
   }
 }

@@ -56,23 +56,54 @@ optimistic-or-pessimistic backlog line — verify):
     binary says **`2.0`** (header alignment confirmed identical to every other
     AT — not a misread). Binary now authoritative. (cf. the Phase-1 Brute HP
     catch.) HC + the other 14 Rebirth ATs matched the hand-port exactly.
-- **`damageCap`, `buffDebuffModifier`, `damageModifier{melee,ranged,aoe}` are NOT
-  in classes.bin** as the planner's scalar values — verified three ways:
-  exact-single-float scan over the whole record (0 hits), flat-per-AT-array scan
-  (no `[5,4,…,7]`-shaped damage-cap vector; the StrengthMax damage members are a
-  uniform flat `5.0` for **every** AT), and a `Melee/Ranged_Damage` table-ratio
-  test (no uniform table→scalar rule — some ATs fit a `/55.61` baseline, others
-  don't). These are CoD2-curated **design constants** (an AT's damage scale
-  defines the AT; near-zero patch-drift risk) and **stay hand-curated**.
-  - Open question (needs CoD2 to resolve, not acted on): the per-AT damage
-    **strength-max curve** at `~delta 82092` reads Blaster/Scrapper/Sentinel/
-    Corruptor/Stalker = 5, Brute ≈ 7.75 — which *disagrees* with the hand-port's
-    `damageCap` (Scrapper/etc = 4, Brute = 7). Either a real drift or that delta
-    isn't the planner's cap concept. Left hand-curated pending an authoritative
-    cross-check.
+- **`damageCap` IS in classes.bin** (resolved in Phase 3, below) — it's the L50
+  of the first damage-type StrengthMax curve. My earlier "not in classes.bin"
+  read was wrong: I searched for the *stale hand-port* vector `[5,4,…,7]`, which
+  of course didn't match, and the flat-array scan found the cap stored as a
+  *per-level curve* (rising 2.1→cap), not a flat array. See Phase 3.
+- **`buffDebuffModifier`, `damageModifier{melee,ranged,aoe}` are NOT single
+  binary quantities** — they're planner abstractions over the game's *many*
+  per-category AT modifier tables; no exact float / flat array / uniform
+  table-ratio reproduces them. **But the load-bearing per-AT modifier data IS
+  binary-sourced and current** — the `named_tables` (→ `at-tables.ts`), which the
+  calc already prefers (`damageModifier`/`buffDebuffModifier` are *fallbacks* for
+  table-less effects only; e.g. `calculateBuffDebuffValue`). The hand scalars are
+  stale in places (the 2020 patch set Tanker melee 0.8→0.95, ranged 0.5→0.8; the
+  hand-port still has 0.8/0.5) — but the named tables already encode the current
+  values (`|Ranged_Damage[L50]|/55.61 = 0.80`, `|Melee_Damage[L50]|/55.61 = 0.95`).
+  **Follow-up (low impact):** route the table-less fallback through the
+  per-category tables and/or refresh the stale fallback scalars.
 - `baseEndurance` (100) and `defenseCap` (0.45) are global constants (same for
   all ATs); `baseRecovery` (1.67) has **0 literal hits** (derived). No value in
   sourcing — kept hand-curated.
+
+---
+
+## ✅ STATUS — Phase 3 (damageCap) DONE, both servers (2026-06-06)
+
+`damageCap` is now **binary-sourced** — the L50 value of the first damage-type
+StrengthMax curve in `classes.bin` (`_ATTRIB_LAYOUT["…"]["dmg_cap_delta"]`:
+**74872** Parse7/HC, **30944** Parse6/Rebirth), flowed through export → converter
+→ `ARCHETYPE_BINARY_STATS` → spread (hand values removed). It's load-bearing
+([damage.ts](src/utils/calculations/damage.ts) caps damage strength at this value).
+
+**Caught a real, confirmed drift** — the hand-port under-capped five ATs:
+
+| AT | hand-port | HC binary | Rebirth binary |
+|---|---|---|---|
+| Scrapper / Sentinel(HC) / Corruptor / Stalker | 400% | **500%** | **500%** |
+| Tanker | 400% | **500%** | 400% |
+| Brute | 700% | 700% | **775%** |
+| Guardian (Rebirth) | 500% | — | 500% |
+
+Verified against the **HC 2020-01-23 Tanker/Brute patch notes** ("Tanker damage
+buff cap increased from 400% to 500%"; "Brute … lowered from 775% to 700%") and
+the live forum (Scrapper 500%). **Per-server binary is authoritative:** HC took
+the 2020 rework (Tanker 500/Brute 700); Rebirth, an older snapshot, kept Tanker
+400/Brute 775. There's a second, **stale** copy of the cap elsewhere in the HC
+record (the pre-2020 values, ≈delta 82092) — the parser deliberately reads the
+live block, not that one. Guarded by `archetype-stats.test.ts` (damageCap
+assertion + sane-range invariant); full suite **184 passing**, tsc clean.
 
 ### Why the hand-curated modifier scalars are NOT a drift risk (verified)
 

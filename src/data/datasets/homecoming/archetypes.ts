@@ -6,14 +6,16 @@
 import type { Archetype, ArchetypeId, ArchetypeRegistry } from '@/types';
 import { ARCHETYPE_BINARY_STATS } from './generated/archetype-stats.generated';
 
-// Per-level HP curves, HP caps, baseHP/maxHP, resistance cap (Phase 1) and
-// baseThreat (Phase 2 header scalar) are now binary-sourced:
-// `ARCHETYPE_BINARY_STATS` is generated from classes.bin (via
-// export_classes.py -> convert-archetypes.cjs) and spread into each archetype's
-// `stats` below. The remaining scalars (damageModifier, damageCap,
-// buffDebuffModifier, baseEndurance, baseRecovery, defenseCap) are NOT present
-// in classes.bin as the planner's scalar values (exhaustively verified) and
-// stay hand-curated here -- see ARCHETYPE-DEFS-BINARY-SOURCING.md (Phase 2).
+// Per-level HP curves, HP caps, baseHP/maxHP, resistance cap (Phase 1),
+// baseThreat (Phase 2 header scalar) and damageCap (Phase 3 StrengthMax L50)
+// are now binary-sourced: `ARCHETYPE_BINARY_STATS` is generated from classes.bin
+// (via export_classes.py -> convert-archetypes.cjs) and spread into each
+// archetype's `stats` below. Sourcing damageCap caught the hand-port under-
+// capping Scrapper/Tanker/Sentinel/Corruptor/Stalker at 400% (they are 500%).
+// The remaining scalars (damageModifier, buffDebuffModifier, baseEndurance,
+// baseRecovery, defenseCap) aren't single binary quantities — the load-bearing
+// per-AT modifiers live in the binary named_tables (at-tables.ts), which the
+// calc already uses; these are only fallbacks. See ARCHETYPE-DEFS-BINARY-SOURCING.md.
 
 export const ARCHETYPES: ArchetypeRegistry = {
   // ============================================
@@ -38,7 +40,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 1.0,
       },
       buffDebuffModifier: 0.625,
-      damageCap: 5.0,       // 500%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -95,7 +96,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.5,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -151,7 +151,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.5,
       },
       buffDebuffModifier: 1.25,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -210,7 +209,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.8,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -273,7 +271,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -336,7 +333,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.8,
       },
       buffDebuffModifier: 1.4,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -396,7 +392,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.65,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 7.0,       // 700% (Homecoming)
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -459,7 +454,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.6,
       },
       buffDebuffModifier: 0.75,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -522,7 +516,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.65,
       },
       buffDebuffModifier: 0.9,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -574,7 +567,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.5,
       },
       buffDebuffModifier: 0.75,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -625,7 +617,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -690,7 +681,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: ['peacebringer/luminous-blast'],
@@ -718,7 +708,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: ['warshade/umbral-blast'],
@@ -748,7 +737,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.65,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: ['arachnos-soldier/arachnos-soldier'],
@@ -788,7 +776,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: ['arachnos-widow/widow-training'],

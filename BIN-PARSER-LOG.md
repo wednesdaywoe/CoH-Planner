@@ -46,9 +46,9 @@ Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
 
 > ---RESOLVED ---
 
-## ✅ Archetype defs binary-sourced from classes.bin — HP curves/caps + baseThreat, both servers (2026-06-06)
+## ✅ Archetype defs binary-sourced from classes.bin — HP curves/caps + baseThreat + damageCap, both servers (2026-06-06)
 
-Campaign leg #2, done in two phases. The `classes.bin` parser (`_classes.py`) now
+Campaign leg #2, done in three phases. The `classes.bin` parser (`_classes.py`) now
 reads the class struct's CharacterAttributes region (not just `named_tables`),
 anchoring on the `hit_points` curve and reading siblings at fixed byte-deltas
 per format (`_ATTRIB_LAYOUT["parse7"|"parse6"]`).
@@ -59,19 +59,30 @@ per format (`_ATTRIB_LAYOUT["parse7"|"parse6"]`).
 - **Phase 2:** `baseThreat` — a class-**header** float at `hit_points_anchor−4040`
   (Parse7) / `−4004` (Parse6). Caught the hand-port's wrong Rebirth **Guardian**
   threat (1.0 → binary 2.0; header alignment confirmed identical to every other
-  AT, so not a misread). The other AT scalars (`damageCap`, `buffDebuffModifier`,
-  `damageModifier`) are **exhaustively verified NOT in classes.bin** as the
-  planner's values (exact-float scan + flat-per-AT-array scan + `Melee/Ranged_
-  Damage` table-ratio test all negative — the StrengthMax damage members are a
-  uniform flat 5.0 for every AT, and no uniform table→scalar rule exists). They
-  are CoD2-curated design constants and stay hand-curated.
+  AT, so not a misread).
+- **Phase 3:** `damageCap` — L50 of the first damage-type **StrengthMax** curve
+  (`dmg_cap_delta` 74872 Parse7 / 30944 Parse6). Caught the hand-port
+  under-capping **Scrapper/Tanker/Sentinel/Corruptor/Stalker at 400% when HC has
+  them at 500%** (and Rebirth Brute at 7.0 when it's 7.75). Verified vs the HC
+  2020-01-23 Tanker/Brute patch notes (Tanker 400→500%, Brute 775→700%) + forum
+  (Scrapper 500%). **Per-server authoritative:** HC Tanker 500/Brute 700, Rebirth
+  Tanker 400/Brute 775. NB the cap has a *second, stale* pre-2020 copy in the HC
+  record (≈delta 82092) — the parser reads the live block, not that one. The
+  initial "damageCap not in classes.bin" read was a false negative (searched the
+  stale hand vector; the cap is stored as a rising per-level curve, not a flat
+  array).
+
+The remaining scalars (`damageModifier`, `buffDebuffModifier`) aren't single
+binary quantities — they're abstractions over the per-category `named_tables`,
+which ARE binary-sourced and current and which the calc already prefers (these
+scalars are table-less *fallbacks* only). See [[at-modifiers-are-binary-tables]].
 
 Pipeline: parser `attribs` → `export_classes.py` → `convert-archetypes.cjs` →
 `archetype-stats.generated.ts` → spread into each `archetypes.ts`. Guarded by
-`src/data/archetype-stats.test.ts` (60 tests, both datasets, incl. baseThreat).
-`threat_delta` is a *negative* delta (header sits before the anchor) so a future
-HC header-field insertion would shift it — the sane-range guard + CI test catch a
-gross misread. Full write-up: **[ARCHETYPE-DEFS-BINARY-SOURCING.md](ARCHETYPE-DEFS-BINARY-SOURCING.md)**.
+`src/data/archetype-stats.test.ts` (60 tests, both datasets, incl. baseThreat +
+damageCap). `threat_delta` is a *negative* delta (header sits before the anchor),
+so a future HC header-field insertion would shift it — the sane-range guards + CI
+test catch a gross misread. Full write-up: **[ARCHETYPE-DEFS-BINARY-SOURCING.md](ARCHETYPE-DEFS-BINARY-SOURCING.md)**.
 
 ## ✅ `perception` / `knockback_strength` set bonuses modeled (2026-06-06)
 
