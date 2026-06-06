@@ -13,9 +13,15 @@ import { ARCHETYPE_BINARY_STATS } from './generated/archetype-stats.generated';
 // archetype's `stats` below. Sourcing damageCap caught the hand-port under-
 // capping Scrapper/Tanker/Sentinel/Corruptor/Stalker at 400% (they are 500%).
 // The remaining scalars (damageModifier, buffDebuffModifier, baseEndurance,
-// baseRecovery, defenseCap) aren't single binary quantities — the load-bearing
-// per-AT modifiers live in the binary named_tables (at-tables.ts), which the
-// calc already uses; these are only fallbacks. See ARCHETYPE-DEFS-BINARY-SOURCING.md.
+// baseRecovery, defenseCap) stay hand-curated. NOTE: damageModifier and
+// buffDebuffModifier are effectively VESTIGIAL — the calc reads the binary
+// per-category named_tables (at-tables.ts) for every effect that carries a
+// {scale, table} pair, which today is all of them; these scalars are only the
+// fallback for hypothetical table-less effects (none exist in the current
+// export). They aren't single binary quantities (each abstracts many per-category
+// tables), so they can't be cleanly binary-sourced, and some are stale (the calc
+// just never reads them). Tanker's was corrected as it's the one cleanly
+// confirmable case; the others are left as-is. See ARCHETYPE-DEFS-BINARY-SOURCING.md.
 
 export const ARCHETYPES: ArchetypeRegistry = {
   // ============================================
@@ -265,9 +271,13 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['tanker'],
       baseEndurance: 100,
       baseRecovery: 1.67,
+      // Corrected from the pre-2020 0.8/0.5 to the HC values (2020-01-23 Tanker
+      // rework: melee 0.8->0.95, ranged 0.5->0.8); confirmed by the binary
+      // Melee/Ranged_Damage tables (52.831/55.61=0.95, 44.489/55.61=0.80). aoe
+      // has no binary table to confirm, left as-is. (Rebirth keeps 0.8/0.5.)
       damageModifier: {
-        melee: 0.8,
-        ranged: 0.5,
+        melee: 0.95,
+        ranged: 0.8,
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,

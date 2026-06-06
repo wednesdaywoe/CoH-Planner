@@ -71,8 +71,18 @@ optimistic-or-pessimistic backlog line — verify):
   stale in places (the 2020 patch set Tanker melee 0.8→0.95, ranged 0.5→0.8; the
   hand-port still has 0.8/0.5) — but the named tables already encode the current
   values (`|Ranged_Damage[L50]|/55.61 = 0.80`, `|Melee_Damage[L50]|/55.61 = 0.95`).
-  **Follow-up (low impact):** route the table-less fallback through the
-  per-category tables and/or refresh the stale fallback scalars.
+  - **Follow-up done (hygiene):** traced the calc — these scalars are
+    **vestigial**. Every effect carries a `{scale, table}` pair → the binary path;
+    the fallback that reads the scalars fires for *zero* current effects (damage
+    included: 0 plain-number `damage` values, 1872 tabled). They can't be cleanly
+    binary-sourced (each abstracts many per-category tables; `|table|/55.61` is
+    clean for most ATs but anomalous for Blaster/Sentinel/Dominator/Corruptor,
+    whose tables bake in damage inherents — Defiance/Domination/etc). Marked them
+    vestigial in a code comment and corrected the one cleanly-confirmable stale
+    value: **HC Tanker damageModifier melee 0.8→0.95, ranged 0.5→0.8** (Rebirth
+    keeps 0.8/0.5 — its binary confirms the pre-2020 values, matching its 400%
+    cap). The other "stale-looking" derivations are inherent-baked anomalies, left
+    as-is.
 - `baseEndurance` (100) and `defenseCap` (0.45) are global constants (same for
   all ATs); `baseRecovery` (1.67) has **0 literal hits** (derived). No value in
   sourcing — kept hand-curated.
