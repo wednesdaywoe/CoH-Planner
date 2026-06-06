@@ -239,6 +239,9 @@ def _parse_classes_parse6(r: Parse6BinReader) -> list[ClassRecord]:
         if tables_off is not None:
             named_tables = _parse_inline_named_tables(data, rec_start, tables_off)
 
+        # Per-archetype attribute curves/caps (HP, HP-cap, resistance cap)
+        attribs = _extract_attribs(data, rec_start, rec_len, _ATTRIB_LAYOUT["parse6"])
+
         records.append(ClassRecord(
             name=name,
             display_name=display_name,
@@ -247,10 +250,86 @@ def _parse_classes_parse6(r: Parse6BinReader) -> list[ClassRecord]:
             secondary_category=secondary,
             pool_category=pool,
             named_tables=named_tables,
+            attribs=attribs,
         ))
         r.skip(rec_len)
 
     return records
+
+
+# --- Per-archetype attribute curves (CharacterAttributes struct) -------------
+#
+# Beyond the named modifier tables, each class record serializes the engine's
+# CharacterAttributes as a long run of count-prefixed per-level float arrays
+# (u4 count + count×f4). The planner's archetype definitions need three of them:
+# the HP curve, the HP-cap curve, and the resistance cap. Rather than fully
+# decode the (large, version-specific) member layout, we anchor on the
+# hit_points curve — the first such array whose level-1 value is a small HP-like
+# number rising to a large level-50 value — and read the cap members at fixed
+# byte-deltas from it. Deltas were derived empirically and VERIFIED against the
+# hand-port for all 15 HC archetypes (full curves + caps match; the only diff
+# was a stale Brute HP table in the hand data, which the binary corrects).
+#
+# Per-binary-format layout. Deltas are byte offsets from the hit_points array's
+# count-prefix; `cap_delta` lands on the hp-cap array's count-prefix and
+# `res_value_delta` on the resistance-cap FLOAT (a flat per-level value, read
+# directly). Derived empirically and VERIFIED against the hand-port for every
+# archetype — HC: 15 ATs (caught a stale Brute HP table the binary corrects);
+# Rebirth: 15 incl. Guardian. Guarded by the archetype-stats CI test so a format
+# change that shifts these fails loudly.
+#   parse7 (Homecoming): 105-entry level tables (50 + combat/incarnate extension)
+#   parse6 (Rebirth):    50-entry level tables (level cap 50, no incarnate)
+_ATTRIB_LAYOUT = {
+    "parse7": {"count": 105, "cap_delta": 44656, "res_value_delta": 112744},
+    "parse6": {"count": 50,  "cap_delta": 15472, "res_value_delta": 46420},
+}
+_PLAYER_LEVELS = 50             # planner uses levels 1-50
+
+
+def _find_hit_points_offset(data, rec_start, rec_len, count):
+    """First count-prefixed array that looks like the hit_points curve: level-1
+    in (50, 300) rising to a level-50 in (300, 5000). Returns record-relative
+    offset of the count prefix, or None."""
+    off = 0
+    while off < rec_len - 8:
+        if struct.unpack_from("<I", data, rec_start + off)[0] == count \
+                and rec_start + off + 4 + count * 4 <= rec_start + rec_len:
+            l1 = struct.unpack_from("<f", data, rec_start + off + 4)[0]
+            l50 = struct.unpack_from("<f", data, rec_start + off + 4 + 49 * 4)[0]
+            if 50 < l1 < 300 and 300 < l50 < 5000 and l50 > l1:
+                return off
+        off += 4
+    return None
+
+
+def _read_level_array(data, rec_start, off, take):
+    """Read `take` floats from the count-prefixed array at `off` (skips the u4
+    count prefix)."""
+    base = rec_start + off + 4
+    return [struct.unpack_from("<f", data, base + i * 4)[0] for i in range(take)]
+
+
+def _extract_attribs(data, rec_start, rec_len, layout):
+    """Extract hit_points / hp_cap curves + resistance_cap from a class record
+    using the given format layout. Returns {} when the hit_points anchor isn't
+    found (pet/odd records)."""
+    cnt = layout["count"]
+    hp_off = _find_hit_points_offset(data, rec_start, rec_len, cnt)
+    if hp_off is None:
+        return {}
+    out: dict[str, object] = {
+        "hit_points": _read_level_array(data, rec_start, hp_off, _PLAYER_LEVELS),
+    }
+    cap_off = hp_off + layout["cap_delta"]
+    if rec_start + cap_off + 4 + cnt * 4 <= rec_start + rec_len \
+            and struct.unpack_from("<I", data, rec_start + cap_off)[0] == cnt:
+        out["hp_cap"] = _read_level_array(data, rec_start, cap_off, _PLAYER_LEVELS)
+    res_off = hp_off + layout["res_value_delta"]
+    if rec_start + res_off + 4 <= rec_start + rec_len:
+        v = struct.unpack_from("<f", data, rec_start + res_off)[0]
+        if 0 < v <= 1:  # sane resistance cap
+            out["resistance_cap"] = v
+    return out
 
 
 def parse_classes(bin_path_or_data) -> list[ClassRecord]:
@@ -304,6 +383,9 @@ def parse_classes(bin_path_or_data) -> list[ClassRecord]:
         if tables_off is not None:
             named_tables = _parse_named_tables(data, rec_start, tables_off, strtab_base)
 
+        # Per-archetype attribute curves/caps (HP, HP-cap, resistance cap)
+        attribs = _extract_attribs(data, rec_start, rec_len, _ATTRIB_LAYOUT["parse7"])
+
         records.append(ClassRecord(
             name=name,
             display_name=display_name,
@@ -312,6 +394,7 @@ def parse_classes(bin_path_or_data) -> list[ClassRecord]:
             secondary_category=secondary,
             pool_category=pool,
             named_tables=named_tables,
+            attribs=attribs,
         ))
 
         r.skip(rec_len)
