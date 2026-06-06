@@ -1,8 +1,16 @@
 # Game-Data Handling Principles
 
-Durable guidance for working with City of Heroes power data in this project —
+Durable guidance for working with City of Heroes game data in this project —
 the principles and the specific gotchas that keep biting us. Read this before
 touching the bin parser, the converters, or the calc when game data looks wrong.
+
+**Scope:** this started as powers guidance and most examples below are powers
+(the bin parser's original focus), but the principles apply to **every data
+domain we binary-source** — powers, archetypes, enhancements, IO sets, AT
+tables, pet entities, incarnates. The binary-sourcing campaign now spans several
+of these; treat "power" in older examples as "whatever game data you're touching."
+§12 collects the cross-domain method (anchoring, fingerprinting, verifying
+derived data) learned extending this beyond powers.
 
 This is the **principles reference**. The chronological issue log lives in
 [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md); project setup is in CLAUDE.md.
@@ -111,7 +119,7 @@ buffs for that attribute). It's captured in `template.flags`. An effect with it 
   *dropped* there — but some are genuine unenhanceable-only effects (keep) and some are
   enhanceable-copy duplicates (drop). Needs the duplicate-vs-genuine discriminator.
 
-## 5. The `.powers` raw defs are the oracle
+## 5. The raw source is the oracle (`.powers` for powers)
 
 `raw defs/` holds the HC dev's authoritative `.powers` source (4,943 powers, same
 category structure; public game data). It is the ground truth for "what should be there."
@@ -119,6 +127,11 @@ category structure; public game data). It is the ground truth for "what should b
 `exported_powers` to find gaps **proactively** instead of one-at-a-time. The attrib side
 needs a `.powers`↔export name-map before its numbers are trustworthy (`kDefense` =
 `Base_Defense`, `kSpeedFlying` = `FlyingSpeed`, etc.).
+
+**Generalizes beyond powers:** every data domain has a ground-truth source to
+verify against. For data we *derive* or used to hand-port (archetypes, IO sets),
+there are TWO oracles — the prior hand-port (what was true when written) and the
+binary (what's true now); diff both. See §12 for the cross-domain method.
 
 ## 6. The re-export workflow (always de-risk)
 
@@ -132,6 +145,12 @@ committing.
 - Command: `py -3 -m bin_crawler.export_powers --assets-dir <dir> --output-dir <scratch>`
 - Adding a universal field (e.g. `toggle_ignore`) touches ~every power JSON — a large but
   expected diff. Confirm the *only* non-field change is benign before committing.
+- **A refresh re-export also pulls in unrelated drift — isolate it.** Re-exporting to add
+  one field will also pick up any game-data change since the last export (e.g. boss-class
+  category flips, a new `Melee_SSHealSelf` table on PB/WS). For a *focused* commit, keep
+  only the target files and `git checkout` the rest — or call out the incidental refresh
+  explicitly in the message. (The archetype-defs leg reverted ~100 critter-table files to
+  keep the diff to the player ATs it actually touched.)
 
 ## 7. Cross-server binary formats: HC Parse7 vs Rebirth/Thunderspy Parse6
 
@@ -244,7 +263,55 @@ parts that bit us:
   old extraction counted them as enhancement aspects (spurious Slow/Knockback). Proc
   pieces are detected by chance<1 / ppm>0 groups (§3), cross-server.
 
+## 12. Deriving structured non-power data from the binary (archetypes, classes, …)
+
+The campaign now binary-sources data beyond powers (IO sets §11; archetype HP
+curves / caps / resistance cap from `classes.bin`). The reusable method + the
+gotchas that bit us:
+
+- **Anchor on a known-value field, then read siblings at fixed byte-deltas —
+  don't fully decode the struct.** A record is often a long run of similar
+  structures (e.g. the CharacterAttributes per-level float arrays). Find ONE
+  field by its *value signature* (hit_points: a small level-1 rising to a large
+  level-50) and read the rest at fixed deltas from it, **verified across every
+  record**. Cheaper and more robust than mapping the whole (large, version-
+  specific) layout — matches how `_classes.py` already scans for `named_tables`.
+- **Use per-record VARIATION as the fingerprint to locate a field.** Exploit how
+  a value differs across records: `resistanceCap` (0.75 most ATs, 0.90 Tank/
+  Brute) is *distinctive*, so its delta is unambiguous; a flat value (defenseCap
+  0.45 for everyone) matches many positions — disambiguate via distinctive
+  siblings, or accept it's a constant. **A field that doesn't vary per record may
+  not be in this bin at all** (see below).
+- **Count-prefix vs value offset (off-by-array-length trap).** A count-prefixed
+  array is `[u4 count][N floats]`; its *last* value sits at
+  `prefix + 4 + (N-1)*4`. Measure deltas **prefix-to-prefix**, not value-to-value
+  — conflating them yields an off-by-`(N-1)*4` bug (this bit the Rebirth hp-cap:
+  measured from the L1 value to the cap's L50 value, off by 49 floats).
+- **Byte-deltas are format-specific — parameterize them.** The same struct in HC
+  Parse7 (105-entry level tables) and Rebirth Parse6 (50-entry) has *different*
+  deltas. Drive the extractor off a per-format layout table
+  (`_ATTRIB_LAYOUT["parse7"|"parse6"]`), never hardcoded numbers — §7's
+  key-not-structure rule, applied to offsets.
+- **Verify against the hand-port AND an independent reference; a mismatch is a
+  finding, not a failure.** The prior hand-port is the oracle for "what was true
+  when written," the binary for "what's true now." Diffing the two catches *both*
+  extraction bugs and real game drift — when they disagree, determine which (the
+  stale HC Brute HP, 1499/1601 → 1606.35, was a real HC buff the hand-port
+  missed; it validated the leg). Then confirm against CoD2 / in-game.
+- **Confirm which artifact a field lives in before assuming.** Not all of a
+  domain's data is in the obvious bin: the archetype *scalars* (damageModifier,
+  buffDebuffModifier, baseThreat, the AT-specific damageCap boosts) are NOT in
+  `classes.bin` — they come from the AT damage tables / inherent powers. A
+  fingerprint search that finds *nothing* is the proof they live elsewhere; don't
+  force a fragile delta onto data that isn't there.
+- **Guard derived data with a runtime==export test.** Mirror
+  `archetype-stats.test.ts` / `io-sets-*.test.ts`: assert the runtime value equals
+  the committed binary export it derives from, so a hand-edit or stale generated
+  file can't silently diverge it from the game. Note the regen-diff blind spot
+  (§9) — layered outputs aren't all covered, so the focused test is the backstop.
+
 ---
 
 *When you learn a new gotcha or principle, add it here — not just to a commit message —
-so every session (local and remote) benefits.*
+so every session (local and remote) benefits. The principles span all game-data
+domains, not just powers — keep examples concrete but state them generally.*
