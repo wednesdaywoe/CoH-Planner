@@ -5,14 +5,17 @@
  * classes.bin via export_classes.py). Regenerate with:
  *   node scripts/convert-archetypes.cjs --dataset rebirth
  *
- * Spread into each archetype's `stats` in archetypes.ts. Phase 1 fields:
- * HP curve, HP cap, baseHP/maxHP (level 50), resistance cap.
+ * Spread into each archetype's `stats` in archetypes.ts. Fields:
+ * HP curve, HP cap, baseHP/maxHP (level 50), resistance cap (Phase 1),
+ * baseThreat (Phase 2 header scalar) and damageCap (Phase 3 StrengthMax).
  */
 
 export interface ArchetypeBinaryStats {
   baseHP: number;
   maxHP: number;
   resistanceCap: number;
+  baseThreat: number;
+  damageCap: number;
   hpTable: number[];
   hpCapTable: number[];
 }
@@ -22,6 +25,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1204.7588,
     maxHP: 1847.2968,
     resistanceCap: 0.75,
+    baseThreat: 1,
+    damageCap: 5,
     hpTable: [
       102.5, 113.4006, 125.3015, 138.1128, 151.8673, 166.7964, 183.2016, 200.7492, 219.4689, 239.3856,
       260.5192, 282.8838, 306.4874, 331.331, 357.4084, 384.7055, 413.1999, 442.8607, 473.6479, 505.5121,
@@ -41,6 +46,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1499.2554,
     maxHP: 3212.6902,
     resistanceCap: 0.9,
+    baseThreat: 4,
+    damageCap: 7.75,
     hpTable: [
       108, 119.782, 133.0053, 147.3203, 162.7753, 180.0597, 200.0956, 221.7801, 245.1819, 270.3649,
       297.388, 326.3032, 357.1553, 389.9804, 424.8054, 461.6466, 500.5088, 541.3848, 584.2539, 629.0817,
@@ -60,6 +67,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1017.3519,
     maxHP: 1606.3451,
     resistanceCap: 0.75,
+    baseThreat: 1,
+    damageCap: 4,
     hpTable: [
       99, 109.3398, 120.3991, 132.2534, 144.9259, 158.3561, 172.4508, 187.366, 203.1062, 219.6715,
       237.0572, 255.2533, 274.2442, 294.0087, 314.5194, 335.743, 357.6397, 380.1636, 403.2622, 426.8769,
@@ -79,6 +88,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1070.8967,
     maxHP: 1606.3451,
     resistanceCap: 0.75,
+    baseThreat: 1,
+    damageCap: 5,
     hpTable: [
       100, 110.5, 121.7997, 133.9275, 146.9091, 160.7676, 175.5225, 191.1898, 207.7812, 225.3041,
       243.7607, 263.1478, 283.4566, 304.6722, 326.7734, 349.7323, 373.514, 398.077, 423.3724, 449.3441,
@@ -98,6 +109,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1017.3519,
     maxHP: 1606.3451,
     resistanceCap: 0.75,
+    baseThreat: 1,
+    damageCap: 4,
     hpTable: [
       99, 109.3398, 120.3991, 132.2534, 144.9259, 158.3561, 172.4508, 187.366, 203.1062, 219.6715,
       237.0572, 255.2533, 274.2442, 294.0087, 314.5194, 335.743, 357.6397, 380.1636, 403.2622, 426.8769,
@@ -117,6 +130,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1017.3519,
     maxHP: 1606.3451,
     resistanceCap: 0.75,
+    baseThreat: 1,
+    damageCap: 4,
     hpTable: [
       99, 109.3398, 120.3991, 132.2534, 144.9259, 158.3561, 172.4508, 187.366, 203.1062, 219.6715,
       237.0572, 255.2533, 274.2442, 294.0087, 314.5194, 335.743, 357.6397, 380.1636, 403.2622, 426.8769,
@@ -136,6 +151,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1070.8967,
     maxHP: 2007.9319,
     resistanceCap: 0.75,
+    baseThreat: 2,
+    damageCap: 5,
     hpTable: [
       100, 110.5, 121.7997, 133.9275, 146.9091, 160.7676, 175.5225, 191.1898, 207.7812, 225.3041,
       243.7607, 263.1478, 283.4566, 304.6722, 326.7734, 349.7323, 373.514, 398.077, 423.3724, 449.3441,
@@ -155,6 +172,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 803.1725,
     maxHP: 1606.3451,
     resistanceCap: 0.75,
+    baseThreat: 2,
+    damageCap: 4,
     hpTable: [
       95, 104.6988, 114.7963, 125.5571, 136.9928, 148.71, 160.1643, 172.0708, 184.4058, 197.1411,
       210.2436, 223.6756, 237.3949, 251.3546, 265.5034, 279.7858, 294.1423, 308.5097, 322.8215, 337.0081,
@@ -174,6 +193,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1338.6208,
     maxHP: 2409.5176,
     resistanceCap: 0.75,
+    baseThreat: 3,
+    damageCap: 5,
     hpTable: [
       105, 116.3013, 128.8032, 142.298, 156.8255, 172.8251, 190.8807, 210.3087, 231.1566, 253.4671,
       277.2778, 302.6199, 329.5183, 357.9898, 388.0434, 419.6787, 452.8858, 487.6444, 523.9233, 561.6801,
@@ -193,6 +214,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1204.7588,
     maxHP: 2088.2485,
     resistanceCap: 0.75,
+    baseThreat: 2,
+    damageCap: 5,
     hpTable: [
       102.5, 113.4006, 125.3015, 138.1128, 151.8673, 166.7964, 183.2016, 200.7492, 219.4689, 239.3856,
       260.5192, 282.8838, 306.4874, 331.331, 357.4084, 384.7055, 413.1999, 442.8607, 473.6479, 505.5121,
@@ -212,6 +235,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1874.0692,
     maxHP: 3533.959,
     resistanceCap: 0.9,
+    baseThreat: 4,
+    damageCap: 4,
     hpTable: [
       115, 127.9038, 142.8102, 159.0389, 176.6583, 196.9403, 221.5971, 248.5467, 277.9074, 309.7932,
       344.3119, 381.5643, 421.6417, 464.6251, 510.5834, 559.5716, 611.6293, 666.7791, 725.0252, 786.3522,
@@ -231,6 +256,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1070.8967,
     maxHP: 2409.5176,
     resistanceCap: 0.85,
+    baseThreat: 2,
+    damageCap: 4,
     hpTable: [
       100, 110.5, 121.7997, 133.9275, 146.9091, 160.7676, 175.5225, 191.1898, 207.7812, 225.3041,
       243.7607, 263.1478, 283.4566, 304.6722, 326.7734, 349.7323, 373.514, 398.077, 423.3724, 449.3441,
@@ -250,6 +277,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1070.8967,
     maxHP: 2409.5176,
     resistanceCap: 0.85,
+    baseThreat: 2,
+    damageCap: 4,
     hpTable: [
       100, 110.5, 121.7997, 133.9275, 146.9091, 160.7676, 175.5225, 191.1898, 207.7812, 225.3041,
       243.7607, 263.1478, 283.4566, 304.6722, 326.7734, 349.7323, 373.514, 398.077, 423.3724, 449.3441,
@@ -269,6 +298,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1070.8967,
     maxHP: 2409.5176,
     resistanceCap: 0.85,
+    baseThreat: 2,
+    damageCap: 4,
     hpTable: [
       100, 110.5, 121.7997, 133.9275, 146.9091, 160.7676, 175.5225, 191.1898, 207.7812, 225.3041,
       243.7607, 263.1478, 283.4566, 304.6722, 326.7734, 349.7323, 373.514, 398.077, 423.3724, 449.3441,
@@ -288,6 +319,8 @@ export const ARCHETYPE_BINARY_STATS: Record<string, ArchetypeBinaryStats> = {
     baseHP: 1070.8967,
     maxHP: 2409.5176,
     resistanceCap: 0.85,
+    baseThreat: 2,
+    damageCap: 4,
     hpTable: [
       100, 110.5, 121.7997, 133.9275, 146.9091, 160.7676, 175.5225, 191.1898, 207.7812, 225.3041,
       243.7607, 263.1478, 283.4566, 304.6722, 326.7734, 349.7323, 373.514, 398.077, 423.3724, 449.3441,

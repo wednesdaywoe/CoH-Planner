@@ -4896,6 +4896,8 @@
       2002.1494140625,
       2007.931884765625
     ],
-    "resistance_cap": 0.75
+    "resistance_cap": 0.75,
+    "base_threat": 2.0,
+    "damage_cap": 5.0
   }
 }

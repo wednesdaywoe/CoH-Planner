@@ -35,16 +35,6 @@ Surfaced/left by the pseudo-pet entity-resolution fix (resolved entry below):
 - **~10 single-entity P-hash summons have no `priority_list`** to resolve to — genuinely
   unresolvable from current export data; they still show no pet effects.
 
-## ⬜ Archetype defs not binary-sourced — parser skips class-struct attrib tables — 2026-06-06
-
-Campaign leg #2 (teed up, not started). `archetypes.ts` is a legacy hand-port; the
-`classes.bin` parser (`_classes.py`) emits only `named_tables` (power modifier tables),
-skipping the class struct's `attrib_base`/`attrib_max`/`attrib_strength` sub-tables — so
-the per-level HP curve, caps, and base end/recovery the planner's core stat math needs are
-NOT in the committed `tables/*.json` export. Fix = extend parser + exporter to capture
-those, then derive `archetypes.ts`. Full scope + field-by-field source map + verification
-plan: **[ARCHETYPE-DEFS-BINARY-SOURCING.md](ARCHETYPE-DEFS-BINARY-SOURCING.md)**.
-
 ## ⬜ Inexhaustibility piece — Set_Mode special-piece not recognised — 2026-06-05
 
 Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
@@ -55,6 +45,44 @@ Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
   the `Set_Mode` special-piece shape in the extractor.
 
 > ---RESOLVED ---
+
+## ✅ Archetype defs binary-sourced from classes.bin — HP curves/caps + baseThreat + damageCap, both servers (2026-06-06)
+
+Campaign leg #2, done in three phases. The `classes.bin` parser (`_classes.py`) now
+reads the class struct's CharacterAttributes region (not just `named_tables`),
+anchoring on the `hit_points` curve and reading siblings at fixed byte-deltas
+per format (`_ATTRIB_LAYOUT["parse7"|"parse6"]`).
+
+- **Phase 1:** per-level HP curve, HP-cap curve, baseHP/maxHP, resistanceCap.
+  Caught a stale HC Brute HP table (1499 → binary 1606.3451; HC buffed it,
+  Rebirth keeps 1499).
+- **Phase 2:** `baseThreat` — a class-**header** float at `hit_points_anchor−4040`
+  (Parse7) / `−4004` (Parse6). Caught the hand-port's wrong Rebirth **Guardian**
+  threat (1.0 → binary 2.0; header alignment confirmed identical to every other
+  AT, so not a misread).
+- **Phase 3:** `damageCap` — L50 of the first damage-type **StrengthMax** curve
+  (`dmg_cap_delta` 74872 Parse7 / 30944 Parse6). Caught the hand-port
+  under-capping **Scrapper/Tanker/Sentinel/Corruptor/Stalker at 400% when HC has
+  them at 500%** (and Rebirth Brute at 7.0 when it's 7.75). Verified vs the HC
+  2020-01-23 Tanker/Brute patch notes (Tanker 400→500%, Brute 775→700%) + forum
+  (Scrapper 500%). **Per-server authoritative:** HC Tanker 500/Brute 700, Rebirth
+  Tanker 400/Brute 775. NB the cap has a *second, stale* pre-2020 copy in the HC
+  record (≈delta 82092) — the parser reads the live block, not that one. The
+  initial "damageCap not in classes.bin" read was a false negative (searched the
+  stale hand vector; the cap is stored as a rising per-level curve, not a flat
+  array).
+
+The remaining scalars (`damageModifier`, `buffDebuffModifier`) aren't single
+binary quantities — they're abstractions over the per-category `named_tables`,
+which ARE binary-sourced and current and which the calc already prefers (these
+scalars are table-less *fallbacks* only). See [[at-modifiers-are-binary-tables]].
+
+Pipeline: parser `attribs` → `export_classes.py` → `convert-archetypes.cjs` →
+`archetype-stats.generated.ts` → spread into each `archetypes.ts`. Guarded by
+`src/data/archetype-stats.test.ts` (60 tests, both datasets, incl. baseThreat +
+damageCap). `threat_delta` is a *negative* delta (header sits before the anchor),
+so a future HC header-field insertion would shift it — the sane-range guards + CI
+test catch a gross misread. Full write-up: **[ARCHETYPE-DEFS-BINARY-SOURCING.md](ARCHETYPE-DEFS-BINARY-SOURCING.md)**.
 
 ## ✅ `perception` / `knockback_strength` set bonuses modeled (2026-06-06)
 

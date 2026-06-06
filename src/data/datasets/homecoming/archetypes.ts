@@ -6,12 +6,22 @@
 import type { Archetype, ArchetypeId, ArchetypeRegistry } from '@/types';
 import { ARCHETYPE_BINARY_STATS } from './generated/archetype-stats.generated';
 
-// Per-level HP curves, HP caps, baseHP/maxHP and resistance cap are now
-// binary-sourced: `ARCHETYPE_BINARY_STATS` is generated from classes.bin (via
-// export_classes.py -> convert-archetypes.cjs) and spread into each archetype's
-// `stats` below. The remaining scalars (damageModifier, damageCap,
-// buffDebuffModifier, baseThreat, baseEndurance, baseRecovery, defenseCap) stay
-// hand-curated here -- see ARCHETYPE-DEFS-BINARY-SOURCING.md (Phase 2).
+// Per-level HP curves, HP caps, baseHP/maxHP, resistance cap (Phase 1),
+// baseThreat (Phase 2 header scalar) and damageCap (Phase 3 StrengthMax L50)
+// are now binary-sourced: `ARCHETYPE_BINARY_STATS` is generated from classes.bin
+// (via export_classes.py -> convert-archetypes.cjs) and spread into each
+// archetype's `stats` below. Sourcing damageCap caught the hand-port under-
+// capping Scrapper/Tanker/Sentinel/Corruptor/Stalker at 400% (they are 500%).
+// The remaining scalars (damageModifier, buffDebuffModifier, baseEndurance,
+// baseRecovery, defenseCap) stay hand-curated. NOTE: damageModifier and
+// buffDebuffModifier are effectively VESTIGIAL — the calc reads the binary
+// per-category named_tables (at-tables.ts) for every effect that carries a
+// {scale, table} pair, which today is all of them; these scalars are only the
+// fallback for hypothetical table-less effects (none exist in the current
+// export). They aren't single binary quantities (each abstracts many per-category
+// tables), so they can't be cleanly binary-sourced, and some are stale (the calc
+// just never reads them). Tanker's was corrected as it's the one cleanly
+// confirmable case; the others are left as-is. See ARCHETYPE-DEFS-BINARY-SOURCING.md.
 
 export const ARCHETYPES: ArchetypeRegistry = {
   // ============================================
@@ -30,14 +40,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['blaster'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 1.0,
       damageModifier: {
         melee: 0.5,
         ranged: 1.125,
         aoe: 1.0,
       },
       buffDebuffModifier: 0.625,
-      damageCap: 5.0,       // 500%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -88,14 +96,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['controller'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 1.0,
       damageModifier: {
         melee: 0.55,
         ranged: 0.55,
         aoe: 0.5,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -145,14 +151,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['defender'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 1.0,
       damageModifier: {
         melee: 0.55,
         ranged: 0.65,
         aoe: 0.5,
       },
       buffDebuffModifier: 1.25,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -205,14 +209,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['scrapper'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 3.0,
       damageModifier: {
         melee: 1.125,
         ranged: 0.5,
         aoe: 0.8,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -269,14 +271,16 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['tanker'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 4.0,
+      // Corrected from the pre-2020 0.8/0.5 to the HC values (2020-01-23 Tanker
+      // rework: melee 0.8->0.95, ranged 0.5->0.8); confirmed by the binary
+      // Melee/Ranged_Damage tables (52.831/55.61=0.95, 44.489/55.61=0.80). aoe
+      // has no binary table to confirm, left as-is. (Rebirth keeps 0.8/0.5.)
       damageModifier: {
-        melee: 0.8,
-        ranged: 0.5,
+        melee: 0.95,
+        ranged: 0.8,
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -333,14 +337,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['sentinel'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.5,
       damageModifier: {
         melee: 0.65,
         ranged: 0.95,
         aoe: 0.8,
       },
       buffDebuffModifier: 1.4,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -394,14 +396,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['brute'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 4.0,
       damageModifier: {
         melee: 0.75,
         ranged: 0.75,
         aoe: 0.65,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 7.0,       // 700% (Homecoming)
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -458,14 +458,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['corruptor'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 1.0,
       damageModifier: {
         melee: 0.55,
         ranged: 0.75,
         aoe: 0.6,
       },
       buffDebuffModifier: 0.75,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -522,14 +520,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['dominator'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 1.0,
       damageModifier: {
         melee: 0.75,
         ranged: 0.75,
         aoe: 0.65,
       },
       buffDebuffModifier: 0.9,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -575,14 +571,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['mastermind'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 0.55,
         ranged: 0.55,
         aoe: 0.5,
       },
       buffDebuffModifier: 0.75,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -627,14 +621,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['stalker'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 1.0,
         ranged: 0.6,
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: [
@@ -693,14 +685,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['peacebringer'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 0.85,
         ranged: 0.8,
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: ['peacebringer/luminous-blast'],
@@ -722,14 +712,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['warshade'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 0.85,
         ranged: 0.8,
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: ['warshade/umbral-blast'],
@@ -753,14 +741,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['arachnos-soldier'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 0.75,
         ranged: 0.75,
         aoe: 0.65,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: ['arachnos-soldier/arachnos-soldier'],
@@ -794,14 +780,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['arachnos-widow'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 0.85,
         ranged: 0.65,
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
-      damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
     },
     primarySets: ['arachnos-widow/widow-training'],

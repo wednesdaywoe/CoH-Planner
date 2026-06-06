@@ -8,18 +8,23 @@ import type { ArchetypeId } from '@/types';
 /**
  * Archetype stats are binary-sourced from classes.bin (both servers).
  *
- * The per-level HP curve, HP cap, baseHP/maxHP and resistance cap come from the
- * `attribs` block of `exported_powers/[<dataset>/]tables/<at>.json` (written by
- * export_classes.py) → `archetype-stats.generated.ts` (convert-archetypes.cjs)
- * → spread into the dataset's archetypes.ts. This guard asserts the RUNTIME
- * archetype stats still match the committed binary export, so a hand-edit or a
- * stale generated file can't silently diverge the planner's core HP math from
- * the live game. (It already caught a stale hand-typed HC Brute HP table.)
+ * The per-level HP curve, HP cap, baseHP/maxHP, resistance cap (Phase 1),
+ * baseThreat (Phase 2 header scalar) and damageCap (Phase 3 StrengthMax L50)
+ * come from the `attribs` block of `exported_powers/[<dataset>/]tables/<at>.json`
+ * (written by export_classes.py) → `archetype-stats.generated.ts`
+ * (convert-archetypes.cjs) → spread into the dataset's archetypes.ts. This guard
+ * asserts the RUNTIME archetype stats still match the committed binary export, so
+ * a hand-edit or a stale generated file can't silently diverge the planner's core
+ * math from the live game. Catches so far: a stale HC Brute HP table; the wrong
+ * Rebirth Guardian threat (1.0 → 2.0); and Scrapper/Tanker/Sentinel/Corruptor/
+ * Stalker damage caps stuck at 400% when HC has them at 500% (verified vs the
+ * 2020-01-23 Tanker/Brute patch notes).
  *
  * Homecoming = Parse7 (105-entry level tables); Rebirth = Parse6 (50-entry).
  * HC has Sentinel and no Guardian; Rebirth has Guardian and no Sentinel.
- * Phase 1 covers the classes.bin-resident fields only — scalar fields
- * (damageModifier, caps, …) remain hand-curated. See
+ * The remaining AT scalars (damageModifier, buffDebuffModifier, …) aren't single
+ * binary quantities — the load-bearing per-AT modifiers live in the binary
+ * named_tables (at-tables.ts), which the calc already uses. See
  * ARCHETYPE-DEFS-BINARY-SOURCING.md.
  */
 const LEVELS = 50;
@@ -50,7 +55,7 @@ const DATASETS: DatasetCase[] = [
   },
 ];
 
-function exportAttribs(tablesUrl: string, id: string): { hit_points: number[]; hp_cap: number[]; resistance_cap: number } {
+function exportAttribs(tablesUrl: string, id: string): { hit_points: number[]; hp_cap: number[]; resistance_cap: number; base_threat: number; damage_cap: number } {
   const dir = fileURLToPath(new URL(tablesUrl, import.meta.url));
   const stem = id.replace(/-/g, '_');
   return JSON.parse(fs.readFileSync(`${dir}/${stem}.json`, 'utf8')).attribs;
@@ -75,6 +80,8 @@ describe.each(DATASETS)('archetype stats are binary-sourced ($id)', ({ id, table
     expect(r4(s.baseHP)).toBe(expHp[LEVELS - 1]);
     expect(r4(s.maxHP)).toBe(expCap[LEVELS - 1]);
     expect(r4(s.resistanceCap)).toBe(r4(a.resistance_cap));
+    expect(r4(s.baseThreat)).toBe(r4(a.base_threat));
+    expect(r4(s.damageCap)).toBe(r4(a.damage_cap));
   });
 
   it.each(ats)('%s HP invariants hold', (atId) => {
@@ -89,5 +96,9 @@ describe.each(DATASETS)('archetype stats are binary-sourced ($id)', ({ id, table
     expect(s.maxHP).toBeGreaterThanOrEqual(s.baseHP);
     expect(s.resistanceCap).toBeGreaterThan(0);
     expect(s.resistanceCap).toBeLessThanOrEqual(1);
+    expect(s.baseThreat).toBeGreaterThan(0);
+    expect(s.baseThreat).toBeLessThanOrEqual(20);
+    expect(s.damageCap).toBeGreaterThanOrEqual(3);
+    expect(s.damageCap).toBeLessThanOrEqual(10);
   });
 });

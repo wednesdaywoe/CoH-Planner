@@ -38,8 +38,115 @@ datasets (60 assertions); full suite 184 passing.
 > `Melee_SSHealSelf` table present in the current bin) — benign current-data
 > drift, filtered out by `extract-at-tables.cjs`'s relevant-table allow-list.
 
-**Remaining:**
-- **Phase 2 scalars** (below): NOT in classes.bin — deferred by design.
+---
+
+## ✅ STATUS — Phase 2 RESOLVED, both servers (2026-06-06)
+
+Phase 2 was originally deferred as *"scalars NOT in classes.bin."* That premise
+was only **partly** true and is now **exhaustively verified** (don't trust the
+optimistic-or-pessimistic backlog line — verify):
+
+- **`baseThreat` IS in classes.bin** — a single float in the class **header**, at
+  `hit_points_anchor − 4040` (Parse7/HC) / `− 4004` (Parse6/Rebirth). It's a
+  negative delta (before the anchor), so it shifts if HC inserts a header field;
+  guarded by a sane-range check + the CI test. Now **binary-sourced** for all 15
+  ATs both servers (added to `_ATTRIB_LAYOUT["…"]["threat_delta"]`, flows through
+  export → converter → `ARCHETYPE_BINARY_STATS` → spread, hand value removed).
+  - **Caught a real drift:** Rebirth **Guardian** threat was hand-typed `1.0`;
+    binary says **`2.0`** (header alignment confirmed identical to every other
+    AT — not a misread). Binary now authoritative. (cf. the Phase-1 Brute HP
+    catch.) HC + the other 14 Rebirth ATs matched the hand-port exactly.
+- **`damageCap` IS in classes.bin** (resolved in Phase 3, below) — it's the L50
+  of the first damage-type StrengthMax curve. My earlier "not in classes.bin"
+  read was wrong: I searched for the *stale hand-port* vector `[5,4,…,7]`, which
+  of course didn't match, and the flat-array scan found the cap stored as a
+  *per-level curve* (rising 2.1→cap), not a flat array. See Phase 3.
+- **`buffDebuffModifier`, `damageModifier{melee,ranged,aoe}` are NOT single
+  binary quantities** — they're planner abstractions over the game's *many*
+  per-category AT modifier tables; no exact float / flat array / uniform
+  table-ratio reproduces them. **But the load-bearing per-AT modifier data IS
+  binary-sourced and current** — the `named_tables` (→ `at-tables.ts`), which the
+  calc already prefers (`damageModifier`/`buffDebuffModifier` are *fallbacks* for
+  table-less effects only; e.g. `calculateBuffDebuffValue`). The hand scalars are
+  stale in places (the 2020 patch set Tanker melee 0.8→0.95, ranged 0.5→0.8; the
+  hand-port still has 0.8/0.5) — but the named tables already encode the current
+  values (`|Ranged_Damage[L50]|/55.61 = 0.80`, `|Melee_Damage[L50]|/55.61 = 0.95`).
+  - **Follow-up done (hygiene):** traced the calc — these scalars are
+    **vestigial**. Every effect carries a `{scale, table}` pair → the binary path;
+    the fallback that reads the scalars fires for *zero* current effects (damage
+    included: 0 plain-number `damage` values, 1872 tabled). They can't be cleanly
+    binary-sourced (each abstracts many per-category tables; `|table|/55.61` is
+    clean for most ATs but anomalous for Blaster/Sentinel/Dominator/Corruptor,
+    whose tables bake in damage inherents — Defiance/Domination/etc). Marked them
+    vestigial in a code comment and corrected the one cleanly-confirmable stale
+    value: **HC Tanker damageModifier melee 0.8→0.95, ranged 0.5→0.8** (Rebirth
+    keeps 0.8/0.5 — its binary confirms the pre-2020 values, matching its 400%
+    cap). The other "stale-looking" derivations are inherent-baked anomalies, left
+    as-is.
+- `baseEndurance` (100) and `defenseCap` (0.45) are global constants (same for
+  all ATs); `baseRecovery` (1.67) has **0 literal hits** (derived). No value in
+  sourcing — kept hand-curated.
+
+---
+
+## ✅ STATUS — Phase 3 (damageCap) DONE, both servers (2026-06-06)
+
+`damageCap` is now **binary-sourced** — the L50 value of the first damage-type
+StrengthMax curve in `classes.bin` (`_ATTRIB_LAYOUT["…"]["dmg_cap_delta"]`:
+**74872** Parse7/HC, **30944** Parse6/Rebirth), flowed through export → converter
+→ `ARCHETYPE_BINARY_STATS` → spread (hand values removed). It's load-bearing
+([damage.ts](src/utils/calculations/damage.ts) caps damage strength at this value).
+
+**Caught a real, confirmed drift** — the hand-port under-capped five ATs:
+
+| AT | hand-port | HC binary | Rebirth binary |
+|---|---|---|---|
+| Scrapper / Sentinel(HC) / Corruptor / Stalker | 400% | **500%** | **500%** |
+| Tanker | 400% | **500%** | 400% |
+| Brute | 700% | 700% | **775%** |
+| Guardian (Rebirth) | 500% | — | 500% |
+
+Verified against the **HC 2020-01-23 Tanker/Brute patch notes** ("Tanker damage
+buff cap increased from 400% to 500%"; "Brute … lowered from 775% to 700%") and
+the live forum (Scrapper 500%). **Per-server binary is authoritative:** HC took
+the 2020 rework (Tanker 500/Brute 700); Rebirth, an older snapshot, kept Tanker
+400/Brute 775. There's a second, **stale** copy of the cap elsewhere in the HC
+record (the pre-2020 values, ≈delta 82092) — the parser deliberately reads the
+live block, not that one. Guarded by `archetype-stats.test.ts` (damageCap
+assertion + sane-range invariant); full suite **184 passing**, tsc clean.
+
+### Why the hand-curated modifier scalars are NOT a drift risk (verified)
+
+`damageModifier` and `buffDebuffModifier` aren't single binary quantities at all
+— they're planner **abstractions** that each collapse the game's *many*
+per-category AT modifier tables (`Melee_Buff_Def`, `Ranged_Heal`,
+`Melee_Debuff_ToHit`, `Ranged_Damage`, …) into one hand-picked number. So there
+is nothing in the bin to "source" them from. **But that's fine — the calc barely
+uses them.** Both are **fallbacks only**:
+
+- **Damage:** `calculateActualDamage` consults `damageModifier` *only* when a
+  power has no `table` field. The canonical path `calculateDamageWithATTable`
+  uses the per-AT modifier table directly (`damage.ts` comment confirms).
+- **Buff/debuff:** `effect-registry.ts` `calculateEffectValue` prefers the
+  binary table (`getTableValue(at, value.table, 50) * value.scale`) whenever the
+  effect carries a `{scale, table}` pair, and only falls back to
+  `buffDebuffModifier` for table-less (legacy/utility) effects.
+
+The load-bearing per-AT modifier data is the **`named_tables`** — which ARE
+binary-sourced and **current** (re-exported from the live piggs; `at-tables.ts`
+re-extracts with no diff). In the HC generated data **18,946** scaled effects
+carry a `table` ref (support categories: `Melee_Buff_Def` 1489×, `Melee_Res_Dmg`
+1221×, `Ranged_Heal` 128×, …). So support-AT buff/debuff magnitudes come from the
+current binary tables and pick up HC's modifier patches on re-export — **CoD2
+staleness is irrelevant to them.** The hand scalars only colour rare table-less
+fallbacks; sourcing them would mean *routing those fallbacks through the
+per-category tables too* (a calc change, not a data-sourcing one) — tracked as a
+possible follow-up, low impact.
+
+Guarded by `archetype-stats.test.ts` (baseThreat assertion + invariant added);
+full suite **184 passing**, tsc clean.
+
+**Remaining campaign backlog:** see bottom of file (legs #3–#5).
 
 The original scope notes follow.
 
