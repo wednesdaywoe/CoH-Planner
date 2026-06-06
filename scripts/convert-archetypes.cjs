@@ -34,10 +34,12 @@ const RAW_DATA_PATH = (datasetId === 'homecoming' && !fs.existsSync(path.join(RA
 const OUTPUT_PATH = datasetPath(datasetId, 'generated', 'archetype-stats.generated.ts');
 
 // Player archetypes (file stem in tables/). Underscore form; the generated key
-// is hyphenated to match the archetypes.ts ids (e.g. 'arachnos-soldier').
+// is hyphenated to match the archetypes.ts ids (e.g. 'arachnos-soldier'). This
+// is the UNION across datasets — `sentinel` is HC-only and `guardian` is
+// Rebirth-only; each dataset's export simply lacks the other (warn + skip).
 const PLAYER_ARCHETYPES = [
   'blaster', 'brute', 'controller', 'corruptor', 'defender', 'dominator',
-  'mastermind', 'scrapper', 'sentinel', 'stalker', 'tanker',
+  'guardian', 'mastermind', 'scrapper', 'sentinel', 'stalker', 'tanker',
   'peacebringer', 'warshade', 'arachnos_soldier', 'arachnos_widow',
 ];
 

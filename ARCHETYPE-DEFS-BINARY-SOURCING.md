@@ -4,11 +4,11 @@ _Tee-up notes, scoped 2026-06-06. Pick up on the PC (where the `.pigg`/bins live
 
 ---
 
-## ✅ STATUS — Phase 1 (Homecoming) DONE (2026-06-06)
+## ✅ STATUS — Phase 1 DONE, both servers (2026-06-06)
 
-The classes.bin-resident per-AT data is now binary-sourced for **Homecoming**:
-HP curve (`hpTable`), HP-cap curve (`hpCapTable`), `baseHP`/`maxHP` (level 50),
-and `resistanceCap`. Pipeline:
+The classes.bin-resident per-AT data is now binary-sourced for **Homecoming AND
+Rebirth**: HP curve (`hpTable`), HP-cap curve (`hpCapTable`), `baseHP`/`maxHP`
+(level 50), and `resistanceCap`. Pipeline:
 
 `classes.bin` → `_classes.py` `attribs` block → `export_classes.py` →
 `exported_powers/tables/<at>.json` → `convert-archetypes.cjs` →
@@ -22,12 +22,23 @@ and `resistanceCap`. Pipeline:
   export, 30 assertions) + wired into `regen-all.cjs` (`generated: true`).
 - Full suite 154 passing; tsc clean.
 
-**Remaining (this leg):**
-- **Rebirth (Parse6).** The parser's attrib extractor is Parse7-only (count=105);
-  Rebirth uses count=50 with different byte-deltas. `convert-archetypes.cjs`
-  skips Rebirth gracefully today. Needs a Parse6 delta-derivation cycle on
-  `z_rebirth_bin.pigg` (mirror the HC RE: anchor hit_points, find cap/res deltas,
-  verify vs the Rebirth hand-port). The **Guardian** AT (leg #4) folds in here.
+### Rebirth (Parse6) — DONE (2026-06-06)
+
+Mirrored the HC RE on `z_rebirth_bin.pigg`: same encoding, 50-entry level tables
+(no incarnate extension), different byte-deltas — `hit_points` delta 0, `hp_cap`
+delta **15472**, `resistance_cap` value delta **46420**. Parser refactored to a
+format-parameterized `_extract_attribs` (`_ATTRIB_LAYOUT["parse7"|"parse6"]`).
+Verified vs the Rebirth hand-port for all 15 ATs **including Guardian** (the
+Rebirth-only AT, campaign leg #4 — folded in here; Rebirth has no Sentinel).
+Confirmed Rebirth keeps the **older Brute HP curve** (L50 1499) where HC buffed
+it to 1606 — per-server binary is authoritative. Guard test now covers both
+datasets (60 assertions); full suite 184 passing.
+
+> The re-export also refreshed two stale Rebirth named-tables (PB/WS gained a
+> `Melee_SSHealSelf` table present in the current bin) — benign current-data
+> drift, filtered out by `extract-at-tables.cjs`'s relevant-table allow-list.
+
+**Remaining:**
 - **Phase 2 scalars** (below): NOT in classes.bin — deferred by design.
 
 The original scope notes follow.

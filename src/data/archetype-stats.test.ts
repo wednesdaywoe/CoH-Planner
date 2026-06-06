@@ -1,51 +1,71 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { loadDataset } from '@/data/dataset';
+import { loadDataset, type DatasetId } from '@/data/dataset';
 import { getArchetype } from '@/data';
 import type { ArchetypeId } from '@/types';
 
 /**
- * Archetype stats are binary-sourced from classes.bin.
+ * Archetype stats are binary-sourced from classes.bin (both servers).
  *
  * The per-level HP curve, HP cap, baseHP/maxHP and resistance cap come from the
- * `attribs` block of `exported_powers/tables/<at>.json` (written by
+ * `attribs` block of `exported_powers/[<dataset>/]tables/<at>.json` (written by
  * export_classes.py) → `archetype-stats.generated.ts` (convert-archetypes.cjs)
- * → spread into archetypes.ts. This guard asserts the RUNTIME archetype stats
- * still match the committed binary export, so a hand-edit or a stale generated
- * file can't silently diverge the planner's core HP math from the live game.
- * (It already caught a stale hand-typed Brute HP table.)
+ * → spread into the dataset's archetypes.ts. This guard asserts the RUNTIME
+ * archetype stats still match the committed binary export, so a hand-edit or a
+ * stale generated file can't silently diverge the planner's core HP math from
+ * the live game. (It already caught a stale hand-typed HC Brute HP table.)
  *
- * Phase 1 covers the classes.bin-resident fields only; the scalar fields
- * (damageModifier, caps, buffDebuffModifier, …) remain hand-curated — see
+ * Homecoming = Parse7 (105-entry level tables); Rebirth = Parse6 (50-entry).
+ * HC has Sentinel and no Guardian; Rebirth has Guardian and no Sentinel.
+ * Phase 1 covers the classes.bin-resident fields only — scalar fields
+ * (damageModifier, caps, …) remain hand-curated. See
  * ARCHETYPE-DEFS-BINARY-SOURCING.md.
  */
-const TABLES = fileURLToPath(new URL('../../exported_powers/tables', import.meta.url));
 const LEVELS = 50;
 const r4 = (n: number) => Math.round(n * 1e4) / 1e4;
 
-// archetype id (hyphenated) → export file stem (underscored)
-const PLAYER_ATS: ArchetypeId[] = [
-  'blaster', 'controller', 'defender', 'scrapper', 'tanker', 'sentinel',
-  'brute', 'corruptor', 'dominator', 'mastermind', 'stalker',
-  'peacebringer', 'warshade', 'arachnos-soldier', 'arachnos-widow',
-] as ArchetypeId[];
-
-function exportAttribs(id: string): { hit_points: number[]; hp_cap: number[]; resistance_cap: number } {
-  const stem = id.replace(/-/g, '_');
-  return JSON.parse(fs.readFileSync(`${TABLES}/${stem}.json`, 'utf8')).attribs;
+interface DatasetCase {
+  id: DatasetId;
+  tablesUrl: string;
+  ats: ArchetypeId[];
 }
 
-describe('archetype stats are binary-sourced (homecoming)', () => {
+const COMMON = [
+  'blaster', 'controller', 'defender', 'scrapper', 'tanker', 'brute',
+  'corruptor', 'dominator', 'mastermind', 'stalker', 'peacebringer',
+  'warshade', 'arachnos-soldier', 'arachnos-widow',
+];
+
+const DATASETS: DatasetCase[] = [
+  {
+    id: 'homecoming' as DatasetId,
+    tablesUrl: '../../exported_powers/tables',
+    ats: [...COMMON, 'sentinel'] as ArchetypeId[],
+  },
+  {
+    id: 'rebirth' as DatasetId,
+    tablesUrl: '../../exported_powers/rebirth/tables',
+    ats: [...COMMON, 'guardian'] as ArchetypeId[],
+  },
+];
+
+function exportAttribs(tablesUrl: string, id: string): { hit_points: number[]; hp_cap: number[]; resistance_cap: number } {
+  const dir = fileURLToPath(new URL(tablesUrl, import.meta.url));
+  const stem = id.replace(/-/g, '_');
+  return JSON.parse(fs.readFileSync(`${dir}/${stem}.json`, 'utf8')).attribs;
+}
+
+describe.each(DATASETS)('archetype stats are binary-sourced ($id)', ({ id, tablesUrl, ats }) => {
   beforeAll(async () => {
-    await loadDataset('homecoming');
+    await loadDataset(id);
   });
 
-  it.each(PLAYER_ATS)('%s matches the committed classes.bin export', (id) => {
-    const at = getArchetype(id);
-    expect(at, `archetype ${id} missing`).toBeDefined();
+  it.each(ats)('%s matches the committed classes.bin export', (atId) => {
+    const at = getArchetype(atId);
+    expect(at, `archetype ${atId} missing in ${id}`).toBeDefined();
     const s = at!.stats;
-    const a = exportAttribs(id);
+    const a = exportAttribs(tablesUrl, atId);
 
     const expHp = a.hit_points.slice(0, LEVELS).map(r4);
     const expCap = a.hp_cap.slice(0, LEVELS).map(r4);
@@ -57,15 +77,13 @@ describe('archetype stats are binary-sourced (homecoming)', () => {
     expect(r4(s.resistanceCap)).toBe(r4(a.resistance_cap));
   });
 
-  it.each(PLAYER_ATS)('%s HP invariants hold', (id) => {
-    const s = getArchetype(id)!.stats;
+  it.each(ats)('%s HP invariants hold', (atId) => {
+    const s = getArchetype(atId)!.stats;
     expect(s.hpTable).toHaveLength(LEVELS);
     expect(s.hpCapTable).toHaveLength(LEVELS);
-    // monotonic non-decreasing HP curve
     for (let i = 1; i < s.hpTable.length; i++) {
       expect(s.hpTable[i]).toBeGreaterThanOrEqual(s.hpTable[i - 1]);
     }
-    // baseHP/maxHP are the level-50 entries; cap >= base; sane resistance cap
     expect(r4(s.baseHP)).toBe(r4(s.hpTable[LEVELS - 1]));
     expect(r4(s.maxHP)).toBe(r4(s.hpCapTable[LEVELS - 1]));
     expect(s.maxHP).toBeGreaterThanOrEqual(s.baseHP);
