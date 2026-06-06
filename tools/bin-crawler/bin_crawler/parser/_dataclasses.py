@@ -205,3 +205,10 @@ class ClassRecord:
     secondary_category: str
     pool_category: str
     named_tables: dict[str, list[float]] = field(default_factory=dict)
+    # Per-archetype attribute curves/caps derived from the class struct's
+    # CharacterAttributes arrays (NOT the named modifier tables above). These
+    # feed the planner's archetype definitions (HP curve, HP cap, resistance
+    # cap). `attribs` keys: "hit_points" / "hp_cap" (per-level float lists,
+    # levels 1-50) and "resistance_cap" (scalar). Empty when the format/record
+    # doesn't expose them (e.g. pet classes, unrecognized layout).
+    attribs: dict[str, object] = field(default_factory=dict)

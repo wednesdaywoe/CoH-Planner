@@ -78,6 +78,7 @@ def main():
                 "secondary_category": c.secondary_category,
                 "pool_category": c.pool_category,
                 "named_tables": c.named_tables,
+                "attribs": c.attribs,
             }
             out_file.write_text(json.dumps(out, indent=2), encoding="utf-8")
             written += 1
