@@ -5,6 +5,39 @@ both HC and Rebirth `io-sets-raw.ts` are now binary-derived from `boostsets.bin`
 `powers.bin`; the dead `convert-io-sets.js` and superseded `extract-rebirth-io-sets.cjs`
 are retired. Durable mechanics live in [GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md) §11._
 
+## ▶ NEXT SESSION — start here
+
+State: all work committed on branch **`feat/hc-io-sets-binary-sourcing`** (commit
+`47bb8bce9`, on top of the parser-fix `ec2970df5`). tsc + 114 vitest green, extractors
+idempotent. **NOT merged to `main`, and NOT yet spot-checked in the running app** — that's
+the one verification step left from the original plan.
+
+1. **App spot-check, then merge (do this first).** The big payoff — ~196 previously-
+   *silently-dropped* Rebirth set-bonus entries (resistance / max-HP / mez-res) — has only
+   been verified at the data layer, not on a live dashboard. Run the app (`/run` or
+   `/verify`), load a build with IO sets on **both** datasets, and confirm set bonuses show
+   up and totals look right: on Rebirth especially a resistance/max-HP set bonus that used
+   to read 0; on HC, max-HP bonuses (should be ~1–3%, not ~11%) and a damage set bonus
+   (~1.5–3.5%). Then open a PR / merge to main. (Branch needs no GitHub remote to merge
+   locally.)
+2. **Tiny follow-ups from this work** (logged in [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md),
+   optional): model `perception` / `knockback_strength` in `STAT_NAME_MAP`
+   (set-bonuses.ts) so those bonuses stop being dropped; a proper extractor fix for the
+   `Set_Mode`-only Inexhaustibility piece (currently a curated `REBIRTH_PIECE_PATCHES`
+   patch); decide whether to keep the one value change — `launch#4` eff 3→2 (binary-correct,
+   minor) — or pin it to the old 3 with an override.
+3. **Next binary-sourcing campaign: Archetype defs (backlog item 2).** `archetypes.ts`
+   (baseHP, damageModifier, caps, inherents) is still a legacy hand-port that can silently
+   drift from the game. The raw `classes.bin` is *already exported + committed* to
+   `tools/bin-crawler/exported_powers/live/tables/` — so this is wiring `archetypes.ts` to
+   consume those tables, not a new extraction. Highest-value remaining item; same
+   "verify-don't-assume" discipline (cross-check a few ATs' baseHP/damage vs the tables
+   before trusting). See the prioritized backlog in HEAL-ABSORB-AND-EXPORT-GAPS.md.
+
+Re-validation helpers (if needed) live in `C:/tmp/` — `hc_validate.py` (HC pieces+bonuses
+vs a committed baseline), `hc_bonus_diff2.py`, `hc_bonus_mult.py`. Baselines:
+`C:/tmp/hc-committed.ts`, `C:/tmp/rebirth-committed.ts`.
+
 ## What shipped (beyond the original "88% piece aspects" plan)
 
 Verifying the data (per GAME-DATA-PRINCIPLES §2) surfaced that the resume plan's premise —
