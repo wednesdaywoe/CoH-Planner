@@ -2303,7 +2303,9 @@ export const useBuildStore = create<BuildStore>()(
 
       resetBuild: () => {
         historyCheckpoint();
-        set({ build: createEmptyBuild() });
+        // Preserve the current server — New Build should keep you on the same
+        // dataset (Rebirth stays Rebirth), not snap back to Homecoming.
+        set((state) => ({ build: createEmptyBuild(state.build.serverId) }));
       },
 
       // Wipe every slotted enhancement across the whole build, keeping the
