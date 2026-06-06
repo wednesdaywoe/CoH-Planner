@@ -12,20 +12,12 @@
  */
 
 /** Round to at most 3 decimals, strip trailing zeros.
- *  3 decimals so values like 1.125% (Luck of the Gambler 3pc +MaxHP)
- *  display exactly rather than being rounded to 1.13%. */
+ *  3 decimals so values like 1.125% (Adrenal Adjustment / Luck of the Gambler
+ *  +MaxHP, and the 1.525% damage bonuses) display exactly rather than rounded —
+ *  used everywhere (tooltips AND dashboard breakdown rows) so the same bonus
+ *  reads identically in every view, matching the in-game number. */
 export function formatBonusValue(value: number): string {
   const rounded = Math.round(value * 1000) / 1000;
-  return rounded.toString();
-}
-
-/** Round to at most 2 decimals, strip trailing zeros. Used for the
- *  dashboard breakdown rows where 2-decimal precision keeps the per-row
- *  numbers compact and consistent with the main stat tile's own format.
- *  The 3-decimal `formatBonusValue` stays in place for the set-bonus
- *  tooltips where 1.125% needs to be visible exactly. */
-export function formatBonusValue2(value: number): string {
-  const rounded = Math.round(value * 100) / 100;
   return rounded.toString();
 }
 

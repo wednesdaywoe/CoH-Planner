@@ -264,6 +264,34 @@ HC_PIECE_ASPECT_OVERRIDES: dict[str, dict[int, list[str]]] = {
     },
 }
 
+# Curated name + proc flag for global/special proc pieces the binary can't
+# characterize. These carry an always-on global (Luck of the Gambler +Recharge,
+# Steadfast +Def, the +Run Speed / +Perception / +Jump Height travel globals) or
+# a Grant_Power proc, encoded as a Null / Grant_Power / Current / Maximum
+# template that ISN'T a plain enhancement aspect — so proc detection misses it
+# when the piece also has a real enhancement aspect, and the global's identity
+# (its "+X" label) isn't derivable from the template at all (a `Null` row doesn't
+# say "Recharge"). The calc gates global/proc application on the piece's `proc`
+# flag (findProcData resolves the effect by set name), so without the flag the
+# global is silently dropped. Names mirror the prior curated io-sets-raw so the
+# slot UI matches in-game. (Sourced from the hand data, not the regenerated file,
+# so it's reproducible — the self-referential _load_hc_sets snapshot is already
+# binary by the time overrides run.) Enhancement aspects + scale-derived
+# totalAspects come from the binary unchanged (verified equal to the hand data).
+HC_PIECE_PATCHES: dict[str, dict[int, dict]] = {
+    'luck_of_the_gambler':       {6: {'name': 'Defense/+Recharge', 'proc': True}},
+    'gift_of_the_ancients':      {6: {'name': 'Defense/+Run Speed', 'proc': True}},
+    'steadfast_protection':      {2: {'name': 'Damage Resistance/+Def(All)', 'proc': True}},
+    'reactive_defenses':         {6: {'name': '+Res(All)', 'proc': True}},
+    'thrust':                    {4: {'name': 'Run/+Run Speed', 'proc': True}},
+    'warp':                      {4: {'name': 'Range/+Perception', 'proc': True}},
+    'launch':                    {4: {'name': 'Jump/+Jump Height/+Max Jump Height', 'proc': True}},
+    'assassins_mark':            {6: {'name': 'Recharge/Chance for Recharge Power', 'proc': True}},
+    'superior_assassins_mark':   {6: {'name': 'Recharge/Chance for Recharge Power', 'proc': True}},
+    'essence_transfer':          {6: {'name': 'Recharge/Chance for +Health', 'proc': True}},
+    'superior_essence_transfer': {6: {'name': 'Recharge/Chance for +Health', 'proc': True}},
+}
+
 # ---------------------------------------------------------------------
 # Rarity → planner category
 # ---------------------------------------------------------------------
@@ -1069,6 +1097,8 @@ def _apply_homecoming_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
       - whole-set: cupids_crush / overwhelming_force (binary skips them).
       - bonuses-from-hand: unique-global + PvP sets (see HC_HAND_BONUS_SETS).
       - per-piece aspect: hypersonic #4 (+Fly Magnitude special).
+      - global/special proc name + flag: pieces the binary can't characterize
+        (LotG +Recharge, Steadfast +Def, +Run Speed/+Perception globals, …).
     All hand data is read from the existing HC io-sets-raw (hc_sets)."""
     stats = {'wholeset': 0, 'hand_bonuses': 0, 'pieces_overridden': 0, 'missing': []}
 
@@ -1103,6 +1133,18 @@ def _apply_homecoming_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
                 p['aspects'] = _sort_aspects_canonical(list(new_aspects))
                 p['name'] = '/'.join(p['aspects'])
                 stats['pieces_overridden'] += 1
+
+    # Curated name + proc flag for global/special proc pieces (HC_PIECE_PATCHES).
+    for set_id, patches in HC_PIECE_PATCHES.items():
+        entry = out_sets.get(set_id)
+        if not entry:
+            stats['missing'].append(f'{set_id} (proc patch target absent)')
+            continue
+        for p in entry.get('pieces', []):
+            patch = patches.get(p.get('num'))
+            if patch:
+                p.update(patch)
+                stats['proc_restored'] = stats.get('proc_restored', 0) + 1
 
     return stats
 

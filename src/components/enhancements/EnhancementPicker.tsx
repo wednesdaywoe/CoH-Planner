@@ -729,7 +729,7 @@ export function EnhancementPicker() {
               <MobileCategoryButton
                 key={cat}
                 label={cat.replace(' Damage', '').replace(' Sets', '')}
-                count={availableSets.filter((s) => s.type === cat && !isSpecialSet(s)).length}
+                count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration' || cat === 'Rest Buff' || !isSpecialSet(s))).length}
                 isActive={sidebarFilter === cat}
                 onClick={() => setSidebarFilter(cat)}
                 textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}
@@ -816,7 +816,7 @@ export function EnhancementPicker() {
                 <SidebarButton
                   key={cat}
                   label={cat}
-                  count={availableSets.filter((s) => s.type === cat && !isSpecialSet(s)).length}
+                  count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration' || cat === 'Rest Buff' || !isSpecialSet(s))).length}
                   isActive={sidebarFilter === cat}
                   onClick={() => setSidebarFilter(cat)}
                   textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}

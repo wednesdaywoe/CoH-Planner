@@ -1657,9 +1657,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Recharge Power",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -7523,9 +7523,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Health",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -9682,9 +9682,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Defense"
         ],
-        "name": "Defense",
+        "name": "Defense/+Run Speed",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 2,
         "unique": false
       }
@@ -12702,9 +12702,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Jump"
         ],
-        "name": "Jump",
+        "name": "Jump/+Jump Height/+Max Jump Height",
         "num": 4,
-        "proc": false,
+        "proc": true,
         "totalAspects": 2,
         "unique": true
       }
@@ -13114,9 +13114,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Defense"
         ],
-        "name": "Defense",
+        "name": "Defense/+Recharge",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 2,
         "unique": false
       }
@@ -17323,9 +17323,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Empty",
+        "name": "+Res(All)",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 1,
         "unique": true
       }
@@ -20077,9 +20077,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage Resistance"
         ],
-        "name": "Damage Resistance",
+        "name": "Damage Resistance/+Def(All)",
         "num": 2,
-        "proc": false,
+        "proc": true,
         "totalAspects": 2,
         "unique": true
       },
@@ -20751,9 +20751,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for Recharge Power",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -22396,9 +22396,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Chance for +Health",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -25342,9 +25342,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Run"
         ],
-        "name": "Run",
+        "name": "Run/+Run Speed",
         "num": 4,
-        "proc": false,
+        "proc": true,
         "totalAspects": 2,
         "unique": true
       }
@@ -27498,9 +27498,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Range"
         ],
-        "name": "Range",
+        "name": "Range/+Perception",
         "num": 4,
-        "proc": false,
+        "proc": true,
         "totalAspects": 2,
         "unique": true
       }
