@@ -44,7 +44,7 @@ export const OilSlickArrow: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P4100491214",
+      "entity": "Pets_OilSlickOil",
       "duration": 30
     }
   }

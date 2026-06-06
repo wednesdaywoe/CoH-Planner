@@ -48,7 +48,7 @@ export const Vacuum: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P2375591925",
+      "entity": "P1660374886",
       "duration": 8
     },
     "hold": {

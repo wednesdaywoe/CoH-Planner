@@ -2115,6 +2115,20 @@ function extractEffects(templates, powerName) {
             // First entity encountered
             const entityInfo = { isPseudoPet };
             if (params.entity_def) entityInfo.entity = params.entity_def;
+            // entity_def is sometimes an opaque P-hash (e.g. P4234428342) that
+            // no entity record resolves; the priority_list names the real
+            // summoned pet (Glue Arrow → Pets_StickyArrow_Blaster, Rain of Fire
+            // → Pets_RainofFire, Caltrops → Pets_Caltrops). Stash it and resolve
+            // AFTER the effect loop, but ONLY when the summon stayed single-
+            // entity — so multi-pet summons that count EntCreate templates
+            // (Phantom Army's 6 templates / 3 decoys, Gremlins, Fire Imps) keep
+            // their existing entity/count semantics untouched. Resolving the
+            // P-hash lets the planner look the pet up in PET_ENTITIES and
+            // surface its effects (DoT / -spd / -rech / …); left as the P-hash
+            // the lookup fails and the power shows no damage/debuffs.
+            if (/^P\d+$/.test(params.entity_def || '') && params.priority_list) {
+              entityInfo._phashPriorityList = params.priority_list;
+            }
             if (params.display_name) entityInfo.displayName = DISPLAY_NAME_OVERRIDES[powerName] || params.display_name;
             if (params.redirects?.length > 0) entityInfo.powers = params.redirects;
             // Duration source: prefer the AttribMod's Duration (Spirit Tree,
@@ -2806,6 +2820,19 @@ function extractEffects(templates, powerName) {
     if (bestDur && bestDur > 0) {
       effects.buffDuration = bestDur;
     }
+  }
+
+  // Resolve an opaque-P-hash summon entity to its real pet name (from the
+  // stashed priority_list) — but ONLY for single-entity summons, so multi-pet
+  // summons that count EntCreate templates are never disturbed (see the
+  // EntCreate handler). This rescues pseudo-pet powers (Glue Arrow, rains,
+  // patches, Caltrops, …) whose entity is an unresolvable hash, letting the
+  // planner look the pet up in PET_ENTITIES and surface its DoT/debuffs.
+  if (effects.summon?._phashPriorityList) {
+    if (effects.summon.entity && /^P\d+$/.test(effects.summon.entity)) {
+      effects.summon.entity = effects.summon._phashPriorityList;
+    }
+    delete effects.summon._phashPriorityList;
   }
 
   return effects;

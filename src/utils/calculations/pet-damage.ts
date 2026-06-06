@@ -255,3 +255,54 @@ export function shouldApplyEnhancements(
   if (!entity) return false;
   return entity.copyCreatorMods || (copyBoosts === true);
 }
+
+// PetEffect.type → PowerEffects key, restricted to the ENHANCEABLE scalar
+// debuffs the effect registry renders as percent (scale × table). These are
+// the pseudo-pet effects a player's enhancements/global buffs actually scale —
+// convert-pet-entities already drops the binary's IgnoreStrength templates, so
+// what remains is enhanceable. Mez / knockback / heal have non-scalar shapes
+// and stay in the Summons block.
+const PSEUDO_PET_ENHANCEABLE_EFFECT: Record<string, keyof import('@/types/power').PowerEffects> = {
+  Slow: 'slow',
+  DefenseDebuff: 'defenseDebuff',
+  ToHitDebuff: 'tohitDebuff',
+  ResistanceDebuff: 'resistanceDebuff',
+  DamageDebuff: 'damageDebuff',
+};
+
+/**
+ * Synthesize a PowerEffects fragment from a pseudo-pet's enhanceable debuffs so
+ * the parent summon power can surface them in its Power Effects block — scaled
+ * by the summoner's enhancements (pseudo-pets inherit them via CopyBoosts).
+ *
+ * Mirrors the pseudo-pet DAMAGE unify: only NON-commandable entities (patches /
+ * rains / location pseudo-pets) qualify; commandable pets (MM henchmen, Phantom
+ * Army, Lore) keep their own Summons block. Returns null when there's nothing
+ * enhanceable to surface. Same-key effects sum their scale (additive debuffs).
+ */
+export function synthesizePseudoPetEffects(
+  summon: import('@/types/power').SummonEffect | undefined,
+): Partial<import('@/types/power').PowerEffects> | null {
+  if (!summon) return null;
+  const entityNames = summon.entities && summon.entities.length > 0
+    ? summon.entities.map((e) => e.entity)
+    : summon.entity ? [summon.entity] : [];
+  if (entityNames.length === 0) return null;
+
+  const out: Record<string, { scale: number; table: string }> = {};
+  for (const entityName of entityNames) {
+    const entity = PET_ENTITIES[entityName];
+    if (!entity || entity.commandable) continue; // pseudo-pets / patches only
+    for (const ability of entity.abilities) {
+      for (const eff of ability.effects ?? []) {
+        const key = PSEUDO_PET_ENHANCEABLE_EFFECT[eff.type];
+        if (!key || eff.scale === undefined || !eff.table) continue;
+        if (out[key]) out[key].scale += eff.scale;
+        else out[key] = { scale: eff.scale, table: eff.table };
+      }
+    }
+  }
+  return Object.keys(out).length > 0
+    ? (out as Partial<import('@/types/power').PowerEffects>)
+    : null;
+}

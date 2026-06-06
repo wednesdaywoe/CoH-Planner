@@ -46,7 +46,7 @@ export const Sleet: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P3955584513",
+      "entity": "Sleet",
       "powers": [
         "Pets.Sleet.Sleet",
         "Pets.Sleet.Avoid"

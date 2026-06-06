@@ -32,7 +32,7 @@ export const IcePatch: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P3663385126",
+      "entity": "Pets_IcePatch",
       "duration": 30
     }
   }

@@ -48,7 +48,7 @@ export const UmbraBeast: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P2987067974",
+      "entity": "Pets_Umbra_Beast_Controller",
       "duration": 99999
     }
   }

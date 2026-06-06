@@ -56,7 +56,7 @@ export const BlackHole: Power = {
     },
     "summon": {
       "isPseudoPet": false,
-      "entity": "P801416744",
+      "entity": "4ZHT57JXQFE7YRCXF9A9MULCEQ",
       "duration": 30
     },
     "buffDuration": 4

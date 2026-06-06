@@ -50,7 +50,7 @@ import {
   getAlphaEnhancementBonuses,
   type EnhancementBonuses,
 } from '@/utils/calculations';
-import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult } from '@/utils/calculations/pet-damage';
+import { calculatePetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult } from '@/utils/calculations/pet-damage';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import type { ArchetypeId } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
@@ -237,6 +237,14 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     return results.length > 0 ? { results, base, enhanced, final: final_ } : null;
   }, [basePower?.effects?.summon, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage]);
 
+  // Pseudo-pet enhanceable debuffs (Glue Arrow's slow, etc.) surfaced into the
+  // Power Effects block — mirrors InfoPanel. Merged into `effects` below so the
+  // player's enhancements scale them; parent effects win on key collisions.
+  const pseudoPetEffects = useMemo(
+    () => synthesizePseudoPetEffects(basePower?.effects?.summon),
+    [basePower?.effects?.summon],
+  );
+
   // Calculate archetype-specific damage bonuses
   const damageDisplayInfo = useMemo(() => {
     if (!calculatedDamage) return null;
@@ -366,7 +374,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Inject healing extracted from damage array
   if (healFromDamageArray && !rawEffects.healing) extraEffects.healing = healFromDamageArray;
 
-  const effects = { ...rawEffects, ...extraEffects } as typeof rawEffects;
+  const effects = { ...pseudoPetEffects, ...rawEffects, ...extraEffects } as typeof rawEffects;
 
   // Get archetype modifier for buff/debuff calculations
   const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;

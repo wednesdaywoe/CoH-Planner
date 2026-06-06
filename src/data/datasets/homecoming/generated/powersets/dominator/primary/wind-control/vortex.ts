@@ -48,7 +48,7 @@ export const Vortex: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P3876726645",
+      "entity": "Pets_WindControl_Vortex",
       "duration": 99999
     }
   },

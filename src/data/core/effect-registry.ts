@@ -308,6 +308,12 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.slow,
     format: 'percent',
     canBeByType: true,
+    // Movement slow IS enhanced by Slow enhancements (the calc's `slow` aspect,
+    // Schedule A). Note: -Recharge (rechargeDebuff) deliberately has NO
+    // enhancementAspect — its templates carry IgnoreStrength in the binary, so
+    // Slow enhancements do not boost it (verified vs CoD2: Glue Arrow's
+    // RechargeTime debuff has IgnoreStrength while its RunningSpeed does not).
+    enhancementAspect: 'slow',
     priority: 8,
   },
   enduranceDrain: {

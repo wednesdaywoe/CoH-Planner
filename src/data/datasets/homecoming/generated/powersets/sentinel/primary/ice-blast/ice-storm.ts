@@ -43,7 +43,7 @@ export const IceStorm: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P1985334123",
+      "entity": "PL_StaticObject",
       "displayName": "Ice Storm",
       "powers": [
         "Pets.IceStorm_Sentinel.Avoid",

@@ -43,7 +43,7 @@ export const JackFrost: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P1712748702",
+      "entity": "Pets_JackFrost_Controller",
       "duration": 99999
     }
   }

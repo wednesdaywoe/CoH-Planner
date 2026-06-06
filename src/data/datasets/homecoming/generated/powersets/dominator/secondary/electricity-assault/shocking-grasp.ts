@@ -44,7 +44,7 @@ export const ShockingGrasp: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P964605222",
+      "entity": "Pet_NoCollision",
       "displayName": "Voltaic Sentinel",
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",

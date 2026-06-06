@@ -43,7 +43,7 @@ export const FreezingRain: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P1985334123",
+      "entity": "Pets_IceStorm_Defender",
       "duration": 15
     }
   }

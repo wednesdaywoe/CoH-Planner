@@ -44,7 +44,7 @@ export const Phantasm: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "P4146085904",
+      "entity": "Pets_Phantasm_Controller",
       "duration": 99999
     }
   }
