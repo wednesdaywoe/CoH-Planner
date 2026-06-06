@@ -7,42 +7,30 @@ are retired. Durable mechanics live in [GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINC
 
 ## ▶ NEXT SESSION — start here
 
-State: all work committed on branch **`feat/hc-io-sets-binary-sourcing`** (commit
-`47bb8bce9`, on top of the parser-fix `ec2970df5`). tsc + 114 vitest green, extractors
-idempotent. **NOT merged to `main`, and NOT yet spot-checked in the running app** — that's
-the one verification step left from the original plan.
+State: all work committed on branch **`feat/hc-io-sets-binary-sourcing`**. tsc + 114
+vitest green, extractors idempotent. **App spot-check DONE (2026-06-06) — all confirmed.**
+**Remaining: merge to `main`.**
 
-1. **App spot-check, then merge (do this first).** The big payoff — ~196 previously-
-   *silently-dropped* Rebirth set-bonus entries — has only been verified at the data layer,
-   not on a live dashboard. Run the app (`/run` or `/verify`) and walk this checklist
-   (~5 min), then open a PR / merge to main (local merge needs no GitHub remote):
+Spot-check results + wrinkles found and fixed during it (all committed on the branch):
+- ✅ Rebirth dropped-bonus recovery (Endless Nightmare / Forced Indoctrination) — confirmed.
+- ✅ HC value scaling (Adrenal 1.125% MaxHP, Pounding Slugfest 2.0% dmg) — confirmed.
+- ✅ **D**: Luck of the Gambler +Recharge (and 10 other global/special proc pieces) had lost
+  their `proc` flag → globals silently dropped. Fixed via `HC_PIECE_PATCHES` (`9741cf547`).
+- ✅ **A3**: "Universal Control Duration"/"Rest Buff" sidebar showed "(0)" — count vs filter
+  mismatch. Fixed (`9741cf547`).
+- ✅ **A2**: Guardian ATOs didn't surface anywhere. Root cause was the **powers pipeline**,
+  not io-sets — `convert-powerset.cjs` stripped "Guardian Archetype Sets" (Guardian absent
+  from its own-ATO maps). Added Guardian to `DAMAGE_ATO_BY_AT` + regenerated the 157 Guardian
+  powersets (`23a801347`). Confirmed working.
+- ✅ **New Build reset to Homecoming** (unrelated): `createEmptyBuild()` hardcoded the server;
+  `resetBuild` now preserves it (`af2de5ccb`).
+- ℹ️ **B** (maxHP "rounding"): a misread (was Recovery, not HP) — no bug. The dashboard
+  set-bonus breakdown was unified to 3-decimal precision to match the tooltip (`9741cf547`);
+  revert that one commit's `set-bonus-format`/`StatsDashboard`/`DetailedTotalsModal` hunk if
+  the old compact 2-decimal is preferred.
 
-   **A. Rebirth — dropped bonuses now appear (the headline).** Switch to the Rebirth
-   dataset; slot a set whose resistance/max-HP/mez-res bonuses the planner used to drop,
-   and confirm they now show in the set-bonus list AND move the totals:
-   - **Endless Nightmare** (Sleep set) — 3pc → **+1.875% Max HP**; 4pc → **+4.5% Energy &
-     Negative Res** + Mez Res. (Both read 0 / absent before.)
-   - **Absolute Resolution** (Guardian ATO) — 3pc → **+1.8% Max End**; 4pc → **+3.75%
-     Lethal/Smashing Res** + Mez Res.
-   - **Forced Indoctrination** — 4pc → the six **mez-duration** bonuses (hold/stun/sleep/
-     immobilize/confuse/terror) all listed.
-
-   **B. HC — value scaling is right (not 10× / not ÷).** HC dataset:
-   - **Adrenal Adjustment** 3pc → **+1.125% Max HP** (the old flat-×100 bug would show
-     ~11.25%).
-   - **Pounding Slugfest** 4pc → **+2.0% Damage** (bug would show ~0.8%).
-
-   **C. No regression on common sets.** Slot a bread-and-butter set (Thunderstrike,
-   Crushing Impact, Kinetic Combat) and confirm its bonuses display the same as before.
-
-   **D. Piece dilution unchanged on the marquee piece.** Slot **Luck of the Gambler
-   "Defense/+Recharge"** (piece 6) — its Defense enhancement value should be the 2-aspect-
-   diluted amount (unchanged; `totalAspects:2` now carries it), and it grants the +7.5%
-   global recharge. Heal sets (**Panacea**) still show **Heal/Absorb** on each healing piece.
-
-   **E. Console is quiet.** Open devtools; there should be **no flood of "Unknown stat in
-   set bonus" warnings** (only `perception` / `knockback_strength` are expected — see
-   follow-up 2).
+1. **Merge to `main`** (local merge needs no GitHub remote) — the spot-check is complete
+   (results above).
 2. **Tiny follow-ups from this work** (logged in [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md),
    optional): model `perception` / `knockback_strength` in `STAT_NAME_MAP`
    (set-bonuses.ts) so those bonuses stop being dropped; a proper extractor fix for the
