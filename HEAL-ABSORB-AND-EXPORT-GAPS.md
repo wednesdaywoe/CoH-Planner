@@ -136,10 +136,15 @@ checked in), or does the converter read `*.bin` directly (PC-only) / a deleted
    §11 for the durable mechanics and **[HC-IO-SETS-BINARY-SOURCING.md](HC-IO-SETS-BINARY-SOURCING.md)**
    for the full build-out log. Guarded by `io-sets-bonus-keys.test.ts` +
    `io-sets-heal-absorb.test.ts`.
-2. **Archetype defs → derive from committed `classes.bin`/`tables` (MED).** The planner's
+2. **Archetype defs → binary-source from `classes.bin` (MED — NEXT LEG).** The planner's
    core stat math (HP, damage, caps) currently rides on a legacy hand-port that can drift.
-   The raw data is already committed — this is wiring `archetypes.ts` to consume `tables/`
-   rather than a new extraction.
+   ⚠️ **Scope correction (verified 2026-06-06):** this is NOT pure wiring. The committed
+   `tables/*.json` export carries only `named_tables` (power *modifier* tables); the parser
+   (`_classes.py`) skips the class struct's `attrib_base`/`attrib_max`/`attrib_strength`
+   sub-tables, so the HP curve, caps, and base end/recovery the hand-port needs are NOT in
+   the export. The leg = **extend parser + exporter to capture those attrib tables, then
+   derive `archetypes.ts`.** Full scope, field-by-field source map, and verification plan
+   teed up in **[ARCHETYPE-DEFS-BINARY-SOURCING.md](ARCHETYPE-DEFS-BINARY-SOURCING.md)**.
 3. **Non-IO enhancement base values (MED).** Investigate `origins.bin` for the
    SO/DO/TO/Hamidon schedules; add an exporter + converter to replace the legacy constants.
    Lower urgency — these are stable game constants.

@@ -19,7 +19,17 @@ Surfaced/left by the pseudo-pet entity-resolution fix (resolved entry below):
 - **~10 single-entity P-hash summons have no `priority_list`** to resolve to — genuinely
   unresolvable from current export data; they still show no pet effects.
 
-## ⬜ Inexhaustibility piece + perception/knockback_strength bonuses — minor IO-set gaps — 2026-06-05
+## ⬜ Archetype defs not binary-sourced — parser skips class-struct attrib tables — 2026-06-06
+
+Campaign leg #2 (teed up, not started). `archetypes.ts` is a legacy hand-port; the
+`classes.bin` parser (`_classes.py`) emits only `named_tables` (power modifier tables),
+skipping the class struct's `attrib_base`/`attrib_max`/`attrib_strength` sub-tables — so
+the per-level HP curve, caps, and base end/recovery the planner's core stat math needs are
+NOT in the committed `tables/*.json` export. Fix = extend parser + exporter to capture
+those, then derive `archetypes.ts`. Full scope + field-by-field source map + verification
+plan: **[ARCHETYPE-DEFS-BINARY-SOURCING.md](ARCHETYPE-DEFS-BINARY-SOURCING.md)**.
+
+## ⬜ Inexhaustibility piece — Set_Mode special-piece not recognised — 2026-06-05
 
 Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
 - **Inexhaustibility** (Rebirth challenge set): its single piece carries only a
@@ -27,11 +37,17 @@ Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
   extracts as `name:"Empty", proc:false`. Worked around with a curated field-patch
   (`REBIRTH_PIECE_PATCHES`) → `"Inexhaustibility"/proc:true`. A proper fix would recognise
   the `Set_Mode` special-piece shape in the extractor.
-- **`perception` / `knockback_strength`** set bonuses are emitted (present in the source)
-  but absent from `STAT_NAME_MAP` (set-bonuses.ts), so the calc drops them. Pre-existing
-  (the hand data had them too); add the keys + global stats to model them.
 
 > ---RESOLVED ---
+
+## ✅ `perception` / `knockback_strength` set bonuses modeled (2026-06-06)
+
+`perception` set bonuses were emitted by the source but dropped by the calc (absent from
+`STAT_NAME_MAP`). Now mapped (`perception → perceptionradius`), routed through
+`character-totals.ts` to the `perceptionRadius` global, and given a Set-Bonus-popup group
+(`set-bonus-groups.ts`, "General"). `knockback_strength` is explicitly mapped to `null`
+(intentionally ignored — KB *magnitude* bonuses aren't a tracked player stat; KB
+protection/resistance already are). Merged via `fix/io-set-bonus-followups`.
 
 ## ✅ Pseudo-pet summon entities resolve from priority_list (Glue Arrow et al.) (2026-06-06)
 
