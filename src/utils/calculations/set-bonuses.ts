@@ -259,6 +259,17 @@ export const STAT_NAME_MAP: Record<string, string | null> = {
 
   // Increased run speed (alternate name)
   'increased_run_speed': 'runspeed',
+
+  // Perception radius buff (Rectified Reticle 3pc, +20%). Feeds the same
+  // perceptionRadius global as in-power +Perception buffs (% based).
+  'perception': 'perceptionradius',
+
+  // Offensive knockback-strength buff (Air Burst 2pc, +2% to the magnitude of
+  // YOUR knockback). The calc has no offensive-KB-strength stat yet (only KB
+  // protection / resistance), so explicitly ignore it rather than silently
+  // dropping it as an unknown stat. Modeling it fully would need a kbStrength
+  // global applied to offensive KB magnitudes — see BIN-PARSER-LOG.md.
+  'knockback_strength': null,
 };
 
 /**
