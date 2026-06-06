@@ -34,7 +34,7 @@ import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
-import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
+import { calculatePetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import type { GenesisExemplarEffect } from '@/data';
@@ -612,6 +612,19 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Resolved damage shown in the Damage block — direct first, pseudo-pet fallback.
   const resolvedDamage = calculatedDamage ?? pseudoPetDamage;
 
+  // Pseudo-pet enhanceable EFFECTS (slow / -def / -tohit, …) surfaced into the
+  // Power Effects block — the analogue of pseudoPetDamage. Powers like Glue
+  // Arrow deliver their enhanceable debuffs through a non-commandable pseudo-pet
+  // and carry nothing on the parent, so the player's enhancements never showed
+  // on them. The pet inherits the summoner's enhancements (CopyBoosts), so
+  // merging these into the parent effects lets RegistryEffectsDisplay scale them
+  // correctly. The helper guards commandable pets and only maps enhanceable
+  // (non-IgnoreStrength) scalar debuffs.
+  const pseudoPetEffects = useMemo(
+    () => synthesizePseudoPetEffects(effectivePower?.effects?.summon),
+    [effectivePower],
+  );
+
   // Calculate archetype inherent damage bonus info (Containment, Scourge, Fury, etc.)
   const inherentInfo = useMemo(() => {
     if (!calculatedDamage) return null;
@@ -954,9 +967,14 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         * persisted in uiStore; calc-pipeline integration is a follow-up. */}
       <MechanicAdjusters power={power} />
 
-      {/* Registry-driven Power Effects display */}
+      {/* Registry-driven Power Effects display. Pseudo-pet enhanceable debuffs
+          (Glue Arrow's slow, etc.) are merged in — parent effects win on key
+          collisions; the pet fills in keys the parent power doesn't carry. */}
       <RegistryEffectsDisplay
-        effects={stackingInfo && targetsHit > 1 ? adjustEffectsForTargets(effects, targetsHit) : effects}
+        effects={(() => {
+          const e = stackingInfo && targetsHit > 1 ? adjustEffectsForTargets(effects, targetsHit) : effects;
+          return pseudoPetEffects ? { ...pseudoPetEffects, ...e } : e;
+        })()}
         allowedEnhancements={power?.allowedEnhancements || []}
         enhancementBonuses={enhancementBonuses}
         globalBonuses={globalBonusesWithStrength}
