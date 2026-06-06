@@ -36,6 +36,7 @@ export const ThornBurst: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Guardian Archetype Sets",
     "Melee AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"

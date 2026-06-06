@@ -34,6 +34,7 @@ export const IceBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Ranged Damage",
     "Slow Movement",
     "To Hit Debuff",

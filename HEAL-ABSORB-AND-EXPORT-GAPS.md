@@ -116,7 +116,7 @@ checked in), or does the converter read `*.bin` directly (PC-only) / a deleted
 
 | Domain | Why it's a gap | Binary source available? |
 |---|---|---|
-| **IO sets** (piece aspects + set bonuses) | HC `convert-io-sets.js` reads the **deleted** `legacy/js/data/io-sets.js` (dead). Rebirth `extract-rebirth-io-sets-v2.py` reads `boostsets.bin` **directly** (PC-only) and reuses HC's hand-data for shared sets. Nothing flows through a committed export. | **Yes — HC `boostsets.bin` present.** Generalizing the Rebirth extractor to HC is feasible now. |
+| ~~**IO sets** (piece aspects + set bonuses)~~ ✅ **RESOLVED 2026-06-05** | Both servers now generate from `boostsets.bin` + `powers.bin` via `extract-rebirth-io-sets-v2.py --dataset <id>`; dead `convert-io-sets.js` + `extract-rebirth-io-sets.cjs` retired. Bonuses use canonical keys + per-attrib value scaling. | Done (PC-only, needs the `.pigg`). |
 | **Archetype definitions** (`archetypes.ts`: baseHP, damageModifier, caps, inherents) | Legacy hand-port ("Migrated from `legacy/js/data/archetypes.js`"). The raw `classes.bin` IS exported to `tables/`, but `archetypes.ts` doesn't consume it — values are hand-typed and can silently drift from the game. | **Yes — `classes.bin` already exported to `tables/`.** Derivation, not new extraction. |
 | **Non-IO enhancements** (SO/DO/TO/Hamidon base schedules) | `enhancements.ts` legacy hand-port; **no exporter exists**. | Maybe — `origins.bin` present (candidate, unconfirmed). |
 | Incarnate salvage / components / recipes | `incarnate-salvage.ts` ported from CoH-Incarnate-Calculator | Unknown bin; rarely changes |
@@ -124,12 +124,18 @@ checked in), or does the converter read `*.bin` directly (PC-only) / a deleted
 
 ### Prioritized backlog (when we pick this back up)
 
-1. **IO sets → binary, both servers (HIGH).** Same family as the Heal/Absorb bug — while
-   `io-sets-raw.ts` is hand/legacy, these keep recurring. HC `boostsets.bin` is present, the
-   Rebirth extractor already works (and now emits Heal/Absorb correctly per Part 1), and it
-   already reuses HC entries for shared sets. Generalizing it to HC retires the dead
-   `convert-io-sets.js` + the legacy hand-data and makes the whole IO-set dataset
-   self-healing. **Biggest win.**
+1. **IO sets → binary, both servers (HIGH).** ✅ **DONE** (2026-06-05). Both HC and Rebirth
+   `io-sets-raw.ts` now generate from `boostsets.bin` + `powers.bin` via
+   `extract-rebirth-io-sets-v2.py --dataset <id>`. The dead `convert-io-sets.js` AND the
+   superseded `extract-rebirth-io-sets.cjs` are retired. Beyond the piece aspects, this
+   round binary-sourced the **set bonuses** (the part that was actually wrong): canonical
+   stat keys + correct per-attrib value scaling (damage ×250, max HP ×10, max end ×1, else
+   ×100) — fixing ≈196 silently-dropped bonus entries on Rebirth-only sets. Piece
+   effective-aspect counts (LotG +Recharge, ATO "#6" proc pieces) are now recovered from the
+   enhancement scale rather than name heuristics. See **[GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md)**
+   §11 for the durable mechanics and **[HC-IO-SETS-BINARY-SOURCING.md](HC-IO-SETS-BINARY-SOURCING.md)**
+   for the full build-out log. Guarded by `io-sets-bonus-keys.test.ts` +
+   `io-sets-heal-absorb.test.ts`.
 2. **Archetype defs → derive from committed `classes.bin`/`tables` (MED).** The planner's
    core stat math (HP, damage, caps) currently rides on a legacy hand-port that can drift.
    The raw data is already committed — this is wiring `archetypes.ts` to consume `tables/`

@@ -127,6 +127,9 @@ export const ARCHETYPE_ATO_CATEGORY: Record<string, IOSetCategory> = {
   warshade: 'Kheldian Archetype Sets',
   'arachnos-soldier': 'Soldiers of Arachnos Archetype Sets',
   'arachnos-widow': 'Soldiers of Arachnos Archetype Sets',
+  // Guardian is a Rebirth-only AT; its ATOs (Guardian's Gift, Absolute
+  // Resolution) slot into any Guardian power.
+  guardian: 'Guardian Archetype Sets',
 };
 
 // ============================================

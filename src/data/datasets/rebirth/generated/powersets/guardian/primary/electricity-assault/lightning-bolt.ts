@@ -35,6 +35,7 @@ export const LightningBolt: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Guardian Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

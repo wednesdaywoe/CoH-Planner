@@ -32,6 +32,7 @@ export const MindProbe: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Melee Damage",
     "Universal Damage Sets"
   ],

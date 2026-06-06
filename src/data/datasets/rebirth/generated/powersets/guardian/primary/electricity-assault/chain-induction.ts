@@ -34,6 +34,7 @@ export const ChainInduction: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Guardian Archetype Sets",
     "Melee Damage",
     "Universal Damage Sets"
   ],

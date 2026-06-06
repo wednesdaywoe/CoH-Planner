@@ -37,6 +37,7 @@ export const GleamingBlast: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Guardian Archetype Sets",
     "Knockback",
     "Ranged Damage",
     "To Hit Debuff",

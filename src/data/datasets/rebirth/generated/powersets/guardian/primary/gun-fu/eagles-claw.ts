@@ -33,6 +33,7 @@ export const EaglesClaw: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Melee Damage",
     "Stuns",
     "Universal Control Duration",

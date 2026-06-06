@@ -35,6 +35,7 @@ export const Consume: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Guardian Archetype Sets",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],

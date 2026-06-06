@@ -40,6 +40,7 @@ export const EmptyClips: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Guardian Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "To Hit Debuff",

@@ -35,6 +35,7 @@ export const SpinningStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

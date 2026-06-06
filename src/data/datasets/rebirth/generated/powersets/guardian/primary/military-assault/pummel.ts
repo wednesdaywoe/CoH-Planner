@@ -33,6 +33,7 @@ export const Pummel: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Melee Damage",
     "Stuns",
     "Universal Control Duration",

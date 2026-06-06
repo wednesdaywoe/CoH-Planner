@@ -195,10 +195,10 @@ export interface Build {
 // DEFAULT BUILD FACTORY
 // ============================================
 
-export function createEmptyBuild(): Build {
+export function createEmptyBuild(serverId: 'homecoming' | 'rebirth' = 'homecoming'): Build {
   return {
     name: 'Untitled Build',
-    serverId: 'homecoming',
+    serverId,
     archetype: {
       id: null,
       name: '',

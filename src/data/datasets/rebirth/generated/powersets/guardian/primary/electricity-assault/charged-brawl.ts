@@ -35,6 +35,7 @@ export const ChargedBrawl: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Guardian Archetype Sets",
     "Melee Damage",
     "Sleep",
     "Universal Control Duration",

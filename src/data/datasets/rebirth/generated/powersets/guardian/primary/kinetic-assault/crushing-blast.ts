@@ -34,6 +34,7 @@ export const CrushingBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Ranged Damage",
     "Slow Movement",
     "To Hit Debuff",

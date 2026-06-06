@@ -39,6 +39,7 @@ export const Ripper: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Guardian Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
     "To Hit Debuff",

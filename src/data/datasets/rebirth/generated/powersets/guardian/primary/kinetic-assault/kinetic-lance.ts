@@ -35,6 +35,7 @@ export const KineticLance: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Ranged Damage",
     "Slow Movement",
     "Sniper Attacks",

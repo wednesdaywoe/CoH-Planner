@@ -8,7 +8,7 @@ import { useEffect, useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
-import { formatBonusValue2 as formatBonusValue } from '@/utils/set-bonus-format';
+import { formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data';
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { getDefenseSoftcap } from '@/data/purple-patch';

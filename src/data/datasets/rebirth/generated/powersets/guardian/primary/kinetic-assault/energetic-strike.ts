@@ -33,6 +33,7 @@ export const EnergeticStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Melee Damage",
     "Stuns",
     "Universal Control Duration",

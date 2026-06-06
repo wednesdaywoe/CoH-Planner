@@ -33,6 +33,7 @@ export const FireBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],
