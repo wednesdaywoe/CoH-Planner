@@ -35,6 +35,7 @@ export const Skewer: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Guardian Archetype Sets",
     "Melee Damage",
     "To Hit Debuff",
     "Universal Damage Sets"

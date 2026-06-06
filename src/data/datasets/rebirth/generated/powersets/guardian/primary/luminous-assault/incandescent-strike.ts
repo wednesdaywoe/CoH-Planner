@@ -37,6 +37,7 @@ export const IncandescentStrike: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Guardian Archetype Sets",
     "Holds",
     "Knockback",
     "Melee Damage",

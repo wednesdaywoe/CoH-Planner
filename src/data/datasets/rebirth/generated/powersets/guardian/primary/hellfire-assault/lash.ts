@@ -33,6 +33,7 @@ export const Lash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Knockback",
     "Melee Damage",
     "Universal Damage Sets"

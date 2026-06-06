@@ -38,6 +38,7 @@ export const GroundZero: Power = {
     "Accurate Defense Debuff",
     "Accurate Healing",
     "Defense Debuff",
+    "Guardian Archetype Sets",
     "Healing",
     "Melee AoE Damage",
     "To Hit Debuff",

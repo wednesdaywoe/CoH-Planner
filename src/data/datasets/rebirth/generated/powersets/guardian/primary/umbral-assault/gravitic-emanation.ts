@@ -39,6 +39,7 @@ export const GraviticEmanation: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Slow Movement",

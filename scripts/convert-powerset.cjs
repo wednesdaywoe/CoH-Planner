@@ -349,6 +349,11 @@ const DAMAGE_ATO_BY_AT = {
   'arachnos-widow':   'Soldiers of Arachnos Archetype Sets',
   peacebringer: 'Kheldian Archetype Sets',
   warshade:     'Kheldian Archetype Sets',
+  // Guardian is a Rebirth-only AT; its ATOs (Guardian's Gift, Absolute
+  // Resolution) attach to any Guardian power. Without this, the per-power
+  // "Guardian Archetype Sets" category the export already carries gets
+  // stripped by the own-ATO filter below (ownAtos would be empty).
+  guardian:     'Guardian Archetype Sets',
 };
 
 // "Control ATO" — Controller/Dominator ATOs attach to mez/control powers.

@@ -33,6 +33,7 @@ export const Thorntrops: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
     "To Hit Debuff",

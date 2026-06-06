@@ -38,6 +38,7 @@ export const Eruption: Power = {
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
     "Defense Debuff",
+    "Guardian Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Debuff",
     "Universal Damage Sets"

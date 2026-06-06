@@ -33,6 +33,7 @@ export const MentalBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

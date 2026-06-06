@@ -34,6 +34,7 @@ export const Subdue: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Immobilize",
     "Ranged Damage",
     "Universal Control Duration",

@@ -36,6 +36,7 @@ export const Zapp: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Guardian Archetype Sets",
     "Ranged Damage",
     "Sniper Attacks",
     "Universal Damage Sets"

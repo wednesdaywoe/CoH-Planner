@@ -35,6 +35,7 @@ export const IncendiaryRound: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

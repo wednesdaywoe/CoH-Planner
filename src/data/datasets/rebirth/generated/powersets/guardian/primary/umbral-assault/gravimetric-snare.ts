@@ -35,6 +35,7 @@ export const GravimetricSnare: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Immobilize",
     "Ranged Damage",
     "Slow Movement",

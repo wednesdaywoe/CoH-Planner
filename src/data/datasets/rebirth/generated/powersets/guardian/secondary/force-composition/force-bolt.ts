@@ -37,6 +37,7 @@ export const ForceBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Guardian Archetype Sets",
     "Knockback",
     "Ranged Damage",
     "Stuns",

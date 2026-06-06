@@ -36,6 +36,7 @@ export const ShinBreaker: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Guardian Archetype Sets",
     "Melee Damage",
     "Slow Movement",
     "To Hit Debuff",
