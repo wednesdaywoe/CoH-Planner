@@ -25,6 +25,7 @@ export const STAT_GROUP_INFO: Record<string, StatGroupInfo> = {
   tohit: { group: 'General', label: 'ToHit' },
   recharge: { group: 'General', label: 'Recharge' },
   range: { group: 'General', label: 'Range' },
+  perceptionradius: { group: 'General', label: 'Perception' },
   kbprotection: { group: 'General', label: 'KB Protection' },
   kbresistance: { group: 'General', label: 'KB Resistance' },
   // Health & Endurance
