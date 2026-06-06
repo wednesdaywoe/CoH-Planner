@@ -49,23 +49,29 @@ known-item spot-checks). tsc clean.
 
 ---
 
-## ⬜ Phase A.2 — Incarnate salvage (decisions pending)
+## 🅿️ Phase A.2 — Incarnate salvage: data ready, calculator rework DEFERRED (2026-06-06)
 
-`incarnate-salvage.ts` (hand, 22 items) is **21/22 correct** vs the binary.
-Open decisions before binary-sourcing it:
+The binary's 34-item "Incarnate" set is **authoritative and complete** — user
+confirmed (2026-06-06):
 
-1. **`InfiniteTessellation`** — hand=`very-rare` (30 empyrean), binary=`uncommon`.
-   Suspicious (generic icon `salvage_MagicalArtifact.tga`; contradicts the
-   well-known very-rare classification). **Verify-don't-assume** — needs an
-   authoritative check (in-game Combat/store, wiki, patch notes) before changing,
-   like the Phase-3 damageCap reconciliation. Not auto-changed.
-2. **34 binary vs 22 hand** — the binary "Incarnate" category includes 12 legacy
-   crafting components (`IncarnateShard`, `IncarnateThread`, `Hero1DNASample`,
-   `GraiMatter`, `NoticeOfTheWell`, `EssenceoftheIncarnate`, …) beyond the 22
-   current thread/empyrean salvage. Include all (binary-complete, but changes the
-   `SalvageId` type + may clutter the incarnate UI) or keep the curated current
-   set + binary-verify rarity? Cost is rarity-derived (not in salvage.bin), so
-   legacy items would get meaningless derived costs.
+- **`InfiniteTessellation` IS `uncommon`** — the binary was right; the hand-port's
+  `very-rare` (30 empyrean) is a **real error** (it's an *uncommon shard
+  component*, 8 shards, not a thread-path very-rare). Don't trust the
+  CoH-Incarnate-Calculator port here.
+- **The 12 "extra" items are the SHARD-component crafting path**, not obsolete
+  junk. Since i25 the thread path is the simplest/default, but shard components
+  (`IncarnateShard`→ Gr'ai Matter / Hero 1 DNA / Penumbra of Rularuu / … commons,
+  Drop of the Well / Incarnate Infused Nictus / Infinite Tessellation / Vanguard
+  DNA = uncommon, Favor of the Well = very-rare) still exist. Binary rarities
+  match the user's authoritative list exactly.
+
+**Decision (per user): leave `incarnate-salvage.ts` + the incarnate component
+calculator UNTOUCHED for now.** Wiring the shard path (or even just reclassifying
+`InfiniteTessellation`) into the current thread-path calculator would complicate
+it — the shard path has a different cost model (shards, not threads/empyrean).
+The corrected binary data (all 34, right rarities) is **ready** in
+`exported_powers/salvage.json` for when the shard-path calculator is built; the
+converter can emit an incarnate registry then. Not a bug to fix in isolation.
 
 ---
 
