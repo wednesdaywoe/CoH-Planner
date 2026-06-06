@@ -6,12 +6,14 @@
 import type { Archetype, ArchetypeId, ArchetypeRegistry } from '@/types';
 import { ARCHETYPE_BINARY_STATS } from './generated/archetype-stats.generated';
 
-// Per-level HP curves, HP caps, baseHP/maxHP and resistance cap are now
-// binary-sourced: `ARCHETYPE_BINARY_STATS` is generated from classes.bin (via
+// Per-level HP curves, HP caps, baseHP/maxHP, resistance cap (Phase 1) and
+// baseThreat (Phase 2 header scalar) are now binary-sourced:
+// `ARCHETYPE_BINARY_STATS` is generated from classes.bin (via
 // export_classes.py -> convert-archetypes.cjs) and spread into each archetype's
 // `stats` below. The remaining scalars (damageModifier, damageCap,
-// buffDebuffModifier, baseThreat, baseEndurance, baseRecovery, defenseCap) stay
-// hand-curated here -- see ARCHETYPE-DEFS-BINARY-SOURCING.md (Phase 2).
+// buffDebuffModifier, baseEndurance, baseRecovery, defenseCap) are NOT present
+// in classes.bin as the planner's scalar values (exhaustively verified) and
+// stay hand-curated here -- see ARCHETYPE-DEFS-BINARY-SOURCING.md (Phase 2).
 
 export const ARCHETYPES: ArchetypeRegistry = {
   // ============================================
@@ -30,7 +32,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['blaster'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 1.0,
       damageModifier: {
         melee: 0.5,
         ranged: 1.125,
@@ -88,7 +89,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['controller'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 1.0,
       damageModifier: {
         melee: 0.55,
         ranged: 0.55,
@@ -145,7 +145,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['defender'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 1.0,
       damageModifier: {
         melee: 0.55,
         ranged: 0.65,
@@ -205,7 +204,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['scrapper'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 3.0,
       damageModifier: {
         melee: 1.125,
         ranged: 0.5,
@@ -269,7 +267,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['tanker'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 4.0,
       damageModifier: {
         melee: 0.8,
         ranged: 0.5,
@@ -333,7 +330,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['sentinel'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.5,
       damageModifier: {
         melee: 0.65,
         ranged: 0.95,
@@ -394,7 +390,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['brute'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 4.0,
       damageModifier: {
         melee: 0.75,
         ranged: 0.75,
@@ -458,7 +453,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['corruptor'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 1.0,
       damageModifier: {
         melee: 0.55,
         ranged: 0.75,
@@ -522,7 +516,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['dominator'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 1.0,
       damageModifier: {
         melee: 0.75,
         ranged: 0.75,
@@ -575,7 +568,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['mastermind'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 0.55,
         ranged: 0.55,
@@ -627,7 +619,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['stalker'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 1.0,
         ranged: 0.6,
@@ -693,7 +684,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['peacebringer'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 0.85,
         ranged: 0.8,
@@ -722,7 +712,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['warshade'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 0.85,
         ranged: 0.8,
@@ -753,7 +742,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['arachnos-soldier'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 0.75,
         ranged: 0.75,
@@ -794,7 +782,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       ...ARCHETYPE_BINARY_STATS['arachnos-widow'],
       baseEndurance: 100,
       baseRecovery: 1.67,
-      baseThreat: 2.0,
       damageModifier: {
         melee: 0.85,
         ranged: 0.65,

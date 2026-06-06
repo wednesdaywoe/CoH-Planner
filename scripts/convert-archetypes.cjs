@@ -9,11 +9,14 @@
  * values derived straight from the game binary (a stale HP table can no longer
  * silently diverge from the live game — it regenerates).
  *
- * Phase 1 (classes.bin core): HP curve, HP cap, resistance cap. The remaining
- * AT scalars (damageModifier, damageCap, buffDebuffModifier, baseThreat,
- * baseEndurance, baseRecovery, defenseCap) stay hand-curated in archetypes.ts
- * — they live in other binary artifacts (damage tables, inherent powers) or
- * are stable design constants. See ARCHETYPE-DEFS-BINARY-SOURCING.md.
+ * Phase 1 (classes.bin core): HP curve, HP cap, resistance cap.
+ * Phase 2 (classes.bin header scalar): baseThreat (the per-AT threat
+ * multiplier, a single float in the class header). The other Phase-2 scalars
+ * (damageModifier, damageCap, buffDebuffModifier, baseEndurance, baseRecovery,
+ * defenseCap) are NOT present in classes.bin as the planner's scalar values —
+ * exhaustively verified (exact-float scan, flat-array scan, table-ratio test
+ * all negative); they're CoD2-curated design constants and stay hand-curated in
+ * archetypes.ts. See ARCHETYPE-DEFS-BINARY-SOURCING.md (Phase 2).
  *
  * Usage: node scripts/convert-archetypes.cjs [--dataset <id>]
  */
@@ -70,15 +73,20 @@ function extract() {
       console.warn(`Warning: ${at} HP curve length ${hpTable.length}/${hpCapTable.length} (expected ${PLAYER_LEVELS}) — skipping`);
       continue;
     }
+    if (typeof a.base_threat !== 'number' || !(a.base_threat > 0)) {
+      console.warn(`Warning: ${at} missing/invalid base_threat (${a.base_threat}) — re-run export_classes.py — skipping`);
+      continue;
+    }
     const key = at.replace(/_/g, '-');
     out[key] = {
       baseHP: hpTable[PLAYER_LEVELS - 1],
       maxHP: hpCapTable[PLAYER_LEVELS - 1],
       resistanceCap: r4(a.resistance_cap),
+      baseThreat: r4(a.base_threat),
       hpTable,
       hpCapTable,
     };
-    console.log(`  ${key}: baseHP=${out[key].baseHP} maxHP=${out[key].maxHP} resCap=${out[key].resistanceCap}`);
+    console.log(`  ${key}: baseHP=${out[key].baseHP} maxHP=${out[key].maxHP} resCap=${out[key].resistanceCap} threat=${out[key].baseThreat}`);
   }
   return out;
 }
@@ -103,14 +111,16 @@ function generate(stats) {
   L.push(' * classes.bin via export_classes.py). Regenerate with:');
   L.push(` *   node scripts/convert-archetypes.cjs --dataset ${datasetId}`);
   L.push(' *');
-  L.push(' * Spread into each archetype\'s `stats` in archetypes.ts. Phase 1 fields:');
-  L.push(' * HP curve, HP cap, baseHP/maxHP (level 50), resistance cap.');
+  L.push(' * Spread into each archetype\'s `stats` in archetypes.ts. Fields:');
+  L.push(' * HP curve, HP cap, baseHP/maxHP (level 50), resistance cap (Phase 1)');
+  L.push(' * and baseThreat (Phase 2 header scalar).');
   L.push(' */');
   L.push('');
   L.push('export interface ArchetypeBinaryStats {');
   L.push('  baseHP: number;');
   L.push('  maxHP: number;');
   L.push('  resistanceCap: number;');
+  L.push('  baseThreat: number;');
   L.push('  hpTable: number[];');
   L.push('  hpCapTable: number[];');
   L.push('}');
@@ -121,6 +131,7 @@ function generate(stats) {
     L.push(`    baseHP: ${s.baseHP},`);
     L.push(`    maxHP: ${s.maxHP},`);
     L.push(`    resistanceCap: ${s.resistanceCap},`);
+    L.push(`    baseThreat: ${s.baseThreat},`);
     L.push(`    hpTable: ${fmtArray(s.hpTable)},`);
     L.push(`    hpCapTable: ${fmtArray(s.hpCapTable)},`);
     L.push('  },');

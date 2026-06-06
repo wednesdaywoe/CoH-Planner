@@ -38,8 +38,46 @@ datasets (60 assertions); full suite 184 passing.
 > `Melee_SSHealSelf` table present in the current bin) — benign current-data
 > drift, filtered out by `extract-at-tables.cjs`'s relevant-table allow-list.
 
-**Remaining:**
-- **Phase 2 scalars** (below): NOT in classes.bin — deferred by design.
+---
+
+## ✅ STATUS — Phase 2 RESOLVED, both servers (2026-06-06)
+
+Phase 2 was originally deferred as *"scalars NOT in classes.bin."* That premise
+was only **partly** true and is now **exhaustively verified** (don't trust the
+optimistic-or-pessimistic backlog line — verify):
+
+- **`baseThreat` IS in classes.bin** — a single float in the class **header**, at
+  `hit_points_anchor − 4040` (Parse7/HC) / `− 4004` (Parse6/Rebirth). It's a
+  negative delta (before the anchor), so it shifts if HC inserts a header field;
+  guarded by a sane-range check + the CI test. Now **binary-sourced** for all 15
+  ATs both servers (added to `_ATTRIB_LAYOUT["…"]["threat_delta"]`, flows through
+  export → converter → `ARCHETYPE_BINARY_STATS` → spread, hand value removed).
+  - **Caught a real drift:** Rebirth **Guardian** threat was hand-typed `1.0`;
+    binary says **`2.0`** (header alignment confirmed identical to every other
+    AT — not a misread). Binary now authoritative. (cf. the Phase-1 Brute HP
+    catch.) HC + the other 14 Rebirth ATs matched the hand-port exactly.
+- **`damageCap`, `buffDebuffModifier`, `damageModifier{melee,ranged,aoe}` are NOT
+  in classes.bin** as the planner's scalar values — verified three ways:
+  exact-single-float scan over the whole record (0 hits), flat-per-AT-array scan
+  (no `[5,4,…,7]`-shaped damage-cap vector; the StrengthMax damage members are a
+  uniform flat `5.0` for **every** AT), and a `Melee/Ranged_Damage` table-ratio
+  test (no uniform table→scalar rule — some ATs fit a `/55.61` baseline, others
+  don't). These are CoD2-curated **design constants** (an AT's damage scale
+  defines the AT; near-zero patch-drift risk) and **stay hand-curated**.
+  - Open question (needs CoD2 to resolve, not acted on): the per-AT damage
+    **strength-max curve** at `~delta 82092` reads Blaster/Scrapper/Sentinel/
+    Corruptor/Stalker = 5, Brute ≈ 7.75 — which *disagrees* with the hand-port's
+    `damageCap` (Scrapper/etc = 4, Brute = 7). Either a real drift or that delta
+    isn't the planner's cap concept. Left hand-curated pending an authoritative
+    cross-check.
+- `baseEndurance` (100) and `defenseCap` (0.45) are global constants (same for
+  all ATs); `baseRecovery` (1.67) has **0 literal hits** (derived). No value in
+  sourcing — kept hand-curated.
+
+Guarded by `archetype-stats.test.ts` (baseThreat assertion + invariant added);
+full suite **184 passing**, tsc clean.
+
+**Remaining campaign backlog:** see bottom of file (legs #3–#5).
 
 The original scope notes follow.
 

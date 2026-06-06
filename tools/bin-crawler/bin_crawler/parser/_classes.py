@@ -271,17 +271,20 @@ def _parse_classes_parse6(r: Parse6BinReader) -> list[ClassRecord]:
 # was a stale Brute HP table in the hand data, which the binary corrects).
 #
 # Per-binary-format layout. Deltas are byte offsets from the hit_points array's
-# count-prefix; `cap_delta` lands on the hp-cap array's count-prefix and
-# `res_value_delta` on the resistance-cap FLOAT (a flat per-level value, read
-# directly). Derived empirically and VERIFIED against the hand-port for every
-# archetype — HC: 15 ATs (caught a stale Brute HP table the binary corrects);
-# Rebirth: 15 incl. Guardian. Guarded by the archetype-stats CI test so a format
-# change that shifts these fails loudly.
+# count-prefix; `cap_delta` lands on the hp-cap array's count-prefix,
+# `res_value_delta` on the resistance-cap FLOAT (a flat per-level value), and
+# `threat_delta` on the base-threat FLOAT — a header scalar that sits BEFORE the
+# hit_points anchor (negative delta), so it shifts if HC ever inserts a header
+# field; the sane-range guard in _extract_attribs catches a gross misread.
+# Derived empirically and VERIFIED against the hand-port for every archetype —
+# HC: 15 ATs (caught a stale Brute HP table the binary corrects); Rebirth: 15
+# incl. Guardian. Guarded by the archetype-stats CI test so a format change that
+# shifts these fails loudly.
 #   parse7 (Homecoming): 105-entry level tables (50 + combat/incarnate extension)
 #   parse6 (Rebirth):    50-entry level tables (level cap 50, no incarnate)
 _ATTRIB_LAYOUT = {
-    "parse7": {"count": 105, "cap_delta": 44656, "res_value_delta": 112744},
-    "parse6": {"count": 50,  "cap_delta": 15472, "res_value_delta": 46420},
+    "parse7": {"count": 105, "cap_delta": 44656, "res_value_delta": 112744, "threat_delta": -4040},
+    "parse6": {"count": 50,  "cap_delta": 15472, "res_value_delta": 46420, "threat_delta": -4004},
 }
 _PLAYER_LEVELS = 50             # planner uses levels 1-50
 
@@ -329,6 +332,12 @@ def _extract_attribs(data, rec_start, rec_len, layout):
         v = struct.unpack_from("<f", data, rec_start + res_off)[0]
         if 0 < v <= 1:  # sane resistance cap
             out["resistance_cap"] = v
+    # base_threat: header scalar at a negative delta (before the anchor).
+    threat_off = hp_off + layout["threat_delta"]
+    if 0 <= threat_off and rec_start + threat_off + 4 <= rec_start + rec_len:
+        v = struct.unpack_from("<f", data, rec_start + threat_off)[0]
+        if 0 < v <= 20:  # sane per-AT threat multiplier (player ATs span 1..4)
+            out["base_threat"] = v
     return out
 
 
