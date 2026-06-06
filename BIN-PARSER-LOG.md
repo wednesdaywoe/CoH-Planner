@@ -5,6 +5,20 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
+## ⬜ Pseudo-pet summon residuals (Phantom Army count, HC P-hash root cause) — 2026-06-06
+
+Surfaced/left by the pseudo-pet entity-resolution fix (resolved entry below):
+- **HC exporter leaves EntCreate `entity_def` as an opaque P-hash** (e.g. P4234428342)
+  while Rebirth's export resolves it to the real pet name. convert-powerset now works
+  around it via `priority_list`, but the cleaner root fix is to resolve the hash in the
+  HC exporter (then convert-powerset wouldn't need the P-hash special-case). Needs the bin.
+- **Multi-pet summons over/under-count from EntCreate-template counting.** Phantom Army has
+  6 EntCreate templates for 3 Decoys → shows ~4 (the fix deliberately doesn't touch multi-
+  entity summons to avoid making it worse). Gremlins (2) / Fire Imps (3) happen to be 1:1
+  and correct. A real fix needs a template→pet-count model, not template counting.
+- **~10 single-entity P-hash summons have no `priority_list`** to resolve to — genuinely
+  unresolvable from current export data; they still show no pet effects.
+
 ## ⬜ Inexhaustibility piece + perception/knockback_strength bonuses — minor IO-set gaps — 2026-06-05
 
 Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
@@ -18,6 +32,20 @@ Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
   (the hand data had them too); add the keys + global stats to model them.
 
 > ---RESOLVED ---
+
+## ✅ Pseudo-pet summon entities resolve from priority_list (Glue Arrow et al.) (2026-06-06)
+
+Location / rain / patch powers (Glue Arrow, Rain of Fire, Blizzard, Caltrops, Sleet,
+Tornado, Lightning Storm, Ice Patch, Jack Frost, Phantasm, …) deal their damage + debuffs
+through a summoned pseudo-pet. The HC binary stored the EntCreate `entity_def` as an opaque
+P-hash, so `PET_ENTITIES[summon.entity]` never resolved and these powers showed no Damage
+block / no debuffs (the Glue Arrow report — DoT(Toxic) / -spd / -rech / -fly / -jump flags
+present but no effects). convert-powerset.cjs now resolves the P-hash to the `priority_list`
+pet name (Pets_StickyArrow_Blaster, Pets_RainofFire, …), but ONLY for single-entity summons
+(post-effect-loop) so multi-pet template-count summons are untouched (0 entityCount changes).
+83 HC powers fixed; diff is purely the `summon.entity` line. Rebirth's export already
+resolves entity_defs (no-op there). Guard: `pseudopet-summon-entity.test.ts`. Residual gaps
+(HC exporter root cause, Phantom Army count) tracked in the unresolved section above.
 
 ## ✅ IO sets are binary-sourced for both servers; bonuses fixed (2026-06-05)
 
