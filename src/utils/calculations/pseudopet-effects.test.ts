@@ -28,7 +28,7 @@ describe('synthesizePseudoPetEffects', () => {
   });
 
   it('does not surface IgnoreStrength debuffs (-Recharge / -Fly / -Jump)', () => {
-    const summon: SummonEffect = { entity: 'Pets_StickyArrow_Blaster' };
+    const summon: SummonEffect = { isPseudoPet: false, entity: 'Pets_StickyArrow_Blaster' };
     const out = synthesizePseudoPetEffects(summon);
     // Only the enhanceable Slow — never rechargeDebuff or movement slows, which
     // carry IgnoreStrength and are filtered from the pet's abilities upstream.
@@ -36,7 +36,7 @@ describe('synthesizePseudoPetEffects', () => {
   });
 
   it('returns null for commandable pets (real summons keep their Summons block)', () => {
-    const summon: SummonEffect = { entity: 'MastermindPets_Assault_Bot' };
+    const summon: SummonEffect = { isPseudoPet: false, entity: 'MastermindPets_Assault_Bot' };
     expect(synthesizePseudoPetEffects(summon)).toBeNull();
   });
 
