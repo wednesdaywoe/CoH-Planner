@@ -5,6 +5,22 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
+## ⬜ Pseudo-pet `summon.powers` redirect chains not resolved (~32 powers) — 2026-06-06
+
+Location/patch/storm powers whose `summon.entity` is a generic marker
+(`PL_StaticObject`, …) deliver all damage/debuffs through a `summon.powers` list
+of redirect powers that the planner never resolves — so they show no data.
+**101 generated files / ~32 distinct powers** (Storm Cell, Category Five,
+Bonfire, Burn, Freezing Rain, Rain of Fire, Sleet, Tar Patch, EMP/Disruption/
+Poison Gas Arrow, Faraday Cage, Force Bubble, Ice Storm, Lightning Rod, Voltaic
+Sentinel, Carrion Creepers, Trick-Arrow Glue Arrow, …). The redirect defs ARE
+exported (`exported_powers/redirects/`), just not converted. Hard because the
+effects form a graph (`Execute_Power` chains, `Create_Entity` sub-spawns,
+`Set_Mode` storm-strength states, DoT over duration) — a flat sum produces wrong
+numbers. Full findings, scope, and proposed approach (path C):
+**[PSEUDO-PET-POWER-RESOLUTION.md](PSEUDO-PET-POWER-RESOLUTION.md)**. Deferred so
+it doesn't derail the archetype-defs leg.
+
 ## ⬜ Pseudo-pet summon residuals (Phantom Army count, HC P-hash root cause) — 2026-06-06
 
 Surfaced/left by the pseudo-pet entity-resolution fix (resolved entry below):
