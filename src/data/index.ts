@@ -267,6 +267,13 @@ export {
 } from './incarnate-salvage';
 export type { SalvageDefinition } from './incarnate-salvage';
 
+// Invention (IO-crafting) salvage — binary-sourced from salvage.bin (108 items).
+export { INVENTION_SALVAGE_REGISTRY } from './generated/invention-salvage.generated';
+export type {
+  InventionSalvageDefinition,
+  InventionSalvageRarity,
+} from './generated/invention-salvage.generated';
+
 // Incarnate crafting recipes
 export {
   INCARNATE_RECIPES,

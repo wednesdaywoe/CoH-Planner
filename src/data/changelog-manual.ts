@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-05',
+    date: '2026-06-06',
     items: [
+      { message: 'Lots of updates have been happening but I haven\'t been adding notes to the changelog for them. What\'s happening behind the scenes is that I\'m going through Sidekick\'s data pipeline and replacing the remaining legacy hand-curated data with data generated from the game binary', type: 'update' },
       { message: 'Increased the rate-limit of builds saved to the server (10 per hour, up from 5 per hour) and added some messaging to help make the limit more transparent instead of letting users hit the wall unknowingly', type: 'update' },
       { message: 'Lots of under-the-hood work to address missing/dropped data', type: 'fix' },
       { message: 'Rebirth: Fix a bug causing the planner to overstate Blaster ToHit buffs (Aim/Tactics/Build Up).', type: 'fix' },
