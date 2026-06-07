@@ -23,14 +23,12 @@ import {
   isCorruptorAttackPower,
   getFuryInfo,
   calculateFuryDamageBonus,
-  calculateFuryDamage,
   isBruteAttackPower,
   getSupremacyInfo,
   getBodyguardInfo,
   isMastermindPower,
   getVigilanceInfo,
   calculateVigilanceDamageBonus,
-  calculateVigilanceDamage,
   isDefenderPower,
   getCriticalHitInfo,
   calculateCriticalHitDamage,
@@ -304,10 +302,13 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     const isSentinelPower = isSentinelAttackPower(powerSet);
     const showOpportunityCrit = isSentinel && isSentinelPower && sentinelCritActive;
 
-    // Determine final column header
+    // Determine final column header. NOTE: this column is only for hit-time
+    // multipliers OUTSIDE the damage cap (crits, Scourge, Containment). Fury
+    // and Vigilance are additive damage-strength buffs already folded into the
+    // capped Final by calculateCharacterTotals, so they're surfaced as info
+    // chips below (showFury/showVigilance) rather than a column — applying them
+    // here would double-count against the Final.
     const finalColumnHeader = showScourge ? 'w/ Scourge'
-      : showFury ? 'w/ Fury'
-      : showVigilance ? 'w/ Vigilance'
       : showCriticalHits ? 'w/ Crit'
       : showAssassination ? (effectiveHidden ? 'w/ Crit' : 'w/ Assassin')
       : showContainment ? 'w/ Contain'
@@ -316,19 +317,15 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
     // Get color class for inherent-modified values
     const finalColumnColor = showScourge ? 'text-sk-magenta'
-      : showFury ? 'text-sk-magenta'
-      : showVigilance ? 'text-sk-magenta'
       : showCriticalHits ? 'text-sk-magenta'
       : showAssassination ? 'text-sk-magenta'
       : showContainment ? 'text-sk-magenta'
       : showOpportunityCrit ? 'text-sk-magenta'
       : 'text-amber-400';
 
-    // Function to apply inherent bonus
+    // Function to apply inherent bonus (hit-time multipliers only)
     const applyInherentBonus = (damage: number) => {
       if (showScourge) return calculateScourgeDamage(damage);
-      if (showFury) return calculateFuryDamage(damage, furyLevel);
-      if (showVigilance) return calculateVigilanceDamage(damage, build.level, vigilanceTeamSize);
       if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
       if (showAssassination) return calculateAssassinationDamage(damage, effectiveHidden, stalkerTeamSize);
       if (showContainment) return calculateContainmentDamage(damage, true);
@@ -528,8 +525,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       {/* Damage bar - overlaid base/enhanced/final relative to AT cap */}
       {calculatedDamage && !calculatedDamage.unknown && calculatedDamage.scale && (() => {
         const damageCap = getDamageCap(archetypeId ?? '');
-        // Fixed reference: AT's damage at scale 1.0 × damageCap
-        const referenceDamage = (calculatedDamage.base / calculatedDamage.scale) * damageCap;
 
         // Include DoT total damage in the bar (direct + DoT×ticks)
         const dot = calculatedDamage.dotDamage;
@@ -544,22 +539,25 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           ? dot.final * dot.ticks
           : calculatedDamage.final + (dot ? dot.final * dot.ticks : 0);
 
+        // 100% = this power's damage cap (unenhanced damage × AT cap).
+        const referenceDamage = totalBase * damageCap;
         const basePercent = Math.min((totalBase / referenceDamage) * 100, 100);
         const enhPercent = Math.min((totalEnhanced / referenceDamage) * 100, 100);
         const finalPercent = Math.min((totalFinal / referenceDamage) * 100, 100);
 
         return (
           <div className="relative h-2 bg-slate-700/30 rounded overflow-hidden" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%`}>
+            {/* Final / Enhanced / Base tiers — same red ramp as the InfoPanel bar */}
             <div
-              className="absolute inset-y-0 left-0 bg-amber-500 rounded-l transition-all duration-300"
+              className="absolute inset-y-0 left-0 bg-red-800 rounded-l transition-all duration-300"
               style={{ width: `${finalPercent}%` }}
             />
             <div
-              className="absolute inset-y-0 left-0 bg-green-500 rounded-l transition-all duration-300"
+              className="absolute inset-y-0 left-0 bg-red-400 rounded-l transition-all duration-300"
               style={{ width: `${enhPercent}%` }}
             />
             <div
-              className="absolute inset-y-0 left-0 bg-slate-400 rounded-l transition-all duration-300"
+              className="absolute inset-y-0 left-0 bg-red-200 rounded-l transition-all duration-300"
               style={{ width: `${basePercent}%` }}
             />
           </div>

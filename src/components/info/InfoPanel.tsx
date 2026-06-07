@@ -29,7 +29,7 @@ import {
   getActiveDamageConversion,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
@@ -674,23 +674,25 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
     const isController = archetypeId === 'controller';
     const isCorruptor = archetypeId === 'corruptor';
-    const isBrute = archetypeId === 'brute';
     const isScrapper = archetypeId === 'scrapper';
     const isStalker = archetypeId === 'stalker';
     const isSentinel = archetypeId === 'sentinel';
 
+    // This column is ONLY for hit-time damage multipliers that sit OUTSIDE the
+    // damage cap (crits, Scourge, Containment). Additive damage-strength buffs
+    // — Brute Fury, Defender Vigilance, etc. — are already folded into
+    // globalBonuses.damage by calculateCharacterTotals (step 9.1), so they're
+    // in the capped Final column. Re-applying them here would double-count.
     const showContainment = isController && isControllerPower(powerSet) && containmentActive;
     const showScourge = isCorruptor && isCorruptorAttackPower(powerSet) && scourgeActive;
-    const showFury = isBrute && isBruteAttackPower(powerSet) && furyLevel > 0;
     const showCriticalHits = isScrapper && isScrapperAttackPower(powerSet) && criticalHitsActive;
     const showAssassination = isStalker && isStalkerAttackPower(powerSet) && stalkerCritActive;
     const showOpportunityCrit = isSentinel && isSentinelAttackPower(powerSet) && sentinelCritActive;
 
-    const hasInherent = showContainment || showScourge || showFury || showCriticalHits || showAssassination || showOpportunityCrit;
+    const hasInherent = showContainment || showScourge || showCriticalHits || showAssassination || showOpportunityCrit;
     if (!hasInherent) return null;
 
     const header = showScourge ? 'w/ Scourge'
-      : showFury ? 'w/ Fury'
       : showCriticalHits ? 'w/ Crit'
       : showAssassination ? (effectiveHidden ? 'w/ Crit' : 'w/ Assassin')
       : showContainment ? 'w/ Contain'
@@ -698,7 +700,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       : 'Final';
 
     const color = showScourge ? 'text-sk-magenta'
-      : showFury ? 'text-sk-magenta'
       : showCriticalHits ? 'text-sk-magenta'
       : showAssassination ? 'text-sk-magenta'
       : showContainment ? 'text-sk-magenta'
@@ -707,7 +708,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
     const applyBonus = (damage: number) => {
       if (showScourge) return calculateScourgeDamage(damage);
-      if (showFury) return calculateFuryDamage(damage, furyLevel);
       if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
       if (showAssassination) return calculateAssassinationDamage(damage, effectiveHidden, stalkerTeamSize);
       if (showContainment) return calculateContainmentDamage(damage, true);
@@ -716,7 +716,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     };
 
     return { header, color, applyBonus, showContainment };
-  }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive, furyLevel,
+  }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive,
       criticalHitsActive, effectiveHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive]);
 
   // Proc-only damage contributions for non-damaging powers. Powers like
@@ -753,7 +753,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       const effect = parseProcEffect(procData.mechanics);
       if (effect.category !== 'Damage' || effect.value == null || effect.valueMax == null) continue;
 
-      const slotLevel = ioSlot.level ?? build.level;
+      // Attuned procs scale with the character's current level; fixed-level
+      // IOs use their crafted level. Mirrors DamageBlock's proc-damage helper
+      // so this table and the "+proc" annotation interpolate at the same level.
+      const slotLevel = ioSlot.attuned ? build.level : (ioSlot.level ?? build.level);
       // Proc damage is FLAT in CoH — it is NOT modified by damage IOs
       // slotted in this power, nor by damage-strength buffs (Fury, Build
       // Up, Aim, Musculature). Procs fire at their fixed scale-table
@@ -820,7 +823,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           chance: c.chance,
           avgDamage: c.damagePerActivation,
           perActivation: c.avgDamage,
-          dps: c.dps,
+          // Recompute DPS on the same enhanced cycle time as the IO-proc rows.
+          // computeIncarnateProcContributions divides by base recharge, which
+          // would otherwise leave incarnate rows inconsistent with the rest of
+          // this table once the power has recharge slotted.
+          dps: c.avgDamage / cycleTime,
         });
       }
     }

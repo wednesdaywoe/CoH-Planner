@@ -272,9 +272,6 @@ function DamageRows({
 function DamageBar({ calculatedDamage, archetypeId, procDamagePerActivation }: DamageBlockProps & { procDamagePerActivation: number }) {
   if (calculatedDamage.scale == null) return null;
   const damageCap = getDamageCap(archetypeId ?? '');
-  // Fixed reference: AT's damage at scale 1.0 × damageCap.
-  // Since base ∝ scale, (base/scale) gives AT base at scale 1.0.
-  const referenceDamage = (calculatedDamage.base / calculatedDamage.scale) * damageCap;
 
   const dot = calculatedDamage.dotDamage;
   const isPureDot = dot && Math.abs(calculatedDamage.base - dot.base) <= 0.001;
@@ -288,19 +285,30 @@ function DamageBar({ calculatedDamage, archetypeId, procDamagePerActivation }: D
     ? dot.final * dot.ticks
     : calculatedDamage.final + (dot ? dot.final * dot.ticks : 0);
 
-  const basePercent = Math.min((totalBase / referenceDamage) * 100, 100);
-  const enhPercent = Math.min((totalEnhanced / referenceDamage) * 100, 100);
-  const finalPercent = Math.min((totalFinal / referenceDamage) * 100, 100);
+  // 100% = THIS power's damage cap (unenhanced damage × AT cap multiplier).
+  // Final caps at `1 + strength ≤ cap`, so finalPercent ≤ 100 and the empty
+  // space to the right is your remaining headroom-to-cap. Proc damage is flat
+  // and cap-exempt, so it stacks past the cap line: when final + proc exceeds
+  // the cap we widen the bar's scale to the total and draw a cap marker, so
+  // procs stay visible *proportionally* even when the attack is capped.
+  const powerCapDamage = totalBase * damageCap;
+  const procDmg = Math.max(0, procDamagePerActivation);
+  const totalWithProc = totalFinal + procDmg;
+  const barMax = Math.max(powerCapDamage, totalWithProc) || 1;
 
-  // Proc damage is flat (cap-exempt), so it stacks on top of the final
-  // segment rather than overlaying it. Clamp to the remaining headroom so
-  // the combined bar never exceeds the cap width.
-  const procRawPercent = referenceDamage > 0 ? (procDamagePerActivation / referenceDamage) * 100 : 0;
-  const procPercent = Math.max(0, Math.min(procRawPercent, 100 - finalPercent));
-  const showProc = procDamagePerActivation > 0 && procPercent > 0;
+  const basePercent = (totalBase / barMax) * 100;
+  const enhPercent = (totalEnhanced / barMax) * 100;
+  const finalPercent = (totalFinal / barMax) * 100;
+  const procPercent = (procDmg / barMax) * 100;
+  const showProc = procDmg > 0;
+
+  // Cap marker only when output (final + proc) runs past the cap; otherwise the
+  // cap sits at the right edge and a marker would be redundant.
+  const capPercent = (powerCapDamage / barMax) * 100;
+  const showCapMarker = capPercent < 99.5;
 
   return (
-    <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%${showProc ? ` · +${procDamagePerActivation.toFixed(1)} flat proc dmg` : ''}`}>
+    <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%${showProc ? ` · +${procDmg.toFixed(1)} flat proc dmg (cap-exempt)` : ''}`}>
       {/* Final (back layer) — full saturation */}
       <div
         className="absolute inset-y-0 left-0 bg-red-800 rounded-l transition-all duration-300"
@@ -316,11 +324,21 @@ function DamageBar({ calculatedDamage, archetypeId, procDamagePerActivation }: D
         className="absolute inset-y-0 left-0 bg-red-200 rounded-l transition-all duration-300"
         style={{ width: `${basePercent}%` }}
       />
-      {/* Proc (flat, cap-exempt) — yellow, stacked after the final segment */}
+      {/* Proc (flat, cap-exempt) — cyan to match the "+N proc" annotation
+          below the bar; stacked after the final segment. (Yellow read as a
+          shade of the red Final tiers, which was confusing.) */}
       {showProc && (
         <div
-          className="absolute inset-y-0 bg-yellow-400 transition-all duration-300"
+          className="absolute inset-y-0 bg-cyan-400 transition-all duration-300"
           style={{ left: `${finalPercent}%`, width: `${procPercent}%` }}
+        />
+      )}
+      {/* AT damage-cap marker — shown when procs extend the bar past the cap */}
+      {showCapMarker && (
+        <div
+          className="absolute inset-y-0 w-px bg-slate-100/80"
+          style={{ left: `${capPercent}%` }}
+          title={`Damage cap (${(damageCap * 100).toFixed(0)}%)`}
         />
       )}
     </div>
