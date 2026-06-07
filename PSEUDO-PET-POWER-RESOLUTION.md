@@ -380,6 +380,23 @@ mechanical consumer** in the player data (only Marine Affinity's Shifting Tides
 references `kWet`, and only to gate "not already wet") — effectively a flavor
 status, nothing to model.
 
+Follow-up #4 (DONE — Oil Slick Ignited):
+- Oil Slick Arrow's fire damage is a SEPARATE entity (`Pets_OilSlickBurn`) created
+  only when the inert slick (`Pets_OilSlickOil`, the summoned entity) is ignited by
+  a fire/energy power — invisible until now. Added an "Oil Slick Ignited" per-power
+  toggle (`summon.conditionalEntities` + `IGNITED_ENTITY_VARIANT` link): off by
+  default (the patch does nothing alone), on folds the enhanceable Fire damage into
+  the totals; the burn DPS is shown flagged "(when triggered)" either way. Covers
+  all variants incl. the Blaster Tactical Arrow one (display "Oil Slick Arrow",
+  internal name "Gymnastics" — a binary quirk) and Rebirth.
+- Same "base state vs triggered upgrade" shape as Storm Cell (oil→ignited ≈
+  Tempest→High Winds), but a real PET_ENTITIES entity rather than redirects.
+
+Intensify (Storm Blast): its stack slider is correct — unlike a normal Aim/Build
+Up (`Replace`), Intensify's +Dmg/+ToHit use `stack: Stack, stack_limit: 2`, so it
+genuinely stacks to 2× (with a `Global_Chance_Mod` storm-strength boost that also
+stacks). Not a quirk.
+
 Remaining (smaller, not blocking):
 - **PET_ENTITIES-overlap redirect effects** (Bonfire/Burn/Liquefy): damage works
   via the `Pets_` fallback, but any EXTRA redirect-power effects beyond the pet's
