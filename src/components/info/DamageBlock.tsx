@@ -68,6 +68,10 @@ export interface DamageBlockProps {
 
 export function DamageBlock(props: DamageBlockProps) {
   const { calculatedDamage, effects, buildLevel } = props;
+  // Average proc damage per activation — computed once and shared by the
+  // cap bar (yellow segment) and the per-cycle metric so both reflect the
+  // same number. Zero when the include-procs toggle is off.
+  const procDamagePerActivation = computeProcDamagePerActivation(props);
   return (
     <div>
       <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
@@ -77,7 +81,7 @@ export function DamageBlock(props: DamageBlockProps) {
         <ModeToggle />
         <DamageRows {...props} />
         {!calculatedDamage.unknown && calculatedDamage.scale != null && (
-          <DamageBar {...props} />
+          <DamageBar {...props} procDamagePerActivation={procDamagePerActivation} />
         )}
         {calculatedDamage.unknown && (
           <div className="text-[11px] text-slate-400 italic mt-1">
@@ -85,7 +89,7 @@ export function DamageBlock(props: DamageBlockProps) {
           </div>
         )}
         {!calculatedDamage.unknown && effects.recharge != null && effects.castTime != null && (
-          <DamageMetrics {...props} />
+          <DamageMetrics {...props} procDamagePerActivation={procDamagePerActivation} />
         )}
       </div>
     </div>
@@ -265,7 +269,7 @@ function DamageRows({
 // DamageBar — base/enhanced/final overlay vs AT damage cap.
 // ----------------------------------------------------------------------
 
-function DamageBar({ calculatedDamage, archetypeId }: DamageBlockProps) {
+function DamageBar({ calculatedDamage, archetypeId, procDamagePerActivation }: DamageBlockProps & { procDamagePerActivation: number }) {
   if (calculatedDamage.scale == null) return null;
   const damageCap = getDamageCap(archetypeId ?? '');
   // Fixed reference: AT's damage at scale 1.0 × damageCap.
@@ -288,8 +292,15 @@ function DamageBar({ calculatedDamage, archetypeId }: DamageBlockProps) {
   const enhPercent = Math.min((totalEnhanced / referenceDamage) * 100, 100);
   const finalPercent = Math.min((totalFinal / referenceDamage) * 100, 100);
 
+  // Proc damage is flat (cap-exempt), so it stacks on top of the final
+  // segment rather than overlaying it. Clamp to the remaining headroom so
+  // the combined bar never exceeds the cap width.
+  const procRawPercent = referenceDamage > 0 ? (procDamagePerActivation / referenceDamage) * 100 : 0;
+  const procPercent = Math.max(0, Math.min(procRawPercent, 100 - finalPercent));
+  const showProc = procDamagePerActivation > 0 && procPercent > 0;
+
   return (
-    <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%`}>
+    <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%${showProc ? ` · +${procDamagePerActivation.toFixed(1)} flat proc dmg` : ''}`}>
       {/* Final (back layer) — full saturation */}
       <div
         className="absolute inset-y-0 left-0 bg-red-800 rounded-l transition-all duration-300"
@@ -305,6 +316,13 @@ function DamageBar({ calculatedDamage, archetypeId }: DamageBlockProps) {
         className="absolute inset-y-0 left-0 bg-red-200 rounded-l transition-all duration-300"
         style={{ width: `${basePercent}%` }}
       />
+      {/* Proc (flat, cap-exempt) — yellow, stacked after the final segment */}
+      {showProc && (
+        <div
+          className="absolute inset-y-0 bg-yellow-400 transition-all duration-300"
+          style={{ left: `${finalPercent}%`, width: `${procPercent}%` }}
+        />
+      )}
     </div>
   );
 }
@@ -316,15 +334,12 @@ function DamageBar({ calculatedDamage, archetypeId }: DamageBlockProps) {
 function DamageMetrics({
   calculatedDamage,
   effects,
-  selectedPower,
   damageDisplayMode,
   arcanaTimeEnabled,
-  includeProcDamage,
   enhancementBonuses,
   globalBonusesForCalc,
-  buildLevel,
-  incarnateProcDamage,
-}: DamageBlockProps) {
+  procDamagePerActivation,
+}: DamageBlockProps & { procDamagePerActivation: number }) {
   // Calculate enhanced recharge time
   const rechargeStats = calcThreeTierUtil('recharge', effects.recharge ?? 0, enhancementBonuses, globalBonusesForCalc);
   const rawCastTime = effects.castTime ?? 0;
@@ -341,46 +356,6 @@ function DamageMetrics({
   const isPureDot = dot ? Math.abs(calculatedDamage.base - dot.base) <= 0.001 : false;
   const dotTotalBase = dot ? dot.base * dot.ticks : 0;
   const dotTotalFinal = dot ? dot.final * dot.ticks : 0;
-
-  // Calculate proc damage per activation if toggle is enabled.
-  // Seeds from active Hybrid/Interface incarnate procs (already an
-  // average per cast — chance × per-activation damage); slotted IO procs
-  // accumulate on top below.
-  let procDamagePerActivation = includeProcDamage ? (incarnateProcDamage ?? 0) : 0;
-  if (includeProcDamage && selectedPower?.slots) {
-    const radius = effects.radius ?? 0;
-    const arcDegrees = radius > 0 ? (arcToDegrees(effects.arc) || 360) : 360;
-    for (const slot of selectedPower.slots) {
-      if (!slot || slot.type !== 'io-set') continue;
-      const ioEnh = slot as IOSetEnhancement;
-      if (!ioEnh.isProc) continue;
-      const procData = findProcData(ioEnh.name, ioEnh.setName);
-      if (!procData || procData.ppm === null) continue;
-      const effect = parseProcEffect(procData.mechanics);
-      if (effect.category !== 'Damage' || effect.value === undefined || effect.valueMax === undefined) continue;
-      // Interpolate damage at the enhancement's effective level
-      const enhLevel = ioEnh.attuned ? buildLevel : (ioEnh.level ?? buildLevel);
-      // Proc damage is FLAT — no damage-strength buff multipliers and no
-      // damage IO enhancement. Procs fire at their fixed scale-table
-      // value; only AT-specific multipliers (Containment, Crit, Scourge)
-      // multiply them, and those happen at hit time, not in the average.
-      const procDmg = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, enhLevel);
-      // Proc chance uses base recharge + slotted Recharge bonus (which is
-      // what determines firing frequency in-game) and raw cast time (not
-      // ArcanaTime). Without the enhancement bonus, slotting Recharge IOs
-      // shows a lower proc % in the tooltip but the damage contribution
-      // here would remain pegged to the unslotted chance.
-      const procChance = calculateProcChance(
-        procData.ppm,
-        effects.recharge ?? 0,
-        rawCastTime,
-        radius,
-        arcDegrees,
-        enhancementBonuses.recharge ?? 0,
-      );
-      procDamagePerActivation += procDmg * procChance;
-    }
-  }
 
   const totalDmgBase = isPureDot
     ? dotTotalBase
@@ -452,6 +427,50 @@ function DamageMetrics({
 // ----------------------------------------------------------------------
 // Helpers.
 // ----------------------------------------------------------------------
+
+/**
+ * Average proc damage per activation for this power. Seeds from active
+ * Hybrid/Interface incarnate procs (already chance-multiplied) and adds each
+ * slotted damage IO proc's chance × flat damage. Returns 0 when the
+ * include-procs toggle is off.
+ *
+ * Proc damage is FLAT — no damage-strength buffs and no damage IO scaling;
+ * only AT-specific multipliers (Containment/Crit/Scourge) touch it, and those
+ * happen at hit time, not in this average. Proc chance uses base recharge +
+ * the power's slotted Recharge bonus (the in-game firing-frequency driver)
+ * and raw cast time (not ArcanaTime), matching the proc-chance tooltip.
+ */
+function computeProcDamagePerActivation(props: DamageBlockProps): number {
+  const { selectedPower, effects, includeProcDamage, enhancementBonuses, buildLevel, incarnateProcDamage } = props;
+  if (!includeProcDamage) return 0;
+  let total = incarnateProcDamage ?? 0;
+  if (selectedPower?.slots) {
+    const radius = effects.radius ?? 0;
+    const arcDegrees = radius > 0 ? (arcToDegrees(effects.arc) || 360) : 360;
+    const rawCastTime = effects.castTime ?? 0;
+    for (const slot of selectedPower.slots) {
+      if (!slot || slot.type !== 'io-set') continue;
+      const ioEnh = slot as IOSetEnhancement;
+      if (!ioEnh.isProc) continue;
+      const procData = findProcData(ioEnh.name, ioEnh.setName);
+      if (!procData || procData.ppm === null) continue;
+      const effect = parseProcEffect(procData.mechanics);
+      if (effect.category !== 'Damage' || effect.value === undefined || effect.valueMax === undefined) continue;
+      const enhLevel = ioEnh.attuned ? buildLevel : (ioEnh.level ?? buildLevel);
+      const procDmg = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, enhLevel);
+      const procChance = calculateProcChance(
+        procData.ppm,
+        effects.recharge ?? 0,
+        rawCastTime,
+        radius,
+        arcDegrees,
+        enhancementBonuses.recharge ?? 0,
+      );
+      total += procDmg * procChance;
+    }
+  }
+  return total;
+}
 
 interface MetricInputs {
   mode: DamageDisplayMode;

@@ -62,6 +62,12 @@ export const GlueArrow: Power = {
                   "type": "Slow",
                   "scale": 0.72,
                   "table": "Ranged_Slow"
+                },
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.32,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
                 }
               ],
               "recharge": 0,

@@ -56,6 +56,7 @@ export const ParalyzingBlast: Power = {
       "resolvedEntities": [
         {
           "displayName": "Tesla Coil",
+          "duration": 60,
           "copyCreatorMods": true,
           "abilities": [
             {
@@ -104,6 +105,12 @@ export const ParalyzingBlast: Power = {
                   "type": "Slow",
                   "scale": 1.6,
                   "table": "Ranged_Ones"
+                },
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.15,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
                 }
               ],
               "recharge": 10,

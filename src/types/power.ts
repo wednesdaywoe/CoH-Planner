@@ -220,6 +220,13 @@ export interface SummonEffect {
   /** Multi-entity summons (e.g., Mastermind henchmen with different entity types) */
   entities?: { entity: string; count: number }[];
   /**
+   * Triggered pet entities gated behind a toggle — a SEPARATE PET_ENTITIES entity
+   * that only applies when activated (Oil Slick Arrow's `Pets_OilSlickBurn` damage
+   * patch, created when the oil is ignited by fire/energy). Off by default; the
+   * runtime folds its (enhanceable) damage into the totals when the toggle is on.
+   */
+  conditionalEntities?: { entity: string; toggleId: string; label: string }[];
+  /**
    * Pseudo-pets resolved from `powers` (redirect lists) at convert time, for
    * location pseudo-pets whose entity_def is a generic shell not backed by a
    * PET_ENTITIES record (Storm Cell, Category Five, Freezing Rain, …). Each
@@ -240,6 +247,9 @@ export interface ResolvedPseudoPetEffect {
   chance?: number;
   /** IgnoreStrength: the player's enhancements/buffs do NOT scale this — show informational/unenhanced. */
   ignoreStrength?: boolean;
+  /** Mode-gated: only applies while the power is in its empowered/triggered state
+   *  (Storm Cell's lightning effects — "while High Winds is active"). */
+  conditional?: boolean;
 }
 
 /** One redirect power resolved into a pseudo-pet ability (PetAbility-shaped). */
@@ -248,6 +258,16 @@ export interface ResolvedPseudoPetAbility {
   displayName: string;
   type: string;
   damage: { damageType: string; scale: number; table: string }[];
+  /** Empowered ("High Winds") replacement for `effects` — the WindSpeed values
+   *  (~2× the base Tempest debuffs). The runtime swaps to these when the
+   *  "Storm Cell Active" toggle is on. */
+  poweredUpEffects?: ResolvedPseudoPetEffect[];
+  /** Empowered replacement for `damage` — the high-storm-strength "Strong Storm
+   *  Cell Lightning" (StormCell_LightningAura, 1.0 ≈ 2× the base 0.5 aura). The
+   *  runtime swaps to these when the "Storm Cell Active" toggle is on, so the
+   *  lightning escalates from the base aura to the strong variant players see
+   *  in-game once storm strength builds. */
+  poweredUpDamage?: { damageType: string; scale: number; table: string }[];
   /** Damage lands at < 100% (storm-strength gated / proc) — kept OUT of the
    *  guaranteed headline DoT and surfaced as a conditional effect instead. */
   conditionalDamage?: boolean;

@@ -52,7 +52,65 @@ export const SleepGrenade: Power = {
         "Redirects.Assault_Rifle.Sleep_Grenade",
         "Redirects.Assault_Rifle.Sleep_Grenade_Damage"
       ],
-      "duration": 30
+      "duration": 30,
+      "resolvedEntities": [
+        {
+          "displayName": "Sleep Grenade",
+          "duration": 30,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Sleep_Grenade",
+              "displayName": "Sleep Grenade",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Sleep",
+                  "magnitude": 3,
+                  "scale": 3.4,
+                  "table": "Melee_Immobilize"
+                },
+                {
+                  "type": "Slow",
+                  "scale": 0.4,
+                  "table": "Melee_Slow"
+                },
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.3,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 3,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 16
+            },
+            {
+              "name": "Sleep_Grenade_Damage",
+              "displayName": "Sleep Grenade Burst",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Toxic",
+                  "scale": 1,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 100,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

@@ -68,8 +68,8 @@ export const JetStream: Power = {
   "conditionalEffects": [
     {
       "id": "stormblast_instormcell",
-      "label": "StormBlast InStormCell",
-      "scope": "per-power",
+      "label": "Storm Cell Active",
+      "scope": "global",
       "defaultActive": false,
       "mode": "replace",
       "effects": {

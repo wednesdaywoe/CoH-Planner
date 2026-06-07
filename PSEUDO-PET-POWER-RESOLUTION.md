@@ -331,17 +331,173 @@ Generalization (DONE — full regen, both datasets):
   Storm Blast isn't even on Rebirth). Verified Tar Patch/Bonfire/Caltrops/etc. all
   carry `entity_def=Pets_*` on Rebirth.
 
-Remaining (smaller follow-ups, not blocking):
-- **Named-entity shells** (`Sleet`/`Meteor`/`Vines`/`Mine`, ~11 files) and
-  `Class_Minion_Pets` (7) aren't in the 4-marker shell set and resolve to a name
-  that isn't a PET_ENTITIES key — still unresolved (need name→`Pets_*` mapping or
-  shell-set expansion).
-- **PET_ENTITIES-overlap redirect effects** (Bonfire/Burn/Liquefy): the pet entity
-  gives damage via the existing path, but extra redirect-power effects are still
-  dropped — needs a merge that doesn't double-count the pet damage.
-- Mode variants ("High Winds"/"Strong Lightning"); effects from a mode-gated
-  ability not yet flagged "while powered up"; conditional-damage "while powered up"
-  label; **PowerInfoTooltip parity** (hover tooltip still uses the old path only).
+Follow-up #2 (DONE — branch `feat/pseudopet-named-shells`):
+- **Named-entity shells resolved.** Added `Meteor`, `Vines`, `Mine`,
+  `Class_Minion_Pets` to `PSEUDOPET_SHELL_ENTITIES` (verified no `Pets_*` overlap →
+  double-count-safe). Resolves Meteor, Plant-Control Vines, Sleep Grenade, Smoke
+  Canister/Grenade, Geode (~13 files). Arsenal Trip Mine correctly does NOT resolve
+  (its `TripMine_Resistance` is all `target:Self` pet-survivability; the explosion
+  is a direct attack on the parent).
+- **Nested `Create_Entity` hop followed.** `collectTemplatesWithChance` now follows
+  `Create_Entity` `params.redirects` as well as `Execute_Power` `params.power_names`
+  (cycle-guarded, depth-bounded) — Meteor delivers damage one hop deep (creates a
+  "Meteor" entity that runs `MeteorHit` → Fire+Smashing). Storm Cell/Cat Five
+  unaffected (their `Create_Entity` self-destructs have no redirects).
+- **Un-prefixed `priority_list` fallback.** `getPetEntity(name)` falls back to
+  `Pets_<name>` — fixes Sleet/Liquefy/Ice_Blast, whose P-hash EntCreate resolves
+  (via `priority_list`) to a bare `"Sleet"`/`"Liquefy"` whose real key is
+  `Pets_Sleet`/`Pets_Liquefy` (complete entities). Existing pet-damage path, no
+  redirect resolution → no double-count. Wired through calculatePetDamage,
+  shouldApplyEnhancements, synthesizePseudoPetEffects, and the InfoPanel lookups.
+- Tests: +Meteor (Create_Entity hop) +Sleet (`Pets_` fallback) → 15 redirect
+  cases; full suite 202 green; tsc clean.
+
+Follow-up #3 (DONE — "Storm Cell Active" / High Winds toggle):
+- **Single global toggle.** `stormblast_instormcell` promoted to `scope: 'global'`
+  (relabeled "Storm Cell Active") — one switch shared across the Storm Blast set:
+  the attacks' in-cell bonuses AND the Storm Cell summon's powered-up state. The
+  summon powers don't generate the gate from their own effects (it lives on the
+  pseudo-pet), so a marker conditionalEffect is added to any power with a
+  `poweredUpEffects` ability (Storm Cell only — keeps Cat Five / Tide Pool out).
+- **WindSpeed live-swap.** `StormCell_WindSpeed` resolved + linked as Tempest's
+  `poweredUpEffects` (the variant isn't in the summon graph → explicit
+  `POWERED_UP_VARIANT` map). `calculateResolvedPseudoPetDamage(..., poweredUp)`:
+  toggle ON → Tempest→WindSpeed (−Rech 7→14%, −Speed 14→28%, −ToHit 4.9→9.8%,
+  matching in-game), the gated lightning folds into DPS, and ⚡ flags clear.
+  Wired into InfoPanel (headline + Creates block) and PowerInfoTooltip via
+  `useGlobalAdjuster('stormblast_instormcell')`.
+- **−Recharge split from −Speed.** Needed for a clean 2× swap (recharge + movement
+  both collapsed to one "Slow" before). `rechargetime` → `RechargeDebuff` (distinct
+  from movement `Slow`, now labeled "-Speed"); the niche aspect=Maximum −max-speed
+  cap is dropped. A net accuracy improvement across ~18 pseudo-pet powers (Storm
+  Cell, Static Field, Sleep Grenade, Glue Arrow, Paralyzing Blast, …) — matches how
+  the in-cell attack bonuses already display recharge vs speed separately.
+- 205 tests (incl. the powered-up swap + recharge-split assertions); tsc clean;
+  regen deterministic (53 generated files).
+
+The "Wet" status (Water/Storm Blast): set by attacks (mode 188) but has **no real
+mechanical consumer** in the player data (only Marine Affinity's Shifting Tides
+references `kWet`, and only to gate "not already wet") — effectively a flavor
+status, nothing to model.
+
+Follow-up #4 (DONE — Oil Slick Ignited):
+- Oil Slick Arrow's fire damage is a SEPARATE entity (`Pets_OilSlickBurn`) created
+  only when the inert slick (`Pets_OilSlickOil`, the summoned entity) is ignited by
+  a fire/energy power — invisible until now. Added an "Oil Slick Ignited" per-power
+  toggle (`summon.conditionalEntities` + `IGNITED_ENTITY_VARIANT` link): off by
+  default (the patch does nothing alone), on folds the enhanceable Fire damage into
+  the totals; the burn DPS is shown flagged "(when triggered)" either way. Covers
+  all variants incl. the Blaster Tactical Arrow one (display "Oil Slick Arrow",
+  internal name "Gymnastics" — a binary quirk) and Rebirth.
+- Same "base state vs triggered upgrade" shape as Storm Cell (oil→ignited ≈
+  Tempest→High Winds), but a real PET_ENTITIES entity rather than redirects.
+
+Intensify (Storm Blast): its stack slider is correct — unlike a normal Aim/Build
+Up (`Replace`), Intensify's +Dmg/+ToHit use `stack: Stack, stack_limit: 2`, so it
+genuinely stacks to 2× (with a `Global_Chance_Mod` storm-strength boost that also
+stacks). Not a quirk.
+
+Follow-up #5 (DONE — shell-detection parity + PET_ENTITIES-overlap override):
+Investigated the "PET_ENTITIES-overlap (Bonfire/Burn/Liquefy)" backlog item; the
+real shape was different from the original framing. **Bonfire/Liquefy were already
+complete** — their redirect list IS the chassis's own intrinsic power
+(`Pets.Bonfire.Bonfire` / `Pets.Liquefy.Liquefy`), so the existing `Pets_` pet path
+covers them with nothing extra to merge. The actual gaps were that
+`attachResolvedPseudoPets` saw LESS than the main summon builder:
+- **Walked only `effects`, not `activation_effects`** → missed Burn's flame patch
+  (its EntCreate lives in `activation_effects`).
+- **Tested `entity_def` against the shell set, but for a P-hash `entity_def` the
+  shell name is in `priority_list`** → missed Freezing Rain (HC internal name
+  "Fog"!), Voltaic Sentinel (`Pet_NoCollision`), Sentinel Rain of Fire / Ice Storm
+  (`PL_StaticObject`).
+Fixes (all in `attachResolvedPseudoPets`, double-count-safe by construction —
+shells are verified absent from PET_ENTITIES):
+- Walk `effects` **and** `activation_effects`; resolve the effective entity via
+  `priority_list` when `entity_def` is a P-hash (mirrors the main builder).
+- Filter non-content redirects (`*.Avoid` AI hints, `*_Info`) alongside ResistAll.
+- A `chance:0` EntCreate sharing a base shell's signature is a conditional variant
+  (Burn's Fiery-Embrace bonus patch) → doesn't inflate the count.
+- Per-entity duration falls back to the summon-level lifespan (Tesla Coil / GDF /
+  Vines resolved entities gained their 60s window).
+- **Burn override (the genuine "overlap merge"):** blaster/sentinel/stalker Burn use
+  `entity_def="Burn"` → the stale `Pets_Burn` entity (Fire 0.06), but actually run
+  `Redirects.Fiery_Aura.Burn` (Fire 0.08) like the PL_StaticObject-chassis Burns.
+  Detected by a Redirects.* override + a SHELL `priority_list` (excludes Geode's
+  nested `Carin_Beacon`→"Geode" pet chain), resolved the redirect, and normalized
+  the chassis to `PL_StaticObject` so the 0.06 isn't counted alongside the 0.08
+  (the runtime renders the pet-entity path AND resolvedEntities as separate lists).
+  All six Burn variants now consistent.
+- **Permanent-pet guard (Voltaic Sentinel):** its EntCreate duration is the 99999
+  "permanent" sentinel (real lifespan is on a Self_Destruct unreachable off the
+  shell). A lifetime *total* over 99999s is meaningless, so the InfoPanel skips it
+  (`PERMANENT_PSEUDOPET_DURATION`); its bounded DPS still shows in the tooltip
+  (which already aggregates DPS, not a total) and its EndDrain in the Summons block.
+- 23 HC files gain `resolvedEntities` (Freezing Rain ×4, Burn ×6, Voltaic Sentinel
+  ×5 incl. Shocking Grasp, Sentinel RoF/IceStorm, + 6 duration additions); Rebirth
+  0 changes (inverted pattern, no shells); regen deterministic; +10 tests (218 green).
+- Sentinel inherent-damage split (`Melee_InherentDamage`) is kept in the data but
+  runtime-skipped (`getTableValue` returns undefined for it) → Fire counted once,
+  matching the direct-attack convention and the existing Sentinel Meteor/Cat Five.
+
+Permanent attack pets (Voltaic Sentinel — `Pet_NoCollision` is the entity COSTUME,
+the real pet `Pets_VoltaicSentinel` has no bounded lifespan in the data → 99999s
+sentinel duration): the InfoPanel headline shows **per-activation** (one bolt)
+damage rather than a meaningless 99999s lifetime total or nothing
+(`PERMANENT_PSEUDOPET_DURATION`). DPS still available via the DMG/DPA/DPS toggle and
+the power tooltip. Note the resolved bolt is the summon's `_PseudoPet` redirect
+(0.56 main component) which slightly under-counts vs the full multi-component bolt
+(0.56+0.112+inherent); the inherent copies are correctly runtime-skipped.
+
+Follow-up #6 (DONE — "Strong Storm Cell Lightning" escalation):
+Confirmed against an in-game combat log: the cell's lightning escalates from the
+base aura (`Storm Cell Lightning Aura`, Energy 0.5 → 20.81 enhanced @ lvl 50) to
+the **"Strong Storm Cell Lightning"** (`StormCell_LightningAura`, Energy 1.0 →
+41.62 = exactly 2×, AoE across 5+ targets) once storm strength builds from attacking
+in the cell. The log also settled the mode question: the strong lightning is the
+**Storm Cell** high-strength state (it fired with only Storm Cell up, never Cat Five),
+and the `!kLightningCat5` gate means Category Five *suppresses* it (Cat Five delivers
+lightning via its own Eye instead). The damage is attributed to the cell, not the
+attacks — the attacks just feed storm strength.
+- Modeled as the Lightning_Proc ability's `poweredUpDamage` (StormCell_LightningAura,
+  1.0), swapped in by the existing "Storm Cell Active" toggle exactly as Tempest→
+  WindSpeed swaps the debuffs. `POWERED_UP_VARIANT` gained `Lightning_Proc → …LightningAura`;
+  the variant loop now branches: a damage-bearing variant → `poweredUpDamage` (lightning),
+  a debuff-only variant → `poweredUpEffects` (WindSpeed). Runtime `calculateResolvedPseudoPetDamage`
+  uses `poweredUpDamage` when powered up. One redirect covers all ATs (Sentinel-crit
+  internal). 4 storm-cell files (blaster/corruptor/defender/sentinel); Rebirth N/A
+  (no Storm Blast); +2 tests (220 green).
+- Mental model clarified for the user: Storm Cell and Category Five are *distinct*
+  summons on a shared storm-strength axis (not one scaled copy of the other) — Cat
+  Five spawns its own two pseudo-pets (Cold/Smashing storm + lightning Eye).
+
+Follow-up #7 (DONE — base lightning always-on + pet-block value formatting):
+- **Base aura un-gated (supersedes the earlier "no guaranteed headline" call).** The
+  combat log proved the base Storm Cell Lightning Aura (0.5) fires continuously from
+  the moment the cell exists — it's a Death Shroud / Quills-style damage aura, not a
+  "while High Winds" effect. Its `IncreaseStormStrength` chance:0 group is a storm-
+  strength ACCUMULATOR, not a mode suppressor. `collectTemplatesWithChance` now skips
+  gating children of an `IncreaseStormStrength` chance:0 group, so the lightning is
+  guaranteed damage (toggle OFF) and the "⚡ only while High Winds" flag no longer
+  appears on it. The toggle still escalates it to the Strong (2×) variant via
+  `poweredUpDamage`. Fixes the "toggle feels flipped" report (the OFF state was
+  showing the lightning as conditional/⚡ even though it always fires). Scoped to the
+  `IncreaseStormStrength` tag → only Storm Cell's base lightning changes.
+- **Pet/Creates block value formatting.** `SingleEntityDisplay` was showing the raw
+  computed fraction (e.g. −ToHit `0.05` → "0.1") instead of a calculated value. Added
+  `formatPetEffectValue`: percentage debuffs → "5%/7%/14%", mez → "mag N (Ns)",
+  KB/-end/heal → raw magnitude. `PetEffectComputed` gained `magnitude` (preserved
+  through both `calculatePetDamage` and `calculateResolvedPseudoPetDamage`) so mez can
+  show "mag 3". Applies to every pseudo-pet AND real-pet effect list (shared display).
+
+Remaining (smaller, not blocking):
+- Burn's Fiery-Embrace bonus patch (a 2nd patch while FE is active) isn't surfaced
+  as a toggle (deliberate — temporary buff window). Voltaic Sentinel's secondary
+  0.112 bolt component is dropped by the shared damage extractor (minor under-count).
+- The base lightning is shown at face-value per-target (like Death Shroud), which is
+  slightly optimistic for a target-cycling AoE — same fuzziness the planner already
+  accepts for damage auras. The Strong escalation's effect chances (33% stun etc.)
+  are unchanged when powered up (only the damage doubles; not verified at high strength).
+- Visual in-app verify is user-side (web app; Vite HMR).
 
 Original framing (kept): Medium-large effort. High player-visible value (Bonfire,
 Burn, Freezing Rain, the storm/rain/patch family, Trick Arrow, Force Bubble, …).

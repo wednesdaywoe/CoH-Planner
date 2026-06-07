@@ -5,7 +5,7 @@
  */
 
 import { useMemo, useState } from 'react';
-import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useContainmentActive, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useSentinelCritActive } from '@/stores';
+import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useContainmentActive, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useSentinelCritActive, useGlobalAdjuster } from '@/stores';
 import { getBaseToHit } from '@/data/purple-patch';
 import {
   lookupPower,
@@ -29,13 +29,13 @@ import {
   getActiveDamageConversion,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
-import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
-import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
+import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
+import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import type { GenesisExemplarEffect } from '@/data';
 import { getActiveIncarnateDamageProcs, computeIncarnateProcContributions } from '@/data/incarnate-procs';
@@ -63,10 +63,18 @@ import {
   findSelectedPowerInBuild,
   selectActiveConditionals,
   applyActiveConditionals,
+  calcThreeTier,
 } from './powerDisplayUtils';
 import {
   RegistryEffectsDisplay,
 } from './SharedPowerComponents';
+
+// Pseudo-pet summon durations at or above this are the data's "permanent"
+// sentinel (99999s) — a persistent attack pet (e.g. Voltaic Sentinel) with no
+// bounded lifespan in the data. For these the headline shows PER-ACTIVATION
+// damage instead of a meaningless 99999s lifetime total. Real damage patches
+// last seconds to a minute, well under this.
+const PERMANENT_PSEUDOPET_DURATION = 1000;
 
 export function InfoPanel() {
   const infoPanel = useUIStore((s) => s.infoPanel);
@@ -260,6 +268,9 @@ interface PowerInfoProps {
 function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
+  // Global "Storm Cell Active" / High Winds — when on, the storm pseudo-pet's
+  // powered-up state applies (WindSpeed debuffs + lightning folded into damage).
+  const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
   const globalBonuses = useGlobalBonuses();
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
@@ -530,6 +541,14 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         ? [{ entityName: summon.entity, count: summon.entityCount || 1 }]
         : [];
     const resolvedList = summon.resolvedEntities ?? [];
+    // Conditional ("ignited") entities — Oil Slick Arrow's burn patch — fold into
+    // the damage total only when their per-power toggle is on (off by default;
+    // the patch does no damage unless ignited by a fire/energy power).
+    for (const ce of summon.conditionalEntities ?? []) {
+      if (mechanicAdjusters[`${effectivePower!.internalName}:${ce.toggleId}`]) {
+        entityList.push({ entityName: ce.entity, count: 1 });
+      }
+    }
     if (entityList.length === 0 && resolvedList.length === 0) return null;
 
     // Skip commanded pets (MM henchmen, Lore incarnates, Phantom Army, etc.)
@@ -538,7 +557,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     // a per-cast damage number for "you summon a Phantom Army" doesn't
     // match how the player thinks about the power.
     for (const { entityName } of entityList) {
-      const entity = PET_ENTITIES[entityName];
+      const entity = getPetEntity(entityName);
       if (entity?.commandable) return null;
     }
 
@@ -566,7 +585,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       const applyEnh = resolved.copyCreatorMods;
       const result = calculateResolvedPseudoPetDamage(
         resolved, archetypeId ?? '', build.level,
-        applyEnh ? enhBonus : 0, applyEnh, globalBonus,
+        applyEnh ? enhBonus : 0, applyEnh, globalBonus, stormCellActive,
       );
       if (result) results.push({
         result, count: resolved.count ?? 1, duration: resolved.duration ?? summon.duration ?? 0,
@@ -583,12 +602,22 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       // collapses for one-shot attack-summons like Lightning Rod and
       // Shield Charge where `activatePeriod` is a 100s marker and the
       // pet despawns after 1-4s — the pet fires exactly once at spawn.
+      //
       if (duration <= 0) continue;
+      // A "permanent" pseudo-pet (the 99999s sentinel duration — a persistent
+      // attack pet like Voltaic Sentinel with no bounded lifespan in the data)
+      // has no meaningful per-cast lifetime TOTAL: fires-per-spawn over 99999s
+      // would be astronomical. Show its PER-ACTIVATION damage (one tick/bolt)
+      // instead — bounded and honest; the "(permanent)" label gives context, and
+      // the DMG/DPA/DPS toggle still works off the per-activation value.
+      const perActivation = duration >= PERMANENT_PSEUDOPET_DURATION;
       for (const ab of result.abilities) {
         const isAuto = ab.ability.type === 'Auto';
         const period = ab.ability.activatePeriod ?? 0;
         let firesPerSpawn: number;
-        if (isAuto && period > 0) {
+        if (perActivation) {
+          firesPerSpawn = 1;
+        } else if (isAuto && period > 0) {
           // Auto abilities fire immediately on spawn, then every `period`
           // seconds. +1 to count the initial tick at t=0.
           firesPerSpawn = Math.max(1, Math.floor(duration / period) + 1);
@@ -621,7 +650,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       type: typeLabel,
       scale: 1,
     } as PowerDamageResult;
-  }, [calculatedDamage, effectivePower, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId]);
+  }, [calculatedDamage, effectivePower, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
 
   // Resolved damage shown in the Damage block — direct first, pseudo-pet fallback.
   const resolvedDamage = calculatedDamage ?? pseudoPetDamage;
@@ -705,6 +734,15 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     const arcDegrees = radius > 0 ? (arcToDegrees(rawArc) || 360) : 360;
     if (!baseRecharge && !castTime) return null;
 
+    // Cycle time uses the *enhanced* recharge (slotted + global) and
+    // arcana-aware cast time, so proc DPS matches the headline Cycle Time and
+    // the DamageBlock "+proc" annotation. Proc *chance* (below) still uses
+    // only the power's slotted recharge — global recharge never affects PPM
+    // rolls, but it does make the power fire more often.
+    const enhancedRecharge = calcThreeTier('recharge', baseRecharge, enhancementBonuses, globalBonusesForCalc).final;
+    const effectiveCast = useArcanaTimeToggle ? calculateArcanaTime(castTime) : castTime;
+    const cycleTime = (enhancedRecharge + effectiveCast) || 1;
+
     const entries: { name: string; setName: string; type: string; chance: number; avgDamage: number; perActivation: number; dps: number }[] = [];
     for (const slot of selectedPower.slots) {
       if (!slot || slot.type !== 'io-set') continue;
@@ -735,7 +773,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         enhancementBonuses.recharge || 0,
       );
       const perActivation = chance * avgDamage;
-      const cycleTime = (baseRecharge + castTime) || 1;
       const dps = perActivation / cycleTime;
       entries.push({
         name: ioSlot.name,
@@ -789,7 +826,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     }
 
     return entries.length > 0 ? entries : null;
-  }, [calculatedDamage, selectedPower, effectivePower, build.level, build.incarnates, archetypeId, incarnateActive?.hybrid, incarnateActive?.interface, enhancementBonuses.recharge, globalBonusesForCalc.damage, powerCanSlotDamage]);
+  }, [calculatedDamage, selectedPower, effectivePower, build.level, build.incarnates, archetypeId, incarnateActive?.hybrid, incarnateActive?.interface, enhancementBonuses.recharge, globalBonusesForCalc.damage, globalBonusesForCalc.recharge, useArcanaTimeToggle, powerCanSlotDamage]);
 
   // Average incarnate-proc damage per cast for THIS attack. Fed to
   // DamageBlock so its "+X proc" annotation includes Hybrid/Interface
@@ -2099,8 +2136,38 @@ const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = {
   DefenseDebuff: { label: '-Defense', color: 'text-orange-400' },
   ResistanceDebuff: { label: '-Resistance', color: 'text-orange-400' },
   DamageDebuff: { label: '-Damage', color: 'text-orange-400' },
-  Slow: { label: 'Slow', color: 'text-teal-400' },
+  RechargeDebuff: { label: '-Recharge', color: 'text-teal-400' },
+  Slow: { label: '-Speed', color: 'text-teal-400' },
 };
+
+// Pet/pseudo-pet debuffs whose computed `value` is a fraction → show as a percent
+// (the label already carries the sign, e.g. "-ToHit 5%"). Everything else shows
+// its calculated magnitude: mez as "mag N (Ns)", KB/-end/heal as the raw value.
+const PERCENT_PET_EFFECTS = new Set([
+  'RechargeDebuff', 'Slow', 'ToHitDebuff', 'DefenseDebuff', 'ResistanceDebuff', 'DamageDebuff', 'RecoveryDebuff',
+]);
+const MEZ_PET_EFFECTS = new Set(['Stun', 'Hold', 'Sleep', 'Fear', 'Confuse', 'Immobilize']);
+
+/** Format a computed pet effect value for display — percentages for debuffs, mag
+ *  (+duration) for mez, raw magnitude for the rest. Replaces showing the raw
+ *  table×scale fraction (e.g. 0.05) which read as a meaningless modifier. */
+function formatPetEffectValue(eff: PetEffectComputed): string {
+  const { type, value, magnitude } = eff;
+  if (PERCENT_PET_EFFECTS.has(type)) {
+    if (value === undefined) return '—';
+    const pct = value * 100;
+    return `${pct.toFixed(pct < 10 ? 1 : 0)}%`;
+  }
+  if (MEZ_PET_EFFECTS.has(type)) {
+    const mag = magnitude !== undefined ? `mag ${magnitude}` : '';
+    const dur = value !== undefined && value > 0 ? ` ${value.toFixed(1)}s` : '';
+    return (mag + dur).trim() || '—';
+  }
+  // Knockback / Knockup / Taunt / EndDrain / Heal: the computed value/points.
+  if (value !== undefined) return value.toFixed(2);
+  if (magnitude !== undefined) return `mag ${magnitude}`;
+  return '—';
+}
 
 /** Expandable row for a single pet ability with damage */
 function PetAbilityRow({ ad }: { ad: PetAbilityDamage }) {
@@ -2370,6 +2437,11 @@ function SingleEntityDisplay({
                       <div key={eff.type} className="flex items-baseline justify-between gap-1.5 text-[11px]">
                         <span className={`${display.color} truncate`}>
                           {display.label}{chanceLabel}
+                          {eff.conditional && (
+                            <span className="text-amber-500/70 italic ml-1" title="Only while the power is in its empowered/triggered state (e.g. Storm Cell's High Winds)">
+                              ⚡
+                            </span>
+                          )}
                           {eff.ignoreStrength && (
                             <span className="text-slate-500 italic ml-1" title="Ignores buffs and enhancements">
                               (unenh.)
@@ -2377,7 +2449,7 @@ function SingleEntityDisplay({
                           )}
                         </span>
                         <span className="text-slate-300 tabular-nums shrink-0">
-                          {eff.value !== undefined ? eff.value.toFixed(1) : '—'}
+                          {formatPetEffectValue(eff)}
                         </span>
                       </div>
                     );
@@ -2394,6 +2466,8 @@ function SingleEntityDisplay({
 
 export function PetDamageDisplay({ summon, level, enhancementDamageBonus, globalDamageBonus, archetypeId }: PetDamageDisplayProps) {
   const [upgradeTier, setUpgradeTier] = useState(0);
+  // "Storm Cell Active" / High Winds — empowered pseudo-pet display (WindSpeed + lightning).
+  const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
 
   // Build entity list from either entities array or single entity. Filter out
   // entries we don't have damage data for AND that look visual-only (e.g. Rain
@@ -2409,8 +2483,8 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
         ? [{ entityName: summon.entity, count: summon.entityCount || 1 }]
         : [];
     return raw.filter(({ entityName }) => {
-      // Has model data → keep
-      if (PET_ENTITIES[entityName]) return true;
+      // Has model data → keep (tolerates un-prefixed names → Pets_<name>, e.g. Sleet)
+      if (getPetEntity(entityName)) return true;
       // Looks like a real (un-modeled) pet name → keep so we can still surface it
       if (/^(Pets_|MastermindPets_|Villain_Pets_|VillainPets_)/i.test(entityName)) return true;
       // P-hashes and other opaque identifiers without model data are
@@ -2423,7 +2497,7 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
   const maxUpgradeTier = useMemo(() => {
     let max = 0;
     for (const e of entityList) {
-      const entity = PET_ENTITIES[e.entityName];
+      const entity = getPetEntity(e.entityName);
       if (entity?.upgradeTiers) {
         for (const t of entity.upgradeTiers) {
           if (t.tier === 2) max = Math.max(max, 1);
@@ -2464,11 +2538,29 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
         label: re.displayName,
         result: calculateResolvedPseudoPetDamage(
           re, archetypeId ?? '', level,
-          applyEnh ? enhancementDamageBonus : 0, applyEnh, globalDamageBonus,
+          applyEnh ? enhancementDamageBonus : 0, applyEnh, globalDamageBonus, stormCellActive,
         ),
       };
     }).filter(r => r.result && r.result.allEffects.length > 0);
-  }, [summon.resolvedEntities, archetypeId, level, enhancementDamageBonus, globalDamageBonus]);
+  }, [summon.resolvedEntities, archetypeId, level, enhancementDamageBonus, globalDamageBonus, stormCellActive]);
+
+  // Conditional ("ignited") entities — Oil Slick Arrow's burn patch. Always shown
+  // here (flagged via the label) as the triggered-state damage; it only folds into
+  // the headline Damage block when the per-power toggle is on (see pseudoPetDamage).
+  const conditionalResults = useMemo(() => {
+    return (summon.conditionalEntities ?? []).map((ce, i) => {
+      const entity = getPetEntity(ce.entity);
+      const applyEnh = entity?.copyCreatorMods ?? false;
+      return {
+        key: `cond-${ce.entity}-${i}`,
+        label: `${ce.label} (when triggered)`,
+        result: calculatePetDamage(
+          ce.entity, level, 1, summon.duration,
+          applyEnh ? enhancementDamageBonus : 0, applyEnh, globalDamageBonus,
+        ),
+      };
+    }).filter(r => r.result);
+  }, [summon.conditionalEntities, level, enhancementDamageBonus, globalDamageBonus, summon.duration]);
 
   // Aggregate totals across all entities
   const totals = useMemo(() => {
@@ -2491,7 +2583,7 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
   const durationLabel = summon.duration ? `${summon.duration}s` : 'permanent';
 
   // Nothing to show (e.g. a location shell with only an unresolved entity).
-  if (entityList.length === 0 && resolvedResults.length === 0) return null;
+  if (entityList.length === 0 && resolvedResults.length === 0 && conditionalResults.length === 0) return null;
 
   return (
     <div className="bg-indigo-900/30 rounded p-2 border border-indigo-500/30">
@@ -2592,8 +2684,27 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
         </div>
       )}
 
+      {/* Conditional ("ignited") entities — Oil Slick Arrow's burn patch. Shown
+          with its Fire DPS as the triggered-state potential; folds into the
+          headline Damage block when the "Oil Slick Ignited" toggle is on. */}
+      {conditionalResults.length > 0 && (
+        <div className="space-y-2">
+          {conditionalResults.map((cr) => (
+            <SingleEntityDisplay
+              key={cr.key}
+              petDamage={cr.result}
+              entityCount={1}
+              label={cr.label}
+              showHeader={true}
+              isPseudoPet={true}
+              duration={summon.duration}
+            />
+          ))}
+        </div>
+      )}
+
       {/* No entity display (pseudopets with no data) */}
-      {entityList.length === 0 && resolvedResults.length === 0 && (
+      {entityList.length === 0 && resolvedResults.length === 0 && conditionalResults.length === 0 && (
         <div className="flex items-center gap-2">
           <span className="text-indigo-400 text-sm font-medium">
             {summon.isPseudoPet ? '⚡ Creates' : '🐾 Summons'}
@@ -2606,7 +2717,7 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
       )}
 
       {/* Fallback: show powers list if no pet data at all */}
-      {entityList.length === 0 && resolvedResults.length === 0 && summon.powers && summon.powers.length > 0 && (
+      {entityList.length === 0 && resolvedResults.length === 0 && conditionalResults.length === 0 && summon.powers && summon.powers.length > 0 && (
         <div className="text-xs text-slate-400 mt-0.5">
           Powers: {summon.powers.map(p => p.split('.').pop()).join(', ')}
         </div>

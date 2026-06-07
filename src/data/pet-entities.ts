@@ -31,3 +31,16 @@ const objectProxy = <T extends object>(getter: () => T): T =>
 export const PET_ENTITIES: Record<string, PetEntity> = objectProxy(
   () => getActiveDataset().petEntities,
 );
+
+/**
+ * Look up a pet entity, tolerating an un-prefixed name. Some powers' EntCreate
+ * P-hash resolves (via `priority_list`) to a bare entity name like "Sleet" /
+ * "Liquefy" whose actual PET_ENTITIES key is `Pets_Sleet` / `Pets_Liquefy`.
+ * Falls back to the `Pets_`-prefixed key so those summons resolve to their real
+ * (complete) pet entity instead of showing nothing. Returns undefined if neither
+ * exists (e.g. a generic shell like "Meteor" handled via `resolvedEntities`).
+ */
+export function getPetEntity(name: string | undefined): PetEntity | undefined {
+  if (!name) return undefined;
+  return PET_ENTITIES[name] ?? PET_ENTITIES[`Pets_${name}`];
+}

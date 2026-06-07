@@ -49,7 +49,53 @@ export const IceStorm: Power = {
         "Pets.IceStorm_Sentinel.Avoid",
         "Pets.IceStorm_Sentinel.IceStorm"
       ],
-      "duration": 15
+      "duration": 15,
+      "resolvedEntities": [
+        {
+          "displayName": "Ice Storm",
+          "duration": 15,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "IceStorm",
+              "displayName": "IceStorm",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Cold",
+                  "scale": 0.0236,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Cold",
+                  "scale": 0.0236,
+                  "table": "Melee_InherentDamage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.1,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "scale": 0.4,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 10
+            }
+          ]
+        }
+      ]
     }
   }
 };

@@ -6,7 +6,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useSentinelCritActive } from '@/stores';
+import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useSentinelCritActive, useGlobalAdjuster } from '@/stores';
 import { getBaseToHit } from '@/data/purple-patch';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { lookupPower, getArchetype, getIOSet, getPowerset } from '@/data';
@@ -50,7 +50,7 @@ import {
   getAlphaEnhancementBonuses,
   type EnhancementBonuses,
 } from '@/utils/calculations';
-import { calculatePetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult } from '@/utils/calculations/pet-damage';
+import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult } from '@/utils/calculations/pet-damage';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import type { ArchetypeId } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
@@ -72,6 +72,8 @@ interface PowerInfoContentProps {
 function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
+  const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
+  const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
   const globalBonuses = useGlobalBonuses();
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
@@ -216,7 +218,14 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     } else if (summon.entity) {
       entityList.push({ entityName: summon.entity, count: summon.entityCount || 1 });
     }
-    if (entityList.length === 0) return null;
+    const resolvedList = summon.resolvedEntities ?? [];
+    // Conditional ("ignited") entities fold in only when their per-power toggle is on.
+    for (const ce of summon.conditionalEntities ?? []) {
+      if (mechanicAdjusters[`${basePower!.internalName}:${ce.toggleId}`]) {
+        entityList.push({ entityName: ce.entity, count: 1 });
+      }
+    }
+    if (entityList.length === 0 && resolvedList.length === 0) return null;
 
     const globalDmgBonus = globalBonusesForCalc.damage || 0;
     const results: PetDamageResult[] = [];
@@ -234,8 +243,23 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       }
     }
 
+    // Synthesized location pseudo-pets (Storm Cell, Category Five, …) — parity
+    // with the InfoPanel. Damage off the summoner's AT; effects (with chance)
+    // surface as the chips below.
+    for (const re of resolvedList) {
+      const applyEnh = re.copyCreatorMods;
+      const enhBonus = applyEnh ? (enhancementBonuses.damage || 0) : 0;
+      const result = calculateResolvedPseudoPetDamage(re, archetypeId ?? '', build.level, enhBonus, applyEnh, globalDmgBonus, stormCellActive);
+      if (result) {
+        results.push(result);
+        base += result.aggregateDpsBase;
+        enhanced += result.aggregateDpsEnhanced;
+        final_ += result.aggregateDpsFinal;
+      }
+    }
+
     return results.length > 0 ? { results, base, enhanced, final: final_ } : null;
-  }, [basePower?.effects?.summon, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage]);
+  }, [basePower?.effects?.summon, basePower?.internalName, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
 
   // Pseudo-pet enhanceable debuffs (Glue Arrow's slow, etc.) surfaced into the
   // Power Effects block — mirrors InfoPanel. Merged into `effects` below so the

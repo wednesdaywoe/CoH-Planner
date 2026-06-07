@@ -786,7 +786,12 @@ const PSEUDOPET_MEZ_ATTRIBS = {
 const PSEUDOPET_DEBUFF_ATTRIBS = {
   endurance: 'EndDrain', recovery: 'RecoveryDebuff', tohit: 'ToHitDebuff',
   base_defense: 'DefenseDebuff', runningspeed: 'Slow', flyingspeed: 'Slow',
-  jumpingspeed: 'Slow', jumpheight: 'Slow', rechargetime: 'Slow',
+  jumpingspeed: 'Slow', jumpheight: 'Slow',
+  // -Recharge is a distinct debuff from movement -Speed (the planner's registry
+  // and the in-cell attack bonuses track them separately). Keeping them apart
+  // also lets the Tempest→WindSpeed empowered swap show each doubling cleanly
+  // (−Rech 7%→14%, −Speed 14%→28%) instead of collapsing to one ambiguous "Slow".
+  rechargetime: 'RechargeDebuff',
 };
 
 /**
@@ -856,6 +861,12 @@ function classifyPseudoPetEffect(template) {
       if (a === 'endurance' && !(scale < 0)) continue;
       // Slow tag rows carry scale ~0 — not a real slow.
       if (debuffType === 'Slow' && Math.abs(scale || 0) < 0.001) continue;
+      // Skip the aspect=Maximum movement-speed cap (−max run speed): it's a niche
+      // secondary debuff distinct from the regular (Current) movement Slow we
+      // surface, and including it makes the Slow value inconsistent (it would win
+      // the single Slow slot in some redirects but not others). The Current-aspect
+      // movement slow is the representative one.
+      if (debuffType === 'Slow' && (template.aspect || '').toLowerCase() === 'maximum') continue;
       const eff = { type: debuffType };
       if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
       if (ignoreStrength) eff.ignoreStrength = true;
@@ -898,14 +909,32 @@ function collectTemplatesWithChance(effects, visited = new Set(), depth = 0, cum
     // A chance:0 group is a mode-gate SENTINEL, not literal 0% — mark `gated` and
     // keep the cumulative chance (so the within-mode proc rate, e.g. a 33% stun,
     // survives) rather than zeroing it. Real proc chances (0<chance<1) multiply.
+    //
+    // EXCEPTION: an `IncreaseStormStrength` chance:0 group is a storm-strength
+    // ACCUMULATOR, not a mode SUPPRESSOR — its payload (Storm Cell's base lightning
+    // aura) always runs (verified in-game: the aura fires continuously from the
+    // moment the cell exists, like a Death Shroud / Quills damage aura, not only
+    // while "High Winds"). So it must NOT gate its children to conditional; the
+    // empowered Strong variant is surfaced separately via poweredUpDamage.
+    const isAccumulator = (effect.tags || []).includes('IncreaseStormStrength');
     const raw = (effect.chance === undefined || effect.chance === null) ? 1 : effect.chance;
-    const childGated = raw === 0 ? true : gated;
+    const childGated = (raw === 0 && !isAccumulator) ? true : gated;
     const c = raw === 0 ? cumChance : cumChance * raw;
 
     for (const t of effect.templates || []) {
       const a = t.attribs && t.attribs[0] ? t.attribs[0].toLowerCase() : null;
-      if (a === 'execute_power' && depth < MAX_DEPTH) {
-        for (const pName of (t.params && t.params.power_names) || []) {
+      // Follow both Execute_Power (params.power_names) and nested Create_Entity
+      // (params.redirects) — some powers deliver damage one Create_Entity hop
+      // removed (Meteor → creates a "Meteor" entity that runs MeteorHit; Vines →
+      // a nested entity running its pulse). The pet self-buff redirect (ResistAll)
+      // is skipped. Cycle-guarded + depth-bounded like the Execute_Power follow.
+      const followNames = a === 'execute_power'
+        ? ((t.params && t.params.power_names) || [])
+        : a === 'create_entity'
+          ? ((t.params && t.params.redirects) || []).filter(r => !/resistall/i.test(r))
+          : null;
+      if (followNames && depth < MAX_DEPTH) {
+        for (const pName of followNames) {
           if (visited.has(pName)) continue;
           const isStd = pName.toLowerCase().startsWith('redirects.');
           const aux = isStd ? null : resolveAuxRedirectPath(pName);
@@ -976,15 +1005,25 @@ function resolveSummonRedirects(redirectNames) {
     }
 
     // Debuffs / mez — one per type (mirrors convert-pet-entities seenTypes dedup),
-    // carrying the proc chance the binary gates them with (e.g. the 33% stun).
+    // carrying the proc chance the binary gates them with (e.g. the 33% stun) and
+    // a `conditional` flag for mode-gated branches (Storm Cell's lightning effects
+    // only apply "while powered up" / High Winds — `gated` via the chance:0 mode
+    // sentinel). Prefer a NON-conditional occurrence of a type if one exists.
     const effects = [];
-    const seen = new Set();
-    for (const { template, chance } of collected) {
+    const seen = new Map(); // type -> index in effects
+    for (const { template, chance, gated } of collected) {
       const e = classifyPseudoPetEffect(template);
-      if (!e || seen.has(e.type)) continue;
-      seen.add(e.type);
+      if (!e) continue;
       if (chance < 1) e.chance = Math.round(chance * 100) / 100;
-      effects.push(e);
+      if (gated) e.conditional = true;
+      if (!seen.has(e.type)) {
+        seen.set(e.type, effects.length);
+        effects.push(e);
+      } else if (!gated) {
+        // An always-on occurrence supersedes a previously-seen gated one.
+        const prev = effects[seen.get(e.type)];
+        if (prev.conditional) effects[seen.get(e.type)] = e;
+      }
     }
 
     if (damage.length === 0 && effects.length === 0) continue; // ResistAll etc.
@@ -1028,8 +1067,88 @@ function resolveSummonRedirects(redirectNames) {
       ...(json.max_targets_hit > 0 ? { maxTargets: json.max_targets_hit } : {}),
     });
   }
+
+  // Empowered "High Winds" variants: Storm Cell's Tempest debuffs upgrade to the
+  // WindSpeed values (~2×) while the storm is powered up. WindSpeed isn't in the
+  // summon graph (it's triggered by Storm Blast attacks in the cell), so link it
+  // explicitly and attach as the base ability's `poweredUpEffects`; the runtime
+  // swaps to these when the "Storm Cell Active" toggle is on.
+  for (const ab of abilities) {
+    const variant = POWERED_UP_VARIANT[ab.name];
+    if (!variant) continue;
+    const vp = resolveRedirectPath(variant);
+    if (!fs.existsSync(vp)) continue;
+    let vjson;
+    try { vjson = JSON.parse(fs.readFileSync(vp, 'utf-8')); } catch { continue; }
+    const vCollected = collectTemplatesWithChance(vjson.effects, new Set([variant]));
+
+    // Damage escalation (the Strong lightning). Mirror the main damage dedup:
+    // Current/Absolute aspects, drop PvP tables (inherent is runtime-skipped).
+    const vDmg = extractDamage(vCollected.map(c => c.template));
+    const vDmgArr = vDmg ? (Array.isArray(vDmg) ? vDmg : [vDmg]) : [];
+    const vSeenDmg = new Set();
+    const vDamage = [];
+    for (const d of vDmgArr) {
+      if (d.table && /pvp/i.test(d.table)) continue;
+      const key = `${d.type}|${d.scale}|${d.table}`;
+      if (vSeenDmg.has(key)) continue;
+      vSeenDmg.add(key);
+      vDamage.push({ damageType: d.type, scale: d.scale, table: d.table });
+    }
+
+    if (vDamage.length > 0) {
+      // A damage-bearing variant is a DAMAGE escalation (Lightning_Proc →
+      // StormCell_LightningAura): swap the ability's damage when powered up and
+      // leave its already-verified conditional effects (33% stun, etc.) alone.
+      ab.poweredUpDamage = vDamage;
+    } else {
+      // A debuff-only variant is an EFFECT escalation (Tempest → WindSpeed).
+      const vEffects = [];
+      const vSeen = new Set();
+      for (const { template, chance } of vCollected) {
+        const e = classifyPseudoPetEffect(template);
+        if (!e || vSeen.has(e.type)) continue;
+        vSeen.add(e.type);
+        if (chance < 1) e.chance = Math.round(chance * 100) / 100;
+        vEffects.push(e);
+      }
+      if (vEffects.length > 0) ab.poweredUpEffects = vEffects;
+    }
+  }
+
   return abilities;
 }
+
+// Powered-up ("High Winds") variant of a pseudo-pet ability — the empowered
+// debuff redirect that replaces the base one while the storm is at full strength.
+// Storm-Cell-specific link (the variant isn't reachable from the summon graph).
+const POWERED_UP_VARIANT = {
+  StormCell_Tempest: 'Redirects.Storm_Blast.StormCell_WindSpeed',
+  StormCell_Tempest_Sentinel: 'Redirects.Storm_Blast.StormCell_WindSpeed_Sentinel',
+  // Storm-strength escalation for the lightning: the cell's base aura
+  // (Lightning_Proc → StormCell_LightningAura2, Energy 0.5) becomes the "Strong
+  // Storm Cell Lightning" (StormCell_LightningAura, Energy 1.0 ≈ 2×) once storm
+  // strength builds from attacking in the cell — exactly what the in-game combat
+  // log shows (base aura 20.81 → strong 41.62 at lvl 50). Surfaced as the
+  // Lightning_Proc ability's powered-up DAMAGE so the "Storm Cell Active" toggle
+  // escalates the lightning the same way it escalates the Tempest debuffs to
+  // WindSpeed. One redirect covers every AT (its Sentinel-crit branch is internal).
+  Lightning_Proc: 'Redirects.Storm_Blast.StormCell_LightningAura',
+};
+
+// "Ignited" variant of a summoned pet entity — a SEPARATE PET_ENTITIES entity
+// created when the base patch is triggered (Oil Slick Arrow: the inert oil slick
+// `Pets_OilSlickOil` becomes the burning damage patch `Pets_OilSlickBurn` when
+// ignited by a fire/energy power). The burn entity isn't in the summon graph
+// (the igniting power spawns it), so link it explicitly. Surfaced as a
+// conditional ("Oil Slick Ignited") entity whose enhanceable Fire damage folds
+// into the totals when the toggle is on. Keyed by the resolved (priority_list)
+// entity name; covers the AT variants.
+const IGNITED_ENTITY_VARIANT = {
+  Pets_OilSlickOil: 'Pets_OilSlickBurn',
+  Pets_OilSlickOil_Blaster: 'Pets_OilSlickBurn_Blaster',
+  Pets_OilSlickOil_Corruptor: 'Pets_OilSlickBurn_Corruptor',
+};
 
 // Generic location-shell entity_defs that are NOT backed by a PET_ENTITIES
 // record — their content lives entirely in the EntCreate redirect list. Scoped
@@ -1042,6 +1161,12 @@ function resolveSummonRedirects(redirectNames) {
 const PSEUDOPET_SHELL_ENTITIES = new Set([
   'PL_StaticObject', 'PL_FightPreferMelee', 'Pet_NoCollision',
   'PL_Untargetable_FightPreferRanged',
+  // Named shells: same shape (generic entity_def + redirects carrying the real
+  // content), just named after the power/class. Verified absent from PET_ENTITIES
+  // (no `Pets_Meteor`/`Pets_Vines`/`Pets_Mine`/`Pets_Class_Minion_Pets`), so
+  // resolving them is double-count-safe. Covers Meteor, Vines, Trip Mine (Arsenal),
+  // Sleep Grenade, Smoke Canister/Grenade, Geode.
+  'Meteor', 'Vines', 'Mine', 'Class_Minion_Pets',
 ]);
 
 function _parseDurationSeconds(str) {
@@ -1051,58 +1176,124 @@ function _parseDurationSeconds(str) {
 }
 
 /**
- * Walk a raw power's effect tree for every EntCreate AttribMod whose entity_def
- * is a generic location shell, resolve each one's redirect list into a
+ * Walk a raw power's effect tree for every EntCreate AttribMod whose summoned
+ * entity is a generic location shell, resolve each one's redirect list into a
  * synthesized ability list, and attach them as `summon.resolvedEntities`.
  *
- * Distinguishes pseudo-pets by entity_def + redirect-list signature so a power
- * that summons two DIFFERENT shells (Category Five's 20s storm + 17s lightning
- * "Eye") keeps BOTH — fixing the EntCreate collapse where the converter treated
- * a repeated entity_def as one pet with entityCount=2 and dropped the second
- * redirect list. Identical lists (true multi-copy summons) collapse to a count.
+ * Distinguishes pseudo-pets by effective-entity + redirect-list signature so a
+ * power that summons two DIFFERENT shells (Category Five's 20s storm + 17s
+ * lightning "Eye") keeps BOTH — fixing the EntCreate collapse where the
+ * converter treated a repeated entity_def as one pet with entityCount=2 and
+ * dropped the second redirect list. Identical lists (true multi-copy summons)
+ * collapse to a count.
+ *
+ * Resolution must see exactly what the runtime sees, so it matches the main
+ * summon builder on two points it previously missed:
+ *  - **activation_effects.** Some patches put the EntCreate there, not in
+ *    `effects` (Burn's flame patch). Walk both arrays.
+ *  - **P-hash entity_def.** When entity_def is an opaque P-hash (P1985334123),
+ *    the real shell name lives in `priority_list` (Freezing Rain / Sentinel Rain
+ *    of Fire → PL_StaticObject, Voltaic Sentinel → Pet_NoCollision). Resolve the
+ *    effective entity the same way before testing it against the shell set.
+ *
+ * Double-count-safe by construction: a shell is only resolved when the effective
+ * entity is in PSEUDOPET_SHELL_ENTITIES, which are verified absent from
+ * PET_ENTITIES — so powers whose P-hash resolves to a real pet (non-Sentinel
+ * Rain of Fire → Pets_RainofFire, Bonfire → Pets_Bonfire, Liquefy → Pets_Liquefy)
+ * are NOT matched here and keep the existing pet-damage path untouched.
+ *
+ * One exception: a real-pet chassis whose content is delivered by an EXTERNAL
+ * Redirects.* override (Burn → entity_def "Burn" but runs Redirects.Fiery_Aura.Burn)
+ * IS resolved here, and its chassis is then normalized off the pet-damage path so
+ * the stale intrinsic damage isn't double-counted. Intrinsic redirects that name
+ * the chassis's own power (Bonfire → Pets.Bonfire.Bonfire) are left alone.
  */
 function attachResolvedPseudoPets(powerJson, effects) {
   if (!effects || !effects.summon) return;
 
-  const shells = []; // { entityDef, displayName, duration, redirects }
-  (function walk(effs) {
+  const shells = []; // { signature, displayName, duration, redirects, chance, override? }
+  const walk = (effs) => {
     for (const e of effs || []) {
+      const chance = (e.chance === undefined || e.chance === null) ? 1 : e.chance;
       for (const t of e.templates || []) {
         if (!(t.attribs || []).includes('Create_Entity')) continue;
         const p = t.params || {};
-        if (p.type !== 'EntCreate' || !PSEUDOPET_SHELL_ENTITIES.has(p.entity_def)) continue;
-        // Drop pet self-survivability redirects (ResistAll) before signing.
-        const redirects = (p.redirects || []).filter(r => !/resistall/i.test(r));
+        if (p.type !== 'EntCreate') continue;
+        // Effective shell name: priority_list when entity_def is an opaque P-hash,
+        // otherwise entity_def itself (mirrors the main summon builder).
+        const effectiveEntity = /^P\d+$/.test(p.entity_def || '') ? p.priority_list : p.entity_def;
+        // Drop non-content redirects before signing: ResistAll (pet
+        // survivability), *.Avoid (AI hint that makes foes path around the
+        // patch), *_Info (tooltip-only). What's left is the real payload.
+        const redirects = (p.redirects || []).filter(r => !/(resistall|\.avoid$|_info$)/i.test(r));
         if (redirects.length === 0) continue;
+        const isShell = PSEUDOPET_SHELL_ENTITIES.has(effectiveEntity);
+        // Override case: a NAMED pet chassis (entity_def resolves to a real
+        // PET_ENTITIES pet) whose content is delivered by an EXTERNAL Redirects.*
+        // power that supersedes the chassis's intrinsic abilities. Burn's
+        // entity_def "Burn" → Pets_Burn (Fire 0.06), but it actually runs
+        // Redirects.Fiery_Aura.Burn (Fire 0.08) — the same redirect the
+        // PL_StaticObject-chassis Burns (tanker/brute/scrapper) use. The chassis's
+        // stale 0.06 must NOT also be counted (double-count), so resolve the
+        // redirect AND record the chassis to normalize away below. The
+        // discriminator is the Redirects.* namespace: intrinsic redirects name the
+        // chassis's own power (Bonfire → Pets.Bonfire.Bonfire, Liquefy →
+        // Pets.Liquefy.Liquefy) and are correctly left on the pet-damage path.
+        // Gated on a SHELL priority_list: a genuine "chassis replaced by redirect"
+        // summon falls back to a generic location shell (Burn → PL_StaticObject),
+        // whereas a real nested-pet chain falls back to another pet (Geode's
+        // Carin_Beacon → "Geode") and must be left untouched.
+        const override = (!isShell && PSEUDOPET_SHELL_ENTITIES.has(p.priority_list)
+          && redirects.some(r => /^redirects\./i.test(r)))
+          ? { chassis: p.entity_def, shell: p.priority_list }
+          : null;
+        if (!isShell && !override) continue;
         shells.push({
-          entityDef: p.entity_def,
+          // Group key uses the effective shell (or chassis for overrides) +
+          // redirect signature so distinct payloads stay separate.
+          signature: `${isShell ? effectiveEntity : p.entity_def}|${redirects.join(',')}`,
           displayName: p.display_name,
           duration: _parseDurationSeconds(t.duration),
           redirects,
+          chance,
+          override,
         });
       }
       walk(e.child_effects);
     }
-  })(powerJson.effects);
+  };
+  walk(powerJson.effects);
+  walk(powerJson.activation_effects);
 
   if (shells.length === 0) return;
 
-  // Group by entity_def + redirect signature; dedup identical lists to a count.
+  // Group by effective entity + redirect signature. Identical signatures collapse
+  // to a count — but only chance>0 occurrences count as real simultaneous copies.
+  // A chance:0 EntCreate sharing a base shell's signature is a conditional variant
+  // (Burn's Fiery-Embrace bonus patch fires only while FE is active), NOT a second
+  // permanent patch, so it must not inflate the count.
   const byKey = new Map();
   for (const s of shells) {
-    const key = `${s.entityDef}|${s.redirects.join(',')}`;
-    if (byKey.has(key)) { byKey.get(key).count++; continue; }
-    byKey.set(key, { ...s, count: 1 });
+    if (byKey.has(s.signature)) { byKey.get(s.signature).occurrences.push(s); continue; }
+    byKey.set(s.signature, { ...s, occurrences: [s] });
   }
 
   const resolved = [];
+  const overrides = []; // { chassis, shell } for pet-path normalization
   for (const g of byKey.values()) {
     const abilities = resolveSummonRedirects(g.redirects);
     if (abilities.length === 0) continue;
+    const count = g.occurrences.filter(o => o.chance > 0).length || 1;
+    // Per-entity lifespan: prefer the EntCreate's own Duration (Category Five's
+    // two shells have distinct 20s/17s windows); fall back to the summon-level
+    // duration the main builder already resolved (pet-lifespan cascade).
+    const duration = g.duration || effects.summon.duration;
+    if (g.override) overrides.push(g.override);
     resolved.push({
-      displayName: g.displayName || effects.summon.displayName || 'Summoned Effect',
-      ...(g.duration ? { duration: g.duration } : {}),
-      ...(g.count > 1 ? { count: g.count } : {}),
+      displayName: g.displayName || effects.summon.displayName
+        || powerJson.display_name || powerJson.name || 'Summoned Effect',
+      ...(duration ? { duration } : {}),
+      ...(count > 1 ? { count } : {}),
       // Location pseudo-pets created by a player power inherit the summoner's
       // modifiers: no explicit CopyBoosts flag on these shells, but the parent
       // powers allow Damage enhancement and in-game numbers scale off the
@@ -1113,7 +1304,25 @@ function attachResolvedPseudoPets(powerJson, effects) {
     });
   }
 
-  if (resolved.length > 0) effects.summon.resolvedEntities = resolved;
+  if (resolved.length === 0) return;
+  effects.summon.resolvedEntities = resolved;
+
+  // Normalize an overridden pet chassis off the pet-damage path so its stale
+  // intrinsic damage isn't counted alongside the resolved redirect (the runtime
+  // renders summon.entity AND resolvedEntities as separate lists). Point the
+  // single-entity summon at the generic shell fallback (priority_list) — which
+  // resolves to nothing in PET_ENTITIES — making the six Burn variants identical
+  // (entity=PL_StaticObject + resolved redirect). Drop the entity outright if the
+  // fallback isn't a known shell. Only touches single-entity summons that match a
+  // detected override; multi-entity summons (summon.entities) are left untouched.
+  if (!effects.summon.entities) {
+    for (const { chassis, shell } of overrides) {
+      if (effects.summon.entity !== chassis) continue;
+      if (PSEUDOPET_SHELL_ENTITIES.has(shell)) effects.summon.entity = shell;
+      else delete effects.summon.entity;
+      delete effects.summon.entityCount;
+    }
+  }
 }
 
 /**
@@ -1601,6 +1810,9 @@ const CONDITIONAL_LABEL_OVERRIDES = {
   // happens when the gate uses a lowercased dotted name like
   // `temporary_powers.temporary_powers.tidal_power`).
   tidal_power: 'Tidal Power',
+  // The "in storm cell" gate — surfaced as a single global "Storm Cell Active"
+  // toggle (Storm Blast: attacks' in-cell bonuses + Storm Cell's High Winds).
+  stormblast_instormcell: 'Storm Cell Active',
 };
 
 function _applyLabelOverride(id, label) {
@@ -1854,7 +2066,11 @@ function extractConditionalEffects(rawEffects, powerJson) {
       // `Source.Mode?`, `kEngaged`) describe the player's own state and
       // should toggle uniformly across every power that references them.
       // Target-state gates (`target.ownPower?`) are per-cast/per-target.
-      scope: group.side === 'source' ? 'global' : 'per-power',
+      // Exception: "in storm cell" reads as target-state, but a player thinks of
+      // it as one "I'm fighting inside my Storm Cell" switch — promote to global
+      // so it's a single toggle shared across the whole Storm Blast set (the
+      // attacks' in-cell bonuses AND the Storm Cell summon's powered-up state).
+      scope: (id === 'stormblast_instormcell' || group.side === 'source') ? 'global' : 'per-power',
       defaultActive: false,
     };
     if (mode) entry.mode = mode;
@@ -3189,6 +3405,18 @@ function extractEffects(templates, powerName) {
     delete effects.summon._phashPriorityList;
   }
 
+  // Ignited variant (Oil Slick Arrow): the summoned entity has a separate
+  // "ignited" damage entity created when triggered by fire/energy. Surface it as
+  // a conditional entity gated behind an "Oil Slick Ignited" toggle so its
+  // enhanceable Fire damage can fold into the totals (off by default — the patch
+  // does no damage unless ignited by another power).
+  const ignitedVariant = effects.summon && IGNITED_ENTITY_VARIANT[effects.summon.entity];
+  if (ignitedVariant) {
+    effects.summon.conditionalEntities = [
+      { entity: ignitedVariant, toggleId: 'oilslick_ignited', label: 'Oil Slick Ignited' },
+    ];
+  }
+
   return effects;
 }
 
@@ -3964,6 +4192,36 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     // rather than a generic "trigger".
     const special = extractSpecialEffects(powerJson.effects, conditional);
     if (special) power.specialEffects = special;
+  }
+
+  // Storm Cell's powered-up state lives on the pseudo-pet (resolvedEntities), not
+  // the parent's gated effects, so it doesn't generate the "Storm Cell Active"
+  // conditional from its own predicate. Surface the shared GLOBAL toggle here so
+  // the InfoPanel can drive the High Winds display (WindSpeed debuffs + lightning).
+  // Gate on a `poweredUpEffects` ability — that WindSpeed link is unique to Storm
+  // Cell, so Category Five (always at max strength) and other gated pseudo-pets
+  // (Tide Pool) don't get a mislabeled toggle.
+  const resolvedEnts = power.effects?.summon?.resolvedEntities;
+  if (resolvedEnts && resolvedEnts.some(ent => ent.abilities.some(a => a.poweredUpEffects))) {
+    const exists = (power.conditionalEffects || []).some(c => c.id === 'stormblast_instormcell');
+    if (!exists) {
+      power.conditionalEffects = [
+        ...(power.conditionalEffects || []),
+        { id: 'stormblast_instormcell', label: 'Storm Cell Active', scope: 'global', defaultActive: false },
+      ];
+    }
+  }
+
+  // Conditional summon entities (Oil Slick Arrow's ignited burn patch) — surface
+  // a per-power toggle so the InfoPanel can fold the triggered entity's damage in.
+  for (const ce of power.effects?.summon?.conditionalEntities ?? []) {
+    const exists = (power.conditionalEffects || []).some(c => c.id === ce.toggleId);
+    if (!exists) {
+      power.conditionalEffects = [
+        ...(power.conditionalEffects || []),
+        { id: ce.toggleId, label: ce.label, scope: 'per-power', defaultActive: false },
+      ];
+    }
   }
 
   // Dual Pistols Swap Ammo: pull the per-ammo secondary effects out of base into

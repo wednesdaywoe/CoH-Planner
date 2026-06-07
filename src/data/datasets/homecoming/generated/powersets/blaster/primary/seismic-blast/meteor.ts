@@ -48,7 +48,45 @@ export const Meteor: Power = {
         "Pets.ResistAll.ResistAll",
         "Redirects.Seismic_Blast.Meteor"
       ],
-      "duration": 10
+      "duration": 10,
+      "resolvedEntities": [
+        {
+          "displayName": "Meteor",
+          "duration": 10,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Meteor",
+              "displayName": "Meteor",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Fire",
+                  "scale": 1,
+                  "table": "Ranged_Damage"
+                },
+                {
+                  "damageType": "Smashing",
+                  "scale": 3,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 10,
+                  "table": "Ranged_Knockback"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 999,
+              "effectArea": "SingleTarget"
+            }
+          ]
+        }
+      ]
     }
   }
 };

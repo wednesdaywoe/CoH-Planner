@@ -68,8 +68,14 @@ export const StormCell: Power = {
               "damage": [],
               "effects": [
                 {
-                  "type": "Slow",
+                  "type": "RechargeDebuff",
                   "scale": 0.07,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "scale": 0.14,
                   "table": "Melee_Slow",
                   "ignoreStrength": true
                 },
@@ -85,7 +91,27 @@ export const StormCell: Power = {
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
               "radius": 35,
-              "maxTargets": 16
+              "maxTargets": 16,
+              "poweredUpEffects": [
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.14,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "scale": 0.28,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "ToHitDebuff",
+                  "scale": 1.4,
+                  "table": "Ranged_Debuff_ToHit",
+                  "ignoreStrength": true
+                }
+              ]
             },
             {
               "name": "Lightning_Proc",
@@ -98,7 +124,6 @@ export const StormCell: Power = {
                   "table": "Ranged_Damage"
                 }
               ],
-              "conditionalDamage": true,
               "effects": [
                 {
                   "type": "EndDrain",
@@ -125,11 +150,26 @@ export const StormCell: Power = {
               "activatePeriod": 1,
               "effectArea": "Sphere",
               "radius": 35,
-              "maxTargets": 1
+              "maxTargets": 1,
+              "poweredUpDamage": [
+                {
+                  "damageType": "Energy",
+                  "scale": 1,
+                  "table": "Ranged_Damage"
+                }
+              ]
             }
           ]
         }
       ]
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stormblast_instormcell",
+      "label": "Storm Cell Active",
+      "scope": "global",
+      "defaultActive": false
+    }
+  ]
 };

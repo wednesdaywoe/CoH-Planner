@@ -51,7 +51,62 @@ export const Vines: Power = {
         "Villain_Pets.Vines.Vines_Debuff",
         "Villain_Pets.Vines.Vines_OneShot"
       ],
-      "duration": 60
+      "duration": 60,
+      "resolvedEntities": [
+        {
+          "displayName": "Vines",
+          "duration": 60,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Vines_Pulse",
+              "displayName": "Vines",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Toxic",
+                  "scale": 0.1,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Hold",
+                  "magnitude": 3,
+                  "scale": 5,
+                  "table": "Ranged_Immobilize"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 4,
+              "effectArea": "Sphere",
+              "radius": 30,
+              "maxTargets": 5
+            },
+            {
+              "name": "Vines_OneShot",
+              "displayName": "Vines",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Hold",
+                  "magnitude": 3,
+                  "scale": 8,
+                  "table": "Ranged_Immobilize"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 1000,
+              "effectArea": "Sphere",
+              "radius": 30,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

@@ -44,7 +44,22 @@ export const OilSlickArrow: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_OilSlickOil",
-      "duration": 30
+      "duration": 30,
+      "conditionalEntities": [
+        {
+          "entity": "Pets_OilSlickBurn",
+          "toggleId": "oilslick_ignited",
+          "label": "Oil Slick Ignited"
+        }
+      ]
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "oilslick_ignited",
+      "label": "Oil Slick Ignited",
+      "scope": "per-power",
+      "defaultActive": false
+    }
+  ]
 };

@@ -78,6 +78,12 @@ export const StaticField: Power = {
                   "type": "Slow",
                   "scale": 0.32,
                   "table": "Ranged_Slow"
+                },
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.24,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
                 }
               ],
               "recharge": 0,

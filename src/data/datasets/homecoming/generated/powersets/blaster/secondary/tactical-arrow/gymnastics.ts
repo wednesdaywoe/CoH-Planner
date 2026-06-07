@@ -43,7 +43,22 @@ export const Gymnastics: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_OilSlickOil_Blaster",
-      "duration": 30
+      "duration": 30,
+      "conditionalEntities": [
+        {
+          "entity": "Pets_OilSlickBurn_Blaster",
+          "toggleId": "oilslick_ignited",
+          "label": "Oil Slick Ignited"
+        }
+      ]
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "oilslick_ignited",
+      "label": "Oil Slick Ignited",
+      "scope": "per-power",
+      "defaultActive": false
+    }
+  ]
 };

@@ -5,7 +5,7 @@
  * Supports the three-tier display: Base → Enhanced → Final
  */
 
-import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
+import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { getPetTableValue, getTableValue } from '@/data/at-tables';
 import type { ResolvedPseudoPet } from '@/types/power';
 
@@ -35,11 +35,17 @@ export interface PetAbilityDamage {
 
 export interface PetEffectComputed {
   type: string;
-  /** Computed value at current level (from scale*table or magnitude) */
+  /** Computed value at current level (from scale*table or magnitude). For
+   *  percentage debuffs this is the fraction (0.07 = -7%); for mez it's the
+   *  duration in seconds; for KB/heal/-end it's the raw magnitude/points. */
   value?: number;
+  /** Mez/knock magnitude (e.g. a mag-3 Stun) — distinct from `value` (duration). */
+  magnitude?: number;
   chance?: number;
   /** IgnoreStrength: the player's enhancements/buffs do NOT scale this (informational). */
   ignoreStrength?: boolean;
+  /** Mode-gated: only applies while the power is empowered/triggered. */
+  conditional?: boolean;
 }
 
 export interface PetDamageResult {
@@ -133,7 +139,7 @@ export function calculatePetDamage(
   globalDamageBonus: number = 0,
   upgradeTier: number = 0
 ): PetDamageResult | null {
-  const entity = PET_ENTITIES[entityName];
+  const entity = getPetEntity(entityName);
   if (!entity) return null;
 
   // Build the combined ability list: base + upgrade tiers
@@ -168,7 +174,7 @@ export function calculatePetDamage(
           } else if (eff.magnitude !== undefined) {
             value = eff.magnitude;
           }
-          allEffectsMap.set(eff.type, { type: eff.type, value, chance: eff.chance });
+          allEffectsMap.set(eff.type, { type: eff.type, value, magnitude: eff.magnitude, chance: eff.chance });
         }
       }
     }
@@ -265,6 +271,9 @@ export function calculateResolvedPseudoPetDamage(
   enhancementBonus: number = 0,
   applyEnhancements: boolean = false,
   globalDamageBonus: number = 0,
+  /** "Storm Cell Active" / High Winds on: swap Tempest→WindSpeed effects, fold the
+   *  mode-gated lightning into the DPS total, and show its effects as active. */
+  poweredUp: boolean = false,
 ): PetDamageResult | null {
   if (!entity?.abilities?.length) return null;
 
@@ -277,8 +286,11 @@ export function calculateResolvedPseudoPetDamage(
   const buffMult = 1 + globalDamageBonus;
 
   for (const ability of entity.abilities) {
-    if (ability.effects) {
-      for (const eff of ability.effects) {
+    // When powered up, the empowered (WindSpeed) effects replace the base set,
+    // and mode-gated content is no longer conditional (it's active).
+    const effSource = (poweredUp && ability.poweredUpEffects) ? ability.poweredUpEffects : ability.effects;
+    if (effSource) {
+      for (const eff of effSource) {
         if (allEffectsMap.has(eff.type)) continue;
         let value: number | undefined;
         if (eff.scale && eff.table) {
@@ -287,7 +299,7 @@ export function calculateResolvedPseudoPetDamage(
         } else if (eff.magnitude !== undefined) {
           value = eff.magnitude;
         }
-        allEffectsMap.set(eff.type, { type: eff.type, value, chance: eff.chance, ignoreStrength: eff.ignoreStrength });
+        allEffectsMap.set(eff.type, { type: eff.type, value, magnitude: eff.magnitude, chance: eff.chance, ignoreStrength: eff.ignoreStrength, conditional: poweredUp ? false : eff.conditional });
       }
     }
 
@@ -295,7 +307,10 @@ export function calculateResolvedPseudoPetDamage(
     // it out of the DPS/headline total and surface it as an informational effect
     // (per-tick value + chance). Mirrors how the game shows Storm Cell's lightning
     // as "chance for X / while powered up" rather than a flat DoT.
-    if (ability.conditionalDamage && ability.damage.length > 0) {
+    // Mode-gated damage (Storm Cell lightning) is conditional UNLESS powered up.
+    // Powered up → it folds into the DPS total (handled below); otherwise it's
+    // surfaced as an informational "<type> Dmg" effect (per-tick value + chance).
+    if (ability.conditionalDamage && !poweredUp && ability.damage.length > 0) {
       for (const dmg of ability.damage) {
         const key = `${dmg.damageType} Dmg`;
         if (allEffectsMap.has(key)) continue;
@@ -304,12 +319,15 @@ export function calculateResolvedPseudoPetDamage(
           type: key,
           value: tv !== undefined ? Math.abs(tv) * Math.abs(dmg.scale) : undefined,
           chance: ability.damageChance && ability.damageChance > 0 ? ability.damageChance : undefined,
+          // chance===0 mode-gated damage is conditional (e.g. Storm Cell lightning
+          // "while High Winds active"); a real proc (chance>0) is not.
+          conditional: !ability.damageChance,
         });
       }
-      if (!ability.effects || ability.effects.length === 0) continue;
+      if (!effSource || effSource.length === 0) continue;
     }
 
-    if (!ability.damage || ability.damage.length === 0 || ability.conditionalDamage) {
+    if (!ability.damage || ability.damage.length === 0 || (ability.conditionalDamage && !poweredUp)) {
       // No guaranteed damage to contribute to DPS — but it may still carry
       // (already-collected) debuffs/mez, so it's an effect-only ability here.
       effectOnlyAbilities.push(ability as unknown as PetAbility);
@@ -318,11 +336,17 @@ export function calculateResolvedPseudoPetDamage(
 
     // Proc damage (0 < damageChance < 1) counts at its EXPECTED value
     // (chance × per-hit) — the planner's proc convention. Guaranteed DoT has no
-    // damageChance ⇒ multiplier 1. (chance===0 mode-gated damage never reaches
-    // here; it's handled as conditional above.)
-    const chanceMult = ability.damageChance ?? 1;
+    // damageChance ⇒ multiplier 1. Powered-up mode-gated damage (the lightning)
+    // counts at full (it's active, not a proc).
+    const chanceMult = (poweredUp && ability.conditionalDamage) ? 1 : (ability.damageChance ?? 1);
+    // Powered up: escalate to the Strong lightning (StormCell_LightningAura, 1.0 ≈
+    // 2× the base 0.5 aura) when a poweredUpDamage variant is present — the
+    // high-storm-strength swap, mirroring the Tempest→WindSpeed effect swap.
+    const damageSource = (poweredUp && ability.poweredUpDamage && ability.poweredUpDamage.length > 0)
+      ? ability.poweredUpDamage
+      : ability.damage;
     const baseDamages: { type: string; base: number }[] = [];
-    for (const dmg of ability.damage) {
+    for (const dmg of damageSource) {
       const tv = getTableValue(archetype, dmg.table, level);
       if (tv === undefined) continue;
       baseDamages.push({ type: dmg.damageType, base: Math.abs(tv) * Math.abs(dmg.scale) * chanceMult });
@@ -384,7 +408,7 @@ export function shouldApplyEnhancements(
   entityName: string,
   copyBoosts?: boolean
 ): boolean {
-  const entity = PET_ENTITIES[entityName];
+  const entity = getPetEntity(entityName);
   if (!entity) return false;
   return entity.copyCreatorMods || (copyBoosts === true);
 }
@@ -431,7 +455,7 @@ export function synthesizePseudoPetEffects(
     ? summon.entities.map((e) => e.entity)
     : summon.entity ? [summon.entity] : [];
   for (const entityName of entityNames) {
-    const entity = PET_ENTITIES[entityName];
+    const entity = getPetEntity(entityName);
     if (!entity || entity.commandable) continue; // pseudo-pets / patches only
     for (const ability of entity.abilities) {
       for (const eff of ability.effects ?? []) addEnhanceable(eff.type, eff.scale, eff.table);

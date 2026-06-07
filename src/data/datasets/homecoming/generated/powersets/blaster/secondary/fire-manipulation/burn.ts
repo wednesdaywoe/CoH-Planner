@@ -46,12 +46,39 @@ export const Burn: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Burn",
+      "entity": "PL_StaticObject",
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Redirects.Fiery_Aura.Burn"
       ],
-      "duration": 10
+      "duration": 10,
+      "resolvedEntities": [
+        {
+          "displayName": "Burn",
+          "duration": 10,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Burn",
+              "displayName": "Burn",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Fire",
+                  "scale": 0.08,
+                  "table": "Melee_Damage"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.8,
+              "effectArea": "Sphere",
+              "radius": 8,
+              "maxTargets": 5
+            }
+          ]
+        }
+      ]
     }
   }
 };

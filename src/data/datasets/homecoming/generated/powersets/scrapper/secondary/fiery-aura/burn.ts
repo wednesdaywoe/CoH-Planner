@@ -60,7 +60,34 @@ export const Burn: Power = {
         "Redirects.Fiery_Aura.Burn"
       ],
       "duration": 10,
-      "entityCount": 2
+      "entityCount": 2,
+      "resolvedEntities": [
+        {
+          "displayName": "Burn Flames",
+          "duration": 10,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Burn",
+              "displayName": "Burn",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Fire",
+                  "scale": 0.08,
+                  "table": "Melee_Damage"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.8,
+              "effectArea": "Sphere",
+              "radius": 8,
+              "maxTargets": 5
+            }
+          ]
+        }
+      ]
     }
   }
 };

@@ -66,13 +66,15 @@ export const TidePool: Power = {
                 {
                   "type": "Slow",
                   "scale": 0.72,
-                  "table": "Ranged_Slow"
+                  "table": "Ranged_Slow",
+                  "conditional": true
                 },
                 {
                   "type": "Knockback",
                   "magnitude": 1,
                   "scale": 0.67,
-                  "table": "Melee_Ones"
+                  "table": "Melee_Ones",
+                  "conditional": true
                 }
               ],
               "recharge": 0,

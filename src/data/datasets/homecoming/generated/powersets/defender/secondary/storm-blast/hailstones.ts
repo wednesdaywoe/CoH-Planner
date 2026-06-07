@@ -63,8 +63,8 @@ export const Hailstones: Power = {
   "conditionalEffects": [
     {
       "id": "stormblast_instormcell",
-      "label": "StormBlast InStormCell",
-      "scope": "per-power",
+      "label": "Storm Cell Active",
+      "scope": "global",
       "defaultActive": false,
       "mode": "replace",
       "effects": {
@@ -84,7 +84,7 @@ export const Hailstones: Power = {
     {
       "kind": "grant",
       "chance": 0.25,
-      "label": "StormBlast InStormCell"
+      "label": "Storm Cell Active"
     },
     {
       "kind": "effect-proc",
@@ -94,7 +94,7 @@ export const Hailstones: Power = {
     {
       "kind": "grant",
       "chance": 0.5,
-      "label": "StormBlast InStormCell"
+      "label": "Storm Cell Active"
     }
   ]
 };
