@@ -276,13 +276,17 @@ describe('pseudo-pet redirect resolution', () => {
       expect(bolt.effects!.some(e => e.type === 'EndDrain')).toBe(true);
     });
 
-    it('is a "permanent" pet (99999s sentinel) — total-damage is suppressed in the panel, DPS is bounded', () => {
-      // The InfoPanel skips a lifetime TOTAL for these (PERMANENT_PSEUDOPET_DURATION);
-      // the calc still yields a bounded per-hit / DPS the tooltip shows.
+    it('is a "permanent" pet (99999s sentinel) — headline shows per-activation, not a 99999s total', () => {
+      // The InfoPanel shows PER-ACTIVATION damage for these (PERMANENT_PSEUDOPET_DURATION)
+      // rather than an astronomical lifetime total; the calc yields bounded per-hit/DPS.
       expect(re.duration).toBeGreaterThanOrEqual(1000);
       const r = calculateResolvedPseudoPetDamage(re, 'blaster', 50)!;
       expect(r.totalDpsBase).toBeGreaterThan(0);
       expect(Number.isFinite(r.totalDpsBase)).toBe(true);
+      // per-activation (one bolt) damage is bounded and non-zero
+      const bolt = r.abilities.find(a => a.ability.name === 'Electrical_Bolt')!;
+      expect(bolt.damagePerHit).toBeGreaterThan(0);
+      expect(Number.isFinite(bolt.damagePerHit)).toBe(true);
     });
   });
 

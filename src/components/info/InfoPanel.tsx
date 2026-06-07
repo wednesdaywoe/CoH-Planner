@@ -70,9 +70,10 @@ import {
 } from './SharedPowerComponents';
 
 // Pseudo-pet summon durations at or above this are the data's "permanent"
-// sentinel (99999s) — a persistent attack pet whose real lifespan we can't
-// resolve off a generic shell. Used to skip a meaningless lifetime-total
-// damage figure for such pets. Real damage patches last seconds to a minute.
+// sentinel (99999s) — a persistent attack pet (e.g. Voltaic Sentinel) with no
+// bounded lifespan in the data. For these the headline shows PER-ACTIVATION
+// damage instead of a meaningless 99999s lifetime total. Real damage patches
+// last seconds to a minute, well under this.
 const PERMANENT_PSEUDOPET_DURATION = 1000;
 
 export function InfoPanel() {
@@ -602,18 +603,21 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       // Shield Charge where `activatePeriod` is a 100s marker and the
       // pet despawns after 1-4s — the pet fires exactly once at spawn.
       //
-      // A "permanent" pseudo-pet (the 99999s sentinel duration — persistent
-      // attack pets like Voltaic Sentinel whose real lifespan lives on a
-      // Self_Destruct we can't resolve off a generic shell) has no meaningful
-      // per-cast lifetime TOTAL: fires-per-spawn would be astronomical. Skip it
-      // here — its bounded DPS still shows in the power tooltip and its effects
-      // in the Summons block. Real damage patches last seconds, not hours.
-      if (duration <= 0 || duration >= PERMANENT_PSEUDOPET_DURATION) continue;
+      if (duration <= 0) continue;
+      // A "permanent" pseudo-pet (the 99999s sentinel duration — a persistent
+      // attack pet like Voltaic Sentinel with no bounded lifespan in the data)
+      // has no meaningful per-cast lifetime TOTAL: fires-per-spawn over 99999s
+      // would be astronomical. Show its PER-ACTIVATION damage (one tick/bolt)
+      // instead — bounded and honest; the "(permanent)" label gives context, and
+      // the DMG/DPA/DPS toggle still works off the per-activation value.
+      const perActivation = duration >= PERMANENT_PSEUDOPET_DURATION;
       for (const ab of result.abilities) {
         const isAuto = ab.ability.type === 'Auto';
         const period = ab.ability.activatePeriod ?? 0;
         let firesPerSpawn: number;
-        if (isAuto && period > 0) {
+        if (perActivation) {
+          firesPerSpawn = 1;
+        } else if (isAuto && period > 0) {
           // Auto abilities fire immediately on spawn, then every `period`
           // seconds. +1 to count the initial tick at t=0.
           firesPerSpawn = Math.max(1, Math.floor(duration / period) + 1);

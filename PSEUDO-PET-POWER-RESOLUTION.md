@@ -439,11 +439,19 @@ shells are verified absent from PET_ENTITIES):
   runtime-skipped (`getTableValue` returns undefined for it) → Fire counted once,
   matching the direct-attack convention and the existing Sentinel Meteor/Cat Five.
 
+Permanent attack pets (Voltaic Sentinel — `Pet_NoCollision` is the entity COSTUME,
+the real pet `Pets_VoltaicSentinel` has no bounded lifespan in the data → 99999s
+sentinel duration): the InfoPanel headline shows **per-activation** (one bolt)
+damage rather than a meaningless 99999s lifetime total or nothing
+(`PERMANENT_PSEUDOPET_DURATION`). DPS still available via the DMG/DPA/DPS toggle and
+the power tooltip. Note the resolved bolt is the summon's `_PseudoPet` redirect
+(0.56 main component) which slightly under-counts vs the full multi-component bolt
+(0.56+0.112+inherent); the inherent copies are correctly runtime-skipped.
+
 Remaining (smaller, not blocking):
-- Voltaic Sentinel & other persistent attack pets show DPS (tooltip) + effects, but
-  no InfoPanel lifetime total — a DPS-mode headline for permanent pseudo-pets would
-  be the proper long-term fix. Burn's Fiery-Embrace bonus patch (a 2nd patch while
-  FE is active) isn't surfaced as a toggle (deliberate — temporary buff window).
+- Burn's Fiery-Embrace bonus patch (a 2nd patch while FE is active) isn't surfaced
+  as a toggle (deliberate — temporary buff window). Voltaic Sentinel's secondary
+  0.112 bolt component is dropped by the shared damage extractor (minor under-count).
 - Category Five's lightning "Eye" has no powered-up toggle (it's always at max
   strength — correct), and "Strong Storm Cell Lightning" (2× lightning at very high
   strength) isn't modeled. Visual in-app verify still pending (no debug port).
