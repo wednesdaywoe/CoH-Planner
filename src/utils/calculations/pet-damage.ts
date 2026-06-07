@@ -335,8 +335,14 @@ export function calculateResolvedPseudoPetDamage(
     // damageChance ⇒ multiplier 1. Powered-up mode-gated damage (the lightning)
     // counts at full (it's active, not a proc).
     const chanceMult = (poweredUp && ability.conditionalDamage) ? 1 : (ability.damageChance ?? 1);
+    // Powered up: escalate to the Strong lightning (StormCell_LightningAura, 1.0 ≈
+    // 2× the base 0.5 aura) when a poweredUpDamage variant is present — the
+    // high-storm-strength swap, mirroring the Tempest→WindSpeed effect swap.
+    const damageSource = (poweredUp && ability.poweredUpDamage && ability.poweredUpDamage.length > 0)
+      ? ability.poweredUpDamage
+      : ability.damage;
     const baseDamages: { type: string; base: number }[] = [];
-    for (const dmg of ability.damage) {
+    for (const dmg of damageSource) {
       const tv = getTableValue(archetype, dmg.table, level);
       if (tv === undefined) continue;
       baseDamages.push({ type: dmg.damageType, base: Math.abs(tv) * Math.abs(dmg.scale) * chanceMult });

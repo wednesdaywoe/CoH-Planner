@@ -448,13 +448,36 @@ the power tooltip. Note the resolved bolt is the summon's `_PseudoPet` redirect
 (0.56 main component) which slightly under-counts vs the full multi-component bolt
 (0.56+0.112+inherent); the inherent copies are correctly runtime-skipped.
 
+Follow-up #6 (DONE — "Strong Storm Cell Lightning" escalation):
+Confirmed against an in-game combat log: the cell's lightning escalates from the
+base aura (`Storm Cell Lightning Aura`, Energy 0.5 → 20.81 enhanced @ lvl 50) to
+the **"Strong Storm Cell Lightning"** (`StormCell_LightningAura`, Energy 1.0 →
+41.62 = exactly 2×, AoE across 5+ targets) once storm strength builds from attacking
+in the cell. The log also settled the mode question: the strong lightning is the
+**Storm Cell** high-strength state (it fired with only Storm Cell up, never Cat Five),
+and the `!kLightningCat5` gate means Category Five *suppresses* it (Cat Five delivers
+lightning via its own Eye instead). The damage is attributed to the cell, not the
+attacks — the attacks just feed storm strength.
+- Modeled as the Lightning_Proc ability's `poweredUpDamage` (StormCell_LightningAura,
+  1.0), swapped in by the existing "Storm Cell Active" toggle exactly as Tempest→
+  WindSpeed swaps the debuffs. `POWERED_UP_VARIANT` gained `Lightning_Proc → …LightningAura`;
+  the variant loop now branches: a damage-bearing variant → `poweredUpDamage` (lightning),
+  a debuff-only variant → `poweredUpEffects` (WindSpeed). Runtime `calculateResolvedPseudoPetDamage`
+  uses `poweredUpDamage` when powered up. One redirect covers all ATs (Sentinel-crit
+  internal). 4 storm-cell files (blaster/corruptor/defender/sentinel); Rebirth N/A
+  (no Storm Blast); +2 tests (220 green).
+- Mental model clarified for the user: Storm Cell and Category Five are *distinct*
+  summons on a shared storm-strength axis (not one scaled copy of the other) — Cat
+  Five spawns its own two pseudo-pets (Cold/Smashing storm + lightning Eye).
+
 Remaining (smaller, not blocking):
 - Burn's Fiery-Embrace bonus patch (a 2nd patch while FE is active) isn't surfaced
   as a toggle (deliberate — temporary buff window). Voltaic Sentinel's secondary
   0.112 bolt component is dropped by the shared damage extractor (minor under-count).
-- Category Five's lightning "Eye" has no powered-up toggle (it's always at max
-  strength — correct), and "Strong Storm Cell Lightning" (2× lightning at very high
-  strength) isn't modeled. Visual in-app verify still pending (no debug port).
+- The strong lightning's effects (Stun/KB/EndDrain) keep their base conditional
+  values when powered up (only the *damage* escalates); the in-game stun chance at
+  high strength wasn't verified, so the verified 33% base display is left intact.
+- Visual in-app verify is user-side (web app; Vite HMR).
 
 Original framing (kept): Medium-large effort. High player-visible value (Bonfire,
 Burn, Freezing Rain, the storm/rain/patch family, Trick Arrow, Force Bubble, …).

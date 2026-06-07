@@ -262,6 +262,12 @@ export interface ResolvedPseudoPetAbility {
    *  (~2× the base Tempest debuffs). The runtime swaps to these when the
    *  "Storm Cell Active" toggle is on. */
   poweredUpEffects?: ResolvedPseudoPetEffect[];
+  /** Empowered replacement for `damage` — the high-storm-strength "Strong Storm
+   *  Cell Lightning" (StormCell_LightningAura, 1.0 ≈ 2× the base 0.5 aura). The
+   *  runtime swaps to these when the "Storm Cell Active" toggle is on, so the
+   *  lightning escalates from the base aura to the strong variant players see
+   *  in-game once storm strength builds. */
+  poweredUpDamage?: { damageType: string; scale: number; table: string }[];
   /** Damage lands at < 100% (storm-strength gated / proc) — kept OUT of the
    *  guaranteed headline DoT and surfaced as a conditional effect instead. */
   conditionalDamage?: boolean;

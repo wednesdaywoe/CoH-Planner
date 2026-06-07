@@ -128,6 +128,25 @@ describe('pseudo-pet redirect resolution', () => {
       expect(off.allEffects.some(e => e.conditional)).toBe(true);
       expect(on.allEffects.every(e => !e.conditional)).toBe(true);
     });
+
+    it('Lightning_Proc carries the Strong-lightning powered-up variant (1.0 = 2x the 0.5 aura)', () => {
+      const lightning = pets[0].abilities.find(a => a.name === 'Lightning_Proc')!;
+      expect(lightning.damage[0]).toMatchObject({ damageType: 'Energy', scale: 0.5 });
+      // StormCell_LightningAura (the "Strong Storm Cell Lightning") swaps in when active.
+      expect(lightning.poweredUpDamage).toBeDefined();
+      expect(lightning.poweredUpDamage![0]).toMatchObject({ damageType: 'Energy', scale: 1 });
+    });
+
+    it('powered up: the lightning escalates to the Strong variant (2x the base aura)', () => {
+      const off = calculateResolvedPseudoPetDamage(pets[0], 'blaster', 50)!;
+      const on = calculateResolvedPseudoPetDamage(pets[0], 'blaster', 50, 0, false, 0, true)!;
+      // Off: the base aura (0.5) is surfaced informationally as a conditional "Energy Dmg".
+      const baseAura = off.allEffects.find(e => e.type === 'Energy Dmg')!.value!;
+      // On: the Strong lightning (1.0) folds into the DPS abilities at exactly 2x.
+      const strong = on.abilities.find(a => a.ability.name === 'Lightning_Proc')!
+        .damageByType.find(d => d.type === 'Energy')!.base;
+      expect(strong).toBeCloseTo(baseAura * 2, 0);
+    });
   });
 
   describe('Category Five', () => {

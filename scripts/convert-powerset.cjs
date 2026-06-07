@@ -1072,16 +1072,40 @@ function resolveSummonRedirects(redirectNames) {
     if (!fs.existsSync(vp)) continue;
     let vjson;
     try { vjson = JSON.parse(fs.readFileSync(vp, 'utf-8')); } catch { continue; }
-    const vEffects = [];
-    const vSeen = new Set();
-    for (const { template, chance } of collectTemplatesWithChance(vjson.effects, new Set([variant]))) {
-      const e = classifyPseudoPetEffect(template);
-      if (!e || vSeen.has(e.type)) continue;
-      vSeen.add(e.type);
-      if (chance < 1) e.chance = Math.round(chance * 100) / 100;
-      vEffects.push(e);
+    const vCollected = collectTemplatesWithChance(vjson.effects, new Set([variant]));
+
+    // Damage escalation (the Strong lightning). Mirror the main damage dedup:
+    // Current/Absolute aspects, drop PvP tables (inherent is runtime-skipped).
+    const vDmg = extractDamage(vCollected.map(c => c.template));
+    const vDmgArr = vDmg ? (Array.isArray(vDmg) ? vDmg : [vDmg]) : [];
+    const vSeenDmg = new Set();
+    const vDamage = [];
+    for (const d of vDmgArr) {
+      if (d.table && /pvp/i.test(d.table)) continue;
+      const key = `${d.type}|${d.scale}|${d.table}`;
+      if (vSeenDmg.has(key)) continue;
+      vSeenDmg.add(key);
+      vDamage.push({ damageType: d.type, scale: d.scale, table: d.table });
     }
-    if (vEffects.length > 0) ab.poweredUpEffects = vEffects;
+
+    if (vDamage.length > 0) {
+      // A damage-bearing variant is a DAMAGE escalation (Lightning_Proc →
+      // StormCell_LightningAura): swap the ability's damage when powered up and
+      // leave its already-verified conditional effects (33% stun, etc.) alone.
+      ab.poweredUpDamage = vDamage;
+    } else {
+      // A debuff-only variant is an EFFECT escalation (Tempest → WindSpeed).
+      const vEffects = [];
+      const vSeen = new Set();
+      for (const { template, chance } of vCollected) {
+        const e = classifyPseudoPetEffect(template);
+        if (!e || vSeen.has(e.type)) continue;
+        vSeen.add(e.type);
+        if (chance < 1) e.chance = Math.round(chance * 100) / 100;
+        vEffects.push(e);
+      }
+      if (vEffects.length > 0) ab.poweredUpEffects = vEffects;
+    }
   }
 
   return abilities;
@@ -1093,6 +1117,15 @@ function resolveSummonRedirects(redirectNames) {
 const POWERED_UP_VARIANT = {
   StormCell_Tempest: 'Redirects.Storm_Blast.StormCell_WindSpeed',
   StormCell_Tempest_Sentinel: 'Redirects.Storm_Blast.StormCell_WindSpeed_Sentinel',
+  // Storm-strength escalation for the lightning: the cell's base aura
+  // (Lightning_Proc → StormCell_LightningAura2, Energy 0.5) becomes the "Strong
+  // Storm Cell Lightning" (StormCell_LightningAura, Energy 1.0 ≈ 2×) once storm
+  // strength builds from attacking in the cell — exactly what the in-game combat
+  // log shows (base aura 20.81 → strong 41.62 at lvl 50). Surfaced as the
+  // Lightning_Proc ability's powered-up DAMAGE so the "Storm Cell Active" toggle
+  // escalates the lightning the same way it escalates the Tempest debuffs to
+  // WindSpeed. One redirect covers every AT (its Sentinel-crit branch is internal).
+  Lightning_Proc: 'Redirects.Storm_Blast.StormCell_LightningAura',
 };
 
 // "Ignited" variant of a summoned pet entity — a SEPARATE PET_ENTITIES entity

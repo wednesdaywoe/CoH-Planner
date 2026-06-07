@@ -154,7 +154,14 @@ export const StormCell: Power = {
               "activatePeriod": 1,
               "effectArea": "Sphere",
               "radius": 35,
-              "maxTargets": 1
+              "maxTargets": 1,
+              "poweredUpDamage": [
+                {
+                  "damageType": "Energy",
+                  "scale": 1,
+                  "table": "Ranged_Damage"
+                }
+              ]
             }
           ]
         }
