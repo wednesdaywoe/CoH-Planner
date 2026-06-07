@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-06-07',
     items: [
+      { message: 'Spent half the 🤬 day trying to model every 🤬 thing Storm Blast 🤬 does. 🤬.', type: 'update' },
       { message: 'Powers that create pet entities (especially complicated ones like Storm Cell, Category Five, etc.) should now resolve correctly', type: 'fix' },
       { message: 'Lots of updates have been happening but I haven\'t been adding notes to the changelog for them. What\'s happening behind the scenes is that I\'m going through Sidekick\'s data pipeline and replacing the remaining legacy hand-curated data with data generated from the game binary', type: 'update' },
       { message: 'Increased the rate-limit of builds saved to the server (10 per hour, up from 5 per hour) and added some messaging to help make the limit more transparent instead of letting users hit the wall unknowingly', type: 'update' },
