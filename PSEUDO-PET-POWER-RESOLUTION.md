@@ -307,10 +307,41 @@ Damage presentation (DONE — refined over two in-app reviews):
   flag is computed but not surfaced on effects. Conditional damage value shows the
   per-tick number without a "while powered up" note.
 
-Then **generalize**: full `npm run regen` (all ATs + Rebirth), expand the shell
-set / handle PET_ENTITIES-overlap powers (Bonfire/Burn/Rain of Fire — double-
-count guard), model the powered-up "High Winds"/"Strong Lightning" mode variants,
-PowerInfoTooltip parity.
+Generalization (DONE — full regen, both datasets):
+- **Homecoming: 60 generated files / 25 distinct powers** now carry
+  `resolvedEntities` (Storm Cell, Category Five, Tar Patch, Faraday Cage, Carrion
+  Creepers, Disruption/EMP/Poison Gas/Sleep-Grenade Arrows, Static Field, Tesla
+  Coil, Tide Pool, Lifegiving Spores, Glittering Column, Gravity Distortion Field,
+  Damping Bubble, Tear Gas, …). Diff is purely `resolvedEntities` additions (no
+  drift). Scoped to the 4 location-shell entity_defs → never overlaps a real pet
+  (only Spirit Tree summons both, and they're distinct entities — not a
+  double-count). Powers that resolve to a real pet via P-hash→priority_list
+  (Rain of Fire→Pets_RainofFire, Glue Arrow→Pets_StickyArrow, Trip Mine→Pets_Mine,
+  Freezing Rain/Ice Storm/Tornado) keep the existing pet-damage path, untouched.
+- **Resistance/defense-by-type debuffs captured** — `classifyPseudoPetEffect` now
+  detects the all-8-types `aspect=Resistance` / `*_Debuff_Def` template (Tar Patch
+  −res, Disruption Arrow −res). §3-correct: it rejects ally resistance BUFFs
+  (Faraday Cage — positive/self) so they're not mislabeled debuffs.
+- **Cross-server (§7): both formats work, by different mechanisms.** HC Parse7 puts
+  the content in REDIRECTS off a generic shell (`entity_def=PL_StaticObject`, real
+  pet a P-hash) → my resolver handles it. Rebirth Parse6 INVERTS it
+  (`entity_def=Pets_IceStorm` the real pet, `priority_list=PL_StaticObject` the
+  shell, no redirects) → the existing pet-entity path already surfaces it. Rebirth
+  regen = 0 changes, which is correct (it doesn't use the shell+redirect pattern;
+  Storm Blast isn't even on Rebirth). Verified Tar Patch/Bonfire/Caltrops/etc. all
+  carry `entity_def=Pets_*` on Rebirth.
+
+Remaining (smaller follow-ups, not blocking):
+- **Named-entity shells** (`Sleet`/`Meteor`/`Vines`/`Mine`, ~11 files) and
+  `Class_Minion_Pets` (7) aren't in the 4-marker shell set and resolve to a name
+  that isn't a PET_ENTITIES key — still unresolved (need name→`Pets_*` mapping or
+  shell-set expansion).
+- **PET_ENTITIES-overlap redirect effects** (Bonfire/Burn/Liquefy): the pet entity
+  gives damage via the existing path, but extra redirect-power effects are still
+  dropped — needs a merge that doesn't double-count the pet damage.
+- Mode variants ("High Winds"/"Strong Lightning"); effects from a mode-gated
+  ability not yet flagged "while powered up"; conditional-damage "while powered up"
+  label; **PowerInfoTooltip parity** (hover tooltip still uses the old path only).
 
 Original framing (kept): Medium-large effort. High player-visible value (Bonfire,
 Burn, Freezing Rain, the storm/rain/patch family, Trick Arrow, Force Bubble, …).

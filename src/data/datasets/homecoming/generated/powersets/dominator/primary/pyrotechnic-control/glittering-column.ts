@@ -53,7 +53,55 @@ export const GlitteringColumn: Power = {
         "Redirects.Pyrotechnic_Control.GlitteringColumn_ToHitAura",
         "Redirects.Pyrotechnic_Control.GlitteringColumn_SelfDestruct"
       ],
-      "duration": 7
+      "duration": 7,
+      "resolvedEntities": [
+        {
+          "displayName": "Glittering Column",
+          "duration": 7,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "GlitteringColumn_Aura",
+              "displayName": "Glittering Column Aura",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Taunt",
+                  "magnitude": 4,
+                  "scale": 7,
+                  "table": "Melee_Ones"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 10,
+              "effectArea": "Sphere",
+              "radius": 40,
+              "maxTargets": 5
+            },
+            {
+              "name": "GlitteringColumn_ToHitAura",
+              "displayName": "Glittering Column Aura",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "ToHitDebuff",
+                  "scale": 3,
+                  "table": "Ranged_Debuff_ToHit"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 2,
+              "effectArea": "Sphere",
+              "radius": 15,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

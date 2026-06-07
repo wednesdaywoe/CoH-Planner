@@ -46,7 +46,36 @@ export const PoisonGasArrow: Power = {
       "powers": [
         "Redirects.Trick_Arrow.PoisonGasArrow"
       ],
-      "duration": 20
+      "duration": 20,
+      "resolvedEntities": [
+        {
+          "displayName": "Poison Gas Arrow",
+          "duration": 20,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "PoisonGasArrow",
+              "displayName": "Poison Gas Arrow",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Sleep",
+                  "magnitude": 2,
+                  "scale": 1,
+                  "table": "Melee_Sleep"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 2.5,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     },
     "damageDebuff": {
       "scale": 2,

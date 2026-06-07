@@ -50,7 +50,60 @@ export const TidePool: Power = {
         "Redirects.Marine_Affinity.TidePool_Aura",
         "Redirects.Marine_Affinity.TidePool_Aura_Debuff"
       ],
-      "duration": 240
+      "duration": 240,
+      "resolvedEntities": [
+        {
+          "displayName": "Tide Pool",
+          "duration": 240,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "TidePool_Aura",
+              "displayName": "Tide Pool",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.72,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 0.67,
+                  "table": "Melee_Ones"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 255
+            },
+            {
+              "name": "TidePool_Aura_Debuff",
+              "displayName": "Tide Pool",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.72,
+                  "table": "Ranged_Slow"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

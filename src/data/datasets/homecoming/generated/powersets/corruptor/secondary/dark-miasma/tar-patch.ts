@@ -43,7 +43,41 @@ export const TarPatch: Power = {
       "powers": [
         "Redirects.Dark_Miasma.Tar"
       ],
-      "duration": 45
+      "duration": 45,
+      "resolvedEntities": [
+        {
+          "displayName": "Tar Patch",
+          "duration": 45,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Tar",
+              "displayName": "Tar",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.72,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "ResistanceDebuff",
+                  "scale": 3,
+                  "table": "Ranged_Debuff_Res_Dmg",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.5,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

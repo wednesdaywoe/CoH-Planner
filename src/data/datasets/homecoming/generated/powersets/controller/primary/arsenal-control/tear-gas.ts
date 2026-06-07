@@ -52,7 +52,62 @@ export const TearGas: Power = {
         "Redirects.Assault_Rifle.Tear_Gas_OneShot",
         "Pets.ResistAll.ResistAll"
       ],
-      "duration": 60
+      "duration": 60,
+      "resolvedEntities": [
+        {
+          "displayName": "Tear Gas",
+          "duration": 60,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Tear_Gas",
+              "displayName": "Tear Gas",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Toxic",
+                  "scale": 0.3,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Hold",
+                  "magnitude": 3,
+                  "scale": 5,
+                  "table": "Ranged_Immobilize"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 4,
+              "effectArea": "Sphere",
+              "radius": 30,
+              "maxTargets": 5
+            },
+            {
+              "name": "Tear_Gas_OneShot",
+              "displayName": "Tear Gas",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Hold",
+                  "magnitude": 3,
+                  "scale": 8,
+                  "table": "Ranged_Immobilize"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 1000,
+              "effectArea": "Sphere",
+              "radius": 30,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

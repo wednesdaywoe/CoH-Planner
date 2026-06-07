@@ -52,7 +52,95 @@ export const ParalyzingBlast: Power = {
         "Redirects.Electric_Control.Tesla_Coil_OneShot",
         "Redirects.Electric_Control.Self_Destruct"
       ],
-      "duration": 60
+      "duration": 60,
+      "resolvedEntities": [
+        {
+          "displayName": "Tesla Coil",
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Tesla_Coil_Pulse",
+              "displayName": "Tesla Coil",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Energy",
+                  "scale": 0.5,
+                  "table": "Melee_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Hold",
+                  "magnitude": 3,
+                  "scale": 7,
+                  "table": "Ranged_Immobilize"
+                },
+                {
+                  "type": "EndDrain",
+                  "scale": 0.02,
+                  "table": "Ranged_Ones"
+                },
+                {
+                  "type": "RecoveryDebuff",
+                  "scale": 1,
+                  "table": "Ranged_Ones"
+                }
+              ],
+              "recharge": 10,
+              "castTime": 0,
+              "activatePeriod": 4,
+              "effectArea": "Sphere",
+              "radius": 30,
+              "maxTargets": 1
+            },
+            {
+              "name": "Tesla_Coil_Debuff",
+              "displayName": "Tesla Coil",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 1.6,
+                  "table": "Ranged_Ones"
+                }
+              ],
+              "recharge": 10,
+              "castTime": 0,
+              "activatePeriod": 4,
+              "effectArea": "Sphere",
+              "radius": 30,
+              "maxTargets": 16
+            },
+            {
+              "name": "Tesla_Coil_OneShot",
+              "displayName": "Tesla Coil",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Hold",
+                  "magnitude": 3,
+                  "scale": 8,
+                  "table": "Ranged_Immobilize"
+                },
+                {
+                  "type": "EndDrain",
+                  "scale": 0.02,
+                  "table": "Ranged_Ones"
+                }
+              ],
+              "recharge": 10,
+              "castTime": 0,
+              "activatePeriod": 1000,
+              "effectArea": "Sphere",
+              "radius": 30,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

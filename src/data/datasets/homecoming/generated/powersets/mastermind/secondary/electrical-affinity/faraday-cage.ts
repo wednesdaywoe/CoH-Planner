@@ -49,7 +49,54 @@ export const FaradayCage: Power = {
         "Redirects.Shock_Therapy.FaradayCageFx",
         "Redirects.Shock_Therapy.FaradayStatic"
       ],
-      "duration": 240
+      "duration": 240,
+      "resolvedEntities": [
+        {
+          "displayName": "Faraday Cage",
+          "duration": 240,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "FaradayCage",
+              "displayName": "Faraday Cage",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "RecoveryDebuff",
+                  "scale": 0.7,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Immobilize",
+                  "magnitude": 1,
+                  "scale": 15,
+                  "table": "Ranged_Res_Boolean"
+                },
+                {
+                  "type": "Hold",
+                  "magnitude": 1,
+                  "scale": 30,
+                  "table": "Ranged_Res_Boolean"
+                },
+                {
+                  "type": "Knockup",
+                  "magnitude": 1,
+                  "scale": 10,
+                  "table": "Ranged_Ones"
+                }
+              ],
+              "recharge": 35,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 255
+            }
+          ]
+        }
+      ]
     }
   }
 };

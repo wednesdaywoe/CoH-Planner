@@ -811,6 +811,32 @@ function classifyPseudoPetEffect(template) {
   // the `enttype` clause. The PvE planner shows the PvE variant (GAME-DATA §3).
   if (table && /pvp/i.test(table)) return null;
 
+  // Typed resistance / defense debuffs (Tar Patch −res, Disruption/EMP Arrow,
+  // Faraday Cage) are a SINGLE template carrying all 8 damage-type (or position)
+  // attribs at aspect=Resistance / on a `*_Debuff_Def` table — not in the flat
+  // attrib→type map. Discriminate by aspect/table, NOT attrib name (GAME-DATA §3:
+  // an aspect=Resistance template using `*_Dmg` attribs is a −resistance debuff,
+  // not the player's damage). Check once, before the per-attrib loop.
+  {
+    const aspect = (template.aspect || '').toLowerCase();
+    const tableLower = (table || '').toLowerCase();
+    const a0 = template.attribs[0] ? template.attribs[0].toLowerCase() : '';
+    const typed = isDamageTypeAttrib(a0) || isDefensePosition(a0);
+    const isDebuff = (scale || 0) < 0 || tableLower.includes('debuff');
+    if (typed && aspect === 'resistance' && isDebuff) {
+      const eff = { type: 'ResistanceDebuff' };
+      if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
+      if (ignoreStrength) eff.ignoreStrength = true;
+      return eff;
+    }
+    if (typed && tableLower.includes('debuff_def')) {
+      const eff = { type: 'DefenseDebuff' };
+      if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
+      if (ignoreStrength) eff.ignoreStrength = true;
+      return eff;
+    }
+  }
+
   for (const rawAttrib of template.attribs) {
     const a = rawAttrib?.toLowerCase();
     if (!a) continue;

@@ -45,7 +45,67 @@ export const ForceBubble: Power = {
         "Redirects.Force_Field.Dampening_Bubble_Debuff",
         "Redirects.Force_Field.Dampening_BubbleFX"
       ],
-      "duration": 45
+      "duration": 45,
+      "resolvedEntities": [
+        {
+          "displayName": "Dampening Bubble",
+          "duration": 45,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Dampening_Bubble",
+              "displayName": "Damping Bubble",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "ToHitDebuff",
+                  "scale": 1,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "DefenseDebuff",
+                  "scale": 0.5,
+                  "table": "Ranged_Res_Boolean"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.5,
+              "effectArea": "Sphere",
+              "radius": 55,
+              "maxTargets": 255
+            },
+            {
+              "name": "Dampening_Bubble_Debuff",
+              "displayName": "Damping Bubble",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "ToHitDebuff",
+                  "scale": 1,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "DefenseDebuff",
+                  "scale": 0.5,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.5,
+              "effectArea": "Sphere",
+              "radius": 55,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

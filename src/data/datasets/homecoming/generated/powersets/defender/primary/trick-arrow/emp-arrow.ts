@@ -49,7 +49,57 @@ export const EMPArrow: Power = {
         "Redirects.Trick_Arrow.EMP_Arrow",
         "Redirects.Trick_Arrow.EMP_Arrow_Fx"
       ],
-      "duration": 240
+      "duration": 240,
+      "resolvedEntities": [
+        {
+          "displayName": "EMP Field",
+          "duration": 240,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "EMP_Arrow",
+              "displayName": "EMP Field",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "RecoveryDebuff",
+                  "scale": 0.7,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Immobilize",
+                  "magnitude": 1,
+                  "scale": 15,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Hold",
+                  "magnitude": 1,
+                  "scale": 30,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Knockup",
+                  "magnitude": 1,
+                  "scale": 10,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     },
     "specialBuff": {
       "heal": {

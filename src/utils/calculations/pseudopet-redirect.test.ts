@@ -3,6 +3,7 @@ import { loadDataset } from '@/data/dataset';
 import { calculateResolvedPseudoPetDamage } from './pet-damage';
 import { StormCell } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/storm-blast/storm-cell';
 import { CategoryFive } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/storm-blast/category-five';
+import { TarPatch } from '@/data/datasets/homecoming/generated/powersets/defender/primary/dark-miasma/tar-patch';
 import type { ResolvedPseudoPet } from '@/types/power';
 
 /**
@@ -120,6 +121,18 @@ describe('pseudo-pet redirect resolution', () => {
       const eye = pets.find(p => p.duration === 17)!;
       const stun = eye.abilities.flatMap(a => a.effects ?? []).find(e => e.type === 'Stun')!;
       expect(stun).toMatchObject({ scale: 4, table: 'Ranged_Stun', magnitude: 3 });
+    });
+  });
+
+  describe('Tar Patch (typed resistance debuff capture)', () => {
+    it('captures the -resistance debuff (all-types template at aspect=Resistance)', () => {
+      const pets = TarPatch.effects!.summon!.resolvedEntities!;
+      const effs = pets.flatMap(p => p.abilities).flatMap(a => a.effects ?? []);
+      const res = effs.find(e => e.type === 'ResistanceDebuff');
+      expect(res).toBeDefined();
+      expect(res!.table).toMatch(/Res_Dmg/i);
+      // and it still carries the Slow (it's a -res AND -speed patch)
+      expect(effs.some(e => e.type === 'Slow')).toBe(true);
     });
   });
 });

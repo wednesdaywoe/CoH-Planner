@@ -45,7 +45,35 @@ export const GlueArrow: Power = {
       "powers": [
         "Redirects.Trick_Arrow.GlueArrow"
       ],
-      "duration": 60
+      "duration": 60,
+      "resolvedEntities": [
+        {
+          "displayName": "Glue Arrow",
+          "duration": 60,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "GlueArrow",
+              "displayName": "Glue Arrow",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.72,
+                  "table": "Ranged_Slow"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 1,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

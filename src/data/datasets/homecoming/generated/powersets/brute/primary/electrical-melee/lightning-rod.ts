@@ -56,7 +56,67 @@ export const LightningRod: Power = {
         "Pets.Lightning_Rod_Universal.Lightning_Rod",
         "Pets.ResistAll.ResistAll"
       ],
-      "duration": 1
+      "duration": 1,
+      "resolvedEntities": [
+        {
+          "displayName": "Lightning Rod",
+          "duration": 1,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Lightning_Rod_Center",
+              "displayName": "Lightning Rod",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Energy",
+                  "scale": 0.933,
+                  "table": "Melee_Damage"
+                }
+              ],
+              "recharge": 10,
+              "castTime": 0,
+              "activatePeriod": 100,
+              "effectArea": "Sphere",
+              "radius": 5,
+              "maxTargets": 1
+            },
+            {
+              "name": "Lightning_Rod",
+              "displayName": "Lightning Rod",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Energy",
+                  "scale": 2.2685,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Fire",
+                  "scale": 1.0208,
+                  "table": "Melee_Damage"
+                }
+              ],
+              "conditionalDamage": true,
+              "effects": [
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 0.64,
+                  "table": "Melee_Ones",
+                  "chance": 0.8
+                }
+              ],
+              "recharge": 10,
+              "castTime": 0,
+              "activatePeriod": 100,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

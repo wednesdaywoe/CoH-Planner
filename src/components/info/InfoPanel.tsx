@@ -2097,6 +2097,8 @@ const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = {
   RecoveryDebuff: { label: '-Recovery', color: 'text-blue-400' },
   ToHitDebuff: { label: '-ToHit', color: 'text-orange-400' },
   DefenseDebuff: { label: '-Defense', color: 'text-orange-400' },
+  ResistanceDebuff: { label: '-Resistance', color: 'text-orange-400' },
+  DamageDebuff: { label: '-Damage', color: 'text-orange-400' },
   Slow: { label: 'Slow', color: 'text-teal-400' },
 };
 

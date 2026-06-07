@@ -56,7 +56,73 @@ export const CarrionCreepers: Power = {
         "Villain_Pets.Creeper_Patch.Bramble",
         "Villain_Pets.Creeper_Patch.FX"
       ],
-      "duration": 120
+      "duration": 120,
+      "resolvedEntities": [
+        {
+          "displayName": "Carrion Creeper",
+          "duration": 120,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Carrion_Creepers",
+              "displayName": "Carrion Creepers",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Smashing",
+                  "scale": 0.2333,
+                  "table": "Ranged_Damage"
+                },
+                {
+                  "damageType": "Lethal",
+                  "scale": 0.2333,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Knockup",
+                  "magnitude": 1,
+                  "scale": 100,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Immobilize",
+                  "magnitude": 4,
+                  "scale": 15,
+                  "table": "Ranged_Immobilize"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 3,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 1
+            },
+            {
+              "name": "Bramble",
+              "displayName": "Bramble",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.5,
+                  "table": "Melee_Slow"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

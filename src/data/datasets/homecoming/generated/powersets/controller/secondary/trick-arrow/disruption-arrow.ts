@@ -44,7 +44,41 @@ export const DisruptionArrow: Power = {
         "Redirects.Trick_Arrow.Disruption_Arrow",
         "Pets.ResistAll.ResistAll"
       ],
-      "duration": 45
+      "duration": 45,
+      "resolvedEntities": [
+        {
+          "displayName": "Disruption Arrow",
+          "duration": 45,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Disruption_Arrow",
+              "displayName": "Disruption Arrow",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "ResistanceDebuff",
+                  "scale": 4,
+                  "table": "Ranged_Res_Dmg",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "EndDrain",
+                  "scale": 5,
+                  "table": "Ranged_EndDrain"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 1,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

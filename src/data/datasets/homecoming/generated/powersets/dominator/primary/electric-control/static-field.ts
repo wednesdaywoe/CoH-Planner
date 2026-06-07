@@ -49,7 +49,47 @@ export const StaticField: Power = {
       "powers": [
         "Pets.Static_Field_Controller.Static_Field"
       ],
-      "duration": 25
+      "duration": 25,
+      "resolvedEntities": [
+        {
+          "displayName": "Static Field",
+          "duration": 25,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Static_Field",
+              "displayName": "Static Field",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Sleep",
+                  "magnitude": 3,
+                  "scale": 3.5,
+                  "table": "Ranged_Immobilize"
+                },
+                {
+                  "type": "EndDrain",
+                  "scale": 0.0273,
+                  "table": "Ranged_EndDrain",
+                  "chance": 0.5
+                },
+                {
+                  "type": "Slow",
+                  "scale": 0.32,
+                  "table": "Ranged_Slow"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 4,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

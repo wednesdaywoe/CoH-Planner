@@ -54,7 +54,82 @@ export const StormCell: Power = {
         "Redirects.Storm_Blast.StormCell_SelfDestruct",
         "Redirects.Storm_Blast.Lightning_Proc"
       ],
-      "duration": 60
+      "duration": 60,
+      "resolvedEntities": [
+        {
+          "displayName": "Storm Cell",
+          "duration": 60,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "StormCell_Tempest_Sentinel",
+              "displayName": "Tempest",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.07,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "ToHitDebuff",
+                  "scale": 0.7,
+                  "table": "Ranged_Debuff_ToHit",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 35,
+              "maxTargets": 10
+            },
+            {
+              "name": "Lightning_Proc",
+              "displayName": "Lightning Proc",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Energy",
+                  "scale": 0.5,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "conditionalDamage": true,
+              "effects": [
+                {
+                  "type": "EndDrain",
+                  "scale": 0.025,
+                  "table": "Ranged_EndDrain"
+                },
+                {
+                  "type": "Stun",
+                  "magnitude": 3,
+                  "scale": 4,
+                  "table": "Ranged_Stun",
+                  "chance": 0.33
+                },
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 1,
+                  "table": "Ranged_Knockback",
+                  "chance": 0.17
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 1,
+              "effectArea": "Sphere",
+              "radius": 35,
+              "maxTargets": 1
+            }
+          ]
+        }
+      ]
     }
   }
 };

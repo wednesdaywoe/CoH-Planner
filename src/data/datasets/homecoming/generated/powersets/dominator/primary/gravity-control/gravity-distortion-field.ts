@@ -53,7 +53,87 @@ export const GravityDistortionField: Power = {
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot",
         "Redirects.Gravity_Control.Self_Destruct"
       ],
-      "duration": 60
+      "duration": 60,
+      "resolvedEntities": [
+        {
+          "displayName": "Gravity Distortion Field",
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Gravity_Distortion_Field_Pulse",
+              "displayName": "Gravity Distortion Field",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Smashing",
+                  "scale": 0.3,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Hold",
+                  "magnitude": 3,
+                  "scale": 5,
+                  "table": "Ranged_Immobilize"
+                }
+              ],
+              "recharge": 240,
+              "castTime": 0,
+              "activatePeriod": 4,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 5
+            },
+            {
+              "name": "Gravity_Distortion_Field_Slow",
+              "displayName": "Gravity Distortion Field",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.5,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "Knockup",
+                  "magnitude": 1,
+                  "scale": 1,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 240,
+              "castTime": 0,
+              "activatePeriod": 0.1,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 16
+            },
+            {
+              "name": "Gravity_Distortion_Field_Oneshot",
+              "displayName": "Gravity Distortion Field",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Hold",
+                  "magnitude": 3,
+                  "scale": 8,
+                  "table": "Ranged_Immobilize"
+                }
+              ],
+              "recharge": 240,
+              "castTime": 0,
+              "activatePeriod": 1000,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

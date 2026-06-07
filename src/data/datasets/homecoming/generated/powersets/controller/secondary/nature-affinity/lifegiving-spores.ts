@@ -47,7 +47,34 @@ export const LifegivingSpores: Power = {
         "Pets.ResistAll.ResistAll",
         "Pets.Lifegiving_Spores.Lifegiving_Spores"
       ],
-      "duration": 99999
+      "duration": 99999,
+      "resolvedEntities": [
+        {
+          "displayName": "LIfegiving Spores",
+          "duration": 99999,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Lifegiving_Spores",
+              "displayName": "Lifegiving Spores",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Heal",
+                  "scale": 0.25,
+                  "table": "Ranged_Heal"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 4,
+              "effectArea": "Sphere",
+              "radius": 15,
+              "maxTargets": 255
+            }
+          ]
+        }
+      ]
     }
   }
 };
