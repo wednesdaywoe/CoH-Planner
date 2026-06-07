@@ -762,6 +762,322 @@ function collectRedirectTemplates(powerJson) {
   return collectTemplatesDeep(redirectJson.effects, new Set([defaultRedirect.name]));
 }
 
+// ============================================
+// PSEUDO-PET REDIRECT RESOLUTION
+// ============================================
+// A large class of location/patch/storm powers (Storm Cell, Category Five,
+// Freezing Rain, Bonfire, Trip Mine, the Trick-Arrow patches, …) deliver ALL
+// of their damage and debuffs through a pseudo-pet that runs a *list* of
+// redirect powers (the parent EntCreate's `params.redirects`). The pet's
+// entity_def is a generic shell (`PL_StaticObject`, `Pet_NoCollision`, …) with
+// no entity file, so there is nothing to look up in PET_ENTITIES — the real
+// content lives only in the redirect list. This resolves that list into a
+// synthesized, PET_ENTITIES-shaped ability list at convert time so the runtime
+// pseudo-pet unify (pet-damage.ts) can surface DoT + enhanceable debuffs, and
+// the IgnoreStrength debuffs as informational. See PSEUDO-PET-POWER-RESOLUTION.md.
+
+// attrib → pseudo-pet effect type. Mirrors convert-pet-entities.cjs so the
+// synthesized PetEffect.type values match what the runtime already renders.
+const PSEUDOPET_MEZ_ATTRIBS = {
+  sleep: 'Sleep', held: 'Hold', stunned: 'Stun', terrorized: 'Fear',
+  afraid: 'Fear', confused: 'Confuse', immobilized: 'Immobilize',
+  knockback: 'Knockback', knockup: 'Knockup', taunt: 'Taunt',
+};
+const PSEUDOPET_DEBUFF_ATTRIBS = {
+  endurance: 'EndDrain', recovery: 'RecoveryDebuff', tohit: 'ToHitDebuff',
+  base_defense: 'DefenseDebuff', runningspeed: 'Slow', flyingspeed: 'Slow',
+  jumpingspeed: 'Slow', jumpheight: 'Slow', rechargetime: 'Slow',
+};
+
+/**
+ * Classify a single (already deep-collected, AT-deduped, PvP-excluded) template
+ * into a pseudo-pet effect. Returns {type, scale?, table?, magnitude?,
+ * ignoreStrength?} or null when the template is not a foe-facing mez/debuff.
+ *
+ * Discriminates enhanceable vs not via the IgnoreStrength flag (GAME-DATA §4):
+ * Storm Cell's Tempest debuffs are all IgnoreStrength → informational only;
+ * Glue Arrow's slow is not → enhanceable.
+ */
+function classifyPseudoPetEffect(template) {
+  if (!template.attribs || template.attribs.length === 0) return null;
+  // Foe-facing only — Self templates are pet self-buffs (ResistAll survivability,
+  // self-root immob that keeps a pseudo-pet stationary, etc.).
+  if (template.target === 'Self') return null;
+  const ignoreStrength = (template.flags || []).includes('IgnoreStrength');
+  const scale = template.scale;
+  const table = template.table;
+  // Prefer PvE: the binary often carries a `*_PvPMez` / `*_PvPDamage` sibling
+  // alongside the PvE table, both ungated once `_stripIgnoredClauses` removes
+  // the `enttype` clause. The PvE planner shows the PvE variant (GAME-DATA §3).
+  if (table && /pvp/i.test(table)) return null;
+
+  for (const rawAttrib of template.attribs) {
+    const a = rawAttrib?.toLowerCase();
+    if (!a) continue;
+
+    const mezType = PSEUDOPET_MEZ_ATTRIBS[a];
+    if (mezType) {
+      const eff = { type: mezType };
+      if (template.magnitude && template.magnitude > 0) eff.magnitude = template.magnitude;
+      if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
+      if (ignoreStrength) eff.ignoreStrength = true;
+      return eff;
+    }
+
+    const debuffType = PSEUDOPET_DEBUFF_ATTRIBS[a];
+    if (debuffType) {
+      // EndDrain only when actually draining (negative scale).
+      if (a === 'endurance' && !(scale < 0)) continue;
+      // Slow tag rows carry scale ~0 — not a real slow.
+      if (debuffType === 'Slow' && Math.abs(scale || 0) < 0.001) continue;
+      const eff = { type: debuffType };
+      if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
+      if (ignoreStrength) eff.ignoreStrength = true;
+      return eff;
+    }
+  }
+  return null;
+}
+
+/**
+/**
+ * Determine the chance at which a redirect's damage actually lands. The binary
+ * gates a lot of pseudo-pet damage: storm-strength escalation carries a `chance:0`
+ * sentinel (Storm Cell's `Lightning_Proc` — "only while High Winds is active")
+ * and proc lightning a `chance:0.25` group (`Category_Five_Lightning`), while the
+ * base storm damage is `chance:1` (guaranteed). Returns the MAX cumulative chance
+ * along any path reaching a damage template (following Execute_Power) — i.e. the
+ * highest-uptime damage path. < 1 ⇒ the damage is conditional and must NOT be
+ * summed into the guaranteed headline DoT (it would overstate, e.g. Storm Cell's
+ * 1908). Mirrors collectTemplatesDeep's skips (PvP-only, dead-state, AT-dup gates).
+ */
+function _redirectDamageChance(effects, visited, depth, cumChance) {
+  const MAX_DEPTH = 3;
+  let hasDamage = false;
+  let maxChance = 0;
+  const note = (c) => { hasDamage = true; if (c > maxChance) maxChance = c; };
+
+  for (const effect of effects || []) {
+    if (effect.is_pvp === 'PVP_ONLY') continue;
+    // chance:0 with a payload = storm-strength gating (kept by collectTemplatesDeep);
+    // propagate it as 0 so gated damage reads as conditional.
+    const groupChance = (effect.chance === undefined || effect.chance === null) ? 1 : effect.chance;
+    const c = cumChance * groupChance;
+    if (effect.requires_expression) {
+      const req = effect.requires_expression;
+      if (req.includes('kHitPoints == 0')) continue;
+      if (req.includes('kMeter > 0') || req.includes('kMeter >=')) continue;
+      if (req.includes('rand()')) continue;
+      if (_isConditionalGate(req)) continue; // AT-dup / state branch — not the base hit
+    }
+    for (const t of effect.templates || []) {
+      const a = t.attribs && t.attribs[0] ? t.attribs[0].toLowerCase() : null;
+      if (a === 'execute_power' && depth < MAX_DEPTH) {
+        for (const pName of (t.params && t.params.power_names) || []) {
+          if (visited.has(pName)) continue;
+          const isStd = pName.toLowerCase().startsWith('redirects.');
+          const aux = isStd ? null : resolveAuxRedirectPath(pName);
+          const p = isStd ? resolveRedirectPath(pName) : (aux || resolveRedirectPath(pName));
+          if (!fs.existsSync(p)) continue;
+          visited.add(pName);
+          try {
+            const j = JSON.parse(fs.readFileSync(p, 'utf-8'));
+            const r = _redirectDamageChance(j.effects, visited, depth + 1, c);
+            if (r.hasDamage) note(r.maxChance);
+          } catch { /* unreadable redirect — skip */ }
+        }
+      } else if (a && isDamageTypeAttrib(a) && extractDamage([t])) {
+        note(c);
+      }
+    }
+    const child = _redirectDamageChance(effect.child_effects, visited, depth, c);
+    if (child.hasDamage) note(child.maxChance);
+  }
+  return { hasDamage, maxChance };
+}
+
+/**
+ * Resolve one EntCreate's redirect list into a synthesized pseudo-pet ability
+ * list (PET_ENTITIES `PetAbility[]` shape). Each named redirect becomes one
+ * ability carrying its damage[] + effects[]; abilities with neither (pet
+ * self-buffs like ResistAll) are dropped. Reuses collectTemplatesDeep (deep
+ * Execute_Power following, AT-conditional dedup, PvP exclusion, cycle guard)
+ * and extractDamage (Current/Absolute damage, buff/debuff-table exclusion).
+ *
+ * Damage that lands at < 100% chance (storm-strength gated / proc) is flagged
+ * `conditionalDamage` (+ `damageChance`) so the runtime keeps it OUT of the
+ * guaranteed headline DoT and surfaces it as a conditional effect instead.
+ *
+ * @param {string[]} redirectNames - the EntCreate's params.redirects
+ * @returns {Array} synthesized PetAbility[]
+ */
+function resolveSummonRedirects(redirectNames) {
+  const abilities = [];
+  for (const name of redirectNames || []) {
+    const isStandardRedirect = name.toLowerCase().startsWith('redirects.');
+    const auxPath = isStandardRedirect ? null : resolveAuxRedirectPath(name);
+    const redirectPath = isStandardRedirect ? resolveRedirectPath(name) : (auxPath || resolveRedirectPath(name));
+    if (!fs.existsSync(redirectPath)) continue;
+
+    let json;
+    try { json = JSON.parse(fs.readFileSync(redirectPath, 'utf-8')); } catch { continue; }
+    if (!json.effects || json.effects.length === 0) continue;
+
+    const templates = collectTemplatesDeep(json.effects, new Set([name]));
+
+    // Damage (reuse the converter's damage extractor — Current/Absolute aspects,
+    // excludes buff/debuff tables). Normalize to PetAbility damage shape.
+    const dmg = extractDamage(templates);
+    const dmgArr = dmg ? (Array.isArray(dmg) ? dmg : [dmg]) : [];
+    // Dedup identical (type, scale, table) hits and drop PvP damage tables.
+    // The duplicate is the storm "powered-up" copy: redirects carry the base
+    // hit AND an `IncreaseStormStrength`-tagged copy at the same scale; summing
+    // them double-counts (we don't model the powered-up state as a separate mode
+    // in the prototype). PvP damage tables are excluded for the PvE planner.
+    const seenDmg = new Set();
+    const damage = [];
+    for (const d of dmgArr) {
+      if (d.table && /pvp/i.test(d.table)) continue;
+      const key = `${d.type}|${d.scale}|${d.table}`;
+      if (seenDmg.has(key)) continue;
+      seenDmg.add(key);
+      damage.push({ damageType: d.type, scale: d.scale, table: d.table });
+    }
+
+    // Debuffs / mez — one per type (mirrors convert-pet-entities seenTypes dedup).
+    const effects = [];
+    const seen = new Set();
+    for (const t of templates) {
+      const e = classifyPseudoPetEffect(t);
+      if (e && !seen.has(e.type)) { seen.add(e.type); effects.push(e); }
+    }
+
+    if (damage.length === 0 && effects.length === 0) continue; // ResistAll etc.
+
+    // How often does this redirect's damage actually land?
+    //  • chance >= 1  → guaranteed DoT (enhanceable headline damage).
+    //  • 0 < chance < 1 → a PROC: the runtime counts its EXPECTED value
+    //    (chance × per-hit), matching the planner's proc convention. `damageChance`
+    //    carries the rate.
+    //  • chance === 0 → MODE-gated (storm-strength "while High Winds active"):
+    //    no computable rate, so it's flagged `conditionalDamage` and surfaced
+    //    informationally instead of summed (would otherwise overstate, e.g.
+    //    Storm Cell's bogus 1908).
+    let conditionalDamage = false;
+    let damageChance;
+    if (damage.length > 0) {
+      const dc = _redirectDamageChance(json.effects, new Set([name]), 0, 1);
+      if (dc.hasDamage && dc.maxChance === 0) {
+        conditionalDamage = true;
+      } else if (dc.hasDamage && dc.maxChance < 1) {
+        damageChance = dc.maxChance; // proc — expected-value weighting downstream
+      }
+    }
+
+    abilities.push({
+      name: json.name,
+      displayName: json.display_name || json.name,
+      type: json.type,
+      damage,
+      ...(conditionalDamage ? { conditionalDamage: true } : {}),
+      ...(damageChance !== undefined ? { damageChance } : {}),
+      ...(effects.length > 0 ? { effects } : {}),
+      recharge: json.recharge_time || 0,
+      castTime: json.activation_time || 0,
+      ...(json.activate_period > 0 ? { activatePeriod: json.activate_period } : {}),
+      ...(json.effect_area ? { effectArea: json.effect_area } : {}),
+      ...(json.radius > 0 ? { radius: json.radius } : {}),
+      ...(json.max_targets_hit > 0 ? { maxTargets: json.max_targets_hit } : {}),
+    });
+  }
+  return abilities;
+}
+
+// Generic location-shell entity_defs that are NOT backed by a PET_ENTITIES
+// record — their content lives entirely in the EntCreate redirect list. Scoped
+// deliberately to the pure-location markers verified absent from PET_ENTITIES;
+// this keeps resolution double-count-safe (it never overlaps a real pet entity
+// whose damage the existing PET_ENTITIES path already computes). Generalization
+// to named-after-power shells (Sleet/Meteor/Vines) and the PET_ENTITIES-overlap
+// cases (Bonfire/Burn/Rain of Fire) is a follow-up — see
+// PSEUDO-PET-POWER-RESOLUTION.md.
+const PSEUDOPET_SHELL_ENTITIES = new Set([
+  'PL_StaticObject', 'PL_FightPreferMelee', 'Pet_NoCollision',
+  'PL_Untargetable_FightPreferRanged',
+]);
+
+function _parseDurationSeconds(str) {
+  if (typeof str !== 'string') return undefined;
+  const m = str.match(/([\d.]+)\s*seconds?/i);
+  return m ? parseFloat(m[1]) : undefined;
+}
+
+/**
+ * Walk a raw power's effect tree for every EntCreate AttribMod whose entity_def
+ * is a generic location shell, resolve each one's redirect list into a
+ * synthesized ability list, and attach them as `summon.resolvedEntities`.
+ *
+ * Distinguishes pseudo-pets by entity_def + redirect-list signature so a power
+ * that summons two DIFFERENT shells (Category Five's 20s storm + 17s lightning
+ * "Eye") keeps BOTH — fixing the EntCreate collapse where the converter treated
+ * a repeated entity_def as one pet with entityCount=2 and dropped the second
+ * redirect list. Identical lists (true multi-copy summons) collapse to a count.
+ */
+function attachResolvedPseudoPets(powerJson, effects) {
+  if (!effects || !effects.summon) return;
+
+  const shells = []; // { entityDef, displayName, duration, redirects }
+  (function walk(effs) {
+    for (const e of effs || []) {
+      for (const t of e.templates || []) {
+        if (!(t.attribs || []).includes('Create_Entity')) continue;
+        const p = t.params || {};
+        if (p.type !== 'EntCreate' || !PSEUDOPET_SHELL_ENTITIES.has(p.entity_def)) continue;
+        // Drop pet self-survivability redirects (ResistAll) before signing.
+        const redirects = (p.redirects || []).filter(r => !/resistall/i.test(r));
+        if (redirects.length === 0) continue;
+        shells.push({
+          entityDef: p.entity_def,
+          displayName: p.display_name,
+          duration: _parseDurationSeconds(t.duration),
+          redirects,
+        });
+      }
+      walk(e.child_effects);
+    }
+  })(powerJson.effects);
+
+  if (shells.length === 0) return;
+
+  // Group by entity_def + redirect signature; dedup identical lists to a count.
+  const byKey = new Map();
+  for (const s of shells) {
+    const key = `${s.entityDef}|${s.redirects.join(',')}`;
+    if (byKey.has(key)) { byKey.get(key).count++; continue; }
+    byKey.set(key, { ...s, count: 1 });
+  }
+
+  const resolved = [];
+  for (const g of byKey.values()) {
+    const abilities = resolveSummonRedirects(g.redirects);
+    if (abilities.length === 0) continue;
+    resolved.push({
+      displayName: g.displayName || effects.summon.displayName || 'Summoned Effect',
+      ...(g.duration ? { duration: g.duration } : {}),
+      ...(g.count > 1 ? { count: g.count } : {}),
+      // Location pseudo-pets created by a player power inherit the summoner's
+      // modifiers: no explicit CopyBoosts flag on these shells, but the parent
+      // powers allow Damage enhancement and in-game numbers scale off the
+      // SUMMONER's archetype (verified vs Storm Cell / Category Five in-game).
+      // So the runtime computes damage off the summoner's AT, not a pet class.
+      copyCreatorMods: true,
+      abilities,
+    });
+  }
+
+  if (resolved.length > 0) effects.summon.resolvedEntities = resolved;
+}
+
 /**
  * Convert a power name to kebab-case filename
  */
@@ -3590,6 +3906,11 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
 
     if (Object.keys(effects).length) power.effects = effects;
 
+    // Resolve location pseudo-pet redirect lists into synthesized ability lists
+    // (Storm Cell, Category Five, Freezing Rain, …) so the runtime can surface
+    // their DoT + debuffs. See PSEUDO-PET-POWER-RESOLUTION.md.
+    attachResolvedPseudoPets(powerJson, power.effects);
+
   }
 
   // Conditional bonus effects (Mechanic Adjusters). These are positive state
@@ -3931,6 +4252,9 @@ module.exports = {
   resolveRedirectPath,
   collectRedirectTemplates,
   collectTemplatesDeep,
+  resolveSummonRedirects,
+  classifyPseudoPetEffect,
+  attachResolvedPseudoPets,
   detectStackingEffects,
   mergeStackingPatches,
 };

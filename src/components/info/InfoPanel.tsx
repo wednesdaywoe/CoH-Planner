@@ -34,7 +34,7 @@ import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
-import { calculatePetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
+import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import type { GenesisExemplarEffect } from '@/data';
@@ -529,7 +529,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       : summon.entity
         ? [{ entityName: summon.entity, count: summon.entityCount || 1 }]
         : [];
-    if (entityList.length === 0) return null;
+    const resolvedList = summon.resolvedEntities ?? [];
+    if (entityList.length === 0 && resolvedList.length === 0) return null;
 
     // Skip commanded pets (MM henchmen, Lore incarnates, Phantom Army, etc.)
     // — the SummonsBlock is the better UI for those: they have multiple
@@ -547,28 +548,41 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     // line did `/ 100` again, which silently nuked Fury / Musculature / Build
     // Up contributions on every pseudo-pet display.
     const globalBonus = globalBonusesForCalc.damage || 0;
-    let base = 0, enhanced = 0, final = 0;
-    // Effective damage scale — sum of all ability damage scales × fires.
-    // Feeds the cap-relative DamageBar so it can render the meter; without
-    // a scale the bar is hidden. This mirrors how `scale` works for direct
-    // damage powers (base / scale = AT damage at scale 1.0).
-    let totalScale = 0;
-    const damageTypes = new Set<string>();
+
+    // Collect PetDamageResults from both real PET_ENTITIES pets and synthesized
+    // location pseudo-pets (resolvedEntities). Each carries its own count and
+    // lifespan so the fires-per-spawn accounting is per-entity (Category Five's
+    // 20s storm and 17s lightning Eye differ).
+    const results: { result: PetDamageResult; count: number; duration: number }[] = [];
     for (const { entityName, count } of entityList) {
       const applyEnh = shouldApplyEnhancements(entityName, summon.copyBoosts);
       const result = calculatePetDamage(
         entityName, build.level, count, summon.duration,
         applyEnh ? enhBonus : 0, applyEnh, globalBonus, 0,
       );
-      if (!result) continue;
+      if (result) results.push({ result, count, duration: summon.duration ?? 0 });
+    }
+    for (const resolved of resolvedList) {
+      const applyEnh = resolved.copyCreatorMods;
+      const result = calculateResolvedPseudoPetDamage(
+        resolved, archetypeId ?? '', build.level,
+        applyEnh ? enhBonus : 0, applyEnh, globalBonus,
+      );
+      if (result) results.push({
+        result, count: resolved.count ?? 1, duration: resolved.duration ?? summon.duration ?? 0,
+      });
+    }
+    if (results.length === 0) return null;
 
+    let base = 0, enhanced = 0, final = 0;
+    const damageTypes = new Set<string>();
+    for (const { result, count, duration } of results) {
       // Compute total per-cast damage by counting actual fires during the
       // summon window. The previous formula (`aggregateDps × duration`)
       // works for true continuous pseudo-pets (Blizzard, Tar Patch) but
       // collapses for one-shot attack-summons like Lightning Rod and
       // Shield Charge where `activatePeriod` is a 100s marker and the
       // pet despawns after 1-4s — the pet fires exactly once at spawn.
-      const duration = summon.duration ?? 0;
       if (duration <= 0) continue;
       for (const ab of result.abilities) {
         const isAuto = ab.ability.type === 'Auto';
@@ -586,11 +600,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         base += ab.damagePerHit * firesPerSpawn * count;
         enhanced += ab.damagePerHitEnhanced * firesPerSpawn * count;
         final += ab.damagePerHitFinal * firesPerSpawn * count;
-        // Sum the ability's raw damage scales (per entry, can be multiple
-        // damage types) so the cap-relative meter has a reference value.
-        for (const dmgEntry of ab.ability.damage) {
-          totalScale += Math.abs(dmgEntry.scale) * firesPerSpawn * count;
-        }
         for (const dmg of ab.damageByType) damageTypes.add(dmg.type);
       }
     }
@@ -600,14 +609,19 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       ? Array.from(damageTypes)[0]
       : damageTypes.size > 1 ? 'Mixed' : 'Damage';
 
+    // Bar retool for pseudo-pet DoT: `scale: 1` makes the cap-relative bar use
+    // `base × cap` as its reference (base/scale = base), so it shows ENHANCEMENT
+    // HEADROOM — base sits at 1/cap and grows toward the cap with enhancements/
+    // buffs. (The default `(base/scale) × cap` reference assumes a per-activation
+    // scale and pins a multi-tick lifetime total to max regardless of slotting.)
     return {
       base,
       enhanced,
       final,
       type: typeLabel,
-      scale: totalScale > 0 ? totalScale : undefined,
+      scale: 1,
     } as PowerDamageResult;
-  }, [calculatedDamage, effectivePower, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage]);
+  }, [calculatedDamage, effectivePower, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId]);
 
   // Resolved damage shown in the Damage block — direct first, pseudo-pet fallback.
   const resolvedDamage = calculatedDamage ?? pseudoPetDamage;
@@ -2227,6 +2241,7 @@ function SingleEntityDisplay({
   showHeader,
   isPseudoPet,
   duration,
+  hideDamage = false,
 }: {
   petDamage: PetDamageResult | null;
   entityCount: number;
@@ -2234,14 +2249,20 @@ function SingleEntityDisplay({
   showHeader: boolean;
   isPseudoPet: boolean;
   duration?: number;
+  /** Suppress the DPS rows — used for synthesized location pseudo-pets whose
+   *  damage is already unified into the headline Damage block; here we only want
+   *  the informational applied-effects list. */
+  hideDamage?: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const [effectsExpanded, setEffectsExpanded] = useState(false);
+  // Default-expand the effects list for synthesized location pseudo-pets — those
+  // debuffs/mez ARE the power's content (Storm Cell is all -rech/-spd/-tohit).
+  const [effectsExpanded, setEffectsExpanded] = useState(hideDamage);
 
   const durationLabel = duration ? `${duration}s` : 'permanent';
   const countLabel = entityCount > 1 ? ` x${entityCount}` : '';
 
-  const hasDamage = petDamage && petDamage.aggregateDpsBase > 0;
+  const hasDamage = !hideDamage && petDamage && petDamage.aggregateDpsBase > 0;
   const hasEnh = petDamage && petDamage.aggregateDpsEnhanced !== petDamage.aggregateDpsBase;
   const hasBuff = petDamage && petDamage.aggregateDpsFinal !== petDamage.aggregateDpsEnhanced;
   const hasEffects = petDamage && petDamage.allEffects.length > 0;
@@ -2344,6 +2365,11 @@ function SingleEntityDisplay({
                       <div key={eff.type} className="grid grid-cols-[1fr_auto] gap-2 text-[11px] py-0.5">
                         <span className={display.color}>
                           {display.label}{chanceLabel}
+                          {eff.ignoreStrength && (
+                            <span className="text-slate-500 italic ml-1" title="Ignores buffs and enhancements">
+                              (unenh.)
+                            </span>
+                          )}
                         </span>
                         <span className="text-slate-300 text-right tabular-nums">
                           {eff.value !== undefined ? eff.value.toFixed(1) : '—'}
@@ -2419,6 +2445,26 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
     });
   }, [entityList, level, enhancementDamageBonus, globalDamageBonus, upgradeTier, summon.copyBoosts, summon.duration]);
 
+  // Synthesized location pseudo-pets (Storm Cell, Category Five, …). Their DAMAGE
+  // is already unified into the headline Damage block (pseudoPetDamage), so here
+  // we render only the informational applied-effects list (the IgnoreStrength
+  // debuffs + mez the player can't enhance) — `hideDamage` suppresses the DPS row.
+  const resolvedResults = useMemo(() => {
+    return (summon.resolvedEntities ?? []).map((re, i) => {
+      const applyEnh = re.copyCreatorMods;
+      return {
+        key: `${re.displayName}-${i}`,
+        count: re.count ?? 1,
+        duration: re.duration,
+        label: re.displayName,
+        result: calculateResolvedPseudoPetDamage(
+          re, archetypeId ?? '', level,
+          applyEnh ? enhancementDamageBonus : 0, applyEnh, globalDamageBonus,
+        ),
+      };
+    }).filter(r => r.result && r.result.allEffects.length > 0);
+  }, [summon.resolvedEntities, archetypeId, level, enhancementDamageBonus, globalDamageBonus]);
+
   // Aggregate totals across all entities
   const totals = useMemo(() => {
     let base = 0, enhanced = 0, final_ = 0;
@@ -2438,6 +2484,9 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
   const hasEnh = totals.enhanced !== totals.base;
   const hasBuff = totals.final !== totals.enhanced;
   const durationLabel = summon.duration ? `${summon.duration}s` : 'permanent';
+
+  // Nothing to show (e.g. a location shell with only an unresolved entity).
+  if (entityList.length === 0 && resolvedResults.length === 0) return null;
 
   return (
     <div className="bg-indigo-900/30 rounded p-2 border border-indigo-500/30">
@@ -2518,8 +2567,28 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
         </div>
       )}
 
+      {/* Synthesized location pseudo-pets (Storm Cell, Category Five, …): the
+          informational applied-effects list (IgnoreStrength debuffs + mez). The
+          DAMAGE is already unified into the headline Damage block, so hideDamage. */}
+      {resolvedResults.length > 0 && (
+        <div className="space-y-2">
+          {resolvedResults.map((rr) => (
+            <SingleEntityDisplay
+              key={rr.key}
+              petDamage={rr.result}
+              entityCount={rr.count}
+              label={rr.label}
+              showHeader={true}
+              isPseudoPet={true}
+              duration={rr.duration ?? summon.duration}
+              hideDamage={true}
+            />
+          ))}
+        </div>
+      )}
+
       {/* No entity display (pseudopets with no data) */}
-      {entityList.length === 0 && (
+      {entityList.length === 0 && resolvedResults.length === 0 && (
         <div className="flex items-center gap-2">
           <span className="text-indigo-400 text-sm font-medium">
             {summon.isPseudoPet ? '⚡ Creates' : '🐾 Summons'}
@@ -2532,7 +2601,7 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
       )}
 
       {/* Fallback: show powers list if no pet data at all */}
-      {entityList.length === 0 && summon.powers && summon.powers.length > 0 && (
+      {entityList.length === 0 && resolvedResults.length === 0 && summon.powers && summon.powers.length > 0 && (
         <div className="text-xs text-slate-400 mt-0.5">
           Powers: {summon.powers.map(p => p.split('.').pop()).join(', ')}
         </div>

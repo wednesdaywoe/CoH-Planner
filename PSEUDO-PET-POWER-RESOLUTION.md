@@ -117,6 +117,76 @@ worse than showing nothing (per GAME-DATA-PRINCIPLES §1). Hence path C.
 - `category_five_lightning`: Energy_Dmg (Ranged_Damage ×0.5), EndDrain, KB,
   Stun (Ranged_Stun ×4 mag 3).
 
+## Verified end-to-end trace + refinements (2026-06-06, PC)
+
+Traced both reference powers through the committed `exported_powers/` and the
+existing converter machinery. Findings that change the implementation:
+
+**1. The current converter silently drops a whole pseudo-pet (collapse bug).**
+The parent `category_five.json` carries **two** `EntCreate` AttribMods, both with
+`entity_def: PL_StaticObject` but *different* redirect lists:
+- "Category Five" → `[ResistAll, Category_Five]` (the Cold+Smashing storm + slows)
+- "Category Five **Eye**" → `[ResistAll, Nukenado_Skin, Nukenado_Pulse,
+  **Category_Five_Lightning**, Nukenado_SelfDestruct]` (the lightning, KB, fear, immob)
+
+The EntCreate handler ([convert-powerset.cjs:2150-2152](scripts/convert-powerset.cjs#L2150))
+treats a repeated `entity_def` as "another copy of the same pet" → bumps
+`entityCount` to 2 and keeps only the *first* redirect list. So the second
+pseudo-pet (the lightning Eye) is thrown away — that's why Category Five's
+lightning is unreachable. **Fix: distinguish EntCreates by `entity_def` + a
+signature of the redirect list.** Identical lists (Fire Imps ×3) still collapse to
+a count; distinct lists (generic `PL_StaticObject` shells) split into separate
+pseudo-pets. So Cat Five resolves to *two* synthesized entities, not one.
+
+**2. `collectTemplatesDeep` already does most of the graph work — reuse it.**
+It follows `Execute_Power` (`params.power_names`) with a cycle guard + `MAX_DEPTH`,
+excludes `PVP_ONLY`, keeps `chance:0` groups that still carry a payload (this is
+how Storm Cell's `Lightning_Proc` → `IncreaseStormStrength` (chance 0) →
+`Execute_Power` → `StormCell_LightningAura2` stays followed), and — crucially —
+its `_isConditionalGate` skip **already dedups the AT-conditional damage copies**:
+the `Class_Corruptor` inherent-damage and `Class_Sentinel` crit duplicates of each
+Energy/Cold/Smashing hit are gated (`arch source> Class_Corruptor eq`, etc.) and
+dropped, leaving only the one base hit. A naïve sum would have doubled/tripled
+every damage number; the existing collector prevents it for free.
+
+**3. What `collectTemplatesDeep` does NOT do (the deltas to add):**
+- It doesn't follow `Create_Entity`. In *these* two powers that's harmless — the
+  only `Create_Entity` templates (`StormCell_SelfDestruct`, `Nukenado_SelfDestruct`,
+  `Nukenado_Skin`) have **no resolvable target** (no `params.entity_def`/`power_names`
+  in the export — they're death-explosion hooks), so they're genuine dead ends.
+  The Cat-Five lightning is reached via the *second EntCreate's redirect list*
+  (finding #1), not via `Create_Entity`. Cycle-guarded `Create_Entity` following can
+  be added later for powers that need it.
+- It flattens away `chance`/`activate_period`, so DoT-over-window and proc gating
+  (Lightning_Proc storm-strength, `Category_Five_Lightning` 0.25/0.67s) need the
+  period/chance preserved on the synthesized ability.
+
+**4. Storm Cell's debuffs are all `IgnoreStrength` (not enhanceable).** Every
+Tempest debuff (-Rech ×0.07, -Spd ×0.14, -ToHit ×0.7) carries `IgnoreStrength`,
+so they must surface as **informational/unenhanced** debuffs — the existing
+`synthesizePseudoPetEffects` (which assumes CopyBoosts-enhanceable) and
+`convert-pet-entities` (which *drops* IgnoreStrength) both mishandle them. Branch
+the synthesis on the flag per-template: enhanceable → Power Effects (scaled);
+IgnoreStrength → display-only (mirror the `…Unenhanced` pattern, GAME-DATA §4).
+Glue Arrow's slow was *not* IgnoreStrength, which is why the prior fix was clean.
+
+**5. `WindSpeed` (empowered Tempest, ~2×) is reached from the *attack* powers
+(`Direct_Strike_*`), not the summon graph** — it's the storm-strength mode variant.
+Out of scope for the summon-side prototype; model as a conditional mode later.
+
+### Resolved leaves the prototype should surface (level-agnostic scales)
+
+- **Storm Cell** (PL_StaticObject, 60s): *Tempest* (period 0.2s, r35) — -Rech
+  (Melee_Slow 0.07), -Run/Fly/Jump (Melee_Slow 0.14), -ToHit (Ranged_Debuff_ToHit
+  0.7), all IgnoreStrength; *Lightning* via Lightning_Proc→LightningAura2 (storm-
+  strength gated) — Energy (Ranged_Damage 0.5), -End (Ranged_EndDrain 0.025), Stun
+  (Ranged_Stun ×4 mag3, chance-gated), KB.
+- **Category Five** = two pseudo-pets (20s): *Storm* — Cold DoT (Melee_Damage
+  0.008, 0.33s), Smashing (Ranged_Damage 0.08), -Run/Jump (Melee_Slow 0.7), -Fly
+  (0.84), -Rech (0.42), all IgnoreStrength; *Eye* — Energy lightning (Ranged_Damage
+  0.5 @ 0.25 chance/0.67s) + -End + Stun + KB, plus Nukenado KB (Ranged_Knockback
+  1.1) + Fear (mag 50) + Immob (mag 100).
+
 ## Proposed approach (path C)
 
 Reuse the Glue Arrow unify infrastructure (`pseudoPetDamage`,
@@ -172,9 +242,69 @@ display path is unchanged.
 
 ## Status / priority
 
-Not started — **deliberately deferred** so it doesn't derail the archetype-defs
-leg. Medium-large effort (graph resolution + mode modeling + cross-server). High
-player-visible value (affects many staple powers: Bonfire, Burn, Freezing Rain,
-the storm/rain/patch family, Trick Arrow, Force Bubble, …). Pick up on the PC
-(needs the bins only if re-export is required; the redirect data is already in
-committed `exported_powers/`, so much of this is a converter-only change).
+**Prototype IN PROGRESS (2026-06-06, PC)** — Storm Cell + Category Five, inline
+architecture (resolved abilities attached to `summon`, no PET_ENTITIES injection).
+
+Done + verified:
+- **Resolver** (`resolveSummonRedirects` + `classifyPseudoPetEffect` in
+  `convert-powerset.cjs`) — reuses `collectTemplatesDeep` (Execute_Power follow,
+  AT-conditional dedup, PvP exclusion, cycle guard) + `extractDamage`. Fixes the
+  double-count (storm powered-up copy) and PvE/PvP mez traps.
+- **Collapse fix** (`attachResolvedPseudoPets`) — distinguishes EntCreates by
+  entity_def + redirect-list signature; Category Five now keeps BOTH pseudo-pets
+  (20s storm + 17s "Eye"). Scoped to four location-shell entity_defs
+  (`PSEUDOPET_SHELL_ENTITIES`) so it never overlaps a real pet → double-count-safe.
+- **Runtime damage** (`calculateResolvedPseudoPetDamage`, pet-damage.ts) — scales
+  off the **summoner's AT table** (verified: lvl-1 Blaster lightning = 5.12 =
+  0.5 × Ranged_Damage(blaster,1); minion_pets would be wrong). Wired into the
+  InfoPanel Damage block via the existing fires-per-spawn path. Tick counts match
+  in-game exactly (61/20s storm, 26/17s eye).
+- **Enhanceable-effect merge** — `synthesizePseudoPetEffects` extended for
+  `resolvedEntities` (IgnoreStrength split honored).
+- **Test** `pseudopet-redirect.test.ts` (8 cases) asserts the in-game-verified
+  numbers; `tsc` clean; existing pseudopet tests still green. Only `blaster
+  storm_blast` regenerated so far.
+
+Verified against in-game (user screenshots, lvl-1 Blaster): every resolved scale
+matches, and the enhanceable/IgnoreStrength split matches the tooltip's "Ignores
+buffs and enhancements" notes exactly.
+
+Display (DONE, user chose "Both"):
+- Enhanceable debuffs → Power Effects (scaled). IgnoreStrength debuffs + mez +
+  conditional damage → the informational "⚡ Creates" block (default-expanded,
+  flagged "(unenh.)"), reusing `SingleEntityDisplay` with a `hideDamage` mode.
+
+Damage presentation (DONE — refined over two in-app reviews):
+- **Chance is first-class (`_redirectDamageChance`).** It computes the max
+  cumulative chance to any damage template (following Execute_Power). Three cases,
+  matching the planner's existing proc convention (procs count at EXPECTED value =
+  chance × per-hit) and the in-game tooltip:
+  - `chance >= 1` → guaranteed DoT (enhanceable headline). [Cat Five Cold/Smashing]
+  - `0 < chance < 1` → **proc, counted at expected value** (`damageChance` ×
+    per-hit). [Cat Five lightning, 0.25] — *not* excluded (the first attempt to
+    exclude it was wrong; a chance-per-period proc is calculable).
+  - `chance === 0` → **mode-gated** (storm-strength "while High Winds active"): no
+    computable rate ⇒ `conditionalDamage`, surfaced informationally, not summed.
+    [Storm Cell lightning] So Storm Cell shows no bogus guaranteed headline.
+- **Cap bar retooled, not hidden.** The default reference `(base/scale) × cap` is
+  per-activation, so a multi-tick lifetime total pins to max regardless of
+  slotting. `pseudoPetDamage` now passes `scale: 1` ⇒ reference becomes
+  `base × cap`, so the bar shows **enhancement headroom** (base at 1/cap, growing
+  with enhancements/buffs). Only the DamageBar consumes `scale`, so this is safe.
+- **Stun/KB/Fear/etc. provenance verified.** Storm Cell's Stun comes from the
+  lightning pet `StormCell_LightningAura2` (executed by `Lightning_Proc`), at 33%
+  on each lightning hit (itself mode-gated). **Known gap (next):** effect chances
+  are still flattened by `classifyPseudoPetEffect` (collectTemplatesDeep drops
+  group chance) — the Stun shows "4.8" without its 33%. Surfacing per-effect
+  chance (an effect-chance walk paralleling `_redirectDamageChance`) is the same
+  class of fix and the natural next step.
+
+Then **generalize**: full `npm run regen` (all ATs + Rebirth), expand the shell
+set / handle PET_ENTITIES-overlap powers (Bonfire/Burn/Rain of Fire — double-
+count guard), model the powered-up "High Winds"/"Strong Lightning" mode variants,
+PowerInfoTooltip parity.
+
+Original framing (kept): Medium-large effort. High player-visible value (Bonfire,
+Burn, Freezing Rain, the storm/rain/patch family, Trick Arrow, Force Bubble, …).
+The redirect data is already in committed `exported_powers/`, so it's a
+converter+runtime change — no bins needed unless a re-export is wanted.

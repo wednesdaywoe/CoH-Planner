@@ -219,6 +219,57 @@ export interface SummonEffect {
   copyBoosts?: boolean;
   /** Multi-entity summons (e.g., Mastermind henchmen with different entity types) */
   entities?: { entity: string; count: number }[];
+  /**
+   * Pseudo-pets resolved from `powers` (redirect lists) at convert time, for
+   * location pseudo-pets whose entity_def is a generic shell not backed by a
+   * PET_ENTITIES record (Storm Cell, Category Five, Freezing Rain, …). Each
+   * carries its own synthesized ability list (damage + debuffs). Damage scales
+   * off the SUMMONER's archetype, not a fixed pet class.
+   * See PSEUDO-PET-POWER-RESOLUTION.md.
+   */
+  resolvedEntities?: ResolvedPseudoPet[];
+}
+
+/** A debuff/mez on a synthesized pseudo-pet ability. */
+export interface ResolvedPseudoPetEffect {
+  type: string;
+  scale?: number;
+  table?: string;
+  magnitude?: number;
+  /** IgnoreStrength: the player's enhancements/buffs do NOT scale this — show informational/unenhanced. */
+  ignoreStrength?: boolean;
+}
+
+/** One redirect power resolved into a pseudo-pet ability (PetAbility-shaped). */
+export interface ResolvedPseudoPetAbility {
+  name: string;
+  displayName: string;
+  type: string;
+  damage: { damageType: string; scale: number; table: string }[];
+  /** Damage lands at < 100% (storm-strength gated / proc) — kept OUT of the
+   *  guaranteed headline DoT and surfaced as a conditional effect instead. */
+  conditionalDamage?: boolean;
+  /** Cumulative chance the conditional damage lands (0 = storm-strength gated). */
+  damageChance?: number;
+  effects?: ResolvedPseudoPetEffect[];
+  recharge?: number;
+  castTime?: number;
+  activatePeriod?: number;
+  effectArea?: string;
+  radius?: number;
+  maxTargets?: number;
+}
+
+/** A pseudo-pet synthesized from one EntCreate's redirect list. */
+export interface ResolvedPseudoPet {
+  displayName: string;
+  /** Pet lifespan in seconds (the DoT window). */
+  duration?: number;
+  /** Number of identical copies summoned. */
+  count?: number;
+  /** Inherits the summoner's enhancements/modifiers (damage off summoner AT). */
+  copyCreatorMods: boolean;
+  abilities: ResolvedPseudoPetAbility[];
 }
 
 // ============================================

@@ -50,7 +50,119 @@ export const CategoryFive: Power = {
         "Redirects.Storm_Blast.Category_Five"
       ],
       "duration": 20,
-      "entityCount": 2
+      "entityCount": 2,
+      "resolvedEntities": [
+        {
+          "displayName": "Category Five",
+          "duration": 20,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Category_Five",
+              "displayName": "Category Five",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Cold",
+                  "scale": 0.008,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Smashing",
+                  "scale": 0.08,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.7,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.33,
+              "effectArea": "Sphere",
+              "radius": 40,
+              "maxTargets": 16
+            }
+          ]
+        },
+        {
+          "displayName": "Category Five Eye",
+          "duration": 17,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Nukenado_Pulse",
+              "displayName": "Category Five Eye Wall",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 1.1,
+                  "table": "Ranged_Knockback"
+                },
+                {
+                  "type": "Fear",
+                  "magnitude": 50,
+                  "scale": 1,
+                  "table": "Melee_Ones",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.33,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 16
+            },
+            {
+              "name": "Category_Five_Lightning",
+              "displayName": "Category Five Lightning",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Energy",
+                  "scale": 0.5,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "damageChance": 0.25,
+              "effects": [
+                {
+                  "type": "EndDrain",
+                  "scale": 0.025,
+                  "table": "Ranged_EndDrain"
+                },
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 1,
+                  "table": "Ranged_Knockback"
+                },
+                {
+                  "type": "Stun",
+                  "magnitude": 3,
+                  "scale": 4,
+                  "table": "Ranged_Stun"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.67,
+              "effectArea": "Sphere",
+              "radius": 40,
+              "maxTargets": 5
+            }
+          ]
+        }
+      ]
     }
   }
 };
