@@ -5,7 +5,7 @@
  * Supports the three-tier display: Base → Enhanced → Final
  */
 
-import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
+import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { getPetTableValue, getTableValue } from '@/data/at-tables';
 import type { ResolvedPseudoPet } from '@/types/power';
 
@@ -133,7 +133,7 @@ export function calculatePetDamage(
   globalDamageBonus: number = 0,
   upgradeTier: number = 0
 ): PetDamageResult | null {
-  const entity = PET_ENTITIES[entityName];
+  const entity = getPetEntity(entityName);
   if (!entity) return null;
 
   // Build the combined ability list: base + upgrade tiers
@@ -384,7 +384,7 @@ export function shouldApplyEnhancements(
   entityName: string,
   copyBoosts?: boolean
 ): boolean {
-  const entity = PET_ENTITIES[entityName];
+  const entity = getPetEntity(entityName);
   if (!entity) return false;
   return entity.copyCreatorMods || (copyBoosts === true);
 }
@@ -431,7 +431,7 @@ export function synthesizePseudoPetEffects(
     ? summon.entities.map((e) => e.entity)
     : summon.entity ? [summon.entity] : [];
   for (const entityName of entityNames) {
-    const entity = PET_ENTITIES[entityName];
+    const entity = getPetEntity(entityName);
     if (!entity || entity.commandable) continue; // pseudo-pets / patches only
     for (const ability of entity.abilities) {
       for (const eff of ability.effects ?? []) addEnhanceable(eff.type, eff.scale, eff.table);

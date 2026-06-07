@@ -1,9 +1,12 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
-import { calculateResolvedPseudoPetDamage } from './pet-damage';
+import { calculateResolvedPseudoPetDamage, calculatePetDamage } from './pet-damage';
+import { getPetEntity } from '@/data/pet-entities';
 import { StormCell } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/storm-blast/storm-cell';
 import { CategoryFive } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/storm-blast/category-five';
 import { TarPatch } from '@/data/datasets/homecoming/generated/powersets/defender/primary/dark-miasma/tar-patch';
+import { Meteor } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/seismic-blast/meteor';
+import { Sleet } from '@/data/datasets/homecoming/generated/powersets/defender/primary/cold-domination/sleet';
 import type { ResolvedPseudoPet } from '@/types/power';
 
 /**
@@ -133,6 +136,30 @@ describe('pseudo-pet redirect resolution', () => {
       expect(res!.table).toMatch(/Res_Dmg/i);
       // and it still carries the Slow (it's a -res AND -speed patch)
       expect(effs.some(e => e.type === 'Slow')).toBe(true);
+    });
+  });
+
+  describe('named shells (Meteor — nested Create_Entity hop)', () => {
+    it('resolves damage one Create_Entity hop deep (the spawned MeteorHit)', () => {
+      const pets = Meteor.effects!.summon!.resolvedEntities!;
+      const dmg = pets.flatMap(p => p.abilities).flatMap(a => a.damage);
+      const types = new Set(dmg.map(d => d.damageType));
+      expect(types.has('Fire')).toBe(true);
+      expect(types.has('Smashing')).toBe(true);
+    });
+  });
+
+  describe('un-prefixed priority_list (Sleet → Pets_Sleet fallback)', () => {
+    it("getPetEntity tolerates the bare name and finds the Pets_-prefixed entity", () => {
+      expect(getPetEntity('Sleet')?.name).toBe('Pets_Sleet');
+    });
+    it('Sleet summon resolves to the real pet so its damage/effects surface', () => {
+      const summon = Sleet.effects!.summon!;
+      expect(summon.entity).toBe('Sleet'); // stays un-prefixed in data
+      const r = calculatePetDamage(summon.entity!, 50, 1, summon.duration);
+      expect(r).not.toBeNull();
+      // Pets_Sleet carries Cold damage + Slow/-Def
+      expect(r!.abilities.some(a => a.damageByType.some(d => d.type === 'Cold'))).toBe(true);
     });
   });
 });

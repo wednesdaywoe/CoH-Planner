@@ -35,7 +35,7 @@ import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
-import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
+import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import type { GenesisExemplarEffect } from '@/data';
 import { getActiveIncarnateDamageProcs, computeIncarnateProcContributions } from '@/data/incarnate-procs';
@@ -538,7 +538,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     // a per-cast damage number for "you summon a Phantom Army" doesn't
     // match how the player thinks about the power.
     for (const { entityName } of entityList) {
-      const entity = PET_ENTITIES[entityName];
+      const entity = getPetEntity(entityName);
       if (entity?.commandable) return null;
     }
 
@@ -2409,8 +2409,8 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
         ? [{ entityName: summon.entity, count: summon.entityCount || 1 }]
         : [];
     return raw.filter(({ entityName }) => {
-      // Has model data → keep
-      if (PET_ENTITIES[entityName]) return true;
+      // Has model data → keep (tolerates un-prefixed names → Pets_<name>, e.g. Sleet)
+      if (getPetEntity(entityName)) return true;
       // Looks like a real (un-modeled) pet name → keep so we can still surface it
       if (/^(Pets_|MastermindPets_|Villain_Pets_|VillainPets_)/i.test(entityName)) return true;
       // P-hashes and other opaque identifiers without model data are
@@ -2423,7 +2423,7 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
   const maxUpgradeTier = useMemo(() => {
     let max = 0;
     for (const e of entityList) {
-      const entity = PET_ENTITIES[e.entityName];
+      const entity = getPetEntity(e.entityName);
       if (entity?.upgradeTiers) {
         for (const t of entity.upgradeTiers) {
           if (t.tier === 2) max = Math.max(max, 1);

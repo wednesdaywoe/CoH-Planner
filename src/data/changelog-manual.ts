@@ -21,11 +21,11 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-06',
+    date: '2026-06-07',
     items: [
+      { message: 'Powers that create pet entities (especially complicated ones like Storm Cell, Category Five, etc.) should now resolve their effects correctly', type: 'fix' },
       { message: 'Lots of updates have been happening but I haven\'t been adding notes to the changelog for them. What\'s happening behind the scenes is that I\'m going through Sidekick\'s data pipeline and replacing the remaining legacy hand-curated data with data generated from the game binary', type: 'update' },
       { message: 'Increased the rate-limit of builds saved to the server (10 per hour, up from 5 per hour) and added some messaging to help make the limit more transparent instead of letting users hit the wall unknowingly', type: 'update' },
-      { message: 'Lots of under-the-hood work to address missing/dropped data', type: 'fix' },
       { message: 'Rebirth: Fix a bug causing the planner to overstate Blaster ToHit buffs (Aim/Tactics/Build Up).', type: 'fix' },
       { message: 'Rebirth users can now utilize the Genesis incarnate slot! (lucky 😤) Now, Genesis is complicated and I expect this first pass to be messy. Please manage your expectations accordingly, and report any issues you find!', type: 'feat' },
       { message: 'Added a Set Totals pop-up, just below the dashboard', type: 'feat' },

@@ -50,7 +50,46 @@ export const SmokeGrenade: Power = {
         "Redirects.Assault_Rifle.Smoke_Grenade",
         "Redirects.Assault_Rifle.Smoke_Confusion"
       ],
-      "duration": 30
+      "duration": 30,
+      "resolvedEntities": [
+        {
+          "displayName": "Smoke Grenade",
+          "duration": 30,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Smoke_Confusion",
+              "displayName": "Smoke Canister",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Knockup",
+                  "scale": 1000,
+                  "table": "Melee_Ones"
+                },
+                {
+                  "type": "Confuse",
+                  "magnitude": 3,
+                  "scale": 2,
+                  "table": "Ranged_Fear"
+                },
+                {
+                  "type": "ToHitDebuff",
+                  "scale": 1.5,
+                  "table": "Ranged_Debuff_ToHit"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 2,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 10
+            }
+          ]
+        }
+      ]
     }
   }
 };

@@ -904,8 +904,18 @@ function collectTemplatesWithChance(effects, visited = new Set(), depth = 0, cum
 
     for (const t of effect.templates || []) {
       const a = t.attribs && t.attribs[0] ? t.attribs[0].toLowerCase() : null;
-      if (a === 'execute_power' && depth < MAX_DEPTH) {
-        for (const pName of (t.params && t.params.power_names) || []) {
+      // Follow both Execute_Power (params.power_names) and nested Create_Entity
+      // (params.redirects) — some powers deliver damage one Create_Entity hop
+      // removed (Meteor → creates a "Meteor" entity that runs MeteorHit; Vines →
+      // a nested entity running its pulse). The pet self-buff redirect (ResistAll)
+      // is skipped. Cycle-guarded + depth-bounded like the Execute_Power follow.
+      const followNames = a === 'execute_power'
+        ? ((t.params && t.params.power_names) || [])
+        : a === 'create_entity'
+          ? ((t.params && t.params.redirects) || []).filter(r => !/resistall/i.test(r))
+          : null;
+      if (followNames && depth < MAX_DEPTH) {
+        for (const pName of followNames) {
           if (visited.has(pName)) continue;
           const isStd = pName.toLowerCase().startsWith('redirects.');
           const aux = isStd ? null : resolveAuxRedirectPath(pName);
@@ -1042,6 +1052,12 @@ function resolveSummonRedirects(redirectNames) {
 const PSEUDOPET_SHELL_ENTITIES = new Set([
   'PL_StaticObject', 'PL_FightPreferMelee', 'Pet_NoCollision',
   'PL_Untargetable_FightPreferRanged',
+  // Named shells: same shape (generic entity_def + redirects carrying the real
+  // content), just named after the power/class. Verified absent from PET_ENTITIES
+  // (no `Pets_Meteor`/`Pets_Vines`/`Pets_Mine`/`Pets_Class_Minion_Pets`), so
+  // resolving them is double-count-safe. Covers Meteor, Vines, Trip Mine (Arsenal),
+  // Sleep Grenade, Smoke Canister/Grenade, Geode.
+  'Meteor', 'Vines', 'Mine', 'Class_Minion_Pets',
 ]);
 
 function _parseDurationSeconds(str) {
@@ -1100,7 +1116,8 @@ function attachResolvedPseudoPets(powerJson, effects) {
     const abilities = resolveSummonRedirects(g.redirects);
     if (abilities.length === 0) continue;
     resolved.push({
-      displayName: g.displayName || effects.summon.displayName || 'Summoned Effect',
+      displayName: g.displayName || effects.summon.displayName
+        || powerJson.display_name || powerJson.name || 'Summoned Effect',
       ...(g.duration ? { duration: g.duration } : {}),
       ...(g.count > 1 ? { count: g.count } : {}),
       // Location pseudo-pets created by a player power inherit the summoner's

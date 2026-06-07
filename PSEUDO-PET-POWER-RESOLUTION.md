@@ -331,14 +331,32 @@ Generalization (DONE — full regen, both datasets):
   Storm Blast isn't even on Rebirth). Verified Tar Patch/Bonfire/Caltrops/etc. all
   carry `entity_def=Pets_*` on Rebirth.
 
-Remaining (smaller follow-ups, not blocking):
-- **Named-entity shells** (`Sleet`/`Meteor`/`Vines`/`Mine`, ~11 files) and
-  `Class_Minion_Pets` (7) aren't in the 4-marker shell set and resolve to a name
-  that isn't a PET_ENTITIES key — still unresolved (need name→`Pets_*` mapping or
-  shell-set expansion).
+Follow-up #2 (DONE — branch `feat/pseudopet-named-shells`):
+- **Named-entity shells resolved.** Added `Meteor`, `Vines`, `Mine`,
+  `Class_Minion_Pets` to `PSEUDOPET_SHELL_ENTITIES` (verified no `Pets_*` overlap →
+  double-count-safe). Resolves Meteor, Plant-Control Vines, Sleep Grenade, Smoke
+  Canister/Grenade, Geode (~13 files). Arsenal Trip Mine correctly does NOT resolve
+  (its `TripMine_Resistance` is all `target:Self` pet-survivability; the explosion
+  is a direct attack on the parent).
+- **Nested `Create_Entity` hop followed.** `collectTemplatesWithChance` now follows
+  `Create_Entity` `params.redirects` as well as `Execute_Power` `params.power_names`
+  (cycle-guarded, depth-bounded) — Meteor delivers damage one hop deep (creates a
+  "Meteor" entity that runs `MeteorHit` → Fire+Smashing). Storm Cell/Cat Five
+  unaffected (their `Create_Entity` self-destructs have no redirects).
+- **Un-prefixed `priority_list` fallback.** `getPetEntity(name)` falls back to
+  `Pets_<name>` — fixes Sleet/Liquefy/Ice_Blast, whose P-hash EntCreate resolves
+  (via `priority_list`) to a bare `"Sleet"`/`"Liquefy"` whose real key is
+  `Pets_Sleet`/`Pets_Liquefy` (complete entities). Existing pet-damage path, no
+  redirect resolution → no double-count. Wired through calculatePetDamage,
+  shouldApplyEnhancements, synthesizePseudoPetEffects, and the InfoPanel lookups.
+- Tests: +Meteor (Create_Entity hop) +Sleet (`Pets_` fallback) → 15 redirect
+  cases; full suite 202 green; tsc clean.
+
+Remaining (smaller, not blocking):
 - **PET_ENTITIES-overlap redirect effects** (Bonfire/Burn/Liquefy): the pet entity
-  gives damage via the existing path, but extra redirect-power effects are still
-  dropped — needs a merge that doesn't double-count the pet damage.
+  now gives damage via the existing path (Liquefy via the `Pets_` fallback), but any
+  EXTRA redirect-power effects beyond the pet's own abilities are still dropped —
+  needs a merge that doesn't double-count the pet damage.
 - Mode variants ("High Winds"/"Strong Lightning"); effects from a mode-gated
   ability not yet flagged "while powered up"; conditional-damage "while powered up"
   label; **PowerInfoTooltip parity** (hover tooltip still uses the old path only).

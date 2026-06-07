@@ -69,7 +69,68 @@ export const Geode: Power = {
         "Redirects.Stone_Armor.Geode",
         "Redirects.Stone_Armor.Geode_Scaling"
       ],
-      "duration": 99999
+      "duration": 99999,
+      "resolvedEntities": [
+        {
+          "displayName": "Geode",
+          "duration": 99999,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Geode",
+              "displayName": "Geode",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Knockup",
+                  "magnitude": 1,
+                  "scale": 10000,
+                  "table": "Melee_Ones",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Immobilize",
+                  "magnitude": 1000,
+                  "scale": 0.2,
+                  "table": "Melee_Ones",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "DefenseDebuff",
+                  "scale": 100,
+                  "table": "Melee_Ones",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 120,
+              "castTime": 0,
+              "activatePeriod": 0.1,
+              "effectArea": "SingleTarget"
+            },
+            {
+              "name": "Geode_Scaling",
+              "displayName": "Geode",
+              "type": "Auto",
+              "damage": [],
+              "effects": [
+                {
+                  "type": "Taunt",
+                  "magnitude": 3,
+                  "scale": 1,
+                  "table": "Melee_InherentTaunt"
+                }
+              ],
+              "recharge": 120,
+              "castTime": 0,
+              "activatePeriod": 0.1,
+              "effectArea": "Sphere",
+              "radius": 30,
+              "maxTargets": 5
+            }
+          ]
+        }
+      ]
     },
     "mezResistance": {
       "knockup": {
