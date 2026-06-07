@@ -470,13 +470,33 @@ attacks — the attacks just feed storm strength.
   summons on a shared storm-strength axis (not one scaled copy of the other) — Cat
   Five spawns its own two pseudo-pets (Cold/Smashing storm + lightning Eye).
 
+Follow-up #7 (DONE — base lightning always-on + pet-block value formatting):
+- **Base aura un-gated (supersedes the earlier "no guaranteed headline" call).** The
+  combat log proved the base Storm Cell Lightning Aura (0.5) fires continuously from
+  the moment the cell exists — it's a Death Shroud / Quills-style damage aura, not a
+  "while High Winds" effect. Its `IncreaseStormStrength` chance:0 group is a storm-
+  strength ACCUMULATOR, not a mode suppressor. `collectTemplatesWithChance` now skips
+  gating children of an `IncreaseStormStrength` chance:0 group, so the lightning is
+  guaranteed damage (toggle OFF) and the "⚡ only while High Winds" flag no longer
+  appears on it. The toggle still escalates it to the Strong (2×) variant via
+  `poweredUpDamage`. Fixes the "toggle feels flipped" report (the OFF state was
+  showing the lightning as conditional/⚡ even though it always fires). Scoped to the
+  `IncreaseStormStrength` tag → only Storm Cell's base lightning changes.
+- **Pet/Creates block value formatting.** `SingleEntityDisplay` was showing the raw
+  computed fraction (e.g. −ToHit `0.05` → "0.1") instead of a calculated value. Added
+  `formatPetEffectValue`: percentage debuffs → "5%/7%/14%", mez → "mag N (Ns)",
+  KB/-end/heal → raw magnitude. `PetEffectComputed` gained `magnitude` (preserved
+  through both `calculatePetDamage` and `calculateResolvedPseudoPetDamage`) so mez can
+  show "mag 3". Applies to every pseudo-pet AND real-pet effect list (shared display).
+
 Remaining (smaller, not blocking):
 - Burn's Fiery-Embrace bonus patch (a 2nd patch while FE is active) isn't surfaced
   as a toggle (deliberate — temporary buff window). Voltaic Sentinel's secondary
   0.112 bolt component is dropped by the shared damage extractor (minor under-count).
-- The strong lightning's effects (Stun/KB/EndDrain) keep their base conditional
-  values when powered up (only the *damage* escalates); the in-game stun chance at
-  high strength wasn't verified, so the verified 33% base display is left intact.
+- The base lightning is shown at face-value per-target (like Death Shroud), which is
+  slightly optimistic for a target-cycling AoE — same fuzziness the planner already
+  accepts for damage auras. The Strong escalation's effect chances (33% stun etc.)
+  are unchanged when powered up (only the damage doubles; not verified at high strength).
 - Visual in-app verify is user-side (web app; Vite HMR).
 
 Original framing (kept): Medium-large effort. High player-visible value (Bonfire,

@@ -909,8 +909,16 @@ function collectTemplatesWithChance(effects, visited = new Set(), depth = 0, cum
     // A chance:0 group is a mode-gate SENTINEL, not literal 0% — mark `gated` and
     // keep the cumulative chance (so the within-mode proc rate, e.g. a 33% stun,
     // survives) rather than zeroing it. Real proc chances (0<chance<1) multiply.
+    //
+    // EXCEPTION: an `IncreaseStormStrength` chance:0 group is a storm-strength
+    // ACCUMULATOR, not a mode SUPPRESSOR — its payload (Storm Cell's base lightning
+    // aura) always runs (verified in-game: the aura fires continuously from the
+    // moment the cell exists, like a Death Shroud / Quills damage aura, not only
+    // while "High Winds"). So it must NOT gate its children to conditional; the
+    // empowered Strong variant is surfaced separately via poweredUpDamage.
+    const isAccumulator = (effect.tags || []).includes('IncreaseStormStrength');
     const raw = (effect.chance === undefined || effect.chance === null) ? 1 : effect.chance;
-    const childGated = raw === 0 ? true : gated;
+    const childGated = (raw === 0 && !isAccumulator) ? true : gated;
     const c = raw === 0 ? cumChance : cumChance * raw;
 
     for (const t of effect.templates || []) {

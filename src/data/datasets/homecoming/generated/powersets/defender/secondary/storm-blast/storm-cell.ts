@@ -124,29 +124,25 @@ export const StormCell: Power = {
                   "table": "Ranged_Damage"
                 }
               ],
-              "conditionalDamage": true,
               "effects": [
                 {
                   "type": "EndDrain",
                   "scale": 0.025,
-                  "table": "Ranged_EndDrain",
-                  "conditional": true
+                  "table": "Ranged_EndDrain"
                 },
                 {
                   "type": "Stun",
                   "magnitude": 3,
                   "scale": 4,
                   "table": "Ranged_Stun",
-                  "chance": 0.33,
-                  "conditional": true
+                  "chance": 0.33
                 },
                 {
                   "type": "Knockback",
                   "magnitude": 1,
                   "scale": 1,
                   "table": "Ranged_Knockback",
-                  "chance": 0.17,
-                  "conditional": true
+                  "chance": 0.17
                 }
               ],
               "recharge": 0,

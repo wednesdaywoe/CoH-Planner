@@ -41,13 +41,6 @@ describe('pseudo-pet redirect resolution', () => {
     return ab?.damageByType.find(d => d.type === type)?.base;
   };
 
-  // Conditional (storm-gated / proc) damage is surfaced as an informational
-  // effect ("<type> Dmg") and kept OUT of result.abilities / the DPS total.
-  const condDmg = (entity: ResolvedPseudoPet, type: string) => {
-    const r = calculateResolvedPseudoPetDamage(entity, 'blaster', 1);
-    return r?.allEffects.find(e => e.type === `${type} Dmg`);
-  };
-
   describe('Storm Cell', () => {
     const summon = StormCell.effects!.summon!;
     const pets = summon.resolvedEntities!;
@@ -78,14 +71,16 @@ describe('pseudo-pet redirect resolution', () => {
       expect(pu.find(e => e.type === 'ToHitDebuff')!.scale).toBeCloseTo(1.4, 3);
     });
 
-    it('lightning is mode-gated (storm-strength), shown conditionally not summed', () => {
+    it('lightning is an ALWAYS-ON damage aura (base 0.5), not mode-gated', () => {
+      // The base Storm Cell Lightning Aura fires continuously from the moment the
+      // cell exists (verified in-game combat log), like a Death Shroud / Quills
+      // aura — its IncreaseStormStrength chance:0 group is an accumulator, not a
+      // suppressor. So it counts as guaranteed DoT, not a "while High Winds" effect.
       const lightning = pets[0].abilities.find(a => a.name === 'Lightning_Proc')!;
-      expect(lightning.conditionalDamage).toBe(true); // chance:0 = "while High Winds active"
-      expect(lightning.damageChance).toBeUndefined(); // no computable rate
-      // Kept out of the headline DoT…
-      expect(dmgType(pets[0], 'Lightning_Proc', 'Energy')).toBeUndefined();
-      // …surfaced as a conditional effect at the verified 5.12/tick (lvl 1, full).
-      expect(condDmg(pets[0], 'Energy')?.value).toBeCloseTo(5.12, 1);
+      expect(lightning.conditionalDamage).toBeFalsy();
+      expect(lightning.damage[0]).toMatchObject({ damageType: 'Energy', scale: 0.5 });
+      // Guaranteed in the headline DoT at the verified 5.12/tick (lvl 1).
+      expect(dmgType(pets[0], 'Lightning_Proc', 'Energy')).toBeCloseTo(5.12, 1);
     });
 
     it('does not double-count the storm-powered-up Energy copy', () => {
@@ -100,32 +95,31 @@ describe('pseudo-pet redirect resolution', () => {
       expect(stun).toMatchObject({ scale: 4, table: 'Ranged_Stun', magnitude: 3 });
     });
 
-    it('flags mode-gated lightning effects conditional, but not the always-on Tempest debuffs', () => {
+    it('no lightning effects are mode-gated (the base aura always fires)', () => {
       const tempest = pets[0].abilities.find(a => a.name === 'StormCell_Tempest')!;
       const lightning = pets[0].abilities.find(a => a.name === 'Lightning_Proc')!;
-      // Tempest (-rech/-tohit) is always on while the cell exists.
       expect(tempest.effects!.every(e => !e.conditional)).toBe(true);
-      // Lightning effects only apply "while High Winds active".
-      expect(lightning.effects!.every(e => e.conditional)).toBe(true);
+      expect(lightning.effects!.every(e => !e.conditional)).toBe(true);
     });
 
-    it('Storm Cell exposes no guaranteed headline damage (it is a debuff field)', () => {
-      const r = calculateResolvedPseudoPetDamage(pets[0], 'blaster', 1);
-      expect(r?.abilities ?? []).toHaveLength(0);
+    it('Storm Cell exposes guaranteed lightning damage (the always-on aura)', () => {
+      const r = calculateResolvedPseudoPetDamage(pets[0], 'blaster', 1)!;
+      expect(r.abilities.some(a => a.ability.name === 'Lightning_Proc')).toBe(true);
+      expect(r.totalDpsBase).toBeGreaterThan(0);
     });
 
-    it('powered up (High Winds): lightning folds into DPS, Tempest shows WindSpeed, nothing flagged conditional', () => {
+    it('powered up (High Winds): lightning doubles to Strong, Tempest shows WindSpeed', () => {
       const off = calculateResolvedPseudoPetDamage(pets[0], 'blaster', 50)!;
       const on = calculateResolvedPseudoPetDamage(pets[0], 'blaster', 50, 0, false, 0, true)!;
-      // Off: no guaranteed damage (lightning is conditional). On: lightning counts.
-      expect(off.totalDpsBase).toBe(0);
-      expect(on.totalDpsBase).toBeGreaterThan(0);
+      // Base aura always contributes; powered up escalates it to the Strong (2×) variant.
+      expect(off.totalDpsBase).toBeGreaterThan(0);
+      expect(on.totalDpsBase).toBeCloseTo(off.totalDpsBase * 2, 0);
       // On: Tempest debuffs show the empowered WindSpeed values (~2× the base).
       const rechOff = off.allEffects.find(e => e.type === 'RechargeDebuff')!.value!;
       const rechOn = on.allEffects.find(e => e.type === 'RechargeDebuff')!.value!;
       expect(rechOn).toBeCloseTo(rechOff * 2, 1);
-      // Off flags conditional content; On shows everything active.
-      expect(off.allEffects.some(e => e.conditional)).toBe(true);
+      // Nothing is flagged conditional now — the base aura is always on.
+      expect(off.allEffects.every(e => !e.conditional)).toBe(true);
       expect(on.allEffects.every(e => !e.conditional)).toBe(true);
     });
 
@@ -137,15 +131,22 @@ describe('pseudo-pet redirect resolution', () => {
       expect(lightning.poweredUpDamage![0]).toMatchObject({ damageType: 'Energy', scale: 1 });
     });
 
-    it('powered up: the lightning escalates to the Strong variant (2x the base aura)', () => {
+    it('computed effects carry magnitude (mez) + fractional value (debuffs) for display', () => {
+      // Backs the Creates-block formatter: debuffs render as "%" (value×100), mez
+      // as "mag N". Raw modifiers (0.07) would otherwise read as meaningless.
+      const r = calculateResolvedPseudoPetDamage(pets[0], 'blaster', 50)!;
+      const stun = r.allEffects.find(e => e.type === 'Stun')!;
+      expect(stun.magnitude).toBe(3); // → "mag 3"
+      const rech = r.allEffects.find(e => e.type === 'RechargeDebuff')!;
+      expect(rech.value).toBeCloseTo(0.07, 2); // fraction → "7%"
+    });
+
+    it('powered up: the lightning per-hit doubles (base aura → Strong)', () => {
       const off = calculateResolvedPseudoPetDamage(pets[0], 'blaster', 50)!;
       const on = calculateResolvedPseudoPetDamage(pets[0], 'blaster', 50, 0, false, 0, true)!;
-      // Off: the base aura (0.5) is surfaced informationally as a conditional "Energy Dmg".
-      const baseAura = off.allEffects.find(e => e.type === 'Energy Dmg')!.value!;
-      // On: the Strong lightning (1.0) folds into the DPS abilities at exactly 2x.
-      const strong = on.abilities.find(a => a.ability.name === 'Lightning_Proc')!
+      const hit = (r: typeof off) => r.abilities.find(a => a.ability.name === 'Lightning_Proc')!
         .damageByType.find(d => d.type === 'Energy')!.base;
-      expect(strong).toBeCloseTo(baseAura * 2, 0);
+      expect(hit(on)).toBeCloseTo(hit(off) * 2, 0);
     });
   });
 

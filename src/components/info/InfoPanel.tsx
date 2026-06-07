@@ -34,7 +34,7 @@ import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
-import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
+import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import type { GenesisExemplarEffect } from '@/data';
@@ -2140,6 +2140,35 @@ const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = {
   Slow: { label: '-Speed', color: 'text-teal-400' },
 };
 
+// Pet/pseudo-pet debuffs whose computed `value` is a fraction → show as a percent
+// (the label already carries the sign, e.g. "-ToHit 5%"). Everything else shows
+// its calculated magnitude: mez as "mag N (Ns)", KB/-end/heal as the raw value.
+const PERCENT_PET_EFFECTS = new Set([
+  'RechargeDebuff', 'Slow', 'ToHitDebuff', 'DefenseDebuff', 'ResistanceDebuff', 'DamageDebuff', 'RecoveryDebuff',
+]);
+const MEZ_PET_EFFECTS = new Set(['Stun', 'Hold', 'Sleep', 'Fear', 'Confuse', 'Immobilize']);
+
+/** Format a computed pet effect value for display — percentages for debuffs, mag
+ *  (+duration) for mez, raw magnitude for the rest. Replaces showing the raw
+ *  table×scale fraction (e.g. 0.05) which read as a meaningless modifier. */
+function formatPetEffectValue(eff: PetEffectComputed): string {
+  const { type, value, magnitude } = eff;
+  if (PERCENT_PET_EFFECTS.has(type)) {
+    if (value === undefined) return '—';
+    const pct = value * 100;
+    return `${pct.toFixed(pct < 10 ? 1 : 0)}%`;
+  }
+  if (MEZ_PET_EFFECTS.has(type)) {
+    const mag = magnitude !== undefined ? `mag ${magnitude}` : '';
+    const dur = value !== undefined && value > 0 ? ` ${value.toFixed(1)}s` : '';
+    return (mag + dur).trim() || '—';
+  }
+  // Knockback / Knockup / Taunt / EndDrain / Heal: the computed value/points.
+  if (value !== undefined) return value.toFixed(2);
+  if (magnitude !== undefined) return `mag ${magnitude}`;
+  return '—';
+}
+
 /** Expandable row for a single pet ability with damage */
 function PetAbilityRow({ ad }: { ad: PetAbilityDamage }) {
   const [open, setOpen] = useState(false);
@@ -2420,7 +2449,7 @@ function SingleEntityDisplay({
                           )}
                         </span>
                         <span className="text-slate-300 tabular-nums shrink-0">
-                          {eff.value !== undefined ? eff.value.toFixed(1) : '—'}
+                          {formatPetEffectValue(eff)}
                         </span>
                       </div>
                     );

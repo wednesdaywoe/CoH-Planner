@@ -35,8 +35,12 @@ export interface PetAbilityDamage {
 
 export interface PetEffectComputed {
   type: string;
-  /** Computed value at current level (from scale*table or magnitude) */
+  /** Computed value at current level (from scale*table or magnitude). For
+   *  percentage debuffs this is the fraction (0.07 = -7%); for mez it's the
+   *  duration in seconds; for KB/heal/-end it's the raw magnitude/points. */
   value?: number;
+  /** Mez/knock magnitude (e.g. a mag-3 Stun) — distinct from `value` (duration). */
+  magnitude?: number;
   chance?: number;
   /** IgnoreStrength: the player's enhancements/buffs do NOT scale this (informational). */
   ignoreStrength?: boolean;
@@ -170,7 +174,7 @@ export function calculatePetDamage(
           } else if (eff.magnitude !== undefined) {
             value = eff.magnitude;
           }
-          allEffectsMap.set(eff.type, { type: eff.type, value, chance: eff.chance });
+          allEffectsMap.set(eff.type, { type: eff.type, value, magnitude: eff.magnitude, chance: eff.chance });
         }
       }
     }
@@ -295,7 +299,7 @@ export function calculateResolvedPseudoPetDamage(
         } else if (eff.magnitude !== undefined) {
           value = eff.magnitude;
         }
-        allEffectsMap.set(eff.type, { type: eff.type, value, chance: eff.chance, ignoreStrength: eff.ignoreStrength, conditional: poweredUp ? false : eff.conditional });
+        allEffectsMap.set(eff.type, { type: eff.type, value, magnitude: eff.magnitude, chance: eff.chance, ignoreStrength: eff.ignoreStrength, conditional: poweredUp ? false : eff.conditional });
       }
     }
 
