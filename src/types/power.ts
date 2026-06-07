@@ -240,6 +240,9 @@ export interface ResolvedPseudoPetEffect {
   chance?: number;
   /** IgnoreStrength: the player's enhancements/buffs do NOT scale this — show informational/unenhanced. */
   ignoreStrength?: boolean;
+  /** Mode-gated: only applies while the power is in its empowered/triggered state
+   *  (Storm Cell's lightning effects — "while High Winds is active"). */
+  conditional?: boolean;
 }
 
 /** One redirect power resolved into a pseudo-pet ability (PetAbility-shaped). */
@@ -248,6 +251,10 @@ export interface ResolvedPseudoPetAbility {
   displayName: string;
   type: string;
   damage: { damageType: string; scale: number; table: string }[];
+  /** Empowered ("High Winds") replacement for `effects` — the WindSpeed values
+   *  (~2× the base Tempest debuffs). The runtime swaps to these when the
+   *  "Storm Cell Active" toggle is on. */
+  poweredUpEffects?: ResolvedPseudoPetEffect[];
   /** Damage lands at < 100% (storm-strength gated / proc) — kept OUT of the
    *  guaranteed headline DoT and surfaced as a conditional effect instead. */
   conditionalDamage?: boolean;

@@ -786,7 +786,12 @@ const PSEUDOPET_MEZ_ATTRIBS = {
 const PSEUDOPET_DEBUFF_ATTRIBS = {
   endurance: 'EndDrain', recovery: 'RecoveryDebuff', tohit: 'ToHitDebuff',
   base_defense: 'DefenseDebuff', runningspeed: 'Slow', flyingspeed: 'Slow',
-  jumpingspeed: 'Slow', jumpheight: 'Slow', rechargetime: 'Slow',
+  jumpingspeed: 'Slow', jumpheight: 'Slow',
+  // -Recharge is a distinct debuff from movement -Speed (the planner's registry
+  // and the in-cell attack bonuses track them separately). Keeping them apart
+  // also lets the Tempest→WindSpeed empowered swap show each doubling cleanly
+  // (−Rech 7%→14%, −Speed 14%→28%) instead of collapsing to one ambiguous "Slow".
+  rechargetime: 'RechargeDebuff',
 };
 
 /**
@@ -856,6 +861,12 @@ function classifyPseudoPetEffect(template) {
       if (a === 'endurance' && !(scale < 0)) continue;
       // Slow tag rows carry scale ~0 — not a real slow.
       if (debuffType === 'Slow' && Math.abs(scale || 0) < 0.001) continue;
+      // Skip the aspect=Maximum movement-speed cap (−max run speed): it's a niche
+      // secondary debuff distinct from the regular (Current) movement Slow we
+      // surface, and including it makes the Slow value inconsistent (it would win
+      // the single Slow slot in some redirects but not others). The Current-aspect
+      // movement slow is the representative one.
+      if (debuffType === 'Slow' && (template.aspect || '').toLowerCase() === 'maximum') continue;
       const eff = { type: debuffType };
       if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
       if (ignoreStrength) eff.ignoreStrength = true;
@@ -986,15 +997,25 @@ function resolveSummonRedirects(redirectNames) {
     }
 
     // Debuffs / mez — one per type (mirrors convert-pet-entities seenTypes dedup),
-    // carrying the proc chance the binary gates them with (e.g. the 33% stun).
+    // carrying the proc chance the binary gates them with (e.g. the 33% stun) and
+    // a `conditional` flag for mode-gated branches (Storm Cell's lightning effects
+    // only apply "while powered up" / High Winds — `gated` via the chance:0 mode
+    // sentinel). Prefer a NON-conditional occurrence of a type if one exists.
     const effects = [];
-    const seen = new Set();
-    for (const { template, chance } of collected) {
+    const seen = new Map(); // type -> index in effects
+    for (const { template, chance, gated } of collected) {
       const e = classifyPseudoPetEffect(template);
-      if (!e || seen.has(e.type)) continue;
-      seen.add(e.type);
+      if (!e) continue;
       if (chance < 1) e.chance = Math.round(chance * 100) / 100;
-      effects.push(e);
+      if (gated) e.conditional = true;
+      if (!seen.has(e.type)) {
+        seen.set(e.type, effects.length);
+        effects.push(e);
+      } else if (!gated) {
+        // An always-on occurrence supersedes a previously-seen gated one.
+        const prev = effects[seen.get(e.type)];
+        if (prev.conditional) effects[seen.get(e.type)] = e;
+      }
     }
 
     if (damage.length === 0 && effects.length === 0) continue; // ResistAll etc.
@@ -1038,8 +1059,41 @@ function resolveSummonRedirects(redirectNames) {
       ...(json.max_targets_hit > 0 ? { maxTargets: json.max_targets_hit } : {}),
     });
   }
+
+  // Empowered "High Winds" variants: Storm Cell's Tempest debuffs upgrade to the
+  // WindSpeed values (~2×) while the storm is powered up. WindSpeed isn't in the
+  // summon graph (it's triggered by Storm Blast attacks in the cell), so link it
+  // explicitly and attach as the base ability's `poweredUpEffects`; the runtime
+  // swaps to these when the "Storm Cell Active" toggle is on.
+  for (const ab of abilities) {
+    const variant = POWERED_UP_VARIANT[ab.name];
+    if (!variant) continue;
+    const vp = resolveRedirectPath(variant);
+    if (!fs.existsSync(vp)) continue;
+    let vjson;
+    try { vjson = JSON.parse(fs.readFileSync(vp, 'utf-8')); } catch { continue; }
+    const vEffects = [];
+    const vSeen = new Set();
+    for (const { template, chance } of collectTemplatesWithChance(vjson.effects, new Set([variant]))) {
+      const e = classifyPseudoPetEffect(template);
+      if (!e || vSeen.has(e.type)) continue;
+      vSeen.add(e.type);
+      if (chance < 1) e.chance = Math.round(chance * 100) / 100;
+      vEffects.push(e);
+    }
+    if (vEffects.length > 0) ab.poweredUpEffects = vEffects;
+  }
+
   return abilities;
 }
+
+// Powered-up ("High Winds") variant of a pseudo-pet ability — the empowered
+// debuff redirect that replaces the base one while the storm is at full strength.
+// Storm-Cell-specific link (the variant isn't reachable from the summon graph).
+const POWERED_UP_VARIANT = {
+  StormCell_Tempest: 'Redirects.Storm_Blast.StormCell_WindSpeed',
+  StormCell_Tempest_Sentinel: 'Redirects.Storm_Blast.StormCell_WindSpeed_Sentinel',
+};
 
 // Generic location-shell entity_defs that are NOT backed by a PET_ENTITIES
 // record — their content lives entirely in the EntCreate redirect list. Scoped
@@ -1618,6 +1672,9 @@ const CONDITIONAL_LABEL_OVERRIDES = {
   // happens when the gate uses a lowercased dotted name like
   // `temporary_powers.temporary_powers.tidal_power`).
   tidal_power: 'Tidal Power',
+  // The "in storm cell" gate — surfaced as a single global "Storm Cell Active"
+  // toggle (Storm Blast: attacks' in-cell bonuses + Storm Cell's High Winds).
+  stormblast_instormcell: 'Storm Cell Active',
 };
 
 function _applyLabelOverride(id, label) {
@@ -1871,7 +1928,11 @@ function extractConditionalEffects(rawEffects, powerJson) {
       // `Source.Mode?`, `kEngaged`) describe the player's own state and
       // should toggle uniformly across every power that references them.
       // Target-state gates (`target.ownPower?`) are per-cast/per-target.
-      scope: group.side === 'source' ? 'global' : 'per-power',
+      // Exception: "in storm cell" reads as target-state, but a player thinks of
+      // it as one "I'm fighting inside my Storm Cell" switch — promote to global
+      // so it's a single toggle shared across the whole Storm Blast set (the
+      // attacks' in-cell bonuses AND the Storm Cell summon's powered-up state).
+      scope: (id === 'stormblast_instormcell' || group.side === 'source') ? 'global' : 'per-power',
       defaultActive: false,
     };
     if (mode) entry.mode = mode;
@@ -3981,6 +4042,24 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     // rather than a generic "trigger".
     const special = extractSpecialEffects(powerJson.effects, conditional);
     if (special) power.specialEffects = special;
+  }
+
+  // Storm Cell's powered-up state lives on the pseudo-pet (resolvedEntities), not
+  // the parent's gated effects, so it doesn't generate the "Storm Cell Active"
+  // conditional from its own predicate. Surface the shared GLOBAL toggle here so
+  // the InfoPanel can drive the High Winds display (WindSpeed debuffs + lightning).
+  // Gate on a `poweredUpEffects` ability — that WindSpeed link is unique to Storm
+  // Cell, so Category Five (always at max strength) and other gated pseudo-pets
+  // (Tide Pool) don't get a mislabeled toggle.
+  const resolvedEnts = power.effects?.summon?.resolvedEntities;
+  if (resolvedEnts && resolvedEnts.some(ent => ent.abilities.some(a => a.poweredUpEffects))) {
+    const exists = (power.conditionalEffects || []).some(c => c.id === 'stormblast_instormcell');
+    if (!exists) {
+      power.conditionalEffects = [
+        ...(power.conditionalEffects || []),
+        { id: 'stormblast_instormcell', label: 'Storm Cell Active', scope: 'global', defaultActive: false },
+      ];
+    }
   }
 
   // Dual Pistols Swap Ammo: pull the per-ammo secondary effects out of base into

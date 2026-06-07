@@ -79,6 +79,12 @@ export const CategoryFive: Power = {
                   "scale": 0.7,
                   "table": "Melee_Slow",
                   "ignoreStrength": true
+                },
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.42,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
                 }
               ],
               "recharge": 0,

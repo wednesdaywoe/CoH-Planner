@@ -5,7 +5,7 @@
  */
 
 import { useMemo, useState } from 'react';
-import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useContainmentActive, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useSentinelCritActive } from '@/stores';
+import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useContainmentActive, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useSentinelCritActive, useGlobalAdjuster } from '@/stores';
 import { getBaseToHit } from '@/data/purple-patch';
 import {
   lookupPower,
@@ -260,6 +260,9 @@ interface PowerInfoProps {
 function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
+  // Global "Storm Cell Active" / High Winds — when on, the storm pseudo-pet's
+  // powered-up state applies (WindSpeed debuffs + lightning folded into damage).
+  const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
   const globalBonuses = useGlobalBonuses();
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
@@ -566,7 +569,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       const applyEnh = resolved.copyCreatorMods;
       const result = calculateResolvedPseudoPetDamage(
         resolved, archetypeId ?? '', build.level,
-        applyEnh ? enhBonus : 0, applyEnh, globalBonus,
+        applyEnh ? enhBonus : 0, applyEnh, globalBonus, stormCellActive,
       );
       if (result) results.push({
         result, count: resolved.count ?? 1, duration: resolved.duration ?? summon.duration ?? 0,
@@ -621,7 +624,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       type: typeLabel,
       scale: 1,
     } as PowerDamageResult;
-  }, [calculatedDamage, effectivePower, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId]);
+  }, [calculatedDamage, effectivePower, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive]);
 
   // Resolved damage shown in the Damage block — direct first, pseudo-pet fallback.
   const resolvedDamage = calculatedDamage ?? pseudoPetDamage;
@@ -2099,7 +2102,8 @@ const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = {
   DefenseDebuff: { label: '-Defense', color: 'text-orange-400' },
   ResistanceDebuff: { label: '-Resistance', color: 'text-orange-400' },
   DamageDebuff: { label: '-Damage', color: 'text-orange-400' },
-  Slow: { label: 'Slow', color: 'text-teal-400' },
+  RechargeDebuff: { label: '-Recharge', color: 'text-teal-400' },
+  Slow: { label: '-Speed', color: 'text-teal-400' },
 };
 
 /** Expandable row for a single pet ability with damage */
@@ -2370,6 +2374,11 @@ function SingleEntityDisplay({
                       <div key={eff.type} className="flex items-baseline justify-between gap-1.5 text-[11px]">
                         <span className={`${display.color} truncate`}>
                           {display.label}{chanceLabel}
+                          {eff.conditional && (
+                            <span className="text-amber-500/70 italic ml-1" title="Only while the power is in its empowered/triggered state (e.g. Storm Cell's High Winds)">
+                              ⚡
+                            </span>
+                          )}
                           {eff.ignoreStrength && (
                             <span className="text-slate-500 italic ml-1" title="Ignores buffs and enhancements">
                               (unenh.)
@@ -2394,6 +2403,8 @@ function SingleEntityDisplay({
 
 export function PetDamageDisplay({ summon, level, enhancementDamageBonus, globalDamageBonus, archetypeId }: PetDamageDisplayProps) {
   const [upgradeTier, setUpgradeTier] = useState(0);
+  // "Storm Cell Active" / High Winds — empowered pseudo-pet display (WindSpeed + lightning).
+  const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
 
   // Build entity list from either entities array or single entity. Filter out
   // entries we don't have damage data for AND that look visual-only (e.g. Rain
@@ -2464,11 +2475,11 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
         label: re.displayName,
         result: calculateResolvedPseudoPetDamage(
           re, archetypeId ?? '', level,
-          applyEnh ? enhancementDamageBonus : 0, applyEnh, globalDamageBonus,
+          applyEnh ? enhancementDamageBonus : 0, applyEnh, globalDamageBonus, stormCellActive,
         ),
       };
     }).filter(r => r.result && r.result.allEffects.length > 0);
-  }, [summon.resolvedEntities, archetypeId, level, enhancementDamageBonus, globalDamageBonus]);
+  }, [summon.resolvedEntities, archetypeId, level, enhancementDamageBonus, globalDamageBonus, stormCellActive]);
 
   // Aggregate totals across all entities
   const totals = useMemo(() => {

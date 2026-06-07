@@ -68,8 +68,14 @@ export const StormCell: Power = {
               "damage": [],
               "effects": [
                 {
-                  "type": "Slow",
+                  "type": "RechargeDebuff",
                   "scale": 0.07,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "scale": 0.14,
                   "table": "Melee_Slow",
                   "ignoreStrength": true
                 },
@@ -85,7 +91,27 @@ export const StormCell: Power = {
               "activatePeriod": 0.2,
               "effectArea": "Sphere",
               "radius": 35,
-              "maxTargets": 16
+              "maxTargets": 16,
+              "poweredUpEffects": [
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.14,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Slow",
+                  "scale": 0.28,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "ToHitDebuff",
+                  "scale": 1.4,
+                  "table": "Ranged_Debuff_ToHit",
+                  "ignoreStrength": true
+                }
+              ]
             },
             {
               "name": "Lightning_Proc",
@@ -103,21 +129,24 @@ export const StormCell: Power = {
                 {
                   "type": "EndDrain",
                   "scale": 0.025,
-                  "table": "Ranged_EndDrain"
+                  "table": "Ranged_EndDrain",
+                  "conditional": true
                 },
                 {
                   "type": "Stun",
                   "magnitude": 3,
                   "scale": 4,
                   "table": "Ranged_Stun",
-                  "chance": 0.33
+                  "chance": 0.33,
+                  "conditional": true
                 },
                 {
                   "type": "Knockback",
                   "magnitude": 1,
                   "scale": 1,
                   "table": "Ranged_Knockback",
-                  "chance": 0.17
+                  "chance": 0.17,
+                  "conditional": true
                 }
               ],
               "recharge": 0,
@@ -131,5 +160,13 @@ export const StormCell: Power = {
         }
       ]
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "stormblast_instormcell",
+      "label": "Storm Cell Active",
+      "scope": "global",
+      "defaultActive": false
+    }
+  ]
 };

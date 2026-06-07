@@ -352,14 +352,41 @@ Follow-up #2 (DONE — branch `feat/pseudopet-named-shells`):
 - Tests: +Meteor (Create_Entity hop) +Sleet (`Pets_` fallback) → 15 redirect
   cases; full suite 202 green; tsc clean.
 
+Follow-up #3 (DONE — "Storm Cell Active" / High Winds toggle):
+- **Single global toggle.** `stormblast_instormcell` promoted to `scope: 'global'`
+  (relabeled "Storm Cell Active") — one switch shared across the Storm Blast set:
+  the attacks' in-cell bonuses AND the Storm Cell summon's powered-up state. The
+  summon powers don't generate the gate from their own effects (it lives on the
+  pseudo-pet), so a marker conditionalEffect is added to any power with a
+  `poweredUpEffects` ability (Storm Cell only — keeps Cat Five / Tide Pool out).
+- **WindSpeed live-swap.** `StormCell_WindSpeed` resolved + linked as Tempest's
+  `poweredUpEffects` (the variant isn't in the summon graph → explicit
+  `POWERED_UP_VARIANT` map). `calculateResolvedPseudoPetDamage(..., poweredUp)`:
+  toggle ON → Tempest→WindSpeed (−Rech 7→14%, −Speed 14→28%, −ToHit 4.9→9.8%,
+  matching in-game), the gated lightning folds into DPS, and ⚡ flags clear.
+  Wired into InfoPanel (headline + Creates block) and PowerInfoTooltip via
+  `useGlobalAdjuster('stormblast_instormcell')`.
+- **−Recharge split from −Speed.** Needed for a clean 2× swap (recharge + movement
+  both collapsed to one "Slow" before). `rechargetime` → `RechargeDebuff` (distinct
+  from movement `Slow`, now labeled "-Speed"); the niche aspect=Maximum −max-speed
+  cap is dropped. A net accuracy improvement across ~18 pseudo-pet powers (Storm
+  Cell, Static Field, Sleep Grenade, Glue Arrow, Paralyzing Blast, …) — matches how
+  the in-cell attack bonuses already display recharge vs speed separately.
+- 205 tests (incl. the powered-up swap + recharge-split assertions); tsc clean;
+  regen deterministic (53 generated files).
+
+The "Wet" status (Water/Storm Blast): set by attacks (mode 188) but has **no real
+mechanical consumer** in the player data (only Marine Affinity's Shifting Tides
+references `kWet`, and only to gate "not already wet") — effectively a flavor
+status, nothing to model.
+
 Remaining (smaller, not blocking):
-- **PET_ENTITIES-overlap redirect effects** (Bonfire/Burn/Liquefy): the pet entity
-  now gives damage via the existing path (Liquefy via the `Pets_` fallback), but any
-  EXTRA redirect-power effects beyond the pet's own abilities are still dropped —
-  needs a merge that doesn't double-count the pet damage.
-- Mode variants ("High Winds"/"Strong Lightning"); effects from a mode-gated
-  ability not yet flagged "while powered up"; conditional-damage "while powered up"
-  label; **PowerInfoTooltip parity** (hover tooltip still uses the old path only).
+- **PET_ENTITIES-overlap redirect effects** (Bonfire/Burn/Liquefy): damage works
+  via the `Pets_` fallback, but any EXTRA redirect-power effects beyond the pet's
+  own abilities are still dropped — needs a no-double-count merge.
+- Category Five's lightning "Eye" has no powered-up toggle (it's always at max
+  strength — correct), and "Strong Storm Cell Lightning" (2× lightning at very high
+  strength) isn't modeled. Visual in-app verify still pending (no debug port).
 
 Original framing (kept): Medium-large effort. High player-visible value (Bonfire,
 Burn, Freezing Rain, the storm/rain/patch family, Trick Arrow, Force Bubble, …).
