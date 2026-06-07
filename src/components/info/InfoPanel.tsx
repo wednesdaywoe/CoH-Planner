@@ -69,6 +69,12 @@ import {
   RegistryEffectsDisplay,
 } from './SharedPowerComponents';
 
+// Pseudo-pet summon durations at or above this are the data's "permanent"
+// sentinel (99999s) — a persistent attack pet whose real lifespan we can't
+// resolve off a generic shell. Used to skip a meaningless lifetime-total
+// damage figure for such pets. Real damage patches last seconds to a minute.
+const PERMANENT_PSEUDOPET_DURATION = 1000;
+
 export function InfoPanel() {
   const infoPanel = useUIStore((s) => s.infoPanel);
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
@@ -595,7 +601,14 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       // collapses for one-shot attack-summons like Lightning Rod and
       // Shield Charge where `activatePeriod` is a 100s marker and the
       // pet despawns after 1-4s — the pet fires exactly once at spawn.
-      if (duration <= 0) continue;
+      //
+      // A "permanent" pseudo-pet (the 99999s sentinel duration — persistent
+      // attack pets like Voltaic Sentinel whose real lifespan lives on a
+      // Self_Destruct we can't resolve off a generic shell) has no meaningful
+      // per-cast lifetime TOTAL: fires-per-spawn would be astronomical. Skip it
+      // here — its bounded DPS still shows in the power tooltip and its effects
+      // in the Summons block. Real damage patches last seconds, not hours.
+      if (duration <= 0 || duration >= PERMANENT_PSEUDOPET_DURATION) continue;
       for (const ab of result.abilities) {
         const isAuto = ab.ability.type === 'Auto';
         const period = ab.ability.activatePeriod ?? 0;

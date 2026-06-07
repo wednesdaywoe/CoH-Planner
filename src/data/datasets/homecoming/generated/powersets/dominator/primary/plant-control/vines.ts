@@ -55,6 +55,7 @@ export const Vines: Power = {
       "resolvedEntities": [
         {
           "displayName": "Vines",
+          "duration": 60,
           "copyCreatorMods": true,
           "abilities": [
             {

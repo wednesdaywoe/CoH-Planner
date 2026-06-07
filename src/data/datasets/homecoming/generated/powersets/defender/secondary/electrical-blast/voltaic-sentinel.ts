@@ -52,7 +52,38 @@ export const VoltaicSentinel: Power = {
         "Pets.VoltaicSentinel_PseudoPet.Electrical_Bolt",
         "Pets.VoltaicSentinel_PseudoPet.Electrical_Field"
       ],
-      "duration": 99999
+      "duration": 99999,
+      "resolvedEntities": [
+        {
+          "displayName": "Voltaic Sentinel",
+          "duration": 99999,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Electrical_Bolt",
+              "displayName": "Electrical Bolt",
+              "type": "Click",
+              "damage": [
+                {
+                  "damageType": "Energy",
+                  "scale": 0.56,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "EndDrain",
+                  "scale": 0.04,
+                  "table": "Ranged_EndDrain"
+                }
+              ],
+              "recharge": 1.25,
+              "castTime": 1,
+              "effectArea": "SingleTarget"
+            }
+          ]
+        }
+      ]
     }
   }
 };

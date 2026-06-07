@@ -57,6 +57,7 @@ export const GravityDistortionField: Power = {
       "resolvedEntities": [
         {
           "displayName": "Gravity Distortion Field",
+          "duration": 60,
           "copyCreatorMods": true,
           "abilities": [
             {

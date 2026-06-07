@@ -397,10 +397,53 @@ Up (`Replace`), Intensify's +Dmg/+ToHit use `stack: Stack, stack_limit: 2`, so i
 genuinely stacks to 2× (with a `Global_Chance_Mod` storm-strength boost that also
 stacks). Not a quirk.
 
+Follow-up #5 (DONE — shell-detection parity + PET_ENTITIES-overlap override):
+Investigated the "PET_ENTITIES-overlap (Bonfire/Burn/Liquefy)" backlog item; the
+real shape was different from the original framing. **Bonfire/Liquefy were already
+complete** — their redirect list IS the chassis's own intrinsic power
+(`Pets.Bonfire.Bonfire` / `Pets.Liquefy.Liquefy`), so the existing `Pets_` pet path
+covers them with nothing extra to merge. The actual gaps were that
+`attachResolvedPseudoPets` saw LESS than the main summon builder:
+- **Walked only `effects`, not `activation_effects`** → missed Burn's flame patch
+  (its EntCreate lives in `activation_effects`).
+- **Tested `entity_def` against the shell set, but for a P-hash `entity_def` the
+  shell name is in `priority_list`** → missed Freezing Rain (HC internal name
+  "Fog"!), Voltaic Sentinel (`Pet_NoCollision`), Sentinel Rain of Fire / Ice Storm
+  (`PL_StaticObject`).
+Fixes (all in `attachResolvedPseudoPets`, double-count-safe by construction —
+shells are verified absent from PET_ENTITIES):
+- Walk `effects` **and** `activation_effects`; resolve the effective entity via
+  `priority_list` when `entity_def` is a P-hash (mirrors the main builder).
+- Filter non-content redirects (`*.Avoid` AI hints, `*_Info`) alongside ResistAll.
+- A `chance:0` EntCreate sharing a base shell's signature is a conditional variant
+  (Burn's Fiery-Embrace bonus patch) → doesn't inflate the count.
+- Per-entity duration falls back to the summon-level lifespan (Tesla Coil / GDF /
+  Vines resolved entities gained their 60s window).
+- **Burn override (the genuine "overlap merge"):** blaster/sentinel/stalker Burn use
+  `entity_def="Burn"` → the stale `Pets_Burn` entity (Fire 0.06), but actually run
+  `Redirects.Fiery_Aura.Burn` (Fire 0.08) like the PL_StaticObject-chassis Burns.
+  Detected by a Redirects.* override + a SHELL `priority_list` (excludes Geode's
+  nested `Carin_Beacon`→"Geode" pet chain), resolved the redirect, and normalized
+  the chassis to `PL_StaticObject` so the 0.06 isn't counted alongside the 0.08
+  (the runtime renders the pet-entity path AND resolvedEntities as separate lists).
+  All six Burn variants now consistent.
+- **Permanent-pet guard (Voltaic Sentinel):** its EntCreate duration is the 99999
+  "permanent" sentinel (real lifespan is on a Self_Destruct unreachable off the
+  shell). A lifetime *total* over 99999s is meaningless, so the InfoPanel skips it
+  (`PERMANENT_PSEUDOPET_DURATION`); its bounded DPS still shows in the tooltip
+  (which already aggregates DPS, not a total) and its EndDrain in the Summons block.
+- 23 HC files gain `resolvedEntities` (Freezing Rain ×4, Burn ×6, Voltaic Sentinel
+  ×5 incl. Shocking Grasp, Sentinel RoF/IceStorm, + 6 duration additions); Rebirth
+  0 changes (inverted pattern, no shells); regen deterministic; +10 tests (218 green).
+- Sentinel inherent-damage split (`Melee_InherentDamage`) is kept in the data but
+  runtime-skipped (`getTableValue` returns undefined for it) → Fire counted once,
+  matching the direct-attack convention and the existing Sentinel Meteor/Cat Five.
+
 Remaining (smaller, not blocking):
-- **PET_ENTITIES-overlap redirect effects** (Bonfire/Burn/Liquefy): damage works
-  via the `Pets_` fallback, but any EXTRA redirect-power effects beyond the pet's
-  own abilities are still dropped — needs a no-double-count merge.
+- Voltaic Sentinel & other persistent attack pets show DPS (tooltip) + effects, but
+  no InfoPanel lifetime total — a DPS-mode headline for permanent pseudo-pets would
+  be the proper long-term fix. Burn's Fiery-Embrace bonus patch (a 2nd patch while
+  FE is active) isn't surfaced as a toggle (deliberate — temporary buff window).
 - Category Five's lightning "Eye" has no powered-up toggle (it's always at max
   strength — correct), and "Strong Storm Cell Lightning" (2× lightning at very high
   strength) isn't modeled. Visual in-app verify still pending (no debug port).

@@ -51,7 +51,44 @@ export const ShockingGrasp: Power = {
         "Pets.VoltaicSentinel_Dominator.Electrical_Bolt",
         "Pets.VoltaicSentinel_Dominator.Electrical_Field"
       ],
-      "duration": 60
+      "duration": 60,
+      "resolvedEntities": [
+        {
+          "displayName": "Voltaic Sentinel",
+          "duration": 60,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Electrical_Bolt",
+              "displayName": "Electrical Bolt",
+              "type": "Click",
+              "damage": [
+                {
+                  "damageType": "Energy",
+                  "scale": 0.84,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "EndDrain",
+                  "scale": 0.05,
+                  "table": "Ranged_Ones"
+                },
+                {
+                  "type": "RecoveryDebuff",
+                  "scale": 1,
+                  "table": "Ranged_Ones",
+                  "chance": 0.2
+                }
+              ],
+              "recharge": 3,
+              "castTime": 1,
+              "effectArea": "SingleTarget"
+            }
+          ]
+        }
+      ]
     }
   }
 };

@@ -8,6 +8,11 @@ import { TarPatch } from '@/data/datasets/homecoming/generated/powersets/defende
 import { Meteor } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/seismic-blast/meteor';
 import { Sleet } from '@/data/datasets/homecoming/generated/powersets/defender/primary/cold-domination/sleet';
 import { OilSlickArrow } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/trick-arrow/oil-slick-arrow';
+import { Burn as BlasterBurn } from '@/data/datasets/homecoming/generated/powersets/blaster/secondary/fire-manipulation/burn';
+import { Burn as TankerBurn } from '@/data/datasets/homecoming/generated/powersets/tanker/primary/fiery-aura/burn';
+import { Fog as FreezingRain } from '@/data/datasets/homecoming/generated/powersets/defender/primary/storm-summoning/fog';
+import { VoltaicSentinel } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/electrical-blast/voltaic-sentinel';
+import { RainofFire as SentinelRainOfFire } from '@/data/datasets/homecoming/generated/powersets/sentinel/primary/fire-blast/rain-of-fire';
 import type { ResolvedPseudoPet } from '@/types/power';
 
 /**
@@ -203,6 +208,99 @@ describe('pseudo-pet redirect resolution', () => {
       const r = calculatePetDamage('Pets_OilSlickBurn', 50, 1, summon.duration);
       expect(r).not.toBeNull();
       expect(r!.abilities.some(a => a.damageByType.some(d => d.type === 'Fire'))).toBe(true);
+    });
+  });
+
+  describe('Burn (PET_ENTITIES-overlap redirect override)', () => {
+    // All six Burn variants run the same Redirects.Fiery_Aura.Burn patch (Fire
+    // 0.08 / 0.8s). Three (tanker/brute/scrapper) summon it off a PL_StaticObject
+    // shell; three (blaster/sentinel/stalker) use entity_def "Burn" → the stale
+    // Pets_Burn entity (Fire 0.06). The chassis is normalized to PL_StaticObject so
+    // the 0.06 isn't counted ALONGSIDE the 0.08 redirect (the runtime renders the
+    // pet-entity path AND resolvedEntities as separate lists → would double-count).
+    it('normalizes the "Burn" chassis to the generic shell so the pet path finds nothing', () => {
+      expect(BlasterBurn.effects!.summon!.entity).toBe('PL_StaticObject');
+      expect(getPetEntity('PL_StaticObject')).toBeUndefined(); // no double-count
+    });
+
+    it('resolves the authoritative redirect patch (Fire 0.08 / 0.8s), not the stale 0.06 entity', () => {
+      const ab = BlasterBurn.effects!.summon!.resolvedEntities![0].abilities[0];
+      expect(ab.name).toBe('Burn');
+      expect(ab.activatePeriod).toBe(0.8);
+      expect(ab.damage).toEqual([{ damageType: 'Fire', scale: 0.08, table: 'Melee_Damage' }]);
+    });
+
+    it('the shell-chassis Burns resolve the identical patch (cross-AT consistency)', () => {
+      const tank = TankerBurn.effects!.summon!.resolvedEntities![0].abilities[0];
+      expect(tank.damage).toEqual([{ damageType: 'Fire', scale: 0.08, table: 'Melee_Damage' }]);
+    });
+
+    it('does NOT collapse the Fiery-Embrace bonus patch into the base count', () => {
+      // scrapper Burn carries a chance:0 Fiery-Embrace duplicate EntCreate sharing
+      // the base signature — it must not bump count to 2 (a conditional variant).
+      const re = BlasterBurn.effects!.summon!.resolvedEntities![0];
+      expect(re.count).toBeUndefined(); // i.e. count === 1
+    });
+  });
+
+  describe('Freezing Rain (P-hash priority_list shell)', () => {
+    // entity_def is an opaque P-hash; the shell name (PL_StaticObject) lives in
+    // priority_list. The resolver mirrors the main builder's P-hash resolution.
+    const re = FreezingRain.effects!.summon!.resolvedEntities![0];
+    const fr = re.abilities.find(a => a.name === 'FreezingRain')!;
+
+    it('surfaces the signature -res / -def / -rech / slow debuff kit', () => {
+      const byType = (t: string) => fr.effects!.find(e => e.type === t);
+      expect(byType('ResistanceDebuff')).toMatchObject({ ignoreStrength: true });
+      expect(byType('ResistanceDebuff')!.table).toMatch(/Res_Dmg/i);
+      expect(byType('DefenseDebuff')).toBeDefined();
+      expect(byType('RechargeDebuff')).toBeDefined();
+      expect(byType('Slow')).toBeDefined();
+    });
+
+    it('carries minor Cold damage scaled off the summoner AT', () => {
+      expect(fr.damage.some(d => d.damageType === 'Cold')).toBe(true);
+      const r = calculateResolvedPseudoPetDamage(re, 'defender', 50);
+      expect(r!.abilities.some(a => a.damageByType.some(d => d.type === 'Cold' && d.base > 0))).toBe(true);
+    });
+  });
+
+  describe('Voltaic Sentinel (Pet_NoCollision shell, permanent pet)', () => {
+    const summon = VoltaicSentinel.effects!.summon!;
+    const re = summon.resolvedEntities![0];
+
+    it('resolves the bolt (Energy damage + EndDrain) off the generic mobile shell', () => {
+      expect(getPetEntity(summon.entity!)).toBeUndefined(); // Pet_NoCollision → no double-count
+      const bolt = re.abilities.find(a => a.name === 'Electrical_Bolt')!;
+      expect(bolt.damage.some(d => d.damageType === 'Energy')).toBe(true);
+      expect(bolt.effects!.some(e => e.type === 'EndDrain')).toBe(true);
+    });
+
+    it('is a "permanent" pet (99999s sentinel) — total-damage is suppressed in the panel, DPS is bounded', () => {
+      // The InfoPanel skips a lifetime TOTAL for these (PERMANENT_PSEUDOPET_DURATION);
+      // the calc still yields a bounded per-hit / DPS the tooltip shows.
+      expect(re.duration).toBeGreaterThanOrEqual(1000);
+      const r = calculateResolvedPseudoPetDamage(re, 'blaster', 50)!;
+      expect(r.totalDpsBase).toBeGreaterThan(0);
+      expect(Number.isFinite(r.totalDpsBase)).toBe(true);
+    });
+  });
+
+  describe('Sentinel Rain of Fire (inherent-damage split, no double-count)', () => {
+    const re = SentinelRainOfFire.effects!.summon!.resolvedEntities![0];
+
+    it('keeps both Melee_Damage and Melee_InherentDamage entries in the data', () => {
+      const fr = re.abilities.find(a => a.name === 'RainofFire')!;
+      const tables = fr.damage.filter(d => d.damageType === 'Fire').map(d => d.table);
+      expect(tables).toContain('Melee_Damage');
+      expect(tables).toContain('Melee_InherentDamage');
+    });
+
+    it('counts the Fire hit ONCE at runtime (inherent table is unknown → skipped, not doubled)', () => {
+      const r = calculateResolvedPseudoPetDamage(re, 'sentinel', 50)!;
+      const fire = r.abilities.flatMap(a => a.damageByType).filter(d => d.type === 'Fire');
+      expect(fire).toHaveLength(1); // Melee_InherentDamage contributes nothing
+      expect(fire[0].base).toBeGreaterThan(0);
     });
   });
 

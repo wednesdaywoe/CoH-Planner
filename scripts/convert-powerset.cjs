@@ -1135,59 +1135,124 @@ function _parseDurationSeconds(str) {
 }
 
 /**
- * Walk a raw power's effect tree for every EntCreate AttribMod whose entity_def
- * is a generic location shell, resolve each one's redirect list into a
+ * Walk a raw power's effect tree for every EntCreate AttribMod whose summoned
+ * entity is a generic location shell, resolve each one's redirect list into a
  * synthesized ability list, and attach them as `summon.resolvedEntities`.
  *
- * Distinguishes pseudo-pets by entity_def + redirect-list signature so a power
- * that summons two DIFFERENT shells (Category Five's 20s storm + 17s lightning
- * "Eye") keeps BOTH — fixing the EntCreate collapse where the converter treated
- * a repeated entity_def as one pet with entityCount=2 and dropped the second
- * redirect list. Identical lists (true multi-copy summons) collapse to a count.
+ * Distinguishes pseudo-pets by effective-entity + redirect-list signature so a
+ * power that summons two DIFFERENT shells (Category Five's 20s storm + 17s
+ * lightning "Eye") keeps BOTH — fixing the EntCreate collapse where the
+ * converter treated a repeated entity_def as one pet with entityCount=2 and
+ * dropped the second redirect list. Identical lists (true multi-copy summons)
+ * collapse to a count.
+ *
+ * Resolution must see exactly what the runtime sees, so it matches the main
+ * summon builder on two points it previously missed:
+ *  - **activation_effects.** Some patches put the EntCreate there, not in
+ *    `effects` (Burn's flame patch). Walk both arrays.
+ *  - **P-hash entity_def.** When entity_def is an opaque P-hash (P1985334123),
+ *    the real shell name lives in `priority_list` (Freezing Rain / Sentinel Rain
+ *    of Fire → PL_StaticObject, Voltaic Sentinel → Pet_NoCollision). Resolve the
+ *    effective entity the same way before testing it against the shell set.
+ *
+ * Double-count-safe by construction: a shell is only resolved when the effective
+ * entity is in PSEUDOPET_SHELL_ENTITIES, which are verified absent from
+ * PET_ENTITIES — so powers whose P-hash resolves to a real pet (non-Sentinel
+ * Rain of Fire → Pets_RainofFire, Bonfire → Pets_Bonfire, Liquefy → Pets_Liquefy)
+ * are NOT matched here and keep the existing pet-damage path untouched.
+ *
+ * One exception: a real-pet chassis whose content is delivered by an EXTERNAL
+ * Redirects.* override (Burn → entity_def "Burn" but runs Redirects.Fiery_Aura.Burn)
+ * IS resolved here, and its chassis is then normalized off the pet-damage path so
+ * the stale intrinsic damage isn't double-counted. Intrinsic redirects that name
+ * the chassis's own power (Bonfire → Pets.Bonfire.Bonfire) are left alone.
  */
 function attachResolvedPseudoPets(powerJson, effects) {
   if (!effects || !effects.summon) return;
 
-  const shells = []; // { entityDef, displayName, duration, redirects }
-  (function walk(effs) {
+  const shells = []; // { signature, displayName, duration, redirects, chance, override? }
+  const walk = (effs) => {
     for (const e of effs || []) {
+      const chance = (e.chance === undefined || e.chance === null) ? 1 : e.chance;
       for (const t of e.templates || []) {
         if (!(t.attribs || []).includes('Create_Entity')) continue;
         const p = t.params || {};
-        if (p.type !== 'EntCreate' || !PSEUDOPET_SHELL_ENTITIES.has(p.entity_def)) continue;
-        // Drop pet self-survivability redirects (ResistAll) before signing.
-        const redirects = (p.redirects || []).filter(r => !/resistall/i.test(r));
+        if (p.type !== 'EntCreate') continue;
+        // Effective shell name: priority_list when entity_def is an opaque P-hash,
+        // otherwise entity_def itself (mirrors the main summon builder).
+        const effectiveEntity = /^P\d+$/.test(p.entity_def || '') ? p.priority_list : p.entity_def;
+        // Drop non-content redirects before signing: ResistAll (pet
+        // survivability), *.Avoid (AI hint that makes foes path around the
+        // patch), *_Info (tooltip-only). What's left is the real payload.
+        const redirects = (p.redirects || []).filter(r => !/(resistall|\.avoid$|_info$)/i.test(r));
         if (redirects.length === 0) continue;
+        const isShell = PSEUDOPET_SHELL_ENTITIES.has(effectiveEntity);
+        // Override case: a NAMED pet chassis (entity_def resolves to a real
+        // PET_ENTITIES pet) whose content is delivered by an EXTERNAL Redirects.*
+        // power that supersedes the chassis's intrinsic abilities. Burn's
+        // entity_def "Burn" → Pets_Burn (Fire 0.06), but it actually runs
+        // Redirects.Fiery_Aura.Burn (Fire 0.08) — the same redirect the
+        // PL_StaticObject-chassis Burns (tanker/brute/scrapper) use. The chassis's
+        // stale 0.06 must NOT also be counted (double-count), so resolve the
+        // redirect AND record the chassis to normalize away below. The
+        // discriminator is the Redirects.* namespace: intrinsic redirects name the
+        // chassis's own power (Bonfire → Pets.Bonfire.Bonfire, Liquefy →
+        // Pets.Liquefy.Liquefy) and are correctly left on the pet-damage path.
+        // Gated on a SHELL priority_list: a genuine "chassis replaced by redirect"
+        // summon falls back to a generic location shell (Burn → PL_StaticObject),
+        // whereas a real nested-pet chain falls back to another pet (Geode's
+        // Carin_Beacon → "Geode") and must be left untouched.
+        const override = (!isShell && PSEUDOPET_SHELL_ENTITIES.has(p.priority_list)
+          && redirects.some(r => /^redirects\./i.test(r)))
+          ? { chassis: p.entity_def, shell: p.priority_list }
+          : null;
+        if (!isShell && !override) continue;
         shells.push({
-          entityDef: p.entity_def,
+          // Group key uses the effective shell (or chassis for overrides) +
+          // redirect signature so distinct payloads stay separate.
+          signature: `${isShell ? effectiveEntity : p.entity_def}|${redirects.join(',')}`,
           displayName: p.display_name,
           duration: _parseDurationSeconds(t.duration),
           redirects,
+          chance,
+          override,
         });
       }
       walk(e.child_effects);
     }
-  })(powerJson.effects);
+  };
+  walk(powerJson.effects);
+  walk(powerJson.activation_effects);
 
   if (shells.length === 0) return;
 
-  // Group by entity_def + redirect signature; dedup identical lists to a count.
+  // Group by effective entity + redirect signature. Identical signatures collapse
+  // to a count — but only chance>0 occurrences count as real simultaneous copies.
+  // A chance:0 EntCreate sharing a base shell's signature is a conditional variant
+  // (Burn's Fiery-Embrace bonus patch fires only while FE is active), NOT a second
+  // permanent patch, so it must not inflate the count.
   const byKey = new Map();
   for (const s of shells) {
-    const key = `${s.entityDef}|${s.redirects.join(',')}`;
-    if (byKey.has(key)) { byKey.get(key).count++; continue; }
-    byKey.set(key, { ...s, count: 1 });
+    if (byKey.has(s.signature)) { byKey.get(s.signature).occurrences.push(s); continue; }
+    byKey.set(s.signature, { ...s, occurrences: [s] });
   }
 
   const resolved = [];
+  const overrides = []; // { chassis, shell } for pet-path normalization
   for (const g of byKey.values()) {
     const abilities = resolveSummonRedirects(g.redirects);
     if (abilities.length === 0) continue;
+    const count = g.occurrences.filter(o => o.chance > 0).length || 1;
+    // Per-entity lifespan: prefer the EntCreate's own Duration (Category Five's
+    // two shells have distinct 20s/17s windows); fall back to the summon-level
+    // duration the main builder already resolved (pet-lifespan cascade).
+    const duration = g.duration || effects.summon.duration;
+    if (g.override) overrides.push(g.override);
     resolved.push({
       displayName: g.displayName || effects.summon.displayName
         || powerJson.display_name || powerJson.name || 'Summoned Effect',
-      ...(g.duration ? { duration: g.duration } : {}),
-      ...(g.count > 1 ? { count: g.count } : {}),
+      ...(duration ? { duration } : {}),
+      ...(count > 1 ? { count } : {}),
       // Location pseudo-pets created by a player power inherit the summoner's
       // modifiers: no explicit CopyBoosts flag on these shells, but the parent
       // powers allow Damage enhancement and in-game numbers scale off the
@@ -1198,7 +1263,25 @@ function attachResolvedPseudoPets(powerJson, effects) {
     });
   }
 
-  if (resolved.length > 0) effects.summon.resolvedEntities = resolved;
+  if (resolved.length === 0) return;
+  effects.summon.resolvedEntities = resolved;
+
+  // Normalize an overridden pet chassis off the pet-damage path so its stale
+  // intrinsic damage isn't counted alongside the resolved redirect (the runtime
+  // renders summon.entity AND resolvedEntities as separate lists). Point the
+  // single-entity summon at the generic shell fallback (priority_list) — which
+  // resolves to nothing in PET_ENTITIES — making the six Burn variants identical
+  // (entity=PL_StaticObject + resolved redirect). Drop the entity outright if the
+  // fallback isn't a known shell. Only touches single-entity summons that match a
+  // detected override; multi-entity summons (summon.entities) are left untouched.
+  if (!effects.summon.entities) {
+    for (const { chassis, shell } of overrides) {
+      if (effects.summon.entity !== chassis) continue;
+      if (PSEUDOPET_SHELL_ENTITIES.has(shell)) effects.summon.entity = shell;
+      else delete effects.summon.entity;
+      delete effects.summon.entityCount;
+    }
+  }
 }
 
 /**

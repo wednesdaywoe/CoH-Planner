@@ -56,6 +56,7 @@ export const ParalyzingBlast: Power = {
       "resolvedEntities": [
         {
           "displayName": "Tesla Coil",
+          "duration": 60,
           "copyCreatorMods": true,
           "abilities": [
             {

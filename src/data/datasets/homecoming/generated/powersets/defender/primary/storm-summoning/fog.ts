@@ -52,7 +52,66 @@ export const Fog: Power = {
         "Pets.Freezing_Rain.FreezingRain",
         "Pets.Freezing_Rain.Avoid"
       ],
-      "duration": 15
+      "duration": 15,
+      "resolvedEntities": [
+        {
+          "displayName": "Freezing Rain",
+          "duration": 15,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "FreezingRain",
+              "displayName": "FreezingRain",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Cold",
+                  "scale": 0.009,
+                  "table": "Ranged_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.56,
+                  "table": "Ranged_Slow"
+                },
+                {
+                  "type": "RechargeDebuff",
+                  "scale": 0.4,
+                  "table": "Ranged_Slow",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "DefenseDebuff",
+                  "scale": 2.4,
+                  "table": "Ranged_Debuff_Def"
+                },
+                {
+                  "type": "ResistanceDebuff",
+                  "scale": 4,
+                  "table": "Ranged_Debuff_Res_Dmg",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 0.1,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true,
+                  "chance": 0.05
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

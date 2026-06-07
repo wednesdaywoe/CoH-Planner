@@ -47,7 +47,47 @@ export const RainofFire: Power = {
         "Pets.RainofFire_Sentinel.Avoid",
         "Pets.RainofFire_Sentinel.RainofFire"
       ],
-      "duration": 15
+      "duration": 15,
+      "resolvedEntities": [
+        {
+          "displayName": "Rain of Fire",
+          "duration": 15,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "RainofFire",
+              "displayName": "RainofFire",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Fire",
+                  "scale": 0.0218,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Fire",
+                  "scale": 0.0218,
+                  "table": "Melee_InherentDamage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Slow",
+                  "scale": 0.4,
+                  "table": "Melee_Slow",
+                  "ignoreStrength": true
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 0.2,
+              "effectArea": "Sphere",
+              "radius": 25,
+              "maxTargets": 10
+            }
+          ]
+        }
+      ]
     }
   }
 };
