@@ -2048,6 +2048,172 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "",
     unique: "Unique"
   },
+
+  // ============================================
+  // Rebirth-only special/proc pieces (interim, hand-curated).
+  // Effect descriptions are binary-sourced (followed the Create_Entity /
+  // Null / Set_Mode redirects in the Rebirth bins to the real granted/summoned
+  // power), but `ppm` is intentionally null: the Rebirth bins don't expose a
+  // clean PPM for these and null keeps them out of the proc-damage calc.
+  // These restore the proc-effect tooltip (was blank — no PROC_DATABASE entry).
+  // To be superseded by binary-sourced proc effects. See [[proc-piece-name-misresolution]].
+  // ============================================
+  "Imperial Might: Chance for Knockdown": {
+    setCategory: "Knockback",
+    setName: "Imperial Might",
+    ioName: "Chance for Knockdown",
+    ppm: null,
+    mechanics: "Foe(Knockback Mag 0.67 = Knockdown); converts your Knockback to Knockdown",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: ""
+  },
+  "Absolute Resolution: Chance for Energy Damage": {
+    setCategory: "Guardian ATO",
+    setName: "Absolute Resolution",
+    ioName: "Chance for Energy Damage",
+    ppm: null,
+    mechanics: "Damage(Energy 7 - 72)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "ATO",
+    unique: "Unique"
+  },
+  "Superior Absolute Resolution: Chance for Energy Damage": {
+    setCategory: "Guardian ATO",
+    setName: "Superior Absolute Resolution",
+    ioName: "Chance for Energy Damage",
+    ppm: null,
+    mechanics: "Damage(Energy 72)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "ATO",
+    unique: "Unique"
+  },
+  "Guardian's Gift: Chance for PBAoE Resolve": {
+    setCategory: "Guardian ATO",
+    setName: "Guardian's Gift",
+    ioName: "Chance for PBAoE Resolve",
+    ppm: null,
+    mechanics: "PBAoE allies: Absorb + Mez Protection + Mez Resistance for 15s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "ATO",
+    unique: "Unique"
+  },
+  "Superior Guardian's Gift: Chance for PBAoE Resolve": {
+    setCategory: "Guardian ATO",
+    setName: "Superior Guardian's Gift",
+    ioName: "Chance for PBAoE Resolve",
+    ppm: null,
+    mechanics: "PBAoE allies: Absorb + Mez Protection + Mez Resistance for 15s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "ATO",
+    unique: "Unique"
+  },
+  "The Haunting: Chance to Summon Haunts": {
+    setCategory: "Fear",
+    setName: "The Haunting",
+    ioName: "Chance to Summon Haunts",
+    ppm: null,
+    mechanics: "Foe: chance to summon Haunt ghosts",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "Event",
+    unique: "Unique"
+  },
+  "Superior Haunting: Chance to Summon Haunts": {
+    setCategory: "Fear",
+    setName: "Superior Haunting",
+    ioName: "Chance to Summon Haunts",
+    ppm: null,
+    mechanics: "Foe: chance to summon Haunt ghosts",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "Event",
+    unique: "Unique"
+  },
+  "Vampire's Bite: Chance for Heal": {
+    setCategory: "Halloween",
+    setName: "Vampire's Bite",
+    ioName: "Chance for Heal",
+    ppm: null,
+    mechanics: "Chance to Heal (self/ally)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "Event",
+    unique: "Unique"
+  },
+  "Superior Vampire's Bite: Chance for Heal": {
+    setCategory: "Halloween",
+    setName: "Superior Vampire's Bite",
+    ioName: "Chance for Heal",
+    ppm: null,
+    mechanics: "Chance to Heal (self/ally)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "Event",
+    unique: "Unique"
+  },
+  "Return From The Grave: Chance for Self Resurrect": {
+    setCategory: "Brute ATO",
+    setName: "Return From The Grave",
+    ioName: "Chance for Self Resurrect",
+    ppm: null,
+    mechanics: "On defeat: chance to self-resurrect with Heal + Endurance",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "ATO",
+    unique: "Unique"
+  },
+  "Superior Return From The Grave: Chance for Self Resurrect": {
+    setCategory: "Brute ATO",
+    setName: "Superior Return From The Grave",
+    ioName: "Chance for Self Resurrect",
+    ppm: null,
+    mechanics: "On defeat: chance to self-resurrect with Heal + Endurance",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "ATO",
+    unique: "Unique"
+  },
+  "Superior Winter's Gift: Slow Resistance": {
+    setCategory: "Universal Travel",
+    setName: "Superior Winter's Gift",
+    ioName: "Slow Resistance",
+    ppm: null,
+    mechanics: "Resist(-Speed 25% & -Recharge 25%)",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "50",
+    pool: "Event",
+    unique: "Unique"
+  },
+  "Inexhaustibility: Chance for Heal/Endurance/Regen": {
+    setCategory: "Rest",
+    setName: "Inexhaustibility",
+    ioName: "Chance for Heal, Endurance, Regeneration",
+    ppm: null,
+    mechanics: "50% chance: Heal + Endurance + Regeneration",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "1--50",
+    pool: "",
+    unique: "Unique"
+  },
 };
 
 /**

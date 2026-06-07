@@ -19797,7 +19797,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Chance",
+        "name": "Knockback Protection",
         "num": 3,
         "proc": true,
         "unique": false
@@ -20054,7 +20054,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Chance",
+        "name": "Chance for Knockback",
         "num": 6,
         "proc": true,
         "unique": false

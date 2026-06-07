@@ -281,11 +281,18 @@ HC_PIECE_ASPECT_OVERRIDES: dict[str, dict[int, list[str]]] = {
 HC_PIECE_PATCHES: dict[str, dict[int, dict]] = {
     'luck_of_the_gambler':       {6: {'name': 'Defense/+Recharge', 'proc': True}},
     'gift_of_the_ancients':      {6: {'name': 'Defense/+Run Speed', 'proc': True}},
-    'steadfast_protection':      {2: {'name': 'Damage Resistance/+Def(All)', 'proc': True}},
+    'steadfast_protection':      {2: {'name': 'Damage Resistance/+Def(All)', 'proc': True},
+                                  3: {'name': 'Knockback Protection', 'proc': True}},
     'reactive_defenses':         {6: {'name': '+Res(All)', 'proc': True}},
     'thrust':                    {4: {'name': 'Run/+Run Speed', 'proc': True}},
     'warp':                      {4: {'name': 'Range/+Perception', 'proc': True}},
     'launch':                    {4: {'name': 'Jump/+Jump Height/+Max Jump Height', 'proc': True}},
+    # Stupefy #6 is a Chance-for-Knockback proc (not a global): the binary
+    # can't label a Knockback proc effect (no _PROC_EFFECT_LABEL entry), so it
+    # falls back to bare "Chance". Without the real name, findProcData's set
+    # fallback returns the wrong Stupefy entry (the generic "Chance for Stun"
+    # sits before "Chance for Knockback" in PROC_DATABASE).
+    'stupefy':                   {6: {'name': 'Chance for Knockback', 'proc': True}},
     'assassins_mark':            {6: {'name': 'Recharge/Chance for Recharge Power', 'proc': True}},
     'superior_assassins_mark':   {6: {'name': 'Recharge/Chance for Recharge Power', 'proc': True}},
     'essence_transfer':          {6: {'name': 'Recharge/Chance for +Health', 'proc': True}},
