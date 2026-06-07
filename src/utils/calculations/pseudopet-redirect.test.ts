@@ -7,6 +7,7 @@ import { CategoryFive } from '@/data/datasets/homecoming/generated/powersets/bla
 import { TarPatch } from '@/data/datasets/homecoming/generated/powersets/defender/primary/dark-miasma/tar-patch';
 import { Meteor } from '@/data/datasets/homecoming/generated/powersets/blaster/primary/seismic-blast/meteor';
 import { Sleet } from '@/data/datasets/homecoming/generated/powersets/defender/primary/cold-domination/sleet';
+import { OilSlickArrow } from '@/data/datasets/homecoming/generated/powersets/controller/secondary/trick-arrow/oil-slick-arrow';
 import type { ResolvedPseudoPet } from '@/types/power';
 
 /**
@@ -180,6 +181,28 @@ describe('pseudo-pet redirect resolution', () => {
       const types = new Set(dmg.map(d => d.damageType));
       expect(types.has('Fire')).toBe(true);
       expect(types.has('Smashing')).toBe(true);
+    });
+  });
+
+  describe('Oil Slick Arrow (ignited conditional entity)', () => {
+    const summon = OilSlickArrow.effects!.summon!;
+
+    it('base summon is the inert oil slick; the burn patch is a conditional entity', () => {
+      expect(summon.entity).toBe('Pets_OilSlickOil'); // inert: KB/Slow/-Def, no damage
+      const ce = summon.conditionalEntities!;
+      expect(ce).toHaveLength(1);
+      expect(ce[0]).toMatchObject({ entity: 'Pets_OilSlickBurn', toggleId: 'oilslick_ignited' });
+    });
+
+    it('surfaces an "Oil Slick Ignited" per-power toggle', () => {
+      const toggle = OilSlickArrow.conditionalEffects!.find(c => c.id === 'oilslick_ignited')!;
+      expect(toggle).toMatchObject({ scope: 'per-power', label: 'Oil Slick Ignited' });
+    });
+
+    it('the ignited burn entity carries enhanceable Fire damage', () => {
+      const r = calculatePetDamage('Pets_OilSlickBurn', 50, 1, summon.duration);
+      expect(r).not.toBeNull();
+      expect(r!.abilities.some(a => a.damageByType.some(d => d.type === 'Fire'))).toBe(true);
     });
   });
 

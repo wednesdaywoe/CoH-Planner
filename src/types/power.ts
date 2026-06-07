@@ -220,6 +220,13 @@ export interface SummonEffect {
   /** Multi-entity summons (e.g., Mastermind henchmen with different entity types) */
   entities?: { entity: string; count: number }[];
   /**
+   * Triggered pet entities gated behind a toggle — a SEPARATE PET_ENTITIES entity
+   * that only applies when activated (Oil Slick Arrow's `Pets_OilSlickBurn` damage
+   * patch, created when the oil is ignited by fire/energy). Off by default; the
+   * runtime folds its (enhanceable) damage into the totals when the toggle is on.
+   */
+  conditionalEntities?: { entity: string; toggleId: string; label: string }[];
+  /**
    * Pseudo-pets resolved from `powers` (redirect lists) at convert time, for
    * location pseudo-pets whose entity_def is a generic shell not backed by a
    * PET_ENTITIES record (Storm Cell, Category Five, Freezing Rain, …). Each

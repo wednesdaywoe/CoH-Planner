@@ -73,6 +73,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
   const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
+  const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
   const globalBonuses = useGlobalBonuses();
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
@@ -218,6 +219,12 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       entityList.push({ entityName: summon.entity, count: summon.entityCount || 1 });
     }
     const resolvedList = summon.resolvedEntities ?? [];
+    // Conditional ("ignited") entities fold in only when their per-power toggle is on.
+    for (const ce of summon.conditionalEntities ?? []) {
+      if (mechanicAdjusters[`${basePower!.internalName}:${ce.toggleId}`]) {
+        entityList.push({ entityName: ce.entity, count: 1 });
+      }
+    }
     if (entityList.length === 0 && resolvedList.length === 0) return null;
 
     const globalDmgBonus = globalBonusesForCalc.damage || 0;
@@ -252,7 +259,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     }
 
     return results.length > 0 ? { results, base, enhanced, final: final_ } : null;
-  }, [basePower?.effects?.summon, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive]);
+  }, [basePower?.effects?.summon, basePower?.internalName, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
 
   // Pseudo-pet enhanceable debuffs (Glue Arrow's slow, etc.) surfaced into the
   // Power Effects block — mirrors InfoPanel. Merged into `effects` below so the

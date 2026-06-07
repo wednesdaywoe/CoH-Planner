@@ -1095,6 +1095,20 @@ const POWERED_UP_VARIANT = {
   StormCell_Tempest_Sentinel: 'Redirects.Storm_Blast.StormCell_WindSpeed_Sentinel',
 };
 
+// "Ignited" variant of a summoned pet entity — a SEPARATE PET_ENTITIES entity
+// created when the base patch is triggered (Oil Slick Arrow: the inert oil slick
+// `Pets_OilSlickOil` becomes the burning damage patch `Pets_OilSlickBurn` when
+// ignited by a fire/energy power). The burn entity isn't in the summon graph
+// (the igniting power spawns it), so link it explicitly. Surfaced as a
+// conditional ("Oil Slick Ignited") entity whose enhanceable Fire damage folds
+// into the totals when the toggle is on. Keyed by the resolved (priority_list)
+// entity name; covers the AT variants.
+const IGNITED_ENTITY_VARIANT = {
+  Pets_OilSlickOil: 'Pets_OilSlickBurn',
+  Pets_OilSlickOil_Blaster: 'Pets_OilSlickBurn_Blaster',
+  Pets_OilSlickOil_Corruptor: 'Pets_OilSlickBurn_Corruptor',
+};
+
 // Generic location-shell entity_defs that are NOT backed by a PET_ENTITIES
 // record — their content lives entirely in the EntCreate redirect list. Scoped
 // deliberately to the pure-location markers verified absent from PET_ENTITIES;
@@ -3267,6 +3281,18 @@ function extractEffects(templates, powerName) {
     delete effects.summon._phashPriorityList;
   }
 
+  // Ignited variant (Oil Slick Arrow): the summoned entity has a separate
+  // "ignited" damage entity created when triggered by fire/energy. Surface it as
+  // a conditional entity gated behind an "Oil Slick Ignited" toggle so its
+  // enhanceable Fire damage can fold into the totals (off by default — the patch
+  // does no damage unless ignited by another power).
+  const ignitedVariant = effects.summon && IGNITED_ENTITY_VARIANT[effects.summon.entity];
+  if (ignitedVariant) {
+    effects.summon.conditionalEntities = [
+      { entity: ignitedVariant, toggleId: 'oilslick_ignited', label: 'Oil Slick Ignited' },
+    ];
+  }
+
   return effects;
 }
 
@@ -4058,6 +4084,18 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
       power.conditionalEffects = [
         ...(power.conditionalEffects || []),
         { id: 'stormblast_instormcell', label: 'Storm Cell Active', scope: 'global', defaultActive: false },
+      ];
+    }
+  }
+
+  // Conditional summon entities (Oil Slick Arrow's ignited burn patch) — surface
+  // a per-power toggle so the InfoPanel can fold the triggered entity's damage in.
+  for (const ce of power.effects?.summon?.conditionalEntities ?? []) {
+    const exists = (power.conditionalEffects || []).some(c => c.id === ce.toggleId);
+    if (!exists) {
+      power.conditionalEffects = [
+        ...(power.conditionalEffects || []),
+        { id: ce.toggleId, label: ce.label, scope: 'per-power', defaultActive: false },
       ];
     }
   }
