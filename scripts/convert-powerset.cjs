@@ -840,36 +840,42 @@ function classifyPseudoPetEffect(template) {
 }
 
 /**
-/**
- * Determine the chance at which a redirect's damage actually lands. The binary
- * gates a lot of pseudo-pet damage: storm-strength escalation carries a `chance:0`
- * sentinel (Storm Cell's `Lightning_Proc` — "only while High Winds is active")
- * and proc lightning a `chance:0.25` group (`Category_Five_Lightning`), while the
- * base storm damage is `chance:1` (guaranteed). Returns the MAX cumulative chance
- * along any path reaching a damage template (following Execute_Power) — i.e. the
- * highest-uptime damage path. < 1 ⇒ the damage is conditional and must NOT be
- * summed into the guaranteed headline DoT (it would overstate, e.g. Storm Cell's
- * 1908). Mirrors collectTemplatesDeep's skips (PvP-only, dead-state, AT-dup gates).
+ * Like collectTemplatesDeep, but returns `{ template, chance, gated }` per leaf —
+ * preserving the cumulative group chance and a mode-gate flag the flat collector
+ * discards. The binary gates pseudo-pet damage AND effects: storm-strength
+ * escalation carries a `chance:0` sentinel (Storm Cell's `Lightning_Proc` /
+ * the 33% lightning stun — "only while High Winds is active"), proc lightning a
+ * `chance:0.25` group (`Category_Five_Lightning`), base storm `chance:1`. A
+ * `chance:0` group is a mode GATE (sets `gated`, keeps the cumulative chance so a
+ * within-mode 33% stun survives), not literal 0%. Follows Execute_Power; mirrors
+ * collectTemplatesDeep's skips (PvP-only, dead-state, AT-dup gates, empty procs).
  */
-function _redirectDamageChance(effects, visited, depth, cumChance) {
+function collectTemplatesWithChance(effects, visited = new Set(), depth = 0, cumChance = 1, gated = false) {
   const MAX_DEPTH = 3;
-  let hasDamage = false;
-  let maxChance = 0;
-  const note = (c) => { hasDamage = true; if (c > maxChance) maxChance = c; };
+  const out = []; // { template, chance, gated }
 
   for (const effect of effects || []) {
     if (effect.is_pvp === 'PVP_ONLY') continue;
-    // chance:0 with a payload = storm-strength gating (kept by collectTemplatesDeep);
-    // propagate it as 0 so gated damage reads as conditional.
-    const groupChance = (effect.chance === undefined || effect.chance === null) ? 1 : effect.chance;
-    const c = cumChance * groupChance;
+    // chance:0 with NO payload = proc placeholder → skip; WITH payload it's a
+    // storm-strength/mode GATE (mirrors collectTemplatesDeep keeping it).
+    const hasPayload = (effect.templates && effect.templates.length > 0)
+      || (effect.child_effects && effect.child_effects.length > 0);
+    if ((effect.chance === 0 || effect.chance === 0.0) && !hasPayload) continue;
+    if (effect.tags && effect.tags.includes('Containment')) continue;
     if (effect.requires_expression) {
       const req = effect.requires_expression;
       if (req.includes('kHitPoints == 0')) continue;
       if (req.includes('kMeter > 0') || req.includes('kMeter >=')) continue;
       if (req.includes('rand()')) continue;
-      if (_isConditionalGate(req)) continue; // AT-dup / state branch — not the base hit
+      if (_isConditionalGate(req)) continue; // AT-dup / state branch
     }
+    // A chance:0 group is a mode-gate SENTINEL, not literal 0% — mark `gated` and
+    // keep the cumulative chance (so the within-mode proc rate, e.g. a 33% stun,
+    // survives) rather than zeroing it. Real proc chances (0<chance<1) multiply.
+    const raw = (effect.chance === undefined || effect.chance === null) ? 1 : effect.chance;
+    const childGated = raw === 0 ? true : gated;
+    const c = raw === 0 ? cumChance : cumChance * raw;
+
     for (const t of effect.templates || []) {
       const a = t.attribs && t.attribs[0] ? t.attribs[0].toLowerCase() : null;
       if (a === 'execute_power' && depth < MAX_DEPTH) {
@@ -882,18 +888,16 @@ function _redirectDamageChance(effects, visited, depth, cumChance) {
           visited.add(pName);
           try {
             const j = JSON.parse(fs.readFileSync(p, 'utf-8'));
-            const r = _redirectDamageChance(j.effects, visited, depth + 1, c);
-            if (r.hasDamage) note(r.maxChance);
+            out.push(...collectTemplatesWithChance(j.effects, visited, depth + 1, c, childGated));
           } catch { /* unreadable redirect — skip */ }
         }
-      } else if (a && isDamageTypeAttrib(a) && extractDamage([t])) {
-        note(c);
+      } else {
+        out.push({ template: t, chance: c, gated: childGated });
       }
     }
-    const child = _redirectDamageChance(effect.child_effects, visited, depth, c);
-    if (child.hasDamage) note(child.maxChance);
+    out.push(...collectTemplatesWithChance(effect.child_effects, visited, depth, c, childGated));
   }
-  return { hasDamage, maxChance };
+  return out;
 }
 
 /**
@@ -923,7 +927,8 @@ function resolveSummonRedirects(redirectNames) {
     try { json = JSON.parse(fs.readFileSync(redirectPath, 'utf-8')); } catch { continue; }
     if (!json.effects || json.effects.length === 0) continue;
 
-    const templates = collectTemplatesDeep(json.effects, new Set([name]));
+    const collected = collectTemplatesWithChance(json.effects, new Set([name]));
+    const templates = collected.map(c => c.template);
 
     // Damage (reuse the converter's damage extractor — Current/Absolute aspects,
     // excludes buff/debuff tables). Normalize to PetAbility damage shape.
@@ -944,34 +949,41 @@ function resolveSummonRedirects(redirectNames) {
       damage.push({ damageType: d.type, scale: d.scale, table: d.table });
     }
 
-    // Debuffs / mez — one per type (mirrors convert-pet-entities seenTypes dedup).
+    // Debuffs / mez — one per type (mirrors convert-pet-entities seenTypes dedup),
+    // carrying the proc chance the binary gates them with (e.g. the 33% stun).
     const effects = [];
     const seen = new Set();
-    for (const t of templates) {
-      const e = classifyPseudoPetEffect(t);
-      if (e && !seen.has(e.type)) { seen.add(e.type); effects.push(e); }
+    for (const { template, chance } of collected) {
+      const e = classifyPseudoPetEffect(template);
+      if (!e || seen.has(e.type)) continue;
+      seen.add(e.type);
+      if (chance < 1) e.chance = Math.round(chance * 100) / 100;
+      effects.push(e);
     }
 
     if (damage.length === 0 && effects.length === 0) continue; // ResistAll etc.
 
-    // How often does this redirect's damage actually land?
-    //  • chance >= 1  → guaranteed DoT (enhanceable headline damage).
-    //  • 0 < chance < 1 → a PROC: the runtime counts its EXPECTED value
-    //    (chance × per-hit), matching the planner's proc convention. `damageChance`
-    //    carries the rate.
-    //  • chance === 0 → MODE-gated (storm-strength "while High Winds active"):
-    //    no computable rate, so it's flagged `conditionalDamage` and surfaced
-    //    informationally instead of summed (would otherwise overstate, e.g.
-    //    Storm Cell's bogus 1908).
+    // How often does this redirect's damage actually land? Derive from the
+    // per-template chance/gated flags of the damage leaves.
+    //  • gated (a chance:0 mode sentinel in the path) → MODE-gated (storm-strength
+    //    "while High Winds active"): no computable rate ⇒ `conditionalDamage`,
+    //    surfaced informationally not summed (else Storm Cell's bogus 1908).
+    //  • 0 < chance < 1, not gated → a PROC: the runtime counts EXPECTED value
+    //    (chance × per-hit), matching the planner's proc convention.
+    //  • chance >= 1 → guaranteed DoT (enhanceable headline damage).
     let conditionalDamage = false;
     let damageChance;
     if (damage.length > 0) {
-      const dc = _redirectDamageChance(json.effects, new Set([name]), 0, 1);
-      if (dc.hasDamage && dc.maxChance === 0) {
-        conditionalDamage = true;
-      } else if (dc.hasDamage && dc.maxChance < 1) {
-        damageChance = dc.maxChance; // proc — expected-value weighting downstream
+      let maxChance = 0, anyGated = false;
+      for (const { template, chance, gated } of collected) {
+        const a = template.attribs && template.attribs[0] ? template.attribs[0].toLowerCase() : null;
+        if (a && isDamageTypeAttrib(a) && extractDamage([template])) {
+          if (chance > maxChance) maxChance = chance;
+          if (gated) anyGated = true;
+        }
       }
+      if (anyGated) conditionalDamage = true;
+      else if (maxChance < 1) damageChance = Math.round(maxChance * 100) / 100;
     }
 
     abilities.push({

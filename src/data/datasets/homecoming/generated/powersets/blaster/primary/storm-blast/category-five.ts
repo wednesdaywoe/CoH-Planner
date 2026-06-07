@@ -138,19 +138,22 @@ export const CategoryFive: Power = {
                 {
                   "type": "EndDrain",
                   "scale": 0.025,
-                  "table": "Ranged_EndDrain"
+                  "table": "Ranged_EndDrain",
+                  "chance": 0.25
                 },
                 {
                   "type": "Knockback",
                   "magnitude": 1,
                   "scale": 1,
-                  "table": "Ranged_Knockback"
+                  "table": "Ranged_Knockback",
+                  "chance": 0.04
                 },
                 {
                   "type": "Stun",
                   "magnitude": 3,
                   "scale": 4,
-                  "table": "Ranged_Stun"
+                  "table": "Ranged_Stun",
+                  "chance": 0.08
                 }
               ],
               "recharge": 0,

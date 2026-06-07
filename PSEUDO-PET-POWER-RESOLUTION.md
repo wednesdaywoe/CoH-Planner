@@ -291,13 +291,21 @@ Damage presentation (DONE — refined over two in-app reviews):
   slotting. `pseudoPetDamage` now passes `scale: 1` ⇒ reference becomes
   `base × cap`, so the bar shows **enhancement headroom** (base at 1/cap, growing
   with enhancements/buffs). Only the DamageBar consumes `scale`, so this is safe.
-- **Stun/KB/Fear/etc. provenance verified.** Storm Cell's Stun comes from the
-  lightning pet `StormCell_LightningAura2` (executed by `Lightning_Proc`), at 33%
-  on each lightning hit (itself mode-gated). **Known gap (next):** effect chances
-  are still flattened by `classifyPseudoPetEffect` (collectTemplatesDeep drops
-  group chance) — the Stun shows "4.8" without its 33%. Surfacing per-effect
-  chance (an effect-chance walk paralleling `_redirectDamageChance`) is the same
-  class of fix and the natural next step.
+- **Per-effect chance surfaced (DONE).** `collectTemplatesWithChance` replaces
+  the flat collector inside `resolveSummonRedirects` and returns
+  `{ template, chance, gated }` per leaf (following Execute_Power), so both damage
+  AND effects carry their cumulative proc chance. A `chance:0` group is treated as
+  a mode GATE (sets `gated`, keeps the cumulative chance) not literal 0%, so a
+  within-mode proc survives. Storm Cell's Stun now reads **33%** (from the lightning
+  pet `StormCell_LightningAura2`, via `Lightning_Proc`), KB 17%, Cat Five's lightning
+  stun 8% (0.25×0.33), etc. `_redirectDamageChance` was retired (subsumed).
+- **Creates block → 2-column layout (DONE).** The effects list was one tall column
+  with a wide label↔value gap; now `grid grid-cols-2` with compact label↔value
+  pairs, halving its height.
+- **Known smaller gaps:** effects from a mode-gated ability (Storm Cell lightning's
+  EndDrain) aren't yet flagged "while powered up" (only the damage is); the `gated`
+  flag is computed but not surfaced on effects. Conditional damage value shows the
+  per-tick number without a "while powered up" note.
 
 Then **generalize**: full `npm run regen` (all ATs + Rebirth), expand the shell
 set / handle PET_ENTITIES-overlap powers (Bonfire/Burn/Rain of Fire — double-

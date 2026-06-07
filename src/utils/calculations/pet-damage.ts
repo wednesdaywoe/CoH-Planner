@@ -287,7 +287,7 @@ export function calculateResolvedPseudoPetDamage(
         } else if (eff.magnitude !== undefined) {
           value = eff.magnitude;
         }
-        allEffectsMap.set(eff.type, { type: eff.type, value, ignoreStrength: eff.ignoreStrength });
+        allEffectsMap.set(eff.type, { type: eff.type, value, chance: eff.chance, ignoreStrength: eff.ignoreStrength });
       }
     }
 

@@ -236,6 +236,8 @@ export interface ResolvedPseudoPetEffect {
   scale?: number;
   table?: string;
   magnitude?: number;
+  /** Proc chance the binary gates this effect with (< 1), e.g. the 33% lightning stun. */
+  chance?: number;
   /** IgnoreStrength: the player's enhancements/buffs do NOT scale this — show informational/unenhanced. */
   ignoreStrength?: boolean;
 }

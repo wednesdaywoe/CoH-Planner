@@ -73,6 +73,13 @@ describe('pseudo-pet redirect resolution', () => {
       expect(lightning.damage.filter(d => d.damageType === 'Energy')).toHaveLength(1);
     });
 
+    it('surfaces the lightning Stun at its 33% proc chance (from the lightning pet)', () => {
+      const lightning = pets[0].abilities.find(a => a.name === 'Lightning_Proc')!;
+      const stun = lightning.effects!.find(e => e.type === 'Stun')!;
+      expect(stun.chance).toBeCloseTo(0.33, 2);
+      expect(stun).toMatchObject({ scale: 4, table: 'Ranged_Stun', magnitude: 3 });
+    });
+
     it('Storm Cell exposes no guaranteed headline damage (it is a debuff field)', () => {
       const r = calculateResolvedPseudoPetDamage(pets[0], 'blaster', 1);
       expect(r?.abilities ?? []).toHaveLength(0);

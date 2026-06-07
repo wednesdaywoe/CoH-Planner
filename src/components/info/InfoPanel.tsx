@@ -2357,13 +2357,16 @@ function SingleEntityDisplay({
                 <span className="text-xs text-slate-300 font-medium">Effects</span>
               </div>
               {effectsExpanded && (
-                <div className="mt-0.5 ml-3 space-y-0">
+                // Two-column flow — each effect is a compact label↔value pair so
+                // the block packs tightly instead of one tall column with a wide
+                // gap between label and value.
+                <div className="mt-0.5 ml-3 grid grid-cols-2 gap-x-4 gap-y-0.5">
                   {petDamage!.allEffects.map((eff) => {
                     const display = EFFECT_DISPLAY[eff.type] || { label: eff.type, color: 'text-slate-300' };
                     const chanceLabel = eff.chance && eff.chance < 1 ? ` (${(eff.chance * 100).toFixed(0)}%)` : '';
                     return (
-                      <div key={eff.type} className="grid grid-cols-[1fr_auto] gap-2 text-[11px] py-0.5">
-                        <span className={display.color}>
+                      <div key={eff.type} className="flex items-baseline justify-between gap-1.5 text-[11px]">
+                        <span className={`${display.color} truncate`}>
                           {display.label}{chanceLabel}
                           {eff.ignoreStrength && (
                             <span className="text-slate-500 italic ml-1" title="Ignores buffs and enhancements">
@@ -2371,7 +2374,7 @@ function SingleEntityDisplay({
                             </span>
                           )}
                         </span>
-                        <span className="text-slate-300 text-right tabular-nums">
+                        <span className="text-slate-300 tabular-nums shrink-0">
                           {eff.value !== undefined ? eff.value.toFixed(1) : '—'}
                         </span>
                       </div>
