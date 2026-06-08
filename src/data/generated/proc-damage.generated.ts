@@ -7,6 +7,7 @@ export const PROC_DAMAGE_EFFECTS: Record<string, ProcEffect[]> = {
   "Blaster's Wrath: Recharge/Chance for Fire Damage": [{ category: "Damage", value: 7, valueMax: 72, effectType: "Fire" }],
   "Bombardment: Chance for Fire Damage": [{ category: "Damage", value: 7, valueMax: 72, effectType: "Fire" }],
   "Chance for Cold Damage": [{ category: "Damage", value: 7, valueMax: 72, effectType: "Cold" }],
+  "Chance for Energy Damage": [{ category: "Damage", value: 7, valueMax: 72, effectType: "Energy" }],
   "Chance for Fire Damage": [{ category: "Damage", value: 10, valueMax: 107, effectType: "Fire" }],
   "Chance for Lethal Damage": [{ category: "Damage", value: 7, valueMax: 72, effectType: "Lethal" }],
   "Chance for Negative Energy Damage": [{ category: "Damage", value: 10, valueMax: 107, effectType: "Negative Energy" }],

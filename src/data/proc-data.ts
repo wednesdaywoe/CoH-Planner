@@ -3059,8 +3059,8 @@ export function calculateProcStats(
     procsPerMinute,
   };
 
-  // Calculate DPS for damage procs
-  const effect = parseProcEffect(procData.mechanics);
+  // Calculate DPS for damage procs (reads binary-sourced structured effects)
+  const effect = procEffectSummary(procData);
   if (effect.category === 'Damage' && effect.value !== undefined && effect.valueMax !== undefined) {
     const avgDamage = (effect.value + effect.valueMax) / 2;
     result.dps = (procsPerMinute * avgDamage) / 60;

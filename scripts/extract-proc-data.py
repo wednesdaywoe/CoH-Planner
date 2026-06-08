@@ -312,7 +312,11 @@ def resolve_proc_payload(piece: PowerRecord, gb_index: dict[str, PowerRecord]) -
                     if not gp:
                         continue
                     for ef in structured_effects(gp):
-                        if ef['category'] == 'Special':
+                        # Skip Special and Damage: a +Damage% buff-stack granted via
+                        # this path (Ascendancy of the Dominator) is bespoke — the
+                        # damage-proc ×250 heuristic and pet-target stamp don't apply.
+                        # Clean grant-globals are Recharge/Defense/etc. (Force Feedback).
+                        if ef['category'] in ('Special', 'Damage'):
                             continue
                         if t.duration:
                             ef['duration'] = round(t.duration, 2)
@@ -342,7 +346,9 @@ def resolve_proc_payload(piece: PowerRecord, gb_index: dict[str, PowerRecord]) -
                 ef = {'category': 'Debuff', 'value': round(sc * 100, 4), 'effectType': 'ToHit', 'duration': dur}
             elif sc < 0 and a == 'RechargeTime':
                 ef = {'category': 'Debuff', 'value': round(sc * 100, 4), 'effectType': 'Recharge', 'duration': dur}
-            elif sc < 0 and a in ('Recovery', 'Endurance'):
+            elif sc < 0 and a in ('Recovery', 'Endurance') and asp == 'Current':
+                # The % end-drain is the Current-aspect template; skip the paired
+                # Absolute/Melee_EndDrain template (a flat magnitude, not a %).
                 ef = {'category': 'Debuff', 'value': round(sc * 100, 4), 'effectType': 'Recovery', 'duration': dur}
             # Self buffs
             elif a == 'Endurance' and asp == 'Current':
@@ -437,9 +443,12 @@ def infer_proc_category(mech: str) -> str:
         if '-resist' in m: return 'Debuff:Resistance'
         if '-tohit' in m or '-to hit' in m: return 'Debuff:ToHit'
         if '-rech' in m: return 'Debuff:Recharge'
-        if '-recovery' in m: return 'Debuff:Recovery'
-        if 'knockback' in m: return 'Control:Knockback'
+        if '-recovery' in m or '-end' in m: return 'Debuff:Recovery'  # -Endurance is a Recovery debuff
+        # Knockdown is the same family as Knockback but the binary mag (<1)
+        # decides; check 'knockdown' FIRST since "Knockback Mag .67 = Knockdown"
+        # contains both words.
         if 'knockdown' in m: return 'Control:Knockdown'
+        if 'knockback' in m: return 'Control:Knockback'
         for word, label in (('disorient', 'Stun'), ('stun', 'Stun'), ('hold', 'Hold'),
                             ('immobiliz', 'Immobilize'), ('sleep', 'Sleep'), ('confus', 'Confuse'),
                             ('terror', 'Fear'), ('fear', 'Fear'), ('placate', 'Placate')):
@@ -548,7 +557,15 @@ def main() -> int:
     hand = parse_hand_globals()
     print(f'  {len(hand)} hand Global/Proc120s entries\n')
 
-    SET_ALIASES = {'numinasconvalescence': 'numinasconvalesence'}
+    # Hand setName -> binary set id. Most are binary MISSPELLINGS (HC's data has
+    # the typo); aliasing lets the generator resolve the proc from the right set.
+    SET_ALIASES = {
+        'numinasconvalescence': 'numinasconvalesence',
+        'cacophony': 'cacophany',                       # binary typo
+        'debilitativeaction': 'debiliativeaction',      # binary typo (missing 't')
+        'ascendancyofthedominator': 'ascendencyofthedominator',          # a->e
+        'superiorascendancyofthedominator': 'superiorascendencyofthedominator',
+    }
     set_by_id = {sid(s.name): s for s in sets}
     for hk, bk in SET_ALIASES.items():
         if bk in set_by_id:
@@ -595,24 +612,26 @@ def main() -> int:
                    if 'Melee_ProcDamage' in (c.named_tables or {}))
     l1, l50 = abs(procdmg[0]), abs(procdmg[49])
     dmg_gen: dict[str, list[dict]] = {}
-    dmg_missing = 0
+    dmg_unresolved: list[str] = []
     for e in parse_hand_damage():
         s = set_by_id.get(sid(e['setName']))
         effs = resolve_damage_proc(s, pidx, l1, l50) if s else None
         if effs:
             dmg_gen[e['key']] = effs
         else:
-            dmg_missing += 1
+            dmg_unresolved.append(f'    {"NO-SET" if not s else "no-template"}: {e["key"]} (set={e["setName"]})')
     print(f'=== damage: {len(dmg_gen)} entries (L1={l1}, L50={round(l50, 2)}); '
-          f'{dmg_missing} unresolved (universal-damage/Rebirth sets) ===')
+          f'{len(dmg_unresolved)} unresolved (universal-damage/Rebirth sets) ===')
+    if '--diag' in sys.argv[1:]:
+        print('\n'.join(dmg_unresolved))
 
     # --- Other non-global procs (Phase 3b): debuff / mez / knock / self-buff ----
     eff_gen: dict[str, list[dict]] = {}
-    eff_missing = 0
+    eff_unresolved: list[str] = []
     for e in parse_hand_other():
         s = set_by_id.get(sid(e['setName']))
         if not s:
-            eff_missing += 1
+            eff_unresolved.append(f'    NO-SET: {e["key"]} (set={e["setName"]}) mech="{e["mechanics"][:50]}"')
             continue
         # collect payloads from every piece, indexed by their effects' categories
         by_key: dict[str, list[dict]] = {}
@@ -637,8 +656,13 @@ def main() -> int:
         if pick:
             eff_gen[e['key']] = pick
         else:
-            eff_missing += 1
-    print(f'=== other: {len(eff_gen)} entries; {eff_missing} unresolved ===')
+            payload_keys = sorted(by_key.keys())
+            eff_unresolved.append(
+                f'    NO-MATCH: {e["key"]} (set={e["setName"]}) want={want!r} '
+                f'payloads={payload_keys} mech="{e["mechanics"][:45]}"')
+    print(f'=== other: {len(eff_gen)} entries; {len(eff_unresolved)} unresolved ===')
+    if '--diag' in sys.argv[1:]:
+        print('\n'.join(eff_unresolved))
 
     # --- PPM (P6): binary-source the per-proc PPM. PPM drives proc DPS + PPM
     # recovery; the hand values had drift (esp. Superior ATOs carrying the base
