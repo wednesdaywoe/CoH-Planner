@@ -21,34 +21,10 @@ import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/type
 import { getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import type { IncarnateSlotId, ToggleableIncarnateSlot } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
-import { STAT_DEFINITIONS } from '@/data/stat-definitions';
+import { STAT_DEFINITIONS, resolveStatValue } from '@/data/stat-definitions';
 import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue } from '@/data/stat-definitions';
 import { applyMovementBuff, getEffectiveMovementCaps, TRAVEL_CAP_BUMPS } from '@/data/core/movement-constants';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
-
-// Stats that need globalBonuses values instead of CalculatedStats
-const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
-  range_bonus: 'range',
-  heal_other: 'healOther',
-  threat_level: 'threatLevel',
-  stealth_pve: 'stealthRadiusPvE',
-  stealth_pvp: 'stealthRadiusPvP',
-  perception_bonus: 'perceptionRadius',
-  prot_repel: 'protRepel',
-  prot_teleport: 'protTeleport',
-  mezres_taunt: 'mezResistTaunt',
-  mezres_placate: 'mezResistPlacate',
-  mezres_hold: 'mezResistHold',
-  mezres_stun: 'mezResistStun',
-  mezres_immob: 'mezResistImmobilize',
-  mezres_sleep: 'mezResistSleep',
-  mezres_confuse: 'mezResistConfuse',
-  mezres_fear: 'mezResistFear',
-  mezres_kb: 'mezResistKnockback',
-  level_shift: 'levelShift',
-  endcost: 'toggleEndCost',
-  netend: 'netEndPerSec',
-};
 
 // Re-export for any consumers that imported from here
 export { STAT_DEFINITIONS };
@@ -265,10 +241,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
       .sort((a, b) => a.order - b.order)
       .map((config) => {
         const def = STAT_DEFINITIONS[config.stat];
-        const globalKey = GLOBAL_BONUS_OVERRIDES[config.stat];
-        const value = globalKey
-          ? globalBonuses[globalKey]
-          : def.getValue(stats, baseHP, maxHPCap);
+        const value = resolveStatValue(config.stat, def, stats, globalBonuses, baseHP, maxHPCap);
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
         // Attach cap for defense/resistance stats
         let cap: number | undefined;
@@ -333,20 +306,16 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         }
 
         return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, totalBaseOffset, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap, tooltip, format };
-      })
-      .filter((stat) => {
-        if (stat.showWhenZero) return true;
-        const v = stat.value;
-        // MezStatValue: show if either protection or resistance is non-zero
-        if (typeof v === 'object' && v !== null && 'protection' in v) {
-          return v.protection !== 0 || v.resistance !== 0;
-        }
-        // PairedStatValue: show if either value is non-zero
-        if (typeof v === 'object' && v !== null && 'first' in v) {
-          return v.first !== 0 || v.second !== 0;
-        }
-        return Number(v) !== 0;
       });
+    // Every user-enabled stat is shown, including zeros. Stats are opt-in via
+    // Settings → Stats, so toggling one on should reliably display it — this
+    // matches how the bulk of stats (defense/resistance/mez, all flagged
+    // showWhenZero) already behave. Previously a subset of "situational" stats
+    // (Range, End Reduction, debuff resistances, stealth, …) lacked that flag
+    // and silently stayed hidden at zero even after the user enabled them, so
+    // they could never be displayed. (StatDefinition.showWhenZero is no longer
+    // consulted here; it's retained as metadata for a possible future
+    // "hide zero stats" toggle.)
   }, [statsConfig, stats, baseHP, maxHPCap, breakdowns, globalBonuses, effectiveMovementCaps, rechargeMidsStyle]);
 
   // Stat categories for grouping (should match config modal)
@@ -354,14 +323,14 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
     {
       name: 'General',
       stats: [
-        'damage', 'accuracy', 'tohit', 'recharge', 'endreduction',
-        'range_bonus', 'heal_other', 'threat_level',
+        'damage', 'accuracy', 'tohit', 'recharge',
+        'range_bonus', 'threat_level', 'level_shift',
         'runspeed', 'flyspeed', 'jumpspeed', 'jumpheight',
       ],
     },
     {
       name: 'Health & Endurance',
-      stats: ['health', 'regeneration', 'maxend', 'recovery', 'endcost', 'netend', 'level_shift'],
+      stats: ['health', 'regeneration', 'heal_other', 'maxend', 'recovery', 'endreduction', 'endcost', 'netend'],
     },
     {
       name: 'Stealth & Perception',

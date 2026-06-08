@@ -64,6 +64,10 @@ export interface DamageBlockProps {
    *  Added to the "+X proc" annotation alongside slotted IO procs so the
    *  power's average-damage total reflects all proc sources. */
   incarnateProcDamage?: number;
+  /** Highest total final damage among the build's attack powers. The cap bar
+   *  normalizes to this so bar length is comparable across powers (Mids-style:
+   *  hardest hitter fills the bar). Falls back to a per-power reference when 0. */
+  maxBuildDamage?: number;
 }
 
 export function DamageBlock(props: DamageBlockProps) {
@@ -269,7 +273,7 @@ function DamageRows({
 // DamageBar — base/enhanced/final overlay vs AT damage cap.
 // ----------------------------------------------------------------------
 
-function DamageBar({ calculatedDamage, archetypeId, procDamagePerActivation }: DamageBlockProps & { procDamagePerActivation: number }) {
+function DamageBar({ calculatedDamage, archetypeId, procDamagePerActivation, maxBuildDamage }: DamageBlockProps & { procDamagePerActivation: number }) {
   if (calculatedDamage.scale == null) return null;
   const damageCap = getDamageCap(archetypeId ?? '');
 
@@ -285,30 +289,35 @@ function DamageBar({ calculatedDamage, archetypeId, procDamagePerActivation }: D
     ? dot.final * dot.ticks
     : calculatedDamage.final + (dot ? dot.final * dot.ticks : 0);
 
-  // 100% = THIS power's damage cap (unenhanced damage × AT cap multiplier).
-  // Final caps at `1 + strength ≤ cap`, so finalPercent ≤ 100 and the empty
-  // space to the right is your remaining headroom-to-cap. Proc damage is flat
-  // and cap-exempt, so it stacks past the cap line: when final + proc exceeds
-  // the cap we widen the bar's scale to the total and draw a cap marker, so
-  // procs stay visible *proportionally* even when the attack is capped.
-  const powerCapDamage = totalBase * damageCap;
+  // Normalize to the build's highest-damage attack (Mids-style) so bar length
+  // is comparable across powers: the hardest hitter fills the bar and the rest
+  // scale relative to it. The reference is shared across every power, so it
+  // tracks ABSOLUTE damage (a per-power "% of cap" reference made same-strength
+  // powers look identical — the bug this replaces). Fall back to the AT's
+  // scale-1.0 capped damage when the build has no damaging powers yet.
+  const referenceDamage = maxBuildDamage && maxBuildDamage > 0
+    ? maxBuildDamage
+    : (calculatedDamage.base / calculatedDamage.scale) * damageCap;
+
+  const basePercent = Math.min((totalBase / referenceDamage) * 100, 100);
+  const enhPercent = Math.min((totalEnhanced / referenceDamage) * 100, 100);
+  const finalPercent = Math.min((totalFinal / referenceDamage) * 100, 100);
+
+  // Proc damage is flat and cap-exempt — stack it past the final fill in cyan
+  // (matching the "+N proc" text below). Clamped to the remaining headroom on
+  // the shared fixed scale so cross-power comparison is preserved.
   const procDmg = Math.max(0, procDamagePerActivation);
-  const totalWithProc = totalFinal + procDmg;
-  const barMax = Math.max(powerCapDamage, totalWithProc) || 1;
+  const procPercent = referenceDamage > 0
+    ? Math.max(0, Math.min((procDmg / referenceDamage) * 100, 100 - finalPercent))
+    : 0;
+  const showProc = procDmg > 0 && procPercent > 0.1;
 
-  const basePercent = (totalBase / barMax) * 100;
-  const enhPercent = (totalEnhanced / barMax) * 100;
-  const finalPercent = (totalFinal / barMax) * 100;
-  const procPercent = (procDmg / barMax) * 100;
-  const showProc = procDmg > 0;
-
-  // Cap marker only when output (final + proc) runs past the cap; otherwise the
-  // cap sits at the right edge and a marker would be redundant.
-  const capPercent = (powerCapDamage / barMax) * 100;
-  const showCapMarker = capPercent < 99.5;
+  // When the attack itself is at the AT damage cap, mark the final fill edge so
+  // it's clear the red has maxed out (vs. just being a small hit).
+  const capped = calculatedDamage.capped === true;
 
   return (
-    <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%${showProc ? ` · +${procDmg.toFixed(1)} flat proc dmg (cap-exempt)` : ''}`}>
+    <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`${maxBuildDamage && maxBuildDamage > 0 ? 'Scaled to your highest-damage attack' : `Damage cap: ${(damageCap * 100).toFixed(0)}%`}${capped ? ` · at damage cap (${(damageCap * 100).toFixed(0)}%)` : ''}${showProc ? ` · +${procDmg.toFixed(1)} proc (cap-exempt)` : ''}`}>
       {/* Final (back layer) — full saturation */}
       <div
         className="absolute inset-y-0 left-0 bg-red-800 rounded-l transition-all duration-300"
@@ -325,20 +334,19 @@ function DamageBar({ calculatedDamage, archetypeId, procDamagePerActivation }: D
         style={{ width: `${basePercent}%` }}
       />
       {/* Proc (flat, cap-exempt) — cyan to match the "+N proc" annotation
-          below the bar; stacked after the final segment. (Yellow read as a
-          shade of the red Final tiers, which was confusing.) */}
+          below the bar; stacked after the final segment. */}
       {showProc && (
         <div
           className="absolute inset-y-0 bg-cyan-400 transition-all duration-300"
           style={{ left: `${finalPercent}%`, width: `${procPercent}%` }}
         />
       )}
-      {/* AT damage-cap marker — shown when procs extend the bar past the cap */}
-      {showCapMarker && (
+      {/* Damage-cap flag — amber tick at the final fill edge when capped */}
+      {capped && (
         <div
-          className="absolute inset-y-0 w-px bg-slate-100/80"
-          style={{ left: `${capPercent}%` }}
-          title={`Damage cap (${(damageCap * 100).toFixed(0)}%)`}
+          className="absolute inset-y-0 w-0.5 bg-amber-300"
+          style={{ left: `calc(${finalPercent}% - 1px)` }}
+          title={`At damage cap (${(damageCap * 100).toFixed(0)}%)`}
         />
       )}
     </div>

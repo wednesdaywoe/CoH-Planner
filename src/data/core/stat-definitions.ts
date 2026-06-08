@@ -9,6 +9,7 @@
 import { STAT_COLORS } from './stat-colors';
 import { applyMovementBuff } from './movement-constants';
 import type { CalculatedStats } from '@/hooks/useCalculatedStats';
+import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 
 // ============================================
 // TYPES
@@ -1040,3 +1041,55 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     breakdownUnit: '',
   },
 };
+
+// ============================================
+// VALUE RESOLUTION (shared by every stat surface)
+// ============================================
+
+/**
+ * Stats whose displayed value comes from the build's `globalBonuses` rather
+ * than the legacy `CalculatedStats` object — their `getValue` returns 0 as a
+ * placeholder. This is the single source of truth shared by the dashboard
+ * tiles, the Detailed Totals sheet, and anywhere else that renders stats, so
+ * the surfaces can never diverge on how a stat is sourced.
+ *
+ * NOTE: mez RESISTANCE (`mezres_hold`…`mezres_kb`) is intentionally absent. Its
+ * value is the per-type total — generic MezResist(All) **plus** the type-
+ * specific bonus — which `getValue` computes from `stats.mezResistance`.
+ * Routing it through the type-specific `globalBonuses` field alone would drop
+ * the generic component (e.g. Aegis' MezResist(All)). `mezres_taunt`/`placate`
+ * have no generic component and no `stats.mezResistance` entry, so they DO use
+ * the override.
+ */
+export const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
+  range_bonus: 'range',
+  heal_other: 'healOther',
+  threat_level: 'threatLevel',
+  stealth_pve: 'stealthRadiusPvE',
+  stealth_pvp: 'stealthRadiusPvP',
+  perception_bonus: 'perceptionRadius',
+  prot_repel: 'protRepel',
+  prot_teleport: 'protTeleport',
+  mezres_taunt: 'mezResistTaunt',
+  mezres_placate: 'mezResistPlacate',
+  level_shift: 'levelShift',
+  endcost: 'toggleEndCost',
+  netend: 'netEndPerSec',
+};
+
+/**
+ * Resolve a stat's display value: the `globalBonuses` override when one exists,
+ * otherwise the definition's own `getValue`. Used by every stat surface so they
+ * compute values identically.
+ */
+export function resolveStatValue(
+  statId: string,
+  def: StatDefinition,
+  stats: CalculatedStats,
+  globalBonuses: GlobalBonuses,
+  baseHP: number,
+  maxHPCap: number,
+): StatValue {
+  const globalKey = GLOBAL_BONUS_OVERRIDES[statId];
+  return globalKey ? globalBonuses[globalKey] : def.getValue(stats, baseHP, maxHPCap);
+}

@@ -15,7 +15,7 @@ import type { ArchetypeId } from '@/types';
 import { calculateCharacterTotals } from '@/utils/calculations/character-totals';
 import { hydrateBuild } from '@/utils/build-serialization';
 import { getMyBuilds, getOwnedBuildIds, isShareEnabled } from '@/services/sharedBuilds';
-import { STAT_DEFINITIONS } from '@/data/stat-definitions';
+import { STAT_DEFINITIONS, resolveStatValue } from '@/data/stat-definitions';
 import type { StatValue, MezStatValue } from '@/data/stat-definitions';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import type { GlobalBonuses, CharacterCalculationResult } from '@/utils/calculations/character-totals';
@@ -30,11 +30,11 @@ import type { SharedBuild } from '@/types/shared';
 const DETAILED_CATEGORIES = [
   {
     name: 'Offense',
-    stats: ['damage', 'accuracy', 'tohit', 'recharge', 'endreduction', 'range_bonus', 'heal_other', 'threat_level'],
+    stats: ['damage', 'accuracy', 'tohit', 'recharge', 'range_bonus', 'threat_level', 'level_shift'],
   },
   {
     name: 'Health & Endurance',
-    stats: ['health', 'regeneration', 'maxend', 'recovery', 'level_shift'],
+    stats: ['health', 'regeneration', 'heal_other', 'maxend', 'recovery', 'endreduction'],
   },
   {
     name: 'Movement',
@@ -84,21 +84,6 @@ const DETAILED_CATEGORIES = [
     ],
   },
 ];
-
-// Stats that need globalBonuses values instead of CalculatedStats
-const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
-  range_bonus: 'range',
-  heal_other: 'healOther',
-  threat_level: 'threatLevel',
-  stealth_pve: 'stealthRadiusPvE',
-  stealth_pvp: 'stealthRadiusPvP',
-  perception_bonus: 'perceptionRadius',
-  prot_repel: 'protRepel',
-  prot_teleport: 'protTeleport',
-  mezres_taunt: 'mezResistTaunt',
-  mezres_placate: 'mezResistPlacate',
-  level_shift: 'levelShift',
-};
 
 // ============================================
 // TYPES
@@ -154,10 +139,7 @@ function computeAllStats(
         const def = STAT_DEFINITIONS[id];
         if (!def) return null;
 
-        const globalKey = GLOBAL_BONUS_OVERRIDES[id];
-        const value = globalKey
-          ? globalBonuses[globalKey]
-          : def.getValue(stats, baseHP, maxHPCap);
+        const value = resolveStatValue(id, def, stats, globalBonuses, baseHP, maxHPCap);
 
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
 

@@ -9,6 +9,7 @@ import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useSentinelCritActive, useGlobalAdjuster } from '@/stores';
 import { getBaseToHit } from '@/data/purple-patch';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
+import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
 import { lookupPower, getArchetype, getIOSet, getPowerset } from '@/data';
 import type { Power } from '@/types';
 import {
@@ -73,6 +74,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
   const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
   const globalBonuses = useGlobalBonuses();
+  const maxBuildDamage = useBuildMaxAttackDamage();
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const dominationActive = useDominationActive();
@@ -539,8 +541,12 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           ? dot.final * dot.ticks
           : calculatedDamage.final + (dot ? dot.final * dot.ticks : 0);
 
-        // 100% = this power's damage cap (unenhanced damage × AT cap).
-        const referenceDamage = totalBase * damageCap;
+        // Normalize to the build's highest-damage attack so bar length is
+        // comparable across powers (Mids-style). Matches DamageBar; falls back
+        // to the AT's scale-1.0 capped damage when no damaging powers exist.
+        const referenceDamage = maxBuildDamage && maxBuildDamage > 0
+          ? maxBuildDamage
+          : (calculatedDamage.base / calculatedDamage.scale) * damageCap;
         const basePercent = Math.min((totalBase / referenceDamage) * 100, 100);
         const enhPercent = Math.min((totalEnhanced / referenceDamage) * 100, 100);
         const finalPercent = Math.min((totalFinal / referenceDamage) * 100, 100);

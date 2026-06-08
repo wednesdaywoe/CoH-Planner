@@ -29,6 +29,7 @@ import {
   getActiveDamageConversion,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
+import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
 import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
@@ -272,6 +273,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // powered-up state applies (WindSpeed debuffs + lightning folded into damage).
   const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
   const globalBonuses = useGlobalBonuses();
+  const maxBuildDamage = useBuildMaxAttackDamage();
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const dominationActive = useDominationActive();
@@ -1118,6 +1120,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           enhancementBonuses={enhancementBonuses}
           globalBonusesForCalc={globalBonusesForCalc}
           incarnateProcDamage={incarnateProcDamage}
+          maxBuildDamage={maxBuildDamage}
         />
       )}
 

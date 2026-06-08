@@ -137,10 +137,9 @@ const STAT_CATEGORIES: {
       { stat: 'accuracy', label: 'Accuracy', colorOverride: 'accuracy' },
       { stat: 'tohit', label: 'To-Hit', colorOverride: 'accuracy' },
       { stat: 'recharge', label: 'Recharge', colorOverride: 'recharge' },
-      { stat: 'endreduction', label: 'End Reduction', colorOverride: 'endurance' },
       { stat: 'range_bonus', label: 'Range' },
-      { stat: 'heal_other', label: 'Heal Other', colorOverride: 'health' },
       { stat: 'threat_level', label: 'Threat', colorOverride: 'resistance' },
+      { stat: 'level_shift', label: 'Level Shift', colorOverride: 'incarnate' },
     ],
   },
   {
@@ -149,11 +148,12 @@ const STAT_CATEGORIES: {
     stats: [
       { stat: 'health', label: 'Max HP' },
       { stat: 'regeneration', label: 'Regeneration' },
+      { stat: 'heal_other', label: 'Heal Other', colorOverride: 'health' },
       { stat: 'maxend', label: 'Max End', colorOverride: 'endurance' },
       { stat: 'recovery', label: 'Recovery', colorOverride: 'endurance' },
+      { stat: 'endreduction', label: 'End Reduction', colorOverride: 'endurance' },
       { stat: 'endcost', label: 'End Cost', colorOverride: 'resistance' },
       { stat: 'netend', label: 'Net End', colorOverride: 'endurance' },
-      { stat: 'level_shift', label: 'Level Shift', colorOverride: 'incarnate' },
     ],
   },
   {
