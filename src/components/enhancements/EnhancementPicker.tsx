@@ -1910,7 +1910,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
       </div>
 
       {/* Proc Effect section */}
-      {piece.proc ? (
+      {piece.proc && (
         <div className="bg-amber-900/30 border border-amber-700/50 rounded p-1.5">
           <div className="text-[9px] text-amber-400 uppercase mb-1 font-semibold">Proc Effect</div>
           {(() => {
@@ -2011,8 +2011,12 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
             return <div className="text-[10px] text-amber-200">{piece.name}</div>;
           })()}
         </div>
-      ) : (
-        /* Enhances section with calculated values */
+      )}
+
+      {/* Enhances section — also shown for hybrid global/proc IOs (LotG
+          Defense/+Recharge, Steadfast Resistance/+Def) that both proc and
+          enhance a stat. Pure procs have an empty `aspects` array. */}
+      {piece.aspects.length > 0 && (
         <div className="bg-slate-800/50 rounded p-1.5">
           <div className="text-[9px] text-slate-500 uppercase mb-1">Enhances:</div>
           {piece.aspects.map((aspect, i) => {

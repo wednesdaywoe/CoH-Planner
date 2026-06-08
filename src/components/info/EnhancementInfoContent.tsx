@@ -181,7 +181,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
         </div>
 
         {/* Proc Effect section - shown for proc enhancements */}
-        {ioEnh.isProc ? (
+        {ioEnh.isProc && (
           <div className="bg-amber-900/30 border border-amber-700/50 rounded p-1.5">
             <div className="text-[11px] text-amber-400 uppercase mb-1 font-semibold">Proc Effect</div>
             {/* Look up detailed proc data */}
@@ -526,8 +526,13 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
               }
             })()}
           </div>
-        ) : (
-          /* Enhances section with calculated values - for non-proc enhancements */
+        )}
+
+        {/* Enhances section — shown whenever the piece enhances aspects, even
+            for hybrid global/proc IOs (LotG Defense/+Recharge, Steadfast
+            Resistance/+Def) that BOTH proc and enhance a stat. Pure procs
+            carry an empty `aspects` array, so this stays hidden for them. */}
+        {ioEnh.aspects.length > 0 && (
           <div className="bg-slate-800/50 rounded p-1.5">
             <div className="text-xs text-slate-300 uppercase mb-1 font-medium">Enhances:</div>
             {ioEnh.aspects.map((aspect, i) => {
