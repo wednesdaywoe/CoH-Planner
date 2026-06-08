@@ -16,7 +16,7 @@ import type { Build, Accolade, ConditionalEffect, Enhancement, EnhancementStatTy
 import type { ProcSettings } from '@/stores/uiStore';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
 import { stanceAdjusterOverrides } from '@/data';
-import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
+import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
@@ -2155,64 +2155,30 @@ function applyProcBonuses(
       continue;
     }
 
-    const effect = parseProcEffect(procData.mechanics);
     const sourceName = `${proc.setName}: ${proc.procName}`;
 
-    // Apply primary effect — check category filter and Rule of 5
-    if (effect.value !== undefined && isProcCategoryEnabled(effect.category, procSettings)) {
-      const stat = effect.category ? PROC_CATEGORY_TO_STAT[effect.category] : undefined;
+    // Binary-sourced structured effects (falls back to the mechanics parse).
+    // Each effect goes through the same category-filter + Rule-of-5 gate.
+    for (const eff of getProcEffects(procData)) {
+      if (eff.value === undefined || !isProcCategoryEnabled(eff.category, procSettings)) continue;
+      // Skip pet/ally buffs (MM auras) and chance-gated procs — they don't
+      // contribute a steady bonus to the PLAYER's dashboard.
+      if ('target' in eff && eff.target === 'pets') continue;
+      if ('chance' in eff && eff.chance !== undefined && eff.chance < 1) continue;
+      const stat = eff.category ? PROC_CATEGORY_TO_STAT[eff.category] : undefined;
       const allowed = stat === undefined
         ? true  // No stat mapping: not subject to Rule of 5 (e.g., KB protection)
         : stat === null
           ? false // Explicitly excluded
-          : trackBonus(tracking, stat, effect.value, sourceName, proc.powerName);
+          : trackBonus(tracking, stat, eff.value, sourceName, proc.powerName);
 
       if (allowed) {
-        applySingleProcEffect(
-          effect.category,
-          effect.value,
-          effect.effectType,
-          sourceName,
-          global,
-          breakdown,
-          proc.powerName
-        );
+        applySingleProcEffect(eff.category, eff.value, eff.effectType, sourceName, global, breakdown, proc.powerName);
       } else if (stat) {
         // Rule of 5 rejected — add a capped entry so it appears in the tooltip
         addToBreakdown(breakdown, stat, {
           name: sourceName,
-          value: effect.value,
-          type: 'proc',
-          capped: true,
-          powerName: proc.powerName,
-        });
-      }
-    }
-
-    // Apply secondary effect if present — check category filter and Rule of 5
-    if (effect.secondaryCategory && effect.secondaryValue !== undefined && isProcCategoryEnabled(effect.secondaryCategory, procSettings)) {
-      const stat = PROC_CATEGORY_TO_STAT[effect.secondaryCategory];
-      const allowed = stat === undefined
-        ? true
-        : stat === null
-          ? false
-          : trackBonus(tracking, stat, effect.secondaryValue, sourceName, proc.powerName);
-
-      if (allowed) {
-        applySingleProcEffect(
-          effect.secondaryCategory,
-          effect.secondaryValue,
-          effect.secondaryEffectType,
-          sourceName,
-          global,
-          breakdown,
-          proc.powerName
-        );
-      } else if (stat) {
-        // Rule of 5 rejected — add a capped entry so it appears in the tooltip
-        addToBreakdown(breakdown, stat, {
-          name: sourceName,
-          value: effect.secondaryValue,
+          value: eff.value,
           type: 'proc',
           capped: true,
           powerName: proc.powerName,
@@ -2258,7 +2224,7 @@ function applyPPMProcBonuses(
       // Skip if not a PPM proc (Global and Proc120s are handled elsewhere)
       if (procData.type !== 'Proc' || procData.ppm === null) continue;
 
-      const effect = parseProcEffect(procData.mechanics);
+      const effects = getProcEffects(procData);
       const procsPerMin = calculateAutoToggleProcsPerMinute(procData.ppm);
       const sourceName = `${procData.setName}: ${ioSlot.name} (PPM)`;
 
@@ -2303,11 +2269,10 @@ function applyPPMProcBonuses(
         }
       };
 
-      // Apply primary effect
-      applyPPMEffect(effect.category, effect.value);
-
-      // Apply secondary effect (e.g., Panacea's +HP primary + +End secondary)
-      applyPPMEffect(effect.secondaryCategory, effect.secondaryValue, effect.secondaryCategory);
+      // Apply each structured effect (e.g., Panacea's +HP + +End)
+      for (const e of effects) {
+        applyPPMEffect(e.category, e.value, effects.length > 1 ? e.category : undefined);
+      }
     }
   };
 
@@ -2375,16 +2340,20 @@ function applyBuildUpProcBonuses(
       const procData = findProcData(ioSlot.name, ioSlot.setName);
       if (!procData || procData.type !== 'Proc' || procData.ppm === null) continue;
 
-      const effect = parseProcEffect(procData.mechanics);
-      if (effect.category !== 'BuildUp') continue;
+      // A Build Up proc is a self-buff Damage effect with a duration (regular
+      // damage procs carry a valueMax range and no duration), plus a ToHit buff.
+      const effects = getProcEffects(procData);
+      const dmgE = effects.find((e) => e.category === 'Damage' && e.duration !== undefined);
+      if (!dmgE) continue;
+      const toHitE = effects.find((e) => e.category === 'ToHit');
 
       buildUpProcs.push({
         procName: ioSlot.name,
         setName: procData.setName,
         ppm: procData.ppm,
-        damage: effect.value || 0,
-        toHit: effect.secondaryValue || 0,
-        duration: effect.duration || 10,
+        damage: dmgE.value || 0,
+        toHit: toHitE?.value || 0,
+        duration: dmgE.duration || 10,
         powerName: power.name,
         baseRecharge,
         castTime,

@@ -295,7 +295,8 @@ export {
 export {
   PROC_DATABASE,
   findProcData,
-  parseProcEffect,
+  getProcEffects,
+  procEffectSummary,
   getProcEffectLabel,
   getProcEffectColor,
   isProcAlwaysOn,
@@ -311,7 +312,7 @@ export {
   calculateProcStats,
   AUTO_POWER_PSEUDO_RECHARGE,
 } from './proc-data';
-export type { ProcData, ProcType, ProcEffectCategory, ParsedProcEffect, PowerProcCalcData } from './proc-data';
+export type { ProcData, ProcType, ProcEffectCategory, ParsedProcEffect, ProcEffect, PowerProcCalcData } from './proc-data';
 
 // Granted powers (sub-powers granted by parent powers like Adaptation)
 export {

@@ -2,7 +2,7 @@
  * Enhancement outline utilities - color-coded outlines for proc and unique enhancements
  */
 
-import { findProcData, parseProcEffect } from '@/data/proc-data';
+import { findProcData, getProcEffects } from '@/data/proc-data';
 import type { ProcEffectCategory } from '@/data/proc-data';
 
 export interface EnhancementOutlineStyle {
@@ -63,10 +63,10 @@ export function getEnhancementOutline(
   if (piece.proc) {
     const procData = findProcData(piece.name, setName);
     if (procData) {
-      const effect = parseProcEffect(procData.mechanics);
-      const color = getProcOutlineColor(effect.category);
-      const secondaryColor = effect.secondaryCategory
-        ? getProcOutlineColor(effect.secondaryCategory)
+      const effects = getProcEffects(procData);
+      const color = getProcOutlineColor(effects[0]?.category ?? 'Special');
+      const secondaryColor = effects[1]
+        ? getProcOutlineColor(effects[1].category)
         : undefined;
       // Only use secondary if it's actually a different color
       return {
