@@ -33,6 +33,7 @@ PROC_DATA_TS = PROJECT_ROOT / 'src' / 'data' / 'proc-data.ts'
 GEN_DIR = PROJECT_ROOT / 'src' / 'data' / 'generated'
 OUT_GLOBALS = GEN_DIR / 'proc-globals.generated.ts'
 OUT_DAMAGE = GEN_DIR / 'proc-damage.generated.ts'
+OUT_EFFECTS = GEN_DIR / 'proc-effects.generated.ts'
 
 # ---------------------------------------------------------------------
 # Binary (attrib, aspect) -> structured ProcEffect {category, mult}.
@@ -276,6 +277,97 @@ def resolve_damage_proc(s, pidx, l1: float, l50: float) -> list[dict] | None:
     return None
 
 
+# Mez attrib -> display label (proc payload). magnitude = template.magnitude,
+# duration = template.scale (mez procs encode duration-seconds in scale).
+MEZ_LABEL = {'Held': 'Hold', 'Stunned': 'Stun', 'Sleep': 'Sleep', 'Confused': 'Confuse',
+             'Terrorized': 'Fear', 'Immobilized': 'Immobilize', 'Placate': 'Placate'}
+
+
+def resolve_proc_payload(piece: PowerRecord, gb_index: dict[str, PowerRecord]) -> list[dict]:
+    """Map a non-global proc piece's PAYLOAD (the chance/ppm effect group) to
+    structured ProcEffects: self-buffs (Endurance/Heal/Recovery/Regen/Absorb),
+    foe debuffs (-Res/-ToHit/-Recharge -> Debuff), mez/knock (-> Control), and
+    Build Up (Grant_Power -> Boost_Up). Skips enhancement aspects and damage
+    (handled by resolve_damage_proc)."""
+    out: list[dict] = []
+    seen: set[str] = set()
+    for eg in piece.effects:
+        for t in eg.templates:
+            if not t.attribs:
+                continue
+            a, asp, sc = t.attribs[0], t.aspect, round(t.scale, 5)
+            # Grant_Power / Null redirects to a Global_Bonus power.
+            if a in ('Grant_Power', 'Null') and t.params:
+                names = t.params.get('power_names', [])
+                # Build Up: Boost_Up grants the standard +100% Dam / +15% ToHit, 10s.
+                if any('Boost_Up' in p for p in names):
+                    d = round(t.duration, 2) or 10.0
+                    out += [{'category': 'Damage', 'value': 100.0, 'effectType': 'All', 'duration': d},
+                            {'category': 'ToHit', 'value': 15.0, 'duration': d}]
+                    return out
+                # Otherwise resolve the granted Global_Bonus (Force Feedback +Rech, …).
+                for tgt in names:
+                    gp = gb_index.get(tgt) or gb_index.get(tgt.split('.')[-1])
+                    if not gp:
+                        continue
+                    for ef in structured_effects(gp):
+                        if ef['category'] == 'Special':
+                            continue
+                        if t.duration:
+                            ef['duration'] = round(t.duration, 2)
+                        ck = ef['category'] + str(ef.get('effectType', '')) + str(ef.get('value'))
+                        if ck not in seen:
+                            seen.add(ck)
+                            out.append(ef)
+                continue
+            # skip markers, damage (3a), and enhancement aspects
+            if a in ('Null', 'Grant_Power', 'Create_Entity', 'Set_Mode') or t.table == 'Melee_ProcDamage':
+                continue
+            if asp == 'Strength' and sc > 0.001 and not a.endswith('_Dmg'):
+                continue
+            dur = round(t.duration, 2) or None
+            ef = None
+            # Mez (magnitude + duration-in-scale)
+            if a in MEZ_LABEL and asp == 'Current':
+                ef = {'category': 'Control', 'value': round(t.magnitude, 3),
+                      'effectType': MEZ_LABEL[a], 'duration': round(sc, 2) or dur}
+            elif a in ('Knockback', 'Knockup') and asp == 'Current':
+                kind = 'Knockdown' if abs(sc) < 1 else 'Knockback'
+                ef = {'category': 'Control', 'value': abs(sc), 'effectType': kind}
+            # Foe debuffs (negative scale)
+            elif sc < 0 and a.endswith('_Dmg') and asp == 'Resistance':
+                ef = {'category': 'Debuff', 'value': round(sc * 100, 4), 'effectType': 'Resistance', 'duration': dur}
+            elif sc < 0 and a == 'ToHit':
+                ef = {'category': 'Debuff', 'value': round(sc * 100, 4), 'effectType': 'ToHit', 'duration': dur}
+            elif sc < 0 and a == 'RechargeTime':
+                ef = {'category': 'Debuff', 'value': round(sc * 100, 4), 'effectType': 'Recharge', 'duration': dur}
+            elif sc < 0 and a in ('Recovery', 'Endurance'):
+                ef = {'category': 'Debuff', 'value': round(sc * 100, 4), 'effectType': 'Recovery', 'duration': dur}
+            # Self buffs
+            elif a == 'Endurance' and asp == 'Current':
+                ef = {'category': 'Endurance', 'value': round(sc * 100, 4)}
+            elif a == 'Recovery' and asp == 'Current':
+                ef = {'category': 'Recovery', 'value': round(sc * 100, 4)}
+            elif a == 'Regeneration' and asp == 'Current':
+                ef = {'category': 'Regeneration', 'value': round(sc * 100, 4)}
+            elif a == 'Heal_Dmg':
+                ef = {'category': 'Heal', 'value': round(sc * 10, 2)}  # ~% of HP (display; dashboard skips Heal)
+            elif a == 'Absorb':
+                ef = {'category': 'Absorb', 'value': round(sc * 100, 4)}
+            if ef is None:
+                continue
+            # Foe-vs-self keys off the effect KIND, not the target field
+            # ('AnyAffected' means the caster for beneficial procs, the enemy for
+            # harmful ones). Debuff/Control are applied to the foe.
+            if ef['category'] in ('Debuff', 'Control'):
+                ef['target'] = 'foe'
+            key = ef['category'] + str(ef.get('effectType', '')) + str(ef.get('value'))
+            if key not in seen:
+                seen.add(key)
+                out.append(ef)
+    return out
+
+
 def parse_hand_damage() -> list[dict]:
     """Parse the hand PROC_DATABASE for Damage entries (key + setName)."""
     txt = PROC_DATA_TS.read_text(encoding='utf-8')
@@ -322,6 +414,46 @@ def infer_category(mech: str) -> str:
     return 'Special'
 
 
+def parse_hand_other() -> list[dict]:
+    """Parse the hand PROC_DATABASE for non-global, non-damage Proc entries."""
+    txt = PROC_DATA_TS.read_text(encoding='utf-8')
+    out = []
+    for m in re.finditer(
+        r'"((?:[^"\\]|\\.)*)":\s*\{\s*\n\s*setCategory:\s*"[^"]*",\s*\n\s*'
+        r'setName:\s*"([^"]+)",\s*\n\s*ioName:\s*"([^"]+)",\s*\n\s*ppm:[^\n]*\n\s*'
+        r'mechanics:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*pvpNotes:[^\n]*\n\s*type:\s*"Proc"', txt):
+        mech = m.group(4)
+        if re.match(r'Damage\s*\(', mech):
+            continue
+        out.append({'key': m.group(1), 'setName': m.group(2), 'ioName': m.group(3), 'mechanics': mech})
+    return out
+
+
+def infer_proc_category(mech: str) -> str:
+    """Infer a non-global proc entry's primary structured category from mechanics."""
+    m = mech.lower()
+    if m.startswith('foe('):
+        if '-resist' in m: return 'Debuff:Resistance'
+        if '-tohit' in m or '-to hit' in m: return 'Debuff:ToHit'
+        if '-rech' in m: return 'Debuff:Recharge'
+        if '-recovery' in m: return 'Debuff:Recovery'
+        if 'knockback' in m: return 'Control:Knockback'
+        if 'knockdown' in m: return 'Control:Knockdown'
+        for word, label in (('disorient', 'Stun'), ('stun', 'Stun'), ('hold', 'Hold'),
+                            ('immobiliz', 'Immobilize'), ('sleep', 'Sleep'), ('confus', 'Confuse'),
+                            ('terror', 'Fear'), ('fear', 'Fear'), ('placate', 'Placate')):
+            if word in m:
+                return f'Control:{label}'
+        return 'Control'
+    if 'build up' in m or 'buildup' in m: return 'Damage'  # Build Up grants damage+tohit
+    if 'endurance' in m: return 'Endurance'
+    if 'absorb' in m or 'absorption' in m: return 'Absorb'
+    if 'heal' in m: return 'Heal'
+    if 'recovery' in m: return 'Recovery'
+    if 'regener' in m: return 'Regeneration'
+    return ''
+
+
 def parse_hand_globals() -> list[dict]:
     """Parse the hand PROC_DATABASE for Global / Proc120s entries (key + fields)."""
     txt = PROC_DATA_TS.read_text(encoding='utf-8')
@@ -348,6 +480,8 @@ def _emit_effect(ef: dict) -> str:
         parts.append(f'valueMax: {ef["valueMax"]}')
     if ef.get('effectType'):
         parts.append(f'effectType: "{ef["effectType"]}"')
+    if ef.get('duration') is not None:
+        parts.append(f'duration: {ef["duration"]}')
     if ef.get('target'):
         parts.append(f'target: "{ef["target"]}"')
     if ef.get('chance') is not None:
@@ -446,12 +580,48 @@ def main() -> int:
     print(f'=== damage: {len(dmg_gen)} entries (L1={l1}, L50={round(l50, 2)}); '
           f'{dmg_missing} unresolved (universal-damage/Rebirth sets) ===')
 
+    # --- Other non-global procs (Phase 3b): debuff / mez / knock / self-buff ----
+    eff_gen: dict[str, list[dict]] = {}
+    eff_missing = 0
+    for e in parse_hand_other():
+        s = set_by_id.get(sid(e['setName']))
+        if not s:
+            eff_missing += 1
+            continue
+        # collect payloads from every piece, indexed by their effects' categories
+        by_key: dict[str, list[dict]] = {}
+        for bl in s.boostlists:
+            pp = next((pidx[b] for b in bl.boosts if b in pidx), None)
+            if not pp:
+                continue
+            payload = resolve_proc_payload(pp, gb_index)
+            for ef in payload:
+                ck = ef['category'] + (':' + ef['effectType'] if ef.get('effectType') else '')
+                by_key.setdefault(ck, payload)
+                by_key.setdefault(ef['category'], payload)
+        want = infer_proc_category(e['mechanics'])
+        pick = by_key.get(want)
+        # Category fallback for non-Control wants only; a mez/knock want must match
+        # its exact type (don't grab a different Control payload — e.g. the generic
+        # "Chance for Stun" tagged to Stupefy, whose only proc is Knockback).
+        if not pick and want and not want.startswith('Control'):
+            pick = by_key.get(want.split(':')[0])
+        if not pick and not want:
+            pick = next(iter(by_key.values()), None)  # no inference -> any payload
+        if pick:
+            eff_gen[e['key']] = pick
+        else:
+            eff_missing += 1
+    print(f'=== other: {len(eff_gen)} entries; {eff_missing} unresolved ===')
+
     if emit:
         GEN_DIR.mkdir(parents=True, exist_ok=True)
         _emit_file(OUT_GLOBALS, 'PROC_GLOBAL_EFFECTS', generated,
                    'Structured always-on GLOBAL proc effects (Set_Bonus.Global_Bonus.* powers).')
         _emit_file(OUT_DAMAGE, 'PROC_DAMAGE_EFFECTS', dmg_gen,
                    'Structured DAMAGE proc effects (scale × Melee_ProcDamage[level]; N=L1, M=L50).')
+        _emit_file(OUT_EFFECTS, 'PROC_OTHER_EFFECTS', eff_gen,
+                   'Structured non-global proc payloads: self-buff / foe debuff / mez / knock / Build Up.')
     return 0
 
 

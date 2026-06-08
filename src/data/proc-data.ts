@@ -4,6 +4,7 @@
  */
 import { PROC_GLOBAL_EFFECTS } from './generated/proc-globals.generated';
 import { PROC_DAMAGE_EFFECTS } from './generated/proc-damage.generated';
+import { PROC_OTHER_EFFECTS } from './generated/proc-effects.generated';
 
 export type ProcType = 'Proc' | 'Proc120s' | 'Global';
 
@@ -71,9 +72,10 @@ export interface ProcEffect {
   effectType?: string;
   /** Duration in seconds (for timed effects) */
   duration?: number;
-  /** Buff target. 'pets' = buffs the player's pets, not the player (MM auras);
-   *  the player-dashboard path skips these. Omitted = self. */
-  target?: 'self' | 'pets';
+  /** Effect target. 'pets' = buffs the player's pets (MM auras); 'foe' = debuff/
+   *  mez/knock applied to the enemy. The player-dashboard path skips both.
+   *  Omitted = self. */
+  target?: 'self' | 'pets' | 'foe';
   /** Trigger chance when < 1 (chance-gated, not steady always-on). The
    *  always-on dashboard path skips these. Omitted = always on. */
   chance?: number;
@@ -2261,6 +2263,12 @@ for (const [key, effects] of Object.entries(PROC_GLOBAL_EFFECTS)) {
 // Binary-sourced damage proc effects (Phase 3): N-M = scale × Melee_ProcDamage at
 // levels 1 and 50. Inert until the damage/display consumers read `.effects`.
 for (const [key, effects] of Object.entries(PROC_DAMAGE_EFFECTS)) {
+  const entry = PROC_DATABASE[key];
+  if (entry) entry.effects = effects;
+}
+// Binary-sourced non-global proc payloads (Phase 3b): self-buff / foe debuff / mez /
+// knock / Build Up. Inert until the PPM/Build-Up/display consumers read `.effects`.
+for (const [key, effects] of Object.entries(PROC_OTHER_EFFECTS)) {
   const entry = PROC_DATABASE[key];
   if (entry) entry.effects = effects;
 }

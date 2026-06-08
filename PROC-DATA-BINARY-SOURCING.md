@@ -36,13 +36,23 @@ Globals are binary-sourced into the player dashboard end-to-end. Results below.
   procs the hand entered as a flat L50 value instead of the scaling 1-50 range, and
   Ice Mistral's wrong min). `ppm` is already binary-correct in the hand data (Phase 1),
   so it's reused for now (generate it in P6).
-- **3b — other non-global procs (NEXT):** debuff (Foe -Res/-ToHit/-Def), mez (Foe
-  Hold/Stun…), and buff procs (Force Feedback +Rech via Global_Bonus redirect, Panacea
-  Heal+End, Performance Shifter +End, Build Up procs). PPM from `eg.ppm`.
-- **3c — consumer migration:** point DamageBlock (damage N-M), `applyPPMProcBonuses`
-  (Panacea/Perf Shifter recovery/regen/end), `applyBuildUpProcBonuses` (Gaussian's/
-  Decimation), and the DISPLAY consumers (EnhancementInfoContent, EnhancementPicker,
-  enhancement-outline, PowerInfoBlocks) at `.effects` instead of `parseProcEffect`.
+- **3b — other non-global procs: ✅ DONE (2026-06-07).** `resolve_proc_payload` maps the
+  chance/ppm effect group → structured effects: self-buff (Endurance/Heal/Recovery/Regen/
+  Absorb), foe debuff (−Res/−ToHit/−Recharge → `Debuff`), mez (`Control` + magnitude +
+  duration-in-scale), knock (`Control` Knockback/Knockdown), Build Up (`Grant_Power →
+  Boost_Up` ⇒ +100% Dam/+15% ToHit, 10s), and Global_Bonus redirects (Force Feedback
+  +Rech 100%/5s). 53 entries → `src/data/generated/proc-effects.generated.ts`, merged
+  (inert until 3c). 42 unresolved (Rebirth → P5; bespoke ATO procs — Fury/Opportunity/
+  Hide/PBAoE/Energy-Font; the mis-tagged generic "Chance for Stun") safely fall back to
+  `parseProcEffect`. Foe-vs-self keys off the effect KIND, not the `AnyAffected` target
+  (which means the caster for beneficial procs). Guard: `proc-other-parity.test.ts`
+  (dashboard Endurance/Recovery/Regen values; allowlists the Performance Shifter
+  +End **7.5% → 10%** correction). Build Up / Force Feedback verified.
+- **3c — consumer migration (NEXT):** point DamageBlock (damage N-M), `applyPPMProcBonuses`
+  (Panacea/Perf Shifter end→recovery), `applyBuildUpProcBonuses` (Gaussian's/Decimation),
+  and the DISPLAY consumers (EnhancementInfoContent, EnhancementPicker, enhancement-outline,
+  PowerInfoBlocks) at `.effects` instead of `parseProcEffect`. This activates all the
+  Phase 3 data + corrections and resolves the tooltip-vs-dashboard inconsistency.
 
 NB transitional inconsistency: DISPLAY consumers still read `mechanics` strings, so the
 Phase 2 corrected globals (Impervium 6%, etc.) and the 7 damage corrections show the old
