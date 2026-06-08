@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-06-07',
     items: [
+      { message: 'Unique and Proc data is now fully sourced from the binary. This should fix some existing enhancements. If you have an existing build with an enhancement that is displaying incorrectly, you may need to remove and replace it', type: 'fix' },
       { message: 'Spent half the 🤬 day trying to model every 🤬 thing Storm Blast 🤬 does. 🤬.', type: 'update' },
       { message: 'Powers that create pet entities (especially complicated ones like Storm Cell, Category Five, etc.) should now resolve correctly', type: 'fix' },
       { message: 'Lots of updates have been happening but I haven\'t been adding notes to the changelog for them. What\'s happening behind the scenes is that I\'m going through Sidekick\'s data pipeline and replacing the remaining legacy hand-curated data with data generated from the game binary', type: 'update' },
