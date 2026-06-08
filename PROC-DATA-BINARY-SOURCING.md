@@ -59,10 +59,30 @@ Globals are binary-sourced into the player dashboard end-to-end. Results below.
     damage procs carry `valueMax`, no duration); DamageBlock takes the Damage effect with
     a `value..valueMax` range. tsc clean, full suite 231/231. `parseProcEffect` is now
     unused in character-totals.ts and DamageBlock.tsx.
-  - **3c-display (NEXT):** migrate EnhancementInfoContent, EnhancementPicker,
-    enhancement-outline, PowerInfoBlocks off `parseProcEffect` to `getProcEffects`. This
-    clears the remaining tooltip-vs-dashboard inconsistency (tooltips still read mechanics
-    strings, so corrected globals/procs show the old value there).
+  - **3c-display: ✅ DONE (2026-06-07).** Added `procEffectSummary(procData)` — the
+    display drop-in for `parseProcEffect` (maps `getProcEffects` to the legacy
+    primary/secondary `ParsedProcEffect` shape). Migrated EnhancementInfoContent,
+    EnhancementPicker (×2), enhancement-outline, EnhancementCard, and InfoPanel (a damage
+    consumer). PowerInfoBlocks only shows proc *chance* (no effect parse) — untouched.
+    Build Up renders via a tweaked Value condition (structured `Damage` with no
+    `valueMax`). **The tooltip-vs-dashboard inconsistency is RESOLVED** — display and
+    dashboard now read the same structured `.effects`. `parseProcEffect` is no longer
+    called by any consumer; it survives only as the internal fallback inside
+    `getProcEffects` (for entries without `.effects`) and in the parity guards. tsc clean,
+    full suite 231/231.
+
+## Phase 3 ✅ COMPLETE (2026-06-07)
+
+Damage + all non-global proc effects are binary-sourced and live in both the dashboard
+and tooltips. Remaining campaign work:
+- **P4 — bespoke procs:** the ~25 special ATO procs still on the `parseProcEffect`
+  fallback (Fury/Opportunity/Hide/Energy-Font/PBAoE-ally). Deepen the redirect resolution
+  or accept the fallback.
+- **P5 — Rebirth:** reuse HC entries for shared sets; Parse6 generation for RB-unique
+  procs (retires the interim Rebirth hand entries).
+- **P6 — full cutover:** generate `ppm`/`type`/`levelRange` too; retire the hand
+  `PROC_DATABASE` + `parseProcEffect`; add a runtime==export guard; unify the three
+  generated files.
 
 NB transitional inconsistency: DISPLAY consumers still read `mechanics` strings, so the
 Phase 2 corrected globals (Impervium 6%, etc.) and the 7 damage corrections show the old

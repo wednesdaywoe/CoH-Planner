@@ -16,7 +16,7 @@ import {
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
   getAvailableGenericIOs, getAvailableHamidons, getAvailableTitans, getAvailableHydras, getAvailableDSyncs, getAvailablePrestige,
   getRarityColor, getTierTextColor, getTierBorderColor,
-  findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
+  findProcData, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
 import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getTotalBonusCount, isBonusCapped, getSetRarityMultiplier, getEffectiveAspectCount, getMultiAspectModifier, BOOST_MULTIPLIER_PER_LEVEL } from '@/utils/calculations';
 import { formatBonusDesc } from '@/utils/set-bonus-format';
@@ -1217,7 +1217,7 @@ function ProcsContent({
 
         // Get proc effect info
         const procData = findProcData(piece.name, set.name);
-        const procEffect = procData ? parseProcEffect(procData.mechanics) : null;
+        const procEffect = procData ? procEffectSummary(procData) : null;
         const procLabel = procEffect ? getProcEffectLabel(procEffect.category) : null;
         const procColor = procEffect ? getProcEffectColor(procEffect.category) : outline.color;
 
@@ -1251,7 +1251,7 @@ function ProcsContent({
                   </span>
                 </span>
               )}
-              {procEffect.value !== undefined && procEffect.category !== 'Damage' && (
+              {procEffect.value !== undefined && !(procEffect.category === 'Damage' && procEffect.valueMax !== undefined) && (
                 <span>
                   <span className="text-slate-400">Value:</span>
                   <span className="ml-1" style={{ color: procColor }}>
@@ -1916,7 +1916,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
           {(() => {
             const procData = findProcData(piece.name, set.name);
             if (procData) {
-              const effect = parseProcEffect(procData.mechanics);
+              const effect = procEffectSummary(procData);
               const effectColorClass = getProcEffectColor(effect.category);
               const categoryLabel = getProcEffectLabel(effect.category);
               const isAlwaysOn = isProcAlwaysOn(procData);
@@ -1984,7 +1984,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                         </span>
                       </div>
                     )}
-                    {effect.value !== undefined && effect.category !== 'Damage' && (
+                    {effect.value !== undefined && !(effect.category === 'Damage' && effect.valueMax !== undefined) && (
                       <div>
                         <span className="text-slate-500">Value:</span>
                         <span className={`${effectColorClass} ml-1`}>

@@ -16,7 +16,7 @@ import {
   BOOST_MULTIPLIER_PER_LEVEL,
 } from '@/utils/calculations';
 import { getEnhancementOutline } from '@/utils/enhancement-outline';
-import { findProcData, parseProcEffect } from '@/data/proc-data';
+import { findProcData, procEffectSummary } from '@/data/proc-data';
 
 interface EnhancementCardProps {
   piece: IOSetPiece;
@@ -211,7 +211,8 @@ function EnhancementTooltip({ piece, setName, level, isAttuned, boost = 0, categ
   );
   const boostMultiplier = 1 + boost * BOOST_MULTIPLIER_PER_LEVEL;
   const rarityLabel = category ? RARITY_LABEL[category] : null;
-  const procEffect = piece.proc ? parseProcEffect((findProcData(piece.name, setName)?.mechanics) || '') : null;
+  const procData = piece.proc ? findProcData(piece.name, setName) : undefined;
+  const procEffect = procData ? procEffectSummary(procData) : null;
 
   return (
     <div className="min-w-[220px]">

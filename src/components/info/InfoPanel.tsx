@@ -22,7 +22,7 @@ import {
   formatEffectValue,
   isSlotToggleable,
   findProcData,
-  parseProcEffect,
+  getProcEffects,
   interpolateProcDamage,
   calculateProcChance,
   arcToDegrees,
@@ -750,8 +750,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       if (!ioSlot.isProc) continue;
       const procData = findProcData(ioSlot.name, ioSlot.setName);
       if (!procData || procData.ppm === null) continue;
-      const effect = parseProcEffect(procData.mechanics);
-      if (effect.category !== 'Damage' || effect.value == null || effect.valueMax == null) continue;
+      // A foe-damage proc is a Damage effect with a value..valueMax range
+      // (Build Up's self-buff Damage has a duration and no valueMax — excluded).
+      const effect = getProcEffects(procData).find(
+        (e) => e.category === 'Damage' && e.value != null && e.valueMax != null,
+      );
+      if (!effect || effect.value == null || effect.valueMax == null) continue;
 
       // Attuned procs scale with the character's current level; fixed-level
       // IOs use their crafted level. Mirrors DamageBlock's proc-damage helper

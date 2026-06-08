@@ -2300,6 +2300,27 @@ export function getProcEffects(procData: ProcData): ProcEffect[] {
 }
 
 /**
+ * Display-oriented summary of a proc's effects in the legacy ParsedProcEffect
+ * shape (primary + one secondary), sourced from getProcEffects. A drop-in for
+ * parseProcEffect(mechanics) in display code so tooltips show the binary values.
+ */
+export function procEffectSummary(procData: ProcData): ParsedProcEffect {
+  const e = getProcEffects(procData);
+  return {
+    category: e[0]?.category ?? 'Special',
+    value: e[0]?.value,
+    valueMax: e[0]?.valueMax,
+    effectType: e[0]?.effectType,
+    duration: e[0]?.duration,
+    isBuff: true,
+    description: procData.mechanics,
+    secondaryCategory: e[1]?.category,
+    secondaryValue: e[1]?.value,
+    secondaryEffectType: e[1]?.effectType,
+  };
+}
+
+/**
  * Look up proc data with fuzzy matching
  * Prioritizes set-prefixed match when setName is provided to avoid
  * ambiguous bare keys (e.g. multiple procs share "Chance for Negative Energy Damage"

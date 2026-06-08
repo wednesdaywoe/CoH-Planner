@@ -297,6 +297,7 @@ export {
   findProcData,
   parseProcEffect,
   getProcEffects,
+  procEffectSummary,
   getProcEffectLabel,
   getProcEffectColor,
   isProcAlwaysOn,

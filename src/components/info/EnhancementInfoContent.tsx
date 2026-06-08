@@ -5,7 +5,7 @@
 
 import { useBuildStore } from '@/stores';
 import { useBonusTracking } from '@/hooks';
-import { getIOSet, getPower, getPowerPool, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
+import { getIOSet, getPower, getPowerPool, findProcData, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
 import {
   normalizeAspectName,
   getAspectSchedule,
@@ -189,8 +189,9 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
               const procData = findProcData(enhancement.name, ioEnh.setName);
 
               if (procData) {
-                // Parse the mechanics into structured effect data
-                const effect = parseProcEffect(procData.mechanics);
+                // Binary-sourced structured effects (falls back to mechanics parse),
+                // summarized to the legacy primary/secondary shape for display.
+                const effect = procEffectSummary(procData);
                 const effectColorClass = getProcEffectColor(effect.category);
                 const categoryLabel = getProcEffectLabel(effect.category);
                 const isAlwaysOn = isProcAlwaysOn(procData);
@@ -274,7 +275,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                           </span>
                         </div>
                       )}
-                      {effect.value !== undefined && effect.category !== 'Damage' && (
+                      {effect.value !== undefined && !(effect.category === 'Damage' && effect.valueMax !== undefined) && (
                         <div>
                           <span className="text-slate-400">Value:</span>
                           <span className={`${effectColorClass} ml-1`}>
