@@ -11,14 +11,17 @@
  * into the leading "+X.X%" portion of `desc`.
  */
 
+import { formatPrecision } from './format-precision';
+
 /** Round to at most 3 decimals, strip trailing zeros.
  *  3 decimals so values like 1.125% (Adrenal Adjustment / Luck of the Gambler
  *  +MaxHP, and the 1.525% damage bonuses) display exactly rather than rounded —
  *  used everywhere (tooltips AND dashboard breakdown rows) so the same bonus
- *  reads identically in every view, matching the in-game number. */
+ *  reads identically in every view, matching the in-game number. Set bonuses
+ *  are the planner's 3-decimal tier; see [[formatPrecision]] for the shared
+ *  round-then-strip mechanic. */
 export function formatBonusValue(value: number): string {
-  const rounded = Math.round(value * 1000) / 1000;
-  return rounded.toString();
+  return formatPrecision(value, 3);
 }
 
 /** Splice the precise value back into the leading "+X.X%" portion of a

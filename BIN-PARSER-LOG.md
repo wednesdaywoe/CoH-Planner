@@ -5,6 +5,39 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
+## ⬜ Rebirth `is_pvp` — PvE copies of per-target increments missing/mis-tagged (~165 powers, incl. Phalanx Fighting) — 2026-06-08
+
+Surfaced fixing Homecoming Phalanx Fighting (resolved entry below). On **Rebirth**,
+Phalanx's per-ally defense increment (`scale 0.3`, "Stack") is flagged
+`is_pvp = "PVP_ONLY"`, while the always-on base (`scale 0.5`, "Replace") is `"EITHER"`.
+Homecoming flags the *same* ally increment `"EITHER"`. convert-powerset correctly
+drops PvP-only effects from the PvE planner, so Rebirth Phalanx generates flat 3.75%
+with **no ally scaling** — contradicting its own description ("this bonus grows for
+each ally near you"). The converter is correct; the source data is suspect.
+
+Evidence it's a Rebirth export/format issue, not converter logic:
+
+- **~165 Rebirth powers** have a `PVP_ONLY` self-`Stack` increment with no matching
+  PvE (`EITHER`/`PVE_ONLY`) copy; HC has ~12.
+- Rebirth's PvE/PvP-split density is ~13× HC's: `PVP_ONLY` 7055 + `PVE_ONLY` 6586
+  across 8659 files, vs HC `544 + 523` across 10666. So `is_pvp` parsing isn't
+  *globally* broken (PVE_ONLY is emitted in bulk), but the PvE copy of these
+  per-target increments is absent.
+- Rebirth effects carry `tags: None` where HC has `tags: []` — a parser/format-version
+  tell (Rebirth is an i25/i26-era bin; PvE/PvP effect copies are likely encoded
+  differently than the Parse7 HC layout the crawler is tuned for).
+
+Counter-evidence (why it's not a blanket failure): Rebirth's *other* per-target powers —
+Energy Absorption, **Against All Odds (same Shield Defense set)**, Soul Drain, Rise to
+the Challenge — all carry correctly-tagged `EITHER` increments.
+
+Needs the Rebirth `.pigg`/`.bin` source (not on the dev machine when filed) to confirm
+whether the PvE increment copy is dropped on export or the `is_pvp` field is misread for
+this effect shape. **Do not** band-aid per-power in convert-powerset. Interim option if a
+Rebirth user confirms in-game ally scaling: a Rebirth override mirroring HC
+(`defenseBuff.{melee,ranged,aoe} = { scale: 0.5, perTarget: 0.3, table: "Melee_Buff_Def" }`).
+Homecoming users are unaffected.
+
 ## ⬜ Pseudo-pet `summon.powers` redirect chains not resolved (~32 powers) — 2026-06-06
 
 Location/patch/storm powers whose `summon.entity` is a generic marker

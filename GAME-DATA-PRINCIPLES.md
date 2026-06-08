@@ -17,6 +17,10 @@ This is the **principles reference**. The chronological issue log lives in
 
 ---
 
+## 0. The Standing Principle: When there is a decision to be made, the preference is always in favor of decisions that move the planner toward being more data-driven
+
+Getting away from hand-curated data entries and overrides is an ongoing battle that has roots in the earliest versions of this planner. Clearing away fragile data and consolidating sources of truth should be preferred over quick wins. This connects directly back the development philosophy: **Prefer fixing root problems properly over quick fixes**
+
 ## 1. The core rule: capture everything mechanical; don't assume our *use* of it is complete either
 
 > The data was rarely the problem. Our assumptions about what the planner needs were.

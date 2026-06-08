@@ -19,6 +19,7 @@ import { abbreviateDamageType, calculateDominationMagnitude, type PowerDamageRes
 import {
   EFFECT_REGISTRY,
   CATEGORY_CONFIG,
+  formatEffectValueForConfig,
   groupEffectsByCategory,
   isMezEffect,
   isByTypeObject,
@@ -262,21 +263,8 @@ function CollapsibleEffectGroup({
   const allSameBase = items.every(i => Math.abs(i.tiers.base - items[0].tiers.base) < 0.01);
   const summaryValue = allSameBase ? items[0].tiers.base : null;
 
-  const formatValue = (v: number, config: EffectDisplayConfig) => {
-    switch (config.format) {
-      case 'percent':
-        return `${v.toFixed(1)}%`;
-      case 'duration':
-        return `${v.toFixed(2)}s`;
-      case 'degrees':
-        return `${Math.round(v)}\u00B0`;
-      case 'value':
-        if (config.label === 'Range' || config.label === 'Radius') return `${v.toFixed(0)}ft`;
-        return v.toFixed(2);
-      default:
-        return v.toFixed(2);
-    }
-  };
+  // Precision is owned by each effect's registry config; see formatEffectValueForConfig.
+  const formatValue = formatEffectValueForConfig;
 
   // For mixed values, show min-max range
   const minBase = Math.min(...items.map(i => i.tiers.base));
@@ -1325,22 +1313,9 @@ export function RegistryEffectsDisplay({
         // Duration annotation for this effect
         const effectDur = getEffectDuration(key);
 
-        // Standard three-tier row
-        const formatValue = (v: number) => {
-          switch (config.format) {
-            case 'percent':
-              return `${(v).toFixed(2)}%`;
-            case 'duration':
-              return `${v.toFixed(2)}s`;
-            case 'degrees':
-              return `${Math.round(v)}\u00B0`;
-            case 'value':
-              if (config.label === 'Range' || config.label === 'Radius') return `${v.toFixed(0)}ft`;
-              return v.toFixed(2);
-            default:
-              return v.toFixed(2);
-          }
-        };
+        // Standard three-tier row \u2014 precision owned by the effect's registry
+        // config (see formatEffectValueForConfig).
+        const formatValue = (v: number) => formatEffectValueForConfig(v, config);
 
         return (
           <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>

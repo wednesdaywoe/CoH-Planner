@@ -11,6 +11,7 @@ import { getScaleValue } from '@/types';
 import { calculateBuffDebuffValue } from '@/utils/calculations';
 import { getTableValue } from '@/data/at-tables';
 import { STAT_COLORS } from './stat-colors';
+import { formatPrecision } from '@/utils/format-precision';
 
 // ============================================
 // TYPES
@@ -55,6 +56,15 @@ export interface EffectDisplayConfig {
   canBeByType?: boolean;
   /** Whether by-type variants should expand into individual rows (vs abbreviated summary) */
   expandByType?: boolean;
+  /**
+   * Max decimal places for the displayed value, declared per effect so the
+   * data — not the rendering component — owns precision. Falls back to
+   * DEFAULT_EFFECT_PRECISION[format] when unset (2 for the percent/value
+   * stat-like tier). Set explicitly only for exceptions, e.g. an effect whose
+   * authored value carries a 3rd decimal. See [[formatPrecision]] for the
+   * shared round-then-strip mechanic and [[formatBonusValue]] for the
+   * set-bonus 3-decimal tier. */
+  precision?: number;
   /** Custom render key if different from effect key */
   renderAs?: string;
   /** Base value to multiply by (e.g., accuracy is multiplier × 75% base to-hit) */
@@ -68,6 +78,51 @@ export interface EffectDisplayConfig {
    * absurd percentages.
    */
   flatPercentPerScale?: number;
+}
+
+// ============================================
+// VALUE FORMATTING
+// ============================================
+
+/**
+ * Default max-decimals per effect format. Power-effect values are the
+ * planner's 2-decimal "stat-like" tier — 2 covers every current effect
+ * (defense 3.75%, resistance 7.5%, +recovery, …). Authored 3-decimal values
+ * live in set bonuses ([[formatBonusValue]]), not here. Override a specific
+ * effect via EffectDisplayConfig.precision only when it genuinely needs finer
+ * or coarser precision.
+ */
+const DEFAULT_EFFECT_PRECISION: Record<EffectFormat, number> = {
+  percent: 2,
+  value: 2,
+  duration: 2,
+  scale: 2,
+  damage: 1,
+  mag: 1,
+  degrees: 0,
+  custom: 2,
+};
+
+/** Resolve an effect's display precision: its declared `precision`, else the
+ *  format default. */
+export function effectValuePrecision(config: EffectDisplayConfig): number {
+  return config.precision ?? DEFAULT_EFFECT_PRECISION[config.format];
+}
+
+/**
+ * Format a resolved effect value (already in display units — percent points,
+ * seconds, etc.) per its full registry config: read the config's declared
+ * precision (or the format default) and round-then-strip via the bare
+ * [[formatEffectValue]]. Adds the one label-dependent case (Range/Radius
+ * render as feet). This is the entry point power-effect rows render through,
+ * so precision is owned by the effect definition rather than each component's
+ * `toFixed`.
+ */
+export function formatEffectValueForConfig(value: number, config: EffectDisplayConfig): string {
+  if (config.format === 'value' && (config.label === 'Range' || config.label === 'Radius')) {
+    return `${formatPrecision(value, 0)}ft`;
+  }
+  return formatEffectValue(value, config.format, effectValuePrecision(config));
 }
 
 // ============================================
@@ -742,22 +797,24 @@ export function calculateEffectValue(
  */
 export function formatEffectValue(
   value: number,
-  format: EffectFormat
+  format: EffectFormat,
+  precision?: number
 ): string {
+  const dp = precision ?? DEFAULT_EFFECT_PRECISION[format];
   switch (format) {
     case 'percent':
-      return `${value.toFixed(1)}%`;
+      return `${formatPrecision(value, dp)}%`;
     case 'duration':
-      return `${value.toFixed(1)}s`;
+      return `${formatPrecision(value, dp)}s`;
     case 'mag':
       return `Mag ${value}`;
     case 'scale':
-      return `${value.toFixed(2)} scale`;
+      return `${formatPrecision(value, dp)} scale`;
     case 'degrees':
       return `${Math.round(value)}°`;
     case 'value':
     default:
-      return value.toFixed(1);
+      return formatPrecision(value, dp);
   }
 }
 

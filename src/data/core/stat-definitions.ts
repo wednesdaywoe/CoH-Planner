@@ -8,6 +8,7 @@
 
 import { STAT_COLORS } from './stat-colors';
 import { applyMovementBuff } from './movement-constants';
+import { formatPrecision } from '@/utils/format-precision';
 import type { CalculatedStats } from '@/hooks/useCalculatedStats';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 
@@ -69,11 +70,11 @@ function pairedValue(a: number, b: number): StatValue {
  *  zeros stripped: 0 → "0", 30 → "30", 30.5 → "30.5", 30.55 → "30.55".
  *  Veterans still see meaningful precision when it exists; clean zeros
  *  don't pad to "0.00" or "30.00". The tooltip carries the unrounded
- *  breakdown for users who want it. */
+ *  breakdown for users who want it. Character totals are the planner's
+ *  2-decimal tier; see [[formatPrecision]] for the shared round-then-strip
+ *  mechanic. */
 function pct2(n: number): string {
-  if (Math.abs(n) < 0.005) return '0';
-  // toFixed(2) rounds to 2 decimal places; parseFloat drops trailing zeros
-  return parseFloat(n.toFixed(2)).toString();
+  return formatPrecision(n, 2);
 }
 
 /** Format a paired or simple percentage stat */
