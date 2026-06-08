@@ -1,4 +1,12 @@
-# Proc-data binary sourcing — 🟡 SCOPING (2026-06-07)
+# Proc-data binary sourcing — ✅ COMPLETE (2026-06-07)
+
+**CLOSE-OUT:** `parseProcEffect` (the fragile `mechanics`-string regex) is **deleted**.
+Every `PROC_DATABASE` entry now carries structured `.effects` — binary-generated for all
+derivable procs, hand-curated in [proc-residual-effects.ts](src/data/proc-residual-effects.ts)
+for the genuinely underivable residual (Rebirth-only sets, `Create_Entity` pet summons,
+PBAoE ally buffs, self-meter/conditional stacks). `getProcEffects` is now a pure read;
+a coverage guard ([proc-effects-coverage.test.ts](src/data/proc-effects-coverage.test.ts))
+enforces 100% `.effects`. Full suite 243/243, tsc clean.
 
 _Root fix for [proc-data.ts](src/data/proc-data.ts): replace the hand-curated
 `PROC_DATABASE` (~250 entries) with binary-derived proc/global data from
@@ -75,9 +83,17 @@ Globals are binary-sourced into the player dashboard end-to-end. Results below.
 
 Damage + all non-global proc effects are binary-sourced and live in both the dashboard
 and tooltips. Remaining campaign work:
-- **P4 — bespoke procs:** the ~25 special ATO procs still on the `parseProcEffect`
-  fallback (Fury/Opportunity/Hide/Energy-Font/PBAoE-ally). Deepen the redirect resolution
-  or accept the fallback.
+- **P4 — bespoke procs: ✅ DONE (2026-06-07).** A generator squeeze recovered +8 more
+  binary procs first — SET_ALIASES for HC binary typos (Cacophony→Cacophany energy
+  damage 7-72, Debilitative Action→Debiliative_Action stun, Ascendancy→Ascendency),
+  an `infer_proc_category` fix (check 'knockdown' before 'knockback' → Kinetic Combat/
+  Avalanche/Ragnarok Knockdown 0.67; map foe '-end' → Recovery debuff → Tempest -13%),
+  and gating the -End debuff to aspect=Current. The Grant_Power redirect branch now
+  skips Damage (a +Damage% stack via grant is bespoke). The irreducible residual (~41:
+  Rebirth-only sets, Create_Entity pets, PBAoE ally buffs, self-meters/conditional
+  stacks) is hand-curated in `proc-residual-effects.ts` — faithful structured
+  transcriptions of the binary-sourced `mechanics`, with `target:'foe'` on display-only
+  debuffs so no dashboard path applies them. **parseProcEffect deleted** (P6 cutover).
 - **P5 — Rebirth: ✅ ASSESSED (2026-06-07) — no generator pass.** Shared sets reuse the
   HC effects (PROC_DATABASE is one cross-server table). The Rebirth-UNIQUE procs
   (Guardian's Gift, Imperial Might, The Haunting, Vampire's Bite, Return From The Grave,
@@ -98,9 +114,18 @@ and tooltips. Remaining campaign work:
   PPM param — trust the data). PPM drives proc DPS + PPM recovery, so this was the
   highest-value remaining fix. Each proc set has one proc piece, so proc-group PPM is
   unambiguous. Full suite 233/233.
-- **P6 — remainder (OPTIONAL polish):** generate `type`/`levelRange` (low drift); retire
-  the hand `mechanics` strings (needs display-string generation) + `parseProcEffect`;
-  unify the four generated files (globals/damage/effects/ppm); runtime==export guard.
+- **P6 — cutover: ✅ DONE (2026-06-07).** `parseProcEffect` + its `parseDuration` helper
+  deleted (332 lines); `getProcEffects` is `procData.effects ?? []`; the
+  `proc-globals-parity` oracle test became a self-contained canonical-value snapshot;
+  new coverage guard enforces 100% `.effects`. The `mechanics` strings remain only as
+  human-readable tooltip text (`procEffectSummary.description`), no longer parsed.
+- **Genuinely-optional remainder (NOT done — diminishing returns):** generate
+  `type`/`levelRange` (near-zero drift); unify the four generated files into one;
+  a runtime==export guard (needs the .pigg bins in CI, not portable). Two HC binary-vs-
+  hand display discrepancies surfaced during the squeeze and are transcribed to the hand
+  value (flagged in `proc-residual-effects.ts`) pending a separate in-game check:
+  Winter's Bite proc reads −Speed in the binary (hand says −Recharge); Superior Avalanche
+  reads a knockdown-magnitude (hand says Knockback Mag 6).
 
 ## Campaign status — core COMPLETE
 

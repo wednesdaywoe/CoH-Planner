@@ -295,7 +295,6 @@ export {
 export {
   PROC_DATABASE,
   findProcData,
-  parseProcEffect,
   getProcEffects,
   procEffectSummary,
   getProcEffectLabel,

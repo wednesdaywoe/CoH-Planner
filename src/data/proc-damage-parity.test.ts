@@ -8,7 +8,7 @@ import { PROC_DAMAGE_EFFECTS } from '@/data/generated/proc-damage.generated';
  * "Damage(Type N - M)" — except an allowlist of confirmed corrections where the
  * hand data was inconsistent (some ATO procs entered as a flat level-50 value
  * instead of the scaling 1-50 range; Ice Mistral's min was wrong for its scale).
- * Retire with parseProcEffect (P6). See PROC-DATA-BINARY-SOURCING.md.
+ * See PROC-DATA-BINARY-SOURCING.md.
  */
 const ALLOWLIST = new Set([
   'Chance for Cold Damage',   // Ice Mistral's Torment: hand N=10 wrong for scale 0.67 → 7

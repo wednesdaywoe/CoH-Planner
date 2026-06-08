@@ -83,7 +83,7 @@ TAG_TO_CATEGORY = {
 # planner behaviour (parity); revisit when the scaling model is improved.
 SCALING_OVERRIDES = {
     # Reactive Defenses / Preventive Medicine: scaling +Res 3%–12.9% (planner
-    # currently applies the 3% floor via parseProcEffect).
+    # applies the 3% floor via this structured `scaling` effect).
     'reactivedefenses': [{'category': 'Resistance', 'value': 3.0, 'effectType': 'All', 'scaling': True}],
     'preventivemedicine': [{'category': 'Absorb', 'value': 20.0, 'scaling': True}],
 }

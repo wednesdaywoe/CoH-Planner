@@ -6,8 +6,8 @@ import { PROC_OTHER_EFFECTS } from '@/data/generated/proc-effects.generated';
  * Transitional guard (Phase 3b): the dashboard-relevant non-global proc payloads
  * (Endurance/Recovery/Regeneration → applyPPMProcBonuses) must match the hand
  * mechanics value, except confirmed corrections. Foe debuff/mez/knock effects are
- * display-only (no dashboard impact) and not value-checked here. Retire with
- * parseProcEffect (P6). See PROC-DATA-BINARY-SOURCING.md.
+ * display-only (no dashboard impact) and not value-checked here.
+ * See PROC-DATA-BINARY-SOURCING.md.
  */
 const DASH = ['Endurance', 'Recovery', 'Regeneration'] as const;
 const ALLOWLIST = new Set([
