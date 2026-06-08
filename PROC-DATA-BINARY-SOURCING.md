@@ -25,14 +25,28 @@ Shield Wall 5% vindication) and surfaces hand-data drift.
 **Phase 2 — structured type + always-on dashboard refactor: ✅ DONE (2026-06-07).**
 Globals are binary-sourced into the player dashboard end-to-end. Results below.
 
-**Phase 3 — PPM / damage procs (NEXT).** Generate `effects` + `ppm` for the ~200
-damage/PPM procs; reproduce `Damage(Type N-M)` level-scaled ranges via the AT damage
-tables for `interpolateProcDamage`. Then migrate the damage/PPM + DISPLAY consumers
-(DamageBlock, incarnate-procs, EnhancementInfoContent, EnhancementPicker,
-enhancement-outline) off `parseProcEffect`. NB: a transitional inconsistency exists —
-the DISPLAY consumers still read `mechanics` strings, so the 3 corrected globals
-(below) show their old value in tooltips while the dashboard uses the binary value;
-resolved when display migrates.
+**Phase 3 — damage/PPM procs + consumer migration. 🟡 IN PROGRESS.**
+
+- **3a — damage proc data: ✅ DONE (2026-06-07).** Cracked the formula: proc damage =
+  `scale × Melee_ProcDamage[level]` (the engine table in `classes.bin`, |L1|=10.0,
+  |L50|=107.09); the displayed N-M range is the L1..L50 damage. Generator emits 35
+  damage entries → `src/data/generated/proc-damage.generated.ts`, merged into
+  `PROC_DATABASE` (inert until consumers read `.effects`). Guard:
+  `proc-damage-parity.test.ts` (matches hand except 7 allowlisted corrections — ATO
+  procs the hand entered as a flat L50 value instead of the scaling 1-50 range, and
+  Ice Mistral's wrong min). `ppm` is already binary-correct in the hand data (Phase 1),
+  so it's reused for now (generate it in P6).
+- **3b — other non-global procs (NEXT):** debuff (Foe -Res/-ToHit/-Def), mez (Foe
+  Hold/Stun…), and buff procs (Force Feedback +Rech via Global_Bonus redirect, Panacea
+  Heal+End, Performance Shifter +End, Build Up procs). PPM from `eg.ppm`.
+- **3c — consumer migration:** point DamageBlock (damage N-M), `applyPPMProcBonuses`
+  (Panacea/Perf Shifter recovery/regen/end), `applyBuildUpProcBonuses` (Gaussian's/
+  Decimation), and the DISPLAY consumers (EnhancementInfoContent, EnhancementPicker,
+  enhancement-outline, PowerInfoBlocks) at `.effects` instead of `parseProcEffect`.
+
+NB transitional inconsistency: DISPLAY consumers still read `mechanics` strings, so the
+Phase 2 corrected globals (Impervium 6%, etc.) and the 7 damage corrections show the old
+value in tooltips until 3c migrates display.
 
 ### Phase 2 results
 

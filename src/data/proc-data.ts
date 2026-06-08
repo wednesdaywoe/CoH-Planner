@@ -3,6 +3,7 @@
  * Includes PPM values, mechanics, damage values, and effect descriptions
  */
 import { PROC_GLOBAL_EFFECTS } from './generated/proc-globals.generated';
+import { PROC_DAMAGE_EFFECTS } from './generated/proc-damage.generated';
 
 export type ProcType = 'Proc' | 'Proc120s' | 'Global';
 
@@ -2254,6 +2255,12 @@ export const PROC_DATABASE: Record<string, ProcData> = {
 // The generated PROC_GLOBAL_EFFECTS is keyed by PROC_DATABASE key; attach each
 // to its entry's `effects`. Consumers prefer `effects` over parsing `mechanics`.
 for (const [key, effects] of Object.entries(PROC_GLOBAL_EFFECTS)) {
+  const entry = PROC_DATABASE[key];
+  if (entry) entry.effects = effects;
+}
+// Binary-sourced damage proc effects (Phase 3): N-M = scale × Melee_ProcDamage at
+// levels 1 and 50. Inert until the damage/display consumers read `.effects`.
+for (const [key, effects] of Object.entries(PROC_DAMAGE_EFFECTS)) {
   const entry = PROC_DATABASE[key];
   if (entry) entry.effects = effects;
 }
