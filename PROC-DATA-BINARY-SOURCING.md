@@ -78,11 +78,36 @@ and tooltips. Remaining campaign work:
 - **P4 — bespoke procs:** the ~25 special ATO procs still on the `parseProcEffect`
   fallback (Fury/Opportunity/Hide/Energy-Font/PBAoE-ally). Deepen the redirect resolution
   or accept the fallback.
-- **P5 — Rebirth:** reuse HC entries for shared sets; Parse6 generation for RB-unique
-  procs (retires the interim Rebirth hand entries).
-- **P6 — full cutover:** generate `ppm`/`type`/`levelRange` too; retire the hand
-  `PROC_DATABASE` + `parseProcEffect`; add a runtime==export guard; unify the three
-  generated files.
+- **P5 — Rebirth: ✅ ASSESSED (2026-06-07) — no generator pass.** Shared sets reuse the
+  HC effects (PROC_DATABASE is one cross-server table). The Rebirth-UNIQUE procs
+  (Guardian's Gift, Imperial Might, The Haunting, Vampire's Bite, Return From The Grave,
+  Inexhaustibility, Superior Winter's Gift, …) are bespoke — Create_Entity summons,
+  Set_Mode globals, Fear+Damage combos — and are **already binary-sourced** in the
+  curated proc-data.ts entries (values pulled from the Rebirth bins by hand during the
+  interim fix). A trial generator pass against the Rebirth Parse6 bins resolved only 2
+  of ~13 and incompletely (e.g. Endless Nightmare captured the Fear but dropped the
+  Psionic damage), so it was reverted rather than ship incomplete data.
+- **P6 — PPM binary-sourced: ✅ DONE (2026-06-07).** `parse_hand_ppm` + a PPM pass emit
+  the per-proc proc-group PPM → `src/data/generated/proc-ppm.generated.ts` (111 entries),
+  overlaid onto `PROC_DATABASE.ppm`. Guard: `proc-ppm-parity.test.ts`. **12 corrections**
+  (binary authoritative, confirmed in-game): the **Superior ATO cluster** carrying the
+  base PPM instead of the Superior value (Might of the Tanker 3→6, Defender's Bastion
+  3→5, Brute's Fury 4→5, Stalker's Guile 3→5, Winter's Bite 3→5, Dominating Grasp 1→2,
+  Avalanche/Frozen Blast 3→3.5), the base procs Blistering Cold / Kinetic Combat 3→2.5,
+  and Sentinel's Ward 5/6→2 (its "~1/min" in-game text is the effective rate, not the
+  PPM param — trust the data). PPM drives proc DPS + PPM recovery, so this was the
+  highest-value remaining fix. Each proc set has one proc piece, so proc-group PPM is
+  unambiguous. Full suite 233/233.
+- **P6 — remainder (OPTIONAL polish):** generate `type`/`levelRange` (low drift); retire
+  the hand `mechanics` strings (needs display-string generation) + `parseProcEffect`;
+  unify the four generated files (globals/damage/effects/ppm); runtime==export guard.
+
+## Campaign status — core COMPLETE
+
+Proc **effects** and **PPM** are binary-sourced and live in both the dashboard and
+tooltips, for both servers (shared sets via HC; Rebirth-unique via the curated entries).
+All consumers read structured `.effects` / overlaid `.ppm`. Remaining work (P4 bespoke
+HC procs, P6 type/levelRange + hand-`mechanics` retirement) is diminishing-returns polish.
 
 NB transitional inconsistency: DISPLAY consumers still read `mechanics` strings, so the
 Phase 2 corrected globals (Impervium 6%, etc.) and the 7 damage corrections show the old

@@ -5,6 +5,7 @@
 import { PROC_GLOBAL_EFFECTS } from './generated/proc-globals.generated';
 import { PROC_DAMAGE_EFFECTS } from './generated/proc-damage.generated';
 import { PROC_OTHER_EFFECTS } from './generated/proc-effects.generated';
+import { PROC_PPM } from './generated/proc-ppm.generated';
 
 export type ProcType = 'Proc' | 'Proc120s' | 'Global';
 
@@ -2271,6 +2272,12 @@ for (const [key, effects] of Object.entries(PROC_DAMAGE_EFFECTS)) {
 for (const [key, effects] of Object.entries(PROC_OTHER_EFFECTS)) {
   const entry = PROC_DATABASE[key];
   if (entry) entry.effects = effects;
+}
+// Binary-sourced per-proc PPM (P6): overlays the hand value (which had drift —
+// e.g. Superior ATOs carrying the base PPM). Drives proc DPS + PPM recovery.
+for (const [key, ppm] of Object.entries(PROC_PPM)) {
+  const entry = PROC_DATABASE[key];
+  if (entry) entry.ppm = ppm;
 }
 
 /**
