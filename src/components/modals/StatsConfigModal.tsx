@@ -8,6 +8,8 @@ import { useUIStore } from '@/stores';
 import { Modal, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 import type { StatDisplayConfig } from '@/types';
+import { groupStatsBySection } from '@/data/stat-definitions';
+import type { StatCategory } from '@/data/stat-definitions';
 
 // Color schemes for each category (matching legacy app)
 const CATEGORY_COLORS = {
@@ -124,136 +126,104 @@ const CATEGORY_COLORS = {
 type CategoryColorKey = keyof typeof CATEGORY_COLORS;
 
 // Stat categories matching legacy app with color coding
-const STAT_CATEGORIES: {
-  name: string;
-  colorKey: CategoryColorKey;
-  stats: { stat: string; label: string; colorOverride?: CategoryColorKey }[];
-}[] = [
-  {
-    name: 'Offense',
-    colorKey: 'damage',
-    stats: [
-      { stat: 'damage', label: 'Damage', colorOverride: 'damage' },
-      { stat: 'accuracy', label: 'Accuracy', colorOverride: 'accuracy' },
-      { stat: 'tohit', label: 'To-Hit', colorOverride: 'accuracy' },
-      { stat: 'recharge', label: 'Recharge', colorOverride: 'recharge' },
-      { stat: 'range_bonus', label: 'Range' },
-      { stat: 'threat_level', label: 'Threat', colorOverride: 'resistance' },
-      { stat: 'level_shift', label: 'Level Shift', colorOverride: 'incarnate' },
-    ],
-  },
-  {
-    name: 'Health & Endurance',
-    colorKey: 'health',
-    stats: [
-      { stat: 'health', label: 'Max HP' },
-      { stat: 'regeneration', label: 'Regeneration' },
-      { stat: 'heal_other', label: 'Heal Other', colorOverride: 'health' },
-      { stat: 'maxend', label: 'Max End', colorOverride: 'endurance' },
-      { stat: 'recovery', label: 'Recovery', colorOverride: 'endurance' },
-      { stat: 'endreduction', label: 'End Reduction', colorOverride: 'endurance' },
-      { stat: 'endcost', label: 'End Cost', colorOverride: 'resistance' },
-      { stat: 'netend', label: 'Net End', colorOverride: 'endurance' },
-    ],
-  },
-  {
-    name: 'Movement',
-    colorKey: 'movement',
-    stats: [
-      { stat: 'runspeed', label: 'Run Speed' },
-      { stat: 'flyspeed', label: 'Fly Speed' },
-      { stat: 'jumpspeed', label: 'Jump Speed' },
-      { stat: 'jumpheight', label: 'Jump Height' },
-    ],
-  },
-  {
-    name: 'Stealth & Perception',
-    colorKey: 'stealth',
-    stats: [
-      { stat: 'stealth_pve', label: 'Stealth (PvE)' },
-      { stat: 'stealth_pvp', label: 'Stealth (PvP)' },
-      { stat: 'perception_bonus', label: 'Perception' },
-    ],
-  },
-  {
-    name: 'Defense',
-    colorKey: 'defense',
-    stats: [
-      { stat: 'defense_melee', label: 'Melee' },
-      { stat: 'defense_ranged', label: 'Ranged' },
-      { stat: 'defense_aoe', label: 'AoE' },
-      { stat: 'def_smashing', label: 'Smashing' },
-      { stat: 'def_lethal', label: 'Lethal' },
-      { stat: 'def_fire', label: 'Fire' },
-      { stat: 'def_cold', label: 'Cold' },
-      { stat: 'def_energy', label: 'Energy' },
-      { stat: 'def_negative', label: 'Negative' },
-      { stat: 'def_psionic', label: 'Psionic' },
-      { stat: 'def_toxic', label: 'Toxic' },
-    ],
-  },
-  {
-    name: 'Resistance',
-    colorKey: 'resistance',
-    stats: [
-      { stat: 'res_smashing', label: 'Smashing' },
-      { stat: 'res_lethal', label: 'Lethal' },
-      { stat: 'res_fire', label: 'Fire' },
-      { stat: 'res_cold', label: 'Cold' },
-      { stat: 'res_energy', label: 'Energy' },
-      { stat: 'res_negative', label: 'Negative' },
-      { stat: 'res_psionic', label: 'Psionic' },
-      { stat: 'res_toxic', label: 'Toxic' },
-    ],
-  },
-  {
-    name: 'Status Protection',
-    colorKey: 'mez',
-    stats: [
-      { stat: 'mez_hold', label: 'Hold' },
-      { stat: 'mez_stun', label: 'Stun' },
-      { stat: 'mez_immob', label: 'Immob' },
-      { stat: 'mez_sleep', label: 'Sleep' },
-      { stat: 'mez_confuse', label: 'Confuse' },
-      { stat: 'mez_fear', label: 'Fear' },
-      { stat: 'mez_kb', label: 'KB' },
-      { stat: 'prot_repel', label: 'Repel' },
-      { stat: 'prot_teleport', label: 'Teleport' },
-    ],
-  },
-  {
-    name: 'Status Resistance',
-    colorKey: 'mez',
-    stats: [
-      { stat: 'mezres_hold', label: 'Hold' },
-      { stat: 'mezres_stun', label: 'Stun' },
-      { stat: 'mezres_immob', label: 'Immob' },
-      { stat: 'mezres_sleep', label: 'Sleep' },
-      { stat: 'mezres_confuse', label: 'Confuse' },
-      { stat: 'mezres_fear', label: 'Fear' },
-      { stat: 'mezres_kb', label: 'KB' },
-      { stat: 'mezres_taunt', label: 'Taunt' },
-      { stat: 'mezres_placate', label: 'Placate' },
-    ],
-  },
-  {
-    name: 'Debuff Resistance',
-    colorKey: 'debuffResist',
-    stats: [
-      { stat: 'debuff_slow', label: 'Slow' },
-      { stat: 'debuff_defense', label: 'Defense' },
-      { stat: 'debuff_recharge', label: 'Recharge' },
-      { stat: 'debuff_endurance', label: 'End Drain' },
-      { stat: 'debuff_recovery', label: 'Recovery' },
-      { stat: 'debuff_tohit', label: 'ToHit' },
-      { stat: 'debuff_regen', label: 'Regen' },
-      { stat: 'debuff_perception', label: 'Perception' },
-    ],
-  },
+interface StatToggle { stat: string; label: string; colorOverride?: CategoryColorKey }
+
+// Settings → Stats display sections. Stat→section placement is single-sourced
+// via STAT_CATEGORY (stat-definitions.ts); this only names the toggle sections,
+// their accent color, and which canonical categories each contains.
+const SETTINGS_SECTIONS: { name: string; colorKey: CategoryColorKey; categories: StatCategory[] }[] = [
+  { name: 'Offense', colorKey: 'damage', categories: ['offense'] },
+  { name: 'Health & Endurance', colorKey: 'health', categories: ['health-endurance'] },
+  { name: 'Movement', colorKey: 'movement', categories: ['movement'] },
+  { name: 'Stealth & Perception', colorKey: 'stealth', categories: ['stealth-perception'] },
+  { name: 'Defense', colorKey: 'defense', categories: ['defense'] },
+  { name: 'Resistance', colorKey: 'resistance', categories: ['resistance'] },
+  { name: 'Status Protection', colorKey: 'mez', categories: ['status-protection'] },
+  { name: 'Status Resistance', colorKey: 'mez', categories: ['status-resistance'] },
+  { name: 'Debuff Resistance', colorKey: 'debuffResist', categories: ['debuff-resistance'] },
 ];
 
+// The toggleable stats with their full settings labels + per-stat accent
+// overrides. Uses the compact `mez_*` status-protection variants (not the
+// detailed sheet's `prot_*`). Order is irrelevant — groupStatsBySection orders
+// within each section by the canonical STAT_SECTIONS order.
+const SETTINGS_STATS: StatToggle[] = [
+  { stat: 'damage', label: 'Damage', colorOverride: 'damage' },
+  { stat: 'accuracy', label: 'Accuracy', colorOverride: 'accuracy' },
+  { stat: 'tohit', label: 'To-Hit', colorOverride: 'accuracy' },
+  { stat: 'recharge', label: 'Recharge', colorOverride: 'recharge' },
+  { stat: 'range_bonus', label: 'Range' },
+  { stat: 'threat_level', label: 'Threat', colorOverride: 'resistance' },
+  { stat: 'level_shift', label: 'Level Shift', colorOverride: 'incarnate' },
+  { stat: 'health', label: 'Max HP' },
+  { stat: 'regeneration', label: 'Regeneration' },
+  { stat: 'heal_other', label: 'Heal Other', colorOverride: 'health' },
+  { stat: 'maxend', label: 'Max End', colorOverride: 'endurance' },
+  { stat: 'recovery', label: 'Recovery', colorOverride: 'endurance' },
+  { stat: 'endreduction', label: 'End Reduction', colorOverride: 'endurance' },
+  { stat: 'endcost', label: 'End Cost', colorOverride: 'resistance' },
+  { stat: 'netend', label: 'Net End', colorOverride: 'endurance' },
+  { stat: 'runspeed', label: 'Run Speed' },
+  { stat: 'flyspeed', label: 'Fly Speed' },
+  { stat: 'jumpspeed', label: 'Jump Speed' },
+  { stat: 'jumpheight', label: 'Jump Height' },
+  { stat: 'stealth_pve', label: 'Stealth (PvE)' },
+  { stat: 'stealth_pvp', label: 'Stealth (PvP)' },
+  { stat: 'perception_bonus', label: 'Perception' },
+  { stat: 'defense_melee', label: 'Melee' },
+  { stat: 'defense_ranged', label: 'Ranged' },
+  { stat: 'defense_aoe', label: 'AoE' },
+  { stat: 'def_smashing', label: 'Smashing' },
+  { stat: 'def_lethal', label: 'Lethal' },
+  { stat: 'def_fire', label: 'Fire' },
+  { stat: 'def_cold', label: 'Cold' },
+  { stat: 'def_energy', label: 'Energy' },
+  { stat: 'def_negative', label: 'Negative' },
+  { stat: 'def_psionic', label: 'Psionic' },
+  { stat: 'def_toxic', label: 'Toxic' },
+  { stat: 'res_smashing', label: 'Smashing' },
+  { stat: 'res_lethal', label: 'Lethal' },
+  { stat: 'res_fire', label: 'Fire' },
+  { stat: 'res_cold', label: 'Cold' },
+  { stat: 'res_energy', label: 'Energy' },
+  { stat: 'res_negative', label: 'Negative' },
+  { stat: 'res_psionic', label: 'Psionic' },
+  { stat: 'res_toxic', label: 'Toxic' },
+  { stat: 'mez_hold', label: 'Hold' },
+  { stat: 'mez_stun', label: 'Stun' },
+  { stat: 'mez_immob', label: 'Immob' },
+  { stat: 'mez_sleep', label: 'Sleep' },
+  { stat: 'mez_confuse', label: 'Confuse' },
+  { stat: 'mez_fear', label: 'Fear' },
+  { stat: 'mez_kb', label: 'KB' },
+  { stat: 'prot_repel', label: 'Repel' },
+  { stat: 'prot_teleport', label: 'Teleport' },
+  { stat: 'mezres_hold', label: 'Hold' },
+  { stat: 'mezres_stun', label: 'Stun' },
+  { stat: 'mezres_immob', label: 'Immob' },
+  { stat: 'mezres_sleep', label: 'Sleep' },
+  { stat: 'mezres_confuse', label: 'Confuse' },
+  { stat: 'mezres_fear', label: 'Fear' },
+  { stat: 'mezres_kb', label: 'KB' },
+  { stat: 'mezres_taunt', label: 'Taunt' },
+  { stat: 'mezres_placate', label: 'Placate' },
+  { stat: 'debuff_slow', label: 'Slow' },
+  { stat: 'debuff_defense', label: 'Defense' },
+  { stat: 'debuff_recharge', label: 'Recharge' },
+  { stat: 'debuff_endurance', label: 'End Drain' },
+  { stat: 'debuff_recovery', label: 'Recovery' },
+  { stat: 'debuff_tohit', label: 'ToHit' },
+  { stat: 'debuff_regen', label: 'Regen' },
+  { stat: 'debuff_perception', label: 'Perception' },
+];
+
+// Toggle sections, with each section's stats grouped + ordered from the shared
+// canonical placement. Same shape the render below expects ({ name, colorKey,
+// stats }).
+const STAT_CATEGORIES = groupStatsBySection(SETTINGS_STATS, (s) => s.stat, SETTINGS_SECTIONS);
+
 // Get all stat IDs for toggle all functionality
-const ALL_STAT_IDS = STAT_CATEGORIES.flatMap((cat) => cat.stats.map((s) => s.stat));
+const ALL_STAT_IDS = SETTINGS_STATS.map((s) => s.stat);
 
 interface StatsConfigModalProps {
   isOpen: boolean;

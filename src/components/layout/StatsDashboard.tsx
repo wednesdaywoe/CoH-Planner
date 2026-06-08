@@ -21,13 +21,28 @@ import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/type
 import { getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import type { IncarnateSlotId, ToggleableIncarnateSlot } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
-import { STAT_DEFINITIONS, resolveStatValue } from '@/data/stat-definitions';
-import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue } from '@/data/stat-definitions';
+import { STAT_DEFINITIONS, resolveStatValue, STAT_CATEGORY } from '@/data/stat-definitions';
+import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue, StatCategory } from '@/data/stat-definitions';
 import { applyMovementBuff, getEffectiveMovementCaps, TRAVEL_CAP_BUMPS } from '@/data/core/movement-constants';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 
 // Re-export for any consumers that imported from here
 export { STAT_DEFINITIONS };
+
+// Dashboard display sections. Stat→section placement is single-sourced via
+// STAT_CATEGORY (stat-definitions.ts); this only names the sections and maps
+// the canonical categories into them — the dashboard folds Offense + Movement
+// into one compact "General" tile.
+const DASHBOARD_SECTIONS: { name: string; categories: StatCategory[] }[] = [
+  { name: 'General', categories: ['offense', 'movement'] },
+  { name: 'Health & Endurance', categories: ['health-endurance'] },
+  { name: 'Stealth & Perception', categories: ['stealth-perception'] },
+  { name: 'Defense', categories: ['defense'] },
+  { name: 'Resistance', categories: ['resistance'] },
+  { name: 'Status Protection', categories: ['status-protection'] },
+  { name: 'Status Resistance', categories: ['status-resistance'] },
+  { name: 'Debuff Resistance', categories: ['debuff-resistance'] },
+];
 export type { StatDefinition, StatValue, CompoundStatValue, MezStatValue };
 
 interface StatsDashboardProps {
@@ -318,70 +333,17 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
     // "hide zero stats" toggle.)
   }, [statsConfig, stats, baseHP, maxHPCap, breakdowns, globalBonuses, effectiveMovementCaps, rechargeMidsStyle]);
 
-  // Stat categories for grouping (should match config modal)
-  const STAT_CATEGORIES = [
-    {
-      name: 'General',
-      stats: [
-        'damage', 'accuracy', 'tohit', 'recharge',
-        'range_bonus', 'threat_level', 'level_shift',
-        'runspeed', 'flyspeed', 'jumpspeed', 'jumpheight',
-      ],
-    },
-    {
-      name: 'Health & Endurance',
-      stats: ['health', 'regeneration', 'heal_other', 'maxend', 'recovery', 'endreduction', 'endcost', 'netend'],
-    },
-    {
-      name: 'Stealth & Perception',
-      stats: ['stealth_pve', 'stealth_pvp', 'perception_bonus'],
-    },
-    {
-      name: 'Defense',
-      stats: [
-        'defense_melee', 'defense_ranged', 'defense_aoe',
-        'def_smashing', 'def_lethal', 'def_fire', 'def_cold',
-        'def_energy', 'def_negative', 'def_psionic', 'def_toxic',
-      ],
-    },
-    {
-      name: 'Resistance',
-      stats: [
-        'res_smashing', 'res_lethal', 'res_fire', 'res_cold',
-        'res_energy', 'res_negative', 'res_psionic', 'res_toxic',
-      ],
-    },
-    {
-      name: 'Status Protection',
-      stats: [
-        'mez_hold', 'mez_stun', 'mez_immob', 'mez_sleep',
-        'mez_confuse', 'mez_fear', 'mez_kb',
-        'prot_repel', 'prot_teleport',
-      ],
-    },
-    {
-      name: 'Status Resistance',
-      stats: [
-        'mezres_hold', 'mezres_stun', 'mezres_immob', 'mezres_sleep',
-        'mezres_confuse', 'mezres_fear', 'mezres_kb',
-        'mezres_taunt', 'mezres_placate',
-      ],
-    },
-    {
-      name: 'Debuff Resistance',
-      stats: [
-        'debuff_slow', 'debuff_defense', 'debuff_recharge',
-        'debuff_endurance', 'debuff_recovery', 'debuff_tohit',
-        'debuff_regen', 'debuff_perception',
-      ],
-    },
-  ];
-
-  // Group visible stats by category
-  const groupedStats = STAT_CATEGORIES.map((cat) => ({
-    name: cat.name,
-    stats: visibleStats.filter((s) => cat.stats.includes(s.id)),
-  })).filter((cat) => cat.stats.length > 0);
+  // Group visible stats into the dashboard's display sections. Section→stat
+  // placement is single-sourced via STAT_CATEGORY (see stat-definitions.ts);
+  // here we only declare the dashboard's section names + which canonical
+  // categories each contains (the dashboard folds Offense + Movement into
+  // "General"). Within-section order stays driven by each stat's `order` (so
+  // the user's reordering is honored), which is why this groups visibleStats
+  // directly rather than via the canonical-order helper.
+  const groupedStats = DASHBOARD_SECTIONS.map((section) => ({
+    name: section.name,
+    stats: visibleStats.filter((s) => section.categories.includes(STAT_CATEGORY[s.id])),
+  })).filter((section) => section.stats.length > 0);
 
   // Auto-track stats that have Rule of 5 violations so the user sees them immediately
   useEffect(() => {

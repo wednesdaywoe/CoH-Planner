@@ -1093,3 +1093,77 @@ export function resolveStatValue(
   const globalKey = GLOBAL_BONUS_OVERRIDES[statId];
   return globalKey ? globalBonuses[globalKey] : def.getValue(stats, baseHP, maxHPCap);
 }
+
+// ============================================
+// SECTION PLACEMENT (single source of truth)
+// ============================================
+
+export type StatCategory =
+  | 'offense'
+  | 'health-endurance'
+  | 'movement'
+  | 'stealth-perception'
+  | 'defense'
+  | 'resistance'
+  | 'status-protection'
+  | 'status-resistance'
+  | 'debuff-resistance';
+
+/**
+ * Canonical, ordered grouping of every dashboard stat into its section. This is
+ * the single source of truth for stat→section placement: the dashboard tiles,
+ * the Settings → Stats toggles, and the Detailed Totals sheet all derive their
+ * sections from this, so moving a stat between sections is a one-line change
+ * here (no longer 3 files).
+ *
+ * Each surface still decides *which* stats it shows (e.g. the compact `mez_*`
+ * vs the detailed `prot_*` status-protection variants, or whether to include
+ * End Cost / Net End) and how it names or merges sections (the dashboard folds
+ * Offense + Movement into "General"; the detailed sheet calls Resistance
+ * "Damage Resistance") — only membership and within-section order live here.
+ */
+export const STAT_SECTIONS: { category: StatCategory; stats: string[] }[] = [
+  { category: 'offense', stats: ['damage', 'accuracy', 'tohit', 'recharge', 'range_bonus', 'threat_level', 'level_shift'] },
+  { category: 'health-endurance', stats: ['health', 'regeneration', 'heal_other', 'maxend', 'recovery', 'endreduction', 'endcost', 'netend'] },
+  { category: 'movement', stats: ['runspeed', 'flyspeed', 'jumpspeed', 'jumpheight'] },
+  { category: 'stealth-perception', stats: ['stealth_pve', 'stealth_pvp', 'perception_bonus'] },
+  { category: 'defense', stats: ['defense_melee', 'defense_ranged', 'defense_aoe', 'def_smashing', 'def_lethal', 'def_fire', 'def_cold', 'def_energy', 'def_negative', 'def_psionic', 'def_toxic'] },
+  { category: 'resistance', stats: ['res_smashing', 'res_lethal', 'res_fire', 'res_cold', 'res_energy', 'res_negative', 'res_psionic', 'res_toxic'] },
+  { category: 'status-protection', stats: ['mez_hold', 'mez_stun', 'mez_immob', 'mez_sleep', 'mez_confuse', 'mez_fear', 'mez_kb', 'prot_hold', 'prot_stun', 'prot_immob', 'prot_sleep', 'prot_confuse', 'prot_fear', 'prot_kb', 'prot_repel', 'prot_teleport'] },
+  { category: 'status-resistance', stats: ['mezres_hold', 'mezres_stun', 'mezres_immob', 'mezres_sleep', 'mezres_confuse', 'mezres_fear', 'mezres_kb', 'mezres_taunt', 'mezres_placate'] },
+  { category: 'debuff-resistance', stats: ['debuff_slow', 'debuff_defense', 'debuff_recharge', 'debuff_endurance', 'debuff_recovery', 'debuff_tohit', 'debuff_regen', 'debuff_perception'] },
+];
+
+/** statId → section category, derived from STAT_SECTIONS. */
+export const STAT_CATEGORY: Record<string, StatCategory> = Object.fromEntries(
+  STAT_SECTIONS.flatMap(({ category, stats }) => stats.map((s) => [s, category] as const)),
+);
+
+/**
+ * Group a surface's chosen items into its display sections, ordering items
+ * within each section by the canonical STAT_SECTIONS order. `sections` lists the
+ * surface's display sections (display name + which categories each contains, in
+ * order); only items whose stat id is present in `items` are placed. Empty
+ * sections are dropped. Generic over the item shape so callers can group plain
+ * stat-id strings (dashboard/detailed) or richer `{stat, label}` rows (config).
+ */
+export function groupStatsBySection<T, S extends { name: string; categories: StatCategory[] }>(
+  items: T[],
+  getStatId: (item: T) => string,
+  sections: S[],
+): (S & { stats: T[] })[] {
+  const byId = new Map(items.map((item) => [getStatId(item), item]));
+  return sections
+    .map((section) => {
+      const stats: T[] = [];
+      for (const cat of section.categories) {
+        const canonical = STAT_SECTIONS.find((s) => s.category === cat)?.stats ?? [];
+        for (const id of canonical) {
+          const item = byId.get(id);
+          if (item !== undefined) stats.push(item);
+        }
+      }
+      return { ...section, stats };
+    })
+    .filter((section) => section.stats.length > 0);
+}

@@ -15,8 +15,8 @@ import type { ArchetypeId } from '@/types';
 import { calculateCharacterTotals } from '@/utils/calculations/character-totals';
 import { hydrateBuild } from '@/utils/build-serialization';
 import { getMyBuilds, getOwnedBuildIds, isShareEnabled } from '@/services/sharedBuilds';
-import { STAT_DEFINITIONS, resolveStatValue } from '@/data/stat-definitions';
-import type { StatValue, MezStatValue } from '@/data/stat-definitions';
+import { STAT_DEFINITIONS, resolveStatValue, groupStatsBySection } from '@/data/stat-definitions';
+import type { StatValue, MezStatValue, StatCategory } from '@/data/stat-definitions';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import type { GlobalBonuses, CharacterCalculationResult } from '@/utils/calculations/character-totals';
 import type { Build } from '@/types/build';
@@ -26,63 +26,39 @@ import type { SharedBuild } from '@/types/shared';
 // CONSTANTS
 // ============================================
 
-// Expanded categories for detailed view (individual types, not paired)
-const DETAILED_CATEGORIES = [
-  {
-    name: 'Offense',
-    stats: ['damage', 'accuracy', 'tohit', 'recharge', 'range_bonus', 'threat_level', 'level_shift'],
-  },
-  {
-    name: 'Health & Endurance',
-    stats: ['health', 'regeneration', 'heal_other', 'maxend', 'recovery', 'endreduction'],
-  },
-  {
-    name: 'Movement',
-    stats: ['runspeed', 'flyspeed', 'jumpspeed', 'jumpheight'],
-  },
-  {
-    name: 'Stealth & Perception',
-    stats: ['stealth_pve', 'stealth_pvp', 'perception_bonus'],
-  },
-  {
-    name: 'Defense',
-    stats: [
-      'defense_melee', 'defense_ranged', 'defense_aoe',
-      'def_smashing', 'def_lethal', 'def_fire', 'def_cold',
-      'def_energy', 'def_negative', 'def_psionic', 'def_toxic',
-    ],
-  },
-  {
-    name: 'Damage Resistance',
-    stats: [
-      'res_smashing', 'res_lethal', 'res_fire', 'res_cold',
-      'res_energy', 'res_negative', 'res_psionic', 'res_toxic',
-    ],
-  },
-  {
-    name: 'Status Protection',
-    stats: [
-      'prot_hold', 'prot_stun', 'prot_immob', 'prot_sleep',
-      'prot_confuse', 'prot_fear', 'prot_kb',
-      'prot_repel', 'prot_teleport',
-    ],
-  },
-  {
-    name: 'Status Resistance',
-    stats: [
-      'mezres_hold', 'mezres_stun', 'mezres_immob', 'mezres_sleep',
-      'mezres_confuse', 'mezres_fear', 'mezres_kb',
-      'mezres_taunt', 'mezres_placate',
-    ],
-  },
-  {
-    name: 'Debuff Resistance',
-    stats: [
-      'debuff_slow', 'debuff_defense', 'debuff_recharge',
-      'debuff_endurance', 'debuff_recovery', 'debuff_tohit',
-      'debuff_regen', 'debuff_perception',
-    ],
-  },
+// Display sections for the detailed sheet. Stat→section placement is
+// single-sourced via STAT_CATEGORY (stat-definitions.ts); this only names the
+// sections and maps the canonical categories into them. The detailed view
+// keeps Offense and Movement separate and labels Resistance "Damage
+// Resistance".
+const DETAILED_SECTIONS: { name: string; categories: StatCategory[] }[] = [
+  { name: 'Offense', categories: ['offense'] },
+  { name: 'Health & Endurance', categories: ['health-endurance'] },
+  { name: 'Movement', categories: ['movement'] },
+  { name: 'Stealth & Perception', categories: ['stealth-perception'] },
+  { name: 'Defense', categories: ['defense'] },
+  { name: 'Damage Resistance', categories: ['resistance'] },
+  { name: 'Status Protection', categories: ['status-protection'] },
+  { name: 'Status Resistance', categories: ['status-resistance'] },
+  { name: 'Debuff Resistance', categories: ['debuff-resistance'] },
+];
+
+// Which stats the detailed sheet shows. It uses the `prot_*` magnitude variants
+// for status protection (not the compact `mez_*`) and omits End Cost / Net End
+// (those live on the dashboard's Health & Endurance tile). Order is irrelevant
+// here — groupStatsBySection orders within each section by the canonical
+// STAT_SECTIONS order.
+const DETAILED_STATS: string[] = [
+  'damage', 'accuracy', 'tohit', 'recharge', 'range_bonus', 'threat_level', 'level_shift',
+  'health', 'regeneration', 'heal_other', 'maxend', 'recovery', 'endreduction',
+  'runspeed', 'flyspeed', 'jumpspeed', 'jumpheight',
+  'stealth_pve', 'stealth_pvp', 'perception_bonus',
+  'defense_melee', 'defense_ranged', 'defense_aoe',
+  'def_smashing', 'def_lethal', 'def_fire', 'def_cold', 'def_energy', 'def_negative', 'def_psionic', 'def_toxic',
+  'res_smashing', 'res_lethal', 'res_fire', 'res_cold', 'res_energy', 'res_negative', 'res_psionic', 'res_toxic',
+  'prot_hold', 'prot_stun', 'prot_immob', 'prot_sleep', 'prot_confuse', 'prot_fear', 'prot_kb', 'prot_repel', 'prot_teleport',
+  'mezres_hold', 'mezres_stun', 'mezres_immob', 'mezres_sleep', 'mezres_confuse', 'mezres_fear', 'mezres_kb', 'mezres_taunt', 'mezres_placate',
+  'debuff_slow', 'debuff_defense', 'debuff_recharge', 'debuff_endurance', 'debuff_recovery', 'debuff_tohit', 'debuff_regen', 'debuff_perception',
 ];
 
 // ============================================
@@ -132,9 +108,9 @@ function computeAllStats(
   const defenseCap = (at?.stats.defenseCap ?? 0.45) * 100;
   const resistanceCap = (at?.stats.resistanceCap ?? 0.75) * 100;
 
-  return DETAILED_CATEGORIES.map((cat) => ({
-    name: cat.name,
-    stats: cat.stats
+  return groupStatsBySection(DETAILED_STATS, (id) => id, DETAILED_SECTIONS).map((section) => ({
+    name: section.name,
+    stats: section.stats
       .map((id) => {
         const def = STAT_DEFINITIONS[id];
         if (!def) return null;
