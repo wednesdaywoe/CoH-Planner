@@ -17,6 +17,7 @@ import type { ProcSettings } from '@/stores/uiStore';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
 import { stanceAdjusterOverrides } from '@/data';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
+import type { ProcEffect } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
@@ -2155,64 +2156,47 @@ function applyProcBonuses(
       continue;
     }
 
-    const effect = parseProcEffect(procData.mechanics);
     const sourceName = `${proc.setName}: ${proc.procName}`;
 
-    // Apply primary effect — check category filter and Rule of 5
-    if (effect.value !== undefined && isProcCategoryEnabled(effect.category, procSettings)) {
-      const stat = effect.category ? PROC_CATEGORY_TO_STAT[effect.category] : undefined;
+    // Prefer binary-sourced structured effects (Phase 2); fall back to parsing
+    // the mechanics string for any global not yet migrated. Each effect goes
+    // through the same category-filter + Rule-of-5 gate.
+    const effects: ProcEffect[] =
+      procData.effects && procData.effects.length > 0
+        ? procData.effects
+        : (() => {
+            const parsed = parseProcEffect(procData.mechanics);
+            const list = [{ category: parsed.category, value: parsed.value, effectType: parsed.effectType }];
+            if (parsed.secondaryCategory && parsed.secondaryValue !== undefined) {
+              list.push({
+                category: parsed.secondaryCategory,
+                value: parsed.secondaryValue,
+                effectType: parsed.secondaryEffectType,
+              });
+            }
+            return list;
+          })();
+
+    for (const eff of effects) {
+      if (eff.value === undefined || !isProcCategoryEnabled(eff.category, procSettings)) continue;
+      // Skip pet/ally buffs (MM auras) and chance-gated procs — they don't
+      // contribute a steady bonus to the PLAYER's dashboard.
+      if ('target' in eff && eff.target === 'pets') continue;
+      if ('chance' in eff && eff.chance !== undefined && eff.chance < 1) continue;
+      const stat = eff.category ? PROC_CATEGORY_TO_STAT[eff.category] : undefined;
       const allowed = stat === undefined
         ? true  // No stat mapping: not subject to Rule of 5 (e.g., KB protection)
         : stat === null
           ? false // Explicitly excluded
-          : trackBonus(tracking, stat, effect.value, sourceName, proc.powerName);
+          : trackBonus(tracking, stat, eff.value, sourceName, proc.powerName);
 
       if (allowed) {
-        applySingleProcEffect(
-          effect.category,
-          effect.value,
-          effect.effectType,
-          sourceName,
-          global,
-          breakdown,
-          proc.powerName
-        );
+        applySingleProcEffect(eff.category, eff.value, eff.effectType, sourceName, global, breakdown, proc.powerName);
       } else if (stat) {
         // Rule of 5 rejected — add a capped entry so it appears in the tooltip
         addToBreakdown(breakdown, stat, {
           name: sourceName,
-          value: effect.value,
-          type: 'proc',
-          capped: true,
-          powerName: proc.powerName,
-        });
-      }
-    }
-
-    // Apply secondary effect if present — check category filter and Rule of 5
-    if (effect.secondaryCategory && effect.secondaryValue !== undefined && isProcCategoryEnabled(effect.secondaryCategory, procSettings)) {
-      const stat = PROC_CATEGORY_TO_STAT[effect.secondaryCategory];
-      const allowed = stat === undefined
-        ? true
-        : stat === null
-          ? false
-          : trackBonus(tracking, stat, effect.secondaryValue, sourceName, proc.powerName);
-
-      if (allowed) {
-        applySingleProcEffect(
-          effect.secondaryCategory,
-          effect.secondaryValue,
-          effect.secondaryEffectType,
-          sourceName,
-          global,
-          breakdown,
-          proc.powerName
-        );
-      } else if (stat) {
-        // Rule of 5 rejected — add a capped entry so it appears in the tooltip
-        addToBreakdown(breakdown, stat, {
-          name: sourceName,
-          value: effect.secondaryValue,
+          value: eff.value,
           type: 'proc',
           capped: true,
           powerName: proc.powerName,

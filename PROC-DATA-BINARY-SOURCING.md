@@ -17,13 +17,79 @@ interim hand entries.
 Decisions locked (2026-06-07): **structured representation, full consumer refactor**
 (retire `parseProcEffect` string parsing); **globals first**.
 
-**Phase 1 — globals generator + validation.** Build `scripts/extract-proc-data.py`
-(reuse `bin_crawler` parser infra, like `extract-rebirth-io-sets-v2.py`). For the
-always-on globals, the authoritative value is the granted `Set_Bonus.Global_Bonus.<Set>[_Type]`
-power (NOT the boost marker — see Finding 2 / [[global-io-values-from-globalbonus-powers]]).
-Emit structured effects, then diff against today's hand-`PROC_DATABASE` as oracle.
-Expect a handful of binary CORRECTIONS (Shield Wall 3→5% Res, Unbreakable Guard
-res→+MaxHP) — investigate each diff; those are the win, not regressions.
+**Phase 1 — globals generator + validation: ✅ DONE (2026-06-07).** Results below.
+`scripts/extract-proc-data.py` resolves + validates the always-on globals against the
+hand oracle. Approach proven: binary reproduces the clean globals exactly (incl. the
+Shield Wall 5% vindication) and surfaces hand-data drift.
+
+**Phase 2 — structured type + always-on dashboard refactor: ✅ DONE (2026-06-07).**
+Globals are binary-sourced into the player dashboard end-to-end. Results below.
+
+**Phase 3 — PPM / damage procs (NEXT).** Generate `effects` + `ppm` for the ~200
+damage/PPM procs; reproduce `Damage(Type N-M)` level-scaled ranges via the AT damage
+tables for `interpolateProcDamage`. Then migrate the damage/PPM + DISPLAY consumers
+(DamageBlock, incarnate-procs, EnhancementInfoContent, EnhancementPicker,
+enhancement-outline) off `parseProcEffect`. NB: a transitional inconsistency exists —
+the DISPLAY consumers still read `mechanics` strings, so the 3 corrected globals
+(below) show their old value in tooltips while the dashboard uses the binary value;
+resolved when display migrates.
+
+### Phase 2 results
+
+- **Generator v2** (`scripts/extract-proc-data.py`) emits structured `ProcEffect[]` per
+  global piece → `src/data/generated/proc-globals.generated.ts` (keyed by PROC_DATABASE
+  key). Handles: per-piece tag-aware Global_Bonus attribution (Steadfast Def vs KB),
+  multi-effect groups (Winter's Gift Slow + RechargeResist), own-template + Global_Bonus
+  combination (Impervious Skin Regen + MezResist), `target`/`chance` marking, scaling
+  overrides (Reactive Defenses floor).
+- **`target` / `chance` exclusion (key parity fix):** pet auras are `target='AnyAffected'`
+  (→ `target:"pets"`) and Essence Transfer is `chance=0.12`; the player-dashboard path
+  skips both — matching the old behaviour (parseProcEffect couldn't parse "...to pets" /
+  flat-HP heals, so they were never applied). All real self-globals are `target='Self'`.
+- **Type + wiring:** `ProcEffect` interface + `ProcData.effects?` added; generated
+  effects merged into `PROC_DATABASE`; `applyProcBonuses` reads `.effects` (one gated
+  loop replacing the primary/secondary blocks), falling back to `parseProcEffect` for
+  any not-yet-migrated entry.
+- **Parity guard** `src/data/proc-globals-parity.test.ts`: structured globals reproduce
+  the legacy dashboard contributions except a 3-entry allowlist of confirmed
+  corrections/completions:
+  - Impervium Armor +Psi Res **5% → 6%** (confirmed in-game).
+  - Impervious Skin **+ MezResist(All) 7.5%** (binary surfaces what the hand string omitted).
+  - Thrust **+ RunSpeed 10%** (hand mechanics had no value; binary fills it).
+  - (Winter's Gift differs only in an `effectType` label the calc ignores — no allowlist needed.)
+- **Validation:** full suite 228/228 green; tsc clean.
+
+### Phase 1 results (37/38 globals resolved; 1 missing = Superior Winter's Gift, Rebirth-only → P5)
+
+### Phase 1 results (37/38 globals resolved; 1 missing = Superior Winter's Gift, Rebirth-only → P5)
+
+**Exact matches vs hand (~20+):** Shield Wall Res 5% ✓ (the vindication — marker said
+3%, `Global_Bonus.Shield_Wall_Res`=0.05=5%), LotG Rech 7.5%, Steadfast Def 3% + KB 4,
+Gladiator Def 3%, GotA Run 7.5%, Synapse Run 15%, Unbreakable Guard MaxHP 7.5%, Winter's
+Gift slow 20%, Aegis Psi5%+MezRes20%, Karma/BotZ KB4, Kismet ToHit 6%, Miracle Rec 15%,
+Numina's Rec10%+Reg20%, Regen Tissue 25%, Edict Def 5%, Sovereign Res 10%.
+
+**Binary CORRECTIONS — hand data was stale (verified faithful single-template reads,
+is_pvp=EITHER, chance=1.0):**
+- Impervium Armor +Psi Res: binary **6%** (`0.06`) vs hand 5%.
+- Call to Arms +Def(pets): binary **5%** (`0.05`) vs hand 3% — now matches Edict (5%).
+- Expedient Reinforcement +Res(pets): binary **10%** (`0.1`) vs hand 5% — now matches Sovereign (10%).
+  → HC standardized the pet-aura IOs; the hand data kept pre-buff values. Take the binary.
+
+**Generator refinements deferred to the emit phase (P2/P6):**
+- **Per-piece global attribution.** Multi-global sets (Steadfast Def+KB, Shield Wall
+  Res+Teleport) currently resolve at set level. Use the boost-piece Null-marker TAG
+  (`Defense`→`_Def`, `Knock`→`_KB`, `Res`→`_Res`) to pick the right `Global_Bonus` per piece.
+- **Scaling globals.** Reactive Defenses / Preventive Medicine carry `Null/Strength/1.0`
+  (extracts as a bogus 100%); the real value is an HP-scaling expression (3%–12.9%).
+  Special-case or thin override; confirm how the calc models scaling +Res.
+- **Crit / special globals.** Critical Strikes, Scrapper's Strike (ATO crit-chance via
+  `Global_Chance_Mod`), Preventive Medicine (a low-HP PROC, mis-typed Global in hand) —
+  bespoke mechanics, special-case.
+- **Stealth / Jump / Perception.** Stealth maps (PVE/PVP in separate groups → merge the
+  pair); Jump/Perception have no `ProcEffectCategory` → `Special` (travel utility, not a
+  dashboard stat). Binary stealth 30/300 ft vs hand 35/389 — cosmetic, low priority.
+- **Set-name alias.** Binary misspells "Numinas_Convalesence" (one s) — aliased.
 
 ## Goal
 

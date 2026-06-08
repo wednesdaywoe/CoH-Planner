@@ -2,6 +2,7 @@
  * Proc enhancement data - detailed information about IO set procs
  * Includes PPM values, mechanics, damage values, and effect descriptions
  */
+import { PROC_GLOBAL_EFFECTS } from './generated/proc-globals.generated';
 
 export type ProcType = 'Proc' | 'Proc120s' | 'Global';
 
@@ -52,6 +53,33 @@ export interface ParsedProcEffect {
   secondaryEffectType?: string;
 }
 
+/**
+ * A single structured proc/global effect. Binary-sourced (see
+ * scripts/extract-proc-data.py + PROC-DATA-BINARY-SOURCING.md). Replaces the
+ * fragile parseProcEffect(mechanics) round-trip: a proc carries a LIST of these
+ * (a global like Aegis has Resistance + MezResist; Winter's Gift has Slow +
+ * Recharge resist). Each maps directly to applySingleProcEffect.
+ */
+export interface ProcEffect {
+  category: ProcEffectCategory;
+  /** Value (percentage, flat, or feet for stealth) */
+  value?: number;
+  /** Max value (damage ranges, stealth PvP radius) */
+  valueMax?: number;
+  /** Damage/effect type (Fire, Cold, All, Psionic, …) */
+  effectType?: string;
+  /** Duration in seconds (for timed effects) */
+  duration?: number;
+  /** Buff target. 'pets' = buffs the player's pets, not the player (MM auras);
+   *  the player-dashboard path skips these. Omitted = self. */
+  target?: 'self' | 'pets';
+  /** Trigger chance when < 1 (chance-gated, not steady always-on). The
+   *  always-on dashboard path skips these. Omitted = always on. */
+  chance?: number;
+  /** True when the value is an HP-scaling floor (Reactive Defenses 3%–12.9%). */
+  scaling?: boolean;
+}
+
 export interface ProcData {
   /** Set category (e.g., "Ranged Damage", "Holds") */
   setCategory: string;
@@ -73,6 +101,12 @@ export interface ProcData {
   pool: string;
   /** Whether unique or exclusive */
   unique: 'Unique' | 'Exclusive' | '';
+  /**
+   * Structured, binary-sourced effects. When present, consumers read these
+   * directly instead of parsing `mechanics`. Populated for always-on globals
+   * (Phase 2); damage/PPM procs follow in later phases.
+   */
+  effects?: ProcEffect[];
 }
 
 /**
@@ -2215,6 +2249,14 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     unique: "Unique"
   },
 };
+
+// Merge binary-sourced structured global effects (Phase 2: always-on globals).
+// The generated PROC_GLOBAL_EFFECTS is keyed by PROC_DATABASE key; attach each
+// to its entry's `effects`. Consumers prefer `effects` over parsing `mechanics`.
+for (const [key, effects] of Object.entries(PROC_GLOBAL_EFFECTS)) {
+  const entry = PROC_DATABASE[key];
+  if (entry) entry.effects = effects;
+}
 
 /**
  * Look up proc data with fuzzy matching
