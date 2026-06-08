@@ -48,11 +48,21 @@ Globals are binary-sourced into the player dashboard end-to-end. Results below.
   (which means the caster for beneficial procs). Guard: `proc-other-parity.test.ts`
   (dashboard Endurance/Recovery/Regen values; allowlists the Performance Shifter
   +End **7.5% → 10%** correction). Build Up / Force Feedback verified.
-- **3c — consumer migration (NEXT):** point DamageBlock (damage N-M), `applyPPMProcBonuses`
-  (Panacea/Perf Shifter end→recovery), `applyBuildUpProcBonuses` (Gaussian's/Decimation),
-  and the DISPLAY consumers (EnhancementInfoContent, EnhancementPicker, enhancement-outline,
-  PowerInfoBlocks) at `.effects` instead of `parseProcEffect`. This activates all the
-  Phase 3 data + corrections and resolves the tooltip-vs-dashboard inconsistency.
+- **3c — consumer migration. 🟡 IN PROGRESS.**
+  - **3c-calc: ✅ DONE (2026-06-07).** Added `getProcEffects(procData)` — the unified
+    accessor returning `.effects` when present, else flattening `parseProcEffect`
+    (legacy 'BuildUp' → Damage+ToHit) into the same shape. Migrated the calc consumers:
+    `applyProcBonuses`, `applyPPMProcBonuses`, `applyBuildUpProcBonuses` (character-totals)
+    and `DamageBlock`. The dashboard + per-power damage now use binary effects — the
+    corrections are LIVE (Performance Shifter +End 7.5→10% in recovery; the ATO damage
+    ranges in DamageBlock). Build Up detected via a Damage effect with `duration` (foe
+    damage procs carry `valueMax`, no duration); DamageBlock takes the Damage effect with
+    a `value..valueMax` range. tsc clean, full suite 231/231. `parseProcEffect` is now
+    unused in character-totals.ts and DamageBlock.tsx.
+  - **3c-display (NEXT):** migrate EnhancementInfoContent, EnhancementPicker,
+    enhancement-outline, PowerInfoBlocks off `parseProcEffect` to `getProcEffects`. This
+    clears the remaining tooltip-vs-dashboard inconsistency (tooltips still read mechanics
+    strings, so corrected globals/procs show the old value there).
 
 NB transitional inconsistency: DISPLAY consumers still read `mechanics` strings, so the
 Phase 2 corrected globals (Impervium 6%, etc.) and the 7 damage corrections show the old

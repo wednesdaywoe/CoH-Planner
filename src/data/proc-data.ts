@@ -2274,6 +2274,32 @@ for (const [key, effects] of Object.entries(PROC_OTHER_EFFECTS)) {
 }
 
 /**
+ * Unified accessor for a proc's structured effects. Returns the binary-sourced
+ * `effects` when present (Phase 2/3), else flattens the legacy
+ * parseProcEffect(mechanics) into the same shape so consumers handle one form.
+ * Legacy 'BuildUp' (single category, value=damage, secondaryValue=tohit) is split
+ * into Damage + ToHit (with duration) to match the structured representation.
+ */
+export function getProcEffects(procData: ProcData): ProcEffect[] {
+  if (procData.effects && procData.effects.length > 0) return procData.effects;
+  const p = parseProcEffect(procData.mechanics);
+  if (p.category === 'BuildUp') {
+    const duration = p.duration ?? 10;
+    const out: ProcEffect[] = [{ category: 'Damage', value: p.value, effectType: 'All', duration }];
+    if (p.secondaryValue !== undefined) out.push({ category: 'ToHit', value: p.secondaryValue, duration });
+    return out;
+  }
+  const out: ProcEffect[] = [{
+    category: p.category, value: p.value, valueMax: p.valueMax,
+    effectType: p.effectType, duration: p.duration,
+  }];
+  if (p.secondaryCategory && p.secondaryValue !== undefined) {
+    out.push({ category: p.secondaryCategory, value: p.secondaryValue, effectType: p.secondaryEffectType });
+  }
+  return out;
+}
+
+/**
  * Look up proc data with fuzzy matching
  * Prioritizes set-prefixed match when setName is provided to avoid
  * ambiguous bare keys (e.g. multiple procs share "Chance for Negative Energy Damage"

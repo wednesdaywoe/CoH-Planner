@@ -16,8 +16,7 @@ import type { Build, Accolade, ConditionalEffect, Enhancement, EnhancementStatTy
 import type { ProcSettings } from '@/stores/uiStore';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
 import { stanceAdjusterOverrides } from '@/data';
-import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
-import type { ProcEffect } from '@/data';
+import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
@@ -2158,26 +2157,9 @@ function applyProcBonuses(
 
     const sourceName = `${proc.setName}: ${proc.procName}`;
 
-    // Prefer binary-sourced structured effects (Phase 2); fall back to parsing
-    // the mechanics string for any global not yet migrated. Each effect goes
-    // through the same category-filter + Rule-of-5 gate.
-    const effects: ProcEffect[] =
-      procData.effects && procData.effects.length > 0
-        ? procData.effects
-        : (() => {
-            const parsed = parseProcEffect(procData.mechanics);
-            const list = [{ category: parsed.category, value: parsed.value, effectType: parsed.effectType }];
-            if (parsed.secondaryCategory && parsed.secondaryValue !== undefined) {
-              list.push({
-                category: parsed.secondaryCategory,
-                value: parsed.secondaryValue,
-                effectType: parsed.secondaryEffectType,
-              });
-            }
-            return list;
-          })();
-
-    for (const eff of effects) {
+    // Binary-sourced structured effects (falls back to the mechanics parse).
+    // Each effect goes through the same category-filter + Rule-of-5 gate.
+    for (const eff of getProcEffects(procData)) {
       if (eff.value === undefined || !isProcCategoryEnabled(eff.category, procSettings)) continue;
       // Skip pet/ally buffs (MM auras) and chance-gated procs — they don't
       // contribute a steady bonus to the PLAYER's dashboard.
@@ -2242,7 +2224,7 @@ function applyPPMProcBonuses(
       // Skip if not a PPM proc (Global and Proc120s are handled elsewhere)
       if (procData.type !== 'Proc' || procData.ppm === null) continue;
 
-      const effect = parseProcEffect(procData.mechanics);
+      const effects = getProcEffects(procData);
       const procsPerMin = calculateAutoToggleProcsPerMinute(procData.ppm);
       const sourceName = `${procData.setName}: ${ioSlot.name} (PPM)`;
 
@@ -2287,11 +2269,10 @@ function applyPPMProcBonuses(
         }
       };
 
-      // Apply primary effect
-      applyPPMEffect(effect.category, effect.value);
-
-      // Apply secondary effect (e.g., Panacea's +HP primary + +End secondary)
-      applyPPMEffect(effect.secondaryCategory, effect.secondaryValue, effect.secondaryCategory);
+      // Apply each structured effect (e.g., Panacea's +HP + +End)
+      for (const e of effects) {
+        applyPPMEffect(e.category, e.value, effects.length > 1 ? e.category : undefined);
+      }
     }
   };
 
@@ -2359,16 +2340,20 @@ function applyBuildUpProcBonuses(
       const procData = findProcData(ioSlot.name, ioSlot.setName);
       if (!procData || procData.type !== 'Proc' || procData.ppm === null) continue;
 
-      const effect = parseProcEffect(procData.mechanics);
-      if (effect.category !== 'BuildUp') continue;
+      // A Build Up proc is a self-buff Damage effect with a duration (regular
+      // damage procs carry a valueMax range and no duration), plus a ToHit buff.
+      const effects = getProcEffects(procData);
+      const dmgE = effects.find((e) => e.category === 'Damage' && e.duration !== undefined);
+      if (!dmgE) continue;
+      const toHitE = effects.find((e) => e.category === 'ToHit');
 
       buildUpProcs.push({
         procName: ioSlot.name,
         setName: procData.setName,
         ppm: procData.ppm,
-        damage: effect.value || 0,
-        toHit: effect.secondaryValue || 0,
-        duration: effect.duration || 10,
+        damage: dmgE.value || 0,
+        toHit: toHitE?.value || 0,
+        duration: dmgE.duration || 10,
         powerName: power.name,
         baseRecharge,
         castTime,
