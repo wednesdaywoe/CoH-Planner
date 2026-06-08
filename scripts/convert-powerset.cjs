@@ -3445,19 +3445,36 @@ function collectTemplatesWithMeta(effects) {
 
     const tags = effect.tags || [];
 
+    const requires = effect.requires_expression || '';
+
     if (effect.templates && effect.templates.length > 0) {
       for (const t of effect.templates) {
-        results.push({ template: t, tags });
+        results.push({ template: t, tags, requires });
       }
     }
     if (effect.child_effects && effect.child_effects.length > 0) {
       const childResults = collectTemplatesWithMeta(effect.child_effects);
       for (const cr of childResults) {
-        results.push({ template: cr.template, tags: [...tags, ...cr.tags] });
+        // Child's own requires wins (it gates the child template); fall back to
+        // the parent group's requires when the child carries none.
+        results.push({ template: cr.template, tags: [...tags, ...cr.tags], requires: cr.requires || requires });
       }
     }
   }
   return results;
+}
+
+/**
+ * Detect a `requires_expression` that excludes the caster from an effect, i.e.
+ * the RPN clause `entref target> entref source> eq !` ("target ≠ source").
+ * Phalanx Fighting's per-ally defense increment carries this so the buff only
+ * accrues from nearby allies, never from the self-target slot.
+ */
+function requiresExcludesSelf(requires) {
+  if (!requires) return false;
+  return requires.includes('entref target>') &&
+    requires.includes('entref source>') &&
+    requires.includes('eq !');
 }
 
 /**
@@ -3711,8 +3728,17 @@ function detectStackingEffects(rawJson) {
   const isAoEWithTargets = (effectArea === 'AoE' || effectArea === 'Cone') &&
     maxTargets && maxTargets > 1 && maxTargets !== 255;
 
+  // Whether self is one of the AoE's counted targets. When true, the first
+  // target slot (N=1) is self; a per-target increment whose `requires`
+  // excludes self (target ≠ source) therefore does NOT apply at N=1, so the
+  // N=1 value is the bare base. Ally/self auras (Phalanx Fighting) hit this;
+  // foe auras (Invincibility, Soul Drain, Energy Absorption) do not, because
+  // self is never in their target set — there the first target is a foe that
+  // does carry the increment. See combinedScale below.
+  const selfIsCountedTarget = (rawJson.targets_affected || []).includes('Self');
+
   const selfBuffs = [];
-  if (isAoEWithTargets) for (const { template, tags } of allTemplatesWithMeta) {
+  if (isAoEWithTargets) for (const { template, tags, requires } of allTemplatesWithMeta) {
     if (template.target !== 'Self') continue;
     if (template.stack !== 'Stack' && template.stack !== 'Continuous' && template.stack !== 'Replace') continue;
 
@@ -3730,6 +3756,7 @@ function detectStackingEffects(rawJson) {
         table: template.table,
         stack: template.stack,
         isDefiance,
+        excludesSelf: requiresExcludesSelf(requires),
       });
     }
   }
@@ -3753,8 +3780,18 @@ function detectStackingEffects(rawJson) {
     const stackScale = stacks.reduce((sum, e) => sum + e.scale, 0);
     const replaceScale = replaces.reduce((sum, e) => sum + e.scale, 0);
     const table = stacks[0].table;
-    const combinedScale = replaceScale + stackScale;
     const perTarget = stackScale;
+
+    // `scale` is the value at N=1 (one target hit). The downstream calc applies
+    // `scale + perTarget × (N − 1)`. Whether the first target carries an
+    // increment depends on the aura's geometry:
+    //   - Foe auras (Invincibility, Soul Drain): the 1 target is a foe that
+    //     contributes → N=1 value = base + one increment.
+    //   - Self-counted ally auras (Phalanx Fighting): the 1 target is self,
+    //     and the increment's `requires` excludes self → N=1 value = base only,
+    //     so a soloist sees the always-on base (matches the live/Mids default).
+    const firstTargetExcluded = selfIsCountedTarget && stacks.every(e => e.excludesSelf);
+    const combinedScale = firstTargetExcluded ? replaceScale : replaceScale + stackScale;
 
     const firstEntry = stacks[0];
     if (firstEntry.subKey) {
