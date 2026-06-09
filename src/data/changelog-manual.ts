@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-07',
+    date: '2026-06-09',
     items: [
+      { message: 'Slot counter will now adjust to your current level, making it easier to plan for a specific level build', type: 'feat' },
       { message: 'Unique and Proc data is now fully sourced from the binary. This should fix some existing enhancements. If you have an existing build with an enhancement that is displaying incorrectly, you may need to remove and replace it', type: 'fix' },
       { message: 'Spent half the 🤬 day trying to model every 🤬 thing Storm Blast 🤬 does. 🤬.', type: 'update' },
       { message: 'Powers that create pet entities (especially complicated ones like Storm Cell, Category Five, etc.) should now resolve correctly', type: 'fix' },

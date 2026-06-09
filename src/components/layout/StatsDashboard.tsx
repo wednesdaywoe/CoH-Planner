@@ -9,7 +9,7 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { formatBonusValue } from '@/utils/set-bonus-format';
-import { getArchetype } from '@/data';
+import { getArchetype, getTotalSlotsAtLevel, getPowerPicksAtLevel } from '@/data';
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
@@ -229,6 +229,13 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   // Slots that consume the level-up budget (the "/67"). Excludes each power's
   // free base slot and any auto-granted freebie slots (Rebirth Health/Stamina).
   const currentSlotCount = countPlacedBudgetSlots(build);
+
+  // Budgets are level-scoped: a level-32 character hasn't yet earned the full
+  // 24 picks / 67 slots, so the denominators track what build.level has granted
+  // so far (both reach their level-50 max). This makes it possible to allocate
+  // the exact count a character of that level would actually have.
+  const powerBudget = getPowerPicksAtLevel(build.level);
+  const slotBudget = getTotalSlotsAtLevel(build.level);
 
   // Effective movement caps — travel toggles (Super Speed / Mighty Leap / Fly /
   // Afterburner / etc.) raise the cap of their corresponding stat while active,
@@ -472,18 +479,18 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
                 Lvl {build.level}
               </span>
             </Tooltip>
-            <Tooltip content={`${24 - currentPowerCount} power picks remaining (${currentPowerCount} used)`}>
+            <Tooltip content={`${Math.max(0, powerBudget - currentPowerCount)} power picks remaining (${currentPowerCount} used of ${powerBudget} at level ${build.level})`}>
               <span className={`text-xs tabular-nums font-medium px-1 ${
-                currentPowerCount > 24 ? 'text-red-400' : 24 - currentPowerCount <= 3 ? 'text-yellow-400' : 'text-emerald-400'
+                currentPowerCount > powerBudget ? 'text-red-400' : powerBudget - currentPowerCount <= 3 ? 'text-yellow-400' : 'text-emerald-400'
               }`}>
-                Pwr {24 - currentPowerCount}/24
+                Pwr {Math.max(0, powerBudget - currentPowerCount)}/{powerBudget}
               </span>
             </Tooltip>
-            <Tooltip content={`${Math.max(0, 67 - currentSlotCount)} enhancement slots remaining (${currentSlotCount} used)`}>
+            <Tooltip content={`${Math.max(0, slotBudget - currentSlotCount)} enhancement slots remaining (${currentSlotCount} used of ${slotBudget} at level ${build.level})`}>
               <span className={`text-xs tabular-nums font-medium px-1 ${
-                currentSlotCount > 67 ? 'text-red-400' : 67 - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
+                currentSlotCount > slotBudget ? 'text-red-400' : slotBudget - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
               }`}>
-                Slot {Math.max(0, 67 - currentSlotCount)}/67
+                Slot {Math.max(0, slotBudget - currentSlotCount)}/{slotBudget}
               </span>
             </Tooltip>
             <div className="hidden lg:block w-px h-4 bg-gray-700 mx-0.5 shrink-0" />
