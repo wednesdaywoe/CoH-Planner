@@ -1,0 +1,430 @@
+{
+  "powerset": "Scrapper_Melee.Dark_Melee",
+  "display_name": "Dark Melee",
+  "archetype": "Scrapper",
+  "notes": [
+    "Damage values are SCALE (AT-agnostic units). Multiply by the AT melee damage modifier and level/combat-mod table at runtime.",
+    "arcana_time = ceil(cast/0.132)*0.132 + 0.132 \u2014 use this (not cast_time) for attack-chain timing.",
+    "dpa_scale = damage_scale.total / arcana_time. recharge_after_cast = how much recharge must elapse after the animation ends before the power is up again.",
+    "PvP, disabled (chance 0), and critical (Melee_InherentDamage) templates are excluded. Scrapper crit chances are surfaced separately under scrapper_crit.",
+    "Shadow Maul is a 4-tick DoT (see damage_scale.dot); total already accounts for all ticks."
+  ],
+  "powers": [
+    {
+      "name": "Shadow_Punch",
+      "display_name": "Shadow Punch",
+      "level": 0,
+      "power_type": "Click",
+      "is_attack": true,
+      "target_type": "Foe",
+      "effect_area": "SingleTarget",
+      "max_targets": 0,
+      "radius": 0.0,
+      "arc_radians": 0.0,
+      "range": 7.0,
+      "accuracy": 1.0,
+      "cast_time": 0.83,
+      "arcana_time": 1.056,
+      "recharge_time": 3.0,
+      "endurance_cost": 4.368,
+      "damage_scale": {
+        "total": 0.84,
+        "by_type": {
+          "smashing": 0.34,
+          "negative": 0.5
+        },
+        "dot": null
+      },
+      "dpa_scale": 0.7955,
+      "eps": 4.136,
+      "recharge_after_cast": 1.944,
+      "secondary_effects": [
+        {
+          "attrib": "ToHit",
+          "scale": 0.75,
+          "table": "Melee_DeBuff_ToHit",
+          "duration_s": 6.0,
+          "magnitude": 1.0
+        }
+      ],
+      "scrapper_crit": {
+        "chance_vs_minion": 0.1,
+        "chance_vs_other": 0.05
+      }
+    },
+    {
+      "name": "Smite",
+      "display_name": "Smite",
+      "level": 0,
+      "power_type": "Click",
+      "is_attack": true,
+      "target_type": "Foe",
+      "effect_area": "SingleTarget",
+      "max_targets": 0,
+      "radius": 0.0,
+      "arc_radians": 0.0,
+      "range": 7.0,
+      "accuracy": 1.0,
+      "cast_time": 0.97,
+      "arcana_time": 1.188,
+      "recharge_time": 6.0,
+      "endurance_cost": 6.864,
+      "damage_scale": {
+        "total": 1.32,
+        "by_type": {
+          "smashing": 0.32,
+          "negative": 1.0
+        },
+        "dot": null
+      },
+      "dpa_scale": 1.1111,
+      "eps": 5.778,
+      "recharge_after_cast": 4.812,
+      "secondary_effects": [
+        {
+          "attrib": "ToHit",
+          "scale": 0.75,
+          "table": "Melee_DeBuff_ToHit",
+          "duration_s": 10.0,
+          "magnitude": 1.0
+        }
+      ],
+      "scrapper_crit": {
+        "chance_vs_minion": 0.1,
+        "chance_vs_other": 0.05
+      }
+    },
+    {
+      "name": "Shadow_Maul",
+      "display_name": "Shadow Maul",
+      "level": 1,
+      "power_type": "Click",
+      "is_attack": true,
+      "target_type": "Foe",
+      "effect_area": "Cone",
+      "max_targets": 5,
+      "radius": 7.0,
+      "arc_radians": 2.0944,
+      "range": 7.0,
+      "accuracy": 1.0,
+      "cast_time": 2.37,
+      "arcana_time": 2.508,
+      "recharge_time": 11.0,
+      "endurance_cost": 11.024,
+      "damage_scale": {
+        "total": 1.6184,
+        "by_type": {
+          "smashing": 0.8092,
+          "negative": 0.8092
+        },
+        "dot": {
+          "ticks": 4,
+          "period": 0.625,
+          "per_tick_scale": 0.2023
+        }
+      },
+      "dpa_scale": 0.6453,
+      "eps": 4.396,
+      "recharge_after_cast": 8.492,
+      "secondary_effects": [
+        {
+          "attrib": "ToHit",
+          "scale": 0.75,
+          "table": "Melee_DeBuff_ToHit",
+          "duration_s": 10.0,
+          "magnitude": 1.0
+        }
+      ],
+      "scrapper_crit": {
+        "chance_vs_minion": 0.1,
+        "chance_vs_other": 0.05
+      }
+    },
+    {
+      "name": "Touch_of_Fear",
+      "display_name": "Touch of Fear",
+      "level": 5,
+      "power_type": "Click",
+      "is_attack": false,
+      "target_type": "Foe",
+      "effect_area": "Sphere",
+      "max_targets": 10,
+      "radius": 6.0,
+      "arc_radians": 0.0,
+      "range": 7.0,
+      "accuracy": 1.0,
+      "cast_time": 1.97,
+      "arcana_time": 2.112,
+      "recharge_time": 8.0,
+      "endurance_cost": 8.528,
+      "damage_scale": {
+        "total": 0.0,
+        "by_type": {},
+        "dot": null
+      },
+      "dpa_scale": 0.0,
+      "eps": 4.038,
+      "recharge_after_cast": 5.888,
+      "secondary_effects": [
+        {
+          "attrib": "Execute_Power",
+          "scale": 0.0,
+          "table": "Melee_Ones",
+          "duration_s": 0.0,
+          "magnitude": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Siphon_Life",
+      "display_name": "Siphon Life",
+      "level": 7,
+      "power_type": "Click",
+      "is_attack": true,
+      "target_type": "Foe",
+      "effect_area": "SingleTarget",
+      "max_targets": 0,
+      "radius": 0.0,
+      "arc_radians": 0.0,
+      "range": 7.0,
+      "accuracy": 1.0,
+      "cast_time": 1.93,
+      "arcana_time": 2.112,
+      "recharge_time": 10.0,
+      "endurance_cost": 10.192,
+      "damage_scale": {
+        "total": 1.96,
+        "by_type": {
+          "negative": 1.96
+        },
+        "dot": null
+      },
+      "dpa_scale": 0.928,
+      "eps": 4.826,
+      "recharge_after_cast": 7.888,
+      "secondary_effects": [
+        {
+          "attrib": "Heal_Dmg",
+          "scale": 1.0,
+          "table": "Melee_HealSelf",
+          "duration_s": 0.0,
+          "magnitude": 1.0
+        },
+        {
+          "attrib": "ToHit",
+          "scale": 0.75,
+          "table": "Melee_DeBuff_ToHit",
+          "duration_s": 10.0,
+          "magnitude": 1.0
+        }
+      ],
+      "scrapper_crit": {
+        "chance_vs_minion": 0.1,
+        "chance_vs_other": 0.05
+      }
+    },
+    {
+      "name": "Taunt",
+      "display_name": "Confront",
+      "level": 11,
+      "power_type": "Click",
+      "is_attack": false,
+      "target_type": "Foe",
+      "effect_area": "SingleTarget",
+      "max_targets": 0,
+      "radius": 0.0,
+      "arc_radians": 0.0,
+      "range": 70.0,
+      "accuracy": 1.0,
+      "cast_time": 1.67,
+      "arcana_time": 1.848,
+      "recharge_time": 3.0,
+      "endurance_cost": 0.0,
+      "damage_scale": {
+        "total": 0.0,
+        "by_type": {},
+        "dot": null
+      },
+      "dpa_scale": 0.0,
+      "eps": 0.0,
+      "recharge_after_cast": 1.152,
+      "secondary_effects": [
+        {
+          "attrib": "Taunt",
+          "scale": 15.0,
+          "table": "Melee_Taunt",
+          "duration_s": 0.0,
+          "magnitude": 4.0
+        },
+        {
+          "attrib": "Taunt",
+          "scale": 4.0,
+          "table": "Melee_Taunt",
+          "duration_s": 0.0,
+          "magnitude": 4.0
+        },
+        {
+          "attrib": "Range",
+          "scale": -0.75,
+          "table": "Melee_Ones",
+          "duration_s": 12.0,
+          "magnitude": 1.0
+        },
+        {
+          "attrib": "Null",
+          "scale": 1.0,
+          "table": "Melee_Ones",
+          "duration_s": 0.0,
+          "magnitude": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Dark_Consumption",
+      "display_name": "Dark Consumption",
+      "level": 17,
+      "power_type": "Click",
+      "is_attack": false,
+      "target_type": "Self",
+      "effect_area": "Sphere",
+      "max_targets": 10,
+      "radius": 8.0,
+      "arc_radians": 0.0,
+      "range": 0.0,
+      "accuracy": 1.0,
+      "cast_time": 1.03,
+      "arcana_time": 1.188,
+      "recharge_time": 180.0,
+      "endurance_cost": 0.52,
+      "damage_scale": {
+        "total": 0.8,
+        "by_type": {
+          "negative": 0.8
+        },
+        "dot": null
+      },
+      "dpa_scale": 0.6734,
+      "eps": 0.438,
+      "recharge_after_cast": 178.812,
+      "secondary_effects": [
+        {
+          "attrib": "Endurance",
+          "scale": 25.0,
+          "table": "Melee_Ones",
+          "duration_s": 0.0,
+          "magnitude": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Soul_Drain",
+      "display_name": "Soul Drain",
+      "level": 21,
+      "power_type": "Click",
+      "is_attack": false,
+      "target_type": "Self",
+      "effect_area": "Sphere",
+      "max_targets": 10,
+      "radius": 10.0,
+      "arc_radians": 0.0,
+      "range": 0.0,
+      "accuracy": 1.2,
+      "cast_time": 2.37,
+      "arcana_time": 2.508,
+      "recharge_time": 120.0,
+      "endurance_cost": 15.6,
+      "damage_scale": {
+        "total": 1.0,
+        "by_type": {
+          "negative": 1.0
+        },
+        "dot": null
+      },
+      "dpa_scale": 0.3987,
+      "eps": 6.22,
+      "recharge_after_cast": 117.492,
+      "secondary_effects": [
+        {
+          "attrib": "ToHit",
+          "scale": 0.2,
+          "table": "Melee_Buff_ToHit",
+          "duration_s": 30.0,
+          "magnitude": 1.0
+        },
+        {
+          "attrib": "DamageBuff(all)",
+          "scale": 0.8,
+          "table": "Melee_Buff_Dmg",
+          "duration_s": 30.0,
+          "magnitude": 1.0
+        },
+        {
+          "attrib": "ToHit",
+          "scale": 1.0,
+          "table": "Melee_Buff_ToHit",
+          "duration_s": 30.0,
+          "magnitude": 1.0
+        },
+        {
+          "attrib": "DamageBuff(all)",
+          "scale": 4.0,
+          "table": "Melee_Buff_Dmg",
+          "duration_s": 30.0,
+          "magnitude": 1.0
+        }
+      ]
+    },
+    {
+      "name": "Midnight_Grasp",
+      "display_name": "Midnight Grasp",
+      "level": 25,
+      "power_type": "Click",
+      "is_attack": true,
+      "target_type": "Foe",
+      "effect_area": "SingleTarget",
+      "max_targets": 0,
+      "radius": 0.0,
+      "arc_radians": 0.0,
+      "range": 7.0,
+      "accuracy": 1.0,
+      "cast_time": 2.07,
+      "arcana_time": 2.244,
+      "recharge_time": 15.0,
+      "endurance_cost": 11.96,
+      "damage_scale": {
+        "total": 2.76,
+        "by_type": {
+          "negative": 2.76
+        },
+        "dot": {
+          "ticks": 5,
+          "period": 0.75,
+          "per_tick_scale": 0.11
+        }
+      },
+      "dpa_scale": 1.2299,
+      "eps": 5.33,
+      "recharge_after_cast": 12.756,
+      "secondary_effects": [
+        {
+          "attrib": "Immobilized",
+          "scale": 15.0,
+          "table": "Melee_Immobilize",
+          "duration_s": 0.0,
+          "magnitude": 3.0
+        },
+        {
+          "attrib": "ToHit",
+          "scale": 0.75,
+          "table": "Melee_DeBuff_ToHit",
+          "duration_s": 20.0,
+          "magnitude": 1.0
+        }
+      ],
+      "scrapper_crit": {
+        "chance_vs_minion": 0.1,
+        "chance_vs_other": 0.05
+      }
+    }
+  ]
+}
