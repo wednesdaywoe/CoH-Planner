@@ -5,7 +5,7 @@
 
 import { useBuildStore } from '@/stores';
 import { useBonusTracking } from '@/hooks';
-import { getIOSet, getPower, getPowerPool, findProcData, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
+import { getIOSet, getPower, getPowerPool, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
 import {
   normalizeAspectName,
   getAspectSchedule,
@@ -176,7 +176,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
               {ioEnh.setName}
               {ioSet && <span className="text-yellow-600 font-normal ml-1">({ioEnh.pieceNum}/{ioSet.pieces.length})</span>}
             </h3>
-            <span className="text-xs text-blue-400">{enhancement.name}</span>
+            <span className="text-xs text-blue-400">{resolveProcPieceName(enhancement.name, ioEnh.setName, ioEnh.isProc)}</span>
           </div>
         </div>
 

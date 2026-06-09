@@ -301,6 +301,11 @@ export function createIOSetEnhancement(
   return {
     type: 'io-set',
     id: `${setId}-${pieceIndex}`,
+    // NOTE: `name` is the canonical proc lookup key (findProcData keys on it in
+    // the calc engine), so it MUST stay the raw piece label — resolving it to
+    // the ioName here would collide with bare PROC_DATABASE keys (e.g. "Chance
+    // for +Absorb" → Entomb). Placeholder "Chance" names are rescued to the
+    // real ioName at the DISPLAY layer via resolveProcPieceName instead.
     name: piece.name,
     icon: set.icon || 'Unknown.png',
     setId,

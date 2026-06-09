@@ -9,6 +9,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Modal, ModalBody } from './Modal';
 import { useBuildStore } from '@/stores';
 import type { Enhancement, IOSetEnhancement } from '@/types';
+import { resolveProcPieceName } from '@/data';
 import { enhancementToRawIdentifier, fetchPrices, formatInf, MATERIAL_IDENTIFIERS, type PriceRow } from '@/services/auctionPrices';
 import { supabase } from '@/lib/supabase';
 
@@ -64,7 +65,7 @@ function buildGroups(enhancements: Enhancement[]): EnhancementGroup[] {
     if (enh.type === 'io-set') {
       const io = enh as IOSetEnhancement;
       setName = io.setName;
-      pieceName = io.name;
+      pieceName = resolveProcPieceName(io.name, io.setName, io.isProc);
       sortKey = `${io.setName}\u0000${io.pieceNum.toString().padStart(2, '0')}`;
     } else if (enh.type === 'io-generic') {
       setName = 'Generic IOs';

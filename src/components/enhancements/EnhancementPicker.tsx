@@ -16,7 +16,7 @@ import {
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
   getAvailableGenericIOs, getAvailableHamidons, getAvailableTitans, getAvailableHydras, getAvailableDSyncs, getAvailablePrestige,
   getRarityColor, getTierTextColor, getTierBorderColor,
-  findProcData, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
+  findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
 import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getTotalBonusCount, isBonusCapped, getSetRarityMultiplier, getEffectiveAspectCount, getMultiAspectModifier, BOOST_MULTIPLIER_PER_LEVEL } from '@/utils/calculations';
 import { formatBonusDesc } from '@/utils/set-bonus-format';
@@ -1268,7 +1268,7 @@ function ProcsContent({
             </div>
           </div>
         ) : (
-          <div className="text-xs text-slate-300">{piece.name}</div>
+          <div className="text-xs text-slate-300">{resolveProcPieceName(piece.name, set.name, piece.proc)}</div>
         );
 
         return (
@@ -1314,7 +1314,7 @@ function ProcsContent({
             {/* Piece info */}
             <div className="flex-1 text-left min-w-0">
               <div className="text-sm font-medium text-gray-200 truncate">
-                {piece.name}
+                {resolveProcPieceName(piece.name, set.name, piece.proc)}
               </div>
               <div className="text-xs text-gray-500 truncate">
                 {set.name}
@@ -1560,7 +1560,7 @@ function IOSetRow({
               {/* Info on right */}
               <div className="flex-1 text-left min-w-0">
                 <div className="text-sm font-medium text-gray-200 truncate">
-                  {piece.name}
+                  {resolveProcPieceName(piece.name, set.name, piece.proc)}
                 </div>
                 <div className="text-xs text-gray-400">
                   {piece.aspects.join(', ')}
@@ -1905,7 +1905,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
         />
         <div className="min-w-0">
           <h3 className="text-xs font-semibold text-yellow-400 leading-tight">{set.name}</h3>
-          <span className="text-[10px] text-blue-400">{piece.name}</span>
+          <span className="text-[10px] text-blue-400">{resolveProcPieceName(piece.name, set.name, piece.proc)}</span>
         </div>
       </div>
 
@@ -2008,7 +2008,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                 </div>
               );
             }
-            return <div className="text-[10px] text-amber-200">{piece.name}</div>;
+            return <div className="text-[10px] text-amber-200">{resolveProcPieceName(piece.name, set.name, piece.proc)}</div>;
           })()}
         </div>
       )}

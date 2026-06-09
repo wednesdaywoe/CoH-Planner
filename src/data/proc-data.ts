@@ -2367,6 +2367,38 @@ export function findProcData(enhancementName: string, setName?: string): ProcDat
 }
 
 /**
+ * Placeholder names the IO-set binary extractor emits for a proc piece whose
+ * effect it can't derive from the template (a `Null` global, a `Grant_Power`
+ * ATO proc, or an unmapped effect attrib). See `extract-rebirth-io-sets-v2.py`
+ * and the proc-piece-name-misresolution notes.
+ */
+const PLACEHOLDER_PROC_NAMES: ReadonlySet<string> = new Set(['Chance', 'Recharge/Chance']);
+
+/**
+ * Resolve a proc piece's *display* name. The authoritative identity of a proc
+ * lives in PROC_DATABASE (binary-sourced), not in the IO-set piece label — the
+ * extractor can only name a proc when its effect is derivable from the binary
+ * template, and otherwise falls back to a bare "Chance"/"Recharge/Chance".
+ *
+ * When that placeholder is shown, look the real `ioName` up from PROC_DATABASE
+ * (the same resolution the proc tooltip already uses for its body), so a slot
+ * reads "Chance for +Absorb" instead of "Chance". Non-proc pieces and pieces
+ * whose extractor name is already meaningful (curated globals like
+ * "Defense/+Recharge") are returned unchanged — this only rescues placeholders.
+ *
+ * Used at the two places a proc name surfaces: `createIOSetEnhancement` (every
+ * slotted enhancement, re-derived on build load) and the enhancement picker.
+ */
+export function resolveProcPieceName(
+  name: string,
+  setName: string | undefined,
+  isProc: boolean | undefined,
+): string {
+  if (!isProc || !PLACEHOLDER_PROC_NAMES.has(name)) return name;
+  return findProcData(name, setName)?.ioName ?? name;
+}
+
+/**
  * Get a user-friendly display name for proc effect category
  */
 export function getProcEffectLabel(category: ProcEffectCategory): string {

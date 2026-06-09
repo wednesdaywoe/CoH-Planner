@@ -16,7 +16,7 @@ import {
   BOOST_MULTIPLIER_PER_LEVEL,
 } from '@/utils/calculations';
 import { getEnhancementOutline } from '@/utils/enhancement-outline';
-import { findProcData, procEffectSummary } from '@/data/proc-data';
+import { findProcData, procEffectSummary, resolveProcPieceName } from '@/data/proc-data';
 
 interface EnhancementCardProps {
   piece: IOSetPiece;
@@ -134,7 +134,7 @@ export function EnhancementCard({
           )}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="text-sm text-gray-200 truncate">{piece.name}</div>
+          <div className="text-sm text-gray-200 truncate">{resolveProcPieceName(piece.name, setName, piece.proc)}</div>
           <div className="flex items-center gap-2">
             <span className="text-xs text-gray-500">
               {isAttuned ? 'Attuned' : `Level ${level}`}
@@ -216,7 +216,7 @@ function EnhancementTooltip({ piece, setName, level, isAttuned, boost = 0, categ
 
   return (
     <div className="min-w-[220px]">
-      <div className="font-medium text-white">{piece.name}</div>
+      <div className="font-medium text-white">{resolveProcPieceName(piece.name, setName, piece.proc)}</div>
       <div className="text-sm text-yellow-400">{setName}</div>
       <div className="text-xs text-gray-400 mb-2 flex items-center gap-2 flex-wrap">
         <span>{isAttuned ? 'Attuned (scales to level)' : `Level ${level}`}</span>
