@@ -41,7 +41,7 @@ export function AttackChainAnnounceModal() {
             <span className="text-[10px] font-medium px-1.5 py-0.5 rounded border bg-purple-900/50 text-purple-300 border-purple-700/50">
               New
             </span>
-            <h2 className="text-lg font-medium text-gray-100">Try the new Attack Chain Builder!</h2>
+            <h2 className="text-lg font-medium text-gray-100">Try the new Attack Chain Builder 😎</h2>
           </div>
           <p className="text-sm text-gray-300 leading-relaxed">
             Add your attacks onto a timeline to see your rotation&apos;s DPS, dead time, and
