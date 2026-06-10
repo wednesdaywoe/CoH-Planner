@@ -1,0 +1,336 @@
+/**
+ * Attack Chain Builder — pure timing / damage / endurance model.
+ *
+ * No app/data dependencies: the caller derives `ChainPower[]` from the live
+ * build (recharge/cast/end/damage already enhanced) and feeds it here. This
+ * module only does the *scheduling* (single-animation greedy packer, mirroring
+ * the in-game constraint that you can only animate one power at a time and a
+ * power's recharge starts the instant its cast begins) and the *endurance
+ * simulation* (continuous recovery − toggle drain, minus the lump end cost paid
+ * at each cast — so a spiky rotation can bottom out even when its average net is
+ * positive).
+ */
+
+export type ChainPowerType = 'attack' | 'utility' | 'buff';
+
+/** Damage-over-time that ticks AFTER the cast finishes (drawn as ticks on the
+ *  timeline). DoT that lands during the cast is already folded into `damage`. */
+export interface ChainDoT {
+  ticks: number;
+  /** seconds between ticks */
+  period: number;
+  /** enhanced damage per tick */
+  perTick: number;
+}
+
+/** One power available to the chain, with values already enhanced for the build. */
+export interface ChainPower {
+  id: string;
+  name: string;
+  type: ChainPowerType;
+  /** ArcanaTime — the animation lock, in seconds (also the recharge anchor). */
+  cast: number;
+  /** Raw base recharge (seconds), BEFORE enhancement/global — so a what-if
+   *  global-recharge slider can be applied on top. */
+  baseRecharge: number;
+  /** Slotted recharge enhancement as a fraction (e.g. 0.95 = +95%). */
+  rechargeEnh: number;
+  /** Enhanced endurance cost per activation. */
+  endCost: number;
+  /** Average direct damage per activation (includes in-cast DoT + buffs). */
+  damage: number;
+  /** After-cast DoT, drawn as ticks (its damage is included in `damage`). */
+  dot?: ChainDoT | null;
+}
+
+/** A scheduled cast: `pi` indexes into the ChainPower[] passed alongside. */
+export interface Activation {
+  pi: number;
+  start: number;
+  end: number;
+  /** index into the pick-order sequence (for per-bar removal). */
+  seq?: number;
+}
+
+export interface EnduranceParams {
+  /** 100 + maxEndurance bonus. */
+  maxEnd: number;
+  /** Endurance recovered per second (recovery rate). */
+  recoveryPerSec: number;
+  /** Endurance drained per second by active toggles. */
+  togglePerSec: number;
+}
+
+export interface DeadGap {
+  start: number;
+  end: number;
+}
+
+/** A vertex on the endurance-over-time track (for the area chart). */
+export interface EndPoint {
+  t: number;
+  /** endurance as a fraction of maxEnd, clamped [0, 1] */
+  frac: number;
+}
+
+export interface EnduranceResult {
+  /** recovery − toggles − attack spend, per second (steady-state average). */
+  netPerSec: number;
+  recoveryPerSec: number;
+  togglePerSec: number;
+  /** attack endurance spent per second over the cycle. */
+  attackPerSec: number;
+  /** net endurance gained/lost per full loop (netPerSec × cycleSec). */
+  perLoopDelta: number;
+  sustainable: boolean;
+  /** From a full bar: seconds until empty (null when sustainable). */
+  timeToEmpty: number | null;
+  /** From a full bar: the first time endurance would hit 0 mid-cast and the
+   *  chain stalls (null when it never stalls within the horizon). */
+  stallTime: number | null;
+  /** Piecewise-linear endurance track from a full bar, for the viz. */
+  track: EndPoint[];
+  /** How many loops the `track` spans. */
+  trackLoops: number;
+}
+
+export interface ChainResult {
+  cycleSec: number;
+  totalDamage: number;
+  dps: number;
+  /** endurance spent per second (attacks only). */
+  endPerSec: number;
+  deadTime: number;
+  deadGaps: DeadGap[];
+  /** 0–100; share of the cycle spent animating (not idle). */
+  efficiency: number;
+  endurance: EnduranceResult | null;
+  /** max per-activation damage in the chain — drives relative-damage coloring. */
+  maxDamage: number;
+}
+
+const EPS = 0.001;
+
+/** Effective recharge after enhancement + (build + what-if) global recharge. */
+export function effectiveRecharge(p: ChainPower, globalRechargePct: number): number {
+  return p.baseRecharge / (1 + p.rechargeEnh + globalRechargePct / 100);
+}
+
+function overlapsAny(activations: Activation[], start: number, end: number): boolean {
+  for (const a of activations) {
+    if (start < a.end - EPS && end > a.start + EPS) return true;
+  }
+  return false;
+}
+
+/**
+ * Earliest start time at which power `pi` can be cast: not before its own
+ * recharge lane is ready, and not overlapping any other animation. Greedy —
+ * mirrors the mockup. Returns the chosen start.
+ */
+export function findSlot(
+  powers: ChainPower[],
+  activations: Activation[],
+  pi: number,
+  globalRechargePct: number,
+): number {
+  const p = powers[pi];
+  const effRech = effectiveRecharge(p, globalRechargePct);
+  const mine = activations.filter((a) => a.pi === pi);
+  const laneReadyAt = mine.length > 0 ? Math.max(...mine.map((a) => a.start + effRech)) : 0;
+
+  let candidateStart = laneReadyAt;
+  for (let iter = 0; iter < 500; iter++) {
+    const candidateEnd = candidateStart + p.cast;
+    if (!overlapsAny(activations, candidateStart, candidateEnd)) return candidateStart;
+    const blocker = activations
+      .filter((a) => a.start < candidateEnd && a.end > candidateStart)
+      .sort((a, b) => b.end - a.end)[0];
+    if (!blocker) break;
+    candidateStart = Math.max(blocker.end, laneReadyAt);
+  }
+  return candidateStart;
+}
+
+/** Append a cast of power `pi` at its earliest legal slot. Returns a NEW array. */
+export function addActivation(
+  powers: ChainPower[],
+  activations: Activation[],
+  pi: number,
+  globalRechargePct: number,
+): Activation[] {
+  const start = findSlot(powers, activations, pi, globalRechargePct);
+  const next = [...activations, { pi, start, end: start + powers[pi].cast }];
+  next.sort((a, b) => a.start - b.start);
+  return next;
+}
+
+/** Remove the latest-scheduled cast of power `pi`. Returns a NEW array. */
+export function removeLastActivation(activations: Activation[], pi: number): Activation[] {
+  const mine = activations.filter((a) => a.pi === pi).sort((a, b) => b.start - a.start);
+  if (mine.length === 0) return activations;
+  const target = mine[0];
+  return activations.filter((a) => a !== target);
+}
+
+/**
+ * Replay a pick-order sequence into scheduled activations, each tagged with its
+ * sequence index so a single bar can be removed (filter the sequence by `seq`).
+ * Deterministic: same sequence + recharge ⇒ identical layout.
+ */
+export function replayChain(
+  powers: ChainPower[],
+  sequence: number[],
+  globalRechargePct: number,
+): Activation[] {
+  const acts: Activation[] = [];
+  sequence.forEach((pi, seq) => {
+    if (pi < 0 || pi >= powers.length) return;
+    const start = findSlot(powers, acts, pi, globalRechargePct);
+    acts.push({ pi, start, end: start + powers[pi].cast, seq });
+    acts.sort((a, b) => a.start - b.start);
+  });
+  return acts;
+}
+
+function calcDeadGaps(activations: Activation[], cycleSec: number): DeadGap[] {
+  const sorted = [...activations].sort((a, b) => a.start - b.start);
+  const gaps: DeadGap[] = [];
+  let cursor = 0;
+  for (const a of sorted) {
+    if (a.start > cursor + EPS) gaps.push({ start: cursor, end: a.start });
+    cursor = Math.max(cursor, a.end);
+  }
+  if (cursor < cycleSec - EPS) gaps.push({ start: cursor, end: cycleSec });
+  return gaps;
+}
+
+/**
+ * Per-activation damage that lands within the cycle window. After-cast DoT
+ * ticks are only counted if they fall before the loop closes (matching how a
+ * looping rotation truncates trailing ticks — the mockup's convention).
+ */
+function activationDamage(p: ChainPower, act: Activation, cycleSec: number): number {
+  let dmg = p.damage;
+  if (p.dot) {
+    for (let t = 1; t <= p.dot.ticks; t++) {
+      const tickT = act.start + p.cast + t * p.dot.period;
+      if (tickT <= cycleSec + EPS) dmg += p.dot.perTick;
+    }
+  }
+  return dmg;
+}
+
+/**
+ * Simulate endurance from a FULL bar across enough loops to reveal steady state
+ * or a stall. Continuous slope = recovery − toggles; each activation subtracts
+ * its end cost at its start. Endurance clamps to [0, maxEnd].
+ */
+function simulateEndurance(
+  powers: ChainPower[],
+  activations: Activation[],
+  cycleSec: number,
+  end: EnduranceParams,
+): EnduranceResult {
+  const netPassive = end.recoveryPerSec - end.togglePerSec;
+  const attackPerCycle = activations.reduce((s, a) => s + powers[a.pi].endCost, 0);
+  const attackPerSec = cycleSec > 0 ? attackPerCycle / cycleSec : 0;
+  const perLoopDelta = netPassive * cycleSec - attackPerCycle;
+  const netPerSec = cycleSec > 0 ? perLoopDelta / cycleSec : netPassive;
+  const sustainable = perLoopDelta >= -EPS;
+
+  // Order the per-cycle endurance events (cast start → −endCost).
+  const events = [...activations]
+    .sort((a, b) => a.start - b.start)
+    .map((a) => ({ t: a.start, cost: powers[a.pi].endCost }));
+
+  // Walk loops, accumulating a piecewise-linear track. Stop at steady state
+  // (sustainable: 2 loops is enough to show the pattern) or when we stall /
+  // hit a horizon (draining).
+  const maxLoops = sustainable ? 2 : 30;
+  const track: EndPoint[] = [];
+  let e = end.maxEnd;
+  let stallTime: number | null = null;
+  const push = (t: number, val: number) =>
+    track.push({ t, frac: Math.max(0, Math.min(1, val / end.maxEnd)) });
+
+  push(0, e);
+  let loops = 0;
+  outer: for (let loop = 0; loop < maxLoops; loop++) {
+    const base = loop * cycleSec;
+    let cursor = 0;
+    for (const ev of events) {
+      // recover continuously up to this cast
+      e = Math.min(end.maxEnd, e + netPassive * (ev.t - cursor));
+      push(base + ev.t, e);
+      // pay the cast
+      e -= ev.cost;
+      if (e < -EPS && stallTime === null) {
+        stallTime = base + ev.t;
+        push(base + ev.t, 0);
+        break outer;
+      }
+      e = Math.max(0, e);
+      push(base + ev.t, e);
+      cursor = ev.t;
+    }
+    // recover through the tail of the loop
+    e = Math.min(end.maxEnd, e + netPassive * (cycleSec - cursor));
+    push(base + cycleSec, e);
+    loops = loop + 1;
+    // sustainable loops converge; once we're back near full, stop early
+    if (sustainable && e >= end.maxEnd - EPS && loop >= 0) break;
+  }
+
+  const timeToEmpty = sustainable ? null : netPerSec < 0 ? end.maxEnd / -netPerSec : null;
+
+  return {
+    netPerSec,
+    recoveryPerSec: end.recoveryPerSec,
+    togglePerSec: end.togglePerSec,
+    attackPerSec,
+    perLoopDelta,
+    sustainable,
+    timeToEmpty,
+    stallTime,
+    track,
+    trackLoops: loops,
+  };
+}
+
+/** Compute every derived stat for the current chain. */
+export function computeChain(
+  powers: ChainPower[],
+  activations: Activation[],
+  end: EnduranceParams | null,
+): ChainResult | null {
+  if (activations.length === 0) return null;
+
+  const cycleSec = Math.max(...activations.map((a) => a.end));
+  const deadGaps = calcDeadGaps(activations, cycleSec);
+  const deadTime = deadGaps.reduce((s, g) => s + (g.end - g.start), 0);
+  const efficiency = cycleSec > 0 ? Math.round((1 - deadTime / cycleSec) * 100) : 0;
+
+  let totalDamage = 0;
+  let maxDamage = 0;
+  let endPerCycle = 0;
+  for (const a of activations) {
+    const p = powers[a.pi];
+    const d = activationDamage(p, a, cycleSec);
+    totalDamage += d;
+    if (d > maxDamage) maxDamage = d;
+    endPerCycle += p.endCost;
+  }
+
+  return {
+    cycleSec,
+    totalDamage,
+    dps: cycleSec > 0 ? totalDamage / cycleSec : 0,
+    endPerSec: cycleSec > 0 ? endPerCycle / cycleSec : 0,
+    deadTime,
+    deadGaps,
+    efficiency,
+    endurance: end ? simulateEndurance(powers, activations, cycleSec, end) : null,
+    maxDamage,
+  };
+}

@@ -13,7 +13,7 @@ import { getArchetype, getTotalSlotsAtLevel, getPowerPicksAtLevel } from '@/data
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
@@ -182,6 +182,9 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const closeProcSettingsModal = useUIStore((s) => s.closeProcSettingsModal);
   const enhancementToolsModalOpen = useUIStore((s) => s.enhancementToolsModalOpen);
   const closeEnhancementToolsModal = useUIStore((s) => s.closeEnhancementToolsModal);
+  const attackChainModalOpen = useUIStore((s) => s.attackChainModalOpen);
+  const openAttackChainModal = useUIStore((s) => s.openAttackChainModal);
+  const closeAttackChainModal = useUIStore((s) => s.closeAttackChainModal);
   const trackedStats = useUIStore((s) => s.trackedStats);
   const toggleTrackedStat = useUIStore((s) => s.toggleTrackedStat);
   const ensureTrackedStats = useUIStore((s) => s.ensureTrackedStats);
@@ -505,6 +508,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
               openEnhancementListModal={openEnhancementListModal}
               openStatsConfigModal={openStatsConfigModal}
               openControlsModal={openControlsModal}
+              openAttackChainModal={openAttackChainModal}
               variant="desktop"
             />
           </div>
@@ -520,6 +524,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
               openEnhancementListModal={openEnhancementListModal}
               openStatsConfigModal={openStatsConfigModal}
               openControlsModal={openControlsModal}
+              openAttackChainModal={openAttackChainModal}
               variant="mobile"
             />
           </div>
@@ -649,6 +654,12 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         isOpen={enhancementToolsModalOpen}
         onClose={closeEnhancementToolsModal}
       />
+
+      {/* Attack Chain Builder Modal */}
+      <AttackChainModal
+        isOpen={attackChainModalOpen}
+        onClose={closeAttackChainModal}
+      />
       </>}
     </>
   );
@@ -667,6 +678,7 @@ interface DashboardActionButtonsProps {
   openEnhancementListModal: () => void;
   openStatsConfigModal: () => void;
   openControlsModal: () => void;
+  openAttackChainModal: () => void;
   variant: 'desktop' | 'mobile';
 }
 
@@ -761,6 +773,14 @@ function DashboardActionButtons(props: DashboardActionButtonsProps) {
         'Compare powersets side-by-side',
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />,
         'Compare Sets',
+      )}
+      {btn(
+        'purple',
+        props.openAttackChainModal,
+        'Build and analyze an attack chain (DPS, dead time, endurance)',
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />,
+        isMobile ? 'Chain' : 'Attack Chain',
+        'attack-chain',
       )}
       {btn(
         'purple',
