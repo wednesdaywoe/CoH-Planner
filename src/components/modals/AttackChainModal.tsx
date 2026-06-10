@@ -460,32 +460,49 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                 }}
                                 title={`${p.name} @ ${fmt(act.start, 2)}s — drag to reorder`}
                               >
+                                {/* Larger transparent hit target around a small
+                                    visible dot — forgiving to click, especially
+                                    on narrow (fast-cast) bars. */}
                                 <button
                                   onPointerDown={(e) => e.stopPropagation()}
                                   onClick={() => {
                                     if (act.seq !== undefined) removeBar(act.seq);
                                   }}
-                                  className="opacity-40 group-hover:opacity-100 transition-opacity"
                                   style={{
                                     position: 'absolute',
-                                    top: -6,
-                                    right: -6,
-                                    width: 16,
-                                    height: 16,
-                                    borderRadius: 8,
-                                    background: '#1a2335',
-                                    border: '1px solid rgba(255,255,255,0.2)',
-                                    color: '#c8d4e0',
-                                    fontSize: 9,
-                                    lineHeight: 1,
+                                    top: -9,
+                                    right: -9,
+                                    width: 26,
+                                    height: 26,
+                                    padding: 0,
+                                    background: 'transparent',
+                                    border: 'none',
                                     cursor: 'pointer',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
+                                    touchAction: 'none',
                                   }}
-                                  title="Remove this cast"
+                                  title="Remove this power"
                                 >
-                                  ✕
+                                  <span
+                                    className="opacity-40 group-hover:opacity-100 transition-opacity"
+                                    style={{
+                                      width: 16,
+                                      height: 16,
+                                      borderRadius: 8,
+                                      background: '#1a2335',
+                                      border: '1px solid rgba(255,255,255,0.2)',
+                                      color: '#c8d4e0',
+                                      fontSize: 9,
+                                      lineHeight: 1,
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                    }}
+                                  >
+                                    ✕
+                                  </span>
                                 </button>
                               </div>
                             </div>
