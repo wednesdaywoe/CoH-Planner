@@ -91,6 +91,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   // color intensity, and compactness weighting (persisted across sessions).
   const powerMetric = useUIStore((s) => s.chainPowerMetric);
   const setPowerMetric = useUIStore((s) => s.setChainPowerMetric);
+  const showToast = useUIStore((s) => s.showToast);
 
   // AT hit-time mechanic toggles (crit / scourge / containment / …) — same
   // sources the power tooltips use, so the chain DPS matches them.
@@ -186,6 +187,21 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const addPower = (pi: number) => setSequence((s) => [...s, pi]);
   const removeBar = (seq: number) => setSequence((s) => s.filter((_, i) => i !== seq));
   const clear = () => setSequence([]);
+
+  // Copy the settled rotation order as plain text (for sharing / notes).
+  const copySequence = () => {
+    const text = sequence.map((pi) => powers[pi]?.name).filter(Boolean).join(' → ');
+    if (!text) return;
+    const clip = navigator.clipboard;
+    if (!clip) {
+      showToast({ message: 'Clipboard unavailable', tone: 'warning' });
+      return;
+    }
+    clip.writeText(text).then(
+      () => showToast({ message: 'Rotation order copied to clipboard', tone: 'success' }),
+      () => showToast({ message: 'Could not copy rotation order', tone: 'warning' }),
+    );
+  };
   const reorderSeq = (from: number, to: number) =>
     setSequence((s) => {
       if (from === to || from < 0 || to < 0 || from >= s.length || to >= s.length) return s;
@@ -655,6 +671,36 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
             </div>
           )}
         </div>
+
+        {/* Rotation quick reference — the settled rotation order, copyable */}
+        {sequence.length > 0 && (
+          <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-3">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">
+                Rotation order
+              </div>
+              <button
+                onClick={copySequence}
+                className="h-6 px-2 rounded border border-gray-700 hover:border-gray-500 text-gray-400 text-[11px]"
+                title="Copy the rotation order to the clipboard"
+              >
+                Copy
+              </button>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-1 gap-y-1 text-[13px] leading-relaxed">
+              {sequence.map((pi, idx) => {
+                const p = powers[pi];
+                if (!p) return null;
+                return (
+                  <span key={idx} className="flex items-center gap-1">
+                    {idx > 0 && <span className="text-gray-600">→</span>}
+                    <span style={{ color: `hsl(${TYPE_HUE[p.type]}, 55%, 72%)` }}>{p.name}</span>
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-9 gap-2">
