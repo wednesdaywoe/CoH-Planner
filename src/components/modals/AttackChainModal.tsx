@@ -2,10 +2,11 @@
  * Attack Chain Builder modal.
  *
  * Click powers to greedily pack an attack rotation (one animation at a time,
- * recharge anchored to cast start — see attack-chain.ts). Surfaces cycle time,
- * DPS, dead time, and an endurance gain/spend model with a sustainability
- * sawtooth. All per-power numbers come from the live build via the same calc
- * the power tooltips use (attack-chain-powers.ts).
+ * recharge anchored to cast start — see attack-chain.ts). Drag a bar on the
+ * timeline to reorder the cast sequence; grab empty space to pan. Surfaces
+ * cycle time, DPS, dead time, and an endurance gain/spend model with a
+ * sustainability sawtooth. All per-power numbers come from the live build via
+ * the same calc the power tooltips use (attack-chain-powers.ts).
  */
 
 import { useMemo, useRef, useState } from 'react';
@@ -111,10 +112,18 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const [extraRech, setExtraRech] = useState(0);
   const [px, setPx] = useState(38);
 
-  // Grab-to-pan the timeline (mouse). Touch keeps native momentum scrolling.
-  // dragMoved gates the per-bar remove ✕ so a pan that ends on a ✕ doesn't
-  // delete the cast.
+  // Timeline reorder: dragging a bar moves that cast in the sequence. Bars are
+  // monotonic in time == sequence order (the packer casts strictly in order),
+  // so a single x-threshold picks the insert gap. Nothing shuffles until drop —
+  // the grabbed bar gets a ring and a full-height insert cursor marks the gap.
+  const reorderRef = useRef<{ from: number; insertAt: number } | null>(null);
+  const [reorder, setReorder] = useState<{ from: number; left: number } | null>(null);
+
+  // Grab-to-pan the timeline (mouse) from empty lane space / labels. Bars
+  // intercept pointerdown (stopPropagation) to start a reorder instead, so a
+  // pan only begins when you grab the background. Touch keeps native scrolling.
   const scrollRef = useRef<HTMLDivElement>(null);
+  const lanesRef = useRef<HTMLDivElement>(null);
   const dragMoved = useRef(false);
   const onTimelinePointerDown = (e: React.PointerEvent) => {
     if (e.pointerType !== 'mouse') return;
@@ -167,6 +176,50 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
       a.splice(to, 0, moved);
       return a;
     });
+
+  // Grab a bar to reorder its cast. Hit-tests pointer-x against every bar's
+  // centre (sorted by screen position == sequence order) to find the insert gap
+  // 0..N, and parks a full-height insert cursor at that gap's leading edge. On
+  // release we map the gap to a target index (accounting for removing the
+  // source) and commit — replayChain then re-packs the timeline once.
+  const startBarDrag = (e: React.PointerEvent, from: number) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    e.stopPropagation(); // don't let the timeline pan handler fire
+    e.preventDefault();
+    reorderRef.current = { from, insertAt: from };
+
+    const update = (clientX: number) => {
+      const cont = lanesRef.current;
+      const st = reorderRef.current;
+      if (!cont || !st) return;
+      const bars = (Array.from(cont.querySelectorAll('[data-bar]')) as HTMLElement[])
+        .map((el) => ({ seq: Number(el.dataset.seq), rect: el.getBoundingClientRect() }))
+        .sort((a, b) => a.rect.left - b.rect.left);
+      if (bars.length === 0) return;
+      let insertAt = 0;
+      for (const b of bars) if (clientX > b.rect.left + b.rect.width / 2) insertAt++;
+      const atEnd = insertAt >= bars.length;
+      const edge = atEnd ? bars[bars.length - 1].rect.right : bars[insertAt].rect.left;
+      st.insertAt = insertAt;
+      setReorder({ from: st.from, left: edge - cont.getBoundingClientRect().left });
+    };
+
+    update(e.clientX);
+    const move = (ev: PointerEvent) => update(ev.clientX);
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      const st = reorderRef.current;
+      reorderRef.current = null;
+      setReorder(null);
+      if (st) {
+        const to = st.insertAt > st.from ? st.insertAt - 1 : st.insertAt;
+        reorderSeq(st.from, to);
+      }
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
 
   // Sort palette: attacks (by damage desc) first, then utility/buff.
   const palette = useMemo(() => {
@@ -269,27 +322,12 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
           )}
         </div>
 
-        {/* Rotation order — drag to reorder the cast sequence */}
-        {sequence.length > 0 && (
-          <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-3">
-            <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-500 mb-2">
-              Rotation order — drag to reorder
-            </div>
-            <RotationStrip
-              sequence={sequence}
-              powers={powers}
-              maxDpa={maxDpa}
-              onReorder={reorderSeq}
-              onRemove={removeBar}
-            />
-          </div>
-        )}
-
         {/* Timeline */}
         <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-3 overflow-hidden">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">
               Chain timeline
+              <span className="font-normal normal-case text-gray-600"> · drag a bar to reorder</span>
             </span>
             <div className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 text-[10px] text-gray-500">
               <span className="flex items-center gap-1.5">
@@ -336,7 +374,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
               style={{ scrollbarWidth: 'none' }}
             >
               {/* Lanes */}
-              <div style={{ position: 'relative', minWidth: LABEL_W + displayW }}>
+              <div ref={lanesRef} style={{ position: 'relative', minWidth: LABEL_W + displayW }}>
                 {usedPis.map((pi) => {
                   const p = powers[pi];
                   const rel = maxDpa > 0 ? powerDpa(p) / maxDpa : 0;
@@ -394,9 +432,14 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                     />
                                   );
                                 })}
-                              {/* activation bar + remove ✕ */}
+                              {/* activation bar (drag to reorder) + remove ✕ */}
                               <div
-                                className="group"
+                                className="group cursor-grab active:cursor-grabbing touch-none"
+                                data-bar
+                                data-seq={act.seq}
+                                onPointerDown={(e) => {
+                                  if (act.seq !== undefined) startBarDrag(e, act.seq);
+                                }}
                                 style={{
                                   position: 'absolute',
                                   left: x,
@@ -410,12 +453,16 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                   alignItems: 'center',
                                   justifyContent: 'flex-end',
                                   overflow: 'visible',
+                                  ...(reorder?.from === act.seq && {
+                                    boxShadow: `0 0 0 2px ${CURSOR_COLOR}, 0 3px 8px rgba(0,0,0,0.45)`,
+                                    zIndex: 3,
+                                  }),
                                 }}
-                                title={`${p.name} @ ${fmt(act.start, 2)}s`}
+                                title={`${p.name} @ ${fmt(act.start, 2)}s — drag to reorder`}
                               >
                                 <button
+                                  onPointerDown={(e) => e.stopPropagation()}
                                   onClick={() => {
-                                    if (dragMoved.current) return; // was a pan, not a click
                                     if (act.seq !== undefined) removeBar(act.seq);
                                   }}
                                   className="opacity-40 group-hover:opacity-100 transition-opacity"
@@ -461,6 +508,24 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                     opacity: 0.55,
                   }}
                 />
+
+                {/* reorder insert cursor — full-height line marking the drop gap */}
+                {reorder && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: reorder.left - 2,
+                      top: 0,
+                      width: 4,
+                      height: '100%',
+                      background: CURSOR_COLOR,
+                      borderRadius: 2,
+                      boxShadow: `0 0 6px ${CURSOR_COLOR}`,
+                      pointerEvents: 'none',
+                      zIndex: 4,
+                    }}
+                  />
+                )}
               </div>
 
               {/* Activity / dead-time bar */}
@@ -522,133 +587,6 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         </div>
       </div>
     </Modal>
-  );
-}
-
-/**
- * The cast sequence as draggable chips (mouse + touch). On drag the held chip
- * gets a bright ring and a thick insert-cursor (a vertical line) snaps between
- * chips to preview the drop position. The list does NOT shuffle until release —
- * less visually noisy than a live re-sort. The greedy packer (replayChain)
- * re-schedules once the new order is committed on drop.
- */
-function RotationStrip({
-  sequence,
-  powers,
-  maxDpa,
-  onReorder,
-  onRemove,
-}: {
-  sequence: number[];
-  powers: ChainPower[];
-  maxDpa: number;
-  onReorder: (from: number, to: number) => void;
-  onRemove: (idx: number) => void;
-}) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const stateRef = useRef<{ from: number; insertAt: number } | null>(null);
-  const [drag, setDrag] = useState<
-    { from: number; insertAt: number; left: number; top: number; height: number } | null
-  >(null);
-
-  const startDrag = (e: React.PointerEvent, idx: number) => {
-    e.preventDefault();
-    stateRef.current = { from: idx, insertAt: idx };
-
-    // Find the insert gap (0..N) from the pointer and position the cursor at
-    // that chip's leading edge. The cursor is absolutely positioned so it never
-    // shifts the chips (no measurement jitter); chips don't move until drop.
-    const update = (clientX: number) => {
-      const cont = containerRef.current;
-      const st = stateRef.current;
-      if (!cont || !st) return;
-      const chips = Array.from(cont.querySelectorAll('[data-chip]')) as HTMLElement[];
-      if (chips.length === 0) return;
-      const contRect = cont.getBoundingClientRect();
-      let insertAt = 0;
-      for (const chip of chips) {
-        const r = chip.getBoundingClientRect();
-        if (clientX > r.left + r.width / 2) insertAt++;
-      }
-      const atEnd = insertAt >= chips.length;
-      const r = chips[atEnd ? chips.length - 1 : insertAt].getBoundingClientRect();
-      st.insertAt = insertAt;
-      setDrag({
-        from: st.from,
-        insertAt,
-        left: (atEnd ? r.right + 1 : r.left - 3) - contRect.left,
-        top: r.top - contRect.top,
-        height: r.height,
-      });
-    };
-
-    update(e.clientX);
-    const move = (ev: PointerEvent) => update(ev.clientX);
-    const up = () => {
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-      const st = stateRef.current;
-      stateRef.current = null;
-      setDrag(null);
-      if (st) {
-        // Convert the gap index to a target index after removing the source.
-        const to = st.insertAt > st.from ? st.insertAt - 1 : st.insertAt;
-        onReorder(st.from, to);
-      }
-    };
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-  };
-
-  return (
-    <div ref={containerRef} className="relative flex flex-wrap items-center gap-1.5 select-none">
-      {sequence.map((pi, idx) => {
-        const p = powers[pi];
-        if (!p) return null;
-        const rel = maxDpa > 0 ? powerDpa(p) / maxDpa : 0;
-        const held = drag?.from === idx;
-        return (
-          <div
-            key={idx}
-            data-chip
-            onPointerDown={(e) => startDrag(e, idx)}
-            className="group inline-flex items-center gap-1.5 pl-2 pr-1.5 py-1 rounded border border-gray-700 text-xs touch-none cursor-grab active:cursor-grabbing"
-            style={{
-              borderLeftWidth: 2,
-              borderLeftColor: barFill(p.type, rel),
-              background: chipBg(p.type, rel),
-              ...(held && { boxShadow: `0 0 0 2px ${CURSOR_COLOR}, 0 3px 8px rgba(0,0,0,0.45)`, zIndex: 1 }),
-            }}
-          >
-            <span className="text-gray-500 text-[10px] tabular-nums">{idx + 1}</span>
-            <span className="text-gray-200">{p.name}</span>
-            <button
-              onPointerDown={(e) => e.stopPropagation()}
-              onClick={() => onRemove(idx)}
-              className="text-gray-500 hover:text-red-400 opacity-50 group-hover:opacity-100 text-[10px] leading-none px-0.5"
-              title="Remove from rotation"
-            >
-              ✕
-            </button>
-          </div>
-        );
-      })}
-      {drag && (
-        <div
-          style={{
-            position: 'absolute',
-            left: drag.left - 1,
-            top: drag.top,
-            width: 4,
-            height: drag.height,
-            background: CURSOR_COLOR,
-            borderRadius: 2,
-            boxShadow: `0 0 6px ${CURSOR_COLOR}`,
-            pointerEvents: 'none',
-          }}
-        />
-      )}
-    </div>
   );
 }
 
