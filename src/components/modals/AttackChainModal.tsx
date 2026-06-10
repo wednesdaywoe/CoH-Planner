@@ -45,7 +45,7 @@ interface AttackChainModalProps {
 const TYPE_HUE: Record<ChainPower['type'], number> = { attack: 258, utility: 152, buff: 35 };
 const LABEL_W = 116;
 const LANE_H = 24;
-const MIN_PX = 14;
+const MIN_PX = 4; // low enough to fit very long recharges (e.g. 50s+ nukes)
 const MAX_PX = 80;
 
 /** Short label for the power-ranking metric (legend + palette tooltips). See
@@ -302,6 +302,20 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
               className="w-7 h-7 rounded border border-gray-700 hover:border-gray-500 text-gray-400"
             >
               +
+            </button>
+            <button
+              onClick={() => {
+                // Fit the whole loop (incl. a long recharge) into the visible
+                // width in one click — sizes px so displaySec spans the track.
+                const el = scrollRef.current;
+                if (!el || displaySec <= 0) return;
+                const avail = el.clientWidth - LABEL_W - 8;
+                if (avail > 0) setPx(Math.max(MIN_PX, Math.min(MAX_PX, avail / displaySec)));
+              }}
+              className="ml-1 h-7 px-2.5 rounded border border-gray-700 hover:border-gray-500 text-gray-400 text-xs"
+              title="Fit the whole cycle (including recharge) to the window"
+            >
+              Fit
             </button>
             <button
               onClick={clear}
