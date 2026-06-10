@@ -210,6 +210,9 @@ interface UIState {
    *  order, bar/chip color intensity, and compactness weighting. */
   chainPowerMetric: PowerMetric;
 
+  /** Show the buff/debuff "active window" bands on the Attack Chain timeline. */
+  chainShowEffectWindows: boolean;
+
   /** Include proc damage in per-power DPS calculations */
   includeProcDamageInDPS: boolean;
 
@@ -426,6 +429,7 @@ interface UIActions {
   closeAttackChainModal: () => void;
   dismissAttackChainAnnounce: () => void;
   setChainPowerMetric: (metric: PowerMetric) => void;
+  setChainShowEffectWindows: (show: boolean) => void;
   toggleIncludeProcDamageInDPS: () => void;
   toggleUseArcanaTime: () => void;
   setDamageDisplayMode: (mode: DamageDisplayMode) => void;
@@ -771,6 +775,7 @@ export const useUIStore = create<UIStore>()(
       attackChainModalOpen: false,
       attackChainAnnounceDismissed: false,
       chainPowerMetric: 'damage' as PowerMetric,
+      chainShowEffectWindows: true,
       includeProcDamageInDPS: true,
       useArcanaTime: true,
       damageDisplayMode: 'damage' as DamageDisplayMode,
@@ -991,6 +996,7 @@ export const useUIStore = create<UIStore>()(
         set({ attackChainAnnounceDismissed: true }),
 
       setChainPowerMetric: (metric) => set({ chainPowerMetric: metric }),
+      setChainShowEffectWindows: (show) => set({ chainShowEffectWindows: show }),
 
       toggleIncludeProcDamageInDPS: () =>
         set((state) => ({
@@ -1698,6 +1704,7 @@ export const useUIStore = create<UIStore>()(
         rechargeMidsStyle: state.rechargeMidsStyle,
         attackChainAnnounceDismissed: state.attackChainAnnounceDismissed,
         chainPowerMetric: state.chainPowerMetric,
+        chainShowEffectWindows: state.chainShowEffectWindows,
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };

@@ -37,10 +37,20 @@ export interface ChainPower {
   rechargeEnh: number;
   /** Enhanced endurance cost per activation. */
   endCost: number;
+  /** Self endurance GAINED per activation (Dark Consumption / Consume / Power
+   *  Sink), scaled by the user's targets-hit slider for the power. A flat
+   *  endurance amount paid back at the cast. 0/undefined = none. */
+  endGain?: number;
   /** Average direct damage per activation (includes in-cast DoT + buffs). */
   damage: number;
   /** After-cast DoT, drawn as ticks (its damage is included in `damage`). */
   dot?: ChainDoT | null;
+  /** A self-buff or foe-debuff window (seconds), drawn as a translucent "active"
+   *  band on the timeline. `buff` (Build Up / Aim / Soul Drain) shows which
+   *  attacks are buffed; `debuff` (Touch of Fear −ToHit, −Res, …) shows when the
+   *  debuff expires so you can time a refresh rather than recast on cooldown.
+   *  undefined = neither. Durations are flat (not enhanceable). */
+  effectWindow?: { kind: 'buff' | 'debuff'; duration: number };
 }
 
 /** A scheduled cast: `pi` indexes into the ChainPower[] passed alongside. */
@@ -78,8 +88,11 @@ export interface EnduranceResult {
   netPerSec: number;
   recoveryPerSec: number;
   togglePerSec: number;
-  /** attack endurance spent per second over the cycle. */
+  /** attack endurance spent per second over the cycle (gross cost). */
   attackPerSec: number;
+  /** self endurance gained per second from click recovery powers (Dark
+   *  Consumption etc.), averaged over the cycle. 0 when the chain has none. */
+  gainPerSec: number;
   /** net endurance gained/lost per full loop (netPerSec × cycleSec). */
   perLoopDelta: number;
   sustainable: boolean;
@@ -274,15 +287,18 @@ function simulateEndurance(
 ): EnduranceResult {
   const netPassive = end.recoveryPerSec - end.togglePerSec;
   const attackPerCycle = activations.reduce((s, a) => s + powers[a.pi].endCost, 0);
+  const gainPerCycle = activations.reduce((s, a) => s + (powers[a.pi].endGain ?? 0), 0);
   const attackPerSec = cycleSec > 0 ? attackPerCycle / cycleSec : 0;
-  const perLoopDelta = netPassive * cycleSec - attackPerCycle;
+  const gainPerSec = cycleSec > 0 ? gainPerCycle / cycleSec : 0;
+  const perLoopDelta = netPassive * cycleSec - attackPerCycle + gainPerCycle;
   const netPerSec = cycleSec > 0 ? perLoopDelta / cycleSec : netPassive;
   const sustainable = perLoopDelta >= -EPS;
 
-  // Order the per-cycle endurance events (cast start → −endCost).
+  // Order the per-cycle endurance events (cast start → net of cost − gain, so a
+  // recovery power like Dark Consumption is a refill spike).
   const events = [...activations]
     .sort((a, b) => a.start - b.start)
-    .map((a) => ({ t: a.start, cost: powers[a.pi].endCost }));
+    .map((a) => ({ t: a.start, cost: powers[a.pi].endCost - (powers[a.pi].endGain ?? 0) }));
 
   // Walk loops, accumulating a piecewise-linear track. Stop at steady state
   // (sustainable: 2 loops is enough to show the pattern) or when we stall /
@@ -310,7 +326,8 @@ function simulateEndurance(
         push(base + ev.t, 0);
         break outer;
       }
-      e = Math.max(0, e);
+      // Clamp both ways: a recovery power (negative cost) refills but caps at max.
+      e = Math.min(end.maxEnd, Math.max(0, e));
       push(base + ev.t, e);
       cursor = ev.t;
     }
@@ -329,6 +346,7 @@ function simulateEndurance(
     recoveryPerSec: end.recoveryPerSec,
     togglePerSec: end.togglePerSec,
     attackPerSec,
+    gainPerSec,
     perLoopDelta,
     sustainable,
     timeToEmpty,

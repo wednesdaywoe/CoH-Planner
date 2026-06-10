@@ -164,6 +164,20 @@ describe('endurance model', () => {
     expect(e.stallTime).toBeCloseTo(1, 5);
   });
 
+  it('a recovery click pays endurance back (Dark Consumption-style)', () => {
+    // A normal attack costs 2 end; R costs 1 but refunds 11 (net +10/cast).
+    const A = mk({ id: 'A', cast: 1, baseRecharge: 1, endCost: 2, damage: 5 });
+    const R = mk({ id: 'R', cast: 1, baseRecharge: 1, endCost: 1, endGain: 11, damage: 0 });
+    const acts = replayChain([A, R], [0, 1], 0); // A@0, R@1 → cycle 2
+    const r = computeChain([A, R], acts, 0, { maxEnd: 100, recoveryPerSec: 0, togglePerSec: 0 })!;
+    const e = r.endurance!;
+    expect(r.cycleSec).toBe(2);
+    expect(e.attackPerSec).toBeCloseTo(1.5, 5); // gross spend (2+1)/2
+    expect(e.gainPerSec).toBeCloseTo(5.5, 5); // 11 / 2s
+    expect(e.netPerSec).toBeCloseTo(4, 5); // (−3 + 11) / 2s
+    expect(e.sustainable).toBe(true);
+  });
+
   it('toggle drain pushes an otherwise-fine chain negative', () => {
     const A = mk({ id: 'A', endCost: 1, baseRecharge: 1 }); // cast 1 + rech 1 → 2s cycle
     const acts = replayChain([A], [0, 0], 0); // A@0, A@1

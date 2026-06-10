@@ -81,7 +81,15 @@ const CURSOR_COLOR = '#f1f5f9';
  *  playing ("waiting"). Striped so it reads as idle-ready, distinct
  *  from the solid orange DoT ticks and the dark cooldown bar. */
 const READY_FILL =
-  'repeating-linear-gradient(45deg, rgba(224,160,46,0.6) 0 4px, rgba(224,160,46,0.2) 4px 8px)';
+  'repeating-linear-gradient(45deg, rgba(124,140,162,0.55) 0 4px, rgba(124,140,162,0.18) 4px 8px)';
+
+/** Colors the cooldown/idle stem while a self-buff (azure) or foe-debuff (amber)
+ *  is active. The color edge = expiry: keep it touching the next cast for full
+ *  uptime with no wasted early recast. Cool = good (buff), warm = debuff. */
+const WINDOW_COLOR: Record<'buff' | 'debuff', string> = {
+  buff: 'rgba(96, 165, 235, 0.6)',
+  debuff: 'rgba(224, 160, 46, 0.6)',
+};
 
 function fmt(n: number, d = 1): string {
   return n.toFixed(d);
@@ -94,6 +102,8 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   // color intensity, and compactness weighting (persisted across sessions).
   const powerMetric = useUIStore((s) => s.chainPowerMetric);
   const setPowerMetric = useUIStore((s) => s.setChainPowerMetric);
+  const effectWindowsOn = useUIStore((s) => s.chainShowEffectWindows);
+  const setEffectWindowsOn = useUIStore((s) => s.setChainShowEffectWindows);
   const showToast = useUIStore((s) => s.showToast);
 
   // Saved chains live on the build (so they travel with the character).
@@ -116,6 +126,9 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
   const sentinelCritActive = useSentinelCritActive();
+  // Per-power targets-hit slider (drives the endurance gain of Dark Consumption
+  // / Consume / Power Sink, scaled per foe — same setting the dashboard uses).
+  const targetsHitValues = useUIStore((s) => s.targetsHitValues);
 
   const { powers, endParams, buildGlobalRech } = useMemo(() => {
     const calc = calculateCharacterTotals(build);
@@ -131,11 +144,11 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
       stalkerTeamSize,
     };
     return {
-      powers: buildChainPowers(build, calc.globalBonuses, mechCtx),
+      powers: buildChainPowers(build, calc.globalBonuses, mechCtx, targetsHitValues),
       endParams: getEnduranceParams(calc.globalBonuses),
       buildGlobalRech: getBuildGlobalRecharge(calc.globalBonuses),
     };
-  }, [build, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize]);
+  }, [build, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize, targetsHitValues]);
 
   const [sequence, setSequence] = useState<number[]>([]);
   const [extraRech, setExtraRech] = useState(0);
@@ -349,6 +362,12 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const displaySec = Math.max(cycleSec, maxCdEnd);
   const displayW = displaySec * px;
   const end = result?.endurance ?? null;
+  // Instant endurance restored by a click recovery power (Dark Consumption etc.)
+  // — shown as a lump (it refills on cast, not over time), capped at the bar.
+  const instantRestore = Math.min(
+    endParams.maxEnd,
+    Math.max(0, ...usedPis.map((pi) => powers[pi].endGain ?? 0)),
+  );
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Attack Chain Builder" size="full">
@@ -473,6 +492,15 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
               />
               <span>%</span>
             </label>
+            <label className="flex items-center gap-1.5 text-[11px] text-gray-500 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={effectWindowsOn}
+                onChange={(e) => setEffectWindowsOn(e.target.checked)}
+                className="w-3.5 h-3.5 rounded border-gray-600 bg-gray-800 accent-amber-500"
+              />
+              Buff/debuff windows
+            </label>
           </div>
           <div className="flex items-center gap-1.5">
             <span className="text-[11px] text-gray-500 mr-1">Zoom</span>
@@ -589,9 +617,21 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                 waiting
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="inline-block w-[2px] h-2.5 rounded-sm" style={{ background: '#C8861F', opacity: 0.55 }} />
+                <span className="inline-block w-[2px] h-2.5 rounded-sm" style={{ background: '#F2A83A', opacity: 0.85 }} />
                 DoT tick
               </span>
+              {effectWindowsOn && (
+                <>
+                  <span className="flex items-center gap-1.5">
+                    <span className="inline-block w-3 h-2 rounded-sm" style={{ background: WINDOW_COLOR.buff }} />
+                    buff
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="inline-block w-3 h-2 rounded-sm" style={{ background: WINDOW_COLOR.debuff }} />
+                    debuff
+                  </span>
+                </>
+              )}
               {result && (
                 <span
                   className={
@@ -652,6 +692,15 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                             mi + 1 < mine.length ? mine[mi + 1].start : mine[0].start + cycleSec;
                           const overEnd = Math.min(nextStart, cycleSec);
                           const overW = overEnd - overStart;
+                          // Buff/debuff "active window": colour the stem from the
+                          // cast's end to expiry (cast + duration), clipped to the
+                          // visible track. The colour edge marks when the effect
+                          // falls off — the moment to refresh.
+                          const win = effectWindowsOn ? p.effectWindow : undefined;
+                          const winLeft = x + w;
+                          const winW = win
+                            ? Math.min(act.start + win.duration, displaySec) * px - winLeft
+                            : 0;
                           return (
                             <div key={act.seq}>
                               {/* recharge (cooldown) */}
@@ -683,6 +732,24 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                   }}
                                 />
                               )}
+                              {/* buff/debuff active window — colours the stem
+                                  over the cooldown/idle bars until the effect
+                                  expires (the colour edge = refresh point). */}
+                              {win && winW > 0 && (
+                                <div
+                                  title={`${p.name} ${win.kind} active ${fmt(win.duration, 0)}s — colour ends at expiry`}
+                                  style={{
+                                    position: 'absolute',
+                                    left: winLeft,
+                                    top: LANE_H / 2 - 3,
+                                    width: winW,
+                                    height: 6,
+                                    background: WINDOW_COLOR[win.kind],
+                                    borderRadius: '0 2px 2px 0',
+                                    zIndex: 1,
+                                  }}
+                                />
+                              )}
                               {/* after-cast DoT ticks */}
                               {p.dot &&
                                 Array.from({ length: p.dot.ticks }).map((_, t) => {
@@ -697,9 +764,10 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                         top: (LANE_H - 10) / 2,
                                         width: 2,
                                         height: 10,
-                                        background: '#C8861F',
+                                        background: '#F2A83A',
                                         borderRadius: 1,
-                                        opacity: inWin ? 0.55 : 0.15,
+                                        opacity: inWin ? 0.85 : 0.25,
+                                        zIndex: 2,
                                       }}
                                     />
                                   );
@@ -897,6 +965,9 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
             }
           />
           <Stat label="Recovery" value={end ? `+${fmt(end.recoveryPerSec, 2)}` : '—'} unit="/s" tone="good" />
+          {instantRestore > 0.5 && (
+            <Stat label="Click +End" value={`+${fmt(instantRestore, 0)}`} unit="end" tone="good" />
+          )}
           <Stat label="Spend" value={end ? `−${fmt(end.togglePerSec + end.attackPerSec, 2)}` : '—'} unit="/s" />
           <Stat
             label="Net end"

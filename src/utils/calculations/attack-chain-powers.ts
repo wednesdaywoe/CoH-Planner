@@ -9,6 +9,7 @@
 
 import type { Build, SelectedPower } from '@/types';
 import { getIOSet, arcToDegrees } from '@/data';
+import { getTableValue } from '@/data/at-tables';
 import {
   calculatePowerEnhancementBonuses,
   calculatePowerDamage,
@@ -58,11 +59,86 @@ function collectCandidates(build: Build): Candidate[] {
   return out;
 }
 
-/** Build the per-power chain data for the current build. */
+/** Self-buff window (seconds) for an offensive click buff — Build Up, Aim, Soul
+ *  Drain, Hasten, Follow Up, etc. Gated to powers carrying a self damage/tohit/
+ *  recharge buff (separate fields from the foe-debuff keys, so a −ToHit debuff
+ *  never lands here). Duration is flat data. 0 = not a self-buff. */
+function selfBuffWindow(power: SelectedPower): number {
+  const e = power.effects;
+  if (!e) return 0;
+  const hasSelfBuff = e.damageBuff != null || e.tohitBuff != null || e.rechargeBuff != null;
+  if (!hasSelfBuff) return 0;
+  const d =
+    e.durations?.damageBuff ??
+    e.durations?.tohitBuff ??
+    e.durations?.rechargeBuff ??
+    e.buffDuration ??
+    0;
+  return typeof d === 'number' && d > 0 ? d : 0;
+}
+
+/** Foe-debuff keys (target-facing). `selfPenalty` powers (Granite Armor etc.)
+ *  reuse some of these as self-downsides and are excluded. */
+const FOE_DEBUFF_KEYS = [
+  'tohitDebuff',
+  'defenseDebuff',
+  'resistanceDebuff',
+  'damageDebuff',
+  'regenDebuff',
+  'recoveryDebuff',
+  'rechargeDebuff',
+  'accuracyDebuff',
+  'slow',
+  'threatDebuff',
+  'perceptionDebuff',
+] as const;
+
+/** Foe-debuff window (seconds) for any power applying a debuff to enemies —
+ *  Touch of Fear −ToHit, Dark Melee −ToHit, −Res/−Regen attacks, etc. Unlike
+ *  self-buffs this applies to damaging attacks too. Duration from the matching
+ *  per-effect key, then the power-level debuff/effect duration. 0 = no debuff. */
+function foeDebuffWindow(power: SelectedPower): number {
+  const e = power.effects;
+  if (!e || e.selfPenalty) return 0;
+  const key = FOE_DEBUFF_KEYS.find((k) => e[k] != null);
+  if (!key) return 0;
+  const d = e.durations?.[key] ?? e.effectDuration ?? e.buffDuration ?? 0;
+  return typeof d === 'number' && d > 0 ? d : 0;
+}
+
+/** Self endurance gained on cast by a click recovery power (Dark Consumption /
+ *  Consume / Power Sink), scaled by the targets-hit slider. enduranceGain is a
+ *  percent of the 100-endurance base (so the resolved value ≈ endurance points);
+ *  EndMod enhancement scales it. The per-target formula matches the InfoPanel:
+ *  scale + perTarget·(targetsHit − 1) — at 0 targets a per-foe power nets 0. */
+function selfEnduranceGain(
+  power: SelectedPower,
+  targetsHit: number,
+  endMod: number,
+  archetypeId: string,
+  level: number,
+): number {
+  const eg = power.effects?.enduranceGain;
+  if (eg == null) return 0;
+  let value: number;
+  if (typeof eg === 'number') {
+    value = eg;
+  } else {
+    const scale = eg.scale + (eg.perTarget ?? 0) * (targetsHit - 1);
+    value = scale * (getTableValue(archetypeId, eg.table, level) ?? 1);
+  }
+  value *= 1 + endMod;
+  return value > 0 ? value : 0;
+}
+
+/** Build the per-power chain data for the current build. `targetsHit` maps a
+ *  power's name → the targets-hit slider value (for per-target effects like the
+ *  endurance gain on Dark Consumption); defaults to none. */
 export function buildChainPowers(
   build: Build,
   globalBonuses: GlobalBonuses,
   mechCtx: AtMechanicContext,
+  targetsHit: Record<string, number> = {},
 ): ChainPower[] {
   const globalForCalc = convertGlobalBonusesToAspects(globalBonuses);
   const archetypeId = build.archetype?.id ?? undefined;
@@ -137,7 +213,30 @@ export function buildChainPowers(
     // Always-counted damage = (hit + in-cast DoT) × AT mult + procs. After-cast
     // DoT ticks (already × mult) are added per-tick by the chain math.
     const damage = mechMult * (directHit + (dotInCast ? dotTotal : 0)) + procDmg;
-    const type: ChainPowerType = damage > 0 || dot ? 'attack' : 'utility';
+    // Self-buff (Build Up / Aim / Soul Drain / Follow Up / Power Siphon) and foe
+    // debuff (Touch of Fear −ToHit, −Res/−Def attacks) windows. Both ride on
+    // damaging attacks too — Soul Drain & Follow Up deal damage AND self-buff —
+    // so neither is gated on damage. Self-buff wins if a power does both.
+    const buffDur = selfBuffWindow(power);
+    const debuffDur = buffDur > 0 ? 0 : foeDebuffWindow(power);
+    const effectWindow =
+      buffDur > 0
+        ? { kind: 'buff' as const, duration: buffDur }
+        : debuffDur > 0
+          ? { kind: 'debuff' as const, duration: debuffDur }
+          : undefined;
+    const type: ChainPowerType =
+      damage > 0 || dot ? 'attack' : buffDur > 0 ? 'buff' : 'utility';
+
+    const endGain = selfEnduranceGain(
+      power,
+      // The targets-hit slider is keyed by internalName everywhere (dashboard,
+      // active-buffs) — match that so the user's setting actually applies.
+      targetsHit[power.internalName] ?? 0,
+      enh.enduranceMod || 0,
+      archetypeId ?? '',
+      build.level,
+    );
 
     return {
       id: `${bucket}:${power.internalName}`,
@@ -147,8 +246,10 @@ export function buildChainPowers(
       baseRecharge,
       rechargeEnh: enh.recharge || 0,
       endCost,
+      endGain: endGain || undefined,
       damage,
       dot,
+      effectWindow,
     } satisfies ChainPower;
   });
 }
