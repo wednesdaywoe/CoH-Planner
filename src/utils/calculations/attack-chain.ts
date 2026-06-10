@@ -104,6 +104,13 @@ export interface ChainResult {
   deadGaps: DeadGap[];
   /** 0–100; share of the cycle spent animating (not idle). */
   efficiency: number;
+  /** 0–100; damage-weighted recharge utilization — how close each damaging
+   *  power comes to firing exactly on cooldown every loop (100 = perfectly
+   *  compact; lower means a power sits "waiting" while another animation
+   *  plays). null when the chain deals no damage. Distinct from efficiency:
+   *  efficiency asks "are you ever idle", compactness asks "when a power is
+   *  ready, do you fire it immediately". */
+  compactness: number | null;
   endurance: EnduranceResult | null;
   /** max per-activation damage in the chain — drives relative-damage coloring. */
   maxDamage: number;
@@ -329,13 +336,36 @@ export function computeChain(
   let totalDamage = 0;
   let maxDamage = 0;
   let endPerCycle = 0;
+  // Per-power loop damage + cast count, for the damage-weighted compactness.
+  const perPower = new Map<number, { count: number; dmg: number }>();
   for (const a of activations) {
     const p = powers[a.pi];
     const d = activationDamage(p, a, cycleSec);
     totalDamage += d;
     if (d > maxDamage) maxDamage = d;
     endPerCycle += p.endCost;
+    const agg = perPower.get(a.pi) ?? { count: 0, dmg: 0 };
+    agg.count += 1;
+    agg.dmg += d;
+    perPower.set(a.pi, agg);
   }
+
+  // Compactness: damage-weighted recharge utilization. For each damaging power,
+  // u = min(1, timesCast × effRech / cycleSec) — 1.0 means it fires exactly on
+  // cooldown every loop; < 1 means it sits ready-but-unused (the per-lane
+  // overshoot) while other animations play. Weighting by each power's loop
+  // damage keeps weak fillers and zero-damage utility from skewing it, and means
+  // slack on a big hitter (recoverable DPS) counts more than slack on a jab.
+  let wSum = 0;
+  let wuSum = 0;
+  for (const [pi, agg] of perPower) {
+    if (agg.dmg <= 0) continue;
+    const effRech = effectiveRecharge(powers[pi], globalRechargePct);
+    const u = cycleSec > 0 ? Math.min(1, (agg.count * effRech) / cycleSec) : 1;
+    wSum += agg.dmg;
+    wuSum += agg.dmg * u;
+  }
+  const compactness = wSum > 0 ? Math.round((wuSum / wSum) * 100) : null;
 
   return {
     cycleSec,
@@ -345,6 +375,7 @@ export function computeChain(
     deadTime,
     deadGaps,
     efficiency,
+    compactness,
     endurance: end ? simulateEndurance(powers, activations, cycleSec, end) : null,
     maxDamage,
   };

@@ -71,6 +71,13 @@ function chipBg(type: ChainPower['type'], rel: number): string {
  *  a power category. */
 const CURSOR_COLOR = '#f1f5f9';
 
+/** Hatched amber band for recharge overshoot — a power that has finished
+ *  recharging but hasn't been recast yet because another animation is still
+ *  playing ("waiting"). Striped so it reads as idle-ready, distinct
+ *  from the solid orange DoT ticks and the dark cooldown bar. */
+const READY_FILL =
+  'repeating-linear-gradient(45deg, rgba(224,160,46,0.6) 0 4px, rgba(224,160,46,0.2) 4px 8px)';
+
 function fmt(n: number, d = 1): string {
   return n.toFixed(d);
 }
@@ -346,6 +353,10 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                 <span className="inline-block w-3 h-2 rounded-sm" style={{ background: '#E24B4A', opacity: 0.65 }} />
                 dead time
               </span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block w-3 h-2 rounded-sm" style={{ background: READY_FILL }} />
+                waiting
+              </span>
               {result && (
                 <span
                   className={
@@ -392,9 +403,20 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                         {mine.length > 1 && <span className="text-gray-600"> ×{mine.length}</span>}
                       </div>
                       <div style={{ position: 'relative', height: LANE_H, width: displayW, flexShrink: 0 }}>
-                        {mine.map((act) => {
+                        {mine.map((act, mi) => {
                           const x = act.start * px;
                           const w = Math.max(p.cast * px, 6);
+                          // Recharge overshoot ("waiting"): from when this
+                          // cast's recharge completes (or its animation ends, if
+                          // it recharges mid-cast) until the next cast of this
+                          // power — the next in-lane cast, or across the loop
+                          // boundary. Clipped to the cycle so it doesn't spill
+                          // into the next loop.
+                          const overStart = Math.max(act.start + effRech, act.end);
+                          const nextStart =
+                            mi + 1 < mine.length ? mine[mi + 1].start : mine[0].start + cycleSec;
+                          const overEnd = Math.min(nextStart, cycleSec);
+                          const overW = overEnd - overStart;
                           return (
                             <div key={act.seq}>
                               {/* recharge (cooldown) */}
@@ -408,6 +430,21 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                     height: 6,
                                     background: cdFill(p.type),
                                     borderRadius: '0 2px 2px 0',
+                                  }}
+                                />
+                              )}
+                              {/* waiting (recharge overshoot) */}
+                              {overW > 0.001 && (
+                                <div
+                                  title={`waiting ${fmt(overW, 2)}s — ${p.name} has recharged but you're still mid-animation`}
+                                  style={{
+                                    position: 'absolute',
+                                    left: overStart * px,
+                                    top: LANE_H / 2 - 3,
+                                    width: overW * px,
+                                    height: 6,
+                                    background: READY_FILL,
+                                    borderRadius: 2,
                                   }}
                                 />
                               )}
@@ -570,7 +607,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-9 gap-2">
           <Stat label="Cycle" value={result ? fmt(cycleSec, 2) : '—'} unit="s" />
           <Stat label="Total dmg" value={result ? fmt(result.totalDamage, 0) : '—'} />
           <Stat label="DPS" value={result ? fmt(result.dps, 1) : '—'} />
@@ -579,6 +616,20 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
             value={result ? fmt(result.efficiency, 0) : '—'}
             unit="%"
             tone={result ? (result.efficiency >= 95 ? 'good' : result.efficiency < 80 ? 'warn' : undefined) : undefined}
+          />
+          <Stat
+            label="Compact."
+            value={result && result.compactness !== null ? fmt(result.compactness, 0) : '—'}
+            unit="%"
+            tone={
+              result && result.compactness !== null
+                ? result.compactness >= 95
+                  ? 'good'
+                  : result.compactness < 80
+                    ? 'warn'
+                    : undefined
+                : undefined
+            }
           />
           <Stat label="Recovery" value={end ? `+${fmt(end.recoveryPerSec, 2)}` : '—'} unit="/s" tone="good" />
           <Stat label="Spend" value={end ? `−${fmt(end.togglePerSec + end.attackPerSec, 2)}` : '—'} unit="/s" />

@@ -43,6 +43,8 @@ describe('chain packer', () => {
     expect(r.totalDamage).toBe(60); // 10+20+10+20
     expect(r.dps).toBe(15);
     expect(r.maxDamage).toBe(20);
+    // Both fire exactly on cooldown (2 casts × effRech 2 = cycle 4) → compact.
+    expect(r.compactness).toBe(100);
   });
 
   it('extends the cycle past the last cast when the opener is still recharging', () => {
@@ -68,6 +70,9 @@ describe('chain packer', () => {
     expect(r.cycleSec).toBe(6);
     expect(r.deadTime).toBe(4); // idle 1→3 and 4→6
     expect(r.efficiency).toBe(33);
+    // Orthogonal to efficiency: C fires exactly on cooldown (2 × effRech 3 = 6),
+    // so it's perfectly COMPACT even though the loop is mostly idle.
+    expect(r.compactness).toBe(100);
   });
 
   it('global recharge shrinks the loop', () => {
@@ -86,6 +91,43 @@ describe('chain packer', () => {
     // D@0 ticks land at 2,3,4 → only t=2 is ≤ cycle(2); D@1 ticks at 3,4,5 → none
     expect(r.cycleSec).toBe(2);
     expect(r.totalDamage).toBe(4);
+  });
+});
+
+describe('compactness', () => {
+  it('drops below 100 when a power overshoots its cooldown (no idle though)', () => {
+    // A and B both recharge in 2s but each is cast once in a 4s loop, so each
+    // sits "waiting" 2s before its next (next-loop) cast. The loop is
+    // fully packed (efficiency 100) but only half-compact — you could fire each
+    // twice as often.
+    const A = mk({ id: 'A', cast: 2, baseRecharge: 2, damage: 100 });
+    const B = mk({ id: 'B', cast: 2, baseRecharge: 2, damage: 100 });
+    const acts = replayChain([A, B], [0, 1], 0); // A@0-2, B@2-4
+    const r = computeChain([A, B], acts, 0, null)!;
+    expect(r.cycleSec).toBe(4);
+    expect(r.efficiency).toBe(100); // packed, no idle
+    expect(r.compactness).toBe(50); // each: min(1, 1×2/4) = 0.5
+  });
+
+  it('weights compactness by damage — a compact big hitter outweighs filler slack', () => {
+    // X (hard hitter) fires exactly on cooldown; A (jab) is cast 3× but could go
+    // 4×. Weighted by loop damage: X=100 @ u=1, A=30 @ u=0.75 → ~94, not the
+    // unweighted ~88.
+    const X = mk({ id: 'X', cast: 1, baseRecharge: 4, damage: 100 });
+    const A = mk({ id: 'A', cast: 1, baseRecharge: 1, damage: 10 });
+    const acts = replayChain([X, A], [0, 1, 1, 1], 0); // X@0, A@1,2,3
+    const r = computeChain([X, A], acts, 0, null)!;
+    expect(r.cycleSec).toBe(4);
+    expect(r.efficiency).toBe(100);
+    // (100×1 + 30×0.75) / 130 = 0.9423 → 94
+    expect(r.compactness).toBe(94);
+  });
+
+  it('is null when the chain deals no damage', () => {
+    const T = mk({ id: 'T', cast: 1, baseRecharge: 1, damage: 0, dot: null });
+    const acts = replayChain([T], [0, 0], 0);
+    const r = computeChain([T], acts, 0, null)!;
+    expect(r.compactness).toBeNull();
   });
 });
 
