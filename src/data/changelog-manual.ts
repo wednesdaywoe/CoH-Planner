@@ -25,6 +25,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { message: 'Added a new Attack Chain Builder tool! Look for it below the Dashboard', type: 'feat' },
       { message: 'Chain Builder drag-and-drop re-ordering is wired up now', type: 'feat' },
+      { message: 'You can now save attack chains with your build and copy the chain sequence to clipboard', type: 'feat' },
       { message: 'Slot counter will now adjust to your current level, making it easier to plan for a specific level build', type: 'feat' },
       { message: 'Unique and Proc data is now fully sourced from the binary. This should fix some existing enhancements. If you have an existing build with an enhancement that is displaying incorrectly, you may need to remove and replace it', type: 'fix' },
       { message: 'Spent half the 🤬 day trying to model every 🤬 thing Storm Blast 🤬 does. 🤬.', type: 'update' },
