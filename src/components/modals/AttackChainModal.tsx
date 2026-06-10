@@ -389,6 +389,10 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                 <span className="inline-block w-3 h-2 rounded-sm" style={{ background: READY_FILL }} />
                 waiting
               </span>
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block w-[2px] h-2.5 rounded-sm" style={{ background: '#C8861F', opacity: 0.55 }} />
+                DoT tick
+              </span>
               {result && (
                 <span
                   className={
@@ -490,13 +494,13 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                       key={t}
                                       style={{
                                         position: 'absolute',
-                                        left: tickT * px - 1.5,
-                                        top: 2,
-                                        width: 3,
-                                        height: LANE_H - 4,
-                                        background: '#EF9F27',
+                                        left: tickT * px - 1,
+                                        top: (LANE_H - 10) / 2,
+                                        width: 2,
+                                        height: 10,
+                                        background: '#C8861F',
                                         borderRadius: 1,
-                                        opacity: inWin ? 0.9 : 0.2,
+                                        opacity: inWin ? 0.55 : 0.15,
                                       }}
                                     />
                                   );
