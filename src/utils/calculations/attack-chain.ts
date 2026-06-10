@@ -302,11 +302,26 @@ function simulateEndurance(
 export function computeChain(
   powers: ChainPower[],
   activations: Activation[],
+  globalRechargePct: number,
   end: EnduranceParams | null,
 ): ChainResult | null {
   if (activations.length === 0) return null;
 
-  const cycleSec = Math.max(...activations.map((a) => a.end));
+  const lastEnd = Math.max(...activations.map((a) => a.end));
+  // The cycle isn't just where the last animation ends — when the loop repeats,
+  // every power must have recharged since its last cast THIS loop. For power P
+  // cast across [firstStart, lastStart], the across-boundary gap is
+  // cycle − (lastStart − firstStart), which must be ≥ effRech. So the binding
+  // power (usually the long-recharge opener cast once) can push the true cycle
+  // past the visible casts — that boundary idle is real dead time.
+  let cycleSec = lastEnd;
+  for (const pi of new Set(activations.map((a) => a.pi))) {
+    const starts = activations.filter((a) => a.pi === pi).map((a) => a.start);
+    const span = Math.max(...starts) - Math.min(...starts);
+    const need = effectiveRecharge(powers[pi], globalRechargePct) + span;
+    if (need > cycleSec) cycleSec = need;
+  }
+
   const deadGaps = calcDeadGaps(activations, cycleSec);
   const deadTime = deadGaps.reduce((s, g) => s + (g.end - g.start), 0);
   const efficiency = cycleSec > 0 ? Math.round((1 - deadTime / cycleSec) * 100) : 0;

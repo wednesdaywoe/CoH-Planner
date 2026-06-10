@@ -8,7 +8,7 @@
  * the power tooltips use (attack-chain-powers.ts).
  */
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Modal } from './Modal';
 import { useBuildStore } from '@/stores';
 import { calculateCharacterTotals } from '@/utils/calculations';
@@ -68,6 +68,31 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const [extraRech, setExtraRech] = useState(0);
   const [px, setPx] = useState(38);
 
+  // Grab-to-pan the timeline (mouse). Touch keeps native momentum scrolling.
+  // dragMoved gates the per-bar remove ✕ so a pan that ends on a ✕ doesn't
+  // delete the cast.
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const dragMoved = useRef(false);
+  const onTimelinePointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType !== 'mouse') return;
+    const el = scrollRef.current;
+    if (!el) return;
+    const startX = e.clientX;
+    const startScroll = el.scrollLeft;
+    dragMoved.current = false;
+    const move = (ev: PointerEvent) => {
+      const dx = ev.clientX - startX;
+      if (Math.abs(dx) > 4) dragMoved.current = true;
+      if (dragMoved.current) el.scrollLeft = startScroll - dx;
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
   const globalRech = buildGlobalRech + extraRech;
 
   const activations = useMemo(
@@ -75,8 +100,8 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
     [powers, sequence, globalRech],
   );
   const result = useMemo(
-    () => computeChain(powers, activations, endParams),
-    [powers, activations, endParams],
+    () => computeChain(powers, activations, globalRech, endParams),
+    [powers, activations, globalRech, endParams],
   );
 
   // Reset the chain if the build changes underneath us (power indices shift).
@@ -118,7 +143,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Attack Chain Builder" size="full">
-      <div className="space-y-2.5 text-[13px] text-gray-300">
+      <div className="space-y-3 text-[13px] text-gray-300 p-0.5">
         {/* Toolbar */}
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3 flex-wrap">
@@ -163,8 +188,8 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         </div>
 
         {/* Palette */}
-        <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-2">
-          <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-500 mb-1.5">
+        <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-3">
+          <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-500 mb-2">
             Available powers — tap to add
           </div>
           {palette.length === 0 ? (
@@ -190,7 +215,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         </div>
 
         {/* Timeline */}
-        <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-2 overflow-hidden">
+        <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-3 overflow-hidden">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">
               Chain timeline
@@ -233,7 +258,12 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
               Tap powers above to build a chain.
             </div>
           ) : (
-            <div className="overflow-x-auto">
+            <div
+              ref={scrollRef}
+              onPointerDown={onTimelinePointerDown}
+              className="overflow-x-auto select-none cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+              style={{ scrollbarWidth: 'none' }}
+            >
               {/* Lanes */}
               <div style={{ position: 'relative', minWidth: LABEL_W + displayW }}>
                 {usedPis.map((pi) => {
@@ -313,7 +343,10 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                 title={`${p.name} @ ${fmt(act.start, 2)}s`}
                               >
                                 <button
-                                  onClick={() => act.seq !== undefined && removeBar(act.seq)}
+                                  onClick={() => {
+                                    if (dragMoved.current) return; // was a pan, not a click
+                                    if (act.seq !== undefined) removeBar(act.seq);
+                                  }}
                                   className="opacity-40 group-hover:opacity-100 transition-opacity"
                                   style={{
                                     position: 'absolute',
@@ -327,6 +360,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                     color: '#c8d4e0',
                                     fontSize: 9,
                                     lineHeight: 1,
+                                    cursor: 'pointer',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
@@ -491,8 +525,8 @@ function Stat({
 }) {
   const color = tone === 'good' ? 'text-emerald-400' : tone === 'warn' ? 'text-amber-400' : 'text-gray-200';
   return (
-    <div className="rounded-md bg-gray-800/60 px-2.5 py-2">
-      <div className="text-[10px] uppercase tracking-wide text-gray-500 font-semibold mb-0.5">{label}</div>
+    <div className="rounded-md bg-gray-800/60 px-3 py-2.5">
+      <div className="text-[10px] uppercase tracking-wide text-gray-500 font-semibold mb-1">{label}</div>
       <span className={`text-base font-medium ${color}`}>{value}</span>
       {unit && <span className="text-[11px] text-gray-500 ml-0.5">{unit}</span>}
     </div>

@@ -35,7 +35,8 @@ describe('chain packer', () => {
     const acts = replayChain(powers, [0, 1, 0, 1], 0);
     expect(acts.map((a) => a.start)).toEqual([0, 1, 2, 3]);
 
-    const r = computeChain(powers, acts, null)!;
+    const r = computeChain(powers, acts, 0, null)!;
+    // Each power cast twice, span 2, effRech 2 → loop need 4 = lastEnd. No gap.
     expect(r.cycleSec).toBe(4);
     expect(r.deadTime).toBe(0);
     expect(r.efficiency).toBe(100);
@@ -44,30 +45,45 @@ describe('chain packer', () => {
     expect(r.maxDamage).toBe(20);
   });
 
-  it('leaves a dead gap when a single power out-paces its recharge', () => {
-    const C = mk({ id: 'C', baseRecharge: 3, cast: 1, damage: 5 });
-    const acts = replayChain([C], [0, 0], 0); // second cast waits for recharge
-    expect(acts.map((a) => a.start)).toEqual([0, 3]);
-
-    const r = computeChain([C], acts, null)!;
-    expect(r.cycleSec).toBe(4);
-    expect(r.deadTime).toBe(2); // idle from 1s → 3s
-    expect(r.efficiency).toBe(50);
+  it('extends the cycle past the last cast when the opener is still recharging', () => {
+    // The reported bug: visible casts end at 2s, but A (cast once) needs 5s to
+    // recharge before the loop can restart — so the true cycle is 5s, not 2s,
+    // and the boundary idle counts as dead time.
+    const A = mk({ id: 'A', cast: 1, baseRecharge: 5 });
+    const B = mk({ id: 'B', cast: 1, baseRecharge: 1 });
+    const acts = replayChain([A, B], [0, 1], 0); // A@0, B@1
+    const r = computeChain([A, B], acts, 0, null)!;
+    expect(r.cycleSec).toBe(5);
+    expect(r.deadTime).toBe(3); // 5s loop − 2s of animation
+    expect(r.efficiency).toBe(40);
   });
 
-  it('global recharge closes the gap', () => {
+  it('a single power loops at its recharge, not its last visible cast', () => {
+    const C = mk({ id: 'C', baseRecharge: 3, cast: 1, damage: 5 });
+    const acts = replayChain([C], [0, 0], 0); // C@0, C@3
+    expect(acts.map((a) => a.start)).toEqual([0, 3]);
+
+    const r = computeChain([C], acts, 0, null)!;
+    // 2 casts span 3s; +3s recharge ⇒ loop is 6s, not 4s (the last cast's end).
+    expect(r.cycleSec).toBe(6);
+    expect(r.deadTime).toBe(4); // idle 1→3 and 4→6
+    expect(r.efficiency).toBe(33);
+  });
+
+  it('global recharge shrinks the loop', () => {
     const C = mk({ id: 'C', baseRecharge: 3, cast: 1 });
-    // +50% global → effRech 2; second cast can fire at t=2 (right after first recharge)
-    const acts = replayChain([C], [0, 0], 50);
+    const acts = replayChain([C], [0, 0], 50); // +50% → effRech 2 → C@0, C@2
     expect(acts.map((a) => a.start)).toEqual([0, 2]);
-    expect(computeChain([C], acts, null)!.deadTime).toBe(1); // gap 1s→2s
+    const r = computeChain([C], acts, 50, null)!;
+    expect(r.cycleSec).toBe(4); // span 2 + effRech 2
+    expect(r.deadTime).toBe(2);
   });
 
   it('counts after-cast DoT ticks that land inside the cycle', () => {
     const D = mk({ id: 'D', cast: 1, baseRecharge: 1, damage: 0, dot: { ticks: 3, period: 1, perTick: 4 } });
     const acts = replayChain([D], [0, 0], 0); // D@0, D@1 → cycle = 2
-    const r = computeChain([D], acts, null)!;
-    // D@0 ticks land at 2,3,4 → only t=2 is ≤ cycle(2); D@1 ticks at 3,4,5 → none ≤ 2
+    const r = computeChain([D], acts, 0, null)!;
+    // D@0 ticks land at 2,3,4 → only t=2 is ≤ cycle(2); D@1 ticks at 3,4,5 → none
     expect(r.cycleSec).toBe(2);
     expect(r.totalDamage).toBe(4);
   });
@@ -78,7 +94,7 @@ describe('endurance model', () => {
     const A = mk({ id: 'A' });
     const B = mk({ id: 'B' });
     const acts = replayChain([A, B], [0, 1, 0, 1], 0); // cycle 4, 4 casts × 1 end
-    const r = computeChain([A, B], acts, { maxEnd: 100, recoveryPerSec: 2, togglePerSec: 0 })!;
+    const r = computeChain([A, B], acts, 0, { maxEnd: 100, recoveryPerSec: 2, togglePerSec: 0 })!;
     const e = r.endurance!;
     expect(e.attackPerSec).toBeCloseTo(1, 5); // 4 end / 4 s
     expect(e.netPerSec).toBeCloseTo(1, 5); // 2 recovery − 0 toggle − 1 attack
@@ -90,7 +106,7 @@ describe('endurance model', () => {
   it('detects a mid-rotation stall even from a full bar', () => {
     const D = mk({ id: 'D', cast: 1, baseRecharge: 1, endCost: 15 });
     const acts = replayChain([D], [0, 0, 0], 0); // D@0,1,2
-    const r = computeChain([D], acts, { maxEnd: 20, recoveryPerSec: 1, togglePerSec: 0 })!;
+    const r = computeChain([D], acts, 0, { maxEnd: 20, recoveryPerSec: 1, togglePerSec: 0 })!;
     const e = r.endurance!;
     // full 20 → cast −15 = 5 → +1/s → at t=1: 6 − 15 = −9 ⇒ stall at t=1
     expect(e.sustainable).toBe(false);
@@ -100,7 +116,7 @@ describe('endurance model', () => {
   it('toggle drain pushes an otherwise-fine chain negative', () => {
     const A = mk({ id: 'A', endCost: 1, baseRecharge: 1 }); // cast 1 + rech 1 → 2s cycle
     const acts = replayChain([A], [0, 0], 0); // A@0, A@1
-    const r = computeChain([A], acts, { maxEnd: 100, recoveryPerSec: 1.5, togglePerSec: 1.5 })!;
+    const r = computeChain([A], acts, 0, { maxEnd: 100, recoveryPerSec: 1.5, togglePerSec: 1.5 })!;
     const e = r.endurance!;
     expect(e.attackPerSec).toBeCloseTo(1, 5); // 2 end / 2 s
     expect(e.netPerSec).toBeCloseTo(-1, 5); // 1.5 − 1.5 − 1

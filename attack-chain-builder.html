@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attack Chain Builder</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #111823;
+    --bg-tertiary: #161f2e;
+    --bg-surface: #1a2335;
+    --border: rgba(255,255,255,0.08);
+    --border-md: rgba(255,255,255,0.14);
+    --border-strong: rgba(255,255,255,0.22);
+    --text-primary: #c8d4e0;
+    --text-secondary: #8a9ab0;
+    --text-tertiary: #506070;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 10px;
+    --green: #1D9E75;
+    --green-dark: #085041;
+    --purple: #7F77DD;
+    --purple-dark: #3C3489;
+    --amber: #BA7517;
+    --amber-dark: #633806;
+    --teal: #1D9E75;
+    --red: #E24B4A;
+    --dot-color: #EF9F27;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    font-size: 13px;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+
+  .outer {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .panel {
+    background: var(--bg-secondary);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 12px;
+  }
+
+  .label-sm {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  input[type=number] {
+    width: 72px;
+    height: 28px;
+    padding: 0 8px;
+    font-size: 12px;
+    background: var(--bg-tertiary);
+    border: 0.5px solid var(--border-md);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    outline: none;
+  }
+
+  input[type=number]:focus {
+    border-color: var(--border-strong);
+  }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    padding: 0 10px;
+    height: 28px;
+    border: 0.5px solid var(--border-md);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  button:hover {
+    background: var(--bg-surface);
+    border-color: var(--border-strong);
+  }
+
+  .pool-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: var(--radius-md);
+    border: 0.5px solid var(--border-md);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .chip:hover {
+    border-color: var(--border-strong);
+    background: var(--bg-surface);
+  }
+
+  .chip-arc {
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+
+  .chip.is-attack  { border-left: 2px solid var(--purple); }
+  .chip.is-utility { border-left: 2px solid var(--green); }
+  .chip.is-buff    { border-left: 2px solid var(--amber); }
+
+  .chain-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .chain-legend {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: var(--text-tertiary);
+  }
+
+  .legend-swatch {
+    width: 12px;
+    height: 6px;
+    border-radius: 2px;
+  }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--border-md);
+  }
+
+  .status-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .timeline-scroll {
+    overflow-x: auto;
+  }
+
+  #swimlanes {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    position: relative;
+  }
+
+  #activity-bar {
+    position: relative;
+    height: 8px;
+    margin-top: 4px;
+  }
+
+  #ruler {
+    position: relative;
+    height: 16px;
+    margin-top: 3px;
+  }
+
+  .empty-msg {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    padding: 16px 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .stat-card {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: 8px 10px;
+  }
+
+  .s-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+
+  .s-val {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .s-unit {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-left: 2px;
+  }
+
+  .s-val.warn { color: var(--amber); }
+  .s-val.good { color: var(--green); }
+
+  @media (max-width: 600px) {
+    .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    body { padding: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="outer">
+  <h1>Attack Chain Builder</h1>
+
+  <div class="panel toolbar">
+    <div class="toolbar-left">
+      <span class="label-sm">Global recharge</span>
+      <input type="number" id="global-rech" value="0" min="0" max="200" step="5">
+      <span class="label-sm">%</span>
+    </div>
+    <button id="clear-btn">
+      <i class="ti ti-trash"></i> Clear
+    </button>
+  </div>
+
+  <div class="panel">
+    <span class="label-sm">Available powers — click to add</span>
+    <div class="pool-chips" id="pool"></div>
+  </div>
+
+  <div class="panel" style="overflow:hidden;">
+    <div class="chain-header">
+      <span class="label-sm">Chain timeline</span>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="chain-legend">
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--green);opacity:.5;"></div>
+            active
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch" style="background:var(--red);opacity:.6;"></div>
+            dead time
+          </div>
+        </div>
+        <div class="status-row">
+          <div class="status-dot" id="status-dot"></div>
+          <span class="status-text" id="status-text">Add powers to build a chain</span>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-scroll">
+      <div id="swimlanes"></div>
+      <div id="activity-bar"></div>
+      <div id="ruler"></div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="s-label">Cycle time</div>
+      <span class="s-val" id="st-cycle">—</span><span class="s-unit">s</span>
+    </div>
+    <div class="stat-card">
+      <div class="s-label">Total DMG</div>
+      <span class="s-val" id="st-dmg">—</span>
+    </div>
+    <div class="stat-card">
+      <div class="s-label">DPS</div>
+      <span class="s-val" id="st-dps">—</span>
+    </div>
+    <div class="stat-card">
+      <div class="s-label">End/s</div>
+      <span class="s-val" id="st-eps">—</span>
+    </div>
+    <div class="stat-card">
+      <div class="s-label">Efficiency</div>
+      <span class="s-val" id="st-eff">—</span><span class="s-unit">%</span>
+    </div>
+  </div>
+</div>
+
+<script>
+const AT_MOD = 1.125;
+const PX = 38;
+const LABEL_W = 130;
+const EPS = 0.001;
+
+const COLORS = {
+  attack:  { act: '#7F77DD', cd: '#3C3489', dot: '#EF9F27' },
+  utility: { act: '#1D9E75', cd: '#085041', dot: '#EF9F27' },
+  buff:    { act: '#BA7517', cd: '#633806', dot: '#EF9F27' },
+};
+
+const POWERS = [
+  { name: 'Shadow Punch',   arc: 1.056, recharge: 3.0,   end: 4.368,  dmg: 0.84,   type: 'attack',  dot: null },
+  { name: 'Smite',          arc: 1.188, recharge: 6.0,   end: 6.864,  dmg: 1.32,   type: 'attack',  dot: null },
+  { name: 'Shadow Maul',    arc: 2.508, recharge: 11.0,  end: 11.024, dmg: 1.6184, type: 'attack',  dot: { ticks: 4,  period: 0.625, per_tick: 0.2023, in_cast: true  } },
+  { name: 'Siphon Life',    arc: 2.112, recharge: 10.0,  end: 10.192, dmg: 1.96,   type: 'attack',  dot: null },
+  { name: 'Midnight Grasp', arc: 2.244, recharge: 15.0,  end: 11.96,  dmg: 2.21,   type: 'attack',  dot: { ticks: 5,  period: 0.75,  per_tick: 0.11,   in_cast: false } },
+  { name: 'Touch of Fear',  arc: 2.112, recharge: 8.0,   end: 8.528,  dmg: 0,      type: 'utility', dot: null },
+  { name: 'Soul Drain',     arc: 2.508, recharge: 120.0, end: 15.6,   dmg: 1.0,    type: 'buff',    dot: null },
+];
+
+let activations = [];
+
+function getEffRech(p) {
+  const bonus = parseFloat(document.getElementById('global-rech').value) || 0;
+  return p.recharge / (1 + bonus / 100);
+}
+
+function calcDirectDmg(p) {
+  let d = p.dmg * AT_MOD;
+  if (p.dot && p.dot.in_cast) d += p.dot.ticks * p.dot.per_tick * AT_MOD;
+  return d;
+}
+
+function overlapsAny(start, end) {
+  for (const a of activations) {
+    if (start < a.end - EPS && end > a.start + EPS) return true;
+  }
+  return false;
+}
+
+function findSlot(pi) {
+  const p = POWERS[pi];
+  const effRech = getEffRech(p);
+  const myPrev = activations.filter(a => a.pi === pi);
+  const laneReadyAt = myPrev.length > 0
+    ? Math.max(...myPrev.map(a => a.start + effRech))
+    : 0;
+  let candidateStart = laneReadyAt;
+  for (let iter = 0; iter < 500; iter++) {
+    const candidateEnd = candidateStart + p.arc;
+    if (!overlapsAny(candidateStart, candidateEnd)) return candidateStart;
+    const blocker = activations
+      .filter(a => a.start < candidateEnd && a.end > candidateStart)
+      .sort((a, b) => b.end - a.end)[0];
+    if (!blocker) break;
+    candidateStart = Math.max(blocker.end, laneReadyAt);
+  }
+  return candidateStart;
+}
+
+function calcDeadGaps(cycleSec) {
+  const sorted = [...activations].sort((a, b) => a.start - b.start);
+  const gaps = [];
+  let cursor = 0;
+  for (const a of sorted) {
+    if (a.start > cursor + EPS) gaps.push({ start: cursor, end: a.start });
+    cursor = Math.max(cursor, a.end);
+  }
+  if (cursor < cycleSec - EPS) gaps.push({ start: cursor, end: cycleSec });
+  return gaps;
+}
+
+function calcTotalDeadTime(cycleSec) {
+  return calcDeadGaps(cycleSec).reduce((s, g) => s + (g.end - g.start), 0);
+}
+
+function addPower(pi) {
+  const p = POWERS[pi];
+  const start = findSlot(pi);
+  activations.push({ pi, start, end: start + p.arc });
+  activations.sort((a, b) => a.start - b.start);
+}
+
+function removeLast(pi) {
+  const myOnes = activations.filter(a => a.pi === pi).sort((a, b) => b.start - a.start);
+  if (myOnes.length === 0) return;
+  activations = activations.filter(a => a !== myOnes[0]);
+}
+
+function render() {
+  const poolEl = document.getElementById('pool');
+  poolEl.innerHTML = '';
+  POWERS.forEach((p, i) => {
+    const el = document.createElement('div');
+    el.className = 'chip is-' + p.type;
+    el.innerHTML = `<span>${p.name}</span><span class="chip-arc">${p.arc.toFixed(2)}s</span>`;
+    el.onclick = () => { addPower(i); render(); };
+    poolEl.appendChild(el);
+  });
+
+  const lanesEl = document.getElementById('swimlanes');
+  const actBarEl = document.getElementById('activity-bar');
+  const rulerEl = document.getElementById('ruler');
+  lanesEl.innerHTML = ''; actBarEl.innerHTML = ''; rulerEl.innerHTML = '';
+
+  if (activations.length === 0) {
+    lanesEl.innerHTML = `<div class="empty-msg"><i class="ti ti-arrow-up-left"></i> Click powers above to build a chain</div>`;
+    ['st-cycle', 'st-dmg', 'st-dps', 'st-eps', 'st-eff'].forEach(id => document.getElementById(id).textContent = '—');
+    document.getElementById('st-eff').className = 's-val';
+    document.getElementById('status-dot').style.background = 'var(--border-md)';
+    document.getElementById('status-text').textContent = 'Add powers to build a chain';
+    return;
+  }
+
+  const cycleSec = Math.max(...activations.map(a => a.end));
+  const maxCdEnd = Math.max(...activations.map(a => a.start + getEffRech(POWERS[a.pi])));
+  const displayW = Math.max(cycleSec, maxCdEnd) * PX;
+  const loopX = cycleSec * PX;
+  const deadTime = calcTotalDeadTime(cycleSec);
+  const deadGaps = calcDeadGaps(cycleSec);
+  const efficiency = Math.round((1 - deadTime / cycleSec) * 100);
+
+  document.getElementById('status-dot').style.background = efficiency >= 95 ? '#1D9E75' : efficiency >= 80 ? '#BA7517' : '#E24B4A';
+  document.getElementById('status-text').textContent = efficiency >= 95
+    ? 'Loop is tight'
+    : `${deadTime.toFixed(2)}s dead time`;
+
+  const uniquePIs = [...new Set(activations.map(a => a.pi))];
+  let totalDmg = 0, totalEnd = 0;
+
+  uniquePIs.forEach(pi => {
+    const p = POWERS[pi];
+    const col = COLORS[p.type];
+    const laneH = 22;
+    const myActs = activations.filter(a => a.pi === pi).sort((a, b) => a.start - b.start);
+
+    const laneEl = document.createElement('div');
+    laneEl.style.cssText = `display:flex;align-items:center;height:${laneH}px;`;
+
+    const labelEl = document.createElement('div');
+    labelEl.style.cssText = `width:${LABEL_W}px;flex-shrink:0;font-size:11px;font-weight:500;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:8px;display:flex;align-items:center;gap:4px;`;
+    const removeBtn = document.createElement('span');
+    removeBtn.style.cssText = `cursor:pointer;color:var(--text-tertiary);font-size:10px;flex-shrink:0;line-height:1;`;
+    removeBtn.textContent = '✕';
+    removeBtn.title = 'Remove last instance';
+    removeBtn.onclick = () => { removeLast(pi); render(); };
+    labelEl.appendChild(removeBtn);
+    const nameSpan = document.createElement('span');
+    nameSpan.textContent = p.name + (myActs.length > 1 ? ` ×${myActs.length}` : '');
+    labelEl.appendChild(nameSpan);
+    laneEl.appendChild(labelEl);
+
+    const trackEl = document.createElement('div');
+    trackEl.style.cssText = `position:relative;height:${laneH}px;width:${displayW}px;flex-shrink:0;`;
+
+    myActs.forEach(act => {
+      const actStartPx = act.start * PX;
+      const actW = p.arc * PX;
+      const cdDur = Math.max(0, getEffRech(p) - p.arc);
+      const cdW = cdDur * PX;
+
+      if (cdW > 0) {
+        const cdEl = document.createElement('div');
+        cdEl.style.cssText = `position:absolute;left:${actStartPx + actW}px;top:${laneH / 2 - 3}px;width:${cdW}px;height:6px;background:${col.cd};border-radius:0 2px 2px 0;`;
+        trackEl.appendChild(cdEl);
+      }
+
+      if (p.dot && !p.dot.in_cast) {
+        for (let t = 1; t <= p.dot.ticks; t++) {
+          const tickT = act.start + p.arc + t * p.dot.period;
+          const inWindow = tickT <= cycleSec;
+          const tickEl = document.createElement('div');
+          tickEl.style.cssText = `position:absolute;left:${tickT * PX - 2}px;top:1px;width:4px;height:${laneH - 2}px;background:${col.dot};border-radius:1px;opacity:${inWindow ? 1 : 0.2};`;
+          trackEl.appendChild(tickEl);
+        }
+      }
+
+      const actEl = document.createElement('div');
+      actEl.style.cssText = `position:absolute;left:${actStartPx}px;top:3px;width:${actW}px;height:${laneH - 6}px;background:${col.act};border-radius:3px;display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:2;`;
+      if (actW > 28) {
+        const lbl = document.createElement('span');
+        lbl.style.cssText = `font-size:10px;font-weight:500;color:rgba(255,255,255,.9);white-space:nowrap;padding:0 4px;`;
+        lbl.textContent = `${p.arc.toFixed(2)}s`;
+        actEl.appendChild(lbl);
+      }
+      trackEl.appendChild(actEl);
+
+      totalDmg += calcDirectDmg(p);
+      totalEnd += p.end;
+      if (p.dot && !p.dot.in_cast) {
+        for (let t = 1; t <= p.dot.ticks; t++) {
+          if (act.start + p.arc + t * p.dot.period <= cycleSec)
+            totalDmg += p.dot.per_tick * AT_MOD;
+        }
+      }
+    });
+
+    laneEl.appendChild(trackEl);
+    lanesEl.appendChild(laneEl);
+  });
+
+  const loopLine = document.createElement('div');
+  loopLine.style.cssText = `position:absolute;left:${LABEL_W + loopX}px;top:0;width:2px;height:100%;background:#1D9E75;opacity:.6;border-radius:1px;`;
+  lanesEl.appendChild(loopLine);
+  lanesEl.style.minWidth = (LABEL_W + displayW) + 'px';
+
+  actBarEl.style.cssText = `position:relative;height:8px;margin-left:${LABEL_W}px;min-width:${displayW}px;`;
+  const bgEl = document.createElement('div');
+  bgEl.style.cssText = `position:absolute;left:0;top:1px;width:${loopX}px;height:6px;background:#1D9E75;border-radius:3px;opacity:.25;`;
+  actBarEl.appendChild(bgEl);
+  deadGaps.forEach(gap => {
+    const gapEl = document.createElement('div');
+    gapEl.style.cssText = `position:absolute;left:${gap.start * PX}px;top:1px;width:${(gap.end - gap.start) * PX}px;height:6px;background:#E24B4A;border-radius:2px;opacity:.65;`;
+    actBarEl.appendChild(gapEl);
+  });
+  const loopBarLine = document.createElement('div');
+  loopBarLine.style.cssText = `position:absolute;left:${loopX}px;top:0;width:2px;height:8px;background:#1D9E75;opacity:.6;border-radius:1px;`;
+  actBarEl.appendChild(loopBarLine);
+
+  rulerEl.style.cssText = `position:relative;height:16px;margin-left:${LABEL_W}px;min-width:${displayW}px;`;
+  const tickInterval = cycleSec > 20 ? 5 : cycleSec > 10 ? 2 : 1;
+  for (let t = 0; t <= Math.ceil(maxCdEnd); t += tickInterval) {
+    const tick = document.createElement('div');
+    tick.style.cssText = `position:absolute;left:${t * PX}px;top:0;display:flex;flex-direction:column;align-items:center;`;
+    tick.innerHTML = `<div style="width:1px;height:4px;background:var(--border-md);"></div><span style="font-size:9px;color:var(--text-tertiary);margin-top:1px;">${t}s</span>`;
+    rulerEl.appendChild(tick);
+  }
+
+  document.getElementById('st-cycle').textContent = cycleSec.toFixed(2);
+  document.getElementById('st-dmg').textContent = totalDmg.toFixed(2);
+  document.getElementById('st-dps').textContent = (totalDmg / cycleSec).toFixed(3);
+  document.getElementById('st-eps').textContent = (totalEnd / cycleSec).toFixed(2);
+
+  const effEl = document.getElementById('st-eff');
+  effEl.textContent = efficiency;
+  effEl.className = 's-val ' + (efficiency >= 95 ? 'good' : efficiency >= 80 ? '' : 'warn');
+}
+
+document.getElementById('global-rech').addEventListener('input', () => { activations = []; render(); });
+document.getElementById('clear-btn').addEventListener('click', () => { activations = []; render(); });
+
+render();
+</script>
+</body>
+</html>

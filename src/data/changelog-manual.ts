@@ -10,7 +10,7 @@ export interface ManualChangelogGroup {
     type: 'feat' | 'fix' | 'update' | 'known-issue';
   }[];
 }
-
+WheelEvent
 /** Flat entry used by changelog.ts */
 export interface ManualEntry {
   date: string;
