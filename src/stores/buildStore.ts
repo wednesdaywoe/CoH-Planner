@@ -9,6 +9,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type {
   Build,
+  AttackChain,
   SelectedPower,
   Accolade,
   ArchetypeId,
@@ -127,6 +128,15 @@ interface BuildActions {
    * `setVaultId` for backend continuity — see Build.vaultId.
    */
   setVaultId: (id: string | null) => void;
+
+  // Saved attack chains (named rotations stored on the build, so they travel
+  // with the character through save / load / export / share).
+  /** Create a new saved chain from a cast-order id list; returns its id. */
+  saveAttackChain: (name: string, powers: string[]) => string;
+  /** Replace the cast order of an existing saved chain (the "Save" action). */
+  updateAttackChain: (id: string, powers: string[]) => void;
+  renameAttackChain: (id: string, name: string) => void;
+  deleteAttackChain: (id: string) => void;
 
   /**
    * Walk every slotted enhancement and bump it to its "finalized" form.
@@ -1821,6 +1831,57 @@ export const useBuildStore = create<BuildStore>()(
           if (state.build.vaultId === next) return state;
           return { build: { ...state.build, vaultId: next } };
         });
+      },
+
+      // --- Saved attack chains ------------------------------------------------
+      saveAttackChain: (name, powers) => {
+        historyCheckpoint();
+        const chain: AttackChain = {
+          id: `chain-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+          name,
+          powers,
+        };
+        set((state) => ({
+          build: {
+            ...state.build,
+            attackChains: [...(state.build.attackChains ?? []), chain],
+          },
+        }));
+        return chain.id;
+      },
+
+      updateAttackChain: (id, powers) => {
+        historyCheckpoint();
+        set((state) => ({
+          build: {
+            ...state.build,
+            attackChains: (state.build.attackChains ?? []).map((c) =>
+              c.id === id ? { ...c, powers } : c,
+            ),
+          },
+        }));
+      },
+
+      renameAttackChain: (id, name) => {
+        historyCheckpoint();
+        set((state) => ({
+          build: {
+            ...state.build,
+            attackChains: (state.build.attackChains ?? []).map((c) =>
+              c.id === id ? { ...c, name } : c,
+            ),
+          },
+        }));
+      },
+
+      deleteAttackChain: (id) => {
+        historyCheckpoint();
+        set((state) => ({
+          build: {
+            ...state.build,
+            attackChains: (state.build.attackChains ?? []).filter((c) => c.id !== id),
+          },
+        }));
       },
 
       maximizeEnhancementLevels: (options) => {

@@ -109,6 +109,7 @@ export function slimBuild(build: Build): SlimBuildData {
     shoppingListAcquired: build.shoppingListAcquired,
     slotOrder: build.slotOrder,
     kheldianForm: build.kheldianForm,
+    attackChains: build.attackChains ?? [],
   };
 }
 
@@ -347,6 +348,7 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     shoppingListAcquired: slim.shoppingListAcquired ?? {},
     slotOrder: slim.slotOrder ?? [],
     ...(slim.kheldianForm ? { kheldianForm: slim.kheldianForm } : {}),
+    ...(Array.isArray(slim.attackChains) ? { attackChains: slim.attackChains } : {}),
   };
 }
 

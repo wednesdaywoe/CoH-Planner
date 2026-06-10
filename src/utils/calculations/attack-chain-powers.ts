@@ -167,3 +167,40 @@ export function getEnduranceParams(globalBonuses: GlobalBonuses): EnduranceParam
 export function getBuildGlobalRecharge(globalBonuses: GlobalBonuses): number {
   return globalBonuses.recharge || 0;
 }
+
+// ---------------------------------------------------------------------------
+// Saved-chain persistence: convert between the runtime pi-sequence (indices
+// into ChainPower[]) and the stable id list stored on the build. Storing
+// indices would break the moment the build's power set changes; ids
+// ("bucket:internalName") are stable, so a saved chain survives reload, export,
+// and share — and gracefully drops any power that's no longer picked.
+// ---------------------------------------------------------------------------
+
+/** The stable internalName portion of a ChainPower id ("bucket:internalName").
+ *  Fallback match key so a saved chain survives pool-slot reshuffles (which can
+ *  change the bucket prefix) as long as the power is still in the build. */
+function chainIdInternalName(id: string): string {
+  const i = id.indexOf(':');
+  return i >= 0 ? id.slice(i + 1) : id;
+}
+
+/** A working pi-sequence → the stable id list stored in a saved AttackChain. */
+export function sequenceToIds(powers: ChainPower[], sequence: number[]): string[] {
+  return sequence.map((pi) => powers[pi]?.id).filter((id): id is string => !!id);
+}
+
+/** A saved AttackChain's id list → a pi-sequence for the CURRENT build's
+ *  powers. Matches each id exactly, then falls back to its internalName; ids
+ *  with no surviving power are dropped. */
+export function idsToSequence(powers: ChainPower[], ids: string[]): number[] {
+  const out: number[] = [];
+  for (const id of ids) {
+    let pi = powers.findIndex((p) => p.id === id);
+    if (pi < 0) {
+      const inm = chainIdInternalName(id);
+      pi = powers.findIndex((p) => chainIdInternalName(p.id) === inm);
+    }
+    if (pi >= 0) out.push(pi);
+  }
+  return out;
+}

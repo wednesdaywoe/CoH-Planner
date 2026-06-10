@@ -27,7 +27,10 @@ import {
   buildChainPowers,
   getEnduranceParams,
   getBuildGlobalRecharge,
+  sequenceToIds,
+  idsToSequence,
 } from '@/utils/calculations/attack-chain-powers';
+import type { AttackChain } from '@/types';
 import {
   replayChain,
   computeChain,
@@ -92,6 +95,17 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const powerMetric = useUIStore((s) => s.chainPowerMetric);
   const setPowerMetric = useUIStore((s) => s.setChainPowerMetric);
   const showToast = useUIStore((s) => s.showToast);
+
+  // Saved chains live on the build (so they travel with the character).
+  const savedChains = build.attackChains ?? [];
+  const saveAttackChain = useBuildStore((s) => s.saveAttackChain);
+  const updateAttackChain = useBuildStore((s) => s.updateAttackChain);
+  const renameAttackChain = useBuildStore((s) => s.renameAttackChain);
+  const deleteAttackChain = useBuildStore((s) => s.deleteAttackChain);
+  // Which saved chain is loaded into the working sequence (null = unsaved
+  // scratch), and the inline name field for new / save-as / rename.
+  const [selectedChainId, setSelectedChainId] = useState<string | null>(null);
+  const [naming, setNaming] = useState<{ mode: 'new' | 'saveas' | 'rename'; value: string } | null>(null);
 
   // AT hit-time mechanic toggles (crit / scourge / containment / …) — same
   // sources the power tooltips use, so the chain DPS matches them.
@@ -175,13 +189,16 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
     [powers, activations, globalRech, endParams, powerMetric],
   );
 
-  // Reset the chain if the build changes underneath us (power indices shift).
-  // Keyed by power count + names so a re-slot doesn't wipe the chain.
+  // When the build's power set changes underneath us (power ids shift), re-map
+  // the loaded saved chain to the new powers (dropping any now-missing power);
+  // if nothing is loaded, clear the scratch sequence. Keyed by power ids so a
+  // mere re-slot (which doesn't change ids) leaves the working chain alone.
   const powersKey = powers.map((p) => p.id).join('|');
   const [lastKey, setLastKey] = useState(powersKey);
   if (powersKey !== lastKey) {
     setLastKey(powersKey);
-    setSequence([]);
+    const chain = selectedChainId ? savedChains.find((c) => c.id === selectedChainId) : null;
+    setSequence(chain ? idsToSequence(powers, chain.powers) : []);
   }
 
   const addPower = (pi: number) => setSequence((s) => [...s, pi]);
@@ -210,6 +227,57 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
       a.splice(to, 0, moved);
       return a;
     });
+
+  // --- Saved-chain wiring ---------------------------------------------------
+  // The working sequence as stable ids, and whether it diverges from the loaded
+  // saved chain (drives the "unsaved" dot + what Save does).
+  const currentIds = sequenceToIds(powers, sequence);
+  const selectedChain = selectedChainId ? savedChains.find((c) => c.id === selectedChainId) ?? null : null;
+  const sameIds = (a: string[], b: string[]) => a.length === b.length && a.every((x, i) => x === b[i]);
+  const modified = selectedChain ? !sameIds(currentIds, selectedChain.powers) : sequence.length > 0;
+
+  const loadChain = (c: AttackChain) => {
+    setSequence(idsToSequence(powers, c.powers));
+    setSelectedChainId(c.id);
+    setNaming(null);
+  };
+  const newChain = () => {
+    setSequence([]);
+    setSelectedChainId(null);
+    setNaming(null);
+  };
+  const onSaveClick = () => {
+    if (sequence.length === 0) return;
+    if (selectedChain) {
+      updateAttackChain(selectedChain.id, currentIds);
+      showToast({ message: `Saved "${selectedChain.name}"`, tone: 'success' });
+    } else {
+      setNaming({ mode: 'new', value: '' });
+    }
+  };
+  const startNaming = (mode: 'saveas' | 'rename') =>
+    setNaming({ mode, value: mode === 'rename' ? selectedChain?.name ?? '' : '' });
+  const confirmNaming = () => {
+    if (!naming) return;
+    const name = naming.value.trim();
+    if (!name) return;
+    if (naming.mode === 'rename') {
+      if (selectedChain) renameAttackChain(selectedChain.id, name);
+    } else {
+      const id = saveAttackChain(name, currentIds);
+      setSelectedChainId(id);
+      showToast({ message: `Saved "${name}"`, tone: 'success' });
+    }
+    setNaming(null);
+  };
+  const onDelete = () => {
+    if (!selectedChain) return;
+    const nm = selectedChain.name;
+    deleteAttackChain(selectedChain.id);
+    setSelectedChainId(null);
+    setSequence([]);
+    showToast({ message: `Deleted "${nm}"`, tone: 'info' });
+  };
 
   // Grab a bar to reorder its cast. Hit-tests pointer-x against every bar's
   // centre (sorted by screen position == sequence order) to find the insert gap
@@ -285,6 +353,107 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Attack Chain Builder" size="full">
       <div className="space-y-3 text-[13px] text-gray-300 p-0.5">
+        {/* Saved chains — named rotations stored on the character */}
+        <div className="flex flex-wrap items-center gap-2 rounded-lg border border-gray-800 bg-gray-900/40 px-3 py-2">
+          <span className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">Chains</span>
+          <div className="flex flex-wrap items-center gap-1">
+            {savedChains.map((c) => {
+              const active = c.id === selectedChainId;
+              return (
+                <button
+                  key={c.id}
+                  onClick={() => loadChain(c)}
+                  className={`h-7 px-2.5 rounded border text-xs ${
+                    active
+                      ? 'border-emerald-500 text-gray-100 bg-emerald-900/20'
+                      : 'border-gray-700 text-gray-300 hover:border-gray-500'
+                  }`}
+                  title={active && modified ? `${c.name} — unsaved changes` : c.name}
+                >
+                  {c.name}
+                  {active && modified && <span className="text-amber-400" aria-label="unsaved"> •</span>}
+                </button>
+              );
+            })}
+            <button
+              onClick={newChain}
+              className={`h-7 px-2.5 rounded border border-dashed text-xs ${
+                selectedChainId === null
+                  ? 'border-emerald-600 text-gray-200'
+                  : 'border-gray-700 text-gray-400 hover:border-gray-500'
+              }`}
+              title="Start a new, unsaved chain"
+            >
+              + New
+            </button>
+          </div>
+          <div className="ml-auto flex items-center gap-1">
+            {naming ? (
+              <>
+                <input
+                  autoFocus
+                  value={naming.value}
+                  onChange={(e) => setNaming((n) => (n ? { ...n, value: e.target.value } : n))}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') confirmNaming();
+                    if (e.key === 'Escape') setNaming(null);
+                  }}
+                  placeholder={naming.mode === 'rename' ? 'New name' : 'Chain name'}
+                  className="h-7 w-40 px-2 bg-gray-800 border border-gray-700 rounded text-gray-200 text-xs"
+                />
+                <button
+                  onClick={confirmNaming}
+                  disabled={!naming.value.trim()}
+                  className="h-7 px-2.5 rounded border border-emerald-600 text-emerald-300 text-xs hover:border-emerald-400 disabled:opacity-40"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={() => setNaming(null)}
+                  className="h-7 px-2 rounded border border-gray-700 text-gray-400 text-xs hover:border-gray-500"
+                >
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={onSaveClick}
+                  disabled={sequence.length === 0 || (!!selectedChain && !modified)}
+                  className="h-7 px-2.5 rounded border border-gray-700 text-gray-300 text-xs hover:border-gray-500 disabled:opacity-40"
+                  title={selectedChain ? 'Save changes to this chain' : 'Save the current rotation as a new chain'}
+                >
+                  {selectedChain ? 'Save' : 'Save as…'}
+                </button>
+                {selectedChain && (
+                  <>
+                    <button
+                      onClick={() => startNaming('saveas')}
+                      disabled={sequence.length === 0}
+                      className="h-7 px-2.5 rounded border border-gray-700 text-gray-300 text-xs hover:border-gray-500 disabled:opacity-40"
+                      title="Save the current rotation as a new chain"
+                    >
+                      Save as…
+                    </button>
+                    <button
+                      onClick={() => startNaming('rename')}
+                      className="h-7 px-2.5 rounded border border-gray-700 text-gray-300 text-xs hover:border-gray-500"
+                    >
+                      Rename
+                    </button>
+                    <button
+                      onClick={onDelete}
+                      className="h-7 px-2.5 rounded border border-gray-700 text-red-400/80 text-xs hover:border-red-500/60 hover:text-red-400"
+                    >
+                      Delete
+                    </button>
+                  </>
+                )}
+              </>
+            )}
+          </div>
+        </div>
+
         {/* Toolbar */}
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3 flex-wrap">

@@ -99,6 +99,21 @@ export interface ArchetypeSelection {
 // MAIN BUILD TYPE
 // ============================================
 
+/**
+ * A saved attack chain — a named, ordered rotation the user has settled on
+ * (e.g. "Single Target", "AoE"). `powers` is the cast order stored as stable
+ * ChainPower ids ("bucket:internalName" — see attack-chain-powers.ts), mapped
+ * back to the current build's powers on load (entries whose power is no longer
+ * in the build are dropped). Lives on the Build so chains travel with the
+ * character through save / load / export / share.
+ */
+export interface AttackChain {
+  id: string;
+  name: string;
+  /** Cast order as ChainPower ids. */
+  powers: string[];
+}
+
 export interface Build {
   /** Build name */
   name: string;
@@ -189,6 +204,11 @@ export interface Build {
    * commit.
    */
   vaultId?: string;
+
+  /** Saved attack chains (named rotations like "Single Target" / "AoE").
+   *  Optional for backward compat; missing → no saved chains. See
+   *  {@link AttackChain} and the Attack Chain Builder. */
+  attackChains?: AttackChain[];
 }
 
 // ============================================
@@ -271,6 +291,8 @@ export interface SlimBuildData {
   secondary: { id: string | null; name: string; powers: { name: string; level: number; slots: unknown[] }[] };
   pools: { id: string; name: string; powers: { name: string; level: number; slots: unknown[] }[] }[];
   epicPool: { id: string; name: string; powers: { name: string; level: number; slots: unknown[] }[] } | null;
+  /** Saved attack chains (named rotations). Optional for backward compat. */
+  attackChains?: AttackChain[];
   [key: string]: unknown;
 }
 

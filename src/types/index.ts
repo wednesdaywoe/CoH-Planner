@@ -96,6 +96,7 @@ export type {
   SetTracking,
   ArchetypeSelection,
   Build,
+  AttackChain,
   BuildExport,
   BuildExportV1,
   BuildExportV2,
