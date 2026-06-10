@@ -109,18 +109,27 @@ describe('compactness', () => {
     expect(r.compactness).toBe(50); // each: min(1, 1×2/4) = 0.5
   });
 
-  it('weights compactness by damage — a compact big hitter outweighs filler slack', () => {
+  it('weights compactness by the power metric — a compact big hitter outweighs filler slack', () => {
     // X (hard hitter) fires exactly on cooldown; A (jab) is cast 3× but could go
-    // 4×. Weighted by loop damage: X=100 @ u=1, A=30 @ u=0.75 → ~94, not the
-    // unweighted ~88.
+    // 4×. Default metric = per-cast damage: X=100 @ u=1, A=10 @ u=0.75.
     const X = mk({ id: 'X', cast: 1, baseRecharge: 4, damage: 100 });
     const A = mk({ id: 'A', cast: 1, baseRecharge: 1, damage: 10 });
     const acts = replayChain([X, A], [0, 1, 1, 1], 0); // X@0, A@1,2,3
     const r = computeChain([X, A], acts, 0, null)!;
     expect(r.cycleSec).toBe(4);
     expect(r.efficiency).toBe(100);
-    // (100×1 + 30×0.75) / 130 = 0.9423 → 94
-    expect(r.compactness).toBe(94);
+    // (100×1 + 10×0.75) / 110 = 0.9773 → 98
+    expect(r.compactness).toBe(98);
+  });
+
+  it('the metric changes the weighting — dps weights by damage/(cast+recharge)', () => {
+    // Same chain, metric = dps: X = 100/(1+4) = 20, A = 10/(1+1) = 5.
+    const X = mk({ id: 'X', cast: 1, baseRecharge: 4, damage: 100 });
+    const A = mk({ id: 'A', cast: 1, baseRecharge: 1, damage: 10 });
+    const acts = replayChain([X, A], [0, 1, 1, 1], 0);
+    const r = computeChain([X, A], acts, 0, null, 'dps')!;
+    // (20×1 + 5×0.75) / 25 = 0.95 → 95
+    expect(r.compactness).toBe(95);
   });
 
   it('is null when the chain deals no damage', () => {

@@ -13,6 +13,7 @@ import { useMemo, useRef, useState } from 'react';
 import { Modal } from './Modal';
 import {
   useBuildStore,
+  useUIStore,
   useScourgeActive,
   useContainmentActive,
   useCriticalHitsActive,
@@ -31,7 +32,9 @@ import {
   replayChain,
   computeChain,
   effectiveRecharge,
+  powerMetricValue,
   type ChainPower,
+  type PowerMetric,
 } from '@/utils/calculations/attack-chain';
 
 interface AttackChainModalProps {
@@ -45,10 +48,9 @@ const LANE_H = 24;
 const MIN_PX = 14;
 const MAX_PX = 80;
 
-/** Per-power nominal damage (direct + full DoT) — drives the relative color. */
-function powerDpa(p: ChainPower): number {
-  return p.damage + (p.dot ? p.dot.ticks * p.dot.perTick : 0);
-}
+/** Short label for the power-ranking metric (legend + palette tooltips). See
+ *  powerMetricValue in attack-chain.ts. */
+const METRIC_LABEL: Record<PowerMetric, string> = { damage: 'dmg', dpa: 'DPA', dps: 'DPS' };
 
 /** Option A coloring: type sets the hue, relative damage sets richness. */
 function barFill(type: ChainPower['type'], rel: number): string {
@@ -84,6 +86,11 @@ function fmt(n: number, d = 1): string {
 
 export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const build = useBuildStore((s) => s.build);
+
+  // The metric that ranks powers everywhere here — palette order, bar/chip
+  // color intensity, and compactness weighting (persisted across sessions).
+  const powerMetric = useUIStore((s) => s.chainPowerMetric);
+  const setPowerMetric = useUIStore((s) => s.setChainPowerMetric);
 
   // AT hit-time mechanic toggles (crit / scourge / containment / …) — same
   // sources the power tooltips use, so the chain DPS matches them.
@@ -154,13 +161,17 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
 
   const globalRech = buildGlobalRech + extraRech;
 
+  // A power's ranking value under the chosen metric (closes over the live
+  // global recharge so DPS tracks the what-if slider).
+  const metricVal = (p: ChainPower) => powerMetricValue(p, powerMetric, globalRech);
+
   const activations = useMemo(
     () => replayChain(powers, sequence, globalRech),
     [powers, sequence, globalRech],
   );
   const result = useMemo(
-    () => computeChain(powers, activations, globalRech, endParams),
-    [powers, activations, globalRech, endParams],
+    () => computeChain(powers, activations, globalRech, endParams, powerMetric),
+    [powers, activations, globalRech, endParams, powerMetric],
   );
 
   // Reset the chain if the build changes underneath us (power indices shift).
@@ -228,21 +239,24 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
     window.addEventListener('pointerup', up);
   };
 
-  // Sort palette: attacks (by damage desc) first, then utility/buff.
+  // Sort palette: attacks (by chosen metric desc) first, then utility/buff.
   const palette = useMemo(() => {
     return powers
       .map((p, i) => ({ p, i }))
       .sort((a, b) => {
         if (a.p.type !== b.p.type) return a.p.type === 'attack' ? -1 : 1;
-        return powerDpa(b.p) - powerDpa(a.p);
+        return powerMetricValue(b.p, powerMetric, globalRech) - powerMetricValue(a.p, powerMetric, globalRech);
       });
-  }, [powers]);
+  }, [powers, powerMetric, globalRech]);
 
   const usedPis = useMemo(() => [...new Set(activations.map((a) => a.pi))], [activations]);
-  // Damage-intensity reference over the WHOLE build (not just the chain) so a
-  // power's color is stable and identical across the palette, rotation strip,
-  // and timeline — the visual link between the three areas.
-  const maxDpa = useMemo(() => Math.max(0, ...powers.map((p) => powerDpa(p))), [powers]);
+  // Metric-intensity reference over the WHOLE build (not just the chain) so a
+  // power's color is stable and identical across the palette and timeline — the
+  // visual link between the two areas.
+  const maxMetric = useMemo(
+    () => Math.max(0, ...powers.map((p) => powerMetricValue(p, powerMetric, globalRech))),
+    [powers, powerMetric, globalRech],
+  );
 
   const cycleSec = result?.cycleSec ?? 0;
   const maxCdEnd = activations.length
@@ -300,8 +314,23 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
 
         {/* Palette */}
         <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-3">
-          <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-500 mb-2">
-            Available powers — tap to add
+          <div className="flex items-center justify-between mb-2">
+            <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">
+              Available powers — tap to add
+            </div>
+            <label className="flex items-center gap-1.5 text-[10px] text-gray-500">
+              Rank by
+              <select
+                value={powerMetric}
+                onChange={(e) => setPowerMetric(e.target.value as PowerMetric)}
+                className="h-6 px-1.5 bg-gray-800 border border-gray-700 rounded text-gray-200 text-[11px]"
+                title="Metric that ranks powers — palette order, color intensity, and compactness weighting"
+              >
+                <option value="damage">Damage (per cast)</option>
+                <option value="dpa">DPA (dmg / cast)</option>
+                <option value="dps">DPS (dmg / cast+rech)</option>
+              </select>
+            </label>
           </div>
           {palette.length === 0 ? (
             <div className="text-[12px] text-gray-500 py-2">
@@ -309,22 +338,25 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
             </div>
           ) : (
             <div className="flex flex-wrap gap-1.5">
-              {palette.map(({ p, i }) => (
-                <button
-                  key={p.id}
-                  onClick={() => addPower(i)}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-gray-700 hover:border-gray-500 text-gray-200 text-xs"
-                  style={{
-                    borderLeftWidth: 2,
-                    borderLeftColor: barFill(p.type, maxDpa > 0 ? powerDpa(p) / maxDpa : 0),
-                    background: chipBg(p.type, maxDpa > 0 ? powerDpa(p) / maxDpa : 0),
-                  }}
-                  title={`${p.name} · cast ${fmt(p.cast, 2)}s · rech ${fmt(p.baseRecharge, 1)}s · ${fmt(powerDpa(p), 0)} dmg`}
-                >
-                  <span>{p.name}</span>
-                  <span className="text-[10px] text-gray-500">{fmt(p.cast, 2)}s</span>
-                </button>
-              ))}
+              {palette.map(({ p, i }) => {
+                const rel = maxMetric > 0 ? metricVal(p) / maxMetric : 0;
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => addPower(i)}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-gray-700 hover:border-gray-500 text-gray-200 text-xs"
+                    style={{
+                      borderLeftWidth: 2,
+                      borderLeftColor: barFill(p.type, rel),
+                      background: chipBg(p.type, rel),
+                    }}
+                    title={`${p.name} · cast ${fmt(p.cast, 2)}s · rech ${fmt(p.baseRecharge, 1)}s · ${fmt(metricVal(p), powerMetric === 'damage' ? 0 : 1)} ${METRIC_LABEL[powerMetric]}`}
+                  >
+                    <span>{p.name}</span>
+                    <span className="text-[10px] text-gray-500">{fmt(p.cast, 2)}s</span>
+                  </button>
+                );
+              })}
             </div>
           )}
         </div>
@@ -343,7 +375,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                   className="inline-block w-12 h-2 rounded"
                   style={{ background: `linear-gradient(90deg, ${barFill('attack', 0)}, ${barFill('attack', 1)})` }}
                 />
-                high dmg
+                high {METRIC_LABEL[powerMetric]}
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="inline-block w-3 h-2 rounded-sm" style={{ background: '#1D9E75', opacity: 0.55 }} />
@@ -388,7 +420,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
               <div ref={lanesRef} style={{ position: 'relative', minWidth: LABEL_W + displayW }}>
                 {usedPis.map((pi) => {
                   const p = powers[pi];
-                  const rel = maxDpa > 0 ? powerDpa(p) / maxDpa : 0;
+                  const rel = maxMetric > 0 ? metricVal(p) / maxMetric : 0;
                   const mine = activations.filter((a) => a.pi === pi);
                   const effRech = effectiveRecharge(p, globalRech);
                   const cdW = Math.max(0, effRech - p.cast) * px;

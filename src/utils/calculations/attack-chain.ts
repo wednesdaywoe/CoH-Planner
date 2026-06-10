@@ -118,9 +118,42 @@ export interface ChainResult {
 
 const EPS = 0.001;
 
+/**
+ * How powers are ranked / weighted everywhere in the builder (palette order,
+ * color intensity, compactness weighting). All three are STABLE per-power
+ * values (no dependence on how many times the power is cast this rotation), so a
+ * power's color/rank doesn't shift as you build the chain.
+ *  - damage: per-cast damage (direct + full DoT) — "how big is the hit".
+ *  - dpa:    damage ÷ cast time — damage per second of animation (the classic
+ *            attack-chain metric for choosing fillers).
+ *  - dps:    damage ÷ (cast + recharge) — sustained single-power throughput.
+ */
+export type PowerMetric = 'damage' | 'dpa' | 'dps';
+
 /** Effective recharge after enhancement + (build + what-if) global recharge. */
 export function effectiveRecharge(p: ChainPower, globalRechargePct: number): number {
   return p.baseRecharge / (1 + p.rechargeEnh + globalRechargePct / 100);
+}
+
+/** Per-cast nominal damage (direct hit + every DoT tick). */
+function nominalDamage(p: ChainPower): number {
+  return p.damage + (p.dot ? p.dot.ticks * p.dot.perTick : 0);
+}
+
+/** The ranking value for a power under the chosen metric. dps needs the global
+ *  recharge (so the sustained number tracks the what-if slider). */
+export function powerMetricValue(
+  p: ChainPower,
+  metric: PowerMetric,
+  globalRechargePct: number,
+): number {
+  const dmg = nominalDamage(p);
+  if (metric === 'dpa') return p.cast > 0 ? dmg / p.cast : 0;
+  if (metric === 'dps') {
+    const t = p.cast + effectiveRecharge(p, globalRechargePct);
+    return t > 0 ? dmg / t : 0;
+  }
+  return dmg; // 'damage'
 }
 
 function overlapsAny(activations: Activation[], start: number, end: number): boolean {
@@ -311,6 +344,7 @@ export function computeChain(
   activations: Activation[],
   globalRechargePct: number,
   end: EnduranceParams | null,
+  metric: PowerMetric = 'damage',
 ): ChainResult | null {
   if (activations.length === 0) return null;
 
@@ -336,34 +370,32 @@ export function computeChain(
   let totalDamage = 0;
   let maxDamage = 0;
   let endPerCycle = 0;
-  // Per-power loop damage + cast count, for the damage-weighted compactness.
-  const perPower = new Map<number, { count: number; dmg: number }>();
+  // Times each power is cast this loop — drives the compactness utilization.
+  const castCount = new Map<number, number>();
   for (const a of activations) {
     const p = powers[a.pi];
     const d = activationDamage(p, a, cycleSec);
     totalDamage += d;
     if (d > maxDamage) maxDamage = d;
     endPerCycle += p.endCost;
-    const agg = perPower.get(a.pi) ?? { count: 0, dmg: 0 };
-    agg.count += 1;
-    agg.dmg += d;
-    perPower.set(a.pi, agg);
+    castCount.set(a.pi, (castCount.get(a.pi) ?? 0) + 1);
   }
 
-  // Compactness: damage-weighted recharge utilization. For each damaging power,
+  // Compactness: metric-weighted recharge utilization. For each power,
   // u = min(1, timesCast × effRech / cycleSec) — 1.0 means it fires exactly on
   // cooldown every loop; < 1 means it sits ready-but-unused (the per-lane
-  // overshoot) while other animations play. Weighting by each power's loop
-  // damage keeps weak fillers and zero-damage utility from skewing it, and means
-  // slack on a big hitter (recoverable DPS) counts more than slack on a jab.
+  // overshoot) while other animations play. Weighting by the chosen power metric
+  // (damage / DPA / DPS) keeps weak fillers and zero-value utility from skewing
+  // it, and means slack on a high-value power (recoverable DPS) counts most.
   let wSum = 0;
   let wuSum = 0;
-  for (const [pi, agg] of perPower) {
-    if (agg.dmg <= 0) continue;
+  for (const [pi, count] of castCount) {
+    const w = powerMetricValue(powers[pi], metric, globalRechargePct);
+    if (w <= 0) continue;
     const effRech = effectiveRecharge(powers[pi], globalRechargePct);
-    const u = cycleSec > 0 ? Math.min(1, (agg.count * effRech) / cycleSec) : 1;
-    wSum += agg.dmg;
-    wuSum += agg.dmg * u;
+    const u = cycleSec > 0 ? Math.min(1, (count * effRech) / cycleSec) : 1;
+    wSum += w;
+    wuSum += w * u;
   }
   const compactness = wSum > 0 ? Math.round((wuSum / wSum) * 100) : null;
 

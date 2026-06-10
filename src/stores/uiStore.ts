@@ -28,6 +28,7 @@ import type {
 } from '@/types';
 import { createDefaultIncarnateActiveState } from '@/types';
 import type { SlotLevelRef } from '@/utils/slot-levels';
+import type { PowerMetric } from '@/utils/calculations/attack-chain';
 
 // ============================================
 // PROC SETTINGS
@@ -204,6 +205,10 @@ interface UIState {
   /** Persisted: the user dismissed the Attack Chain Builder announcement
    *  ("don't show again") — keeps it from re-appearing on reload. */
   attackChainAnnounceDismissed: boolean;
+
+  /** Which metric ranks powers in the Attack Chain Builder — drives palette
+   *  order, bar/chip color intensity, and compactness weighting. */
+  chainPowerMetric: PowerMetric;
 
   /** Include proc damage in per-power DPS calculations */
   includeProcDamageInDPS: boolean;
@@ -420,6 +425,7 @@ interface UIActions {
   openAttackChainModal: () => void;
   closeAttackChainModal: () => void;
   dismissAttackChainAnnounce: () => void;
+  setChainPowerMetric: (metric: PowerMetric) => void;
   toggleIncludeProcDamageInDPS: () => void;
   toggleUseArcanaTime: () => void;
   setDamageDisplayMode: (mode: DamageDisplayMode) => void;
@@ -764,6 +770,7 @@ export const useUIStore = create<UIStore>()(
       enhancementToolsModalOpen: false,
       attackChainModalOpen: false,
       attackChainAnnounceDismissed: false,
+      chainPowerMetric: 'damage' as PowerMetric,
       includeProcDamageInDPS: true,
       useArcanaTime: true,
       damageDisplayMode: 'damage' as DamageDisplayMode,
@@ -982,6 +989,8 @@ export const useUIStore = create<UIStore>()(
 
       dismissAttackChainAnnounce: () =>
         set({ attackChainAnnounceDismissed: true }),
+
+      setChainPowerMetric: (metric) => set({ chainPowerMetric: metric }),
 
       toggleIncludeProcDamageInDPS: () =>
         set((state) => ({
@@ -1688,6 +1697,7 @@ export const useUIStore = create<UIStore>()(
         ruleOf5AlertEnabled: state.ruleOf5AlertEnabled,
         rechargeMidsStyle: state.rechargeMidsStyle,
         attackChainAnnounceDismissed: state.attackChainAnnounceDismissed,
+        chainPowerMetric: state.chainPowerMetric,
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };
