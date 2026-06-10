@@ -17,8 +17,9 @@
 
 import type { PowerDamageResult } from '@/utils/calculations';
 import { calculateArcanaTime, abbreviateDamageType } from '@/utils/calculations';
-import { findProcData, getProcEffects, calculateProcChance, interpolateProcDamage, arcToDegrees } from '@/data';
-import type { IOSetEnhancement, SelectedPower } from '@/types';
+import { arcToDegrees } from '@/data';
+import { calculateSlottedProcDamagePerCast } from '@/utils/calculations/power-proc-damage';
+import type { SelectedPower } from '@/types';
 import { useUIStore } from '@/stores';
 import { getDamageCap, calcThreeTier as calcThreeTierUtil } from './powerDisplayUtils';
 import { getConArrow } from './SharedPowerComponents';
@@ -472,32 +473,15 @@ function computeProcDamagePerActivation(props: DamageBlockProps): number {
   let total = incarnateProcDamage ?? 0;
   if (selectedPower?.slots) {
     const radius = effects.radius ?? 0;
-    const arcDegrees = radius > 0 ? (arcToDegrees(effects.arc) || 360) : 360;
-    const rawCastTime = effects.castTime ?? 0;
-    for (const slot of selectedPower.slots) {
-      if (!slot || slot.type !== 'io-set') continue;
-      const ioEnh = slot as IOSetEnhancement;
-      if (!ioEnh.isProc) continue;
-      const procData = findProcData(ioEnh.name, ioEnh.setName);
-      if (!procData || procData.ppm === null) continue;
-      // A foe-damage proc is a Damage effect with a value..valueMax range (Build
-      // Up's self-buff Damage carries a duration and no valueMax — excluded).
-      const dmg = getProcEffects(procData).find(
-        (e) => e.category === 'Damage' && e.value !== undefined && e.valueMax !== undefined,
-      );
-      if (!dmg || dmg.value === undefined || dmg.valueMax === undefined) continue;
-      const enhLevel = ioEnh.attuned ? buildLevel : (ioEnh.level ?? buildLevel);
-      const procDmg = interpolateProcDamage(dmg.value, dmg.valueMax, procData.levelRange, enhLevel);
-      const procChance = calculateProcChance(
-        procData.ppm,
-        effects.recharge ?? 0,
-        rawCastTime,
-        radius,
-        arcDegrees,
-        enhancementBonuses.recharge ?? 0,
-      );
-      total += procDmg * procChance;
-    }
+    total += calculateSlottedProcDamagePerCast({
+      slots: selectedPower.slots,
+      baseRecharge: effects.recharge ?? 0,
+      castTime: effects.castTime ?? 0,
+      radius,
+      arcDegrees: radius > 0 ? (arcToDegrees(effects.arc) || 360) : 360,
+      rechargeEnh: enhancementBonuses.recharge ?? 0,
+      buildLevel,
+    });
   }
   return total;
 }

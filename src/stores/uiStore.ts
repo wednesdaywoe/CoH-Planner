@@ -201,6 +201,10 @@ interface UIState {
   /** Attack Chain Builder modal open state */
   attackChainModalOpen: boolean;
 
+  /** Persisted: the user dismissed the Attack Chain Builder announcement
+   *  ("don't show again") — keeps it from re-appearing on reload. */
+  attackChainAnnounceDismissed: boolean;
+
   /** Include proc damage in per-power DPS calculations */
   includeProcDamageInDPS: boolean;
 
@@ -415,6 +419,7 @@ interface UIActions {
   closeEnhancementToolsModal: () => void;
   openAttackChainModal: () => void;
   closeAttackChainModal: () => void;
+  dismissAttackChainAnnounce: () => void;
   toggleIncludeProcDamageInDPS: () => void;
   toggleUseArcanaTime: () => void;
   setDamageDisplayMode: (mode: DamageDisplayMode) => void;
@@ -758,6 +763,7 @@ export const useUIStore = create<UIStore>()(
       procSettingsModalOpen: false,
       enhancementToolsModalOpen: false,
       attackChainModalOpen: false,
+      attackChainAnnounceDismissed: false,
       includeProcDamageInDPS: true,
       useArcanaTime: true,
       damageDisplayMode: 'damage' as DamageDisplayMode,
@@ -973,6 +979,9 @@ export const useUIStore = create<UIStore>()(
 
       closeAttackChainModal: () =>
         set({ attackChainModalOpen: false }),
+
+      dismissAttackChainAnnounce: () =>
+        set({ attackChainAnnounceDismissed: true }),
 
       toggleIncludeProcDamageInDPS: () =>
         set((state) => ({
@@ -1678,6 +1687,7 @@ export const useUIStore = create<UIStore>()(
         helpToastEnabled: state.helpToastEnabled,
         ruleOf5AlertEnabled: state.ruleOf5AlertEnabled,
         rechargeMidsStyle: state.rechargeMidsStyle,
+        attackChainAnnounceDismissed: state.attackChainAnnounceDismissed,
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };

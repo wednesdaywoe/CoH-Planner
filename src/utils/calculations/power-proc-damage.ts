@@ -1,0 +1,62 @@
+/**
+ * Slotted damage-proc contribution per cast — the single source for the
+ * "+proc" damage shown on the DamageBlock and folded into the Attack Chain
+ * builder's DPS. Extracted from DamageBlock so the two can't diverge.
+ *
+ * Proc damage is FLAT in CoH: it is NOT modified by damage IOs slotted in the
+ * power, nor by damage-strength buffs (Fury/Build Up/Aim/Musculature). A proc
+ * fires at its fixed scale-table value. Proc *chance* uses the power's base +
+ * slotted (local) recharge — global recharge never affects PPM rolls (it just
+ * makes the power fire more often).
+ */
+
+import type { Enhancement, IOSetEnhancement } from '@/types';
+import {
+  findProcData,
+  getProcEffects,
+  calculateProcChance,
+  interpolateProcDamage,
+} from '@/data';
+
+export interface SlottedProcDamageInput {
+  slots: (Enhancement | null)[];
+  /** Base recharge (s) — proc chance uses base + local recharge enh, not global. */
+  baseRecharge: number;
+  /** Raw cast/activation time (s) — NOT ArcanaTime. */
+  castTime: number;
+  /** AoE radius (ft); 0 for single-target. */
+  radius: number;
+  /** Cone arc already in DEGREES (callers convert from raw arc themselves). */
+  arcDegrees: number;
+  /** Local slotted recharge enhancement as a fraction (e.g. 0.95). */
+  rechargeEnh: number;
+  /** Character level used to interpolate proc damage. */
+  buildLevel: number;
+}
+
+/**
+ * Sum of `chance × damage` over every slotted foe-damage proc in the power —
+ * the expected proc damage added to one cast. Returns 0 when nothing procs.
+ */
+export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput): number {
+  const { slots, baseRecharge, castTime, radius, arcDegrees, rechargeEnh, buildLevel } = input;
+  let total = 0;
+  for (const slot of slots) {
+    if (!slot || slot.type !== 'io-set') continue;
+    const io = slot as IOSetEnhancement;
+    if (!io.isProc) continue;
+    const procData = findProcData(io.name, io.setName);
+    if (!procData || procData.ppm === null) continue;
+    // A foe-damage proc is a Damage effect with a value..valueMax range (Build
+    // Up's self-buff Damage carries a duration and no valueMax — excluded).
+    const dmg = getProcEffects(procData).find(
+      (e) => e.category === 'Damage' && e.value !== undefined && e.valueMax !== undefined,
+    );
+    if (!dmg || dmg.value === undefined || dmg.valueMax === undefined) continue;
+    const enhLevel = io.attuned ? buildLevel : (io.level ?? buildLevel);
+    const procDmg = interpolateProcDamage(dmg.value, dmg.valueMax, procData.levelRange, enhLevel);
+    const procChance = calculateProcChance(procData.ppm, baseRecharge, castTime, radius, arcDegrees, rechargeEnh);
+    total += procDmg * procChance;
+  }
+  return total;
+}
