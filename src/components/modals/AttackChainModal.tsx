@@ -56,6 +56,19 @@ function barFill(type: ChainPower['type'], rel: number): string {
 function cdFill(type: ChainPower['type']): string {
   return `hsl(${TYPE_HUE[type]}, 38%, 24%)`;
 }
+/** Translucent fill of the bar color — tints palette/rotation chips with the
+ *  power's damage color (the visual link to its timeline bar) while keeping the
+ *  label readable. */
+function chipBg(type: ChainPower['type'], rel: number): string {
+  // Stronger saturation + ~45% opacity so chips read as clearly colored (and
+  // the damage gradient is visible) while the dark base keeps the label legible.
+  return `hsla(${TYPE_HUE[type]}, ${45 + rel * 45}%, ${60 - rel * 26}%, 0.45)`;
+}
+
+/** Drop-indicator color for the rotation strip. Deliberately NOT a type hue
+ *  (purple/green/amber) so the insert cursor + held-chip ring read as UI, not
+ *  a power category. */
+const CURSOR_COLOR = '#f1f5f9';
 
 function fmt(n: number, d = 1): string {
   return n.toFixed(d);
@@ -146,6 +159,14 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const addPower = (pi: number) => setSequence((s) => [...s, pi]);
   const removeBar = (seq: number) => setSequence((s) => s.filter((_, i) => i !== seq));
   const clear = () => setSequence([]);
+  const reorderSeq = (from: number, to: number) =>
+    setSequence((s) => {
+      if (from === to || from < 0 || to < 0 || from >= s.length || to >= s.length) return s;
+      const a = [...s];
+      const [moved] = a.splice(from, 1);
+      a.splice(to, 0, moved);
+      return a;
+    });
 
   // Sort palette: attacks (by damage desc) first, then utility/buff.
   const palette = useMemo(() => {
@@ -158,10 +179,10 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   }, [powers]);
 
   const usedPis = useMemo(() => [...new Set(activations.map((a) => a.pi))], [activations]);
-  const maxDpa = useMemo(
-    () => Math.max(0, ...usedPis.map((pi) => powerDpa(powers[pi]))),
-    [usedPis, powers],
-  );
+  // Damage-intensity reference over the WHOLE build (not just the chain) so a
+  // power's color is stable and identical across the palette, rotation strip,
+  // and timeline — the visual link between the three areas.
+  const maxDpa = useMemo(() => Math.max(0, ...powers.map((p) => powerDpa(p))), [powers]);
 
   const cycleSec = result?.cycleSec ?? 0;
   const maxCdEnd = activations.length
@@ -232,8 +253,12 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                 <button
                   key={p.id}
                   onClick={() => addPower(i)}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-gray-700 bg-gray-800 hover:border-gray-500 text-gray-200 text-xs"
-                  style={{ borderLeft: `2px solid ${barFill(p.type, 0.75)}` }}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-gray-700 hover:border-gray-500 text-gray-200 text-xs"
+                  style={{
+                    borderLeftWidth: 2,
+                    borderLeftColor: barFill(p.type, maxDpa > 0 ? powerDpa(p) / maxDpa : 0),
+                    background: chipBg(p.type, maxDpa > 0 ? powerDpa(p) / maxDpa : 0),
+                  }}
                   title={`${p.name} · cast ${fmt(p.cast, 2)}s · rech ${fmt(p.baseRecharge, 1)}s · ${fmt(powerDpa(p), 0)} dmg`}
                 >
                   <span>{p.name}</span>
@@ -243,6 +268,22 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
             </div>
           )}
         </div>
+
+        {/* Rotation order — drag to reorder the cast sequence */}
+        {sequence.length > 0 && (
+          <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-3">
+            <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-500 mb-2">
+              Rotation order — drag to reorder
+            </div>
+            <RotationStrip
+              sequence={sequence}
+              powers={powers}
+              maxDpa={maxDpa}
+              onReorder={reorderSeq}
+              onRemove={removeBar}
+            />
+          </div>
+        )}
 
         {/* Timeline */}
         <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-3 overflow-hidden">
@@ -481,6 +522,133 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         </div>
       </div>
     </Modal>
+  );
+}
+
+/**
+ * The cast sequence as draggable chips (mouse + touch). On drag the held chip
+ * gets a bright ring and a thick insert-cursor (a vertical line) snaps between
+ * chips to preview the drop position. The list does NOT shuffle until release —
+ * less visually noisy than a live re-sort. The greedy packer (replayChain)
+ * re-schedules once the new order is committed on drop.
+ */
+function RotationStrip({
+  sequence,
+  powers,
+  maxDpa,
+  onReorder,
+  onRemove,
+}: {
+  sequence: number[];
+  powers: ChainPower[];
+  maxDpa: number;
+  onReorder: (from: number, to: number) => void;
+  onRemove: (idx: number) => void;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const stateRef = useRef<{ from: number; insertAt: number } | null>(null);
+  const [drag, setDrag] = useState<
+    { from: number; insertAt: number; left: number; top: number; height: number } | null
+  >(null);
+
+  const startDrag = (e: React.PointerEvent, idx: number) => {
+    e.preventDefault();
+    stateRef.current = { from: idx, insertAt: idx };
+
+    // Find the insert gap (0..N) from the pointer and position the cursor at
+    // that chip's leading edge. The cursor is absolutely positioned so it never
+    // shifts the chips (no measurement jitter); chips don't move until drop.
+    const update = (clientX: number) => {
+      const cont = containerRef.current;
+      const st = stateRef.current;
+      if (!cont || !st) return;
+      const chips = Array.from(cont.querySelectorAll('[data-chip]')) as HTMLElement[];
+      if (chips.length === 0) return;
+      const contRect = cont.getBoundingClientRect();
+      let insertAt = 0;
+      for (const chip of chips) {
+        const r = chip.getBoundingClientRect();
+        if (clientX > r.left + r.width / 2) insertAt++;
+      }
+      const atEnd = insertAt >= chips.length;
+      const r = chips[atEnd ? chips.length - 1 : insertAt].getBoundingClientRect();
+      st.insertAt = insertAt;
+      setDrag({
+        from: st.from,
+        insertAt,
+        left: (atEnd ? r.right + 1 : r.left - 3) - contRect.left,
+        top: r.top - contRect.top,
+        height: r.height,
+      });
+    };
+
+    update(e.clientX);
+    const move = (ev: PointerEvent) => update(ev.clientX);
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      const st = stateRef.current;
+      stateRef.current = null;
+      setDrag(null);
+      if (st) {
+        // Convert the gap index to a target index after removing the source.
+        const to = st.insertAt > st.from ? st.insertAt - 1 : st.insertAt;
+        onReorder(st.from, to);
+      }
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <div ref={containerRef} className="relative flex flex-wrap items-center gap-1.5 select-none">
+      {sequence.map((pi, idx) => {
+        const p = powers[pi];
+        if (!p) return null;
+        const rel = maxDpa > 0 ? powerDpa(p) / maxDpa : 0;
+        const held = drag?.from === idx;
+        return (
+          <div
+            key={idx}
+            data-chip
+            onPointerDown={(e) => startDrag(e, idx)}
+            className="group inline-flex items-center gap-1.5 pl-2 pr-1.5 py-1 rounded border border-gray-700 text-xs touch-none cursor-grab active:cursor-grabbing"
+            style={{
+              borderLeftWidth: 2,
+              borderLeftColor: barFill(p.type, rel),
+              background: chipBg(p.type, rel),
+              ...(held && { boxShadow: `0 0 0 2px ${CURSOR_COLOR}, 0 3px 8px rgba(0,0,0,0.45)`, zIndex: 1 }),
+            }}
+          >
+            <span className="text-gray-500 text-[10px] tabular-nums">{idx + 1}</span>
+            <span className="text-gray-200">{p.name}</span>
+            <button
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={() => onRemove(idx)}
+              className="text-gray-500 hover:text-red-400 opacity-50 group-hover:opacity-100 text-[10px] leading-none px-0.5"
+              title="Remove from rotation"
+            >
+              ✕
+            </button>
+          </div>
+        );
+      })}
+      {drag && (
+        <div
+          style={{
+            position: 'absolute',
+            left: drag.left - 1,
+            top: drag.top,
+            width: 4,
+            height: drag.height,
+            background: CURSOR_COLOR,
+            borderRadius: 2,
+            boxShadow: `0 0 6px ${CURSOR_COLOR}`,
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+    </div>
   );
 }
 
