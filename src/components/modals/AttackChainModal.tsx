@@ -10,7 +10,16 @@
 
 import { useMemo, useRef, useState } from 'react';
 import { Modal } from './Modal';
-import { useBuildStore } from '@/stores';
+import {
+  useBuildStore,
+  useScourgeActive,
+  useContainmentActive,
+  useCriticalHitsActive,
+  useStalkerHidden,
+  useStalkerTeamSize,
+  useStalkerCritActive,
+  useSentinelCritActive,
+} from '@/stores';
 import { calculateCharacterTotals } from '@/utils/calculations';
 import {
   buildChainPowers,
@@ -55,14 +64,35 @@ function fmt(n: number, d = 1): string {
 export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const build = useBuildStore((s) => s.build);
 
+  // AT hit-time mechanic toggles (crit / scourge / containment / …) — same
+  // sources the power tooltips use, so the chain DPS matches them.
+  const scourgeActive = useScourgeActive();
+  const containmentActive = useContainmentActive();
+  const criticalHitsActive = useCriticalHitsActive();
+  const stalkerHidden = useStalkerHidden();
+  const stalkerTeamSize = useStalkerTeamSize();
+  const stalkerCritActive = useStalkerCritActive();
+  const sentinelCritActive = useSentinelCritActive();
+
   const { powers, endParams, buildGlobalRech } = useMemo(() => {
     const calc = calculateCharacterTotals(build);
+    const hasHide = build.secondary.powers.some((p) => p.internalName === 'Hide');
+    const mechCtx = {
+      archetypeId: build.archetype?.id ?? undefined,
+      containmentActive,
+      scourgeActive,
+      criticalHitsActive,
+      stalkerCritActive,
+      sentinelCritActive,
+      effectiveHidden: stalkerHidden && hasHide,
+      stalkerTeamSize,
+    };
     return {
-      powers: buildChainPowers(build, calc.globalBonuses),
+      powers: buildChainPowers(build, calc.globalBonuses, mechCtx),
       endParams: getEnduranceParams(calc.globalBonuses),
       buildGlobalRech: getBuildGlobalRecharge(calc.globalBonuses),
     };
-  }, [build]);
+  }, [build, containmentActive, scourgeActive, criticalHitsActive, stalkerCritActive, sentinelCritActive, stalkerHidden, stalkerTeamSize]);
 
   const [sequence, setSequence] = useState<number[]>([]);
   const [extraRech, setExtraRech] = useState(0);

@@ -17,6 +17,7 @@ import {
 } from '@/utils/calculations';
 import { calcThreeTier, convertGlobalBonusesToAspects } from '@/components/info/powerDisplayUtils';
 import { calculateSlottedProcDamagePerCast } from './power-proc-damage';
+import { atMechanicMultiplier, type AtMechanicContext } from './power-at-mechanics';
 import type { ChainPower, ChainPowerType, EnduranceParams } from './attack-chain';
 
 type CalcResult = ReturnType<typeof calculateCharacterTotals>;
@@ -25,6 +26,8 @@ type GlobalBonuses = CalcResult['globalBonuses'];
 interface Candidate {
   power: SelectedPower;
   powersetName: string;
+  /** Powerset id (e.g. "scrapper/dark-melee") — gates the AT crit mechanic. */
+  powersetId: string;
   category?: 'PRIMARY' | 'SECONDARY';
   /** stable bucket prefix so ids don't collide across sets/pools. */
   bucket: string;
@@ -37,6 +40,7 @@ function collectCandidates(build: Build): Candidate[] {
   const add = (
     powers: SelectedPower[] | undefined,
     powersetName: string,
+    powersetId: string,
     bucket: string,
     category?: 'PRIMARY' | 'SECONDARY',
   ) => {
@@ -44,22 +48,26 @@ function collectCandidates(build: Build): Candidate[] {
       if (p.powerType !== 'Click') return;
       if (p.isAutoGranted) return;
       if (p.stats?.castTime === undefined) return;
-      out.push({ power: p, powersetName, category, bucket });
+      out.push({ power: p, powersetName, powersetId, category, bucket });
     });
   };
-  add(build.primary?.powers, build.primary?.name ?? 'Primary', 'pri', 'PRIMARY');
-  add(build.secondary?.powers, build.secondary?.name ?? 'Secondary', 'sec', 'SECONDARY');
-  build.pools?.forEach((pool, i) => add(pool.powers, pool.name ?? 'Pool', `pool${i}`));
-  add(build.epicPool?.powers, build.epicPool?.name ?? 'Epic', 'epic');
+  add(build.primary?.powers, build.primary?.name ?? 'Primary', build.primary?.id ?? '', 'pri', 'PRIMARY');
+  add(build.secondary?.powers, build.secondary?.name ?? 'Secondary', build.secondary?.id ?? '', 'sec', 'SECONDARY');
+  build.pools?.forEach((pool, i) => add(pool.powers, pool.name ?? 'Pool', pool.id ?? '', `pool${i}`));
+  add(build.epicPool?.powers, build.epicPool?.name ?? 'Epic', build.epicPool?.id ?? '', 'epic');
   return out;
 }
 
 /** Build the per-power chain data for the current build. */
-export function buildChainPowers(build: Build, globalBonuses: GlobalBonuses): ChainPower[] {
+export function buildChainPowers(
+  build: Build,
+  globalBonuses: GlobalBonuses,
+  mechCtx: AtMechanicContext,
+): ChainPower[] {
   const globalForCalc = convertGlobalBonusesToAspects(globalBonuses);
   const archetypeId = build.archetype?.id ?? undefined;
 
-  return collectCandidates(build).map(({ power, powersetName, category, bucket }) => {
+  return collectCandidates(build).map(({ power, powersetName, powersetId, category, bucket }) => {
     const enh = calculatePowerEnhancementBonuses(
       { name: power.name, slots: power.slots },
       build.level,
@@ -71,9 +79,9 @@ export function buildChainPowers(build: Build, globalBonuses: GlobalBonuses): Ch
     const cast = calculateArcanaTime(power.stats?.castTime ?? 0);
     const endCost = calcThreeTier('endurance', baseEnd, enh, globalForCalc).final;
 
-    // Direct + DoT damage, fully enhanced + global +damage. AT crit mechanics
-    // (scourge/containment/fury/crits) aren't folded in yet — those are
-    // toggle-gated and a separate pass.
+    // Direct + DoT damage, fully enhanced + global +damage (which already folds
+    // in additive strength buffs like Brute Fury / Defender Vigilance). The
+    // multiplicative AT mechanics (crit/scourge/containment) are applied below.
     const hasDamage = !!power.damage || !!power.effects?.damage;
     const dmg = hasDamage
       ? calculatePowerDamage(
@@ -117,13 +125,18 @@ export function buildChainPowers(build: Build, globalBonuses: GlobalBonuses): Ch
       buildLevel: build.level,
     });
 
+    // AT hit-time multiplier (crit / scourge / containment / assassination /
+    // opportunity) — applies to base damage + DoT, NOT procs. Single-sourced
+    // with the InfoPanel via resolveAtMechanic. 1.0 when no mechanic is active.
+    const mechMult = atMechanicMultiplier(powersetId, mechCtx);
+
     // Trailing marks only for after-cast DoT; in-cast DoT is already in `damage`.
     const dot = dotData && !dotInCast
-      ? { ticks: dotData.ticks, period: dotData.tickRate, perTick: dotData.final }
+      ? { ticks: dotData.ticks, period: dotData.tickRate, perTick: dotData.final * mechMult }
       : null;
-    // Always-counted damage = hit + procs + any in-cast DoT (can't be
-    // truncated). After-cast DoT ticks are added per-tick by the chain math.
-    const damage = directHit + procDmg + (dotInCast ? dotTotal : 0);
+    // Always-counted damage = (hit + in-cast DoT) × AT mult + procs. After-cast
+    // DoT ticks (already × mult) are added per-tick by the chain math.
+    const damage = mechMult * (directHit + (dotInCast ? dotTotal : 0)) + procDmg;
     const type: ChainPowerType = damage > 0 || dot ? 'attack' : 'utility';
 
     return {

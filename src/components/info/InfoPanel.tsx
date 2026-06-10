@@ -30,7 +30,8 @@ import {
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
+import { resolveAtMechanic } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
@@ -670,54 +671,39 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     [effectivePower],
   );
 
-  // Calculate archetype inherent damage bonus info (Containment, Scourge, Fury, etc.)
+  // Archetype hit-time damage multiplier (Containment, Scourge, crits, …).
+  // ONLY hit-time multipliers that sit OUTSIDE the damage cap belong here.
+  // Additive damage-strength buffs (Brute Fury, Defender Vigilance) are already
+  // folded into globalBonuses.damage by calculateCharacterTotals (step 9.1), so
+  // they're in the capped Final column — re-applying them would double-count.
+  // Single-sourced with the Attack Chain builder via resolveAtMechanic.
   const inherentInfo = useMemo(() => {
     if (!calculatedDamage) return null;
 
-    const isController = archetypeId === 'controller';
-    const isCorruptor = archetypeId === 'corruptor';
-    const isScrapper = archetypeId === 'scrapper';
-    const isStalker = archetypeId === 'stalker';
-    const isSentinel = archetypeId === 'sentinel';
+    const mech = resolveAtMechanic(powerSet, {
+      archetypeId: archetypeId ?? undefined,
+      containmentActive,
+      scourgeActive,
+      criticalHitsActive,
+      stalkerCritActive,
+      sentinelCritActive,
+      effectiveHidden,
+      stalkerTeamSize,
+    });
+    if (!mech) return null;
 
-    // This column is ONLY for hit-time damage multipliers that sit OUTSIDE the
-    // damage cap (crits, Scourge, Containment). Additive damage-strength buffs
-    // — Brute Fury, Defender Vigilance, etc. — are already folded into
-    // globalBonuses.damage by calculateCharacterTotals (step 9.1), so they're
-    // in the capped Final column. Re-applying them here would double-count.
-    const showContainment = isController && isControllerPower(powerSet) && containmentActive;
-    const showScourge = isCorruptor && isCorruptorAttackPower(powerSet) && scourgeActive;
-    const showCriticalHits = isScrapper && isScrapperAttackPower(powerSet) && criticalHitsActive;
-    const showAssassination = isStalker && isStalkerAttackPower(powerSet) && stalkerCritActive;
-    const showOpportunityCrit = isSentinel && isSentinelAttackPower(powerSet) && sentinelCritActive;
+    const header = mech.kind === 'scourge' ? 'w/ Scourge'
+      : mech.kind === 'crit' ? 'w/ Crit'
+      : mech.kind === 'assassination' ? (effectiveHidden ? 'w/ Crit' : 'w/ Assassin')
+      : mech.kind === 'containment' ? 'w/ Contain'
+      : 'w/ Crit'; // opportunity
 
-    const hasInherent = showContainment || showScourge || showCriticalHits || showAssassination || showOpportunityCrit;
-    if (!hasInherent) return null;
-
-    const header = showScourge ? 'w/ Scourge'
-      : showCriticalHits ? 'w/ Crit'
-      : showAssassination ? (effectiveHidden ? 'w/ Crit' : 'w/ Assassin')
-      : showContainment ? 'w/ Contain'
-      : showOpportunityCrit ? 'w/ Crit'
-      : 'Final';
-
-    const color = showScourge ? 'text-sk-magenta'
-      : showCriticalHits ? 'text-sk-magenta'
-      : showAssassination ? 'text-sk-magenta'
-      : showContainment ? 'text-sk-magenta'
-      : showOpportunityCrit ? 'text-sk-magenta'
-      : 'text-amber-400';
-
-    const applyBonus = (damage: number) => {
-      if (showScourge) return calculateScourgeDamage(damage);
-      if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
-      if (showAssassination) return calculateAssassinationDamage(damage, effectiveHidden, stalkerTeamSize);
-      if (showContainment) return calculateContainmentDamage(damage, true);
-      if (showOpportunityCrit) return calculateOpportunityCritDamage(damage);
-      return damage;
+    return {
+      header,
+      color: 'text-sk-magenta',
+      applyBonus: (damage: number) => damage * mech.multiplier,
+      showContainment: mech.kind === 'containment',
     };
-
-    return { header, color, applyBonus, showContainment };
   }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive,
       criticalHitsActive, effectiveHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive]);
 
