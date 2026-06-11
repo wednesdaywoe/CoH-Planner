@@ -24,7 +24,7 @@ const AT_MECHANIC_KEYS: Record<string, readonly string[]> = {
   brute: ['furyLevel'],
   stalker: ['stalkerHidden', 'stalkerTeamSize', 'stalkerCritActive'],
   scrapper: ['criticalHitsActive'],
-  sentinel: ['opportunityLevel', 'sentinelCritActive'],
+  sentinel: ['sentinelCritActive'],
   controller: ['containmentActive'],
   dominator: ['dominationActive'],
   corruptor: ['scourgeActive'],

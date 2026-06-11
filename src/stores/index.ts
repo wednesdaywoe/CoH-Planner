@@ -41,7 +41,6 @@ export {
   useStalkerTeamSize,
   useStalkerCritActive,
   useContainmentActive,
-  useOpportunityLevel,
   useSentinelCritActive,
   usePowerViewMode,
   useTargetsHit,
