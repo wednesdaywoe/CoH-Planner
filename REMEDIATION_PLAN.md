@@ -106,10 +106,13 @@ The audit's own findings were re-verified against source and hold up. One materi
   - DEAD-11 ExportImportModal external-import branch: removed (render→game-as-final-else, footer, handlers, state, imports, 'external' type member). 1636→1478 lines. (9bee12c17)
   - **Dead-code sweep is COMPLETE — all DEAD-1 through DEAD-12 resolved.**
 
-### Still pending
-- **FLOW-2/3/4** — behavior changes, not dead-code: Header server-switch persist envelope → store action; undo/redo restore calc-affecting `ui` state; persist `sentinelCritActive` consistently (note: FLOW-4 interacts with the now-removed `opportunityLevel` persistence).
-- **MSOT-4 Step 2** DIVERGENT (140): needs in-game numbers or converter fixes.
-- `arc` radians-vs-degrees: fix site (converter vs consumer) + rationale.
+- **FLOW-2/3/4 (DONE)** — (15036557f): FLOW-2 removed the redundant server-switch persist hand-write (the canonical onRehydrate URL-param sync already does it correctly — the hand-write's pre-set was suppressing it and using a malformed partial archetype); FLOW-3 `_restoreBuild` now syncs `ui.selectedBranch` via `detectBranch` (kheldianForm lives on the build, already restored); FLOW-4 persist `stalkerCritActive`+`sentinelCritActive` for parity with the other AT toggles.
+
+### Still pending (blocked / needs a dedicated pass)
+- **MSOT-4 Step 2** DIVERGENT (140): needs in-game Brainstorm numbers or a converter regen pass.
+- `arc` radians-vs-degrees: fix site (converter vs consumer) + rationale — part of the MSOT-4 Step 2 converter work.
+
+**Everything else in this plan is complete.** Phase 1 (correctness), Phase 2 (perf/state), and Phase 3 (full dead-code sweep + FLOW fixes) are all done and committed on `audit-and-remediation`.
 
 ## What's explicitly NOT in scope
 The audit's "Verified-clean" list (ED, caps, Build/Power types, identity/ownership, `build.sets`, the wire-format funnel) — don't re-investigate. Python companion tools were out of the original audit scope.
