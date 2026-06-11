@@ -1532,17 +1532,18 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Stealth Radius — highest-source-wins, not additive. Per CoH game
-    // mechanics, multiple stealth toggles (Stealth + Super Speed +
-    // Infiltration etc.) do NOT stack their radii — only the largest
-    // single source applies. Track contributors in the breakdown so the
-    // user can see why the displayed total isn't the sum, but commit
-    // only `Math.max` to the global stat.
+    // Stealth Radius — additive across all sources. Per CoH game mechanics,
+    // StealthRadius grants from different powers AND IO procs stack (Shinobi-Iri
+    // + Super Speed + a Celerity/Unbounded Leap +Stealth IO, …): that's why a
+    // Stealth IO is slotted on top of a stealth power to reach the invisibility
+    // cap. (You can't slot two copies of the same power, so "a power doesn't
+    // stack with itself" needs no special handling here.) PvE and PvP radii are
+    // tracked independently — each power adds its own value to each total.
     if (effects.stealth) {
       if (effects.stealth.stealthPvE !== undefined) {
         const val = resolveScaledEffect(effects.stealth.stealthPvE, archetypeId, buildLevel);
         if (val > 0) {
-          global.stealthRadiusPvE = Math.max(global.stealthRadiusPvE, val);
+          global.stealthRadiusPvE += val;
           addToBreakdown(breakdown, 'stealthRadiusPvE', {
             name: power.name,
             value: val,
@@ -1553,7 +1554,7 @@ function applyActivePowerBonuses(
       if (effects.stealth.stealthPvP !== undefined) {
         const val = resolveScaledEffect(effects.stealth.stealthPvP, archetypeId, buildLevel);
         if (val > 0) {
-          global.stealthRadiusPvP = Math.max(global.stealthRadiusPvP, val);
+          global.stealthRadiusPvP += val;
           addToBreakdown(breakdown, 'stealthRadiusPvP', {
             name: power.name,
             value: val,
@@ -1894,6 +1895,7 @@ function collectAlwaysOnProcs(build: Build): SlottedProc[] {
 function applySingleProcEffect(
   category: string,
   value: number | undefined,
+  valueMax: number | undefined,
   effectType: string | undefined,
   sourceName: string,
   global: GlobalBonuses,
@@ -2090,6 +2092,46 @@ function applySingleProcEffect(
       });
       break;
 
+    case 'Stealth': {
+      // Stealth radius is additive across all sources (see the active-power
+      // stealth handling earlier in this module): an IO proc stacks on top of
+      // any stealth power toward the invisibility cap. A stealth ProcEffect
+      // carries the PvE radius in `value` and the PvP radius in `valueMax`, but
+      // stealth IOs (Celerity, Unbounded Leap, Freebird, …) split these across
+      // two effects:
+      //   { value: 30 }                 → PvE-only  (30 ft)
+      //   { value: 300, valueMax: 300 } → PvP-only  (value duplicates valueMax)
+      // Guard the PvE add on `value !== valueMax` so the duplicated PvP
+      // magnitude never leaks into the PvE radius.
+      if (valueMax !== undefined) {
+        global.stealthRadiusPvP += valueMax;
+        addToBreakdown(breakdown, 'stealthRadiusPvP', {
+          name: sourceName,
+          value: valueMax,
+          type: 'proc',
+          powerName,
+        });
+        if (value !== valueMax) {
+          global.stealthRadiusPvE += value;
+          addToBreakdown(breakdown, 'stealthRadiusPvE', {
+            name: sourceName,
+            value,
+            type: 'proc',
+            powerName,
+          });
+        }
+      } else {
+        global.stealthRadiusPvE += value;
+        addToBreakdown(breakdown, 'stealthRadiusPvE', {
+          name: sourceName,
+          value,
+          type: 'proc',
+          powerName,
+        });
+      }
+      break;
+    }
+
     // Other categories (Damage, Control, Debuff, etc.) are not "always-on" stats
     default:
       break;
@@ -2177,7 +2219,7 @@ function applyProcBonuses(
           : trackBonus(tracking, stat, eff.value, sourceName, proc.powerName);
 
       if (allowed) {
-        applySingleProcEffect(eff.category, eff.value, eff.effectType, sourceName, global, breakdown, proc.powerName);
+        applySingleProcEffect(eff.category, eff.value, eff.valueMax, eff.effectType, sourceName, global, breakdown, proc.powerName);
       } else if (stat) {
         // Rule of 5 rejected — add a capped entry so it appears in the tooltip
         addToBreakdown(breakdown, stat, {
