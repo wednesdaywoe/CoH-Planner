@@ -12,18 +12,5 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "description": "The Radiant Strike is a slow melee attack, but makes up for it with superior damage. Radiant Strike releases Kheldian light on impact, which can Knock Back foes, bring down fliers, and reduce a target's Defense.  Damage: High. Recharge: Moderate.",
-  "targetType": "Foe (Alive)",
-  "effects": {
-    "slow": {
-      "fly": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 30,
-    "durations": {
-      "defenseDebuff": 6,
-      "slow": 30
-    }
-  }
+  "targetType": "Foe (Alive)"
 };

@@ -11,7 +11,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "description": "When you toggle on Thermal Shield, you emit tendrils of Kheldian energy that give you resistance to Fire and Cold damage.  Recharge: Very Fast.",
-  "stats": {},
-  "effects": {}
+  "description": "When you toggle on Thermal Shield, you emit tendrils of Kheldian energy that give you resistance to Fire and Cold damage.  Recharge: Very Fast."
 };

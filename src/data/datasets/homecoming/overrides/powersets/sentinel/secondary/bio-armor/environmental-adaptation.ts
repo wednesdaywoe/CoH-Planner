@@ -10,37 +10,4 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  "effects": {
-    "defenseBuff": {
-      "fire": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "hold": 0.75,
-      "mezResistance": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
-      "immobilize": 0.75
-    }
-  }
-};
+export const overrides: Partial<Power> = {};

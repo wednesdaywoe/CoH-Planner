@@ -13,18 +13,5 @@ import type { Power } from '@/types';
 export const overrides: Partial<Power> = {
   "description": "White Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. White Dwarf Smite can also bring down fliers, and reduce their defense. This power is only available while in White Dwarf Form.  Damage: Light. Recharge: Fast.",
   "targetType": "Foe (Alive)",
-  "requires": "White Dwarf",
-  "effects": {
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 30,
-    "durations": {
-      "defenseDebuff": 10,
-      "slow": 30
-    }
-  }
+  "requires": "White Dwarf"
 };

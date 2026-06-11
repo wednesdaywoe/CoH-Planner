@@ -11,7 +11,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "description": "When you toggle on Penumbral Shield, you become highly resistant to Fire, Cold, and Toxic damage.  Recharge: Very Fast.",
-  "stats": {},
-  "effects": {}
+  "description": "When you toggle on Penumbral Shield, you become highly resistant to Fire, Cold, and Toxic damage.  Recharge: Very Fast."
 };

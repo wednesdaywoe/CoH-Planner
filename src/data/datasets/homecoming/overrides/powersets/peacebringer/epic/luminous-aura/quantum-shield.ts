@@ -11,7 +11,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "description": "When you toggle on Quantum Shield, you become highly resistant to Energy and Negative damage.  Recharge: Very Fast.",
-  "stats": {},
-  "effects": {}
+  "description": "When you toggle on Quantum Shield, you become highly resistant to Energy and Negative damage.  Recharge: Very Fast."
 };

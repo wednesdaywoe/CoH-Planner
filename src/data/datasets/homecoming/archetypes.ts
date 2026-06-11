@@ -14,13 +14,16 @@ import { ARCHETYPE_BINARY_STATS } from './generated/archetype-stats.generated';
 // capping Scrapper/Tanker/Sentinel/Corruptor/Stalker at 400% (they are 500%).
 // The remaining scalars (damageModifier, buffDebuffModifier, baseEndurance,
 // baseRecovery, defenseCap) stay hand-curated. NOTE: damageModifier and
-// buffDebuffModifier are effectively VESTIGIAL — the calc reads the binary
-// per-category named_tables (at-tables.ts) for every effect that carries a
-// {scale, table} pair, which today is all of them; these scalars are only the
-// fallback for hypothetical table-less effects (none exist in the current
-// export). They aren't single binary quantities (each abstracts many per-category
-// tables), so they can't be cleanly binary-sourced, and some are stale (the calc
-// just never reads them). Tanker's was corrected as it's the one cleanly
+// buffDebuffModifier are a LIVE table-less fallback, NOT vestigial — `damage.ts`
+// reads buffDebuffModifier (calculateBuffDebuffValue, damage.ts:864) and
+// damageModifier (damage.ts:278) for effects with no {scale, table} pair, and
+// several UI surfaces (InfoPanel, PowerInfoTooltip, CompareSlottingModal,
+// DetailedTotalsModal) read the effective buff/debuff modifier. Most effects DO
+// carry a {scale, table} pair and use the binary per-category named_tables
+// (at-tables.ts), so the fallback fires only for table-less effects — but it
+// does fire, so keep these maintained. They aren't single binary quantities
+// (each abstracts many per-category tables), so they can't be cleanly binary-
+// sourced, and some may be stale. Tanker's was corrected as the one cleanly
 // confirmable case; the others are left as-is. See ARCHETYPE-DEFS-BINARY-SOURCING.md.
 
 export const ARCHETYPES: ArchetypeRegistry = {

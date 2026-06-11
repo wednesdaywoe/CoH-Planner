@@ -16,10 +16,5 @@ export const overrides: Partial<Power> = {
     "Melee Damage",
     "Threat Duration",
     "Universal Damage Sets"
-  ],
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.32,
-    "table": "Melee_Damage"
-  }
+  ]
 };

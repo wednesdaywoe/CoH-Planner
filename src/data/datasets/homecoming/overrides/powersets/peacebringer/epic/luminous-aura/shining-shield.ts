@@ -11,7 +11,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "description": "When you toggle on your Shining Shield, you create an energy barrier that grants you high resistance to Smashing and Lethal damage.  Recharge: Very Fast.",
-  "stats": {},
-  "effects": {}
+  "description": "When you toggle on your Shining Shield, you create an energy barrier that grants you high resistance to Smashing and Lethal damage.  Recharge: Very Fast."
 };
