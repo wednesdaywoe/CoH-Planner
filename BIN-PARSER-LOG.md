@@ -730,3 +730,25 @@ effect-registry already renders `slow` as "-Speed"). Broad fix — `slow` went f
 now carries both halves of its slow in the `cryoammunition` conditional. Purely
 additive (every other effect key net-preserved; self-penalty Granite-style slows
 unchanged).
+
+## ⛏️ Summon `copy_boosts` not extracted — pending (found 2026-06-11)
+
+**Symptom.** During the MSOT-4 override-retirement campaign, the only thing keeping
+Electrical Affinity's **Discharge** override alive (controller + corruptor) was
+`summon.copyBoosts: true` — a hand value with no binary backing. The exported
+summon template carries `entity_def` / `priority_list` but **no `copy_boosts`
+flag**, so `summon.copyBoosts` is `undefined` in generated and the override
+supplies it by hand.
+
+**Why it matters.** `copyBoosts` is *consumed* — `shouldApplyEnhancements`
+(InfoPanel, PowerInfoTooltip, pet-damage.ts) uses it to decide whether a summoned
+pet applies the caster's enhancement/global damage bonuses. So a missing flag
+silently changes pet DPS. This is a §1 "captured-but-unused" gap on the **parser**
+side: the binary summon AttribMod almost certainly has the copy-boosts/
+copy-creator-mods flag; the parser reads past it.
+
+**Fix direction (not done).** Capture the summon flag(s) in the powers parser
+(`_powers.py` summon/entity handling) and emit `copy_boosts` on the summon export,
+then drop the Discharge overrides (§0 — prefer data-driven over hand overrides).
+Until then, the Discharge `copyBoosts` overrides are a legitimate, intentional
+correction — do NOT retire them.
