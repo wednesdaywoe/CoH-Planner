@@ -34,6 +34,16 @@ interface Candidate {
   bucket: string;
 }
 
+// Base timing/cost reads that handle the data-shape split: primary/secondary
+// powers carry these under `stats`, but pool / epic / patron powers (built by
+// power-pools.ts / epic-pools.ts, which rename activationTime → castTime) carry
+// them under `effects` with no `stats` block. Read `stats` first, then `effects`.
+const powerCastTime = (p: SelectedPower): number => p.stats?.castTime ?? p.effects?.castTime ?? 0;
+const powerBaseRecharge = (p: SelectedPower): number => p.stats?.recharge ?? p.effects?.recharge ?? 0;
+const powerEndCost = (p: SelectedPower): number => p.stats?.endurance ?? p.effects?.enduranceCost ?? 0;
+const powerRadius = (p: SelectedPower): number => p.stats?.radius ?? p.effects?.radius ?? 0;
+const powerArc = (p: SelectedPower): number | undefined => p.stats?.arc ?? p.effects?.arc;
+
 /** Click powers (attacks, click buffs, click controls) from every powerset.
  *  Toggles/autos/passives can't sit in an attack chain, so they're excluded. */
 function collectCandidates(build: Build): Candidate[] {
@@ -48,7 +58,8 @@ function collectCandidates(build: Build): Candidate[] {
     powers?.forEach((p) => {
       if (p.powerType !== 'Click') return;
       if (p.isAutoGranted) return;
-      if (p.stats?.castTime === undefined) return;
+      // Needs a cast time from EITHER shape (stats or effects) to sit in a chain.
+      if (p.stats?.castTime == null && p.effects?.castTime == null) return;
       out.push({ power: p, powersetName, powersetId, category, bucket });
     });
   };
@@ -179,9 +190,9 @@ export function buildChainPowers(
       getIOSet,
     );
 
-    const baseRecharge = power.stats?.recharge ?? 0;
-    const baseEnd = power.stats?.endurance ?? 0;
-    const cast = calculateArcanaTime(power.stats?.castTime ?? 0);
+    const baseRecharge = powerBaseRecharge(power);
+    const baseEnd = powerEndCost(power);
+    const cast = calculateArcanaTime(powerCastTime(power));
     const endCost = calcThreeTier('endurance', baseEnd, enh, globalForCalc).final;
 
     // Direct + DoT damage, fully enhanced + global +damage (which already folds
@@ -213,19 +224,19 @@ export function buildChainPowers(
     // DoT that outlasts the animation lingers AFTER the cast (Midnight Grasp,
     // Gloom, Disintegrate, the fire-blast burns) — draw trailing marks and let
     // them truncate at the loop boundary. Verified against in-game DoT timing.
-    const rawCast = power.stats?.castTime ?? 0;
+    const rawCast = powerCastTime(power);
     const dotInCast = !!dotData && dotData.duration > 0 && dotData.duration <= rawCast + 0.05;
 
     // Expected slotted-proc damage per cast — the same helper the DamageBlock
     // "+proc" annotation uses, so the chain DPS matches the power tooltip.
     // Proc chance keys off base + LOCAL recharge, never global.
-    const radius = power.stats?.radius ?? 0;
+    const radius = powerRadius(power);
     const procDmg = calculateSlottedProcDamagePerCast({
       slots: power.slots,
       baseRecharge,
       castTime: rawCast,
       radius,
-      arcDegrees: radius > 0 ? (arcToDegrees(power.stats?.arc) || 360) : 360,
+      arcDegrees: radius > 0 ? (arcToDegrees(powerArc(power)) || 360) : 360,
       rechargeEnh: enh.recharge || 0,
       buildLevel: build.level,
     });
