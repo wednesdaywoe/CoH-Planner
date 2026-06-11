@@ -83,8 +83,16 @@ The audit's own findings were re-verified against source and hold up. One materi
 
 ---
 
-## Decision log (to be filled during execution, per autonomy agreement)
-- MSOT-4 DIVERGENT: per-power keep/delete with the verifying evidence.
+## Decision log (per autonomy agreement)
+
+### Resolved
+- **MSOT-4 Step 1 (mechanical retires)** — Retired 133 override pins (119 DEAD_PIN + 14 PVP_ONLY_REDUNDANT): stripped the dead fields, kept text overrides, left `{}` where nothing remained (the converter's own default → no regen-diff drift). Value-neutral by construction; the PvP-only drops are redundant with the calc's own PvP filter (damage.ts:419). Committed by user with MSOT-4 milestone.
+- **MSOT-2 modifier divergence** — Single-sourced only the 10%/5%-per-scale *rule* and `getEffectiveBuffDebuffModifier` (now in calculations/buff-debuff.ts); kept each consumer's existing modifier input (damage.ts→raw AT modifier, powerDisplayUtils→effective). The raw-vs-effective divergence (Corruptor/Mastermind secondary, **table-less effects only**) was NOT silently reconciled — it would change displayed game values and needs in-game verification. Documented in place. Value-neutral. (commit 3eed4e70b)
+- **MSOT-5 parseIOSetUid** — Reconciled to the **Mids superset**: the game (/buildexport) path now resolves descriptive-suffix proc/event UIDs (pieceNum 6) and strips apostrophes, instead of returning null. This is the bug fix (the game path was silently dropping pieces a .mbd resolved). Guarded by characterization tests committed first. (commits aabe3f57c → 6e1888db8)
+- **MSOT-5 archetype maps** — Unioned to one `Class_X` map including Rebirth `Class_Guardian`; mxd `CLASS_TO_ARCHETYPE` now **derived** from it (so it gains Guardian too). The game importer previously rejected Guardian builds. (commit 6e1888db8)
+
+### Still pending (later phases)
+- MSOT-4 Step 2 DIVERGENT (140): per-power keep/delete with verifying evidence — needs in-game numbers or converter fixes.
 - `arc` radians-vs-degrees: fix site (converter vs consumer) + rationale.
 - `globalIOLevel`: delete-dead vs migrate (planned: delete-dead).
 - localStorage re-sync: enable on rehydrate (planned: yes).
