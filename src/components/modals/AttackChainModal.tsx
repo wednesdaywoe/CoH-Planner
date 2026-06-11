@@ -336,12 +336,16 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
     window.addEventListener('pointerup', up);
   };
 
-  // Sort palette: attacks (by chosen metric desc) first, then utility/buff.
+  // Sort palette: attacks first, then everything else (buff/utility) by metric.
+  // Rank attacks ahead of non-attacks, then order by the chosen metric — a total
+  // order (the old `attack ? -1 : 1` form was non-antisymmetric once a third
+  // 'buff' type existed, giving buff-vs-utility an arbitrary order).
   const palette = useMemo(() => {
+    const rank = (p: ChainPower) => (p.type === 'attack' ? 0 : 1);
     return powers
       .map((p, i) => ({ p, i }))
       .sort((a, b) => {
-        if (a.p.type !== b.p.type) return a.p.type === 'attack' ? -1 : 1;
+        if (rank(a.p) !== rank(b.p)) return rank(a.p) - rank(b.p);
         return powerMetricValue(b.p, powerMetric, globalRech) - powerMetricValue(a.p, powerMetric, globalRech);
       });
   }, [powers, powerMetric, globalRech]);
@@ -362,12 +366,18 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const displaySec = Math.max(cycleSec, maxCdEnd);
   const displayW = displaySec * px;
   const end = result?.endurance ?? null;
-  // Instant endurance restored by a click recovery power (Dark Consumption etc.)
-  // — shown as a lump (it refills on cast, not over time), capped at the bar.
+  // Instant endurance restored by click recovery powers (Dark Consumption etc.)
+  // — a lump (refills on cast, not over time). Sum across the distinct recovery
+  // powers in the chain, capped at the bar.
   const instantRestore = Math.min(
     endParams.maxEnd,
-    Math.max(0, ...usedPis.map((pi) => powers[pi].endGain ?? 0)),
+    usedPis.reduce((s, pi) => s + (powers[pi].endGain ?? 0), 0),
   );
+  // Continuous net shown as "Net end" = Recovery − Spend, so the three /s stats
+  // reconcile. Click recovery is a lump (instantRestore) and feeds Sustain
+  // instead — folding its averaged rate into Net end here would make the visible
+  // Recovery/Spend/Net numbers fail to add up.
+  const passiveNet = end ? end.recoveryPerSec - end.togglePerSec - end.attackPerSec : 0;
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Attack Chain Builder" size="full">
@@ -971,9 +981,9 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
           <Stat label="Spend" value={end ? `−${fmt(end.togglePerSec + end.attackPerSec, 2)}` : '—'} unit="/s" />
           <Stat
             label="Net end"
-            value={end ? `${end.netPerSec >= 0 ? '+' : ''}${fmt(end.netPerSec, 2)}` : '—'}
+            value={end ? `${passiveNet >= 0 ? '+' : ''}${fmt(passiveNet, 2)}` : '—'}
             unit="/s"
-            tone={end ? (end.netPerSec >= 0 ? 'good' : 'warn') : undefined}
+            tone={end ? (passiveNet >= -0.001 ? 'good' : 'warn') : undefined}
           />
           <Stat
             label="Sustain"

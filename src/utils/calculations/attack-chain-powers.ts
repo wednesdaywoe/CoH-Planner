@@ -7,7 +7,7 @@
  * `attack-chain.ts`; this layer is the only part that touches build/data.
  */
 
-import type { Build, SelectedPower } from '@/types';
+import type { Build, SelectedPower, PowerEffects } from '@/types';
 import { getIOSet, arcToDegrees } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import {
@@ -59,26 +59,55 @@ function collectCandidates(build: Build): Candidate[] {
   return out;
 }
 
-/** Self-buff window (seconds) for an offensive click buff — Build Up, Aim, Soul
- *  Drain, Hasten, Follow Up, etc. Gated to powers carrying a self damage/tohit/
- *  recharge buff (separate fields from the foe-debuff keys, so a −ToHit debuff
- *  never lands here). Duration is flat data. 0 = not a self-buff. */
+/** Resolve an effect's duration (s) from the per-effect `durations` map: try
+ *  each key in priority order (exact, then any duration key whose base — before
+ *  a `_suffix` like the strength meta-template discriminator — matches), then
+ *  the supplied power-level fallbacks. 0 when nothing positive is found. Shared
+ *  by the self-buff and foe-debuff window helpers so they resolve identically. */
+function resolveEffectDuration(
+  e: PowerEffects,
+  keys: readonly string[],
+  fallbacks: ReadonlyArray<number | undefined>,
+): number {
+  const durs = e.durations;
+  if (durs) {
+    for (const k of keys) {
+      const exact = durs[k];
+      if (typeof exact === 'number' && exact > 0) return exact;
+      for (const dk of Object.keys(durs)) {
+        if (dk.split('_')[0] === k) {
+          const v = durs[dk];
+          if (typeof v === 'number' && v > 0) return v;
+        }
+      }
+    }
+  }
+  for (const f of fallbacks) if (typeof f === 'number' && f > 0) return f;
+  return 0;
+}
+
+/** Self-buff fields for offensive click buffs (Build Up / Aim / Soul Drain /
+ *  Hasten / Follow Up) — separate from the foe-debuff keys, so a −ToHit debuff
+ *  never lands here. */
+const SELF_BUFF_KEYS = ['damageBuff', 'tohitBuff', 'rechargeBuff'] as const;
+
+/** Self-buff window (seconds), or 0 when the power isn't a self-buff. */
 function selfBuffWindow(power: SelectedPower): number {
   const e = power.effects;
   if (!e) return 0;
-  const hasSelfBuff = e.damageBuff != null || e.tohitBuff != null || e.rechargeBuff != null;
-  if (!hasSelfBuff) return 0;
-  const d =
-    e.durations?.damageBuff ??
-    e.durations?.tohitBuff ??
-    e.durations?.rechargeBuff ??
-    e.buffDuration ??
-    0;
-  return typeof d === 'number' && d > 0 ? d : 0;
+  const present = SELF_BUFF_KEYS.filter((k) => e[k] != null);
+  if (present.length === 0) return 0;
+  return resolveEffectDuration(e, present, [e.buffDuration]);
 }
 
-/** Foe-debuff keys (target-facing). `selfPenalty` powers (Granite Armor etc.)
- *  reuse some of these as self-downsides and are excluded. */
+/** Foe-debuff keys (target-facing) that warrant a duration "window" on the
+ *  timeline. Deliberately a CURATED subset of the effect-registry's
+ *  `category: 'debuff'` entries — not all of them qualify: `enduranceCrash` is a
+ *  self-penalty crash, and `enduranceDrain` / `specialDebuff` are instant or
+ *  odd-shaped, none of which represent a maintained foe debuff. Driving this
+ *  from the registry verbatim would draw spurious windows for those. Powers
+ *  flagged `selfPenalty` (Granite Armor etc.) reuse some of these as
+ *  self-downsides and are excluded by `foeDebuffWindow`. */
 const FOE_DEBUFF_KEYS = [
   'tohitDebuff',
   'defenseDebuff',
@@ -95,15 +124,15 @@ const FOE_DEBUFF_KEYS = [
 
 /** Foe-debuff window (seconds) for any power applying a debuff to enemies —
  *  Touch of Fear −ToHit, Dark Melee −ToHit, −Res/−Regen attacks, etc. Unlike
- *  self-buffs this applies to damaging attacks too. Duration from the matching
- *  per-effect key, then the power-level debuff/effect duration. 0 = no debuff. */
+ *  self-buffs this applies to damaging attacks too. Uses the duration of
+ *  whichever present debuff actually has one (not blindly the first key), then
+ *  the power-level debuff/effect duration. 0 = no debuff. */
 function foeDebuffWindow(power: SelectedPower): number {
   const e = power.effects;
   if (!e || e.selfPenalty) return 0;
-  const key = FOE_DEBUFF_KEYS.find((k) => e[k] != null);
-  if (!key) return 0;
-  const d = e.durations?.[key] ?? e.effectDuration ?? e.buffDuration ?? 0;
-  return typeof d === 'number' && d > 0 ? d : 0;
+  const present = FOE_DEBUFF_KEYS.filter((k) => e[k] != null);
+  if (present.length === 0) return 0;
+  return resolveEffectDuration(e, present, [e.effectDuration, e.buffDuration]);
 }
 
 /** Self endurance gained on cast by a click recovery power (Dark Consumption /

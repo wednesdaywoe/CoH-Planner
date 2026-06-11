@@ -173,9 +173,23 @@ describe('endurance model', () => {
     const e = r.endurance!;
     expect(r.cycleSec).toBe(2);
     expect(e.attackPerSec).toBeCloseTo(1.5, 5); // gross spend (2+1)/2
-    expect(e.gainPerSec).toBeCloseTo(5.5, 5); // 11 / 2s
-    expect(e.netPerSec).toBeCloseTo(4, 5); // (−3 + 11) / 2s
-    expect(e.sustainable).toBe(true);
+    expect(e.netPerSec).toBeCloseTo(4, 5); // analytic (−3 + 11) / 2s
+    expect(e.sustainable).toBe(true); // clamped bar holds at full
+    expect(e.stallTime).toBeNull();
+  });
+
+  it('does not over-report sustainability when a recovery click overfills the cap', () => {
+    // R refunds +110 but fires on a full bar (all wasted); 3 attacks then drain
+    // 105 with no passive recovery. Analytic perLoopDelta = +5 (looks fine), but
+    // the clamped bar empties → must report a stall, not "sustainable".
+    const R = mk({ id: 'R', cast: 1, baseRecharge: 1, endCost: 0, endGain: 110, damage: 0 });
+    const A = mk({ id: 'A', cast: 1, baseRecharge: 1, endCost: 35, damage: 5 });
+    const acts = replayChain([R, A], [0, 1, 1, 1], 0); // R@0, A@1,2,3 → cycle 4
+    const r = computeChain([R, A], acts, 0, { maxEnd: 100, recoveryPerSec: 0, togglePerSec: 0 })!;
+    const e = r.endurance!;
+    expect(e.perLoopDelta).toBeCloseTo(5, 5); // analytic looks positive…
+    expect(e.sustainable).toBe(false); // …but the overfilled gain is wasted
+    expect(e.stallTime).not.toBeNull();
   });
 
   it('toggle drain pushes an otherwise-fine chain negative', () => {

@@ -90,10 +90,9 @@ export interface EnduranceResult {
   togglePerSec: number;
   /** attack endurance spent per second over the cycle (gross cost). */
   attackPerSec: number;
-  /** self endurance gained per second from click recovery powers (Dark
-   *  Consumption etc.), averaged over the cycle. 0 when the chain has none. */
-  gainPerSec: number;
-  /** net endurance gained/lost per full loop (netPerSec × cycleSec). */
+  /** net endurance gained/lost per full loop (netPerSec × cycleSec). Analytic
+   *  (counts the full click gain); `sustainable`/`stallTime` come from the
+   *  clamped sim instead, which discards endurance wasted over the cap. */
   perLoopDelta: number;
   sustainable: boolean;
   /** From a full bar: seconds until empty (null when sustainable). */
@@ -289,10 +288,8 @@ function simulateEndurance(
   const attackPerCycle = activations.reduce((s, a) => s + powers[a.pi].endCost, 0);
   const gainPerCycle = activations.reduce((s, a) => s + (powers[a.pi].endGain ?? 0), 0);
   const attackPerSec = cycleSec > 0 ? attackPerCycle / cycleSec : 0;
-  const gainPerSec = cycleSec > 0 ? gainPerCycle / cycleSec : 0;
   const perLoopDelta = netPassive * cycleSec - attackPerCycle + gainPerCycle;
   const netPerSec = cycleSec > 0 ? perLoopDelta / cycleSec : netPassive;
-  const sustainable = perLoopDelta >= -EPS;
 
   // Order the per-cycle endurance events (cast start → net of cost − gain, so a
   // recovery power like Dark Consumption is a refill spike).
@@ -300,19 +297,24 @@ function simulateEndurance(
     .sort((a, b) => a.start - b.start)
     .map((a) => ({ t: a.start, cost: powers[a.pi].endCost - (powers[a.pi].endGain ?? 0) }));
 
-  // Walk loops, accumulating a piecewise-linear track. Stop at steady state
-  // (sustainable: 2 loops is enough to show the pattern) or when we stall /
-  // hit a horizon (draining).
-  const maxLoops = sustainable ? 2 : 30;
+  // Walk the CLAMPED track from a full bar and read sustainability from IT, not
+  // from perLoopDelta: a burst recovery power (Dark Consumption) that overfills
+  // the cap wastes the overflow, which the analytic perLoopDelta would wrongly
+  // credit. Run until the per-loop boundary endurance settles (steady state →
+  // sustainable) or the bar empties mid-cast (stall → not), capped at 30 loops
+  // for a slow drain that never quite stalls within the horizon.
+  const MAX_LOOPS = 30;
   const track: EndPoint[] = [];
   let e = end.maxEnd;
   let stallTime: number | null = null;
+  let prevBoundary = end.maxEnd;
+  let boundaryDelta = 0;
   const push = (t: number, val: number) =>
     track.push({ t, frac: Math.max(0, Math.min(1, val / end.maxEnd)) });
 
   push(0, e);
   let loops = 0;
-  outer: for (let loop = 0; loop < maxLoops; loop++) {
+  outer: for (let loop = 0; loop < MAX_LOOPS; loop++) {
     const base = loop * cycleSec;
     let cursor = 0;
     for (const ev of events) {
@@ -335,10 +337,15 @@ function simulateEndurance(
     e = Math.min(end.maxEnd, e + netPassive * (cycleSec - cursor));
     push(base + cycleSec, e);
     loops = loop + 1;
-    // sustainable loops converge; once we're back near full, stop early
-    if (sustainable && e >= end.maxEnd - EPS && loop >= 0) break;
+    boundaryDelta = e - prevBoundary;
+    // Steady state reached (boundary endurance stopped moving) → stop; keep at
+    // least 2 loops so the sawtooth shows the repeating pattern.
+    if (loop >= 1 && Math.abs(boundaryDelta) < EPS) break;
+    prevBoundary = e;
   }
 
+  // Sustainable iff the clamped bar never emptied AND isn't still trending down.
+  const sustainable = stallTime === null && boundaryDelta >= -EPS;
   const timeToEmpty = sustainable ? null : netPerSec < 0 ? end.maxEnd / -netPerSec : null;
 
   return {
@@ -346,7 +353,6 @@ function simulateEndurance(
     recoveryPerSec: end.recoveryPerSec,
     togglePerSec: end.togglePerSec,
     attackPerSec,
-    gainPerSec,
     perLoopDelta,
     sustainable,
     timeToEmpty,
