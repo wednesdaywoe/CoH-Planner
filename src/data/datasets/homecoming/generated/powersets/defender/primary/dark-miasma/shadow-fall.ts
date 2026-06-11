@@ -128,6 +128,7 @@ export const ShadowFall: Power = {
         "scale": 390,
         "table": "Melee_Ones"
       },
+      "stackKey": "NictusFX",
       "stealthPvE": {
         "scale": 35.5,
         "table": "Melee_Ones"

@@ -1,18 +1,57 @@
 # Rebirth Data Gaps & Bugs
 
-**Status:** Open (workstreams 2 & 3 remain)
-**Discovered:** 2026-05-04
-**Affects:** Rebirth dataset only. Homecoming is correct.
+**Status:** Open — this doc is the **front door / index for all Rebirth-specific data gaps.**
+Deep workstreams (§1–§3) live here in full; items whose detailed diagnosis lives in the
+chronological parser log are *linked, not duplicated.*
+**Affects:** Rebirth dataset only — except items tagged "both servers."
+**Started:** 2026-05-04 · **Updated:** 2026-06-11
 
-This doc tracks three related Rebirth data quality issues:
-1. [`boosts_allowed` extraction bug](#1-boosts_allowed-extraction-bug--fixed-2026-05-04) — **FIXED 2026-05-04**
-2. [Missing Rebirth-unique power pools](#2-missing-rebirth-unique-power-pools) — Rebirth ships pools we don't have generated yet
-3. [Warshade / Peacebringer overhaul not captured](#3-warshade--peacebringer-overhaul-not-captured) — Rebirth substantially reworked Kheldians; our data still reflects an earlier shape
+> **The recurring root cause.** Most Rebirth gaps trace to one thing: **Parse6 (Rebirth's
+> binary format) drops a class of AttribMod tail/condition fields that Parse7 (HC) decodes.**
+> When a Rebirth-only bug surfaces, suspect a Parse6 field gap first. Full diagnoses for the
+> logged items are in [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md); the map below is the index.
 
-> **See also** [HEAL-ABSORB-AND-EXPORT-GAPS.md](HEAL-ABSORB-AND-EXPORT-GAPS.md) for Rebirth-relevant
-> export gaps surfaced 2026-06-05: IO-set aspects/bonuses are only partially binary-derived
-> (`extract-rebirth-io-sets-v2.py`) and drop Absorb from Heal pieces; and the Guardian AT
-> (Rebirth-only) is missing from `extract-at-tables.cjs`'s `PLAYER_ARCHETYPES` allow-list.
+## Rebirth gap map
+
+### Parse6 parser limitations (the recurring theme)
+- **Stealth `stack_key` / `stack` mode not resolved** (reports `Replace` / `4294967295`
+  for even pool Stealth) → Rebirth stealth is **pure-additive**, over-counting builds with
+  2+ suppress-group stealth powers; HC groups them max-wins. Detail: BIN-PARSER-LOG
+  *"Stealth radius binary-sourced stacking groups"* (2026-06-11). **Open** (low impact).
+- **`flags` not decoded at all (always `[]`)** → `copyBoosts` / `PseudoPet` never set on
+  Rebirth pets; summon pet DPS could be wrong. Detail: BIN-PARSER-LOG *"Summon copy_boosts"*
+  (2026-06-11). **Open, low-pri** (no Rebirth override depends on it yet).
+- **Form-redirect data in tail bytes dropped** (Kheldian Human/Nova/Dwarf) — worked around
+  with a hand-curated map. Detail: **§3 below** + `memory/project_parse6_redirects.md`. **Open.**
+- **`is_pvp` has no explicit flag** — synthesized from the RPN `requires`; the ally-buff-vs-
+  PvP-split heuristic mis-fired on Phalanx Fighting. Detail: BIN-PARSER-LOG *"Rebirth is_pvp —
+  Phalanx Fighting"* (2026-06-11). **Fixed.**
+
+### Committed-export staleness / pipeline
+- **`regen-all` dry-runs pools/epics** (the `convert-pool-powers` / `convert-epic-pools` STEPS
+  lack `--apply`) → Rebirth `power-pools.ts` / `epic-pools.ts` never regenerate via the
+  orchestrator and silently drift. Detail: BIN-PARSER-LOG *"regen-all silently DRY-RUNS
+  pools/epics"* (2026-06-11). **Open.**
+- **Committed `exported_powers/rebirth` is stale vs the current parser** — carries `tags: None`
+  where a fresh export emits `tags: []` (~7800 files), plus an incidental `granite-armor`
+  summon key-reorder. Needs a dedicated **"re-export Rebirth to current parser"** pass. **Open.**
+
+### Resolved Rebirth divergences (logged in BIN-PARSER-LOG)
+- **Phalanx Fighting ally scaling** restored (is_pvp) — 2026-06-11.
+- **Archetype defs** — Guardian baseThreat 1.0→2.0, Brute HP, per-server damageCap (both servers) — 2026-06-06.
+- **IO sets binary-sourced both servers** (≈196 Rebirth-only bonus entries recovered) — 2026-06-05.
+- **Blaster ToHit AT modifiers** were HC's 0.10, not Rebirth's rebalanced 0.075/0.07 — 2026-06-03.
+- **`boosts_allowed` off-by-one** (BOOST_TYPE enum divergence) — **§1 below** — 2026-05-04.
+- **Inexhaustibility** no-rarity boostsets record — 2026-06-02 (a `Set_Mode` piece-shape
+  workaround is still open — see BIN-PARSER-LOG *"Inexhaustibility piece"*).
+
+### Open Rebirth data workstreams (detailed below)
+- **[§2 — Missing Rebirth-unique power pools](#2-missing-rebirth-unique-power-pools).**
+- **[§3 — Warshade / Peacebringer form mechanic](#3-warshade--peacebringer-form-mechanic--wrong-model)** (PowerRedirector model).
+
+> **See also** [HEAL-ABSORB-AND-EXPORT-GAPS.md](HEAL-ABSORB-AND-EXPORT-GAPS.md) — IO-set
+> aspect/Absorb export gaps + the Guardian AT (Rebirth-only) missing from
+> `extract-at-tables.cjs`'s `PLAYER_ARCHETYPES` allow-list (surfaced 2026-06-05).
 
 ---
 

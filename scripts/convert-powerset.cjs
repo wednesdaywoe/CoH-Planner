@@ -3464,6 +3464,20 @@ function extractEffects(templates, powerName) {
         } else {
           if (!effects.stealth) effects.stealth = {};
           effects.stealth[stealthType] = makeEffect();
+          // Carry the binary stealth-stacking group so the calc can resolve
+          // mutual suppression. Powers in a Suppress group with a shared key
+          // (all "NictusFX" today: Stealth, Super Speed, Shinobi-Iri, the cloak
+          // toggles) don't stack — only the largest radius applies; everything
+          // else stacks additively. Require BOTH stack==='Suppress' AND a
+          // resolved (non-sentinel) key: the Rebirth Parse6 export resolves
+          // neither for stealth (reports 'Replace' / 0xFFFFFFFF), so its
+          // stealth falls through to additive — a documented cross-server gap.
+          // PvE/PvP templates of a power share the key; set it once.
+          const stealthKey = template.stack_key;
+          const keyResolved = stealthKey && stealthKey !== '4294967295' && stealthKey !== '0';
+          if (template.stack === 'Suppress' && keyResolved) {
+            effects.stealth.stackKey = stealthKey;
+          }
           recordDuration('stealth');
         }
         continue;

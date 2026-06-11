@@ -195,6 +195,12 @@ export interface StealthEffects {
   stealthPvE?: NumberOrScaled;
   stealthPvP?: NumberOrScaled;
   translucency?: NumberOrScaled;
+  /** Binary stealth-stacking group (`stack_key`). Powers sharing a non-null
+   *  key mutually suppress — only the largest StealthRadius in the group
+   *  applies (e.g. "NictusFX": Stealth, Super Speed, Shinobi-Iri, the cloak
+   *  toggles). Null/absent means the radius stacks additively. Consumed by
+   *  resolveStealthRadius in character-totals. */
+  stackKey?: string | null;
 }
 
 // ============================================

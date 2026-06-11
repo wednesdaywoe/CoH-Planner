@@ -178,8 +178,8 @@ export const GraniteArmor: Power = {
     },
     "summon": {
       "isPseudoPet": false,
-      "entity": "ROCKSUIT",
-      "duration": 0.75
+      "duration": 0.75,
+      "entity": "ROCKSUIT"
     },
     "debuffResistance": {
       "defense": {

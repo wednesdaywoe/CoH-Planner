@@ -125,3 +125,51 @@ describe('stealth power + stealth IO stack additively (homecoming, Sentinel Ninj
     expect(t.globalBonuses.stealthRadiusPvP).toBeCloseTo(390 + 300, 3);
   });
 });
+
+/**
+ * The suppress-group rule: stealth powers sharing the binary "NictusFX"
+ * stack_key (pool Stealth/Super Speed, Shinobi-Iri, the cloak toggles) do NOT
+ * stack — only the largest radius applies. An IO proc is a separate group, so it
+ * still adds on top. This is the case the stack-key model fixes over naive
+ * additive stacking.
+ */
+describe('suppress-group stealth powers do NOT stack (homecoming)', () => {
+  beforeAll(async () => {
+    await loadDataset('homecoming');
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function build(opts: { shinobi?: boolean; superSpeed?: boolean; celerity?: boolean }): any {
+    const b = createEmptyBuild();
+    b.serverId = 'homecoming';
+    b.level = 50;
+    b.archetype = { id: 'sentinel', name: 'Sentinel', stats: null, inherent: null } as any;
+    if (opts.shinobi) {
+      b.secondary = { id: 'sentinel/ninjitsu', name: 'Ninjitsu', powers: [
+        { internalName: 'Shinobi-Iri', name: 'Shinobi-Iri', powerType: 'Toggle', isActive: true,
+          slots: opts.celerity ? [stealthProcSlot('Celerity', 'Buff Stealth')] : [] },
+      ] } as any;
+    }
+    if (opts.superSpeed) {
+      b.pools = [{ id: 'speed', name: 'Speed', powers: [
+        { internalName: 'Super_Speed', name: 'Super Speed', powerType: 'Toggle', isActive: true, slots: [] },
+      ] }] as any;
+    }
+    return b;
+  }
+
+  it('Super Speed alone = 35 ft PvE (sanity: the pool power loads & contributes)', () => {
+    const t = calculateCharacterTotals(build({ superSpeed: true }), false, undefined, { combatMode: true });
+    expect(t.globalBonuses.stealthRadiusPvE).toBeCloseTo(35, 3);
+  });
+
+  it('Shinobi-Iri (35.5) + Super Speed (35) = 35.5 ft, NOT 70.5 — same NictusFX group', () => {
+    const t = calculateCharacterTotals(build({ shinobi: true, superSpeed: true }), false, undefined, { combatMode: true });
+    expect(t.globalBonuses.stealthRadiusPvE).toBeCloseTo(35.5, 3); // max(35.5, 35), not the sum
+  });
+
+  it('two suppress powers + a Celerity IO = max(35.5, 35) + 30 = 65.5 ft (IO is its own group)', () => {
+    const t = calculateCharacterTotals(build({ shinobi: true, superSpeed: true, celerity: true }), false, undefined, { combatMode: true });
+    expect(t.globalBonuses.stealthRadiusPvE).toBeCloseTo(65.5, 3);
+  });
+});

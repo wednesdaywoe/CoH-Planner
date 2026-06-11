@@ -626,6 +626,9 @@ interface ActivePowerEffect {
   stealth?: {
     stealthPvE?: ScalarOrScaled;
     stealthPvP?: ScalarOrScaled;
+    /** Binary stealth-stacking group (`stack_key`); non-null = suppress group
+     *  (max-wins), null/absent = additive. See resolveStealthRadius. */
+    stackKey?: string | null;
   };
   // Perception
   perceptionBuff?: ScalarOrScaled;
@@ -840,6 +843,76 @@ export function collectStrengthBuffs(
   return sb;
 }
 
+/**
+ * One stealth-radius contribution, gathered across active powers and procs and
+ * resolved together by resolveStealthRadius once every source is known.
+ *
+ * `stackKey` is the binary stealth-stacking group. Contributions sharing a
+ * non-null key mutually suppress — only the largest radius in that key applies
+ * (all "NictusFX" today: Stealth, Super Speed, Shinobi-Iri, the cloak toggles).
+ * A null key stacks additively (Stalker Hide, IO procs, and Rebirth stealth,
+ * whose Parse6 export can't resolve the key — a documented cross-server gap).
+ */
+interface StealthContribution {
+  stackKey: string | null;
+  /** PvE radius (feet); 0 if this source has no PvE component. */
+  pve: number;
+  /** PvP radius (feet); 0 if this source has no PvP component. */
+  pvp: number;
+  sourceName: string;
+  type: 'active-power' | 'proc';
+  powerName?: string;
+}
+
+/**
+ * Commit the gathered stealth contributions to global.stealthRadiusPvE/PvP.
+ * Per CoH mechanics each keyed (suppress) group contributes only its largest
+ * radius; null-key contributions stack additively; the grand total is the sum.
+ * Every contributor is recorded in the breakdown — suppressed (non-winning)
+ * keyed entries are flagged `capped` so the tooltip explains why the displayed
+ * total isn't the naive sum.
+ */
+function resolveStealthRadius(
+  contribs: StealthContribution[],
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>,
+): void {
+  const axes = [
+    { axis: 'pve' as const, key: 'stealthRadiusPvE' as const },
+    { axis: 'pvp' as const, key: 'stealthRadiusPvP' as const },
+  ];
+  for (const { axis, key } of axes) {
+    // Largest radius per keyed (suppress) group.
+    const groupMax = new Map<string, number>();
+    for (const c of contribs) {
+      const v = c[axis];
+      if (v <= 0 || !c.stackKey) continue;
+      const cur = groupMax.get(c.stackKey);
+      if (cur === undefined || v > cur) groupMax.set(c.stackKey, v);
+    }
+    let total = 0;
+    for (const v of groupMax.values()) total += v;        // one winner per group
+    for (const c of contribs) {                            // + additive (null-key)
+      const v = c[axis];
+      if (v > 0 && !c.stackKey) total += v;
+    }
+    global[key] = total;
+    // Breakdown: list every contributor; mark suppressed keyed losers capped.
+    for (const c of contribs) {
+      const v = c[axis];
+      if (v <= 0) continue;
+      const suppressed = !!c.stackKey && v < (groupMax.get(c.stackKey) ?? 0);
+      addToBreakdown(breakdown, key, {
+        name: c.sourceName,
+        value: v,
+        type: c.type,
+        powerName: c.powerName,
+        ...(suppressed ? { capped: true } : {}),
+      });
+    }
+  }
+}
+
 function applyActivePowerBonuses(
   powers: PowerWithToggle[],
   global: GlobalBonuses,
@@ -851,7 +924,8 @@ function applyActivePowerBonuses(
   targetsHitValues: Record<string, number> = {},
   exemplarLevel?: number,
   combatMode?: boolean,
-  strengthBuffs: StrengthBuffs = emptyStrengthBuffs()
+  strengthBuffs: StrengthBuffs = emptyStrengthBuffs(),
+  stealthContribs: StealthContribution[] = []
 ): void {
   for (const power of powers) {
     // Auto powers are always active; others require explicit isActive toggle
@@ -1532,35 +1606,26 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Stealth Radius — additive across all sources. Per CoH game mechanics,
-    // StealthRadius grants from different powers AND IO procs stack (Shinobi-Iri
-    // + Super Speed + a Celerity/Unbounded Leap +Stealth IO, …): that's why a
-    // Stealth IO is slotted on top of a stealth power to reach the invisibility
-    // cap. (You can't slot two copies of the same power, so "a power doesn't
-    // stack with itself" needs no special handling here.) PvE and PvP radii are
-    // tracked independently — each power adds its own value to each total.
+    // Stealth Radius — only COLLECTED here; the grouped max+sum is committed to
+    // global.stealthRadius* by resolveStealthRadius once procs are gathered too.
+    // Powers in a shared suppress group (binary stack_key, e.g. "NictusFX":
+    // Stealth, Super Speed, Shinobi-Iri, the cloak toggles) don't stack — only
+    // the largest applies; everything else stacks additively. That's why a
+    // Stealth IO (its own group) lands on top of a stealth power toward the
+    // invisibility cap, while Super Speed + pool Stealth (same group) don't add.
     if (effects.stealth) {
-      if (effects.stealth.stealthPvE !== undefined) {
-        const val = resolveScaledEffect(effects.stealth.stealthPvE, archetypeId, buildLevel);
-        if (val > 0) {
-          global.stealthRadiusPvE += val;
-          addToBreakdown(breakdown, 'stealthRadiusPvE', {
-            name: power.name,
-            value: val,
-            type: 'active-power',
-          });
-        }
-      }
-      if (effects.stealth.stealthPvP !== undefined) {
-        const val = resolveScaledEffect(effects.stealth.stealthPvP, archetypeId, buildLevel);
-        if (val > 0) {
-          global.stealthRadiusPvP += val;
-          addToBreakdown(breakdown, 'stealthRadiusPvP', {
-            name: power.name,
-            value: val,
-            type: 'active-power',
-          });
-        }
+      const pve = effects.stealth.stealthPvE !== undefined
+        ? resolveScaledEffect(effects.stealth.stealthPvE, archetypeId, buildLevel) : 0;
+      const pvp = effects.stealth.stealthPvP !== undefined
+        ? resolveScaledEffect(effects.stealth.stealthPvP, archetypeId, buildLevel) : 0;
+      if (pve > 0 || pvp > 0) {
+        stealthContribs.push({
+          stackKey: effects.stealth.stackKey ?? null,
+          pve,
+          pvp,
+          sourceName: power.name,
+          type: 'active-power',
+        });
       }
     }
 
@@ -1900,7 +1965,8 @@ function applySingleProcEffect(
   sourceName: string,
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>,
-  powerName?: string
+  powerName: string | undefined,
+  stealthContribs: StealthContribution[]
 ): void {
   if (value === undefined) return;
   if (isCalcDebugEnabled()) {
@@ -2093,42 +2159,26 @@ function applySingleProcEffect(
       break;
 
     case 'Stealth': {
-      // Stealth radius is additive across all sources (see the active-power
-      // stealth handling earlier in this module): an IO proc stacks on top of
-      // any stealth power toward the invisibility cap. A stealth ProcEffect
-      // carries the PvE radius in `value` and the PvP radius in `valueMax`, but
-      // stealth IOs (Celerity, Unbounded Leap, Freebird, …) split these across
-      // two effects:
+      // Stealth IO procs (Celerity, Unbounded Leap, Freebird, …) are their own
+      // additive group — they land on top of any stealth power toward the
+      // invisibility cap. A stealth ProcEffect carries the PvE radius in `value`
+      // and the PvP radius in `valueMax`, but stealth IOs split these across two
+      // effects:
       //   { value: 30 }                 → PvE-only  (30 ft)
       //   { value: 300, valueMax: 300 } → PvP-only  (value duplicates valueMax)
-      // Guard the PvE add on `value !== valueMax` so the duplicated PvP
-      // magnitude never leaks into the PvE radius.
-      if (valueMax !== undefined) {
-        global.stealthRadiusPvP += valueMax;
-        addToBreakdown(breakdown, 'stealthRadiusPvP', {
-          name: sourceName,
-          value: valueMax,
-          type: 'proc',
-          powerName,
-        });
-        if (value !== valueMax) {
-          global.stealthRadiusPvE += value;
-          addToBreakdown(breakdown, 'stealthRadiusPvE', {
-            name: sourceName,
-            value,
-            type: 'proc',
-            powerName,
-          });
-        }
-      } else {
-        global.stealthRadiusPvE += value;
-        addToBreakdown(breakdown, 'stealthRadiusPvE', {
-          name: sourceName,
-          value,
-          type: 'proc',
-          powerName,
-        });
-      }
+      // Guard the PvE side on `value !== valueMax` so the duplicated PvP
+      // magnitude never leaks into the PvE radius. Collected with a null
+      // stackKey (additive) and resolved by resolveStealthRadius.
+      const pvp = valueMax !== undefined ? valueMax : 0;
+      const pve = valueMax === undefined ? value : (value !== valueMax ? value : 0);
+      stealthContribs.push({
+        stackKey: null,
+        pve,
+        pvp,
+        sourceName,
+        type: 'proc',
+        powerName,
+      });
       break;
     }
 
@@ -2185,7 +2235,8 @@ function applyProcBonuses(
   build: Build,
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>,
-  procSettings?: ProcSettings,
+  procSettings: ProcSettings | undefined,
+  stealthContribs: StealthContribution[],
 ): void {
   // Procs use their own Rule of 5 tracking, separate from set bonuses.
   // In CoH, unique IO procs (e.g., LotG +Recharge) and set bonuses have independent stacking limits.
@@ -2219,7 +2270,7 @@ function applyProcBonuses(
           : trackBonus(tracking, stat, eff.value, sourceName, proc.powerName);
 
       if (allowed) {
-        applySingleProcEffect(eff.category, eff.value, eff.valueMax, eff.effectType, sourceName, global, breakdown, proc.powerName);
+        applySingleProcEffect(eff.category, eff.value, eff.valueMax, eff.effectType, sourceName, global, breakdown, proc.powerName, stealthContribs);
       } else if (stat) {
         // Rule of 5 rejected — add a capped entry so it appears in the tooltip
         addToBreakdown(breakdown, stat, {
@@ -3332,7 +3383,10 @@ export function calculateCharacterTotals(
   globalBonuses.strengthEndMod = strengthBuffs.endMod;
   globalBonuses.strengthMovement = strengthBuffs.movement;
   globalBonuses.strengthMez = strengthBuffs.mez;
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs);
+  // Stealth radius is gathered from active powers AND procs, then committed
+  // together by resolveStealthRadius (suppress-group max + additive sum).
+  const stealthContribs: StealthContribution[] = [];
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs, stealthContribs);
 
   // Step 7.1: Apply active mode-/state-gated conditional contributions (Bio
   // Armor adaptation modes, …). Each active conditional is a synthetic active
@@ -3355,7 +3409,7 @@ export function calculateCharacterTotals(
     options?.mechanicAdjusters ?? {},
   );
   if (conditionalPowers.length > 0) {
-    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode);
+    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs);
   }
   if (_debug) debugGroupEnd();
 
@@ -3365,8 +3419,12 @@ export function calculateCharacterTotals(
   const anyProcEnabled = !procSettings || Object.values(procSettings).some(v => v);
   if (_debug) debugGroup('Step 7.5-7.6: Proc Bonuses');
   if (anyProcEnabled) {
-    applyProcBonuses(build, globalBonuses, breakdown, procSettings);
+    applyProcBonuses(build, globalBonuses, breakdown, procSettings, stealthContribs);
   }
+
+  // Step 7.5b: Commit stealth radius now that every source (active powers +
+  // procs) is gathered — suppress groups contribute their max, the rest add.
+  resolveStealthRadius(stealthContribs, globalBonuses, breakdown);
 
   // Step 7.6: Apply Build Up proc average contributions (PPM click procs)
   if (!procSettings || procSettings.buildUp) {

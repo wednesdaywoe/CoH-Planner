@@ -3,9 +3,33 @@
 Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 (`tools/bin-crawler/` + `scripts/convert-powerset.cjs` + `scripts/convert-epic-pools.cjs`), with diagnoses and recommended fixes. Newest entries at top, in the "NEW ISSUES/UNRESOLVED" section. When completed, move the entry to the top of "RESOLVED" section with details of the fix or any other relevant information.
 
+> **Rebirth-specific gaps** are indexed in [to-do/REBIRTH_DATA_GAPS.md](to-do/REBIRTH_DATA_GAPS.md)
+> (the front door for the Rebirth dataset — most trace to one root: Parse6 drops AttribMod
+> tail/condition fields that Parse7 decodes). Rebirth findings still get their detailed
+> write-up *here*; that doc links back to them.
+
 >Agent note: One small flag for your separate task: when you pick up the parser work, the verification tooling I built is at c:\tmp\ (oracle-verify.mjs, override-audit.mjs, etc.) — handy if you end up retiring the Discharge overrides after the parser fix, to confirm the audit goes 9 → 7.
 
 > --- NEW ISSUES / UNRESOLVED ---
+
+## ⬜ regen-all silently DRY-RUNS pools/epics — they never regenerate via the orchestrator — 2026-06-11
+
+`scripts/regen-all.cjs` runs `convert-pool-powers.cjs` and `convert-epic-pools.cjs`
+with `args: []`, but **both converters require `--apply` to write** (without it they
+print "… (DRY RUN) / Run with --apply" and exit). So `npm run regen:generated`
+refreshes **powersets** (`convert-all-powersets --force`) but **never**
+`generated/power-pools.ts` / `generated/epic-pools.ts`. This is the root cause of the
+recurring "pool/epic committed output is stale vs the converter" deferrals scattered
+through this log (CopyBoosts, specialBuff, accuracy entries…): a full regen genuinely
+*can't* refresh them. The `regen-diff.yml` guard inherits the same dry-run
+(`--generated-only` still skips the write), so **pool/epic drift is invisible to CI**.
+
+Fixing it = add `--apply` to those two STEPS — but the first run will surface large
+latent drift (≈2400 lines on epic-pools, incl. a pre-`slow`-extraction
+`rechargeDebuff → slow` restructuring), so it needs a **reviewed** pool/epic regen, not
+a blind apply. Until then, any converter change that touches pools/epics must be
+hand-applied to the affected entries (as the stealth `stackKey` ✅ below did for the 3
+Concealment/Speed pool powers).
 
 ## ⬜ Pseudo-pet summon residuals — leftovers after the count fix (low priority) — 2026-06-11
 
@@ -44,6 +68,58 @@ Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
   the `Set_Mode` special-piece shape in the extractor.
 
 > ---RESOLVED ---
+
+## ✅ Stealth radius binary-sourced stacking groups — `stack_key` carried, suppress-group max model (2026-06-11)
+
+**Symptom.** Celerity / Unbounded Leap +Stealth IO procs didn't count toward the
+stealth-radius dashboard stat (DP/NIN Sentinel report). The proximate cause was a calc
+gap (no proc `Stealth` handler in `applySingleProcEffect`), but fixing it surfaced the
+deeper model question: stealth radius was aggregated **max-wins**, then (interim)
+**pure-additive**, and *neither* matches the game.
+
+**The binary rule (verify-don't-assume, §12).** Every StealthRadius template carries a
+`stack` mode + `stack_key`. Across all 103 HC player stealth templates there are exactly
+**two** behaviors (`exported_powers/live/**`):
+- `stack="Suppress"` + `stack_key="NictusFX"` (**32 powers**: Pool Stealth/Super Speed/
+  Invisibility, Cloak of Darkness, Energy Cloak, Shinobi-Iri, Shadow Cloak, Steamy Mist,
+  Arctic Fog, Cloaking Device, Mask Presence…) — one mutual-suppression group, only the
+  **largest** radius applies.
+- `stack="Replace"` + `stack_key=null` (**71 powers**: Stalker Hide, Grant Invisibility,
+  Smoke Flash, pet stealth — AND the IO procs, a separate group) — **additive**.
+
+This reproduces the game exactly: pool Stealth (55) alone is invis-capped; Super Speed
+(35) + pool Stealth (55) → max **55** (don't stack, both NictusFX); Super Speed (35) +
+a Celerity IO → **65** (the famous combo — the IO is a separate group, so it adds).
+
+**Fix.**
+- **Converter** ([convert-powerset.cjs](scripts/convert-powerset.cjs), shared by the
+  pool/epic converters): carry `template.stack_key` onto `effects.stealth.stackKey`, but
+  ONLY when `stack==='Suppress'` AND the key is resolved (≠ `4294967295` 0xFFFFFFFF
+  sentinel, ≠ `0`).
+- **Calc** ([character-totals.ts](src/utils/calculations/character-totals.ts)):
+  `StealthContribution` + `resolveStealthRadius` — active powers and procs *collect*
+  contributions tagged by `stackKey`; the commit (one **max** per keyed group + **sum**
+  of null-key) runs once after procs are gathered.
+- **Type:** `StealthEffects.stackKey` ([power.ts](src/types/power.ts)).
+
+**Materialized.** HC regen = 29 powerset files + 3 pool powers gain `stackKey:
+"NictusFX"`, nothing else (regen-idempotent). The 3 pool keys (Pool Stealth/Super Speed/
+Invisibility) were **hand-injected** into `generated/power-pools.ts` because regen-all
+dry-runs pools — see the ⬜ regen-all entry above — to avoid bundling ~2400 lines of
+unrelated stale-pool drift.
+
+**Rebirth Parse6 gap (cross-server, deferred).** Parse6 resolves **neither** the stack
+mode nor the key for stealth — it reports `stack="Replace"`, `stack_key="4294967295"`
+for even pool Stealth. So the converter's `Suppress`+resolved-key guard correctly falls
+Rebirth through to **pure additive** (no `stackKey` emitted): a documented limitation —
+Rebirth over-counts builds running 2+ suppress-group stealth powers. Closing it needs
+the Parse6 AttribMod parser to resolve the stack fields, same family as the Parse6
+`is_pvp`/`flags` gaps tracked elsewhere here. See [[rebirth-assets-and-parse6]],
+[[stealth-stacking-model]].
+
+**Guard:** [stealth-procs.test.ts](src/utils/calculations/stealth-procs.test.ts) — 9
+tests incl. "Shinobi-Iri (35.5) + Super Speed (35) = 35.5, not 70.5" (suppress group)
+and "+ Celerity = 65.5" (IO adds on top). tsc clean.
 
 ## ✅ Multi-pet summon counts — Phantom Army (6→3) + Gang War (dropped→9) fixed (2026-06-11)
 

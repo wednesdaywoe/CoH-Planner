@@ -67,6 +67,7 @@ export const ShinobiIri: Power = {
         "scale": 35.5,
         "table": "Melee_Ones"
       },
+      "stackKey": "NictusFX",
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"
