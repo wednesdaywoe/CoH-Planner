@@ -255,6 +255,9 @@
                   "Redirects.Regeneration.Instant_Regeneration"
                 ]
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             }
           ]

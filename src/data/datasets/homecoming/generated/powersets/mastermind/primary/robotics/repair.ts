@@ -39,7 +39,8 @@ export const Repair: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Maintenance_Bot",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

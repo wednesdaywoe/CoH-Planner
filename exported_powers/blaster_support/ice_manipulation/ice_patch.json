@@ -85,7 +85,8 @@
             "priority_list": "Pets_IcePatch"
           },
           "flags": [
-            "NearGround"
+            "NearGround",
+            "CopyBoosts"
           ],
           "flags_raw": 1288
         }

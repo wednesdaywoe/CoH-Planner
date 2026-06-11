@@ -305,7 +305,8 @@
                     "IgnoreStrength",
                     "IgnoreResistance",
                     "KeepThroughDeath",
-                    "NoHitDelay"
+                    "NoHitDelay",
+                    "CopyBoosts"
                   ],
                   "flags_raw": 82992
                 }
@@ -579,7 +580,8 @@
                     "IgnoreStrength",
                     "IgnoreResistance",
                     "KeepThroughDeath",
-                    "NoHitDelay"
+                    "NoHitDelay",
+                    "CopyBoosts"
                   ],
                   "flags_raw": 82992
                 }

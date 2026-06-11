@@ -42,6 +42,7 @@ export const Decoy: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 60,
+      "copyBoosts": true,
       "entities": [
         {
           "entity": "P998401764",

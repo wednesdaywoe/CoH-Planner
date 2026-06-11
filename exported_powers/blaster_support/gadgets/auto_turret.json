@@ -93,6 +93,9 @@
             "entity_def": "P3912486950",
             "priority_list": "Pets_Turret"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

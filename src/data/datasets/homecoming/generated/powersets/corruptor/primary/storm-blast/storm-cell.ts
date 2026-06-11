@@ -55,6 +55,7 @@ export const StormCell: Power = {
         "Redirects.Storm_Blast.Lightning_Proc"
       ],
       "duration": 60,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Storm Cell",

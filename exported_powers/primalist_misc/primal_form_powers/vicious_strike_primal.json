@@ -226,7 +226,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods",
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 16496
         },
@@ -308,7 +309,8 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods",
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 16496
         },

@@ -50,6 +50,7 @@ export const IceStorm: Power = {
         "Pets.IceStorm_Sentinel.IceStorm"
       ],
       "duration": 15,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Ice Storm",

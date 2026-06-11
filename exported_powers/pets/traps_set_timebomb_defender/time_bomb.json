@@ -85,6 +85,9 @@
             "entity_def": "Pets_Traps_TimeBomb_Defender",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

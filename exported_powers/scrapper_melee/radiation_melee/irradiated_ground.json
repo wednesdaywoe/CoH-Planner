@@ -96,6 +96,9 @@
             "entity_def": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
             "priority_list": "PL_StaticObject"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

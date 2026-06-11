@@ -100,7 +100,8 @@
           },
           "flags": [
             "IgnoreCombatMods",
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 16704
         },
@@ -134,6 +135,9 @@
               "Redirects.Trick_Arrow.EMP_Arrow_Burst"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

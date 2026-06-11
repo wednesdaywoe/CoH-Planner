@@ -185,6 +185,9 @@
             "entity_def": "Pets_Chain_Confuse_Dominator_Jump3",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -216,6 +219,9 @@
             "entity_def": "Pets_Chain_Confuse_Dominator_Jump3",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

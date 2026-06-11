@@ -93,6 +93,9 @@
             "entity_def": "P3273083397",
             "priority_list": "Pets_Gremlin_Controller"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -124,6 +127,9 @@
             "entity_def": "Pets_Gremlin_Controller",
             "priority_list": "Pet"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

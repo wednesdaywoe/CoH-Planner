@@ -119,6 +119,9 @@
             "entity_def": "Pets_Trick_Shot_Jump2",
             "priority_list": "PFX"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

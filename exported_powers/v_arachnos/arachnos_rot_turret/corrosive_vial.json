@@ -87,7 +87,8 @@
           "flags": [
             "NearGround",
             "IgnoreResistance",
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17448
         }

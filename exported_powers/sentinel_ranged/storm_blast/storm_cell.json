@@ -101,6 +101,9 @@
               "Redirects.Storm_Blast.Lightning_Proc"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

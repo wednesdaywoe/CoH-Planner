@@ -90,7 +90,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "CopyBoosts"
           ],
           "flags_raw": 112
         },
@@ -126,7 +127,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "CopyBoosts"
           ],
           "flags_raw": 112
         }

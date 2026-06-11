@@ -92,6 +92,9 @@
               "Objects.Debug.Ranged_Smashing"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -124,6 +127,9 @@
               "Objects.Debug.Ranged_Lethal"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -156,6 +162,9 @@
               "Objects.Debug.Ranged_Fire"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -188,6 +197,9 @@
               "Objects.Debug.Ranged_Cold"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -220,6 +232,9 @@
               "Objects.Debug.Ranged_Energy"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -252,6 +267,9 @@
               "Objects.Debug.Ranged_Negative"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -284,6 +302,9 @@
               "Objects.Debug.Ranged_Toxic"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -316,6 +337,9 @@
               "Objects.Debug.Ranged_Psi"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -364,6 +388,9 @@
               "Objects.Debug.Melee_Smashing"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -396,6 +423,9 @@
               "Objects.Debug.Melee_Lethal"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -428,6 +458,9 @@
               "Objects.Debug.Melee_Fire"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -460,6 +493,9 @@
               "Objects.Debug.Melee_Cold"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -492,6 +528,9 @@
               "Objects.Debug.Melee_Energy"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -524,6 +563,9 @@
               "Objects.Debug.Melee_Negative"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -556,6 +598,9 @@
               "Objects.Debug.Melee_Toxic"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -588,6 +633,9 @@
               "Objects.Debug.Melee_Psi"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -636,6 +684,9 @@
               "Objects.Debug.AoE_Smashing"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -668,6 +719,9 @@
               "Objects.Debug.AoE_Lethal"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -700,6 +754,9 @@
               "Objects.Debug.AoE_Fire"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -732,6 +789,9 @@
               "Objects.Debug.AoE_Cold"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -764,6 +824,9 @@
               "Objects.Debug.AoE_Energy"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -796,6 +859,9 @@
               "Objects.Debug.AoE_Negative"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -828,6 +894,9 @@
               "Objects.Debug.AoE_Toxic"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -860,6 +929,9 @@
               "Objects.Debug.AoE_Psi"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

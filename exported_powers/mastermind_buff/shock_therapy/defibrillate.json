@@ -93,6 +93,9 @@
               "Redirects.Shock_Therapy.Defibrillate_Revive"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -125,6 +128,9 @@
               "Redirects.Shock_Therapy.Defibrillate_Debuff"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -157,6 +163,9 @@
               "Redirects.Shock_Therapy.Consume_Static"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

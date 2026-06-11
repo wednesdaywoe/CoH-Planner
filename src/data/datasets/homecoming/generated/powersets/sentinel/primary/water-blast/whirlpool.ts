@@ -47,6 +47,7 @@ export const Whirlpool: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 15,
+      "copyBoosts": true,
       "entities": [
         {
           "entity": "P2995632953",

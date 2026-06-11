@@ -53,6 +53,7 @@ export const ParalyzingBlast: Power = {
         "Redirects.Electric_Control.Self_Destruct"
       ],
       "duration": 60,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Tesla Coil",

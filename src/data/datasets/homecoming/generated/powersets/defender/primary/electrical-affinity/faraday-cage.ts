@@ -50,6 +50,7 @@ export const FaradayCage: Power = {
         "Redirects.Shock_Therapy.FaradayStatic"
       ],
       "duration": 240,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Faraday Cage",

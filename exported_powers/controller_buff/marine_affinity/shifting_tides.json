@@ -96,7 +96,8 @@
             ]
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         }
@@ -355,7 +356,8 @@
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods",
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 16480
         }
@@ -479,7 +481,8 @@
                 ]
               },
               "flags": [
-                "KeepThroughDeath"
+                "KeepThroughDeath",
+                "CopyBoosts"
               ],
               "flags_raw": 17664
             }

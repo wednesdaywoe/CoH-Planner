@@ -43,7 +43,8 @@ export const GunDrone: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_GunDrone_Tri_Controller",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

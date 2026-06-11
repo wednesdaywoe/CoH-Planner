@@ -43,7 +43,8 @@ export const BattleDrones: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Droid",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     },
     "teleport": {
       "scale": 1,

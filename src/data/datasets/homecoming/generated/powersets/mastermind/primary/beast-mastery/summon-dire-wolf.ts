@@ -50,7 +50,8 @@ export const SummonDireWolf: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Dire_Wolf",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

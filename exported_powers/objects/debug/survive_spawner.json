@@ -82,6 +82,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -113,6 +116,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -144,6 +150,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -175,6 +184,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -206,6 +218,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -237,6 +252,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -268,6 +286,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -299,6 +320,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -330,6 +354,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -361,6 +388,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -392,6 +422,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -423,6 +456,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -454,6 +490,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -485,6 +524,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -516,6 +558,9 @@
             "entity_def": "P174413786",
             "priority_list": "Survive_Minion"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

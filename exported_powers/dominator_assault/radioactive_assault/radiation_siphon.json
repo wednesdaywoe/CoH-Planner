@@ -428,6 +428,9 @@
               "Villain_Pets.Dominator_RadioactiveAssault_Snipe.Radiation_Siphon_Contamination"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -105,6 +105,9 @@
                   "Redirects.Storm_Blast.StormCell_LightningAura2"
                 ]
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             }
           ]
@@ -151,6 +154,9 @@
                   "Redirects.Storm_Blast.StormCell_LightningAura4"
                 ]
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             }
           ]

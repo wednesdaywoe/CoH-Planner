@@ -49,7 +49,8 @@ export const UmbraBeast: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Umbra_Beast",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

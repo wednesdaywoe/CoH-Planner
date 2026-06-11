@@ -49,6 +49,7 @@ export const Meteor: Power = {
         "Redirects.Seismic_Blast.Meteor"
       ],
       "duration": 10,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Meteor",

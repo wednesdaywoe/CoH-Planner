@@ -44,6 +44,7 @@ export const Gymnastics: Power = {
       "isPseudoPet": false,
       "entity": "Pets_OilSlickOil_Blaster",
       "duration": 30,
+      "copyBoosts": true,
       "conditionalEntities": [
         {
           "entity": "Pets_OilSlickBurn_Blaster",

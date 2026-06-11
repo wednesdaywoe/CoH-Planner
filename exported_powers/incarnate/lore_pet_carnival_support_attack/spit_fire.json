@@ -117,7 +117,8 @@
             "priority_list": "PL_StaticObject"
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         }

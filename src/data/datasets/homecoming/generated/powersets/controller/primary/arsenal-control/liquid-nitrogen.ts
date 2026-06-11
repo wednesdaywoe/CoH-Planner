@@ -43,7 +43,8 @@ export const LiquidNitrogen: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_LiquidNitrogen",
-      "duration": 30
+      "duration": 30,
+      "copyBoosts": true
     }
   }
 };

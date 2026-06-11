@@ -50,6 +50,7 @@ export const EMPArrow: Power = {
         "Redirects.Trick_Arrow.EMP_Arrow_Fx"
       ],
       "duration": 240,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "EMP Field",

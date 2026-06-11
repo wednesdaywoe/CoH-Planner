@@ -498,6 +498,9 @@
               "Redirects.Rad_Melee.Contaminated_Strike_AoE"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

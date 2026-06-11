@@ -44,7 +44,8 @@ export const JackFrost: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_JackFrost",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

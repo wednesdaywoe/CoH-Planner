@@ -197,6 +197,9 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -274,6 +274,9 @@
               "Redirects.Marine_Affinity.Rising_Tide"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

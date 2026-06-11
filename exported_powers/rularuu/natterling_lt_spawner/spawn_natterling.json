@@ -81,6 +81,9 @@
             "entity_def": "Rularuu_Natterling_Lt_Merged",
             "priority_list": "PL_SpawnFlying"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

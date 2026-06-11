@@ -43,6 +43,7 @@ export const FireImps: Power = {
       "isPseudoPet": false,
       "entity": "Pets_FireImp",
       "duration": 99999,
+      "copyBoosts": true,
       "entityCount": 3
     }
   }

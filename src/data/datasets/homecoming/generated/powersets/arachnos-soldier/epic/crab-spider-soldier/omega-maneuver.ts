@@ -46,7 +46,8 @@ export const OmegaManeuver: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Omega_Bomb",
-      "duration": 5
+      "duration": 5,
+      "copyBoosts": true
     }
   }
 };

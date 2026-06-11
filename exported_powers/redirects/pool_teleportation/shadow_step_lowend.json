@@ -543,6 +543,9 @@
               "Redirects.Pool_Teleportation.Teleport_Hover"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ],

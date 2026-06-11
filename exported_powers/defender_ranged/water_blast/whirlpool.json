@@ -96,6 +96,9 @@
             "entity_def": "P2995632953",
             "priority_list": "Pets_Whirlpool_Defender"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

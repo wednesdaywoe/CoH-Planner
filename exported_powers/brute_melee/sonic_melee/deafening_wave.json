@@ -589,6 +589,9 @@
                   "Redirects.Sonic_Melee.Deafening_Wave"
                 ]
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             }
           ]

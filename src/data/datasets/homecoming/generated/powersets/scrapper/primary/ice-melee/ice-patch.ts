@@ -33,7 +33,8 @@ export const IcePatch: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_IcePatch",
-      "duration": 30
+      "duration": 30,
+      "copyBoosts": true
     }
   }
 };

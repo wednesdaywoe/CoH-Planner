@@ -94,6 +94,9 @@
               "Redirects.Force_Field.Dampening_BubbleFX"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

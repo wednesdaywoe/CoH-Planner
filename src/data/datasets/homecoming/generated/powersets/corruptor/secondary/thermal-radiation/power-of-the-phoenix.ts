@@ -53,7 +53,8 @@ export const PowerofthePhoenix: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "P2874174058",
-      "duration": 5
+      "duration": 5,
+      "copyBoosts": true
     },
     "untouchable": {
       "scale": 10,

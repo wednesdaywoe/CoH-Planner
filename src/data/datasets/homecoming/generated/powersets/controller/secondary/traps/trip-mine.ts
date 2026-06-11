@@ -41,7 +41,8 @@ export const TripMine: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_Mine",
-      "duration": 260
+      "duration": 260,
+      "copyBoosts": true
     }
   }
 };

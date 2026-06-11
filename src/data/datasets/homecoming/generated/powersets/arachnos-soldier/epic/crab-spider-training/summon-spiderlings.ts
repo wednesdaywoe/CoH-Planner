@@ -44,6 +44,7 @@ export const SummonSpiderlings: Power = {
       "isPseudoPet": false,
       "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
       "duration": 240,
+      "copyBoosts": true,
       "entityCount": 3
     }
   }

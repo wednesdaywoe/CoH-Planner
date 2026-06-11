@@ -213,6 +213,9 @@
               "Redirects.Comeback.Debt_Protection"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

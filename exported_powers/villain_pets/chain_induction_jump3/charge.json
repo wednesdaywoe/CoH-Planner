@@ -119,6 +119,9 @@
             "entity_def": "Pets_Chain_Induction_Jump4",
             "priority_list": "PFX"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

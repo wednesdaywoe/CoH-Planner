@@ -98,6 +98,9 @@
             ],
             "priority_list": "PL_StaticObject"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -91,6 +91,9 @@
             "entity_def": "Pets_DistortionField_Controller",
             "priority_list": "PL_StaticObject"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

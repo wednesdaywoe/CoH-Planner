@@ -97,6 +97,9 @@
               "Redirects.Storm_Blast.Category_Five"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -135,6 +138,9 @@
               "Redirects.Storm_Blast.Nukenado_SelfDestruct"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

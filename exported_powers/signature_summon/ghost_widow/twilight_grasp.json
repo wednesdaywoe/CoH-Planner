@@ -85,6 +85,9 @@
               "Redirects.Dark_Miasma.Twilight"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

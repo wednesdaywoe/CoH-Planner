@@ -120,7 +120,8 @@
             "priority_list": "PFX"
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         },

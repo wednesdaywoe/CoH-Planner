@@ -45,6 +45,7 @@ export const ShadowField: Power = {
       "isPseudoPet": false,
       "entity": "Pets_Shadow_Field_Dominator",
       "duration": 45,
+      "copyBoosts": true,
       "entityCount": 2
     }
   }

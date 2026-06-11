@@ -48,6 +48,7 @@ export const PoisonGasArrow: Power = {
         "Redirects.Trick_Arrow.PoisonGasArrow"
       ],
       "duration": 20,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Poison Gas Arrow",

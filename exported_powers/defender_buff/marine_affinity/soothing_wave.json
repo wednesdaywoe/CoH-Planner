@@ -117,6 +117,9 @@
               "Redirects.Marine_Affinity.Soothing_Wave"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

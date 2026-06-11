@@ -469,6 +469,9 @@
                   "Temporary_Powers.Temporary_Powers.Radiation_Control_GammaBurstDebuff"
                 ]
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             }
           ]

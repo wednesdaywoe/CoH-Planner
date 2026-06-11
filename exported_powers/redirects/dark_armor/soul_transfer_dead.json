@@ -378,7 +378,8 @@
                   },
                   "flags": [
                     "KeepThroughDeath",
-                    "NoHitDelay"
+                    "NoHitDelay",
+                    "CopyBoosts"
                   ],
                   "flags_raw": 83200
                 }
@@ -766,6 +767,9 @@
                           "Redirects.Comeback.Debt_Protection"
                         ]
                       },
+                      "flags": [
+                        "CopyBoosts"
+                      ],
                       "flags_raw": 1280
                     }
                   ],

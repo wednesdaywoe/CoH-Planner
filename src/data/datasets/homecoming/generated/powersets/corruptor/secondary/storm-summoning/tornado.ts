@@ -49,7 +49,8 @@ export const Tornado: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Tornado",
-      "duration": 30
+      "duration": 30,
+      "copyBoosts": true
     }
   }
 };

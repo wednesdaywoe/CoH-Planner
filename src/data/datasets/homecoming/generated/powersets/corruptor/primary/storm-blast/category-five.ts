@@ -50,6 +50,7 @@ export const CategoryFive: Power = {
         "Redirects.Storm_Blast.Category_Five"
       ],
       "duration": 20,
+      "copyBoosts": true,
       "entityCount": 2,
       "resolvedEntities": [
         {

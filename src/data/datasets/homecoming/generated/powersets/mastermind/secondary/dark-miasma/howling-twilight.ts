@@ -84,7 +84,8 @@ export const HowlingTwilight: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_HowlingVillain",
-      "duration": 1
+      "duration": 1,
+      "copyBoosts": true
     },
     "stun": {
       "mag": 2,

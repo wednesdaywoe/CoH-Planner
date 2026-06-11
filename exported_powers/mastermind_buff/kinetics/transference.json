@@ -92,6 +92,9 @@
               "Redirects.Kinetics.Transference"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

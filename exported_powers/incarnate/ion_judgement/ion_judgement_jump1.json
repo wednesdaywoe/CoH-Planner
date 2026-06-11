@@ -200,7 +200,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17456
         }

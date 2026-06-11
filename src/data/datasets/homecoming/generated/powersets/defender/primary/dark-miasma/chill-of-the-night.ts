@@ -47,7 +47,8 @@ export const ChilloftheNight: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_DarkServant",
-      "duration": 240
+      "duration": 240,
+      "copyBoosts": true
     }
   }
 };

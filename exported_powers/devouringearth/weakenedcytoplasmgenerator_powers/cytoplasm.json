@@ -82,7 +82,8 @@
             "priority_list": "PL_FightPreferMelee"
           },
           "flags": [
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "CopyBoosts"
           ],
           "flags_raw": 1056
         },

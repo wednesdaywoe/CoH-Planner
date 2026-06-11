@@ -231,7 +231,8 @@
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         },
@@ -265,7 +266,8 @@
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         },

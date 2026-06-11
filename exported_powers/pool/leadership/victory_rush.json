@@ -103,6 +103,9 @@
                   "Pets.Pool_Leadership_VictoryRush.VictoryRush_AV"
                 ]
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             }
           ]
@@ -164,6 +167,9 @@
                       "Pets.Pool_Leadership_VictoryRush.VictoryRush_EB"
                     ]
                   },
+                  "flags": [
+                    "CopyBoosts"
+                  ],
                   "flags_raw": 1280
                 }
               ]
@@ -225,6 +231,9 @@
                           "Pets.Pool_Leadership_VictoryRush.VictoryRush_BS"
                         ]
                       },
+                      "flags": [
+                        "CopyBoosts"
+                      ],
                       "flags_raw": 1280
                     }
                   ]
@@ -286,6 +295,9 @@
                               "Pets.Pool_Leadership_VictoryRush.VictoryRush_LT"
                             ]
                           },
+                          "flags": [
+                            "CopyBoosts"
+                          ],
                           "flags_raw": 1280
                         }
                       ]
@@ -347,6 +359,9 @@
                                   "Pets.Pool_Leadership_VictoryRush.VictoryRush_MN"
                                 ]
                               },
+                              "flags": [
+                                "CopyBoosts"
+                              ],
                               "flags_raw": 1280
                             }
                           ]
@@ -395,6 +410,9 @@
                                   "Pets.Pool_Leadership_VictoryRush.VictoryRush_Base"
                                 ]
                               },
+                              "flags": [
+                                "CopyBoosts"
+                              ],
                               "flags_raw": 1280
                             }
                           ]

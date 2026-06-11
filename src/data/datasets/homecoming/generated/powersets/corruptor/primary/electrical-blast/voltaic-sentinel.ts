@@ -53,6 +53,7 @@ export const VoltaicSentinel: Power = {
         "Pets.VoltaicSentinel_PseudoPet.Electrical_Field"
       ],
       "duration": 99999,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Voltaic Sentinel",

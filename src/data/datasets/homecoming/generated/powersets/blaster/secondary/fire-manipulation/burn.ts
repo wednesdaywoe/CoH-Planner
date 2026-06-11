@@ -52,6 +52,7 @@ export const Burn: Power = {
         "Redirects.Fiery_Aura.Burn"
       ],
       "duration": 10,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Burn",

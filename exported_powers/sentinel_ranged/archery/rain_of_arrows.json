@@ -91,6 +91,9 @@
             "entity_def": "P4047293352",
             "priority_list": "Pets_RainofArrows_Visual"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -122,6 +125,9 @@
             "entity_def": "Pets_RainofArrows_Sentinel",
             "priority_list": "PL_StaticObject"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

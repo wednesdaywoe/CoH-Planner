@@ -101,7 +101,8 @@
             ]
           },
           "flags": [
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "CopyBoosts"
           ],
           "flags_raw": 320
         },

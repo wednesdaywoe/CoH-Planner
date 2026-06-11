@@ -44,7 +44,8 @@ export const DarkExtraction: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Warshade_Extraction",
-      "duration": 200
+      "duration": 200,
+      "copyBoosts": true
     }
   }
 };

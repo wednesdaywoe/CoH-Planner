@@ -97,6 +97,9 @@
               "Pets.Static_Field_Controller.Static_Field"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

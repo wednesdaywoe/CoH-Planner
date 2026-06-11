@@ -147,7 +147,8 @@
           "flags": [
             "NearGround",
             "IgnoreCombatMods",
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 16712
         }

@@ -214,7 +214,8 @@
             ]
           },
           "flags": [
-            "NoHitDelay"
+            "NoHitDelay",
+            "CopyBoosts"
           ],
           "flags_raw": 66816
         }

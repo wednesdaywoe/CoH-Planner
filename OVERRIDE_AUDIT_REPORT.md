@@ -11,115 +11,30 @@ The override layer was built to paper over a **stale April-2019 CoD2 extract**. 
 **Recommended handling:**
 - **DEAD_PIN (119) + PVP_ONLY_REDUNDANT (14)** — mechanically retire (remove the pinned fields / delete file if nothing legit remains). No game-value judgment required.
 - **AUGMENT_ONLY (16)** — keep; these add planner-only fields the generated layer does not emit.
-- **DIVERGENT (27)** — per-power decision, triage by stakes: **DAMAGE 0** (verify in-game first), **STATS 0**, **EFFECTS 27**. For each, decide whether the override is a legit planner correction (keep) or a frozen stale value (delete so the live binary shows).
+- **DIVERGENT (7)** — per-power decision, triage by stakes: **DAMAGE 0** (verify in-game first), **STATS 0**, **EFFECTS 7**. For each, decide whether the override is a legit planner correction (keep) or a frozen stale value (delete so the live binary shows).
 - Cross-cutting signal: `arc` is stored in **radians** in generated but **degrees** in overrides — reconcile representation rather than treating each as a one-off.
 
 ## Tally
 
 | Status | Count | Meaning |
 |---|---|---|
-| DIVERGENT | 27 | A non-PvP value generated also emits (PvE damage / stats / effects sub-key) differs → **decision needed**: real planner correction vs. frozen stale value. |
-| AUGMENT_ONLY | 40 | Override only adds planner-only sub-keys generated never emits (maxStacks, stacksLinear, …); no value conflict → keep. |
-| TEXT_ONLY | 6103 | Override only touches display/text fields → out of MSOT-4 scope. |
+| DIVERGENT | 7 | A non-PvP value generated also emits (PvE damage / stats / effects sub-key) differs → **decision needed**: real planner correction vs. frozen stale value. |
+| AUGMENT_ONLY | 44 | Override only adds planner-only sub-keys generated never emits (maxStacks, stacksLinear, …); no value conflict → keep. |
+| TEXT_ONLY | 6119 | Override only touches display/text fields → out of MSOT-4 scope. |
 
-## DIVERGENT (27)
-
-### `homecoming` arachnos-soldier/epic/bane-spider-training/bane-spider-armor.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: durations
-  - override: `{"durations":{"confuse":10.25,"fear":10.25,"hold":10.25,"immobilize":10.25,"maxHPBuff":10.25,"resistance":10.25,"sleep":10.25,"stun":10.25}}`
-  - generated: `{"resistance":{"smashing":{"scale":0.75,"table":"Melee_Res_Dmg"},"lethal":{"scale":0.75,"table":"Melee_Res_Dmg"},"fire":{"scale":0.75,"table":"Melee_Res_Dmg"},"cold":{"scale":0.75,"table":"Melee_Res_Dmg"},"energy":{"scale":0.75,"table":"Melee_Res_Dmg"},"negative":{"scale":0.75,"table":"Melee_Res_Dmg"},"psionic":{"scale":0.75,"table":"Melee_Res_Dmg"},"toxic":{"scale":0.75,"table":"Melee_Res_Dmg"}},"durations":{"resistance":10.25,"confuse":10.25,"fear":10.25,"hold":10.25,"immobilize":10.25,"stun":10.25,"sleep":10.25,"mezResistance":10.25,"maxHPBuff":10.25},"confuse":{"mag":1,"scale":4,"table":"Melee_Ones"},"effectDuration":10.25,"fear":{"mag":1,"scale":4,"table":"Melee_Ones"},"hold":{"mag":1,"scale":4,"table":"Melee_Ones"},"immobilize":{"mag":1,"scale":4,"table":"Melee_Ones"},"stun":{"mag":1,"scale":4,"table":"Melee_Ones"},"sleep":{"mag":1,"scale":4,"table":"Melee_Ones"},"mezResistance":{"sleep":{"scale":5,"table":"Melee_Ones"}},"maxHPBuff":{"scale":2,"table":"Melee_HealSelf"},"buffDuration":10.25}`
+## DIVERGENT (7)
 
 ### `homecoming` arachnos-soldier/epic/bane-spider-training/hide.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: stealth, durations
-  - override: `{"stealth":{"stealthPvE":{"scale":55,"table":"Melee_Ones"},"stealthPvP":{"scale":500,"table":"Melee_Ones"},"translucency":{"scale":0.15,"table":"Melee_Ones"}},"durations":{"defenseBuff":0.75,"stealth":0.75}}`
+- **effects** — CONFLICT: stealth
+  - override: `{"stealth":{"stealthPvE":{"scale":55,"table":"Melee_Ones"},"stealthPvP":{"scale":500,"table":"Melee_Ones"},"translucency":{"scale":0.15,"table":"Melee_Ones"}}}`
   - generated: `{"stealth":{"stealthPvE":{"scale":55,"table":"Melee_Ones"},"stealthPvP":{"scale":500,"table":"Melee_Ones"}},"durations":{"stealth":0.75,"defenseBuff":0.75,"defenseBuffSuppressible":0.75},"defenseBuff":{"ranged":{"scale":0.375,"table":"Melee_Buff_Def"},"melee":{"scale":0.375,"table":"Melee_Buff_Def"},"aoe":{"scale":0.375,"table":"Melee_Buff_Def"},"smashing":{"scale":0.375,"table":"Melee_Buff_Def"},"lethal":{"scale":0.375,"table":"Melee_Buff_Def"},"fire":{"scale":0.375,"table":"Melee_Buff_Def"},"cold":{"scale":0.375,"table":"Melee_Buff_Def"},"energy":{"scale":0.375,"table":"Melee_Buff_Def"},"negative":{"scale":0.375,"table":"Melee_Buff_Def"}},"defenseBuffSuppressible":{"ranged":{"scale":0.375,"table":"Melee_Buff_Def"},"melee":{"scale":0.375,"table":"Melee_Buff_Def"},"aoe":{"scale":0.375,"table":"Melee_Buff_Def"},"smashing":{"scale":0.375,"table":"Melee_Buff_Def"},"lethal":{"scale":0.375,"table":"Melee_Buff_Def"},"fire":{"scale":0.375,"table":"Melee_Buff_Def"},"cold":{"scale":0.375,"table":"Melee_Buff_Def"},"energy":{"scale":0.375,"table":"Melee_Buff_Def"},"negative":{"scale":0.375,"table":"Melee_Buff_Def"}},"buffDuration":0.75}`
 
-### `homecoming` arachnos-soldier/epic/bane-spider-training/web-cocoon.ts _[EFFECTS]_
-- **effects** — CONFLICT: slow, durations | adds: movement
-  - override: `{"slow":{"jumpHeight":{"scale":500,"table":"Ranged_Ones"},"fly":{"scale":10,"table":"Ranged_Ones"}},"rechargeDebuff":{"scale":0.5,"table":"Ranged_Slow"},"movement":{"runSpeed":{"scale":0.5,"table":"Ranged_Slow"},"flySpeed":{"scale":0.5,"table":"Ranged_Slow"}},"buffDuration":15,"durations":{"movement":15,"rechargeBuff":15,"slow":15}}`
-  - generated: `{"hold":{"mag":3,"scale":10,"table":"Ranged_Immobilize"},"slow":{"jumpHeight":{"scale":2,"table":"Melee_Leap"},"runSpeed":{"scale":0.5,"table":"Ranged_Slow"},"flySpeed":{"scale":0.5,"table":"Ranged_Slow"},"fly":{"scale":10,"table":"Ranged_Ones"}},"durations":{"slow":15,"rechargeDebuff":15},"rechargeDebuff":{"scale":0.5,"table":"Ranged_Slow"},"buffDuration":15}`
-
-### `homecoming` arachnos-soldier/epic/crab-spider-training/crab-spider-armor.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: durations
-  - override: `{"durations":{"confuse":10.25,"fear":10.25,"hold":10.25,"immobilize":10.25,"resistance":10.25,"sleep":10.25,"stun":10.25}}`
-  - generated: `{"resistance":{"smashing":{"scale":0.3,"table":"Melee_Res_Dmg"},"lethal":{"scale":0.3,"table":"Melee_Res_Dmg"},"psionic":{"scale":0.2,"table":"Melee_Res_Dmg"}},"durations":{"resistance":10.25,"confuse":10.25,"fear":10.25,"hold":10.25,"immobilize":10.25,"stun":10.25,"sleep":10.25,"mezResistance":10.25},"confuse":{"mag":1,"scale":4,"table":"Melee_Ones"},"effectDuration":10.25,"fear":{"mag":1,"scale":4,"table":"Melee_Ones"},"hold":{"mag":1,"scale":4,"table":"Melee_Ones"},"immobilize":{"mag":1,"scale":4,"table":"Melee_Ones"},"stun":{"mag":1,"scale":4,"table":"Melee_Ones"},"sleep":{"mag":1,"scale":4,"table":"Melee_Ones"},"mezResistance":{"sleep":{"scale":5,"table":"Melee_Ones"}},"buffDuration":10.25}`
-
-### `homecoming` arachnos-soldier/epic/crab-spider-training/serum.ts _[EFFECTS]_
-- **effects** — CONFLICT: maxHPBuff
-  - override: `{"maxHPBuff":{"scale":2,"table":"Melee_HealSelf"}}`
-  - generated: `{"maxHPBuff":{"scale":4,"table":"Melee_HealSelf"},"durations":{"maxHPBuff":120},"buffDuration":120,"maxStacks":2,"stacksLinear":["maxHPBuff"]}`
-
-### `homecoming` arachnos-soldier/epic/training-and-gadgets/combat-training-offensive.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: durations | adds: tohitBuff
-  - override: `{"tohitBuff":{"scale":0.33,"table":"Melee_Ones"},"durations":{"tohitBuff":0.75}}`
-  - generated: `{"accuracyBuff":{"scale":1,"table":"Melee_Buff_ToHit"},"durations":{"accuracyBuff":0.75,"debuffResistance":0.75},"debuffResistance":{"tohit":{"scale":0.33,"table":"Melee_Ones"}},"buffDuration":0.75}`
-
-### `homecoming` arachnos-soldier/epic/training-and-gadgets/mental-training.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: debuffResistance, movement
-  - override: `{"debuffResistance":{"recharge":{"scale":0.4,"table":"Melee_Ones"}},"movement":{"runSpeed":{"scale":0.4,"table":"Melee_Ones"},"flySpeed":{"scale":0.1,"table":"Melee_SpeedFlying"}}}`
-  - generated: `{"rechargeBuff":{"scale":0.2,"table":"Melee_Ones"},"durations":{"rechargeBuff":10.25,"movement":10.25,"debuffResistance":10.25},"movement":{"runSpeed":{"scale":0.1,"table":"Melee_SpeedRunning"},"flySpeed":{"scale":0.1,"table":"Melee_SpeedFlying"}},"debuffResistance":{"movement":{"scale":0.4,"table":"Melee_Ones"},"recharge":{"scale":0.4,"table":"Melee_Ones"}},"buffDuration":10.25}`
-
-### `homecoming` arachnos-soldier/epic/training-and-gadgets/tactical-training-assault.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: durations
-  - override: `{"durations":{"damageBuff":2.25,"placate":2.25,"taunt":2.25}}`
-  - generated: `{"damageBuff":{"scale":1.5,"table":"Ranged_Buff_Dmg"},"durations":{"damageBuff":2.25,"mezResistance":2.25},"mezResistance":{"taunt":{"scale":1.75,"table":"Ranged_Res_Boolean"},"placate":{"scale":1.75,"table":"Ranged_Res_Boolean"}},"buffDuration":2.25}`
-
-### `homecoming` arachnos-soldier/epic/training-and-gadgets/tactical-training-leadership.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: confuse, fear, durations
-  - override: `{"confuse":{"mag":1,"scale":1.75,"table":"Ranged_Res_Boolean"},"fear":{"mag":1,"scale":1.75,"table":"Ranged_Res_Boolean"},"durations":{"confuse":2.25,"fear":2.25,"perceptionBuff":2.25,"tohitBuff":2.25}}`
-  - generated: `{"tohitBuff":{"scale":1,"table":"Ranged_Buff_ToHit"},"durations":{"tohitBuff":2.25,"debuffResistance":2.25,"perceptionBuff":2.25,"mezResistance":2.25,"confuse":2.25,"fear":2.25},"debuffResistance":{"perception":{"scale":1.5,"table":"Ranged_Res_Boolean"}},"perceptionBuff":{"scale":2,"table":"Ranged_Res_Boolean"},"mezResistance":{"confuse":{"scale":1.75,"table":"Ranged_Res_Boolean"},"fear":{"scale":1.75,"table":"Ranged_Res_Boolean"}},"confuse":{"mag":1,"scale":15,"table":"Ranged_Res_Boolean"},"effectDuration":2.25,"fear":{"mag":1,"scale":15,"table":"Ranged_Res_Boolean"},"buffDuration":2.25}`
-
-### `homecoming` arachnos-soldier/epic/training-and-gadgets/wolf-spider-armor.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: durations
-  - override: `{"durations":{"confuse":10.25,"fear":10.25,"hold":10.25,"immobilize":10.25,"resistance":10.25,"sleep":10.25,"stun":10.25}}`
-  - generated: `{"resistance":{"smashing":{"scale":0.3,"table":"Melee_Res_Dmg"},"lethal":{"scale":0.3,"table":"Melee_Res_Dmg"},"psionic":{"scale":0.2,"table":"Melee_Res_Dmg"}},"durations":{"resistance":10.25,"confuse":10.25,"fear":10.25,"hold":10.25,"immobilize":10.25,"stun":10.25,"sleep":10.25,"mezResistance":10.25},"confuse":{"mag":1,"scale":2,"table":"Melee_Ones"},"effectDuration":10.25,"fear":{"mag":1,"scale":2,"table":"Melee_Ones"},"hold":{"mag":1,"scale":2,"table":"Melee_Ones"},"immobilize":{"mag":1,"scale":2,"table":"Melee_Ones"},"stun":{"mag":1,"scale":2,"table":"Melee_Ones"},"sleep":{"mag":1,"scale":2,"table":"Melee_Ones"},"mezResistance":{"sleep":{"scale":5,"table":"Melee_Ones"}},"buffDuration":10.25}`
-
-### `homecoming` arachnos-widow/epic/fortunata-teamwork/fate-sealed.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: durations
-  - override: `{"specialBuff":{"hold":{"scale":0.33,"table":"Melee_Ones"},"stun":{"scale":0.33,"table":"Melee_Ones"},"immobilize":{"scale":0.33,"table":"Melee_Ones"},"sleep":{"scale":0.33,"table":"Melee_Ones"},"confuse":{"scale":0.33,"table":"Melee_Ones"},"fear":{"scale":0.33,"table":"Melee_Ones"}},"durations":{"confuse":0.75,"fear":0.75,"hold":0.75,"immobilize":0.75,"sleep":0.75,"stun":0.75}}`
-  - generated: `{"specialBuff":{"confuse":{"scale":0.33,"table":"Melee_Ones"},"fear":{"scale":0.33,"table":"Melee_Ones"},"hold":{"scale":0.33,"table":"Melee_Ones"},"immobilize":{"scale":0.33,"table":"Melee_Ones"},"stun":{"scale":0.33,"table":"Melee_Ones"},"sleep":{"scale":0.33,"table":"Melee_Ones"}},"durations":{"specialBuff":0.75,"mezResistance":0.75},"mezResistance":{"confuse":{"scale":1,"table":"Melee_Res_Boolean"},"fear":{"scale":1,"table":"Melee_Res_Boolean"},"hold":{"scale":1,"table":"Melee_Res_Boolean"},"immobilize":{"scale":1,"table":"Melee_Res_Boolean"},"stun":{"scale":1,"table":"Melee_Res_Boolean"},"sleep":{"scale":1,"table":"Melee_Res_Boolean"}},"buffDuration":0.75}`
-
 ### `homecoming` arachnos-widow/epic/fortunata-teamwork/frt-mask-presence.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
 - **effects** — CONFLICT: stealth
   - override: `{"stealth":{"stealthPvE":{"scale":40,"table":"Melee_Ones"},"stealthPvP":{"scale":400,"table":"Melee_Ones"},"translucency":{"scale":0.15,"table":"Melee_Ones"}}}`
   - generated: `{"stealth":{"stealthPvE":{"scale":40,"table":"Melee_Ones"},"stealthPvP":{"scale":400,"table":"Melee_Ones"}},"durations":{"stealth":0.75,"defenseBuff":0.75,"defenseBuffSuppressible":0.75},"defenseBuff":{"ranged":{"scale":0.25,"table":"Melee_Buff_Def"},"melee":{"scale":0.25,"table":"Melee_Buff_Def"},"aoe":{"scale":0.25,"table":"Melee_Buff_Def"},"smashing":{"scale":0.25,"table":"Melee_Buff_Def"},"lethal":{"scale":0.25,"table":"Melee_Buff_Def"},"fire":{"scale":0.25,"table":"Melee_Buff_Def"},"cold":{"scale":0.25,"table":"Melee_Buff_Def"},"energy":{"scale":0.25,"table":"Melee_Buff_Def"},"negative":{"scale":0.25,"table":"Melee_Buff_Def"}},"defenseBuffSuppressible":{"ranged":{"scale":0.5,"table":"Melee_Buff_Def"},"melee":{"scale":0.5,"table":"Melee_Buff_Def"},"aoe":{"scale":0.5,"table":"Melee_Buff_Def"},"smashing":{"scale":0.5,"table":"Melee_Buff_Def"},"lethal":{"scale":0.5,"table":"Melee_Buff_Def"},"fire":{"scale":0.5,"table":"Melee_Buff_Def"},"cold":{"scale":0.5,"table":"Melee_Buff_Def"},"energy":{"scale":0.5,"table":"Melee_Buff_Def"},"negative":{"scale":0.5,"table":"Melee_Buff_Def"}},"buffDuration":0.75}`
 
-### `homecoming` arachnos-widow/epic/teamwork/foresight.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: durations | adds: specialBuff, elusivity, effectDuration
-  - override: `{"specialBuff":{"hold":{"scale":0.25,"table":"Melee_Ones"},"stun":{"scale":0.25,"table":"Melee_Ones"},"immobilize":{"scale":0.25,"table":"Melee_Ones"},"sleep":{"scale":0.25,"table":"Melee_Ones"},"confuse":{"scale":0.25,"table":"Melee_Ones"},"fear":{"scale":0.25,"table":"Melee_Ones"}},"elusivity":{"all":{"scale":0.5,"table":"Melee_Res_Boolean"}},"effectDuration":0.75,"durations":{"confuse":0.75,"defenseBuff":0.75,"elusivity":0.75,"fear":0.75,"hold":0.75,"immobilize":0.75,"resistance":0.75,"sleep":0.75,"stun":0.75}}`
-  - generated: `{"resistance":{"psionic":{"scale":0.2,"table":"Melee_Ones"},"smashing":{"scale":0,"table":"Melee_Ones"},"lethal":{"scale":0,"table":"Melee_Ones"},"fire":{"scale":0,"table":"Melee_Ones"},"cold":{"scale":0,"table":"Melee_Ones"},"energy":{"scale":0,"table":"Melee_Ones"},"negative":{"scale":0,"table":"Melee_Ones"}},"durations":{"resistance":0.75,"mezResistance":0.75,"debuffResistance":0.75,"defenseBuff":0.75},"mezResistance":{"confuse":{"scale":0.25,"table":"Melee_Ones"},"fear":{"scale":0.25,"table":"Melee_Ones"},"hold":{"scale":0.25,"table":"Melee_Ones"},"immobilize":{"scale":0.25,"table":"Melee_Ones"},"stun":{"scale":0.25,"table":"Melee_Ones"},"sleep":{"scale":0.25,"table":"Melee_Ones"}},"debuffResistance":{"defense":{"scale":0.5,"table":"Melee_Res_Boolean"}},"defenseBuff":{"ranged":{"scale":0.75,"table":"Melee_Buff_Def"},"melee":{"scale":0.75,"table":"Melee_Buff_Def"},"aoe":{"scale":0.75,"table":"Melee_Buff_Def"}},"buffDuration":0.75}`
-
-### `homecoming` arachnos-widow/epic/teamwork/indomitable-will.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: durations
-  - override: `{"durations":{"confuse":0.75,"fear":0.75,"hold":0.75,"immobilize":0.75,"knockback":0.75,"knockup":0.75,"protection":0.75,"repel":0.75,"resistance":0.75,"sleep":0.75,"stun":0.75}}`
-  - generated: `{"confuse":{"mag":1,"scale":30,"table":"Melee_Res_Boolean"},"effectDuration":0.75,"durations":{"confuse":0.75,"fear":0.75,"hold":0.75,"stun":0.75,"sleep":0.75,"resistance":0.75,"immobilize":0.75,"mezResistance":0.75,"knockup":0.75,"knockback":0.75,"repel":0.75},"fear":{"mag":1,"scale":30,"table":"Melee_Res_Boolean"},"hold":{"mag":1,"scale":30,"table":"Melee_Res_Boolean"},"stun":{"mag":1,"scale":30,"table":"Melee_Res_Boolean"},"sleep":{"mag":1,"scale":30,"table":"Melee_Res_Boolean"},"resistance":{"psionic":{"scale":1,"table":"Melee_Res_Dmg"}},"immobilize":{"mag":1,"scale":30,"table":"Melee_Res_Boolean"},"mezResistance":{"knockup":{"scale":100,"table":"Melee_Ones"},"knockback":{"scale":100,"table":"Melee_Ones"},"repel":{"scale":100,"table":"Melee_Ones"}},"knockup":{"scale":10,"table":"Melee_Ones"},"knockback":{"scale":10,"table":"Melee_Ones"},"repel":{"scale":10,"table":"Melee_Ones"},"buffDuration":0.75}`
-
-### `homecoming` arachnos-widow/epic/widow-teamwork/elude.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: durations | adds: elusivity
-  - override: `{"elusivity":{"all":{"scale":1,"table":"Melee_Res_Boolean"}},"durations":{"defenseBuff":180,"elusivity":180,"movement":180,"recoveryBuff":180,"recoveryDebuff":20}}`
-  - generated: `{"defenseBuff":{"ranged":{"scale":6,"table":"Melee_Buff_Def"},"melee":{"scale":6,"table":"Melee_Buff_Def"},"aoe":{"scale":6,"table":"Melee_Buff_Def"}},"durations":{"defenseBuff":180,"recoveryBuff":180,"movement":180,"debuffResistance":180,"recoveryDebuff":20},"recoveryBuff":{"scale":1,"table":"Melee_Ones"},"movement":{"jumpHeight":{"scale":2,"table":"Melee_Ones"},"runSpeed":{"scale":0.5,"table":"Melee_SpeedRunning"}},"debuffResistance":{"defense":{"scale":1,"table":"Melee_Res_Boolean"}},"recoveryDebuff":{"scale":100,"table":"Melee_Ones"},"enduranceDrain":{"scale":1,"table":"Melee_Ones"},"buffDuration":180}`
-
-### `homecoming` arachnos-widow/epic/widow-teamwork/mental-training.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: debuffResistance, movement
-  - override: `{"debuffResistance":{"recharge":{"scale":0.4,"table":"Melee_Ones"}},"movement":{"runSpeed":{"scale":0.4,"table":"Melee_Ones"},"flySpeed":{"scale":0.1,"table":"Melee_SpeedFlying"}}}`
-  - generated: `{"rechargeBuff":{"scale":0.2,"table":"Melee_Ones"},"durations":{"rechargeBuff":10.25,"movement":10.25,"debuffResistance":10.25},"movement":{"runSpeed":{"scale":0.1,"table":"Melee_SpeedRunning"},"flySpeed":{"scale":0.1,"table":"Melee_SpeedFlying"}},"debuffResistance":{"movement":{"scale":0.4,"table":"Melee_Ones"},"recharge":{"scale":0.4,"table":"Melee_Ones"}},"buffDuration":10.25}`
-
 ### `homecoming` arachnos-widow/epic/widow-teamwork/nw-mask-presence.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
 - **effects** — CONFLICT: stealth
   - override: `{"stealth":{"stealthPvE":{"scale":55,"table":"Melee_Ones"},"stealthPvP":{"scale":500,"table":"Melee_Ones"},"translucency":{"scale":0.15,"table":"Melee_Ones"}}}`
   - generated: `{"stealth":{"stealthPvE":{"scale":55,"table":"Melee_Ones"},"stealthPvP":{"scale":500,"table":"Melee_Ones"}},"durations":{"stealth":0.75,"defenseBuff":0.75,"defenseBuffSuppressible":0.75},"defenseBuff":{"smashing":{"scale":0.25,"table":"Melee_Buff_Def"},"lethal":{"scale":0.25,"table":"Melee_Buff_Def"},"fire":{"scale":0.25,"table":"Melee_Buff_Def"},"cold":{"scale":0.25,"table":"Melee_Buff_Def"},"ranged":{"scale":0.25,"table":"Melee_Buff_Def"},"melee":{"scale":0.25,"table":"Melee_Buff_Def"},"aoe":{"scale":0.25,"table":"Melee_Buff_Def"},"energy":{"scale":0.25,"table":"Melee_Buff_Def"},"negative":{"scale":0.25,"table":"Melee_Buff_Def"}},"defenseBuffSuppressible":{"ranged":{"scale":0.5,"table":"Melee_Buff_Def"},"melee":{"scale":0.5,"table":"Melee_Buff_Def"},"aoe":{"scale":0.5,"table":"Melee_Buff_Def"},"smashing":{"scale":0.5,"table":"Melee_Buff_Def"},"lethal":{"scale":0.5,"table":"Melee_Buff_Def"},"fire":{"scale":0.5,"table":"Melee_Buff_Def"},"cold":{"scale":0.5,"table":"Melee_Buff_Def"},"energy":{"scale":0.5,"table":"Melee_Buff_Def"},"negative":{"scale":0.5,"table":"Melee_Buff_Def"}},"buffDuration":0.75}`
@@ -129,57 +44,27 @@ The override layer was built to paper over a **stale April-2019 CoD2 extract**. 
   - override: `{"stealth":{"stealthPvE":{"scale":150,"table":"Melee_Ones"},"stealthPvP":{"scale":380,"table":"Melee_Ones"},"translucency":{"scale":0.2,"table":"Melee_Ones"}}}`
   - generated: `{"placate":{"scale":6,"table":"Melee_Taunt"},"stealth":{"stealthPvE":{"scale":150,"table":"Melee_Ones"},"stealthPvP":{"scale":380,"table":"Melee_Ones"}},"durations":{"stealth":10},"buffDuration":10}`
 
-### `homecoming` controller/secondary/electrical-affinity/discharge.ts _[EFFECTS]_
-- **effects** — CONFLICT: summon
-  - override: `{"summon":{"isPseudoPet":false,"entity":"Pets_GalvanicSentinel","duration":120,"copyBoosts":true}}`
-  - generated: `{"summon":{"isPseudoPet":false,"entity":"Pets_GalvanicSentinel","duration":120}}`
-
-### `homecoming` corruptor/secondary/electrical-affinity/discharge.ts _[EFFECTS]_
-- **effects** — CONFLICT: summon
-  - override: `{"summon":{"isPseudoPet":false,"entity":"Pets_GalvanicSentinel","duration":120,"copyBoosts":true}}`
-  - generated: `{"summon":{"isPseudoPet":false,"entity":"Pets_GalvanicSentinel","duration":120}}`
-
-### `homecoming` peacebringer/epic/luminous-aura/essence-boost.ts _[EFFECTS]_
-- **effects** — CONFLICT: maxHPBuff
-  - override: `{"maxHPBuff":{"scale":2,"table":"Melee_HealSelf"}}`
-  - generated: `{"maxHPBuff":{"scale":4,"table":"Melee_HealSelf"},"durations":{"maxHPBuff":120,"resistance":120},"resistance":{"toxic":{"scale":2,"table":"Melee_Res_Dmg"}},"buffDuration":120,"maxStacks":2,"stacksLinear":["maxHPBuff"]}`
-
 ### `homecoming` peacebringer/epic/luminous-aura/group-energy-flight.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
 - **effects** — CONFLICT: movement
   - override: `{"movement":{"fly":{"scale":0.1,"table":"Melee_Ones"},"flySpeed":{"scale":0.5,"table":"Melee_SpeedFlying"},"movementControl":{"scale":10,"table":"Melee_Control"},"movementFriction":{"scale":10,"table":"Melee_Friction"}}}`
   - generated: `{"movement":{"fly":{"scale":0.1,"table":"Melee_Ones"}},"durations":{"movement":2.25},"buffDuration":2.25}`
 
-### `homecoming` peacebringer/epic/luminous-aura/light-form.ts _[EFFECTS]_
-- **effects** — CONFLICT: durations
-  - override: `{"durations":{"hold":90,"immobilize":90,"knockback":90,"knockup":90,"protection":90,"recoveryBuff":90,"repel":90,"resistance":90,"sleep":90,"stun":90}}`
-  - generated: `{"resistance":{"smashing":{"scale":7,"table":"Melee_Res_Dmg"},"lethal":{"scale":7,"table":"Melee_Res_Dmg"},"fire":{"scale":7,"table":"Melee_Res_Dmg"},"cold":{"scale":7,"table":"Melee_Res_Dmg"},"energy":{"scale":7,"table":"Melee_Res_Dmg"},"negative":{"scale":7,"table":"Melee_Res_Dmg"},"toxic":{"scale":7,"table":"Melee_Res_Dmg"}},"durations":{"resistance":90,"recoveryBuff":90,"mezResistance":90,"knockup":90,"knockback":90,"repel":90,"hold":90,"immobilize":90,"stun":90,"sleep":90},"recoveryBuff":{"scale":0.3,"table":"Melee_Ones"},"mezResistance":{"knockup":{"scale":10,"table":"Melee_Ones"},"knockback":{"scale":10,"table":"Melee_Ones"},"repel":{"scale":10,"table":"Melee_Ones"}},"knockup":{"scale":100,"table":"Melee_Ones"},"knockback":{"scale":100,"table":"Melee_Ones"},"repel":{"scale":10,"table":"Melee_Ones"},"enduranceDrain":{"scale":0.5,"table":"Melee_Ones"},"hold":{"mag":1,"scale":10,"table":"Melee_Res_Boolean"},"effectDuration":90,"immobilize":{"mag":1,"scale":10,"table":"Melee_Res_Boolean"},"stun":{"mag":1,"scale":10,"table":"Melee_Res_Boolean"},"sleep":{"mag":1,"scale":10,"table":"Melee_Res_Boolean"},"buffDuration":90,"maxStacks":2,"stacksLinear":["recoveryBuff","resistance"]}`
-
 ### `homecoming` peacebringer/epic/luminous-aura/quantum-flight.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
 - **effects** — CONFLICT: stealth
-  - override: `{"stealth":{"translucency":{"scale":0.1,"table":"Melee_Ones"},"stealthPvE":{"scale":20,"table":"Melee_Ones"},"stealthPvP":{"scale":222,"table":"Melee_Ones"}},"durations":{"movement":0.75,"stealth":0.75,"threatDebuff":0.75}}`
+  - override: `{"stealth":{"translucency":{"scale":0.1,"table":"Melee_Ones"},"stealthPvE":{"scale":20,"table":"Melee_Ones"},"stealthPvP":{"scale":222,"table":"Melee_Ones"}}}`
   - generated: `{"movement":{"fly":{"scale":1,"table":"Melee_Ones"},"flySpeed":{"scale":5,"table":"Melee_SpeedFlying"},"movementControl":{"scale":3,"table":"Melee_Control"},"movementFriction":{"scale":3,"table":"Melee_Friction"}},"durations":{"movement":0.75,"stealth":0.75,"threatDebuff":0.75},"stealth":{"stealthPvE":{"scale":20,"table":"Melee_Ones"},"stealthPvP":{"scale":222,"table":"Melee_Ones"}},"threatDebuff":{"scale":1,"table":"Melee_Ones"},"buffDuration":0.75}`
-
-### `homecoming` peacebringer/epic/luminous-aura/white-dwarf-step.ts _[EFFECTS]_
-- **effects** — CONFLICT: movement, buffDuration, durations
-  - override: `{"movement":{"fly":{"scale":1,"table":"Melee_Ones"},"flySpeed":{"scale":500,"table":"Melee_SpeedFlying"},"movementControl":{"scale":8,"table":"Melee_Ones"},"movementFriction":{"scale":8,"table":"Melee_Ones"}},"buffDuration":1.5,"durations":{"movement":1.5,"stealth":1.5}}`
-  - generated: `{"teleport":{"scale":1,"table":"Ranged_Ones"},"movement":{"fly":{"scale":1,"table":"Ranged_Ones"},"flySpeed":{"scale":500,"table":"Melee_SpeedFlying"},"movementControl":{"scale":8,"table":"Melee_Ones"},"movementFriction":{"scale":8,"table":"Melee_Ones"}},"durations":{"movement":15,"untouchable":3},"untouchable":{"scale":1000,"table":"Ranged_Ones"},"buffDuration":15}`
-
-### `homecoming` peacebringer/epic/luminous-aura/white-dwarf.ts _[EFFECTS]_
-- **stats** — all 0 sub-keys equal
-- **effects** — CONFLICT: knockup, knockback, durations
-  - override: `{"knockup":{"scale":100,"table":"Melee_Ones"},"knockback":{"scale":100,"table":"Melee_Ones"},"durations":{"confuse":2.03,"fear":2.03,"hold":2.03,"immobilize":2.03,"knockback":2.03,"knockup":2.03,"maxHPBuff":2,"movement":2,"protection":2,"recoveryBuff":2,"resistance":2,"sleep":2.03,"stun":2.03,"threatBuff":2}}`
-  - generated: `{"resistance":{"smashing":{"scale":5,"table":"Melee_Res_Dmg"},"lethal":{"scale":5,"table":"Melee_Res_Dmg"},"fire":{"scale":5,"table":"Melee_Res_Dmg"},"cold":{"scale":5,"table":"Melee_Res_Dmg"},"energy":{"scale":5,"table":"Melee_Res_Dmg"},"negative":{"scale":5,"table":"Melee_Res_Dmg"},"toxic":{"scale":5,"table":"Melee_Res_Dmg"}},"durations":{"resistance":2,"confuse":2.03,"fear":2.03,"hold":2.03,"stun":2.03,"sleep":2.03,"immobilize":2.03,"maxHPBuff":2,"threatBuff":2,"recoveryBuff":2,"movement":2,"mezResistance":2,"knockup":2.03,"knockback":2.03},"confuse":{"mag":1,"scale":50,"table":"Melee_Res_Boolean"},"effectDuration":2.03,"fear":{"mag":1,"scale":50,"table":"Melee_Res_Boolean"},"hold":{"mag":1,"scale":50,"table":"Melee_Res_Boolean"},"stun":{"mag":1,"scale":50,"table":"Melee_Res_Boolean"},"sleep":{"mag":1,"scale":50,"table":"Melee_Res_Boolean"},"immobilize":{"mag":1,"scale":60,"table":"Melee_Res_Boolean"},"maxHPBuff":{"scale":7.5,"table":"Melee_HealSelf"},"threatBuff":{"scale":1,"table":"Melee_Ones"},"recoveryBuff":{"scale":0.15,"table":"Melee_Ones"},"movement":{"jumpHeight":{"scale":2,"table":"Melee_Ones"},"jumpSpeed":{"scale":0.01,"table":"Melee_Ones"},"movementControl":{"scale":10,"table":"Melee_Control"},"movementFriction":{"scale":0.2,"table":"Melee_Ones"}},"mezResistance":{"knockup":{"scale":100,"table":"Melee_Ones"},"knockback":{"scale":100,"table":"Melee_Ones"}},"knockup":{"scale":200,"table":"Melee_Ones"},"knockback":{"scale":200,"table":"Melee_Ones"},"buffDuration":2.03}`
 
 ### `homecoming` stalker/primary/street-justice/assassins-strike.ts _[EFFECTS]_
 - **effects** — differ
   - override: `{"stealth":{"stealthPvE":{"scale":1,"table":"Melee_Ones"},"stealthPvP":{"scale":1,"table":"Melee_Ones"}},"durations":{"stealth":8},"buffDuration":8}`
   - generated: `"(absent)"`
 
-## AUGMENT_ONLY (40)
+## AUGMENT_ONLY (44)
 
 ### `homecoming` arachnos-soldier/epic/arachnos-soldier/ws-wide-area-web-grenade.ts
+- **effects** — adds: movement
+
+### `homecoming` arachnos-soldier/epic/bane-spider-training/web-cocoon.ts
 - **effects** — adds: movement
 
 ### `homecoming` arachnos-soldier/epic/crab-spider-soldier/frenzy.ts
@@ -190,11 +75,20 @@ The override layer was built to paper over a **stale April-2019 CoD2 extract**. 
 - **stats** — adds: radius, maxTargets
 - **effects** — adds: stun
 
+### `homecoming` arachnos-soldier/epic/training-and-gadgets/combat-training-offensive.ts
+- **effects** — adds: tohitBuff
+
 ### `homecoming` arachnos-widow/epic/night-widow-training/nw-eviscerate.ts
 - **effects** — adds: movement
 
 ### `homecoming` arachnos-widow/epic/night-widow-training/nw-slash.ts
 - **effects** — adds: movement
+
+### `homecoming` arachnos-widow/epic/teamwork/foresight.ts
+- **effects** — adds: specialBuff, elusivity, effectDuration
+
+### `homecoming` arachnos-widow/epic/widow-teamwork/elude.ts
+- **effects** — adds: elusivity
 
 ### `homecoming` arachnos-widow/epic/widow-training/lunge.ts
 - **effects** — adds: movement

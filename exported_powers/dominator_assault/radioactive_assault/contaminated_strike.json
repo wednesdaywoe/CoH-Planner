@@ -323,6 +323,9 @@
               "Villain_Pets.Dominator_RadioactiveAssault_Snipe.Contaminated_Strike_Contamination"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

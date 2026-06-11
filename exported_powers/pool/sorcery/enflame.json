@@ -94,7 +94,8 @@
             "priority_list": "Pets_Enflame_Pet"
           },
           "flags": [
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "CopyBoosts"
           ],
           "flags_raw": 320
         },

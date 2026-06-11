@@ -93,6 +93,9 @@
             "entity_def": "P3273083397",
             "priority_list": "Pets_Gremlin"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -124,6 +127,9 @@
             "entity_def": "Pets_Gremlin",
             "priority_list": "PL_FightPreferMelee"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

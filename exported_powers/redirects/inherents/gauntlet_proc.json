@@ -103,6 +103,9 @@
               "Redirects.Inherents.Gauntlet_Proc_Aura"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ],
@@ -149,6 +152,9 @@
                   "Redirects.Inherents.Gauntlet_AoE"
                 ]
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             }
           ]

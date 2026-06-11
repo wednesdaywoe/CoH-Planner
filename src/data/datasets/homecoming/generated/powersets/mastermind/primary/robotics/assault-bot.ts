@@ -45,7 +45,8 @@ export const AssaultBot: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Assault_Bot",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

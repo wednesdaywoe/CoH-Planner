@@ -776,7 +776,8 @@
                   },
                   "flags": [
                     "NoHitDelay",
-                    "NoProjectileDelay"
+                    "NoProjectileDelay",
+                    "CopyBoosts"
                   ],
                   "flags_raw": 197888
                 }

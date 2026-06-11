@@ -97,6 +97,9 @@
               "Redirects.Pyrotechnic_Control.Blast_Off"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

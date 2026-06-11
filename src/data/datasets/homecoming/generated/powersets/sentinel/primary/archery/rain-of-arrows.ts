@@ -42,6 +42,7 @@ export const RainofArrows: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 3,
+      "copyBoosts": true,
       "entities": [
         {
           "entity": "P4047293352",

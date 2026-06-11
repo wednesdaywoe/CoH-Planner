@@ -419,7 +419,8 @@
               },
               "flags": [
                 "IgnoreCombatMods",
-                "KeepThroughDeath"
+                "KeepThroughDeath",
+                "CopyBoosts"
               ],
               "flags_raw": 16704
             }

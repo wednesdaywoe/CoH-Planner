@@ -113,7 +113,8 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "CopyBoosts"
           ],
           "flags_raw": 1072
         },
@@ -148,7 +149,8 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "CopyBoosts"
           ],
           "flags_raw": 1072
         }

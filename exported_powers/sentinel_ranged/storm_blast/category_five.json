@@ -98,7 +98,8 @@
             ]
           },
           "flags": [
-            "HideZero"
+            "HideZero",
+            "CopyBoosts"
           ],
           "flags_raw": 9472
         },
@@ -138,6 +139,9 @@
               "Redirects.Storm_Blast.Category_Five_Lightning_Sentinel"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

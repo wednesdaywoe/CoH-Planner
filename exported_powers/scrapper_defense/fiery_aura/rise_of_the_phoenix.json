@@ -95,6 +95,9 @@
               "Redirects.Fiery_Aura.Phoenix"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

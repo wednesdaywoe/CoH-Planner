@@ -53,6 +53,7 @@ export const TearGas: Power = {
         "Pets.ResistAll.ResistAll"
       ],
       "duration": 60,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Tear Gas",

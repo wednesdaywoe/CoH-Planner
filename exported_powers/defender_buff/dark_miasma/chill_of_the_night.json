@@ -96,6 +96,9 @@
             "entity_def": "P4241331532",
             "priority_list": "Pets_DarkServant"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

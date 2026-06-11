@@ -42,7 +42,8 @@ export const CatherineWheel: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_CatherineWheel",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

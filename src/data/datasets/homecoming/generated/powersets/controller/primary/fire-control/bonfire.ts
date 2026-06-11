@@ -46,7 +46,8 @@ export const Bonfire: Power = {
       "powers": [
         "Pets.Bonfire.Bonfire"
       ],
-      "duration": 45
+      "duration": 45,
+      "copyBoosts": true
     }
   }
 };

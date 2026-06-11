@@ -96,6 +96,9 @@
               "Redirects.Marine_Affinity.Whitecap_Arrive"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

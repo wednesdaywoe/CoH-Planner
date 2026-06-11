@@ -346,6 +346,9 @@
             "entity_def": "Pets_Static_Field_End_Recovery_Dominator",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -81,6 +81,9 @@
             "entity_def": "DevouringEarth_Hive_Spire_Swarm",
             "priority_list": "PL_FightPreferMelee"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

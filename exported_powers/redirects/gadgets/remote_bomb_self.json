@@ -180,7 +180,8 @@
             "priority_list": "Pets_Bomb"
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         }
@@ -284,7 +285,8 @@
             "priority_list": "Pets_Bomb_Controller"
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         }
@@ -332,7 +334,8 @@
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         }
@@ -380,7 +383,8 @@
             "priority_list": "Pets_Bomb_Corruptor"
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         },
@@ -414,7 +418,8 @@
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         }
@@ -462,7 +467,8 @@
             "priority_list": "Pets_Bomb_Defender"
           },
           "flags": [
-            "KeepThroughDeath"
+            "KeepThroughDeath",
+            "CopyBoosts"
           ],
           "flags_raw": 17664
         }

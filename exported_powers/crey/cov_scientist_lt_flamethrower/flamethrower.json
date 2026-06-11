@@ -112,7 +112,8 @@
           },
           "flags": [
             "NearGround",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "CopyBoosts"
           ],
           "flags_raw": 328
         }

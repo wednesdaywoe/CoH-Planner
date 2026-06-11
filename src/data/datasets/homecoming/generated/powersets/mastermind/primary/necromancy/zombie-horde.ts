@@ -44,7 +44,8 @@ export const ZombieHorde: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Zombie",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     },
     "teleport": {
       "scale": 1,

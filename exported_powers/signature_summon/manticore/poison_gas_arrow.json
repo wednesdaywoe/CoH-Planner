@@ -84,7 +84,8 @@
             "priority_list": "PL_StaticObject"
           },
           "flags": [
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "CopyBoosts"
           ],
           "flags_raw": 320
         }

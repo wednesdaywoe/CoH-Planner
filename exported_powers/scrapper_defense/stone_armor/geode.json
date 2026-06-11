@@ -95,7 +95,8 @@
             ]
           },
           "flags": [
-            "NoHitDelay"
+            "NoHitDelay",
+            "CopyBoosts"
           ],
           "flags_raw": 66816
         },
@@ -213,7 +214,8 @@
               },
               "flags": [
                 "IgnoreStrength",
-                "IgnoreResistance"
+                "IgnoreResistance",
+                "CopyBoosts"
               ],
               "flags_raw": 1072
             }
@@ -629,7 +631,8 @@
             ]
           },
           "flags": [
-            "NoHitDelay"
+            "NoHitDelay",
+            "CopyBoosts"
           ],
           "flags_raw": 66816
         }

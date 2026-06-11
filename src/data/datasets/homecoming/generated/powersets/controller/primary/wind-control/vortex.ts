@@ -49,7 +49,8 @@ export const Vortex: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_WindControl_Vortex_Controller",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   },
   "requires": "accesslevel char> 0 >="

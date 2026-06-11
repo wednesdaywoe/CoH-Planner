@@ -450,6 +450,9 @@
               "Pets.Static_Field_End_Recovery_Controller.Endurance_Recovered"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

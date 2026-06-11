@@ -55,6 +55,7 @@ export const LightningRod: Power = {
         "Pets.ResistAll.ResistAll"
       ],
       "duration": 1,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Lightning Rod",

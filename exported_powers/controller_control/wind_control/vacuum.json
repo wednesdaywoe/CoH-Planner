@@ -105,7 +105,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "DeepSleep"
+            "DeepSleep",
+            "CopyBoosts"
           ],
           "flags_raw": 2096
         }

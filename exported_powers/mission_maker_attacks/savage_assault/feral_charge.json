@@ -284,6 +284,9 @@
               "Mission_Maker_Pets.Savage_Melee.Feral_Charge"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -110,6 +110,9 @@
             "entity_def": "GenericVillains_Digiwench_ChainJump2",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -141,6 +144,9 @@
             "entity_def": "GenericVillains_Digiwench_ChainJump2",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

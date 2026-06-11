@@ -92,6 +92,9 @@
             "entity_def": "Pets_Traps_Acid_Mortar",
             "priority_list": "PL_FightPreferRanged"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

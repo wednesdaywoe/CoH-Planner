@@ -41,6 +41,7 @@ export const SpiritTree: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 60,
+      "copyBoosts": true,
       "entities": [
         {
           "entity": "P1734497484",

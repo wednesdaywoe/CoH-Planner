@@ -51,7 +51,8 @@ export const Sleet: Power = {
         "Pets.Sleet.Sleet",
         "Pets.Sleet.Avoid"
       ],
-      "duration": 15
+      "duration": 15,
+      "copyBoosts": true
     }
   }
 };

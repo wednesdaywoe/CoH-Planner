@@ -96,6 +96,9 @@
             "entity_def": "P2995632953",
             "priority_list": "Pets_Whirlpool_Sentinel"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -131,6 +134,9 @@
             ],
             "priority_list": "Whirlpool"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -89,7 +89,8 @@
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
-            "NearGround"
+            "NearGround",
+            "CopyBoosts"
           ],
           "flags_raw": 1288
         }

@@ -48,6 +48,7 @@ export const LifegivingSpores: Power = {
         "Pets.Lifegiving_Spores.Lifegiving_Spores"
       ],
       "duration": 99999,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "LIfegiving Spores",

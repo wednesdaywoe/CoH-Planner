@@ -80,6 +80,9 @@
             "type": "EntCreate",
             "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -110,6 +113,9 @@
             "type": "EntCreate",
             "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -140,6 +146,9 @@
             "type": "EntCreate",
             "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -184,6 +193,9 @@
             "type": "EntCreate",
             "entity_def": "Arachnos_Mu_Adept_High_Ghost_Noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -228,6 +240,9 @@
             "type": "EntCreate",
             "entity_def": "Arachnos_Mu_Guardian_High_Ghost_Noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

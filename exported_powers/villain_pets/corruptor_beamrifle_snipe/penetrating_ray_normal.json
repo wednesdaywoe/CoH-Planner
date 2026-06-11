@@ -429,6 +429,9 @@
               "Pets.DisintegrateSpread.Disintegrate_Spread"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

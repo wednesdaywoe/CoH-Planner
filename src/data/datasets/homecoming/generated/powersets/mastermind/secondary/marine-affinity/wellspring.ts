@@ -41,7 +41,8 @@ export const Wellspring: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Wellspring",
-      "duration": 240
+      "duration": 240,
+      "copyBoosts": true
     }
   }
 };

@@ -46,6 +46,7 @@ export const GlueArrow: Power = {
         "Redirects.Trick_Arrow.GlueArrow"
       ],
       "duration": 60,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Glue Arrow",

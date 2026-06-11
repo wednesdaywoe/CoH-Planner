@@ -92,7 +92,8 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "CopyBoosts"
           ],
           "flags_raw": 1072
         },
@@ -128,6 +129,9 @@
               "Villain_Pets.Spirit_Tree_Aura.Spirit_Tree"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

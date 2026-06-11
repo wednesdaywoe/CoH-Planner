@@ -45,6 +45,7 @@ export const DisruptionArrow: Power = {
         "Pets.ResistAll.ResistAll"
       ],
       "duration": 45,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Disruption Arrow",

@@ -80,6 +80,9 @@
             "type": "EntCreate",
             "entity_def": "FreedomCorps_Rifle_high_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -124,6 +127,9 @@
             "type": "EntCreate",
             "entity_def": "FreedomCorps_Minigun_high_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -168,6 +174,9 @@
             "type": "EntCreate",
             "entity_def": "FreedomCorps_Flamethrower_high_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -212,6 +221,9 @@
             "type": "EntCreate",
             "entity_def": "FreedomCorps_Eagle_high_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -256,6 +268,9 @@
             "type": "EntCreate",
             "entity_def": "FreedomCorps_SpecOps_high_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -300,6 +315,9 @@
             "type": "EntCreate",
             "entity_def": "FreedomCorps_Nullifier_high_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -344,6 +362,9 @@
             "type": "EntCreate",
             "entity_def": "FreedomCorps_Officer_high_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

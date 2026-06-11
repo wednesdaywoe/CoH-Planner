@@ -46,7 +46,8 @@ export const IrradiatedGround: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
-      "duration": 10
+      "duration": 10,
+      "copyBoosts": true
     }
   }
 };

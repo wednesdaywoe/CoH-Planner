@@ -51,6 +51,7 @@ export const SmokeGrenade: Power = {
         "Redirects.Assault_Rifle.Smoke_Confusion"
       ],
       "duration": 30,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Smoke Grenade",

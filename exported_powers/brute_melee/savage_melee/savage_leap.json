@@ -298,6 +298,9 @@
               "Brute_Melee_Aux.Savage_Melee.Savage_Leap_AoE"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

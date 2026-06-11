@@ -47,7 +47,8 @@ export const Oni: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Oni",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

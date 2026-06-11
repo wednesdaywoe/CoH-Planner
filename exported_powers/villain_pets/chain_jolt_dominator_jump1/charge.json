@@ -174,6 +174,9 @@
             "entity_def": "Pets_Chain_Jolt_Dominator_Jump2",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -205,6 +208,9 @@
             "entity_def": "Pets_Chain_Jolt_Dominator_Jump2",
             "priority_list": "PL_Untargetable_FightPreferRanged"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

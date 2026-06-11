@@ -47,7 +47,8 @@ export const Whirlpool: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Whirlpool_Corruptor",
-      "duration": 15
+      "duration": 15,
+      "copyBoosts": true
     }
   }
 };

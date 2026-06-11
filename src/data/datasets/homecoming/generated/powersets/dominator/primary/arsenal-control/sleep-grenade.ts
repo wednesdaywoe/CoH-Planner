@@ -53,6 +53,7 @@ export const SleepGrenade: Power = {
         "Redirects.Assault_Rifle.Sleep_Grenade_Damage"
       ],
       "duration": 30,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Sleep Grenade",

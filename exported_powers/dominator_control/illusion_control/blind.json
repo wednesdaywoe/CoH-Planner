@@ -397,6 +397,9 @@
               "Redirects.Illusion_Control.Blind"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

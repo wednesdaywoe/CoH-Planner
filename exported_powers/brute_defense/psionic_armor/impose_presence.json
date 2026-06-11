@@ -274,6 +274,9 @@
               "Redirects.Inherents.Fury_Proc_Aura"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

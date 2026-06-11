@@ -46,7 +46,8 @@ export const Singularity: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Singularity",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

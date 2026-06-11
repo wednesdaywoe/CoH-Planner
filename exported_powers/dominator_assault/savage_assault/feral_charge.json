@@ -297,6 +297,9 @@
               "Dominator_Assault_Aux.Savage_Assault.Feral_Charge_Hit"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -86,6 +86,9 @@
               "Villain_Pets.Creeper_Entangle.Entangle"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

@@ -92,6 +92,9 @@
             "entity_def": "P4100491214",
             "priority_list": "Pets_OilSlickOil_Blaster"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

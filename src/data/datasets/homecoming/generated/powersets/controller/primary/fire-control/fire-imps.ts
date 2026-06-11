@@ -42,6 +42,7 @@ export const FireImps: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 99999,
+      "copyBoosts": true,
       "entities": [
         {
           "entity": "P1757360070",

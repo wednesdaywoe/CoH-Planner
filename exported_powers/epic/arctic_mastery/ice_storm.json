@@ -91,6 +91,9 @@
             "entity_def": "Pets_IceStorm",
             "priority_list": "PL_StaticObject"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -138,6 +141,9 @@
             "entity_def": "Pets_Embraced_IceStorm",
             "priority_list": "PL_StaticObject"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

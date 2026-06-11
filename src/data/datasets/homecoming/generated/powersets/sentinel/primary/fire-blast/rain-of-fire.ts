@@ -48,6 +48,7 @@ export const RainofFire: Power = {
         "Pets.RainofFire_Sentinel.RainofFire"
       ],
       "duration": 15,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Rain of Fire",

@@ -182,6 +182,9 @@
                   "Redirects.Ice_Armor.Icy_Bastion_NoCast"
                 ]
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             }
           ],
@@ -361,7 +364,8 @@
               },
               "flags": [
                 "IgnoreStrength",
-                "IgnoreResistance"
+                "IgnoreResistance",
+                "CopyBoosts"
               ],
               "flags_raw": 1072
             }
@@ -411,6 +415,9 @@
               "Redirects.Ice_Armor.Icy_Bastion"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -446,7 +453,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "NoHitDelay"
+            "NoHitDelay",
+            "CopyBoosts"
           ],
           "flags_raw": 66608
         }

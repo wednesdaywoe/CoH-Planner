@@ -142,6 +142,9 @@
               "Redirects.Inherents.Gauntlet_Proc_Aura"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

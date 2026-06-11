@@ -41,6 +41,12 @@ class EffectTemplate:
     # (IgnoreResistance) and 0x430 (IgnoreStrength + IgnoreResistance)
     # without waiting for the full bit-to-name table.
     flags_raw: int = 0
+    # Raw SECOND flags word (the u4 immediately after flags_raw). The binary
+    # stores AttribMod flags across two consecutive u4s; `flags_raw` is the
+    # first, this is the second. Validated bits: CopyBoosts=0x4, CopyCreatorMods=0x8,
+    # PseudoPet=0x20 (see _FLAG2_BITS in _powers.py). Stored raw so the
+    # remaining bits can be decoded later without re-export. 0 for Parse6.
+    flags2_raw: int = 0
     boost_mod_allowed_id: int = 0
     mode_name: str | None = None
     suppress_events: list[dict] = field(default_factory=list)

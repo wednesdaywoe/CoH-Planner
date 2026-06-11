@@ -93,6 +93,9 @@
             "entity_def": "Pets_Corruptor_IceStorm",
             "priority_list": "PL_StaticObject"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

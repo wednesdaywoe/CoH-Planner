@@ -44,7 +44,8 @@ export const SummonDemons: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Ember_Demon",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

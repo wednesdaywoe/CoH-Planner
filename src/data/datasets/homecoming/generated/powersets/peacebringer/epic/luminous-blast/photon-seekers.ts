@@ -43,6 +43,7 @@ export const PhotonSeekers: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 60,
+      "copyBoosts": true,
       "entities": [
         {
           "entity": "Pets_LightDrone1",

@@ -51,6 +51,7 @@ export const CategoryFive: Power = {
         "Redirects.Storm_Blast.Category_Five_Sentinel"
       ],
       "duration": 15,
+      "copyBoosts": true,
       "entityCount": 2,
       "resolvedEntities": [
         {

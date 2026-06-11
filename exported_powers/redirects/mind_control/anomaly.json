@@ -133,6 +133,9 @@
                 "entity_def": "NDNZFTFG8P9RWWVD74JVVDB2R2",
                 "priority_list": "CE65AHN963G7Y5LUK29EETFAMA"
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             }
           ]
@@ -178,6 +181,9 @@
                 "entity_def": "NDNZFTFG8P9RWWVD74JVVDB2R2",
                 "priority_list": "CE65AHN963G7Y5LUK29EETFAMA"
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             }
           ]

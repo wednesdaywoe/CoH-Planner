@@ -94,7 +94,8 @@
           },
           "flags": [
             "IgnoreCombatMods",
-            "NoHitDelay"
+            "NoHitDelay",
+            "CopyBoosts"
           ],
           "flags_raw": 65856
         },
@@ -130,7 +131,8 @@
           },
           "flags": [
             "IgnoreCombatMods",
-            "NoHitDelay"
+            "NoHitDelay",
+            "CopyBoosts"
           ],
           "flags_raw": 65856
         }

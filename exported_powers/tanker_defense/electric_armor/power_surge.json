@@ -531,6 +531,9 @@
                   "Redirects.Electric_Armor.EM_Pulse"
                 ]
               },
+              "flags": [
+                "CopyBoosts"
+              ],
               "flags_raw": 1280
             },
             {

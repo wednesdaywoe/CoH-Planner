@@ -43,7 +43,8 @@ export const Caltrops: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Caltrops",
-      "duration": 45
+      "duration": 45,
+      "copyBoosts": true
     }
   }
 };

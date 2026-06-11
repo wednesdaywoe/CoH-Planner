@@ -84,7 +84,8 @@
             "priority_list": "PFX"
           },
           "flags": [
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "CopyBoosts"
           ],
           "flags_raw": 320
         }
@@ -132,7 +133,8 @@
             "priority_list": "PFX"
           },
           "flags": [
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "CopyBoosts"
           ],
           "flags_raw": 320
         }

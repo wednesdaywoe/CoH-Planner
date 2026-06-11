@@ -44,6 +44,7 @@ export const Gremlins: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 99999,
+      "copyBoosts": true,
       "entities": [
         {
           "entity": "P3273083397",

@@ -117,6 +117,9 @@
             "entity_def": "Objects_UXB_Target",
             "priority_list": "PL_BeGoodAndFight"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

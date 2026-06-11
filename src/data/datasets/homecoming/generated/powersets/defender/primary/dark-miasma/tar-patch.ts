@@ -44,6 +44,7 @@ export const TarPatch: Power = {
         "Redirects.Dark_Miasma.Tar"
       ],
       "duration": 45,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Tar Patch",

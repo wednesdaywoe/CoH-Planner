@@ -146,6 +146,9 @@
               "Pets.Trip_Mine_Dominator.TripMine"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

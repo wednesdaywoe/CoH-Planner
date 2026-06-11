@@ -202,6 +202,9 @@
               "Redirects.Sonic.Sonic_Vibrations_1_Dominator"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

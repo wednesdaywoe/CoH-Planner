@@ -57,6 +57,7 @@ export const CarrionCreepers: Power = {
         "Villain_Pets.Creeper_Patch.FX"
       ],
       "duration": 120,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Carrion Creeper",

@@ -91,6 +91,9 @@
             "entity_def": "Pets_FireImp",
             "priority_list": "PL_FightPreferMelee"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -122,6 +125,9 @@
             "entity_def": "Pets_FireImp",
             "priority_list": "PL_FightPreferMelee"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -153,6 +159,9 @@
             "entity_def": "Pets_FireImp",
             "priority_list": "PL_FightPreferMelee"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

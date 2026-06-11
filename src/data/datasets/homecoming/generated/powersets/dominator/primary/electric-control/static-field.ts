@@ -50,6 +50,7 @@ export const StaticField: Power = {
         "Pets.Static_Field_Controller.Static_Field"
       ],
       "duration": 25,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Static Field",

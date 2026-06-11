@@ -58,6 +58,39 @@ def _decode_flags(flags_raw: int) -> list[str]:
     return [name for bit, name in _FLAG_BITS if flags_raw & bit]
 
 
+# SECOND AttribMod flags word — the u4 stored immediately after the first
+# flags word (`flags_raw`). The binary splits AttribMod flags across two
+# consecutive u4s; copy/pet-related keywords live in this second word, which
+# the parser previously swallowed into the opaque Params tail (so CopyBoosts,
+# PseudoPet, etc. were never emitted — the converter's dormant
+# `template.flags.includes('CopyBoosts'/'PseudoPet')` checks never fired).
+#
+# Bits derived by matching ~14.5k binary templates to their `.powers` source
+# `Flags` keyword sets via (table, scale, magnitude) signature, then per-bit
+# precision/recall (probe in c:\tmp\copyboosts-probe3.py). All three below have
+# perfect recall (fn=0):
+#   0x4  CopyBoosts       tp=408 fn=0  (also 415/415 vs an entity_def-keyed cross-check)
+#   0x8  CopyCreatorMods  tp=33  fn=0
+#   0x20 PseudoPet        tp=68  fp=0 fn=0
+# Only CopyBoosts is surfaced for now (it's all the converter consumes here, via
+# summon.copyBoosts → pet enhancement application). PseudoPet (0x20) is validated
+# but deferred: emitting it would flip summon.isPseudoPet on ~68 powers, changing
+# their Power-Info display ("🐾 Summons" → "⚡ Creates") — a behavior change that
+# belongs with the pseudo-pet resolution work, not this CopyBoosts fix.
+# CopyCreatorMods (0x8) is currently unconsumed downstream. Add either by
+# uncommenting once verified. Lower bits (0x1/0x2) did not map cleanly to any
+# tested keyword and are left undecoded.
+_FLAG2_BITS: tuple[tuple[int, str], ...] = (
+    (0x000004, "CopyBoosts"),
+    # (0x000008, "CopyCreatorMods"),  # validated (fn=0); unconsumed downstream
+    # (0x000020, "PseudoPet"),        # validated (fp=0/fn=0); flips display — defer
+)
+
+
+def _decode_flags2(flags2_raw: int) -> list[str]:
+    return [name for bit, name in _FLAG2_BITS if flags2_raw & bit]
+
+
 def _detect_format(r: BinReader) -> tuple[bool, bool, bool]:
     """Detect Parse7 powers.bin layout variant.
 
@@ -527,13 +560,18 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     # EntCreate entity defs).
     boost_mod_allowed_id = r.read_u4() if r.remaining() >= 4 else 0
     flags_raw = r.read_u4() if r.remaining() >= 4 else 0
+    # Second flags word (CopyBoosts / PseudoPet / CopyCreatorMods live here).
+    # Read it explicitly so it's decoded rather than left in the opaque Params
+    # tail. The trailing tail (FX / Params) still starts after it; the param
+    # scanner is a heuristic string-offset sweep that never depended on this
+    # word (a small bitmask, never a valid string offset).
+    flags2_raw = r.read_u4() if r.remaining() >= 4 else 0
 
-    # Legacy fields preserved for downstream consumers — flags as a string
-    # list is currently empty (bit decoding TBD); BMA exposed as a name
+    # Legacy fields preserved for downstream consumers — BMA exposed as a name
     # via the simple int → str conversion (won't conflict with any consumer
     # since it's never been populated before).
     boost_mod_allowed = str(boost_mod_allowed_id) if boost_mod_allowed_id else ""
-    flags: list[str] = _decode_flags(flags_raw)
+    flags: list[str] = _decode_flags(flags_raw) + _decode_flags2(flags2_raw)
     mode_name = None
 
     tail_bytes = bytes(r._data[r._pos:r._end])
@@ -569,6 +607,7 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
         boost_mod_allowed_id=boost_mod_allowed_id,
         flags=flags,
         flags_raw=flags_raw,
+        flags2_raw=flags2_raw,
         mode_name=mode_name,
         params=params,
     )

@@ -598,6 +598,9 @@
               "Villain_Pets.Dominator_ElectricityAssault_Snipe.Thunder_Strike_AoE"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -91,6 +91,9 @@
             "entity_def": "P1985334123",
             "priority_list": "Pets_Defender_RainofFire"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

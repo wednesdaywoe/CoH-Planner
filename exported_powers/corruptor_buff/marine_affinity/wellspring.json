@@ -90,7 +90,8 @@
             "entity_def": "Pets_Wellspring"
           },
           "flags": [
-            "NoFloaters"
+            "NoFloaters",
+            "CopyBoosts"
           ],
           "flags_raw": 1281
         }

@@ -131,7 +131,8 @@
                 "IgnoreStrength",
                 "IgnoreResistance",
                 "IgnoreCombatMods",
-                "StackByAttribAndKey"
+                "StackByAttribAndKey",
+                "CopyBoosts"
               ],
               "flags_raw": 262256
             }

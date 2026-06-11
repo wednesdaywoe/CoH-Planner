@@ -104,6 +104,9 @@
               "Villain_Pets.Creeper_Patch.FX"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -100,6 +100,9 @@
             ],
             "priority_list": "Pet_NoCollision"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

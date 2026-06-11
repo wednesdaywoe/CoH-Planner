@@ -84,6 +84,9 @@
               "Redirects.Kinetics.Transfusion"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {

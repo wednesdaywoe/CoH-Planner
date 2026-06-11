@@ -51,6 +51,7 @@ export const GravityDistortionField: Power = {
         "Redirects.Gravity_Control.Self_Destruct"
       ],
       "duration": 60,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Gravity Distortion Field",

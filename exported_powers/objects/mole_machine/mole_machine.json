@@ -80,6 +80,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Sniper_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -110,6 +113,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Lieutenant_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -140,6 +146,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Sniper_GasMask_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -170,6 +179,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Lieutenant_GasMask_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -200,6 +212,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Warhulk_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -230,6 +245,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Fake_Nemesis_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -274,6 +292,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Elite_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -318,6 +339,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Elite_GasMask_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -362,6 +386,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Jaeger_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -406,6 +433,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Jaeger_Slicer_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]
@@ -450,6 +480,9 @@
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Jaeger_Bomber_noexp"
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -45,6 +45,7 @@ export const ForceBubble: Power = {
         "Redirects.Force_Field.Dampening_BubbleFX"
       ],
       "duration": 45,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Dampening Bubble",

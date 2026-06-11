@@ -87,6 +87,9 @@
               "Redirects.Kinetics.KineticTransfer"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         },
         {
@@ -119,6 +122,9 @@
               "Redirects.Kinetics.KineticTransferBuffSelf"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

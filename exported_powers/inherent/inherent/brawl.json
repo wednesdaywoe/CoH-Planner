@@ -906,6 +906,9 @@
                           "Temporary_Powers.Temporary_Powers.Invention_Plasmatic_Taser"
                         ]
                       },
+                      "flags": [
+                        "CopyBoosts"
+                      ],
                       "flags_raw": 1280
                     },
                     {
@@ -1069,6 +1072,9 @@
                               "Temporary_Powers.Temporary_Powers.Friendly_Fireworks"
                             ]
                           },
+                          "flags": [
+                            "CopyBoosts"
+                          ],
                           "flags_raw": 1280
                         },
                         {
@@ -1372,6 +1378,9 @@
                       "Temporary_Powers.Temporary_Powers.Friendly_Fireworks"
                     ]
                   },
+                  "flags": [
+                    "CopyBoosts"
+                  ],
                   "flags_raw": 1280
                 },
                 {

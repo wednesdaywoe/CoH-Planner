@@ -52,6 +52,7 @@ export const ShockingGrasp: Power = {
         "Pets.VoltaicSentinel_Dominator.Electrical_Field"
       ],
       "duration": 60,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Voltaic Sentinel",

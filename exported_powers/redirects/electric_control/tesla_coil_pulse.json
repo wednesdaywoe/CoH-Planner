@@ -90,6 +90,9 @@
               "Redirects.Electric_Control.Tesla_Coil_Chain"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

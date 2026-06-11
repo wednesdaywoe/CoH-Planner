@@ -52,6 +52,7 @@ export const Vines: Power = {
         "Villain_Pets.Vines.Vines_OneShot"
       ],
       "duration": 60,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Vines",

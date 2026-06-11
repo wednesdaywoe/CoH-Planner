@@ -52,6 +52,7 @@ export const Fog: Power = {
         "Pets.Freezing_Rain.Avoid"
       ],
       "duration": 15,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Freezing Rain",

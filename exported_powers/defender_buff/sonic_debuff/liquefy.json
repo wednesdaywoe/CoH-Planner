@@ -105,7 +105,8 @@
           },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "CopyBoosts"
           ],
           "flags_raw": 1072
         },
@@ -139,6 +140,9 @@
               "Pets.Liquefy.LiquefyShock"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

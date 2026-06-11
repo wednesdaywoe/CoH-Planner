@@ -54,6 +54,7 @@ export const GlitteringColumn: Power = {
         "Redirects.Pyrotechnic_Control.GlitteringColumn_SelfDestruct"
       ],
       "duration": 7,
+      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Glittering Column",

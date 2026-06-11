@@ -48,7 +48,8 @@ export const SkeletalWarriors: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "MastermindPets_Skeletal_Warrior",
-      "duration": 99999
+      "duration": 99999,
+      "copyBoosts": true
     }
   }
 };

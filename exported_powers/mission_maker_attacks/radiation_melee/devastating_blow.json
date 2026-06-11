@@ -275,6 +275,9 @@
               "Redirects.Rad_Melee.Radioactive_Smash_AoE"
             ]
           },
+          "flags": [
+            "CopyBoosts"
+          ],
           "flags_raw": 1280
         }
       ]

@@ -169,6 +169,9 @@
               "flag": 0
             }
           ],
+          "flags": [
+            "CopyBoosts"
+          ],
           "boost_mod_allowed_id": 16
         }
       ],
