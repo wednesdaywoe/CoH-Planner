@@ -8,13 +8,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  targetType: 'Foe',
-  effects: {
-    summon: {
-      isPseudoPet: false,
-      entity: 'Pets_Lightning_Rod_Brute',
-      displayName: 'Lightning Rod',
-      duration: 1,
-    },
-  },
+  "targetType": "Foe"
 };

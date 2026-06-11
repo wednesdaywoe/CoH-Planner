@@ -19,31 +19,5 @@ export const overrides: Partial<Power> = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 14,
-    "endurance": 15.184
-  },
-  "targetType": "Foe (Alive)",
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2.76,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 2.19,
-      "table": "Melee_Knockback"
-    }
-  }
+  "targetType": "Foe (Alive)"
 };

@@ -12,15 +12,5 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "internalName": "Nw_Mental_Blast",
-  "targetType": "Foe (Alive)",
-  "effects": {
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 6,
-    "durations": {
-      "rechargeBuff": 6
-    }
-  }
+  "targetType": "Foe (Alive)"
 };

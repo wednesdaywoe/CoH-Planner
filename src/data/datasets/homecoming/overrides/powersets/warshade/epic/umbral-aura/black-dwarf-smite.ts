@@ -15,12 +15,6 @@ export const overrides: Partial<Power> = {
   "targetType": "Foe (Alive)",
   "requires": "Black Dwarf",
   "effects": {
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      }
-    },
     "movement": {
       "jumpHeight": {
         "scale": 0.2,
@@ -43,11 +37,6 @@ export const overrides: Partial<Power> = {
       "scale": 0.2,
       "table": "Melee_Slow"
     },
-    "buffDuration": 10,
-    "durations": {
-      "movement": 10,
-      "rechargeBuff": 10,
-      "slow": 30
-    }
+    "buffDuration": 10
   }
 };

@@ -10,27 +10,4 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.5092,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4508,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 0.75,
-      "table": "Melee_Knockback"
-    }
-  }
-};
+export const overrides: Partial<Power> = {};

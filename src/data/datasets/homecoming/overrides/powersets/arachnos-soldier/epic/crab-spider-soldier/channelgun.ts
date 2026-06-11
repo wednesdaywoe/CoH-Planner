@@ -20,14 +20,5 @@ export const overrides: Partial<Power> = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "stats": {
-    "endurance": 8.12
-  },
-  "targetType": "Foe (Alive)",
-  "damage": {
-    "type": "Energy",
-    "scale": 1.16,
-    "table": "Ranged_Damage"
-  },
-  "effects": {}
+  "targetType": "Foe (Alive)"
 };

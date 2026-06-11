@@ -11,32 +11,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "description": "Kheldians are masters of energy and matter. A Warshade can transform into a massive unstoppable essence draining beast known as a Black Dwarf. When you choose this power, you will have access to 6 other powers that can only be used while in this form. You will not be able to use any other powers while in Black Dwarf form. Black Dwarf has awesome resistance to all damage except Psionics, as well as controlling effects. Black Dwarf also has improved HP and Endurance Recovery, but is limited to melee attacks.  Recharge: Very Fast.",
-  "stats": {},
-  "effects": {
-    "knockup": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "confuse": 2.03,
-      "fear": 2.03,
-      "hold": 2.03,
-      "immobilize": 2.03,
-      "knockback": 2.03,
-      "knockup": 2.03,
-      "maxHPBuff": 2,
-      "movement": 2,
-      "protection": 2,
-      "recoveryBuff": 2,
-      "resistance": 2,
-      "sleep": 2.03,
-      "stun": 2.03,
-      "threatBuff": 2
-    }
-  }
+  "description": "Kheldians are masters of energy and matter. A Warshade can transform into a massive unstoppable essence draining beast known as a Black Dwarf. When you choose this power, you will have access to 6 other powers that can only be used while in this form. You will not be able to use any other powers while in Black Dwarf form. Black Dwarf has awesome resistance to all damage except Psionics, as well as controlling effects. Black Dwarf also has improved HP and Endurance Recovery, but is limited to melee attacks.  Recharge: Very Fast."
 };
