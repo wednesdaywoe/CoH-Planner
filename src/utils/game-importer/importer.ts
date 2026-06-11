@@ -15,7 +15,6 @@ import type {
   SpecialEnhancement,
   SpecialEnhancementDef,
   PoolSelection,
-  ArchetypeId,
   Origin,
 } from '@/types';
 import { createEmptyIncarnateBuildState } from '@/types';
@@ -45,6 +44,11 @@ import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 
 import { warnFallback } from '@/utils/fallback-warnings';
+import {
+  parseIOSetUid,
+  mapArchetypeClass,
+  SPECIAL_SUFFIX_MAPS,
+} from '@/utils/enhancement-uid';
 import { parseGameExport } from './parser';
 import type {
   GameExportData,
@@ -57,24 +61,6 @@ import type {
 // ============================================
 // ARCHETYPE MAPPING
 // ============================================
-
-export const ARCHETYPE_MAP: Record<string, ArchetypeId> = {
-  'Class_Blaster': 'blaster',
-  'Class_Brute': 'brute',
-  'Class_Controller': 'controller',
-  'Class_Defender': 'defender',
-  'Class_Scrapper': 'scrapper',
-  'Class_Tanker': 'tanker',
-  'Class_Sentinel': 'sentinel',
-  'Class_Corruptor': 'corruptor',
-  'Class_Dominator': 'dominator',
-  'Class_Mastermind': 'mastermind',
-  'Class_Stalker': 'stalker',
-  'Class_Peacebringer': 'peacebringer',
-  'Class_Warshade': 'warshade',
-  'Class_Arachnos_Soldier': 'arachnos-soldier',
-  'Class_Arachnos_Widow': 'arachnos-widow',
-};
 
 const ORIGIN_MAP: Record<string, Origin> = {
   'Magic': 'Magic',
@@ -356,7 +342,7 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
   };
 
   // 1. Map archetype
-  const archetypeId = ARCHETYPE_MAP[parsed.header.archetype];
+  const archetypeId = mapArchetypeClass(parsed.header.archetype);
   if (!archetypeId) {
     return {
       success: false,
@@ -801,56 +787,6 @@ const SPECIAL_ENH_PREFIXES: [string, SpecialEnhancement['category'], Record<stri
   ['Generic_', 'prestige', PRESTIGE_ENHANCEMENTS],
 ];
 
-// Direct suffix → registry ID mappings (same as Mids importer)
-const SPECIAL_SUFFIX_MAP: Record<string, Record<string, string>> = {
-  'hamidon': {
-    'damage_accuracy': 'nucleolus', 'damage_range': 'centriole',
-    'debuff_endurance_discount': 'enzyme', 'debuff_accuracy': 'lysosome',
-    'buff_recharge': 'membrane', 'damage_mez': 'peroxisome',
-    'res_damage_endurance_discount': 'ribosome', 'heal_endurance_discount': 'golgi',
-    'accuracy_mez': 'endoplasm', 'buff_endurance_discount': 'cytoskeleton',
-    'travel_endurance_discount': 'microfilament', 'endurance_modification_recharge': 'vesicle',
-    'slow_recharge_endurance_discount': 'stereocilia', 'endurance_modification_accuracy': 'microtubule',
-    'damage_endurance_discount': 'karyoplasm', 'accuracy_range': 'microvillus',
-    'damage_recharge': 'chromatin', 'threat_accuracy_recharge': 'ectosome',
-    'heal_recharge': 'amyloplast', 'heal_accuracy': 'chloroplast',
-  },
-  'titan': {
-    'damage_mez': 'amethyst', 'accuracy_mez': 'calcite', 'buff_recharge': 'citrine',
-    'damage_accuracy': 'diamond', 'debuff_accuracy': 'gypsum',
-    'heal_endurance_discount': 'kyanite', 'res_damage_endurance_discount': 'peridont',
-    'damage_range': 'quartz', 'travel_endurance_discount': 'selenite',
-    'buff_endurance_discount': 'tanzanite', 'debuff_endurance_discount': 'zeolite',
-  },
-  'hydra': {
-    'debuff_endurance_discount': 'antiproton', 'debuff_accuracy': 'delta',
-    'res_damage_endurance_discount': 'electron', 'damage_mez': 'gluon',
-    'accuracy_mez': 'graviton', 'damage_accuracy': 'neutrino',
-    'damage_range': 'neutron', 'heal_endurance_discount': 'positron',
-    'buff_endurance_discount': 'proton', 'buff_recharge': 'quark',
-    'travel_endurance_discount': 'theta',
-  },
-  'd-sync': {
-    'travel_endurance_discount': 'acceleration', 'accuracy_mez': 'binding',
-    'endurance_modification_recharge': 'conduit', 'damage_mez': 'containment',
-    'slow_recharge_endurance_discount': 'deceleration', 'endurance_modification_accuracy': 'drain',
-    'damage_endurance_discount': 'efficiency', 'buff_endurance_discount': 'elusivity',
-    'damage_accuracy': 'empowerment', 'damage_range': 'extension',
-    'res_damage_endurance_discount': 'fortification', 'accuracy_range': 'guidance',
-    'debuff_endurance_discount': 'marginalization', 'debuff_accuracy': 'obfuscation',
-    'damage_recharge': 'optimization', 'threat_accuracy_recharge': 'provocation',
-    'heal_endurance_discount': 'reconstitution', 'heal_recharge': 'reconstruction',
-    'buff_recharge': 'shifting', 'heal_accuracy': 'siphon',
-  },
-  'prestige': {
-    'might_of_the_empire': 'might_of_the_empire',
-    'clockwork_efficiency': 'clockwork_efficiency',
-    'will_of_the_seers': 'will_of_the_seers',
-    'resistance_tactics': 'resistance_tactics',
-    'syndicate_techniques': 'syndicate_techniques',
-  },
-};
-
 /**
  * Try to resolve a UID as a special enhancement (HamiO, Titan, Hydra, D-Sync, Prestige).
  * Returns null if the UID doesn't match any special prefix.
@@ -860,7 +796,7 @@ function resolveSpecialEnhancement(uid: string, boost?: number): EnhancementReso
     if (!uid.startsWith(prefix)) continue;
 
     const suffix = uid.slice(prefix.length).toLowerCase();
-    const suffixMap = SPECIAL_SUFFIX_MAP[category];
+    const suffixMap = SPECIAL_SUFFIX_MAPS[category];
     const id = suffixMap?.[suffix];
     if (id && registry[id]) {
       return {
@@ -1006,49 +942,6 @@ function hasIOSetPieceSuffix(uid: string): boolean {
   const afterPrefix = uid.slice('Crafted_'.length);
   // Must have at least something before the _X suffix
   return /^.+_[A-F]$/.test(afterPrefix);
-}
-
-interface ParsedIOSetUid {
-  setId: string;
-  pieceNum: number;
-  attuned: boolean;
-  /** True when the UID had a `Superior_Attuned_` prefix — caller should prefer the `superior_` variant. */
-  superior: boolean;
-}
-
-/**
- * Parse an IO set enhancement UID into its components.
- * Same logic as the Mids importer.
- */
-export function parseIOSetUid(uid: string): ParsedIOSetUid | null {
-  let remaining = uid;
-  let attuned = false;
-  let superior = false;
-
-  // Strip prefixes
-  if (remaining.startsWith('Superior_Attuned_')) {
-    remaining = remaining.slice('Superior_Attuned_'.length);
-    attuned = true;
-    superior = true;
-  } else if (remaining.startsWith('Attuned_')) {
-    remaining = remaining.slice('Attuned_'.length);
-    attuned = true;
-  } else if (remaining.startsWith('Crafted_')) {
-    remaining = remaining.slice('Crafted_'.length);
-  }
-
-  // Extract piece letter (last _X where X is A-F)
-  const pieceMatch = remaining.match(/_([A-F])$/);
-  if (!pieceMatch) return null;
-
-  const pieceLetter = pieceMatch[1];
-  const pieceNum = pieceLetter.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
-  const setName = remaining.slice(0, -2); // Remove "_X"
-
-  // Lowercase to match app's IO set IDs
-  const setId = setName.toLowerCase();
-
-  return { setId, pieceNum, attuned, superior };
 }
 
 // ============================================
