@@ -1136,7 +1136,14 @@ export const useBuildStore = create<BuildStore>()(
       setHasHydrated: (value) => set({ _hasHydrated: value }),
 
       // History restore (used by undo/redo)
-      _restoreBuild: (build) => set({ build }),
+      _restoreBuild: (build) => {
+        set({ build });
+        // History snapshots the Build only. Mirror the build-derived UI state
+        // that other mutation paths (e.g. importBuild) set alongside the build,
+        // so undo/redo doesn't leave it stale: the VEAT branch picker. (Kheldian
+        // form lives on the build itself, so set({ build }) already restores it.)
+        useUIStore.getState().setSelectedBranch(detectBranch(build));
+      },
 
       // Build metadata
       setBuildName: (name) => {
