@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-06-11',
     items: [
+      { message: 'Fixed an issue where a build import that failed badly had no way to recover to a clean state, keeping the user stuck in the corrupted build state', type: 'fix' },
       { message: 'Massive under-the-hood cleanup to remove legacy code and audit the data pipeline, surfaced a bug that was affecting all melee damage', type: 'update' },
       { message: 'Added a new Attack Chain Builder tool! Look for it below the Dashboard', type: 'feat' },
       { message: 'Chain Builder drag-and-drop re-ordering is wired up now', type: 'feat' },

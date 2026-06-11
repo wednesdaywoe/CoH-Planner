@@ -33,21 +33,46 @@ if (import.meta.env.PROD && import.meta.env.VITE_SENTRY_DSN) {
 }
 
 function ErrorFallback() {
+  // Escape hatch for the "corrupt build crash loop": a bad imported/persisted
+  // build crashes the planner render → this fallback shows → plain Reload
+  // re-reads the same persisted build from localStorage and crashes again.
+  // (A failed /import also leaves its #<data> fragment in the URL.) Clearing
+  // the persisted build and booting at the app root — dropping any fragment —
+  // breaks the loop without making the user clear browser storage by hand.
+  const startFresh = () => {
+    try {
+      localStorage.removeItem('coh-planner-build')
+    } catch {
+      /* localStorage unavailable (private mode / disabled) — reload anyway */
+    }
+    // Hard navigation to BASE_URL drops the /import#<data> fragment and forces
+    // a clean boot with no persisted build.
+    window.location.href = import.meta.env.BASE_URL || '/'
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950 p-6">
       <div className="max-w-md text-center space-y-4">
         <h1 className="text-xl font-semibold text-slate-100">Something went wrong</h1>
         <p className="text-sm text-slate-400">
           Sidekick hit an unexpected error and couldn't render. The issue has been reported.
-          Try reloading the page — if it keeps happening, you can clear local storage from
-          Settings or send feedback.
+          Try reloading — if it keeps happening (e.g. a build that won't load), start fresh
+          to clear the saved build and return to the planner.
         </p>
-        <button
-          onClick={() => window.location.reload()}
-          className="px-4 py-2 rounded bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium"
-        >
-          Reload
-        </button>
+        <div className="flex items-center justify-center gap-3">
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 rounded bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium"
+          >
+            Reload
+          </button>
+          <button
+            onClick={startFresh}
+            className="px-4 py-2 rounded bg-slate-700 hover:bg-slate-600 text-slate-100 text-sm font-medium"
+          >
+            Start fresh
+          </button>
+        </div>
       </div>
     </div>
   )
