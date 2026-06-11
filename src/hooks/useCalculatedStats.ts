@@ -293,14 +293,6 @@ export function useCalculatedStats(): CalculatedStats {
 }
 
 /**
- * Get character stats in new format
- */
-export function useCharacterStats(): CharacterStats {
-  const result = useCharacterCalculation();
-  return result.stats;
-}
-
-/**
  * Get global bonuses that affect all powers
  */
 export function useGlobalBonuses() {
@@ -314,46 +306,6 @@ export function useGlobalBonuses() {
 export function useStatBreakdown(stat: string): DashboardStatBreakdown | undefined {
   const result = useCharacterCalculation();
   return result.breakdown.get(stat);
-}
-
-// ============================================
-// INDIVIDUAL STAT HOOKS
-// ============================================
-
-/**
- * Get just the global recharge bonus
- */
-export function useGlobalRecharge(): number {
-  const result = useCharacterCalculation();
-  return result.globalBonuses.recharge;
-}
-
-/**
- * Get defense stats
- */
-export function useDefenseStats(): CalculatedStats['defense'] {
-  const stats = useCalculatedStats();
-  return stats.defense;
-}
-
-/**
- * Get resistance stats
- */
-export function useResistanceStats(): CalculatedStats['resistance'] {
-  const stats = useCalculatedStats();
-  return stats.resistance;
-}
-
-/**
- * Get HP-related stats
- */
-export function useHealthStats() {
-  const result = useCharacterCalculation();
-  return {
-    maxHP: result.globalBonuses.maxHP,
-    hpBuff: result.globalBonuses.maxHP,
-    regenBuff: result.globalBonuses.regeneration,
-  };
 }
 
 // ============================================
@@ -372,31 +324,6 @@ export function useTotalSlotsUsed(): number {
  */
 export function useSlotsRemaining(): number {
   return useBuildStore((state) => state.getSlotsRemaining());
-}
-
-/**
- * Count powers taken at each level
- */
-export function usePowersPerLevel(): Map<number, number> {
-  const build = useBuildStore((state) => state.build);
-
-  return useMemo(() => {
-    const levelMap = new Map<number, number>();
-
-    const countPowers = (powers: { level: number }[]) => {
-      for (const power of powers) {
-        const current = levelMap.get(power.level) || 0;
-        levelMap.set(power.level, current + 1);
-      }
-    };
-
-    countPowers(build.primary.powers);
-    countPowers(build.secondary.powers);
-    build.pools.forEach((pool) => countPowers(pool.powers));
-    if (build.epicPool) countPowers(build.epicPool.powers);
-
-    return levelMap;
-  }, [build]);
 }
 
 /**

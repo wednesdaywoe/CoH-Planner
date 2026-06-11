@@ -2767,11 +2767,5 @@ export const usePools = () => useBuildStore((state) => state.build.pools);
 /** Select the epic pool */
 export const useEpicPool = () => useBuildStore((state) => state.build.epicPool);
 
-/** Select build settings */
-export const useBuildSettings = () => useBuildStore((state) => state.build.settings);
-
-/** Select incarnate powers */
-export const useIncarnates = () => useBuildStore((state) => state.build.incarnates);
-
 /** Select crafting checklist state */
 export const useCraftingChecklist = () => useBuildStore((state) => state.build.craftingChecklist);
