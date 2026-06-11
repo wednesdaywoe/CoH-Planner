@@ -235,3 +235,36 @@ describe('Mez duration surfacing — prefer PvE template over PvP (homecoming)',
     });
   }
 });
+
+// Guards the damage-buff AT tables (Melee_Buff_Dmg / Ranged_Buff_Dmg) that were
+// missing from the extractor allowlist — without them, every damage buff (Build
+// Up, Soul Drain, Against All Odds, …) fell back to a flat 0.10, over-valuing
+// low-damage ATs and under-valuing high-damage ones. at-tables is a layered
+// output outside the regen-diff guard, so this focused test is the backstop
+// against a future re-extract silently dropping them.
+describe('damage-buff AT tables (Melee/Ranged_Buff_Dmg)', () => {
+  beforeAll(async () => {
+    await loadDataset('homecoming');
+  });
+
+  it('resolve to AT-specific values, not the generic 0.10 fallback', () => {
+    // Tanker is a low-damage AT (0.0875 → Build Up scale 8 = +70%);
+    // Blaster/Scrapper are high (0.125 → +100%). Pre-fix all read 0.10 (+80%).
+    expect(getTableValue('tanker', 'melee_buff_dmg', 50)).toBeCloseTo(0.0875, 4);
+    expect(getTableValue('blaster', 'melee_buff_dmg', 50)).toBeCloseTo(0.125, 4);
+    expect(getTableValue('scrapper', 'melee_buff_dmg', 50)).toBeCloseTo(0.125, 4);
+    // Ranged variant present too (used by Aim and ranged damage buffs).
+    expect(getTableValue('blaster', 'ranged_buff_dmg', 50)).toBeGreaterThan(0);
+  });
+
+  it('Build Up resolves to its AT-accurate value via the table (not 0.10)', () => {
+    // Tanker Build Up (damageBuff scale 8) → 8 × 0.0875 = 0.70 (+70%), not 0.80.
+    const ps = getPowerset('tanker/battle-axe');
+    const buildUp = ps?.powers.find(p => p.internalName === 'Build_Up');
+    expect(buildUp, 'Build_Up').toBeTruthy();
+    const dmgBuff = (buildUp!.effects as Record<string, { scale: number; table: string }>).damageBuff;
+    expect(dmgBuff?.table).toBe('Melee_Buff_Dmg');
+    const resolved = dmgBuff.scale * (getTableValue('tanker', dmgBuff.table, 50) as number);
+    expect(resolved).toBeCloseTo(0.70, 2);
+  });
+});
