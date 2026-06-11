@@ -2382,6 +2382,13 @@ export const useBuildStore = create<BuildStore>()(
     {
       name: 'coh-planner-build',
       storage: createJSONStorage(() => localStorage),
+      // The rehydrate migrations reach into the active dataset (inherent rules,
+      // power defs via syncBuildDefinitions). Auto-hydration runs at store-import
+      // time — BEFORE main.tsx's loadDataset() — so those migrations threw
+      // "No dataset loaded" and aborted (partial migration: new inherents weren't
+      // appended, slots weren't reconciled). Skip auto-hydration and rehydrate
+      // explicitly in main.tsx after the dataset is loaded.
+      skipHydration: true,
       partialize: (state) => ({
         build: {
           ...state.build,
