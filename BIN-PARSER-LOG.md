@@ -747,8 +747,28 @@ silently changes pet DPS. This is a §1 "captured-but-unused" gap on the **parse
 side: the binary summon AttribMod almost certainly has the copy-boosts/
 copy-creator-mods flag; the parser reads past it.
 
-**Fix direction (not done).** Capture the summon flag(s) in the powers parser
-(`_powers.py` summon/entity handling) and emit `copy_boosts` on the summon export,
-then drop the Discharge overrides (§0 — prefer data-driven over hand overrides).
-Until then, the Discharge `copyBoosts` overrides are a legitimate, intentional
-correction — do NOT retire them.
+**Investigation (2026-06-11).** The converter side is already wired:
+`convert-powerset.cjs:2682` computes `hasCopyBoosts = template.flags.some(f =>
+f.includes('CopyBoosts'))` and `:2710` sets `summon.copyBoosts = true`. So the
+*only* missing piece is the parser emitting `'CopyBoosts'` in a template's
+`flags`. `CopyBoosts` IS an EntCreate AttribMod flag in `.powers` (e.g.
+Omega_Maneuver: `Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+CopyBoosts`).
+
+But it is **NOT in the template's `flags_raw` u4** that `_powers.py:529` reads.
+Proof: Omega's EntCreate template parses `flags_raw=0x70`, which *correctly*
+decodes its three Ignore flags (0x10|0x20|0x40) — so the read is aligned — yet
+has no CopyBoosts bit. (Rain_of_Arrows, `.powers` `Flags CopyBoosts` only, reads
+`0x500` = the undecoded 0x100/0x400 packed-field doublet the `_FLAG_BITS` comment
+already flags as "NOT flags".) So CopyBoosts lives in a field the template parser
+*skips* — almost certainly one of the "2-3 zero-filled u4s of unknown semantic"
+or the FX struct between Flags and Params (`_powers.py:520-524`), not a missing
+`_FLAG_BITS` entry.
+
+**Fix direction (real work, not a quick bit-add):** §12 byte-level location —
+dump the post-flags region for matched CopyBoosts-vs-not EntCreate templates,
+find the differentiating field, then parameterize for Parse7 (HC) **and** Parse6
+(Rebirth), validate the derived flag across *all* summon powers against `.powers`
+(broad blast radius — wrong → silently mis-flags pet enhancement application /
+DPS), and add a focused test. Until then, the Discharge `copyBoosts` overrides
+are a legitimate, intentional correction — **do NOT retire them.**
