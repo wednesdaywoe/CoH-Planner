@@ -58,7 +58,7 @@ import type {
 // ARCHETYPE MAPPING
 // ============================================
 
-const ARCHETYPE_MAP: Record<string, ArchetypeId> = {
+export const ARCHETYPE_MAP: Record<string, ArchetypeId> = {
   'Class_Blaster': 'blaster',
   'Class_Brute': 'brute',
   'Class_Controller': 'controller',
@@ -1020,7 +1020,7 @@ interface ParsedIOSetUid {
  * Parse an IO set enhancement UID into its components.
  * Same logic as the Mids importer.
  */
-function parseIOSetUid(uid: string): ParsedIOSetUid | null {
+export function parseIOSetUid(uid: string): ParsedIOSetUid | null {
   let remaining = uid;
   let attuned = false;
   let superior = false;

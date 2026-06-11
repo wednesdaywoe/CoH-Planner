@@ -1415,7 +1415,7 @@ interface ParsedIOSetUid {
  *   "Hecatomb_A"                              → { setId: "hecatomb", pieceNum: 1, attuned: false, superior: false }
  *   "Attuned_Basilisks_Gaze_A"                → { setId: "basilisks_gaze", pieceNum: 1, attuned: true, superior: false }
  */
-function parseIOSetUid(uid: string): ParsedIOSetUid | null {
+export function parseIOSetUid(uid: string): ParsedIOSetUid | null {
   let remaining = uid;
   let attuned = false;
   let superior = false;
