@@ -278,40 +278,18 @@ export function useCharacterCalculation(): CharacterCalculationResult {
 }
 
 /**
- * Calculate all derived stats from the current build (legacy format)
+ * Calculate all derived stats from the current build (legacy format).
+ *
+ * This is *definitionally* `convertToLegacyStats(useCharacterCalculation())` —
+ * it consumes the single shared calculation rather than running
+ * `calculateCharacterTotals` a second time. Previously it recomputed with a
+ * different option set (it omitted `targetLevelOffset`), so the legacy-stats
+ * view and the breakdown view could transiently disagree and the engine ran
+ * twice on every render of the dashboard/totals modal.
  */
 export function useCalculatedStats(): CalculatedStats {
-  const build = useBuildStore((state) => state.build);
-  const exemplarMode = useUIStore((state) => state.exemplarMode);
-  const exemplarLevel = useUIStore((state) => state.exemplarLevel);
-  const incarnateActive = useUIStore((state) => state.incarnateActive);
-  const incarnateLevelShiftActive = useUIStore((state) => state.incarnateLevelShiftActive);
-  const procSettings = useUIStore((state) => state.procSettings);
-  const procsEnabled = useUIStore((state) => state.includeProcDamageInDPS);
-  const targetsHitValues = useUIStore((state) => state.targetsHitValues);
-  const vigilanceTeamSize = useUIStore((state) => state.vigilanceTeamSize);
-  const furyLevel = useUIStore((state) => state.furyLevel);
-  const combatMode = useUIStore((state) => state.combatMode);
-  const globalAdjusters = useUIStore((state) => state.globalAdjusters);
-  const mechanicAdjusters = useUIStore((state) => state.mechanicAdjusters);
-
-  // When master Proc toggle is off, disable all proc categories
-  const effectiveProcSettings = procsEnabled ? procSettings : ALL_PROCS_DISABLED;
-
-  return useMemo(() => {
-    const result = calculateCharacterTotals(build, exemplarMode, incarnateActive, {
-      procSettings: effectiveProcSettings,
-      targetsHitValues,
-      exemplarLevel: exemplarMode ? exemplarLevel : undefined,
-      vigilanceTeamSize,
-      furyLevel,
-      incarnateLevelShiftActive,
-      combatMode,
-      globalAdjusters,
-      mechanicAdjusters,
-    });
-    return convertToLegacyStats(result.stats, result);
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters]);
+  const result = useCharacterCalculation();
+  return useMemo(() => convertToLegacyStats(result.stats, result), [result]);
 }
 
 /**
