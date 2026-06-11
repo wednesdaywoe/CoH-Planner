@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-10',
+    date: '2026-06-11',
     items: [
+      { message: 'Massive under-the-hood cleanup to remove legacy code and audit the data pipeline, surfaced a bug that was affecting all melee damage', type: 'update' },
       { message: 'Added a new Attack Chain Builder tool! Look for it below the Dashboard', type: 'feat' },
       { message: 'Chain Builder drag-and-drop re-ordering is wired up now', type: 'feat' },
       { message: 'You can now save attack chains with your build and copy the chain sequence to clipboard', type: 'feat' },

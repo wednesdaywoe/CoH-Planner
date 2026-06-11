@@ -16,18 +16,5 @@ export const overrides: Partial<Power> = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"
-  ],
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Voltaic Sentinel",
-      "powers": [
-        "Pets.ResistAll_NoFly.ResistAll",
-        "Pets.VoltaicSentinel_Dominator.Electrical_Bolt",
-        "Pets.VoltaicSentinel_Dominator.Electrical_Field"
-      ],
-      "duration": 60,
-      "copyBoosts": true
-    }
-  }
+  ]
 };

@@ -3,6 +3,8 @@
 Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 (`tools/bin-crawler/` + `scripts/convert-powerset.cjs` + `scripts/convert-epic-pools.cjs`), with diagnoses and recommended fixes. Newest entries at top, in the "NEW ISSUES/UNRESOLVED" section. When completed, move the entry to the top of "RESOLVED" section with details of the fix or any other relevant information.
 
+>Agent note: One small flag for your separate task: when you pick up the parser work, the verification tooling I built is at c:\tmp\ (oracle-verify.mjs, override-audit.mjs, etc.) — handy if you end up retiring the Discharge overrides after the parser fix, to confirm the audit goes 9 → 7.
+
 > --- NEW ISSUES / UNRESOLVED ---
 
 ## ⬜ Rebirth `is_pvp` — PvE copies of per-target increments missing/mis-tagged (~165 powers, incl. Phalanx Fighting) — 2026-06-08
@@ -730,3 +732,45 @@ effect-registry already renders `slow` as "-Speed"). Broad fix — `slow` went f
 now carries both halves of its slow in the `cryoammunition` conditional. Purely
 additive (every other effect key net-preserved; self-penalty Granite-style slows
 unchanged).
+
+## ⛏️ Summon `copy_boosts` not extracted — pending (found 2026-06-11)
+
+**Symptom.** During the MSOT-4 override-retirement campaign, the only thing keeping
+Electrical Affinity's **Discharge** override alive (controller + corruptor) was
+`summon.copyBoosts: true` — a hand value with no binary backing. The exported
+summon template carries `entity_def` / `priority_list` but **no `copy_boosts`
+flag**, so `summon.copyBoosts` is `undefined` in generated and the override
+supplies it by hand.
+
+**Why it matters.** `copyBoosts` is *consumed* — `shouldApplyEnhancements`
+(InfoPanel, PowerInfoTooltip, pet-damage.ts) uses it to decide whether a summoned
+pet applies the caster's enhancement/global damage bonuses. So a missing flag
+silently changes pet DPS. This is a §1 "captured-but-unused" gap on the **parser**
+side: the binary summon AttribMod almost certainly has the copy-boosts/
+copy-creator-mods flag; the parser reads past it.
+
+**Investigation (2026-06-11).** The converter side is already wired:
+`convert-powerset.cjs:2682` computes `hasCopyBoosts = template.flags.some(f =>
+f.includes('CopyBoosts'))` and `:2710` sets `summon.copyBoosts = true`. So the
+*only* missing piece is the parser emitting `'CopyBoosts'` in a template's
+`flags`. `CopyBoosts` IS an EntCreate AttribMod flag in `.powers` (e.g.
+Omega_Maneuver: `Flags IgnoreStrength IgnoreResistance IgnoreCombatMods
+CopyBoosts`).
+
+But it is **NOT in the template's `flags_raw` u4** that `_powers.py:529` reads.
+Proof: Omega's EntCreate template parses `flags_raw=0x70`, which *correctly*
+decodes its three Ignore flags (0x10|0x20|0x40) — so the read is aligned — yet
+has no CopyBoosts bit. (Rain_of_Arrows, `.powers` `Flags CopyBoosts` only, reads
+`0x500` = the undecoded 0x100/0x400 packed-field doublet the `_FLAG_BITS` comment
+already flags as "NOT flags".) So CopyBoosts lives in a field the template parser
+*skips* — almost certainly one of the "2-3 zero-filled u4s of unknown semantic"
+or the FX struct between Flags and Params (`_powers.py:520-524`), not a missing
+`_FLAG_BITS` entry.
+
+**Fix direction (real work, not a quick bit-add):** §12 byte-level location —
+dump the post-flags region for matched CopyBoosts-vs-not EntCreate templates,
+find the differentiating field, then parameterize for Parse7 (HC) **and** Parse6
+(Rebirth), validate the derived flag across *all* summon powers against `.powers`
+(broad blast radius — wrong → silently mis-flags pet enhancement application /
+DPS), and add a focused test. Until then, the Discharge `copyBoosts` overrides
+are a legitimate, intentional correction — **do NOT retire them.**

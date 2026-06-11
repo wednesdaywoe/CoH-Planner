@@ -10,23 +10,4 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.075,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.075,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.75,
-        "table": "Melee_Res_Boolean"
-      }
-    }
-  }
-};
+export const overrides: Partial<Power> = {};

@@ -10,9 +10,4 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  effects: {
-    maxStacks: 3,
-    stacksLinear: ['absorb', 'debuffResistance'],
-  },
-};
+export const overrides: Partial<Power> = {};

@@ -35,7 +35,9 @@ export function PowerCard({
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
 
-  const canAddSlot = power.slots.length < power.maxSlots;
+  // Canonical check: enforces both the per-power max AND the build-wide placed-slot
+  // budget (the inline `slots.length < maxSlots` missed the budget — MSOT-8).
+  const canAddSlot = useBuildStore((s) => s.canAddSlot(power.internalName, category));
   const showToggle = shouldShowToggle(power);
   const isActive = power.isActive ?? false;
 

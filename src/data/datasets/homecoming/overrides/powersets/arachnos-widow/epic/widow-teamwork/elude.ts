@@ -11,20 +11,12 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "stats": {},
   "effects": {
     "elusivity": {
       "all": {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
-    },
-    "durations": {
-      "defenseBuff": 180,
-      "elusivity": 180,
-      "movement": 180,
-      "recoveryBuff": 180,
-      "recoveryDebuff": 20
     }
   }
 };

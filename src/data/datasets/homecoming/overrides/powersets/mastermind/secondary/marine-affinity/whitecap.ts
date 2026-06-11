@@ -16,6 +16,5 @@ export const overrides: Partial<Power> = {
     "Knockback",
     "Melee AoE Damage",
     "Universal Damage Sets"
-  ],
-  "effects": {}
+  ]
 };

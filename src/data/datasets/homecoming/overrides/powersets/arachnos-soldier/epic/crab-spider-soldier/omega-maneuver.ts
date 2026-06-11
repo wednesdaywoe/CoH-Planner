@@ -30,25 +30,10 @@ export const overrides: Partial<Power> = {
     "Universal Damage Sets"
   ],
   "stats": {
-    "range": 80,
-    "endurance": 26,
-    "castTime": 2.5,
     "radius": 15,
     "maxTargets": 16
   },
   "targetType": "Foe (Alive)",
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Ranged_Damage"
-    }
-  ],
   "effects": {
     "stun": {
       "mag": 3,

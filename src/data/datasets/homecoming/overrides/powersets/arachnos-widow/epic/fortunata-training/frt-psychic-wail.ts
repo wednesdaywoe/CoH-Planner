@@ -11,15 +11,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "internalName": "Frt_Psychic_Wail",
-  "effects": {
-    "rechargeDebuff": {
-      "scale": 0.7,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 20,
-    "durations": {
-      "rechargeBuff": 20
-    }
-  }
+  "internalName": "Frt_Psychic_Wail"
 };

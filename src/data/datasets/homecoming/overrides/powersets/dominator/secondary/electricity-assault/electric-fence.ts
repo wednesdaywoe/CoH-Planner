@@ -15,16 +15,5 @@ export const overrides: Partial<Power> = {
     "Endurance Modification",
     "Ranged Damage",
     "Universal Damage Sets"
-  ],
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Ranged_Ones"
-    }
-  }
+  ]
 };

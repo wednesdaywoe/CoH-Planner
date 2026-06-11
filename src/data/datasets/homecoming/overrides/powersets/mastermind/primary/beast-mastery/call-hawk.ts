@@ -18,6 +18,5 @@ export const overrides: Partial<Power> = {
     "Ranged Damage",
     "To Hit Debuff",
     "Universal Damage Sets"
-  ],
-  "effects": {}
+  ]
 };

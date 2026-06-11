@@ -249,12 +249,6 @@ interface UIState {
   /** Tooltip state */
   tooltip: TooltipState;
 
-  /** Dark mode (for future use) */
-  darkMode: boolean;
-
-  /** Compact mode (for future use) */
-  compactMode: boolean;
-
   /** Collapse the stats dashboard to a slim summary row (toggled by `D` hotkey) */
   dashboardCollapsed: boolean;
 
@@ -296,9 +290,6 @@ interface UIState {
 
   /** Containment active state - for Controllers to see double damage vs controlled targets */
   containmentActive: boolean;
-
-  /** Opportunity meter level for Sentinels (0-100) */
-  opportunityLevel: number;
 
   /** Sentinel critical hits active state */
   sentinelCritActive: boolean;
@@ -436,8 +427,6 @@ interface UIActions {
   toggleCombatMode: () => void;
   toggleProcChancePinned: () => void;
   toggleHints: () => void;
-  toggleDarkMode: () => void;
-  toggleCompactMode: () => void;
   toggleDashboardCollapsed: () => void;
   setUIScale: (scale: number) => void;
 
@@ -581,7 +570,6 @@ interface UIActions {
   setContainmentActive: (active: boolean) => void;
 
   // Opportunity Level (Sentinel inherent) - slider 0-100
-  setOpportunityLevel: (level: number) => void;
 
   // Sentinel Critical Hits Active State (Sentinel inherent)
   toggleSentinelCrit: () => void;
@@ -785,8 +773,6 @@ export const useUIStore = create<UIStore>()(
       infoPanel: defaultInfoPanel,
       statsConfig: defaultStatsConfig,
       tooltip: defaultTooltip,
-      darkMode: true,
-      compactMode: false,
       dashboardCollapsed: false,
       uiScale: 1.0,
       incarnateActive: createDefaultIncarnateActiveState(),
@@ -801,7 +787,6 @@ export const useUIStore = create<UIStore>()(
       stalkerTeamSize: 0, // Default to solo (0 teammates)
       stalkerCritActive: false, // Default to OFF (like Critical Hits)
       containmentActive: false, // Default to OFF (like Critical Hits)
-      opportunityLevel: 50, // Default to 50 (reasonable mid-combat average)
       sentinelCritActive: false, // Default to OFF (like Critical Hits)
       selectedBranch: null, // No branch selected by default
       compareSlottingOpen: false,
@@ -1023,16 +1008,6 @@ export const useUIStore = create<UIStore>()(
       toggleHints: () =>
         set((state) => ({
           hintsEnabled: !state.hintsEnabled,
-        })),
-
-      toggleDarkMode: () =>
-        set((state) => ({
-          darkMode: !state.darkMode,
-        })),
-
-      toggleCompactMode: () =>
-        set((state) => ({
-          compactMode: !state.compactMode,
         })),
 
       toggleDashboardCollapsed: () =>
@@ -1451,10 +1426,6 @@ export const useUIStore = create<UIStore>()(
       setContainmentActive: (active) =>
         set({ containmentActive: active }),
 
-      // Opportunity Level (Sentinel)
-      setOpportunityLevel: (level) =>
-        set({ opportunityLevel: Math.max(0, Math.min(100, level)) }),
-
       // Sentinel Critical Hits
       toggleSentinelCrit: () =>
         set((state) => ({
@@ -1636,7 +1607,6 @@ export const useUIStore = create<UIStore>()(
           stalkerTeamSize: 0,
           stalkerCritActive: false,
           containmentActive: false,
-          opportunityLevel: 0,
           sentinelCritActive: false,
           trackedStats: [],
           permaTrackedPowers: [],
@@ -1676,8 +1646,6 @@ export const useUIStore = create<UIStore>()(
         hintsEnabled: state.hintsEnabled,
         infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled, undocked: false },
         statsConfig: state.statsConfig,
-        darkMode: state.darkMode,
-        compactMode: state.compactMode,
         dashboardCollapsed: state.dashboardCollapsed,
         uiScale: state.uiScale,
         incarnateActive: state.incarnateActive,
@@ -1690,7 +1658,9 @@ export const useUIStore = create<UIStore>()(
         criticalHitsActive: state.criticalHitsActive,
         stalkerHidden: state.stalkerHidden,
         stalkerTeamSize: state.stalkerTeamSize,
+        stalkerCritActive: state.stalkerCritActive,
         containmentActive: state.containmentActive,
+        sentinelCritActive: state.sentinelCritActive,
         selectedBranch: state.selectedBranch,
         powerViewMode: state.powerViewMode,
         trackedStats: state.trackedStats,
@@ -1864,9 +1834,6 @@ export const useStalkerCritActive = () => useUIStore((state) => state.stalkerCri
 
 /** Select containment active state */
 export const useContainmentActive = () => useUIStore((state) => state.containmentActive);
-
-/** Select opportunity meter level */
-export const useOpportunityLevel = () => useUIStore((state) => state.opportunityLevel);
 
 /** Select sentinel crit active state */
 export const useSentinelCritActive = () => useUIStore((state) => state.sentinelCritActive);

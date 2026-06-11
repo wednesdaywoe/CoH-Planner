@@ -566,24 +566,13 @@ function BuildIdentityPopover() {
       return;
     }
 
-    // Persist the new serverId on the saved build BEFORE reload so that
-    // main.tsx's pre-mount loader picks the right dataset on next boot.
-    try {
-      const raw = localStorage.getItem('coh-planner-build');
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (parsed?.state?.build) {
-          parsed.state.build.serverId = newId;
-          // Clear archetype/powerset picks — they're invalid on the new server.
-          parsed.state.build.archetype = { id: null };
-          parsed.state.build.primary = { id: null, powers: [] };
-          parsed.state.build.secondary = { id: null, powers: [] };
-          localStorage.setItem('coh-planner-build', JSON.stringify(parsed));
-        }
-      }
-    } catch {
-      // If persistence fails, fall back to URL-param override on reload.
-    }
+    // We reload with `?serverId=<newId>` (below). buildStore's onRehydrateStorage
+    // URL-param sync is the single source of truth for this: on next boot it sees
+    // the param differs from the persisted build.serverId and authoritatively sets
+    // serverId + clears the now-invalid archetype/powerset picks (with the canonical
+    // empty shape). We deliberately do NOT hand-write the persist envelope here —
+    // doing so pre-set serverId, which suppressed that canonical path and left a
+    // malformed partial archetype.
 
     // The reload itself is fast, but the post-reload dataset boot pulls in
     // a fresh chunk graph (powersets + IO sets + AT tables). Drop a

@@ -53,6 +53,11 @@ function ErrorFallback() {
   )
 }
 
+// Resolves after the dataset is loaded AND the persisted build is rehydrated.
+// Anything that mutates the build during boot (the .skif handler below) must
+// await this so it lands after hydration instead of being clobbered by it.
+let bootReady: Promise<void>
+
 // Handle .skif files opened via PWA file association
 if ('launchQueue' in window) {
   (window as any).launchQueue.setConsumer(async (launchParams: any) => {
@@ -61,6 +66,9 @@ if ('launchQueue' in window) {
       const text = await file.text();
       try {
         const { useBuildStore } = await import('./stores/buildStore');
+        // Import the opened file AFTER boot so it wins over the rehydrated build
+        // and has the active dataset available for power resolution.
+        await bootReady
         useBuildStore.getState().importBuild(text);
       } catch {
         console.error('Failed to import .skif file');
@@ -92,7 +100,16 @@ function bootServerId(): 'homecoming' | 'rebirth' {
   }
 }
 
-loadDataset(bootServerId()).then(() => {
+bootReady = loadDataset(bootServerId()).then(async () => {
+  // Hydrate the persisted build only AFTER the dataset is loaded — its rehydrate
+  // migrations (inherent reconciliation, syncBuildDefinitions) read the active
+  // dataset. The store is created with `skipHydration: true`; bootServerId()
+  // already pre-peeked the persisted serverId so the matching dataset is active.
+  const { useBuildStore } = await import('./stores/buildStore')
+  await useBuildStore.persist.rehydrate()
+})
+
+bootReady.then(() => {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <Sentry.ErrorBoundary fallback={<ErrorFallback />}>

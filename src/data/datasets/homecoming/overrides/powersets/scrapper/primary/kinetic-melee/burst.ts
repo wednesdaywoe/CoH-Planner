@@ -10,8 +10,4 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  "stats": {
-    "castTime": 2.53
-  }
-};
+export const overrides: Partial<Power> = {};

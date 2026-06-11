@@ -14,13 +14,5 @@ export const overrides: Partial<Power> = {
   "description": "Summons a Galvanic Sentinel to your aid. The Galvanic Sentinel shocks and weakens your foes, draining some endurance and reducing their regeneration, recovery, and damage output. The Galvanic Sentinel can be buffed and healed, and may be targeted with your Circuit powers.Recharge: Slow.",
   "allowedSetCategories": [
     "Endurance Modification"
-  ],
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_GalvanicSentinel",
-      "duration": 120,
-      "copyBoosts": true
-    }
-  }
+  ]
 };

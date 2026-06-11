@@ -19,10 +19,5 @@ export const overrides: Partial<Power> = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "targetType": "Foe (Alive)",
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Melee_Damage"
-  }
+  "targetType": "Foe (Alive)"
 };

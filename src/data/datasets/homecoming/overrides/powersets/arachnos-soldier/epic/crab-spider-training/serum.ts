@@ -10,11 +10,4 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  "effects": {
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    }
-  }
-};
+export const overrides: Partial<Power> = {};

@@ -11,11 +11,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "description": "You can activate this power to increase your maximum Hit Points for a short time. Essence Boost also grants you resistance to Toxic Damage.  Recharge: Very Long.",
-  "effects": {
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    }
-  }
+  "description": "You can activate this power to increase your maximum Hit Points for a short time. Essence Boost also grants you resistance to Toxic Damage.  Recharge: Very Long."
 };

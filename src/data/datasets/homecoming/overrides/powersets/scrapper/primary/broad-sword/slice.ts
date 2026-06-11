@@ -11,9 +11,6 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "stats": {
-    "castTime": 1.83
-  },
   "excludes": [
     "Boomerang_Slice"
   ]

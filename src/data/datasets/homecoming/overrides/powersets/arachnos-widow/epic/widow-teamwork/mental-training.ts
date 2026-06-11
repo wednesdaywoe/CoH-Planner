@@ -11,24 +11,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "allowedSetCategories": [],
-  "stats": {},
-  "effects": {
-    "debuffResistance": {
-      "recharge": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      }
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedFlying"
-      }
-    }
-  }
+  "allowedSetCategories": []
 };

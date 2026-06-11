@@ -14,7 +14,6 @@ export {
   useSecondary,
   usePools,
   useEpicPool,
-  useBuildSettings,
   useCraftingChecklist,
 } from './buildStore';
 export type { PowerCategory } from './buildStore';
@@ -41,7 +40,6 @@ export {
   useStalkerTeamSize,
   useStalkerCritActive,
   useContainmentActive,
-  useOpportunityLevel,
   useSentinelCritActive,
   usePowerViewMode,
   useTargetsHit,

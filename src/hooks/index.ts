@@ -2,22 +2,16 @@
  * Hooks barrel export
  *
  * Import hooks from here:
- * import { useCalculatedStats, useGlobalRecharge } from '@/hooks';
+ * import { useCalculatedStats, useGlobalBonuses } from '@/hooks';
  */
 
 export {
   useCalculatedStats,
   useCharacterCalculation,
-  useCharacterStats,
   useGlobalBonuses,
   useStatBreakdown,
-  useGlobalRecharge,
-  useDefenseStats,
-  useResistanceStats,
-  useHealthStats,
   useTotalSlotsUsed,
   useSlotsRemaining,
-  usePowersPerLevel,
   useActiveSetBonuses,
   useBonusTracking,
   useOffendingPowerNames,
@@ -33,7 +27,6 @@ export type {
 
 export { useLongPress } from './useLongPress';
 export { useSwipeToRemove } from './useSwipeToRemove';
-export { useActivePowerBuffs } from './useActivePowerBuffs';
 export { useSlotLevels } from './useSlotLevels';
 export { useIsTouchDevice, isTouchDevice } from './useIsTouchDevice';
 export { useStatusCheck } from './useStatusCheck';

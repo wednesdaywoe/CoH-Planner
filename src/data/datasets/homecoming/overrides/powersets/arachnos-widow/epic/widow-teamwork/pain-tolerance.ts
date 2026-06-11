@@ -14,7 +14,5 @@ export const overrides: Partial<Power> = {
   "allowedSetCategories": [
     "Healing",
     "Resist Damage"
-  ],
-  "stats": {},
-  "effects": {}
+  ]
 };

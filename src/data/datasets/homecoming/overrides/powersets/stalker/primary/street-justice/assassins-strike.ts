@@ -16,11 +16,6 @@ export const overrides: Partial<Power> = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.5,
-    "table": "Melee_Damage"
-  },
   "effects": {
     "stealth": {
       "stealthPvE": {

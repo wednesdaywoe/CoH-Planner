@@ -12,15 +12,5 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "internalName": "Frt_Psionic_Lance",
-  "targetType": "Foe (Alive)",
-  "effects": {
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "rechargeBuff": 10
-    }
-  }
+  "targetType": "Foe (Alive)"
 };

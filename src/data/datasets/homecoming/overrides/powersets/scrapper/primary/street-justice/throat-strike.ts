@@ -15,22 +15,5 @@ export const overrides: Partial<Power> = {
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
-  ],
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    }
   ]
 };

@@ -26,32 +26,19 @@ import {
 import { LEGACY_PIECE_ALIASES } from './legacy-piece-aliases';
 import type { MidsImportWarning } from './types';
 import { warnFallback } from '@/utils/fallback-warnings';
+import {
+  parseIOSetUid,
+  mapArchetypeClass,
+  SPECIAL_SUFFIX_MAPS,
+  type SpecialCategory,
+} from '@/utils/enhancement-uid';
 
 // ============================================
 // ARCHETYPE MAPPING
 // ============================================
 
-const MIDS_ARCHETYPE_MAP: Record<string, ArchetypeId> = {
-  'Class_Blaster': 'blaster',
-  'Class_Brute': 'brute',
-  'Class_Controller': 'controller',
-  'Class_Defender': 'defender',
-  'Class_Scrapper': 'scrapper',
-  'Class_Tanker': 'tanker',
-  'Class_Sentinel': 'sentinel',
-  'Class_Guardian': 'guardian',  // Rebirth-only AT
-  'Class_Corruptor': 'corruptor',
-  'Class_Dominator': 'dominator',
-  'Class_Mastermind': 'mastermind',
-  'Class_Stalker': 'stalker',
-  'Class_Peacebringer': 'peacebringer',
-  'Class_Warshade': 'warshade',
-  'Class_Arachnos_Soldier': 'arachnos-soldier',
-  'Class_Arachnos_Widow': 'arachnos-widow',
-};
-
 export function mapArchetype(midsClass: string): ArchetypeId | null {
-  return MIDS_ARCHETYPE_MAP[midsClass] ?? null;
+  return mapArchetypeClass(midsClass);
 }
 
 // ============================================
@@ -1399,71 +1386,10 @@ function isGenericStat(name: string): boolean {
   return name in MIDS_STAT_MAP && !name.match(/_[A-F]$/);
 }
 
-interface ParsedIOSetUid {
-  setId: string;
-  pieceNum: number;
-  attuned: boolean;
-  /** True when the UID had a `Superior_Attuned_` prefix — caller should prefer the `superior_` variant. */
-  superior: boolean;
-}
-
-/**
- * Parse a Mids IO set enhancement UID into its components.
- * Examples:
- *   "Superior_Attuned_Superior_Brutes_Fury_A" → { setId: "superior_brutes_fury", pieceNum: 1, attuned: true, superior: true }
- *   "Superior_Attuned_Blistering_Cold_A"      → { setId: "blistering_cold", pieceNum: 1, attuned: true, superior: true }
- *   "Hecatomb_A"                              → { setId: "hecatomb", pieceNum: 1, attuned: false, superior: false }
- *   "Attuned_Basilisks_Gaze_A"                → { setId: "basilisks_gaze", pieceNum: 1, attuned: true, superior: false }
- */
-function parseIOSetUid(uid: string): ParsedIOSetUid | null {
-  let remaining = uid;
-  let attuned = false;
-  let superior = false;
-
-  // Strip attuned prefixes
-  if (remaining.startsWith('Superior_Attuned_')) {
-    remaining = remaining.slice('Superior_Attuned_'.length);
-    attuned = true;
-    superior = true;
-  } else if (remaining.startsWith('Attuned_')) {
-    remaining = remaining.slice('Attuned_'.length);
-    attuned = true;
-  } else if (remaining.startsWith('Crafted_')) {
-    remaining = remaining.slice('Crafted_'.length);
-  }
-
-  // Try the standard piece letter (last _X where X is A-F).
-  const pieceMatch = remaining.match(/_([A-F])$/);
-  let pieceNum: number;
-  let setName: string;
-  if (pieceMatch) {
-    const pieceLetter = pieceMatch[1];
-    pieceNum = pieceLetter.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
-    setName = remaining.slice(0, -2); // Remove "_X"
-  } else {
-    // Some Mids UIDs use a descriptive suffix instead of a letter for
-    // special pieces (e.g. "Superior_Return_From_the_Grave_Rez_Effects",
-    // event sets with unique procs). Treat these as a synthetic
-    // "last piece" — caller's piece-name resolver will use Mids' display
-    // name to find a proc/special piece in the set rather than relying on
-    // pieceNum. Conservatively use 6 (the typical last-piece slot).
-    pieceNum = 6;
-    setName = remaining;
-  }
-
-  // Lowercase + strip apostrophes (Mids: "Vampire's_Bite" → our key
-  // "vampires_bite"). Mids preserves the apostrophe in its UIDs while
-  // our planner data uses ASCII-only set ids.
-  const setId = setName.toLowerCase().replace(/['']/g, '');
-
-  return { setId, pieceNum, attuned, superior };
-}
 
 // ============================================
 // SPECIAL ENHANCEMENT MAPPING (HamiO/Titan/Hydra/D-Sync)
 // ============================================
-
-type SpecialCategory = 'hamidon' | 'titan' | 'hydra' | 'd-sync' | 'prestige';
 
 interface SpecialRegistryDef {
   name: string;
@@ -1607,86 +1533,6 @@ const SPECIAL_REGISTRIES: Record<SpecialCategory, Record<string, SpecialRegistry
  *   Threat = Taunt
  *   Heal = Healing (may also include Absorb in some entries)
  */
-const SPECIAL_SUFFIX_MAPS: Record<SpecialCategory, Record<string, string>> = {
-  'hamidon': {
-    'damage_accuracy': 'nucleolus',
-    'damage_range': 'centriole',
-    'debuff_endurance_discount': 'enzyme',
-    'debuff_accuracy': 'lysosome',
-    'buff_recharge': 'membrane',
-    'damage_mez': 'peroxisome',
-    'res_damage_endurance_discount': 'ribosome',
-    'heal_endurance_discount': 'golgi',
-    'accuracy_mez': 'endoplasm',
-    'buff_endurance_discount': 'cytoskeleton',
-    'travel_endurance_discount': 'microfilament',
-    'endurance_modification_recharge': 'vesicle',
-    'slow_recharge_endurance_discount': 'stereocilia',
-    'endurance_modification_accuracy': 'microtubule',
-    'damage_endurance_discount': 'karyoplasm',
-    'accuracy_range': 'microvillus',
-    'damage_recharge': 'chromatin',
-    'threat_accuracy_recharge': 'ectosome',
-    'heal_recharge': 'amyloplast',
-    'heal_accuracy': 'chloroplast',
-  },
-  'titan': {
-    'damage_mez': 'amethyst',
-    'accuracy_mez': 'calcite',
-    'buff_recharge': 'citrine',
-    'damage_accuracy': 'diamond',
-    'debuff_accuracy': 'gypsum',
-    'heal_endurance_discount': 'kyanite',
-    'res_damage_endurance_discount': 'peridont',
-    'damage_range': 'quartz',
-    'travel_endurance_discount': 'selenite',
-    'buff_endurance_discount': 'tanzanite',
-    'debuff_endurance_discount': 'zeolite',
-  },
-  'hydra': {
-    'debuff_endurance_discount': 'antiproton',
-    'debuff_accuracy': 'delta',
-    'res_damage_endurance_discount': 'electron',
-    'damage_mez': 'gluon',
-    'accuracy_mez': 'graviton',
-    'damage_accuracy': 'neutrino',
-    'damage_range': 'neutron',
-    'heal_endurance_discount': 'positron',
-    'buff_endurance_discount': 'proton',
-    'buff_recharge': 'quark',
-    'travel_endurance_discount': 'theta',
-  },
-  'd-sync': {
-    'travel_endurance_discount': 'acceleration',
-    'accuracy_mez': 'binding',
-    'endurance_modification_recharge': 'conduit',
-    'damage_mez': 'containment',
-    'slow_recharge_endurance_discount': 'deceleration',
-    'endurance_modification_accuracy': 'drain',
-    'damage_endurance_discount': 'efficiency',
-    'buff_endurance_discount': 'elusivity',
-    'damage_accuracy': 'empowerment',
-    'damage_range': 'extension',
-    'res_damage_endurance_discount': 'fortification',
-    'accuracy_range': 'guidance',
-    'debuff_endurance_discount': 'marginalization',
-    'debuff_accuracy': 'obfuscation',
-    'damage_recharge': 'optimization',
-    'threat_accuracy_recharge': 'provocation',
-    'heal_endurance_discount': 'reconstitution',
-    'heal_recharge': 'reconstruction',
-    'buff_recharge': 'shifting',
-    'heal_accuracy': 'siphon',
-  },
-  'prestige': {
-    'might_of_the_empire': 'might_of_the_empire',
-    'clockwork_efficiency': 'clockwork_efficiency',
-    'will_of_the_seers': 'will_of_the_seers',
-    'resistance_tactics': 'resistance_tactics',
-    'syndicate_techniques': 'syndicate_techniques',
-  },
-};
-
 const SPECIAL_PREFIXES: [string, SpecialCategory][] = [
   // Synthetic_Hamidon_ must come before Hamidon_ so startsWith matches the longer prefix first.
   // Synthetic HOs share the Hamidon registry (identical aspect values in-game).

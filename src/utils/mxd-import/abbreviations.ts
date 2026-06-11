@@ -327,20 +327,7 @@ export const PROC_INDICATORS = [
 // ARCHETYPE NAME MAPPING
 // ============================================
 
-export const CLASS_TO_ARCHETYPE: Record<string, string> = {
-  'Blaster': 'blaster',
-  'Brute': 'brute',
-  'Controller': 'controller',
-  'Corruptor': 'corruptor',
-  'Defender': 'defender',
-  'Dominator': 'dominator',
-  'Mastermind': 'mastermind',
-  'Scrapper': 'scrapper',
-  'Sentinel': 'sentinel',
-  'Stalker': 'stalker',
-  'Tanker': 'tanker',
-  'Peacebringer': 'peacebringer',
-  'Warshade': 'warshade',
-  'Arachnos Soldier': 'arachnos-soldier',
-  'Arachnos Widow': 'arachnos-widow',
-};
+// Display-name → archetype map, derived from the canonical Class_X map in the
+// shared enhancement-uid module (MSOT-5). Re-exported under the historical name
+// so mxd-import consumers are unchanged; derivation also gives mxd Guardian.
+export { CLASS_NAME_TO_ARCHETYPE as CLASS_TO_ARCHETYPE } from '@/utils/enhancement-uid';

@@ -36,10 +36,6 @@ export const overrides: Partial<Power> = {
       "scale": 0.2,
       "table": "Melee_Slow"
     },
-    "buffDuration": 4,
-    "durations": {
-      "movement": 4,
-      "rechargeBuff": 4
-    }
+    "buffDuration": 4
   }
 };

@@ -10,10 +10,11 @@
  */
 
 import type { DamageType, ArchetypeId, NumberOrScaled } from '@/types';
-import { getScaleValue } from '@/types';
 import { getArchetype } from '@/data';
 import { getTableValue } from '@/data/at-tables';
-import { normalizeTableName, normalizeArchetypeId } from './at-effects';
+import { normalizeTableName, normalizeArchetypeId } from './at-table-normalize';
+import { calculateBuffDebuffFraction, type BuffDebuffCategory } from './buff-debuff';
+import { warnFallback } from '@/utils/fallback-warnings';
 
 // ============================================
 // DAMAGE TABLES
@@ -572,7 +573,11 @@ export function calculatePowerDamage(
       enhancedDamage = atEnhanced;
       finalDamage = atFinal;
     } else {
-      // Fallback to generic calculation if AT table not found
+      // Fallback to generic calculation if AT table not found. The generic
+      // melee/ranged tables can yield different numbers than the per-AT table,
+      // so surface the miss (a bad/missing `table` shows plausible-but-wrong
+      // damage otherwise). Mirrors at-effects.ts calculateScaledEffect.
+      warnFallback('calculatePowerDamage', `AT-table miss for '${tableName}' (${archetypeId}) — using generic ${damageType} table for scale ${scale}`);
       baseDamage = calculateActualDamage({ scale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
       enhancedDamage = calculateActualDamage({ scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
       finalDamage = calculateActualDamage({ scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
@@ -618,6 +623,7 @@ export function calculatePowerDamage(
         feEnhancedDamage = feEnhanced;
         feFinalDamage = feFinal;
       } else {
+        warnFallback('calculatePowerDamage', `AT-table miss for '${tableName}' (${archetypeId}) — using generic ${damageType} table for Fiery Embrace scale ${fieryEmbraceScale}`);
         feBaseDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
         feEnhancedDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
         feFinalDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
@@ -836,123 +842,27 @@ export function formatDamage(damage: number): string {
 }
 
 /**
- * Calculate buff/debuff value using archetype modifier
- * Returns the percentage value (e.g., 12.5 for 12.5%)
+ * Calculate buff/debuff value using the archetype's (raw) modifier.
+ * Returns the percentage value in POINTS (e.g., 12.5 for 12.5%).
  *
- * In City of Heroes, debuffs and buffs use different base scaling:
- * - Debuffs (ToHit, Defense, Resistance debuffs): 5% per scale (multiplier 5)
- * - Buffs (Damage, Defense, ToHit buffs): 10% per scale (multiplier 10)
+ * Thin wrapper over the canonical `calculateBuffDebuffFraction` (buff-debuff.ts),
+ * which owns the 10%/5%-per-scale rule. This wrapper resolves the modifier from
+ * the archetype and converts fraction → percentage points (×100).
  *
- * Accepts both number (legacy) and ScaledEffect (new format) as input.
+ * NOTE: this path uses the archetype's *raw* buffDebuffModifier. The display
+ * surfaces (powerDisplayUtils) instead pass the *effective* modifier
+ * (getEffectiveBuffDebuffModifier zeroes Corruptor/Mastermind secondary support
+ * to 1.0). For table-less buff/debuff effects on those ATs the two can differ —
+ * a known semantic divergence flagged for in-game verification, NOT reconciled
+ * here because it would change displayed game values. Accepts both number
+ * (legacy) and ScaledEffect (new format) as input.
  */
-export function calculateBuffDebuffValue(
+export function calculateBuffDebuffPercent(
   scaleOrEffect: NumberOrScaled,
   archetypeId?: ArchetypeId,
-  category: 'buff' | 'debuff' = 'buff'
+  category: BuffDebuffCategory = 'buff'
 ): number {
-  // Extract scale from NumberOrScaled
-  const scale = getScaleValue(scaleOrEffect);
-  if (scale === undefined || scale === 0) return 0;
-
-  const baseMultiplier = category === 'debuff' ? 5 : 10;
-
-  if (!archetypeId) return scale * baseMultiplier;
-
-  const archetype = getArchetype(archetypeId);
-  if (!archetype) return scale * baseMultiplier;
-
-  const modifier = archetype.stats?.buffDebuffModifier || 1.0;
-
-  // Formula: scale * archetypeModifier * baseMultiplier = percentage value
-  return scale * modifier * baseMultiplier;
+  const modifier = archetypeId ? (getArchetype(archetypeId)?.stats?.buffDebuffModifier ?? 1.0) : 1.0;
+  return calculateBuffDebuffFraction(scaleOrEffect, modifier, category) * 100;
 }
 
-// ============================================
-// DOT (DAMAGE OVER TIME) CALCULATION
-// ============================================
-
-export interface DotDamageResult {
-  /** Base damage per tick without enhancements */
-  baseTick: number;
-  /** Enhanced damage per tick with slot enhancements */
-  enhancedTick: number;
-  /** Final damage per tick with global buffs */
-  finalTick: number;
-  /** Base total damage (all ticks) */
-  baseTotal: number;
-  /** Enhanced total damage (all ticks) */
-  enhancedTotal: number;
-  /** Final total damage (all ticks) */
-  finalTotal: number;
-  /** Damage type name */
-  type: string;
-  /** Number of ticks */
-  ticks: number;
-}
-
-export interface DotEffect {
-  type: string;
-  scale: number;
-  ticks: number;
-  /** Optional AT table name for damage calculation */
-  table?: string;
-}
-
-/**
- * Calculate DoT damage for a power from build
- * Returns three-tier values similar to direct damage
- */
-export function calculateDotDamage(
-  dot: DotEffect,
-  buildContext: BuildContext,
-  enhancementBonuses: { damage?: number } = {},
-  globalDamageBonus = 0,
-  activeBuffs = 0,
-  isRanged = false
-): DotDamageResult {
-  const { level, archetypeId } = buildContext;
-  const damageType: DamageTableType = isRanged ? 'ranged' : 'melee';
-  const enhancementBonus = enhancementBonuses.damage || 0;
-
-  // Check if we can use AT_TABLES
-  const useATTables = dot.table && archetypeId;
-
-  let baseTick: number;
-  let enhancedTick: number;
-  let finalTick: number;
-
-  if (useATTables) {
-    // Use AT_TABLES for archetype-specific accurate damage
-    const atBase = calculateDamageWithATTable(dot.scale, dot.table!, archetypeId, level, 0, 0);
-    const atEnhanced = calculateDamageWithATTable(dot.scale, dot.table!, archetypeId, level, enhancementBonus, 0);
-    const atFinal = calculateDamageWithATTable(dot.scale, dot.table!, archetypeId, level, enhancementBonus, globalDamageBonus + activeBuffs);
-
-    if (atBase !== null && atEnhanced !== null && atFinal !== null) {
-      baseTick = atBase;
-      enhancedTick = atEnhanced;
-      finalTick = atFinal;
-    } else {
-      // Fallback to generic calculation
-      baseTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
-      enhancedTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
-      finalTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
-    }
-  } else {
-    // Use generic damage tables
-    baseTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
-    enhancedTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
-    finalTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
-  }
-
-  // Total damage = per tick × number of ticks
-  return {
-    baseTick,
-    enhancedTick,
-    finalTick,
-    baseTotal: baseTick * dot.ticks,
-    enhancedTotal: enhancedTick * dot.ticks,
-    finalTotal: finalTick * dot.ticks,
-    type: dot.type,
-    ticks: dot.ticks,
-  };
-}

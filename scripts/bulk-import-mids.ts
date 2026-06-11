@@ -336,7 +336,7 @@ function buildToRow(
   authorName: string,
 ): SharedBuildRow {
   const exportJson = {
-    version: 3,
+    version: 4, // match the app's current export envelope (slimBuild is current-shape)
     build: slimBuild(build),
     meta: {
       exportedAt: new Date().toISOString(),

@@ -12,15 +12,5 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "internalName": "Nw_Psychic_Scream",
-  "targetType": "Foe (Alive)",
-  "effects": {
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 20,
-    "durations": {
-      "rechargeBuff": 20
-    }
-  }
+  "targetType": "Foe (Alive)"
 };

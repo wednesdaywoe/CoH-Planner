@@ -18,11 +18,5 @@ export const overrides: Partial<Power> = {
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"
-  ],
-  "effects": {
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
+  ]
 };

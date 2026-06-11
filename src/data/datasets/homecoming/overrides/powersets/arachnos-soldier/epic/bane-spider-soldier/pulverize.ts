@@ -26,29 +26,5 @@ export const overrides: Partial<Power> = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "stats": {
-    "endurance": 11.48
-  },
-  "targetType": "Foe (Alive)",
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  }
+  "targetType": "Foe (Alive)"
 };

@@ -515,7 +515,6 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
       inherent: archetype.inherent,
     },
     level,
-    exemplarLevel: null,
     progressionMode: 'auto',
     primary: {
       id: primaryId,
@@ -532,7 +531,6 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     inherents,
     accolades: [],
     settings: {
-      globalIOLevel: 50,
       origin,
     },
     sets: {},

@@ -13,15 +13,5 @@ import type { Power } from '@/types';
 export const overrides: Partial<Power> = {
   "internalName": "Nw_Smoke_Grenade",
   "description": "The Smoke Grenade envelops all those in the affected area in a cloud of smoke. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit. ",
-  "targetType": "Foe (Alive)",
-  "effects": {
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "durations": {
-      "perceptionDebuff": 60,
-      "tohitDebuff": 60
-    }
-  }
+  "targetType": "Foe (Alive)"
 };

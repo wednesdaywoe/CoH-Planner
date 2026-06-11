@@ -79,12 +79,20 @@ const RELEVANT_TABLES = [
   'ranged_debuff_tohit',
   'melee_debuff_def',
   'melee_debuff_tohit',
+  // Damage-strength debuff (no melee_debuff_dmg exists in the binary)
+  'ranged_debuff_dmg',
 
   // Buff tables
   'ranged_buff_def',
   'ranged_buff_tohit',
   'melee_buff_def',
   'melee_buff_tohit',
+  // Damage-strength buff tables — AT-specific (blaster 0.125, tanker 0.0875,
+  // …). Without these, every melee/ranged damage buff (Build Up, Soul Drain,
+  // Against All Odds, Follow Up, Aim, …) fell back to a flat 0.10, over-valuing
+  // low-damage ATs' buffs and under-valuing high-damage ones.
+  'melee_buff_dmg',
+  'ranged_buff_dmg',
 
   // Heal tables
   'ranged_heal',

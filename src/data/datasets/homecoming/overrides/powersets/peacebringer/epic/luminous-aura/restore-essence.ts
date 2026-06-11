@@ -11,6 +11,5 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "description": "Should you fall in battle, you can Restore your Essence and bring yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds.  Recharge: Very Long.",
-  "effects": {}
+  "description": "Should you fall in battle, you can Restore your Essence and bring yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds.  Recharge: Very Long."
 };

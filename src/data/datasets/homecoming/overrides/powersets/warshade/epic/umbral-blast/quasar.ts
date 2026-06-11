@@ -35,10 +35,6 @@ export const overrides: Partial<Power> = {
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
-    "buffDuration": 20,
-    "durations": {
-      "movement": 20,
-      "rechargeBuff": 20
-    }
+    "buffDuration": 20
   }
 };
