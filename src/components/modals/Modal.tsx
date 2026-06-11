@@ -14,6 +14,20 @@ interface ModalProps {
   showCloseButton?: boolean;
   closeOnBackdrop?: boolean;
   closeOnEscape?: boolean;
+  /**
+   * On narrow (mobile) screens, render edge-to-edge over the whole viewport —
+   * including the bottom nav — instead of a centered card that reserves space
+   * for the nav. Use for content-heavy pickers that should scroll vertically
+   * only. Desktop behavior is unchanged.
+   */
+  mobileFullscreen?: boolean;
+  /**
+   * When false, the content area does NOT scroll itself — the child is expected
+   * to manage its own single scroll region. Prevents a redundant outer
+   * scrollbar (and the horizontal scrollbar `overflow-y-auto` implies) for
+   * children that already have an internal `overflow-y-auto` pane. Default true.
+   */
+  scrollBody?: boolean;
 }
 
 const sizeClasses = {
@@ -33,6 +47,8 @@ export function Modal({
   showCloseButton = true,
   closeOnBackdrop = true,
   closeOnEscape = true,
+  mobileFullscreen = false,
+  scrollBody = true,
 }: ModalProps) {
   const handleEscape = useCallback(
     (e: KeyboardEvent) => {
@@ -71,24 +87,29 @@ export function Modal({
     }
   };
 
+  // Backdrop: a centered card normally reserves space above the mobile bottom
+  // nav (z-50). Fullscreen mode instead sits above the nav (z-[60]) and covers
+  // it edge-to-edge so the picker reads as a single surface, not a layer that
+  // leaves tappable nav showing through.
+  const backdropClass = mobileFullscreen
+    ? 'fixed inset-0 z-[60] flex items-center justify-center bg-black/70 backdrop-blur-sm max-lg:p-0 lg:p-4'
+    : 'fixed inset-0 max-lg:bottom-[calc(56px+env(safe-area-inset-bottom))] z-40 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm';
+  const cardClass = mobileFullscreen
+    ? `w-full ${sizeClasses[size]} bg-gray-900 shadow-xl flex flex-col animate-in fade-in zoom-in-95 duration-200`
+      + ' max-lg:max-w-none max-lg:h-full max-lg:max-h-none max-lg:rounded-none max-lg:border-0'
+      + ' lg:rounded-lg lg:border lg:border-gray-700 lg:max-h-[90vh]'
+    : `w-full ${sizeClasses[size]} bg-gray-900 rounded-lg shadow-xl border border-gray-700 max-h-[90vh] flex flex-col animate-in fade-in zoom-in-95 duration-200`;
+
   return createPortal(
     <div
-      className="fixed inset-0 max-lg:bottom-[calc(56px+env(safe-area-inset-bottom))] z-40 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      className={backdropClass}
       onMouseDown={handleMouseDown}
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
       aria-labelledby={title ? 'modal-title' : undefined}
     >
-      <div
-        className={`
-          w-full ${sizeClasses[size]}
-          bg-gray-900 rounded-lg shadow-xl
-          border border-gray-700
-          max-h-[90vh] flex flex-col
-          animate-in fade-in zoom-in-95 duration-200
-        `}
-      >
+      <div className={cardClass}>
         {/* Header */}
         {(title || showCloseButton) && (
           <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700">
@@ -122,7 +143,7 @@ export function Modal({
         )}
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto">{children}</div>
+        <div className={`flex-1 min-h-0 ${scrollBody ? 'overflow-y-auto' : 'overflow-hidden'}`}>{children}</div>
       </div>
     </div>,
     document.body

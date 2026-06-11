@@ -163,9 +163,11 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
         <span className="text-[10px] text-slate-600">({totalCount})</span>
       </div>
 
-      {/* Collapsible content */}
+      {/* Collapsible content — laid out in the same 3-column grid as the
+          power slots above (one inherent group per column) so it reads as a
+          continuation of the chronological view rather than a separate block. */}
       {!collapsed && (
-        <div className="p-2 space-y-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-700">
           {/* Fitness powers */}
           {inherentGroups.fitness.length > 0 && (
             <InherentGroup
@@ -274,11 +276,12 @@ function InherentGroup({
   const sortedPowers = [...powers].sort((a, b) => a.available - b.available);
 
   return (
-    <div>
-      <div className="text-[10px] font-medium text-slate-500 uppercase mb-1">
+    <div className="bg-slate-900 flex flex-col gap-1">
+      {/* Column header — matches the level-range headers on the power columns. */}
+      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide px-1 py-1 border-b border-slate-700">
         {title}
       </div>
-      <div className="grid grid-cols-2 gap-1">
+      <div className="flex flex-col gap-1 p-1">
         {sortedPowers.map((power) => {
           const isLocked = isPowerLocked(power.internalName);
 

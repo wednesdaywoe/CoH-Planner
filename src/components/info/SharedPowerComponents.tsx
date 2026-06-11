@@ -753,10 +753,19 @@ export function RegistryEffectsDisplay({
   // but buffDuration is not actually rendered as a primary display value —
   // the `duration` prop on this component is unused. Re-surfacing the
   // duration here is the only place users see "-Recharge lasts 15s".
-  const getEffectDuration = (effectKey: string): number | undefined => {
+  const getEffectDuration = (effectKey: string, category?: string): number | undefined => {
     const baseKey = effectKey.includes('_') ? effectKey.split('_')[0] : effectKey;
-    const dur = durations?.[effectKey] ?? durations?.[baseKey] ?? buffDur;
-    return dur;
+    // An explicit per-effect duration always wins.
+    const explicit = durations?.[effectKey] ?? durations?.[baseKey];
+    if (explicit != null) return explicit;
+    // Otherwise fall back to the power-level buff duration ONLY for timed
+    // effects (buffs/debuffs/control) — that's where "this -Recharge debuff
+    // lasts 15s" comes from. Execution stats (End Cost, Rech Time, Accuracy,
+    // Pwr Range, Activation, Radius, Arc, Max Targets) are instantaneous power
+    // attributes with no duration, so the buff duration must NOT be stamped
+    // onto them (was producing a bogus "(2s)" on every such row).
+    if (category === 'execution') return undefined;
+    return buffDur;
   };
 
   // Map enhancement type names to registry aspect names
@@ -1063,9 +1072,11 @@ export function RegistryEffectsDisplay({
   displayableEffects.length = 0;
   displayableEffects.push(...grouped);
 
+  // Label column is wide enough for the longest stat label ("Max Targets")
+  // so two-word labels never wrap to a second line and break row alignment.
   const gridCols = compact
-    ? 'grid-cols-[4rem_1fr_1fr_1fr]'
-    : 'grid-cols-[5rem_1fr_1fr_1fr]';
+    ? 'grid-cols-[5rem_1fr_1fr_1fr]'
+    : 'grid-cols-[5.5rem_1fr_1fr_1fr]';
   const fontSize = compact ? 'text-xs' : 'text-sm';
   const headerFontSize = compact ? 'text-[10px]' : 'text-[11px]';
 
@@ -1310,8 +1321,8 @@ export function RegistryEffectsDisplay({
           );
         }
 
-        // Duration annotation for this effect
-        const effectDur = getEffectDuration(key);
+        // Duration annotation for this effect (suppressed for execution stats)
+        const effectDur = getEffectDuration(key, config.category);
 
         // Standard three-tier row \u2014 precision owned by the effect's registry
         // config (see formatEffectValueForConfig).
@@ -1319,7 +1330,7 @@ export function RegistryEffectsDisplay({
 
         return (
           <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
-            <span className={config.colorClass}>
+            <span className={`${config.colorClass} whitespace-nowrap`}>
               {label}
               {effectDur != null && (
                 <span className="text-slate-400 font-normal text-[11px] ml-0.5">({effectDur}s)</span>
@@ -1385,7 +1396,9 @@ export function RegistryEffectsDisplay({
           fontSize,
           archetypeId,
           level,
-          effectDur: itemKey ? getEffectDuration(itemKey) : undefined,
+          effectDur: itemKey
+            ? getEffectDuration(itemKey, group.type === 'single' ? group.item.effect.config.category : undefined)
+            : undefined,
         }));
         const result: React.ReactNode[] = [];
         if (sectionHeader) result.push(sectionHeader);

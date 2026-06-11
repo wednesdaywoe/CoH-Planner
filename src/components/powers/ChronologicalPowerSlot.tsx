@@ -127,12 +127,12 @@ export function ChronologicalPowerSlot({
         <div className="flex min-w-0">
           {/* Left column: Level + empty icon space (matches PowerRow stacked layout) */}
           <div className="flex flex-col items-center flex-shrink-0 mr-1 justify-between">
-            <span className="text-[10px] font-semibold text-slate-500 leading-tight">L{level}</span>
+            <span className="text-[10px] font-semibold text-slate-400 leading-tight">L{level}</span>
             <div className="w-6 h-6 mt-0.5" />
           </div>
           {/* Right column: Label + spacer (matches name row + slots row) */}
           <div className="flex flex-col flex-1 min-w-0">
-            <span className="text-xs text-slate-600 italic">
+            <span className="text-xs text-slate-400 italic">
               {isPrimarySlot
                 ? 'Primary power'
                 : isSecondarySlot

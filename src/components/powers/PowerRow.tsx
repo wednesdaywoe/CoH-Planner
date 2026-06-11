@@ -414,7 +414,7 @@ export function PowerRow({
           {/* Left column: Level on top, icon underneath */}
           <div className={`flex flex-col items-center flex-shrink-0 mr-1 ${level !== undefined ? 'justify-between' : 'justify-center'}`}>
             {level !== undefined && (
-              <span className="text-[10px] font-semibold text-slate-500 leading-tight">L{level}</span>
+              <span className="text-[10px] font-semibold text-slate-400 leading-tight">L{level}</span>
             )}
             {renderIcon(level !== undefined ? 'mt-0.5' : undefined)}
           </div>
@@ -444,7 +444,7 @@ export function PowerRow({
       {/* Row 1: Level · Icon · Name | Auto | X */}
       <div className="flex items-center min-w-0">
         {level !== undefined && (
-          <span className="text-[10px] font-semibold text-slate-500 w-5 text-right flex-shrink-0 mr-1">L{level}</span>
+          <span className="text-[10px] font-semibold text-slate-400 w-5 text-right flex-shrink-0 mr-1">L{level}</span>
         )}
         <span className="flex-shrink-0 mr-1">
           {renderIcon()}
@@ -458,7 +458,7 @@ export function PowerRow({
           {name}
         </span>
         {showAutoLabel && (
-          <span className="text-[9px] text-slate-500 ml-1 flex-shrink-0">(Auto)</span>
+          <span className="text-[9px] text-slate-400 ml-1 flex-shrink-0">(Auto)</span>
         )}
         {renderActions()}
       </div>

@@ -355,7 +355,7 @@ export function PowerItem({
             : isSelected
               ? 'bg-blue-900/30 border border-blue-600/50 hover:border-red-500/70 cursor-pointer'
               : isDisabled
-                ? 'bg-slate-800/50 border border-slate-700/50 opacity-40 cursor-not-allowed'
+                ? 'bg-slate-800/50 border border-slate-700/50 opacity-70 cursor-not-allowed'
                 : `bg-slate-800 border border-slate-700 ${hoverBorderClass} cursor-pointer`
         }
       `}
@@ -386,7 +386,7 @@ export function PowerItem({
       {/* Level badge */}
       <span
         className={`text-[10px] font-semibold flex-shrink-0 w-5 text-right pointer-events-none ${
-          isAvailable ? 'text-slate-500' : 'text-amber-500/70'
+          isAvailable ? 'text-slate-400' : 'text-amber-400'
         }`}
         title={isAvailable ? `Available at level ${power.available + 1}` : `Requires level ${power.available + 1}`}
       >
@@ -402,8 +402,11 @@ export function PowerItem({
           (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
         }}
       />
-      {/* Power name */}
-      <span className="truncate flex-1 text-slate-200 pointer-events-none">
+      {/* Power name — wraps to a second line on narrow screens (the
+          primary|secondary two-column grid is cramped at ~390px) instead of
+          truncating mid-word. Names that fit stay on one line; line-clamp-2
+          caps the rare very-long name. */}
+      <span className="line-clamp-2 leading-snug flex-1 min-w-0 text-slate-200 pointer-events-none">
         {power.name}
       </span>
       {/* Mobile info button - only visible on small screens */}
@@ -636,7 +639,7 @@ export function AvailablePowers({
         <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
           {categoryLabel}
         </div>
-        <div className="text-xs text-slate-500 italic py-2">
+        <div className="text-xs text-slate-400 italic py-2">
           Select an archetype first
         </div>
       </div>
@@ -650,7 +653,7 @@ export function AvailablePowers({
         <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
           {categoryLabel}
         </div>
-        <div className="text-xs text-slate-500 italic py-2">
+        <div className="text-xs text-slate-400 italic py-2">
           Select a {category} powerset
         </div>
       </div>
@@ -689,14 +692,14 @@ export function AvailablePowers({
         <>
           {/* Show message if both powersets not selected */}
           {!bothPowersetsSelected && (
-            <div className="text-xs text-amber-500/70 italic py-1 mb-1">
+            <div className="text-xs text-amber-400 italic py-1 mb-1">
               Select both Primary and Secondary to choose powers
             </div>
           )}
 
           {/* Level 1 instruction */}
           {bothPowersetsSelected && isLevel1 && !hasPickedPowerThisCategory && !otherCategoryHasPower && (
-            <div className="text-xs text-emerald-500/70 italic py-1 mb-1">
+            <div className="text-xs text-emerald-400 italic py-1 mb-1">
               Pick 1 of the level 1 powers
             </div>
           )}
@@ -706,14 +709,14 @@ export function AvailablePowers({
             </div>
           )}
           {bothPowersetsSelected && isLevel1 && hasPickedPowerThisCategory && (
-            <div className="text-xs text-slate-500 italic py-1 mb-1">
+            <div className="text-xs text-slate-400 italic py-1 mb-1">
               {categoryLabel} power selected
             </div>
           )}
 
           {/* Power list */}
           {allPowers.length === 0 ? (
-            <div className="text-xs text-slate-500 italic py-1">
+            <div className="text-xs text-slate-400 italic py-1">
               No powers in this powerset
             </div>
           ) : (

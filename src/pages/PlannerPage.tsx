@@ -151,8 +151,8 @@ export function PlannerPage() {
         >
           {/* Column 1: Available Powers (Primary + Secondary + Pool/Epic) */}
           <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
-            <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center justify-between">
-              <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+            <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex flex-col items-start gap-1.5 py-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:py-0">
+              <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
                 Available Powers
                 {powerLimitReached && (
                   <span className="ml-2 text-amber-400 normal-case tracking-normal font-normal">
@@ -160,7 +160,7 @@ export function PlannerPage() {
                   </span>
                 )}
               </h2>
-              <ViewModeToggle />
+              <ViewModeToggle className="w-full sm:w-auto shrink-0 sm:ml-2" />
             </div>
             <div className={`flex-1 overflow-y-auto p-1.5 space-y-0 relative ${powerLimitReached ? 'opacity-60' : ''}`}>
               <CollapsibleSection title="Primary & Secondary" defaultOpen>
@@ -213,7 +213,7 @@ export function PlannerPage() {
           {/* Column 2: Chronological Power View (3-column grid) */}
           <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
             <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
-              <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+              <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
                 Powers by Level
               </h2>
             </div>
@@ -257,8 +257,8 @@ export function PlannerPage() {
       >
         {/* Column 1: Available Powers — combined (xs and lg+, hidden at md) */}
         <div className="bg-slate-900 flex md:hidden lg:flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
-          <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center justify-between">
-            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+          <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex flex-col items-start gap-1.5 py-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:py-0">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
               Available Powers
               {powerLimitReached && (
                 <span className="ml-2 text-amber-400 normal-case tracking-normal font-normal">
@@ -266,7 +266,7 @@ export function PlannerPage() {
                 </span>
               )}
             </h2>
-            <ViewModeToggle />
+            <ViewModeToggle className="w-full sm:w-auto shrink-0 sm:ml-2" />
           </div>
           <div className={`flex-1 overflow-y-auto p-1.5 space-y-0 relative ${powerLimitReached ? 'opacity-60' : ''}`}>
             {/* Primary & Secondary side-by-side */}
@@ -321,10 +321,10 @@ export function PlannerPage() {
         {/* md-only: Available Primary (col 1 of row 1) */}
         <div className="bg-slate-900 hidden md:flex lg:hidden flex-col overflow-hidden min-h-[300px]">
           <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center justify-between">
-            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
               Available Primary
             </h2>
-            <ViewModeToggle />
+            <ViewModeToggle className="w-full sm:w-auto shrink-0 sm:ml-2" />
           </div>
           <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-60' : ''}`}>
             {powerLimitReached && (
@@ -353,7 +353,7 @@ export function PlannerPage() {
         {/* md-only: Available Secondary (col 2 of row 1) */}
         <div className="bg-slate-900 hidden md:flex lg:hidden flex-col overflow-hidden min-h-[300px]">
           <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
-            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
               Available Secondary
             </h2>
           </div>
@@ -383,7 +383,7 @@ export function PlannerPage() {
         {/* Column 2: Selected Primary Powers */}
         <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
           <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
-            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
               Primary Powers
             </h2>
           </div>
@@ -395,7 +395,7 @@ export function PlannerPage() {
         {/* Column 3: Selected Secondary Powers */}
         <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
           <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
-            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
               Secondary Powers
             </h2>
           </div>
@@ -407,7 +407,7 @@ export function PlannerPage() {
         {/* Column 4: Pool/Epic/Inherent Powers (selected, with slots) */}
         <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
           <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
-            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
               Pool Powers
             </h2>
           </div>

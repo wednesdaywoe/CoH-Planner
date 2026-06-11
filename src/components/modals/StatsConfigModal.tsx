@@ -125,6 +125,23 @@ const CATEGORY_COLORS = {
 
 type CategoryColorKey = keyof typeof CATEGORY_COLORS;
 
+// Documented color key for the dashboard. Hue encodes WHICH stat group a value
+// belongs to (so you can scan "all my defense numbers" at a glance) — it does
+// NOT mean good vs bad. Good/bad is conveyed by the secondary cues below, so
+// the system never relies on hue alone (color-vision-deficiency safe).
+const HUE_LEGEND: { swatch: string; meaning: string }[] = [
+  { swatch: 'bg-red-400',    meaning: 'Damage' },
+  { swatch: 'bg-yellow-400', meaning: 'Accuracy / To-Hit' },
+  { swatch: 'bg-purple-400', meaning: 'Defense' },
+  { swatch: 'bg-orange-400', meaning: 'Resistance · End Cost' },
+  { swatch: 'bg-blue-400',   meaning: 'Endurance / Recovery' },
+  { swatch: 'bg-green-400',  meaning: 'Health / Regen / Heal' },
+  { swatch: 'bg-teal-400',   meaning: 'Movement speed' },
+  { swatch: 'bg-pink-400',   meaning: 'Mez & status protection' },
+  { swatch: 'bg-cyan-400',   meaning: 'Debuff resistance' },
+  { swatch: 'bg-slate-300',  meaning: 'Recharge & neutral stats' },
+];
+
 // Stat categories matching legacy app with color coding
 interface StatToggle { stat: string; label: string; colorOverride?: CategoryColorKey }
 
@@ -243,6 +260,7 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
   // when the dashboard's gear icon was clicked with a deep-link target.
   const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [flashedCategory, setFlashedCategory] = useState<string | null>(null);
+  const [showColorKey, setShowColorKey] = useState(false);
 
   useEffect(() => {
     if (!isOpen || !scrollToStatId) return;
@@ -358,6 +376,59 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
               ({visibleCount} selected, 8 recommended for optimal display)
             </span>
           </p>
+        </div>
+
+        {/* Color key — documents the dashboard's color system. Collapsed by
+            default to keep the modal focused on stat selection. */}
+        <div className="border-b border-gray-700">
+          <button
+            onClick={() => setShowColorKey((v) => !v)}
+            className="w-full flex items-center gap-2 px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-800/50 transition-colors"
+            aria-expanded={showColorKey}
+          >
+            <svg
+              className={`w-3.5 h-3.5 text-gray-400 transition-transform ${showColorKey ? 'rotate-90' : ''}`}
+              fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+            <span className="font-medium">Color key</span>
+            <span className="text-gray-400 text-xs">— what the dashboard colors mean</span>
+          </button>
+          {showColorKey && (
+            <div className="px-4 pb-3 pt-1 space-y-3">
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Color tells you <span className="text-gray-200">which stat group</span> a value belongs
+                to — not whether it's good or bad. Whether a value is good or bad is shown by the cues below,
+                so you never have to rely on color alone.
+              </p>
+              {/* Hue → stat group */}
+              <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                {HUE_LEGEND.map((row) => (
+                  <div key={row.meaning} className="flex items-center gap-2">
+                    <span className={`w-3 h-3 rounded-sm flex-shrink-0 ${row.swatch}`} />
+                    <span className="text-xs text-gray-300">{row.meaning}</span>
+                  </div>
+                ))}
+              </div>
+              {/* Secondary (non-color) cues for status & good/bad */}
+              <div className="border-t border-gray-700/70 pt-2 space-y-1.5">
+                <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-wide">Status cues</div>
+                <div className="flex items-start gap-2 text-xs text-gray-300">
+                  <span className="text-gray-100 underline decoration-dotted decoration-current underline-offset-2 flex-shrink-0">45.0%</span>
+                  <span>Dotted underline — the value is at or above its cap (soft-capped).</span>
+                </div>
+                <div className="flex items-start gap-2 text-xs text-gray-300">
+                  <span className="text-gray-100 ring-1 ring-orange-400/70 rounded px-1 flex-shrink-0">45.0%</span>
+                  <span>Orange ring — a contributing bonus was rejected by the Rule of 5.</span>
+                </div>
+                <div className="flex items-start gap-2 text-xs text-gray-300">
+                  <span className="flex-shrink-0"><span className="text-emerald-400">+1.5/s</span> · <span className="text-red-400">−0.8/s</span></span>
+                  <span>Sign shows direction; <span className="text-red-400">red</span> marks a deficit (e.g. negative Net End or over budget).</span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Toggle all buttons + Procs toggle */}

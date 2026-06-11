@@ -4,6 +4,7 @@
 
 import { useState } from 'react';
 import { Modal, ModalBody } from './Modal';
+import { resolvePath } from '@/utils/paths';
 
 interface AboutModalProps {
   isOpen: boolean;
@@ -45,6 +46,14 @@ export function AboutModal({ isOpen, onClose }: AboutModalProps) {
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalBody>
         <div className="min-h-[600px] pb-32">
+          {/* Brand logo — relocated here from the former top banner. */}
+          <div className="flex justify-center pt-2 pb-6 border-b border-gray-800">
+            <img
+              src={resolvePath('/img/sidekick-banner.svg')}
+              alt="Sidekick"
+              className="h-16 max-w-full"
+            />
+          </div>
           <div className="flex flex-col items-center gap-4 pt-8">
             {CONTRIBUTORS.map((contributor) => (
               <div

@@ -119,7 +119,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
 
   if (powers.length === 0) {
     return (
-      <div className="text-xs text-slate-500 italic py-4 text-center">
+      <div className="text-xs text-slate-400 italic py-4 text-center">
         {selection.name ? 'Select powers from the available list' : 'Select a powerset first'}
       </div>
     );

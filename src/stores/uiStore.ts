@@ -301,7 +301,7 @@ interface UIState {
   compareSlottingOpen: boolean;
   compareSlottingPower: { powerName: string; powerSet: string } | null;
 
-  /** Power view mode: 'category' (default) or 'chronological' (Mids-style) */
+  /** Power view mode: 'chronological' (Mids-style, default) or 'category' */
   powerViewMode: 'category' | 'chronological';
 
   /** Contextual hint text shown at the bottom of the planner (driven by mouseenter on slots/ghosts/etc). Null hides the bar. */
@@ -791,7 +791,7 @@ export const useUIStore = create<UIStore>()(
       selectedBranch: null, // No branch selected by default
       compareSlottingOpen: false,
       compareSlottingPower: null,
-      powerViewMode: 'category', // Default to category-based view
+      powerViewMode: 'category', // powerViewMode: 'category' | 'chronological';
       hoverHint: null,
       slotMoveSource: null,
       trackedStats: [], // No tracked stats by default

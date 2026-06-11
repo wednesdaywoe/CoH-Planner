@@ -639,12 +639,18 @@ export function EnhancementPicker() {
       onClose={closeEnhancementPicker}
       title={`Select Enhancement for ${currentPower?.name || picker.currentPowerName || 'Power'}`}
       size="full"
+      mobileFullscreen
+      scrollBody={false}
     >
-      <ModalBody className="p-0">
-        <div className="flex flex-col h-[80vh] sm:h-[70vh]">
+      <ModalBody className="p-0 h-full">
+        {/* Fills the modal below lg (where it's fullscreen, matching Modal's
+            mobileFullscreen breakpoint) and is a fixed 70vh card on desktop.
+            The single scroll lives in the content pane below — the modal body
+            itself does not scroll (scrollBody={false}). */}
+        <div className="flex flex-col h-full lg:h-[70vh] min-h-0">
         {/* Type filter tabs at top */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-700 bg-gray-900/50 flex-shrink-0">
-          <div className="flex overflow-x-auto">
+          <div className="flex overflow-x-auto scrollbar-thin">
             {[
               { id: 'io-sets' as const, label: 'IO Sets', title: 'Set IOs that grant set bonuses when slotted together' },
               { id: 'generic' as const, label: 'Generic IO', title: 'Single-aspect Invention enhancements (no set bonuses)' },
@@ -715,9 +721,10 @@ export function EnhancementPicker() {
           </div>
         </div>
 
-        {/* Category filter - horizontal scrolling on mobile only */}
+        {/* Category filter — wraps to multiple rows on mobile so the picker
+            scrolls vertically only (no horizontal scrollbar mid-content). */}
         {typeFilter === 'io-sets' && availableSets.length > 0 && (
-          <div className="flex sm:hidden overflow-x-auto border-b border-gray-700 bg-gray-900/30 flex-shrink-0 gap-1 px-2 py-1.5">
+          <div className="flex sm:hidden flex-wrap border-b border-gray-700 bg-gray-900/30 flex-shrink-0 gap-1 px-2 py-1.5">
             <MobileCategoryButton
               label="All"
               count={availableSets.filter((s) => !isSpecialSet(s)).length}
@@ -897,9 +904,12 @@ export function EnhancementPicker() {
             </div>
           )}
 
-          {/* Main content area */}
+          {/* Main content area — the picker's single scroll region.
+              overflow-x-hidden keeps it vertical-only (overflow-y-auto alone
+              implies overflow-x:auto, which surfaced a stray horizontal
+              scrollbar on mobile). */}
           <div
-            className="flex-1 overflow-y-auto p-2 pr-4 sm:p-3"
+            className="flex-1 overflow-y-auto overflow-x-hidden p-2 pr-4 sm:p-3"
             onContextMenu={(e) => { if (e.shiftKey) e.preventDefault(); }}
           >
             <div className="flex items-center justify-end gap-1 mb-2">
