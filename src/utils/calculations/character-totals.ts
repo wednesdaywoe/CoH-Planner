@@ -45,6 +45,7 @@ import {
   type EnhancementBonuses,
 } from './enhancement-values';
 import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
+import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
 import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
 import {
@@ -1656,9 +1657,12 @@ function resolveScaledEffect(
       return effect.scale * tableValue;
     }
   }
-  // Fallback: use a default multiplier of 0.10 for resistance/defense tables
+  // Fallback: use a default multiplier of 0.10 for resistance/defense tables.
+  // Deduped per (table, archetype) so a recurring miss (e.g. Melee_Buff_Dmg on
+  // damage buffs, which has no AT table) logs once instead of flooding on every
+  // recalc.
   if (effect.table) {
-    console.warn(`[character-totals] AT table not found: "${effect.table}" for archetype "${archetypeId}" — using fallback 0.10`);
+    warnFallback('resolveScaledEffect', `AT table "${effect.table}" not found for "${archetypeId}" — using fallback 0.10`);
   }
   return effect.scale * 0.10;
 }
