@@ -439,19 +439,24 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
               visual marker that's just FX). Keep entries with PET_ENTITIES
               data OR a recognizable real pet-name prefix. */}
           {effects.summon.entities ? (
-            effects.summon.entities
-              .filter((e) =>
-                /^(Pets_|MastermindPets_|Villain_Pets_|VillainPets_)/i.test(e.entity),
-              )
-              .map((e) => {
-                const displayName = e.entity.replace(/^(Pets_|MastermindPets_)/i, '').replace(/_/g, ' ');
-                return (
-                  <div key={e.entity} className="flex items-center gap-1">
-                    <span className="text-indigo-400">🐾</span>
-                    <span className="text-slate-200">{displayName}{e.count > 1 ? ` x${e.count}` : ''}</span>
-                  </div>
-                );
-              })
+            <>
+              {effects.summon.mutuallyExclusive && (
+                <div className="text-slate-300 text-[10px] italic">Summons 1 of (tier matches henchman):</div>
+              )}
+              {effects.summon.entities
+                .filter((e) =>
+                  /^(Pets_|MastermindPets_|Villain_Pets_|VillainPets_)/i.test(e.entity),
+                )
+                .map((e) => {
+                  const displayName = e.entity.replace(/^(Pets_|MastermindPets_)/i, '').replace(/_/g, ' ');
+                  return (
+                    <div key={e.entity} className="flex items-center gap-1">
+                      <span className="text-indigo-400">🐾</span>
+                      <span className="text-slate-200">{displayName}{!effects.summon!.mutuallyExclusive && e.count > 1 ? ` x${e.count}` : ''}</span>
+                    </div>
+                  );
+                })}
+            </>
           ) : (
             // Single entity
             <div className="flex items-center gap-1">

@@ -14,43 +14,107 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-## ⬜ Pseudo-pet summon residuals — leftovers after the count fix (low priority) — 2026-06-11
+## ⬜ HC P-hash root resolution — opaque entity-def, DEFER (low priority) — 2026-06-11
 
-The multi-pet **count** bugs (Phantom Army, Gang War) are FIXED — see the ✅ entry
-below. What remains is low-value and deliberately deferred:
+The last pseudo-pet residual. An EntCreate `entity_def` is sometimes an opaque
+P-hash; it is NOT a simple hash of the name (tested CRC32/mul33 over name variants vs
+102 known P-hash↔priority_list pairs: 0 matches), and one P-hash maps to *multiple*
+names (`P1648600109` → Apparitions_Enraged_Spectre **and** _LT), so it's an opaque
+entity-def reference, not a name hash. Resolving the root needs a separate
+villain/entity-def bin's name table (new parser) — high effort. The
+convert-powerset `priority_list` workaround stays. (The Fire Imps / Gremlins 1+1
+P-hash *display* shape and the Soul Extraction tier model — formerly listed here as
+"low value" — turned out to be genuinely-wrong player-facing bugs; both FIXED, see the
+✅ entries below.)
 
-- **HC P-hash root resolution — investigated, DEFER.** Not a simple hash of the name
-  (tested CRC32/mul33 over name variants vs 102 known P-hash↔priority_list pairs: 0
-  matches), and one P-hash maps to *multiple* names (`P1648600109` →
-  Apparitions_Enraged_Spectre **and** _LT), so it's an opaque entity-def reference,
-  not a name hash. Resolving it needs a separate villain/entity-def bin's name table
-  (new parser) — high effort. Of 196 P-hash EntCreates, **186 already resolve via
-  `priority_list`**; only **10 lack it**, and those are NPC/Temporary_Powers/
-  Incarnate-internal (DevouringEarth seed, Proximity_Mine self-destruct, Power_Cell,
-  Spirit_Snare) — not player-build powers. The convert-powerset `priority_list`
-  workaround stays.
-- **Cosmetic 1:1 P-hash display split.** Controller Fire Imps (`P… + 2×Pets_FireImp_
-  Controller`) and Gremlins (`P… + Pets_Gremlin_Controller`) show one extra "unknown"
-  entity, but their **counts are already correct** (3 and 2). The count fix below
-  deliberately does NOT merge these 1+1 P-hash shapes — that shape is
-  indistinguishable from a single rain represented as P-hash+named (Rain of Arrows),
-  where merging would double the count. Display-only; low value.
-- **Soul Extraction tier model.** Summons ONE specter whose tier (Boss/Lt/Minion)
-  matches the sacrificed henchman; the binary has 3 templates (one per tier). Still
-  shows no summon (its EntCreates are dropped, like Gang War's were, but it has no
-  pose pattern so the count fix leaves it alone — template-counting would wrongly
-  show all 3 tiers). Needs a tier-conditional model, not template counting.
+**CORRECTION (2026-06-11) — the "10 unresolved are all NPC/temp, not player" claim was
+WRONG.** Re-verified against the current export: only **3** P-hash EntCreates lack a
+`priority_list`, all `Objects.{Proximity_Bomb,Underground_Bomb,Underground_Bomb_Final}.
+Self_Destruct` (entity `P1090583630`). They're **unreferenced** by any power in the
+current dataset (no live impact today), but characterising them as "NPC/Temporary" was
+an unverified dismissal — `Objects.Proximity_Bomb` (display "Proximity Bomb") is exactly
+the **detonation-object family that player Devices/Traps mine powers use**, not an
+NPC-only thing. (Surfaced when a user flagged "Proximity Mine is a Devices power.") The
+player mine/device powers themselves resolve fine (Trip Mine→`Pets_Mine`, Auto
+Turret→`Pets_Turret`, Caltrops→`Pets_Caltrops`). See the ⬜ Trip Mine entry below for
+the *real* gap this thread exposed.
 
-## ⬜ Inexhaustibility piece — Set_Mode special-piece not recognised — 2026-06-05
+## ⬜ Trip Mine shows NO damage — `Pets_Mine` / `Pets_Traps_Mine_Defender` missing from PET_ENTITIES — 2026-06-11
 
-Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
-- **Inexhaustibility** (Rebirth challenge set): its single piece carries only a
-  `Set_Mode`/Strength marker template — no real attribs, no chance/ppm group — so it
-  extracts as `name:"Empty", proc:false`. Worked around with a curated field-patch
-  (`REBIRTH_PIECE_PATCHES`) → `"Inexhaustibility"/proc:true`. A proper fix would recognise
-  the `Set_Mode` special-piece shape in the extractor.
+Surfaced while verifying the P-hash correction above. **Trip Mine** (Blaster Devices,
+all Traps ATs — Defender/Controller/Corruptor/Mastermind, Dominator Arsenal Assault;
+both servers) generates as a bare `summon: { entity: "Pets_Mine", … }` with **no
+damage**, and its override file is **empty** — so the planner surfaces the mine summon
+but **zero explosion damage** for a staple high-damage power. Root: the mine entity
+(`Pets_Mine`, `Pets_Traps_Mine_*`) is **absent from PET_ENTITIES** (Turret/Caltrops are
+present, so it's mine-specific), and the mine's own powers carry no damage the converter
+captures — `Pets.Mine.Trip_Mine` has no `_Dmg` templates; `Pets.Mine.Self_Destruct` is
+an `EntCreate` with `entity_def=None` (a redirect/null), so the explosion attack lives
+one hop further down an unwalked chain. Needs: trace the Self_Destruct redirect to the
+real explosion attack and either add the mine to PET_ENTITIES (via convert-pet-entities)
+or surface the damage on the power. Cross-check the empty trip-mine overrides afterward
+(they may be DEAD vs a fixed binary path, or were left empty *because* the binary path
+was broken). Player-facing, not cosmetic.
 
 > ---RESOLVED ---
+
+## ✅ "Low-value leftovers" were two real bugs + one near-miss (skeptic pass, 2026-06-11)
+
+A skeptic re-investigation of the three items the log had filed as "cosmetic / low
+priority / can't fix." Two were genuinely-wrong player-facing bugs with clean fixes;
+the third was already correct AND verifying it caught a bug I nearly introduced.
+
+**① Fire Imps / Gremlins P-hash display — FIXED (broad).** The log claimed the 1+1
+P-hash shape was "indistinguishable from a rain (Rain of Arrows), where merging would
+double-count" → unmergeable. **Wrong** — the discriminator was in the data the whole
+time: each P-hash carries its OWN `priority_list`. Fire Imps' `P1757360070.priority_
+list == "Pets_FireImp_Controller"` (its named siblings) → provably the same pet →
+merge. Rain of Arrows' `P4047293352.priority_list == "Pets_RainofArrows_Visual"` ≠ its
+sibling `Pets_RainofArrows` (visual vs static object) → no match → untouched.
+New `resolvePhashSiblings` ([convert-powerset.cjs](scripts/convert-powerset.cjs), runs
+after `normalizeSummonEntities`) merges a P-hash into a named sibling ONLY when its
+`priority_list` exactly equals that sibling's `entity_def`. Result: Fire Imps →
+`Pets_FireImp_Controller ×3`, Gremlins → `×2` (Controller `Pets_Gremlin_Controller`,
+Dominator `Pets_Gremlin`) — the garbage `P…` entity gone for **every Fire/Electric
+Controller + Dominator**. Exactly 3 generated files; Decoy (already merged by the FX
+path) and Rain of Arrows byte-identical. Guard: 3 new cases in
+[multipet-summon-count.test.ts](src/data/multipet-summon-count.test.ts) incl. a
+Rain-of-Arrows-stays-split regression.
+
+**② Soul Extraction — FIXED (was showing NO pet).** Summons ONE Ghost whose tier
+matches the sacrificed Undead henchman; the binary lists all three tiers as separate
+EntCreates, each gated by a henchman-identity `requires` (HC: `MastermindPets_Lich
+target.VillainName>`; Rebirth Parse6: `arch target> Class_Boss_Henchman eq`). The
+converter's blanket `.VillainName>`/NPC-gate drop discarded all three → the power
+rendered no summon at all. New `rebuildTierConditionalSummon` detects the
+player-henchman tier-gate shape (both server encodings) and rebuilds the summon as
+**mutually-exclusive variants** — a new `SummonEffect.mutuallyExclusive` flag
+([power.ts](src/types/power.ts)); the 3 tier ghosts at count 1 each. Displays
+([InfoPanel.tsx](src/components/info/InfoPanel.tsx),
+[PowerInfoTooltip.tsx](src/components/info/PowerInfoTooltip.tsx)) render
+"Summons 1 of (tier matches henchman)" and SUPPRESS the summed "Total … DPS" (which
+would imply you get all three). Both servers, 2 generated files. Guard in the multipet
+test (3 tiers + `mutuallyExclusive`, no inflated `entityCount`).
+
+**③ Inexhaustibility — VERIFIED CORRECT; near-miss bug avoided.** Mid-investigation I
+thought the set's `bonuses: []` was a *missing* always-on Heal/End/Regen bonus (the
+`Set_Bonus.Challenge_Set_Bonus.Inexhaustibility` power grants Heal 2.0 / +End 0.10 /
++Regen 2.0). Verifying before emitting (GAME-DATA-PRINCIPLES §12) showed that power has
+`activate_period=10`, `chance=0.5` — it's a **periodic proc, not an always-on bonus**.
+Emitting those as a static set bonus would have over-counted a +2.0 Regen that only
+ticks 50%/10s. So `bonuses: []` is **correct**, `proc:true` is **correct**, and the
+proc is already captured ([proc-data.ts](src/data/proc-data.ts) +
+[proc-residual-effects.ts](src/data/proc-residual-effects.ts), category `Special` like
+every other bespoke Rebirth self-proc). The piece's binary `display_name` is itself an
+unresolvable P-hash message ID (`P3179408089`), so the curated `REBIRTH_PIECE_PATCHES`
+name is the only source — the "recognise the Set_Mode shape" idea can't name it either.
+**No change to the data; the curated patch is the right call.** Rationale recorded in
+[extract-rebirth-io-sets-v2.py](scripts/extract-rebirth-io-sets-v2.py) so it isn't
+"fixed" into a bug later. (The old ⬜ "Set_Mode special-piece not recognised" entry is
+closed by this.)
+
+tsc clean; 458/458 tests (was 455 + 3 multipet). See [[pseudo-pet-resolution]],
+[[proc-piece-name-misresolution]].
 
 ## ✅ regen-all now refreshes pools/epics — orchestrator dry-run fixed, stranded converter drift landed (2026-06-11)
 

@@ -226,6 +226,13 @@ export interface SummonEffect {
   /** Multi-entity summons (e.g., Mastermind henchmen with different entity types) */
   entities?: { entity: string; count: number }[];
   /**
+   * The `entities` are mutually-exclusive variants — exactly ONE materializes,
+   * not all of them. Soul Extraction summons a single Ghost whose tier
+   * (Boss/Lt/Minion) matches the Undead henchman you sacrifice. Display as
+   * "Summons 1 of: …" and never sum the variants' counts/damage.
+   */
+  mutuallyExclusive?: boolean;
+  /**
    * Triggered pet entities gated behind a toggle — a SEPARATE PET_ENTITIES entity
    * that only applies when activated (Oil Slick Arrow's `Pets_OilSlickBurn` damage
    * patch, created when the oil is ignited by fire/energy). Off by default; the

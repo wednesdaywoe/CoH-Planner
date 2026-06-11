@@ -2577,7 +2577,12 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
 
   const isMultiEntity = entityList.length > 1;
   const isSingleEntity = entityList.length === 1;
-  const hasDamage = totals.base > 0;
+  // Mutually-exclusive variants (Soul Extraction's tier ghosts): exactly ONE
+  // materializes, so the per-variant cards are alternatives — never an additive
+  // group. Label them and suppress the summed "Total … DPS" (which would imply
+  // you get all three at once).
+  const mutuallyExclusive = summon.mutuallyExclusive === true;
+  const hasDamage = totals.base > 0 && !mutuallyExclusive;
   const hasEnh = totals.enhanced !== totals.base;
   const hasBuff = totals.final !== totals.enhanced;
   const durationLabel = summon.duration ? `${summon.duration}s` : 'permanent';
@@ -2634,6 +2639,11 @@ export function PetDamageDisplay({ summon, level, enhancementDamageBonus, global
       {/* Multi-entity display */}
       {isMultiEntity && (
         <div className="space-y-2">
+          {mutuallyExclusive && (
+            <div className="text-xs text-indigo-300 font-medium">
+              Summons 1 of (tier matches the henchman you sacrifice):
+            </div>
+          )}
           {petResults.map((pr) => (
             <SingleEntityDisplay
               key={pr.entityName}

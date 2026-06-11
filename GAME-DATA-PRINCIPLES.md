@@ -30,6 +30,15 @@ The recurring failure mode that has bitten us many times: decide a field is
 later it mattered. Examples: offensive knockback, foe -KB protection, brute modifiers,
 Kinetic Melee, Kheldian effects, `IgnoreStrength`.
 
+> 6/11/26 - Yet another example of 'low value data' turns out to be signifcant: BIN-PARSER-LOG.md
+Three log items filed as "low-value leftovers" → on
+investigation, two were genuinely-wrong player-facing bugs with clean fixes:
+- Fire Imps/Gremlins "cosmetic P-hash, indistinguishable from a rain, unmergeable" →
+  the discriminator (the P-hash's own `priority_list`) was in the data all along; a
+  garbage entity was shown to every Fire/Electric Controller+Dominator. FIXED.
+- Soul Extraction "needs a tier model, low value" → it showed NO pet at all. FIXED with
+  a `mutuallyExclusive` summon variant.
+
 **Rule:** capture and surface everything that affects *what a power does*. Skip only
 **asset / presentation references** — `VisualFX`/`.PFX` paths, animation `include`s,
 combat-text message IDs (`P119576033`), icon internals. Those are art-pipeline pointers

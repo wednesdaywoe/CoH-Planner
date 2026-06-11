@@ -192,8 +192,22 @@ REBIRTH_PIECE_ASPECT_OVERRIDES: dict[str, dict[int, list[str]]] = {
 #   Inexhaustibility's single piece carries only a `Set_Mode` marker template
 #   (no real attribs, no chance/ppm group), so it extracts as name="Empty",
 #   proc=false. It's a special Rest enhancement; restore the curated name +
-#   proc flag. (Surfacing the Set_Mode special piece properly is a separate
-#   bin-parser to-do — see BIN-PARSER-LOG.md.)
+#   proc flag.
+#
+#   VERIFIED 2026-06-11 (verify-don't-assume): the patch is the CORRECT call,
+#   not a stopgap to be "fixed" away —
+#     * The piece's binary display_name is an unresolvable P-hash message ID
+#       (P3179408089), so even recognising the Set_Mode-piece shape can't name
+#       it without a localization-string table we don't parse. The curated name
+#       is the only source.
+#     * `proc=true` is right: the set's effect lives in the periodic-proc power
+#       Set_Bonus.Challenge_Set_Bonus.Inexhaustibility (activate_period=10,
+#       chance=0.5 → Heal 2.0 / +End 0.10 / +Regen 2.0), NOT an always-on set
+#       bonus. So the set's empty `bonuses` is CORRECT — emitting those values as
+#       a static bonus would over-count a +2.0 Regen that only procs on a 50%/10s
+#       tick. The proc itself is already captured (proc-data.ts +
+#       proc-residual-effects.ts, category 'Special' like the other bespoke
+#       Rebirth self-procs). Nothing is missing.
 REBIRTH_PIECE_PATCHES: dict[str, dict[int, dict]] = {
     'inexhaustibility': {
         1: {'name': 'Inexhaustibility', 'proc': True},

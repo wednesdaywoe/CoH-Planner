@@ -45,16 +45,8 @@ export const Gremlins: Power = {
       "isPseudoPet": false,
       "duration": 99999,
       "copyBoosts": true,
-      "entities": [
-        {
-          "entity": "P3273083397",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Gremlin",
-          "count": 1
-        }
-      ]
+      "entity": "Pets_Gremlin",
+      "entityCount": 2
     }
   }
 };

@@ -1363,6 +1363,125 @@ function normalizeSummonEntities(powerJson, effects) {
   }
 }
 
+/**
+ * Resolve a P-hash entity that IS one of its named siblings, and merge the count.
+ *
+ * Fire Imps / Gremlins summon their FIRST pet through an opaque P-hash entity_def
+ * (`P1757360070`, delay 0) and the rest through the named entity directly
+ * (`Pets_FireImp_Controller`, delay 1/3). The multi-entity builder keys on the raw
+ * entity_def, so the P-hash never merges and the planner shows a garbage
+ * "P1757360070 ×1" entity alongside the real imps (count was right, identity wasn't).
+ *
+ * The P-hash's OWN `priority_list` is the ground-truth resolution: Fire Imps'
+ * `P1757360070.priority_list === "Pets_FireImp_Controller"` — the same name as its
+ * siblings → they are the same pet, merge. This is the discriminator that makes the
+ * merge rain-safe: Rain of Arrows' `P4047293352.priority_list === "Pets_RainofArrows_
+ * Visual"`, which is NOT its sibling `Pets_RainofArrows` (a visual vs the static
+ * object) → no match → left exactly as before, no double-count.
+ *
+ * Runs AFTER normalizeSummonEntities, which owns the FX-variant / pose count bugs
+ * (Phantom Army, Gang War) and rewrites those to a single `entity` form — so by the
+ * time this sees an `entities[]` array, it's the genuine multi-type case.
+ */
+function resolvePhashSiblings(powerJson, effects) {
+  const summon = effects && effects.summon;
+  if (!summon || !summon.entities || summon.entities.length < 2) return;
+
+  // entity_def -> priority_list, harvested from every EntCreate in the raw power.
+  const plOf = {};
+  const collect = (groups) => {
+    for (const g of groups || []) {
+      for (const t of g.templates || []) {
+        const p = t.params || {};
+        if (p.type === 'EntCreate' && p.entity_def) plOf[p.entity_def] = p.priority_list;
+      }
+      collect(g.child_effects);
+    }
+  };
+  collect(powerJson.effects);
+  collect(powerJson.activation_effects);
+
+  const names = new Set(summon.entities.map((e) => e.entity));
+  let changed = false;
+  for (const item of [...summon.entities]) {
+    if (!_PHASH_RE.test(item.entity)) continue;
+    const resolved = plOf[item.entity];
+    // Merge ONLY when the P-hash resolves (via its own priority_list) to a name
+    // that is also a sibling entity — proven same pet (Fire Imps, Gremlins).
+    if (!resolved || resolved === item.entity || !names.has(resolved)) continue;
+    const dest = summon.entities.find((e) => e.entity === resolved);
+    dest.count += item.count;
+    summon.entities.splice(summon.entities.indexOf(item), 1);
+    changed = true;
+  }
+  if (!changed) return;
+  // Collapsed to one type → use the compact single-entity form.
+  if (summon.entities.length === 1) {
+    const only = summon.entities[0];
+    delete summon.entities;
+    summon.entity = only.entity;
+    if (only.count > 1) summon.entityCount = only.count;
+  }
+}
+
+/**
+ * Rebuild a tier-conditional summon that the gate filter dropped entirely.
+ *
+ * Soul Extraction summons ONE spectral Ghost whose tier matches the Undead
+ * henchman you sacrifice — the binary lists all three tiers as separate EntCreate
+ * templates, each gated by a target-identity `requires` (`MastermindPets_Lich
+ * target.VillainName>` → Boss, `…Skeletal_Warrior` → Lt, `…Zombie` → Minion). The
+ * converter treats `.VillainName>` as an undisplayable NPC gate and drops all
+ * three, so the power renders no pet at all.
+ *
+ * These aren't NPC-only gates — they're the player's OWN henchman types (the gate
+ * names a `MastermindPets_*` entity), i.e. the tier-selection mechanic. Surface the
+ * summon as mutually-exclusive variants (exactly one materializes) so the display
+ * can show "1 of: Ghost (Boss/Lt/Minion)" without inflating the count to 3 or
+ * summing three ghosts' damage. Runs only when the summon was dropped; a normal
+ * summon is left untouched. Scoped tight: ALL EntCreates must carry the
+ * `MastermindPets_* …VillainName>` henchman-identity gate (Soul Extraction alone).
+ */
+function rebuildTierConditionalSummon(powerJson, effects) {
+  if (!effects || effects.summon) return;        // only when the summon was dropped
+  const insts = [];
+  const collect = (groups) => {
+    for (const g of groups || []) {
+      const req = (g.requires_expression || '').trim();
+      for (const t of g.templates || []) {
+        if (!(t.attribs || []).includes('Create_Entity')) continue;
+        const p = t.params || {};
+        if (p.type !== 'EntCreate' || !p.entity_def) continue;
+        insts.push({ entity: p.entity_def, req, duration: _parseDurationSeconds(t.duration), flags: t.flags || [] });
+      }
+      collect(g.child_effects);
+    }
+  };
+  collect(powerJson.effects);
+  collect(powerJson.activation_effects);
+
+  if (insts.length < 2) return;
+  // Every variant gated by a check on which of the PLAYER's own henchmen is
+  // sacrificed — the tier selector, not an enemy-NPC gate. The two servers
+  // encode it differently:
+  //   HC (Parse7):     `MastermindPets_Lich target.VillainName>`  (pet identity)
+  //   Rebirth (Parse6): `arch target> Class_Boss_Henchman eq`     (henchman class)
+  const TIER_GATE = /MastermindPets_\w+\s+target\.VillainName>|arch\s+target>\s+Class_\w+_Henchman\s+eq/;
+  if (!insts.every(i => TIER_GATE.test(i.req))) return;
+  const names = [...new Set(insts.map(i => i.entity))];
+  if (names.length < 2) return;
+
+  const summon = {
+    isPseudoPet: insts[0].flags.some(f => f.includes('PseudoPet')),
+    mutuallyExclusive: true,
+    entities: names.map(entity => ({ entity, count: 1 })),
+  };
+  const dur = insts.map(i => i.duration).find(d => d && d > 0);
+  if (dur) summon.duration = dur;
+  if (insts.some(i => i.flags.some(f => f.includes('CopyBoosts')))) summon.copyBoosts = true;
+  effects.summon = summon;
+}
+
 function attachResolvedPseudoPets(powerJson, effects) {
   if (!effects || !effects.summon) return;
 
@@ -4393,6 +4512,12 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   {
     const eff = power.effects || {};
     normalizeSummonEntities(powerJson, eff);
+    // Merge a P-hash entity that resolves (via its priority_list) to one of its
+    // named siblings — Fire Imps' first imp, Gremlins' first gremlin. See fn doc.
+    resolvePhashSiblings(powerJson, eff);
+    // Surface a tier-conditional summon the gate filter dropped (Soul Extraction
+    // → one Ghost, tier matches the sacrificed henchman). See fn doc.
+    rebuildTierConditionalSummon(powerJson, eff);
     if (eff.summon && !power.effects) power.effects = eff;
   }
 

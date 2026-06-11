@@ -49,11 +49,43 @@ describe('multi-pet summon counts (homecoming)', () => {
     expect(t).not.toContain('Pets_Thug_Pose_05'); // poses collapsed to one entity
   });
 
-  it('Soul Extraction is NOT inflated to 3 ghosts (tier-gated, left untouched)', () => {
-    // Guard the scoping: a dropped non-pose summon must not be rebuilt as a
-    // bogus 3-entity list. It either has no summon block or its original shape.
+  it('Fire Imps = 3 Pets_FireImp_Controller (P-hash first imp merged via priority_list)', () => {
+    const t = gen('homecoming', 'controller/primary/fire-control/fire-imps.ts');
+    expect(summonField(t, 'entity')).toBe('Pets_FireImp_Controller');
+    expect(summonField(t, 'entityCount')).toBe('3');
+    expect(t).not.toMatch(/"P\d{6,}"/); // no raw P-hash entity left
+  });
+
+  it('Gremlins = 2 of the AT gremlin pet (P-hash first gremlin merged)', () => {
+    const ctrl = gen('homecoming', 'controller/primary/electric-control/gremlins.ts');
+    expect(summonField(ctrl, 'entity')).toBe('Pets_Gremlin_Controller');
+    expect(summonField(ctrl, 'entityCount')).toBe('2');
+    expect(ctrl).not.toMatch(/"P\d{6,}"/);
+    const dom = gen('homecoming', 'dominator/primary/electric-control/gremlins.ts');
+    expect(summonField(dom, 'entity')).toBe('Pets_Gremlin');
+    expect(summonField(dom, 'entityCount')).toBe('2');
+  });
+
+  it('Rain of Arrows keeps its distinct P-hash (priority_list ≠ sibling → NOT merged)', () => {
+    // Rain-safety guard for the priority_list discriminator: Rain of Arrows'
+    // P-hash resolves to Pets_RainofArrows_Visual, which is NOT its sibling
+    // Pets_RainofArrows (visual vs static object), so the merge must leave it
+    // alone — collapsing it would wrongly fuse two distinct entities.
+    const t = gen('homecoming', 'blaster/primary/archery/rain-of-arrows.ts');
+    expect(t).toMatch(/"P\d{6,}"/);          // P-hash still present
+    expect(t).toContain('Pets_RainofArrows'); // static-object sibling still present
+  });
+
+  it('Soul Extraction surfaces 3 tier ghosts as MUTUALLY EXCLUSIVE (summons 1, not 3)', () => {
+    // Previously dropped entirely (VillainName gate). Now rebuilt as the three
+    // tier variants flagged mutuallyExclusive — exactly one materializes, so the
+    // display shows "1 of" and never sums their damage. Each variant count = 1.
     const t = gen('homecoming', 'mastermind/primary/necromancy/soul-extraction.ts');
-    const ghostEntities = (t.match(/MastermindPets_Ghost_(Boss|Lt|Minion)/g) || []).length;
-    expect(ghostEntities).toBeLessThan(3);
+    expect(t).toContain('"mutuallyExclusive": true');
+    for (const tier of ['Boss', 'Lt', 'Minion']) {
+      expect(t).toContain(`MastermindPets_Ghost_${tier}`);
+    }
+    // No inflated entityCount — the variants stay count 1 (one summoned).
+    expect(t).not.toMatch(/"entityCount":\s*3/);
   });
 });
