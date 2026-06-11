@@ -3,6 +3,8 @@
 Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 (`tools/bin-crawler/` + `scripts/convert-powerset.cjs` + `scripts/convert-epic-pools.cjs`), with diagnoses and recommended fixes. Newest entries at top, in the "NEW ISSUES/UNRESOLVED" section. When completed, move the entry to the top of "RESOLVED" section with details of the fix or any other relevant information.
 
+>Agent note: One small flag for your separate task: when you pick up the parser work, the verification tooling I built is at c:\tmp\ (oracle-verify.mjs, override-audit.mjs, etc.) — handy if you end up retiring the Discharge overrides after the parser fix, to confirm the audit goes 9 → 7.
+
 > --- NEW ISSUES / UNRESOLVED ---
 
 ## ⬜ Rebirth `is_pvp` — PvE copies of per-target increments missing/mis-tagged (~165 powers, incl. Phalanx Fighting) — 2026-06-08
