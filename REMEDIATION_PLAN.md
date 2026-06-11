@@ -108,9 +108,10 @@ The audit's own findings were re-verified against source and hold up. One materi
 
 - **FLOW-2/3/4 (DONE)** — (15036557f): FLOW-2 removed the redundant server-switch persist hand-write (the canonical onRehydrate URL-param sync already does it correctly — the hand-write's pre-set was suppressing it and using a malformed partial archetype); FLOW-3 `_restoreBuild` now syncs `ui.selectedBranch` via `detectBranch` (kheldianForm lives on the build, already restored); FLOW-4 persist `stalkerCritActive`+`sentinelCritActive` for parity with the other AT toggles.
 
-### Still pending (blocked / needs a dedicated pass)
-- **MSOT-4 Step 2** DIVERGENT (140): needs in-game Brainstorm numbers or a converter regen pass.
-- `arc` radians-vs-degrees: fix site (converter vs consumer) + rationale — part of the MSOT-4 Step 2 converter work.
+### MSOT-4 Step 2 — DONE except 26 oracle-unavailable powers
+**Key finding:** NOT in-game-blocked. The committed `.powers` oracle (raw defs/, §5) + exported_powers (current binary) are the ground truth; the safe test is `generated == oracle` (removing a DIVERGENT override falls back to generated).
+- Built `oracle-verify.mjs`: follows each generated file's `Source:` header → exported_powers path → `.powers` raw def, compares every scalar stat (incl. arc deg↔rad). **114 powers verified+retired across 2 batches (a2df2ded9, 35e24412d) with ZERO generated-vs-oracle mismatches** — overrides were stale CoD2 snapshots. ~1,860 lines of stale data removed. `arc` resolved here (generated radians are correct; arcToDegrees handles display).
+- **26 HELD** (DIVERGENT 140→26): EAT epic-pool powers (VEAT training/teamwork, PB luminous-aura) — effects-only conflicts, and the `.powers` snapshot lacks Peacebringer + these EAT epics, so they can't be oracle-verified. They're the special-mechanic powers where an override could be a real correction (cf. Fiery Aura Burn redirect). **Genuinely need a raw-defs refresh (to include those categories) OR in-game/CoD2 verification.** This is the narrowed, honest external-dependent remainder.
 
 **Everything else in this plan is complete.** Phase 1 (correctness), Phase 2 (perf/state), and Phase 3 (full dead-code sweep + FLOW fixes) are all done and committed on `audit-and-remediation`.
 
