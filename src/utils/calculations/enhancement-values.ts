@@ -847,15 +847,6 @@ export function combineWithAlphaED(
 // ============================================
 
 /**
- * Calculate Common IO value by level
- */
-export function calculateCommonIOValue(level: number, aspect: EnhancementStatType): number {
-  const normalized = normalizeAspectName(aspect) || aspect.toLowerCase();
-  const schedule = getAspectSchedule(normalized);
-  return getIOValueAtLevel(level, schedule);
-}
-
-/**
  * Format enhancement value as percentage
  */
 export function formatEnhancementValue(value: number): string {

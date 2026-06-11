@@ -7,7 +7,6 @@ export {
   getBaseDamage,
   calculateActualDamage,
   calculatePowerDamage,
-  calculateDotDamage,
   formatDamage,
   calculateBuffDebuffPercent,
   abbreviateDamageType,
@@ -15,7 +14,6 @@ export {
   type DamageTableType,
   type DamageCalculationOptions,
   type PowerDamageResult,
-  type DotDamageResult,
   type DamageEffect,
   type PowerWithDamage,
   type BuildContext,
@@ -36,7 +34,6 @@ export {
   getSetRarityMultiplier,
   calculatePowerEnhancementBonuses,
   combineWithAlphaED,
-  calculateCommonIOValue,
   formatEnhancementValue,
   type EnhancementSchedule,
   type ParsedBonuses,
@@ -44,22 +41,6 @@ export {
   type PowerWithSlots,
   type EnhancementBonuses,
 } from './enhancement-values';
-
-// Power stats
-export {
-  calculatePowerStats,
-  formatStatForTooltip,
-  isStatEnhanced,
-  hasGlobalBonuses,
-  calculateImprovement,
-  type ThreeTierStat,
-  type ComplexStat,
-  type DamageScale,
-  type PowerEffectsForCalc,
-  type PowerForCalc,
-  type GlobalBonuses,
-  type PowerStats,
-} from './power-stats';
 
 // Set bonuses (Rule of 5)
 export {
@@ -88,24 +69,10 @@ export { computeSetTracking } from './set-tracking';
 
 // Character stats
 export {
-  STAT_CATEGORIES,
-  DEFAULT_ENABLED_STATS,
   createEmptyStats,
-  getBaselineEndurance,
-  getBaselineRecovery,
   getBaselineHealth,
-  calculatePoolPowerBonuses,
-  calculateActivePowerBonuses,
-  formatStatValue,
-  STAT_TO_COMBINED,
-  applyStatToCharacter,
-  type StatDefinition,
-  type StatCategory,
   type CharacterStats,
   type BaselineHealth,
-  type PowerBonuses,
-  type ActivePowerBonuses,
-  type FormattedStat,
 } from './stats';
 
 // Character totals (unified calculation system)
@@ -127,27 +94,11 @@ export {
   areIncarnatesSuppressed,
 } from './effective-level';
 
-// AT-based effect calculations (using Homecoming tables)
+// AT-table name/id normalization
 export {
-  calculateScaledEffect,
-  calculateMultipleEffects,
-  calculateScaledDamage,
-  calculatePowerDamageFromScaled,
-  sumDamageResults,
-  calculateScaledHeal,
-  isScaledEffect,
   normalizeTableName,
   normalizeArchetypeId,
-  getArchetypeTableNames,
-  hasATTables,
-  compareATModifiers,
-  formatEffectValue,
-  formatDamageValue,
-  type ScaledEffect,
-  type ScaledDamage,
-  type EffectCalculationResult,
-  type DamageCalculationResult as ATDamageResult,
-} from './at-effects';
+} from './at-table-normalize';
 
 // Archetype inherent calculations
 export {
