@@ -2,11 +2,12 @@
  * Focused Burst — OVERRIDES LAYER
  *
  * Hand-written deltas applied on top of the generated power object via
- * `withOverrides()`. Each field below is a value the previously-committed
- * composed file carried that the current CoD2-raw extraction does not.
- * Keep them — the CoD2 archive we convert from is a snapshot, and these
- * overrides are where current HC values live when they've drifted from
- * that snapshot. See src/data/README.md.
+ * `withOverrides()`. The generated layer is now sourced from the live HC
+ * binary (exported_powers/), so the legacy numeric pins that used to live
+ * here were stale CoD2 values and have been retired (2026-06 override audit).
+ * Any remaining entries are display fixes or planner-only enrichments the
+ * parser doesn't emit yet — prefer fixing the parser/converter over re-adding
+ * an override. See GAME-DATA-PRINCIPLES.md §13 and src/data/README.md.
  */
 import type { Power } from '@/types';
 

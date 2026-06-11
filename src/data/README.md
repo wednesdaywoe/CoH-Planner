@@ -1,26 +1,28 @@
 # `src/data/` — power data layering
 
-Power data lives in three sibling trees under this directory:
+Power data lives in three sibling trees, per server, under
+`src/data/datasets/<server>/` (`homecoming`, `rebirth`):
 
 ```
 src/data/
-├── generated/                    All auto-extracted data. NEVER hand-edit.
-│   ├── powersets/<at>/<slot>/<set>/<power>.ts   (per-power)
-│   ├── epic-pools.ts                            (aggregate)
-│   ├── power-pools.ts                           (aggregate)
-│   └── incarnate-effects.ts                     (aggregate, heterogeneous)
+├── datasets/<server>/
+│   ├── generated/                All auto-extracted data. NEVER hand-edit.
+│   │   ├── powersets/<at>/<slot>/<set>/<power>.ts   (per-power)
+│   │   ├── epic-pools.ts                            (aggregate)
+│   │   ├── power-pools.ts                           (aggregate)
+│   │   └── incarnate-effects.ts                     (aggregate, heterogeneous)
+│   │
+│   ├── overrides/                Hand-written deltas. Survives regeneration.
+│   │   ├── powersets/<at>/<slot>/<set>/<power>.ts   (per-power Partial<Power>)
+│   │   ├── epic-pools.ts                            (Record<fullName, Partial<Power>>)
+│   │   └── power-pools.ts                           (Record<fullName, Partial<Power>>)
+│   │   (No overrides file for incarnate — its exports are heterogeneous
+│   │    so per-power overrides don't apply.)
+│   │
+│   └── powersets/<at>/<slot>/<set>/<power>.ts       Composed per-power export
 │
-├── overrides/                    Hand-written deltas. Survives regeneration.
-│   ├── powersets/<at>/<slot>/<set>/<power>.ts   (per-power Partial<Power>)
-│   ├── epic-pools.ts                            (Record<fullName, Partial<Power>>)
-│   └── power-pools.ts                           (Record<fullName, Partial<Power>>)
-│   (No overrides file for incarnate — its exports are heterogeneous
-│    so per-power overrides don't apply.)
-│
-├── powersets/<at>/<slot>/<set>/<power>.ts       Composed per-power export
-├── epic-pools-raw.ts                            Composed aggregate facade
-├── power-pools-raw.ts                           Composed aggregate facade
-└── _layer.ts                                    withOverrides() + applyAggregateOverrides()
+├── _layer.ts                    withOverrides() + applyAggregateOverrides()
+└── *.ts                         Thin facades forwarding to the active dataset
 ```
 
 Planner code imports from the composed layer (`powersets/.../<power>.ts`,
@@ -31,46 +33,49 @@ by `fullName`.
 
 ## Why three files
 
-The convert script regenerates from raw CoD2 data. Hand-edits to those
-files (display-name corrections, AT-specific level adjustments, planner-
-only stacking metadata, etc.) used to be silently overwritten by the
-next regeneration. Splitting into generated + overrides + composed lets
-each layer evolve independently:
+The convert script regenerates `generated/` from `exported_powers/` on
+every run, so any hand-edit there would be overwritten. Splitting into
+generated + overrides + composed lets each layer evolve independently:
 
-- Re-run `convert-powerset.cjs` whenever raw data changes — overrides
-  survive untouched.
-- Hand-edit overrides whenever the generated extraction is wrong or
-  missing a planner-side field — the next regen leaves them alone.
-- Composed files are stable once written; they only need editing if the
-  power's identifier (export name) changes.
+- Re-run the converters (`npm run regen`) whenever the source changes —
+  overrides survive untouched.
+- Hand-edit an override only when the generated extraction is genuinely
+  wrong/missing a planner-side field — the next regen leaves it alone.
+- Composed files are thin `withOverrides(generated, overrides)` wrappers;
+  they only need editing if the power's export name changes.
 
-## Important: the CoD2 raw data is a stale snapshot
+## ⚠️ `generated/` is authoritative — overrides should be rare and shrinking
 
-`raw_data_homecoming-20251209_7415/` is an external archive that hasn't
-been refreshed since its timestamp — HC's actual game data has drifted
-from it in places (attack recharges shortened, effect durations
-adjusted, new sub-effects added, etc.). **The overrides layer is where
-the current HC values live** when they differ from raw CoD2. Concretely:
+> **This section was inverted before 2026-06.** It used to say the source
+> was a stale 2019 CoD2 archive and that "the overrides layer is where the
+> current HC values live — do not drop an override that disagrees with
+> generated." **That guidance is now wrong and has been removed.**
 
-- **Do not drop an override just because it disagrees with the generated
-  file.** The generated file comes from CoD2; CoD2 is the snapshot. An
-  override that sets `stats.recharge = 8` where generated says `10` is
-  preserving the current in-game value.
-- When in doubt about a specific number, verify against live HC (or the
-  bin-crawler parser, which reads the current `.pigg` archives directly)
-  before accepting either side. See
-  [`tools/bin-crawler/`](../../tools/bin-crawler/) for the live parser.
-- The long-term fix is to migrate the convert pipeline away from the
-  CoD2 archive onto the bin-crawler extraction in
-  [`exported_powers/`](../../exported_powers/). Until then, overrides
-  are how corrections land.
+The convert source is now `exported_powers/`, produced by **Bin Crawler from
+the live HC `.pigg` binary** (refreshed every patch). So `generated/` reflects
+**current** game data — it is the authoritative layer, not a stale snapshot.
 
-A large batch of overrides was produced by `scripts/migrate-to-layered.cjs`
-during the layering rollout. Those overrides capture deltas between the
-CoD2 snapshot and the previously-committed composed files (which already
-had current HC values hand-merged). They represent accurate data that
-would silently regress if the override layer were bypassed — keep them
-until CoD2 or the convert source is refreshed.
+Consequently the old override rationale **inverted**: an override that pins a
+numeric value (`stats.recharge`, a damage `scale`, an effect `table`) now
+almost always *freezes an old CoD2 value on top of correct generated data* —
+the opposite of preserving the current value. A 2026-06 audit verified every
+numeric-pinning override against the `.powers` oracle / a fresh live-binary
+parse and **retired ~2,000 lines of stale pins** (DIVERGENT 140 → 9).
+
+So, the corrected rules:
+
+- **A numeric override that disagrees with `generated` is suspect, not
+  sacred.** The right test is `generated == oracle` (the `.powers` raw def or
+  a fresh Bin Crawler parse of the live `.pigg`), *not* "is the override
+  stale" — removing it falls back to `generated`, so what matters is whether
+  generated is correct. When generated matches the oracle, drop the pin.
+- **Keep only genuine enrichments** the parser doesn't emit yet (planner-only
+  fields like `maxStacks`/`stacksLinear`; data gaps like `summon.copyBoosts`).
+  When you find such a gap, log it in [BIN-PARSER-LOG.md](../../BIN-PARSER-LOG.md)
+  and prefer fixing the parser/converter over keeping the override.
+- See **[GAME-DATA-PRINCIPLES.md §13](../../GAME-DATA-PRINCIPLES.md)** for the
+  full audit method and the traps (unit/representation differences, silent
+  fallbacks that mask wrong values, etc.).
 
 ## Override file shape
 
@@ -137,8 +142,8 @@ export const overrides: Partial<Power> = {};
 ## Converter behavior
 
 `node scripts/convert-powerset.cjs <category> <powerset>` always writes
-the fresh extraction into `src/data/generated/powersets/<at>/<slot>/<set>/`
-and writes the powerset `index.ts` into `src/data/powersets/<at>/<slot>/<set>/`.
+the fresh extraction into `src/data/datasets/<server>/generated/powersets/<at>/<slot>/<set>/`
+and writes the composed powerset under `src/data/datasets/<server>/powersets/<at>/<slot>/<set>/`.
 
 For each individual power, the converter scaffolds the composed + override
 files ONLY WHEN NEITHER EXISTS — this avoids dropping a dangling override
