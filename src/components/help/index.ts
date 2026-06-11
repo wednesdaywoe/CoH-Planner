@@ -1,1 +1,0 @@
-export { MediaDemo } from './MediaDemo';
