@@ -43,16 +43,8 @@ export const Decoy: Power = {
       "isPseudoPet": false,
       "duration": 60,
       "copyBoosts": true,
-      "entities": [
-        {
-          "entity": "P998401764",
-          "count": 2
-        },
-        {
-          "entity": "Pets_Decoy",
-          "count": 4
-        }
-      ]
+      "entity": "Pets_Decoy",
+      "entityCount": 3
     },
     "maxStacks": 2,
     "stacksLinear": [

@@ -242,8 +242,13 @@ display path is unchanged.
 
 ## Status / priority
 
-**Prototype IN PROGRESS (2026-06-06, PC)** — Storm Cell + Category Five, inline
-architecture (resolved abilities attached to `summon`, no PET_ENTITIES injection).
+**COMPLETE (path C shipped; verified committed 2026-06-11).** Built incrementally
+from a Storm Cell + Category Five prototype (inline architecture — resolved
+abilities attached to `summon.resolvedEntities`, no PET_ENTITIES injection) through
+seven follow-ups to full both-dataset generalization. ~90 HC generated files carry
+`resolvedEntities`; `pseudopet-redirect.test.ts` + `pseudopet-effects.test.ts`
+green. The BIN-PARSER-LOG entry is reconciled to RESOLVED. Only the smaller,
+explicitly non-blocking gaps in "Remaining" below are open.
 
 Done + verified:
 - **Resolver** (`resolveSummonRedirects` + `classifyPseudoPetEffect` in

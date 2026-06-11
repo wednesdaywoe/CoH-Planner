@@ -54,7 +54,7 @@
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! enttype target> player eq &&",
       "flags": [],
-      "is_pvp": "PVP_ONLY",
+      "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
@@ -92,7 +92,7 @@
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! enttype target> player eq &&",
       "flags": [],
-      "is_pvp": "PVP_ONLY",
+      "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
@@ -130,7 +130,7 @@
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! enttype target> player eq &&",
       "flags": [],
-      "is_pvp": "PVP_ONLY",
+      "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {

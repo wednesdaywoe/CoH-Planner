@@ -42,44 +42,8 @@ export const GangWar: Power = {
     "summon": {
       "isPseudoPet": false,
       "duration": 120,
-      "entities": [
-        {
-          "entity": "Pets_Thug_Pose_01",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Thug_Pose_02",
-          "count": 2
-        },
-        {
-          "entity": "Pets_Thug_Pose_03",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Thug_Pose_04",
-          "count": 2
-        },
-        {
-          "entity": "Pets_Thug_Pose_05",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Thug_Pose_06",
-          "count": 2
-        },
-        {
-          "entity": "Pets_Thug_Pose_07",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Thug_Pose_08",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Thug_Pose_09",
-          "count": 2
-        }
-      ]
+      "entity": "Pets_Thug_Pose_01",
+      "entityCount": 10
     }
   },
   "specialEffects": [

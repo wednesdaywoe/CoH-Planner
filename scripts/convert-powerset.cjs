@@ -1208,6 +1208,161 @@ function _parseDurationSeconds(str) {
  * the stale intrinsic damage isn't double-counted. Intrinsic redirects that name
  * the chassis's own power (Bonfire → Pets.Bonfire.Bonfire) are left alone.
  */
+/**
+ * Correct multi-pet summon COUNTS from the EntCreate template list.
+ *
+ * The flat EntCreate handler counts one pet per template, which is wrong for two
+ * shapes (BIN-PARSER-LOG "Pseudo-pet summon residuals"):
+ *
+ *  1. **Mutually-exclusive FX-variant groups** — Phantom Army ("Decoy") carries
+ *     its 3 staggered decoys in TWO effect groups with complementary requires
+ *     (`@CustomFX … ||` and the same `… || !`): a visual branch, only one fires.
+ *     The handler counts both → 6 decoys instead of 3. Drop the negated branch.
+ *  2. **Cosmetic pose variants + chance-weighted spawns** — Gang War's gang is 13
+ *     `Pets_Thug_Pose_01..09` (the same Thug, different costume poses) firing at
+ *     decreasing chances (1.0×6, .75×2, .5×2, .25, .10×2). Collapse the
+ *     `_Pose_NN` variants to one entity and count the chance-weighted expected
+ *     value (≈9), matching the planner's expected-value proc convention. Gang
+ *     War's EntCreates also live in `activation_effects` with `IgnoreStrength`,
+ *     so the buff-oriented drop filter discards them and the summon is missing
+ *     entirely — rebuilt here from powerJson.
+ *
+ * Scoped to be rain-safe: only complementary-FX groups, `_Pose_NN` variants, and
+ * dropped multi-template summons are touched. Rains / location pseudo-pets (Rain
+ * of Arrows, Whirlpool — a single rain represented as P-hash + named) have none
+ * of these patterns, so they are left exactly as the existing path produced them.
+ * Single-template summons (incl. attacks' incidental EntCreates like Necromancy
+ * Dark Blast → a specter, or Thugs Pistols → a pose) are below the 2-instance
+ * threshold and untouched. The P-hash→named display merge fires only when the
+ * named base appears ≥2× (Phantom Army decoys, Fire Imps) — never on the
+ * ambiguous 1+1 shape (Gremlins, rains), so counts that were already correct
+ * (Gremlins 2, Fire Imps 3 — the P-hash was just an unresolved display entity)
+ * are preserved.
+ */
+const _PHASH_RE = /^P\d+$/;
+const _POSE_RE = /^(.+)_Pose_(\d+)$/;
+
+function _complementaryReq(a, b) {
+  const x = (a || '').trim(), y = (b || '').trim();
+  return x !== '' && (x === `${y} !` || y === `${x} !`);
+}
+
+function normalizeSummonEntities(powerJson, effects) {
+  if (!effects) return;
+  // Collect EntCreate instances with group context. Mirror the main builder's
+  // target rules: main `effects` use any target (Phantom Army decoys are
+  // AnyAffected); `activation_effects` use Self only (matches the buff path).
+  const insts = [];
+  const collect = (groups, selfOnly) => {
+    const visit = (g) => {
+      if (g.is_pvp === 'PVP_ONLY') return;
+      const chance = typeof g.chance === 'number' ? g.chance : 1;
+      const req = (g.requires_expression || '').trim();
+      for (const t of (g.templates || [])) {
+        if (!(t.attribs || []).includes('Create_Entity')) continue;
+        if (!t.params || t.params.type !== 'EntCreate' || !t.params.entity_def) continue;
+        if (selfOnly && t.target !== 'Self') continue;
+        insts.push({
+          entity: t.params.entity_def, chance, req,
+          duration: _parseDurationSeconds(t.duration),
+          flags: t.flags || [],
+        });
+      }
+      for (const c of (g.child_effects || [])) visit(c);
+    };
+    for (const g of (groups || [])) visit(g);
+  };
+  collect(powerJson.effects, false);
+  collect(powerJson.activation_effects, true);
+
+  if (insts.length < 2) return;                       // single summons / attack incidentals
+  if (insts.every(i => PSEUDOPET_SHELL_ENTITIES.has(i.entity))) return;  // pseudo-pet path
+
+  // Strict scoping: only the two genuine count bugs trigger a rewrite —
+  //   - complementary FX-variant groups (Phantom Army's @CustomFX Mirror branch
+  //     double-counts the gang), and
+  //   - cosmetic `_Pose_NN` variants (Gang War's 13 thug poses).
+  // Every other multi-template summon (MM henchmen with level/tier gating —
+  // Battle Drones, Soul Extraction, Call Thugs, …) is left EXACTLY as the
+  // existing handler produced it. Recounting those here would mis-model their
+  // level-gated / tier-conditional counts (e.g. Soul Extraction summons ONE
+  // tier-matched ghost, not all three) — the "make it worse" trap.
+  const reqs = [...new Set(insts.map(i => i.req))];
+  const dropReqs = new Set();
+  for (let i = 0; i < reqs.length; i++)
+    for (let j = i + 1; j < reqs.length; j++)
+      if (_complementaryReq(reqs[i], reqs[j]))
+        dropReqs.add(reqs[i].endsWith('!') ? reqs[i] : reqs[j]);
+  const fxApplied = dropReqs.size > 0;
+  const hasPoses = insts.some(i => _POSE_RE.test(i.entity));
+  if (!fxApplied && !hasPoses) return;                // no bug pattern → no-op
+  // A dropped summon is only safe to REBUILD when we can collapse it correctly
+  // (poses). A dropped non-pose summon (Soul Extraction's tier ghosts) stays
+  // dropped — its correct count isn't derivable from template counting.
+  if (!effects.summon && !hasPoses) return;
+
+  // (1) FX-variant dedup: drop the negated branch of any complementary req pair.
+  let kept = dropReqs.size ? insts.filter(i => !dropReqs.has(i.req)) : insts;
+  if (!kept.length) kept = insts;
+
+  // (2) pose-collapse: map X_Pose_NN to the lowest-numbered pose present.
+  const poseRep = {};
+  for (const i of kept) {
+    const m = i.entity.match(_POSE_RE);
+    if (!m) continue;
+    const base = m[1], n = parseInt(m[2], 10);
+    if (!(base in poseRep) || n < poseRep[base].n) poseRep[base] = { n, name: i.entity };
+  }
+  const resolvePose = (e) => {
+    const m = e.match(_POSE_RE);
+    return m ? poseRep[m[1]].name : e;
+  };
+
+  // (3) P-hash→named display merge — only when exactly one named base that
+  // appears ≥2× (proves a genuine multi-of-same summon, not a 1+1 rain).
+  const resolved = kept.map(i => ({ ...i, base: resolvePose(i.entity) }));
+  const namedCounts = {};
+  for (const r of resolved) if (!_PHASH_RE.test(r.base)) namedCounts[r.base] = (namedCounts[r.base] || 0) + 1;
+  const namedBases = Object.keys(namedCounts);
+  const mergeTarget = (namedBases.length === 1 && namedCounts[namedBases[0]] >= 2) ? namedBases[0] : null;
+  const identity = (b) => (mergeTarget && _PHASH_RE.test(b)) ? mergeTarget : b;
+
+  // (4) chance-weighted expected count per resolved identity.
+  const counts = {};
+  for (const r of resolved) {
+    const id = identity(r.base);
+    counts[id] = (counts[id] || 0) + r.chance;
+  }
+  const entities = Object.entries(counts).map(([entity, sum]) => ({
+    entity, count: Math.max(1, Math.round(sum)),
+  }));
+
+  // Build the corrected entity descriptor (single vs multi).
+  const apply = (summon) => {
+    delete summon.entity; delete summon.entityCount; delete summon.entities;
+    delete summon._phashPriorityList;
+    if (entities.length === 1) {
+      summon.entity = entities[0].entity;
+      if (entities[0].count > 1) summon.entityCount = entities[0].count;
+    } else {
+      summon.entities = entities;
+    }
+  };
+
+  if (effects.summon) {
+    apply(effects.summon);
+  } else {
+    // Dropped pure-summon (Gang War): build the summon from scratch.
+    const first = kept[0];
+    const summon = { isPseudoPet: first.flags.some(f => f.includes('PseudoPet')) };
+    apply(summon);
+    const dur = kept.map(i => i.duration).find(d => d && d > 0);
+    if (dur) summon.duration = dur;
+    if (kept.some(i => i.flags.some(f => f.includes('CopyBoosts')))) summon.copyBoosts = true;
+    effects.summon = summon;
+  }
+}
+
 function attachResolvedPseudoPets(powerJson, effects) {
   if (!effects || !effects.summon) return;
 
@@ -4214,6 +4369,17 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     // their DoT + debuffs. See PSEUDO-PET-POWER-RESOLUTION.md.
     attachResolvedPseudoPets(powerJson, power.effects);
 
+  }
+
+  // Multi-pet summon count correction (Phantom Army FX double-count → 3; Gang War
+  // dropped + pose-collapse/chance-weight → 9). Runs OUTSIDE the allTemplates
+  // guard above because Gang War's summon templates are dropped by the
+  // activation_effects buff filter, leaving allTemplates empty — the corrected
+  // summon is rebuilt directly from powerJson. See BIN-PARSER-LOG.
+  {
+    const eff = power.effects || {};
+    normalizeSummonEntities(powerJson, eff);
+    if (eff.summon && !power.effects) power.effects = eff;
   }
 
   // Conditional bonus effects (Mechanic Adjusters). These are positive state

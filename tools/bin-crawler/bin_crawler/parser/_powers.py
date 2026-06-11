@@ -1426,7 +1426,25 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False) -> tuple[li
             # Synthesize the equivalent flag so downstream filters
             # (`if (effect.is_pvp === 'PVP_ONLY') continue;`) work.
             req = tmpl.jit_requires or ''
-            if 'target> player eq' in req:
+            # A SELF-targeted AttribMod whose requires carries the self-exclusion
+            # clause `entref target> entref source> eq !` ("target != self") is a
+            # proximity / ally-counting self-buff — it applies +X to the caster
+            # for each nearby OTHER entity matching the type filter. Here the
+            # trailing `enttype target> player eq` is an *ally-type filter*
+            # (count nearby player teammates), NOT the PvE/PvP combat split. The
+            # genuine split is foe-targeted (target=AnyAffected) and ships as a
+            # *pair*: a `critter eq` copy (PvE) and a `player eq` copy (PvP) of
+            # the same effect — Force Bubble's Repel/Knockback are the canonical
+            # example. Phalanx Fighting (Brute/Scrapper/Tanker) is the friendly
+            # case: its per-ally +Def increment is Self-targeted with the
+            # self-exclusion clause and has NO critter sibling, so reading the
+            # `player eq` as PvP-only made convert-powerset drop the ally scaling
+            # in PvE — contradicting the power's own description and HC's explicit
+            # is_pvp=EITHER for the same template. Treat these as EITHER.
+            self_exclusion = 'entref target> entref source> eq !' in req.lower()
+            if tmpl.target == 'Self' and self_exclusion:
+                is_pvp = 'EITHER'
+            elif 'target> player eq' in req:
                 is_pvp = 'PVP_ONLY'
             elif 'target> critter eq' in req:
                 is_pvp = 'PVE_ONLY'

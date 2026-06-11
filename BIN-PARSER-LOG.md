@@ -7,68 +7,32 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-## ⬜ Rebirth `is_pvp` — PvE copies of per-target increments missing/mis-tagged (~165 powers, incl. Phalanx Fighting) — 2026-06-08
+## ⬜ Pseudo-pet summon residuals — leftovers after the count fix (low priority) — 2026-06-11
 
-Surfaced fixing Homecoming Phalanx Fighting (resolved entry below). On **Rebirth**,
-Phalanx's per-ally defense increment (`scale 0.3`, "Stack") is flagged
-`is_pvp = "PVP_ONLY"`, while the always-on base (`scale 0.5`, "Replace") is `"EITHER"`.
-Homecoming flags the *same* ally increment `"EITHER"`. convert-powerset correctly
-drops PvP-only effects from the PvE planner, so Rebirth Phalanx generates flat 3.75%
-with **no ally scaling** — contradicting its own description ("this bonus grows for
-each ally near you"). The converter is correct; the source data is suspect.
+The multi-pet **count** bugs (Phantom Army, Gang War) are FIXED — see the ✅ entry
+below. What remains is low-value and deliberately deferred:
 
-Evidence it's a Rebirth export/format issue, not converter logic:
-
-- **~165 Rebirth powers** have a `PVP_ONLY` self-`Stack` increment with no matching
-  PvE (`EITHER`/`PVE_ONLY`) copy; HC has ~12.
-- Rebirth's PvE/PvP-split density is ~13× HC's: `PVP_ONLY` 7055 + `PVE_ONLY` 6586
-  across 8659 files, vs HC `544 + 523` across 10666. So `is_pvp` parsing isn't
-  *globally* broken (PVE_ONLY is emitted in bulk), but the PvE copy of these
-  per-target increments is absent.
-- Rebirth effects carry `tags: None` where HC has `tags: []` — a parser/format-version
-  tell (Rebirth is an i25/i26-era bin; PvE/PvP effect copies are likely encoded
-  differently than the Parse7 HC layout the crawler is tuned for).
-
-Counter-evidence (why it's not a blanket failure): Rebirth's *other* per-target powers —
-Energy Absorption, **Against All Odds (same Shield Defense set)**, Soul Drain, Rise to
-the Challenge — all carry correctly-tagged `EITHER` increments.
-
-Needs the Rebirth `.pigg`/`.bin` source (not on the dev machine when filed) to confirm
-whether the PvE increment copy is dropped on export or the `is_pvp` field is misread for
-this effect shape. **Do not** band-aid per-power in convert-powerset. Interim option if a
-Rebirth user confirms in-game ally scaling: a Rebirth override mirroring HC
-(`defenseBuff.{melee,ranged,aoe} = { scale: 0.5, perTarget: 0.3, table: "Melee_Buff_Def" }`).
-Homecoming users are unaffected.
-
-## ⬜ Pseudo-pet `summon.powers` redirect chains not resolved (~32 powers) — 2026-06-06
-
-Location/patch/storm powers whose `summon.entity` is a generic marker
-(`PL_StaticObject`, …) deliver all damage/debuffs through a `summon.powers` list
-of redirect powers that the planner never resolves — so they show no data.
-**101 generated files / ~32 distinct powers** (Storm Cell, Category Five,
-Bonfire, Burn, Freezing Rain, Rain of Fire, Sleet, Tar Patch, EMP/Disruption/
-Poison Gas Arrow, Faraday Cage, Force Bubble, Ice Storm, Lightning Rod, Voltaic
-Sentinel, Carrion Creepers, Trick-Arrow Glue Arrow, …). The redirect defs ARE
-exported (`exported_powers/redirects/`), just not converted. Hard because the
-effects form a graph (`Execute_Power` chains, `Create_Entity` sub-spawns,
-`Set_Mode` storm-strength states, DoT over duration) — a flat sum produces wrong
-numbers. Full findings, scope, and proposed approach (path C):
-**[PSEUDO-PET-POWER-RESOLUTION.md](PSEUDO-PET-POWER-RESOLUTION.md)**. Deferred so
-it doesn't derail the archetype-defs leg.
-
-## ⬜ Pseudo-pet summon residuals (Phantom Army count, HC P-hash root cause) — 2026-06-06
-
-Surfaced/left by the pseudo-pet entity-resolution fix (resolved entry below):
-- **HC exporter leaves EntCreate `entity_def` as an opaque P-hash** (e.g. P4234428342)
-  while Rebirth's export resolves it to the real pet name. convert-powerset now works
-  around it via `priority_list`, but the cleaner root fix is to resolve the hash in the
-  HC exporter (then convert-powerset wouldn't need the P-hash special-case). Needs the bin.
-- **Multi-pet summons over/under-count from EntCreate-template counting.** Phantom Army has
-  6 EntCreate templates for 3 Decoys → shows ~4 (the fix deliberately doesn't touch multi-
-  entity summons to avoid making it worse). Gremlins (2) / Fire Imps (3) happen to be 1:1
-  and correct. A real fix needs a template→pet-count model, not template counting.
-- **~10 single-entity P-hash summons have no `priority_list`** to resolve to — genuinely
-  unresolvable from current export data; they still show no pet effects.
+- **HC P-hash root resolution — investigated, DEFER.** Not a simple hash of the name
+  (tested CRC32/mul33 over name variants vs 102 known P-hash↔priority_list pairs: 0
+  matches), and one P-hash maps to *multiple* names (`P1648600109` →
+  Apparitions_Enraged_Spectre **and** _LT), so it's an opaque entity-def reference,
+  not a name hash. Resolving it needs a separate villain/entity-def bin's name table
+  (new parser) — high effort. Of 196 P-hash EntCreates, **186 already resolve via
+  `priority_list`**; only **10 lack it**, and those are NPC/Temporary_Powers/
+  Incarnate-internal (DevouringEarth seed, Proximity_Mine self-destruct, Power_Cell,
+  Spirit_Snare) — not player-build powers. The convert-powerset `priority_list`
+  workaround stays.
+- **Cosmetic 1:1 P-hash display split.** Controller Fire Imps (`P… + 2×Pets_FireImp_
+  Controller`) and Gremlins (`P… + Pets_Gremlin_Controller`) show one extra "unknown"
+  entity, but their **counts are already correct** (3 and 2). The count fix below
+  deliberately does NOT merge these 1+1 P-hash shapes — that shape is
+  indistinguishable from a single rain represented as P-hash+named (Rain of Arrows),
+  where merging would double the count. Display-only; low value.
+- **Soul Extraction tier model.** Summons ONE specter whose tier (Boss/Lt/Minion)
+  matches the sacrificed henchman; the binary has 3 templates (one per tier). Still
+  shows no summon (its EntCreates are dropped, like Gang War's were, but it has no
+  pose pattern so the count fix leaves it alone — template-counting would wrongly
+  show all 3 tiers). Needs a tier-conditional model, not template counting.
 
 ## ⬜ Inexhaustibility piece — Set_Mode special-piece not recognised — 2026-06-05
 
@@ -80,6 +44,141 @@ Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
   the `Set_Mode` special-piece shape in the extractor.
 
 > ---RESOLVED ---
+
+## ✅ Multi-pet summon counts — Phantom Army (6→3) + Gang War (dropped→9) fixed (2026-06-11)
+
+`normalizeSummonEntities` ([convert-powerset.cjs](scripts/convert-powerset.cjs),
+runs after the effect loop) corrects the two genuine count bugs the flat
+per-template EntCreate handler got wrong:
+
+- **Phantom Army** (internal "Decoy", Controller+Dominator) carried its 3 staggered
+  decoys in TWO effect groups with **complementary `@CustomFX Mirror` requires**
+  (`… ||` vs `… || !` — a visual branch, only one fires). The handler counted both
+  → `P998401764 ×2 + Pets_Decoy ×4` (6). Now FX-deduped to one branch + the P-hash
+  first-decoy merged into the named pet → **`Pets_Decoy ×3`** (Dominator:
+  `Pets_Decoy_Dominator ×3`).
+- **Gang War** is 13 `Pets_Thug_Pose_01..09` (one Thug, cosmetic poses) firing at
+  `chance 1.0×6, .75×2, .5×2, .25, .10×2`. On HC its EntCreates sit in
+  `activation_effects` with `IgnoreStrength`, so the buff-drop filter discarded the
+  whole summon (it showed **no pets at all**). Now rebuilt from powerJson, poses
+  collapsed to `Pets_Thug_Pose_01`, count = chance-weighted expected value →
+  **9** (Rebirth 10; per-server pose chances + 120s duration). Expected-value
+  matches the planner's proc convention; *worth an in-game spot-check.*
+
+**Strictly scoped to be rain-safe and regression-safe.** The normalizer is a no-op
+unless complementary FX-variant groups OR `_Pose_NN` variants are present, and only
+rebuilds a *dropped* summon when poses let it collapse correctly. So:
+- Rains/location pseudo-pets (Rain of Arrows, Whirlpool — a single rain as
+  P-hash+named) have none of these patterns → untouched (no double-count).
+- Level/tier-gated MM henchmen (Battle Drones, Soul Extraction, Call Thugs, Zombie
+  Horde, …) are left EXACTLY as before — recounting them would mis-model their
+  level-gated/tier-conditional counts (Soul Extraction would wrongly show 3 tiers).
+- The 1+1 P-hash shapes (Fire Imps, Gremlins) are NOT merged (their counts were
+  already correct; the P-hash is a cosmetic display split — see the ⬜ leftover).
+- Attacks with an incidental single EntCreate (Necromancy Dark Blast → a specter,
+  Thugs Pistols → a pose) are below the 2-instance threshold → still dropped.
+
+Verified: a full HC powerset regen changes exactly 3 files (Decoy ×2 ATs +
+Gang War); Rebirth changes Gang War only (Phantom Army's Parse6 shape lacks the FX
+pattern → no-op). Guard: [multipet-summon-count.test.ts](src/data/multipet-summon-count.test.ts)
+(incl. a Soul-Extraction-not-inflated regression assertion). tsc clean, 446 tests.
+
+## ✅ Pseudo-pet `summon.powers` redirect chains resolved (~32 powers, path C) — log reconciled 2026-06-11
+
+This was completed across seven follow-ups (Storm Cell / Category Five reference
+cases first, then full generalization to both datasets) — the `⬜` entry here was
+just never flipped. Full implementation history, worked examples, in-game-verified
+numbers, and the remaining smaller gaps live in
+**[to-do/PSEUDO-PET-POWER-RESOLUTION.md](to-do/PSEUDO-PET-POWER-RESOLUTION.md)**.
+
+Summary of what shipped (verified present + committed 2026-06-11):
+- **Resolver** `resolveSummonRedirects` + `collectTemplatesWithChance` +
+  `attachResolvedPseudoPets` in [convert-powerset.cjs](scripts/convert-powerset.cjs):
+  walks the redirect graph (`Execute_Power` + cycle-guarded `Create_Entity` hops),
+  reuses `collectTemplatesDeep` (AT-conditional dedup, PvP exclusion, storm-mode
+  de-double-count), and synthesizes `summon.resolvedEntities` at convert time so the
+  runtime display path is unchanged. Scoped to a vetted set of location-shell
+  entity_defs (`PSEUDOPET_SHELL_ENTITIES`) that are absent from `PET_ENTITIES` →
+  double-count-safe; collapse bug fixed (Category Five keeps BOTH pseudo-pets by
+  entity_def + redirect-list signature).
+- **Runtime** `calculateResolvedPseudoPetDamage` (pet-damage.ts) scales off the
+  summoner's AT table; `synthesizePseudoPetEffects` honors the IgnoreStrength
+  enhanceable/display-only split; mode swaps (Storm Cell "High Winds" toggle →
+  WindSpeed debuffs + Strong lightning; Oil Slick "Ignited" toggle) wired through.
+- **Coverage:** ~90 HC generated files carry `resolvedEntities` (Storm Cell,
+  Category Five, Tar Patch, Faraday Cage, Carrion Creepers, the Trick-Arrow patches,
+  Static Field, Tesla Coil, Tide Pool, Meteor, Vines, Geode, Freezing Rain, Burn,
+  Voltaic Sentinel, Lightning Rod, …). The P-hash→`priority_list`/`Pets_`-fallback
+  family (Rain of Fire, Glue Arrow, Trip Mine, Ice Storm, Sleet, Liquefy, Bonfire)
+  keeps the existing pet-entity path. **Cross-server:** HC Parse7 uses the
+  shell+redirect pattern (resolver handles it); Rebirth Parse6 inverts it
+  (`entity_def=Pets_*` real pet, shell in `priority_list`) so the existing pet path
+  already covers it → Rebirth regen = 0 changes.
+- **Guard:** `pseudopet-redirect.test.ts` (in-game-verified scales) +
+  `pseudopet-effects.test.ts` — both green (38 cases).
+
+Remaining items are smaller and explicitly non-blocking (Burn's Fiery-Embrace bonus
+patch toggle, Voltaic Sentinel's secondary bolt component under-count, base-aura
+face-value AoE fuzziness) — tracked in the to-do doc, not reopened.
+
+## ✅ Rebirth `is_pvp` — Phalanx Fighting ally scaling restored; Parse6 ally-buff vs PvP-split disambiguated (2026-06-11)
+
+**Root cause (confirmed against the Rebirth `.pigg`, now on the machine).** Parse6
+has **no explicit `is_pvp` flag** — the parser *synthesizes* it from each
+AttribMod's RPN `requires` (`_parse_effects_parse6`). The old heuristic mapped any
+`target> player eq` → `PVP_ONLY`. Phalanx's per-ally +Def increment (`scale 0.3`,
+`Stack`, **target=Self**) carries
+`entref target> entref source> eq ! enttype target> player eq &&` =
+**"target ≠ self AND target is a player"** — i.e. *count nearby OTHER players*
+(the ally-scaling clause), **not** a PvP combat gate. So convert-powerset dropped
+it from the PvE planner and Rebirth Phalanx generated a flat +Def with no ally
+scaling. (HC reads an explicit `is_pvp=EITHER` for the same template, which is why
+HC was fine.)
+
+**The discriminator (verify-don't-assume).** The genuine PvE/PvP split is
+**foe-targeted** (`target=AnyAffected`) and ships as a **pair**: a `critter eq`
+copy (PvE) + a `player eq` copy (PvP) of the same effect — Force Bubble's
+Repel/Knockback is the canonical example, and it must stay split. The ally-buff is
+**Self-targeted** with the **self-exclusion clause** and has **no `critter`
+sibling**. Probing the whole Rebirth binary: of the `PVP_ONLY` `player eq`
+templates carrying the self-exclusion clause, exactly **9 are `target=Self`** — the
+3 Phalanx Fightings (Brute/Scrapper/Tanker × melee/ranged/area) — vs 26
+`AnyAffected` (the legitimate foe-repel splits). No `target=Self` + self-exclusion
++ `critter` template exists, so widening the pattern is safe.
+
+**Scope correction.** The original "~165 powers" was a loose estimate (any
+`PVP_ONLY` self-`Stack` increment lacking a PvE copy). The *precise* mis-classified
+pattern — Self-targeted ally-counting self-buff — is **only Phalanx Fighting**
+(3 ATs). The other `PVP_ONLY` self-`Stack` increments without PvE copies are
+genuine offensive/foe effects, correctly classified.
+
+**Fix.** [_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py)
+`_parse_effects_parse6`: a Self-targeted AttribMod whose `requires` contains the
+self-exclusion clause `entref target> entref source> eq !` is a proximity/ally
+self-buff → classify **EITHER** (the `player`/`critter` sub-clause is an ally-type
+filter, not the combat split). Flips exactly the 9 Phalanx increments; Force Bubble
+et al. untouched (`PVP_ONLY` 7599→7590).
+
+**Materialized.** A fresh Rebirth re-export diff was **`is_pvp`-only on exactly the
+3 Phalanx files** (after ignoring a pre-existing stale-export `tags: None → []`
+drift — see below), so applied the change surgically: `PVP_ONLY → EITHER` in the 3
+committed `exported_powers/rebirth/.../phalanx_fighting.json` files (9 lines),
+regenerated the 3 shield-defense powersets. Phalanx now generates `perTarget: 0.3`
+ally scaling (**matching HC's `perTarget 0.3`**) + `maxStacks: 2` from the binary
+`stack_limit`. **HC vs Rebirth encode this differently:** HC has no `Stack`
+template (it bakes `perTarget` into the base, no `maxStacks`); Rebirth uses a
+separate `Stack` increment with `stack_limit=2`, faithfully rendered as
+`maxStacks: 2` — a real per-server data difference, not an artifact.
+
+**Deferred (separate):** the committed `exported_powers/rebirth` tree is **stale
+vs the current parser** — it carries `tags: None` where a fresh export emits
+`tags: []` (~7800 files would churn). That's the `tags` parser change never having
+been re-exported for Rebirth; unrelated to this fix. Left for a dedicated
+"re-export Rebirth to current parser" pass; applied only the 3 Phalanx files here
+to keep the diff attributable.
+
+**Guard:** [rebirth-phalanx-ally-scaling.test.ts](src/data/rebirth-phalanx-ally-scaling.test.ts).
+tsc clean, 442/442 tests pass. See [[rebirth-assets-and-parse6]].
 
 ## ✅ Summon `copy_boosts` binary-sourced — second AttribMod flags word decoded; Discharge overrides retired (2026-06-11)
 
