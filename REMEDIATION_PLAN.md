@@ -96,10 +96,18 @@ The audit's own findings were re-verified against source and hold up. One materi
 - **MSOT-6 (globalIOLevel home)** — Verified `build.settings.globalIOLevel` is write-only (zero readers; `build.settings` is read only for `.origin`). **Deleted** the build-resident copy (type, factory default, dead `setGlobalIOLevel` action, serialization fallback, both importers); the live UI-store copy stays. Backward-compatible (old persisted builds' extra field is inert), so no persist-version bump needed.
 - **MSOT-7 (localStorage re-sync)** — **Audit was stale.** `onRehydrateStorage` already calls `syncBuildDefinitions(state.build)` (buildStore.ts:2654, "Sync power definitions (effects, icons)… fixes stale data"), so the localStorage path is NOT carrying stale effects/icons — the core hazard does not exist. Only fixed the real remnant: `bulk-import-mids.ts` stamped `version: 3` on a current-shape slim build → bumped to 4.
 
-### Still pending (later phases)
-- MSOT-4 Step 2 DIVERGENT (140): per-power keep/delete with verifying evidence — needs in-game numbers or converter fixes.
+- **Phase 3 dead-code sweep (mostly DONE)** — verified each item by tracing real consumers (several audit "dead" labels were name collisions, kept those). Commits:
+  - Repo hygiene: `git rm --cached completed/ .playwright-mcp/`, removed root `attack-chain-builder.html`/`scrapper_dark_melee_chain.json`, deleted `at-modifier-tables.json` (DEAD-12, 2.8 MB). (c7b393683)
+  - Orphan components: dead top barrel, `stats/`, `enhancements/{EnhancementCard,IOSetList,barrel}`, `help/`, `incarnate/IncarnatePanel`. (6ccf37b08)
+  - Calc zombies (DEAD-1/2/3/5/6): deleted at-effects.ts (extracted normalizers to at-table-normalize.ts), power-stats.ts, trimmed stats.ts to its live surface, removed calculateDotDamage + the dead calc-layer calculateCommonIOValue. (5db21f015)
+  - State zombies: DEAD-7 opportunityLevel + DEAD-10 darkMode/compactMode (b776cc44b); DEAD-8 build.exemplarLevel + DEAD-9 store actions (f5ef2a0dd); DEAD-9 dead selector hooks + useActivePowerBuffs (2b4667740).
+  - All backward-compatible; no persist-version bump needed (removing unread fields needs no data transform — the audit's "one bump" assumption was over-cautious).
+
+### Still pending
+- **DEAD-11** ExportImportModal external-import branch (~90-line unreachable JSX + state/handlers/imports/type) — fragile exact-match surgery; deferred for a focused pass.
+- **FLOW-2/3/4** — behavior changes, not dead-code: Header server-switch persist envelope → store action; undo/redo restore calc-affecting `ui` state; persist `sentinelCritActive` consistently.
+- **MSOT-4 Step 2** DIVERGENT (140): needs in-game numbers or converter fixes.
 - `arc` radians-vs-degrees: fix site (converter vs consumer) + rationale.
-- Phase 3 dead-code sweep incl. the state zombies (DEAD-7 `opportunityLevel`, DEAD-8 `build.exemplarLevel`, DEAD-10 `darkMode`/`compactMode`) — all backward-compatible removals; no persist bump needed (the audit's "one bump" assumption was over-cautious — removing unread fields needs no data transform).
 
 ## What's explicitly NOT in scope
 The audit's "Verified-clean" list (ED, caps, Build/Power types, identity/ownership, `build.sets`, the wire-format funnel) — don't re-investigate. Python companion tools were out of the original audit scope.
