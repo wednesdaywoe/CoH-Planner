@@ -11,18 +11,18 @@ The override layer was built to paper over a **stale April-2019 CoD2 extract**. 
 **Recommended handling:**
 - **DEAD_PIN (119) + PVP_ONLY_REDUNDANT (14)** — mechanically retire (remove the pinned fields / delete file if nothing legit remains). No game-value judgment required.
 - **AUGMENT_ONLY (16)** — keep; these add planner-only fields the generated layer does not emit.
-- **DIVERGENT (140)** — per-power decision, triage by stakes: **DAMAGE 18** (verify in-game first), **STATS 8**, **EFFECTS 114**. For each, decide whether the override is a legit planner correction (keep) or a frozen stale value (delete so the live binary shows).
+- **DIVERGENT (136)** — per-power decision, triage by stakes: **DAMAGE 14** (verify in-game first), **STATS 8**, **EFFECTS 114**. For each, decide whether the override is a legit planner correction (keep) or a frozen stale value (delete so the live binary shows).
 - Cross-cutting signal: `arc` is stored in **radians** in generated but **degrees** in overrides — reconcile representation rather than treating each as a one-off.
 
 ## Tally
 
 | Status | Count | Meaning |
 |---|---|---|
-| DIVERGENT | 140 | A non-PvP value generated also emits (PvE damage / stats / effects sub-key) differs → **decision needed**: real planner correction vs. frozen stale value. |
+| DIVERGENT | 136 | A non-PvP value generated also emits (PvE damage / stats / effects sub-key) differs → **decision needed**: real planner correction vs. frozen stale value. |
 | AUGMENT_ONLY | 16 | Override only adds planner-only sub-keys generated never emits (maxStacks, stacksLinear, …); no value conflict → keep. |
-| TEXT_ONLY | 6014 | Override only touches display/text fields → out of MSOT-4 scope. |
+| TEXT_ONLY | 6018 | Override only touches display/text fields → out of MSOT-4 scope. |
 
-## DIVERGENT (140)
+## DIVERGENT (136)
 
 ### `homecoming` arachnos-soldier/epic/arachnos-soldier/frag-grenade.ts _[EFFECTS]_
 - **damage** — PvE entries equal; differs only by PvP variants (calc-filtered)
@@ -38,17 +38,6 @@ The override layer was built to paper over a **stale April-2019 CoD2 extract**. 
   - override: `{"resistanceDebuff":{"scale":-2,"table":"Ranged_Res_Dmg"}}`
   - generated: `{"resistanceDebuff":{"smashing":{"scale":2,"table":"Ranged_Res_Dmg"},"lethal":{"scale":2,"table":"Ranged_Res_Dmg"},"fire":{"scale":2,"table":"Ranged_Res_Dmg"},"cold":{"scale":2,"table":"Ranged_Res_Dmg"},"energy":{"scale":2,"table":"Ranged_Res_Dmg"},"negative":{"scale":2,"table":"Ranged_Res_Dmg"},"psionic":{"scale":2,"table":"Ranged_Res_Dmg"},"toxic":{"scale":4,"table":"Ranged_Res_Dmg"}},"durations":{"resistanceDebuff":16},"buffDuration":16}`
 
-### `homecoming` arachnos-soldier/epic/bane-spider-soldier/crowd-control.ts _[DAMAGE]_
-- **stats** — CONFLICT: accuracy, arc
-  - override: `{"accuracy":1,"arc":120}`
-  - generated: `{"accuracy":1.05,"range":7,"radius":7,"arc":3.1415927410125732,"recharge":16,"endurance":15.184,"castTime":2,"maxTargets":10}`
-- **damage** — PvE damage differs (2 vs 2 non-PvP entries)
-  - override: `["{type:Smashing,scale:2.1,table:Melee_Damage}","{type:Toxic,scale:0.1,table:Melee_Damage,duration:4.1,tickRate:1}"]`
-  - generated: `["{type:Smashing,scale:1.61,table:Melee_Damage}","{type:Toxic,scale:0.1,table:Melee_Damage,duration:4.1,tickRate:1}","{type:Smashing,scale:1.7183,table:Melee_PvPDamage}","{type:Toxic,scale:0.0836,table:Melee_PvPDamage,duration:4.1,tickRate:1}","{type:Smashing,scale:0.7217,table:Ranged_PvPDamage}"]`
-- **effects** — CONFLICT: knockback
-  - override: `{"knockback":{"scale":0.67,"table":"Melee_Knockback"}}`
-  - generated: `{"knockback":{"scale":1.34,"table":"Melee_Ones"}}`
-
 ### `homecoming` arachnos-soldier/epic/bane-spider-soldier/mace-beam-blast.ts _[DAMAGE]_
 - **stats** — CONFLICT: accuracy, range, recharge, endurance, radius
   - override: `{"accuracy":1,"range":80,"recharge":12,"endurance":13,"radius":15}`
@@ -56,17 +45,6 @@ The override layer was built to paper over a **stale April-2019 CoD2 extract**. 
 - **damage** — PvE damage differs (2 vs 1 non-PvP entries)
   - override: `["{type:Smashing,scale:0.4,table:Ranged_Damage}","{type:Energy,scale:0.4,table:Ranged_Damage}"]`
   - generated: `["{type:Energy,scale:0.784,table:Ranged_Damage}","{type:Energy,scale:0.7876,table:Ranged_PvPDamage}","{type:Energy,scale:1.1814,table:Ranged_PvPDamage}"]`
-- **effects** — CONFLICT: knockback
-  - override: `{"knockback":{"scale":0.75,"table":"Ranged_Knockback"}}`
-  - generated: `{"knockback":{"scale":2,"table":"Ranged_Knockback"}}`
-
-### `homecoming` arachnos-soldier/epic/bane-spider-soldier/mace-beam-volley.ts _[DAMAGE]_
-- **stats** — CONFLICT: accuracy, range, recharge, endurance, castTime, arc
-  - override: `{"accuracy":1,"range":60,"recharge":14,"endurance":14.56,"castTime":2,"arc":60}`
-  - generated: `{"accuracy":1.05,"range":40,"radius":40,"arc":0.7853981852531433,"recharge":10,"endurance":10.192,"castTime":1.67,"maxTargets":10}`
-- **damage** — PvE damage differs (2 vs 1 non-PvP entries)
-  - override: `["{type:Smashing,scale:0.6,table:Ranged_Damage}","{type:Energy,scale:0.6,table:Ranged_Damage}"]`
-  - generated: `["{type:Energy,scale:0.824,table:Ranged_Damage}","{type:Energy,scale:0.8273,table:Ranged_PvPDamage}","{type:Energy,scale:1.1417,table:Ranged_PvPDamage}"]`
 - **effects** — CONFLICT: knockback
   - override: `{"knockback":{"scale":0.75,"table":"Ranged_Knockback"}}`
   - generated: `{"knockback":{"scale":2,"table":"Ranged_Knockback"}}`
@@ -131,15 +109,6 @@ The override layer was built to paper over a **stale April-2019 CoD2 extract**. 
   - override: `{"slow":{"jumpHeight":{"scale":500,"table":"Ranged_Ones"},"fly":{"scale":10,"table":"Ranged_Ones"}},"rechargeDebuff":{"scale":0.5,"table":"Ranged_Slow"},"movement":{"runSpeed":{"scale":0.5,"table":"Ranged_Slow"},"flySpeed":{"scale":0.5,"table":"Ranged_Slow"}},"buffDuration":15,"durations":{"movement":15,"rechargeBuff":15,"slow":15}}`
   - generated: `{"hold":{"mag":3,"scale":10,"table":"Ranged_Immobilize"},"slow":{"jumpHeight":{"scale":2,"table":"Melee_Leap"},"runSpeed":{"scale":0.5,"table":"Ranged_Slow"},"flySpeed":{"scale":0.5,"table":"Ranged_Slow"},"fly":{"scale":10,"table":"Ranged_Ones"}},"durations":{"slow":15,"rechargeDebuff":15},"rechargeDebuff":{"scale":0.5,"table":"Ranged_Slow"},"buffDuration":15}`
 
-### `homecoming` arachnos-soldier/epic/crab-spider-soldier/arm-lash.ts _[DAMAGE]_
-- **stats** — CONFLICT: range, recharge, endurance, castTime, arc, maxTargets
-  - override: `{"range":7,"recharge":12,"endurance":13,"castTime":1.5,"arc":90,"maxTargets":10}`
-  - generated: `{"accuracy":1,"range":10,"radius":10,"arc":0.5235987901687622,"recharge":10,"endurance":10.192,"castTime":1.67,"maxTargets":5}`
-- **damage** — PvE damage differs (1 vs 1 non-PvP entries)
-  - override: `{"type":"Lethal","scale":2.1,"table":"Melee_Damage"}`
-  - generated: `["{type:Lethal,scale:1.7,table:Melee_Damage}","{type:Lethal,scale:1.5982,table:Melee_PvPDamage}","{type:Lethal,scale:0.3708,table:Melee_PvPDamage}"]`
-- **effects** — all 0 sub-keys equal
-
 ### `homecoming` arachnos-soldier/epic/crab-spider-soldier/channelgun.ts _[STATS]_
 - **stats** — CONFLICT: endurance
   - override: `{"endurance":8.12}`
@@ -195,15 +164,6 @@ The override layer was built to paper over a **stale April-2019 CoD2 extract**. 
 - **damage** — PvE damage differs (1 vs 1 non-PvP entries)
   - override: `{"type":"Lethal","scale":1,"table":"Melee_Damage"}`
   - generated: `["{type:Lethal,scale:1.32,table:Melee_Damage}","{type:Lethal,scale:1.34,table:Melee_PvPDamage}"]`
-- **effects** — all 0 sub-keys equal
-
-### `homecoming` arachnos-soldier/epic/crab-spider-soldier/suppression.ts _[DAMAGE]_
-- **stats** — CONFLICT: endurance, arc
-  - override: `{"endurance":20.44,"arc":60}`
-  - generated: `{"accuracy":1,"range":50,"radius":50,"arc":1.0471975803375244,"recharge":16,"endurance":17.316,"castTime":3,"maxTargets":10}`
-- **damage** — PvE damage differs (1 vs 1 non-PvP entries)
-  - override: `{"type":"Energy","scale":0.19,"table":"Ranged_Damage","duration":3.1,"tickRate":0.6}`
-  - generated: `["{type:Energy,scale:0.1854,table:Ranged_Damage,duration:3.1,tickRate:0.6000000238418579}","{type:Energy,scale:0.1744,table:Ranged_PvPDamage,duration:3.1,tickRate:0.6000000238418579}","{type:Energy,scale:0.3489,table:Ranged_PvPDamage,duration:3.1,tickRate:0.6000000238418579}"]`
 - **effects** — all 0 sub-keys equal
 
 ### `homecoming` arachnos-soldier/epic/crab-spider-training/crab-spider-armor.ts _[EFFECTS]_
