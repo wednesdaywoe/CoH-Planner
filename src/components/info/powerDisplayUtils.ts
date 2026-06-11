@@ -15,7 +15,6 @@ import type {
   ScaledDamageEntry,
   SelectedPower,
 } from '@/types';
-import { getScaleValue } from '@/types';
 import type { CharacterGlobalBonuses } from '@/utils/calculations';
 import { getTableValue } from '@/data/at-tables';
 import { getArchetype } from '@/data/archetypes';
@@ -58,14 +57,11 @@ export const TABLE_BASE_VALUES: Record<string, number> = {
   'default': 0.10,
 };
 
-/**
- * Base values for buff/debuff effects per scale point at modifier 1.0
- * In City of Heroes, debuffs and buffs use different base scaling:
- * - Debuffs (ToHit, Defense, Resistance debuffs): 5% per scale (0.05)
- * - Buffs (Damage, Defense, ToHit buffs): 10% per scale (0.10)
- */
-export const BASE_DEBUFF = 0.05;  // 5% per scale for debuffs
-export const BASE_BUFF = 0.10;    // 10% per scale for buffs
+// The 10%/5%-per-scale buff/debuff rule and the effective-modifier logic are
+// single-sourced in calculations/buff-debuff.ts. Re-exported here for the UI
+// surfaces that import from this module (InfoPanel, PowerInfoTooltip,
+// CompareSlottingModal).
+export { getEffectiveBuffDebuffModifier } from '@/utils/calculations/buff-debuff';
 
 export type EffectCategory = 'buff' | 'debuff';
 
@@ -138,46 +134,6 @@ export function getByTypeFirstValue(byType: DefenseByType | ResistanceByType | M
     }
   }
   return undefined;
-}
-
-/**
- * Get the effective buff/debuff modifier for the powerset
- * - Defender/Controller PRIMARY support: uses their full buffDebuffModifier
- * - Corruptor/Mastermind SECONDARY support: uses 1.0 (base rate, not their primary modifier)
- * - Others: uses 1.0
- */
-export function getEffectiveBuffDebuffModifier(powerSet: string, archetypeModifier: number): number {
-  const powersetArchetype = powerSet.split('/')[0];
-
-  // Defender and Controller have support as PRIMARY - use full modifier
-  if (powersetArchetype === 'defender' || powersetArchetype === 'controller') {
-    return archetypeModifier;
-  }
-
-  // Corruptor and Mastermind have support as SECONDARY - use base rate (1.0)
-  // Their buffDebuffModifier (0.75) applies to their primary blast damage, not secondary support
-  if (powersetArchetype === 'corruptor' || powersetArchetype === 'mastermind') {
-    return 1.0;
-  }
-
-  // Pool powers and others use base rate
-  return 1.0;
-}
-
-/**
- * Calculate the actual buff/debuff percentage value
- * Formula: scale × base × effectiveModifier
- * Accepts both number (legacy) and ScaledEffect (new format) as input.
- */
-export function calculateBuffDebuffValue(
-  scaleOrEffect: NumberOrScaled,
-  effectiveModifier: number,
-  category: EffectCategory = 'buff'
-): number {
-  const scale = getScaleValue(scaleOrEffect);
-  if (scale === undefined || scale === 0) return 0;
-  const baseValue = category === 'debuff' ? BASE_DEBUFF : BASE_BUFF;
-  return scale * baseValue * effectiveModifier;
 }
 
 /**

@@ -8,12 +8,12 @@ import type { PowerEffects, NumberOrScaled, SpecialEffect } from '@/types';
 import type { ExtraInstance } from './powerDisplayUtils';
 import { getScaleValue } from '@/types';
 import {
-  calculateBuffDebuffValue,
   calculateResistancePercent,
   calcThreeTier,
   expandByTypeEntries,
   expandProtectionEntries,
 } from './powerDisplayUtils';
+import { calculateBuffDebuffFraction } from '@/utils/calculations';
 import type { ThreeTierValues } from './powerDisplayUtils';
 import { abbreviateDamageType, calculateDominationMagnitude, type PowerDamageResult } from '@/utils/calculations';
 import {
@@ -686,7 +686,7 @@ function getEffectBaseValue(
       }
     }
     // Fallback to legacy formula for plain number scales
-    const result = calculateBuffDebuffValue(scaled, buffDebuffMod, config.calculation);
+    const result = calculateBuffDebuffFraction(scaled, buffDebuffMod, config.calculation);
     return result * 100;
   }
 

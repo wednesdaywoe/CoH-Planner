@@ -8,7 +8,7 @@
 
 import type { ArchetypeId, NumberOrScaled, NumberOrMez, MezEffect } from '@/types';
 import { getScaleValue } from '@/types';
-import { calculateBuffDebuffValue } from '@/utils/calculations';
+import { calculateBuffDebuffPercent } from '@/utils/calculations';
 import { getTableValue } from '@/data/at-tables';
 import { STAT_COLORS } from './stat-colors';
 import { formatPrecision } from '@/utils/format-precision';
@@ -787,7 +787,7 @@ export function calculateEffectValue(
       }
     }
     // Fallback to legacy formula for plain number scales
-    return calculateBuffDebuffValue(value, archetypeId, config.calculation);
+    return calculateBuffDebuffPercent(value, archetypeId, config.calculation);
   }
   return getScaleValue(value) ?? 0;
 }

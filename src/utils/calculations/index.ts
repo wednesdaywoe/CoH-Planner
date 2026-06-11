@@ -9,7 +9,7 @@ export {
   calculatePowerDamage,
   calculateDotDamage,
   formatDamage,
-  calculateBuffDebuffValue,
+  calculateBuffDebuffPercent,
   abbreviateDamageType,
   calculateArcanaTime,
   type DamageTableType,
@@ -222,3 +222,12 @@ export {
   calculatePermaInfo,
   type PermaInfo,
 } from './perma';
+
+// Buff/debuff base-rate rule (single source of truth)
+export {
+  calculateBuffDebuffFraction,
+  getEffectiveBuffDebuffModifier,
+  BASE_BUFF,
+  BASE_DEBUFF,
+  type BuffDebuffCategory,
+} from './buff-debuff';
