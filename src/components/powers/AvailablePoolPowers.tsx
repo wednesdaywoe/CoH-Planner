@@ -44,7 +44,7 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
   const poolsUnlocked = arePoolsUnlocked(build.level);
   const epicUnlocked = areEpicPoolsUnlocked(build.level);
   const pools = build.pools;
-  const canAddPool = pools.length < 4;
+  const canAddPool = useBuildStore((s) => s.canAddPool()); // canonical check (MSOT-8; was magic `4`)
 
   // Check if 24-power limit has been reached (exclude auto-granted form sub-powers)
   const countNonGranted = (powers: { isAutoGranted?: boolean }[]) =>
