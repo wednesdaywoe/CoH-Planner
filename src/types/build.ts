@@ -63,8 +63,6 @@ export interface AccoladeBonus {
 // ============================================
 
 export interface BuildSettings {
-  /** Global IO level for calculations (10-53) */
-  globalIOLevel: number;
   /** Character origin */
   origin: Origin;
 }
@@ -243,7 +241,6 @@ export function createEmptyBuild(serverId: 'homecoming' | 'rebirth' = 'homecomin
     inherents: [],
     accolades: [],
     settings: {
-      globalIOLevel: 50,
       origin: 'Natural',
     },
     sets: {},

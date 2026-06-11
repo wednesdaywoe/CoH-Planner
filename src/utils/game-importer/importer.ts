@@ -597,7 +597,6 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
     inherents,
     accolades: [],
     settings: {
-      globalIOLevel: level <= 50 ? Math.min(level + 2, 53) : 50,
       origin,
     },
     sets: {},

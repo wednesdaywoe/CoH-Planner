@@ -341,7 +341,7 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     epicPool,
     inherents,
     accolades: slim.accolades ?? [],
-    settings: slim.settings ?? { globalIOLevel: 50, origin: 'Natural' },
+    settings: slim.settings ?? { origin: 'Natural' },
     sets,
     incarnates: slim.incarnates ?? createEmptyIncarnateBuildState(),
     craftingChecklist: slim.craftingChecklist ?? {},

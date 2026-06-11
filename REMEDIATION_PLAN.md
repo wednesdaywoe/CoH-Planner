@@ -91,11 +91,15 @@ The audit's own findings were re-verified against source and hold up. One materi
 - **MSOT-5 parseIOSetUid** — Reconciled to the **Mids superset**: the game (/buildexport) path now resolves descriptive-suffix proc/event UIDs (pieceNum 6) and strips apostrophes, instead of returning null. This is the bug fix (the game path was silently dropping pieces a .mbd resolved). Guarded by characterization tests committed first. (commits aabe3f57c → 6e1888db8)
 - **MSOT-5 archetype maps** — Unioned to one `Class_X` map including Rebirth `Class_Guardian`; mxd `CLASS_TO_ARCHETYPE` now **derived** from it (so it gains Guardian too). The game importer previously rejected Guardian builds. (commit 6e1888db8)
 
+- **MSOT-1 (double-calc)** — `useCalculatedStats` now consumes `useCharacterCalculation()` instead of re-running `calculateCharacterTotals`. Value-neutral (`targetLevelOffset` feeds only purple-patch hit-chance, not the self-stats the legacy view reads). (commit 79133ae1c)
+- **MSOT-8 (limit checks)** — `PowerCard` and `AvailablePoolPowers` now call the canonical `canAddSlot`/`canAddPool`; PowerCard gains the build-wide slot-budget check it was missing. (commit 535a8260e)
+- **MSOT-6 (globalIOLevel home)** — Verified `build.settings.globalIOLevel` is write-only (zero readers; `build.settings` is read only for `.origin`). **Deleted** the build-resident copy (type, factory default, dead `setGlobalIOLevel` action, serialization fallback, both importers); the live UI-store copy stays. Backward-compatible (old persisted builds' extra field is inert), so no persist-version bump needed.
+- **MSOT-7 (localStorage re-sync)** — **Audit was stale.** `onRehydrateStorage` already calls `syncBuildDefinitions(state.build)` (buildStore.ts:2654, "Sync power definitions (effects, icons)… fixes stale data"), so the localStorage path is NOT carrying stale effects/icons — the core hazard does not exist. Only fixed the real remnant: `bulk-import-mids.ts` stamped `version: 3` on a current-shape slim build → bumped to 4.
+
 ### Still pending (later phases)
 - MSOT-4 Step 2 DIVERGENT (140): per-power keep/delete with verifying evidence — needs in-game numbers or converter fixes.
 - `arc` radians-vs-degrees: fix site (converter vs consumer) + rationale.
-- `globalIOLevel`: delete-dead vs migrate (planned: delete-dead).
-- localStorage re-sync: enable on rehydrate (planned: yes).
+- Phase 3 dead-code sweep incl. the state zombies (DEAD-7 `opportunityLevel`, DEAD-8 `build.exemplarLevel`, DEAD-10 `darkMode`/`compactMode`) — all backward-compatible removals; no persist bump needed (the audit's "one bump" assumption was over-cautious — removing unread fields needs no data transform).
 
 ## What's explicitly NOT in scope
 The audit's "Verified-clean" list (ED, caps, Build/Power types, identity/ownership, `build.sets`, the wire-format funnel) — don't re-investigate. Python companion tools were out of the original audit scope.

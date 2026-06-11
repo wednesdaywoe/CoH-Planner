@@ -116,7 +116,6 @@ interface BuildActions {
   setExemplarLevel: (level: number | null) => void;
   setProgressionMode: (mode: ProgressionMode) => void;
   setOrigin: (origin: Origin) => void;
-  setGlobalIOLevel: (level: number) => void;
   setKheldianForm: (form: 'human' | 'nova' | 'dwarf') => void;
 
   /**
@@ -1995,19 +1994,6 @@ export const useBuildStore = create<BuildStore>()(
           build: {
             ...state.build,
             settings: { ...state.build.settings, origin },
-          },
-        }));
-      },
-
-      setGlobalIOLevel: (level) => {
-        historyCheckpoint();
-        set((state) => ({
-          build: {
-            ...state.build,
-            settings: {
-              ...state.build.settings,
-              globalIOLevel: Math.max(10, Math.min(53, level)),
-            },
           },
         }));
       },
