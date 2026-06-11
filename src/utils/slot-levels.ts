@@ -403,10 +403,16 @@ function pickLevelForEntry(
  * otherwise uses respec mode.
  */
 export function computeAllSlotLevels(build: Build): Map<string, number[]> {
-  if (build.slotOrder.length > 0) {
-    return computeSlotLevelsLeveling(build);
+  // Defensive: `slotOrder` is normally initialized by every load path
+  // (importBuild / hydrateBuild / rehydrate migration), but a build whose
+  // rehydrate migration aborted partway can reach here with it undefined.
+  // This is the single chokepoint for slot-level computation, so guarding
+  // here keeps every consumer (useSlotLevels, freeze/move helpers, exports)
+  // from crashing on a half-migrated build.
+  if (!build.slotOrder || build.slotOrder.length === 0) {
+    return computeSlotLevelsRespec(build);
   }
-  return computeSlotLevelsRespec(build);
+  return computeSlotLevelsLeveling(build);
 }
 
 /**

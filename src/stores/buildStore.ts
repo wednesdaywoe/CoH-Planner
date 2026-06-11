@@ -2389,6 +2389,22 @@ export const useBuildStore = create<BuildStore>()(
       }),
       onRehydrateStorage: () => (state) => {
         if (state) {
+          // Early structural init: the fields below are dereferenced
+          // *unguarded* by later migrations (e.g. `inherents.length`,
+          // `primary.powers`). Initialize them FIRST so that if any single
+          // migration throws, the build is still structurally valid and the
+          // first render won't crash. The migration body is also wrapped in
+          // try/catch for the same reason — a failed migration must degrade to
+          // "loads un-migrated", never "white screen on load". Paired with the
+          // defensive guard in computeAllSlotLevels.
+          if (!state.build.slotOrder) state.build.slotOrder = [];
+          if (!Array.isArray(state.build.inherents)) state.build.inherents = [];
+          if (!state.build.incarnates) state.build.incarnates = createEmptyIncarnateBuildState();
+          if (!state.build.craftingChecklist) state.build.craftingChecklist = createEmptyCraftingChecklistState();
+          if (!state.build.shoppingListAcquired) state.build.shoppingListAcquired = {};
+          if (!Array.isArray(state.build.accolades)) state.build.accolades = [];
+          if (!state.build.sets) state.build.sets = {};
+          try {
           // Convert pieces arrays back to Sets after rehydration
           // The persisted state has arrays, but we need Sets
           const setsEntries = Object.entries(state.build.sets || {}) as [
@@ -2738,6 +2754,15 @@ export const useBuildStore = create<BuildStore>()(
             }
           }
 
+          } catch (err) {
+            // A migration threw. The early structural init above guarantees
+            // the build is still renderable, so load it with whatever
+            // migrations completed rather than aborting hydration.
+            console.error(
+              'Build rehydrate migration failed; loading with partial migration applied',
+              err
+            );
+          }
           state.setHasHydrated(true);
         }
       },
