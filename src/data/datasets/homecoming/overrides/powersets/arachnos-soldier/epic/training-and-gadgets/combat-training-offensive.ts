@@ -12,14 +12,10 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "allowedSetCategories": [],
-  "stats": {},
   "effects": {
     "tohitBuff": {
       "scale": 0.33,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "tohitBuff": 0.75
     }
   }
 };

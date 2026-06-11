@@ -13,20 +13,6 @@ import type { Power } from '@/types';
 export const overrides: Partial<Power> = {
   "targetType": "Foe (Alive)",
   "effects": {
-    "slow": {
-      "jumpHeight": {
-        "scale": 500,
-        "table": "Ranged_Ones"
-      },
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
     "movement": {
       "runSpeed": {
         "scale": 0.5,
@@ -36,12 +22,6 @@ export const overrides: Partial<Power> = {
         "scale": 0.5,
         "table": "Ranged_Slow"
       }
-    },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "rechargeBuff": 15,
-      "slow": 15
     }
   }
 };

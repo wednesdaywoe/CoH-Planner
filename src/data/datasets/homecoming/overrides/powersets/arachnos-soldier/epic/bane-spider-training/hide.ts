@@ -11,7 +11,6 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "stats": {},
   "effects": {
     "stealth": {
       "stealthPvE": {
@@ -26,10 +25,6 @@ export const overrides: Partial<Power> = {
         "scale": 0.15,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "stealth": 0.75
     }
   }
 };

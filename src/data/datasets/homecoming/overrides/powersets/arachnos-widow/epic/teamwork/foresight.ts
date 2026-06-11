@@ -15,7 +15,6 @@ export const overrides: Partial<Power> = {
     "Defense Sets",
     "Resist Damage"
   ],
-  "stats": {},
   "effects": {
     "specialBuff": {
       "hold": {
@@ -49,17 +48,6 @@ export const overrides: Partial<Power> = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "effectDuration": 0.75,
-    "durations": {
-      "confuse": 0.75,
-      "defenseBuff": 0.75,
-      "elusivity": 0.75,
-      "fear": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    }
+    "effectDuration": 0.75
   }
 };

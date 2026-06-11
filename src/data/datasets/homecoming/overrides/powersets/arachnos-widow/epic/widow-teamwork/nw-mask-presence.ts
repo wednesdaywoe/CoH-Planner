@@ -15,7 +15,6 @@ export const overrides: Partial<Power> = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "stats": {},
   "effects": {
     "stealth": {
       "stealthPvE": {

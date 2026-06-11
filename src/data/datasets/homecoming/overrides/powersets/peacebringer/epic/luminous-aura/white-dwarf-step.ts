@@ -12,30 +12,5 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "targetType": "Location (Teleport)",
-  "requires": "White Dwarf",
-  "effects": {
-    "movement": {
-      "fly": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 500,
-        "table": "Melee_SpeedFlying"
-      },
-      "movementControl": {
-        "scale": 8,
-        "table": "Melee_Ones"
-      },
-      "movementFriction": {
-        "scale": 8,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 1.5,
-    "durations": {
-      "movement": 1.5,
-      "stealth": 1.5
-    }
-  }
+  "requires": "White Dwarf"
 };

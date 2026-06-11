@@ -12,42 +12,5 @@ import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
   "maxSlots": 6,
-  "allowedSetCategories": [],
-  "stats": {},
-  "effects": {
-    "specialBuff": {
-      "hold": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "stun": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "immobilize": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "sleep": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "confuse": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "fear": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "confuse": 0.75,
-      "fear": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    }
-  }
+  "allowedSetCategories": []
 };
