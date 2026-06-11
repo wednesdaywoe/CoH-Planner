@@ -103,9 +103,11 @@ The audit's own findings were re-verified against source and hold up. One materi
   - State zombies: DEAD-7 opportunityLevel + DEAD-10 darkMode/compactMode (b776cc44b); DEAD-8 build.exemplarLevel + DEAD-9 store actions (f5ef2a0dd); DEAD-9 dead selector hooks + useActivePowerBuffs (2b4667740).
   - All backward-compatible; no persist-version bump needed (removing unread fields needs no data transform — the audit's "one bump" assumption was over-cautious).
 
+  - DEAD-11 ExportImportModal external-import branch: removed (render→game-as-final-else, footer, handlers, state, imports, 'external' type member). 1636→1478 lines. (9bee12c17)
+  - **Dead-code sweep is COMPLETE — all DEAD-1 through DEAD-12 resolved.**
+
 ### Still pending
-- **DEAD-11** ExportImportModal external-import branch (~90-line unreachable JSX + state/handlers/imports/type) — fragile exact-match surgery; deferred for a focused pass.
-- **FLOW-2/3/4** — behavior changes, not dead-code: Header server-switch persist envelope → store action; undo/redo restore calc-affecting `ui` state; persist `sentinelCritActive` consistently.
+- **FLOW-2/3/4** — behavior changes, not dead-code: Header server-switch persist envelope → store action; undo/redo restore calc-affecting `ui` state; persist `sentinelCritActive` consistently (note: FLOW-4 interacts with the now-removed `opportunityLevel` persistence).
 - **MSOT-4 Step 2** DIVERGENT (140): needs in-game numbers or converter fixes.
 - `arc` radians-vs-degrees: fix site (converter vs consumer) + rationale.
 
