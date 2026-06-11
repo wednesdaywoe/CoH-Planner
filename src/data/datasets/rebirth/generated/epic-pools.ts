@@ -79,12 +79,35 @@ export const EPIC_POOLS_RAW = {
             "scale": 15,
             "table": "Melee_Immobilize"
           },
+          "slow": {
+            "jumpHeight": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "fly": {
+              "scale": 1,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "slow": 15,
+            "rechargeDebuff": 18
+          },
           "rechargeDebuff": {
             "scale": 0.2,
             "table": "Melee_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 18
           },
           "buffDuration": 18
         }
@@ -141,12 +164,31 @@ export const EPIC_POOLS_RAW = {
             "scale": 12,
             "table": "Melee_Immobilize"
           },
+          "slow": {
+            "jumpHeight": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            }
+          },
+          "durations": {
+            "slow": 18,
+            "rechargeDebuff": 18
+          },
           "rechargeDebuff": {
             "scale": 0.3,
             "table": "Melee_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 18
           },
           "buffDuration": 18
         }
@@ -201,12 +243,31 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
+          "slow": {
+            "jumpHeight": {
+              "scale": 0.2,
+              "table": "Melee_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.2,
+              "table": "Melee_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Melee_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Melee_Slow"
+            }
+          },
+          "durations": {
+            "slow": 10,
+            "rechargeDebuff": 10
+          },
           "rechargeDebuff": {
             "scale": 0.2,
             "table": "Melee_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 10
           },
           "buffDuration": 10
         }
@@ -254,7 +315,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Slow"
           },
           "durations": {
-            "rechargeDebuff": 10
+            "rechargeDebuff": 10,
+            "slow": 10
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 1,
+              "table": "Melee_SpeedRunning"
+            },
+            "flySpeed": {
+              "scale": 0.65,
+              "table": "Melee_Slow"
+            },
+            "jumpHeight": {
+              "scale": 0.65,
+              "table": "Melee_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.65,
+              "table": "Melee_Slow"
+            }
           },
           "buffDuration": 10
         }
@@ -362,7 +442,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -466,7 +565,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.5,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -555,7 +658,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -1365,7 +1487,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -1602,7 +1728,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -1675,6 +1805,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Knockback"
+          },
           "taunt": {
             "scale": 1,
             "table": "Melee_InherentTaunt"
@@ -1884,14 +2018,34 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "slow": {
+            "jumpHeight": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            }
+          },
+          "durations": {
+            "slow": 10,
+            "rechargeDebuff": 10,
+            "resistanceDebuff": 10,
+            "defenseDebuff": 10,
+            "knockback": 10
+          },
           "rechargeDebuff": {
             "scale": 0.3,
             "table": "Melee_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 10,
-            "resistanceDebuff": 10,
-            "defenseDebuff": 10
           },
           "resistanceDebuff": {
             "smashing": {
@@ -1930,6 +2084,10 @@ export const EPIC_POOLS_RAW = {
           "defenseDebuff": {
             "scale": 1.5,
             "table": "Melee_Debuff_Def"
+          },
+          "knockback": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
           },
           "taunt": {
             "scale": 1,
@@ -2041,6 +2199,10 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
+          },
           "taunt": {
             "scale": 1,
             "table": "Melee_InherentTaunt"
@@ -2095,7 +2257,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "taunt": {
             "scale": 1,
@@ -2212,6 +2393,10 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
+          "knockback": {
+            "scale": 1,
+            "table": "Melee_Knockback"
+          },
           "taunt": {
             "scale": 1,
             "table": "Melee_InherentTaunt"
@@ -3078,6 +3263,10 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "recoveryDebuff": 4
           },
+          "knockback": {
+            "scale": 0.64,
+            "table": "Melee_Ones"
+          },
           "buffDuration": 4
         }
       },
@@ -3272,12 +3461,31 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage"
             }
           ],
+          "slow": {
+            "jumpHeight": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            }
+          },
+          "durations": {
+            "slow": 10,
+            "rechargeDebuff": 10
+          },
           "rechargeDebuff": {
             "scale": 0.2,
             "table": "Ranged_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 10
           },
           "buffDuration": 10
         }
@@ -3560,12 +3768,35 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 10,
+          "slow": {
+            "runSpeed": {
+              "scale": 1,
+              "table": "Ranged_SpeedRunning"
+            },
+            "jumpHeight": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "fly": {
+              "scale": 1,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "slow": 0.75,
+            "rechargeDebuff": 0.75
+          },
           "rechargeDebuff": {
             "scale": 0.5,
             "table": "Ranged_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 0.75
           },
           "buffDuration": 0.75
         }
@@ -4009,7 +4240,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.5,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -4354,7 +4589,17 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
-          }
+          },
+          "slow": {
+            "fly": {
+              "scale": 1.6,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "slow": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -4456,7 +4701,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -4614,7 +4878,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -5564,6 +5847,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.4,
             "table": "Melee_Damage"
           },
+          "knockback": {
+            "scale": 5,
+            "table": "Melee_Knockback"
+          },
           "tohitDebuff": {
             "scale": 0.75,
             "table": "Melee_DeBuff_ToHit"
@@ -6253,7 +6540,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.5,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -6972,7 +7263,14 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Debuff_Def"
           },
           "durations": {
-            "defenseDebuff": 15
+            "defenseDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "fly": {
+              "scale": 1,
+              "table": "Melee_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -7615,6 +7913,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 5,
             "table": "Melee_Stun"
           },
+          "knockback": {
+            "scale": 5,
+            "table": "Melee_Knockback"
+          },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
@@ -8026,7 +8328,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.432,
               "table": "Melee_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -8275,7 +8581,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.432,
               "table": "Melee_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -8375,7 +8685,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.8,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -8424,7 +8738,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.3,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -8472,7 +8790,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.4,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -9541,10 +9863,18 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 9,
           "maxTargets": 16,
+          "knockback": {
+            "scale": 3,
+            "table": "Ranged_Knockback"
+          },
+          "durations": {
+            "knockback": 0.75
+          },
           "enduranceDrain": {
             "scale": 2.5,
             "table": "Ranged_Ones"
-          }
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -9630,6 +9960,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Smashing",
             "scale": 1,
             "table": "Ranged_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Ranged_Ones"
           },
           "stun": {
             "mag": 2,
@@ -9782,12 +10116,31 @@ export const EPIC_POOLS_RAW = {
             "scale": 12,
             "table": "Ranged_Immobilize"
           },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 0.3,
+              "table": "Ranged_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.3,
+              "table": "Ranged_Slow"
+            }
+          },
+          "durations": {
+            "slow": 12,
+            "rechargeDebuff": 12
+          },
           "rechargeDebuff": {
             "scale": 0.3,
             "table": "Ranged_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 12
           },
           "buffDuration": 12
         }
@@ -9842,12 +10195,35 @@ export const EPIC_POOLS_RAW = {
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 0.3,
+              "table": "Ranged_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.3,
+              "table": "Ranged_Slow"
+            },
+            "fly": {
+              "scale": 1.6,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "slow": 12,
+            "rechargeDebuff": 12
+          },
           "rechargeDebuff": {
             "scale": 0.2,
             "table": "Ranged_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 12
           },
           "buffDuration": 12
         }
@@ -10345,12 +10721,35 @@ export const EPIC_POOLS_RAW = {
             "scale": 15,
             "table": "Melee_Immobilize"
           },
+          "slow": {
+            "jumpHeight": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "fly": {
+              "scale": 1,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "slow": 15,
+            "rechargeDebuff": 18
+          },
           "rechargeDebuff": {
             "scale": 0.2,
             "table": "Melee_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 18
           },
           "buffDuration": 18
         }
@@ -10528,7 +10927,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Slow"
           },
           "durations": {
-            "rechargeDebuff": 10
+            "rechargeDebuff": 10,
+            "slow": 10
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 1,
+              "table": "Melee_SpeedRunning"
+            },
+            "flySpeed": {
+              "scale": 0.65,
+              "table": "Melee_Slow"
+            },
+            "jumpHeight": {
+              "scale": 0.65,
+              "table": "Melee_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.65,
+              "table": "Melee_Slow"
+            }
           },
           "buffDuration": 10
         }
@@ -10597,7 +11015,17 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
-          }
+          },
+          "slow": {
+            "fly": {
+              "scale": 1.6,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "slow": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -10654,14 +11082,34 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "slow": {
+            "jumpHeight": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            }
+          },
+          "durations": {
+            "slow": 10,
+            "rechargeDebuff": 10,
+            "resistanceDebuff": 10,
+            "defenseDebuff": 10,
+            "knockback": 10
+          },
           "rechargeDebuff": {
             "scale": 0.3,
             "table": "Melee_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 10,
-            "resistanceDebuff": 10,
-            "defenseDebuff": 10
           },
           "resistanceDebuff": {
             "smashing": {
@@ -10700,6 +11148,10 @@ export const EPIC_POOLS_RAW = {
           "defenseDebuff": {
             "scale": 1.5,
             "table": "Melee_Debuff_Def"
+          },
+          "knockback": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
           },
           "buffDuration": 10
         }
@@ -10972,7 +11424,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -11023,7 +11494,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.5,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -11334,6 +11809,10 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "recoveryDebuff": 4
           },
+          "knockback": {
+            "scale": 0.64,
+            "table": "Melee_Ones"
+          },
           "buffDuration": 4
         }
       },
@@ -11513,7 +11992,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.6,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -11795,7 +12278,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.4,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -11845,7 +12332,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.3,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -12101,6 +12592,10 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "rechargeDebuff": 10
           },
+          "knockup": {
+            "scale": 1.4,
+            "table": "Ranged_Ones"
+          },
           "buffDuration": 10
         }
       },
@@ -12141,6 +12636,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Smashing",
             "scale": 1.42,
             "table": "Melee_Damage"
+          },
+          "knockup": {
+            "scale": 2,
+            "table": "Melee_Knockback"
           }
         }
       },
@@ -12752,12 +13251,31 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage"
             }
           ],
+          "slow": {
+            "jumpHeight": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            }
+          },
+          "durations": {
+            "slow": 10,
+            "rechargeDebuff": 10
+          },
           "rechargeDebuff": {
             "scale": 0.2,
             "table": "Ranged_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 10
           },
           "buffDuration": 10
         }
@@ -12937,12 +13455,31 @@ export const EPIC_POOLS_RAW = {
             "duration": 0.6,
             "tickRate": 0.5
           },
+          "slow": {
+            "jumpHeight": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            }
+          },
+          "durations": {
+            "slow": 10,
+            "rechargeDebuff": 10
+          },
           "rechargeDebuff": {
             "scale": 0.2,
             "table": "Ranged_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 10
           },
           "buffDuration": 10
         }
@@ -13653,12 +14190,31 @@ export const EPIC_POOLS_RAW = {
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
+          "slow": {
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            },
+            "runSpeed": {
+              "scale": 1,
+              "table": "Ranged_SpeedRunning"
+            },
+            "flySpeed": {
+              "scale": 0.1,
+              "table": "Ranged_Slow"
+            }
+          },
+          "durations": {
+            "slow": 0.75,
+            "rechargeDebuff": 15
+          },
           "rechargeDebuff": {
             "scale": 0.1,
             "table": "Ranged_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 15
           },
           "buffDuration": 15
         }
@@ -14202,12 +14758,31 @@ export const EPIC_POOLS_RAW = {
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
+          "slow": {
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            },
+            "runSpeed": {
+              "scale": 1,
+              "table": "Ranged_SpeedRunning"
+            },
+            "flySpeed": {
+              "scale": 0.1,
+              "table": "Ranged_Slow"
+            }
+          },
+          "durations": {
+            "slow": 0.75,
+            "rechargeDebuff": 15
+          },
           "rechargeDebuff": {
             "scale": 0.1,
             "table": "Ranged_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 15
           },
           "buffDuration": 15
         }
@@ -14790,6 +15365,10 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 10,
             "table": "Melee_Stun"
+          },
+          "knockup": {
+            "scale": 3,
+            "table": "Melee_Knockback"
           }
         }
       },
@@ -14890,7 +15469,17 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
-          }
+          },
+          "slow": {
+            "fly": {
+              "scale": 1.6,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "slow": 15
+          },
+          "buffDuration": 15
         }
       }
     ]
@@ -14948,7 +15537,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -15052,7 +15660,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.5,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -15217,7 +15829,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -15402,6 +16033,10 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "recoveryDebuff": 4
+          },
+          "knockback": {
+            "scale": 0.64,
+            "table": "Melee_Ones"
           },
           "buffDuration": 4
         }
@@ -16058,7 +16693,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 1,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Ranged_Knockback"
+          }
         }
       }
     ]
@@ -16464,7 +17103,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.8,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -16588,7 +17231,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.3,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -16900,7 +17547,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.3,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -16948,7 +17599,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.4,
               "table": "Ranged_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Ranged_Knockback"
+          }
         }
       }
     ]
@@ -17211,6 +17866,10 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "rechargeDebuff": 10
+          },
+          "knockup": {
+            "scale": 1.4,
+            "table": "Ranged_Ones"
           },
           "buffDuration": 10
         }
@@ -17518,6 +18177,10 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "rechargeDebuff": 10
           },
+          "knockup": {
+            "scale": 1.4,
+            "table": "Ranged_Ones"
+          },
           "buffDuration": 10
         }
       }
@@ -17735,7 +18398,15 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 0.75,
             "table": "Melee_Immobilize"
-          }
+          },
+          "repel": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "repel": 0.75
+          },
+          "buffDuration": 0.75
         }
       }
     ]
@@ -18125,7 +18796,11 @@ export const EPIC_POOLS_RAW = {
               "duration": 3.2,
               "tickRate": 1
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -18295,7 +18970,17 @@ export const EPIC_POOLS_RAW = {
             "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
-          }
+          },
+          "slow": {
+            "fly": {
+              "scale": 1.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "slow": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -18395,7 +19080,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.5,
               "table": "Melee_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -18443,7 +19132,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.15,
               "table": "Melee_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 2,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -18491,7 +19184,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.5,
               "table": "Melee_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -18537,7 +19234,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -19198,6 +19914,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Smashing",
             "scale": 1.64,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 3,
+            "table": "Melee_Knockback"
           }
         }
       },
@@ -19242,6 +19962,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Smashing",
             "scale": 0.9,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
           },
           "stun": {
             "mag": 2,
@@ -19443,7 +20167,11 @@ export const EPIC_POOLS_RAW = {
               "duration": 3.2,
               "tickRate": 1
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -19605,14 +20333,34 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "slow": {
+            "jumpHeight": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            }
+          },
+          "durations": {
+            "slow": 10,
+            "rechargeDebuff": 10,
+            "resistanceDebuff": 10,
+            "defenseDebuff": 10,
+            "knockback": 10
+          },
           "rechargeDebuff": {
             "scale": 0.3,
             "table": "Melee_Slow"
-          },
-          "durations": {
-            "rechargeDebuff": 10,
-            "resistanceDebuff": 10,
-            "defenseDebuff": 10
           },
           "resistanceDebuff": {
             "smashing": {
@@ -19651,6 +20399,10 @@ export const EPIC_POOLS_RAW = {
           "defenseDebuff": {
             "scale": 1.5,
             "table": "Melee_Debuff_Def"
+          },
+          "knockback": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
           },
           "buffDuration": 10
         }
@@ -19752,7 +20504,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -19800,7 +20556,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -19850,7 +20625,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.5,
               "table": "Melee_Damage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -20567,7 +21346,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }
@@ -20799,7 +21597,26 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Slow"
           },
           "durations": {
-            "rechargeDebuff": 15
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            },
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
+            }
           },
           "buffDuration": 15
         }

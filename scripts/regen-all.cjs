@@ -37,6 +37,10 @@ const datasets = (() => {
 
 // Steps in dependency order. The two that write under generated/ vs the layered
 // powersets/ tree are tagged so --generated-only can skip the downstream ones.
+// NB convert-pool-powers / convert-epic-pools DRY-RUN unless given --apply, so
+// they must carry it here or the orchestrator silently never refreshes
+// generated/power-pools.ts + epic-pools.ts (and CI's regen-diff misses pool/epic
+// drift entirely).
 //   convert-all-powersets  -> generated/powersets/** (+ composed powersets/**)
 //   convert-pool-powers    -> generated/power-pools.ts
 //   convert-epic-pools     -> generated/epic-pools.ts
@@ -53,8 +57,8 @@ const STEPS = [
   { script: 'convert-all-powersets.cjs',      args: ['--force'], generated: true },
   { script: 'generate-powerset-index.cjs',    args: [],          generated: false },
   { script: 'generate-kheldian-variants.cjs', args: [],          generated: false },
-  { script: 'convert-pool-powers.cjs',        args: [],          generated: true },
-  { script: 'convert-epic-pools.cjs',         args: [],          generated: true },
+  { script: 'convert-pool-powers.cjs',        args: ['--apply'], generated: true },
+  { script: 'convert-epic-pools.cjs',         args: ['--apply'], generated: true },
   { script: 'convert-incarnate-effects.cjs',  args: [],          generated: true },
   { script: 'convert-salvage.cjs',            args: [],          generated: true },
   { script: 'convert-pet-entities.cjs',       args: [],          generated: false },

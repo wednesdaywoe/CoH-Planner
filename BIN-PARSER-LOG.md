@@ -3,6 +3,8 @@
 Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 (`tools/bin-crawler/` + `scripts/convert-powerset.cjs` + `scripts/convert-epic-pools.cjs`), with diagnoses and recommended fixes. Newest entries at top, in the "NEW ISSUES/UNRESOLVED" section. When completed, move the entry to the top of "RESOLVED" section with details of the fix or any other relevant information.
 
+> **Before you make any edits** Be sure to read `GAME-DATA-PRINCIPLES.md`
+
 > **Rebirth-specific gaps** are indexed in [to-do/REBIRTH_DATA_GAPS.md](to-do/REBIRTH_DATA_GAPS.md)
 > (the front door for the Rebirth dataset — most trace to one root: Parse6 drops AttribMod
 > tail/condition fields that Parse7 decodes). Rebirth findings still get their detailed
@@ -11,25 +13,6 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 >Agent note: One small flag for your separate task: when you pick up the parser work, the verification tooling I built is at c:\tmp\ (oracle-verify.mjs, override-audit.mjs, etc.) — handy if you end up retiring the Discharge overrides after the parser fix, to confirm the audit goes 9 → 7.
 
 > --- NEW ISSUES / UNRESOLVED ---
-
-## ⬜ regen-all silently DRY-RUNS pools/epics — they never regenerate via the orchestrator — 2026-06-11
-
-`scripts/regen-all.cjs` runs `convert-pool-powers.cjs` and `convert-epic-pools.cjs`
-with `args: []`, but **both converters require `--apply` to write** (without it they
-print "… (DRY RUN) / Run with --apply" and exit). So `npm run regen:generated`
-refreshes **powersets** (`convert-all-powersets --force`) but **never**
-`generated/power-pools.ts` / `generated/epic-pools.ts`. This is the root cause of the
-recurring "pool/epic committed output is stale vs the converter" deferrals scattered
-through this log (CopyBoosts, specialBuff, accuracy entries…): a full regen genuinely
-*can't* refresh them. The `regen-diff.yml` guard inherits the same dry-run
-(`--generated-only` still skips the write), so **pool/epic drift is invisible to CI**.
-
-Fixing it = add `--apply` to those two STEPS — but the first run will surface large
-latent drift (≈2400 lines on epic-pools, incl. a pre-`slow`-extraction
-`rechargeDebuff → slow` restructuring), so it needs a **reviewed** pool/epic regen, not
-a blind apply. Until then, any converter change that touches pools/epics must be
-hand-applied to the affected entries (as the stealth `stackKey` ✅ below did for the 3
-Concealment/Speed pool powers).
 
 ## ⬜ Pseudo-pet summon residuals — leftovers after the count fix (low priority) — 2026-06-11
 
@@ -68,6 +51,55 @@ Surfaced while binary-sourcing IO sets (resolved entry below). Low priority:
   the `Set_Mode` special-piece shape in the extractor.
 
 > ---RESOLVED ---
+
+## ✅ regen-all now refreshes pools/epics — orchestrator dry-run fixed, stranded converter drift landed (2026-06-11)
+
+**Root cause (as diagnosed).** `scripts/regen-all.cjs` ran `convert-pool-powers.cjs`
+and `convert-epic-pools.cjs` with `args: []`, but both DRY-RUN unless given `--apply`.
+So `npm run regen:generated` refreshed powersets but **never**
+`generated/power-pools.ts` / `epic-pools.ts`, and CI's `regen-diff` guard inherited the
+blind spot — the documented root of every "pool/epic output is stale, hand-applied /
+deferred" note in this log (CopyBoosts, stealth `stackKey`, specialBuff, accuracy…).
+
+**Fix.** Added `--apply` to those two STEPS in [regen-all.cjs](scripts/regen-all.cjs)
+(+ a comment noting *why* they need it where the others don't). The orchestrator now
+genuinely regenerates the pool/epic layers, so CI's regenerate-and-diff will catch
+pool/epic drift from here on.
+
+**The stranded drift, reviewed and landed.** The first real apply surfaced **2264
+insertions / 320 deletions** across the 4 generated files (HC + Rebirth × pool + epic;
+epic-heavy as predicted). Bucketed the entire diff by JSON key and confirmed **every**
+change maps to a converter improvement already shipped + validated on powersets,
+values preserved — no regressions:
+- **`slow` movement-extraction** (+164 `slow`, + `fly`/`runSpeed`/`jumpHeight`/
+  `jumpSpeed`/`movementControl`/`movementFriction`): immobilizes/holds carrying a
+  `Ranged_Slow` table now split their movement-suppression `slow` out (previously
+  dropped) while **keeping** `rechargeDebuff` at the same scale/table/duration — the
+  pre-`slow`-extraction `rechargeDebuff → slow` restructuring the old entry warned of,
+  confirmed additive not destructive.
+- **Offensive knockback** (+105 `knockback`, +14 `knockup`, +6 `repel`): the
+  2026-06-04 "KB dropped from all attacks" fix reaching pool/epic attacks (Boxing 2.68,
+  Spring Attack knockup 4, epic blasts 1.34…).
+- **`copyBoosts`** (+51): the 2026-06-11 second-flags-word fix on pool/epic summons.
+- **Pseudo-pet entity resolution** (`entity` +7/−7): P-hash → named
+  (`P2832274689 → Pets_Enflame_Pet`, etc.).
+- **IgnoreStrength re-keys** (`recoveryBuff`/`tohitBuff` → `…Unenhanced`, +8/−8 with
+  values identical): the 940d89dbb generalization. These + the unchanged
+  `defenseDebuff`/`tohitDebuff`/`specialDebuff`/`maxTargets` values (whose containers
+  merely gained a new `slow`/`knockback` sibling) are why the per-key add/remove
+  tallies net to zero — renames and sibling-additions, not value changes.
+
+**Verified.** A second `regen-all --generated-only` run is **idempotent** (identical
+2264-line diff, zero further churn) and confirms the *other* generated layers
+(powersets/incarnate/salvage/archetypes) were already current — only the 4 pool/epic
+files change. tsc clean; **455/455 tests** incl. `converter-invariants` (no new
+`*_PvPMez`/`0xFFFFFFFF` leaks from the regen).
+
+**Follow-up (not done here — belongs to the override campaign).** Now that the
+pool/epic generated layer is current, any `overrides/power-pools.ts` /
+`overrides/epic-pools.ts` entries that were pinning a value the converter now produces
+natively are candidate **dead pins** — worth an MSOT-4-style audit pass, but left
+untouched to keep this diff attributable. See [[adversarial-remediation-campaign]].
 
 ## ✅ Stealth radius binary-sourced stacking groups — `stack_key` carried, suppress-group max model (2026-06-11)
 

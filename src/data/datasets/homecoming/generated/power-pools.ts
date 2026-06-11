@@ -232,7 +232,8 @@ export const POWER_POOLS_RAW = {
             "powers": [
               "Redirects.Pool_Experimentation.Corrosive_Vial_Splat"
             ],
-            "duration": 14
+            "duration": 14,
+            "copyBoosts": true
           }
         }
       },
@@ -457,7 +458,11 @@ export const POWER_POOLS_RAW = {
               "scale": 1.801,
               "table": "Melee_PvPDamage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 2.68,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -642,6 +647,10 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_PvPDamage"
             }
           ],
+          "knockback": {
+            "scale": 1.34,
+            "table": "Melee_Ones"
+          },
           "stun": {
             "mag": 3,
             "scale": 6,
@@ -653,9 +662,9 @@ export const POWER_POOLS_RAW = {
           },
           "durations": {
             "rechargeBuff": 6,
-            "tohitBuff": 6
+            "tohitBuffUnenhanced": 6
           },
-          "tohitBuff": {
+          "tohitBuffUnenhanced": {
             "scale": 0.05,
             "table": "Melee_Ones"
           },
@@ -971,7 +980,21 @@ export const POWER_POOLS_RAW = {
               "scale": 1.61,
               "table": "Melee_PvPDamage"
             }
-          ]
+          ],
+          "slow": {
+            "fly": {
+              "scale": 1.6,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "slow": 30
+          },
+          "knockup": {
+            "scale": 1.5,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 30
         }
       },
       {
@@ -1354,7 +1377,11 @@ export const POWER_POOLS_RAW = {
               "scale": 2.049,
               "table": "Ranged_PvPDamage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1.34,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -1463,7 +1490,11 @@ export const POWER_POOLS_RAW = {
               "scale": 0.4194,
               "table": "Ranged_PvPDamage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1.34,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -1579,7 +1610,11 @@ export const POWER_POOLS_RAW = {
           "activationTime": 2.1,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "knockback": {
+            "scale": 1.34,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -2513,7 +2548,11 @@ export const POWER_POOLS_RAW = {
               "scale": 1.562,
               "table": "Melee_PvPDamage"
             }
-          ]
+          ],
+          "knockup": {
+            "scale": 4,
+            "table": "Melee_Knockback"
+          }
         }
       },
       {
@@ -2775,6 +2814,10 @@ export const POWER_POOLS_RAW = {
           "teleport": {
             "scale": 1,
             "table": "Ranged_Ones"
+          },
+          "knockback": {
+            "scale": 1.34,
+            "table": "Melee_Ones"
           }
         }
       },
@@ -3312,7 +3355,11 @@ export const POWER_POOLS_RAW = {
               "scale": 1.891,
               "table": "Ranged_PvPDamage"
             }
-          ]
+          ],
+          "knockback": {
+            "scale": 1.34,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -3398,8 +3445,9 @@ export const POWER_POOLS_RAW = {
           "maxTargets": 5,
           "summon": {
             "isPseudoPet": false,
-            "entity": "P2832274689",
-            "duration": 5
+            "entity": "Pets_Enflame_Pet",
+            "duration": 5,
+            "copyBoosts": true
           }
         }
       },
@@ -3777,6 +3825,10 @@ export const POWER_POOLS_RAW = {
           "durations": {
             "slow": 3
           },
+          "knockback": {
+            "scale": 3,
+            "table": "Melee_Knockback"
+          },
           "enduranceDrain": {
             "scale": 3,
             "table": "Melee_Ones"
@@ -3994,7 +4046,25 @@ export const POWER_POOLS_RAW = {
           "teleport": {
             "scale": 3.1,
             "table": "Ranged_Ones"
-          }
+          },
+          "slow": {
+            "flySpeed": {
+              "scale": 1,
+              "table": "Ranged_Ones"
+            },
+            "movementControl": {
+              "scale": 1,
+              "table": "Ranged_Ones"
+            },
+            "movementFriction": {
+              "scale": 1,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "slow": 4
+          },
+          "buffDuration": 4
         }
       },
       {
