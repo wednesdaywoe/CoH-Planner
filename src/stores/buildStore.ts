@@ -104,7 +104,6 @@ interface BuildActions {
   moveSlotLevel: (source: SlotLevelRef, target: SlotLevelRef) => boolean;
   /** Whether `moveSlotLevel(source, target)` would succeed (for UI hinting). */
   canMoveSlotLevel: (source: SlotLevelRef, target: SlotLevelRef) => boolean;
-  clearSlotOrder: () => void;
 
   // Enhancements
   setEnhancement: (powerName: string, slotIndex: number, enhancement: Enhancement, category?: PowerCategory) => void;
@@ -113,7 +112,6 @@ interface BuildActions {
 
   // Settings
   setLevel: (level: number) => void;
-  setExemplarLevel: (level: number | null) => void;
   setProgressionMode: (mode: ProgressionMode) => void;
   setOrigin: (origin: Origin) => void;
   setKheldianForm: (form: 'human' | 'nova' | 'dwarf') => void;
@@ -193,12 +191,9 @@ interface BuildActions {
   // Computed
   getTotalSlotsUsed: () => number;
   getSlotsRemaining: () => number;
-  getActiveSetBonuses: () => Array<{ setId: string; bonusIndex: number }>;
   canAddSlot: (powerName: string, category?: PowerCategory) => boolean;
   canAddPool: () => boolean;
-  canSelectEpicPool: () => boolean;
   isUniqueEnhancementSlotted: (setId: string, pieceNum: number) => boolean;
-  isPrestigeSlotted: (prestigeId: string) => boolean;
 
   // Import/Export
   exportBuild: () => string;
@@ -738,40 +733,6 @@ function isUniqueEnhancementSlotted(build: Build, setId: string, pieceNum: numbe
   return false;
 }
 
-/**
- * Check if a prestige enhancement is already slotted anywhere in the build.
- * Prestige enhancements are unique per character (max 1 of each).
- */
-function isPrestigeEnhancementSlotted(build: Build, prestigeId: string): boolean {
-  const checkSlots = (slots: (Enhancement | null)[]): boolean => {
-    return slots.some((enh) => {
-      if (!enh || enh.type !== 'special') return false;
-      return (enh as { category: string; id: string }).category === 'prestige' &&
-        (enh as { id: string }).id === prestigeId;
-    });
-  };
-
-  for (const power of build.primary.powers) {
-    if (checkSlots(power.slots)) return true;
-  }
-  for (const power of build.secondary.powers) {
-    if (checkSlots(power.slots)) return true;
-  }
-  for (const pool of build.pools) {
-    for (const power of pool.powers) {
-      if (checkSlots(power.slots)) return true;
-    }
-  }
-  if (build.epicPool) {
-    for (const power of build.epicPool.powers) {
-      if (checkSlots(power.slots)) return true;
-    }
-  }
-  for (const power of build.inherents) {
-    if (checkSlots(power.slots)) return true;
-  }
-  return false;
-}
 
 // Set tracking extracted to src/utils/calculations/set-tracking.ts
 const updateSetTracking = computeSetTracking;
@@ -1701,12 +1662,6 @@ export const useBuildStore = create<BuildStore>()(
         return canMoveSlotLevel(get().build, source, target);
       },
 
-      clearSlotOrder: () => {
-        set((s) => ({
-          build: { ...s.build, slotOrder: [] },
-        }));
-      },
-
       // Enhancements
       setEnhancement: (powerName, slotIndex, enhancement, categoryHint) => {
         const state = get();
@@ -1765,16 +1720,6 @@ export const useBuildStore = create<BuildStore>()(
             },
           };
         });
-      },
-
-      setExemplarLevel: (level) => {
-        historyCheckpoint();
-        set((state) => ({
-          build: {
-            ...state.build,
-            exemplarLevel: level ? Math.max(1, Math.min(state.build.level, level)) : null,
-          },
-        }));
       },
 
       setProgressionMode: (mode) => {
@@ -2224,21 +2169,6 @@ export const useBuildStore = create<BuildStore>()(
         return getPlacedSlotLimit(build.level) - countPlacedSlots(build);
       },
 
-      getActiveSetBonuses: () => {
-        const bonuses: Array<{ setId: string; bonusIndex: number }> = [];
-        const { sets } = get().build;
-
-        for (const [setId, tracking] of Object.entries(sets)) {
-          // Add bonuses for each threshold reached
-          // Typically bonuses are at 2, 3, 4, 5, 6 pieces
-          for (let pieces = 2; pieces <= tracking.count; pieces++) {
-            bonuses.push({ setId, bonusIndex: pieces - 2 });
-          }
-        }
-
-        return bonuses;
-      },
-
       canAddSlot: (powerName, categoryHint) => {
         const state = get();
         const found = findPower(state.build, powerName, categoryHint);
@@ -2252,13 +2182,8 @@ export const useBuildStore = create<BuildStore>()(
 
       canAddPool: () => get().build.pools.length < MAX_POWER_POOLS,
 
-      canSelectEpicPool: () => get().build.level >= EPIC_POOL_LEVEL,
-
       isUniqueEnhancementSlotted: (setId: string, pieceNum: number) =>
         isUniqueEnhancementSlotted(get().build, setId, pieceNum),
-
-      isPrestigeSlotted: (prestigeId: string) =>
-        isPrestigeEnhancementSlotted(get().build, prestigeId),
 
       // Import/Export
       exportBuild: () => {

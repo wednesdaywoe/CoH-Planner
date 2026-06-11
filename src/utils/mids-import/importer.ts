@@ -515,7 +515,6 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
       inherent: archetype.inherent,
     },
     level,
-    exemplarLevel: null,
     progressionMode: 'auto',
     primary: {
       id: primaryId,

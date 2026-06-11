@@ -89,7 +89,6 @@ export function slimBuild(build: Build): SlimBuildData {
     serverId: build.serverId,
     archetype: { id: build.archetype.id, name: build.archetype.name },
     level: build.level,
-    exemplarLevel: build.exemplarLevel,
     progressionMode: build.progressionMode,
     primary: slimPowersetSelection(build.primary),
     secondary: slimPowersetSelection(build.secondary),
@@ -325,7 +324,6 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     serverId: (slim.serverId === 'rebirth' ? 'rebirth' : 'homecoming') as Build['serverId'],
     archetype: archetypeSelection,
     level: slim.level ?? 50,
-    exemplarLevel: slim.exemplarLevel ?? null,
     progressionMode: slim.progressionMode ?? 'auto',
     primary: {
       id: primaryId,

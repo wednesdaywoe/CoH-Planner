@@ -580,7 +580,6 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
       inherent: archetype.inherent,
     },
     level,
-    exemplarLevel: null,
     progressionMode: 'auto',
     primary: {
       id: primaryId,
