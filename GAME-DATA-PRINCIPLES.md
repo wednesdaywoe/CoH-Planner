@@ -368,7 +368,14 @@ missing game table — chase it to the source. Route such warnings through the d
 `warnFallback` helper so a real gap surfaces once instead of flooding (and so it stays
 visible rather than getting silenced).
 
----
+**The migration isn't done until the prose is right too.** This audit retired ~2,000 lines
+of stale pins but the *comments* explaining them — 361 override headers (*"Keep them — the
+current CoD2-raw extraction does not [have these]"*) and `src/data/README.md` (*"Do not drop
+an override that disagrees with generated"*) — were left in place, now saying the exact
+inverse of the truth. Correct data + lying comments is the §2 failure mode wearing a
+victory lap. When you change what the data *means* (source swapped, pins retired, a field's
+authority moved), grep for every comment/README/header that describes the old meaning and
+fix it in the **same** change — the headers and docs are part of the data, not separate from it.
 
 *When you learn a new gotcha or principle, add it here — not just to a commit message —
 so every session (local and remote) benefits. The principles span all game-data
