@@ -1,6 +1,6 @@
 # CoH Sidekick — Architecture & Technical Documentation
 
-**Last updated:** April 19, 2026
+**Last updated:** June 11, 2026
 
 CoH Sidekick is a City of Heroes character build planner and suite of helpful tools for the Homecoming server. Hosted at **coh-sidekick.com** via GitHub Pages.
 
@@ -23,25 +23,29 @@ This document covers the planner's architecture. The repository also ships three
 ```
 src/
 ├── components/
-│   ├── enhancements/   Enhancement picker, IO set browser
-│   ├── help/           Help system, onboarding help
+│   ├── enhancements/   Enhancement picker, IO set browser, set-bonus display
 │   ├── incarnate/      Incarnate slot UI, effects tooltips
-│   ├── info/           InfoPanel (power details, damage calc)
-│   ├── layout/         Header, MainLayout, StatsDashboard
-│   ├── modals/         Modal dialogs (compare-slotting, enhancement list, etc.)
+│   ├── info/           InfoPanel (power details, damage calc), shared power components
+│   ├── layout/         Header, MainLayout, StatsDashboard (the live stats view)
+│   ├── modals/         Modal dialogs (compare-slotting, export/import, enhancement list, etc.)
 │   ├── onboarding/     Onboarding beacon, feature discovery
 │   ├── powers/         Power tray, power slots, level assignments
 │   ├── shared/         BuildCard, BuildFilters (shared builds browser)
-│   ├── stats/          StatsPanel, PinnedPowersBar, stat breakdowns
 │   └── ui/             Primitives (Button, Select, Toggle, Tooltip, etc.)
 ├── data/
-│   ├── powersets/      Generated power definition files
-│   ├── at-tables.ts    AT modifier tables (105 values × N tables × 13 ATs)
-│   ├── archetypes.ts   Archetype definitions, HP tables, damage caps
-│   ├── io-sets-raw.ts  IO enhancement set database
-│   ├── incarnate-effects.ts          Incarnate interfaces + lookup functions
-│   ├── incarnate-effects-generated.ts Auto-generated incarnate data
-│   └── ...             Pool powers, epic pools, accolades, salvage, recipes
+│   ├── dataset.ts      Active-dataset loader; top-level files are thin facades
+│   │                     that forward reads to the active dataset (multi-server)
+│   ├── datasets/       Per-server data (homecoming, rebirth):
+│   │   └── <server>/
+│   │       ├── generated/   Pristine extraction (never hand-edited, regenerable)
+│   │       ├── overrides/   Hand deltas that survive regen (planner-only fields,
+│   │       │                  display fixes); see Override Layer below
+│   │       └── powersets/   Composed = withOverrides(generated, overrides)
+│   ├── at-tables.ts    Facade → datasets/<server>/at-tables.ts (AT modifier tables)
+│   ├── archetypes.ts   Facade → archetype defs, HP tables, caps (binary-sourced)
+│   ├── io-sets-raw.ts  IO enhancement set database (extracted from boostsets.bin)
+│   ├── incarnate-effects.ts  Incarnate interfaces + lookup functions
+│   └── ...             Pool powers, epic pools, accolades, salvage, pet entities
 ├── hooks/              Custom React hooks
 ├── lib/                Supabase client singleton
 ├── pages/              PlannerPage, BuildsPage, BuildDetailPage, ImportPage, SettingsPage, PlasmicHost
@@ -49,52 +53,52 @@ src/
 ├── stores/             Zustand stores (buildStore, uiStore, authStore, historyStore, onboardingStore)
 ├── types/              TypeScript type definitions
 └── utils/
-    ├── calculations/   The math engine (~7,700 lines)
+    ├── calculations/   The math engine (~9,000 lines)
     ├── calc-debug.ts   Debug logging system (window.cohDebug)
-    ├── external-import/ Import from external planner URLs
-    ├── game-import/    Import from game .mxd files
-    └── mids-import/    Import from Mids .mxd files
+    ├── fallback-warnings.ts  Deduped "fell back to a default" warnings (window.cohDebug.warnings)
+    ├── enhancement-uid.ts    Shared IO-set-UID + archetype parsing for all importers
+    ├── external-import/ Import from external planner JSON
+    ├── game-importer/  Import from the in-game /buildsave export
+    ├── mids-import/    Import from Mids Reborn .mbd files
+    └── mxd-import/     Import from legacy Mids .mxd text
 ```
 
 ## Data Pipeline
 
-Game data flows from Homecoming server dumps through extraction scripts into typed TypeScript modules that are committed to the repo:
+Three committed layers, each derived from the one before it:
 
 ```
-Raw Server Data (gitignored)                    Processed App Data (committed)
-─────────────────────────                       ─────────────────────────────
-raw_data_homecoming-<build>/
-├── powers/
-│   ├── <AT>/<set>/<power>.json  ──convert──→  src/data/powersets/<AT>/<role>/<set>/<power>.ts
-│   ├── pool_power/<pool>/       ──convert──→  src/data/power-pools-raw.ts
-│   ├── epic_power/<pool>/       ──convert──→  src/data/epic-pools-raw.ts
-│   └── incarnate/
-│       ├── alpha/ + alpha_silent/
-│       ├── destiny/ + destiny_silent/
-│       ├── hybrid/ + hybrid_silent/  ──convert──→  src/data/incarnate-effects-generated.ts
-│       ├── interface/ + interface_silent/
-│       ├── judgement/
-│       └── lore/
-├── tables/<AT>.json             ──extract──→  src/data/at-tables.ts
-└── objects/<entity>.json        ──convert──→  src/data/pet-entities.ts
+Live .pigg archives          exported_powers/ (committed)        src/data/datasets/<server>/
+(G:\Homecoming\assets\live)  ─ Bin Crawler ─►  <cat>/<set>/<power>.json  ─ convert ─►  generated/.../<power>.ts
+                             export_powers.py  tables/<AT>.json           ─ extract ─►  at-tables.ts
+                                               (the convert input)        ─ convert ─►  archetype-stats / salvage / pet-entities / …
 ```
 
-The current raw dump in use is `exported_powers`. Swapping in a newer dump is a matter of dropping the new directory next to the old one and updating the path constant in the conversion scripts. Longer-term, the plan is to regenerate this data directly from the `.pigg` archives via Bin Crawler (see Suite section below), removing the dependency on externally-produced JSON dumps.
+1. **`.pigg` → `exported_powers/`** — Bin Crawler (`tools/bin-crawler`, see Suite section) parses the live binary archives that Homecoming's launcher refreshes every patch, and writes structured JSON to `exported_powers/`. **This JSON is committed**, so steps 2–3 are a pure source transform that runs without Python or the `.pigg` files (and the CI regen-diff guard can reproduce `generated/` byte-for-byte).
+2. **`exported_powers/` → `generated/`** — the `scripts/convert-*.cjs` converters emit pristine, never-hand-edited TypeScript under `src/data/datasets/<server>/generated/`. Re-run with `npm run regen` (or `regen:generated`).
+3. **`generated/` + `overrides/` → composed `powersets/`** — `withOverrides()` layers hand deltas on top (see Override Layer).
+
+> History: the source used to be a stale 2019 CoD2 `raw_data_homecoming-*` JSON dump, which was the root cause of most "missing/wrong data" issues. It has been replaced by the live-`.pigg` → Bin Crawler → `exported_powers/` flow above; the converters consume `exported_powers/`, not the old dump.
+
+### Override Layer (generated / overrides / composed)
+
+Because `generated/` is overwritten on every regen, hand corrections live in a parallel `overrides/` tree and are merged at import time by `withOverrides(base, overrides)` ([src/data/_layer.ts](src/data/_layer.ts)) — a shallow top-level field replace with deep-merge for `effects`/`stats`. The composed `powersets/*.ts` files are thin wrappers (`withOverrides(generated, overrides)`).
+
+**Overrides should be rare and shrinking.** They began as a workaround for the stale CoD2 dump; with the live-binary source, an override that pins a numeric value usually *freezes a stale value over correct generated data*. A 2026-06 audit verified every numeric-pinning override against the `.powers` oracle / live binary and retired ~2,000 lines of stale pins, leaving only genuine planner enrichments (e.g. `summon.copyBoosts`, which the parser doesn't yet extract). Prefer fixing the parser/converter over adding an override (GAME-DATA-PRINCIPLES §0).
 
 ### Extraction Scripts (scripts/)
 
 | Script | Purpose |
 |--------|---------|
-| `convert-powerset.cjs` | Main power converter: raw JSON → typed .ts files |
-| `convert-all-powersets.cjs` | Batch converter for all powersets |
-| `convert-pool-powers.cjs` | Pool power extraction |
-| `convert-epic-pools.cjs` | Epic/patron pool extraction |
+| `regen-all.cjs` | **Orchestrator** — runs all converters below in dependency order, both datasets, from committed `exported_powers/` (no `.pigg`/Python). `npm run regen` / `regen:generated`. The regen-diff CI guard runs this and asserts byte-equality. |
+| `convert-powerset.cjs` / `convert-all-powersets.cjs` | Main power converter (`exported_powers` JSON → `generated/` .ts) + batch driver |
+| `convert-pool-powers.cjs`, `convert-epic-pools.cjs` | Pool / epic-patron pool extraction |
 | `convert-incarnate-effects.cjs` | Incarnate effects from all 6 slots (Alpha through Lore) |
-| `convert-io-sets.js` | IO enhancement set extraction |
-| `convert-pet-entities.cjs` | Pet/minion entity definitions |
-| `extract-at-tables.cjs` | AT modifier tables from archetype JSON |
-| `reconvert-redirect-powersets.cjs` | Rebuilds powersets that use in-game redirects |
-| `generate-powerset-index.cjs` | Regenerates the powerset barrel index after powerset additions |
+| `convert-archetypes.cjs` | Archetype HP curves / caps / baseThreat / damageCap from `classes.bin` (see GAME-DATA-PRINCIPLES §12) |
+| `convert-salvage.cjs`, `convert-pet-entities.cjs` | Invention salvage; pet/minion entity definitions |
+| `extract-at-tables.cjs` | AT modifier tables from `exported_powers/tables/<AT>.json` |
+| `extract-rebirth-io-sets-v2.py` | IO sets from `boostsets.bin` + `powers.bin`, both servers (Python; replaces the retired `convert-io-sets.js`) |
+| `generate-powerset-index.cjs`, `generate-kheldian-variants.cjs` | Powerset barrel index; Kheldian form variants |
 
 ### Other Scripts
 
@@ -104,6 +108,15 @@ The current raw dump in use is `exported_powers`. Swapping in a newer dump is a 
 | `env-loader.ts`, `env-shim.ts`, `register-env-loader.mjs` | Load `.env` vars into Node-side TypeScript scripts that need Vite-style `VITE_*` env access. |
 
 > **Note on script hygiene:** historically this directory accumulated `fix-*`, `patch-*`, and one-shot migration scripts that applied corrections to generated data. Those have all been removed in favor of fixing the upstream data pipeline. If you need to apply a one-time correction in future, prefer regenerating from current `.pigg` data via Bin Crawler over committing a one-shot patch script — those scripts are usually non-idempotent and rot quickly.
+
+## Boot Sequence
+
+The data-layer facades (`@/data/at-tables`, `@/data/archetypes`, …) read from the *active dataset*, which `getActiveDataset()` throws on if nothing is loaded. So **a dataset must be loaded before any data access**, and `main.tsx` enforces a strict order:
+
+1. `bootServerId()` reads the persisted build's `serverId` straight from `localStorage` (not the store) — so the correct dataset loads first and we don't flash the wrong server.
+2. `await loadDataset(...)` loads the matching dataset chunk.
+3. **Then** the buildStore hydrates. The store is created with `skipHydration: true` and `main.tsx` calls `useBuildStore.persist.rehydrate()` *after* the dataset is loaded — because the rehydrate migrations (inherent reconciliation, `syncBuildDefinitions`) read the active dataset. (Auto-hydrating at import — before `loadDataset` — made those migrations throw and silently abort.)
+4. `bootReady` (the load+rehydrate promise) gates both the React render and the `.skif` file-open handler, so an opened build lands after hydration rather than being clobbered by it.
 
 ## Calculation System
 

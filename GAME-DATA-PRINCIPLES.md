@@ -56,6 +56,14 @@ real effects and a confirmed over-enhance bug. Concretely:
   thing** — go inspect 3–5 concrete examples before drawing conclusions.
 - Trace one clear case end-to-end (source `.powers` → `exported_powers` → `generated` →
   calc/display) before generalizing a fix.
+- **Comments lie — grep before trusting them.** In-file comments here have actively
+  misdescribed data flow. A 2026-06 adversarial audit found `buffDebuffModifier`
+  documented as *"effectively VESTIGIAL … the calc just never reads them"* while
+  `damage.ts:864` reads it (a live table-less fallback). A maintainer trusting that
+  comment reasons about a system that does not exist. Treat any in-file claim that data
+  is *"vestigial," "never read," "safe to ignore,"* or *"handled elsewhere"* as a
+  hypothesis to verify with a grep, not a fact — and when you confirm one is false, **fix
+  the comment in the same change** so it can't mislead the next person.
 
 ## 3. The recurring traps (read before any effect-data analysis)
 
@@ -313,6 +321,52 @@ gotchas that bit us:
   the committed binary export it derives from, so a hand-edit or stale generated
   file can't silently diverge it from the game. Note the regen-diff blind spot
   (§9) — layered outputs aren't all covered, so the focused test is the backstop.
+
+## 13. Overrides rot against a fixed source — audit them, don't trust them
+
+The override layer (`datasets/<server>/overrides/`, merged by `withOverrides`) carries
+hand corrections that survive regen. But an override written to compensate for a *stale
+source* silently **inverts** once the source is fixed: it now freezes the old value on
+top of correct `generated` data — the exact opposite of its purpose. Most of this
+project's overrides were created against the 2019 CoD2 dump; after the switch to the live
+`.pigg` binary they became stale-value-freezers, and a 2026-06 audit retired ~2,000 lines
+of them (DIVERGENT 140 → 9, the 9 being genuine enrichments). The durable method:
+
+- **Test `generated == oracle`, not "is the override stale."** Removing a divergent
+  override falls back to `generated`, so the question that matters is whether *generated*
+  is correct — compare it to the `.powers` oracle (§5) or a fresh live-binary parse, not
+  to the override. When they match, the override is a stale pin and is safe to drop
+  regardless of what value it carried.
+- **Scalar agreement is a cheap extraction-correctness proxy.** If a power's
+  accuracy/range/recharge/arc/… all match the oracle, the pipeline works for that power,
+  so its damage/effects are almost certainly faithful too — you needn't hand-verify every
+  field (0 mismatches across ~110 powers verified this way). Where the `.powers` snapshot
+  is missing a category (it lacks Peacebringer + some EAT epics), a *fresh* Bin Crawler
+  parse of the live `.pigg` is the substitute oracle — diff it against committed
+  `exported_powers` to confirm currency (§6) before trusting it.
+- **Mind unit/representation differences.** The same value stored in different units
+  across layers looks like a conflict when it isn't: `.powers` stores cone `Arc` in
+  **degrees** (180), the binary/`generated` in **radians** (π), and `arcToDegrees`
+  converts back — with a heuristic `≤2π → radians` guard that would misread a genuinely
+  small (<6.28°) degree value. Likewise the converter may *re-key* an effect (mez kept as
+  per-group `durations` vs per-mez): different shape, same data. Normalize before
+  declaring a divergence.
+- **Keep genuine parser-gap enrichments.** A few overrides supply data the parser doesn't
+  extract *yet* (e.g. `summon.copyBoosts`, consumed by pet-damage). Discriminate by which
+  side matches the oracle: generated-matches-oracle ⇒ stale pin (drop); override-matches-
+  oracle-while-generated-is-missing/wrong ⇒ real correction (keep, and log the parser gap
+  in BIN-PARSER-LOG so it can be sourced from the binary later, §0).
+
+**Corollary — silent fallbacks hide wrong values, not just missing ones.** When a value
+isn't found the calc usually substitutes a flat default rather than erroring, and that
+default can be wrong in *both* directions. Damage buffs whose `Melee_Buff_Dmg` table was
+missing from the `extract-at-tables` allowlist fell back to a flat `0.10` — over-valuing
+low-damage ATs (Tanker Build Up showed +80% vs the real +70%) and under-valuing high ones
+(Blaster +80% vs +100%). A recurring *"table not found → fallback"* warning is usually an
+**allowlist/extraction gap on a real table** (§1's captured-but-unused class), not a
+missing game table — chase it to the source. Route such warnings through the deduped
+`warnFallback` helper so a real gap surfaces once instead of flooding (and so it stays
+visible rather than getting silenced).
 
 ---
 
