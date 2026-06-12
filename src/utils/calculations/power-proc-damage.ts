@@ -53,8 +53,14 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
       (e) => e.category === 'Damage' && e.value !== undefined && e.valueMax !== undefined,
     );
     if (!dmg || dmg.value === undefined || dmg.valueMax === undefined) continue;
-    const enhLevel = io.attuned ? buildLevel : (io.level ?? buildLevel);
-    const procDmg = interpolateProcDamage(dmg.value, dmg.valueMax, procData.levelRange, enhLevel);
+    // Proc DAMAGE scales with the CHARACTER's (combat) level, never the slotted
+    // IO's crafted level: a level-21 and a level-50 Touch of Lady Grey deal
+    // identical damage on a level-50 character (the "slot the cheapest proc"
+    // rule). The IO level governs enhancement *values* and exemplar floor, not
+    // the proc payload. interpolateProcDamage clamps to the proc's own
+    // levelRange. (@Redlynne report, 2026-06-12 — was using io.level for
+    // non-attuned, so Global-IO-Level builds under-counted 10×.)
+    const procDmg = interpolateProcDamage(dmg.value, dmg.valueMax, procData.levelRange, buildLevel);
     const procChance = calculateProcChance(procData.ppm, baseRecharge, castTime, radius, arcDegrees, rechargeEnh);
     total += procDmg * procChance;
   }

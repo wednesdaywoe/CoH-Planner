@@ -745,10 +745,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       );
       if (!effect || effect.value == null || effect.valueMax == null) continue;
 
-      // Attuned procs scale with the character's current level; fixed-level
-      // IOs use their crafted level. Mirrors DamageBlock's proc-damage helper
-      // so this table and the "+proc" annotation interpolate at the same level.
-      const slotLevel = ioSlot.attuned ? build.level : (ioSlot.level ?? build.level);
+      // Proc DAMAGE scales with the CHARACTER's (combat) level, NOT the slotted
+      // IO's crafted level — a level-21 and a level-50 proc deal identical damage
+      // on a level-50 character ("slot the cheapest proc"). Mirrors DamageBlock's
+      // proc-damage helper. interpolateProcDamage clamps to the proc's levelRange.
+      const slotLevel = build.level;
       // Proc damage is FLAT in CoH — it is NOT modified by damage IOs
       // slotted in this power, nor by damage-strength buffs (Fury, Build
       // Up, Aim, Musculature). Procs fire at their fixed scale-table

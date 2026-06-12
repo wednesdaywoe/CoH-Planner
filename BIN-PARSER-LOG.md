@@ -41,6 +41,41 @@ below for the *real* gap this thread exposed.
 
 > ---RESOLVED ---
 
+## ✅ Rebirth stealth suppression (NictusFX) restored — Parse6 format limitation, fixed via HC cross-server oracle (2026-06-12)
+
+**Gap.** Rebirth stealth radius was **pure-additive** (e.g. Stealth 55 + Super Speed 35 →
+90 instead of max 55), over-counting any build with 2+ suppress-group stealth powers. Filed
+as "Parse6 drops the stack fields" — but that was wrong.
+
+**Root cause (reframed via verify-don't-assume).** It is NOT a droppable field. HC's Parse7
+`stack_key` is a **string** that can name a *global, cross-power* group ("NictusFX", shared
+by 30 stealth powers). Rebirth's older **Parse6 `stack_key` is a per-power integer** (e.g.
+Support_Genome groups its own damage types as 1/2; Guardians_Gift uses 6–10 for its mez
+types) — it structurally **cannot express** a global string key. Proof: "NictusFX" appears
+in Rebirth's `powers.bin` only **once**, on an unrelated NPC FX power; Super Speed's stealth
+template doesn't contain it at all. (The same multiverse install confirms the format split:
+Thunderspy's `coxg/bin.pigg` is **Parse7** and carries NictusFX; Rebirth's `z_rebirth_bin.pigg`
+is **Parse6** and can't. Rebirth's `rebirth/` is the correct, current source — `piggs/` is the
+stock base with no Rebirth content.) So the suppression is CoH **engine behavior** that only
+Parse7 happens to serialize.
+
+**Fix (cross-server oracle).** `STEALTH_SUPPRESS_LEAVES` in
+[convert-powerset.cjs](scripts/convert-powerset.cjs) — the binary-derived HC membership by
+power **leaf name** (12 leaves: Stealth, Invisibility, Super_Speed, Cloak_of_Darkness,
+Energy_Cloak, Arctic_Fog, Shadow_Fall, Steamy_Mist, Shadow_Cloak, Cloaking_Device,
+Shinobi-Iri, Kyokan). When the export has no native `Suppress` key (Rebirth) and the leaf
+matches, emit `stackKey: "NictusFX"`. **No-op on HC** (native key already set) — verified: HC
+regen = 0 changes. Leaf-match is safe because `extractEffects(…, powerName)` is fed only
+player powerset + pool powers (convert-powerset / convert-pool-powers); the 73 HC NPC/pet
+powers sharing these leaves (additive) use a separate extractEffects / aren't converted.
+
+**Membership is binary-authoritative, and the double-check paid off:** the prior prose listed
+**Mask Presence** as a suppress member — the binary says `Replace`/null (additive). Corrected
+in the entry below + memory. **Result:** 26 Rebirth player stealth powers (incl. the 3 pool
+powers) gain `stackKey: "NictusFX"`; Hide / Grant Invis / Mask Presence / IO procs stay
+additive. Guard: [rebirth-stealth-suppress.test.ts](src/data/rebirth-stealth-suppress.test.ts).
+tsc clean, 480 tests.
+
 ## ✅ Rebirth "Return From The Grave" resurrection set — mislabeled "Brute Archetype Sets" → new "Resurrection" category (2026-06-12)
 
 **Bug (Rebirth).** Return From The Grave / Superior (Rebirth's first-ever Rez IO
@@ -350,12 +385,19 @@ deeper model question: stealth radius was aggregated **max-wins**, then (interim
 **The binary rule (verify-don't-assume, §12).** Every StealthRadius template carries a
 `stack` mode + `stack_key`. Across all 103 HC player stealth templates there are exactly
 **two** behaviors (`exported_powers/live/**`):
-- `stack="Suppress"` + `stack_key="NictusFX"` (**32 powers**: Pool Stealth/Super Speed/
-  Invisibility, Cloak of Darkness, Energy Cloak, Shinobi-Iri, Shadow Cloak, Steamy Mist,
-  Arctic Fog, Cloaking Device, Mask Presence…) — one mutual-suppression group, only the
-  **largest** radius applies.
-- `stack="Replace"` + `stack_key=null` (**71 powers**: Stalker Hide, Grant Invisibility,
-  Smoke Flash, pet stealth — AND the IO procs, a separate group) — **additive**.
+- `stack="Suppress"` + `stack_key="NictusFX"` (**30 powers**, 12 leaf names: Pool Stealth/
+  Super Speed/Invisibility, Cloak of Darkness, Energy Cloak, Shinobi-Iri, Shadow Cloak,
+  Steamy Mist, Arctic Fog, Cloaking Device, Kyokan) — one mutual-suppression group, only
+  the **largest** radius applies.
+- `stack="Replace"` + `stack_key=null` (Stalker Hide, Grant Invisibility, Smoke Flash, pet
+  stealth — AND the IO procs, a separate group) — **additive**.
+
+  **Correction (verified 2026-06-12):** **Mask Presence** (Night Widow / Fortunata) was
+  previously listed here as a NictusFX suppress member — it is NOT. Every Mask Presence
+  template is `stack="Replace"`, `stack_key=null` in the binary → it stacks **additively**,
+  like Hide. (The generated *data* was always correct — the converter only carries
+  `stackKey` on `Suppress` templates — only this prose was wrong; count was 32, is 30.) The
+  authoritative membership is the binary's 12 leaves above; trust the binary, not the list.
 
 This reproduces the game exactly: pool Stealth (55) alone is invis-capped; Super Speed
 (35) + pool Stealth (55) → max **55** (don't stack, both NictusFX); Super Speed (35) +
@@ -382,10 +424,15 @@ unrelated stale-pool drift.
 mode nor the key for stealth — it reports `stack="Replace"`, `stack_key="4294967295"`
 for even pool Stealth. So the converter's `Suppress`+resolved-key guard correctly falls
 Rebirth through to **pure additive** (no `stackKey` emitted): a documented limitation —
-Rebirth over-counts builds running 2+ suppress-group stealth powers. Closing it needs
-the Parse6 AttribMod parser to resolve the stack fields, same family as the Parse6
-`is_pvp`/`flags` gaps tracked elsewhere here. See [[rebirth-assets-and-parse6]],
-[[stealth-stacking-model]].
+Rebirth over-counts builds running 2+ suppress-group stealth powers. See
+[[rebirth-assets-and-parse6]], [[stealth-stacking-model]].
+
+> **RESOLVED 2026-06-12 — see the dedicated entry at the top of this log.** This was
+> NOT a parser-droppable field: Parse6's `stack_key` is a *per-power integer* and
+> structurally cannot express HC's *global* string key "NictusFX" (confirmed — the
+> string exists only on one unrelated NPC FX power in Rebirth's binary; Thunderspy's
+> Parse7 `coxg/bin.pigg` carries it, Rebirth's Parse6 can't). Fixed by re-applying the
+> HC-oracle membership (12 leaf names) in the converter — a no-op on HC.
 
 **Guard:** [stealth-procs.test.ts](src/utils/calculations/stealth-procs.test.ts) — 9
 tests incl. "Shinobi-Iri (35.5) + Super Speed (35) = 35.5, not 70.5" (suppress group)

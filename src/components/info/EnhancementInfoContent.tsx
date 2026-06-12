@@ -131,6 +131,13 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
     const effectiveLevel = ioEnh.attuned
       ? Math.max(setMin, setMax > 1 ? Math.min(build.level || 50, setMax) : (build.level || 50))
       : (enhancement.level || 50);
+    // Proc DAMAGE is the exception: it scales with the CHARACTER's (combat) level,
+    // never the IO's crafted level (a level-21 and a level-50 proc deal identical
+    // damage on a level-50 char — "slot the cheapest proc"). `effectiveLevel` above
+    // is correct for enhancement VALUES (which do scale with IO level) but wrong for
+    // the proc payload. interpolateProcDamage clamps to the proc's own levelRange.
+    // (@Redlynne report, 2026-06-12.)
+    const procDamageLevel = build.level || 50;
     // Look up the piece data so we can use its display name as a fallback
     // signal for special segments (e.g. "/+Run Speed", "/Fast Snipe") that
     // don't appear in the aspects array but still count toward the
@@ -271,7 +278,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                         <div>
                           <span className="text-slate-400">Dmg:</span>
                           <span className="text-red-400 ml-1">
-                            {interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, effectiveLevel)} {effect.effectType}
+                            {interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, procDamageLevel)} {effect.effectType}
                           </span>
                         </div>
                       )}
@@ -368,7 +375,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                                 <div>
                                   <span className="text-slate-400">DPS:</span>
                                   <span className="text-red-400 ml-1">
-                                    {((procsPerMin * interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, effectiveLevel)) / 60).toFixed(1)}
+                                    {((procsPerMin * interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, procDamageLevel)) / 60).toFixed(1)}
                                   </span>
                                 </div>
                               )}
@@ -441,7 +448,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                               <span className="text-green-400 ml-1">{procsPerMin.toFixed(2)}</span>
                             </div>
                             {effect.category === 'Damage' && effect.value !== undefined && effect.valueMax !== undefined && (() => {
-                              const dmgAtLevel = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, effectiveLevel);
+                              const dmgAtLevel = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, procDamageLevel);
                               return (
                                 <div>
                                   <span className="text-slate-400">DPS:</span>

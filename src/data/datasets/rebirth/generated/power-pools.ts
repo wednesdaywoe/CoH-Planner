@@ -1643,6 +1643,7 @@ export const POWER_POOLS_RAW = {
               "scale": 35,
               "table": "Melee_Ones"
             },
+            "stackKey": "NictusFX",
             "stealthPvP": {
               "scale": 389,
               "table": "Melee_Ones"
@@ -1824,6 +1825,7 @@ export const POWER_POOLS_RAW = {
               "scale": 55,
               "table": "Melee_Ones"
             },
+            "stackKey": "NictusFX",
             "stealthPvP": {
               "scale": 611,
               "table": "Melee_Ones"
@@ -3694,7 +3696,8 @@ export const POWER_POOLS_RAW = {
             "stealthPvE": {
               "scale": 35,
               "table": "Melee_Ones"
-            }
+            },
+            "stackKey": "NictusFX"
           },
           "threatDebuff": {
             "scale": 1,

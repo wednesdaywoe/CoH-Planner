@@ -21,6 +21,13 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-06-12',
+    items: [
+      { message: 'Fixed damage procs being calculated at the enhancement’s slotted level instead of your character’s level — they now deal full damage (e.g. 71.75 at level 50, not ~7), which also corrects the DPS of any attack carrying a damage proc', type: 'fix' },
+    ]
+  },
+  // ───────────────────────────────────────────────────────────────────────
+  {
     date: '2026-06-11',
     items: [
       { message: 'Fixed an issue where a build import that failed badly had no way to recover to a clean state, keeping the user stuck in the corrupted build state', type: 'fix' },

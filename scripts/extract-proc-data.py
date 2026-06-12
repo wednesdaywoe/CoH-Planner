@@ -263,7 +263,10 @@ def resolve_damage_proc(s, pidx, l1: float, l50: float) -> list[dict] | None:
     N - M)' and corrects its inconsistencies (some ATO procs were entered flat).
     """
     def rnd(x):
-        return int(x + 0.5)
+        # 2 decimals — proc damage displays to 2dp (e.g. 71.75, not 72). The
+        # parity test rounds to int when comparing against the hand 'N - M'
+        # mechanics strings.
+        return round(x, 2)
     for bl in s.boostlists:
         pp = next((pidx[b] for b in bl.boosts if b in pidx), None)
         if not pp:

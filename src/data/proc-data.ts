@@ -2613,7 +2613,8 @@ export function interpolateProcDamage(
   }
 
   const clamped = Math.max(minLevel, Math.min(maxLevel, currentLevel));
-  return Math.round(minDmg + (maxDmg - minDmg) * (clamped - minLevel) / (maxLevel - minLevel));
+  const dmg = minDmg + (maxDmg - minDmg) * (clamped - minLevel) / (maxLevel - minLevel);
+  return Math.round(dmg * 100) / 100; // 2 decimals (e.g. 71.75, not 72)
 }
 
 export function calculateProcDPS(

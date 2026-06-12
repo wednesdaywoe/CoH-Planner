@@ -14,10 +14,13 @@ chronological parser log are *linked, not duplicated.*
 ## Rebirth gap map
 
 ### Parse6 parser limitations (the recurring theme)
-- **Stealth `stack_key` / `stack` mode not resolved** (reports `Replace` / `4294967295`
-  for even pool Stealth) → Rebirth stealth is **pure-additive**, over-counting builds with
-  2+ suppress-group stealth powers; HC groups them max-wins. Detail: BIN-PARSER-LOG
-  *"Stealth radius binary-sourced stacking groups"* (2026-06-11). **Open** (low impact).
+- ~~**Stealth `stack_key` / `stack` mode not resolved**~~ **RESOLVED 2026-06-12.** Not a
+  droppable field — Parse6's `stack_key` is a per-power integer and structurally can't carry
+  HC's global "NictusFX" string (Parse7-only; Thunderspy's `coxg` Parse7 has it, Rebirth's
+  Parse6 can't). Fixed by re-applying the HC-oracle suppress-group membership (12 leaf names)
+  in the converter — a no-op on HC. The double-check corrected a prose error (Mask Presence
+  is additive, NOT a suppress member). Detail: BIN-PARSER-LOG *"Rebirth stealth suppression
+  (NictusFX) restored"* (2026-06-12).
 - **`flags` not decoded at all (always `[]`)** → `copyBoosts` / `PseudoPet` never set on
   Rebirth pets; summon pet DPS could be wrong. Detail: BIN-PARSER-LOG *"Summon copy_boosts"*
   (2026-06-11). **Open, low-pri** (no Rebirth override depends on it yet).

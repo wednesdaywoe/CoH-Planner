@@ -32,7 +32,11 @@ describe('damage proc structured-vs-mechanics parity', () => {
     const handN = parseInt(m[1], 10);
     const handM = m[2] ? parseInt(m[2], 10) : handN;
     const e = effects[0];
-    if ((e.value !== handN || e.valueMax !== handM) && !ALLOWLIST.has(key)) {
+    // Generated values carry 2-decimal precision (e.g. 6.7 / 71.75); the hand
+    // mechanics strings are integer "N - M". Compare on the rounded integers.
+    const genN = Math.round(e.value ?? NaN);
+    const genM = Math.round(e.valueMax ?? NaN);
+    if ((genN !== handN || genM !== handM) && !ALLOWLIST.has(key)) {
       unexpected.push(`${key}\n  hand: ${handN}-${handM}  gen: ${e.value}-${e.valueMax}`);
     }
   }

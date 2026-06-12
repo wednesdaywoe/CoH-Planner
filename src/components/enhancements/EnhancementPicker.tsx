@@ -946,7 +946,6 @@ export function EnhancementPicker() {
               <ProcsContent
                 pieces={procPieces}
                 attunementEnabled={attunementEnabled}
-                globalIOLevel={globalIOLevel}
                 isPieceInCurrentPower={isPieceInCurrentPower}
                 onPieceMouseDown={handlePieceMouseDown}
                 onPieceMouseUp={handlePieceMouseUp}
@@ -1174,7 +1173,6 @@ function IOSetsContent({
 interface ProcsContentProps {
   pieces: { set: IOSet; piece: IOSetPiece; pieceIndex: number }[];
   attunementEnabled: boolean;
-  globalIOLevel: number;
   isPieceInCurrentPower: (setId: string, pieceNum: number) => boolean;
   onPieceMouseDown: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
   onPieceMouseUp: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
@@ -1187,7 +1185,6 @@ interface ProcsContentProps {
 function ProcsContent({
   pieces,
   attunementEnabled,
-  globalIOLevel,
   isPieceInCurrentPower,
   onPieceMouseDown,
   onPieceMouseUp,
@@ -1198,6 +1195,9 @@ function ProcsContent({
 }: ProcsContentProps) {
   const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
   const isCompareMode = useUIStore((s) => s.enhancementPicker.virtualSlots) !== null;
+  // Proc damage scales with the CHARACTER's level, not the IO's crafted/global-IO
+  // level — preview at the level it'll actually deal once slotted. (@Redlynne, 2026-06-12)
+  const procDamageLevel = useBuildStore((s) => s.build.level);
 
   if (pieces.length === 0) {
     return <div className="text-center text-gray-500 py-8">No procs available for this power</div>;
@@ -1257,7 +1257,7 @@ function ProcsContent({
                 <span>
                   <span className="text-slate-400">Dmg:</span>
                   <span className="text-red-400 ml-1">
-                    {interpolateProcDamage(procEffect.value, procEffect.valueMax, procData.levelRange, globalIOLevel)} {procEffect.effectType}
+                    {interpolateProcDamage(procEffect.value, procEffect.valueMax, procData.levelRange, procDamageLevel)} {procEffect.effectType}
                   </span>
                 </span>
               )}
@@ -1990,7 +1990,8 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                       <div>
                         <span className="text-slate-500">Dmg:</span>
                         <span className="text-red-400 ml-1">
-                          {interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, globalIOLevel)} {effect.effectType}
+                          {/* Proc damage uses CHARACTER level, not crafted/global-IO level (@Redlynne, 2026-06-12) */}
+                          {interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, build.level || 50)} {effect.effectType}
                         </span>
                       </div>
                     )}

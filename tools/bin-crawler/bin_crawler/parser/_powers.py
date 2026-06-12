@@ -1333,7 +1333,7 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
     chance = r.read_f4()
 
     # CancelOnMiss + CancelEvents
-    _cancel_on_miss = r.read_bool()
+    cancel_on_miss = r.read_bool()
     cancel_event_ids = r.read_u4_array()
     cancel_events = [EVENT_NAME.get(v, f"Event_{v}") for v in cancel_event_ids]
 
@@ -1342,7 +1342,26 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
     #   UseMagnitudeResistance, UseDurationResistance,
     #   AllowCombatMods, UseMagnitudeCombatMods, UseDurationCombatMods,
     #   BoostTemplate
-    _bool_block = [r.read_bool() for _ in range(9)]
+    bool_block = [r.read_bool() for _ in range(9)]
+
+    # AttribMod flags. Parse6 stores them as the inverse `Allow*` bools (+ the
+    # CancelOnMiss bool above) instead of HC's Parse7 packed bitmask — but the
+    # downstream `EffectTemplate.flags` is HC-shaped, so map them to the same
+    # keywords the calc already honors (`IgnoreStrength` splits enhanced buffs to
+    # an Unenhanced bucket; see GAME-DATA-PRINCIPLES §4). Validated against the HC
+    # binary (Hide → IgnoreResistance; Jab → none) 2026-06-12. CopyBoosts/PseudoPet
+    # live in the not-yet-decoded post-magnitude tail, NOT here — still deferred.
+    flags: list[str] = []
+    if cancel_on_miss:
+        flags.append("CancelOnMiss")
+    if bool_block[0]:               # NearGround
+        flags.append("NearGround")
+    if not bool_block[1]:           # AllowStrength=False → IgnoreStrength
+        flags.append("IgnoreStrength")
+    if not bool_block[2]:           # AllowResistance=False → IgnoreResistance
+        flags.append("IgnoreResistance")
+    if not bool_block[5]:           # AllowCombatMods=False → IgnoreCombatMods
+        flags.append("IgnoreCombatMods")
 
     # Requires (RPN tokens) + two unused string_arrays
     requires_tokens = r.read_string_array()
@@ -1417,6 +1436,7 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
         stack_limit=stack_limit,
         stack_key=stack_key,
         cancel_events=cancel_events,
+        flags=flags,
         params=params,
     )
 

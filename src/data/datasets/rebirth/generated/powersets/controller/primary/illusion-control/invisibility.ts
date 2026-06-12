@@ -45,6 +45,7 @@ export const Invisibility: Power = {
         "scale": 200,
         "table": "Melee_Ones"
       },
+      "stackKey": "NictusFX",
       "stealthPvP": {
         "scale": 1000,
         "table": "Melee_Ones"
