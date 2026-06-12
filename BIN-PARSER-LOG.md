@@ -14,30 +14,60 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-## ⬜ HC P-hash root resolution — opaque entity-def, DEFER (low priority) — 2026-06-11
+## 🔬 HC P-hash "entity_def" — ROOT SOLVED: it's the EntCreate float/combat-text message, not an entity ref (code cleanup deferred) — 2026-06-12
 
-The last pseudo-pet residual. An EntCreate `entity_def` is sometimes an opaque
-P-hash; it is NOT a simple hash of the name (tested CRC32/mul33 over name variants vs
-102 known P-hash↔priority_list pairs: 0 matches), and one P-hash maps to *multiple*
-names (`P1648600109` → Apparitions_Enraged_Spectre **and** _LT), so it's an opaque
-entity-def reference, not a name hash. Resolving the root needs a separate
-villain/entity-def bin's name table (new parser) — high effort. The
-convert-powerset `priority_list` workaround stays. (The Fire Imps / Gremlins 1+1
-P-hash *display* shape and the Soul Extraction tier model — formerly listed here as
-"low value" — turned out to be genuinely-wrong player-facing bugs; both FIXED, see the
-✅ entries below.)
+**The premise was wrong.** This was filed as "an opaque entity-def reference needing a
+separate villain/entity-def bin's name table (new parser, high effort)." It is none of
+that. The opaque `P<number>` is a **message-table key for the EntCreate's float /
+combat-text DisplayMessage** (the summon/detonation announcement) — resolvable via the
+**existing** `clientmessages-en.bin`, no new parser. Verified: **all 49** distinct P-hash
+`entity_def` values across the HC export resolve to a message string, and every one is
+float text:
+- `P1985334123` (×25) → *"You call forth a {PowerName}!"* (Rain of Fire, Sleet, Auto Turret…)
+- `P174413786` (×16) → *"You turn the ground into a sticky {PowerName}…"* (Tar Patch)
+- `P1757360070` → *"You call forth Three {PowerName} of dancing flame!"* (Fire Imps)
+- `P1648600109` → *"An Enraged Spectre emerges!"* (hence it "maps to 2 names" — same float,
+  two pet tiers; it was never a name hash, which is why CRC32/mul33 found 0 matches)
+- `P1090583630` → *"Zero!"* (the bomb detonation float — the 3 "unresolved" Self_Destructs)
+- `P4164625865`/`P2437733030` → *"You take {Damage} points of … damage from the explosion."* (Briefcase)
 
-**CORRECTION (2026-06-11) — the "10 unresolved are all NPC/temp, not player" claim was
-WRONG.** Re-verified against the current export: only **3** P-hash EntCreates lack a
-`priority_list`, all `Objects.{Proximity_Bomb,Underground_Bomb,Underground_Bomb_Final}.
-Self_Destruct` (entity `P1090583630`). They're **unreferenced** by any power in the
-current dataset (no live impact today), but characterising them as "NPC/Temporary" was
-an unverified dismissal — `Objects.Proximity_Bomb` (display "Proximity Bomb") is exactly
-the **detonation-object family that player Devices/Traps mine powers use**, not an
-NPC-only thing. (Surfaced when a user flagged "Proximity Mine is a Devices power.") The
-player mine/device powers themselves resolve fine (Trip Mine→`Pets_Mine`, Auto
-Turret→`Pets_Turret`, Caltrops→`Pets_Caltrops`). See the ✅ parser-misalignment entry
-below for the *real* gap this thread exposed.
+**Why the parser mislabels it.** `_extract_params`'s heuristic
+([_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py)) picks `entity_def` as the
+first tail string passing `_looks_like_entity_def`. A message key `P\d+` passes that test
+(leading uppercase, all alnum) **and** the DisplayMessage leads the Params block before the
+EntityDef — so the float-message key is grabbed as `entity_def`, and the **real** entity
+name falls through to `priority_list`. Proven by the dual Self_Destruct cases:
+`Underground_Bomb` has the real `Objects_Underground_DemoCharge` *first* → grabbed
+correctly (P-hash is a 2nd EntCreate's float); `Proximity_Bomb` has *only* `P1090583630`
+("Zero!") → P-hash grabbed, no `priority_list` (it's a pure detonation, summons no pet).
+
+**Live impact: none.** The 44 referenced pseudo-pets resolve correctly — `priority_list`
+*is* the real entity source (Rain of Fire→`Pets_RainofFire`, Tar Patch→`Pets_TarPatch`,
+Fire Imps→`Pets_FireImp_Controller`), so the "workaround" was actually reading the right
+field all along. The ~5 P-hash-only powers (Proximity_Bomb.Self_Destruct, Briefcase.Detonate,
+Crey.Clone_Subjugator.Consume, Council.Robot_Jets.Launch) are unreferenced object/NPC float
+effects.
+
+**Clean fix path (DEFERRED — needs pseudo-pet co-design, not a drop-in flip).** Reject
+message-keys (`^P\d+$`) in `_looks_like_entity_def` so `entity_def` picks the real entity
+name (or `None` for pure-float detonations → no EntCreate emitted). BUT this changes
+`entity_def` for ~49 powers, and the recently-shipped pseudo-pet machinery in
+[convert-powerset.cjs](scripts/convert-powerset.cjs) — `resolvePhashSiblings` (Fire
+Imps/Gremlins ×3 merge), `normalizeSummonEntities` (Decoy ×3, Gang War), the multipet
+counts, and the Rain-of-Arrows "P-hash visual ≠ named static" split discriminator — is all
+built around the *current* P-hash-`entity_def` shape and keys off it. Flipping the parser
+requires a full HC re-export + convert diff to prove those in-game-verified resolutions are
+preserved (or to migrate them onto the resolved-name + a new `float_message` field). Not
+done here: zero live impact + real regression risk to verified work. Could fold the message
+resolution into the export (emit `float_message` instead of stuffing it in `entity_def`)
+when that co-design happens.
+
+**CORRECTION (2026-06-11, retained):** only **3** P-hash EntCreates lack a `priority_list`
+(`Objects.{Proximity_Bomb,Underground_Bomb,Underground_Bomb_Final}.Self_Destruct`,
+`P1090583630`="Zero!"); they're unreferenced by any power. The earlier "10 unresolved are
+NPC/temp" claim was an unverified dismissal — `Objects.Proximity_Bomb` is the
+detonation-object family player Devices/Traps mine powers use; those player powers resolve
+fine (Trip Mine→`Pets_Mine`, Auto Turret→`Pets_Turret`, Caltrops→`Pets_Caltrops`).
 
 > ---RESOLVED ---
 
@@ -67,7 +97,14 @@ changes. Applied + regenerated: 69 generated files change (all legit IgnoreStren
 splits / `ignoreStrength:true`), **HC untouched**, `tags: null→[]` refreshed, `entities/`
 already current (separate `export_entities.py` path, 0 changes). tsc clean, 480 tests.
 
-## ✅ Rebirth stealth suppression (NictusFX) restored — Parse6 format limitation, fixed via HC cross-server oracle (2026-06-12)
+## ⏸️ Rebirth stealth suppression (NictusFX) — fix BUILT then REVERTED to additive (deliberate, 2026-06-12)
+
+> **OUTCOME: Rebirth stealth is kept ADDITIVE.** The cross-server-oracle fix below was built,
+> validated, and then **deliberately reverted** (user call) — per the Jounin lesson (Rebirth
+> genuinely diverges from HC, only in-client observation settles it), additive is the **safer
+> inference**: its sole failure mode is an inflated *display* stealth radius, and it never
+> affects what's slottable. Re-apply ONLY if live Rebirth is observed to be max-wins. The
+> membership (12 leaves) + mechanism are kept below for that re-application.
 
 **Gap.** Rebirth stealth radius was **pure-additive** (e.g. Stealth 55 + Super Speed 35 →
 90 instead of max 55), over-counting any build with 2+ suppress-group stealth powers. Filed

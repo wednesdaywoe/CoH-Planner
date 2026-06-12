@@ -14,13 +14,17 @@ chronological parser log are *linked, not duplicated.*
 ## Rebirth gap map
 
 ### Parse6 parser limitations (the recurring theme)
-- ~~**Stealth `stack_key` / `stack` mode not resolved**~~ **RESOLVED 2026-06-12.** Not a
-  droppable field — Parse6's `stack_key` is a per-power integer and structurally can't carry
-  HC's global "NictusFX" string (Parse7-only; Thunderspy's `coxg` Parse7 has it, Rebirth's
-  Parse6 can't). Fixed by re-applying the HC-oracle suppress-group membership (12 leaf names)
-  in the converter — a no-op on HC. The double-check corrected a prose error (Mask Presence
-  is additive, NOT a suppress member). Detail: BIN-PARSER-LOG *"Rebirth stealth suppression
-  (NictusFX) restored"* (2026-06-12).
+- **Stealth `stack_key` not resolved → Rebirth stealth kept ADDITIVE (deliberate, 2026-06-12).**
+  Diagnosed: NOT a droppable field — Parse6's `stack_key` is a per-power integer and can't carry
+  HC's global "NictusFX" string (Parse7-only; Thunderspy's `coxg` Parse7 has it, Rebirth's Parse6
+  can't), so the suppression grouping is runtime engine behavior absent from Rebirth's binary. A
+  cross-server-oracle fix (re-applying HC's 12-leaf NictusFX membership in the converter) was
+  built + validated, then **REVERTED to additive**: per the Jounin lesson (Rebirth genuinely
+  diverges from HC), additive is the **safer inference** — its only failure mode is an inflated
+  *display* stat, and it never affects slotting — until live Rebirth is observed to confirm
+  stealth is max-wins. Membership + mechanism preserved in BIN-PARSER-LOG / the stealth memory
+  for re-application if in-client confirms suppression. (The double-check also corrected a prose
+  error: Mask Presence is additive, NOT a NictusFX member.)
 - **`flags` not decoded** → **PARTIALLY RESOLVED 2026-06-12.** The calc-relevant flags
   (`IgnoreStrength` 60k / `IgnoreResistance` 65k / `IgnoreCombatMods` 7k + NearGround/
   CancelOnMiss) were being read-and-discarded as the inverse `Allow*` 9-bool block — now
