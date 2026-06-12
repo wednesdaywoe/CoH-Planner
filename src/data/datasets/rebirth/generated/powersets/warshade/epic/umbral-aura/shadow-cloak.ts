@@ -57,7 +57,6 @@ export const ShadowCloak: Power = {
         "scale": 35,
         "table": "Melee_Ones"
       },
-      "stackKey": "NictusFX",
       "stealthPvP": {
         "scale": 389,
         "table": "Melee_Ones"

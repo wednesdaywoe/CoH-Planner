@@ -24,6 +24,7 @@ import { ConfirmModal } from '@/components/modals/ConfirmModal';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, OPPORTUNITY_CRIT_MULTIPLIER } from '@/utils/calculations';
 import { isCalcDebugEnabled, enableCalcDebug, disableCalcDebug } from '@/utils/calc-debug';
 import { getProfile } from '@/services/profile';
+import { usePwaInstall } from '@/hooks/usePwaInstall';
 import type { ArchetypeId, ArchetypeBranchId, Origin, Powerset } from '@/types';
 import { BUILD_TIME, APP_VERSION } from '@/buildTime';
 
@@ -780,6 +781,7 @@ function ActionMenu({
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const { canInstall, promptInstall } = usePwaInstall();
 
   const user = useAuthStore((s) => s.user);
   const loading = useAuthStore((s) => s.loading);
@@ -1018,6 +1020,18 @@ function ActionMenu({
             </>
           )}
           <hr className="border-gray-700 my-1" />
+          {canInstall && (
+            <button
+              onClick={() => { promptInstall(); setOpen(false); }}
+              className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2"
+              title="Install Sidekick as an app on this device — it opens in its own window and loads instantly, even offline. (Chrome/Edge.)"
+            >
+              <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              Install app
+            </button>
+          )}
           <button onClick={() => { onWhatsNew(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-amber-300 hover:bg-gray-700 hover:text-amber-200 transition-colors flex items-center gap-2" title="Recent changes and announcements.">
             <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />

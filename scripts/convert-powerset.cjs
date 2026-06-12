@@ -1781,30 +1781,6 @@ const STEALTH_TYPES = {
   'translucency': 'translucency',
 };
 
-// Binary-derived (HC oracle) membership of the "NictusFX" stealth-suppression
-// group, by power leaf name (`powerJson.name`). These 12 personal-concealment
-// powers mutually suppress — only the largest StealthRadius in the group counts;
-// everything else (Hide, Grant/Group Invis, Smoke Flash, pet stealth, Mask
-// Presence, IO procs) stacks additively.
-//
-// HC's Parse7 binary serializes this as `stack="Suppress"` + `stack_key="NictusFX"`,
-// which the stealth builder below carries natively. Rebirth's older Parse6 format
-// CANNOT express a global cross-power string key (its `stack_key` is a per-power
-// integer; stealth exports as `Replace`/0xFFFFFFFF), so Rebirth stealth would
-// over-count builds running 2+ suppress powers. We re-apply the group by leaf name
-// as a cross-server oracle — a no-op on HC (native key already set).
-//
-// Leaf match is safe here even though 73 HC NPC/pet powers share these leaves but
-// are genuinely additive: this `extractEffects` is only fed PLAYER powerset + pool
-// powers (convert-powerset / convert-pool-powers); pet entities use a separate
-// extractEffects and NPCs aren't converted. Membership verified against the live
-// HC binary 2026-06-12 (Mask Presence is NOT a member — see BIN-PARSER-LOG).
-const STEALTH_SUPPRESS_LEAVES = new Set([
-  'Stealth', 'Invisibility', 'Super_Speed', 'Cloak_of_Darkness', 'Energy_Cloak',
-  'Arctic_Fog', 'Shadow_Fall', 'Steamy_Mist', 'Shadow_Cloak', 'Cloaking_Device',
-  'Shinobi-Iri', 'Kyokan',
-]);
-
 // Control attributes
 const CONTROL_TYPES = {
   'taunt': 'taunt', 'taunted': 'taunt',
@@ -3667,13 +3643,17 @@ function extractEffects(templates, powerName) {
           const keyResolved = stealthKey && stealthKey !== '4294967295' && stealthKey !== '0';
           if (template.stack === 'Suppress' && keyResolved) {
             effects.stealth.stackKey = stealthKey;
-          } else if (!effects.stealth.stackKey && STEALTH_SUPPRESS_LEAVES.has(powerName)) {
-            // Cross-server oracle (Rebirth): Parse6 can't serialize the global
-            // "NictusFX" key (see STEALTH_SUPPRESS_LEAVES), so its stealth exports
-            // as Replace/null and would over-count. Re-apply the suppress group by
-            // leaf name. No-op on HC — the native key was set in the branch above.
-            effects.stealth.stackKey = 'NictusFX';
           }
+          // NOTE: Rebirth's Parse6 export can't carry the global "NictusFX"
+          // suppress key (its stack_key is a per-power integer), so Rebirth
+          // stealth has no stackKey here → stays ADDITIVE. A cross-server-oracle
+          // fix (re-applying HC's NictusFX membership by leaf name) was built and
+          // deliberately REVERTED 2026-06-12: additive is the safer inference (it
+          // only inflates a *display* stat, never affects slotting) until live
+          // Rebirth is observed to confirm stealth is max-wins, not additive —
+          // the Jounin lesson, that Rebirth genuinely diverges from HC. The
+          // membership + mechanism are recorded in BIN-PARSER-LOG / the stealth
+          // memory for re-application if/when in-client confirms suppression.
           recordDuration('stealth');
         }
         continue;

@@ -20,7 +20,6 @@ import { PowerInfoModal } from '@/components/modals';
 import { ToastContainer } from '@/components/ui/Toast';
 import { useUIStore, useAuthStore } from '@/stores';
 import { useHelpDiscoveryToast } from '@/hooks/useHelpDiscoveryToast';
-import { useUpdateChecker } from '@/hooks/useUpdateChecker';
 import { useStatusCheck } from '@/hooks/useStatusCheck';
 import { useUndoRedoKeyboard } from '@/hooks/useUndoRedoKeyboard';
 import { useTooltipHotkey } from '@/hooks/useTooltipHotkey';
@@ -44,7 +43,6 @@ export function MainLayout({ children }: MainLayoutProps) {
   const openHelpModal = useUIStore((s) => s.openHelpModal);
   const openWelcomeModal = useUIStore((s) => s.openWelcomeModal);
   const uiScale = useUIStore((s) => s.uiScale);
-  const { updateAvailable } = useUpdateChecker();
   const activeStatus = useStatusCheck();
   useUndoRedoKeyboard();
   useTooltipHotkey();
@@ -80,7 +78,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       style={applyZoom ? { zoom: uiScale, overflowX: 'clip' as const } : undefined}
     >
       <StatusBanner active={activeStatus} />
-      <UpdateBanner visible={updateAvailable} />
+      <UpdateBanner />
       <Header />
       {/* StatsDashboard is accessible on mobile via the bottom nav's Dashboard tab */}
       <div className="hidden lg:block">

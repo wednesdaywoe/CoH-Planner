@@ -49,7 +49,6 @@ export const SteamyMist: Power = {
         "scale": 35,
         "table": "Ranged_Ones"
       },
-      "stackKey": "NictusFX",
       "stealthPvP": {
         "scale": 389,
         "table": "Ranged_Ones"

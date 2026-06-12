@@ -52,13 +52,13 @@ chronological parser log are *linked, not duplicated.*
   category; 59 rez powers re-tagged. Same sweep VERIFIED Vampire's Bite/Imperial
   Might/Liberty's Belt are correctly ECMelee/ECKnockback/ECResist (pool-identical to
   standard sets — the old "mis-tagged" TODOs were false). — 2026-06-12.
-- **Call Jounin "missing Accurate Defense Debuff"** — PROVEN a genuine Rebirth client
-  `boostsets.bin` omission (HC lists all 11 MM pet summons in the Accurate DefDebuff
-  sets; Rebirth drops 6 incl. Call Jounin), NOT a dropped field/template: per-power
-  fields 74–78 are empty, the boostset parser is byte-faithful, no redirect, upgrade
-  powers accept no sets. Data-driven fix impossible (data absent from Rebirth's client
-  files). **Parked** pending live-client confirmation; if confirmed, scoped HC-oracle
-  cross-fill (Accurate DefDebuff only, the 6 summons). See `memory/io-set-category-plumbing.md`. — 2026-06-12.
+- **Call Jounin "missing Accurate Defense Debuff"** — **RESOLVED, NO FIX NEEDED (2026-06-12).**
+  In-client confirmed (@Redlynne, live Rebirth): Jounin slotting = Pet ×2, Universal ×2, ATO,
+  Defense Debuff, Knockback, ToHit Debuff — **NO Accurate Defense Debuff**, matching our parse
+  EXACTLY. Our boostsets-inversion data was correct; the original bug report was in error. The
+  HC-oracle cross-fill we **correctly PARKED** would have ADDED a category the live game doesn't
+  have. Lesson: Rebirth's client data is authoritative — don't impose HC parity (even when the
+  pet "obviously" has the -Def attack). See `memory/io-set-category-plumbing.md`.
 - **Phalanx Fighting ally scaling** restored (is_pvp) — 2026-06-11.
 - **Archetype defs** — Guardian baseThreat 1.0→2.0, Brute HP, per-server damageCap (both servers) — 2026-06-06.
 - **IO sets binary-sourced both servers** (≈196 Rebirth-only bonus entries recovered) — 2026-06-05.

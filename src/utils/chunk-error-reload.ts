@@ -1,5 +1,5 @@
 /**
- * Detect "stale tab, new deploy" failures and recover.
+ * Last-resort recovery from "stale tab, new deploy" chunk-load failures.
  *
  * When we deploy a new build, Vite emits chunk files with new hashed
  * filenames. A browser tab still running the previous `index.html` only
@@ -10,10 +10,18 @@
  *   - Chrome:  "Failed to fetch dynamically imported module"
  *   - Firefox: "error loading dynamically imported module"
  *
- * We listen for those, show a brief toast, and reload. A sessionStorage
- * flag prevents an infinite reload loop in the unusual case where the
- * fresh page also fails (e.g. real bug, not just stale assets) — the
- * second hit shows a manual-reload toast instead of auto-reloading.
+ * The service worker (vite-plugin-pwa, prompt mode) is the real fix: it
+ * precaches the shell so a controlled tab keeps serving the *old* chunks
+ * from cache until the user accepts the update — no 404. This guard only
+ * matters for pages the SW doesn't yet control: a deploy landing during a
+ * user's first-ever session, before the SW takes over. In that narrow case
+ * we reload once to pick up current assets.
+ *
+ * Recovery is intentionally silent — the "update available" prompt owns all
+ * update messaging now; this is just plumbing. A sessionStorage flag
+ * prevents an infinite reload loop if the fresh page also fails (a real
+ * bug, not stale assets): the second hit shows a manual-reload toast
+ * instead of auto-reloading.
  */
 
 import { useUIStore } from '@/stores/uiStore';
@@ -68,15 +76,12 @@ function handleChunkError(message: string) {
     return;
   }
 
+  // First hit: a stale-asset 404 on a page the SW doesn't yet control. Reload
+  // once to fetch current assets. No toast — the update prompt owns update
+  // messaging, and the reload is immediate so a toast wouldn't paint anyway.
   sessionStorage.setItem(RELOAD_FLAG, '1');
-  tryShowToast({
-    message: 'A new version of Sidekick is available — reloading…',
-    tone: 'info',
-    durationMs: 3000,
-  });
-  // Short delay so the toast actually paints before reload.
-  window.setTimeout(() => window.location.reload(), 1200);
-  console.warn('[sidekick] chunk load failed — auto-reloading:', message);
+  console.warn('[sidekick] chunk load failed — auto-reloading once:', message);
+  window.location.reload();
 }
 
 export function installChunkErrorReload() {
