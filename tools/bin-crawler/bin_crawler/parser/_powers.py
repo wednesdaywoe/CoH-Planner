@@ -91,6 +91,24 @@ def _decode_flags2(flags2_raw: int) -> list[str]:
     return [name for bit, name in _FLAG2_BITS if flags2_raw & bit]
 
 
+# Rate-limited "we silently dropped a power's effects" warning. A swallowed
+# parse failure used to be invisible — it hid the ~265-power Trip Mine
+# misalignment for months. Surface the first N by name + a final total so a
+# future layout shift is loud, without spamming a full export run.
+_dropped_powers: list[str] = []
+_DROP_WARN_CAP = 25
+
+
+def _warn_dropped(full_name: str, reason: str) -> None:
+    import sys
+    _dropped_powers.append(full_name)
+    if len(_dropped_powers) <= _DROP_WARN_CAP:
+        print(f"  Warning: dropped effects for {full_name}: {reason}", file=sys.stderr)
+    elif len(_dropped_powers) == _DROP_WARN_CAP + 1:
+        print(f"  Warning: … further dropped-effect warnings suppressed "
+              f"(see total at end)", file=sys.stderr)
+
+
 def _detect_format(r: BinReader) -> tuple[bool, bool, bool]:
     """Detect Parse7 powers.bin layout variant.
 
@@ -170,6 +188,7 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
         else:
             parser = lambda sub: _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
 
+    _dropped_powers.clear()
     records = []
     for i in range(count):
         rec_len = r.read_u4()
@@ -185,6 +204,11 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
                 print(f"  Warning: record {i} parse error: {e}", file=sys.stderr)
 
         r.skip(rec_len)
+
+    if _dropped_powers:
+        import sys
+        print(f"  Warning: dropped effects on {len(_dropped_powers)} power(s) due to "
+              f"parse failures (see GAME-DATA-PRINCIPLES §5)", file=sys.stderr)
 
     return records
 
@@ -1044,30 +1068,41 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     r.read_u4_array()  # modes_disallowed
     r.read_u4_array()  # modes_suspended
 
-    # Redirect pre-field (always 0 in samples) + Redirect struct_array —
-    # top-level Redirect{Power..Requires..} blocks from the .def. Used by
-    # dual-mode powers (sniper slow/fast variants, Energy_Transfer, etc.).
-    # Per-element layout: power_name (string) + requires_tokens (string_array)
-    # + show_in_info (u4, 0xff=true). The old parser collapsed these into
-    # _parse_effects's skip_struct_array+read_u4 pre-fields, which worked
-    # only when redirects were empty — for non-empty redirects the whole
-    # effects parse would misalign and silently produce 0 effects.
-    #
-    # On parse failure: skip to end of record rather than risking a hang on
-    # garbage counts in _parse_effects.
-    r.read_u4()  # redirect pre-field (0 in all samples checked)
+    # The field here was previously read as a single u4 "redirect pre-field
+    # (always 0 in samples)" — but it is actually a u4_array (a mode/recharge-
+    # group list, e.g. ['kPostDeath'] on pet/entity powers). Reading it as a lone
+    # u4 only worked when the array was EMPTY (count=0 reads identically); when
+    # non-empty it consumed just the count and left the values in place, shifting
+    # the redirect + effects reads by 4·N bytes → _parse_effects read a garbage
+    # eff_count and the try/except below SILENTLY produced `effects: []`. This was
+    # the root of the ~265 entity/pet powers (Trip Mine, Mastermind/Lore/Kheldian
+    # pet abilities) that lost their entire effects array. Reading it as an array
+    # is byte-identical for the empty case (no regression) and correct otherwise.
+    # See GAME-DATA-PRINCIPLES §5 / BIN-PARSER-LOG.
+    r.read_u4_array()  # mode/recharge-group array (usually empty; non-empty on pet powers)
+
+    # Redirect struct_array — top-level Redirect{Power..Requires..} blocks from
+    # the .def. Used by dual-mode powers (sniper slow/fast variants,
+    # Energy_Transfer, etc.). Per-element: power_name (string) +
+    # requires_tokens (string_array) + show_in_info (u4, 0xff=true).
+    # On parse failure: skip to end rather than risk a hang on a garbage count.
     try:
         redirects = _parse_redirects(r)
-    except Exception:
+    except Exception as e:
+        # Fail LOUD: a redirect misparse here misaligns the effects read and
+        # silently empties the power's effects (the ~265-power Trip Mine class).
+        # Surface it so the next layout shift announces itself instead of hiding.
         redirects = []
+        _warn_dropped(full_name, f"redirect parse failed ({e}); effects may be lost")
         r.skip_to_end()
 
     # Parse effects
     try:
         effects, activation_effects = _parse_effects(r)
-    except Exception:
+    except Exception as e:
         effects = []
         activation_effects = []
+        _warn_dropped(full_name, f"effects parse failed ({e})")
 
     # Skip remaining metadata after effects
     r.skip_to_end()

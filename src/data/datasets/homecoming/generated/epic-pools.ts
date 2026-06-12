@@ -15483,7 +15483,13 @@ export const EPIC_POOLS_RAW = {
           "recharge": 900,
           "endurance": 20.8,
           "activationTime": 2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Psionic_Nexus",
+            "duration": 240,
+            "copyBoosts": true
+          }
         }
       }
     ]

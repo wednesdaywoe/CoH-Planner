@@ -36,27 +36,120 @@ an unverified dismissal — `Objects.Proximity_Bomb` (display "Proximity Bomb") 
 the **detonation-object family that player Devices/Traps mine powers use**, not an
 NPC-only thing. (Surfaced when a user flagged "Proximity Mine is a Devices power.") The
 player mine/device powers themselves resolve fine (Trip Mine→`Pets_Mine`, Auto
-Turret→`Pets_Turret`, Caltrops→`Pets_Caltrops`). See the ⬜ Trip Mine entry below for
-the *real* gap this thread exposed.
-
-## ⬜ Trip Mine shows NO damage — `Pets_Mine` / `Pets_Traps_Mine_Defender` missing from PET_ENTITIES — 2026-06-11
-
-Surfaced while verifying the P-hash correction above. **Trip Mine** (Blaster Devices,
-all Traps ATs — Defender/Controller/Corruptor/Mastermind, Dominator Arsenal Assault;
-both servers) generates as a bare `summon: { entity: "Pets_Mine", … }` with **no
-damage**, and its override file is **empty** — so the planner surfaces the mine summon
-but **zero explosion damage** for a staple high-damage power. Root: the mine entity
-(`Pets_Mine`, `Pets_Traps_Mine_*`) is **absent from PET_ENTITIES** (Turret/Caltrops are
-present, so it's mine-specific), and the mine's own powers carry no damage the converter
-captures — `Pets.Mine.Trip_Mine` has no `_Dmg` templates; `Pets.Mine.Self_Destruct` is
-an `EntCreate` with `entity_def=None` (a redirect/null), so the explosion attack lives
-one hop further down an unwalked chain. Needs: trace the Self_Destruct redirect to the
-real explosion attack and either add the mine to PET_ENTITIES (via convert-pet-entities)
-or surface the damage on the power. Cross-check the empty trip-mine overrides afterward
-(they may be DEAD vs a fixed binary path, or were left empty *because* the binary path
-was broken). Player-facing, not cosmetic.
+Turret→`Pets_Turret`, Caltrops→`Pets_Caltrops`). See the ✅ parser-misalignment entry
+below for the *real* gap this thread exposed.
 
 > ---RESOLVED ---
+
+## ✅ SYSTEMIC parser misalignment FIXED — 1133 powers' dropped effects restored (incl. Trip Mine) — 2026-06-11
+
+**One-line root fix** in [_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py):
+the field before the redirect block was read as a lone `read_u4()` ("redirect
+pre-field, always 0 in samples") but is actually a **`u4_array`** (a mode/recharge-group
+list, e.g. `['kPostDeath']` on pet/entity powers). Reading it as a single u4 was
+byte-identical ONLY when the array was empty (count=0); when non-empty it left the
+element values in place, shifting the redirect + effects reads → `_parse_effects` read a
+garbage `eff_count` (2360) → the `try/except pass` silently produced `effects: []`.
+Changed `read_u4()` → `read_u4_array()`: identical for the empty case (zero regression),
+correct otherwise.
+
+**Verified (CoD2 oracle + scratch-export diff).** Re-export changed **1133 HC powers
+0→effects, 0 lost, 0 changed, 0 spurious** (no power gained effects CoD2 says shouldn't
+exist). 265 are CoD2-confirmed player-relevant (MM henchman abilities, Kheldian Energy
+Drone `Impact`, Lore/Signature pet attacks, Beast wolf `Wild_Charge`/`Howl`); the other
+868 are NPC/critter powers that feed Lore-pet mimicry (Cabal, Arachnos…). `Pets.Mine.
+Trip_Mine` now carries `Fire 2.0 + Lethal 1.0 + Fire 1.0 + KB` — matching CoD2 — so Trip
+Mine / Time Bomb (Devices/Traps/Arsenal) finally show explosion damage via the pet path.
+Materialized: `exported_powers/` (1134 files) + regen → `pet-entities.ts` (+3495) + Bane
+Spider Placate (a player VEAT power that was empty) + epic-pools. Also added a **fail-loud
+`_warn_dropped`** so a future silent drop announces itself (the swallowed `try/except pass`
+hid this for months). tsc clean, 460 tests (+ `parser-effect-alignment.test.ts`).
+
+**Stragglers / follow-ups (not this fix):**
+- **`Incarnate_I20.Airstrike.Main`** — the 1 of 265 still empty, but a DIFFERENT bug:
+  `eff_count=1` (not garbage), its single group's *templates* fail to parse (template-
+  level, one Incarnate Judgement). Separate investigation.
+- **Rebirth Parse6** — `_parse_power_parse6` was NOT touched; 109/1361 Rebirth pet powers
+  (8%) have 0 effects, possibly the same misread in the Parse6 layout. Needs its own
+  byte-level check + a Rebirth re-export. Tracked for the Rebirth data pass.
+- The "ours >> CoD2" counts on Assassin `_Quick`/`_Stealth` + StormCell variants are
+  PRE-EXISTING (identical in the committed export) — CoD2 de-dups redirect/PvP-paired
+  templates; not introduced here.
+
+<details><summary>Original investigation notes (kept for context)</summary>
+
+Started as "Trip Mine shows no damage," root-caused into a **systemic binary-parser bug**.
+The data IS in `powers.bin` — CoD2 reads the same file and gets the effects — **our parser
+misaligns on a class of pet/summon entity powers and silently drops their entire effects
+array.**
+
+**Smoking gun.** Instrumenting `_parse_effects` for `Pets.Mine.Trip_Mine`: it reads
+`eff_count = 2360` (0x938) — **garbage**. The reader is misaligned by the time it reaches
+the effects struct_array, so it reads a junk count; every subsequent group read fails and
+is swallowed by the `try/except pass` at [_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py)
+~788 → the power ends up with `effects: []`, **no crash, no warning**. A sibling in the
+same powerset (`Pets.Mine.Self_Destruct`) aligns fine, so it's a **field-size misread
+triggered by something in these powers' record shape** (a variable-length field —
+attack_types / boosts_allowed / a string-array / the redirect pre-field — sized wrong for
+this layout, cascading into the effects offset). The format auto-detect (`has_field_45b` /
+`has_field_41b`) is the prime suspect.
+
+**Scope — 265 powers** where CoD2 has effects and our deep-walked export has **zero**
+(`raw_data_homecoming-20251209` vs `exported_powers`, child_effects counted on both sides
+to avoid the false positive that Dual Pistols / Electrical Melee — which merely *nest* in
+`child_effects` — initially produced):
+
+| category | # | player-relevant? |
+|---|---|---|
+| Mastermind_Pets | 64 | **yes** — henchman abilities (Beast wolf `Wild_Charge`/`Howl` = dmg + ToHit debuff) |
+| Objects | 47 | Trip Mine / Time Bomb detonations, mission objects |
+| Pets | 44 | `Pets.Mine.Trip_Mine` (Fire 2.0 + Lethal 1.0 + 2×KB), location pets |
+| Incarnate | 43 | **yes** — Lore pet attacks/buffs (`Mind_Link`, `Soothe`, `Frigid_Burst`) |
+| Villain_Pets | 22 | Mu `EM_Pulse`, Arachnobot `Web`, Lore-mimic sources |
+| Signature_Summon | 16 | **yes** — Signature Lore pets (`Soul_Storm`, `Psychic_Wail`) |
+| Mastermind_Summon | 14 | **yes** — `Grant_Power` upgrade powers (Tame/Train Beasts, Abyssal Empowerment) |
+| Kheldian_Pets | 5 | **yes** — PB Energy Drone `Impact` (Energy dmg + KB) |
+| Redirects / NPC_Pets / GenericVillains / Epic | 9 | mixed |
+
+Some victims are travel/FX (`Super_Leap`, `Fly_fx` — low value), but many are **real pet
+attacks/buffs/upgrades** players care about. **Caveat to confirm:** whether each dropped
+power actually feeds the planner's displayed pet damage (some pets' main attacks may parse
+fine and only secondary abilities are dropped) — scope the player-facing delta before/after
+a fix. This supersedes the earlier (wrong) "explosion entity is unnamed" note — the entity
+red herring was `Self_Destruct`; the damage is on `Pets.Mine.Trip_Mine`, which we misparse.
+
+**Fix = find the misaligned field in the entity-power record layout** (compare byte layout
+of a correctly-parsed pet power vs a victim; the divergence point is the bad field). Proper
+binary-sourced root fix — restores ~265 powers, kills the Trip Mine gap, and needs NO new
+bin.
+
+</details>
+
+## ✅ Remote Bomb shows damage — `*_Info` display-power resolution (4 powers) — 2026-06-11
+
+Surfaced right after the Trip Mine fix (user: "Trip Mine shows damage, Remote Bomb does
+not"). **Different root** — not the parser, and not a pet: **Remote Bomb** (Blaster
+Devices + Traps Controller/Corruptor/Defender; the reworked "Time_Bomb") is a pure
+**mode-conditional redirect shell**. The player power has no effects; its Self/Target/
+detonation redirects carry only a scale-0 placeholder + the bomb-pet summon
+(`Pets_Bomb_Temporal`, a control bubble). The game keeps the player-facing damage on a
+dedicated `<name>_Info` / `_Blaster_Info` display power (`show_in_info`, condition `'0'`
+— never fires mechanically, exists to show the number): `Remote_Bomb_Blaster_Info` =
+Fire 2.0 + Lethal 3.0 + KB.
+
+**Fix** ([convert-powerset.cjs](scripts/convert-powerset.cjs)
+`collectInfoRedirectTemplates`): when a redirect-shell power's mechanical redirect yields
+no damage, follow the `*_Info` display power paired in its own redirect list. Three
+gotchas handled: (1) strip the redundant `arch source> Class_<AT> eq` selector (the info
+power is already AT-specific, else `collectTemplatesDeep` drops the whole group);
+(2) drop the PvP `enttype target> player eq` KB variant (prefer PvE — else KB doubles
+4+4=8); (3) bypass `_filterFieryEmbraceBonus` for info-sourced damage (it wrongly stripped
+Remote Bomb's genuine base Fire as an FE bonus). Result: Blaster → Fire 2.0/Lethal 3.0/KB
+4; Traps → the "Temporal Bomb" Fire 1.182/Lethal 0.818. Exactly **4 generated files**;
+gated to the redirect-shell+`_Info` shape so nothing else is touched. Guard:
+[redirect-info-damage.test.ts](src/data/redirect-info-damage.test.ts). tsc clean, 462
+tests. *(Traps damage values worth an in-game spot-check — they come from the generic
+`Remote_Bomb_Info`/"Temporal Bomb" display power.)*
 
 ## ✅ "Low-value leftovers" were two real bugs + one near-miss (skeptic pass, 2026-06-11)
 

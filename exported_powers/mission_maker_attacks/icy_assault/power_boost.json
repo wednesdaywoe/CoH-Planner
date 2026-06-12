@@ -39,7 +39,106 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Heal_Dmg",
+            "Absorb",
+            "Endurance",
+            "RunningSpeed",
+            "FlyingSpeed",
+            "Confused",
+            "Terrorized",
+            "Held",
+            "Immobilized",
+            "Stunned",
+            "Sleep"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "Self",
+          "table": "Melee_Stun",
+          "scale": 0.66,
+          "duration": "15 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "me.NictusFX",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "StackByAttribAndKey"
+          ],
+          "flags_raw": 263216
+        },
+        {
+          "attribs": [
+            "Ranged",
+            "Melee",
+            "Area",
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy",
+            "Psionic",
+            "Toxic",
+            "Base_Defense",
+            "ToHit"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "Self",
+          "table": "Melee_Stun",
+          "scale": 0.396,
+          "duration": "15 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "me.NictusFX",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "StackByAttribAndKey"
+          ],
+          "flags_raw": 263216
+        }
+      ]
+    }
+  ],
   "available_level": 7,
   "powerset": "Mission_Maker_Attacks.Icy_Assault"
 }

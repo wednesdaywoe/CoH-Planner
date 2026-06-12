@@ -39,7 +39,108 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "99999 seconds",
+          "magnitude": 1.0,
+          "delay": 2.6500000953674316,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Fiery_Demonling",
+            "priority_list": "Pet"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "CopyBoosts"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "combatlevel source> 30 >=",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "99999 seconds",
+          "magnitude": 1.0,
+          "delay": 3.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Cold_Demonling",
+            "priority_list": "Pet"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "CopyBoosts"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    }
+  ],
   "available_level": 0,
   "powerset": "RoguesGallery.Desdemona"
 }

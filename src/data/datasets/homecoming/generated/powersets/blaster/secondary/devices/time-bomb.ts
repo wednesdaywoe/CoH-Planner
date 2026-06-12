@@ -33,5 +33,23 @@ export const TimeBomb: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 2,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 3,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 4,
+      "table": "Melee_Knockback"
+    }
+  }
 };

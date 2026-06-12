@@ -36,5 +36,30 @@ export const Placate: Power = {
   "allowedSetCategories": [
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 54,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 500,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 10,
+      "tohitBuff": 10
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
+    },
+    "placate": {
+      "scale": 6,
+      "table": "Melee_Taunt"
+    },
+    "buffDuration": 10
+  }
 };

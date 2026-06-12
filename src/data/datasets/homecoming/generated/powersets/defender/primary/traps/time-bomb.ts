@@ -37,5 +37,57 @@ export const TimeBomb: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 1.182,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.818,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 4,
+      "table": "Melee_Knockback"
+    },
+    "rechargeBuff": {
+      "scale": 0.375,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "rechargeBuff": 30,
+      "recoveryBuff": 30,
+      "rechargeDebuff": 30,
+      "slow": 30,
+      "recoveryDebuff": 30
+    },
+    "recoveryBuff": {
+      "scale": 0.375,
+      "table": "Ranged_Ones"
+    },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Ranged_Ones"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Ones"
+      }
+    },
+    "recoveryDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 30
+  }
 };

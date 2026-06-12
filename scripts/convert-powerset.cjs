@@ -762,6 +762,53 @@ function collectRedirectTemplates(powerJson) {
   return collectTemplatesDeep(redirectJson.effects, new Set([defaultRedirect.name]));
 }
 
+/**
+ * Pull damage templates from a power's `*_Info` display redirect.
+ *
+ * Some pure-redirect powers apply their damage through a summoned pet / multi-stage
+ * detonation the planner can't compute, so the game carries the player-facing numbers
+ * on a dedicated display power (`<name>_Info` / `<name>_Blaster_Info`, marked
+ * `show_in_info` with a never-true `'0'` condition — it never fires mechanically, it
+ * exists purely to show the damage). Remote Bomb (Blaster Devices + all Traps ATs) is
+ * the case: its Self/Target/detonation redirects carry only a scale-0 placeholder + the
+ * bomb-pet summon, while `Remote_Bomb_Blaster_Info` holds the real Fire/Lethal damage.
+ * The right info power for the AT is already paired in this power's own redirect list,
+ * so just follow it. Gated by the caller on "the mechanical redirect produced no
+ * damage," so it only fires for these display-damage shells.
+ */
+function collectInfoRedirectTemplates(powerJson) {
+  if (!powerJson.redirect) return [];
+  const infoRedirect = powerJson.redirect.find(
+    r => /_Info$/.test(r.name || '') && (r.condition_expression === '0' || r.show_in_info)
+  );
+  if (!infoRedirect) return [];
+  const p = resolveRedirectPath(infoRedirect.name);
+  if (!fs.existsSync(p)) return [];
+  const j = JSON.parse(fs.readFileSync(p, 'utf-8'));
+  if (!j.effects?.length) return [];
+  // The info power's damage sits in a group gated `arch source> Class_<AT> eq` — the
+  // AT-variant selector. But the info power is ALREADY AT-specific (the per-AT info
+  // power is the one paired in THIS power's redirect list — Blaster→_Blaster_Info),
+  // so that gate is redundant and would make collectTemplatesDeep drop the whole
+  // group. Strip just the arch-class selector (not other gates) before collecting.
+  // Also drop the PvP variant of any PvE/PvP `enttype` pair — `enttype target>
+  // player eq` is the PvP-only copy (Remote Bomb's KB is split critter/player at
+  // 4.0 each; collecting both sums to 8). Prefer PvE, matching the rest of the
+  // converter (GAME-DATA-PRINCIPLES §3).
+  const clean = (effs) => effs
+    .filter(e => !/\benttype\s+target>\s+player\s+eq/.test(e.requires_expression || ''))
+    .map(e => {
+      const c = { ...e };
+      if (typeof c.requires_expression === 'string'
+          && /\barch\s+source>\s+Class_\w+\s+eq/.test(c.requires_expression)) {
+        c.requires_expression = '';
+      }
+      if (c.child_effects?.length) c.child_effects = clean(c.child_effects);
+      return c;
+    });
+  return collectTemplatesDeep(clean(j.effects), new Set([infoRedirect.name]));
+}
+
 // ============================================
 // PSEUDO-PET REDIRECT RESOLUTION
 // ============================================
@@ -4433,11 +4480,23 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // (e.g. Fault → Redirects.Stone_Melee.Fault_Brute / Fault_Cone_Brute, where
   // the actual damage/knockback/stun lives in the redirect targets).
   let allTemplates = [];
+  let usedInfoRedirect = false;
   if (powerJson.effects?.length) {
     allTemplates = collectTemplatesDeep(powerJson.effects);
   } else if (powerJson.redirect?.length > 0) {
     // Power has empty effects but redirects to other powers — follow the redirect chain
     allTemplates = collectRedirectTemplates(powerJson);
+    // If the mechanical redirect carried no real damage (Remote Bomb's Self/Target
+    // detonation is just a scale-0 placeholder + the bomb-pet summon), fall back to
+    // the `*_Info` display power the game uses to surface the damage numbers.
+    if (!extractDamage(allTemplates)) {
+      const infoTemplates = collectInfoRedirectTemplates(powerJson);
+      if (infoTemplates.length > 0) {
+        allTemplates = allTemplates.concat(infoTemplates);
+        usedInfoRedirect = true;
+        console.log(`  [redirect] Used _Info display damage for ${powerJson.display_name}`);
+      }
+    }
     if (allTemplates.length > 0) {
       console.log(`  [redirect] Resolved ${allTemplates.length} templates from redirect chain for ${powerJson.display_name}`);
     }
@@ -4484,7 +4543,10 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
 
   if (allTemplates.length > 0) {
     let damage = extractDamage(allTemplates);
-    damage = _filterFieryEmbraceBonus(damage, powerJson);
+    // The `*_Info` display power explicitly declares the power's damage types, so
+    // trust it — don't run it through the Fiery-Embrace-bonus heuristic, which
+    // would wrongly strip Remote Bomb's genuine base Fire damage as an FE bonus.
+    if (!usedInfoRedirect) damage = _filterFieryEmbraceBonus(damage, powerJson);
     if (damage) power.damage = damage;
 
     const effects = extractEffects(allTemplates, powerJson.name);

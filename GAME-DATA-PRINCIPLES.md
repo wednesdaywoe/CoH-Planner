@@ -30,14 +30,21 @@ The recurring failure mode that has bitten us many times: decide a field is
 later it mattered. Examples: offensive knockback, foe -KB protection, brute modifiers,
 Kinetic Melee, Kheldian effects, `IgnoreStrength`.
 
-> 6/11/26 - Yet another example of 'low value data' turns out to be signifcant: BIN-PARSER-LOG.md
-Three log items filed as "low-value leftovers" → on
-investigation, two were genuinely-wrong player-facing bugs with clean fixes:
-- Fire Imps/Gremlins "cosmetic P-hash, indistinguishable from a rain, unmergeable" →
-  the discriminator (the P-hash's own `priority_list`) was in the data all along; a
-  garbage entity was shown to every Fire/Electric Controller+Dominator. FIXED.
-- Soul Extraction "needs a tier model, low value" → it showed NO pet at all. FIXED with
-  a `mutuallyExclusive` summon variant.
+> Examples of 'low value data' turns out to be signifcant (BIN-PARSER-LOG.md)
+> 6/11/26
+
+  Three log items filed as "low-value leftovers" → on
+  investigation, two were genuinely-wrong player-facing bugs with clean fixes:
+  - Fire Imps/Gremlins "cosmetic P-hash, indistinguishable from a rain, unmergeable" →
+    the discriminator (the P-hash's own `priority_list`) was in the data all along; a
+    garbage entity was shown to every Fire/Electric Controller+Dominator. FIXED.
+  - Soul Extraction "needs a tier model, low value" → it showed NO pet at all. FIXED with
+    a `mutuallyExclusive` summon variant.
+> 6/11/26
+    Began as "10 unresolved are all NPC/temp, not player". Upon questioning that assumption, it turned into "Trip Mine shows no damage." On further investigation, we find a SYSTEMIC parser misalignment that drops effects on ~265 entity/pet powers (incl. Trip Mine).
+ 
+
+
 
 **Rule:** capture and surface everything that affects *what a power does*. Skip only
 **asset / presentation references** — `VisualFX`/`.PFX` paths, animation `include`s,
@@ -153,6 +160,30 @@ needs a `.powers`↔export name-map before its numbers are trustworthy (`kDefens
 verify against. For data we *derive* or used to hand-port (archetypes, IO sets),
 there are TWO oracles — the prior hand-port (what was true when written) and the
 binary (what's true now); diff both. See §12 for the cross-domain method.
+
+**Diff the WHOLE export against the oracle — silent drops are invisible from the
+inside (2026-06-11, the bite that keeps biting).** "Trip Mine shows no damage" looked
+like one niche power; a blunt count-diff of *every* power's effect-template total
+(`exported_powers` vs the CoD2 archive `raw_data_homecoming-*`, child_effects counted on
+both sides) surfaced **265 powers** our parser silently drops effects on — a whole class
+of pet/summon entity powers (Mastermind_Pets, Incarnate/Lore, Kheldian_Pets, Objects…).
+The data was in `powers.bin` the whole time (CoD2 reads the same file and gets it); the
+parser **misaligns** on those records (`_parse_effects` reads a garbage `eff_count` like
+2360) and the surrounding **`try/except pass` swallows every failed group read → `effects:
+[]`, no crash, no warning.** Two durable rules from this:
+- **A self-consistent pipeline proves nothing.** Our export, converter, and calc all
+  agreed on "0 effects" — internally consistent, externally wrong. Only an *independent*
+  oracle diff catches a silent drop. Keep a cheap effect-count parity sweep
+  (CoD2 vs export) in the toolbox and run it after any parser change, not just when a
+  number looks off.
+- **Beware the false positive in the diff itself.** A first pass flagged Dual Pistols /
+  Electrical Melee as "empty" — they merely *nest* their templates in `child_effects`
+  while CoD2 flattens to top-level. Count **deep** (recurse `child_effects` +
+  `activation_effects`) on both sides before believing a mismatch.
+- **Fail loud, not silent.** A `try/except pass` around a struct read turns a parser
+  misalignment into invisible data loss across hundreds of powers. Swallowed parse
+  failures must at least `log` (power name + what was dropped) so the next misalignment
+  announces itself instead of hiding for months.
 
 ## 6. The re-export workflow (always de-risk)
 
