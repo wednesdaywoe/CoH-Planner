@@ -40,8 +40,8 @@ export const NeutrinoBolt: Power = {
     "Defense Debuff",
     "Guardian Archetype Sets",
     "Ranged Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

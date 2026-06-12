@@ -41,7 +41,8 @@ export const ChilloftheNight: Power = {
     "Holds",
     "Immobilize",
     "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

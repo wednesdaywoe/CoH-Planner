@@ -34,7 +34,7 @@ export const ChillingEmbrace: Power = {
   ],
   "allowedSetCategories": [
     "Slow Movement",
-    "To Hit Debuff"
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

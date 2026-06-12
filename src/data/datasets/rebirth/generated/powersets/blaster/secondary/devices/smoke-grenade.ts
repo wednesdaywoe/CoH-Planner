@@ -34,7 +34,8 @@ export const SmokeGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

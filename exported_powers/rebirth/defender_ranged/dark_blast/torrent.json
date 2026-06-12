@@ -45,7 +45,8 @@
     "Knockback",
     "Ranged AoE Damage",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "cast_through": [],
   "toggle_ignore": [],

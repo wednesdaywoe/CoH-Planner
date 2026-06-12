@@ -41,9 +41,9 @@ export const IncandescentStrike: Power = {
     "Holds",
     "Knockback",
     "Melee Damage",
-    "To Hit Debuff",
     "Universal Control Duration",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": [

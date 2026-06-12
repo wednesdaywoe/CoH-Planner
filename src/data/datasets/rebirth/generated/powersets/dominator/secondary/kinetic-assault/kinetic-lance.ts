@@ -38,8 +38,8 @@ export const KineticLance: Power = {
     "Ranged Damage",
     "Slow Movement",
     "Sniper Attacks",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": [

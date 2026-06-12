@@ -36,7 +36,8 @@ export const RisetotheChallenge: Power = {
   ],
   "allowedSetCategories": [
     "Healing",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

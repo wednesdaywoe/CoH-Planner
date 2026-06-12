@@ -36,8 +36,8 @@ export const EntanglingArrow: Power = {
   "allowedSetCategories": [
     "Immobilize",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

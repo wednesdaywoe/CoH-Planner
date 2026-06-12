@@ -35,7 +35,8 @@ export const Hurricane: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

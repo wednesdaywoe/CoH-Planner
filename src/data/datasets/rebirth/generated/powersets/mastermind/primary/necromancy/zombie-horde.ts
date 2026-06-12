@@ -37,7 +37,8 @@ export const ZombieHorde: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

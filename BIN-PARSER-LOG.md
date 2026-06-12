@@ -151,6 +151,43 @@ gated to the redirect-shell+`_Info` shape so nothing else is touched. Guard:
 tests. *(Traps damage values worth an in-game spot-check — they come from the generic
 `Remote_Bomb_Info`/"Temporal Bomb" display power.)*
 
+## ✅ Rebirth Tar Patch no longer shows "To Hit Debuff" — Witchcraft recategorized "Universal Debuff" (2026-06-11)
+
+**Bug (user, Rebirth):** Tar Patch's slotting offered "To Hit Debuff" sets, but in-game
+it only takes Slow, **Universal Debuff**, Range, Endurance, Recharge.
+
+**Root cause.** `allowed_set_categories` is computed from boostsets.bin's authoritative
+per-set power lists. The only non-Slow set covering Tar Patch is **Witchcraft /
+Superior Witchcraft** (Rebirth Halloween event sets). Their pieces span **Defense + Slow
++ ToHit Debuff** — genuine *multi-aspect "Universal Debuff"* sets, slottable in any of
+those power types (Tar Patch qualifies via its **Slow**). But the binary tags them
+`ECToHitDeBuff` (one of their aspects) → the exporter labeled every power that can slot
+them "To Hit Debuff", wrongly implying Tar Patch (which has NO to-hit debuff) takes
+ToHit-debuff sets. (HC is unaffected — it has no Witchcraft; HC Tar Patch = `['Slow
+Movement']`.)
+
+**Fix.** Recategorized Witchcraft + Superior Witchcraft → "Universal Debuff" via
+`_CHALLENGE_SET_OVERRIDES_BY_NAME` in
+[_boostsets.py](tools/bin-crawler/bin_crawler/parser/_boostsets.py) (same mechanism as
+ForcedIndoctrination → "Universal Control Duration"). Real single-aspect ToHit sets
+(Cloud Senses, Dark Watcher's Despair, Siphon Insight) stay "To Hit Debuff".
+**Surgical re-export** (per the de-risk workflow): exported Rebirth to scratch and applied
+**only** the `allowed_set_categories` field to the committed `exported_powers/rebirth`
+(**922 power files** — the real scope of Witchcraft's slottable powers; verified each diff
+is allowed_set_categories-only, no stale-export drift). Plumbed the new category through
+the planner: `IOSetCategory` ([common.ts](src/types/common.ts)),
+`IO_SET_TYPE_TO_CATEGORY` + `CATEGORY_TO_ASPECTS`/`CATEGORY_PRIORITY`
+([io-sets.ts](src/data/io-sets.ts), [enhancement-registry.ts](src/data/enhancement-registry.ts)),
+Witchcraft `type` in [io-sets-raw.ts](src/data/datasets/rebirth/io-sets-raw.ts), and the
+EnhancementPicker event-tier-standard surfacing.
+
+**Verified.** Tar Patch → `['Slow Movement', 'Universal Debuff']` (no To Hit Debuff);
+genuine -ToHit powers (Darkest Night, Fearsome Stare, Twilight Grasp) KEEP "To Hit Debuff"
+AND gain "Universal Debuff" — the discriminator is exact. Regen changed Rebirth powersets
+(+ pools/epics). Guard:
+[rebirth-universal-debuff.test.ts](src/data/rebirth-universal-debuff.test.ts). tsc clean,
+466 tests. See [[epic-pool-availability-class-gate]] for the sibling Rebirth-slotting work.
+
 ## ✅ "Low-value leftovers" were two real bugs + one near-miss (skeptic pass, 2026-06-11)
 
 A skeptic re-investigation of the three items the log had filed as "cosmetic / low

@@ -42,8 +42,8 @@ export const ProtonVolley: Power = {
     "Guardian Archetype Sets",
     "Ranged Damage",
     "Sniper Attacks",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

@@ -37,7 +37,7 @@ export const Infrigidate: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Slow Movement",
-    "To Hit Debuff"
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

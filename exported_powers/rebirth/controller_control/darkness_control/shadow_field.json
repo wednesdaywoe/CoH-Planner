@@ -43,7 +43,8 @@
     "Controller Archetype Sets",
     "Holds",
     "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "cast_through": [],
   "toggle_ignore": [],

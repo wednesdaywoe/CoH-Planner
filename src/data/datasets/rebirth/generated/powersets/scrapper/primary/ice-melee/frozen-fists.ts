@@ -36,8 +36,8 @@ export const FrozenFists: Power = {
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": [

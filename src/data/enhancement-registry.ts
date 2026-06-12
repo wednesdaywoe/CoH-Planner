@@ -123,6 +123,9 @@ export const SET_CATEGORY_TO_ENHANCEMENT: Record<string, EnhancementStatType[]> 
   'Accurate To-Hit Debuff': ['ToHit Debuff', 'Accuracy'],
   'Accurate Defense Debuff': ['Defense Debuff', 'Accuracy'],
   'Slow Movement': ['Slow'],
+  // Rebirth multi-aspect debuff event sets (Witchcraft): pieces span Defense
+  // Debuff + Slow + ToHit Debuff, hence slottable in any of those power types.
+  'Universal Debuff': ['Defense Debuff', 'Slow', 'ToHit Debuff'],
   'Threat Duration': ['Taunt'],
   'Endurance Modification': ['EnduranceReduction'],
   // Movement
@@ -197,6 +200,8 @@ export const CATEGORY_PRIORITY: IOSetCategory[] = [
   'Accurate To-Hit Debuff',
   'Accurate Defense Debuff',
   'Slow Movement',
+  // Rebirth multi-aspect debuff event set (Witchcraft) — sits with the debuffs.
+  'Universal Debuff',
   // Other support
   'Endurance Modification',
   'Threat Duration',

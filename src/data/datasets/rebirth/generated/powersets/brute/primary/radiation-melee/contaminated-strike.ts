@@ -41,8 +41,8 @@ export const ContaminatedStrike: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Threat Duration",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": [

@@ -35,8 +35,8 @@ export const DistortionField: Power = {
   "allowedSetCategories": [
     "Holds",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

@@ -47,7 +47,7 @@ export const ChillingEmbrace: Power = {
     "Endurance Modification",
     "Healing",
     "Slow Movement",
-    "To Hit Debuff"
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

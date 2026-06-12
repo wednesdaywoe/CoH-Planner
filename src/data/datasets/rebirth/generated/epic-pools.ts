@@ -216,8 +216,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -293,7 +293,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Slow Movement",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -361,8 +361,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 2,
@@ -597,8 +597,8 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Pet Damage",
           "Recharge Intensive Pets",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -638,8 +638,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Control Duration"
+          "Universal Control Duration",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -1143,7 +1143,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -1378,8 +1378,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Ranged Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -1619,8 +1619,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Ranged Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -1979,8 +1979,8 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -2823,7 +2823,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Ranged Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -2949,7 +2950,8 @@ export const EPIC_POOLS_RAW = {
           "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -2999,7 +3001,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Ranged AoE Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -3059,7 +3062,8 @@ export const EPIC_POOLS_RAW = {
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -3439,8 +3443,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -3757,7 +3761,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Slow Movement",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -4073,8 +4077,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Ranged Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -4329,8 +4333,8 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Pet Damage",
           "Recharge Intensive Pets",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -4630,7 +4634,8 @@ export const EPIC_POOLS_RAW = {
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -4858,8 +4863,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Control Duration"
+          "Universal Control Duration",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -5830,7 +5835,8 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -5922,7 +5928,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Ranged Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -5970,7 +5977,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Ranged AoE Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -6026,7 +6034,8 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "To Hit Debuff",
           "Universal Control Duration",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -6105,9 +6114,9 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Stuns",
-          "To Hit Debuff",
           "Universal Control Duration",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -6320,8 +6329,8 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Pet Damage",
           "Recharge Intensive Pets",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -6373,8 +6382,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Ranged Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -6643,8 +6652,8 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Pet Damage",
           "Recharge Intensive Pets",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -7075,7 +7084,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Ranged AoE Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -7400,7 +7410,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Slow Movement",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -8207,8 +8217,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Ranged Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -8460,8 +8470,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Ranged Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -9399,7 +9409,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -9624,7 +9634,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -10095,9 +10105,9 @@ export const EPIC_POOLS_RAW = {
           "Holds",
           "Ranged Damage",
           "Slow Movement",
-          "To Hit Debuff",
           "Universal Control Duration",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -10170,9 +10180,9 @@ export const EPIC_POOLS_RAW = {
           "Immobilize",
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
           "Universal Control Duration",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -10872,8 +10882,8 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 2,
@@ -10910,7 +10920,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Slow Movement",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -11055,8 +11065,8 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -11233,9 +11243,9 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Stuns",
-          "To Hit Debuff",
           "Universal Control Duration",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -11277,8 +11287,8 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Pet Damage",
           "Recharge Intensive Pets",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -11404,8 +11414,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Control Duration"
+          "Universal Control Duration",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -11584,8 +11594,8 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Pet Damage",
           "Recharge Intensive Pets",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -12109,7 +12119,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -12767,7 +12777,8 @@ export const EPIC_POOLS_RAW = {
           "Guardian Archetype Sets",
           "Ranged AoE Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -12913,7 +12924,8 @@ export const EPIC_POOLS_RAW = {
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -13229,8 +13241,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -13435,8 +13447,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -13506,8 +13518,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 2,
@@ -13561,8 +13573,8 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 2,
@@ -13782,8 +13794,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 2,
@@ -14100,7 +14112,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -14668,7 +14680,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -14857,7 +14869,8 @@ export const EPIC_POOLS_RAW = {
           "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -15809,8 +15822,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Control Duration"
+          "Universal Control Duration",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -16206,7 +16219,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Ranged AoE Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -16593,7 +16607,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -18613,7 +18627,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -18829,9 +18843,9 @@ export const EPIC_POOLS_RAW = {
           "Knockback",
           "Ranged AoE Damage",
           "Stuns",
-          "To Hit Debuff",
           "Universal Control Duration",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -19214,8 +19228,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Holds",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Control Duration"
+          "Universal Control Duration",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -19283,8 +19297,8 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Pet Damage",
           "Recharge Intensive Pets",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -19630,7 +19644,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Ranged Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -19680,7 +19695,8 @@ export const EPIC_POOLS_RAW = {
           "Ranged Damage",
           "Sniper Attacks",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.2,
@@ -19850,7 +19866,8 @@ export const EPIC_POOLS_RAW = {
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -20306,8 +20323,8 @@ export const EPIC_POOLS_RAW = {
           "Defense Debuff",
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -20534,8 +20551,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Control Duration"
+          "Universal Control Duration",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1.05,
@@ -21075,7 +21092,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Ranged Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -21182,7 +21200,8 @@ export const EPIC_POOLS_RAW = {
           "Accurate To-Hit Debuff",
           "Ranged AoE Damage",
           "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -21227,7 +21246,8 @@ export const EPIC_POOLS_RAW = {
           "ToHit Debuff"
         ],
         "allowedSetCategories": [
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -21326,8 +21346,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Control Duration"
+          "Universal Control Duration",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -21392,8 +21412,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Ranged AoE Damage",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -21577,8 +21597,8 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Immobilize",
           "Slow Movement",
-          "To Hit Debuff",
-          "Universal Control Duration"
+          "Universal Control Duration",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,

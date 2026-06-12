@@ -45,9 +45,9 @@ export const CripplingAxeKick: Power = {
     "Slow Movement",
     "Tanker Archetype Sets",
     "Threat Duration",
-    "To Hit Debuff",
     "Universal Control Duration",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

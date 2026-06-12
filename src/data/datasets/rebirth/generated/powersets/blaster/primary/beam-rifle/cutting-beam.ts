@@ -41,8 +41,8 @@ export const CuttingBeam: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

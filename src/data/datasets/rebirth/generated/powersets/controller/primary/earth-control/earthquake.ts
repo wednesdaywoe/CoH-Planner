@@ -36,7 +36,8 @@ export const Earthquake: Power = {
   "allowedSetCategories": [
     "Defense Debuff",
     "Knockback",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

@@ -38,7 +38,8 @@ export const Gloom: Power = {
     "Guardian Archetype Sets",
     "Ranged Damage",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

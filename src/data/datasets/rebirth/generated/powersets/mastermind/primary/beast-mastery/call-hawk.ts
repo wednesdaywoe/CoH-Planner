@@ -39,7 +39,8 @@ export const CallHawk: Power = {
     "Knockback",
     "Ranged Damage",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

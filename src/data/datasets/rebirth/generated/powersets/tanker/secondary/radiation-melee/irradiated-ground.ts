@@ -37,8 +37,8 @@ export const IrradiatedGround: Power = {
     "Defense Debuff",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

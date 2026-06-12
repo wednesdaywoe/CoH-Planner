@@ -220,8 +220,8 @@ export const POWER_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Ranged AoE Damage",
-          "To Hit Debuff",
-          "Universal Damage Sets"
+          "Universal Damage Sets",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -1250,7 +1250,7 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -3047,7 +3047,8 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Slow Movement",
-          "To Hit Debuff"
+          "To Hit Debuff",
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -4313,7 +4314,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Slow Movement",
-          "To Hit Debuff"
+          "Universal Debuff"
         ],
         "effects": {
           "accuracy": 1,

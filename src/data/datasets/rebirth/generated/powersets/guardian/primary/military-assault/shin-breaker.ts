@@ -39,8 +39,8 @@ export const ShinBreaker: Power = {
     "Guardian Archetype Sets",
     "Melee Damage",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

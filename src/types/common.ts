@@ -183,7 +183,10 @@ export type IOSetCategory =
   // Rebirth Challenge Enhancement categories — universal mez set (Forced
   // Indoctrination) and the single-piece Rest enhancement (Inexhaustibility)
   | 'Universal Control Duration'
-  | 'Rest Buff';
+  | 'Rest Buff'
+  // Rebirth multi-aspect debuff event sets (Witchcraft) — slottable in any
+  // Slow / Defense-debuff / ToHit-debuff power (e.g. Tar Patch via Slow)
+  | 'Universal Debuff';
 
 // ============================================
 // IO SET RARITY

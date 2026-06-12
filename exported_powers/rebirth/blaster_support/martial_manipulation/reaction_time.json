@@ -6,7 +6,7 @@
   "display_name": "Reaction Time",
   "display_fullname": "Blaster Support Martial Manipulation Reaction Time",
   "display_help": "You attune yourself to the world around you, moving with preternatural speed.  All enemies nearby move slowly and have reduced recharge, and you can absorb small amounts of damage every 2 seconds.  When Reaction Time is deactivated, you gain a burst of speed for a short duration, increasing your own recharge and move speed.",
-  "display_short_help": "Toggle (PBAoE), Self Absorb over Time, +Recovery, Foe \u2013Rech, - Move, Special",
+  "display_short_help": "Toggle (PBAoE), Self Absorb over Time, +Recovery, Foe –Rech, - Move, Special",
   "icon": "martialmanipulation_reactiontime.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -42,7 +42,7 @@
     "Endurance Modification",
     "Healing",
     "Slow Movement",
-    "To Hit Debuff"
+    "Universal Debuff"
   ],
   "cast_through": [
     "hold",

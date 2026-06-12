@@ -40,7 +40,8 @@ export const NightFall: Power = {
     "Accurate To-Hit Debuff",
     "Ranged AoE Damage",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

@@ -38,8 +38,8 @@ export const Frenzy: Power = {
     "Defense Debuff",
     "Melee AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": [

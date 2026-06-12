@@ -40,8 +40,8 @@ export const Frost: Power = {
     "Ranged AoE Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

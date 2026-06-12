@@ -48,7 +48,8 @@ export const SummonWolves: Power = {
     "Running & Sprints",
     "To Hit Buff",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

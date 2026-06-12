@@ -41,8 +41,8 @@ export const RadioactiveSmash: Power = {
     "Guardian Archetype Sets",
     "Knockback",
     "Melee Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": [

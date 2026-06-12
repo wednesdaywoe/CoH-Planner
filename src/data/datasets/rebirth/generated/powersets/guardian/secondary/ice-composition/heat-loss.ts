@@ -36,7 +36,7 @@ export const HeatLoss: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Slow Movement",
-    "To Hit Debuff"
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

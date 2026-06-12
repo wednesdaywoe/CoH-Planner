@@ -43,8 +43,8 @@
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "cast_through": [
     "hold",

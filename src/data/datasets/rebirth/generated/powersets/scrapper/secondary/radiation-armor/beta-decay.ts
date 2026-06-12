@@ -38,7 +38,8 @@ export const BetaDecay: Power = {
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
     "Defense Debuff",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

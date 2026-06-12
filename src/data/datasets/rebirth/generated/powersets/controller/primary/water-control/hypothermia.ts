@@ -39,8 +39,8 @@ export const Hypothermia: Power = {
     "Controller Archetype Sets",
     "Sleep",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

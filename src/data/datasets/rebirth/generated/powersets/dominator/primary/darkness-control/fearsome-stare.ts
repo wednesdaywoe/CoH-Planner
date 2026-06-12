@@ -41,7 +41,8 @@ export const FearsomeStare: Power = {
     "Dominator Archetype Sets",
     "Fear",
     "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

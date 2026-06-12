@@ -40,8 +40,8 @@ export const ProtonVolley: Power = {
     "Defense Debuff",
     "Ranged Damage",
     "Sniper Attacks",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

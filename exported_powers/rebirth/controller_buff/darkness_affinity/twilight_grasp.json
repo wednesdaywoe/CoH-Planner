@@ -42,7 +42,8 @@
     "Accurate Healing",
     "Accurate To-Hit Debuff",
     "Healing",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Debuff"
   ],
   "cast_through": [],
   "toggle_ignore": [],

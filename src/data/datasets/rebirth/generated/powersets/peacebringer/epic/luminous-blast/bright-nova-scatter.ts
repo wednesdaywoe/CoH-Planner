@@ -41,8 +41,8 @@ export const BrightNovaScatter: Power = {
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Ranged AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

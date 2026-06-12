@@ -37,7 +37,8 @@ export const Smite: Power = {
     "Blaster Archetype Sets",
     "Melee Damage",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": [

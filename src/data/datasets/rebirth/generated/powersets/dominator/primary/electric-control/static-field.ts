@@ -38,8 +38,8 @@ export const StaticField: Power = {
     "Dominator Archetype Sets",
     "Sleep",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

@@ -37,7 +37,8 @@ export const RadiationInfection: Power = {
   ],
   "allowedSetCategories": [
     "Defense Debuff",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

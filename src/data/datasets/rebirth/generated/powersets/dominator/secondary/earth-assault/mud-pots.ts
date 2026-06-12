@@ -37,8 +37,8 @@ export const MudPots: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

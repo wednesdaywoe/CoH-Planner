@@ -40,7 +40,8 @@ export const FearsomeStare: Power = {
     "Accurate To-Hit Debuff",
     "Fear",
     "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

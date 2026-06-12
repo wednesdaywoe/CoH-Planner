@@ -25255,7 +25255,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "To Hit Debuff"
+    "type": "Universal Debuff"
   },
   "synapses_agility": {
     "bonuses": [
@@ -28707,6 +28707,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "To Hit Debuff"
+    "type": "Universal Debuff"
   }
 };

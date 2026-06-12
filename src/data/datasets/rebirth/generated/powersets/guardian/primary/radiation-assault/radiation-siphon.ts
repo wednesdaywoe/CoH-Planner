@@ -42,8 +42,8 @@ export const RadiationSiphon: Power = {
     "Guardian Archetype Sets",
     "Healing",
     "Melee Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": [

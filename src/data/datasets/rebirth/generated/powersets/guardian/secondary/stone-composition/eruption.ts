@@ -41,7 +41,8 @@ export const Eruption: Power = {
     "Guardian Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

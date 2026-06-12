@@ -40,8 +40,8 @@
   "allowed_set_categories": [
     "Melee AoE Damage",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "cast_through": [],
   "toggle_ignore": [],

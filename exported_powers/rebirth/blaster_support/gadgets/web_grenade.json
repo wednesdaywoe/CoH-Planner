@@ -41,8 +41,8 @@
   "allowed_set_categories": [
     "Immobilize",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "cast_through": [
     "hold",

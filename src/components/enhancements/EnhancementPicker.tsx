@@ -174,7 +174,7 @@ export function EnhancementPicker() {
       // event-tier rarity for exemplar-immunity. Surface them as standard
       // categories so users can find sets like Forced Indoctrination
       // without first knowing to click the Event filter.
-      if (set.type === 'Universal Control Duration' || set.type === 'Rest Buff') {
+      if (set.type === 'Universal Control Duration' || set.type === 'Rest Buff' || set.type === 'Universal Debuff') {
         cats.add(set.type);
       }
     }
@@ -251,7 +251,7 @@ export function EnhancementPicker() {
         // Indoctrination / Inexhaustibility ship with event rarity for
         // exemplar-immunity but conceptually belong here. Skip the
         // special filter when the user has selected one of these.
-        sets = (sidebarFilter === 'Universal Control Duration' || sidebarFilter === 'Rest Buff')
+        sets = (sidebarFilter === 'Universal Control Duration' || sidebarFilter === 'Rest Buff' || sidebarFilter === 'Universal Debuff')
           ? availableSets.filter((set) => set.type === sidebarFilter)
           : availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
     }
@@ -736,7 +736,7 @@ export function EnhancementPicker() {
               <MobileCategoryButton
                 key={cat}
                 label={cat.replace(' Damage', '').replace(' Sets', '')}
-                count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration' || cat === 'Rest Buff' || !isSpecialSet(s))).length}
+                count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration' || cat === 'Rest Buff' || cat === 'Universal Debuff' || !isSpecialSet(s))).length}
                 isActive={sidebarFilter === cat}
                 onClick={() => setSidebarFilter(cat)}
                 textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}
@@ -823,7 +823,7 @@ export function EnhancementPicker() {
                 <SidebarButton
                   key={cat}
                   label={cat}
-                  count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration' || cat === 'Rest Buff' || !isSpecialSet(s))).length}
+                  count={availableSets.filter((s) => s.type === cat && (cat === 'Universal Control Duration' || cat === 'Rest Buff' || cat === 'Universal Debuff' || !isSpecialSet(s))).length}
                   isActive={sidebarFilter === cat}
                   onClick={() => setSidebarFilter(cat)}
                   textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}

@@ -44,8 +44,8 @@ export const HeadSplitter: Power = {
     "Knockback",
     "Melee AoE Damage",
     "Threat Duration",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {

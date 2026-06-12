@@ -41,7 +41,8 @@
   "allowed_set_categories": [
     "Accurate To-Hit Debuff",
     "Slow Movement",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Debuff"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -105,6 +105,7 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   // though the per-power `allowedSetCategories` already lists the category.
   'Universal Control Duration': 'Universal Control Duration',
   'Rest Buff': 'Rest Buff',
+  'Universal Debuff': 'Universal Debuff',
 };
 
 /**

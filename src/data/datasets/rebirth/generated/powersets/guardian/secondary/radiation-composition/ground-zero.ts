@@ -41,8 +41,8 @@ export const GroundZero: Power = {
     "Guardian Archetype Sets",
     "Healing",
     "Melee AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": [

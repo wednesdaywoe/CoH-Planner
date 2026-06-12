@@ -40,7 +40,7 @@ export const InertialSiphon: Power = {
     "Leaping & Sprints",
     "Running & Sprints",
     "Slow Movement",
-    "To Hit Debuff",
+    "Universal Debuff",
     "Universal Travel"
   ],
   "maxSlots": 6,

@@ -41,7 +41,8 @@
     "Accurate To-Hit Debuff",
     "Confuse",
     "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "cast_through": [],
   "toggle_ignore": [],

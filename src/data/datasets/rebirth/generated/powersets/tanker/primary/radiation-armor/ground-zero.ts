@@ -42,8 +42,8 @@ export const GroundZero: Power = {
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": [

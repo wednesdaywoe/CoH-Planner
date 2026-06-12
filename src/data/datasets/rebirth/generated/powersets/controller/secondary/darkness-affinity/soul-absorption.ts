@@ -37,7 +37,8 @@ export const SoulAbsorption: Power = {
     "Accurate To-Hit Debuff",
     "Endurance Modification",
     "Healing",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

@@ -41,8 +41,8 @@
   "allowed_set_categories": [
     "Holds",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Control Duration"
+    "Universal Control Duration",
+    "Universal Debuff"
   ],
   "cast_through": [],
   "toggle_ignore": [],

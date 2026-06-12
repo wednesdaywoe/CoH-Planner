@@ -40,8 +40,8 @@ export const Sleet: Power = {
     "Defense Debuff",
     "Ranged AoE Damage",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

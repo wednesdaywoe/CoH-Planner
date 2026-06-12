@@ -37,7 +37,8 @@ export const TwilightGrasp: Power = {
     "Accurate Healing",
     "Accurate To-Hit Debuff",
     "Healing",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "effects": {

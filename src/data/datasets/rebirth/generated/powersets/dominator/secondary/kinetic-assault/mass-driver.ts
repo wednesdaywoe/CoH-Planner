@@ -36,8 +36,8 @@ export const MassDriver: Power = {
   "allowedSetCategories": [
     "Ranged Damage",
     "Slow Movement",
-    "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Universal Debuff"
   ],
   "maxSlots": 6,
   "damage": {
