@@ -92,8 +92,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P4234428342",
-            "priority_list": "Pets_StickyArrow_Blaster"
+            "entity_def": "Pets_StickyArrow_Blaster",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

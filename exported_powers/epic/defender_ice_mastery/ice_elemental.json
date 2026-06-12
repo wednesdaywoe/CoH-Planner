@@ -92,8 +92,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1712748702",
-            "priority_list": "Pets_IceElemental"
+            "entity_def": "Pets_IceElemental",
+            "priority_list": "PL_FightPreferMelee"
           },
           "flags": [
             "IgnoreStrength",

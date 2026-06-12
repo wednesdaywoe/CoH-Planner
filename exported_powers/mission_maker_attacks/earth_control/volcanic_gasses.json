@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P4176979480",
-            "priority_list": "Pets_Volcanicgas"
+            "entity_def": "Pets_Volcanicgas",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

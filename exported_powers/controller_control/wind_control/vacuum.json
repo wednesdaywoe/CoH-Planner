@@ -99,8 +99,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P2375591925",
-            "priority_list": "P1660374886"
+            "entity_def": "Pets_WindControl_Vacuum_Controller",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

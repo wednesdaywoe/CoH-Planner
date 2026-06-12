@@ -79,8 +79,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -113,8 +113,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -147,8 +147,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -181,8 +181,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -215,8 +215,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -249,8 +249,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -283,8 +283,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -317,8 +317,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -351,8 +351,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -385,8 +385,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -419,8 +419,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -453,8 +453,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -487,8 +487,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -521,8 +521,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"
@@ -555,8 +555,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Survive_Minion"
+            "entity_def": "Survive_Minion",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"

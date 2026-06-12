@@ -178,8 +178,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P3912486950",
-            "priority_list": "Pets_Bomb"
+            "entity_def": "Pets_Bomb",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
             "KeepThroughDeath",
@@ -283,8 +283,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P3912486950",
-            "priority_list": "Pets_Bomb_Controller"
+            "entity_def": "Pets_Bomb_Controller",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
             "KeepThroughDeath",
@@ -332,8 +332,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P3912486950",
-            "priority_list": "Pets_Bomb_Corruptor"
+            "entity_def": "Pets_Bomb_Corruptor",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
             "KeepThroughDeath",
@@ -465,8 +465,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P3912486950",
-            "priority_list": "Pets_Bomb_Defender"
+            "entity_def": "Pets_Bomb_Defender",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
             "KeepThroughDeath",

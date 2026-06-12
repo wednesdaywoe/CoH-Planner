@@ -78,10 +78,6 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "EntCreate",
-            "entity_def": "P1149374652"
-          },
           "flags": [
             "IgnoreResistance"
           ],

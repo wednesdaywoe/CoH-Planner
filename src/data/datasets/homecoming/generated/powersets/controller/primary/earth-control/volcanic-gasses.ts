@@ -47,7 +47,7 @@ export const VolcanicGasses: Power = {
       "copyBoosts": true,
       "entities": [
         {
-          "entity": "P4176979480",
+          "entity": "Pets_Volcanicgas",
           "count": 1
         },
         {

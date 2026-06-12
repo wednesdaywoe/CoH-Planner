@@ -89,8 +89,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P3912486950",
-            "priority_list": "Pets_GunDrone_Tri_Controller"
+            "entity_def": "Pets_GunDrone_Tri_Controller",
+            "priority_list": "Pet"
           },
           "flags": [
             "CopyBoosts"

@@ -257,11 +257,6 @@
               "stack": "Stack",
               "stack_limit": 2,
               "stack_key": null,
-              "params": {
-                "type": "EntCreate",
-                "entity_def": "P801416744",
-                "priority_list": "4ZHT57JXQFE7YRCXF9A9MULCEQ"
-              },
               "cancel_events": [
                 "Event_34"
               ],

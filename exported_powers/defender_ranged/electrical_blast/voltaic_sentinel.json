@@ -91,14 +91,14 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P964605222",
+            "entity_def": "Pet_NoCollision",
             "display_name": "Voltaic Sentinel",
             "redirects": [
               "Pets.ResistAll_NoFly.ResistAll",
               "Pets.VoltaicSentinel_PseudoPet.Electrical_Bolt",
               "Pets.VoltaicSentinel_PseudoPet.Electrical_Field"
             ],
-            "priority_list": "Pet_NoCollision"
+            "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"

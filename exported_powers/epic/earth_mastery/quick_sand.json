@@ -85,8 +85,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1397656559",
-            "priority_list": "Pets_Epic_Quicksand"
+            "entity_def": "Pets_Epic_Quicksand",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

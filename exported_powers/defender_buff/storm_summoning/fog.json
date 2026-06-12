@@ -93,13 +93,12 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1985334123",
+            "entity_def": "PL_StaticObject",
             "display_name": "Freezing Rain",
             "redirects": [
               "Pets.Freezing_Rain.FreezingRain",
               "Pets.Freezing_Rain.Avoid"
-            ],
-            "priority_list": "PL_StaticObject"
+            ]
           },
           "flags": [
             "IgnoreStrength",

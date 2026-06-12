@@ -95,8 +95,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1985334123",
-            "priority_list": "Pets_Tornado"
+            "entity_def": "Pets_Tornado",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
             "IgnoreStrength",

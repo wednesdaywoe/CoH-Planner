@@ -66,14 +66,17 @@ describe('multi-pet summon counts (homecoming)', () => {
     expect(summonField(dom, 'entityCount')).toBe('2');
   });
 
-  it('Rain of Arrows keeps its distinct P-hash (priority_list ≠ sibling → NOT merged)', () => {
-    // Rain-safety guard for the priority_list discriminator: Rain of Arrows'
-    // P-hash resolves to Pets_RainofArrows_Visual, which is NOT its sibling
-    // Pets_RainofArrows (visual vs static object), so the merge must leave it
-    // alone — collapsing it would wrongly fuse two distinct entities.
+  it('Rain of Arrows keeps two distinct entities (visual ≠ static → NOT merged)', () => {
+    // Rain-safety guard: Rain of Arrows summons a visual pseudo-pet
+    // (Pets_RainofArrows_Visual) AND a static-object sibling (Pets_RainofArrows)
+    // — distinct entities that must NOT collapse into one. Since the P-hash
+    // entity_def is now resolved at the parser (it was the float-message key, not
+    // an entity — see BIN-PARSER-LOG "P-hash entity_def — ROOT SOLVED"), the
+    // visual pet shows its real name instead of a raw P-hash.
     const t = gen('homecoming', 'blaster/primary/archery/rain-of-arrows.ts');
-    expect(t).toMatch(/"P\d{6,}"/);          // P-hash still present
-    expect(t).toContain('Pets_RainofArrows'); // static-object sibling still present
+    expect(t).not.toMatch(/"P\d{6,}"/);             // P-hash resolved away
+    expect(t).toContain('Pets_RainofArrows_Visual'); // visual pseudo-pet (was the P-hash)
+    expect(t).toContain('Pets_RainofArrows');        // static-object sibling, still distinct
   });
 
   it('Soul Extraction surfaces 3 tier ghosts as MUTUALLY EXCLUSIVE (summons 1, not 3)', () => {

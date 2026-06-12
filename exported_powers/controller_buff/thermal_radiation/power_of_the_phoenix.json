@@ -120,8 +120,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P297828065",
-            "priority_list": "P2874174058"
+            "entity_def": "Pets_Phoenix",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

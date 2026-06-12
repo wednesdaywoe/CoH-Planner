@@ -90,13 +90,12 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1985334123",
+            "entity_def": "PL_StaticObject",
             "display_name": "Ice Storm",
             "redirects": [
               "Pets.IceStorm_Sentinel.Avoid",
               "Pets.IceStorm_Sentinel.IceStorm"
-            ],
-            "priority_list": "PL_StaticObject"
+            ]
           },
           "flags": [
             "CopyBoosts"

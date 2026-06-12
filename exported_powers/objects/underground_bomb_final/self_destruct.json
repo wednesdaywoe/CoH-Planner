@@ -412,10 +412,6 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "EntCreate",
-            "entity_def": "P1090583630"
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

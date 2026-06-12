@@ -97,12 +97,12 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P258400189",
+            "entity_def": "Liquefy",
             "redirects": [
               "Pets.ResistAll.ResistAll",
               "Pets.Liquefy.Liquefy"
             ],
-            "priority_list": "Liquefy"
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

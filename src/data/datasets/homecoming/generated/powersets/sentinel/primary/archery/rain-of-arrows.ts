@@ -45,7 +45,7 @@ export const RainofArrows: Power = {
       "copyBoosts": true,
       "entities": [
         {
-          "entity": "P4047293352",
+          "entity": "Pets_RainofArrows_Visual",
           "count": 1
         },
         {

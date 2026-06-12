@@ -90,8 +90,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P703765092",
-            "priority_list": "Pets_Terror"
+            "entity_def": "Pets_Terror",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
             "IgnoreStrength",

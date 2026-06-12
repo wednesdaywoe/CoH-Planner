@@ -92,8 +92,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1985334123",
-            "priority_list": "Pets_LightningStorm"
+            "entity_def": "Pets_LightningStorm",
+            "priority_list": "PL_Untargetable_SpawnFlying"
           },
           "flags": [
             "IgnoreStrength",

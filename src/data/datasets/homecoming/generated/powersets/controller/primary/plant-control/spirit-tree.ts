@@ -44,7 +44,7 @@ export const SpiritTree: Power = {
       "copyBoosts": true,
       "entities": [
         {
-          "entity": "P1734497484",
+          "entity": "Pets_Spirit_Tree",
           "count": 1
         },
         {

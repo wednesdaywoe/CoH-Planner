@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P4026445528",
-            "priority_list": "Pets_IceSlick"
+            "entity_def": "Pets_IceSlick",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

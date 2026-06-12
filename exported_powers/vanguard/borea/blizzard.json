@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1985334123",
-            "priority_list": "L43AVXW9VTUZYANUXENTJMYBLS"
+            "entity_def": "L43AVXW9VTUZYANUXENTJMYBLS",
+            "priority_list": "Pets_Blizzard"
           },
           "flags": [
             "CopyBoosts"

@@ -93,8 +93,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P2995632953",
-            "priority_list": "Pets_Whirlpool_Sentinel"
+            "entity_def": "Pets_Whirlpool_Sentinel",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "CopyBoosts"
@@ -127,12 +127,12 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1985334123",
+            "entity_def": "Whirlpool",
             "redirects": [
               "Pets.Whirlpool_Sentinel.Avoid",
               "Pets.Whirlpool_Sentinel.Whirlpool"
             ],
-            "priority_list": "Whirlpool"
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "CopyBoosts"

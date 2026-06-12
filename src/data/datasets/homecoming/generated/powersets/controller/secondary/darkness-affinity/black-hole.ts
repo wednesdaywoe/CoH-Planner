@@ -54,11 +54,6 @@ export const BlackHole: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "4ZHT57JXQFE7YRCXF9A9MULCEQ",
-      "duration": 30
-    },
     "buffDuration": 4
   }
 };

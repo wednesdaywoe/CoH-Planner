@@ -90,8 +90,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1985334123",
-            "priority_list": "Pets_IceStorm_Defender"
+            "entity_def": "Pets_IceStorm_Defender",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "CopyBoosts"

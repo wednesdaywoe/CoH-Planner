@@ -81,8 +81,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P4164625865",
-            "priority_list": "Objects_Briefcase_Explosion"
+            "entity_def": "Objects_Briefcase_Explosion",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "CopyBoosts"
@@ -115,8 +115,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P2437733030",
-            "priority_list": "Objects_Briefcase_Burn"
+            "entity_def": "Objects_Briefcase_Burn",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "CopyBoosts"

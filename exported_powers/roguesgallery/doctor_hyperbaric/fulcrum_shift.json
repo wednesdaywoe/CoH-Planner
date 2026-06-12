@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1328624799",
-            "priority_list": "NPC_Pets_MA_KineticTransferDebuff"
+            "entity_def": "NPC_Pets_MA_KineticTransferDebuff",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

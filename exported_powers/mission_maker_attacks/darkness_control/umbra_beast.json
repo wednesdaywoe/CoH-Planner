@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P2987067974",
-            "priority_list": "Pets_Umbra_Beast"
+            "entity_def": "Pets_Umbra_Beast",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "IgnoreStrength",

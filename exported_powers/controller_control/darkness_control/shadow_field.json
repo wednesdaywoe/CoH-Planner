@@ -90,8 +90,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P4284718959",
-            "priority_list": "Pets_Shadow_Field_Controller"
+            "entity_def": "Pets_Shadow_Field_Controller",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

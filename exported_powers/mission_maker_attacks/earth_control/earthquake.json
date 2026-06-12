@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P643314801",
-            "priority_list": "Pets_Earthquake"
+            "entity_def": "Pets_Earthquake",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

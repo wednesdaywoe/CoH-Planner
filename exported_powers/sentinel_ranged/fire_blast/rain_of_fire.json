@@ -88,13 +88,12 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1985334123",
+            "entity_def": "PL_StaticObject",
             "display_name": "Rain of Fire",
             "redirects": [
               "Pets.RainofFire_Sentinel.Avoid",
               "Pets.RainofFire_Sentinel.RainofFire"
-            ],
-            "priority_list": "PL_StaticObject"
+            ]
           },
           "flags": [
             "CopyBoosts"

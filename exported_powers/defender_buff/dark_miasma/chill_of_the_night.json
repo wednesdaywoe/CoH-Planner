@@ -93,8 +93,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P4241331532",
-            "priority_list": "Pets_DarkServant"
+            "entity_def": "Pets_DarkServant",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"

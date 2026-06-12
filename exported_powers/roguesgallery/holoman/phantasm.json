@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P639306245",
-            "priority_list": "GenericVillains_I24_Holo_Man_Phantasm"
+            "entity_def": "GenericVillains_I24_Holo_Man_Phantasm",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "IgnoreStrength",

@@ -88,8 +88,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1712748702",
-            "priority_list": "Pets_CatherineWheel"
+            "entity_def": "Pets_CatherineWheel",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "IgnoreStrength",

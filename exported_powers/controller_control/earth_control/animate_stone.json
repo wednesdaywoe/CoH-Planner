@@ -91,8 +91,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P388854299",
-            "priority_list": "Pets_Stone_Controller"
+            "entity_def": "Pets_Stone_Controller",
+            "priority_list": "Pet"
           },
           "flags": [
             "IgnoreStrength",

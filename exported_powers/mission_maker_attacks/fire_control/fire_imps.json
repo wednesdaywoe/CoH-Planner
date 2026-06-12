@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1757360070",
-            "priority_list": "Pets_FireImp"
+            "entity_def": "Pets_FireImp",
+            "priority_list": "PL_FightPreferMelee"
           },
           "flags": [
             "CopyBoosts"

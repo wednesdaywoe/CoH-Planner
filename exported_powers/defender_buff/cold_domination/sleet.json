@@ -93,12 +93,12 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P3955584513",
+            "entity_def": "Sleet",
             "redirects": [
               "Pets.Sleet.Sleet",
               "Pets.Sleet.Avoid"
             ],
-            "priority_list": "Sleet"
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

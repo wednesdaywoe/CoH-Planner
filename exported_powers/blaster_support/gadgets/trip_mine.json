@@ -89,8 +89,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P3912486950",
-            "priority_list": "Pets_Mine"
+            "entity_def": "Pets_Mine",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
           },
           "flags": [
             "CopyBoosts"

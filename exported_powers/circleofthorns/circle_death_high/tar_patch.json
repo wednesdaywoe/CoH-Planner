@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P174413786",
-            "priority_list": "Pets_TarPatch"
+            "entity_def": "Pets_TarPatch",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "CopyBoosts"

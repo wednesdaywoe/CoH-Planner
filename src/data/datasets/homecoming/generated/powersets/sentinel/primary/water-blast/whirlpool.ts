@@ -50,11 +50,11 @@ export const Whirlpool: Power = {
       "copyBoosts": true,
       "entities": [
         {
-          "entity": "P2995632953",
+          "entity": "Pets_Whirlpool_Sentinel",
           "count": 1
         },
         {
-          "entity": "P1985334123",
+          "entity": "Whirlpool",
           "count": 1
         }
       ]

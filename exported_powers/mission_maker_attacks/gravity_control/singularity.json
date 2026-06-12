@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P857968679",
-            "priority_list": "Pets_Singularity"
+            "entity_def": "Pets_Singularity",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "IgnoreStrength",

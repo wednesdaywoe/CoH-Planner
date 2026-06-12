@@ -94,8 +94,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P2158078059",
-            "priority_list": "P2416771117"
+            "entity_def": "Pets_Fallout",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

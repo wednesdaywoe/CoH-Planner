@@ -96,8 +96,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1984608796",
-            "priority_list": "Pets_Psionic_Nexus"
+            "entity_def": "Pets_Psionic_Nexus",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "IgnoreStrength",

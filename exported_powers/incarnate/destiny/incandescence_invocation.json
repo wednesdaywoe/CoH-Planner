@@ -142,7 +142,7 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P2051536888",
+            "entity_def": "IncarnatePets_Incandescent_Destiny_Shield",
             "priority_list": "PL_StaticObject"
           },
           "flags": [

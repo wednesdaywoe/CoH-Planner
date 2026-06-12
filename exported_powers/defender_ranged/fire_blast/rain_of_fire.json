@@ -88,8 +88,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1985334123",
-            "priority_list": "Pets_Defender_RainofFire"
+            "entity_def": "Pets_Defender_RainofFire",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "CopyBoosts"

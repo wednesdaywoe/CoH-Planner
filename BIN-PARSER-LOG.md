@@ -14,7 +14,11 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-## 🔬 HC P-hash "entity_def" — ROOT SOLVED: it's the EntCreate float/combat-text message, not an entity ref (code cleanup deferred) — 2026-06-12
+*(none open)*
+
+> ---RESOLVED ---
+
+## ✅ HC P-hash "entity_def" FIXED — it was the EntCreate float/combat-text message, now resolved to the real entity at the parser — 2026-06-12
 
 **The premise was wrong.** This was filed as "an opaque entity-def reference needing a
 separate villain/entity-def bin's name table (new parser, high effort)." It is none of
@@ -48,28 +52,36 @@ field all along. The ~5 P-hash-only powers (Proximity_Bomb.Self_Destruct, Briefc
 Crey.Clone_Subjugator.Consume, Council.Robot_Jets.Launch) are unreferenced object/NPC float
 effects.
 
-**Clean fix path (DEFERRED — needs pseudo-pet co-design, not a drop-in flip).** Reject
-message-keys (`^P\d+$`) in `_looks_like_entity_def` so `entity_def` picks the real entity
-name (or `None` for pure-float detonations → no EntCreate emitted). BUT this changes
-`entity_def` for ~49 powers, and the recently-shipped pseudo-pet machinery in
-[convert-powerset.cjs](scripts/convert-powerset.cjs) — `resolvePhashSiblings` (Fire
-Imps/Gremlins ×3 merge), `normalizeSummonEntities` (Decoy ×3, Gang War), the multipet
-counts, and the Rain-of-Arrows "P-hash visual ≠ named static" split discriminator — is all
-built around the *current* P-hash-`entity_def` shape and keys off it. Flipping the parser
-requires a full HC re-export + convert diff to prove those in-game-verified resolutions are
-preserved (or to migrate them onto the resolved-name + a new `float_message` field). Not
-done here: zero live impact + real regression risk to verified work. Could fold the message
-resolution into the export (emit `float_message` instead of stuffing it in `entity_def`)
-when that co-design happens.
+**Fix (applied 2026-06-12).** New `_is_message_key(s)` helper (`P`+digits) in
+[_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py); both `_extract_params`
+(Parse7) and `_extract_params_parse6` now drop message keys from the EntCreate string pool
+*before* picking entity_def/priority_list. Result: the off-by-one is corrected —
+`entity_def` lands on the real EntityDef and `priority_list` on the real AI list. The
+invariant that de-risks it: **new `entity_def` == old `effectiveEntity`** (the convert
+ternary `/^P\d+$/.test(ed) ? priority_list : ed`), so `convert-powerset` resolves
+identically. Pure-float detonations with no real entity (Proximity_Bomb.Self_Destruct =
+"Zero!") now correctly emit **no** EntCreate.
 
-**CORRECTION (2026-06-11, retained):** only **3** P-hash EntCreates lack a `priority_list`
-(`Objects.{Proximity_Bomb,Underground_Bomb,Underground_Bomb_Final}.Self_Destruct`,
-`P1090583630`="Zero!"); they're unreferenced by any power. The earlier "10 unresolved are
-NPC/temp" claim was an unverified dismissal — `Objects.Proximity_Bomb` is the
-detonation-object family player Devices/Traps mine powers use; those player powers resolve
-fine (Trip Mine→`Pets_Mine`, Auto Turret→`Pets_Turret`, Caltrops→`Pets_Caltrops`).
+**Verified (HC re-export + generated diff).** Scratch re-export → committed diff was
+**156 files, every change confined to `effects` (0 non-effects drift); all 156 had a
+committed P-hash entity_def** (no collateral). Applied + regenerated HC powersets (26 files):
+- P-hash → real name everywhere (Rain of Fire→`Pets_RainofFire`, Tar Patch→`Pets_TarPatch`).
+- **Bonus fixes:** powers that previously showed a *garbage* opaque entity now resolve —
+  `P4176979480`→`Pets_Volcanicgas`, `P1734497484`→`Pets_Spirit_Tree`, `P2416771117`→
+  `Pets_Fallout`, `P2874174058`→`Pets_Phoenix`; Black Hole's bogus `4ZHT…`-hash summon
+  (an encoded-unresolved-P-hash placeholder; Black Hole is a no-damage intangibility field,
+  its mez lives in `effects`) is dropped.
+- **Counts/splits preserved:** Fire Imps ×3, Gremlins, Decoy ×3, Gang War, Soul Extraction
+  (mutuallyExclusive), Rain of Arrows still split (`Pets_RainofArrows_Visual` ≠
+  `Pets_RainofArrows`). Dominator Shadow Field improved: `entityCount:2`-of-one → the real
+  base + `_Domination` variant (the P-hash EntCreate was the Domination variant, masked by
+  its base priority_list).
+- `resolvePhashSiblings` is now effectively a no-op (no P-hashes survive) but left in place
+  as a harmless safety net. **Rebirth unaffected** — its Parse6 already emits real `Pets_*`
+  entity_defs (verified **0** P-hash EntCreate params), so the shared filter is a no-op there.
 
-> ---RESOLVED ---
+Guards: `multipet-summon-count.test.ts` (Rain-of-Arrows assertion updated: P-hash resolved →
+assert the two distinct resolved names) + the pseudopet suites. tsc clean, 476 tests.
 
 ## ✅ Rebirth Parse6 AttribMod flags decoded — IgnoreStrength/Resistance/CombatMods (bundled full re-export) (2026-06-12)
 

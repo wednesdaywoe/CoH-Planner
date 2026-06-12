@@ -89,8 +89,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1814112202",
-            "priority_list": "Pets_Caltrops"
+            "entity_def": "Pets_Caltrops",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "CopyBoosts"

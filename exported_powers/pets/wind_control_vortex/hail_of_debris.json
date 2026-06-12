@@ -87,8 +87,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1377621860",
-            "priority_list": "Pets_WindControl_HailOfDebris"
+            "entity_def": "Pets_WindControl_HailOfDebris",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",

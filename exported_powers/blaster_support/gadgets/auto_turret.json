@@ -90,8 +90,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P3912486950",
-            "priority_list": "Pets_Turret"
+            "entity_def": "Pets_Turret",
+            "priority_list": "PL_SpawnFlying"
           },
           "flags": [
             "CopyBoosts"

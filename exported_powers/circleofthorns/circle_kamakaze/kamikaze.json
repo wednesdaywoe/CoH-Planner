@@ -107,8 +107,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P3521581073",
-            "priority_list": "CircleOfThorns_Explosion"
+            "entity_def": "CircleOfThorns_Explosion",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "DeepSleep",

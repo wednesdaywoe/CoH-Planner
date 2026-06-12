@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1721012894",
-            "priority_list": "Pets_Fly_Trap"
+            "entity_def": "Pets_Fly_Trap",
+            "priority_list": "PL_FightPreferRanged"
           },
           "flags": [
             "IgnoreStrength",

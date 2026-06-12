@@ -282,6 +282,17 @@ def _looks_like_entity_def(s: str) -> bool:
     return all(c.isalnum() or c == '_' for c in s)
 
 
+def _is_message_key(s: str) -> bool:
+    """A `P<digits>` clientmessages key (e.g. `P1985334123` → "You call forth a
+    {PowerName}!"). These are the EntCreate's float/combat-text DisplayMessage,
+    NOT an entity reference — but they pass `_looks_like_entity_def` (leading 'P',
+    all-alnum) and lead the Params block, so the heuristic otherwise grabs the
+    message key as `entity_def` and pushes the real EntityDef down into
+    `priority_list`. Filter them out so entity_def/priority_list land on the real
+    strings. See BIN-PARSER-LOG "P-hash entity_def — ROOT SOLVED" (2026-06-12)."""
+    return len(s) > 1 and s[0] == 'P' and s[1:].isdigit()
+
+
 def _extract_params(tail_bytes: bytes, attribs: list[str],
                     strtab_base: int, strtab_data) -> dict | None:
     """Scan the AttribMod template tail for Params data the planner cares about.
@@ -322,21 +333,26 @@ def _extract_params(tail_bytes: bytes, attribs: list[str],
         return None
 
     if is_create_entity:
+        # Drop float/combat-text message keys (P<digits>) — the EntCreate's
+        # DisplayMessage, not the entity. Otherwise the message key (which leads
+        # the Params block) is grabbed as entity_def and the real EntityDef is
+        # pushed into priority_list. See BIN-PARSER-LOG (2026-06-12).
+        ent = [s for s in found if not _is_message_key(s)]
         # Entity defs typically lead the Params block. DisplayName is free text
         # (often title-cased with spaces), PriorityList is short identifier.
-        entity_def = next((s for s in found if _looks_like_entity_def(s)), None)
-        power_names = [s for s in found if _looks_like_power_name(s)]
+        entity_def = next((s for s in ent if _looks_like_entity_def(s)), None)
+        power_names = [s for s in ent if _looks_like_power_name(s)]
         # DisplayName: any short string that isn't a power-name and has a space
         # or just looks like a tooltip.
         display_name = next(
-            (s for s in found
+            (s for s in ent
              if s != entity_def and not _looks_like_power_name(s)
              and ' ' in s and len(s) < 80),
             None,
         )
         # PriorityList: leftover short non-dotted identifier (e.g. "Pet").
         priority_list = next(
-            (s for s in found
+            (s for s in ent
              if s != entity_def and s != display_name
              and '.' not in s and len(s) < 40
              and all(c.isalnum() or c == '_' for c in s)),
@@ -421,19 +437,22 @@ def _extract_params_parse6(tail_bytes: bytes, attribs: list[str]) -> dict | None
         pos += 1
 
     if is_create_entity:
-        entity_def = next((s for s in found if _looks_like_entity_def(s)), None)
+        # Drop float/combat-text message keys (P<digits>) — see the Parse7
+        # branch + BIN-PARSER-LOG (2026-06-12).
+        ent = [s for s in found if not _is_message_key(s)]
+        entity_def = next((s for s in ent if _looks_like_entity_def(s)), None)
         if not entity_def:
             return None
         result: dict = {'type': 'EntCreate', 'entity_def': entity_def}
-        power_names = [s for s in found if _looks_like_power_name(s)]
+        power_names = [s for s in ent if _looks_like_power_name(s)]
         display_name = next(
-            (s for s in found
+            (s for s in ent
              if s != entity_def and not _looks_like_power_name(s)
              and ' ' in s and len(s) < 80),
             None,
         )
         priority_list = next(
-            (s for s in found
+            (s for s in ent
              if s != entity_def and s != display_name
              and '.' not in s and len(s) < 40
              and all(c.isalnum() or c == '_' for c in s)),

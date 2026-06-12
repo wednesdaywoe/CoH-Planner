@@ -90,8 +90,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P3273083397",
-            "priority_list": "Pets_Gremlin"
+            "entity_def": "Pets_Gremlin",
+            "priority_list": "PL_FightPreferMelee"
           },
           "flags": [
             "CopyBoosts"

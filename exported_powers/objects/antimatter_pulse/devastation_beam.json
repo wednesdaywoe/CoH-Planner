@@ -78,8 +78,8 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "P1763752941",
-            "priority_list": "Objects_Keyes_DevastationBeam_Effect"
+            "entity_def": "Objects_Keyes_DevastationBeam_Effect",
+            "priority_list": "PL_StaticObject"
           },
           "flags": [
             "IgnoreStrength",
