@@ -52,6 +52,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -83,7 +84,11 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Lore_Longbow_Boss"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -94,6 +99,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -125,7 +131,11 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "IncarnatePets_Lore_Longbow_Support"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -136,6 +146,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -169,7 +180,11 @@
             "power_names": [
               "Incarnate.Lore_Silent.Level_Shift"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -180,6 +195,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -213,7 +229,11 @@
             "power_names": [
               "Incarnate.Lore_Silent.Level_Shift"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

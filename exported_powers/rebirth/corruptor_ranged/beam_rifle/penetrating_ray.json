@@ -64,6 +64,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -102,6 +103,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -140,6 +142,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -178,6 +181,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -216,6 +220,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -254,6 +259,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -292,6 +298,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -330,6 +337,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -368,6 +376,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower?",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -400,7 +409,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_DisintegrateSpread",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -411,6 +424,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "cur.kToHit source> .97 >=",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -438,7 +452,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -449,6 +467,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "1",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -476,7 +495,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

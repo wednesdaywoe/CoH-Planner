@@ -64,6 +64,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -96,7 +97,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_Shade",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -107,6 +112,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -139,7 +145,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_Shade",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -150,6 +160,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -183,7 +194,11 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Haunted"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

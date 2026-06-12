@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "AllyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> earth eq || &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -78,7 +79,12 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "Pets_Team_Transporter_Hero"
-          }
+          },
+          "flags": [
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -89,6 +95,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "AllyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> earth eq || &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -120,7 +127,12 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "Pets_Team_Transporter_Villain"
-          }
+          },
+          "flags": [
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -131,6 +143,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "praetorianprogress source> praetoria eq praetorianprogress source> tutorial eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -162,7 +175,12 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "Pets_Team_Transporter_Praetorian"
-          }
+          },
+          "flags": [
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

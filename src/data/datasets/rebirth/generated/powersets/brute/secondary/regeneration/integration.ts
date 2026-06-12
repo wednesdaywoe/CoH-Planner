@@ -61,6 +61,7 @@ export const Integration: Power = {
       "hold": 2.25,
       "sleep": 2.25,
       "immobilize": 2.25,
+      "regenBuffUnenhanced": 2.25,
       "regenBuff": 2.25
     },
     "knockback": {
@@ -92,8 +93,12 @@ export const Integration: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
+    "regenBuffUnenhanced": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
     "regenBuff": {
-      "scale": 1.5,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "taunt": {

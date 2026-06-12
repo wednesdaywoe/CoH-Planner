@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -79,7 +80,11 @@
             "type": "EntCreate",
             "entity_def": "Rikti_Portal_Unarmored_Rikti_Conscript",
             "priority_list": "PL_FightPreferRanged"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -90,6 +95,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -122,7 +128,11 @@
             "type": "EntCreate",
             "entity_def": "Rikti_Portal_Unarmored_Rikti_Conscript",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -133,6 +143,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -165,7 +176,11 @@
             "type": "EntCreate",
             "entity_def": "Rikti_Portal_Monkey",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -176,6 +191,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -208,7 +224,11 @@
             "type": "EntCreate",
             "entity_def": "Rikti_Portal_Monkey",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

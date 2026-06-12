@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -79,7 +80,10 @@
             "type": "EntCreate",
             "entity_def": "ParagonPolice_Heracles_TearGas",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags": [
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -90,6 +94,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

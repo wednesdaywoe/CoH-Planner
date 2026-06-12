@@ -57,6 +57,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -89,7 +90,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_01",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -100,6 +106,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -132,7 +139,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_02",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -143,6 +155,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -175,7 +188,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_02",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -186,6 +204,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -218,7 +237,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_03",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -229,6 +253,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -261,7 +286,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_04",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -272,6 +302,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -304,7 +335,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_04",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -315,6 +351,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -347,7 +384,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_05",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -358,6 +400,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -390,7 +433,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_06",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -401,6 +449,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -433,7 +482,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_06",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -444,6 +498,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -476,7 +531,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_07",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -487,6 +547,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -519,7 +580,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_08",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -530,6 +596,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -562,7 +629,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_09",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -573,6 +645,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -605,7 +678,12 @@
             "type": "EntCreate",
             "entity_def": "Pets_Thug_Pose_09",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     }

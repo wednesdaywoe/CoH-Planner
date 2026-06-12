@@ -66,6 +66,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -98,7 +99,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_Liquefy",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -109,6 +114,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -141,7 +147,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_ShockCont",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

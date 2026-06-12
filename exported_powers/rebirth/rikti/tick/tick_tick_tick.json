@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHitPoints% source> 99 >=",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -80,7 +81,11 @@
             "power_names": [
               "Rikti.UXB_Boom.Nuke"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -91,6 +96,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHitPoints% source> 99 >=",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,

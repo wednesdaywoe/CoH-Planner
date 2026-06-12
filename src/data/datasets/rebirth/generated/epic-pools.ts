@@ -3334,10 +3334,10 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "resistance": 120,
-            "recoveryBuff": 120,
+            "recoveryBuffUnenhanced": 120,
             "recoveryDebuff": 15
           },
-          "recoveryBuff": {
+          "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
           },
@@ -6896,10 +6896,10 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "resistance": 120,
-            "recoveryBuff": 120,
+            "recoveryBuffUnenhanced": 120,
             "recoveryDebuff": 15
           },
-          "recoveryBuff": {
+          "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
           },
@@ -7722,10 +7722,10 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "resistance": 120,
-            "recoveryBuff": 120,
+            "recoveryBuffUnenhanced": 120,
             "recoveryDebuff": 15
           },
-          "recoveryBuff": {
+          "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
           },
@@ -16993,10 +16993,10 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "resistance": 120,
-            "recoveryBuff": 120,
+            "recoveryBuffUnenhanced": 120,
             "recoveryDebuff": 15
           },
-          "recoveryBuff": {
+          "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
           },

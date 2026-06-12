@@ -50,6 +50,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -77,7 +78,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -88,6 +92,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Undead target.HasTag? MastermindPets_Zombie target.VillainName> ! && MastermindPets_Skeletal_Warrior target.VillainName> ! && MastermindPets_Ghost_Minion target.VillainName> ! && MastermindPets_Ghost_Lt target.VillainName> ! && MastermindPets_Ghost_Boss target.VillainName> ! && MastermindPets_Lich target.VillainName> ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -115,7 +120,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -126,6 +134,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> Vahzilok eq Vahzilok_Reaper target.VillainName> ! && Vahzilok_Lieutenant target.VillainName> ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -153,7 +162,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     }

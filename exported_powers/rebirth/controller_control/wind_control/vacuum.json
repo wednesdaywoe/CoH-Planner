@@ -70,6 +70,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target.owner> entref source> eq !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -102,7 +103,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_WindControl_Vacuum_Controller",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -113,6 +118,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -151,6 +157,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -178,7 +185,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "NearGround"
+          ]
         }
       ]
     },
@@ -189,6 +199,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -227,6 +238,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq entref target.owner> entref source> eq ! && target.isFriend? ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -265,6 +277,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq target.isFriend? ! && kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.hasTag? || && entref target.owner> entref source> eq ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -303,6 +316,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq target.isFriend? ! && entref target.owner> entref source> eq ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -341,6 +355,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq target.isFriend? ! && kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || && entref target.owner> entref source> eq ! && Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 6 == &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -379,6 +394,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kCloudedSkies source.mode? ! entref target.owner> entref source> eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -406,7 +422,12 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -417,6 +438,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target.owner> entref source> eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -444,7 +466,12 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -455,6 +482,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -488,7 +516,11 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -499,6 +531,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -526,7 +559,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

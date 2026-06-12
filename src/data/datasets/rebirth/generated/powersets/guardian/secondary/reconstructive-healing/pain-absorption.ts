@@ -45,14 +45,14 @@ export const PainAbsorption: Power = {
     "durations": {
       "resistance": 60,
       "absorb": 20,
-      "regenBuff": 20,
+      "regenBuffUnenhanced": 20,
       "resistanceDebuff": 20
     },
     "absorb": {
       "scale": 2,
       "table": "Melee_HealSelf"
     },
-    "regenBuff": {
+    "regenBuffUnenhanced": {
       "scale": 1,
       "table": "Melee_Ones"
     },
@@ -87,10 +87,10 @@ export const PainAbsorption: Power = {
         },
         "durations": {
           "absorb": 20,
-          "regenBuff": 20,
+          "regenBuffUnenhanced": 20,
           "resistanceDebuff": 20
         },
-        "regenBuff": {
+        "regenBuffUnenhanced": {
           "scale": 2,
           "table": "Melee_Ones"
         },
@@ -121,10 +121,10 @@ export const PainAbsorption: Power = {
         },
         "durations": {
           "absorb": 20,
-          "regenBuff": 20,
+          "regenBuffUnenhanced": 20,
           "resistanceDebuff": 20
         },
-        "regenBuff": {
+        "regenBuffUnenhanced": {
           "scale": 3,
           "table": "Melee_Ones"
         },

@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -77,6 +78,11 @@
           "stack_key": "4294967295",
           "cancel_events": [
             "HitByFoe"
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
           ]
         }
       ]

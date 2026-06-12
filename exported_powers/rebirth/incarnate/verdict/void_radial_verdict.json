@@ -55,6 +55,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -93,6 +94,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -120,7 +122,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -131,6 +136,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -158,7 +164,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -169,6 +178,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -196,7 +206,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -207,6 +220,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -234,7 +248,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -245,6 +262,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -272,7 +290,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -283,6 +304,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -310,7 +332,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -321,6 +346,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -348,7 +374,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -359,6 +388,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -386,7 +416,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     }

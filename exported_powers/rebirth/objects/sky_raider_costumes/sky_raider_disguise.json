@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "costume target> male eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -78,7 +79,11 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "SKY_RAIDERS_04"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -89,6 +94,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "costume target> female eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -120,7 +126,11 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "SKY_RAIDERS_04"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -131,6 +141,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "costume target> huge eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -162,7 +173,11 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "SKY_RAIDERS_04"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

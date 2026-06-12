@@ -57,6 +57,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -84,7 +85,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -95,6 +99,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -127,7 +132,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_Savage_Melee_Savage_Leap",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -138,6 +147,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -171,7 +181,11 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -182,6 +196,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -215,7 +230,11 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Assassins_Focus"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

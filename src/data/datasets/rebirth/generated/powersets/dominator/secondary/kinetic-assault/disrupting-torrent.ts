@@ -59,12 +59,12 @@ export const DisruptingTorrent: Power = {
       "scale": 0.67,
       "table": "Ranged_Ones"
     },
-    "regenBuff": {
+    "regenBuffUnenhanced": {
       "scale": 1,
       "table": "Ranged_Ones"
     },
     "durations": {
-      "regenBuff": 15
+      "regenBuffUnenhanced": 15
     },
     "buffDuration": 15
   },

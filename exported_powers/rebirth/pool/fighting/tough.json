@@ -57,6 +57,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -84,7 +85,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -95,6 +100,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || isPVPMap? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -127,6 +133,9 @@
             "Damaged",
             "Event_19",
             "Event_22"
+          ],
+          "flags": [
+            "IgnoreResistance"
           ]
         }
       ]
@@ -138,6 +147,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || isPVPMap? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -170,6 +180,9 @@
             "Damaged",
             "Event_19",
             "Event_22"
+          ],
+          "flags": [
+            "IgnoreResistance"
           ]
         }
       ]
@@ -181,6 +194,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -208,7 +222,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -219,6 +236,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -246,7 +264,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -257,6 +278,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -284,7 +306,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -295,6 +320,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -322,7 +348,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -333,6 +362,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -360,7 +390,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -371,6 +404,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -398,7 +432,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -409,6 +446,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -436,7 +474,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -447,6 +488,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -474,7 +516,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -485,6 +530,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -517,6 +563,9 @@
             "Damaged",
             "Event_19",
             "Event_22"
+          ],
+          "flags": [
+            "IgnoreResistance"
           ]
         }
       ]
@@ -528,6 +577,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -560,6 +610,9 @@
             "Damaged",
             "Event_19",
             "Event_22"
+          ],
+          "flags": [
+            "IgnoreResistance"
           ]
         }
       ]
@@ -571,6 +624,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -598,7 +652,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -609,6 +666,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -636,7 +694,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -647,6 +708,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -674,7 +736,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -685,6 +750,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -712,7 +778,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -723,6 +792,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -750,7 +820,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -761,6 +834,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -788,7 +862,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -799,6 +876,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -826,7 +904,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -837,6 +918,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -864,7 +946,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     }

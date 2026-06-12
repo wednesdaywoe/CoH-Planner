@@ -49,6 +49,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? ! enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -76,7 +77,10 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": "6"
+          "stack_key": "6",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -87,6 +91,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? ! enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -114,7 +119,10 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": "7"
+          "stack_key": "7",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -125,6 +133,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? ! enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -152,7 +161,10 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": "8"
+          "stack_key": "8",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -163,6 +175,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? ! enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -190,7 +203,10 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": "9"
+          "stack_key": "9",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -201,6 +217,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? ! enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -228,7 +245,10 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": "10"
+          "stack_key": "10",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -239,6 +259,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? ! enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -266,7 +287,10 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": "11"
+          "stack_key": "11",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -277,6 +301,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? ! enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -304,7 +329,10 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": "12"
+          "stack_key": "12",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -315,6 +343,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -342,7 +371,10 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 2,
-          "stack_key": "6"
+          "stack_key": "6",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -353,6 +385,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -380,7 +413,11 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 2,
-          "stack_key": "7"
+          "stack_key": "7",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -391,6 +428,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -418,7 +456,11 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 2,
-          "stack_key": "8"
+          "stack_key": "8",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -429,6 +471,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -456,7 +499,11 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 2,
-          "stack_key": "9"
+          "stack_key": "9",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -467,6 +514,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -494,7 +542,11 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 2,
-          "stack_key": "10"
+          "stack_key": "10",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -505,6 +557,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -532,7 +585,11 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 2,
-          "stack_key": "11"
+          "stack_key": "11",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -543,6 +600,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "isPVPMap? enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -570,7 +628,11 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 2,
-          "stack_key": "12"
+          "stack_key": "12",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -581,6 +643,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -614,7 +677,11 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Guardian_Resolve_Counter"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

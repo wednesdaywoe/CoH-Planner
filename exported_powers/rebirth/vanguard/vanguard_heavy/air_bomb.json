@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -79,7 +80,12 @@
             "type": "EntCreate",
             "entity_def": "FreedomCorps_Air_Bomb",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     }

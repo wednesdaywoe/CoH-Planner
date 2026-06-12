@@ -40,12 +40,12 @@ export const ShadowCloak: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
+    "recoveryBuffUnenhanced": {
       "scale": 1,
       "table": "Melee_Ones"
     },
     "durations": {
-      "recoveryBuff": 2,
+      "recoveryBuffUnenhanced": 2,
       "stealth": 0.75,
       "defenseBuff": 0.75,
       "immobilize": 0.75,

@@ -63,6 +63,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -90,7 +91,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -101,6 +105,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -128,7 +133,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -139,6 +147,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -177,6 +186,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -204,7 +214,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -215,6 +229,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -242,7 +257,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -253,6 +272,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -280,7 +300,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -291,6 +315,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -318,7 +343,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -329,6 +358,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -356,7 +386,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -367,6 +401,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -394,7 +429,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -405,6 +444,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -432,7 +472,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -443,6 +487,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -470,7 +515,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -481,6 +530,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -508,7 +558,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -519,6 +573,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Tanker eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -557,6 +612,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Scrapper eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -595,6 +651,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Blaster eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -633,6 +690,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Defender eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -671,6 +729,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Controller eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -709,6 +768,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Brute eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -747,6 +807,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Stalker eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -785,6 +846,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Corruptor eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -823,6 +885,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Dominator eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -861,6 +924,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Guardian eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -899,6 +963,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq arch source> Class_Mastermind eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -937,6 +1002,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Peacebringer eq arch source> Class_Warshade eq || enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -975,6 +1041,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Arachnos_Soldier eq arch source> Class_Arachnos_Widow eq || enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -1013,6 +1080,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Scrapper eq enttype target> critter eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -1051,6 +1119,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.hasTag? || arch source> Class_Controller eq && enttype target> critter eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -1089,6 +1158,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHeld target> 0 > kSleep target> 0 > || arch source> Class_Stalker eq && kMeter source> .9 < && enttype target> critter eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -1127,6 +1197,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Stalker eq kmeter source> 0 > && enttype target> critter eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -1165,6 +1236,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq && enttype target> critter eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -1203,6 +1275,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Scrapper eq enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -1241,6 +1314,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.hasTag? || arch source> Class_Controller eq && enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -1279,6 +1353,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHeld target> 0 > kSleep target> 0 > || arch source> Class_Stalker eq && kMeter source> .9 < && enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -1317,6 +1392,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch source> Class_Stalker eq kmeter source> 0 > && enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -1355,6 +1431,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq && enttype target> player eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -1393,6 +1470,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && arch source> Class_Tanker eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -1431,6 +1509,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Raid target.HasTag? ! enttype target> critter eq && arch source> Class_Tanker eq &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,

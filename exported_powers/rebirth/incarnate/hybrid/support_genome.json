@@ -61,6 +61,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -88,7 +89,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1"
+          "stack_key": "1",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -99,6 +104,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -126,7 +132,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1"
+          "stack_key": "1",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -137,6 +147,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -164,7 +175,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1"
+          "stack_key": "1",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -175,6 +190,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -202,7 +218,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1"
+          "stack_key": "1",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -213,6 +233,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -240,7 +261,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1"
+          "stack_key": "1",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -251,6 +276,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -278,7 +304,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1"
+          "stack_key": "1",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -289,6 +319,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -316,7 +347,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1"
+          "stack_key": "1",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -327,6 +362,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -354,7 +390,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1"
+          "stack_key": "1",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -365,6 +405,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -392,7 +433,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2"
+          "stack_key": "2",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -403,6 +448,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -430,7 +476,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2"
+          "stack_key": "2",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -441,6 +491,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -468,7 +519,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2"
+          "stack_key": "2",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -479,6 +534,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -512,7 +568,11 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Lockout"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -523,6 +583,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -556,7 +617,11 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Support_Boost_Common"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -567,6 +632,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -600,7 +666,11 @@
             "power_names": [
               "Incarnate.Hybrid_Silent.Support_Boost_Common"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

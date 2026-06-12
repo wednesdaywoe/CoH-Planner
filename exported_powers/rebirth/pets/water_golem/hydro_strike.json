@@ -52,6 +52,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -90,6 +91,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "rank target> Class_Minion_Small eq rank target> Class_Minion_Small_Agressive eq || rank target> Class_Minion_Turret eq || rank target> Class_Minion_Fire eq || rank target> Class_Minion_Swarm eq || rank target> Class_Minion_Henchman eq || rank target> Class_Minion_OilSlickTarget eq || rank target> Class_Minion_Monument eq || rank target> Class_Minion_UnkillableNPC eq || rank target> Class_Minion_PraetorianSmall eq || rank target> Class_Minion_Practice eq || rank target> Class_Minion_PraetorianGrunt eq || rank target> Class_Minion_Grunt eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -128,6 +130,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "rank target> Class_Lt_PraetorianGrunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Lt_Sniper eq || rank target> Class_Lt_Henchman eq || rank target> Class_Lt_LongRangeDrone eq || rank target> Class_Lt_Turret eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -166,6 +169,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || enttype target> player eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -204,6 +208,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "rank target> Class_Boss_PraetorianElite eq rank target> Class_Boss_Elite eq || rank target> Class_Boss_EliteTurret eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -242,6 +247,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "rank target> Class_Boss_PraetorianArchvillain eq rank target> Class_Boss_PraetorianAVLowPerception eq || rank target> Class_Boss_Archvillain eq || rank target> Class_Boss_Monster eq || rank target> Class_Boss_Rularuu eq || rank target> Class_Boss_RularuuCoP eq || rank target> Class_Boss_RularuuFM eq || rank target> Class_Boss_Hamidon eq || rank target> Class_Boss_Archvillain_Flying eq || rank target> Class_Boss_Monster_Flying eq || rank target> Class_Boss_Reichsman eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -280,6 +286,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -313,7 +320,11 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Water_Control_Drowning"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

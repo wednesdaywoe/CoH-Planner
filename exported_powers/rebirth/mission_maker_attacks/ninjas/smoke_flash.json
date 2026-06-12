@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "NPC_Pets_MA_Genin target.VillainName> NPC_Pets_MA_Jonin target.VillainName> || NPC_Pets_MA_Oni target.VillainName> ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -74,7 +75,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -85,6 +89,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "NPC_Pets_MA_Genin target.VillainName> NPC_Pets_MA_Jonin target.VillainName> || NPC_Pets_MA_Oni target.VillainName> ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -112,7 +117,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -123,6 +131,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "NPC_Pets_MA_Genin target.VillainName> NPC_Pets_MA_Jonin target.VillainName> || NPC_Pets_MA_Oni target.VillainName> ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -150,7 +159,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -161,6 +174,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "NPC_Pets_MA_Genin target.VillainName> NPC_Pets_MA_Jonin target.VillainName> || NPC_Pets_MA_Oni target.VillainName> ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -188,7 +202,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -199,6 +217,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "NPC_Pets_MA_Genin target.VillainName> NPC_Pets_MA_Jonin target.VillainName> || NPC_Pets_MA_Oni target.VillainName> ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -232,7 +251,11 @@
             "power_names": [
               "Villain_Pets.Kuji_Kiri.Smoke_Bomb"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

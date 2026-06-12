@@ -57,6 +57,7 @@ export const CloakingDevice: Power = {
       "stealth": 0.75,
       "defenseBuff": 0.75,
       "regenBuff": 0.75,
+      "regenBuffUnenhanced": 0.75,
       "recoveryBuff": 0.75
     },
     "defenseBuff": {
@@ -102,7 +103,11 @@ export const CloakingDevice: Power = {
       }
     },
     "regenBuff": {
-      "scale": 2.25,
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
+      "scale": 1.125,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {

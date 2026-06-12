@@ -21,9 +21,13 @@ chronological parser log are *linked, not duplicated.*
   in the converter — a no-op on HC. The double-check corrected a prose error (Mask Presence
   is additive, NOT a suppress member). Detail: BIN-PARSER-LOG *"Rebirth stealth suppression
   (NictusFX) restored"* (2026-06-12).
-- **`flags` not decoded at all (always `[]`)** → `copyBoosts` / `PseudoPet` never set on
-  Rebirth pets; summon pet DPS could be wrong. Detail: BIN-PARSER-LOG *"Summon copy_boosts"*
-  (2026-06-11). **Open, low-pri** (no Rebirth override depends on it yet).
+- **`flags` not decoded** → **PARTIALLY RESOLVED 2026-06-12.** The calc-relevant flags
+  (`IgnoreStrength` 60k / `IgnoreResistance` 65k / `IgnoreCombatMods` 7k + NearGround/
+  CancelOnMiss) were being read-and-discarded as the inverse `Allow*` 9-bool block — now
+  decoded in `_parse_effect_template_parse6` (validated 97–99.9% precision/recall vs HC;
+  fixes 81 player powers over-enhancing +Recovery/+ToHit). **Still deferred:** `copyBoosts`/
+  `PseudoPet` — those live in the not-yet-decoded post-magnitude **tail**, NOT the bool block;
+  real RE. Detail: BIN-PARSER-LOG *"Rebirth Parse6 AttribMod flags decoded"* (2026-06-12).
 - **Form-redirect data in tail bytes dropped** (Kheldian Human/Nova/Dwarf) — worked around
   with a hand-curated map. Detail: **§3 below** + `memory/project_parse6_redirects.md`. **Open.**
 - **`is_pvp` has no explicit flag** — synthesized from the RPN `requires`; the ally-buff-vs-
@@ -35,9 +39,12 @@ chronological parser log are *linked, not duplicated.*
   lack `--apply`) → Rebirth `power-pools.ts` / `epic-pools.ts` never regenerate via the
   orchestrator and silently drift. Detail: BIN-PARSER-LOG *"regen-all silently DRY-RUNS
   pools/epics"* (2026-06-11). **Open.**
-- **Committed `exported_powers/rebirth` is stale vs the current parser** — carries `tags: None`
-  where a fresh export emits `tags: []` (~7800 files), plus an incidental `granite-armor`
-  summon key-reorder. Needs a dedicated **"re-export Rebirth to current parser"** pass. **Open.**
+- ~~**Committed `exported_powers/rebirth` is stale vs the current parser**~~ **RESOLVED
+  2026-06-12.** Full re-export done (bundled with the `flags` decode above): de-risked per §6
+  (scratch export → leaf-level diff PROVED the entire delta was ONLY `{flags, tags}` across
+  7823 files — zero game drift), then applied + regenerated (69 generated files, all legit
+  IgnoreStrength→Unenhanced splits; HC untouched). `tags: null→[]` refreshed. Entity files
+  (`entities/`) were already current (separate `export_entities.py` parser path, 0 changes).
 
 ### Resolved Rebirth divergences (logged in BIN-PARSER-LOG)
 - **Return From The Grave** resurrection set was mislabeled "Brute Archetype Sets"

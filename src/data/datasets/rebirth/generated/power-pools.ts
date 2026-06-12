@@ -489,12 +489,12 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "recoveryBuff": {
+          "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
           },
           "durations": {
-            "recoveryBuff": 2,
+            "recoveryBuffUnenhanced": 2,
             "defenseBuff": 0.75,
             "mezResistance": 0.75
           },
@@ -597,9 +597,9 @@ export const POWER_POOLS_RAW = {
           },
           "durations": {
             "rechargeBuff": 6,
-            "tohitBuff": 6
+            "tohitBuffUnenhanced": 6
           },
-          "tohitBuff": {
+          "tohitBuffUnenhanced": {
             "scale": 0.05,
             "table": "Melee_Ones"
           },
@@ -1628,12 +1628,12 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.73,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "recoveryBuff": {
+          "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
           },
           "durations": {
-            "recoveryBuff": 2,
+            "recoveryBuffUnenhanced": 2,
             "stealth": 0.75,
             "defenseBuff": 0.75,
             "slow": 0.75
@@ -2455,12 +2455,12 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.0813,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "recoveryBuff": {
+          "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
           },
           "durations": {
-            "recoveryBuff": 2,
+            "recoveryBuffUnenhanced": 2,
             "movement": 0.75,
             "defenseBuff": 0.75,
             "immobilize": 0.75,
@@ -2621,12 +2621,12 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 1,
           "effectArea": "SingleTarget",
-          "recoveryBuff": {
+          "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
           },
           "durations": {
-            "recoveryBuff": 2,
+            "recoveryBuffUnenhanced": 2,
             "movement": 0.75,
             "defenseBuff": 1.25,
             "knockback": 1.25,

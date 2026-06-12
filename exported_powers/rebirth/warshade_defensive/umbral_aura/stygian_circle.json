@@ -58,6 +58,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -85,7 +86,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -96,6 +100,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kWarshade_Tanker_Mode source.Mode? ! arch target> Class_Lt_Grunt eq ! && arch target> Class_Lt_Sniper eq ! && arch target> Class_Boss_Grunt eq ! && arch target> Class_Boss_Elite eq ! && arch target> Class_Boss_Archvillain eq ! && arch target> Class_Boss_Monster eq ! && enttype target> player eq ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -123,7 +128,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -134,6 +142,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Lt_Grunt eq arch target> Class_Lt_Sniper eq || kWarshade_Tanker_Mode source.Mode? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -161,7 +170,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -172,6 +184,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Boss_Grunt eq arch target> Class_Boss_Elite eq || enttype target> player eq || kWarshade_Tanker_Mode source.Mode? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -199,7 +212,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -210,6 +226,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Boss_Archvillain eq arch target> Class_Boss_Monster eq || kWarshade_Tanker_Mode source.Mode? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -237,7 +254,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -248,6 +268,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kWarshade_Tanker_Mode source.Mode? arch target> Class_Lt_Grunt eq ! && arch target> Class_Lt_Sniper eq ! && arch target> Class_Boss_Grunt eq ! && arch target> Class_Boss_Elite eq ! && arch target> Class_Boss_Archvillain eq ! && arch target> Class_Boss_Monster eq ! && enttype target> player eq ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -275,7 +296,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -286,6 +310,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Lt_Grunt eq arch target> Class_Lt_Sniper eq || kWarshade_Tanker_Mode source.Mode? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -313,7 +338,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -324,6 +352,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Boss_Grunt eq arch target> Class_Boss_Elite eq || enttype target> player eq || kWarshade_Tanker_Mode source.Mode? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
@@ -351,7 +380,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -362,6 +394,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Boss_Archvillain eq arch target> Class_Boss_Monster eq || kWarshade_Tanker_Mode source.Mode? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -389,7 +422,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -400,6 +436,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -427,7 +464,11 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     }

@@ -40,12 +40,12 @@ export const Minerals: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
+    "recoveryBuffUnenhanced": {
       "scale": 1,
       "table": "Melee_Ones"
     },
     "durations": {
-      "recoveryBuff": 2,
+      "recoveryBuffUnenhanced": 2,
       "defenseBuff": 0.75,
       "debuffResistance": 0.75,
       "perceptionBuff": 0.75,

@@ -54,6 +54,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "mod.kConfused target> 0 <= target.isFriend? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -81,7 +82,11 @@
           "caster_stack": "Unlimited",
           "stack": "Stack",
           "stack_limit": 4,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     }

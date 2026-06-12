@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Scrapper eq arch target> Class_Blaster eq || arch target> Class_Brute eq || arch target> Class_Stalker eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -74,7 +75,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -85,6 +91,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Scrapper eq arch target> Class_Blaster eq || arch target> Class_Brute eq || arch target> Class_Stalker eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -112,7 +119,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -123,6 +135,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Tanker eq arch target> Class_Defender eq || arch target> Class_Mastermind eq || arch target> Class_Guardian eq || arch target> Class_Corruptor eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -150,7 +163,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -161,6 +179,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Tanker eq arch target> Class_Defender eq || arch target> Class_Mastermind eq || arch target> Class_Guardian eq || arch target> Class_Corruptor eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -188,7 +207,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -199,6 +223,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Tanker eq arch target> Class_Defender eq || arch target> Class_Mastermind eq || arch target> Class_Guardian eq || arch target> Class_Corruptor eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -226,7 +251,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -237,6 +267,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Tanker eq arch target> Class_Defender eq || arch target> Class_Mastermind eq || arch target> Class_Guardian eq || arch target> Class_Corruptor eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -264,7 +295,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -275,6 +311,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Tanker eq arch target> Class_Defender eq || arch target> Class_Mastermind eq || arch target> Class_Guardian eq || arch target> Class_Corruptor eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -302,7 +339,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -313,6 +355,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Tanker eq arch target> Class_Defender eq || arch target> Class_Mastermind eq || arch target> Class_Guardian eq || arch target> Class_Corruptor eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -340,7 +383,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -351,6 +399,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Tanker eq arch target> Class_Defender eq || arch target> Class_Mastermind eq || arch target> Class_Guardian eq || arch target> Class_Corruptor eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -378,7 +427,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -389,6 +443,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Tanker eq arch target> Class_Defender eq || arch target> Class_Mastermind eq || arch target> Class_Guardian eq || arch target> Class_Corruptor eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -416,7 +471,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -427,6 +487,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -454,7 +515,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -465,6 +531,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -492,7 +559,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -503,6 +575,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -530,7 +603,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -541,6 +619,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -568,7 +647,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -579,6 +663,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -606,7 +691,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -617,6 +707,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -644,7 +735,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -655,6 +751,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -682,7 +779,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -693,6 +795,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -720,7 +823,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -731,6 +839,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -758,7 +867,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -769,6 +883,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -796,7 +911,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -807,6 +927,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -834,7 +955,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -845,6 +971,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Controller eq arch target> Class_Dominator eq || isPVPMap? &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -872,7 +999,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -883,6 +1015,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "arch target> Class_Arachnos_Soldier eq arch target> Class_Arachnos_Widow eq || arch target> Class_Peacebringer eq || arch target> Class_Warshade eq ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -910,7 +1043,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     }

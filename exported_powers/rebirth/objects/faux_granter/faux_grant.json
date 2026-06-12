@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Temporary_Powers.SilentPowers.Paradox_Core_Eternity target.ownPower? !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -80,7 +81,12 @@
             "power_names": [
               "Temporary_Powers.SilentPowers.Paradox_Core_Eternity"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -91,6 +97,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Temporary_Powers.SilentPowers.Limitless_Radial_Freeeem target.ownPower? !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -124,7 +131,12 @@
             "power_names": [
               "Temporary_Powers.SilentPowers.Limitless_Radial_Freeeem"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -135,6 +147,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Temporary_Powers.SilentPowers.Divine_Core_Oscillation target.ownPower? !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -168,7 +181,12 @@
             "power_names": [
               "Temporary_Powers.SilentPowers.Divine_Core_Oscillation"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -179,6 +197,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Temporary_Powers.SilentPowers.Divine_Core_Oscillation_Icon target.ownPower? !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -212,7 +231,12 @@
             "power_names": [
               "Temporary_Powers.SilentPowers.Divine_Core_Oscillation_Icon"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     }

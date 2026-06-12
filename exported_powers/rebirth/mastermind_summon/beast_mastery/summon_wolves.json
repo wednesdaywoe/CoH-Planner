@@ -71,6 +71,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -102,7 +103,11 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "MastermindPets_Howler_Wolf"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -113,6 +118,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "combatlevel source> 5 >",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -144,7 +150,11 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "MastermindPets_Howler_Wolf"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -155,6 +165,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "combatlevel source> 17 >",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -186,7 +197,11 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "MastermindPets_Howler_Wolf_Alpha"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

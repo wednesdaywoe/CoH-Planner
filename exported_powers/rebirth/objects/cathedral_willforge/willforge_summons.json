@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -79,7 +80,11 @@
             "type": "EntCreate",
             "entity_def": "StormElementals_Cathedral_Storm_Elemental_Lt",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -90,6 +95,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -122,7 +128,11 @@
             "type": "EntCreate",
             "entity_def": "StormElementals_Cathedral_Storm_Elemental_Lt",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -133,6 +143,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -165,7 +176,11 @@
             "type": "EntCreate",
             "entity_def": "StormElementals_Cathedral_Storm_Elemental_Lt",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -176,6 +191,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -208,7 +224,11 @@
             "type": "EntCreate",
             "entity_def": "StormElementals_Cathedral_Storm_Elemental_Boss",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -219,6 +239,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -251,7 +272,11 @@
             "type": "EntCreate",
             "entity_def": "StormElementals_Cathedral_Storm_Elemental",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -262,6 +287,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -294,7 +320,11 @@
             "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Wisps_Lt",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -305,6 +335,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -337,7 +368,11 @@
             "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Wisps_Boss",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -348,6 +383,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -380,7 +416,11 @@
             "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Wisp",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -391,6 +431,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -423,7 +464,11 @@
             "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Sentry_Lt",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -434,6 +479,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -466,7 +512,11 @@
             "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Sentry_Boss",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -477,6 +527,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -509,7 +560,11 @@
             "type": "EntCreate",
             "entity_def": "Rularuu_Cathedral_Sentry",
             "priority_list": "PL_FightRangedToDeath"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

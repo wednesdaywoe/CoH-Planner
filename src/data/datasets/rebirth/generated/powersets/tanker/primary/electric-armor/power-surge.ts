@@ -82,7 +82,7 @@ export const PowerSurge: Power = {
     },
     "durations": {
       "resistance": 90,
-      "recoveryBuff": 90,
+      "recoveryBuffUnenhanced": 90,
       "knockup": 90,
       "mezResistance": 90,
       "knockback": 90,
@@ -93,7 +93,7 @@ export const PowerSurge: Power = {
       "immobilize": 90,
       "debuffResistance": 90
     },
-    "recoveryBuff": {
+    "recoveryBuffUnenhanced": {
       "scale": 1,
       "table": "Melee_Ones"
     },

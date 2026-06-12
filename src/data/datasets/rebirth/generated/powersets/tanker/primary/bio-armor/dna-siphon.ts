@@ -110,7 +110,8 @@ export const DNASiphon: Power = {
       "damage": {
         "type": "Heal",
         "scale": 0.375,
-        "table": "Melee_HealSelf"
+        "table": "Melee_HealSelf",
+        "ignoreStrength": true
       },
       "group": "adaptation"
     },
@@ -120,15 +121,15 @@ export const DNASiphon: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "regenBuff": {
+        "regenBuffUnenhanced": {
           "scale": 0.06,
           "table": "Melee_Ones"
         },
         "durations": {
-          "regenBuff": 30,
-          "recoveryBuff": 30
+          "regenBuffUnenhanced": 30,
+          "recoveryBuffUnenhanced": 30
         },
-        "recoveryBuff": {
+        "recoveryBuffUnenhanced": {
           "scale": 0.09375,
           "table": "Melee_Ones"
         },

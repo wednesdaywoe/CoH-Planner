@@ -185,15 +185,15 @@ export const Adaptation: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "regenBuff": {
+        "regenBuffUnenhanced": {
           "scale": 0.3,
           "table": "Melee_Ones"
         },
         "durations": {
-          "regenBuff": 0.75,
-          "recoveryBuff": 0.75
+          "regenBuffUnenhanced": 0.75,
+          "recoveryBuffUnenhanced": 0.75
         },
-        "recoveryBuff": {
+        "recoveryBuffUnenhanced": {
           "scale": 0.2,
           "table": "Melee_Ones"
         },

@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Incarnate_Reward_Genesis target.ownPower? !",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -80,7 +81,12 @@
             "power_names": [
               "Temporary_Powers.Temporary_Powers.Incarnate_Reward_Genesis"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     }

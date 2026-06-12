@@ -6,7 +6,7 @@
   "display_name": "Reaction Time",
   "display_fullname": "Blaster Support Martial Manipulation Reaction Time",
   "display_help": "You attune yourself to the world around you, moving with preternatural speed.  All enemies nearby move slowly and have reduced recharge, and you can absorb small amounts of damage every 2 seconds.  When Reaction Time is deactivated, you gain a burst of speed for a short duration, increasing your own recharge and move speed.",
-  "display_short_help": "Toggle (PBAoE), Self Absorb over Time, +Recovery, Foe –Rech, - Move, Special",
+  "display_short_help": "Toggle (PBAoE), Self Absorb over Time, +Recovery, Foe \u2013Rech, - Move, Special",
   "icon": "martialmanipulation_reactiontime.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -71,6 +71,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -109,6 +110,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -136,7 +138,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -147,6 +152,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "enttype target> critter eq entref target> entref source> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
@@ -174,7 +180,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -185,6 +194,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -223,6 +233,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -250,7 +261,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -261,6 +275,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq ! cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -299,6 +314,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -326,7 +342,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -337,6 +356,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -364,7 +384,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -375,6 +398,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -402,7 +426,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -413,6 +440,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -440,7 +468,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -451,6 +482,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -478,7 +510,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -489,6 +524,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -516,7 +552,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
         }
       ]
     },
@@ -527,6 +566,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -554,7 +594,11 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -565,6 +609,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "entref target> entref source> eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -592,7 +637,10 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
         }
       ]
     }

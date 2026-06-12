@@ -58,6 +58,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -90,7 +91,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_Patron_Powers_Arachnobot_Disrupter",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -101,6 +106,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -133,7 +139,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_Patron_Powers_Arachnobot_Disrupter",
             "priority_list": "PL_FightPreferMelee"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

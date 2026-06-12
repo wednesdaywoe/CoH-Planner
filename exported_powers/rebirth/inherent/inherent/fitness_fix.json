@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Pool.Fitness.Quick target.ownPower? Pool.Fitness.Hurdle target.ownPower? || Pool.Fitness.Health target.ownPower? || Pool.Fitness.Stamina target.ownPower? ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -80,7 +81,11 @@
             "power_names": [
               "Inherent.Fitness.Swift"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -91,6 +96,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Pool.Fitness.Quick target.ownPower? Pool.Fitness.Hurdle target.ownPower? || Pool.Fitness.Health target.ownPower? || Pool.Fitness.Stamina target.ownPower? ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -124,7 +130,11 @@
             "power_names": [
               "Inherent.Fitness.Hurdle"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -135,6 +145,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Pool.Fitness.Quick target.ownPower? Pool.Fitness.Hurdle target.ownPower? || Pool.Fitness.Health target.ownPower? || Pool.Fitness.Stamina target.ownPower? ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -168,7 +179,11 @@
             "power_names": [
               "Inherent.Fitness.Health"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -179,6 +194,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "Pool.Fitness.Quick target.ownPower? Pool.Fitness.Hurdle target.ownPower? || Pool.Fitness.Health target.ownPower? || Pool.Fitness.Stamina target.ownPower? ||",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -212,7 +228,11 @@
             "power_names": [
               "Inherent.Fitness.Stamina"
             ]
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

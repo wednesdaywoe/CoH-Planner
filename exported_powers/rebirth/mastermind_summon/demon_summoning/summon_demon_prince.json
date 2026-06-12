@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Summon Demon Prince",
   "display_fullname": "Mastermind Summon Demon Summoning Summon Demon Prince",
-  "display_help": "Summons forth a foul Demon Prince from the deepest reaches of the Abyss. The Demon Prince is mighty among its kind and is a master of cold powers. It serves the conjuror only so that it may wreak havoc upon the material plane. The Demon has some defense versus lethal, smashing, fire and cold attacks. You may only have 1 Demon Prince under your control at any given time. If you attempt to summon another Demon Prince the power will fail. Recharge: Very Long",
+  "display_help": "Summons forth a foul Demon Prince from the deepest reaches of the Abyss. The Demon Prince is mighty among its kind and is a master of cold powers. It serves the conjuror only so that it may wreak havoc upon the material plane.\u00a0The Demon has some defense versus lethal, smashing, fire and cold attacks.\u00a0You may only have 1 Demon Prince under your control at any given time. If you attempt to summon another Demon Prince the power will fail. Recharge: Very Long",
   "display_short_help": "Summon Demon Prince",
   "icon": "demonsummoning_summondemonprince.png",
   "auto_issue": false,
@@ -64,6 +64,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -95,7 +96,11 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "MastermindPets_Demon_Prince"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

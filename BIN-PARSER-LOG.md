@@ -41,6 +41,32 @@ below for the *real* gap this thread exposed.
 
 > ---RESOLVED ---
 
+## ✅ Rebirth Parse6 AttribMod flags decoded — IgnoreStrength/Resistance/CombatMods (bundled full re-export) (2026-06-12)
+
+**Gap.** Rebirth template `flags` were always `[]` — the calc never saw `IgnoreStrength`,
+so 81 player powers (Bio Armor, Stone Armor toggles, Unstoppable, Meltdown, Power Surge,
+Resurgence, Mutation, Elixir of Life…) **over-enhanced** their `+Recovery`/`+ToHit` buffs
+(applied EndMod/ToHit enhancement where the game says ignore).
+
+**Root cause + fix.** NOT a missing field — Parse6 stores these as the **inverse `Allow*`
+9-bool block** (NearGround, AllowStrength, AllowResistance, …, AllowCombatMods) that
+`_parse_effect_template_parse6` read into `_bool_block` and **discarded**, plus a
+`cancel_on_miss` bool. Now decoded → HC-shaped `flags`: `IgnoreStrength` (not AllowStrength),
+`IgnoreResistance`, `IgnoreCombatMods`, `NearGround`, `CancelOnMiss`. The calc is
+dataset-agnostic, so the existing `IgnoreStrength` handling (split enhanced buffs to the
+`*Unenhanced` bucket, §4; meta-template exclusion) now fires on Rebirth too. **Validated**
+against the HC binary: precision/recall **0.9992/0.9954** (IgnoreStrength), **0.9842/0.9981**
+(IgnoreResistance), **0.9715/0.9484** (IgnoreCombatMods) across 14,644 aligned templates.
+**Still deferred:** `CopyBoosts`/`PseudoPet` live in the not-yet-decoded post-magnitude tail,
+NOT this bool block — separate RE.
+
+**Bundled the full Rebirth re-export** (closing the long-standing staleness item). De-risked
+per §6: scratch export → a leaf-level diff PROVED the entire committed-vs-fresh delta was
+**only `{flags, tags}` across 7,823 files** — zero game drift, no scale/table/effects-structure
+changes. Applied + regenerated: 69 generated files change (all legit IgnoreStrength→Unenhanced
+splits / `ignoreStrength:true`), **HC untouched**, `tags: null→[]` refreshed, `entities/`
+already current (separate `export_entities.py` path, 0 changes). tsc clean, 480 tests.
+
 ## ✅ Rebirth stealth suppression (NictusFX) restored — Parse6 format limitation, fixed via HC cross-server oracle (2026-06-12)
 
 **Gap.** Rebirth stealth radius was **pure-additive** (e.g. Stealth 55 + Super Speed 35 →

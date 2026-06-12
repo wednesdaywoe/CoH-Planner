@@ -61,6 +61,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kStealth source> 0.5 <=",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -93,7 +94,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_Shadow_Field_Dominator",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     },
@@ -104,6 +109,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "kStealth source> 0.5 >",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -136,7 +142,11 @@
             "type": "EntCreate",
             "entity_def": "Pets_Shadow_Field_Dominator_Domination",
             "priority_list": "PL_StaticObject"
-          }
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

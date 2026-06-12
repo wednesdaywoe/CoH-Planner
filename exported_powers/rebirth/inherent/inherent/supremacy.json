@@ -47,6 +47,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -74,7 +75,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -85,6 +91,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -112,7 +119,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -123,6 +135,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -150,7 +163,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -161,6 +179,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -188,7 +207,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -199,6 +223,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -226,7 +251,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -237,6 +267,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -264,7 +295,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -275,6 +311,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -302,7 +339,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -313,6 +355,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -340,7 +383,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -351,6 +399,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -378,7 +427,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -389,6 +443,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq arch target> Class_Minion_Henchman eq && Axp source.inVolume> Bxp source.inVolume> || ABxp source.inVolume> || Cxp source.inVolume> || Temporary_Powers.Temporary_Powers.Incarnate_Reward_Dark_Astoria source.OwnPower? || &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -416,7 +471,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     },
@@ -427,6 +487,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "group target> MastermindPets eq arch target> Class_Lt_Henchman eq && Axp source.inVolume> Bxp source.inVolume> || ABxp source.inVolume> || Cxp source.inVolume> || Temporary_Powers.Temporary_Powers.Incarnate_Reward_Dark_Astoria source.OwnPower? || &&",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -454,7 +515,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
         }
       ]
     }

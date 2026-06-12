@@ -51,6 +51,7 @@
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
@@ -82,7 +83,12 @@
           "params": {
             "type": "EntCreate",
             "entity_def": "Pets_Lion_Pet"
-          }
+          },
+          "flags": [
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
         }
       ]
     }

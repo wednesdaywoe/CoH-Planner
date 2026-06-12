@@ -56,11 +56,16 @@ export const TouchofFear: Power = {
     "durations": {
       "tohitDebuff": 20,
       "regenBuff": 60,
+      "regenBuffUnenhanced": 60,
       "recoveryBuff": 60,
       "damageBuff": 8.67
     },
     "regenBuff": {
-      "scale": 2.25,
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
+      "scale": 1.125,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {
