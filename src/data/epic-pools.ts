@@ -251,6 +251,49 @@ const EPIC_POOL_FALLBACK: Record<string, string> = {
 
 const PATRON_POOL_NAMES = new Set(['Leviathan Mastery', 'Mace Mastery', 'Mu Mastery', 'Soul Mastery']);
 
+// Game `@Class_<Name>` tokens → our archetype ids. Epic/ancillary pools gate
+// their powers with `requires` expressions like `$archetype @Class_Mastermind ==`
+// (or `… @Class_Defender == @Class_Corruptor == ||` for a shared copy). This is
+// the authoritative game restriction on which archetypes may take the pool.
+const CLASS_TOKEN_TO_AT: Record<string, string> = {
+  blaster: 'blaster', brute: 'brute', controller: 'controller', corruptor: 'corruptor',
+  defender: 'defender', dominator: 'dominator', mastermind: 'mastermind', scrapper: 'scrapper',
+  sentinel: 'sentinel', stalker: 'stalker', tanker: 'tanker', peacebringer: 'peacebringer',
+  warshade: 'warshade', arachnos_soldier: 'arachnos_soldier', arachnos_widow: 'arachnos_widow',
+  guardian: 'guardian',
+};
+
+/**
+ * The set of archetype ids a pool is gated to, read from its powers' `requires`
+ * `@Class_<Name>` tokens. An empty set means the pool carries no archetype gate
+ * (unrestricted / legacy data without baked-in class expressions). No pool uses
+ * a negated (`!=`) class gate, so every `@Class` token is an allow.
+ */
+function poolArchetypeGate(pool: EpicPool): Set<string> {
+  const gate = new Set<string>();
+  for (const power of pool.powers) {
+    const req = power.requires;
+    if (!req) continue;
+    const re = /@Class_([A-Za-z_]+)/g;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(req)) !== null) {
+      const at = CLASS_TOKEN_TO_AT[m[1].toLowerCase()];
+      if (at) gate.add(at);
+    }
+  }
+  return gate;
+}
+
+/**
+ * Whether the game's `@Class` gate on a pool admits the given archetype.
+ * Ungated pools (empty set) are treated as admitted so legacy data without
+ * baked-in class expressions keeps its prior behavior.
+ */
+function poolAdmitsArchetype(pool: EpicPool, normalizedId: string): boolean {
+  const gate = poolArchetypeGate(pool);
+  return gate.size === 0 || gate.has(normalizedId);
+}
+
 /**
  * Get epic pools for a specific archetype
  * @param archetypeId - The archetype ID (e.g., "sentinel", "blaster")
@@ -271,7 +314,11 @@ export function getEpicPoolsForArchetype(archetypeId: string): EpicPool[] {
     (pool) => archTypesToMatch.includes(pool.archetype.toLowerCase())
   );
 
-  // Fill in missing patron pools from villain counterpart
+  // Fill in missing patron pools from villain counterpart. Patron pools are
+  // genuinely cross-AT in-game (a rogue Blaster can take them), but our data
+  // only holds one AT's *copy* of each — whose `@Class` gate names that copy's
+  // owner, not everyone who can pick it. So patron borrowing is matched by
+  // pool name only; the gate is deliberately NOT consulted here.
   const patronFallbackAT = PATRON_POOL_FALLBACK[normalizedId];
   if (patronFallbackAT) {
     const existingNames = new Set(pools.map(p => p.displayName || p.name));
@@ -283,7 +330,13 @@ export function getEpicPoolsForArchetype(archetypeId: string): EpicPool[] {
     pools.push(...fallbackPools);
   }
 
-  // Fill in missing epic pools from hero counterpart
+  // Fill in missing ancillary pools from the hero counterpart, but only those
+  // the game actually lets this AT take. The borrowed copy carries an
+  // authoritative `@Class` gate (e.g. Defender's shared pools gate
+  // `@Class_Defender == @Class_Corruptor ==` — Corruptor is admitted, but a
+  // Mastermind borrowing from Defender is not). Without this guard the name
+  // dedup leaks every non-colliding hero pool onto the villain AT — the
+  // Mastermind-shows-Defender-masteries bug.
   const epicFallbackAT = EPIC_POOL_FALLBACK[normalizedId];
   if (epicFallbackAT) {
     const existingNames = new Set(pools.map(p => p.displayName || p.name));
@@ -291,6 +344,7 @@ export function getEpicPoolsForArchetype(archetypeId: string): EpicPool[] {
       (pool) => pool.archetype.toLowerCase() === epicFallbackAT
         && !PATRON_POOL_NAMES.has(pool.displayName || pool.name)
         && !existingNames.has(pool.displayName || pool.name)
+        && poolAdmitsArchetype(pool, normalizedId)
     );
     pools.push(...fallbackPools);
   }

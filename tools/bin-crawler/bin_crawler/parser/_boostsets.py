@@ -593,6 +593,15 @@ _CHALLENGE_SET_OVERRIDES_BY_RARITY = {
 }
 _CHALLENGE_SET_OVERRIDES_BY_NAME = {
     "Inexhaustibility": "Rest Buff",
+    # Rebirth multi-aspect debuff event sets. Their pieces enhance Defense +
+    # Slow + ToHit Debuff (verified in io-sets-raw), making them "Universal
+    # Debuff" sets slottable in ANY debuff power — e.g. Tar Patch via its Slow
+    # aspect. The binary tags them ECToHitDeBuff (one of their aspects), which
+    # wrongly implied Tar Patch accepts ToHit-debuff sets. Real single-aspect
+    # ToHit sets (Cloud Senses, Dark Watcher's Despair, Siphon Insight) stay
+    # "To Hit Debuff". See BIN-PARSER-LOG.
+    "Witchcraft": "Universal Debuff",
+    "Superior_Witchcraft": "Universal Debuff",
 }
 
 
