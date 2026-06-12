@@ -41,6 +41,50 @@ below for the *real* gap this thread exposed.
 
 > ---RESOLVED ---
 
+## ✅ Rebirth "Return From The Grave" resurrection set — mislabeled "Brute Archetype Sets" → new "Resurrection" category (2026-06-12)
+
+**Bug (Rebirth).** Return From The Grave / Superior (Rebirth's first-ever Rez IO
+set, Halloween event) showed up as a **Brute Archetype Set**. Its 60-power pool
+is exclusively resurrection powers (Revive, Rise of the Phoenix, Soul Transfer,
+Resurgence, Howling Twilight, Resurrect, Rebirth, Mutation, Stygian Return,
+Restore Essence, Resuscitate, Power of the Phoenix, Phoenix, Conduit of Pain…),
+so it leaked "Brute Archetype Sets" onto every non-Brute rez power (Controller
+Resurrect, Pool Resuscitate, Scrapper/Stalker Revive, Kheldian self-rezzes…).
+
+**Root cause.** No common-rarity set shares the rez pool, so pool-matching
+fails; the rarity is `ECHalloween`, which triggers `_infer_ato_category`, and
+that scanned the first power (`Brute_Defense.Dark_Armor.Soul_Transfer`) → bogus
+`ECBrute`. It was the ONE `ECHalloween` set without a curated override (Witchcraft/
+Haunting/Nightmare all have one that wins first).
+
+**Fix.** New bespoke **"Resurrection"** category (the Witchcraft→"Universal Debuff"
+precedent). (1) `_CHALLENGE_SET_OVERRIDES_BY_NAME` → "Resurrection" for both names
+in [_boostsets.py](tools/bin-crawler/bin_crawler/parser/_boostsets.py); guarded the
+`_infer_ato_category` call to skip BY_NAME-overridden sets so the raw category isn't
+left as a misleading `ECBrute`. (2) Plumbed the category through `IOSetCategory`
+(common.ts), `IO_SET_TYPE_TO_CATEGORY` (io-sets.ts), `SET_CATEGORY_TO_ENHANCEMENT`
++ `CATEGORY_PRIORITY` (enhancement-registry.ts), the 4 event-tier special-cases in
+EnhancementPicker.tsx, and the set `type` in rebirth `io-sets-raw.ts`. (3) **Surgical
+re-apply** (§6): recomputed `build_power_category_index` on the fixed boostsets and
+copied only `allowed_set_categories` into the 59 affected committed
+`exported_powers/rebirth` JSONs, then regenerated (44 powerset files + power/epic
+pools). Non-Brute rez powers DROP the spurious "Brute Archetype Sets" and gain
+"Resurrection"; genuine Brute rez powers (Soul Transfer / Rise of the Phoenix in
+`Brute_Defense.*`) KEEP "Brute Archetype Sets" (real Brute ATOs slot every Brute
+power) AND gain "Resurrection". Guard:
+[rebirth-resurrection.test.ts](src/data/rebirth-resurrection.test.ts). tsc clean, 473
+tests.
+
+**Same boostsets sweep, two side-findings.** (a) The old `_boostsets.py` TODO list
+flagged Vampire's Bite (ECMelee), Imperial Might (ECKnockback), Liberty's Belt
+(ECResist) as "mis-tagged" — VERIFIED CORRECT against the binary: their pools are
+byte-identical to the standard Melee(511)/Knockback(608)/Resist(314) pools, so
+pool-matching assigns them right. Replaced the false TODOs with the verified note.
+(b) The Call Jounin "missing Accurate Defense Debuff" question is now PROVEN a
+genuine Rebirth client `boostsets.bin` omission (not a dropped field/parser gap) —
+see [to-do/REBIRTH_DATA_GAPS.md](to-do/REBIRTH_DATA_GAPS.md) §1 and
+`memory/io-set-category-plumbing.md`; parked pending live-client confirmation.
+
 ## ✅ SYSTEMIC parser misalignment FIXED — 1133 powers' dropped effects restored (incl. Trip Mine) — 2026-06-11
 
 **One-line root fix** in [_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py):

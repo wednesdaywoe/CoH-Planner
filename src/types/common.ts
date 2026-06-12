@@ -186,7 +186,10 @@ export type IOSetCategory =
   | 'Rest Buff'
   // Rebirth multi-aspect debuff event sets (Witchcraft) — slottable in any
   // Slow / Defense-debuff / ToHit-debuff power (e.g. Tar Patch via Slow)
-  | 'Universal Debuff';
+  | 'Universal Debuff'
+  // Rebirth resurrection event set (Return From The Grave) — slottable only
+  // in resurrection powers (Revive, Rise of the Phoenix, Howling Twilight, …)
+  | 'Resurrection';
 
 // ============================================
 // IO SET RARITY

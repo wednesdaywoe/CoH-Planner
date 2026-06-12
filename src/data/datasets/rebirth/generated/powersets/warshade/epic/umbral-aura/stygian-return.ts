@@ -35,6 +35,7 @@ export const StygianReturn: Power = {
     "Healing",
     "Kheldian Archetype Sets",
     "Melee AoE Damage",
+    "Resurrection",
     "Stuns",
     "Universal Control Duration",
     "Universal Damage Sets"

@@ -2951,9 +2951,9 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Brute Archetype Sets",
           "Endurance Modification",
-          "Healing"
+          "Healing",
+          "Resurrection"
         ],
         "effects": {
           "accuracy": 2,
@@ -3140,8 +3140,8 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Brute Archetype Sets",
-          "Healing"
+          "Healing",
+          "Resurrection"
         ],
         "effects": {
           "accuracy": 1,

@@ -39,10 +39,10 @@
     "Damage"
   ],
   "allowed_set_categories": [
-    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
+    "Resurrection",
     "Stuns",
     "Universal Control Duration",
     "Universal Damage Sets"

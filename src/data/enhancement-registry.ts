@@ -126,6 +126,10 @@ export const SET_CATEGORY_TO_ENHANCEMENT: Record<string, EnhancementStatType[]> 
   // Rebirth multi-aspect debuff event sets (Witchcraft): pieces span Defense
   // Debuff + Slow + ToHit Debuff, hence slottable in any of those power types.
   'Universal Debuff': ['Defense Debuff', 'Slow', 'ToHit Debuff'],
+  // Rebirth resurrection event set (Return From The Grave). Slots only in
+  // resurrection powers; the enhanceable aspects on those powers are heal /
+  // recharge / end-reduction (fallback only — real categories come from the binary).
+  'Resurrection': ['Healing', 'Recharge', 'EnduranceReduction'],
   'Threat Duration': ['Taunt'],
   'Endurance Modification': ['EnduranceReduction'],
   // Movement
@@ -206,6 +210,9 @@ export const CATEGORY_PRIORITY: IOSetCategory[] = [
   'Endurance Modification',
   'Threat Duration',
   'Accurate Healing',
+  // Rebirth resurrection event set (Return From The Grave) — niche, sits with
+  // the support categories.
+  'Resurrection',
   // Travel (usually specific travel powers)
   'Running',
   'Running & Sprints',

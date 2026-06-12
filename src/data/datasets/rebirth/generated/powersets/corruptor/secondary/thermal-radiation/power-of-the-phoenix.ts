@@ -38,6 +38,7 @@ export const PowerofthePhoenix: Power = {
     "Endurance Modification",
     "Healing",
     "Ranged AoE Damage",
+    "Resurrection",
     "Stuns",
     "Universal Control Duration",
     "Universal Damage Sets"

@@ -36,6 +36,7 @@ export const PhoenixAwakening: Power = {
     "Guardian Archetype Sets",
     "Healing",
     "Melee AoE Damage",
+    "Resurrection",
     "Stuns",
     "Universal Control Duration",
     "Universal Damage Sets"

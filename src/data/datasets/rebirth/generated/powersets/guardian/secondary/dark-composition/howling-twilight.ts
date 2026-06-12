@@ -38,6 +38,7 @@ export const HowlingTwilight: Power = {
   "allowedSetCategories": [
     "Guardian Archetype Sets",
     "Ranged AoE Damage",
+    "Resurrection",
     "Slow Movement",
     "Stuns",
     "Universal Control Duration",

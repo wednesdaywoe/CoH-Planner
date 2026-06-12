@@ -39,9 +39,9 @@
     "Rebirth_Boost_10"
   ],
   "allowed_set_categories": [
-    "Brute Archetype Sets",
     "Endurance Modification",
-    "Resist Damage"
+    "Resist Damage",
+    "Resurrection"
   ],
   "cast_through": [],
   "toggle_ignore": [],

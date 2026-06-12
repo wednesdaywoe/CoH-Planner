@@ -37,6 +37,18 @@ chronological parser log are *linked, not duplicated.*
   summon key-reorder. Needs a dedicated **"re-export Rebirth to current parser"** pass. **Open.**
 
 ### Resolved Rebirth divergences (logged in BIN-PARSER-LOG)
+- **Return From The Grave** resurrection set was mislabeled "Brute Archetype Sets"
+  (AT-prefix fallback off its first rez power) → new bespoke **"Resurrection"**
+  category; 59 rez powers re-tagged. Same sweep VERIFIED Vampire's Bite/Imperial
+  Might/Liberty's Belt are correctly ECMelee/ECKnockback/ECResist (pool-identical to
+  standard sets — the old "mis-tagged" TODOs were false). — 2026-06-12.
+- **Call Jounin "missing Accurate Defense Debuff"** — PROVEN a genuine Rebirth client
+  `boostsets.bin` omission (HC lists all 11 MM pet summons in the Accurate DefDebuff
+  sets; Rebirth drops 6 incl. Call Jounin), NOT a dropped field/template: per-power
+  fields 74–78 are empty, the boostset parser is byte-faithful, no redirect, upgrade
+  powers accept no sets. Data-driven fix impossible (data absent from Rebirth's client
+  files). **Parked** pending live-client confirmation; if confirmed, scoped HC-oracle
+  cross-fill (Accurate DefDebuff only, the 6 summons). See `memory/io-set-category-plumbing.md`. — 2026-06-12.
 - **Phalanx Fighting ally scaling** restored (is_pvp) — 2026-06-11.
 - **Archetype defs** — Guardian baseThreat 1.0→2.0, Brute HP, per-server damageCap (both servers) — 2026-06-06.
 - **IO sets binary-sourced both servers** (≈196 Rebirth-only bonus entries recovered) — 2026-06-05.

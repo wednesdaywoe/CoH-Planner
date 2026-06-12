@@ -40,10 +40,10 @@
     "Damage"
   ],
   "allowed_set_categories": [
-    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
     "Ranged AoE Damage",
+    "Resurrection",
     "Stuns",
     "Universal Control Duration",
     "Universal Damage Sets"

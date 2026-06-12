@@ -38,10 +38,10 @@
     "Damage"
   ],
   "allowed_set_categories": [
-    "Brute Archetype Sets",
     "Healing",
     "Kheldian Archetype Sets",
     "Melee AoE Damage",
+    "Resurrection",
     "Stuns",
     "Universal Control Duration",
     "Universal Damage Sets"

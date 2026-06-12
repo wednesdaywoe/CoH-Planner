@@ -32,6 +32,7 @@ export const RestoreEssence: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
+    "Resurrection",
     "To Hit Buff"
   ],
   "maxSlots": 6,

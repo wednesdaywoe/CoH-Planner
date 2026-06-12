@@ -17355,7 +17355,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Brute Archetype Sets"
+    "type": "Resurrection"
   },
   "rolling_barrage": {
     "bonuses": [
@@ -23557,7 +23557,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": "Brute Archetype Sets"
+    "type": "Resurrection"
   },
   "superior_scourging_blast": {
     "bonuses": [

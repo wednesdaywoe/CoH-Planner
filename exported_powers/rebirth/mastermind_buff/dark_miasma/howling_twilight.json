@@ -40,8 +40,8 @@
     "Damage"
   ],
   "allowed_set_categories": [
-    "Brute Archetype Sets",
     "Ranged AoE Damage",
+    "Resurrection",
     "Slow Movement",
     "Stuns",
     "Universal Control Duration",

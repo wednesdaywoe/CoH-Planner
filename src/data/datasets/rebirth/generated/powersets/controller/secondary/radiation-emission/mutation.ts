@@ -34,6 +34,7 @@ export const Mutation: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Resurrection",
     "To Hit Buff"
   ],
   "maxSlots": 6,

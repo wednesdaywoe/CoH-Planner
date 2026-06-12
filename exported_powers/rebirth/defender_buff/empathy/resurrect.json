@@ -39,8 +39,8 @@
     "Buff_Defense"
   ],
   "allowed_set_categories": [
-    "Brute Archetype Sets",
     "Defense Sets",
+    "Resurrection",
     "To Hit Buff"
   ],
   "cast_through": [],

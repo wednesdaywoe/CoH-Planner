@@ -38,8 +38,8 @@
     "Rebirth_Boost_10"
   ],
   "allowed_set_categories": [
-    "Brute Archetype Sets",
-    "Healing"
+    "Healing",
+    "Resurrection"
   ],
   "cast_through": [],
   "toggle_ignore": [],

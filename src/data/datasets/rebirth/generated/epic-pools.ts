@@ -5682,10 +5682,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Resurrection",
           "Stuns",
           "Universal Control Duration",
           "Universal Damage Sets"
@@ -9066,10 +9066,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Resurrection",
           "Stuns",
           "Universal Control Duration",
           "Universal Damage Sets"
@@ -9339,10 +9339,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Resurrection",
           "Stuns",
           "Universal Control Duration",
           "Universal Damage Sets"
@@ -9715,10 +9715,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Resurrection",
           "Stuns",
           "Universal Control Duration",
           "Universal Damage Sets"
@@ -13166,10 +13166,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Resurrection",
           "Stuns",
           "Universal Control Duration",
           "Universal Damage Sets"
@@ -14031,10 +14031,10 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Brute Archetype Sets",
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Resurrection",
           "Stuns",
           "Universal Control Duration",
           "Universal Damage Sets"

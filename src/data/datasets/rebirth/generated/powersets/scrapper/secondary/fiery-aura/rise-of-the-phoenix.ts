@@ -34,6 +34,7 @@ export const RiseofthePhoenix: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
+    "Resurrection",
     "Scrapper Archetype Sets",
     "Stuns",
     "Universal Control Duration",

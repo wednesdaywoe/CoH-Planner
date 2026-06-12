@@ -345,8 +345,14 @@ def _parse_boostsets_parse6(r: Parse6BinReader) -> list[BoostSetRecord]:
             rec["category"] = "ECUniversalDamage"
         # Rebirth's Parse6 ATOs lack a category string AND have AT-specific
         # pools that no common-rarity set shares — so pool-matching fails.
-        # Infer the AT from the first power's category prefix.
-        if not rec["category"] and rec["powers"]:
+        # Infer the AT from the first power's category prefix. Skip sets that
+        # carry an explicit planner-category override (e.g. Return From The
+        # Grave): the AT-prefix heuristic would otherwise mislabel them from
+        # their first power's prefix (RFTG's first rez power is Brute_Defense.*
+        # → bogus "ECBrute"), leaving a misleading raw category behind even
+        # though _resolve_category later overrides it.
+        if (not rec["category"] and rec["powers"]
+                and rec["name"] not in _CHALLENGE_SET_OVERRIDES_BY_NAME):
             rec["category"] = _infer_ato_category(rec["rarity"], rec["powers"])
         # Rebirth-only oddballs: Overwhelming Force (rarity=ECSummer) and
         # similar wide-pool sets that allow slotting into nearly every power
@@ -564,16 +570,23 @@ REBIRTH_SET_CATEGORY_OVERRIDES: dict[str, str] = {
     'Superior_The_Haunting':         'ECFear',
     'Endless_Nightmare':             'ECSleep',        # 100% Sleep in pool
     'Superior_Endless_Nightmare':    'ECSleep',
-    # Halloween — TODO verify on wiki:
-    #   Vampires_Bite / Superior_Vampires_Bite       (currently mis-tagged ECMelee, 511 powers)
-    #   Return_From_The_Grave / Superior_Return_From_The_Grave (currently mis-tagged ECBrute, 60 powers)
-    # Challenge enhancements (Secret Master TF rewards) — TODO verify on wiki:
-    #   Imperial_Might          (currently mis-tagged ECKnockback)
-    #   Forced_Indoctrination   (no category)
-    #   Libertys_Belt           (currently mis-tagged ECResist)
-    #   Inexhaustibility        (no category)
-    # Synapses_Agility currently maps to ECUniversalTravel via pool-match —
-    # leave alone unless wiki confirms otherwise.
+    # Verified 2026-06-12 (binary, not "mis-tagged" — these were FALSE TODOs):
+    #   Vampires_Bite / Superior   → ECMelee  is CORRECT. Its 511-power pool is
+    #       byte-identical to the standard Melee pool (Kinetic_Combat/Mako's
+    #       Bite = 511); pool-matching assigns it correctly.
+    #   Imperial_Might             → ECKnockback is CORRECT. 608-power pool ==
+    #       the standard Knockback pool (Force_Feedback/Kinetic_Crash = 608);
+    #       its pieces are Damage+Knockback. Pool-matched, no override needed.
+    #   Libertys_Belt              → ECResist is CORRECT. 314-power pool == the
+    #       standard Resist pool (Aegis/Steadfast = 314); pieces are all
+    #       Damage Resistance. Pool-matched, no override needed.
+    #   Synapses_Agility           → ECUniversalTravel via pool-match, CORRECT.
+    # Handled elsewhere (no entry needed here):
+    #   Return_From_The_Grave / Superior → "Resurrection" via
+    #       _CHALLENGE_SET_OVERRIDES_BY_NAME (the only genuine mislabel; the
+    #       AT-prefix fallback wrongly read ECBrute off its first rez power).
+    #   Forced_Indoctrination → "Universal Control Duration" (BY_RARITY).
+    #   Inexhaustibility      → "Rest Buff" (BY_NAME).
 }
 
 
@@ -602,6 +615,16 @@ _CHALLENGE_SET_OVERRIDES_BY_NAME = {
     # "To Hit Debuff". See BIN-PARSER-LOG.
     "Witchcraft": "Universal Debuff",
     "Superior_Witchcraft": "Universal Debuff",
+    # Return From The Grave — Rebirth's "first-ever Rez IO Set" (Halloween
+    # event). Its 60-power pool is exclusively resurrection powers (Revive,
+    # Rise of the Phoenix, Soul Transfer, Resurgence, Howling Twilight,
+    # Resurrect, Rebirth, Mutation, Stygian Return, Restore Essence,
+    # Resuscitate, Power of the Phoenix, Phoenix, …). No common-rarity set
+    # shares that pool, so pool-matching fails and the AT-prefix fallback
+    # mislabeled it "ECBrute" off its first power (Brute_Defense.*). The set
+    # is conceptually a bespoke "Resurrection" category (verified 2026-06-12).
+    "Return_From_The_Grave": "Resurrection",
+    "Superior_Return_From_The_Grave": "Resurrection",
 }
 
 

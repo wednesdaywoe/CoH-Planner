@@ -34,7 +34,8 @@ export const Rebirth: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Resurrection"
   ],
   "maxSlots": 6,
   "damage": [

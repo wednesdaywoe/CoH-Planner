@@ -38,9 +38,9 @@
     "Buff_ToHit"
   ],
   "allowed_set_categories": [
-    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
+    "Resurrection",
     "To Hit Buff"
   ],
   "cast_through": [],
