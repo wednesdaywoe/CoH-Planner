@@ -296,6 +296,7 @@ export const EARLY_TRAVEL_POWERS: readonly string[] = [
   'Speed_of_Sound',    // Pool.Experimentation.Speed_of_Sound (rank 3)
   'Mighty_Leap',       // Pool.Force_of_Will.Mighty_Leap (rank 3)
   'Mystic_Flight',     // Pool.Sorcery.Mystic_Flight (rank 4, but rank 3 is auto-granted Arcane Power)
+  'Jetpack',           // Pool.Gadgetry.Jetpack (rank 3) — Rebirth-only Origin pool; L4 w/ no prereq like the other Origin travel powers
 ] as const;
 
 /**

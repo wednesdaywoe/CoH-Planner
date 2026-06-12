@@ -3383,6 +3383,25 @@ function extractEffects(templates, powerName) {
       if (RESOURCE_TYPES[attrib]) {
         const resType = RESOURCE_TYPES[attrib];
 
+        // Engine-side no-op marker, NOT a displayable buff: a `tick_chance: 0`
+        // Expression resource template never fires its periodic application, so
+        // it contributes nothing in-game. Rebirth attaches such a
+        // Recovery/Regen/Expression/Current/2s marker to most defensive toggles
+        // (Stealth, Tough, Weave, Stone Armor, the Kheldian shields, Combat
+        // Jumping, …). Our parser can't yet extract the `magnitude_expression`
+        // these carry, so the converter would otherwise fall back to scale×table
+        // and emit a phantom "+100% Recovery (2s)" (reported on Rebirth Stealth,
+        // @Redlynne). `tick_chance` is the discriminator: the phantoms are 0;
+        // genuine scaling Expression buffs — Gamma Boost's HP-scaled recovery
+        // /regen, Earthen Embrace, the pseudopet HP_* heals — are tick_chance: 1
+        // and pass through unchanged (verified: every HC resource-Expression
+        // template is tick_chance: 1, so HC output is untouched). Absorb keeps
+        // its own Expression handling below (aspect=Maximum caps whose tick
+        // duration we still read), so defer to that path.
+        if (resType !== 'absorb' && template.type === 'Expression' && template.tick_chance === 0) {
+          continue;
+        }
+
         // Helper to accumulate scales for resource effects that may appear multiple times
         // (e.g., maxHPBuff with 2x templates of scale 1.0 should sum to scale 2.0)
         const addOrAccumulate = (key) => {

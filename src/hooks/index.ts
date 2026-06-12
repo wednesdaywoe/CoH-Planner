@@ -10,6 +10,7 @@ export {
   useCharacterCalculation,
   useGlobalBonuses,
   useStatBreakdown,
+  useStatBreakdowns,
   useTotalSlotsUsed,
   useSlotsRemaining,
   useActiveSetBonuses,

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER } from './set-bonus-groups';
+import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY } from './set-bonus-groups';
 import { STAT_NAME_MAP } from '@/utils/calculations/set-bonuses';
 
 /**
@@ -33,5 +33,23 @@ describe('Set bonus group coverage', () => {
     expect(STAT_GROUP_INFO.defEnergy.label).toBe(STAT_GROUP_INFO.defNegative.label);
     expect(STAT_GROUP_INFO.defFire.label).toBe(STAT_GROUP_INFO.defCold.label);
     expect(STAT_GROUP_INFO.resSmashing.label).toBe(STAT_GROUP_INFO.resLethal.label);
+  });
+
+  // The popup folds always-on proc globals (LotG +Recharge, +Def(All), Kismet
+  // +ToHit, …) into its rows by mapping dashboard breakdown keys → group keys.
+  // A typo in the target key would silently dump the proc into "Misc".
+  it('every proc breakdown→group target key is a real STAT_GROUP_INFO entry', () => {
+    const unmapped = Object.values(PROC_BREAKDOWN_KEY_TO_GROUP_KEY).filter(
+      (groupKey) => !STAT_GROUP_INFO[groupKey]
+    );
+    expect(unmapped).toEqual([]);
+  });
+
+  it('LotG +Recharge lands in the General · Recharge row', () => {
+    // The breakdown emits proc recharge under the `recharge` key; it must map to
+    // the same row the set-bonus recharge totals use.
+    const groupKey = PROC_BREAKDOWN_KEY_TO_GROUP_KEY.recharge;
+    expect(groupKey).toBe('recharge');
+    expect(STAT_GROUP_INFO[groupKey]).toEqual({ group: 'General', label: 'Recharge' });
   });
 });

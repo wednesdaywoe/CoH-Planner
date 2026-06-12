@@ -79,3 +79,53 @@ export const STAT_GROUP_INFO: Record<string, StatGroupInfo> = {
 export const SET_BONUS_GROUP_ORDER = [
   'General', 'Health & Endurance', 'Defense', 'Resistance', 'Mez Duration', 'Mez/Debuff Res', 'Movement', 'Misc',
 ];
+
+/**
+ * Maps a dashboard `breakdown` map key → the normalized `STAT_GROUP_INFO` key.
+ *
+ * Always-on global IO procs (LotG +Recharge, Numina/Miracle +Rec/+Reg, Steadfast
+ * /Gladiator's +Def(All), Kismet +ToHit, …) are NOT set bonuses, so they never
+ * enter the set-bonus Rule-of-5 map the Set Bonus Totals popup reads. They DO
+ * land in the per-stat `breakdown` (as `type: 'proc'` sources), which the
+ * dashboard tiles and Detailed Totals modal already display. To surface them in
+ * the Set Bonus Totals popup too, we fold those proc sources into the matching
+ * row — but the breakdown's stat keys differ from the popup's grouping keys for
+ * a handful of stats (`toHit` vs `tohit`, `maxHP` vs `maxhp`, `protKnockback` vs
+ * `kbprotection`, …). This map covers exactly the keys `applySingleProcEffect`
+ * can emit; anything not listed (e.g. Build Up proc `damage`) is intentionally
+ * excluded from the totals window.
+ */
+export const PROC_BREAKDOWN_KEY_TO_GROUP_KEY: Record<string, string> = {
+  recharge: 'recharge',
+  recovery: 'recovery',
+  regeneration: 'regeneration',
+  maxHP: 'maxhp',
+  toHit: 'tohit',
+  runSpeed: 'runspeed',
+  // Defense (positional + typed) — keys already match STAT_GROUP_INFO
+  defMelee: 'defMelee',
+  defRanged: 'defRanged',
+  defAoE: 'defAoE',
+  defSmashing: 'defSmashing',
+  defLethal: 'defLethal',
+  defFire: 'defFire',
+  defCold: 'defCold',
+  defEnergy: 'defEnergy',
+  defNegative: 'defNegative',
+  defPsionic: 'defPsionic',
+  defToxic: 'defToxic',
+  // Resistance (typed) — keys already match STAT_GROUP_INFO
+  resSmashing: 'resSmashing',
+  resLethal: 'resLethal',
+  resFire: 'resFire',
+  resCold: 'resCold',
+  resEnergy: 'resEnergy',
+  resNegative: 'resNegative',
+  resPsionic: 'resPsionic',
+  resToxic: 'resToxic',
+  // Mez / Debuff Resistance
+  mezResist: 'mezresist',
+  debuffResistSlow: 'debuffresistslow',
+  debuffResistRecharge: 'debuffresistrecharge',
+  protKnockback: 'kbprotection',
+};

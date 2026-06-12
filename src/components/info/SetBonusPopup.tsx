@@ -19,11 +19,11 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore } from '@/stores';
-import { useBonusTracking, useIsTouchDevice } from '@/hooks';
+import { useBonusTracking, useStatBreakdowns, useIsTouchDevice } from '@/hooks';
 import { Tooltip } from '@/components/ui';
 import { Modal } from '@/components/modals/Modal';
 import { formatBonusValue } from '@/utils/set-bonus-format';
-import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER } from '@/data/set-bonus-groups';
+import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY } from '@/data/set-bonus-groups';
 import type { ValueTracking } from '@/utils/calculations/set-bonuses';
 
 const DEFAULT_WIDTH = 380;
@@ -57,13 +57,57 @@ export function SetBonusPopup() {
   const isTouch = useIsTouchDevice();
   const closeSetBonusPopup = useUIStore((s) => s.closeSetBonusPopup);
   const tracking = useBonusTracking();
+  const breakdowns = useStatBreakdowns();
 
   const groups = useMemo<BonusGroup[]>(() => {
-    // group → label → row (dedupe paired stats, keeping the larger total)
+    // 1. Per-stat Rule-of-5 buckets, seeded from the set-bonus tracking.
+    const perStat = new Map<string, ValueTracking[]>();
+    for (const [stat, byValue] of Object.entries(tracking)) {
+      const buckets = Object.values(byValue);
+      if (buckets.length) perStat.set(stat, [...buckets]);
+    }
+
+    // 2. Fold in always-on proc globals (LotG +Recharge, Numina/Miracle, Steadfast
+    //    /Gladiator's +Def(All), Kismet +ToHit, …). These are NOT set bonuses, so
+    //    they're absent from `tracking`; they live in the dashboard breakdown as
+    //    `type: 'proc'` sources. Group each stat's proc sources into synthetic
+    //    buckets (the proc pass already flagged any Rule-of-5-rejected ones as
+    //    `capped`). Proc globals keep their own R5 pool, so a same-value proc and
+    //    set bonus stay as separate buckets rather than merging.
+    for (const [bkKey, bd] of breakdowns) {
+      const stat = PROC_BREAKDOWN_KEY_TO_GROUP_KEY[bkKey];
+      if (!stat) continue;
+      const procSources = bd.sources.filter((s) => s.type === 'proc');
+      if (procSources.length === 0) continue;
+
+      const byValue = new Map<string, ValueTracking>();
+      for (const s of procSources) {
+        const key = s.value.toFixed(2);
+        let vt = byValue.get(key);
+        if (!vt) {
+          vt = { count: 0, sources: [], rejectedSources: [], capped: false, value: s.value };
+          byValue.set(key, vt);
+        }
+        const tracked = { name: s.name, powerName: s.powerName };
+        if (s.capped) {
+          vt.capped = true;
+          vt.rejectedSources.push(tracked);
+        } else {
+          vt.count++;
+          vt.sources.push(tracked);
+        }
+      }
+
+      const existing = perStat.get(stat);
+      if (existing) existing.push(...byValue.values());
+      else perStat.set(stat, [...byValue.values()]);
+    }
+
+    // 3. Build grouped rows (dedupe paired stats, keeping the larger total).
     const byGroup = new Map<string, Map<string, StatRow>>();
 
-    for (const [stat, byValue] of Object.entries(tracking)) {
-      const buckets = Object.values(byValue).sort((a, b) => b.value - a.value);
+    for (const [stat, rawBuckets] of perStat) {
+      const buckets = rawBuckets.sort((a, b) => b.value - a.value);
       if (buckets.length === 0) continue;
       let total = 0;
       let wastedCount = 0;
@@ -94,7 +138,7 @@ export function SetBonusPopup() {
         };
       })
       .sort((a, b) => a.order - b.order || a.group.localeCompare(b.group));
-  }, [tracking]);
+  }, [tracking, breakdowns]);
 
   // Tap-to-expand state (touch only).
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
@@ -173,8 +217,8 @@ export function SetBonusPopup() {
 
   const renderBuckets = (row: StatRow) => (
     <div className="space-y-0.5">
-      {row.buckets.map((b) => (
-        <div key={b.value}>
+      {row.buckets.map((b, bi) => (
+        <div key={bi}>
           {b.sources.map((s, i) => (
             <div key={`a${i}`} className="flex justify-between gap-3 text-slate-300">
               <span className="truncate">{s.name}</span>

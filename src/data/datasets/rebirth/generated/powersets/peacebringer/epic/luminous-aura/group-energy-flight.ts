@@ -42,17 +42,6 @@ export const GroupEnergyFlight: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuffUnenhanced": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuffUnenhanced": 2,
-      "movement": 0.75,
-      "slow": 0.75,
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75
-    },
     "movement": {
       "fly": {
         "scale": 1,
@@ -70,6 +59,12 @@ export const GroupEnergyFlight: Power = {
         "scale": 15,
         "table": "Melee_Friction"
       }
+    },
+    "durations": {
+      "movement": 0.75,
+      "slow": 0.75,
+      "defenseBuff": 0.75,
+      "debuffResistance": 0.75
     },
     "slow": {
       "flySpeed": {

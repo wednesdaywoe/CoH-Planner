@@ -308,6 +308,16 @@ export function useStatBreakdown(stat: string): DashboardStatBreakdown | undefin
   return result.breakdown.get(stat);
 }
 
+/**
+ * Get the full per-stat breakdown map (every contributing source, including
+ * always-on proc globals). The Set Bonus Totals popup uses this to fold proc
+ * globals (LotG +Recharge, etc.) into the set-bonus rows.
+ */
+export function useStatBreakdowns(): Map<string, DashboardStatBreakdown> {
+  const result = useCharacterCalculation();
+  return result.breakdown;
+}
+
 // ============================================
 // SLOT COUNTING HOOKS
 // ============================================

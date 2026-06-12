@@ -489,15 +489,6 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "recoveryBuffUnenhanced": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryBuffUnenhanced": 2,
-            "defenseBuff": 0.75,
-            "mezResistance": 0.75
-          },
           "defenseBuff": {
             "melee": {
               "scale": 0.5,
@@ -539,6 +530,10 @@ export const POWER_POOLS_RAW = {
               "scale": 0.5,
               "table": "Melee_Buff_Def"
             }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "mezResistance": 0.75
           },
           "mezResistance": {
             "immobilize": {
@@ -1628,16 +1623,6 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.73,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "recoveryBuffUnenhanced": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryBuffUnenhanced": 2,
-            "stealth": 0.75,
-            "defenseBuff": 0.75,
-            "slow": 0.75
-          },
           "stealth": {
             "stealthPvE": {
               "scale": 35,
@@ -1647,6 +1632,11 @@ export const POWER_POOLS_RAW = {
               "scale": 389,
               "table": "Melee_Ones"
             }
+          },
+          "durations": {
+            "stealth": 0.75,
+            "defenseBuff": 0.75,
+            "slow": 0.75
           },
           "defenseBuff": {
             "melee": {
@@ -2453,17 +2443,6 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.0813,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "recoveryBuffUnenhanced": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryBuffUnenhanced": 2,
-            "movement": 0.75,
-            "defenseBuff": 0.75,
-            "immobilize": 0.75,
-            "mezResistance": 0.75
-          },
           "movement": {
             "jumpHeight": {
               "scale": 2,
@@ -2481,6 +2460,12 @@ export const POWER_POOLS_RAW = {
               "scale": 0.2,
               "table": "Melee_Ones"
             }
+          },
+          "durations": {
+            "movement": 0.75,
+            "defenseBuff": 0.75,
+            "immobilize": 0.75,
+            "mezResistance": 0.75
           },
           "defenseBuff": {
             "melee": {
@@ -2619,20 +2604,6 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 1,
           "effectArea": "SingleTarget",
-          "recoveryBuffUnenhanced": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryBuffUnenhanced": 2,
-            "movement": 0.75,
-            "defenseBuff": 1.25,
-            "knockback": 1.25,
-            "knockup": 1.25,
-            "hold": 1.25,
-            "mezResistance": 1.25,
-            "debuffResistance": 1.25
-          },
           "movement": {
             "jumpHeight": {
               "scale": 0.125,
@@ -2650,6 +2621,15 @@ export const POWER_POOLS_RAW = {
               "scale": 0.2,
               "table": "Melee_Ones"
             }
+          },
+          "durations": {
+            "movement": 0.75,
+            "defenseBuff": 1.25,
+            "knockback": 1.25,
+            "knockup": 1.25,
+            "hold": 1.25,
+            "mezResistance": 1.25,
+            "debuffResistance": 1.25
           },
           "defenseBuff": {
             "melee": {

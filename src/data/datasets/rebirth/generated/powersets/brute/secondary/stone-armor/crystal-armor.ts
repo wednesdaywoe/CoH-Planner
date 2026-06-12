@@ -40,15 +40,6 @@ export const CrystalArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuffUnenhanced": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuffUnenhanced": 2,
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75
-    },
     "defenseBuff": {
       "energy": {
         "scale": 1.6,
@@ -58,6 +49,10 @@ export const CrystalArmor: Power = {
         "scale": 1.6,
         "table": "Melee_Buff_Def"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "debuffResistance": 0.75
     },
     "debuffResistance": {
       "defense": {

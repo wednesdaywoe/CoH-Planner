@@ -40,23 +40,18 @@ export const MineralArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuffUnenhanced": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuffUnenhanced": 2,
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75,
-      "confuse": 0.75,
-      "mezResistance": 0.75
-    },
     "defenseBuff": {
       "psionic": {
         "scale": 2.5,
         "table": "Melee_Buff_Def"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "debuffResistance": 0.75,
+      "perceptionBuff": 0.75,
+      "confuse": 0.75,
+      "mezResistance": 0.75
     },
     "debuffResistance": {
       "perception": {

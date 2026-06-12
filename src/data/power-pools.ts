@@ -54,6 +54,11 @@ interface LegacyPoolPower {
   shortHelp?: string;
   icon: string;
   powerType: string;
+  /** Ally/foe/self targeting (e.g. "Teammate" for Grant Invisibility). Drives
+   *  the ally-only filter that keeps ally-buff defense out of the caster's
+   *  totals — must be carried through the transform or that filter sees
+   *  undefined and the buff leaks into self stats. */
+  targetType?: string;
   requires?: string;
   maxSlots: number;
   allowedEnhancements: string[];
@@ -118,6 +123,7 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
     shortHelp: legacy.shortHelp,
     icon: legacy.icon,
     powerType: legacy.powerType as PowerType,
+    targetType: legacy.targetType as Power['targetType'],
     requires: legacy.requires,
     effects: {
       // Stats (renamed from legacy format)

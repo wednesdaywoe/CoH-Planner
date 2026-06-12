@@ -6,10 +6,15 @@
  * 2. Portal-based positioning for complex tooltips
  */
 
-import { useState, useRef, useCallback, useEffect, type ReactNode, type CSSProperties } from 'react';
+import { useState, useRef, useCallback, useEffect, useLayoutEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
+
+// Gap between the trigger and the tooltip, and the minimum margin the tooltip
+// keeps from any window edge.
+const GAP = 8;
+const EDGE_PADDING = 8;
 
 interface TooltipProps {
   content: ReactNode;
@@ -29,7 +34,11 @@ export function Tooltip({
   triggerClassName,
 }: TooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [coords, setCoords] = useState({ x: 0, y: 0, triggerTop: 0, triggerBottom: 0 });
+  // Captured at show time; drives positioning.
+  const [triggerRect, setTriggerRect] = useState<DOMRect | null>(null);
+  // Final, viewport-clamped pixel coordinates. Null until measured so the
+  // tooltip stays hidden (avoids a one-frame flash at 0,0).
+  const [coords, setCoords] = useState<{ left: number; top: number } | null>(null);
   const timeoutRef = useRef<number | null>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
@@ -42,14 +51,12 @@ export function Tooltip({
     timeoutRef.current = window.setTimeout(() => {
       timeoutRef.current = null;
       if (triggerRef.current) {
-        const rect = triggerRef.current.getBoundingClientRect();
-        const x = rect.left + rect.width / 2;
-        const y = position === 'bottom' ? rect.bottom : rect.top;
-        setCoords({ x, y, triggerTop: rect.top, triggerBottom: rect.bottom });
+        setTriggerRect(triggerRef.current.getBoundingClientRect());
       }
+      setCoords(null); // force a fresh measure for the new placement
       setIsVisible(true);
     }, delay);
-  }, [position, delay]);
+  }, [delay]);
 
   const hideTooltip = useCallback(() => {
     if (timeoutRef.current) {
@@ -57,6 +64,7 @@ export function Tooltip({
       timeoutRef.current = null;
     }
     setIsVisible(false);
+    setCoords(null);
   }, []);
 
   // Cleanup on unmount
@@ -68,81 +76,65 @@ export function Tooltip({
     };
   }, []);
 
-  // Clamp tooltip to viewport after it renders
-  const clampToViewport = useCallback((node: HTMLDivElement | null) => {
-    if (!node) return;
-    (tooltipRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
-    const rect = node.getBoundingClientRect();
-    const padding = 8;
+  // Measure the rendered tooltip, then compute a deterministic placement:
+  // start from the preferred side, flip to the opposite side only if the
+  // preferred one overflows (and the opposite fits), then clamp both axes so
+  // the tooltip can never run off any window edge. Computing numeric left/top
+  // here — rather than mutating CSS transforms — keeps horizontal and vertical
+  // adjustments independent, which is what the old string-surgery approach got
+  // wrong (a horizontal clamp would break the vertical flip, leaving wide
+  // tooltips stranded off the top of the screen).
+  useLayoutEffect(() => {
+    if (!isVisible || !triggerRect || !tooltipRef.current) return;
+    const tip = tooltipRef.current.getBoundingClientRect();
+    const w = tip.width;
+    const h = tip.height;
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 
-    // Horizontal clamping
-    if (rect.left < padding) {
-      node.style.left = `${padding}px`;
-      node.style.transform = node.style.transform.replace('translateX(-50%)', 'translateX(0)');
-      node.style.transform = node.style.transform.replace('translate(-50%,', 'translate(0,');
-    } else if (rect.right > vw - padding) {
-      node.style.left = `${vw - padding}px`;
-      node.style.transform = node.style.transform.replace('translateX(-50%)', 'translateX(-100%)');
-      node.style.transform = node.style.transform.replace('translate(-50%,', 'translate(-100%,');
+    const cx = triggerRect.left + triggerRect.width / 2;
+    const cy = triggerRect.top + triggerRect.height / 2;
+
+    // Auto-flip the preferred side if it would overflow and the opposite fits.
+    let side = position;
+    if (side === 'top' && triggerRect.top - GAP - h < EDGE_PADDING && triggerRect.bottom + GAP + h <= vh - EDGE_PADDING) {
+      side = 'bottom';
+    } else if (side === 'bottom' && triggerRect.bottom + GAP + h > vh - EDGE_PADDING && triggerRect.top - GAP - h >= EDGE_PADDING) {
+      side = 'top';
+    } else if (side === 'left' && triggerRect.left - GAP - w < EDGE_PADDING && triggerRect.right + GAP + w <= vw - EDGE_PADDING) {
+      side = 'right';
+    } else if (side === 'right' && triggerRect.right + GAP + w > vw - EDGE_PADDING && triggerRect.left - GAP - w >= EDGE_PADDING) {
+      side = 'left';
     }
 
-    // Vertical clamping — flip tooltip if it overflows top or bottom
-    if (position === 'top' && rect.top < padding) {
-      // Flip to below the trigger
-      node.style.top = `${coords.triggerBottom + 8}px`;
-      node.style.transform = node.style.transform
-        .replace('translateY(-100%)', 'translateY(0)')
-        .replace('translate(-50%, -100%)', 'translate(-50%, 0)');
-    } else if (position === 'bottom' && rect.bottom > vh - padding) {
-      // Flip to above the trigger
-      node.style.top = `${coords.triggerTop - 8}px`;
-      node.style.transform = node.style.transform
-        .replace('translateY(0)', 'translateY(-100%)')
-        .replace('translate(-50%, 0)', 'translate(-50%, -100%)');
-    }
-  }, [position, coords.triggerTop, coords.triggerBottom]);
-
-  const getTooltipStyle = (): CSSProperties => {
-    const baseStyle: CSSProperties = {
-      position: 'fixed',
-      zIndex: 9999,
-    };
-
-    switch (position) {
-      case 'top':
-        return {
-          ...baseStyle,
-          left: coords.x,
-          top: coords.y,
-          transform: 'translate(-50%, -100%) translateY(-8px)',
-        };
+    let left: number;
+    let top: number;
+    switch (side) {
       case 'bottom':
-        return {
-          ...baseStyle,
-          left: coords.x,
-          top: coords.y,
-          transform: 'translate(-50%, 0) translateY(8px)',
-        };
+        left = cx - w / 2;
+        top = triggerRect.bottom + GAP;
+        break;
       case 'left':
-        return {
-          ...baseStyle,
-          left: coords.x,
-          top: coords.y,
-          transform: 'translate(-100%, -50%) translateX(-8px)',
-        };
+        left = triggerRect.left - GAP - w;
+        top = cy - h / 2;
+        break;
       case 'right':
-        return {
-          ...baseStyle,
-          left: coords.x,
-          top: coords.y,
-          transform: 'translate(0, -50%) translateX(8px)',
-        };
+        left = triggerRect.right + GAP;
+        top = cy - h / 2;
+        break;
+      case 'top':
       default:
-        return baseStyle;
+        left = cx - w / 2;
+        top = triggerRect.top - GAP - h;
+        break;
     }
-  };
+
+    // Clamp to the viewport on both axes so the tooltip is always fully visible.
+    left = Math.max(EDGE_PADDING, Math.min(left, vw - w - EDGE_PADDING));
+    top = Math.max(EDGE_PADDING, Math.min(top, vh - h - EDGE_PADDING));
+
+    setCoords({ left, top });
+  }, [isVisible, triggerRect, position, content]);
 
   return (
     <>
@@ -159,9 +151,16 @@ export function Tooltip({
       {isVisible &&
         createPortal(
           <div
-            ref={clampToViewport}
+            ref={tooltipRef}
             role="tooltip"
-            style={getTooltipStyle()}
+            style={{
+              position: 'fixed',
+              left: coords ? coords.left : 0,
+              top: coords ? coords.top : 0,
+              zIndex: 9999,
+              // Stay hidden until measured to avoid a flash at (0,0).
+              visibility: coords ? 'visible' : 'hidden',
+            }}
             className={`
               px-2 py-1
               bg-gray-900 text-gray-200

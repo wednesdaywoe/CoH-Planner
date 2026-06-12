@@ -40,18 +40,6 @@ export const ShadowCloak: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuffUnenhanced": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuffUnenhanced": 2,
-      "stealth": 0.75,
-      "defenseBuff": 0.75,
-      "immobilize": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
     "stealth": {
       "stealthPvE": {
         "scale": 35,
@@ -61,6 +49,13 @@ export const ShadowCloak: Power = {
         "scale": 389,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "stealth": 0.75,
+      "defenseBuff": 0.75,
+      "immobilize": 0.75,
+      "debuffResistance": 0.75,
+      "perceptionBuff": 0.75
     },
     "defenseBuff": {
       "ranged": {

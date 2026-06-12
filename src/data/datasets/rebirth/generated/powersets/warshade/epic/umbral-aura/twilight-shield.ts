@@ -40,14 +40,6 @@ export const TwilightShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuffUnenhanced": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuffUnenhanced": 2,
-      "resistance": 0.75
-    },
     "resistance": {
       "energy": {
         "scale": 3,
@@ -58,6 +50,9 @@ export const TwilightShield: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 2
+    "durations": {
+      "resistance": 0.75
+    },
+    "buffDuration": 0.75
   }
 };
