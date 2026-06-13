@@ -27,6 +27,7 @@ import type {
   Enhancement,
 } from '@/types';
 import { createDefaultIncarnateActiveState } from '@/types';
+import { type ColorThemeId, DEFAULT_COLOR_THEME, applyColorTheme } from '@/data/core/themes';
 import type { SlotLevelRef } from '@/utils/slot-levels';
 import type { PowerMetric } from '@/utils/calculations/attack-chain';
 
@@ -202,9 +203,9 @@ interface UIState {
   /** Attack Chain Builder modal open state */
   attackChainModalOpen: boolean;
 
-  /** Persisted: the user dismissed the Attack Chain Builder announcement
-   *  ("don't show again") — keeps it from re-appearing on reload. */
-  attackChainAnnounceDismissed: boolean;
+  /** Persisted: ids of feature announcements the user has permanently dismissed
+   *  ("don't show again"). Keyed by Announcement.id — see data/core/announcements. */
+  dismissedAnnouncements: string[];
 
   /** Which metric ranks powers in the Attack Chain Builder — drives palette
    *  order, bar/chip color intensity, and compactness weighting. */
@@ -254,6 +255,9 @@ interface UIState {
 
   /** App-wide UI zoom scale (0.85 to 1.3, default 1.0) */
   uiScale: number;
+
+  /** Selected color theme. Re-skins the chrome via [data-theme] on <html>. */
+  colorTheme: ColorThemeId;
 
   /** Incarnate active state - which incarnate slots are active for stat calculations */
   incarnateActive: IncarnateActiveState;
@@ -418,7 +422,7 @@ interface UIActions {
   closeEnhancementToolsModal: () => void;
   openAttackChainModal: () => void;
   closeAttackChainModal: () => void;
-  dismissAttackChainAnnounce: () => void;
+  dismissAnnouncement: (id: string) => void;
   setChainPowerMetric: (metric: PowerMetric) => void;
   setChainShowEffectWindows: (show: boolean) => void;
   toggleIncludeProcDamageInDPS: () => void;
@@ -429,6 +433,7 @@ interface UIActions {
   toggleHints: () => void;
   toggleDashboardCollapsed: () => void;
   setUIScale: (scale: number) => void;
+  setColorTheme: (theme: ColorThemeId) => void;
 
   // Info Panel
   setInfoPanelEnabled: (enabled: boolean) => void;
@@ -761,7 +766,7 @@ export const useUIStore = create<UIStore>()(
       procSettingsModalOpen: false,
       enhancementToolsModalOpen: false,
       attackChainModalOpen: false,
-      attackChainAnnounceDismissed: false,
+      dismissedAnnouncements: [],
       chainPowerMetric: 'damage' as PowerMetric,
       chainShowEffectWindows: true,
       includeProcDamageInDPS: true,
@@ -775,6 +780,7 @@ export const useUIStore = create<UIStore>()(
       tooltip: defaultTooltip,
       dashboardCollapsed: false,
       uiScale: 1.0,
+      colorTheme: DEFAULT_COLOR_THEME,
       incarnateActive: createDefaultIncarnateActiveState(),
       incarnateLevelShiftActive: true,
       dominationActive: false,
@@ -977,8 +983,12 @@ export const useUIStore = create<UIStore>()(
       closeAttackChainModal: () =>
         set({ attackChainModalOpen: false }),
 
-      dismissAttackChainAnnounce: () =>
-        set({ attackChainAnnounceDismissed: true }),
+      dismissAnnouncement: (id: string) =>
+        set((state) =>
+          state.dismissedAnnouncements.includes(id)
+            ? state
+            : { dismissedAnnouncements: [...state.dismissedAnnouncements, id] }
+        ),
 
       setChainPowerMetric: (metric) => set({ chainPowerMetric: metric }),
       setChainShowEffectWindows: (show) => set({ chainShowEffectWindows: show }),
@@ -1017,6 +1027,11 @@ export const useUIStore = create<UIStore>()(
 
       setUIScale: (scale: number) =>
         set({ uiScale: Math.max(0.85, Math.min(1.3, scale)) }),
+
+      setColorTheme: (theme: ColorThemeId) => {
+        applyColorTheme(theme);
+        set({ colorTheme: theme });
+      },
 
       // Info Panel
       setInfoPanelEnabled: (enabled) =>
@@ -1648,6 +1663,7 @@ export const useUIStore = create<UIStore>()(
         statsConfig: state.statsConfig,
         dashboardCollapsed: state.dashboardCollapsed,
         uiScale: state.uiScale,
+        colorTheme: state.colorTheme,
         incarnateActive: state.incarnateActive,
         incarnateLevelShiftActive: state.incarnateLevelShiftActive,
         dominationActive: state.dominationActive,
@@ -1672,7 +1688,7 @@ export const useUIStore = create<UIStore>()(
         helpToastEnabled: state.helpToastEnabled,
         ruleOf5AlertEnabled: state.ruleOf5AlertEnabled,
         rechargeMidsStyle: state.rechargeMidsStyle,
-        attackChainAnnounceDismissed: state.attackChainAnnounceDismissed,
+        dismissedAnnouncements: state.dismissedAnnouncements,
         chainPowerMetric: state.chainPowerMetric,
         chainShowEffectWindows: state.chainShowEffectWindows,
       }),
@@ -1697,6 +1713,16 @@ export const useUIStore = create<UIStore>()(
             buildUp: allOn,
             movement: allOn,
           };
+        }
+        // Migrate the old single attack-chain dismissal flag → the
+        // dismissedAnnouncements registry, so users who already opted out of
+        // that spotlight don't see it return.
+        if (!Array.isArray(merged.dismissedAnnouncements)) {
+          merged.dismissedAnnouncements = [];
+        }
+        if (raw && raw.attackChainAnnounceDismissed === true &&
+            !merged.dismissedAnnouncements.includes('attack-chain-builder')) {
+          merged.dismissedAnnouncements = [...merged.dismissedAnnouncements, 'attack-chain-builder'];
         }
         // Ensure procSettings has all keys (in case new categories are added)
         if (merged.procSettings) {

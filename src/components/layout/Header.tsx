@@ -1020,6 +1020,10 @@ function ActionMenu({
             </>
           )}
           <hr className="border-gray-700 my-1" />
+          <button onClick={() => { navigate({ to: '/settings' }); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="App settings — appearance/themes, account, and developer options.">
+            <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            Settings
+          </button>
           {canInstall && (
             <button
               onClick={() => { promptInstall(); setOpen(false); }}
@@ -1117,17 +1121,17 @@ function SettingsPopover() {
             ? 'text-amber-400 bg-amber-900/40 hover:bg-amber-800/50 border-amber-600/50'
             : 'text-sky-300 bg-sky-900/30 hover:bg-sky-800/40 border-sky-700/50'
         }`}
-        title="Build settings"
+        title="Build options"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
         </svg>
-        <span className="hidden sm:inline">Settings</span>
+        <span className="hidden sm:inline">Options</span>
       </button>
 
       {open && (
         <div className="absolute left-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl p-4 min-w-[280px] z-[60] space-y-4">
-          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Build Settings</h3>
+          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Build Options</h3>
 
           {/* Level */}
           <div className="space-y-1">

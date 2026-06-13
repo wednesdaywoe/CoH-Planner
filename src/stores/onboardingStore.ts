@@ -57,7 +57,7 @@ export const ONBOARDING_STEPS: OnboardingStepDef[] = [
   { id: 'export-import', tier: 3, hint: 'Export to share, or import from Mids' },
   { id: 'at-mechanic', tier: 3, hint: "Your AT's special mechanic \u2014 adjust to see the impact" },
   { id: 'controls', tier: 3, hint: 'View all keyboard shortcuts and mouse controls' },
-  { id: 'settings', tier: 3, hint: 'Build settings \u2014 level, origin, exemplar mode, and more' },
+  { id: 'settings', tier: 3, hint: 'Build options \u2014 level, origin, exemplar mode, and more' },
 
   // Tier 4 — Endgame (conditional on level 50)
   { id: 'incarnate-slot', tier: 4, hint: 'Unlock Incarnate slots for endgame powers', conditional: true },

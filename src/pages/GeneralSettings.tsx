@@ -6,7 +6,8 @@
  */
 
 import { useState, useCallback } from 'react';
-import { useAuthStore } from '@/stores';
+import { useAuthStore, useUIStore } from '@/stores';
+import { COLOR_THEMES, COLOR_THEME_ORDER } from '@/data/core/themes';
 import { supabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/Button';
 import { getOwnedBuildIds, claimBuilds } from '@/services/sharedBuilds';
@@ -17,6 +18,9 @@ export function GeneralSettings() {
   const loading = useAuthStore((s) => s.loading);
   const login = useAuthStore((s) => s.login);
   const logout = useAuthStore((s) => s.logout);
+
+  const colorTheme = useUIStore((s) => s.colorTheme);
+  const setColorTheme = useUIStore((s) => s.setColorTheme);
 
   const [claimLoading, setClaimLoading] = useState(false);
   const [claimResult, setClaimResult] = useState<{ claimed: number; failed: number } | null>(null);
@@ -101,6 +105,59 @@ export function GeneralSettings() {
             </Button>
           </div>
         )}
+      </div>
+
+      {/* Appearance / color theme */}
+      <div className="bg-gray-800 border border-gray-700 rounded-lg p-5 mb-6">
+        <h2 className="text-sm font-semibold text-gray-300 mb-1">Appearance</h2>
+        <p className="text-sm text-gray-400 mb-4">
+          Choose a color theme. Changes apply instantly and are saved on this device.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {COLOR_THEME_ORDER.map((id) => {
+            const theme = COLOR_THEMES[id];
+            const selected = colorTheme === id;
+            const chips = [
+              theme.swatch.base,
+              theme.swatch.surface,
+              theme.swatch.panel,
+              theme.swatch.primary,
+              theme.swatch.accent,
+              theme.swatch.highlight,
+            ];
+            return (
+              <button
+                key={id}
+                type="button"
+                onClick={() => setColorTheme(id)}
+                aria-pressed={selected}
+                className={`text-left rounded-lg border p-3 transition-colors ${
+                  selected
+                    ? 'border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/40 bg-gray-700/40'
+                    : 'border-gray-700 hover:border-gray-600 hover:bg-gray-700/30'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-baseline gap-2 min-w-0">
+                    <span className="text-sm font-medium text-gray-100">{theme.label}</span>
+                    <span className="text-xs text-gray-500 truncate">{theme.tagline}</span>
+                  </div>
+                  {selected && (
+                    <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wide text-[var(--color-primary)]">
+                      Active
+                    </span>
+                  )}
+                </div>
+                <div className="flex gap-0.5 mb-2 rounded overflow-hidden ring-1 ring-black/30">
+                  {chips.map((c, i) => (
+                    <div key={i} className="h-6 flex-1" style={{ backgroundColor: c }} />
+                  ))}
+                </div>
+                <p className="text-xs text-gray-400 leading-snug">{theme.description}</p>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Claim builds section (only when logged in and has local tokens) */}

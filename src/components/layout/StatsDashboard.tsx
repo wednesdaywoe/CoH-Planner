@@ -13,7 +13,7 @@ import { getArchetype, getTotalSlotsAtLevel, getPowerPicksAtLevel } from '@/data
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AttackChainAnnounceModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
@@ -637,8 +637,8 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
       {/* Welcome Modal — opened from the update banner's "learn more" link */}
       <WelcomeModal />
 
-      {/* Attack Chain Builder spotlight — auto-shows until dismissed */}
-      <AttackChainAnnounceModal />
+      {/* Feature announcement spotlight — auto-shows the newest undismissed entry */}
+      <AnnouncementModal />
 
       {/* Compare Slotting Modal */}
       <CompareSlottingModal />

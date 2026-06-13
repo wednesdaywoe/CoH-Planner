@@ -6,7 +6,7 @@
  *   - Dashboard: stats dashboard in a sheet (hidden from its normal slot on mobile)
  *   - Incarnate: opens the existing incarnate modal
  *   - Menu: file actions (new/clear/export/import/about/login)
- *   - Settings: build settings (level, origin, exemplar, toggles)
+ *   - Options: build options (level, origin, exemplar, toggles)
  *
  * Home is active when no sheet/modal is open, so users always have an
  * unambiguous "back to the planner" tap target (tab-style toggling isn't
@@ -123,7 +123,7 @@ export function MobileBottomNav() {
         </MobileSheet>
       )}
       {mobileSheet === 'settings' && (
-        <MobileSheet title="Settings" onClose={closeMobileSheet}>
+        <MobileSheet title="Build Options" onClose={closeMobileSheet}>
           <MobileSettingsContent />
         </MobileSheet>
       )}
@@ -155,7 +155,7 @@ export function MobileBottomNav() {
           }}
         />
         <NavButton
-          label="Settings"
+          label="Options"
           icon={IconSettings}
           active={mobileSheet === 'settings'}
           onClick={() => switchSheet('settings')}
@@ -363,6 +363,7 @@ function MobileMenuContent({
         {itemNoClose('Enhancement Tools', onRequestEnhancementTools)}
       </Section>
       <Section label="Info">
+        {item('Settings', () => navigate({ to: '/settings' }))}
         {item('Help', openHelpModal)}
         {item('Controls', openControlsModal)}
         <button

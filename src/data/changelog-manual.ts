@@ -21,15 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-12',
+    date: '2026-06-13',
     items: [
-      { message: 'Fixed damage procs being calculated at the enhancement’s slotted level instead of your character’s level — they now deal full damage (e.g. 71.75 at level 50, not ~7), which also corrects the DPS of any attack carrying a damage proc', type: 'fix' },
-    ]
-  },
-  // ───────────────────────────────────────────────────────────────────────
-  {
-    date: '2026-06-11',
-    items: [
+      { message: 'Added color themes options! Go to Menu > Settings to pick your flavor', type: 'feat' },
       { message: 'Fixed an issue where a build import that failed badly had no way to recover to a clean state, keeping the user stuck in the corrupted build state', type: 'fix' },
       { message: 'Massive under-the-hood cleanup to remove legacy code and audit the data pipeline, surfaced a bug that was affecting all melee damage', type: 'update' },
       { message: 'Added a new Attack Chain Builder tool! Look for it below the Dashboard', type: 'feat' },

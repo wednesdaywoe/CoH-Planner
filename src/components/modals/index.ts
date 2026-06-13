@@ -24,4 +24,4 @@ export { EnhancementToolsModal } from './EnhancementToolsModal';
 export { PoolPickerModal } from './PoolPickerModal';
 export { ForumExportModal } from './ForumExportModal';
 export { AttackChainModal } from './AttackChainModal';
-export { AttackChainAnnounceModal } from './AttackChainAnnounceModal';
+export { AnnouncementModal } from './AnnouncementModal';

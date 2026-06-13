@@ -16,6 +16,16 @@ const TABS = [
 export function SettingsLayout() {
   return (
     <div className="max-w-2xl mx-auto p-6">
+      <Link
+        to="/"
+        className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-white mb-4 transition-colors"
+      >
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+        Back to planner
+      </Link>
+
       <h1 className="text-2xl font-bold text-white mb-6">Settings</h1>
 
       <nav className="flex gap-1 mb-6 border-b border-gray-700">

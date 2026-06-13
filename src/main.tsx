@@ -9,6 +9,21 @@ import { loadDataset } from '@/data/dataset'
 import '@/utils/calc-debug'
 import '@/utils/fallback-warnings'
 import { installChunkErrorReload } from '@/utils/chunk-error-reload'
+import { applyColorTheme, isColorThemeId, DEFAULT_COLOR_THEME } from '@/data/core/themes'
+
+// Apply the persisted color theme to <html> before React mounts so there's no
+// flash of the default chrome on reload. Read straight from localStorage rather
+// than the store (which hasn't been created yet at this point).
+function bootColorTheme() {
+  try {
+    const raw = localStorage.getItem('coh-planner-ui')
+    const id = raw ? JSON.parse(raw)?.state?.colorTheme : undefined
+    applyColorTheme(isColorThemeId(id) ? id : DEFAULT_COLOR_THEME)
+  } catch {
+    applyColorTheme(DEFAULT_COLOR_THEME)
+  }
+}
+bootColorTheme()
 
 // Install before any dynamic imports run so chunk-load failures during boot
 // (e.g. the dataset import below) are caught and recovered from rather than

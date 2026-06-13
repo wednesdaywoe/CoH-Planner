@@ -1,7 +1,18 @@
 @import "tailwindcss";
 
 @theme {
+  /* Brand accent. Themeable: stays magenta on the default (Sidekick) look,
+     overridden to each theme's accent under [data-theme] below. Also used by
+     special-mechanic highlights (Scourge / Fury / crits / Hide). */
   --color-sk-magenta: #D62BCE;
+
+  /* Semantic action tokens — primary buttons / links. Defaults match the
+     historical Tailwind blue-600 / blue-700 / blue-400 used across the app.
+     Re-skinned per theme below so primary actions adopt each theme's color. */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-fg: #ffffff;
+  --color-link: #60a5fa;
 }
 
 /* Custom stat color classes - matching the existing app's color scheme */
@@ -137,4 +148,107 @@
 body {
   @apply bg-gray-900 text-gray-100;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+/* ============================================================
+   COLOR THEMES
+   ------------------------------------------------------------
+   Each theme re-skins the app by overriding the neutral color
+   ramps that the UI chrome is built from (`gray-*` and
+   `slate-*`, both used heavily) plus the brand/action tokens.
+   Because every Tailwind v4 color utility resolves through
+   `var(--color-…)`, overriding these variables under a
+   `[data-theme]` selector re-skins ~2,500 existing utility
+   usages with zero component changes.
+
+   These rules are intentionally UNLAYERED so they win over
+   Tailwind's layered `:root` defaults regardless of specificity.
+
+   The default (Sidekick) look has no [data-theme] attribute and
+   uses Tailwind's stock gray/slate ramps + the magenta brand
+   accent defined in @theme above. Registry: src/data/core/themes.ts
+   ============================================================ */
+
+/* --- Paragon — City of Heroes (Hero blue / Paragon gold) --- */
+[data-theme='paragon'] {
+  --color-gray-50:  #F4F7FC;  --color-slate-50:  #F4F7FC;
+  --color-gray-100: #E8EEF8;  --color-slate-100: #E8EEF8;
+  --color-gray-200: #CEDAEC;  --color-slate-200: #CEDAEC;
+  --color-gray-300: #A9BEDB;  --color-slate-300: #A9BEDB;
+  --color-gray-400: #7C99C4;  --color-slate-400: #7C99C4;
+  --color-gray-500: #3D6AAE;  --color-slate-500: #3D6AAE;
+  --color-gray-600: #27508F;  --color-slate-600: #27508F;
+  --color-gray-700: #1B3A72;  --color-slate-700: #1B3A72;
+  --color-gray-800: #0F1E3A;  --color-slate-800: #0F1E3A;
+  --color-gray-900: #0C1525;  --color-slate-900: #0C1525;
+  --color-gray-950: #0A0F1A;  --color-slate-950: #0A0F1A;
+
+  --color-sk-magenta: #F0C040;
+  --color-primary: #2D6AE0;
+  --color-primary-hover: #2457C0;
+  --color-primary-fg: #ffffff;
+  --color-link: #5A8AE8;
+}
+
+/* --- Menace — City of Villains (Arachnos red / Grandville amber) --- */
+[data-theme='menace'] {
+  --color-gray-50:  #FAF4F3;  --color-slate-50:  #FAF4F3;
+  --color-gray-100: #F4E8E7;  --color-slate-100: #F4E8E7;
+  --color-gray-200: #E7D1D0;  --color-slate-200: #E7D1D0;
+  --color-gray-300: #D1B3B4;  --color-slate-300: #D1B3B4;
+  --color-gray-400: #B48A8D;  --color-slate-400: #B48A8D;
+  --color-gray-500: #75363B;  --color-slate-500: #75363B;
+  --color-gray-600: #52272C;  --color-slate-600: #52272C;
+  --color-gray-700: #3B1D21;  --color-slate-700: #3B1D21;
+  --color-gray-800: #281619;  --color-slate-800: #281619;
+  --color-gray-900: #1B0F12;  --color-slate-900: #1B0F12;
+  --color-gray-950: #0F0909;  --color-slate-950: #0F0909;
+
+  --color-sk-magenta: #C47A10;
+  --color-primary: #B81C24;
+  --color-primary-hover: #9A1820;
+  --color-primary-fg: #ffffff;
+  --color-link: #E0707A;
+}
+
+/* --- Imperial — Praetoria (Imperial gold / marble grey) --- */
+[data-theme='imperial'] {
+  --color-gray-50:  #ECEAE2;  --color-slate-50:  #ECEAE2;
+  --color-gray-100: #D8D4C8;  --color-slate-100: #D8D4C8;
+  --color-gray-200: #C6C4BA;  --color-slate-200: #C6C4BA;
+  --color-gray-300: #ACABA2;  --color-slate-300: #ACABA2;
+  --color-gray-400: #8C8D88;  --color-slate-400: #8C8D88;
+  --color-gray-500: #5A5C64;  --color-slate-500: #5A5C64;
+  --color-gray-600: #3A3C44;  --color-slate-600: #3A3C44;
+  --color-gray-700: #25272E;  --color-slate-700: #25272E;
+  --color-gray-800: #18191F;  --color-slate-800: #18191F;
+  --color-gray-900: #131419;  --color-slate-900: #131419;
+  --color-gray-950: #0E0F12;  --color-slate-950: #0E0F12;
+
+  --color-sk-magenta: #C8A840;
+  --color-primary: #C8A840;
+  --color-primary-hover: #AE9032;
+  --color-primary-fg: #15140F;
+  --color-link: #6FA0CC;
+}
+
+/* --- Renegade — Rogue / Vigilante (Rogue purple / Vanguard teal) --- */
+[data-theme='renegade'] {
+  --color-gray-50:  #ECE8F5;  --color-slate-50:  #ECE8F5;
+  --color-gray-100: #D9D1E9;  --color-slate-100: #D9D1E9;
+  --color-gray-200: #C7BBDF;  --color-slate-200: #C7BBDF;
+  --color-gray-300: #AFA6D0;  --color-slate-300: #AFA6D0;
+  --color-gray-400: #948BB9;  --color-slate-400: #948BB9;
+  --color-gray-500: #574D8C;  --color-slate-500: #574D8C;
+  --color-gray-600: #3F3770;  --color-slate-600: #3F3770;
+  --color-gray-700: #2C2655;  --color-slate-700: #2C2655;
+  --color-gray-800: #221D40;  --color-slate-800: #221D40;
+  --color-gray-900: #191532;  --color-slate-900: #191532;
+  --color-gray-950: #0E0C17;  --color-slate-950: #0E0C17;
+
+  --color-sk-magenta: #1DB890;
+  --color-primary: #6A4FBB;
+  --color-primary-hover: #5840A0;
+  --color-primary-fg: #ffffff;
+  --color-link: #B3A6D8;
 }
