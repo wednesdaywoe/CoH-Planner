@@ -19,7 +19,6 @@ import { PowerInfoModal } from '@/components/modals';
 // import { OnboardingBeacon } from '@/components/onboarding/OnboardingBeacon';
 import { ToastContainer } from '@/components/ui/Toast';
 import { useUIStore, useAuthStore } from '@/stores';
-import { useHelpDiscoveryToast } from '@/hooks/useHelpDiscoveryToast';
 import { useStatusCheck } from '@/hooks/useStatusCheck';
 import { useUndoRedoKeyboard } from '@/hooks/useUndoRedoKeyboard';
 import { useTooltipHotkey } from '@/hooks/useTooltipHotkey';
@@ -48,7 +47,6 @@ export function MainLayout({ children }: MainLayoutProps) {
   useTooltipHotkey();
   useDashboardCollapseHotkey();
   useInfoPanelLockHotkey();
-  useHelpDiscoveryToast();
   const initializeAuth = useAuthStore((s) => s.initialize);
 
   const [isMobile, setIsMobile] = useState(() =>

@@ -355,9 +355,6 @@ interface UIState {
   /** Active toast notifications (newest first). */
   toasts: Toast[];
 
-  /** Whether the "discover the help system" hint toast appears on each load. */
-  helpToastEnabled: boolean;
-
   /** Whether to show the educational banner when a build has any capped
    *  (Rule-of-5-rejected) set bonus. Default on so first-time users learn
    *  what the strikethrough/orange-ring indicators mean. */
@@ -649,8 +646,6 @@ interface UIActions {
   showToast: (toast: Omit<Toast, 'id'>) => string;
   dismissToast: (id: string) => void;
   clearToasts: () => void;
-  setHelpToastEnabled: (enabled: boolean) => void;
-  toggleHelpToastEnabled: () => void;
   setRuleOf5AlertEnabled: (enabled: boolean) => void;
   toggleRuleOf5AlertEnabled: () => void;
   setRechargeMidsStyle: (enabled: boolean) => void;
@@ -809,7 +804,6 @@ export const useUIStore = create<UIStore>()(
       levelUpMode: false, // Off by default — classic "respec" flow
       mobileSheet: null,
       toasts: [],
-      helpToastEnabled: true,
       ruleOf5AlertEnabled: true,
       rechargeMidsStyle: false,
 
@@ -1587,9 +1581,6 @@ export const useUIStore = create<UIStore>()(
       dismissToast: (id) =>
         set((state) => ({ toasts: state.toasts.filter((t) => t.id !== id) })),
       clearToasts: () => set({ toasts: [] }),
-      setHelpToastEnabled: (enabled) => set({ helpToastEnabled: enabled }),
-      toggleHelpToastEnabled: () =>
-        set((state) => ({ helpToastEnabled: !state.helpToastEnabled })),
       setRuleOf5AlertEnabled: (enabled) => set({ ruleOf5AlertEnabled: enabled }),
       toggleRuleOf5AlertEnabled: () =>
         set((state) => ({ ruleOf5AlertEnabled: !state.ruleOf5AlertEnabled })),
@@ -1685,7 +1676,6 @@ export const useUIStore = create<UIStore>()(
         levelUpMode: state.levelUpMode,
         mechanicAdjusters: state.mechanicAdjusters,
         globalAdjusters: state.globalAdjusters,
-        helpToastEnabled: state.helpToastEnabled,
         ruleOf5AlertEnabled: state.ruleOf5AlertEnabled,
         rechargeMidsStyle: state.rechargeMidsStyle,
         dismissedAnnouncements: state.dismissedAnnouncements,

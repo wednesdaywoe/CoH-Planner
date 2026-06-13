@@ -1088,8 +1088,6 @@ function SettingsPopover() {
   const onboardingEnabled = useOnboardingStore((s) => s.enabled);
   const toggleOnboarding = useOnboardingStore((s) => s.toggle);
   const resetOnboarding = useOnboardingStore((s) => s.reset);
-  const helpToastEnabled = useUIStore((s) => s.helpToastEnabled);
-  const toggleHelpToastEnabled = useUIStore((s) => s.toggleHelpToastEnabled);
 
   const [calcDebugOn, setCalcDebugOn] = useState(isCalcDebugEnabled);
   const handleToggleCalcDebug = () => {
@@ -1383,19 +1381,6 @@ function SettingsPopover() {
             >
               Reset guided hints
             </button>
-          </div>
-
-          {/* Help-discovery toast */}
-          <div className="flex items-center justify-between">
-            <Tooltip content="Show a small reminder toast on launch pointing at the searchable Help system">
-              <Toggle
-                id="help-toast-toggle"
-                name="helpToast"
-                checked={helpToastEnabled}
-                onChange={toggleHelpToastEnabled}
-                label="Help hint on launch"
-              />
-            </Tooltip>
           </div>
 
           <hr className="border-gray-700" />
