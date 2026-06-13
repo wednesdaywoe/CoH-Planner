@@ -1,7 +1,6 @@
 {
   "permissions": {
     "allow": [
-      "(c*)",
       "Bash(python:*)",
       "Bash(py -3 *)",
       "Bash(python convert_powerset.py:*)",
@@ -106,7 +105,9 @@
       "Bash(node scripts/convert-incarnate-effects.cjs)",
       "Bash(RAW=/Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/powers/incarnate __NEW_LINE_435fc2fb923305da__ echo \"=== JUDGEMENT files ===\" ls \"$RAW/judgement/\")",
       "Read(//Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/**)",
-      "Bash(/dev/null __NEW_LINE_435fc2fb923305da__ echo echo '=== Sample: Ion Core Superior Judgement ===' python3 -c \":*)"
+      "Bash(/dev/null __NEW_LINE_435fc2fb923305da__ echo echo '=== Sample: Ion Core Superior Judgement ===' python3 -c \":*)",
+      "Bash(npm --version)",
+      "Bash(npm run *)"
     ]
   }
 }
