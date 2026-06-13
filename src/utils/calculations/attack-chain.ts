@@ -5,10 +5,12 @@
  * build (recharge/cast/end/damage already enhanced) and feeds it here. This
  * module only does the *scheduling* (single-animation greedy packer, mirroring
  * the in-game constraint that you can only animate one power at a time and a
- * power's recharge starts the instant its cast begins) and the *endurance
- * simulation* (continuous recovery − toggle drain, minus the lump end cost paid
- * at each cast — so a spiky rotation can bottom out even when its average net is
- * positive).
+ * power's recharge does NOT begin until its cast animation finishes — so the
+ * soonest it can fire again is cast-end + recharge, and its solo repeat period
+ * is cast + recharge, matching the rest of the app's DPS convention) and the
+ * *endurance simulation* (continuous recovery − toggle drain, minus the lump
+ * end cost paid at each cast — so a spiky rotation can bottom out even when its
+ * average net is positive).
  */
 
 export type ChainPowerType = 'attack' | 'utility' | 'buff';
@@ -179,6 +181,10 @@ function overlapsAny(activations: Activation[], start: number, end: number): boo
  * Earliest start time at which power `pi` can be cast: not before its own
  * recharge lane is ready, and not overlapping any other animation. Greedy —
  * mirrors the mockup. Returns the chosen start.
+ *
+ * Recharge starts when a cast *finishes*, not when it begins (CoH mechanic), so
+ * a prior cast at [start, end] makes the power ready again at `end + effRech` —
+ * its solo repeat period is cast + recharge.
  */
 export function findSlot(
   powers: ChainPower[],
@@ -189,7 +195,7 @@ export function findSlot(
   const p = powers[pi];
   const effRech = effectiveRecharge(p, globalRechargePct);
   const mine = activations.filter((a) => a.pi === pi);
-  const laneReadyAt = mine.length > 0 ? Math.max(...mine.map((a) => a.start + effRech)) : 0;
+  const laneReadyAt = mine.length > 0 ? Math.max(...mine.map((a) => a.end + effRech)) : 0;
 
   let candidateStart = laneReadyAt;
   for (let iter = 0; iter < 500; iter++) {
@@ -374,16 +380,18 @@ export function computeChain(
 
   const lastEnd = Math.max(...activations.map((a) => a.end));
   // The cycle isn't just where the last animation ends — when the loop repeats,
-  // every power must have recharged since its last cast THIS loop. For power P
-  // cast across [firstStart, lastStart], the across-boundary gap is
-  // cycle − (lastStart − firstStart), which must be ≥ effRech. So the binding
-  // power (usually the long-recharge opener cast once) can push the true cycle
-  // past the visible casts — that boundary idle is real dead time.
+  // every power must have recharged since its last cast THIS loop. Recharge
+  // starts at cast-END, so power P's last cast [.., lastEnd_P] is ready again at
+  // lastEnd_P + effRech. The loop's next cast of P sits at cycle + firstStart_P,
+  // which must not precede that — so cycle ≥ lastEnd_P + effRech − firstStart_P.
+  // The binding power (usually the long-recharge opener cast once) can push the
+  // true cycle past the visible casts — that boundary idle is real dead time.
   let cycleSec = lastEnd;
   for (const pi of new Set(activations.map((a) => a.pi))) {
-    const starts = activations.filter((a) => a.pi === pi).map((a) => a.start);
-    const span = Math.max(...starts) - Math.min(...starts);
-    const need = effectiveRecharge(powers[pi], globalRechargePct) + span;
+    const mine = activations.filter((a) => a.pi === pi);
+    const firstStart = Math.min(...mine.map((a) => a.start));
+    const lastEndPi = Math.max(...mine.map((a) => a.end));
+    const need = lastEndPi + effectiveRecharge(powers[pi], globalRechargePct) - firstStart;
     if (need > cycleSec) cycleSec = need;
   }
 
@@ -405,19 +413,21 @@ export function computeChain(
     castCount.set(a.pi, (castCount.get(a.pi) ?? 0) + 1);
   }
 
-  // Compactness: metric-weighted recharge utilization. For each power,
-  // u = min(1, timesCast × effRech / cycleSec) — 1.0 means it fires exactly on
-  // cooldown every loop; < 1 means it sits ready-but-unused (the per-lane
-  // overshoot) while other animations play. Weighting by the chosen power metric
-  // (damage / DPA / DPS) keeps weak fillers and zero-value utility from skewing
-  // it, and means slack on a high-value power (recoverable DPS) counts most.
+  // Compactness: metric-weighted recharge utilization. A power's fastest solo
+  // repeat period is cast + effRech (recharge starts at cast-END), so in a
+  // cycleSec loop it could fire at most cycleSec / (cast + effRech) times. For
+  // each power, u = min(1, timesCast × (cast + effRech) / cycleSec) — 1.0 means
+  // it fires exactly on cooldown every loop; < 1 means it sits ready-but-unused
+  // while other animations play. Weighting by the chosen power metric (damage /
+  // DPA / DPS) keeps weak fillers and zero-value utility from skewing it, and
+  // means slack on a high-value power (recoverable DPS) counts most.
   let wSum = 0;
   let wuSum = 0;
   for (const [pi, count] of castCount) {
     const w = powerMetricValue(powers[pi], metric, globalRechargePct);
     if (w <= 0) continue;
-    const effRech = effectiveRecharge(powers[pi], globalRechargePct);
-    const u = cycleSec > 0 ? Math.min(1, (count * effRech) / cycleSec) : 1;
+    const period = powers[pi].cast + effectiveRecharge(powers[pi], globalRechargePct);
+    const u = cycleSec > 0 && period > 0 ? Math.min(1, (count * period) / cycleSec) : 1;
     wSum += w;
     wuSum += w * u;
   }

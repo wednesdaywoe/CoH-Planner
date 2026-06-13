@@ -202,8 +202,13 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
     server: input.server,
     tags: input.tags,
     build_json: buildData,
-    is_public: input.is_public ?? true,
   };
+  // Only send is_public when the caller explicitly set it. Omitting it on an
+  // update tells the backend to PRESERVE the row's current visibility — so a
+  // re-save (vault/quick-share) can't silently revert a build the user made
+  // public via the visibility toggle. (Must not coerce undefined→true here, or
+  // the omission would itself flip the row public.)
+  if (input.is_public !== undefined) payload.is_public = input.is_public;
 
   // If updating an existing build, attach credentials (token and/or JWT via auth header)
   if (input.existingId) {
@@ -363,7 +368,11 @@ export async function quickShareBuild(buildExport: BuildExport): Promise<{ url: 
   // edge function rejects), fall back to creating a new one.
   if (cached) {
     try {
-      const result = await shareBuild({ ...shareInput, existingId: cached.shareId });
+      // Preserve the row's current visibility on update (drop is_public) — the
+      // user may have made this build public via the toggle since it was first
+      // quick-shared; a re-share must not silently revert it to unlisted.
+      const { is_public: _ignored, ...updateInput } = shareInput;
+      const result = await shareBuild({ ...updateInput, existingId: cached.shareId });
       writeQuickShareCache({ shareId: result.id, fingerprint });
       return { url: result.url };
     } catch (e) {

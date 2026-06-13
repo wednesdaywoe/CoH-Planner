@@ -42,6 +42,7 @@ import { calculateIncarnateDamage } from '@/data/at-tables';
 import type { GenesisExemplarEffect } from '@/data';
 import { getActiveIncarnateDamageProcs, computeIncarnateProcContributions } from '@/data/incarnate-procs';
 import { resolvePath } from '@/utils/paths';
+import { applyQuickSnipe } from '@/utils/quick-snipe';
 import { resolveKheldianRedirect } from '@/data/datasets/rebirth/kheldian-redirects';
 import { KHELDIAN_FORM_VARIANT_POWERS } from '@/data/datasets/rebirth/kheldian-form-variants';
 import { getPowerset, stanceAdjusterOverrides } from '@/data';
@@ -430,22 +431,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
   // When combatMode is active and power has quickSnipe, use Quick-cast stats/damage
   const isQuickSnipe = combatMode && !!formRedirectedPower?.quickSnipe;
-  const snipeAdjustedPower = useMemo(() => {
-    if (!formRedirectedPower) return formRedirectedPower;
-    if (!isQuickSnipe || !formRedirectedPower.quickSnipe) return formRedirectedPower;
-    return {
-      ...formRedirectedPower,
-      stats: formRedirectedPower.stats ? { ...formRedirectedPower.stats, ...formRedirectedPower.quickSnipe.stats } : formRedirectedPower.stats,
-      damage: formRedirectedPower.quickSnipe.damage,
-      // For epic pool powers that store stats in effects
-      effects: formRedirectedPower.effects ? {
-        ...formRedirectedPower.effects,
-        ...(formRedirectedPower.quickSnipe.stats.castTime != null && { castTime: formRedirectedPower.quickSnipe.stats.castTime }),
-        ...(formRedirectedPower.quickSnipe.stats.range != null && { range: formRedirectedPower.quickSnipe.stats.range }),
-        ...(formRedirectedPower.quickSnipe.stats.accuracy != null && { accuracy: formRedirectedPower.quickSnipe.stats.accuracy }),
-      } : formRedirectedPower.effects,
-    } as Power;
-  }, [formRedirectedPower, isQuickSnipe]);
+  // Single-sourced with useBuildMaxAttackDamage (the damage-bar normalization
+  // reference) so the bar numerator and its reference apply the same snipe form.
+  const snipeAdjustedPower = useMemo(
+    () => (formRedirectedPower ? applyQuickSnipe(formRedirectedPower, combatMode) : formRedirectedPower),
+    [formRedirectedPower, combatMode],
+  );
 
   // Layer active Mechanic Adjuster contributions on top of the snipe-
   // adjusted power so damage / effects display reflect toggle state

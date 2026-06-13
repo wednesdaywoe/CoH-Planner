@@ -107,7 +107,20 @@
       "Read(//Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/**)",
       "Bash(/dev/null __NEW_LINE_435fc2fb923305da__ echo echo '=== Sample: Ion Core Superior Judgement ===' python3 -c \":*)",
       "Bash(npm --version)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(cat)",
+      "Bash(node /tmp/decode.mjs)",
+      "Bash(cp /tmp/gap_test.test.ts src/__gap_test.test.ts *)",
+      "Bash(git -C /home/jiiwii/GitHub/CoH-Sidekick status --short)",
+      "Bash(git -C /home/jiiwii/GitHub/CoH-Sidekick diff --stat -- src/)",
+      "Bash(command -v deno)",
+      "Bash(deno check *)",
+      "Bash(command -v supabase)",
+      "Bash(supabase --version)",
+      "Bash(supabase functions *)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
     ]
   }
 }

@@ -951,14 +951,28 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
 
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-9 gap-2">
-          <Stat label="Cycle" value={result ? fmt(cycleSec, 2) : '—'} unit="s" />
-          <Stat label="Total dmg" value={result ? fmt(result.totalDamage, 0) : '—'} />
-          <Stat label="DPS" value={result ? fmt(result.dps, 1) : '—'} />
+          <Stat
+            label="Cycle"
+            value={result ? fmt(cycleSec, 2) : '—'}
+            unit="s"
+            help="How long one full loop of the rotation takes before it repeats. This is the last power's end time, OR — if a long-recharge power hasn't recovered by then — extended until every power is ready to fire again. Each power's animation lock (ArcanaTime) and its effective recharge are both built into this number."
+          />
+          <Stat
+            label="Total dmg"
+            value={result ? fmt(result.totalDamage, 0) : '—'}
+            help="Total damage dealt across one full cycle — every power's hit, in-cycle damage-over-time ticks, and expected proc damage. DoT ticks that would land after the loop repeats are not counted."
+          />
+          <Stat
+            label="DPS"
+            value={result ? fmt(result.dps, 1) : '—'}
+            help="Damage per second = Total damage ÷ Cycle time. The sustained throughput of the rotation, including any idle time inside the cycle."
+          />
           <Stat
             label="Efficiency"
             value={result ? fmt(result.efficiency, 0) : '—'}
             unit="%"
             tone={result ? (result.efficiency >= 95 ? 'good' : result.efficiency < 80 ? 'warn' : undefined) : undefined}
+            help="measures how often your character is activating powers (cycle − dead time) ÷ cycle. 100% = you are always activating something (the red gaps on the timeline are dead time)"
           />
           <Stat
             label="Compact."
@@ -973,17 +987,36 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                     : undefined
                 : undefined
             }
+            help="Compactness — measures how often powers are idle (off cooldown, waiting to be used), weighted by the selected power metric (damage / DPA / DPS). For each power: min(1, times activation × effective recharge ÷ cycle)"
           />
-          <Stat label="Recovery" value={end ? `+${fmt(end.recoveryPerSec, 2)}` : '—'} unit="/s" tone="good" />
+          <Stat
+            label="Recovery"
+            value={end ? `+${fmt(end.recoveryPerSec, 2)}` : '—'}
+            unit="/s"
+            tone="good"
+            help="Endurance recovered per second from your recovery rate (before subtracting toggles and attack costs)."
+          />
           {instantRestore > 0.5 && (
-            <Stat label="Click +End" value={`+${fmt(instantRestore, 0)}`} unit="end" tone="good" />
+            <Stat
+              label="Click +End"
+              value={`+${fmt(instantRestore, 0)}`}
+              unit="end"
+              tone="good"
+              help="Endurance restored per cycle by click recovery powers in the chain (Dark Consumption / Consume / Power Sink), scaled by your targets-hit setting for each."
+            />
           )}
-          <Stat label="Spend" value={end ? `−${fmt(end.togglePerSec + end.attackPerSec, 2)}` : '—'} unit="/s" />
+          <Stat
+            label="Spend"
+            value={end ? `−${fmt(end.togglePerSec + end.attackPerSec, 2)}` : '—'}
+            unit="/s"
+            help="Endurance drained per second: active toggle upkeep plus the average attack cost spread over the cycle."
+          />
           <Stat
             label="Net end"
             value={end ? `${passiveNet >= 0 ? '+' : ''}${fmt(passiveNet, 2)}` : '—'}
             unit="/s"
             tone={end ? (passiveNet >= -0.001 ? 'good' : 'warn') : undefined}
+            help="Recovery minus total spend, per second. Positive (green) = endurance grows over time; negative (amber) = the rotation drains your bar."
           />
           <Stat
             label="Sustain"
@@ -997,6 +1030,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                     : `${fmt(end.timeToEmpty ?? 0, 0)}s`
             }
             tone={end ? (end.sustainable && end.stallTime === null ? 'good' : 'warn') : undefined}
+            help="Can you run this rotation forever from a full bar? 'yes' = endurance never bottoms out. 'stall Ns' = the bar hits zero mid-cast at N seconds and the chain breaks. A bare 'Ns' = not stalling yet but slowly draining, emptying in about N seconds."
           />
         </div>
       </div>
@@ -1067,16 +1101,25 @@ function Stat({
   value,
   unit,
   tone,
+  help,
 }: {
   label: string;
   value: string;
   unit?: string;
   tone?: 'good' | 'warn';
+  /** Plain-language explanation shown on hover (native tooltip). */
+  help?: string;
 }) {
   const color = tone === 'good' ? 'text-emerald-400' : tone === 'warn' ? 'text-amber-400' : 'text-gray-200';
   return (
-    <div className="rounded-md bg-gray-800/60 px-3 py-2.5">
-      <div className="text-[10px] uppercase tracking-wide text-gray-500 font-semibold mb-1">{label}</div>
+    <div
+      className={`rounded-md bg-gray-800/60 px-3 py-2.5${help ? ' cursor-help' : ''}`}
+      title={help}
+    >
+      <div className="flex items-center gap-1 mb-1">
+        <span className="text-[10px] uppercase tracking-wide text-gray-500 font-semibold">{label}</span>
+        {help && <span className="text-[9px] text-gray-600 leading-none">ⓘ</span>}
+      </div>
       <span className={`text-base font-medium ${color}`}>{value}</span>
       {unit && <span className="text-[11px] text-gray-500 ml-0.5">{unit}</span>}
     </div>

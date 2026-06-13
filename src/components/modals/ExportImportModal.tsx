@@ -204,7 +204,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         server: '',
         tags: [],
         build_json: exportData,
-        is_public: false,
+        // Force private only when creating a fresh vault entry. On an update,
+        // omit is_public so the backend preserves the current visibility —
+        // otherwise re-saving edits would silently revert a build the user made
+        // public via the visibility toggle.
+        ...(updateExisting ? {} : { is_public: false }),
         existingId: updateExisting ? linkedVaultId : undefined,
       });
       // Link the in-memory build to the (new or updated) entry so a

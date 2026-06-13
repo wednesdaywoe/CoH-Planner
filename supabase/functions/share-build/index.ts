@@ -70,6 +70,11 @@ Deno.serve(async (req: Request) => {
     // `authUserId !== null` made logged-in "private" saves PUBLIC and metered
     // them against the public-share bucket, which is why vault rows never
     // appeared and library saves hit the strict share limit.)
+    //
+    // When is_public is OMITTED on an update, the caller wants to preserve the
+    // row's current visibility (a re-save that must not touch public/private).
+    // We leave the column out of the update payload in that case.
+    const visibilityProvided = typeof body.is_public === 'boolean';
     const isPrivateRequest = body.is_public === false;
     const isPublic: boolean = isPrivateRequest ? (authUserId === null) : true;
 
@@ -108,9 +113,12 @@ Deno.serve(async (req: Request) => {
 
     const windowStart = new Date(Date.now() - RATE_WINDOW_HOURS * 60 * 60 * 1000).toISOString();
 
-    // Vault saves and public shares use separate rate limit buckets
-    const rateLimitAction = isPublic ? 'share' : 'vault';
-    const rateLimit = isPublic ? SHARE_RATE_LIMIT : VAULT_RATE_LIMIT;
+    // Vault saves and public shares use separate rate limit buckets. A
+    // visibility-preserving update (is_public omitted) is a low-stakes re-save
+    // — meter it as a vault action. Public shares always send is_public:true.
+    const meterAsPublic = visibilityProvided && isPublic;
+    const rateLimitAction = meterAsPublic ? 'share' : 'vault';
+    const rateLimit = meterAsPublic ? SHARE_RATE_LIMIT : VAULT_RATE_LIMIT;
 
     const { count } = await supabase
       .from('rate_limits')
@@ -187,7 +195,8 @@ Deno.serve(async (req: Request) => {
       server: (body.server || '').slice(0, 50),
       tags,
       build_json,
-      is_public: isPublic,
+      // is_public is applied per-operation below: preserved on update when the
+      // caller omitted it, always set on insert.
     };
 
     // ---- UPDATE existing build ----
@@ -223,9 +232,14 @@ Deno.serve(async (req: Request) => {
         );
       }
 
+      // Only write is_public when the caller explicitly provided it; otherwise
+      // leave the column untouched so the current visibility is preserved.
+      const updateFields: Record<string, unknown> = { ...buildData, updated_at: new Date().toISOString() };
+      if (visibilityProvided) updateFields.is_public = isPublic;
+
       const { error: updateError } = await supabase
         .from('shared_builds')
-        .update({ ...buildData, updated_at: new Date().toISOString() })
+        .update(updateFields)
         .eq('id', body.existing_id);
 
       if (updateError) {
@@ -250,6 +264,7 @@ Deno.serve(async (req: Request) => {
     const { error: insertError } = await supabase.from('shared_builds').insert({
       id,
       ...buildData,
+      is_public: isPublic,  // new rows always set visibility explicitly
       owner_token_hash: ownerTokenHash,
       user_id: authUserId,  // null if not logged in, UUID if authenticated
     });

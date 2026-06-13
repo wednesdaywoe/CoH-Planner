@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-06-13',
     items: [
+      { message: 'Fixed an issue that was silently setting public builds to private', type: 'feat' },
       { message: 'Added color themes options! Go to Menu > Settings to pick your flavor', type: 'feat' },
       { message: 'Fixed an issue where a build import that failed badly had no way to recover to a clean state, keeping the user stuck in the corrupted build state', type: 'fix' },
       { message: 'Massive under-the-hood cleanup to remove legacy code and audit the data pipeline, surfaced a bug that was affecting all melee damage', type: 'update' },

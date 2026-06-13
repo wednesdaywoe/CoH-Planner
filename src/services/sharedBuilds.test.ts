@@ -1,10 +1,88 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach, type Mock } from 'vitest';
+
+// Mock the Supabase singleton + auth store so we can drive shareBuild and
+// inspect the payload it sends to the edge function.
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    auth: { refreshSession: vi.fn().mockResolvedValue({ error: null }) },
+    functions: { invoke: vi.fn().mockResolvedValue({ data: { id: 'abc' }, error: null }) },
+  },
+}));
+vi.mock('@/stores/authStore', () => ({
+  useAuthStore: { getState: () => ({ user: { id: 'user-1' } }) },
+}));
+
+import { supabase } from '@/lib/supabase';
 import {
   RateLimitError,
   RATE_LIMITS,
   formatRateLimitMessage,
   rateLimitHint,
+  shareBuild,
 } from './sharedBuilds';
+import type { ShareBuildInput } from '@/types/shared';
+
+const invoke = () => (supabase!.functions.invoke as Mock);
+
+function baseInput(overrides: Partial<ShareBuildInput> = {}): ShareBuildInput {
+  return {
+    name: 'Test Build',
+    description: '',
+    author_name: '',
+    server: '',
+    tags: [],
+    build_json: {
+      version: '1',
+      build: {
+        name: 'Test Build',
+        level: 50,
+        archetype: { id: 'blaster', name: 'Blaster' },
+        primary: { id: 'fire', name: 'Fire Blast' },
+        secondary: { id: 'fire_manip', name: 'Fire Manipulation' },
+      },
+    } as unknown as ShareBuildInput['build_json'],
+    ...overrides,
+  };
+}
+
+/**
+ * Visibility-preservation contract: a re-save (vault / quick-share) that omits
+ * is_public must NOT send the field, so the backend leaves the row's current
+ * public/private state untouched. Forcing is_public on update was reverting
+ * builds the user had made public via the visibility toggle.
+ */
+describe('shareBuild is_public payload', () => {
+  beforeEach(() => {
+    // The suite runs in node (no DOM package); stub the globals shareBuild reads.
+    vi.stubGlobal('window', { location: { origin: 'http://test' } });
+    vi.stubGlobal('localStorage', {
+      getItem: () => null,
+      setItem: () => {},
+      removeItem: () => {},
+    });
+    invoke().mockClear();
+  });
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it('omits is_public from the payload when the caller does not set it', async () => {
+    await shareBuild(baseInput({ existingId: 'row-1' }));
+    const body = invoke().mock.calls[0][1].body;
+    expect('is_public' in body).toBe(false);
+    expect(body.existing_id).toBe('row-1');
+  });
+
+  it('sends is_public:false when explicitly creating a private entry', async () => {
+    await shareBuild(baseInput({ is_public: false }));
+    expect(invoke().mock.calls[0][1].body.is_public).toBe(false);
+  });
+
+  it('sends is_public:true when explicitly sharing publicly', async () => {
+    await shareBuild(baseInput({ is_public: true }));
+    expect(invoke().mock.calls[0][1].body.is_public).toBe(true);
+  });
+});
 
 /**
  * The save/share rate limit is server-enforced and was previously invisible

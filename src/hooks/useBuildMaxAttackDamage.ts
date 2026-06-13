@@ -24,6 +24,8 @@ import {
   getAlphaEnhancementBonuses,
   type EnhancementBonuses,
 } from '@/utils/calculations';
+import { applyQuickSnipe } from '@/utils/quick-snipe';
+import { warnFallback } from '@/utils/fallback-warnings';
 import type { ArchetypeId, SelectedPower } from '@/types';
 
 export function useBuildMaxAttackDamage(): number {
@@ -32,6 +34,10 @@ export function useBuildMaxAttackDamage(): number {
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
+  // Combat mode swaps snipe powers to their quick-cast (higher-damage) form.
+  // The InfoPanel damage bars apply this too (snipeAdjustedPower), so the
+  // normalization reference must as well or fast snipes self-clamp at 100%.
+  const combatMode = useUIStore((s) => s.combatMode);
 
   const archetypeId = build.archetype?.id as ArchetypeId | undefined;
   // calculatePowerDamage expects the global damage buff as a decimal; the
@@ -56,8 +62,17 @@ export function useBuildMaxAttackDamage(): number {
     ];
 
     let max = 0;
+    // Track candidates so a build that HAS damaging powers but yields max=0
+    // (every power skipped as unknown/no-scale) can warn instead of silently
+    // degrading every damage bar to the per-power fallback reference.
+    let candidateCount = 0;
+    const skipped: string[] = [];
     for (const power of powers) {
-      if (!power.damage && !power.effects?.damage) continue;
+      // Apply the quick-snipe form before reading damage so the reference
+      // matches the (combat-mode-boosted) value the bars render.
+      const effPower = applyQuickSnipe(power, combatMode);
+      if (!effPower.damage && !effPower.effects?.damage) continue;
+      candidateCount++;
 
       // Per-power slotted Damage enhancement (post-ED, Alpha-aware) — mirrors
       // the InfoPanel single-power calculation so the max is apples-to-apples.
@@ -69,8 +84,11 @@ export function useBuildMaxAttackDamage(): number {
         enhDamage = bonuses.damage ?? 0;
       }
 
-      const dmg = calculatePowerDamage(power, { level: build.level, archetypeId }, { damage: enhDamage }, globalDamage, 0);
-      if (!dmg || dmg.unknown || dmg.scale == null) continue;
+      const dmg = calculatePowerDamage(effPower, { level: build.level, archetypeId }, { damage: enhDamage }, globalDamage, 0);
+      if (!dmg || dmg.unknown || dmg.scale == null) {
+        skipped.push(power.name);
+        continue;
+      }
 
       const dot = dmg.dotDamage;
       const isPureDot = dot && Math.abs(dmg.base - dot.base) <= 0.001;
@@ -79,6 +97,17 @@ export function useBuildMaxAttackDamage(): number {
         : dmg.final + (dot ? dot.final * dot.ticks : 0);
       if (totalFinal > max) max = totalFinal;
     }
+
+    // Damaging powers exist but none produced a usable number — the damage bars
+    // will all fall back to per-power scaling. Surface the real values so a
+    // recurrence is diagnosable instead of looking like "every bar is maxed".
+    if (candidateCount > 0 && max === 0) {
+      warnFallback(
+        'useBuildMaxAttackDamage',
+        `${candidateCount} damaging power(s) but max=0 — damage bars fall back to per-power scaling`,
+        { skipped },
+      );
+    }
     return max;
-  }, [build, archetypeId, globalDamage, exemplarMode, exemplarLevel, incarnateActive]);
+  }, [build, archetypeId, globalDamage, exemplarMode, exemplarLevel, incarnateActive, combatMode]);
 }
