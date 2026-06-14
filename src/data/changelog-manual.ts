@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-13',
+    date: '2026-06-14',
     items: [
+      { message: 'Added a few more themes', type: 'feat' },
       { message: 'Fixed an issue that was silently setting public builds to private', type: 'feat' },
       { message: 'Added color themes options! Go to Menu > Settings to pick your flavor', type: 'feat' },
       { message: 'Fixed an issue where a build import that failed badly had no way to recover to a clean state, keeping the user stuck in the corrupted build state', type: 'fix' },
