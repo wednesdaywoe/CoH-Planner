@@ -4,7 +4,10 @@
 
 import { forwardRef, type InputHTMLAttributes } from 'react';
 
-type ToggleVariant = 'blue' | 'orange';
+// `primary` (the default) adopts the active theme accent; `warning` stays amber
+// across themes for true caution toggles (e.g. Bonus Cap Alert) — see the
+// three-color-family split in THEME-INTEGRATION-PLAN.md.
+type ToggleVariant = 'primary' | 'warning';
 
 interface ToggleProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label?: string;
@@ -15,16 +18,16 @@ interface ToggleProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'
 // Tailwind needs full class names present in source for JIT to pick them up,
 // so per-variant classes are spelled out rather than templated.
 const TRACK_CHECKED: Record<ToggleVariant, string> = {
-  blue: 'peer-checked:bg-blue-600',
-  orange: 'peer-checked:bg-orange-500',
+  primary: 'peer-checked:bg-[var(--color-primary)]',
+  warning: 'peer-checked:bg-warning',
 };
 const FOCUS_RING: Record<ToggleVariant, string> = {
-  blue: 'peer-focus:ring-blue-500',
-  orange: 'peer-focus:ring-orange-500',
+  primary: 'peer-focus:ring-[var(--color-ring)]',
+  warning: 'peer-focus:ring-warning',
 };
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
-  ({ label, description, className = '', checked, disabled, title, variant = 'blue', ...props }, ref) => {
+  ({ label, description, className = '', checked, disabled, title, variant = 'primary', ...props }, ref) => {
     return (
       <label
         title={title}

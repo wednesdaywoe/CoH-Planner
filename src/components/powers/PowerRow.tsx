@@ -120,8 +120,8 @@ export function PowerRow({
   // On touch devices, suppress hover-triggered info panel — use the info button instead
   const hoverHandler = isTouch ? undefined : onHover;
   const leaveHandler = isTouch ? undefined : onLeave;
-  // Bonus Cap Alert: powers contributing a Rule-of-5-rejected bonus get an
-  // orange ring so users can see *which* powers to retune. Empty set when the
+  // Bonus Cap Alert: powers contributing a Rule-of-5-rejected bonus get a
+  // warning ring so users can see *which* powers to retune. Empty set when the
   // alert is disabled, so this is a no-op then.
   const offendingPowers = useOffendingPowerNames();
   const isOverCap = offendingPowers.has(name);
@@ -251,11 +251,11 @@ export function PowerRow({
     : categoryBorder
       ? `${categoryBorder} border-slate-700 hover:border-slate-600`
       : 'border-slate-700 hover:border-slate-600';
-  // Layered after borderClass so the orange ring wins regardless of locked /
+  // Layered after borderClass so the warning ring wins regardless of locked /
   // category-tinted variants. ring-inset keeps it from interfering with the
   // existing border on adjacent rows.
   const overCapClass = isOverCap
-    ? 'ring-2 ring-inset ring-orange-500'
+    ? 'ring-2 ring-inset ring-[var(--color-warning)]'
     : '';
 
   // Indent spacer for inline layout row 2

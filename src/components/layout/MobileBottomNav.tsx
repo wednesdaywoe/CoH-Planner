@@ -220,13 +220,13 @@ function NavButton({
       onClick={onClick}
       className={`relative flex-1 flex flex-col items-center justify-center gap-0.5 py-2 text-[10px] font-medium transition-colors ${
         active
-          ? 'text-sky-400 bg-slate-800'
+          ? 'text-[var(--color-link)] bg-slate-800'
           : 'text-slate-400 hover:text-slate-200 active:bg-slate-800'
       }`}
     >
       {active && (
         <span
-          className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 w-8 rounded-b bg-sky-400"
+          className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 w-8 rounded-b bg-[var(--color-primary)]"
           aria-hidden
         />
       )}
@@ -462,7 +462,7 @@ function MobileSettingsContent() {
             disabled={build.level <= 1}
             className="w-8 h-8 rounded bg-slate-800 text-slate-300 disabled:opacity-30 font-bold"
           >−</button>
-          <span className="text-base font-bold text-emerald-400 w-8 text-center">{build.level}</span>
+          <span className="text-base font-bold text-[var(--color-link)] w-8 text-center">{build.level}</span>
           <button
             onClick={() => setLevel(build.level + 1)}
             disabled={build.level >= MAX_LEVEL}
@@ -499,7 +499,7 @@ function MobileSettingsContent() {
             disabled={targetLevelOffset <= -7}
             className="w-8 h-8 rounded bg-slate-800 text-slate-300 disabled:opacity-30 font-bold"
           >−</button>
-          <span className="text-base font-bold text-cyan-400 w-10 text-center">
+          <span className="text-base font-bold text-[var(--color-link)] w-10 text-center">
             {targetLevelOffset >= 0 ? `+${targetLevelOffset}` : targetLevelOffset}
           </span>
           <button
@@ -515,7 +515,7 @@ function MobileSettingsContent() {
           <button
             onClick={() => setContentMode('standard')}
             className={`text-sm px-3 py-1 rounded transition-colors ${
-              contentMode === 'standard' ? 'bg-cyan-600 text-white' : 'text-slate-400'
+              contentMode === 'standard' ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]' : 'text-slate-400'
             }`}
           >
             Standard
@@ -523,7 +523,7 @@ function MobileSettingsContent() {
           <button
             onClick={() => setContentMode('incarnate')}
             className={`text-sm px-3 py-1 rounded transition-colors ${
-              contentMode === 'incarnate' ? 'bg-purple-600 text-white' : 'text-slate-400'
+              contentMode === 'incarnate' ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]' : 'text-slate-400'
             }`}
           >
             Incarnate

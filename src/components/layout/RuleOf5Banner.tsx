@@ -1,7 +1,7 @@
 /**
  * RuleOf5Banner — educational banner shown when the current build has any
  * set bonus that has been rejected by the Rule of 5 (the 6th+ identical
- * value is ignored by the game). Users were missing the orange-ring +
+ * value is ignored by the game). Users were missing the warning-ring +
  * strikethrough indicators on the dashboard tiles, so this surfaces it
  * up-front the first time a build crosses the rule.
  *
@@ -61,14 +61,14 @@ export function RuleOf5Banner() {
     <div
       role="status"
       aria-live="polite"
-      className="bg-amber-600/90 text-white text-sm flex items-center justify-center gap-3 px-4 py-2 flex-wrap border-b border-amber-700"
+      className="bg-[var(--color-warning)]/90 text-white text-sm flex items-center justify-center gap-3 px-4 py-2 flex-wrap border-b border-[var(--color-warning)]"
     >
       <span className="font-medium">Rule of 5:</span>
       <span>
         {cappedCount} {label} over the cap and not counting. Powers
-        contributing the offending bonus are ringed in orange, and the
-        rejected entries show up with{' '}
-        <span className="line-through">strikethrough orange</span> in the
+        contributing the offending bonus are highlighted, and the
+        rejected entries show up{' '}
+        <span className="line-through">struck through</span> in the
         stat tooltips.
       </span>
       <button

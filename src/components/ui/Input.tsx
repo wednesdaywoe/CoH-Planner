@@ -31,12 +31,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             placeholder:text-gray-500
             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900
             disabled:opacity-50 disabled:cursor-not-allowed
-            ${error ? 'border-red-500 focus:ring-red-500' : 'border-gray-600 focus:ring-blue-500'}
+            ${error ? 'border-danger focus:ring-danger' : 'border-gray-600 focus:ring-[var(--color-ring)]'}
             ${className}
           `}
           {...props}
         />
-        {error && <span className="text-xs text-red-400">{error}</span>}
+        {error && <span className="text-xs text-danger-fg">{error}</span>}
         {helperText && !error && <span className="text-xs text-gray-400">{helperText}</span>}
       </div>
     );

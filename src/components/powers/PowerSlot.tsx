@@ -37,7 +37,7 @@ export function PowerSlot({
     return (
       <button
         onClick={onClick}
-        className="w-8 h-8 rounded border-2 border-dashed border-gray-600 hover:border-blue-500 flex items-center justify-center text-gray-500 hover:text-blue-500 transition-colors"
+        className="w-8 h-8 rounded border-2 border-dashed border-gray-600 hover:border-[var(--color-primary)] flex items-center justify-center text-gray-500 hover:text-[var(--color-primary)] transition-colors"
         title="Add enhancement slot"
         data-onboarding="add-slot"
       >
@@ -51,7 +51,7 @@ export function PowerSlot({
       <button
         onClick={onClick}
         onContextMenu={handleContextMenu}
-        className="w-8 h-8 rounded bg-gray-700 border border-gray-600 hover:border-blue-500 flex items-center justify-center transition-colors"
+        className="w-8 h-8 rounded bg-gray-700 border border-gray-600 hover:border-[var(--color-primary)] flex items-center justify-center transition-colors"
         title={`Slot ${slotIndex + 1} - Click to add enhancement`}
         data-onboarding="slot-enhancement"
       >
@@ -69,7 +69,7 @@ export function PowerSlot({
           w-8 h-8 rounded border overflow-hidden
           transition-colors
           ${getEnhancementBorderColor(enhancement)}
-          hover:ring-2 hover:ring-blue-500
+          hover:ring-2 hover:ring-[var(--color-primary)]
         `}
       >
         <SlottedEnhancementIcon enhancement={enhancement} size={32} />
@@ -150,11 +150,11 @@ function EnhancementTooltip({ enhancement, slots }: EnhancementTooltipProps) {
                     const totalCount = normalized ? getTotalBonusCount(bonusTracking, normalized, e.value) : 0;
                     const capped = normalized ? isBonusCapped(bonusTracking, normalized, e.value) : false;
                     return (
-                      <span key={i} className={capped ? 'text-orange-400 font-semibold' : ''}>
+                      <span key={i} className={capped ? 'text-warning-fg font-semibold' : ''}>
                         {i > 0 && ', '}
                         {formatBonusDesc(e.desc, e.stat, e.value)}
                         {isActive && totalCount > 0 && (
-                          <span className={`ml-0.5 text-[9px] ${capped ? 'text-orange-400' : 'text-slate-500'}`}>
+                          <span className={`ml-0.5 text-[9px] ${capped ? 'text-warning-fg' : 'text-slate-500'}`}>
                             ({totalCount}/5)
                           </span>
                         )}

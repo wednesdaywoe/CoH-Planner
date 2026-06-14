@@ -1,7 +1,12 @@
 # Theme Integration Plan — chrome alignment
 
-Status: **planned, not started** (2026-06-14). Picks up from the theme work that
-added Hamidon / Resistance / Carnival and the shelved `imperial-light`.
+Status: **Phases 0–2 done** (2026-06-14). Tokens defined, `src/components/ui/`
+primitives migrated, the Rule-of-5 / Bonus-Cap warning highlights moved onto
+`--color-warning`, and the header/mobile chrome (`Header.tsx`,
+`MobileBottomNav.tsx`, stat-tile rings) migrated onto the Family-1 accent;
+typecheck + build clean throughout. **Phases 3–4 remain** (modals, info panels).
+Picks up from the theme work that added Hamidon / Resistance / Carnival and the
+shelved `imperial-light`.
 
 ## Goal
 
@@ -75,17 +80,40 @@ lives in `@theme` and stays put. This keeps green=success everywhere.
 
 ## Phased migration (high ROI first)
 
-- **Phase 0 — define tokens.** Add Family-2 tokens to `@theme` with current
-  default hexes (green-600/yellow-600/red-600/blue-600 equivalents). No visual
-  change yet. Wire light-theme darker variants where needed.
-- **Phase 1 — primitives** (`src/components/ui/`). Migrate Button/Toggle/Badge/
-  Slider/Toast/Input/Select variants onto Family-1 (action) and Family-2 (status)
-  tokens. Biggest cascade for least edits. Toggle: make the default "on" colour
-  `--color-primary`; keep a `warning` variant on `--color-warning` for Bonus Cap.
+- **Phase 0 — define tokens. ✅ DONE.** Added to `@theme`: `--color-ring`
+  (Family-1, `var(--color-primary)` so focus rings follow the accent) and the
+  Family-2 status set, each as a solid base (-600) + lighter `-fg` (-400) so
+  migrations reproduce the existing two-shade `bg-600/20 + text-400` look
+  exactly: `--color-success(-fg)`, `--color-warning(-fg)`, `--color-danger(-fg)`,
+  `--color-info(-fg)`. Status tokens live in `@theme` only — NOT re-skinned per
+  dark `[data-theme]`. Light-theme `-fg` contrast overrides still TODO (Phase 4 /
+  light-theme work).
+- **Phase 1 — primitives** (`src/components/ui/`). **✅ DONE.** Button `danger` →
+  `bg-danger`/`focus:ring-danger` (`hover:brightness-90`). Toggle variants
+  renamed `blue|orange` → `primary|warning` (default `primary` → accent;
+  `warning` → `--color-warning` for Bonus Cap; Header call site updated). Badge
+  `primary`→primary/link, `success|warning|danger`→status tokens (`purple|cyan`
+  decorative + `RarityBadge` game-semantic, left alone). Slider thumb →
+  `--color-primary`(+`-hover`), ring → `--color-ring`. Toast info/success/warning
+  borders+icons → status tokens, action button → primary. Input/Select focus
+  rings → `--color-ring`; Input error → danger tokens.
 - **Phase 2 — header/chrome** (`layout/Header.tsx`, `MobileBottomNav.tsx`).
-  Shared Builds inline `#4f46e5` → `--color-primary`; "Menu"/Level-Up emerald
-  "active/ready" states — **decision needed** (see below); AT-mechanic `sky/purple`
-  selector states → `--color-primary` / `--color-primary-subtle`.
+  **✅ DONE.** Shared Builds inline `#4f46e5`/`#6366f1` → `--color-primary`;
+  "Menu" trigger + Level-Up mode pill / advance button / level-stepper emerald
+  "active/ready" → `--color-primary` (+ `--color-link` for accent text/values);
+  AT-mechanic `sky` pills (Fury/Team/etc.), Options button, Content-mode +
+  Kheldian-form selector active states, the mobile active-tab indicator, and the
+  capped/tracked stat-tile rings → `--color-primary` family (`bg-primary/20`
+  pill tint, `border-primary/40`, `text-link` labels, `ring-[var(--color-ring)]`
+  focus). Used `text-link` for accent text/numbers and `bg-[var(--color-primary)]`
+  for solid fills. **Left as-is (out of scope):** the decorative File/Menu
+  dropdown item icons (per-item color variety, bucket-3-like), the Discord brand
+  `#5865F2`, the share-popup `innerHTML` spinner (detached document — CSS vars
+  won't resolve there), the SKMagenta identity-nudge literal (paired with a
+  fixed-magenta keyframe), and the exemplar/amber + "picks pending" amber
+  (warning-ish, not accent). Skipped adding `--color-primary-subtle` — the
+  `bg-[var(--color-primary)]/20` alpha pattern auto-derives the tint and
+  re-hues per theme without a separate token.
 - **Phase 3 — modals** (`ExportImportModal`, `EnhancementPicker`, `FeedbackModal`,
   `WelcomeModal`, `SetBonusLookupModal`). Map success/valid → `--color-success`,
   primary actions/selection → `--color-primary`, info boxes → `--color-info`.
@@ -98,10 +126,22 @@ lives in `@theme` and stays put. This keeps green=success everywhere.
 1. **"Active/ready" green (emerald) — Family 1 or 2?** The Level-Up and "Menu"
    active states use emerald as "go/ready," not "success." Recommend: treat
    selection/active as **Family 1 (theme primary)** so active states match the
-   theme; reserve green strictly for true success/validation.
+   theme; reserve green strictly for true success/validation. **✅ SETTLED →
+   Family 1.** Applied in Phase 2: Level-Up / Menu / selectors now adopt
+   `--color-primary`; green kept only for genuine success/validation.
 2. **Toggle "on" color.** Default on = `--color-primary`; keep an explicit
    `warning` variant (Bonus Cap Alert) on `--color-warning`. Confirm that's the
-   intended semantic split.
+   intended semantic split. **✅ SETTLED + DONE.** Also migrated the whole
+   Rule-of-5 / Bonus-Cap *highlight* system onto `--color-warning` so the toggle
+   and the highlights it controls match: the offending-power ring (`PowerRow`),
+   the capped dashboard stat-tile ring + strikethrough breakdown entries
+   (`StatsDashboard`, `DetailedTotalsModal`, `EnhancementInfoContent`,
+   `SetBonusDisplay`, `PowerSlot`, `EnhancementPicker`), the `RuleOf5Banner`, the
+   `StatsConfigModal` legend swatch, and the user-facing copy (Header toggle
+   title, help-topics) reworded off the literal word "orange" → "highlight". The
+   to-hit 95% cap and damage-cap indicators are a *different* cap concept (left
+   on their own amber/orange) and the `ring-blue-500` "tracked-stat" tile ring is
+   a Family-1 item deferred to Phase 2.
 3. **Light-theme contrast.** Family-2 status colors at `-600` need darker
    variants on `imperial-light` (same scoped-override trick already used for
    stat accents). Folds into the shelved light-theme work.

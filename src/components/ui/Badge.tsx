@@ -24,10 +24,10 @@ interface BadgeProps {
 
 const variantClasses: Record<BadgeVariant, string> = {
   default: 'bg-gray-700 text-gray-300',
-  primary: 'bg-blue-600/20 text-blue-400 border-blue-600/30',
-  success: 'bg-green-600/20 text-green-400 border-green-600/30',
-  warning: 'bg-yellow-600/20 text-yellow-400 border-yellow-600/30',
-  danger: 'bg-red-600/20 text-red-400 border-red-600/30',
+  primary: 'bg-primary/20 text-link border-primary/30',
+  success: 'bg-success/20 text-success-fg border-success/30',
+  warning: 'bg-warning/20 text-warning-fg border-warning/30',
+  danger: 'bg-danger/20 text-danger-fg border-danger/30',
   purple: 'bg-purple-600/20 text-purple-400 border-purple-600/30',
   cyan: 'bg-cyan-600/20 text-cyan-400 border-cyan-600/30',
 };

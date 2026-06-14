@@ -120,7 +120,7 @@ export function ChronologicalPowerSlot({
         onDrop={handleDrop}
         className={`flex flex-col px-1.5 py-1 bg-slate-800/50 border rounded-sm transition-colors ${
           isValidTarget
-            ? 'border-blue-500 border-dashed bg-blue-500/10'
+            ? 'border-[var(--color-primary)] border-dashed bg-[var(--color-primary)]/10'
             : 'border-dashed border-slate-700'
         }`}
       >
@@ -234,7 +234,7 @@ export function ChronologicalPowerSlot({
       className={`transition-opacity ${
         isDragging ? 'opacity-40' : ''
       } ${
-        isValidTarget ? 'ring-2 ring-blue-500 ring-inset rounded-sm' : ''
+        isValidTarget ? 'ring-2 ring-[var(--color-primary)] ring-inset rounded-sm' : ''
       } ${
         isInvalidTarget ? 'opacity-30' : ''
       }`}

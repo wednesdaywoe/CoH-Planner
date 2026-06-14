@@ -324,13 +324,13 @@ export function PowerItem({
 
   const hoverBorderClass = accentColor === 'purple'
     ? 'hover:border-purple-500'
-    : 'hover:border-blue-500';
+    : 'hover:border-[var(--color-primary)]';
   const infoBtnBgClass = accentColor === 'purple'
     ? 'hover:bg-purple-600/20'
-    : 'hover:bg-blue-600/20';
+    : 'hover:bg-[var(--color-primary)]/20';
   const infoBtnTextClass = accentColor === 'purple'
     ? 'text-purple-400'
-    : 'text-blue-400';
+    : 'text-[var(--color-link)]';
 
   const isTouch = useIsTouchDevice();
 
@@ -353,7 +353,7 @@ export function PowerItem({
           isLocked
             ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
             : isSelected
-              ? 'bg-blue-900/30 border border-blue-600/50 hover:border-red-500/70 cursor-pointer'
+              ? 'bg-[var(--color-primary)]/25 border border-[var(--color-primary)]/60 hover:border-[var(--color-danger)]/70 cursor-pointer'
               : isDisabled
                 ? 'bg-slate-800/50 border border-slate-700/50 opacity-70 cursor-not-allowed'
                 : `bg-slate-800 border border-slate-700 ${hoverBorderClass} cursor-pointer`

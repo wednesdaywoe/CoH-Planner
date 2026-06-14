@@ -607,11 +607,11 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                         const capped = normalized ? isBonusCapped(bonusTracking, normalized, eff.value) : false;
                         const formatted = formatBonusDesc(eff.desc, eff.stat, eff.value);
                         return (
-                          <span key={i} className={capped ? 'text-orange-400' : ''}>
+                          <span key={i} className={capped ? 'text-warning-fg' : ''}>
                             {i > 0 && ', '}
                             {formatted}
                             {isActive && totalCount > 0 && (
-                              <span className={`ml-0.5 text-xs ${capped ? 'text-orange-400 font-semibold' : 'text-slate-300'}`}>
+                              <span className={`ml-0.5 text-xs ${capped ? 'text-warning-fg font-semibold' : 'text-slate-300'}`}>
                                 ({totalCount}/5)
                               </span>
                             )}

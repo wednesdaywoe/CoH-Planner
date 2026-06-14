@@ -8,9 +8,9 @@ import { createPortal } from 'react-dom';
 import { useUIStore, type Toast } from '@/stores/uiStore';
 
 const TONE_STYLES: Record<NonNullable<Toast['tone']>, string> = {
-  info: 'bg-slate-800 border-blue-500/60 text-slate-100',
-  success: 'bg-slate-800 border-emerald-500/60 text-slate-100',
-  warning: 'bg-slate-800 border-amber-500/60 text-slate-100',
+  info: 'bg-slate-800 border-info/60 text-slate-100',
+  success: 'bg-slate-800 border-success/60 text-slate-100',
+  warning: 'bg-slate-800 border-warning/60 text-slate-100',
 };
 
 const TONE_ICON: Record<NonNullable<Toast['tone']>, string> = {
@@ -20,9 +20,9 @@ const TONE_ICON: Record<NonNullable<Toast['tone']>, string> = {
 };
 
 const TONE_ICON_COLOR: Record<NonNullable<Toast['tone']>, string> = {
-  info: 'text-blue-400',
-  success: 'text-emerald-400',
-  warning: 'text-amber-400',
+  info: 'text-info-fg',
+  success: 'text-success-fg',
+  warning: 'text-warning-fg',
 };
 
 function ToastItem({ toast }: { toast: Toast }) {
@@ -60,7 +60,7 @@ function ToastItem({ toast }: { toast: Toast }) {
       {toast.action && (
         <button
           onClick={handleAction}
-          className="shrink-0 px-2.5 py-1 text-xs font-medium rounded bg-blue-600 hover:bg-blue-500 text-white transition-colors"
+          className="shrink-0 px-2.5 py-1 text-xs font-medium rounded bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-[var(--color-primary-fg)] transition-colors"
         >
           {toast.action.label}
         </button>

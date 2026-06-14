@@ -419,8 +419,8 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
                   <span>Dotted underline — the value is at or above its cap (soft-capped).</span>
                 </div>
                 <div className="flex items-start gap-2 text-xs text-gray-300">
-                  <span className="text-gray-100 ring-1 ring-orange-400/70 rounded px-1 flex-shrink-0">45.0%</span>
-                  <span>Orange ring — a contributing bonus was rejected by the Rule of 5.</span>
+                  <span className="text-gray-100 ring-1 ring-[var(--color-warning)]/70 rounded px-1 flex-shrink-0">45.0%</span>
+                  <span>Warning ring — a contributing bonus was rejected by the Rule of 5.</span>
                 </div>
                 <div className="flex items-start gap-2 text-xs text-gray-300">
                   <span className="flex-shrink-0"><span className="text-emerald-400">+1.5/s</span> · <span className="text-red-400">−0.8/s</span></span>

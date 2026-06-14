@@ -43,18 +43,18 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>(
             [&::-webkit-slider-thumb]:appearance-none
             [&::-webkit-slider-thumb]:w-4
             [&::-webkit-slider-thumb]:h-4
-            [&::-webkit-slider-thumb]:bg-blue-500
+            [&::-webkit-slider-thumb]:bg-[var(--color-primary)]
             [&::-webkit-slider-thumb]:rounded-full
             [&::-webkit-slider-thumb]:cursor-pointer
-            [&::-webkit-slider-thumb]:hover:bg-blue-400
+            [&::-webkit-slider-thumb]:hover:bg-[var(--color-primary-hover)]
             [&::-moz-range-thumb]:w-4
             [&::-moz-range-thumb]:h-4
-            [&::-moz-range-thumb]:bg-blue-500
+            [&::-moz-range-thumb]:bg-[var(--color-primary)]
             [&::-moz-range-thumb]:rounded-full
             [&::-moz-range-thumb]:cursor-pointer
             [&::-moz-range-thumb]:border-0
-            [&::-moz-range-thumb]:hover:bg-blue-400
-            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900
+            [&::-moz-range-thumb]:hover:bg-[var(--color-primary-hover)]
+            focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] focus:ring-offset-2 focus:ring-offset-gray-900
           `}
           {...props}
         />

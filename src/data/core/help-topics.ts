@@ -321,14 +321,14 @@ export const HELP_TOPICS: HelpTopic[] = [
     id: 'ds-stat-tooltips',
     title: 'Stat Breakdowns (Hover Tooltips)',
     category: 'dashboard-stats',
-    description: 'Hover over any stat to see a detailed breakdown of all its sources: set bonuses, active powers, inherent powers, accolades, procs, and incarnate powers. Sources that exceed the Rule of 5 cap are shown in orange with strikethrough.',
+    description: 'Hover over any stat to see a detailed breakdown of all its sources: set bonuses, active powers, inherent powers, accolades, procs, and incarnate powers. Sources that exceed the Rule of 5 cap are highlighted with strikethrough.',
     keywords: ['breakdown', 'tooltip', 'hover', 'sources', 'orange'],
   },
   {
     id: 'ds-rule-of-5',
     title: 'Rule of 5: Spotting Capped Set Bonuses',
     category: 'dashboard-stats',
-    description: 'City of Heroes only counts the first FIVE instances of any identical set bonus value — the 6th and beyond are ignored. The planner detects this automatically. Any stat with one or more sources hitting the Rule of 5 cap gets an orange ring around its dashboard tile, and is auto-tracked so you spot it the moment it happens. Hover the stat to see the full breakdown: capped sources are listed in orange with strikethrough so you can tell exactly which set bonuses are no longer counting toward your totals. The Detailed Totals modal uses the same orange/strikethrough convention.',
+    description: 'City of Heroes only counts the first FIVE instances of any identical set bonus value — the 6th and beyond are ignored. The planner detects this automatically. Any stat with one or more sources hitting the Rule of 5 cap gets a warning ring around its dashboard tile, and is auto-tracked so you spot it the moment it happens. Hover the stat to see the full breakdown: capped sources are highlighted with strikethrough so you can tell exactly which set bonuses are no longer counting toward your totals. The Detailed Totals modal uses the same highlight/strikethrough convention.',
     keywords: [
       'rule of 5',
       'rule of five',
@@ -355,8 +355,8 @@ export const HELP_TOPICS: HelpTopic[] = [
       'identical',
     ],
     tips: [
-      'Orange ring around a dashboard stat = at least one source for that stat is being ignored by the Rule of 5.',
-      'Hover the stat to see which specific set bonuses are capped (orange + strikethrough in the tooltip).',
+      'Warning ring around a dashboard stat = at least one source for that stat is being ignored by the Rule of 5.',
+      'Hover the stat to see which specific set bonuses are capped (highlighted + strikethrough in the tooltip).',
       'The rule applies per-bonus-value, not per-set: five "+6.25% Recharge" bonuses cap independently from five "+5% Recharge" bonuses.',
       'Procs have their own Rule of 5 tracking, separate from set bonuses.',
       'If you see the ring, swap one of the offending IO sets for a different bonus — the 6th instance is wasted budget.',

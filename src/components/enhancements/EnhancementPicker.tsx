@@ -2101,11 +2101,11 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                       // Use eff.value for accurate display instead of pre-rounded eff.desc
                       const formatted = formatBonusDesc(eff.desc, eff.stat, eff.value);
                       return (
-                        <span key={i} className={capped ? 'text-orange-400 font-semibold' : isTracked ? 'text-blue-300 font-semibold' : ''}>
+                        <span key={i} className={capped ? 'text-warning-fg font-semibold' : isTracked ? 'text-blue-300 font-semibold' : ''}>
                           {i > 0 && ', '}
                           {formatted}
                           {isActive && totalCount > 0 && (
-                            <span className={`ml-0.5 text-[9px] ${capped ? 'text-orange-400' : 'text-slate-500'}`}>
+                            <span className={`ml-0.5 text-[9px] ${capped ? 'text-warning-fg' : 'text-slate-500'}`}>
                               ({totalCount}/5)
                             </span>
                           )}

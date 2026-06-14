@@ -870,7 +870,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
   const content = (
     <div
       className={`flex items-baseline justify-between gap-1 min-w-0 overflow-hidden ${onTrack ? 'cursor-pointer' : 'cursor-help'} ${
-        (tracked || hasCapped) ? `ring-1 ${hasCapped ? 'ring-orange-400/70' : 'ring-blue-500/60'} rounded px-1 -mx-1` : ''
+        (tracked || hasCapped) ? `ring-1 ${hasCapped ? 'ring-[var(--color-warning)]/70' : 'ring-[var(--color-primary)]/60'} rounded px-1 -mx-1` : ''
       } ${className}`}
       onClick={onTrack}
     >
@@ -924,10 +924,10 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             <div className="text-[9px] text-slate-400 uppercase mb-0.5">Set Bonuses</div>
             {setBonusSources.map((source, i) => (
               <div key={i} className={`flex justify-between text-[10px] ${source.capped ? 'opacity-70' : ''}`}>
-                <span className={`${source.capped ? 'text-orange-400 line-through' : 'text-slate-300'} truncate max-w-[200px]`}>
+                <span className={`${source.capped ? 'text-warning-fg line-through' : 'text-slate-300'} truncate max-w-[200px]`}>
                   {source.name}
                 </span>
-                <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-orange-400 line-through' : 'text-green-400'}`}>
+                <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-warning-fg line-through' : 'text-green-400'}`}>
                   +{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}
                 </span>
               </div>
@@ -980,8 +980,8 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             <div className="text-[9px] text-slate-400 uppercase mb-0.5">Procs</div>
             {procSources.map((source, i) => (
               <div key={i} className={`flex justify-between text-[10px] ${source.capped ? 'opacity-70' : ''}`}>
-                <span className={`${source.capped ? 'text-orange-400 line-through' : 'text-slate-300'} truncate max-w-[200px]`}>{source.name}</span>
-                <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-orange-400 line-through' : 'text-cyan-400'}`}>+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className={`${source.capped ? 'text-warning-fg line-through' : 'text-slate-300'} truncate max-w-[200px]`}>{source.name}</span>
+                <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-warning-fg line-through' : 'text-cyan-400'}`}>+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>

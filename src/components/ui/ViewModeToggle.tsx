@@ -14,7 +14,7 @@ export function ViewModeToggle({ className = '' }: ViewModeToggleProps) {
 
   const btnBase =
     'flex flex-1 sm:flex-none items-center justify-center gap-1 px-2 py-1 text-xs font-medium transition-colors whitespace-nowrap';
-  const activeCls = 'bg-blue-600 text-white';
+  const activeCls = 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]';
   const inactiveCls = 'text-slate-300 hover:text-white hover:bg-slate-700';
 
   return (

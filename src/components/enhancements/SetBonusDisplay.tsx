@@ -87,10 +87,10 @@ function BonusRow({ bonus, isActive, bonusTracking }: BonusRowProps) {
                 const totalCount = normalized ? getTotalBonusCount(bonusTracking, normalized, effect.value) : 0;
                 const capped = normalized ? isBonusCapped(bonusTracking, normalized, effect.value) : false;
                 return (
-                  <div key={i} className={`text-[13px] ${capped ? 'text-orange-400' : 'text-gray-100'}`}>
+                  <div key={i} className={`text-[13px] ${capped ? 'text-warning-fg' : 'text-gray-100'}`}>
                     {effect.stat}: +{formatBonusValue(effect.value)}%
                     {isActive && totalCount > 0 && (
-                      <span className={`ml-1 text-xs ${capped ? 'text-orange-400 font-semibold' : 'text-slate-300'}`}>
+                      <span className={`ml-1 text-xs ${capped ? 'text-warning-fg font-semibold' : 'text-slate-300'}`}>
                         ({totalCount}/5)
                       </span>
                     )}
@@ -117,11 +117,11 @@ function BonusRow({ bonus, isActive, bonusTracking }: BonusRowProps) {
       <div
         className={`
           flex items-center justify-between text-xs py-0.5
-          ${hasAnyCapped ? 'text-orange-400' : isActive ? 'text-green-400' : 'text-gray-500'}
+          ${hasAnyCapped ? 'text-warning-fg' : isActive ? 'text-green-400' : 'text-gray-500'}
         `}
       >
         <span className="flex items-center gap-1">
-          <span className={`w-1.5 h-1.5 rounded-full ${hasAnyCapped ? 'bg-orange-400' : isActive ? 'bg-green-400' : 'bg-gray-600'}`} />
+          <span className={`w-1.5 h-1.5 rounded-full ${hasAnyCapped ? 'bg-warning-fg' : isActive ? 'bg-green-400' : 'bg-gray-600'}`} />
           {bonus.pieces}pc:
         </span>
         <span className="truncate ml-2">
@@ -172,11 +172,11 @@ export function SetBonusSummary({
                     const totalCount = normalized ? getTotalBonusCount(bonusTracking!, normalized, e.value) : 0;
                     const capped = normalized ? isBonusCapped(bonusTracking!, normalized, e.value) : false;
                     return (
-                      <span key={i} className={capped ? 'text-orange-400 font-semibold' : ''}>
+                      <span key={i} className={capped ? 'text-warning-fg font-semibold' : ''}>
                         {i > 0 && ', '}
                         {e.stat} +{formatBonusValue(e.value)}
                         {isActive && totalCount > 0 && (
-                          <span className={`ml-0.5 text-[9px] ${capped ? 'text-orange-400' : 'text-slate-500'}`}>
+                          <span className={`ml-0.5 text-[9px] ${capped ? 'text-warning-fg' : 'text-slate-500'}`}>
                             ({totalCount}/5)
                           </span>
                         )}

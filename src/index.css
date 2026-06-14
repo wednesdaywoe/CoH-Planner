@@ -13,6 +13,23 @@
   --color-primary-hover: #1d4ed8;
   --color-primary-fg: #ffffff;
   --color-link: #60a5fa;
+
+  /* Family 1 — focus ring. Follows the active accent via var() indirection, so
+     it re-skins per theme automatically wherever a [data-theme] overrides
+     --color-primary. Use as focus:ring-[var(--color-ring)]. */
+  --color-ring: var(--color-primary);
+
+  /* Family 2 — semantic status. Defined ONCE here and intentionally NOT
+     re-skinned per dark [data-theme]: green=success, red=danger, amber=warning,
+     blue=info must read the same under every theme (a purple "success" toast is
+     as wrong as purple "damage"). Light themes may override the -fg shades for
+     contrast only. Each status has a solid base (Tailwind -600, for fills / tint
+     bases / borders) and a lighter -fg (Tailwind -400, for text + icons on the
+     dark canvas) so migrations reproduce the existing two-shade look exactly. */
+  --color-success: #16a34a;  --color-success-fg: #4ade80;
+  --color-warning: #d97706;  --color-warning-fg: #fbbf24;
+  --color-danger:  #dc2626;  --color-danger-fg:  #f87171;
+  --color-info:    #2563eb;  --color-info-fg:    #60a5fa;
 }
 
 /* Custom stat color classes - matching the existing app's color scheme */
@@ -183,10 +200,13 @@ body {
   --color-gray-900: #0C1525;  --color-slate-900: #0C1525;
   --color-gray-950: #0A0F1A;  --color-slate-950: #0A0F1A;
 
-  --color-sk-magenta: #F0C040;
-  --color-primary: #2D6AE0;
-  --color-primary-hover: #2457C0;
-  --color-primary-fg: #ffffff;
+  /* Action accent is GOLD on the navy ramp — the classic Paragon City gold-on-
+     blue hero look — with hero-blue kept as --color-link for highlights. Blue
+     primary blended into the navy chrome. */
+  --color-sk-magenta: #6c6b68;
+  --color-primary: #818181;
+  --color-primary-hover: #757471;
+  --color-primary-fg: #1A1408;
   --color-link: #5A8AE8;
 }
 
@@ -204,10 +224,12 @@ body {
   --color-gray-900: #1B0F12;  --color-slate-900: #1B0F12;
   --color-gray-950: #0F0909;  --color-slate-950: #0F0909;
 
+  /* Action accent is AMBER on the maroon ramp — pops where Arachnos-red blended
+     into the maroon chrome. Red survives as the lighter --color-link. */
   --color-sk-magenta: #C47A10;
-  --color-primary: #B81C24;
-  --color-primary-hover: #9A1820;
-  --color-primary-fg: #ffffff;
+  --color-primary: #9f2828;
+  --color-primary-hover: #A8680E;
+  --color-primary-fg: #1A1206;
   --color-link: #E0707A;
 }
 
@@ -290,10 +312,12 @@ body {
   --color-gray-900: #191532;  --color-slate-900: #191532;
   --color-gray-950: #0E0C17;  --color-slate-950: #0E0C17;
 
-  --color-sk-magenta: #1DB890;
-  --color-primary: #6A4FBB;
-  --color-primary-hover: #5840A0;
-  --color-primary-fg: #ffffff;
+  /* Action accent is TEAL on the rogue-purple ramp — pops where purple blended
+     into the purple chrome. Light purple survives as the --color-link highlight. */
+  --color-sk-magenta: #75818b;
+  --color-primary: #525b62;
+  --color-primary-hover: #75818b;
+  --color-primary-fg: #06241C;
   --color-link: #B3A6D8;
 }
 
@@ -306,15 +330,19 @@ body {
   --color-gray-400: #5BB291;  --color-slate-400: #5BB291;
   --color-gray-500: #1F8763;  --color-slate-500: #1F8763;
   --color-gray-600: #145C44;  --color-slate-600: #145C44;
-  --color-gray-700: #0D2E22;  --color-slate-700: #0D2E22;
-  --color-gray-800: #081A14;  --color-slate-800: #081A14;
+  --color-gray-700: #134130;  --color-slate-700: #0D2E22;
+  --color-gray-800: #0d2920;  --color-slate-800: #081A14;
   --color-gray-900: #061310;  --color-slate-900: #061310;
-  --color-gray-950: #050E0C;  --color-slate-950: #050E0C;
+  --color-gray-950: #0a1c18;  --color-slate-950: #050E0C;
 
+  /* Action accent is GOLD, not green — a contrasting hue that pops against the
+     jade ramp (same grey-ramp + gold-action formula as Imperial). Leaving
+     primary green made selections/buttons vanish into the green chrome. The
+     bio-jade survives as the lighter --color-link so green stays in the palette. */
   --color-sk-magenta: #D4A820;
-  --color-primary: #0FA876;
-  --color-primary-hover: #0C8A60;
-  --color-primary-fg: #04140E;
+  --color-primary: #156985;
+  --color-primary-hover: #BA9019;
+  --color-primary-fg: #14100A;
   --color-link: #4FD1A8;
 }
 
@@ -353,9 +381,11 @@ body {
   --color-gray-900: #1B1628;  --color-slate-900: #1B1628;
   --color-gray-950: #15111F;  --color-slate-950: #15111F;
 
+  /* Action accent is CRIMSON on the carnival-purple ramp — pops where purple
+     blended into the purple chrome. Light purple survives as --color-link. */
   --color-sk-magenta: #E0207A;
-  --color-primary: #7A28A0;
-  --color-primary-hover: #661F86;
+  --color-primary: #E0207A;
+  --color-primary-hover: #C21A68;
   --color-primary-fg: #ffffff;
   --color-link: #C58AE0;
 }

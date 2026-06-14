@@ -279,14 +279,14 @@ function BreakdownPanel({
               >
                 <span
                   className={`${
-                    source.capped ? 'text-orange-400 line-through' : 'text-slate-300'
+                    source.capped ? 'text-warning-fg line-through' : 'text-slate-300'
                   } truncate max-w-[200px]`}
                 >
                   {source.name}
                 </span>
                 <span
                   className={`ml-2 flex-shrink-0 ${
-                    source.capped ? 'text-orange-400 line-through' : srcColor
+                    source.capped ? 'text-warning-fg line-through' : srcColor
                   }`}
                 >
                   +{formatBonusValue(source.value)}{unit}

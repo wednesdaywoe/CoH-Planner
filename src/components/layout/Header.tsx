@@ -208,8 +208,8 @@ export function Header() {
           size="sm"
           onClick={() => navigate({ to: isOnBuildsPage ? '/' : '/builds' })}
           title={isOnBuildsPage ? 'Return to the build planner' : 'Browse shared builds from the community'}
-          style={{ background: '#4f46e5', borderColor: '#6366f1' }}
-          className="text-white hover:!bg-indigo-700"
+          style={{ background: 'var(--color-primary)', borderColor: 'var(--color-primary-hover)' }}
+          className="text-[var(--color-primary-fg)] hover:!brightness-110"
         >
           <svg className="w-4 h-4 sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -254,9 +254,9 @@ export function Header() {
             checked={ruleOf5AlertEnabled}
             onChange={toggleRuleOf5AlertEnabled}
             label="Bonus Cap Alert"
-            title="Show a banner above the dashboard and ring offending powers in orange when the build has any set bonus that exceeds the Rule of 5 cap."
+            title="Show a banner above the dashboard and highlight offending powers when the build has any set bonus that exceeds the Rule of 5 cap."
             className="!gap-2"
-            variant="orange"
+            variant="warning"
           />
         </div>
 
@@ -393,11 +393,11 @@ function LevelUpModeButton() {
   }
 
   return (
-    <div className="flex items-center gap-1 px-2 py-1 rounded border border-emerald-500 bg-emerald-600/10 text-xs">
+    <div className="flex items-center gap-1 px-2 py-1 rounded border border-[var(--color-primary)] bg-[var(--color-primary)]/10 text-xs">
       <button
         onClick={handleToggle}
         title="Turn off Level Up Mode"
-        className="text-emerald-300 hover:text-emerald-200 flex items-center gap-1"
+        className="text-[var(--color-link)] hover:brightness-110 flex items-center gap-1"
       >
         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -405,7 +405,7 @@ function LevelUpModeButton() {
         <span className="hidden md:inline font-medium">Level Up</span>
       </button>
 
-      <span className="w-px h-4 bg-emerald-500/40 mx-1" />
+      <span className="w-px h-4 bg-[var(--color-primary)]/40 mx-1" />
 
       {ready ? (
         atMax ? (
@@ -413,7 +413,7 @@ function LevelUpModeButton() {
         ) : (
           <button
             onClick={handleLevelUp}
-            className="flex items-center gap-1 px-2 py-0.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded font-medium transition-colors"
+            className="flex items-center gap-1 px-2 py-0.5 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-[var(--color-primary-fg)] rounded font-medium transition-colors"
             title={`Advance to level ${nextLevel}`}
           >
             <span>→ Lvl {nextLevel}</span>
@@ -477,16 +477,16 @@ function HeaderLevelSlider() {
       <button
         onClick={() => setLevel(level - 1)}
         disabled={level <= 1}
-        className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+        className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
       >
         &minus;
       </button>
-      <span className="text-sm font-bold text-emerald-400 w-6 text-center">{level}</span>
+      <span className="text-sm font-bold text-[var(--color-link)] w-6 text-center">{level}</span>
       <button
         onClick={() => setLevel(level + 1)}
         disabled={upDisabled}
         title={upTitle}
-        className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+        className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
       >
         +
       </button>
@@ -667,7 +667,7 @@ function BuildIdentityPopover() {
               value={build.name}
               onChange={(e) => setBuildName(e.target.value)}
               placeholder="Build Name"
-              className="w-full bg-slate-700 border border-slate-600 rounded px-3 py-1.5 text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-slate-700 border border-slate-600 rounded px-3 py-1.5 text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]"
             />
           </div>
 
@@ -891,7 +891,7 @@ function ActionMenu({
       <button
         onClick={() => setOpen(!open)}
         data-onboarding={triggerOnboardingId2}
-        className="flex items-center gap-1 px-2 py-1.5 text-xs text-emerald-300 hover:text-white bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-700/50 rounded transition-colors"
+        className="flex items-center gap-1 px-2 py-1.5 text-xs text-[var(--color-link)] hover:text-white bg-[var(--color-primary)]/20 hover:bg-[var(--color-primary)]/30 border border-[var(--color-primary)]/40 rounded transition-colors"
         title="Menu"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1117,7 +1117,7 @@ function SettingsPopover() {
         className={`flex items-center gap-1 px-2 py-1.5 text-xs hover:text-white border rounded transition-colors ${
           exemplarMode
             ? 'text-amber-400 bg-amber-900/40 hover:bg-amber-800/50 border-amber-600/50'
-            : 'text-sky-300 bg-sky-900/30 hover:bg-sky-800/40 border-sky-700/50'
+            : 'text-[var(--color-link)] bg-[var(--color-primary)]/20 hover:bg-[var(--color-primary)]/30 border-[var(--color-primary)]/40'
         }`}
         title="Build options"
       >
@@ -1138,15 +1138,15 @@ function SettingsPopover() {
               <button
                 onClick={() => setLevel(build.level - 1)}
                 disabled={build.level <= 1}
-                className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+                className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
               >
                 &minus;
               </button>
-              <span className="text-sm font-bold text-emerald-400 w-6 text-center">{build.level}</span>
+              <span className="text-sm font-bold text-[var(--color-link)] w-6 text-center">{build.level}</span>
               <button
                 onClick={() => setLevel(build.level + 1)}
                 disabled={build.level >= MAX_LEVEL}
-                className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+                className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
               >
                 +
               </button>
@@ -1171,16 +1171,16 @@ function SettingsPopover() {
                   onClick={() => setUIScale(uiScale - 0.05)}
                   disabled={uiScale <= 0.85}
                   aria-label="Decrease UI scale"
-                  className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+                  className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
                 >
                   &minus;
                 </button>
-                <span className="text-sm font-bold text-sky-400 w-10 text-center">{Math.round(uiScale * 100)}%</span>
+                <span className="text-sm font-bold text-[var(--color-link)] w-10 text-center">{Math.round(uiScale * 100)}%</span>
                 <button
                   onClick={() => setUIScale(uiScale + 0.05)}
                   disabled={uiScale >= 1.3}
                   aria-label="Increase UI scale"
-                  className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+                  className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
                 >
                   +
                 </button>
@@ -1212,17 +1212,17 @@ function SettingsPopover() {
                   <button
                     onClick={() => setTargetLevelOffset(targetLevelOffset - 1)}
                     disabled={targetLevelOffset <= -7}
-                    className="text-slate-400 hover:text-cyan-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+                    className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
                   >
                     &minus;
                   </button>
-                  <span className="text-sm font-bold text-cyan-400 w-8 text-center">
+                  <span className="text-sm font-bold text-[var(--color-link)] w-8 text-center">
                     {targetLevelOffset >= 0 ? `+${targetLevelOffset}` : `${targetLevelOffset}`}
                   </span>
                   <button
                     onClick={() => setTargetLevelOffset(targetLevelOffset + 1)}
                     disabled={targetLevelOffset >= 7}
-                    className="text-slate-400 hover:text-cyan-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+                    className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
                   >
                     +
                   </button>
@@ -1241,8 +1241,8 @@ function SettingsPopover() {
                     onClick={() => setContentMode('standard')}
                     className={`text-xs px-2 py-0.5 rounded transition-colors ${
                       contentMode === 'standard'
-                        ? 'bg-cyan-600 text-white'
-                        : 'text-slate-400 hover:text-cyan-400'
+                        ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]'
+                        : 'text-slate-400 hover:text-[var(--color-link)]'
                     }`}
                   >
                     Standard
@@ -1251,8 +1251,8 @@ function SettingsPopover() {
                     onClick={() => setContentMode('incarnate')}
                     className={`text-xs px-2 py-0.5 rounded transition-colors ${
                       contentMode === 'incarnate'
-                        ? 'bg-purple-600 text-white'
-                        : 'text-slate-400 hover:text-purple-400'
+                        ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]'
+                        : 'text-slate-400 hover:text-[var(--color-link)]'
                     }`}
                   >
                     Incarnate
@@ -1377,7 +1377,7 @@ function SettingsPopover() {
             <button
               onClick={resetOnboarding}
               title="Restart all dismissed onboarding hints from the beginning"
-              className="text-xs text-sky-400 hover:text-sky-300 transition-colors"
+              className="text-xs text-[var(--color-link)] hover:brightness-110 transition-colors"
             >
               Reset guided hints
             </button>
@@ -1415,7 +1415,7 @@ function KheldianFormSelector() {
         onClick={() => setKheldianForm(form)}
         className={`px-2 py-0.5 text-xs rounded border transition-colors ${
           active
-            ? 'bg-purple-700/50 border-purple-500 text-purple-100'
+            ? 'bg-[var(--color-primary)]/40 border-[var(--color-primary)] text-[var(--color-link)]'
             : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
         }`}
       >
@@ -1542,7 +1542,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
         <Tooltip content="Toggle to show average Scourge damage bonus (+30% as multiplier). Scourge chance increases as enemy HP drops below 50%.">
           <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             scourgeActive
-              ? 'bg-sky-900/30 border-sky-700/40'
+              ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)]/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
             <Toggle
@@ -1561,24 +1561,24 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
         <Tooltip content={`Fury grants +${furyLevel * 2}% damage. Adjust to see damage at different fury levels.`}>
           <div data-onboarding="at-mechanic" className={`flex items-center gap-1 px-2 py-1 rounded border ${
             furyLevel > 0
-              ? 'bg-sky-900/30 border-sky-700/40'
+              ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)]/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
-            <span className="text-xs text-sky-400 font-semibold uppercase">Fury</span>
+            <span className="text-xs text-[var(--color-link)] font-semibold uppercase">Fury</span>
             <button
               onClick={() => setFuryLevel(Math.max(0, furyLevel - 1))}
               disabled={furyLevel <= 0}
               aria-label="Decrease Fury level"
-              className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
             >
               &minus;
             </button>
-            <span className="text-sm font-bold text-sky-400 w-7 text-center">{furyLevel}</span>
+            <span className="text-sm font-bold text-[var(--color-link)] w-7 text-center">{furyLevel}</span>
             <button
               onClick={() => setFuryLevel(Math.min(100, furyLevel + 1))}
               disabled={furyLevel >= 100}
               aria-label="Increase Fury level"
-              className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
             >
               +
             </button>
@@ -1591,7 +1591,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
               showValue={false}
               showRange={false}
             />
-            <span className="text-[10px] text-sky-400/70">+{furyLevel * 2}%</span>
+            <span className="text-[10px] text-[var(--color-link)]/70">+{furyLevel * 2}%</span>
           </div>
         </Tooltip>
       )}
@@ -1601,7 +1601,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
         <Tooltip content="Toggle to show Supremacy buffs (+25% Damage, +10% ToHit) for henchmen within 60ft. Also enables Bodyguard Mode info.">
           <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             supremacyActive
-              ? 'bg-sky-900/30 border-sky-700/40'
+              ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)]/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
             <Toggle
@@ -1623,24 +1623,24 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
           <Tooltip content={`Vigilance grants +${(damageBonus * 100).toFixed(0)}% damage based on team size. Solo = max bonus, 3+ teammates = no bonus.`}>
             <div data-onboarding="at-mechanic" className={`flex items-center gap-1 px-2 py-1 rounded border ${
               vigilanceTeamSize < 3
-                ? 'bg-sky-900/30 border-sky-700/40'
+                ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)]/40'
                 : 'bg-slate-700/50 border-slate-600'
             }`}>
-              <span className="text-xs text-sky-400 font-semibold uppercase">Team</span>
+              <span className="text-xs text-[var(--color-link)] font-semibold uppercase">Team</span>
               <button
                 onClick={() => setVigilanceTeamSize(Math.max(0, vigilanceTeamSize - 1))}
                 disabled={vigilanceTeamSize <= 0}
                 aria-label="Decrease team size"
-                className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
               >
                 &minus;
               </button>
-              <span className="text-sm font-bold text-sky-400 w-8 text-center">{teamLabel}</span>
+              <span className="text-sm font-bold text-[var(--color-link)] w-8 text-center">{teamLabel}</span>
               <button
                 onClick={() => setVigilanceTeamSize(Math.min(7, vigilanceTeamSize + 1))}
                 disabled={vigilanceTeamSize >= 7}
                 aria-label="Increase team size"
-                className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
               >
                 +
               </button>
@@ -1653,7 +1653,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
                 showValue={false}
                 showRange={false}
               />
-              <span className="text-[10px] text-sky-400/70">+{(damageBonus * 100).toFixed(0)}%</span>
+              <span className="text-[10px] text-[var(--color-link)]/70">+{(damageBonus * 100).toFixed(0)}%</span>
             </div>
           </Tooltip>
         );
@@ -1664,7 +1664,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
         <Tooltip content="Toggle to show average Critical Hit damage bonus. 5% crit chance vs minions (+5% avg), 10% vs higher ranks (+10% avg). Critical hits deal double damage.">
           <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             criticalHitsActive
-              ? 'bg-sky-900/30 border-sky-700/40'
+              ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)]/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
             <Toggle
@@ -1698,7 +1698,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
                 !hasHide
                   ? 'bg-slate-800/30 border-slate-700/40 opacity-50'
                   : alphaStrike
-                    ? 'bg-sky-900/30 border-sky-700/40'
+                    ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)]/40'
                     : 'bg-slate-700/50 border-slate-600'
               }`}>
                 <Toggle
@@ -1713,22 +1713,22 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
             </Tooltip>
             {!alphaStrike && (
               <Tooltip content={`Assassination grants +${(damageBonus * 100).toFixed(0)}% avg damage. 10% base crit + 3% per teammate outside of Hide.`}>
-                <div className="flex items-center gap-1 px-2 py-1 rounded border bg-sky-900/30 border-sky-700/40">
-                  <span className="text-xs text-sky-400 font-semibold uppercase">Team</span>
+                <div className="flex items-center gap-1 px-2 py-1 rounded border bg-[var(--color-primary)]/20 border-[var(--color-primary)]/40">
+                  <span className="text-xs text-[var(--color-link)] font-semibold uppercase">Team</span>
                   <button
                     onClick={() => setStalkerTeamSize(Math.max(0, stalkerTeamSize - 1))}
                     disabled={stalkerTeamSize <= 0}
                     aria-label="Decrease team size"
-                    className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                    className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
                   >
                     &minus;
                   </button>
-                  <span className="text-sm font-bold text-sky-400 w-8 text-center">{teamLabel}</span>
+                  <span className="text-sm font-bold text-[var(--color-link)] w-8 text-center">{teamLabel}</span>
                   <button
                     onClick={() => setStalkerTeamSize(Math.min(7, stalkerTeamSize + 1))}
                     disabled={stalkerTeamSize >= 7}
                     aria-label="Increase team size"
-                    className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                    className="text-slate-400 hover:text-[var(--color-link)] disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
                   >
                     +
                   </button>
@@ -1741,14 +1741,14 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
                     showValue={false}
                     showRange={false}
                   />
-                  <span className="text-[10px] text-sky-400/70">+{(damageBonus * 100).toFixed(0)}%</span>
+                  <span className="text-[10px] text-[var(--color-link)]/70">+{(damageBonus * 100).toFixed(0)}%</span>
                 </div>
               </Tooltip>
             )}
             <Tooltip content={`Toggle to show average Assassination critical damage bonus (+${(damageBonus * 100).toFixed(0)}% avg).`}>
               <div className={`flex items-center px-2 py-1 rounded border ${
                 stalkerCritActive
-                  ? 'bg-sky-900/30 border-sky-700/40'
+                  ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)]/40'
                   : 'bg-slate-700/50 border-slate-600'
               }`}>
                 <Toggle
@@ -1769,7 +1769,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
         <Tooltip content="Toggle to show Containment damage bonus. Controllers deal double damage to Held, Immobilized, Slept, or Disoriented targets.">
           <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             containmentActive
-              ? 'bg-sky-900/30 border-sky-700/40'
+              ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)]/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
             <Toggle
@@ -1788,7 +1788,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
         <Tooltip content={`Toggle to show Opportunity critical damage bonus (+${(OPPORTUNITY_CRIT_MULTIPLIER * 100).toFixed(0)}%). Crits deal ${(OPPORTUNITY_CRIT_MULTIPLIER * 100).toFixed(0)}% bonus damage.`}>
           <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             sentinelCritActive
-              ? 'bg-sky-900/30 border-sky-700/40'
+              ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)]/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
             <Toggle
