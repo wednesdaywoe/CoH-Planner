@@ -646,7 +646,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     summary: { powersImported: number; powersFailed: number; enhancementsImported: number; enhancementsFailed: number },
     characterName?: string,
   ) => (
-    <div className="bg-green-900/20 border border-green-700/50 rounded p-3 text-sm text-green-300">
+    <div className="bg-[var(--color-success)]/15 border border-[var(--color-success)]/50 rounded p-3 text-sm text-[var(--color-success-fg)]">
       <p className="font-semibold mb-2">Parse Successful</p>
       <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
         {characterName && (
@@ -703,7 +703,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
           <button
             className={`px-4 py-2 font-semibold transition-colors ${
               activeTab === 'save'
-                ? 'text-blue-400 border-b-2 border-blue-400'
+                ? 'text-[var(--color-link)] border-b-2 border-[var(--color-primary)]'
                 : 'text-gray-400 hover:text-gray-300'
             }`}
             onClick={() => setActiveTab('save')}
@@ -713,7 +713,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
           <button
             className={`px-4 py-2 font-semibold transition-colors ${
               activeTab === 'load-import'
-                ? 'text-amber-400 border-b-2 border-amber-400'
+                ? 'text-[var(--color-link)] border-b-2 border-[var(--color-primary)]'
                 : 'text-gray-400 hover:text-gray-300'
             }`}
             onClick={() => setActiveTab('load-import')}
@@ -723,7 +723,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
           <button
             className={`px-4 py-2 font-semibold transition-colors ${
               activeTab === 'share-export'
-                ? 'text-green-400 border-b-2 border-green-400'
+                ? 'text-[var(--color-link)] border-b-2 border-[var(--color-primary)]'
                 : 'text-gray-400 hover:text-gray-300'
             }`}
             onClick={() => setActiveTab('share-export')}
@@ -750,7 +750,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   value={buildAlias}
                   onChange={(e) => setBuildAlias(e.target.value)}
                   placeholder="e.g., Fire/Kin Tank - Farm Build"
-                  className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]"
                   maxLength={100}
                 />
               </div>
@@ -790,18 +790,18 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               {user ? (
                 <>
                   {vaultSaveSuccess ? (
-                    <div className="bg-indigo-900/20 border border-indigo-700/50 rounded p-4 text-sm text-indigo-300">
+                    <div className="bg-[var(--color-info)]/15 border border-[var(--color-info)]/50 rounded p-4 text-sm text-[var(--color-info-fg)]">
                       <p className="font-semibold">
                         {canUpdateVault ? 'Build updated in your library!' : 'Build saved to your library!'}
                       </p>
-                      <p className="text-xs text-indigo-400 mt-1">
+                      <p className="text-xs text-[var(--color-info-fg)] mt-1">
                         This build is private and only visible to you in My Builds.
                       </p>
                     </div>
                   ) : (
                     <>
                       {canUpdateVault && (
-                        <p className="text-xs text-indigo-400">
+                        <p className="text-xs text-[var(--color-info-fg)]">
                           This build is linked to a saved entry in your library. Saving will overwrite the existing entry; choose "Save as new" to fork it instead.
                         </p>
                       )}
@@ -810,7 +810,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                         onClick={() => handleVaultSave(false)}
                         isLoading={vaultSaveLoading}
                         disabled={vaultSaveLoading || !build.archetype.id}
-                        className="w-full !bg-indigo-600 hover:!bg-indigo-700"
+                        className="w-full !bg-[var(--color-primary)] hover:!bg-[var(--color-primary-hover)]"
                       >
                         {canUpdateVault ? 'Update Saved Build' : 'Save to Library (Private)'}
                       </Button>
@@ -854,7 +854,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               <button
                 className={`flex-1 py-2 px-3 rounded text-sm font-semibold transition-colors ${
                   loadSource === 'local'
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]'
                     : 'bg-gray-800 text-gray-400 hover:text-gray-300 hover:bg-gray-700'
                 }`}
                 onClick={() => setLoadSource('local')}
@@ -864,7 +864,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               <button
                 className={`flex-1 py-2 px-3 rounded text-sm font-semibold transition-colors ${
                   loadSource === 'mids'
-                    ? 'bg-amber-600 text-white'
+                    ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]'
                     : 'bg-gray-800 text-gray-400 hover:text-gray-300 hover:bg-gray-700'
                 }`}
                 onClick={() => setLoadSource('mids')}
@@ -874,7 +874,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               <button
                 className={`flex-1 py-2 px-3 rounded text-sm font-semibold transition-colors ${
                   loadSource === 'game'
-                    ? 'bg-cyan-600 text-white'
+                    ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]'
                     : 'bg-gray-800 text-gray-400 hover:text-gray-300 hover:bg-gray-700'
                 }`}
                 onClick={() => setLoadSource('game')}
@@ -899,8 +899,8 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                       file:mr-4 file:py-2 file:px-4
                       file:rounded file:border-0
                       file:text-sm file:font-semibold
-                      file:bg-blue-600 file:text-white
-                      hover:file:bg-blue-700
+                      file:bg-[var(--color-primary)] file:text-[var(--color-primary-fg)]
+                      hover:file:bg-[var(--color-primary-hover)]
                       file:cursor-pointer cursor-pointer"
                   />
                 </div>
@@ -922,7 +922,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                     value={importText}
                     onChange={(e) => setImportText(e.target.value)}
                     placeholder="Paste exported build JSON here..."
-                    className="w-full h-24 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono text-sm"
+                    className="w-full h-24 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] font-mono text-sm"
                   />
                   {importText.trim() && (
                     <Button
@@ -943,7 +943,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   </div>
                 )}
                 {importSuccess && (
-                  <div className="bg-green-900/20 border border-green-700/50 rounded p-3 text-sm text-green-300">
+                  <div className="bg-[var(--color-success)]/15 border border-[var(--color-success)]/50 rounded p-3 text-sm text-[var(--color-success-fg)]">
                     Build imported successfully!
                   </div>
                 )}
@@ -952,7 +952,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             ) : loadSource === 'mids' ? (
               /* Mids Import */
               <div className="space-y-4">
-                <div className="bg-amber-900/20 border border-amber-700/50 rounded p-3 text-sm text-amber-300">
+                <div className="bg-[var(--color-warning)]/15 border border-[var(--color-warning)]/50 rounded p-3 text-sm text-[var(--color-warning-fg)]">
                   <p>Upload an .MBD file or paste its contents below. </p>
                   <p>!!! PLEASE READ !!! Here's the reality: Mids name patterns are all over the place. Some entries have no AT designation at all, others use abbreviated or combined AT names, and a few use prefixes instead of suffixes. There are also cases where the AT name appears as a prefix instead of a suffix, which makes the naming even more inconsistent. Importing and exporting Mids files reliably is going to be a long work in progress.</p>
                 </div>
@@ -970,8 +970,8 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                       file:mr-4 file:py-2 file:px-4
                       file:rounded file:border-0
                       file:text-sm file:font-semibold
-                      file:bg-amber-600 file:text-white
-                      hover:file:bg-amber-700
+                      file:bg-[var(--color-primary)] file:text-[var(--color-primary-fg)]
+                      hover:file:bg-[var(--color-primary-hover)]
                       file:cursor-pointer cursor-pointer"
                   />
                 </div>
@@ -1018,7 +1018,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             ) : (
               /* Game Import */
               <div className="space-y-4">
-                <div className="bg-cyan-900/20 border border-cyan-700/50 rounded p-3 text-sm text-cyan-300">
+                <div className="bg-[var(--color-info)]/15 border border-[var(--color-info)]/50 rounded p-3 text-sm text-[var(--color-info-fg)]">
                   <p>Import a build from the <span className="font-semibold">Homecoming</span> in-game build export. Use the <span className="text-sk-magenta font-semibold">/buildsave</span> command in-game, then upload the text file or paste its contents below.</p>
                 </div>
 
@@ -1035,8 +1035,8 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                       file:mr-4 file:py-2 file:px-4
                       file:rounded file:border-0
                       file:text-sm file:font-semibold
-                      file:bg-cyan-600 file:text-white
-                      hover:file:bg-cyan-700
+                      file:bg-[var(--color-primary)] file:text-[var(--color-primary-fg)]
+                      hover:file:bg-[var(--color-primary-hover)]
                       file:cursor-pointer cursor-pointer"
                   />
                 </div>
@@ -1090,7 +1090,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               <button
                 className={`flex-1 py-2 px-3 rounded text-sm font-semibold transition-colors ${
                   shareExportSubTab === 'share'
-                    ? 'bg-green-600 text-white'
+                    ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]'
                     : 'bg-gray-800 text-gray-400 hover:text-gray-300 hover:bg-gray-700'
                 }`}
                 onClick={() => setShareExportSubTab('share')}
@@ -1115,11 +1115,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                 {shareUrl ? (
                   <div className="space-y-4">
                     {/* Public share success */}
-                    <div className="bg-green-900/20 border border-green-700/50 rounded p-4 text-sm text-green-300">
+                    <div className="bg-[var(--color-success)]/15 border border-[var(--color-success)]/50 rounded p-4 text-sm text-[var(--color-success-fg)]">
                       <p className="font-semibold mb-2">
                         {shareUpdated ? 'Build updated successfully!' : 'Build shared successfully!'}
                       </p>
-                      <p className="text-xs text-green-400 mb-3">Anyone with this link can view your build:</p>
+                      <p className="text-xs text-[var(--color-success-fg)] mb-3">Anyone with this link can view your build:</p>
                       <div className="flex gap-2">
                         <input
                           type="text"
@@ -1137,7 +1137,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                         </Button>
                       </div>
                       {!shareUpdated && (
-                        <p className="text-xs text-green-500 mt-2">
+                        <p className="text-xs text-[var(--color-success-fg)] mt-2">
                           You can update or delete this build later from this browser.
                         </p>
                       )}
@@ -1211,7 +1211,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                                 setUpdateExistingId(null);
                               }
                             }}
-                            className="rounded border-gray-600 bg-gray-700 text-green-500 focus:ring-green-500"
+                            className="rounded border-gray-600 bg-gray-700 text-[var(--color-primary)] focus:ring-[var(--color-ring)]"
                           />
                           Update an existing shared build
                         </label>
@@ -1221,7 +1221,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                             <select
                               value={updateExistingId}
                               onChange={(e) => setUpdateExistingId(e.target.value)}
-                              className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-1.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                              className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-1.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]"
                             >
                               {allOwnedIds.map((id) => {
                                 const info = accountBuildMap.get(id);
@@ -1258,7 +1258,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                         value={shareDescription}
                         onChange={(e) => setShareDescription(e.target.value)}
                         placeholder="Describe your build — what it's for, how to play it, etc."
-                        className="w-full h-24 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                        className="w-full h-24 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
                         maxLength={500}
                       />
                       <p className="text-xs text-gray-500 mt-1">{shareDescription.length}/500</p>
@@ -1274,7 +1274,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                           value={shareAuthor}
                           onChange={(e) => setShareAuthor(e.target.value)}
                           placeholder="Your global name"
-                          className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                          className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
                           maxLength={50}
                         />
                       </div>
@@ -1287,7 +1287,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                           value={shareServer}
                           onChange={(e) => setShareServer(e.target.value)}
                           placeholder="e.g., Homecoming"
-                          className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                          className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
                           maxLength={50}
                         />
                       </div>
@@ -1302,7 +1302,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                         value={shareTags}
                         onChange={(e) => setShareTags(e.target.value)}
                         placeholder="e.g., PvP, farming, budget, softcap"
-                        className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                        className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
                         maxLength={200}
                       />
                     </div>
@@ -1319,7 +1319,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                       </div>
                     )}
 
-                    <div className="bg-green-900/20 border border-green-700/50 rounded p-3 text-sm text-green-300">
+                    <div className="bg-[var(--color-success)]/15 border border-[var(--color-success)]/50 rounded p-3 text-sm text-[var(--color-success-fg)]">
                       <p className="font-semibold mb-1">
                         {updateExistingId ? 'Update Info:' : 'Share Info:'}
                       </p>
@@ -1401,7 +1401,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                           value={popmenuName}
                           onChange={(e) => setPopmenuName(e.target.value)}
                           placeholder={build.name?.replace(/[^a-zA-Z0-9]/g, '_') || 'MyBuild'}
-                          className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+                          className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
                           maxLength={50}
                         />
                       </div>

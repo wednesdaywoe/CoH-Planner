@@ -306,9 +306,15 @@ parts that bit us:
   rarity(1.25 for purple/Superior)`. So Luck of the Gambler's "Defense/+Recharge" reads
   Defense at 0.625 (the 2-aspect modifier) — its +Recharge global DOES dilute, scale
   proves it; ATO "#6" Recharge/Chance pieces read 0.4375 (4 aspects). Invert the modifier
-  to set `totalAspects`. (Exception: the planner deliberately splits Heal into Heal+Absorb,
-  so healing pieces' list length intentionally exceeds the scale-derived count — don't
-  override those; emit `totalAspects` only when derived > list length.)
+  to set `totalAspects`. (Heal/Absorb caveat: the scale-derived count is the *true* aspect
+  count — the binary already treats Heal and Absorb as ONE slot, because they're the same
+  enhancement category. The planner lists Absorb separately only so it surfaces as its own
+  enhanced stat, NOT as a dilution signal; that's why healing pieces' list length exceeds
+  the scale-derived count. So the list-length excess is cosmetic, not authoritative —
+  `getEffectiveAspectCount` collapses the Heal+Absorb pair back to one slot at runtime, and
+  the extractor emits `totalAspects` only when derived > list length. An earlier fix
+  mis-read the Absorb split as real dilution and over-valued every healing piece; see
+  `src/data/io-sets-heal-absorb.test.ts`.)
 - **Enhancement aspects are `aspect=Strength` with POSITIVE non-zero scale.** Negative-
   scale Strength templates are proc debuffs/conversions (Winter's Bite -Recharge/-Slow,
   Sudden Acceleration / Imperial Might #6's -Knockback KB→knockdown) — §3 sign rule. The

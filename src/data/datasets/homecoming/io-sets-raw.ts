@@ -24910,9 +24910,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "EndMod"
         ],
-        "name": "EndMod",
+        "name": "EndMod/+Run Speed",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 2,
         "unique": true
       }

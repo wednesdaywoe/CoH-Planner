@@ -48,7 +48,7 @@ function FilterSelect({ label, value, onChange, options, disabled, placeholder }
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
-        className="flex-1 text-sm bg-gray-800 border border-gray-700 rounded px-2.5 py-1.5 text-gray-200 focus:outline-none focus:border-blue-500 disabled:opacity-40 disabled:cursor-not-allowed"
+        className="flex-1 text-sm bg-gray-800 border border-gray-700 rounded px-2.5 py-1.5 text-gray-200 focus:outline-none focus:border-[var(--color-ring)] disabled:opacity-40 disabled:cursor-not-allowed"
       >
         {placeholder && <option value="">{placeholder}</option>}
         {options.map(opt => (
@@ -63,7 +63,7 @@ function SortArrow({ column, sortColumn, sortDir }: { column: SortColumn; sortCo
   if (column !== sortColumn || sortDir === null) {
     return <span className="text-gray-700 ml-0.5">{'\u2195'}</span>;
   }
-  return <span className="text-blue-400 ml-0.5">{sortDir === 'asc' ? '\u2191' : '\u2193'}</span>;
+  return <span className="text-[var(--color-link)] ml-0.5">{sortDir === 'asc' ? '\u2191' : '\u2193'}</span>;
 }
 
 // ============================================
@@ -263,7 +263,7 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
               type="checkbox"
               checked={myPowersOnly}
               onChange={(e) => setMyPowersOnly(e.target.checked)}
-              className="rounded border-gray-600 bg-gray-800 text-blue-500 focus:ring-blue-500 focus:ring-offset-0"
+              className="rounded border-gray-600 bg-gray-800 text-[var(--color-primary)] focus:ring-[var(--color-ring)] focus:ring-offset-0"
             />
             <span className="text-xs text-gray-400">Only show sets I can slot</span>
           </label>

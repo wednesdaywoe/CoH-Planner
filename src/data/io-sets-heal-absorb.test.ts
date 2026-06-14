@@ -8,10 +8,18 @@ import { IO_SETS_RAW as RB_SETS } from '@/data/datasets/rebirth/io-sets-raw';
  * In CoH every Heal-boosting enhancement also boosts Absorb — they share one
  * enhancement category, and the binary encodes Absorb as its OWN Strength
  * attrib on healing pieces (verified against boostsets.bin: Panacea/Numina/etc.
- * each carry HitPoints AND a distinct Absorb attrib). The planner treats Heal
- * and Absorb as separate, value-DILUTING aspects: `parseIOSetPieceValues`
- * divides the enhancement value by the aspect count, so a Heal piece missing
- * Absorb counts as 1 aspect and over-values Heal.
+ * each carry HitPoints AND a distinct Absorb attrib). We therefore list Absorb
+ * as its own aspect so it surfaces as a distinct enhanced stat on the piece.
+ *
+ * NOTE — Absorb does NOT dilute the per-aspect value. Heal and Absorb are the
+ * SAME enhancement category (one boost applied to two attributes), so they
+ * occupy a single slot in the multi-aspect scheduling penalty. A pure Heal
+ * piece is genuinely 1 aspect (42.4% @ L50), and "Heal/Absorb/Recharge" is a
+ * 2-aspect piece (26.5%), not 3. `getEffectiveAspectCount` collapses the pair;
+ * see enhancement-values.heal-absorb.test.ts. (An earlier fix — 6574dfcc9 —
+ * mistakenly read "Absorb is its own binary attrib" as "Absorb is a separate
+ * value-diluting aspect"; the over-dilution went uncaught because the change
+ * was never checked against the known in-game enhancement percentages.)
  *
  * Therefore, for every non-proc IO-set piece:
  *   - 'Heal' ⟺ 'Absorb'  (both present or neither)

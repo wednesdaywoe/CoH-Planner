@@ -183,7 +183,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
               {ioEnh.setName}
               {ioSet && <span className="text-yellow-600 font-normal ml-1">({ioEnh.pieceNum}/{ioSet.pieces.length})</span>}
             </h3>
-            <span className="text-xs text-blue-400">{resolveProcPieceName(enhancement.name, ioEnh.setName, ioEnh.isProc)}</span>
+            <span className="text-xs text-[var(--color-link)]">{resolveProcPieceName(enhancement.name, ioEnh.setName, ioEnh.isProc)}</span>
           </div>
         </div>
 
@@ -670,7 +670,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
             className="flex-shrink-0"
           />
           <div className="min-w-0">
-            <h3 className="text-sm font-semibold text-blue-400 leading-tight">{enhancement.name}</h3>
+            <h3 className="text-sm font-semibold text-[var(--color-link)] leading-tight">{enhancement.name}</h3>
             <span className="text-[11px] text-slate-300">Generic IO</span>
           </div>
         </div>
@@ -711,7 +711,7 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
             className="flex-shrink-0"
           />
           <div className="min-w-0">
-            <h3 className="text-sm font-semibold text-blue-400 leading-tight">{enhancement.name}</h3>
+            <h3 className="text-sm font-semibold text-[var(--color-link)] leading-tight">{enhancement.name}</h3>
             <span className="text-[11px] text-slate-300">{originEnh.tier}</span>
           </div>
         </div>

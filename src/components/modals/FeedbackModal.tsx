@@ -169,9 +169,9 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
 
       <ModalBody>
         {status === 'success' ? (
-          <div className="bg-green-900/20 border border-green-700/50 rounded p-4 text-center">
-            <p className="text-green-300 font-semibold text-lg mb-1">Thank you!</p>
-            <p className="text-green-400/80 text-sm">Your feedback has been sent.</p>
+          <div className="bg-[var(--color-success)]/15 border border-[var(--color-success)]/50 rounded p-4 text-center">
+            <p className="text-[var(--color-success-fg)] font-semibold text-lg mb-1">Thank you!</p>
+            <p className="text-[var(--color-success-fg)]/80 text-sm">Your feedback has been sent.</p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -221,13 +221,13 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                     const isActive = feedbackType === type;
                     const colorMap = {
                       red: isActive
-                        ? 'bg-red-600/20 border-red-500 text-red-300'
+                        ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)] text-[var(--color-link)]'
                         : 'border-gray-600 text-gray-400 hover:border-gray-500 hover:text-gray-300',
                       blue: isActive
-                        ? 'bg-blue-600/20 border-blue-500 text-blue-300'
+                        ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)] text-[var(--color-link)]'
                         : 'border-gray-600 text-gray-400 hover:border-gray-500 hover:text-gray-300',
                       purple: isActive
-                        ? 'bg-purple-600/20 border-purple-500 text-purple-300'
+                        ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)] text-[var(--color-link)]'
                         : 'border-gray-600 text-gray-400 hover:border-gray-500 hover:text-gray-300',
                     };
                     return (
@@ -258,9 +258,9 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               </div>
             )}
             {feedbackType === 'suggestion' && (
-              <div className="bg-blue-900/15 border border-blue-700/40 rounded p-3">
-                <p className="text-xs font-medium text-blue-400 mb-1.5">Tips for a great suggestion:</p>
-                <ul className="text-xs text-blue-400/70 space-y-0.5 list-disc list-inside">
+              <div className="bg-[var(--color-info)]/15 border border-[var(--color-info)]/50 rounded p-3">
+                <p className="text-xs font-medium text-[var(--color-info-fg)] mb-1.5">Tips for a great suggestion:</p>
+                <ul className="text-xs text-[var(--color-info-fg)]/70 space-y-0.5 list-disc list-inside">
                   <li>Describe the problem or gap you've noticed</li>
                   <li>Explain how the feature would help your workflow</li>
                   <li>If possible, reference how other tools handle it</li>
@@ -277,7 +277,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder={config.placeholder}
-                className="w-full h-40 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                className="w-full h-40 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
                 maxLength={5000}
               />
               <p className="text-xs text-gray-500 mt-1">
@@ -297,7 +297,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 value={globalName}
                 onChange={(e) => setGlobalName(e.target.value)}
                 placeholder="@YourName"
-                className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
               />
             </div>
 
@@ -309,7 +309,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                     type="checkbox"
                     checked={includeSnapshot}
                     onChange={(e) => setIncludeSnapshot(e.target.checked)}
-                    className="w-3.5 h-3.5 rounded border-gray-500 bg-gray-700 text-blue-500 focus:ring-blue-500 focus:ring-offset-0"
+                    className="w-3.5 h-3.5 rounded border-gray-500 bg-gray-700 text-[var(--color-primary)] focus:ring-[var(--color-ring)] focus:ring-offset-0"
                   />
                   <span className="text-xs font-medium text-gray-300">
                     Include build snapshot
@@ -318,7 +318,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 <button
                   type="button"
                   onClick={handleCopySnapshot}
-                  className="text-xs text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1"
+                  className="text-xs text-[var(--color-link)] hover:brightness-110 transition-colors flex items-center gap-1"
                 >
                   <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     {snapshotCopied ? (

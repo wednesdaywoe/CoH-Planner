@@ -12,10 +12,10 @@ type ChangeStatus = 'known-bug' | 'fixed' | 'planned' | 'in-progress' | 'new';
 
 function StatusBadge({ status }: { status: ChangeStatus }) {
   const config = {
-    'known-bug': { label: 'Bug', className: 'bg-red-900/50 text-red-300 border-red-700/50' },
-    'fixed': { label: 'Fixed', className: 'bg-green-900/50 text-green-300 border-green-700/50' },
-    'planned': { label: 'Planned', className: 'bg-blue-900/50 text-blue-300 border-blue-700/50' },
-    'in-progress': { label: ' ⚙️ ', className: 'bg-amber-900/50 text-amber-300 border-amber-700/50' },
+    'known-bug': { label: 'Bug', className: 'bg-[var(--color-danger)]/30 text-[var(--color-danger-fg)] border-[var(--color-danger)]/50' },
+    'fixed': { label: 'Fixed', className: 'bg-[var(--color-success)]/30 text-[var(--color-success-fg)] border-[var(--color-success)]/50' },
+    'planned': { label: 'Planned', className: 'bg-[var(--color-info)]/30 text-[var(--color-info-fg)] border-[var(--color-info)]/50' },
+    'in-progress': { label: ' ⚙️ ', className: 'bg-[var(--color-warning)]/30 text-[var(--color-warning-fg)] border-[var(--color-warning)]/50' },
     'new': { label: 'New', className: 'bg-purple-900/50 text-purple-300 border-purple-700/50' },
   };
   const { label, className } = config[status];

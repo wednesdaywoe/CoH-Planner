@@ -134,7 +134,7 @@ function ModeToggle() {
             onClick={() => setDamageDisplayMode(mode)}
             title={title}
             className={`px-2 py-0.5 text-xs font-medium transition-colors ${
-              active ? 'bg-cyan-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-700'
+              active ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]' : 'text-slate-300 hover:text-white hover:bg-slate-700'
             }`}
           >
             {label}

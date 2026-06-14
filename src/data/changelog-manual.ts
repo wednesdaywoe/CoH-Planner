@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-06-14',
     items: [
+      { message: 'Fixed a regression where split enhancmement aspects (health/absorb) were counted as two aspects', type: 'fix' },
       { message: 'Added a few more themes', type: 'feat' },
       { message: 'Fixed an issue that was silently setting public builds to private', type: 'feat' },
       { message: 'Added color themes options! Go to Menu > Settings to pick your flavor', type: 'feat' },

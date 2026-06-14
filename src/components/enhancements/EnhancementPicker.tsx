@@ -666,7 +666,7 @@ export function EnhancementPicker() {
                 title={tab.title}
                 className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                   typeFilter === tab.id
-                    ? 'text-blue-400 border-b-2 border-blue-400 bg-gray-800/50'
+                    ? 'text-[var(--color-link)] border-b-2 border-[var(--color-primary)] bg-gray-800/50'
                     : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/30'
                 }`}
               >
@@ -929,13 +929,13 @@ export function EnhancementPicker() {
                     <span className="text-xs text-gray-500 mr-1">Sort:</span>
                     <button
                       onClick={() => setIOSortBy('name')}
-                      className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'name' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-gray-200'}`}
+                      className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'name' ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]' : 'text-gray-400 hover:text-gray-200'}`}
                     >
                       A-Z
                     </button>
                     <button
                       onClick={() => setIOSortBy('level')}
-                      className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'level' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-gray-200'}`}
+                      className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'level' ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]' : 'text-gray-400 hover:text-gray-200'}`}
                     >
                       Level
                     </button>

@@ -108,6 +108,7 @@ export type EnhancementSchedule = 'A' | 'B' | 'C' | 'D';
  */
 const ASPECT_SCHEDULE_MAP: Record<string, EnhancementSchedule> = {
   // Schedule A (33.33% SO)
+  absorb: 'A',
   accuracy: 'A',
   confuse: 'A',
   damage: 'A',
@@ -431,6 +432,15 @@ export function getSetRarityMultiplier(category?: string, name?: string): number
  *      attribute effects like +Critical Hit% that count as 3 extra).
  *   2. Otherwise: max of the explicit `aspects.length` (+1 if `isProc`) and
  *      the slash-segment count of the piece name.
+ *
+ * Heal and Absorb share a single enhancement category in-game: the Healing
+ * enhancement boosts both attributes at the same value, so a piece listing
+ * both occupies just ONE aspect slot for the scheduling penalty. The data
+ * carries Absorb as its own aspect (and name segment) so it surfaces as a
+ * distinct enhanced stat, but it must not dilute the per-aspect value — e.g.
+ * "Heal/Absorb/Recharge" is a 2-aspect piece (26.5% @ L50), not 3 (21.2%),
+ * and a pure "Heal/Absorb" is a 1-aspect piece (42.4%), not 2. Collapse the
+ * pair in both the explicit-aspect and name-segment counts.
  */
 export function getEffectiveAspectCount(
   aspects: string[],
@@ -439,9 +449,12 @@ export function getEffectiveAspectCount(
   pieceName: string,
 ): number {
   if (totalAspects != null) return totalAspects;
-  const explicit = aspects.length + (isProc ? 1 : 0);
+  const aspectsHaveHealAbsorb = aspects.includes('Heal') && aspects.includes('Absorb');
+  const explicit = aspects.length + (isProc ? 1 : 0) - (aspectsHaveHealAbsorb ? 1 : 0);
   if (!pieceName) return explicit;
-  const nameSegments = pieceName.split('/').length;
+  const segments = pieceName.split('/');
+  const nameHasHealAbsorb = segments.includes('Heal') && segments.includes('Absorb');
+  const nameSegments = segments.length - (nameHasHealAbsorb ? 1 : 0);
   return Math.max(explicit, nameSegments);
 }
 

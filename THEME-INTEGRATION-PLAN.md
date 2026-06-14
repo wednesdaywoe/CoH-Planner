@@ -1,12 +1,14 @@
 # Theme Integration Plan — chrome alignment
 
-Status: **Phases 0–2 done** (2026-06-14). Tokens defined, `src/components/ui/`
+Status: **All phases (0–4) done** (2026-06-14). Tokens defined, `src/components/ui/`
 primitives migrated, the Rule-of-5 / Bonus-Cap warning highlights moved onto
-`--color-warning`, and the header/mobile chrome (`Header.tsx`,
-`MobileBottomNav.tsx`, stat-tile rings) migrated onto the Family-1 accent;
-typecheck + build clean throughout. **Phases 3–4 remain** (modals, info panels).
-Picks up from the theme work that added Hamidon / Resistance / Carnival and the
-shelved `imperial-light`.
+`--color-warning`, header/mobile chrome + power-selection/slot states + stat-tile
+rings migrated onto the Family-1 accent, the five flat themes retuned so their
+action accent contrasts the ramp (Resistance/Imperial formula), and the Phase-3
+modals + Phase-4 info panels migrated. Typecheck + build clean throughout.
+**Remaining/optional:** Light-theme (`imperial-light`) Family-2 `-fg` contrast
+overrides (decision #3 below) when that shelved theme is revived. Picks up from
+the theme work that added Hamidon / Resistance / Carnival.
 
 ## Goal
 
@@ -115,11 +117,31 @@ lives in `@theme` and stays put. This keeps green=success everywhere.
   `bg-[var(--color-primary)]/20` alpha pattern auto-derives the tint and
   re-hues per theme without a separate token.
 - **Phase 3 — modals** (`ExportImportModal`, `EnhancementPicker`, `FeedbackModal`,
-  `WelcomeModal`, `SetBonusLookupModal`). Map success/valid → `--color-success`,
-  primary actions/selection → `--color-primary`, info boxes → `--color-info`.
+  `WelcomeModal`, `SetBonusLookupModal`). **✅ DONE.** Success/valid →
+  `--color-success`, primary actions/selection/tabs/toggles/file-inputs →
+  `--color-primary`/`--color-link`, focus rings → `--color-ring`, info notes →
+  `--color-info`, caution notes (Mids "PLEASE READ") → `--color-warning`,
+  WelcomeModal status badges → danger/success/info/warning tokens. **Unified
+  selection sets that were partially color-coded:** the 3 top tabs
+  (Save/Load/Share = blue/amber/green), the 3-way import-source toggle +
+  file-buttons (Local/Mids/Game = blue/amber/cyan), and the FeedbackModal
+  feedback-type chips (bug/suggestion/other = red/blue/purple) all collapse to
+  the theme accent when active (labels carry the wayfinding). **Left as-is:**
+  `EnhancementPicker` is almost entirely stat/category/rarity color (out of
+  scope — only its type-filter tab + IO A-Z/Level sort toggles migrated); the
+  WelcomeModal `new` purple badge (no semantic token); one ambiguous
+  `text-emerald-300` popmenu description line; RarityBadge + aspect/category
+  colors everywhere.
 - **Phase 4 — info panels** (`EnhancementInfoContent`, `PowerInfoTooltip`,
-  `DamageBlock`). Mostly bucket 3 (stat-adjacent) — verify each accent is truly
-  chrome before migrating; leave anything that encodes a stat/damage type.
+  `DamageBlock`). **✅ DONE.** As expected, almost everything here is bucket 3 and
+  was LEFT: the effect-aspect color map (Endurance/Heal/Absorb/Control…),
+  green="enhanced value", green="set bonus active" (matches the untouched
+  `SetBonusDisplay` convention), proc-type colors, indigo pet indicators/box,
+  and the cyan damage-viz bar + ArcanaTime/proc value colors. Only genuine chrome
+  migrated → `--color-link`/`--color-primary`: the enhancement/power **name
+  headings** (the blue `<h3>` title accent + the proc-piece name), the
+  `DamageBlock` display-mode **toggle** active state, and the `PowerInfoTooltip`
+  **"Pinned (Shift)"** ring + label.
 
 ## Decisions to settle before/while doing this
 

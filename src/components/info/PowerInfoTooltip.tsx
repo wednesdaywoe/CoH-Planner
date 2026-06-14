@@ -415,7 +415,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     <div className="space-y-1.5 max-w-[320px]">
       {/* Header */}
       <div>
-        <h3 className="text-sm font-semibold text-blue-400 leading-tight">
+        <h3 className="text-sm font-semibold text-[var(--color-link)] leading-tight">
           {basePower.name}
           {hasEnhancements && (
             <span className="text-[10px] text-green-500 ml-1">(enhanced)</span>
@@ -1241,10 +1241,10 @@ export function PowerInfoTooltip() {
           className="fixed z-50 pointer-events-none"
           style={{ left: pinned.position.x, top: pinned.position.y }}
         >
-          <div ref={pinnedRef} className="ring-2 ring-sky-400/70 rounded-lg inline-block">
+          <div ref={pinnedRef} className="ring-2 ring-[var(--color-primary)]/70 rounded-lg inline-block">
             <TooltipBody content={pinned.content} />
           </div>
-          <div className="text-[11px] text-sky-300 text-center mt-0.5">Pinned (Shift)</div>
+          <div className="text-[11px] text-[var(--color-link)] text-center mt-0.5">Pinned (Shift)</div>
         </div>
       )}
       {showLive && infoPanelContent && (

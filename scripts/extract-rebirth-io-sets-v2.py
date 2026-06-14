@@ -396,10 +396,12 @@ ATTRIB_TO_ASPECT = {
     # In CoH every Heal-boosting enhancement also boosts Absorb, and the binary
     # encodes Absorb as its OWN Strength attrib on healing pieces (verified:
     # Panacea/Numina/etc. each carry HitPoints AND a distinct Absorb attrib).
-    # The planner treats Heal and Absorb as separate value-diluting aspects, so
-    # map the real attrib through rather than dropping it — otherwise a healing
-    # piece looks like 1 aspect (Heal) and over-values, and a regen would strip
-    # the Absorb the hand-data carries.
+    # Map the real attrib through rather than dropping it so Absorb surfaces as
+    # its own enhanced stat (and a regen doesn't strip the Absorb the hand-data
+    # carries). NOTE: Heal and Absorb do NOT dilute each other — they're the
+    # same enhancement category (one boost, two attributes), so the planner
+    # collapses the pair into a single aspect slot (getEffectiveAspectCount).
+    # A pure Heal piece is 1 aspect (42.4% @ L50), not 2.
     'Absorb':             'Absorb',
     'Endurance':          'EndMod',
     'DamageType':         'Damage',
