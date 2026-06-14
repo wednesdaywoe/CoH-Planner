@@ -268,9 +268,8 @@ export function PowerRow({
   // Shared between the stacked and inline layouts so both Category and
   // Chronological views render identical controls.
   const ACTION_BTN =
-    'w-6 h-6 flex items-center justify-center rounded text-slate-400 ' +
-    'opacity-100 md:opacity-60 md:group-hover:opacity-100 ' +
-    'hover:bg-slate-700/60 transition-colors flex-shrink-0';
+    'w-6 h-6 flex items-center justify-center rounded text-slate-200 ' +
+    'opacity-100 hover:bg-slate-700/60 transition-colors flex-shrink-0';
   const renderActions = () => (
     <div className="flex items-center gap-0.5 ml-1 flex-shrink-0">
       {onInfoClick && (
@@ -298,7 +297,7 @@ export function PowerRow({
       {showRemove && onRemove && (
         <button
           onClick={onRemove}
-          className={`${ACTION_BTN} hover:text-red-400`}
+          className={`${ACTION_BTN} ring-1 ring-slate-600/70 hover:ring-red-400/70 hover:text-red-400`}
           title="Remove power"
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -365,7 +365,7 @@ function AvailablePoolSection({
           </div>
           <button
             onClick={(e) => { e.stopPropagation(); onRemovePool(); }}
-            className="text-[10px] text-slate-600 hover:text-red-400 ml-1"
+            className="text-[10px] text-slate-200 hover:text-red-400 ml-1"
             title="Remove pool"
           >✕</button>
         </div>
@@ -421,7 +421,7 @@ function AvailablePoolSection({
             e.stopPropagation();
             onRemovePool();
           }}
-          className="text-xs text-slate-500 hover:text-slate-300"
+          className="text-xs text-slate-200 hover:text-red-400"
           title="Remove pool"
         >
           ✕
@@ -540,7 +540,7 @@ function AvailableEpicPoolSection({
           </div>
           <button
             onClick={(e) => { e.stopPropagation(); onRemovePool(); }}
-            className="text-[10px] text-slate-600 hover:text-red-400 ml-1"
+            className="text-[10px] text-slate-200 hover:text-red-400 ml-1"
             title="Remove epic pool"
           >✕</button>
         </div>
@@ -569,7 +569,7 @@ function AvailableEpicPoolSection({
             e.stopPropagation();
             onRemovePool();
           }}
-          className="text-xs text-slate-500 hover:text-slate-300"
+          className="text-xs text-slate-200 hover:text-red-400"
           title="Remove epic pool"
         >
           ✕
