@@ -3517,7 +3517,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Chance for Resurrect",
+        "name": "+Stealth",
         "num": 3,
         "proc": true,
         "unique": true
@@ -8662,7 +8662,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Chance for Resurrect",
+        "name": "+Stealth",
         "num": 3,
         "proc": true,
         "unique": true
@@ -26072,7 +26072,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Chance for Resurrect",
+        "name": "+Stealth",
         "num": 3,
         "proc": true,
         "unique": true
@@ -26928,7 +26928,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "aspects": [],
-        "name": "Chance for Resurrect",
+        "name": "+Stealth",
         "num": 3,
         "proc": true,
         "unique": true

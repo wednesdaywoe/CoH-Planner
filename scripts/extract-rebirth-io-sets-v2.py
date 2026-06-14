@@ -299,6 +299,17 @@ HC_PIECE_PATCHES: dict[str, dict[int, dict]] = {
                                   3: {'name': 'Knockback Protection', 'proc': True}},
     'reactive_defenses':         {6: {'name': '+Res(All)', 'proc': True}},
     'thrust':                    {4: {'name': 'Run/+Run Speed', 'proc': True}},
+    # Travel-set +Stealth globals. The stealth grant is a Create_Entity template,
+    # which CREATE_ENTITY_LABEL names "Resurrect" (correct for RFtG, wrong here) —
+    # yielding a bogus "Chance for Resurrect". Force the real "+Stealth" name +
+    # proc flag (findProcData resolves the effect by set name: Celerity → "Buff
+    # Stealth"; the others have explicit "<Set>: +Stealth" PROC_DATABASE keys).
+    'celerity':                  {3: {'name': '+Stealth', 'proc': True}},
+    'freebird':                  {3: {'name': '+Stealth', 'proc': True}},
+    'timespace_manipulation':    {3: {'name': '+Stealth', 'proc': True}},
+    'unbounded_leap':            {3: {'name': '+Stealth', 'proc': True}},
+    # EndMod/+Run Speed always-on global (the bin tagged it proc:false, name "EndMod").
+    'synapses_shock':            {6: {'name': 'EndMod/+Run Speed', 'proc': True}},
     'warp':                      {4: {'name': 'Range/+Perception', 'proc': True}},
     'launch':                    {4: {'name': 'Jump/+Jump Height/+Max Jump Height', 'proc': True}},
     # Stupefy #6 is a Chance-for-Knockback proc (not a global): the binary
@@ -545,7 +556,18 @@ _PROC_EFFECT_LABEL = {
     'Toxic_Dmg':          'Toxic Damage',
     'Psionic_Dmg':        'Psionic Damage',
     'Heal_Dmg':           'Heal',
-    'Create_Entity':      'Resurrect',  # Negative-scale Create_Entity = resurrect proc on RFtG-style sets
+    # Travel-set +Stealth globals (Celerity / Freebird / Unbounded Leap / Time &
+    # Space Manipulation) carry their stealth as StealthRadius_PVE/PVP (aspect
+    # Current, scale 30/300). Both collapse to one "Stealth" label.
+    'StealthRadius_PVE':  'Stealth',
+    'StealthRadius_PVP':  'Stealth',
+    # NB: Create_Entity is intentionally NOT mapped. It is a summon/FX/resurrect
+    # pseudopet marker whose real identity (Energy Font, Self Resurrect, the
+    # stealth FX entities) comes from HC_PIECE_PATCHES / PROC_DATABASE, never
+    # this heuristic. The |scale|=1.0 summon/resurrect markers are already
+    # dropped at the template level above; the leftover positive-scale stealth
+    # FX entities (0.5/0.8) used to fall through here and mislabel the piece
+    # "Chance for Resurrect" — now they're simply unlabeled and ignored.
 }
 
 

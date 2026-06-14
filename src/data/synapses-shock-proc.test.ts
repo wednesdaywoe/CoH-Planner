@@ -13,7 +13,7 @@ import { findProcData, getProcEffects } from '@/data/proc-data';
  * EndMod value to the 2-aspect modifier).
  */
 describe("Synapse's Shock #6 is a run-speed global proc", () => {
-  const piece = (IO_SETS_RAW as Record<string, { pieces: Array<Record<string, unknown>> }>)
+  const piece = (IO_SETS_RAW as unknown as Record<string, { pieces: Array<Record<string, unknown>> }>)
     .synapses_shock.pieces.find((p) => p.num === 6)!;
 
   it('is flagged as a proc with a +Run Speed name and 2-aspect dilution', () => {

@@ -320,6 +320,29 @@ parts that bit us:
   Sudden Acceleration / Imperial Might #6's -Knockback KB→knockdown) — §3 sign rule. The
   old extraction counted them as enhancement aspects (spurious Slow/Knockback). Proc
   pieces are detected by chance<1 / ppm>0 groups (§3), cross-server.
+- **Always-on global pieces must be flagged `proc: true` or their global silently
+  vanishes.** A hybrid global (enhances one aspect AND grants a passive bonus — LotG
+  "Defense/+Recharge", Gift of the Ancients / Thrust / Synapse's Shock run-speed) only
+  reaches the character through `collectAlwaysOnProcs`, which hard-gates on the slot's
+  `isProc` (= the piece's `proc` flag). The extractor is inconsistent about tagging these
+  X/+Y pieces — Thrust #4 came out `proc: true`, **Synapse's Shock #6 came out `proc: false`
+  with its name stripped to bare "EndMod"** (fixed 2026-06 → `proc:true`, name "EndMod/+Run
+  Speed", `totalAspects:2`; guard `src/data/synapses-shock-proc.test.ts`). Audit: of every
+  `type:"Global"` PROC_DATABASE entry, cross-check that its set has at least one `proc:true`
+  piece — Synapse's Shock was the only mis-flagged one whose effect is actually modeled.
+- **Known UNMODELED set globals (calc no-ops, not flag bugs).** Some specials have no
+  numeric effect wired up, so flipping `proc` does nothing:
+  - **ATO crit bonuses** — Scrapper's Strike "+Crit for ALL powers" and Critical Strikes
+    "chance for +Crit" both resolve to `category:"Special"` with **no value** in
+    `proc-globals.generated.ts`; `applyAlwaysOnProcBonuses` skips any effect with
+    `value === undefined`, and `applySingleProcEffect` has no `Special`/`Crit` case. So
+    neither ATO's crit reaches the calc today (Scrapper's Strike is additionally `proc:false`,
+    but fixing that alone wouldn't help). Modeling ATO crit-chance is a feature, not a data fix.
+  - **Hypersonic "Fly/+Fly Magnitude"** and **Experienced Marksman "Range"** — zero
+    PROC_DATABASE entries, and `FlyMagnitude` isn't even a category `applySingleProcEffect`
+    handles (supported: Recovery, Regeneration, Endurance, Heal, MaxHP, Defense, Resistance,
+    ToHit, Recharge, RunSpeed, MezResist, SlowResistance, RechargeResistance,
+    KnockbackProtection, Stealth). Their specials are entirely unmodeled.
 
 ## 12. Deriving structured non-power data from the binary (archetypes, classes, …)
 
