@@ -118,7 +118,8 @@
       "Bash(command -v supabase)",
       "Bash(supabase --version)",
       "Bash(supabase functions *)",
-      "Bash(bash /tmp/analyze.sh)"
+      "Bash(bash /tmp/analyze.sh)",
+      "Bash(bash /tmp/analyze_accent_colors.sh)"
     ],
     "additionalDirectories": [
       "/tmp"
