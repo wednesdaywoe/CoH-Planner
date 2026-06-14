@@ -16,7 +16,11 @@ export type ColorThemeId =
   | 'paragon'
   | 'menace'
   | 'imperial'
-  | 'renegade';
+  | 'imperial-light'
+  | 'renegade'
+  | 'hamidon'
+  | 'resistance'
+  | 'carnival';
 
 export interface ColorTheme {
   id: ColorThemeId;
@@ -102,6 +106,24 @@ export const COLOR_THEMES: Record<ColorThemeId, ColorTheme> = {
       highlight: '#D8D4C8',
     },
   },
+  // WIP / shelved — kept in the registry but omitted from COLOR_THEME_ORDER so
+  // it does not appear in the picker yet (see the note there). First pass at a
+  // light theme via an inverted ramp; needs more work before it ships.
+  'imperial-light': {
+    id: 'imperial-light',
+    label: 'Imperial Light',
+    tagline: 'Praetoria, by day',
+    description:
+      'The marble gleams. Don\'t look underground.',
+    swatch: {
+      base: '#ECEAE2',
+      surface: '#D8D4C8',
+      panel: '#C6C4BA',
+      primary: '#C8A840',
+      accent: '#3F6E9E',
+      highlight: '#18191F',
+    },
+  },
   renegade: {
     id: 'renegade',
     label: 'Renegade',
@@ -117,6 +139,51 @@ export const COLOR_THEMES: Record<ColorThemeId, ColorTheme> = {
       highlight: '#C7BBDF',
     },
   },
+  hamidon: {
+    id: 'hamidon',
+    label: 'Hamidon',
+    tagline: 'The Devouring Girth',
+    description:
+      'I\'m not saying he\'s right, but he makes a good jello.',
+    swatch: {
+      base: '#050E0C',
+      surface: '#081A14',
+      panel: '#0D2E22',
+      primary: '#0FA876',
+      accent: '#D4A820',
+      highlight: '#D6F0E4',
+    },
+  },
+  resistance: {
+    id: 'resistance',
+    label: 'Resistance',
+    tagline: 'Underground Praetoria',
+    description:
+      'Didn\'t drink the water.',
+    swatch: {
+      base: '#0E0C0A',
+      surface: '#1C1814',
+      panel: '#2C2620',
+      primary: '#1E88D8',
+      accent: '#B86820',
+      highlight: '#E5DFD7',
+    },
+  },
+  carnival: {
+    id: 'carnival',
+    label: 'Carnival',
+    tagline: 'Carnival of Shadows',
+    description:
+      'The mask stays on.',
+    swatch: {
+      base: '#15111F',
+      surface: '#221A33',
+      panel: '#34264C',
+      primary: '#7A28A0',
+      accent: '#E0207A',
+      highlight: '#C8C0D8',
+    },
+  },
 };
 
 /** Ordered list for rendering the picker. Sidekick (default) first. */
@@ -125,7 +192,15 @@ export const COLOR_THEME_ORDER: ColorThemeId[] = [
   'paragon',
   'menace',
   'imperial',
+  // 'imperial-light' — WIP, hidden from the picker. The inverted-ramp light
+  // theme works for the bulk of the UI, but toggles, some menu buttons, and the
+  // color-coded stats still have contrast rough edges on a light canvas that
+  // need proper theme wiring. Re-add this id here to expose it again. The
+  // theme's CSS lives under [data-theme='imperial-light'] in index.css.
   'renegade',
+  'hamidon',
+  'resistance',
+  'carnival',
 ];
 
 export const DEFAULT_COLOR_THEME: ColorThemeId = 'sidekick';

@@ -117,7 +117,8 @@
       "Bash(deno check *)",
       "Bash(command -v supabase)",
       "Bash(supabase --version)",
-      "Bash(supabase functions *)"
+      "Bash(supabase functions *)",
+      "Bash(bash /tmp/analyze.sh)"
     ],
     "additionalDirectories": [
       "/tmp"

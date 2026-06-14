@@ -232,6 +232,50 @@ body {
   --color-link: #6FA0CC;
 }
 
+/* --- Imperial Light — Praetoria by day (inverted Imperial ramp: light marble) ---
+   This is the app's first LIGHT theme. The gray/slate ramp is the reverse of
+   Imperial's, so the darkest steps (used by components for backgrounds) resolve
+   to light marble and the lightest steps (used for text) resolve to near-black.
+   Stat colors (text-*-400) and any hardcoded text-white/bg-black still assume a
+   dark canvas — see the light-theme audit before trusting contrast everywhere. */
+[data-theme='imperial-light'] {
+  --color-gray-50:  #0E0F12;  --color-slate-50:  #0E0F12;
+  --color-gray-100: #131419;  --color-slate-100: #131419;
+  --color-gray-200: #18191F;  --color-slate-200: #18191F;
+  --color-gray-300: #25272E;  --color-slate-300: #25272E;
+  --color-gray-400: #3A3C44;  --color-slate-400: #3A3C44;
+  --color-gray-500: #5A5C64;  --color-slate-500: #5A5C64;
+  --color-gray-600: #8C8D88;  --color-slate-600: #8C8D88;
+  --color-gray-700: #ACABA2;  --color-slate-700: #ACABA2;
+  --color-gray-800: #C6C4BA;  --color-slate-800: #C6C4BA;
+  --color-gray-900: #D8D4C8;  --color-slate-900: #D8D4C8;
+  --color-gray-950: #ECEAE2;  --color-slate-950: #ECEAE2;
+
+  --color-sk-magenta: #3F6E9E;
+  --color-primary: #C8A840;
+  --color-primary-hover: #AE9032;
+  --color-primary-fg: #15140F;
+  --color-link: #2E5E8C;
+
+  /* Light-canvas fixes for literals that assume a dark background. Scoped to
+     this theme only — the dark themes are untouched.
+       • `text-white`/`bg-white` flip to near-black via --color-white so bright
+         text stays readable on marble (covers ~170 hardcoded text-white sites
+         at once). --color-black is left alone so modal bg-black/70 still dims.
+       • The stat accents that wash out on near-white (yellow=accuracy/tohit,
+         amber=summon/speed, orange=resistance/end-cost, blue=recovery/recharge,
+         cyan/sky=recovery/fly) drop to readable shades while keeping their hue,
+         so the global stat semantics (yellow=accuracy) survive without editing
+         stat-colors.ts. Red/pink/green/purple already read on light. */
+  --color-white: #18191F;
+  --color-yellow-400: #A16207;  --color-yellow-300: #A16207;
+  --color-amber-400:  #B45309;  --color-amber-300:  #B45309;
+  --color-orange-400: #C2410C;  --color-orange-300: #C2410C;
+  --color-blue-400:   #2563EB;  --color-blue-300:   #2563EB;
+  --color-cyan-400:   #0E7490;
+  --color-sky-400:    #0369A1;
+}
+
 /* --- Renegade — Rogue / Vigilante (Rogue purple / Vanguard teal) --- */
 [data-theme='renegade'] {
   --color-gray-50:  #ECE8F5;  --color-slate-50:  #ECE8F5;
@@ -251,4 +295,67 @@ body {
   --color-primary-hover: #5840A0;
   --color-primary-fg: #ffffff;
   --color-link: #B3A6D8;
+}
+
+/* --- Hamidon — the Devouring Earth (Bio teal / Hami gold) --- */
+[data-theme='hamidon'] {
+  --color-gray-50:  #EAF7F1;  --color-slate-50:  #EAF7F1;
+  --color-gray-100: #D6F0E4;  --color-slate-100: #D6F0E4;
+  --color-gray-200: #B5E2CF;  --color-slate-200: #B5E2CF;
+  --color-gray-300: #8BCEB3;  --color-slate-300: #8BCEB3;
+  --color-gray-400: #5BB291;  --color-slate-400: #5BB291;
+  --color-gray-500: #1F8763;  --color-slate-500: #1F8763;
+  --color-gray-600: #145C44;  --color-slate-600: #145C44;
+  --color-gray-700: #0D2E22;  --color-slate-700: #0D2E22;
+  --color-gray-800: #081A14;  --color-slate-800: #081A14;
+  --color-gray-900: #061310;  --color-slate-900: #061310;
+  --color-gray-950: #050E0C;  --color-slate-950: #050E0C;
+
+  --color-sk-magenta: #D4A820;
+  --color-primary: #0FA876;
+  --color-primary-hover: #0C8A60;
+  --color-primary-fg: #04140E;
+  --color-link: #4FD1A8;
+}
+
+/* --- Resistance — underground Praetoria (Electric blue / rust grime) --- */
+[data-theme='resistance'] {
+  --color-gray-50:  #F2EFEA;  --color-slate-50:  #F2EFEA;
+  --color-gray-100: #E5DFD7;  --color-slate-100: #E5DFD7;
+  --color-gray-200: #D2C9BD;  --color-slate-200: #D2C9BD;
+  --color-gray-300: #B5A998;  --color-slate-300: #B5A998;
+  --color-gray-400: #908373;  --color-slate-400: #908373;
+  --color-gray-500: #706458;  --color-slate-500: #706458;
+  --color-gray-600: #4A4138;  --color-slate-600: #4A4138;
+  --color-gray-700: #2C2620;  --color-slate-700: #2C2620;
+  --color-gray-800: #1C1814;  --color-slate-800: #1C1814;
+  --color-gray-900: #14110E;  --color-slate-900: #14110E;
+  --color-gray-950: #0E0C0A;  --color-slate-950: #0E0C0A;
+
+  --color-sk-magenta: #B86820;
+  --color-primary: #1E88D8;
+  --color-primary-hover: #1A74BA;
+  --color-primary-fg: #ffffff;
+  --color-link: #5AA8E8;
+}
+
+/* --- Carnival of Shadows (Carnival purple / crimson pink, blue-grey pallor) --- */
+[data-theme='carnival'] {
+  --color-gray-50:  #F4F1F8;  --color-slate-50:  #F4F1F8;
+  --color-gray-100: #E4DEEC;  --color-slate-100: #E4DEEC;
+  --color-gray-200: #C8C0D8;  --color-slate-200: #C8C0D8;
+  --color-gray-300: #A79EBE;  --color-slate-300: #A79EBE;
+  --color-gray-400: #847A99;  --color-slate-400: #847A99;
+  --color-gray-500: #635877;  --color-slate-500: #635877;
+  --color-gray-600: #51436B;  --color-slate-600: #51436B;
+  --color-gray-700: #34264C;  --color-slate-700: #34264C;
+  --color-gray-800: #221A33;  --color-slate-800: #221A33;
+  --color-gray-900: #1B1628;  --color-slate-900: #1B1628;
+  --color-gray-950: #15111F;  --color-slate-950: #15111F;
+
+  --color-sk-magenta: #E0207A;
+  --color-primary: #7A28A0;
+  --color-primary-hover: #661F86;
+  --color-primary-fg: #ffffff;
+  --color-link: #C58AE0;
 }
