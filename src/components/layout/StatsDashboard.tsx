@@ -31,12 +31,13 @@ export { STAT_DEFINITIONS };
 
 // Dashboard display sections. Stat→section placement is single-sourced via
 // STAT_CATEGORY (stat-definitions.ts); this only names the sections and maps
-// the canonical categories into them — the dashboard folds Offense + Movement
-// into one compact "General" tile.
+// the canonical categories into them — the compact "General" tile folds in
+// Stealth/Perception alongside Offense, and Movement folds in alongside
+// Health/Endurance under "Survival & Mobility". The detailed/config modals
+// keep these as separate sections.
 const DASHBOARD_SECTIONS: { name: string; categories: StatCategory[] }[] = [
-  { name: 'General', categories: ['offense', 'movement'] },
-  { name: 'Health & Endurance', categories: ['health-endurance'] },
-  { name: 'Stealth & Perception', categories: ['stealth-perception'] },
+  { name: 'General', categories: ['offense', 'stealth-perception'] },
+  { name: 'Survival & Mobility', categories: ['health-endurance', 'movement'] },
   { name: 'Defense', categories: ['defense'] },
   { name: 'Resistance', categories: ['resistance'] },
   { name: 'Status Protection', categories: ['status-protection'] },

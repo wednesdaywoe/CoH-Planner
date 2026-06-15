@@ -229,8 +229,7 @@ function buildStatsHTML(g: GlobalBonuses): string {
       ${statSection('Offense', offense)}
       ${statSection('Defense', defense)}
       ${statSection('Resistance', resistance)}
-      ${statSection('Health & Endurance', health)}
-      ${statSection('Movement', movement)}
+      ${statSection('Survival & Mobility', health + movement)}
       ${statSection('Mez Protection', protection)}
       ${statSection('Debuff Resistance', debuffRes)}
     </div>`;

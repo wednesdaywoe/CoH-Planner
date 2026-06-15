@@ -33,8 +33,7 @@ import type { SharedBuild } from '@/types/shared';
 // Resistance".
 const DETAILED_SECTIONS: { name: string; categories: StatCategory[] }[] = [
   { name: 'Offense', categories: ['offense'] },
-  { name: 'Health & Endurance', categories: ['health-endurance'] },
-  { name: 'Movement', categories: ['movement'] },
+  { name: 'Survival & Mobility', categories: ['health-endurance', 'movement'] },
   { name: 'Stealth & Perception', categories: ['stealth-perception'] },
   { name: 'Defense', categories: ['defense'] },
   { name: 'Damage Resistance', categories: ['resistance'] },
@@ -45,7 +44,7 @@ const DETAILED_SECTIONS: { name: string; categories: StatCategory[] }[] = [
 
 // Which stats the detailed sheet shows. It uses the `prot_*` magnitude variants
 // for status protection (not the compact `mez_*`) and omits End Cost / Net End
-// (those live on the dashboard's Health & Endurance tile). Order is irrelevant
+// (those live on the dashboard's Survival & Mobility tile). Order is irrelevant
 // here — groupStatsBySection orders within each section by the canonical
 // STAT_SECTIONS order.
 const DETAILED_STATS: string[] = [

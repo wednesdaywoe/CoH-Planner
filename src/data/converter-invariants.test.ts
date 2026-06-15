@@ -104,4 +104,32 @@ describe('generated-data invariants (committed; CI-runnable, no raw data)', () =
       .filter((r) => !PVP_MEZ_ALLOWLIST.has(r));
     expect(offenders).toEqual([]);
   });
+
+  // Every toggle with an endurance cost must carry its `activatePeriod` (tick
+  // period). End/sec = endurance / activatePeriod; when the field is missing the
+  // runtime transform falls back to 0.5s, overcounting any toggle whose real
+  // period differs (Oppressive Gloom ticks every 2.0s → its 0.156 cost is 0.08/s,
+  // not the 0.31/s the 0.5 default produced). The epic-pools converter once
+  // dropped this field for all 75 epic toggles; this locks it in for the
+  // single-object epic-pools / power-pools generated files in both datasets.
+  it('every endurance-costing toggle carries activatePeriod (no 0.5s fallback)', () => {
+    const offenders: string[] = [];
+    for (const ds of DATASETS) {
+      for (const name of ['epic-pools.ts', 'power-pools.ts']) {
+        const file = path.join(DATASETS_DIR, ds, 'generated', name);
+        if (!fs.existsSync(file)) continue;
+        const m = read(file).match(/export\s+const\s+\w+\s*=\s*(\{[\s\S]*\})\s*(?:as\s+const)?\s*;?\s*$/);
+        if (!m) continue;
+        const obj = JSON.parse(m[1]) as Record<string, { powers?: Array<{ internalName?: string; name?: string; powerType?: string; effects?: { endurance?: number; activatePeriod?: number } }> }>;
+        for (const poolId of Object.keys(obj)) {
+          for (const p of obj[poolId].powers ?? []) {
+            if (p.powerType === 'Toggle' && p.effects?.endurance != null && p.effects.activatePeriod == null) {
+              offenders.push(`${ds}/${poolId}/${p.internalName ?? p.name}`);
+            }
+          }
+        }
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
 });

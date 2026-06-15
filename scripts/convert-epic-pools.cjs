@@ -180,6 +180,11 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   if (rawJson.recharge_time) effects.recharge = rawJson.recharge_time;
   if (rawJson.endurance_cost) effects.endurance = rawJson.endurance_cost;
   if (rawJson.activation_time) effects.activationTime = rawJson.activation_time;
+  // Toggle tick period — endurance/sec = endurance / activatePeriod. Missing this
+  // field made every epic/patron toggle's endurance display fall back to 0.5s and
+  // overcount cost (Oppressive Gloom showed 0.31/s instead of its true 0.08/s, since
+  // its real tick period is 2.0s not 0.5s). Mirrors convert-pool-powers.cjs.
+  if (rawJson.activate_period) effects.activatePeriod = rawJson.activate_period;
   if (rawJson.effect_area && rawJson.effect_area !== 'None') {
     // Bin format uses "Sphere" for what the planner calls "AoE"; normalize.
     effects.effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;

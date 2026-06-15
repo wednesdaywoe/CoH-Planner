@@ -491,6 +491,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 2,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -777,6 +778,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -1322,6 +1324,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -1425,6 +1428,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
+          "activatePeriod": 10,
           "effectArea": "SingleTarget",
           "regenBuff": {
             "scale": 0.2,
@@ -1563,6 +1567,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -1666,6 +1671,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
+          "activatePeriod": 10,
           "effectArea": "SingleTarget",
           "regenBuff": {
             "scale": 0.2,
@@ -2310,6 +2316,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -2959,6 +2966,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.325,
           "activationTime": 2.37,
+          "activatePeriod": 0.5,
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 16,
@@ -3625,6 +3633,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.73,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -3680,6 +3689,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "mezResistance": {
             "knockback": {
@@ -3769,6 +3779,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 20,
           "endurance": 0.325,
           "activationTime": 2.03,
+          "activatePeriod": 0.5,
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 10,
@@ -3936,6 +3947,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.73,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -3991,6 +4003,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "mezResistance": {
             "knockback": {
@@ -4171,6 +4184,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 2,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -4276,6 +4290,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -4444,6 +4459,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -4492,6 +4508,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "mezResistance": {
             "knockback": {
@@ -4755,6 +4772,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 2,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -4808,6 +4826,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -5032,6 +5051,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -5282,6 +5302,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -5555,6 +5576,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 0.195,
           "activationTime": 1.17,
+          "activatePeriod": 2,
           "effectArea": "AoE",
           "radius": 12,
           "maxTargets": 16,
@@ -5637,6 +5659,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -6208,6 +6231,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "mezResistance": {
             "knockback": {
@@ -6283,6 +6307,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -6476,6 +6501,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 2,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -6581,6 +6607,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 30,
           "endurance": 0.1625,
           "activationTime": 1.03,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "onlyAffectsSelf": {
             "scale": 0.75,
@@ -6753,6 +6780,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -7035,6 +7063,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -7641,6 +7670,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -7962,6 +7992,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -8161,6 +8192,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -8271,6 +8303,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
+          "activatePeriod": 10,
           "effectArea": "SingleTarget",
           "regenBuff": {
             "scale": 0.2,
@@ -8414,6 +8447,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -8524,6 +8558,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
+          "activatePeriod": 10,
           "effectArea": "SingleTarget",
           "regenBuff": {
             "scale": 0.2,
@@ -8635,6 +8670,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -9021,6 +9057,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 1.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -9294,6 +9331,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 1.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -9587,6 +9625,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 1.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -9800,6 +9839,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 30,
           "endurance": 0.1625,
           "activationTime": 1.03,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "onlyAffectsSelf": {
             "scale": 0.75,
@@ -9870,6 +9910,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 40,
           "activationTime": 1.03,
+          "activatePeriod": 0.5,
           "effectArea": "AoE",
           "radius": 9,
           "maxTargets": 16,
@@ -9912,6 +9953,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -10315,6 +10357,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.73,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -10370,6 +10413,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "mezResistance": {
             "knockback": {
@@ -11536,6 +11580,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.195,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -12066,6 +12111,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.195,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -12374,6 +12420,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.195,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -12428,6 +12475,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
+          "activatePeriod": 10,
           "effectArea": "SingleTarget",
           "regenBuff": {
             "scale": 0.2,
@@ -13319,6 +13367,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "mezResistance": {
             "knockback": {
@@ -13396,6 +13445,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.73,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -13617,6 +13667,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "mezResistance": {
             "knockback": {
@@ -13694,6 +13745,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.73,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -13948,6 +14000,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 1.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -14462,6 +14515,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
+          "activatePeriod": 10,
           "effectArea": "SingleTarget",
           "maxHPBuff": {
             "scale": 0.75,
@@ -14623,6 +14677,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.312,
           "activationTime": 2.567,
+          "activatePeriod": 2,
           "effectArea": "AoE",
           "radius": 30,
           "maxTargets": 30,
@@ -15062,6 +15117,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
+          "activatePeriod": 10,
           "effectArea": "SingleTarget",
           "maxHPBuff": {
             "scale": 0.75,
@@ -15193,6 +15249,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.312,
           "activationTime": 2.567,
+          "activatePeriod": 2,
           "effectArea": "AoE",
           "radius": 30,
           "maxTargets": 255,
@@ -15410,6 +15467,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -15599,6 +15657,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 2,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -15961,6 +16020,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -16274,6 +16334,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -16326,6 +16387,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 0.195,
           "activationTime": 1.17,
+          "activatePeriod": 2,
           "effectArea": "AoE",
           "radius": 12,
           "maxTargets": 16,
@@ -16477,6 +16539,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
+          "activatePeriod": 10,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -16916,6 +16979,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -17182,6 +17246,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -17498,6 +17563,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -17771,6 +17837,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -17822,6 +17889,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 15,
           "endurance": 0.65,
           "activationTime": 1.67,
+          "activatePeriod": 4,
           "effectArea": "AoE",
           "radius": 8,
           "maxTargets": 10,
@@ -18082,6 +18150,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -18132,6 +18201,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 15,
           "endurance": 0.65,
           "activationTime": 1.67,
+          "activatePeriod": 4,
           "effectArea": "AoE",
           "radius": 8,
           "maxTargets": 10,
@@ -18319,6 +18389,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 2,
           "endurance": 0.1625,
           "activationTime": 0.67,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "resistance": {
             "smashing": {
@@ -18370,6 +18441,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 1.3,
           "activationTime": 1.67,
+          "activatePeriod": 4,
           "effectArea": "AoE",
           "radius": 8,
           "maxTargets": 10,
@@ -18405,6 +18477,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 60,
           "endurance": 1.95,
           "activationTime": 1.13,
+          "activatePeriod": 0.5,
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 5,
@@ -18883,6 +18956,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 240,
           "endurance": 0.1625,
           "activationTime": 0.07,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "mezResistance": {
             "knockback": {
@@ -20016,6 +20090,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 0.1625,
           "activationTime": 0.73,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "smashing": {
@@ -21255,6 +21330,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.325,
           "activationTime": 2.37,
+          "activatePeriod": 0.5,
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 16,
@@ -21491,6 +21567,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
@@ -21663,6 +21740,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
+          "activatePeriod": 10,
           "effectArea": "SingleTarget",
           "regenBuff": {
             "scale": 0.2,
@@ -21741,6 +21819,7 @@ export const EPIC_POOLS_RAW = {
           "recharge": 10,
           "endurance": 0.39,
           "activationTime": 1.17,
+          "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "tohitBuff": {
             "scale": 0.5,
