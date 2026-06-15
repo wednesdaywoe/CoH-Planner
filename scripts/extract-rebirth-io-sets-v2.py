@@ -132,6 +132,12 @@ ICON_OVERRIDES = {
     'libertys_belt':                   'Libertys_Belt.png',
     'rolling_barrage':                 'Rolling_Barrage.png',
     'synapses_agility':                'PowerOfSynapse.png',
+    # HC EndMod set whose icon was never in the curated set — without this it
+    # fell back to a stale value (sEfficiencyAdaptor.png), making it visually
+    # indistinguishable from Efficacy Adaptor. Icon extracted from the HC
+    # texture_gui.pigg (e_icon_preemptive_optimization.texture) and composited
+    # into public/img/Enhancements/IO Sets/sPreemptiveOptimization.png.
+    'preemptive_optimization':         'sPreemptiveOptimization.png',
 }
 
 # ---------------------------------------------------------------------

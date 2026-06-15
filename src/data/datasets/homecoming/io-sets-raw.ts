@@ -16453,7 +16453,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "sEfficiencyAdaptor.png",
+    "icon": "sPreemptiveOptimization.png",
     "maxLevel": 50,
     "minLevel": 21,
     "name": "Preemptive Optimization",
