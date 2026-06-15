@@ -446,7 +446,7 @@ function LevelUpModeButton() {
 
 // ---- Inline Level Slider ----
 
-function HeaderLevelSlider() {
+export function HeaderLevelSlider() {
   const build = useBuildStore((s) => s.build);
   const level = build.level;
   const setLevel = useBuildStore((s) => s.setLevel);

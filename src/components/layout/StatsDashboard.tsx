@@ -5,12 +5,11 @@
  */
 
 import { useEffect, useMemo } from 'react';
-import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
+import { useCalculatedStats, useCharacterCalculation, useBuildBudget } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { formatBonusValue } from '@/utils/set-bonus-format';
-import { getArchetype, getTotalSlotsAtLevel, getPowerPicksAtLevel } from '@/data';
-import { countPlacedBudgetSlots } from '@/utils/slot-levels';
+import { getArchetype } from '@/data';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal } from '@/components/modals';
@@ -223,24 +222,8 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const breakdowns = calcResult.breakdown;
   const globalBonuses = calcResult.globalBonuses;
 
-  // Calculate power and slot counts (exclude auto-granted form sub-powers)
-  const countNonGranted = (powers: { isAutoGranted?: boolean }[]) =>
-    powers.filter(p => !p.isAutoGranted).length;
-  const currentPowerCount =
-    countNonGranted(build.primary.powers) +
-    countNonGranted(build.secondary.powers) +
-    build.pools.reduce((sum, pool) => sum + countNonGranted(pool.powers), 0) +
-    (build.epicPool ? countNonGranted(build.epicPool.powers) : 0);
-  // Slots that consume the level-up budget (the "/67"). Excludes each power's
-  // free base slot and any auto-granted freebie slots (Rebirth Health/Stamina).
-  const currentSlotCount = countPlacedBudgetSlots(build);
-
-  // Budgets are level-scoped: a level-32 character hasn't yet earned the full
-  // 24 picks / 67 slots, so the denominators track what build.level has granted
-  // so far (both reach their level-50 max). This makes it possible to allocate
-  // the exact count a character of that level would actually have.
-  const powerBudget = getPowerPicksAtLevel(build.level);
-  const slotBudget = getTotalSlotsAtLevel(build.level);
+  // Level-scoped power-pick and slot budgets (shared with the mobile build bar).
+  const { currentPowerCount, powerBudget, currentSlotCount, slotBudget } = useBuildBudget();
 
   // Effective movement caps — travel toggles (Super Speed / Mighty Leap / Fly /
   // Afterburner / etc.) raise the cap of their corresponding stat while active,

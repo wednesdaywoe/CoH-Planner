@@ -29,6 +29,10 @@ import type { IOSet, IOSetPiece, EnhancementStatType, SpecialEnhancementDef, IOS
 import { getSetTrackedMatches } from '@/data/set-bonus-index';
 import { getEnhancementOutline } from '@/utils/enhancement-outline';
 
+// Max finger travel (px) between touchstart and touchend still counted as a tap
+// rather than a scroll. Generous enough for thumbs on a moving list.
+const TAP_MOVE_TOLERANCE = 12;
+
 type EnhancementTypeFilter = 'io-sets' | 'generic' | 'special' | 'origin';
 
 // Sidebar filter can be 'all', a category name, or a special group
@@ -577,20 +581,34 @@ export function EnhancementPicker() {
     resetDrag();
   };
 
-  // Touch handlers — tap toggles in selectMode, otherwise tap slots immediately.
-  // No drag: React touch listeners are passive so preventDefault in onTouchMove
-  // silently fails and the page scrolls instead of tracking the drag. The sticky
-  // action bar provides an explicit commit path that works reliably on touch.
-  const handlePieceTouchStart = (_set: IOSet, _pieceIndex: number, _e: React.TouchEvent) => {
-    // Intentionally empty — tap handled on touchEnd to avoid double-firing with click
+  // Touch handlers — tap toggles in selectMode, otherwise taps slot immediately.
+  // The piece list scrolls freely (listeners are passive, so we never
+  // preventDefault during the gesture), and we discriminate tap-from-scroll at
+  // touchEnd by how far the finger traveled. Without this, lifting your finger
+  // over a piece mid-scroll slots it and closes the picker — the "fat thumb"
+  // trap a user reported.
+  const pieceTouchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  const handlePieceTouchStart = (_set: IOSet, _pieceIndex: number, e: React.TouchEvent) => {
+    const t = e.touches[0];
+    pieceTouchStartRef.current = t ? { x: t.clientX, y: t.clientY } : null;
   };
 
   const handlePieceTouchMove = (_e: React.TouchEvent) => {
-    // No-op — touch-drag removed (see comment above)
+    // No-op — movement is measured at touchEnd from changedTouches.
   };
 
   const handlePieceTouchEnd = (set: IOSet, pieceIndex: number, e: React.TouchEvent) => {
-    e.preventDefault(); // Prevent the synthetic click from double-firing
+    // If the finger traveled past the tap tolerance, it was a scroll — ignore it
+    // (don't slot, and don't preventDefault; let the scroll gesture stand).
+    const start = pieceTouchStartRef.current;
+    pieceTouchStartRef.current = null;
+    const t = e.changedTouches[0];
+    if (start && t && Math.hypot(t.clientX - start.x, t.clientY - start.y) > TAP_MOVE_TOLERANCE) {
+      return;
+    }
+
+    e.preventDefault(); // Genuine tap — prevent the synthetic click double-firing
 
     if (selectMode) {
       toggleShiftSelect(set, pieceIndex);

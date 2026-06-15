@@ -32,3 +32,5 @@ export { useSlotLevels } from './useSlotLevels';
 export { useIsTouchDevice, isTouchDevice } from './useIsTouchDevice';
 export { useStatusCheck } from './useStatusCheck';
 export type { ActiveStatus } from './useStatusCheck';
+export { useBuildBudget } from './useBuildBudget';
+export type { BuildBudget } from './useBuildBudget';

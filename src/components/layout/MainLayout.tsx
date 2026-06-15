@@ -10,6 +10,7 @@ import { StatusBanner } from './StatusBanner';
 import { RuleOf5Banner } from './RuleOf5Banner';
 import { ExemplarModeBanner } from './ExemplarModeBanner';
 import { MobileBottomNav } from './MobileBottomNav';
+import { MobileBuildBar } from './MobileBuildBar';
 import { EnhancementPicker } from '@/components/enhancements/EnhancementPicker';
 import { PowerInfoTooltip } from '@/components/info';
 import { PowerInfoModal } from '@/components/modals';
@@ -78,6 +79,8 @@ export function MainLayout({ children }: MainLayoutProps) {
       <StatusBanner active={activeStatus} />
       <UpdateBanner />
       <Header />
+      {/* Mobile-only: keeps level + pick/slot budget pinned while the page scrolls */}
+      <MobileBuildBar />
       {/* StatsDashboard is accessible on mobile via the bottom nav's Dashboard tab */}
       <div className="hidden lg:block">
         <StatsDashboard />
