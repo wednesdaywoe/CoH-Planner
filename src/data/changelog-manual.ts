@@ -21,19 +21,13 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-14',
+    date: '2026-06-15',
     items: [
+      { message: 'Adjusted mobile UI: when adding/changing enhancements, there is now an expand button to list all the enhancements slotted in the power', type: 'update' },
       { message: 'Fixed a regression where split enhancmement aspects (health/absorb) were counted as two aspects', type: 'fix' },
       { message: "Fixed Synapse's Shock \"EndMod/+Run Speed\" — it now grants its global run-speed bonus and shows up in the proc list", type: 'fix' },
       { message: "Fixed the travel-set stealth procs (Celerity, Freebird, Time & Space Manipulation, Unbounded Leap) showing as \"Chance for Resurrect\" instead of \"+Stealth\"", type: 'fix' },
       { message: 'Added a few more themes', type: 'feat' },
-      { message: 'Fixed an issue that was silently setting public builds to private', type: 'feat' },
-      { message: 'Added color themes options! Go to Menu > Settings to pick your flavor', type: 'feat' },
-      { message: 'Fixed an issue where a build import that failed badly had no way to recover to a clean state, keeping the user stuck in the corrupted build state', type: 'fix' },
-      { message: 'Massive under-the-hood cleanup to remove legacy code and audit the data pipeline, surfaced a bug that was affecting all melee damage', type: 'update' },
-      { message: 'Added a new Attack Chain Builder tool! Look for it below the Dashboard', type: 'feat' },
-      { message: 'Chain Builder drag-and-drop re-ordering is wired up now', type: 'feat' },
-      { message: 'You can now save attack chains with your build and copy the chain sequence to clipboard', type: 'feat' },
     ]
   },
 

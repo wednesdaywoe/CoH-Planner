@@ -149,9 +149,11 @@ interface StatToggle { stat: string; label: string; colorOverride?: CategoryColo
 // via STAT_CATEGORY (stat-definitions.ts); this only names the toggle sections,
 // their accent color, and which canonical categories each contains.
 const SETTINGS_SECTIONS: { name: string; colorKey: CategoryColorKey; categories: StatCategory[] }[] = [
-  { name: 'Offense', colorKey: 'damage', categories: ['offense'] },
+  // "General" folds Stealth/Perception in with Offense to mirror the compact
+  // dashboard tile (see DASHBOARD_SECTIONS). Per-stat colorOverrides keep the
+  // stealth stats their own hue inside this damage-accented section.
+  { name: 'General', colorKey: 'damage', categories: ['offense', 'stealth-perception'] },
   { name: 'Survival & Mobility', colorKey: 'health', categories: ['health-endurance', 'movement'] },
-  { name: 'Stealth & Perception', colorKey: 'stealth', categories: ['stealth-perception'] },
   { name: 'Defense', colorKey: 'defense', categories: ['defense'] },
   { name: 'Resistance', colorKey: 'resistance', categories: ['resistance'] },
   { name: 'Status Protection', colorKey: 'mez', categories: ['status-protection'] },
@@ -183,9 +185,9 @@ const SETTINGS_STATS: StatToggle[] = [
   { stat: 'flyspeed', label: 'Fly Speed', colorOverride: 'movement' },
   { stat: 'jumpspeed', label: 'Jump Speed', colorOverride: 'movement' },
   { stat: 'jumpheight', label: 'Jump Height', colorOverride: 'movement' },
-  { stat: 'stealth_pve', label: 'Stealth (PvE)' },
-  { stat: 'stealth_pvp', label: 'Stealth (PvP)' },
-  { stat: 'perception_bonus', label: 'Perception' },
+  { stat: 'stealth_pve', label: 'Stealth (PvE)', colorOverride: 'stealth' },
+  { stat: 'stealth_pvp', label: 'Stealth (PvP)', colorOverride: 'stealth' },
+  { stat: 'perception_bonus', label: 'Perception', colorOverride: 'stealth' },
   { stat: 'defense_melee', label: 'Melee' },
   { stat: 'defense_ranged', label: 'Ranged' },
   { stat: 'defense_aoe', label: 'AoE' },

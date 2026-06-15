@@ -107,6 +107,11 @@ export function EnhancementPicker() {
   // click/tap toggle selection instead of slotting immediately.
   const [selectMode, setSelectMode] = useState(false);
 
+  // When opening the picker to change an already-slotted IO set piece, this
+  // holds that set's id so its row scrolls into view + briefly highlights.
+  // Null for empty slots / non-set enhancements (nothing specific to scroll to).
+  const [jumpToSetId, setJumpToSetId] = useState<string | null>(null);
+
   // Get the current power definition (unified lookup across all categories)
   const currentPower = useMemo(() => {
     if (!picker.currentPowerName || !picker.currentPowerSet) return null;
@@ -309,24 +314,75 @@ export function EnhancementPicker() {
   // `globalIOLevel` persists across picker opens (and across page reloads
   // via the UI store) so the user's most recent choice sticks instead of
   // snapping back every time the modal reopens.
+  // Map a set to the sidebar group it lives under (mirrors the sidebar buttons):
+  // its special-rarity group when applicable, else its standard set type.
+  const sidebarFilterForSet = (set: IOSet): SidebarFilter => {
+    if (set.type === 'Universal Damage Sets') return 'universal';
+    if (set.category === 'purple') return 'very-rare';
+    if (set.category === 'ato') return 'archetype';
+    if (set.category === 'pvp') return 'pvp';
+    // Niche event-rarity sets that are surfaced as standard categories (see
+    // standardCategories) live under their own type, not the Event group.
+    if (set.type === 'Universal Control Duration' || set.type === 'Rest Buff' || set.type === 'Universal Debuff' || set.type === 'Resurrection') {
+      return set.type;
+    }
+    if (set.category === 'event') return 'event';
+    return set.type;
+  };
+
+  // Derive the picker section (type tab + sidebar filter) that an already-slotted
+  // enhancement belongs to, so opening "change" lands on it directly.
+  const sectionForEnhancement = (
+    enh: Enhancement,
+  ): { typeFilter: EnhancementTypeFilter; sidebarFilter: SidebarFilter } | null => {
+    switch (enh.type) {
+      case 'io-generic':
+        return { typeFilter: 'generic', sidebarFilter: 'all' };
+      case 'origin':
+        return { typeFilter: 'origin', sidebarFilter: 'all' };
+      case 'special':
+        return { typeFilter: 'special', sidebarFilter: 'all' };
+      case 'io-set': {
+        const set = availableSets.find((s) => (s.id || s.name) === enh.setId);
+        return {
+          typeFilter: 'io-sets',
+          sidebarFilter: set ? sidebarFilterForSet(set) : 'all',
+        };
+      }
+    }
+  };
+
   const prevIsOpen = useRef(false);
   useEffect(() => {
     if (picker.isOpen && !prevIsOpen.current) {
-      const remembered = picker.currentPowerName
-        ? lastPickerFilterByPower[picker.currentPowerName]
-        : undefined;
-      if (remembered) {
-        setTypeFilter(remembered.typeFilter as EnhancementTypeFilter);
-        setSidebarFilter(remembered.sidebarFilter as SidebarFilter);
-      } else if (primaryCategory) {
-        setTypeFilter('io-sets');
-        setSidebarFilter(primaryCategory);
+      // Changing a filled slot → jump straight to that enhancement's section
+      // (and, for IO sets, scroll its set into view). Empty slots have no
+      // specific target, so fall back to the remembered / primary category.
+      const slots = picker.virtualSlots ?? currentPowerSlots;
+      const existing = slots[picker.currentSlotIndex] as Enhancement | null | undefined;
+      const section = existing ? sectionForEnhancement(existing) : null;
+      if (section) {
+        setTypeFilter(section.typeFilter);
+        setSidebarFilter(section.sidebarFilter);
+        setJumpToSetId(existing?.type === 'io-set' ? (existing.setId ?? null) : null);
+      } else {
+        const remembered = picker.currentPowerName
+          ? lastPickerFilterByPower[picker.currentPowerName]
+          : undefined;
+        if (remembered) {
+          setTypeFilter(remembered.typeFilter as EnhancementTypeFilter);
+          setSidebarFilter(remembered.sidebarFilter as SidebarFilter);
+        } else if (primaryCategory) {
+          setTypeFilter('io-sets');
+          setSidebarFilter(primaryCategory);
+        }
+        setJumpToSetId(null);
       }
       setShiftSelected(new Map());
       setStackedSelected(new Map());
     }
     prevIsOpen.current = picker.isOpen;
-  }, [picker.isOpen, picker.currentPowerName, primaryCategory, lastPickerFilterByPower]);
+  }, [picker.isOpen, picker.currentPowerName, picker.currentSlotIndex, picker.virtualSlots, currentPowerSlots, primaryCategory, lastPickerFilterByPower]);
 
   // Persist the filter the user lands on for this power so the next open
   // defaults to it. Runs whenever the active filter changes while open.
@@ -972,6 +1028,7 @@ export function EnhancementPicker() {
                 dragEndIndex={dragEndIndex}
                 isPieceInCurrentPower={isPieceInCurrentPower}
                 isShiftSelected={isShiftSelected}
+                jumpToSetId={jumpToSetId}
               />
             )}
 
@@ -1122,6 +1179,8 @@ interface IOSetsContentProps {
   dragEndIndex: number | null;
   isPieceInCurrentPower: (setId: string, pieceNum: number) => boolean;
   isShiftSelected: (set: IOSet, pieceIndex: number) => boolean;
+  /** Set id to scroll into view + highlight on open (changing a slotted piece). */
+  jumpToSetId?: string | null;
 }
 
 function IOSetsContent({
@@ -1138,6 +1197,7 @@ function IOSetsContent({
   dragEndIndex,
   isPieceInCurrentPower,
   isShiftSelected,
+  jumpToSetId,
 }: IOSetsContentProps) {
   if (sets.length === 0) {
     return <div className="text-center text-gray-500 py-8">No IO sets available for this power</div>;
@@ -1160,6 +1220,7 @@ function IOSetsContent({
           dragEndIndex={dragSet?.id === set.id ? dragEndIndex : null}
           isPieceInCurrentPower={isPieceInCurrentPower}
           isShiftSelected={isShiftSelected}
+          jumpTarget={!!jumpToSetId && (set.id || set.name) === jumpToSetId}
         />
       ))}
     </div>
@@ -1362,6 +1423,8 @@ interface IOSetRowProps {
   dragEndIndex: number | null;
   isPieceInCurrentPower: (setId: string, pieceNum: number) => boolean;
   isShiftSelected: (set: IOSet, pieceIndex: number) => boolean;
+  /** True when this is the slotted set being changed — scroll into view + flash. */
+  jumpTarget?: boolean;
 }
 
 function IOSetRow({
@@ -1377,7 +1440,21 @@ function IOSetRow({
   dragEndIndex,
   isPieceInCurrentPower,
   isShiftSelected,
+  jumpTarget,
 }: IOSetRowProps) {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [jumpFlash, setJumpFlash] = useState(false);
+
+  // On open-to-change, bring the slotted set into view and flash it so the user
+  // can see where the picker landed. Runs only when jumpTarget flips true.
+  useEffect(() => {
+    if (!jumpTarget) return;
+    rowRef.current?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    setJumpFlash(true);
+    const t = setTimeout(() => setJumpFlash(false), 1600);
+    return () => clearTimeout(t);
+  }, [jumpTarget]);
+
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
@@ -1430,11 +1507,14 @@ function IOSetRow({
   };
 
   return (
-    <div className={`rounded-lg p-2 ${
-      hasTrackedMatch
-        ? 'bg-blue-900/20 border-l-2 border-l-blue-500/70'
-        : 'bg-gray-800/40'
-    }`}>
+    <div
+      ref={rowRef}
+      className={`rounded-lg p-2 transition-shadow ${
+        hasTrackedMatch
+          ? 'bg-blue-900/20 border-l-2 border-l-blue-500/70'
+          : 'bg-gray-800/40'
+      } ${jumpFlash ? 'ring-2 ring-[var(--color-primary)] ring-offset-2 ring-offset-gray-900' : ''}`}
+    >
       {/* Set header */}
       <div className="flex items-center gap-1 sm:gap-2 mb-2 flex-wrap">
         <span className={`text-xs sm:text-sm font-medium ${getRarityColor(set.category)}`}>

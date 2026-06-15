@@ -33,8 +33,9 @@ export { STAT_DEFINITIONS };
 // STAT_CATEGORY (stat-definitions.ts); this only names the sections and maps
 // the canonical categories into them — the compact "General" tile folds in
 // Stealth/Perception alongside Offense, and Movement folds in alongside
-// Health/Endurance under "Survival & Mobility". The detailed/config modals
-// keep these as separate sections.
+// Health/Endurance under "Survival & Mobility". The Stats config modal mirrors
+// this same "General" grouping; the detailed-totals modal keeps Stealth &
+// Perception as its own section.
 const DASHBOARD_SECTIONS: { name: string; categories: StatCategory[] }[] = [
   { name: 'General', categories: ['offense', 'stealth-perception'] },
   { name: 'Survival & Mobility', categories: ['health-endurance', 'movement'] },

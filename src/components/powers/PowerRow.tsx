@@ -12,6 +12,7 @@ import { useIsTouchDevice, useOffendingPowerNames } from '@/hooks';
 import { Tooltip } from '@/components/ui';
 import { TouchableSlot } from './TouchableSlot';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
+import { SlottedEnhancementList } from './SlottedEnhancementList';
 import { PermaRing } from './PermaRing';
 import type { SlotSize } from './TouchableSlot';
 import { useBuildStore, useUIStore, type PowerCategory } from '@/stores';
@@ -197,6 +198,11 @@ export function PowerRow({
   const removableSlotCount = slots.filter((s, i) => i > 0 && s === null).length;
   const filledSlotCount = slots.filter(s => s !== null).length;
 
+  // Touch-only read-only inspection: expand a text list of slotted enhancements
+  // so users can check what's slotted without tapping a slot (which opens the
+  // editing picker). Desktop keeps hover-to-inspect, so this stays hidden there.
+  const [showSlotting, setShowSlotting] = useState(false);
+
   // Track drag state for slot highlighting
   const [dragHighlight, setDragHighlight] = useState<{ mode: 'slots' | 'enhancements'; count: number } | null>(null);
   const handleDragStateChange = useCallback((state: { mode: 'slots' | 'enhancements'; count: number } | null) => {
@@ -272,6 +278,29 @@ export function PowerRow({
     'opacity-100 hover:bg-slate-700/60 transition-colors flex-shrink-0';
   const renderActions = () => (
     <div className="flex items-center gap-0.5 ml-1 flex-shrink-0">
+      {isTouch && (
+        <button
+          onClick={() => setShowSlotting((v) => !v)}
+          className={`w-6 h-6 flex items-center justify-center rounded-md border transition-colors flex-shrink-0 text-[var(--color-primary)] ${
+            showSlotting
+              ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/30'
+              : 'border-[var(--color-primary)]/60 bg-[var(--color-primary)]/15 hover:bg-[var(--color-primary)]/25'
+          }`}
+          title={showSlotting ? 'Hide slotted enhancements' : 'Show slotted enhancements'}
+          aria-expanded={showSlotting}
+          aria-label="Show slotted enhancements"
+        >
+          <svg
+            className={`w-3.5 h-3.5 transition-transform ${showSlotting ? 'rotate-180' : ''}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      )}
       {onInfoClick && (
         <button
           onClick={onInfoClick}
@@ -427,6 +456,9 @@ export function PowerRow({
             </div>
           </div>
         </div>
+        {isTouch && showSlotting && (
+          <SlottedEnhancementList slots={slots} onSelectSlot={handleSlotClick} />
+        )}
       </div>
     );
   }
@@ -468,6 +500,10 @@ export function PowerRow({
         {renderSlots()}
         {renderToggle()}
       </div>
+
+      {isTouch && showSlotting && (
+        <SlottedEnhancementList slots={slots} onSelectSlot={handleSlotClick} />
+      )}
     </div>
   );
 }
