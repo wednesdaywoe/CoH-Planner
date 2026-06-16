@@ -561,9 +561,14 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
     allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
     isLocked: true,
     category: 'basic',
+    // Per powers.bin (HC + Rebirth, verified 2026-06-16): the basic Sprint and
+    // the prestige sprints (PowerSlide/Rush/Surge/Dash/Quick) use Melee_Ones for
+    // RunningSpeed (a flat +0.5 = +50%), NOT Melee_SpeedRunning — they are
+    // sprints, not travel powers — plus a small +0.1 JumpHeight (Melee_Ones).
     effects: {
       enduranceCost: 0.13,
-      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
   // Ninja Run and Beast Run are P2W travel toggles available to every
@@ -642,7 +647,8 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     category: 'prestige',
     effects: {
       enduranceCost: 0.13,
-      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
   {
@@ -661,7 +667,8 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     category: 'prestige',
     effects: {
       enduranceCost: 0.13,
-      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
   {
@@ -680,7 +687,8 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     category: 'prestige',
     effects: {
       enduranceCost: 0.13,
-      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
   {
@@ -699,7 +707,8 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     category: 'prestige',
     effects: {
       enduranceCost: 0.13,
-      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
   {
@@ -718,7 +727,8 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     category: 'prestige',
     effects: {
       enduranceCost: 0.13,
-      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+      runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
 ];

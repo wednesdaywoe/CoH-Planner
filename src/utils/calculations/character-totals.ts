@@ -1201,10 +1201,11 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Movement (top-level scalar form). Stack-aware.
+    // Movement (top-level scalar form). Stack-aware. Speed attribs scale by
+    // their AT table; jump height uses bare scale — see resolveMovementPercent.
     if (effects.runSpeed !== undefined) {
       const adjusted = adjustForStacking(effects.runSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'runSpeed', effects.maxStacks);
-      const value = extractScaleValue(adjusted) * 100;
+      const value = resolveMovementPercent(adjusted, 'runSpeed', archetypeId, buildLevel);
       global.runSpeed += value;
       addToBreakdown(breakdown, 'runSpeed', {
         name: power.name,
@@ -1215,7 +1216,7 @@ function applyActivePowerBonuses(
 
     if (effects.flySpeed !== undefined) {
       const adjusted = adjustForStacking(effects.flySpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'flySpeed', effects.maxStacks);
-      const value = extractScaleValue(adjusted) * 100;
+      const value = resolveMovementPercent(adjusted, 'flySpeed', archetypeId, buildLevel);
       global.flySpeed += value;
       addToBreakdown(breakdown, 'flySpeed', {
         name: power.name,
@@ -1226,7 +1227,7 @@ function applyActivePowerBonuses(
 
     if (effects.jumpHeight !== undefined) {
       const adjusted = adjustForStacking(effects.jumpHeight as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'jumpHeight', effects.maxStacks);
-      const value = extractScaleValue(adjusted) * 100;
+      const value = resolveMovementPercent(adjusted, 'jumpHeight', archetypeId, buildLevel);
       global.jumpHeight += value;
       addToBreakdown(breakdown, 'jumpHeight', {
         name: power.name,
@@ -1237,7 +1238,7 @@ function applyActivePowerBonuses(
 
     if (effects.jumpSpeed !== undefined) {
       const adjusted = adjustForStacking(effects.jumpSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'jumpSpeed', effects.maxStacks);
-      const value = extractScaleValue(adjusted) * 100;
+      const value = resolveMovementPercent(adjusted, 'jumpSpeed', archetypeId, buildLevel);
       global.jumpSpeed += value;
       addToBreakdown(breakdown, 'jumpSpeed', {
         name: power.name,
@@ -1265,7 +1266,7 @@ function applyActivePowerBonuses(
           // Stack-aware: stacksLinear uses the bare effect key (e.g. 'runSpeed'),
           // matching what classifyTemplateForStacking produces.
           const adjusted = adjustForStacking(val as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, type, effects.maxStacks);
-          const value = resolveScaledEffect(adjusted, archetypeId, buildLevel) * 100;
+          const value = resolveMovementPercent(adjusted, key, archetypeId, buildLevel);
           global[key] += value;
           addToBreakdown(breakdown, key, {
             name: power.name,
@@ -1733,6 +1734,32 @@ function resolveScaledEffect(
   return effect.scale * 0.10;
 }
 
+/**
+ * Resolve a movement effect to its displayed percentage (the value added to
+ * global.runSpeed/flySpeed/jumpSpeed/jumpHeight).
+ *
+ * Speed attribs (run/fly/jump SPEED) scale by their AT modifier table just like
+ * every other buff — e.g. Super Speed `RunningSpeed 1.0 × Melee_SpeedRunning`
+ * (3.5 at L50) = +350%, Ninja Run `0.4 × 3.5` = +140%. Verified against the
+ * Rebirth/HC `powers.bin`. The bare-scale reading (×100, no table) used here
+ * historically gave absurdly slow travel powers (Super Speed +100% ≈ 28 mph).
+ *
+ * Jump HEIGHT is the exception: its table (`Melee_Leap` ≈ 27.8 at L50) is NOT a
+ * percent multiplier — applying it would yield +695% for Ninja Run. Jump height
+ * uses the bare scale (Hurdle `0.06` → +6%, Ninja Run `0.25` → +25%), matching
+ * the bin's `Melee_Ones`-tabled Sprint jump (`0.1` → +10%) and long-standing
+ * intent.
+ */
+function resolveMovementPercent(
+  effect: ScalarOrScaled | undefined,
+  movementKey: string,
+  archetypeId: string,
+  level: number,
+): number {
+  if (movementKey === 'jumpHeight') return extractScaleValue(effect) * 100;
+  return resolveScaledEffect(effect, archetypeId, level) * 100;
+}
+
 function capitalizeFirst(str: string): string {
   if (str.toLowerCase() === 'aoe') return 'AoE';
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -1763,16 +1790,17 @@ function addToBreakdown(
 
 /**
  * Fitness power effects derived from INHERENT_FITNESS_POWERS scale data (levels.ts).
- * Each value = scale × 100 (percentage buff).
  *
- * Movement effects (runSpeed, flySpeed, jumpHeight) display as scale × 100 because
- * the speed tables (Melee_SpeedRunning, Melee_Leap, etc.) convert to ft/s for the
- * game physics engine, not for display. Buff effects (regenBuff, recoveryBuff) use
- * Melee_Ones tables (value 1.0), so scale × 1.0 × 100 = scale × 100 as well.
+ * Movement SPEED stats (runSpeed, flySpeed, jumpSpeed) are resolved at runtime
+ * through their AT table — Swift's RunningSpeed is `scale 0.1 × Melee_SpeedRunning`
+ * (3.5 at L50) = +35%, not the bare +10% — so the `value` below is only a
+ * fallback (see the FITNESS_MOVEMENT_STATS branch in applyFitnessPowerBonuses).
+ * Jump HEIGHT and the Melee_Ones buffs (regen, recovery) genuinely equal
+ * scale × 100, so their `value` is authoritative.
  *
- *   Swift:   runSpeed  { scale: 0.1,  table: 'Melee_SpeedRunning' } → 10%
- *            flySpeed  { scale: 0.1,  table: 'Melee_SpeedFlying' }  → 10%
- *   Hurdle:  jumpHeight { scale: 0.06, table: 'Melee_Leap' }        → 6%
+ *   Swift:   runSpeed  { scale: 0.1,  table: 'Melee_SpeedRunning' } → table-resolved (~35% @50)
+ *            flySpeed  { scale: 0.1,  table: 'Melee_SpeedFlying' }  → table-resolved (~14% @50)
+ *   Hurdle:  jumpHeight { scale: 0.06, table: 'Melee_Leap' }        → 6% (bare scale)
  *   Health:  regenBuff  { scale: 0.4,  table: 'Melee_Ones' }        → 40%
  *   Stamina: recoveryBuff { scale: 0.25, table: 'Melee_Ones' }      → 25%
  */
@@ -1781,6 +1809,9 @@ interface FitnessEffect {
   value: number;
   enhancementType: string;
 }
+
+/** Fitness stats whose `value` is a fallback — resolved via AT table at runtime. */
+const FITNESS_MOVEMENT_STATS = new Set<keyof GlobalBonuses>(['runSpeed', 'flySpeed', 'jumpSpeed', 'jumpHeight']);
 
 const FITNESS_POWER_EFFECTS: Record<string, FitnessEffect[]> = {
   'Swift': [
@@ -1835,8 +1866,21 @@ function applyFitnessPowerBonuses(
       // Get the enhancement multiplier for this effect's type
       const enhMultiplier = 1 + (enhBonuses[effect.enhancementType] || 0);
 
+      // Movement stats resolve through the AT table at the build level (Swift's
+      // RunningSpeed scales by Melee_SpeedRunning, etc.) just like active-power
+      // movement — see resolveMovementPercent. Non-movement stats (regen,
+      // recovery) keep their fixed Melee_Ones value. Falls back to the hardcoded
+      // value if the inherent def somehow lacks the effect.
+      let baseValue = effect.value;
+      if (FITNESS_MOVEMENT_STATS.has(effect.stat)) {
+        const movEffect = (power.effects as Record<string, ScalarOrScaled> | undefined)?.[effect.stat];
+        if (movEffect !== undefined) {
+          baseValue = resolveMovementPercent(movEffect, effect.stat, build.archetype.id || '', globalIOLevel);
+        }
+      }
+
       // Calculate final value: base * (1 + enhancement%)
-      const finalValue = effect.value * enhMultiplier;
+      const finalValue = baseValue * enhMultiplier;
 
       // Apply to global bonuses
       global[effect.stat] += finalValue;
@@ -3125,6 +3169,20 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
     for (const power of build.epicPool.powers) {
       powers.push(enrich(power, epicDef?.powers.find((p) => p.internalName === power.internalName)));
     }
+  }
+
+  // Inherent powers carry real self-buffs that must flow through the active-power
+  // loop — most importantly the movement toggles (Sprint, Ninja Run, Beast Run,
+  // prestige sprints), which otherwise contribute nothing to run/jump/fly speed.
+  // Skip categories that already have dedicated handling so they aren't counted
+  // twice: `fitness` (Swift/Hurdle/Health/Stamina → applyFitnessPowerBonuses) and
+  // `archetype` (Supremacy, Vigilance, … → the AT-specific inherent calcs). The
+  // stored inherent already carries effects/powerType from hydration, so it needs
+  // no powerset-def enrichment.
+  for (const power of build.inherents || []) {
+    const cat = (power as { inherentCategory?: string }).inherentCategory;
+    if (cat === 'fitness' || cat === 'archetype') continue;
+    powers.push(power as unknown as PowerWithToggle);
   }
 
   return powers;
