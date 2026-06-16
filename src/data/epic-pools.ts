@@ -15,6 +15,7 @@ import type {
 } from '@/types';
 import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_HC } from './datasets/homecoming/epic-pools-raw';
 import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_REBIRTH } from './datasets/rebirth/epic-pools-raw';
+import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_THUNDERSPY } from './datasets/thunderspy/epic-pools-raw';
 import { getActiveDataset } from './dataset';
 import { EPIC_POOL_LEVEL, EPIC_TIER_REQUIREMENTS } from './levels';
 
@@ -188,6 +189,7 @@ const _registryCache = new Map<string, EpicPoolRegistry>();
 function _resolveRawForDataset(datasetId: string) {
   switch (datasetId) {
     case 'rebirth': return EPIC_POOLS_RAW_REBIRTH;
+    case 'thunderspy': return EPIC_POOLS_RAW_THUNDERSPY;
     case 'homecoming':
     default: return EPIC_POOLS_RAW_HC;
   }

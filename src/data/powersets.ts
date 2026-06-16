@@ -9,6 +9,7 @@
 import type { Powerset, Power } from '@/types';
 import { MODULAR_POWERSETS as HC_POWERSETS_RAW } from './datasets/homecoming/powersets/index';
 import { MODULAR_POWERSETS as REBIRTH_POWERSETS } from './datasets/rebirth/powersets/index';
+import { MODULAR_POWERSETS as THUNDERSPY_POWERSETS } from './datasets/thunderspy/powersets/index';
 import { getActiveDataset } from './dataset';
 
 // ============================================
@@ -44,6 +45,8 @@ function getRegistry(): PowersetRegistry {
   switch (getActiveDataset().id) {
     case 'rebirth':
       return REBIRTH_POWERSETS;
+    case 'thunderspy':
+      return THUNDERSPY_POWERSETS;
     case 'homecoming':
     default:
       return HC_POWERSETS;

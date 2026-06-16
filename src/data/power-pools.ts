@@ -16,6 +16,7 @@ import type {
 } from '@/types';
 import { POWER_POOLS_RAW as POWER_POOLS_RAW_HC } from './datasets/homecoming/power-pools-raw';
 import { POWER_POOLS_RAW as POWER_POOLS_RAW_REBIRTH } from './datasets/rebirth/power-pools-raw';
+import { POWER_POOLS_RAW as POWER_POOLS_RAW_THUNDERSPY } from './datasets/thunderspy/power-pools-raw';
 import { getActiveDataset } from './dataset';
 import { POOL_UNLOCK_LEVEL, EARLY_TRAVEL_POWERS } from './levels';
 
@@ -179,6 +180,7 @@ const _registryCache = new Map<string, PowerPoolRegistry>();
 function _resolveRawForDataset(datasetId: string) {
   switch (datasetId) {
     case 'rebirth': return POWER_POOLS_RAW_REBIRTH;
+    case 'thunderspy': return POWER_POOLS_RAW_THUNDERSPY;
     case 'homecoming':
     default: return POWER_POOLS_RAW_HC;
   }

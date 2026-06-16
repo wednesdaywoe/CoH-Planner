@@ -260,6 +260,8 @@ export async function loadDataset(id: DatasetId): Promise<Dataset> {
           return (await import('./datasets/homecoming')).default;
         case 'rebirth':
           return (await import('./datasets/rebirth')).default;
+        case 'thunderspy':
+          return (await import('./datasets/thunderspy')).default;
         default: {
           const _exhaustive: never = id;
           throw new Error(`Unknown dataset: ${_exhaustive}`);
@@ -283,5 +285,6 @@ export function getAllDatasetMetadata(): Array<{ id: DatasetId; displayName: str
   return [
     { id: 'homecoming', displayName: 'Homecoming' },
     { id: 'rebirth', displayName: 'Rebirth' },
+    { id: 'thunderspy', displayName: 'Thunderspy' },
   ];
 }

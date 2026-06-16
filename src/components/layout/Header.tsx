@@ -41,13 +41,12 @@ const ORIGIN_OPTIONS = [
   { value: 'Technology', label: 'Technology' },
 ];
 
-// Rebirth is enabled — data tree, IO sets, scalar tables, and AT inherents
-// all landed alongside Stage B. Thunderspy stays gated until that dataset
-// has a parsed data tree.
+// Rebirth and Thunderspy are both enabled — each has a parsed data tree,
+// scalar tables, AT inherents, and (for Thunderspy) the custom Primalist AT.
 const SERVER_OPTIONS = [
   { value: 'homecoming', label: 'Homecoming' },
   { value: 'rebirth', label: 'Rebirth' },
-  { value: 'thunderspy', label: 'Thunderspy (Coming Soon)', disabled: true },
+  { value: 'thunderspy', label: 'Thunderspy' },
 ];
 
 // Archetype dropdown options. Mostly server-agnostic, but the lineup
@@ -90,6 +89,27 @@ const ARCHETYPE_OPTIONS_REBIRTH = [
   { value: 'warshade', label: 'Warshade' },
   { value: 'arachnos-soldier', label: 'Arachnos Soldier' },
   { value: 'arachnos-widow', label: 'Arachnos Widow' },
+];
+
+// Thunderspy lineup: standard ATs (no Sentinel/Guardian) plus the custom
+// Primalist form-shifter AT.
+const ARCHETYPE_OPTIONS_THUNDERSPY = [
+  { value: '', label: 'Select Archetype...' },
+  { value: 'blaster', label: 'Blaster' },
+  { value: 'controller', label: 'Controller' },
+  { value: 'defender', label: 'Defender' },
+  { value: 'scrapper', label: 'Scrapper' },
+  { value: 'tanker', label: 'Tanker' },
+  { value: 'brute', label: 'Brute' },
+  { value: 'corruptor', label: 'Corruptor' },
+  { value: 'dominator', label: 'Dominator' },
+  { value: 'mastermind', label: 'Mastermind' },
+  { value: 'stalker', label: 'Stalker' },
+  { value: 'peacebringer', label: 'Peacebringer' },
+  { value: 'warshade', label: 'Warshade' },
+  { value: 'arachnos-soldier', label: 'Arachnos Soldier' },
+  { value: 'arachnos-widow', label: 'Arachnos Widow' },
+  { value: 'primalist', label: 'Primalist' },
 ];
 
 function isPrimaryPowerset(powerset: Powerset): boolean {
@@ -323,6 +343,7 @@ function countManualPowerPicks(build: ReturnType<typeof useBuildStore.getState>[
 const DATASET_BADGE_VARIANT: Record<DatasetId, BadgeVariant> = {
   homecoming: 'cyan',
   rebirth: 'purple',
+  thunderspy: 'warning',
 };
 
 function DatasetBadge() {
@@ -692,7 +713,13 @@ function BuildIdentityPopover() {
             <Select
               id="archetype-select"
               name="archetype"
-              options={build.serverId === 'rebirth' ? ARCHETYPE_OPTIONS_REBIRTH : ARCHETYPE_OPTIONS_HC}
+              options={
+                build.serverId === 'rebirth'
+                  ? ARCHETYPE_OPTIONS_REBIRTH
+                  : build.serverId === 'thunderspy'
+                    ? ARCHETYPE_OPTIONS_THUNDERSPY
+                    : ARCHETYPE_OPTIONS_HC
+              }
               value={archetypeId || ''}
               onChange={handleArchetypeChange}
               className="w-full"

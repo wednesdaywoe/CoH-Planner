@@ -16,6 +16,7 @@ import type {
 } from '@/types';
 import { IO_SETS_RAW as IO_SETS_RAW_HC } from './datasets/homecoming/io-sets-raw';
 import { IO_SETS_RAW as IO_SETS_RAW_REBIRTH } from './datasets/rebirth/io-sets-raw';
+import { IO_SETS_RAW as IO_SETS_RAW_THUNDERSPY } from './datasets/thunderspy/io-sets-raw';
 import { getActiveDataset } from './dataset';
 
 // ============================================
@@ -240,6 +241,7 @@ const _registryCache = new Map<string, IOSetRegistry>();
 function _resolveRawForDataset(datasetId: string) {
   switch (datasetId) {
     case 'rebirth': return IO_SETS_RAW_REBIRTH;
+    case 'thunderspy': return IO_SETS_RAW_THUNDERSPY;
     case 'homecoming':
     default: return IO_SETS_RAW_HC;
   }

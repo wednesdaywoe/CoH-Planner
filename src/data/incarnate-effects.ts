@@ -31,13 +31,26 @@ import {
   // Genesis is Rebirth-only — Homecoming's generated file has no such export.
   GENERATED_GENESIS_EFFECTS as REBIRTH_GENESIS,
 } from './datasets/rebirth/generated/incarnate-effects';
+import {
+  GENERATED_ALPHA_EFFECTS as THUNDERSPY_ALPHA,
+  GENERATED_DESTINY_EFFECTS as THUNDERSPY_DESTINY,
+  GENERATED_HYBRID_EFFECTS as THUNDERSPY_HYBRID,
+  GENERATED_INTERFACE_EFFECTS as THUNDERSPY_INTERFACE,
+  GENERATED_JUDGEMENT_EFFECTS as THUNDERSPY_JUDGEMENT,
+  GENERATED_LORE_EFFECTS as THUNDERSPY_LORE,
+  // Thunderspy also ships a Genesis slot.
+  GENERATED_GENESIS_EFFECTS as THUNDERSPY_GENESIS,
+} from './datasets/thunderspy/generated/incarnate-effects';
 import { getActiveDataset } from './dataset';
 
-// Lazy per-dataset accessors. The active dataset isn't loaded yet at module
-// evaluation time, so we resolve on demand.
-function _isRebirth(): boolean {
-  return getActiveDataset().id === 'rebirth';
+/** Pick the per-dataset table for the active dataset (HC is the default). */
+function _pick3<T>(hc: T, rebirth: T, thunderspy: T): T {
+  const id = getActiveDataset().id;
+  return id === 'rebirth' ? rebirth : id === 'thunderspy' ? thunderspy : hc;
 }
+
+// Lazy per-dataset accessors. The active dataset isn't loaded yet at module
+// evaluation time, so we resolve on demand (see _pick3 above).
 
 // ============================================
 // TYPES
@@ -300,7 +313,7 @@ function alphaEffects(): Record<string, AlphaEffects> {
   const id = getActiveDataset().id;
   let r = _alphaCache.get(id);
   if (!r) {
-    r = (_isRebirth() ? REBIRTH_ALPHA : HC_ALPHA) as Record<string, AlphaEffects>;
+    r = _pick3(HC_ALPHA, REBIRTH_ALPHA, THUNDERSPY_ALPHA) as Record<string, AlphaEffects>;
     _alphaCache.set(id, r);
   }
   return r;
@@ -316,7 +329,7 @@ function destinyEffects(): Record<string, DestinyEffects> {
   const id = getActiveDataset().id;
   let r = _destinyCache.get(id);
   if (!r) {
-    r = (_isRebirth() ? REBIRTH_DESTINY : HC_DESTINY) as Record<string, DestinyEffects>;
+    r = _pick3(HC_DESTINY, REBIRTH_DESTINY, THUNDERSPY_DESTINY) as Record<string, DestinyEffects>;
     _destinyCache.set(id, r);
   }
   return r;
@@ -332,7 +345,7 @@ function hybridEffects(): Record<string, HybridEffects> {
   const id = getActiveDataset().id;
   let r = _hybridCache.get(id);
   if (!r) {
-    r = (_isRebirth() ? REBIRTH_HYBRID : HC_HYBRID) as unknown as Record<string, HybridEffects>;
+    r = _pick3(HC_HYBRID, REBIRTH_HYBRID, THUNDERSPY_HYBRID) as unknown as Record<string, HybridEffects>;
     _hybridCache.set(id, r);
   }
   return r;
@@ -348,7 +361,7 @@ function interfaceEffectsRegistry(): Record<string, InterfaceEffects> {
   const id = getActiveDataset().id;
   let r = _interfaceCache.get(id);
   if (!r) {
-    r = (_isRebirth() ? REBIRTH_INTERFACE : HC_INTERFACE) as unknown as Record<string, InterfaceEffects>;
+    r = _pick3(HC_INTERFACE, REBIRTH_INTERFACE, THUNDERSPY_INTERFACE) as unknown as Record<string, InterfaceEffects>;
     _interfaceCache.set(id, r);
   }
   return r;
@@ -364,7 +377,7 @@ function judgementEffectsRegistry(): Record<string, JudgementEffects> {
   const id = getActiveDataset().id;
   let r = _judgementCache.get(id);
   if (!r) {
-    r = (_isRebirth() ? REBIRTH_JUDGEMENT : HC_JUDGEMENT) as unknown as Record<string, JudgementEffects>;
+    r = _pick3(HC_JUDGEMENT, REBIRTH_JUDGEMENT, THUNDERSPY_JUDGEMENT) as unknown as Record<string, JudgementEffects>;
     _judgementCache.set(id, r);
   }
   return r;
@@ -383,7 +396,7 @@ function loreEffectsRegistry(): Record<string, LoreEffects> {
   const id = getActiveDataset().id;
   let r = _loreCache.get(id);
   if (!r) {
-    r = (_isRebirth() ? REBIRTH_LORE : HC_LORE) as unknown as Record<string, LoreEffects>;
+    r = _pick3(HC_LORE, REBIRTH_LORE, THUNDERSPY_LORE) as unknown as Record<string, LoreEffects>;
     _loreCache.set(id, r);
   }
   return r;
@@ -394,12 +407,15 @@ function loreEffectsRegistry(): Record<string, LoreEffects> {
 // ============================================
 
 // Genesis data auto-generated — see scripts/convert-incarnate-effects.cjs.
-// Homecoming has no Genesis slot, so this is empty for non-Rebirth datasets.
+// Homecoming has no Genesis slot, so this is empty for HC; Rebirth and
+// Thunderspy both ship one.
 const _genesisEmpty: Record<string, GenesisEffects> = {};
 function genesisEffectsRegistry(): Record<string, GenesisEffects> {
-  return _isRebirth()
-    ? (REBIRTH_GENESIS as unknown as Record<string, GenesisEffects>)
-    : _genesisEmpty;
+  return _pick3(
+    _genesisEmpty,
+    REBIRTH_GENESIS as unknown as Record<string, GenesisEffects>,
+    THUNDERSPY_GENESIS as unknown as Record<string, GenesisEffects>,
+  );
 }
 
 // ============================================

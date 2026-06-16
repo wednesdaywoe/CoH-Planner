@@ -128,7 +128,9 @@ export type ArchetypeId =
   | 'warshade'
   // Epic Archetypes - Arachnos (Villain)
   | 'arachnos-soldier'
-  | 'arachnos-widow';
+  | 'arachnos-widow'
+  // Thunderspy-only — custom Kheldian-style form-shifter AT
+  | 'primalist';
 
 // ============================================
 // ARCHETYPE REGISTRY
