@@ -28,6 +28,8 @@
   "Pets.Traps_Poison_Gas_Defender.Self_Destruct": 30,
   "Pets.Traps_TimeBomb_Defender.Self_Destruct": 2,
   "Rularuu.Natterling_Lt_Spawner.Self_Destruct": 5,
+  "V_Arachnos.Short_Fuse.Self_Destruct": 25,
+  "V_Miscellaneous.Blast_Radius.Self_Destruct": 1,
   "Villain_Pets.Creeper_Entangle.Self_Destruct": 2,
   "Villain_Pets.Creeper_Vine.Self_Destruct": 15,
   "Villain_Pets.Dominating_Grasp.Self_Destruct": 20,
@@ -35,7 +37,5 @@
   "Villain_Pets.Poison_Poison_Gas.Self_Destruct": 30,
   "Villain_Pets.Shade.Self_Destruct": 60,
   "Villain_Pets.Traps_Poison_Gas.Self_Destruct": 30,
-  "Villain_Pets.Traps_TimeBomb.Self_Destruct": 2,
-  "V_Arachnos.Short_Fuse.Self_Destruct": 25,
-  "V_Miscellaneous.Blast_Radius.Self_Destruct": 1
+  "Villain_Pets.Traps_TimeBomb.Self_Destruct": 2
 }

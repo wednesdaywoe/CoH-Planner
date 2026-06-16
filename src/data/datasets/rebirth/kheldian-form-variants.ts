@@ -340,12 +340,19 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
         "scale": 0.67,
         "table": "Melee_Ones"
       },
+      "slow": {
+        "fly": {
+          "scale": 1.6,
+          "table": "Melee_Ones"
+        }
+      },
+      "durations": {
+        "slow": 30,
+        "defenseDebuff": 10
+      },
       "defenseDebuff": {
         "scale": 1,
         "table": "Melee_Debuff_Def"
-      },
-      "durations": {
-        "defenseDebuff": 10
       },
       "stun": {
         "mag": 2,
@@ -356,7 +363,7 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
         "scale": 1,
         "table": "Melee_InherentTaunt"
       },
-      "buffDuration": 10
+      "buffDuration": 30
     }
   },
   "White_Dwarf_Strike": {
@@ -428,10 +435,37 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "table": "Ranged_SSDamage"
     },
     "effects": {
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        }
+      },
+      "durations": {
+        "slow": 6,
+        "rechargeDebuff": 6
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "knockback": {
         "scale": 1,
         "table": "Ranged_Knockback"
-      }
+      },
+      "buffDuration": 6
     }
   },
   "Dark_Nova_Bolt": {
@@ -454,6 +488,35 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "type": "Negative",
       "scale": 0.68,
       "table": "Ranged_SSDamage"
+    },
+    "effects": {
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        }
+      },
+      "durations": {
+        "slow": 3,
+        "rechargeDebuff": 3
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "buffDuration": 3
     }
   },
   "Dark_Nova_Detonation": {
@@ -483,7 +546,34 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "knockback": {
         "scale": 2,
         "table": "Ranged_Knockback"
-      }
+      },
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        }
+      },
+      "durations": {
+        "slow": 10,
+        "rechargeDebuff": 10
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "buffDuration": 10
     }
   },
   "Dark_Nova_Ebon_Eye": {
@@ -506,6 +596,35 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "type": "Negative",
       "scale": 1.32,
       "table": "Ranged_SSDamage"
+    },
+    "effects": {
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        }
+      },
+      "durations": {
+        "slow": 6,
+        "rechargeDebuff": 6
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "buffDuration": 6
     }
   },
   "Dark_Nova_Emanation": {
@@ -531,6 +650,35 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "type": "Negative",
       "scale": 0.99,
       "table": "Ranged_SSDamage"
+    },
+    "effects": {
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        }
+      },
+      "durations": {
+        "slow": 8,
+        "rechargeDebuff": 8
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "buffDuration": 8
     }
   },
   "Dark_Nova_Essence_Drain": {
@@ -560,7 +708,36 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
         "scale": 1,
         "table": "Ranged_HealSelf"
       }
-    ]
+    ],
+    "effects": {
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        }
+      },
+      "durations": {
+        "slow": 6,
+        "rechargeDebuff": 6
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "buffDuration": 6
+    }
   },
   "Dark_Nova_Mire": {
     "name": "Dark Nova Mire",
@@ -585,13 +762,37 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "table": "Ranged_SSDamage"
     },
     "effects": {
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        }
+      },
+      "durations": {
+        "slow": 6,
+        "rechargeDebuff": 6,
+        "tohitBuff": 30,
+        "damageBuff": 30
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
       "tohitBuff": {
         "scale": 0.5,
         "table": "Melee_Buff_ToHit"
-      },
-      "durations": {
-        "tohitBuff": 30,
-        "damageBuff": 30
       },
       "damageBuff": {
         "scale": 1.25,
@@ -622,10 +823,29 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "table": "Melee_SSDamage"
     },
     "effects": {
+      "slow": {
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        }
+      },
+      "durations": {
+        "slow": 4,
+        "rechargeDebuff": 4
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "taunt": {
         "scale": 1,
         "table": "Melee_InherentTaunt"
-      }
+      },
+      "buffDuration": 4
     }
   },
   "Black_Dwarf_Drain": {
@@ -657,10 +877,37 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       }
     ],
     "effects": {
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        }
+      },
+      "durations": {
+        "slow": 6,
+        "rechargeDebuff": 6
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
       "taunt": {
         "scale": 1,
         "table": "Melee_InherentTaunt"
-      }
+      },
+      "buffDuration": 6
     }
   },
   "Black_Dwarf_Eye": {
@@ -685,10 +932,37 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "table": "Melee_SSDamage"
     },
     "effects": {
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Ranged_Slow"
+        }
+      },
+      "durations": {
+        "slow": 6,
+        "rechargeDebuff": 6
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "taunt": {
         "scale": 1,
         "table": "Melee_InherentTaunt"
-      }
+      },
+      "buffDuration": 6
     }
   },
   "Black_Dwarf_Mire": {
@@ -714,13 +988,37 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "table": "Melee_SSDamage"
     },
     "effects": {
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        }
+      },
+      "durations": {
+        "slow": 6,
+        "rechargeDebuff": 6,
+        "tohitBuff": 10,
+        "damageBuff": 10
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
       "tohitBuff": {
         "scale": 0.5,
         "table": "Melee_Buff_ToHit"
-      },
-      "durations": {
-        "tohitBuff": 10,
-        "damageBuff": 10
       },
       "damageBuff": {
         "scale": 1.25,
@@ -766,6 +1064,36 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
         "scale": 0.67,
         "table": "Melee_Ones"
       },
+      "slow": {
+        "fly": {
+          "scale": 1.6,
+          "table": "Melee_Ones"
+        },
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        }
+      },
+      "durations": {
+        "slow": 10,
+        "rechargeDebuff": 10
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
       "stun": {
         "mag": 2,
         "scale": 6,
@@ -774,7 +1102,8 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "taunt": {
         "scale": 1,
         "table": "Melee_InherentTaunt"
-      }
+      },
+      "buffDuration": 10
     }
   },
   "Black_Dwarf_Strike": {
@@ -806,6 +1135,32 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       }
     ],
     "effects": {
+      "slow": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        }
+      },
+      "durations": {
+        "slow": 6,
+        "rechargeDebuff": 6
+      },
+      "rechargeDebuff": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
       "knockback": {
         "scale": 0.67,
         "table": "Melee_Ones"
@@ -813,7 +1168,8 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
       "taunt": {
         "scale": 1,
         "table": "Melee_InherentTaunt"
-      }
+      },
+      "buffDuration": 6
     }
   }
 };
