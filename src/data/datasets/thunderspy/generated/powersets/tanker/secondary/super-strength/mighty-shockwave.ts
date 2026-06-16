@@ -41,5 +41,10 @@ export const MightyShockwave: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.876923,
+    "table": "Melee_Damage"
+  },
   "requires": "Tanker_Melee.Super_Strength.Hand_Clap !"
 };

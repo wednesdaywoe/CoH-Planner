@@ -37,6 +37,11 @@ export const SpinningKick: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.92,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,

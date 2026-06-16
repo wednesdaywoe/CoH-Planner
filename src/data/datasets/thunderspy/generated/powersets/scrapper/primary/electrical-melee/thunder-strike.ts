@@ -41,6 +41,18 @@ export const ThunderStrike: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.588,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 1.455,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 0.5,

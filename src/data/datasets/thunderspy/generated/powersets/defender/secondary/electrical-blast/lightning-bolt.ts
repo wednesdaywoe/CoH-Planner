@@ -37,5 +37,10 @@ export const LightningBolt: Power = {
     "Endurance Modification",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  }
 };

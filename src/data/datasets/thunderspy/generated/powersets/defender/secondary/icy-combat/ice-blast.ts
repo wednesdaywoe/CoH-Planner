@@ -38,5 +38,10 @@ export const IceBlast: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.64,
+    "table": "Ranged_Damage"
+  },
   "requires": "Defender_Ranged.Ice_Blast.Ice_Sword !"
 };

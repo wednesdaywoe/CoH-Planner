@@ -37,6 +37,11 @@ export const TelekineticThrust: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.4,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 8,

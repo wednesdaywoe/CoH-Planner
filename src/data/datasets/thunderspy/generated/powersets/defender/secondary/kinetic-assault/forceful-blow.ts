@@ -36,6 +36,11 @@ export const ForcefulBlow: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.274,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.75,

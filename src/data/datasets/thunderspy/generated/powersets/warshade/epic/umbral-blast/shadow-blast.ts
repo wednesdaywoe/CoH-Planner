@@ -40,6 +40,11 @@ export const ShadowBlast: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 1,

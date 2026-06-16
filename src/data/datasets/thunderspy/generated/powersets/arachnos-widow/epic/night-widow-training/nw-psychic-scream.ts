@@ -38,5 +38,10 @@ export const NWPsychicScream: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.217935,
+    "table": "Ranged_Damage"
+  }
 };

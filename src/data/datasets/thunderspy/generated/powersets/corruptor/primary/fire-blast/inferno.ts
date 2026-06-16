@@ -35,5 +35,31 @@ export const Inferno: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.3,
+      "table": "Ranged_Damage",
+      "duration": 8.1
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 2,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

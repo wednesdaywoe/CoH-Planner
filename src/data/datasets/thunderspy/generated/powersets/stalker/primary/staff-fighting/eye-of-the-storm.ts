@@ -37,5 +37,36 @@ export const EyeoftheStorm: Power = {
     "Knockback",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.205,
+    "table": "Melee_Damage",
+    "duration": 2.3
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 0.246,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.246,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 1.23,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
+  ]
 };

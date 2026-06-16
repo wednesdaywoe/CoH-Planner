@@ -39,6 +39,11 @@ export const Quills: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.15,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

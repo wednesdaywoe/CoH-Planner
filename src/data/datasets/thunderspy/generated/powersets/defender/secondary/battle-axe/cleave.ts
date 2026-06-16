@@ -39,5 +39,10 @@ export const Cleave: Power = {
     "Knockback",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.76,
+    "table": "Melee_Damage"
+  }
 };

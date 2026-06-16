@@ -40,5 +40,24 @@ export const ShadowMaul: Power = {
     "Melee AoE Damage",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.16,
+    "table": "Melee_Damage",
+    "duration": 2
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 2.156,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

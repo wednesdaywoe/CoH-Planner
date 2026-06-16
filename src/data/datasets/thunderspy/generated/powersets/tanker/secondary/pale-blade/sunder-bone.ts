@@ -39,5 +39,55 @@ export const SunderBone: Power = {
     "Melee Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.28,
+    "table": "Melee_Damage"
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 0.5,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.5,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.5,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.5,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.5,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.5,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 2,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
+  ]
 };

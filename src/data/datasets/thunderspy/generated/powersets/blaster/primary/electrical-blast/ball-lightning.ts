@@ -39,5 +39,18 @@ export const BallLightning: Power = {
     "Endurance Modification",
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.27,
+      "table": "Ranged_Damage",
+      "duration": 2
+    }
+  ]
 };

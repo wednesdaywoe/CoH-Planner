@@ -38,5 +38,10 @@ export const ThunderStrike: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.25,
+    "table": "Ranged_Damage"
+  }
 };

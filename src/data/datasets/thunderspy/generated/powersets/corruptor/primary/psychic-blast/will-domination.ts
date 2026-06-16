@@ -38,11 +38,29 @@ export const WillDomination: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.96,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 0.800000011920929,
       "scale": 16,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.96,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

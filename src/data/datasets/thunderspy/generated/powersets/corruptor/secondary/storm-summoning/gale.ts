@@ -41,10 +41,28 @@ export const Gale: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 5,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.1,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

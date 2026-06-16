@@ -41,5 +41,10 @@ export const LifeDrain: Power = {
     "Ranged Damage",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.898462,
+    "table": "Ranged_Damage"
+  }
 };

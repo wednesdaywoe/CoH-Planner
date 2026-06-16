@@ -39,5 +39,10 @@ export const CrowdControl: Power = {
     "Knockback",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.61,
+    "table": "Melee_Damage"
+  }
 };

@@ -42,5 +42,10 @@ export const RadiationSiphon: Power = {
     "Healing",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.49,
+    "table": "Melee_Damage"
+  }
 };

@@ -38,6 +38,11 @@ export const Dominate: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

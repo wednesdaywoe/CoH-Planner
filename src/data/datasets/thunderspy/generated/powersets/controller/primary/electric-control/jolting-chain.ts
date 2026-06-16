@@ -39,5 +39,10 @@ export const JoltingChain: Power = {
     "Knockback",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2,
+    "table": "Ranged_Damage"
+  }
 };

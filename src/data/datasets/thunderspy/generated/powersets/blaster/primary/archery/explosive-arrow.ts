@@ -40,6 +40,11 @@ export const ExplosiveArrow: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.3,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 2,

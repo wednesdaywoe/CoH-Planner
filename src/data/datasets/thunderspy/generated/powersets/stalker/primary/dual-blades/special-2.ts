@@ -37,5 +37,30 @@ export const Special2: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.7,
+    "table": "Melee_Damage"
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 1.7,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.57,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
+  ]
 };

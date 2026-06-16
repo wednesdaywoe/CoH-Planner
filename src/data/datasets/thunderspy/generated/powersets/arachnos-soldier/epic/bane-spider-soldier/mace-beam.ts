@@ -38,6 +38,11 @@ export const MaceBeam: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 1,

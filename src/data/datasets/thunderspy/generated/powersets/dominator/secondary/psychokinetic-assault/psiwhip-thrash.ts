@@ -39,5 +39,10 @@ export const PsiWhipThrash: Power = {
     "Knockback",
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.5,
+    "table": "Ranged_Damage"
+  }
 };

@@ -38,5 +38,10 @@ export const Hack: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.16,
+    "table": "Melee_Damage"
+  },
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

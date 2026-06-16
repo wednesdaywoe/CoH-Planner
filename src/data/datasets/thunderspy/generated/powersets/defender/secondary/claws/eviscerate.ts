@@ -37,5 +37,10 @@ export const Eviscerate: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.302727,
+    "table": "Melee_Damage"
+  }
 };

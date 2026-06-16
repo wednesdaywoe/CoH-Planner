@@ -41,6 +41,18 @@ export const DawnStrike: Power = {
     "Melee AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 4,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 2.096842,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 10,

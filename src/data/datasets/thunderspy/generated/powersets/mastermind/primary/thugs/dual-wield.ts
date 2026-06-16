@@ -38,6 +38,12 @@ export const DualWield: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.98,
+    "table": "Ranged_Damage",
+    "duration": 0.3
+  },
   "effects": {
     "knockback": {
       "scale": 0.64,

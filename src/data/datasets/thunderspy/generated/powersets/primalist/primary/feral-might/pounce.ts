@@ -37,6 +37,19 @@ export const Pounce: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 2.76,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 4.1
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 1,
@@ -50,6 +63,19 @@ export const Pounce: Power = {
       "label": "Conditional",
       "scope": "per-power",
       "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 1.38,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.2,
+          "table": "Melee_Damage",
+          "duration": 4.1
+        }
+      ],
       "effects": {
         "stun": {
           "mag": 1,

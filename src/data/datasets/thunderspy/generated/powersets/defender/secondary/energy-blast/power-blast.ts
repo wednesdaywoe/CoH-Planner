@@ -38,6 +38,11 @@ export const PowerBlast: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.492,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 1,

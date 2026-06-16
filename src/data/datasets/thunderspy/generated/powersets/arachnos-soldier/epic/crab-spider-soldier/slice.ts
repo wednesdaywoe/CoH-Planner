@@ -37,5 +37,10 @@ export const Slice: Power = {
     "Defense Debuff",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.7,
+    "table": "Melee_Damage"
+  }
 };

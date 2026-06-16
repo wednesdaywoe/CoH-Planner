@@ -38,5 +38,10 @@ export const SavageStrike: Power = {
     "Melee Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.68,
+    "table": "Melee_Damage"
+  }
 };

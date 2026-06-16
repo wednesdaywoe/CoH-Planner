@@ -42,11 +42,29 @@ export const JacobsLadder: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.5,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 0.10000000149011612,
       "scale": 6,
       "table": "Melee_Sleep"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.5,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

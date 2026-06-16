@@ -39,5 +39,25 @@ export const Lash: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.1,
+    "table": "Melee_Damage",
+    "duration": 0.5
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.3,
+        "table": "Melee_Damage",
+        "duration": 0.5
+      }
+    }
+  ],
   "requires": "Tanker_Defense.Shield_Defense !"
 };

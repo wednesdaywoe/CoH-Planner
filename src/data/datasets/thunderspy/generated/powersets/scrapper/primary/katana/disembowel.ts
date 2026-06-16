@@ -40,6 +40,11 @@ export const Disembowel: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.8,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 2,

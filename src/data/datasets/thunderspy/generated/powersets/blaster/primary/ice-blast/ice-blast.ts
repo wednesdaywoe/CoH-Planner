@@ -43,5 +43,10 @@ export const IceBlast: Power = {
     "Ranged Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.492,
+    "table": "Ranged_Damage"
+  }
 };

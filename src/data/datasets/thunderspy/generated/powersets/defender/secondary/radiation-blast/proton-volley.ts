@@ -41,5 +41,11 @@ export const ProtonVolley: Power = {
     "Ranged Damage",
     "Sniper Attacks"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.49,
+    "table": "Ranged_Damage",
+    "duration": 1.6
+  }
 };

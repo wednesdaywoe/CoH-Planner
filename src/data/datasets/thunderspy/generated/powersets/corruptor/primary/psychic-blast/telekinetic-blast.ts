@@ -38,10 +38,28 @@ export const Telekineticblast: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 4,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.64,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

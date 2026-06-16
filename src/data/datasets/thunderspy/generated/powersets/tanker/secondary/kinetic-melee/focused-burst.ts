@@ -41,5 +41,10 @@ export const FocusedBurst: Power = {
     "Ranged Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.23,
+    "table": "Melee_Damage"
+  }
 };

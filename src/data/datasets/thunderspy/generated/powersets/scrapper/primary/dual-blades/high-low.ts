@@ -39,5 +39,11 @@ export const HighLow: Power = {
     "Knockback",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.151,
+    "table": "Melee_Damage",
+    "duration": 2.05
+  }
 };

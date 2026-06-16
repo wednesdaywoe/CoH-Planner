@@ -40,5 +40,23 @@ export const Shred: Power = {
     "Defense Debuff",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Melee_Damage"
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

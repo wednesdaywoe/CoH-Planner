@@ -43,5 +43,10 @@ export const MudPots: Power = {
     "Melee AoE Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.18,
+    "table": "Melee_Damage"
+  }
 };

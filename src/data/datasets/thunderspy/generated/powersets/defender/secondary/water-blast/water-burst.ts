@@ -41,5 +41,48 @@ export const WaterBurst: Power = {
     "Ranged AoE Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.225,
+    "table": "Ranged_Damage"
+  },
+  "conditionalEffects": [
+    {
+      "id": "tidal_power-1",
+      "label": "Tidal Power (1 stacks)",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.045,
+        "table": "Ranged_Damage"
+      },
+      "group": "tidal_power-stacks"
+    },
+    {
+      "id": "tidal_power-2",
+      "label": "Tidal Power (2 stacks)",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.108,
+        "table": "Ranged_Damage"
+      },
+      "group": "tidal_power-stacks"
+    },
+    {
+      "id": "tidal_power-3",
+      "label": "Tidal Power (3 stacks)",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.225,
+        "table": "Ranged_Damage"
+      },
+      "group": "tidal_power-stacks"
+    }
+  ]
 };

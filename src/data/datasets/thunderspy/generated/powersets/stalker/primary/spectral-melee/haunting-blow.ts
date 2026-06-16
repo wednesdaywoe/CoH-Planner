@@ -37,11 +37,29 @@ export const HauntingBlow: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.66,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "fear": {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Fear"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.32,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

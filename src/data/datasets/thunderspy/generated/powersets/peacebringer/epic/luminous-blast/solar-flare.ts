@@ -41,6 +41,11 @@ export const SolarFlare: Power = {
     "Melee AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.42,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 2,

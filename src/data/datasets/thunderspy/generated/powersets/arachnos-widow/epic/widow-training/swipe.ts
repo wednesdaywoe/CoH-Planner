@@ -34,5 +34,18 @@ export const Swipe: Power = {
   "allowedSetCategories": [
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.08,
+      "table": "Melee_Damage",
+      "duration": 2.1
+    }
+  ]
 };

@@ -46,12 +46,20 @@ export const EmptyClips: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.13,
-    "table": "Ranged_Damage",
-    "duration": 1.6
-  },
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.13,
+      "table": "Ranged_Damage",
+      "duration": 1.6
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.13,
+      "table": "Ranged_Damage",
+      "duration": 1.6
+    }
+  ],
   "conditionalEffects": [
     {
       "id": "lethalammo",

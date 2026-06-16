@@ -18,6 +18,27 @@ fixed, move it to the top of the RESOLVED section with the fix details.
 
 > --- NEW ISSUES / UNRESOLVED ---
 
+## ⚠️ Damage element type is generic `Special` (Thunderspy uses a single `Damage` attrib) — 2026-06-16
+
+**Context.** Thunderspy effect templates store damage with one generic `Damage`
+attrib + a `Melee_Damage`/`Ranged_Damage` table + scale; the specific element
+(Fire / Smashing / …) is NOT in the binary attrib — it appears only in the
+power's `display_short_help` (e.g. `Minor DMG(Fire)`). HC/Rebirth instead use
+per-element attribs (Smashing, Fire, …).
+
+**Current state (acceptable).** `extractDamage`/`isDamageTypeAttrib`
+([convert-powerset.cjs](../scripts/convert-powerset.cjs)) now map the bare
+`damage` attrib to a typeless **`Special`** damage entry, so the **magnitude**
+(scale × table) is correct and present on all attacks (1,276 power files after
+the 2026-06-16 fix; previously 0). This was the dataset-wide "no damage on any
+Thunderspy attack" bug surfaced during Primalist form work.
+
+**Follow-up (cosmetic / resistance-grouping only).** Refine the `Special` label
+to the real element by parsing `DMG\(([^)]+)\)` out of the power's shortHelp at
+conversion time. Threading shortHelp into `extractDamage` touches ~11 call
+sites, so deferred. Damage totals are already correct; only the per-element
+breakdown (and type-specific resistance) is affected.
+
 ## ⚠️ `export_entities` (VillainDef.bin) overruns record boundary on Thunderspy — 2026-06-16
 
 **Symptom.** `python3 -m bin_crawler.export_entities --assets-dir <tspy>` crashes:

@@ -38,5 +38,19 @@ export const DartBurst: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.1785,
+      "table": "Ranged_Damage",
+      "duration": 0.8
+    },
+    {
+      "type": "Special",
+      "scale": 0.11,
+      "table": "Ranged_Damage",
+      "duration": 5
+    }
+  ]
 };

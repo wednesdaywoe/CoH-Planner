@@ -38,5 +38,10 @@ export const GleamingBolt: Power = {
     "Defense Debuff",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.6,
+    "table": "Ranged_Damage"
+  }
 };

@@ -42,6 +42,19 @@ export const Chilblain: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 2,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 1,
+      "table": "Ranged_Damage",
+      "duration": 1
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 1,

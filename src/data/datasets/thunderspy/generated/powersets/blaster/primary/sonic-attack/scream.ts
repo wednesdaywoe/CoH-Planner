@@ -41,5 +41,11 @@ export const Scream: Power = {
   "allowedSetCategories": [
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.132,
+    "table": "Ranged_Damage",
+    "duration": 1.05
+  }
 };

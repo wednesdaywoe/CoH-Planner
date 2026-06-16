@@ -38,5 +38,11 @@ export const PsychicScream: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.178,
+    "table": "Ranged_Damage",
+    "duration": 2.05
+  }
 };

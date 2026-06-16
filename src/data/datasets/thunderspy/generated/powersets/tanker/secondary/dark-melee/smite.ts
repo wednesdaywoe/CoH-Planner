@@ -41,5 +41,10 @@ export const Smite: Power = {
     "Threat Duration",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.4,
+    "table": "Melee_Damage"
+  }
 };

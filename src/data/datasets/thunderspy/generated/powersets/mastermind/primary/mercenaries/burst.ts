@@ -38,5 +38,11 @@ export const Burst: Power = {
     "Defense Debuff",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.33,
+    "table": "Ranged_Damage",
+    "duration": 0.91
+  }
 };

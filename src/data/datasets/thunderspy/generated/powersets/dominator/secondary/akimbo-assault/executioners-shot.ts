@@ -43,11 +43,18 @@ export const ExecutionersShot: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.46,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.46,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.46,
+      "table": "Melee_Damage"
+    }
+  ],
   "conditionalEffects": [
     {
       "id": "lethalammo",

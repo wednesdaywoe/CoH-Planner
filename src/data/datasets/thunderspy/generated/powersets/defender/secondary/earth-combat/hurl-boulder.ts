@@ -38,6 +38,11 @@ export const HurlBoulder: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 3,

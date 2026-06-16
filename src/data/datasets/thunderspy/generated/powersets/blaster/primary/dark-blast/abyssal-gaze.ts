@@ -41,6 +41,12 @@ export const AbyssalGaze: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.472,
+    "table": "Ranged_Damage",
+    "duration": 2.1
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

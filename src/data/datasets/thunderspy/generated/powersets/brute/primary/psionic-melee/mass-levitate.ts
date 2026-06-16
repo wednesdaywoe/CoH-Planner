@@ -40,10 +40,29 @@ export const MassLevitate: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.42,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 2,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.142,
+        "table": "Melee_Damage",
+        "duration": 3.1
+      }
+    }
+  ]
 };

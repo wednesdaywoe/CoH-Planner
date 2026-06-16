@@ -37,6 +37,11 @@ export const TRClawPierce: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.083,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "taunt": {
       "scale": 20,

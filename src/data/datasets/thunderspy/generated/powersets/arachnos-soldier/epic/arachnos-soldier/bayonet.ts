@@ -35,5 +35,18 @@ export const Bayonet: Power = {
     "Healing",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.008,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.12,
+      "table": "Melee_Damage",
+      "duration": 5.1
+    }
+  ]
 };

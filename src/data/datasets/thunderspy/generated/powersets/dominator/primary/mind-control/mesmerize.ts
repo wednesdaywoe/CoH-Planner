@@ -38,6 +38,11 @@ export const Mesmerize: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 1,

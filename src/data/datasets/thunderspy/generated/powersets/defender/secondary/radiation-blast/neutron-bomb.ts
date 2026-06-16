@@ -40,5 +40,10 @@ export const NeutronBomb: Power = {
     "Defense Debuff",
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.63,
+    "table": "Ranged_Damage"
+  }
 };

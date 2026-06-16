@@ -38,5 +38,11 @@ export const PoisonousRay: Power = {
     "Defense Debuff",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.4,
+    "table": "Ranged_Damage",
+    "duration": 2.1
+  }
 };

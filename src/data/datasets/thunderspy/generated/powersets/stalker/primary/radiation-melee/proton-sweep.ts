@@ -41,5 +41,24 @@ export const ProtonSweep: Power = {
     "Defense Debuff",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.089375,
+    "table": "Melee_Damage",
+    "duration": 1.5
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.43,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

@@ -36,5 +36,10 @@ export const Parry: Power = {
     "Defense Sets",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.84,
+    "table": "Melee_Damage"
+  }
 };

@@ -37,5 +37,10 @@ export const Consume: Power = {
     "Endurance Modification",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.4,
+    "table": "Melee_Damage"
+  }
 };

@@ -44,10 +44,35 @@ export const Torrent: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.2,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.63,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 5,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.63,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

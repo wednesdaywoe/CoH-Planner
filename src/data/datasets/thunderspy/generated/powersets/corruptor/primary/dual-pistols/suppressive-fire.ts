@@ -40,9 +40,29 @@ export const SuppressiveFire: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.05,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.05,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.1,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

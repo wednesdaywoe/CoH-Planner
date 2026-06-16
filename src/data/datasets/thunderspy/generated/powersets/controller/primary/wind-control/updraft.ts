@@ -39,6 +39,19 @@ export const Updraft: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.5,
+      "table": "Ranged_Damage",
+      "duration": 1
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 6,

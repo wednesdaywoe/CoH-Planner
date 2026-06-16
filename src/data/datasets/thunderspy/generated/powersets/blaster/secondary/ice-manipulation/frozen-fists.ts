@@ -36,5 +36,10 @@ export const FrozenFists: Power = {
     "Melee Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.492,
+    "table": "Melee_Damage"
+  }
 };

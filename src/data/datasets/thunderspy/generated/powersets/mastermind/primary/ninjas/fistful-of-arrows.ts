@@ -38,5 +38,10 @@ export const FistfulofArrows: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.055556,
+    "table": "Ranged_Damage"
+  }
 };

@@ -34,5 +34,40 @@ export const FetidPresence: Power = {
     "Melee AoE Damage"
   ],
   "maxSlots": 6,
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 0.03,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.03,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.03,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.03,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.03,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
+  ],
   "requires": "Tanker_Melee.Pale_Blade.Lash"
 };

@@ -36,5 +36,32 @@ export const Hemorrhage: Power = {
     "Melee Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.81,
+    "table": "Melee_Damage"
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 1.11,
+          "table": "Melee_Damage",
+          "duration": 4.1
+        },
+        {
+          "type": "Special",
+          "scale": 1.35,
+          "table": "Melee_Damage",
+          "duration": 5.1
+        }
+      ]
+    }
+  ]
 };

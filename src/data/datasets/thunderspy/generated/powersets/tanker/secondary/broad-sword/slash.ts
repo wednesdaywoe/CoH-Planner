@@ -39,5 +39,10 @@ export const Slash: Power = {
     "Melee Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Melee_Damage"
+  }
 };

@@ -36,5 +36,17 @@ export const Reckoning: Power = {
   "allowedSetCategories": [
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 1.06,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

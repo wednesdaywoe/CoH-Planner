@@ -38,5 +38,10 @@ export const Frenzy: Power = {
     "Defense Debuff",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.79,
+    "table": "Melee_Damage"
+  }
 };

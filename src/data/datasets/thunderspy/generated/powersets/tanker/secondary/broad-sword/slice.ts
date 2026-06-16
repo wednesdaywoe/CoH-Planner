@@ -42,5 +42,10 @@ export const Slice: Power = {
     "Melee AoE Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.23,
+    "table": "Melee_Damage"
+  }
 };

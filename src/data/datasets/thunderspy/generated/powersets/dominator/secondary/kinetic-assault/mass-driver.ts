@@ -37,5 +37,31 @@ export const MassDriver: Power = {
     "Ranged Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.26,
+    "table": "Ranged_Damage",
+    "duration": 2.1
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 1.69,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 2.1125,
+          "table": "Ranged_Damage"
+        }
+      ]
+    }
+  ]
 };

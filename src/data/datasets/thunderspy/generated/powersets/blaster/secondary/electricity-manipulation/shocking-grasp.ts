@@ -39,6 +39,12 @@ export const ShockingGrasp: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.3,
+    "table": "Melee_Damage",
+    "duration": 5.1
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

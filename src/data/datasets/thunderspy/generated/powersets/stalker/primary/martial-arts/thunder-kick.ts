@@ -37,11 +37,29 @@ export const ThunderKick: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.10000000149011612,
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

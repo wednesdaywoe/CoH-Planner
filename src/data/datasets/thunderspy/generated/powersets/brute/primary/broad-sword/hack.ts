@@ -39,5 +39,10 @@ export const Hack: Power = {
     "Melee Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.64,
+    "table": "Melee_Damage"
+  }
 };

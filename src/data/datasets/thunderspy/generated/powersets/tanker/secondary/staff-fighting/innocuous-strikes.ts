@@ -44,6 +44,12 @@ export const InnocuousStrikes: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.332,
+    "table": "Melee_Damage",
+    "duration": 1.7
+  },
   "effects": {
     "immobilize": {
       "mag": 0.6000000238418579,

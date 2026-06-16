@@ -43,5 +43,10 @@ export const IceBolt: Power = {
     "Ranged Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.3,
+    "table": "Ranged_Damage"
+  }
 };

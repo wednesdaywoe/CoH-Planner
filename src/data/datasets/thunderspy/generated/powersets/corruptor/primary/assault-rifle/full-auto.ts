@@ -38,5 +38,32 @@ export const FullAuto: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.162,
+      "table": "Ranged_Damage",
+      "duration": 3.3
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.162,
+        "table": "Ranged_Damage",
+        "duration": 3.3
+      }
+    }
+  ]
 };

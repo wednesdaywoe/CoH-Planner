@@ -35,5 +35,17 @@ export const Consecrate: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.42,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.71,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

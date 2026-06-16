@@ -42,5 +42,10 @@ export const Ripper: Power = {
     "Knockback",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.95,
+    "table": "Melee_Damage"
+  }
 };

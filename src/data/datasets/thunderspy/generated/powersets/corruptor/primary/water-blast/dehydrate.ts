@@ -43,5 +43,31 @@ export const Dehydrate: Power = {
     "Ranged Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.25,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.1488,
+      "table": "Ranged_Damage",
+      "duration": 4.1
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.64,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

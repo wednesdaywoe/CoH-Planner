@@ -40,6 +40,11 @@ export const Slug: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.28,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.75,
@@ -50,5 +55,18 @@ export const Slug: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 2.28,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

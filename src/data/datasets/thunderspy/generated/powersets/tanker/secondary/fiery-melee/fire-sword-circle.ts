@@ -37,5 +37,18 @@ export const FireSwordCircle: Power = {
     "Melee AoE Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.775,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1
+    }
+  ]
 };

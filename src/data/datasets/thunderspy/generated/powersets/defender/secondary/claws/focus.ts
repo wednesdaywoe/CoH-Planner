@@ -37,5 +37,10 @@ export const Focus: Power = {
     "Knockback",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.0496,
+    "table": "Melee_Damage"
+  }
 };

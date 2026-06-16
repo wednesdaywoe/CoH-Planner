@@ -37,5 +37,10 @@ export const ExplosiveShuriken: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.912,
+    "table": "Ranged_Damage"
+  }
 };

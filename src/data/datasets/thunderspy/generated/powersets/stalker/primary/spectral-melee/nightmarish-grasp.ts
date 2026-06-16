@@ -39,6 +39,11 @@ export const NightmarishGrasp: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.98,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 1,
@@ -50,5 +55,18 @@ export const NightmarishGrasp: Power = {
       "scale": 20,
       "table": "Melee_Fear"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.96,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

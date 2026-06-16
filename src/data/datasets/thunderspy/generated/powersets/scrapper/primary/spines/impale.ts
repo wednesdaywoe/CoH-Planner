@@ -40,6 +40,19 @@ export const Impale: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.64,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 4.1
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 1,

@@ -38,6 +38,11 @@ export const Nova: Power = {
     "Melee AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.2,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 10,

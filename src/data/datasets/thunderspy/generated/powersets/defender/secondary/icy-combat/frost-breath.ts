@@ -41,5 +41,11 @@ export const FrostBreath: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.7,
+    "table": "Ranged_Damage",
+    "duration": 0.6
+  },
   "requires": "Defender_Ranged.Ice_Blast.Ice_Sword_Circle !"
 };

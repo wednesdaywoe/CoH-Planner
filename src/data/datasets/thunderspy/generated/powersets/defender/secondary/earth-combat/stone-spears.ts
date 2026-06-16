@@ -37,5 +37,10 @@ export const StoneSpears: Power = {
     "Knockback",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.5,
+    "table": "Ranged_Damage"
+  }
 };

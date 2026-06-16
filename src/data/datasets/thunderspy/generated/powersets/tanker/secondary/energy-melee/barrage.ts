@@ -41,6 +41,12 @@ export const Barrage: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.198,
+    "table": "Melee_Damage",
+    "duration": 0.3
+  },
   "effects": {
     "stun": {
       "mag": 0.10000000149011612,

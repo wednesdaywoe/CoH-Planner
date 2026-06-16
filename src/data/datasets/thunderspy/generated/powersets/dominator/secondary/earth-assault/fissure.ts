@@ -42,6 +42,11 @@ export const Fissure: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.35,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.33000001311302185,

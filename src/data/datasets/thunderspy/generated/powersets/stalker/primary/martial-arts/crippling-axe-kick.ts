@@ -39,11 +39,29 @@ export const CripplingAxeKick: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.64,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.64,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

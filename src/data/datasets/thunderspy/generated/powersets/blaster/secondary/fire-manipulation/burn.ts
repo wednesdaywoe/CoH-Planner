@@ -35,5 +35,10 @@ export const Burn: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.6,
+    "table": "Melee_Damage"
+  }
 };

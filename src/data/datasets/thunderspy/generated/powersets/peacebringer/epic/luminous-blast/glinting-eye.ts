@@ -38,5 +38,10 @@ export const GlintingEye: Power = {
     "Defense Debuff",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  }
 };

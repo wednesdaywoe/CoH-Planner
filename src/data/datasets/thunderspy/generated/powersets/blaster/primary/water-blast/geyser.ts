@@ -44,12 +44,30 @@ export const Geyser: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.5,
+    "table": "Ranged_Damage"
+  },
   "conditionalEffects": [
     {
       "id": "tidal_power-1",
       "label": "Tidal Power (1 stacks)",
       "scope": "global",
       "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 0.1,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.143182,
+          "table": "Ranged_Damage",
+          "duration": 5.1
+        }
+      ],
       "effects": {
         "stun": {
           "mag": 0.33000001311302185,
@@ -64,6 +82,19 @@ export const Geyser: Power = {
       "label": "Tidal Power (2 stacks)",
       "scope": "global",
       "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 0.24,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.152727,
+          "table": "Ranged_Damage",
+          "duration": 5.1
+        }
+      ],
       "effects": {
         "stun": {
           "mag": 0.6000000238418579,
@@ -78,12 +109,38 @@ export const Geyser: Power = {
       "label": "Tidal Power (3 stacks)",
       "scope": "global",
       "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 0.5,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.170455,
+          "table": "Ranged_Damage",
+          "duration": 5.1
+        }
+      ],
       "effects": {
         "stun": {
           "mag": 1,
           "scale": 5,
           "table": "Ranged_Stun"
         }
+      },
+      "group": "tidal_power-stacks"
+    },
+    {
+      "id": "tidal_power-0",
+      "label": "Tidal Power (0 stacks)",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.136364,
+        "table": "Ranged_Damage",
+        "duration": 5.1
       },
       "group": "tidal_power-stacks"
     }

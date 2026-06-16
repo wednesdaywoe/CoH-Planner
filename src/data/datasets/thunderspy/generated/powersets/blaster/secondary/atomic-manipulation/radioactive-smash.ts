@@ -39,5 +39,10 @@ export const RadioactiveSmash: Power = {
     "Knockback",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.37,
+    "table": "Melee_Damage"
+  }
 };

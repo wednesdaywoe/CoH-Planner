@@ -39,5 +39,23 @@ export const TeslaCage: Power = {
     "Holds",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.15,
+    "table": "Ranged_Damage"
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.15,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

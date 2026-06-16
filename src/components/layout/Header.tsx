@@ -282,6 +282,7 @@ export function Header() {
 
         {archetypeId && <ATMechanics archetypeId={archetypeId} />}
         <KheldianFormSelector />
+        <PrimalistFormSelector />
         {STANCE_GROUPS.map((group) => (
           <StanceSelector key={group.key} group={group} />
         ))}
@@ -1458,6 +1459,45 @@ function KheldianFormSelector() {
         {button('human', 'Human')}
         {button('nova', novaLabel)}
         {button('dwarf', dwarfLabel)}
+      </div>
+    </Tooltip>
+  );
+}
+
+function PrimalistFormSelector() {
+  const build = useBuildStore((s) => s.build);
+  const setPrimalistForm = useBuildStore((s) => s.setPrimalistForm);
+
+  // Only show on Thunderspy Primalist builds.
+  if (build.serverId !== 'thunderspy') return null;
+  if (build.archetype.id !== 'primalist') return null;
+
+  const current = build.primalistForm ?? 'primal';
+
+  const button = (form: 'primal' | 'hunter' | 'prowler', label: string) => {
+    const active = current === form;
+    return (
+      <button
+        type="button"
+        onClick={() => setPrimalistForm(form)}
+        className={`px-2 py-0.5 text-xs rounded border transition-colors ${
+          active
+            ? 'bg-[var(--color-primary)]/40 border-[var(--color-primary)] text-[var(--color-link)]'
+            : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
+        }`}
+      >
+        {label}
+      </button>
+    );
+  };
+
+  return (
+    <Tooltip content="Primalist attacks change with the active form (Primal / Hunter / Prowler). The info panel shows the selected form's damage and effects; slot allocation is unchanged.">
+      <div className="flex items-center gap-1 px-2 py-1 rounded border bg-slate-700/50 border-slate-600">
+        <span className="text-xs text-slate-400 mr-1">Form:</span>
+        {button('primal', 'Primal')}
+        {button('hunter', 'Hunter')}
+        {button('prowler', 'Prowler')}
       </div>
     </Tooltip>
   );

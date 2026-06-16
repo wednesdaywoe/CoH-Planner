@@ -40,5 +40,10 @@ export const HowlingTwilight: Power = {
     "Slow Movement",
     "Stuns"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.25,
+    "table": "Ranged_Damage"
+  }
 };

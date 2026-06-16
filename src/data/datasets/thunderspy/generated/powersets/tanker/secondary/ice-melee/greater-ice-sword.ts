@@ -40,5 +40,10 @@ export const GreaterIceSword: Power = {
     "Slow Movement",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.588,
+    "table": "Melee_Damage"
+  }
 };

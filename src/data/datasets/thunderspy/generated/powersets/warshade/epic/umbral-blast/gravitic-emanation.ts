@@ -45,6 +45,11 @@ export const GraviticEmanation: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.4,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 5,

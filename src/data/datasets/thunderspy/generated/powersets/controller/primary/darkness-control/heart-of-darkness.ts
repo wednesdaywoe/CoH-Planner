@@ -41,6 +41,12 @@ export const HeartofDarkness: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.07,
+    "table": "Ranged_Damage",
+    "duration": 4.1
+  },
   "effects": {
     "stun": {
       "mag": 1,

@@ -40,5 +40,11 @@ export const AcidArrow: Power = {
     "Defense Debuff",
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.01,
+    "table": "Ranged_Damage",
+    "duration": 20
+  }
 };

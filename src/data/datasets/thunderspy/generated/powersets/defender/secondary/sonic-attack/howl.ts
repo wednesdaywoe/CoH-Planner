@@ -38,5 +38,10 @@ export const Howl: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.405,
+    "table": "Ranged_Damage"
+  }
 };

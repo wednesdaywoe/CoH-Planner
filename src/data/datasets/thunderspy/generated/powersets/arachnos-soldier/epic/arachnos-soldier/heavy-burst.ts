@@ -41,5 +41,11 @@ export const HeavyBurst: Power = {
     "Defense Debuff",
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.109,
+    "table": "Ranged_Damage",
+    "duration": 2
+  }
 };

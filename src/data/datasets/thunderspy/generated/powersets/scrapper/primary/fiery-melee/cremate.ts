@@ -34,5 +34,18 @@ export const Cremate: Power = {
   "allowedSetCategories": [
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.64,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1
+    }
+  ]
 };

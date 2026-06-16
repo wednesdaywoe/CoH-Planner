@@ -38,5 +38,10 @@ export const Tremor: Power = {
     "Melee AoE Damage",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.2,
+    "table": "Melee_Damage"
+  }
 };

@@ -40,6 +40,11 @@ export const FragGrenade: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.67,

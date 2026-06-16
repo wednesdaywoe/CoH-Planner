@@ -37,6 +37,11 @@ export const Pummel: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.7,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.6600000262260437,

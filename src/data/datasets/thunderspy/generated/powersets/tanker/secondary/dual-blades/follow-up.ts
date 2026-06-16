@@ -40,5 +40,10 @@ export const FollowUp: Power = {
     "Threat Duration",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.8,
+    "table": "Melee_Damage"
+  }
 };

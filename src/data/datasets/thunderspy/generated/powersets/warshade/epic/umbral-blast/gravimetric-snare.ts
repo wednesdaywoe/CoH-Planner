@@ -40,6 +40,12 @@ export const GravimetricSnare: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.1,
+    "table": "Ranged_Damage",
+    "duration": 9.2
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

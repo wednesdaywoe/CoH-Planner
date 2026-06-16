@@ -43,12 +43,30 @@ export const ExecutionersShot: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.06,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.06,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.06,
+      "table": "Ranged_Damage"
+    }
+  ],
   "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 2.12,
+        "table": "Ranged_Damage"
+      }
+    },
     {
       "id": "lethalammo",
       "label": "Standard Ammo",

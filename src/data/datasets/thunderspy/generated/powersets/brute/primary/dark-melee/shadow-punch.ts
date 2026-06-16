@@ -39,5 +39,10 @@ export const ShadowPunch: Power = {
     "Threat Duration",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.25,
+    "table": "Melee_Damage"
+  }
 };

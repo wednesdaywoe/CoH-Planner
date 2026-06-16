@@ -42,5 +42,10 @@ export const HotFeet: Power = {
     "Melee AoE Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.25,
+    "table": "Ranged_Damage"
+  }
 };

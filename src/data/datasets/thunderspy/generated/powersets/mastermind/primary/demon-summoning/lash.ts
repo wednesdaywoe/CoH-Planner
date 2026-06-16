@@ -37,6 +37,19 @@ export const Lash: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.96,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.11,
+      "table": "Ranged_Damage",
+      "duration": 1.5
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 0.64,

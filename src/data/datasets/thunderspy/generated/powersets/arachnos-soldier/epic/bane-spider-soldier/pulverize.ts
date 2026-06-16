@@ -38,6 +38,19 @@ export const Pulverize: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.148,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 4.1
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 0.20000000298023224,

@@ -35,5 +35,18 @@ export const Blaze: Power = {
   "allowedSetCategories": [
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.439,
+      "table": "Ranged_Damage",
+      "duration": 2.1
+    }
+  ]
 };

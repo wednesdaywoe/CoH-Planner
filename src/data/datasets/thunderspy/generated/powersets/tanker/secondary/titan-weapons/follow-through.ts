@@ -43,6 +43,11 @@ export const FollowThrough: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.156,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.33000001311302185,

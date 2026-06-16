@@ -38,5 +38,10 @@ export const Moonbeam: Power = {
     "Melee AoE Damage",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Melee_Damage"
+  }
 };

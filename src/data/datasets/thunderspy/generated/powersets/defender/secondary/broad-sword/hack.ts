@@ -37,5 +37,10 @@ export const Hack: Power = {
     "Defense Debuff",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.64,
+    "table": "Melee_Damage"
+  }
 };

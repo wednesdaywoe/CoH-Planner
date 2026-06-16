@@ -41,11 +41,43 @@ export const LightningClap: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.588,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 1.455,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 0.5,
       "scale": 5,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 0.588,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 1.372,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
+  ]
 };

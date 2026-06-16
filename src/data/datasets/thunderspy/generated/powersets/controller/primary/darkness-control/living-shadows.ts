@@ -43,6 +43,12 @@ export const LivingShadows: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.13,
+    "table": "Ranged_Damage",
+    "duration": 5.2
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

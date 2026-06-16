@@ -38,6 +38,12 @@ export const Entangle: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.175,
+    "table": "Ranged_Damage",
+    "duration": 3
+  },
   "effects": {
     "stun": {
       "mag": 1,

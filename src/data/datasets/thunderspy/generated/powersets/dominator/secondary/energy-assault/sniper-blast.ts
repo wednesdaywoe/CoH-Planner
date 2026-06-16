@@ -41,6 +41,11 @@ export const SniperBlast: Power = {
     "Sniper Attacks"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.9968,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.7,

@@ -39,12 +39,30 @@ export const Pistols: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.5,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    }
+  ],
   "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.05,
+        "table": "Ranged_Damage"
+      }
+    },
     {
       "id": "lethalammo",
       "label": "Standard Ammo",

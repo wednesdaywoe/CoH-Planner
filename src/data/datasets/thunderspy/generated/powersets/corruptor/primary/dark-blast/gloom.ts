@@ -38,5 +38,25 @@ export const Gloom: Power = {
     "Ranged Damage",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.22,
+    "table": "Ranged_Damage",
+    "duration": 1.5
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.22,
+        "table": "Ranged_Damage",
+        "duration": 1.5
+      }
+    }
+  ]
 };

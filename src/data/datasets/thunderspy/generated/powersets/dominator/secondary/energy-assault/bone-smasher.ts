@@ -37,6 +37,11 @@ export const BoneSmasher: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.6,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.6000000238418579,

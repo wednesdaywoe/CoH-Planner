@@ -38,5 +38,11 @@ export const VenomGrenade: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.1964,
+    "table": "Ranged_Damage",
+    "duration": 4.12
+  },
   "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade !"
 };

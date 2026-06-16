@@ -39,13 +39,46 @@ export const SpinningStrike: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.77,
+    "table": "Melee_Damage"
+  },
   "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 0.8085,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.8624,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 1.54,
+          "table": "Melee_Damage"
+        }
+      ]
+    },
     {
       "id": "combo_level_3",
       "label": "Combo Level 3",
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
+      "damage": {
+        "type": "Special",
+        "scale": 0.9625,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "fear": {
           "mag": 0.30000001192092896,

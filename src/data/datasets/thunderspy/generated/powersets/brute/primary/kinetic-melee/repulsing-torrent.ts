@@ -43,6 +43,11 @@ export const RepulsingTorrent: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.825,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 3,

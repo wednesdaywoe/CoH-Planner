@@ -42,6 +42,11 @@ export const GrippingTerror: Power = {
     "Melee AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.75,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 1,
@@ -53,5 +58,18 @@ export const GrippingTerror: Power = {
       "scale": 10,
       "table": "Melee_Fear"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.5,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

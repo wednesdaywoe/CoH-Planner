@@ -40,6 +40,11 @@ export const FrozenAura: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.42,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 1,

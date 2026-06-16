@@ -34,5 +34,10 @@ export const Strike: Power = {
   "allowedSetCategories": [
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.83,
+    "table": "Melee_Damage"
+  }
 };

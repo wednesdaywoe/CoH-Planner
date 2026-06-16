@@ -41,6 +41,19 @@ export const Grenade: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 2.28,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 1,
+      "table": "Melee_Damage",
+      "duration": 1
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 2,

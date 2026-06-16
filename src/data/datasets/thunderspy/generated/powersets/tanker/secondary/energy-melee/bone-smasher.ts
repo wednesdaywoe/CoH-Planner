@@ -41,6 +41,11 @@ export const BoneSmasher: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.49,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.6000000238418579,

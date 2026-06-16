@@ -39,5 +39,10 @@ export const SoulDrain: Power = {
     "Threat Duration",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Melee_Damage"
+  }
 };

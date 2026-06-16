@@ -35,5 +35,17 @@ export const PsiWhipLash: Power = {
   "allowedSetCategories": [
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

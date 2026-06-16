@@ -40,6 +40,11 @@ export const PhotonGrenade: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.3,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.30000001192092896,

@@ -40,6 +40,11 @@ export const HurlBoulder: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.64,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 3,

@@ -39,11 +39,29 @@ export const HavocPunch: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.396,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 0.30000001192092896,
       "scale": 8,
       "table": "Melee_Sleep"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.32,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

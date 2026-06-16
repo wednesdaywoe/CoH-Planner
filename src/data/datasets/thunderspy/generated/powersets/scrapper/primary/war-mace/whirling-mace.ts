@@ -38,6 +38,11 @@ export const WhirlingMace: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.12,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.30000001192092896,

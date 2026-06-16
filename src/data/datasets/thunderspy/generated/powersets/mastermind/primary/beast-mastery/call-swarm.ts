@@ -40,5 +40,11 @@ export const CallSwarm: Power = {
     "Ranged Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.264,
+    "table": "Ranged_Damage",
+    "duration": 1.5
+  }
 };

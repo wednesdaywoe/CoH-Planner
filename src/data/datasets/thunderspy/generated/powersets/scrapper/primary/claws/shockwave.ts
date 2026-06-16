@@ -41,6 +41,11 @@ export const Shockwave: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.05,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.5,

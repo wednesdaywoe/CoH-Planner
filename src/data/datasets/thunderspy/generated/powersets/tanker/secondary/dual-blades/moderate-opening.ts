@@ -39,5 +39,11 @@ export const ModerateOpening: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.3867,
+    "table": "Melee_Damage",
+    "duration": 1
+  },
   "requires": "Tanker_Defense.Shield_Defense !"
 };

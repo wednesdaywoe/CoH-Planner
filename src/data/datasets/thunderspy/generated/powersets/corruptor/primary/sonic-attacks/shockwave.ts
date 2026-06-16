@@ -41,10 +41,28 @@ export const Shockwave: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.32,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 3,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.64,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

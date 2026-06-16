@@ -38,6 +38,11 @@ export const FRTDominate: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.387692,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

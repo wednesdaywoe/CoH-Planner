@@ -41,6 +41,11 @@ export const CrushingUppercut: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 3.18,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,
@@ -58,6 +63,18 @@ export const CrushingUppercut: Power = {
       "label": "Conditional",
       "scope": "per-power",
       "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 3.339,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 3.5616,
+          "table": "Melee_Damage"
+        }
+      ],
       "effects": {
         "stun": {
           "mag": 1,
@@ -72,6 +89,11 @@ export const CrushingUppercut: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
+      "damage": {
+        "type": "Special",
+        "scale": 3.975,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "stun": {
           "mag": 1,

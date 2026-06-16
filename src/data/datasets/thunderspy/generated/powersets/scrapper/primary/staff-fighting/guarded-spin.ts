@@ -39,5 +39,11 @@ export const GuardedSpin: Power = {
     "Defense Sets",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.231667,
+    "table": "Melee_Damage",
+    "duration": 1.5
+  }
 };

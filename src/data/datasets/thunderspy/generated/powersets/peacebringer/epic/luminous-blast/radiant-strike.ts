@@ -39,5 +39,10 @@ export const RadiantStrike: Power = {
     "Knockback",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Melee_Damage"
+  }
 };

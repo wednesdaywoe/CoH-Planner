@@ -40,11 +40,29 @@ export const SpiritSunder: Power = {
     "Recharge Intensive Pets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.6,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "fear": {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Fear"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 3.18,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

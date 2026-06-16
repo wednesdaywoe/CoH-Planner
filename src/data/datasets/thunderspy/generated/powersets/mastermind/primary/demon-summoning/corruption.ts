@@ -35,5 +35,18 @@ export const Corruption: Power = {
   "allowedSetCategories": [
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.32,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.15,
+      "table": "Ranged_Damage",
+      "duration": 3.1
+    }
+  ]
 };

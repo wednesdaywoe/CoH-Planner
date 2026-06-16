@@ -37,6 +37,11 @@ export const Stun: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.075,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,

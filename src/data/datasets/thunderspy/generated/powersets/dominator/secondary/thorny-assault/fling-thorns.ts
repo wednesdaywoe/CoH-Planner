@@ -41,5 +41,18 @@ export const FlingThorns: Power = {
     "Defense Debuff",
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 4.1
+    }
+  ]
 };

@@ -115,6 +115,7 @@ interface BuildActions {
   setProgressionMode: (mode: ProgressionMode) => void;
   setOrigin: (origin: Origin) => void;
   setKheldianForm: (form: 'human' | 'nova' | 'dwarf') => void;
+  setPrimalistForm: (form: 'primal' | 'hunter' | 'prowler') => void;
 
   /**
    * Link the current in-memory build to a Build Library entry by id, so
@@ -1767,6 +1768,37 @@ export const useBuildStore = create<BuildStore>()(
           build: {
             ...state.build,
             kheldianForm: form,
+            primary: { ...state.build.primary, powers: syncPowerList(state.build.primary.powers) },
+            secondary: { ...state.build.secondary, powers: syncPowerList(state.build.secondary.powers) },
+          },
+        }));
+      },
+
+      setPrimalistForm: (form) => {
+        historyCheckpoint();
+        // Mirror setKheldianForm: selecting a form toggles the matching form
+        // power's isActive so its persistent effects apply, and deactivates the
+        // other. Primal (the default human form) leaves both toggles off.
+        const targetActive = (internalName: string | undefined): boolean | undefined => {
+          if (internalName === 'Hunter_Form') return form === 'hunter';
+          if (internalName === 'Prowler_Form') return form === 'prowler';
+          return undefined; // not a form toggle — leave alone
+        };
+        const syncPowerList = (powers: SelectedPower[]): SelectedPower[] => {
+          let changed = false;
+          const out = powers.map((p) => {
+            const desired = targetActive(p.internalName);
+            if (desired === undefined) return p;
+            if (p.isActive === desired) return p;
+            changed = true;
+            return { ...p, isActive: desired };
+          });
+          return changed ? out : powers;
+        };
+        set((state) => ({
+          build: {
+            ...state.build,
+            primalistForm: form,
             primary: { ...state.build.primary, powers: syncPowerList(state.build.primary.powers) },
             secondary: { ...state.build.secondary, powers: syncPowerList(state.build.secondary.powers) },
           },

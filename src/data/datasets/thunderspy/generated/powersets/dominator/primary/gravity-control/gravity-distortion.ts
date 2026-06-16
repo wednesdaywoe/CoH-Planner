@@ -40,6 +40,12 @@ export const GravityDistortion: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.22,
+    "table": "Ranged_Damage",
+    "duration": 4.2
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

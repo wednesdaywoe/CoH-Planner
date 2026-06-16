@@ -42,6 +42,11 @@ export const ChainFences: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.3,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

@@ -1970,7 +1970,10 @@ const SPECIAL_ATTRIBS = new Set([
  * Check if an attrib is a damage type
  */
 function isDamageTypeAttrib(attrib) {
-  return attrib && DAMAGE_TYPES[attrib.toLowerCase()] !== undefined;
+  if (!attrib) return false;
+  const a = attrib.toLowerCase();
+  // `damage` is Thunderspy's generic damage attrib (see extractDamage).
+  return DAMAGE_TYPES[a] !== undefined || a === 'damage';
 }
 
 /**
@@ -2999,7 +3002,14 @@ function extractDamage(templates) {
     if (!template.attribs || !template.scale) continue;
 
     const attrib = template.attribs[0]?.toLowerCase();
-    const damageType = DAMAGE_TYPES[attrib];
+    // Thunderspy stores damage with a single generic `Damage` attrib (the
+    // specific element — Fire/Smashing/… — lives only in the power's shortHelp),
+    // unlike HC/Rebirth which use per-type attribs (Smashing, Fire, …). Map the
+    // generic one to a typeless `Special` damage entry so the scale/table (the
+    // load-bearing damage magnitude) is captured. Element-type refinement from
+    // shortHelp is a tracked follow-up. HC/Rebirth never use a bare `damage`
+    // attrib, so this branch is Thunderspy-only and can't change their output.
+    const damageType = DAMAGE_TYPES[attrib] ?? (attrib === 'damage' ? 'Special' : undefined);
     const aspect = template.aspect?.toLowerCase();
 
     // Only extract as "damage" if:

@@ -38,11 +38,29 @@ export const FreezeRay: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 1,
       "scale": 8,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.1,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

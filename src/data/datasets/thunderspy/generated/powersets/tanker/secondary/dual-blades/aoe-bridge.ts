@@ -37,5 +37,24 @@ export const AoEBridge: Power = {
     "Melee AoE Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.57,
+    "table": "Melee_Damage",
+    "duration": 0.6
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.57,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

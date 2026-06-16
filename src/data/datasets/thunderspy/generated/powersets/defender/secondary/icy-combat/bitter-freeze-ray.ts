@@ -41,6 +41,11 @@ export const BitterFreezeRay: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.32,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

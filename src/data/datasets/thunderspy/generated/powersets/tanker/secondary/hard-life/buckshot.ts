@@ -39,5 +39,10 @@ export const Buckshot: Power = {
     "Knockback",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.7,
+    "table": "Melee_Damage"
+  }
 };

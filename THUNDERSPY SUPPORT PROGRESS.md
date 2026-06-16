@@ -214,12 +214,26 @@ Goal: make Thunderspy a selectable dataset in the planner app (currently only `h
 5. **UI** (Header.tsx): Thunderspy `SERVER_OPTIONS` enabled, `warning` (amber) badge, Primalist-aware archetype picker.
 6. **`primalist` added** to converter AT lists (`extract-at-tables`, `convert-archetypes`) and both powerset category maps.
 
+### Primalist form mechanics — ✅ DONE (Phase F, 2026-06-16)
+
+Primalist is a Kheldian-style form-shifter: its six Feral Might attacks (+ Primal Gift's Primal Howl) are **empty redirect shells**; the real per-form effect data lives in `Primalist_Misc.{Primal,Hunter,Prowler}_Form_Powers` as `<Power>_Primal/_Hunter/_Prowler` variants. Modeled on the Rebirth Kheldian redirect system (display-time overlay; slots stay on the base shell):
+
+- **`scripts/generate-primalist-variants.cjs`** (new) → `datasets/thunderspy/primalist-form-variants.ts`: emits `PRIMALIST_FORM_VARIANT_POWERS` (20 variants) + `PRIMALIST_REDIRECTS` (7 base→form maps, derived from `_Primal/_Hunter/_Prowler` suffixes).
+- **`datasets/thunderspy/primalist-redirects.ts`** (hand): `PrimalistForm` type, `resolvePrimalistRedirect` (every form redirects since the shell is empty; missing variant falls back to Primal), `isPrimalistFormShell`, variant-name set.
+- **State**: `Build.primalistForm` (`primal`|`hunter`|`prowler`, default primal) + `buildStore.setPrimalistForm` (syncs Hunter_Form/Prowler_Form toggle `isActive`).
+- **Display**: InfoPanel `formRedirectedPower` overlays the resolved variant's stats/damage/effects onto the shell.
+- **UI**: Header `PrimalistFormSelector` (Primal/Hunter/Prowler), shown for Thunderspy Primalist.
+
+### Dataset-wide damage extraction — ✅ FIXED (2026-06-16, surfaced by Phase F)
+
+Phase F exposed that **no Thunderspy attack had any damage** in the converted data (0 of 3,104 power files). Cause: Thunderspy stores damage with a single **generic `Damage` attrib** (the element — Fire/Smashing/… — lives only in the shortHelp like `DMG(Fire)`), whereas HC/Rebirth use per-type attribs; `extractDamage`/`isDamageTypeAttrib` (`convert-powerset.cjs`) only recognised the typed attribs and dropped the generic one. Fixed by mapping the bare `damage` attrib to a typeless `Special` damage entry (correct scale/table magnitude). HC/Rebirth never use a bare `damage` attrib, so their output is unchanged. After regen: **1,276 power files now carry damage**. **Follow-up:** refine the `Special` label to the real element by parsing the power's shortHelp `DMG(...)` — magnitude is already correct; only the type label is generic.
+
 ### Remaining
 
-1. **IO sets** (`io-sets-raw.ts`): currently **re-exports HC's** registry as a first-pass approximation (fully functional). Real extraction needs `extract-rebirth-io-sets-v2.py` ported to a Thunderspy mode (212 sets in `boostsets.bin`).
-2. **Primalist forms** (Phase F): model Hunter/Prowler/Primal form toggles + per-attack lifesteal redirects (the form-variant powers live in `Primalist_Misc`), reusing the Kheldian form machinery. Not yet modeled — Primalist is selectable and its base Feral Might / Primal Gift powers work, but form-switching isn't wired.
+1. **Damage element-type refinement** (above): `Special` → Fire/Smashing/etc. from shortHelp. Magnitudes correct; cosmetic/resistance-grouping only.
+2. **IO sets** (`io-sets-raw.ts`): re-exports HC as a first-pass; real extraction needs `extract-rebirth-io-sets-v2.py` ported to Thunderspy (212 sets in `boostsets.bin`).
 3. **Entities parser fix** so `pet-entities.ts` can be populated (parser-log open issue). Until then summoned-pet detail panels are empty.
-4. **regen-all**: Thunderspy isn't in `regen-all.cjs`'s default dataset list (its `convert-pet-entities`/`generate-kheldian-variants` steps would fail without entities / a form-variants file). Regen its generated layer manually per-converter for now.
+4. **regen-all**: Thunderspy isn't in `regen-all.cjs`'s default list (its `convert-pet-entities`/`generate-kheldian-variants` steps need entities / a form-variants file). Regen its generated layer manually per-converter; note the new `generate-primalist-variants.cjs` and `generate-archetypes.cjs` steps.
 
 ## How to add more sources later
 

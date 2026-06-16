@@ -38,6 +38,19 @@ export const FlingQuills: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.424,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 1,

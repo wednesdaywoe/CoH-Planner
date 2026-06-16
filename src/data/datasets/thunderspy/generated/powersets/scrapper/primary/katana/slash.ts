@@ -38,5 +38,11 @@ export const Slash: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.42,
+    "table": "Melee_Damage",
+    "duration": 0.3
+  },
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

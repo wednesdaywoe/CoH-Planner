@@ -37,5 +37,17 @@ export const SpectralWounds: Power = {
     "Ranged Damage",
     "Sleep"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 2.45,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": -0.49,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

@@ -42,6 +42,12 @@ export const CrushingField: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.1,
+    "table": "Ranged_Damage",
+    "duration": 5.2
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

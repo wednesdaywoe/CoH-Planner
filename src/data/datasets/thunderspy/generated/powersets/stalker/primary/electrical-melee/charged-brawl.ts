@@ -39,11 +39,29 @@ export const ChargedBrawl: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.252,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 0.10000000149011612,
       "scale": 6,
       "table": "Melee_Sleep"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.84,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

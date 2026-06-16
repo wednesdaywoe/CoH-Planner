@@ -37,5 +37,11 @@ export const TRPlasmaCannon: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.1964,
+    "table": "Ranged_Damage",
+    "duration": 4.12
+  }
 };

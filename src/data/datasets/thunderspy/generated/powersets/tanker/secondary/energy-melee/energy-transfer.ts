@@ -41,6 +41,18 @@ export const EnergyTransfer: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.37,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 3.75,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 0.6000000238418579,

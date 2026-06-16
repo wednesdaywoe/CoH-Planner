@@ -187,6 +187,15 @@ export interface Build {
   kheldianForm?: 'human' | 'nova' | 'dwarf';
 
   /**
+   * Active form for Thunderspy Primalist builds. Selects which per-form
+   * variant of the empty Feral Might / Primal Howl shell powers the
+   * damage/info display shows (Feral_Blow → Feral_Blow_Hunter in Hunter
+   * form, etc.). Defaults to 'primal' (the human/base form). Like
+   * kheldianForm, this has no effect on slot allocation.
+   */
+  primalistForm?: 'primal' | 'hunter' | 'prowler';
+
+  /**
    * If this build was loaded from the user's Build Library, the source
    * build's id. Used by the Save → Library flow to update the existing
    * entry rather than creating a duplicate. Cleared when the user starts

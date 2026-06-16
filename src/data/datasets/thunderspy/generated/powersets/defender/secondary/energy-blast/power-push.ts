@@ -38,6 +38,11 @@ export const PowerPush: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.12,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 8,

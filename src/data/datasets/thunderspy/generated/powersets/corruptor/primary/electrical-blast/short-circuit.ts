@@ -37,5 +37,24 @@ export const ShortCircuit: Power = {
     "Endurance Modification",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.3,
+    "table": "Melee_Damage",
+    "duration": 2.1
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.9,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

@@ -41,6 +41,11 @@ export const MaceBeamVolley: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.29,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 1,

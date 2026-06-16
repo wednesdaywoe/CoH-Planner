@@ -37,5 +37,10 @@ export const FollowUp: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.6384,
+    "table": "Melee_Damage"
+  },
   "requires": "Widow_Training.Night_Widow_Training.Build_Up !"
 };

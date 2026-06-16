@@ -42,6 +42,11 @@ export const BitterFreezeRay: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.32,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 1,
@@ -53,5 +58,18 @@ export const BitterFreezeRay: Power = {
       "scale": 30,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.32,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

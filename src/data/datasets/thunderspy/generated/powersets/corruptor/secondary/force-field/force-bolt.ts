@@ -39,6 +39,11 @@ export const ForceBolt: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 9.1,
@@ -48,5 +53,18 @@ export const ForceBolt: Power = {
       "knockback": 1
     },
     "buffDuration": 1
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

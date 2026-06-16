@@ -41,6 +41,11 @@ export const CosmicBurst: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.484,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,

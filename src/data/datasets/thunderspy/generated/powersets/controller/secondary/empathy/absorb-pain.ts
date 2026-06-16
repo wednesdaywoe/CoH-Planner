@@ -34,5 +34,10 @@ export const AbsorbPain: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 3,
+    "table": "Ranged_Damage"
+  }
 };

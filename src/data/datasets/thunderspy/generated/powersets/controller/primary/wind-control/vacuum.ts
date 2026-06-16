@@ -49,5 +49,18 @@ export const Vacuum: Power = {
       "scale": 10,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.15,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

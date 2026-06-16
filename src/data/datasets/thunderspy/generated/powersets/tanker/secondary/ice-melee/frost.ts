@@ -42,5 +42,11 @@ export const Frost: Power = {
     "Slow Movement",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.27,
+    "table": "Melee_Damage",
+    "duration": 5.1
+  }
 };

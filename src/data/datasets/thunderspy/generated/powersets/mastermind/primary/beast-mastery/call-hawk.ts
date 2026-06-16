@@ -40,5 +40,11 @@ export const CallHawk: Power = {
     "Ranged Damage",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.392,
+    "table": "Ranged_Damage",
+    "duration": 1.3
+  }
 };

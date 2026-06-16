@@ -39,5 +39,19 @@ export const ParasiticAura: Power = {
     "Melee AoE Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.1,
+        "table": "Melee_Damage",
+        "duration": 30
+      }
+    }
+  ]
 };

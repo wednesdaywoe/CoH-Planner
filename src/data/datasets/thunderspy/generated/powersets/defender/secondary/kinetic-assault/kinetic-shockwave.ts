@@ -40,12 +40,22 @@ export const KineticShockwave: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.715,
+    "table": "Melee_Damage"
+  },
   "conditionalEffects": [
     {
       "id": "conditional",
       "label": "Conditional",
       "scope": "per-power",
       "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "immobilize": {
           "mag": 0.20000000298023224,

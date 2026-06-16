@@ -38,6 +38,11 @@ export const PsychicShockwave: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.25,

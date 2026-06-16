@@ -46,9 +46,16 @@ export const DualWield: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.82,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.82,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.82,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

@@ -44,5 +44,10 @@ export const XRayBeam: Power = {
     "Defense Debuff",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.148,
+    "table": "Ranged_Damage"
+  }
 };

@@ -40,6 +40,12 @@ export const ProtonVolley: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.49,
+    "table": "Ranged_Damage",
+    "duration": 1.6
+  },
   "effects": {
     "stun": {
       "mag": 1,

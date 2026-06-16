@@ -35,5 +35,18 @@ export const BlazingArrow: Power = {
   "allowedSetCategories": [
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.96,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.125,
+      "table": "Ranged_Damage",
+      "duration": 4.12
+    }
+  ]
 };

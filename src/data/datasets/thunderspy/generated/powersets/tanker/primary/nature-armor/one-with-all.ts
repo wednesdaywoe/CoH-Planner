@@ -38,5 +38,10 @@ export const OneWithAll: Power = {
     "Melee AoE Damage",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 3,
+    "table": "Melee_Damage"
+  }
 };

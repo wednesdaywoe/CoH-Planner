@@ -42,5 +42,10 @@ export const MercurialBlow: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.84,
+    "table": "Melee_Damage"
+  },
   "requires": "Tanker_Defense.Shield_Defense !"
 };

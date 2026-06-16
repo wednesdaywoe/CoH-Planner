@@ -37,5 +37,40 @@ export const Disintegrate: Power = {
   "allowedSetCategories": [
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.216,
+      "table": "Ranged_Damage",
+      "duration": 10.5
+    },
+    {
+      "type": "Special",
+      "scale": 0.108,
+      "table": "Ranged_Damage",
+      "duration": 10.5
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 2.156,
+          "table": "Ranged_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 1.078,
+          "table": "Ranged_Damage",
+          "duration": 1
+        }
+      ]
+    }
+  ]
 };

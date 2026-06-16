@@ -38,5 +38,31 @@ export const BlazingBolt: Power = {
     "Ranged Damage",
     "Sniper Attacks"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 2.76,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.225,
+      "table": "Ranged_Damage",
+      "duration": 3.1
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 2.76,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

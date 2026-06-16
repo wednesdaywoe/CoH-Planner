@@ -37,11 +37,36 @@ export const EaglesClaw: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.92,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,
       "scale": 8,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 2.92,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 2.92,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
+  ]
 };

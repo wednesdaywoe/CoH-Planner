@@ -38,6 +38,20 @@ export const ThornBarrage: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.53,
+      "table": "Ranged_Damage",
+      "duration": 1.75
+    },
+    {
+      "type": "Special",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 3.1
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 1,

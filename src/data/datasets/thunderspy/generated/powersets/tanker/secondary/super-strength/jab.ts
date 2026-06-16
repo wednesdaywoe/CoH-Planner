@@ -41,6 +41,11 @@ export const Jab: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.10000000149011612,

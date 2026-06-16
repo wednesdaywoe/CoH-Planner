@@ -36,5 +36,10 @@ export const Special1: Power = {
     "Knockback",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.41,
+    "table": "Melee_Damage"
+  }
 };

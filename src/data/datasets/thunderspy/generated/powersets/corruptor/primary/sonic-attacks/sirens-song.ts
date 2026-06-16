@@ -41,11 +41,29 @@ export const SirensSong: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.5,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

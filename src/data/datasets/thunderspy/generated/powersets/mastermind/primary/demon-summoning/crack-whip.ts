@@ -39,5 +39,18 @@ export const CrackWhip: Power = {
     "Knockback",
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.13,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.222,
+      "table": "Melee_Damage",
+      "duration": 1.05
+    }
+  ]
 };

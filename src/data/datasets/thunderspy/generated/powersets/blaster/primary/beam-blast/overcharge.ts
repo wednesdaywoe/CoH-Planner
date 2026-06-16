@@ -43,6 +43,19 @@ export const Overcharge: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 4.1
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 0.6000000238418579,

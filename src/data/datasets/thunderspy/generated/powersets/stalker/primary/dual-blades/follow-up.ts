@@ -36,5 +36,23 @@ export const FollowUp: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.8,
+    "table": "Melee_Damage"
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.8,
+        "table": "Melee_Damage"
+      }
+    }
+  ],
   "requires": "Stalker_Melee.Dual_Blades.Build_Up !"
 };

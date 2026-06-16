@@ -40,5 +40,10 @@ export const BitterIceBlast: Power = {
     "Slow Movement",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.684,
+    "table": "Ranged_Damage"
+  }
 };

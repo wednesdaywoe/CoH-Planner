@@ -38,11 +38,29 @@ export const LancerShot: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.12,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 2.12,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

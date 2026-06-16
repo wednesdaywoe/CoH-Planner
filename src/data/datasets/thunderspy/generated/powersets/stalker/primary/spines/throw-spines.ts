@@ -41,11 +41,29 @@ export const ThrowSpines: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.09,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 0.5,
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.09,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

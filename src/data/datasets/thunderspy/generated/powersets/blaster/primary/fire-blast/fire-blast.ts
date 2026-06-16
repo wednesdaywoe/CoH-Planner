@@ -41,5 +41,18 @@ export const FireBlast: Power = {
   "allowedSetCategories": [
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.15,
+      "table": "Ranged_Damage",
+      "duration": 3.1
+    }
+  ]
 };

@@ -38,6 +38,11 @@ export const Screech: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,

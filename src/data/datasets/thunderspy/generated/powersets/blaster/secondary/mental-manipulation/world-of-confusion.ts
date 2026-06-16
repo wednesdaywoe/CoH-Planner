@@ -43,5 +43,10 @@ export const WorldofConfusion: Power = {
     "Confuse",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.12,
+    "table": "Ranged_Damage"
+  }
 };

@@ -46,6 +46,11 @@ export const ArcticAir: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.2,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "fear": {
       "mag": 0.5,

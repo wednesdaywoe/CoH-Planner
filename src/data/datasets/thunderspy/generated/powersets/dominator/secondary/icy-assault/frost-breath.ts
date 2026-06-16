@@ -40,5 +40,11 @@ export const FrostBreath: Power = {
     "Ranged AoE Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.55,
+    "table": "Ranged_Damage",
+    "duration": 0.6
+  }
 };

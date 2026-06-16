@@ -37,5 +37,10 @@ export const SerpentsReach: Power = {
     "Knockback",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.8,
+    "table": "Melee_Damage"
+  }
 };

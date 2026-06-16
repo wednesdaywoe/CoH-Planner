@@ -41,11 +41,42 @@ export const SkySplitter: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.38,
+    "table": "Melee_Damage",
+    "duration": 1.9
+  },
   "effects": {
     "stun": {
       "mag": 1,
       "scale": 5,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 0.828,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.828,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 0.828,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
+  ]
 };

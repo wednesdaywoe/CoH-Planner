@@ -36,5 +36,10 @@ export const MaimingSlash: Power = {
     "Melee Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.16,
+    "table": "Melee_Damage"
+  }
 };

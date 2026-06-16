@@ -41,6 +41,20 @@ export const TRCocoon: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.155,
+      "table": "Ranged_Damage",
+      "duration": 6
+    },
+    {
+      "type": "Special",
+      "scale": 0.0755,
+      "table": "Ranged_Damage",
+      "duration": 6
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 1,

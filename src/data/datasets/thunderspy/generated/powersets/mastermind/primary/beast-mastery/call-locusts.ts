@@ -43,5 +43,11 @@ export const CallLocusts: Power = {
     "Ranged AoE Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.3036,
+    "table": "Ranged_Damage",
+    "duration": 1.5
+  }
 };

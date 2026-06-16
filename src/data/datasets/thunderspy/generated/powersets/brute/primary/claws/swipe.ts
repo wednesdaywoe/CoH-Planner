@@ -37,5 +37,10 @@ export const Swipe: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.24,
+    "table": "Melee_Damage"
+  },
   "requires": "Brute_Defense.Shield_Defense ! Brute_Defense.Stone_Armor ! &&"
 };

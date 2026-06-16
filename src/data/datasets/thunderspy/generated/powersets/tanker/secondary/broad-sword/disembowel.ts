@@ -41,6 +41,11 @@ export const Disembowel: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.96,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 2,

@@ -37,6 +37,19 @@ export const BarbSwipe: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.84,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 2.1
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 1,

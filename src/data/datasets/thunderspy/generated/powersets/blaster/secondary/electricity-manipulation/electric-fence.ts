@@ -46,6 +46,12 @@ export const ElectricFence: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.2,
+    "table": "Ranged_Damage",
+    "duration": 8.2
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

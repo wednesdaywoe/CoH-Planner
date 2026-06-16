@@ -40,6 +40,19 @@ export const RingofFire: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 2.3,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 1.15,
+      "table": "Ranged_Damage",
+      "duration": 1
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 1,

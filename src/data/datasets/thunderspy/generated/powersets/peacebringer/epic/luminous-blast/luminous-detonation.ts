@@ -43,6 +43,11 @@ export const LuminousDetonation: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.9,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 2,

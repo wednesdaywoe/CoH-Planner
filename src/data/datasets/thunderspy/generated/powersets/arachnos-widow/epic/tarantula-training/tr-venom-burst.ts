@@ -37,5 +37,10 @@ export const TRVenomBurst: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.0923,
+    "table": "Ranged_Damage"
+  }
 };

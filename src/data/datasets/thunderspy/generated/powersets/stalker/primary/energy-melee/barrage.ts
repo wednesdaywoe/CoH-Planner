@@ -37,11 +37,30 @@ export const Barrage: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.198,
+    "table": "Melee_Damage",
+    "duration": 0.3
+  },
   "effects": {
     "stun": {
       "mag": 0.10000000149011612,
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.32,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

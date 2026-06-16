@@ -38,11 +38,29 @@ export const Subdue: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.32,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 0.800000011920929,
       "scale": 6,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.32,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

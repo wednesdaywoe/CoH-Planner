@@ -44,6 +44,11 @@ export const Terrify: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "fear": {
       "mag": 1,

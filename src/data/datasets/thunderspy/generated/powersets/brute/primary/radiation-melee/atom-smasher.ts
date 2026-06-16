@@ -44,6 +44,11 @@ export const AtomSmasher: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.775,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 0.25,

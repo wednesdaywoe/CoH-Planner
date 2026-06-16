@@ -40,6 +40,11 @@ export const MaceBeamBlast: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.392,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 1,

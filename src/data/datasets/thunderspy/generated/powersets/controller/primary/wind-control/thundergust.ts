@@ -41,5 +41,10 @@ export const Thundergust: Power = {
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.24,
+    "table": "Ranged_Damage"
+  }
 };

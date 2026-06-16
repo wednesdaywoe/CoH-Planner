@@ -39,6 +39,11 @@ export const GreaterPsiBlade: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.69,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,
@@ -52,6 +57,11 @@ export const GreaterPsiBlade: Power = {
       "label": "Conditional",
       "scope": "per-power",
       "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.34625,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "stun": {
           "mag": 1,

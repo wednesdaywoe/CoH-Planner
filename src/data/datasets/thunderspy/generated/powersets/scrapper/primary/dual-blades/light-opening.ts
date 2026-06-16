@@ -35,5 +35,11 @@ export const LightOpening: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.42,
+    "table": "Melee_Damage",
+    "duration": 0.5
+  },
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

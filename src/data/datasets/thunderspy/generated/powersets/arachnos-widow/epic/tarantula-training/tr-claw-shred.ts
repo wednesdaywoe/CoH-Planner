@@ -40,6 +40,11 @@ export const TRClawShred: Power = {
     "Melee AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.329,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "taunt": {
       "scale": 20,

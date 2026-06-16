@@ -40,5 +40,11 @@ export const GroupEnergyFlight: Power = {
     "Defense Debuff",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.08,
+    "table": "Ranged_Damage",
+    "duration": 1.25
+  }
 };

@@ -34,5 +34,10 @@ export const IceSwordCircle: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.684,
+    "table": "Melee_Damage"
+  },
   "requires": "Defender_Ranged.Ice_Blast.Frost_Breath !"
 };

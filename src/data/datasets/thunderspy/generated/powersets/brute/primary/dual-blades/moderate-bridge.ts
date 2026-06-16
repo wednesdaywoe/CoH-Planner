@@ -39,5 +39,11 @@ export const ModerateBridge: Power = {
     "Melee Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.66,
+    "table": "Melee_Damage",
+    "duration": 0.6
+  }
 };

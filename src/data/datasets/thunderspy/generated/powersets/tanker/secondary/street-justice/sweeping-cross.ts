@@ -42,6 +42,11 @@ export const SweepingCross: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.5,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.20000000298023224,
@@ -55,6 +60,18 @@ export const SweepingCross: Power = {
       "label": "Conditional",
       "scope": "per-power",
       "defaultActive": false,
+      "damage": [
+        {
+          "type": "Special",
+          "scale": 1.575,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Special",
+          "scale": 1.725,
+          "table": "Melee_Damage"
+        }
+      ],
       "effects": {
         "stun": {
           "mag": 0.25999999046325684,
@@ -69,6 +86,11 @@ export const SweepingCross: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
+      "damage": {
+        "type": "Special",
+        "scale": 1.95,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "stun": {
           "mag": 0.30000001192092896,

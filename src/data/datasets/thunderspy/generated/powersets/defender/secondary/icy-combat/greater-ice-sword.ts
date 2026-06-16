@@ -33,5 +33,10 @@ export const GreaterIceSword: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.96,
+    "table": "Melee_Damage"
+  },
   "requires": "Defender_Ranged.Ice_Blast.Bitter_Ice_Blast !"
 };

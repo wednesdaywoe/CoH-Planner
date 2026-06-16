@@ -41,5 +41,10 @@ export const BitterIceBlast: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "requires": "Defender_Ranged.Ice_Blast.Greater_Ice_Sword !"
 };

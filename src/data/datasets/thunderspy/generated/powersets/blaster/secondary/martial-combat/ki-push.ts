@@ -48,6 +48,11 @@ export const KiPush: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.8,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 4,

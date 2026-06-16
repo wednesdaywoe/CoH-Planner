@@ -41,5 +41,10 @@ export const ElectronHaze: Power = {
     "Knockback",
     "Ranged AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.7,
+    "table": "Ranged_Damage"
+  }
 };

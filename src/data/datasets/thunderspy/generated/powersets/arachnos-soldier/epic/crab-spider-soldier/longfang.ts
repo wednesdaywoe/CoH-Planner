@@ -38,5 +38,11 @@ export const Longfang: Power = {
     "Defense Debuff",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.382,
+    "table": "Ranged_Damage",
+    "duration": 0.7
+  }
 };

@@ -40,6 +40,11 @@ export const DevastatingBlow: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.77,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 0.6000000238418579,

@@ -38,5 +38,10 @@ export const Beheader: Power = {
     "Melee Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.96,
+    "table": "Melee_Damage"
+  }
 };

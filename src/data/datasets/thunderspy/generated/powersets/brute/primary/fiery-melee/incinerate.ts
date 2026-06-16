@@ -36,5 +36,11 @@ export const Incinerate: Power = {
     "Melee Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.25,
+    "table": "Melee_Damage",
+    "duration": 2.25
+  }
 };

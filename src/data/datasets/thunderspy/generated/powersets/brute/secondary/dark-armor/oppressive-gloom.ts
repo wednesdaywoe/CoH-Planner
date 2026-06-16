@@ -37,6 +37,11 @@ export const OppressiveGloom: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.1,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,

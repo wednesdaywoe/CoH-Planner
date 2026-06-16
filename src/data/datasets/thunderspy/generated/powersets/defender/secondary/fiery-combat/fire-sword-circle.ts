@@ -34,5 +34,18 @@ export const FireSwordCircle: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.465,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.15,
+      "table": "Melee_Damage",
+      "duration": 2.1
+    }
+  ],
   "requires": "Defender_Ranged.Fire_Blast.Rain_of_Fire !"
 };

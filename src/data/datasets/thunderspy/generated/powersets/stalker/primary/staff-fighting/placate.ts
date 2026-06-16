@@ -41,11 +41,30 @@ export const Placate: Power = {
     "Melee AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.332,
+    "table": "Melee_Damage",
+    "duration": 1.7
+  },
   "effects": {
     "immobilize": {
       "mag": 0.6000000238418579,
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.66,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

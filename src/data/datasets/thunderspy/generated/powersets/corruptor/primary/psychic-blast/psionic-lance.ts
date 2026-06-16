@@ -38,5 +38,23 @@ export const PsionicLance: Power = {
     "Ranged Damage",
     "Sniper Attacks"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.76,
+    "table": "Ranged_Damage"
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 2.76,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

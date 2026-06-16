@@ -39,5 +39,10 @@ export const Zapp: Power = {
     "Ranged Damage",
     "Sniper Attacks"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.28,
+    "table": "Ranged_Damage"
+  }
 };

@@ -37,5 +37,18 @@ export const DragonBreath: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.22,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.22,
+      "table": "Ranged_Damage",
+      "duration": 3.1
+    }
+  ]
 };

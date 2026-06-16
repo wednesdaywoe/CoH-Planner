@@ -40,6 +40,11 @@ export const PsiBladeSweep: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.36,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.33000001311302185,
@@ -53,6 +58,12 @@ export const PsiBladeSweep: Power = {
       "label": "Conditional",
       "scope": "per-power",
       "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.236,
+        "table": "Melee_Damage",
+        "duration": 3.1
+      },
       "effects": {
         "stun": {
           "mag": 0.5,

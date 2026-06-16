@@ -44,5 +44,10 @@ export const HeadSplitter: Power = {
     "Melee AoE Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.28,
+    "table": "Melee_Damage"
+  }
 };

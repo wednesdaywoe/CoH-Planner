@@ -41,6 +41,12 @@ export const EmptyClips: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.351852,
+    "table": "Ranged_Damage",
+    "duration": 0.7
+  },
   "effects": {
     "knockback": {
       "scale": 0.64,

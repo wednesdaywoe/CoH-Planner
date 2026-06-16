@@ -36,5 +36,18 @@ export const Blaze: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 2.12,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.225,
+      "table": "Ranged_Damage",
+      "duration": 4.1
+    }
+  ],
   "requires": "Defender_Ranged.Fire_Blast.Fire_Sword !"
 };

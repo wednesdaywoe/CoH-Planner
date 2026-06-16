@@ -34,5 +34,17 @@ export const PsiBladeSlash: Power = {
   "allowedSetCategories": [
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.98,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.98,
+      "table": "Melee_Damage"
+    }
+  ]
 };

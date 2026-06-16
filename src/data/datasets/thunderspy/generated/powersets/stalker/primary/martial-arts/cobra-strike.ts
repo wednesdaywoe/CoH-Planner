@@ -38,11 +38,29 @@ export const CobraStrike: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.96,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.96,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

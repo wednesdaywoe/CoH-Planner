@@ -40,5 +40,11 @@ export const Slash: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.42,
+    "table": "Melee_Damage",
+    "duration": 0.3
+  },
   "requires": "Brute_Defense.Shield_Defense !"
 };

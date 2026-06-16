@@ -37,5 +37,11 @@ export const ChargedBrawl: Power = {
     "Endurance Modification",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.5,
+    "table": "Melee_Damage",
+    "duration": 2
+  }
 };

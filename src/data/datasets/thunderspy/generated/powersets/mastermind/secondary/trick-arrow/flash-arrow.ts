@@ -37,5 +37,10 @@ export const FlashArrow: Power = {
     "Accurate To-Hit Debuff",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.15,
+    "table": "Ranged_Damage"
+  }
 };

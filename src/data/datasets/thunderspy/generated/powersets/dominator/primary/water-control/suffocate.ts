@@ -41,6 +41,12 @@ export const Suffocate: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.275,
+    "table": "Ranged_Damage",
+    "duration": 3.1
+  },
   "effects": {
     "immobilize": {
       "mag": 1,

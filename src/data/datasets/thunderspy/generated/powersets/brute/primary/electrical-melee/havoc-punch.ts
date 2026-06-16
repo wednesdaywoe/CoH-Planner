@@ -41,6 +41,11 @@ export const HavocPunch: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.396,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 0.30000001192092896,

@@ -42,9 +42,16 @@ export const PiercingRounds: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.055,
-    "table": "Ranged_Damage"
-  }
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.055,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.055,
+      "table": "Ranged_Damage"
+    }
+  ]
 };

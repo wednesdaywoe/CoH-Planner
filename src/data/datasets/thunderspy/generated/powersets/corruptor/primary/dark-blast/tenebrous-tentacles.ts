@@ -44,11 +44,31 @@ export const TenebrousTentacles: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.07235,
+    "table": "Ranged_Damage",
+    "duration": 6.1
+  },
   "effects": {
     "immobilize": {
       "mag": 1,
       "scale": 15,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.118,
+        "table": "Ranged_Damage",
+        "duration": 6.1
+      }
+    }
+  ]
 };

@@ -34,5 +34,24 @@ export const ModerateOpening: Power = {
   "allowedSetCategories": [
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.3867,
+    "table": "Melee_Damage",
+    "duration": 1
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.84,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

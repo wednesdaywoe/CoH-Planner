@@ -40,5 +40,10 @@ export const DarkRegeneration: Power = {
     "Melee AoE Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.2,
+    "table": "Melee_Damage"
+  }
 };

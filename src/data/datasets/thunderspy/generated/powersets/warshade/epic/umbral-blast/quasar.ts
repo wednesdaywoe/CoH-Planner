@@ -40,6 +40,11 @@ export const Quasar: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 4,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 10,

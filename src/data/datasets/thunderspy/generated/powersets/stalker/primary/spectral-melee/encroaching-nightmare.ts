@@ -40,6 +40,11 @@ export const EncroachingNightmare: Power = {
     "Melee AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.71,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 1,
@@ -51,5 +56,18 @@ export const EncroachingNightmare: Power = {
       "scale": 10,
       "table": "Melee_Fear"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.42,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

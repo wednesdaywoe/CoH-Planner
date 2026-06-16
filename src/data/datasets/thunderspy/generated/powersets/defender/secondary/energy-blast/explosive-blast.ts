@@ -40,6 +40,11 @@ export const ExplosiveBlast: Power = {
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.27,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 2,

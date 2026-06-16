@@ -35,5 +35,10 @@ export const TRVenomBolt: Power = {
   "allowedSetCategories": [
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.6072,
+    "table": "Melee_Damage"
+  }
 };

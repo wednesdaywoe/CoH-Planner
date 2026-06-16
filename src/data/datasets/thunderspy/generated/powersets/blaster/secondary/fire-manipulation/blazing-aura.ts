@@ -49,5 +49,10 @@ export const BlazingAura: Power = {
     "Healing",
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.2,
+    "table": "Melee_Damage"
+  }
 };

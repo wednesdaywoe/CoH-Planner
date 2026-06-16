@@ -37,6 +37,11 @@ export const Swoop: Power = {
     "Melee Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.28,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 3,

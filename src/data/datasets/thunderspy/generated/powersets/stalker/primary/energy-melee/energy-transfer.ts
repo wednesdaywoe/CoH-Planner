@@ -37,11 +37,29 @@ export const EnergyTransfer: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.37,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.5,
       "scale": 8,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 3,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

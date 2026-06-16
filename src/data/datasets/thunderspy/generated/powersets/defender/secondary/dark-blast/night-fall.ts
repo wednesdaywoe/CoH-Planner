@@ -41,5 +41,11 @@ export const NightFall: Power = {
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.11,
+    "table": "Ranged_Damage",
+    "duration": 2.8
+  }
 };

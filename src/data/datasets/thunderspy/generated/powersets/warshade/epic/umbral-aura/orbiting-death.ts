@@ -36,5 +36,11 @@ export const OrbitingDeath: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.17,
+    "table": "Melee_Damage",
+    "duration": 2.5
+  }
 };

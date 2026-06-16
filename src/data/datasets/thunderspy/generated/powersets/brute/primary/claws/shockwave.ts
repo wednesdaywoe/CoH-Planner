@@ -43,6 +43,11 @@ export const Shockwave: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.13,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.5,

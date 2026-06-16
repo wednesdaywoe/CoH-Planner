@@ -38,5 +38,18 @@ export const ThornyDarts: Power = {
     "Defense Debuff",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.84,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.05,
+      "table": "Ranged_Damage",
+      "duration": 3.1
+    }
+  ]
 };

@@ -42,6 +42,19 @@ export const Ripper: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 1.7,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 0.2,
+      "table": "Melee_Damage",
+      "duration": 4.1
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 0.5,

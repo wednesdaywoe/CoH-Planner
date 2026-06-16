@@ -37,5 +37,11 @@ export const Slash: Power = {
     "Defense Debuff",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.42,
+    "table": "Melee_Damage",
+    "duration": 0.3
+  }
 };

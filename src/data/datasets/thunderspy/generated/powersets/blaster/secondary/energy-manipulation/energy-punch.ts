@@ -37,6 +37,11 @@ export const EnergyPunch: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 0.59,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 0.30000001192092896,

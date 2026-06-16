@@ -41,6 +41,18 @@ export const HavokPunch: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": 0.78,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Special",
+      "scale": 1.82,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "sleep": {
       "mag": 0.5,
