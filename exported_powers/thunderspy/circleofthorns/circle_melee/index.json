@@ -1,0 +1,19 @@
+{
+  "key": "CircleOfThorns.Circle_Melee",
+  "display_name": "Circle_Melee",
+  "help": "Circle of Thorns",
+  "short_help": "Circle of Thorns",
+  "icon": "circle_melee_set.ico",
+  "powers": [
+    "CircleOfThorns.Circle_Melee.Falchion"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Falchion"
+  ],
+  "power_short_helps": [
+    "Melee Lethal/Negative, Low Dam"
+  ]
+}

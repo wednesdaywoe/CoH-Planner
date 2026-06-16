@@ -110,6 +110,10 @@ const CATEGORY_MAP = {
   // is Rebirth's distinct take with its own powerset library).
   'guardian_assault': { archetype: 'guardian', type: 'primary' },
   'guardian_comp': { archetype: 'guardian', type: 'secondary' },
+  // Thunderspy Primalist — Kheldian-style form-shifter with a single primary
+  // (Feral_Might) and single secondary (Primal_Gifts) powerset.
+  'feral_might': { archetype: 'primalist', type: 'primary' },
+  'primal_gifts': { archetype: 'primalist', type: 'secondary' },
   // Kheldians — both the defensive and offensive categories live under
   // the same `epic` path in the composed tree (Luminous/Umbral Aura &
   // Blast), matching the existing Powerset.category = 'epic'.

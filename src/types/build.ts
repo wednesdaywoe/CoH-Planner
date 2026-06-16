@@ -122,7 +122,7 @@ export interface Build {
    * build. Older builds without this field migrate to `'homecoming'`.
    * See `src/data/dataset.ts` and `MULTI_DATASET_PLAN.md`.
    */
-  serverId: 'homecoming' | 'rebirth';
+  serverId: 'homecoming' | 'rebirth' | 'thunderspy';
 
   /** Selected archetype */
   archetype: ArchetypeSelection;
@@ -210,7 +210,7 @@ export interface Build {
 // DEFAULT BUILD FACTORY
 // ============================================
 
-export function createEmptyBuild(serverId: 'homecoming' | 'rebirth' = 'homecoming'): Build {
+export function createEmptyBuild(serverId: 'homecoming' | 'rebirth' | 'thunderspy' = 'homecoming'): Build {
   return {
     name: 'Untitled Build',
     serverId,
@@ -277,7 +277,7 @@ export interface SlimBuildData {
   name: string;
   /** Dataset / server identifier. Optional for backward compat — older
    * exports predate multi-dataset support and default to `'homecoming'`. */
-  serverId?: 'homecoming' | 'rebirth';
+  serverId?: 'homecoming' | 'rebirth' | 'thunderspy';
   archetype: { id: string | null; name: string };
   level: number;
   primary: { id: string | null; name: string; powers: { name: string; level: number; slots: unknown[] }[] };

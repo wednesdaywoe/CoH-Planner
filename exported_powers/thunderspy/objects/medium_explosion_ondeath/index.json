@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Medium_Explosion_OnDeath",
+  "display_name": "Explosion",
+  "help": "Object",
+  "short_help": "Object",
+  "icon": "medium_explosion_ondeath_set.ico",
+  "powers": [
+    "Objects.Medium_Explosion_OnDeath.Medium_Explosion"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Medium Explosion"
+  ],
+  "power_short_helps": [
+    "Disorient"
+  ]
+}

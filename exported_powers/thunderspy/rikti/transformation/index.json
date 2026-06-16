@@ -1,0 +1,19 @@
+{
+  "key": "Rikti.Transformation",
+  "display_name": "Transformation",
+  "help": "Rikti",
+  "short_help": "Rikti",
+  "icon": "transformation_set.ico",
+  "powers": [
+    "Rikti.Transformation.Transformation"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Transformation"
+  ],
+  "power_short_helps": [
+    "Toggle: Shapeshift, Special"
+  ]
+}

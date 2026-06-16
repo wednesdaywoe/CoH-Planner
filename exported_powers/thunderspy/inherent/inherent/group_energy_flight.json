@@ -1,0 +1,214 @@
+{
+  "name": "Group_Energy_Flight",
+  "full_name": "Inherent.Inherent.Group_Energy_Flight",
+  "short_name": "Group_Energy_Flight",
+  "type": "Toggle",
+  "display_name": "Group Energy Flight",
+  "display_fullname": "Inherent Inherent Group Energy Flight",
+  "display_help": "You can endow your nearby teammates with Flight. Be mindful! Your friends will fall if you run out of Endurance or if they travel too far away from you. Group Energy Flight travel speed is slower than Energy Flight.",
+  "display_short_help": "Toggle: Team Fly",
+  "icon": "luminousaura_groupenergyflight.png",
+  "auto_issue": true,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 255,
+  "radius": 60.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.03,
+  "recharge_time": 0.0,
+  "activate_period": 2.0,
+  "endurance_cost": 1.3,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Teammate",
+    "Self"
+  ],
+  "targets_affected": [
+    "Teammate",
+    "Self"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "SpeedFlying"
+  ],
+  "allowed_set_categories": [
+    "Flight",
+    "Universal Travel"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [
+    "hold",
+    "sleep",
+    "stun"
+  ],
+  "num_allowed": 1,
+  "requires": "$archetype @Class_Peacebringer ==",
+  "activate_requires": "$archetype @Class_Peacebringer ==",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "!",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Ones"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "!",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "!",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Control"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Control",
+          "scale": 10.0,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "!",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "!",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "SpeedFlying"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_SpeedFlying",
+          "scale": 0.5,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "!",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "!",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Friction"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Friction",
+          "scale": 10.0,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "!",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Inherent.Inherent"
+}

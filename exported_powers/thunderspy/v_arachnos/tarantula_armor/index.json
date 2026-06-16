@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Tarantula_Armor",
+  "display_name": "Tarantula_Armor",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "tarantula_armor_set.ico",
+  "powers": [
+    "V_Arachnos.Tarantula_Armor.Armored_Exoskeleton"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Armored Exoskeleton"
+  ],
+  "power_short_helps": [
+    "Resistance"
+  ]
+}

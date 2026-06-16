@@ -1,0 +1,31 @@
+{
+  "key": "Teamwork.Tarantula_Teamwork",
+  "display_name": "Tarantula Teamwork",
+  "help": "Tarantula Teamwork",
+  "short_help": "Tarantula Teamwork",
+  "icon": "tarantula_teamwork_set.png",
+  "powers": [
+    "Teamwork.Tarantula_Teamwork.Tarantula_Conversion",
+    "Teamwork.Tarantula_Teamwork.TR_Mind_Link",
+    "Teamwork.Tarantula_Teamwork.Reinforced_Exoskeleton",
+    "Teamwork.Tarantula_Teamwork.Will_Of_Arachnae"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Tarantula Conversion",
+    "Mind Link",
+    "Reinforced Exoskeleton",
+    "Intravenous Serum"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res (All), Self +Max HP",
+    "PBAoE: Team +To Hit, +DEF (All), +RES (Psionic)",
+    "Toggle: Self +Res All But Psionics",
+    "Self Heal, Self +Max HP"
+  ]
+}

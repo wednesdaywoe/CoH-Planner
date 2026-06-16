@@ -1,0 +1,287 @@
+{
+  "name": "Victory_Rush",
+  "full_name": "Pool.Leadership.Victory_Rush",
+  "short_name": "Victory_Rush",
+  "type": "Click",
+  "display_name": "Victory Rush",
+  "display_fullname": "Pool Leadership Victory Rush",
+  "display_help": "The defeat of an opponent gives your team a rush of adrenaline. The excitement of your victory increases the recovery and reduces the endurance cost of your powers. This effect extends to your teammates as well. The total strength of this bonus is dependent upon the rank of the enemy on which this is cast, with Archvillains and Giant Monsters providing the greatest benefit. This power does not stack with multiple castings. You must be level 14 before you can train Victory Rush. Recharge: Very Long",
+  "display_short_help": "Ranged (Targeted AoE), Team +Recovery, -End Cost",
+  "icon": "leadership_victoryrush.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 100.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.17,
+  "recharge_time": 180.0,
+  "activate_period": 0.0,
+  "endurance_cost": 9.75,
+  "interrupt_time": 0.0,
+  "target_type": "DeadFoe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "DeadFoe"
+  ],
+  "targets_affected": [
+    "DeadFoe"
+  ],
+  "boosts_allowed": [
+    "Recovery",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge"
+  ],
+  "allowed_set_categories": [
+    "Endurance Modification"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> Class_Minion_Small eq rank target> eq || rank target> eq || rank target> eq || rank target> Class_Minion_Swarm eq || rank target> Class_Minion_Henchman eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Ones"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> Class_Minion_Small eq rank target> eq || rank target> eq || rank target> eq || rank target> Class_Minion_Swarm eq || rank target> Class_Minion_Henchman eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq ||",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> eq rank target> Class_Minion_Grunt eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Ones"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> eq rank target> Class_Minion_Grunt eq ||",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> eq rank target> Class_Lt_Grunt eq || rank target> eq || rank target> Class_Lt_Henchman eq || rank target> eq || rank target> eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Ones"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> eq rank target> Class_Lt_Grunt eq || rank target> eq || rank target> Class_Lt_Henchman eq || rank target> eq || rank target> eq ||",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq rank target> eq || rank target> Class_Boss_Grunt eq || rank target> eq || rank target> eq || rank target> Class_Boss_Grunt eq || rank target> eq || rank target> eq || rank target> Class_Boss_Henchman eq || rank target> eq || rank target> eq || enttype target> player eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Ones"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq rank target> eq || rank target> Class_Boss_Grunt eq || rank target> eq || rank target> eq || rank target> Class_Boss_Grunt eq || rank target> eq || rank target> eq || rank target> Class_Boss_Henchman eq || rank target> eq || rank target> eq || enttype target> player eq ||",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> eq rank target> Class_Boss_Elite eq || rank target> eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Ones"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> eq rank target> Class_Boss_Elite eq || rank target> eq ||",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "rank target> eq rank target> eq || rank target> Class_Boss_Archvillain eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq || rank target> Class_Boss_Reichsman eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Ones"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "rank target> eq rank target> eq || rank target> Class_Boss_Archvillain eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq || rank target> eq || rank target> Class_Boss_Reichsman eq ||",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Pool.Leadership"
+}

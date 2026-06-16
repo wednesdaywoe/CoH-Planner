@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Knock",
+  "display_name": "Knock",
+  "help": "Object",
+  "short_help": "Object",
+  "icon": "knock_set.ico",
+  "powers": [
+    "Objects.Knock.Diabolique"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Diabolique"
+  ],
+  "power_short_helps": [
+    "Script"
+  ]
+}

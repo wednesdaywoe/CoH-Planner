@@ -1,0 +1,19 @@
+{
+  "key": "Council.Sonic_Rifle",
+  "display_name": "Sonic Rifle",
+  "help": "Council",
+  "short_help": "Council",
+  "icon": "sonic_rifle_set.ico",
+  "powers": [
+    "Council.Sonic_Rifle.Sonic_Blast"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Sonic Blast"
+  ],
+  "power_short_helps": [
+    "-RES(All but Psionics)"
+  ]
+}

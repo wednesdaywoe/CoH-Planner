@@ -1,0 +1,19 @@
+{
+  "key": "Pets.Water_Control_Riptide",
+  "display_name": "Riptide",
+  "help": "Water Control",
+  "short_help": "Water Control",
+  "icon": "water_control_riptide_set.ico",
+  "powers": [
+    "Pets.Water_Control_Riptide.Riptide"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Riptide"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), Minor DoT(Cold), Foe Forced Movement"
+  ]
+}

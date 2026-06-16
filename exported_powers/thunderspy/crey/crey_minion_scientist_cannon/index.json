@@ -1,0 +1,19 @@
+{
+  "key": "Crey.Crey_Minion_Scientist_Cannon",
+  "display_name": "Crey_Minion_Scientist_Cannon",
+  "help": "Crey",
+  "short_help": "Crey",
+  "icon": "crey_minion_scientist_cannon_set.ico",
+  "powers": [
+    "Crey.Crey_Minion_Scientist_Cannon.N2_Cannon"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "N2 Cannon"
+  ],
+  "power_short_helps": [
+    "-Recharge, -Speed"
+  ]
+}

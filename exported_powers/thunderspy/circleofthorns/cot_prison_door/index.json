@@ -1,0 +1,19 @@
+{
+  "key": "CircleOfThorns.CoT_Prison_Door",
+  "display_name": "CoT_Prison_Door",
+  "help": "Circle of Thorns",
+  "short_help": "Circle of Thorns",
+  "icon": "cot_prison_door_set.ico",
+  "powers": [
+    "CircleOfThorns.CoT_Prison_Door.Resistance"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Resistance"
+  ],
+  "power_short_helps": [
+    "Self Auto, Res Fear, Confuse, Disorient, KnockBack"
+  ]
+}

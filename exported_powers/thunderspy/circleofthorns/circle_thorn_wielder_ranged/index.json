@@ -1,0 +1,19 @@
+{
+  "key": "CircleOfThorns.Circle_Thorn_Wielder_Ranged",
+  "display_name": "Circle_Thorn_Wielder_Ranged",
+  "help": "Circle of Thorns",
+  "short_help": "Circle of Thorns",
+  "icon": "circle_thorn_wielder_ranged_set.ico",
+  "powers": [
+    "CircleOfThorns.Circle_Thorn_Wielder_Ranged.Throwing_Dagger"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Throwing Dagger"
+  ],
+  "power_short_helps": [
+    "Ranged Lethal/Negative, Low Dam"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "key": "Rularuu.Rularuu",
+  "display_name": "Rularuu",
+  "help": "Rularuu",
+  "short_help": "Rularuu",
+  "icon": "rularuu_set.ico",
+  "powers": [
+    "Rularuu.Rularuu.Resistance",
+    "Rularuu.Rularuu.Fly"
+  ],
+  "available_level": [
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Resistance",
+    "Fly"
+  ],
+  "power_short_helps": [
+    "Resistance",
+    "Self Travel"
+  ]
+}

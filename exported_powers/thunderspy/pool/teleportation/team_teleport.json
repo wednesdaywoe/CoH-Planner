@@ -1,0 +1,94 @@
+{
+  "name": "Team_Teleport",
+  "full_name": "Pool.Teleportation.Team_Teleport",
+  "short_name": "Team_Teleport",
+  "type": "Click",
+  "display_name": "Team Teleport",
+  "display_fullname": "Pool Teleportation Team Teleport",
+  "display_help": "You can Teleport yourself and your nearby teammates to a targeted location. Teammates must be in close proximity to you. Team Teleport costs slightly more Endurance than Teleport, but you can Teleport your entire team for no additional cost. You must be at least level 14 before selecting Team Teleport.",
+  "display_short_help": "Ranged (Location), Team Teleport",
+  "icon": "teleportation_groupteleport.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 255,
+  "radius": 30.0,
+  "arc": 0.0,
+  "range": 25.0,
+  "range_secondary": 225.0,
+  "activation_time": 1.67,
+  "recharge_time": 0.0,
+  "activate_period": 0.0,
+  "endurance_cost": 20.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "Teleport",
+  "targets_autohit": [
+    "DeadOrAliveTeammate",
+    "Self"
+  ],
+  "targets_affected": [
+    "DeadOrAliveTeammate",
+    "Self"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge"
+  ],
+  "allowed_set_categories": [
+    "Teleport",
+    "Universal Travel"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "!",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Ones"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Ranged_Ones",
+          "scale": 0.0,
+          "duration": "1.50 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "!",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Pool.Teleportation"
+}

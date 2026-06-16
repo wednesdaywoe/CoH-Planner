@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Script_Teleport",
+  "display_name": "Script Teleport",
+  "help": "Map",
+  "short_help": "Map",
+  "icon": "script_teleport_set.ico",
+  "powers": [
+    "Objects.Script_Teleport.Script_Teleport"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Script Teleport"
+  ],
+  "power_short_helps": [
+    "Random Teleport"
+  ]
+}

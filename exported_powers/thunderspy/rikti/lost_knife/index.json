@@ -1,0 +1,19 @@
+{
+  "key": "Rikti.Lost_Knife",
+  "display_name": "Lost_Knife",
+  "help": "The Lost",
+  "short_help": "The Lost",
+  "icon": "lost_knife_set.ico",
+  "powers": [
+    "Rikti.Lost_Knife.Knife"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Knife"
+  ],
+  "power_short_helps": [
+    "Melee Lethal, Low Dam"
+  ]
+}

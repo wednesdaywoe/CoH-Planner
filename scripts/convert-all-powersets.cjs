@@ -65,6 +65,11 @@ const EXTRA_CATEGORIES = {
   // Rebirth-only Guardian
   'guardian_assault':       { archetype: 'guardian', type: 'primary' },
   'guardian_comp':          { archetype: 'guardian', type: 'secondary' },
+  // Thunderspy-only Primalist — a Kheldian-style form-shifter. Single primary
+  // (Feral_Might) + single secondary (Primal_Gifts) powerset; form-attack
+  // variants live in Primalist_Misc (handled as redirects, not a pickable set).
+  'feral_might':            { archetype: 'primalist', type: 'primary' },
+  'primal_gifts':           { archetype: 'primalist', type: 'secondary' },
 };
 
 const ALL_CATEGORIES = { ...CATEGORIES, ...EXTRA_CATEGORIES };

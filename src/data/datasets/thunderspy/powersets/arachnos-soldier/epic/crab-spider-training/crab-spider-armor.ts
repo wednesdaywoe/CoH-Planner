@@ -1,0 +1,16 @@
+/**
+ * Crab Spider Armor Upgrade — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs training_gadgets crab_spider_training
+ */
+import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CrabSpiderArmor as base } from '@/data/datasets/thunderspy/generated/powersets/arachnos-soldier/epic/crab-spider-training/crab-spider-armor';
+import { overrides } from '@/data/datasets/thunderspy/overrides/powersets/arachnos-soldier/epic/crab-spider-training/crab-spider-armor';
+
+export const CrabSpiderArmor: Power = withOverrides(base, overrides);

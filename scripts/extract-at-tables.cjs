@@ -40,7 +40,8 @@ const PLAYER_ARCHETYPES = [
   'peacebringer',
   'warshade',
   'arachnos_soldier',
-  'arachnos_widow'
+  'arachnos_widow',
+  'primalist', // Thunderspy-only custom AT (warn+skip on HC/Rebirth)
 ];
 
 // Pet character classes that need damage tables

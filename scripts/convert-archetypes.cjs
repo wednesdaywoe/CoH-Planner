@@ -46,6 +46,7 @@ const PLAYER_ARCHETYPES = [
   'blaster', 'brute', 'controller', 'corruptor', 'defender', 'dominator',
   'guardian', 'mastermind', 'scrapper', 'sentinel', 'stalker', 'tanker',
   'peacebringer', 'warshade', 'arachnos_soldier', 'arachnos_widow',
+  'primalist', // Thunderspy-only custom AT (warn+skip on HC/Rebirth)
 ];
 
 const PLAYER_LEVELS = 50; // levels 1-50

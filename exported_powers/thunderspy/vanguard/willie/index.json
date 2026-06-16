@@ -1,0 +1,19 @@
+{
+  "key": "Vanguard.Willie",
+  "display_name": "Willie",
+  "help": "Vanguard",
+  "short_help": "Vanguard",
+  "icon": "willie_set.ico",
+  "powers": [
+    "Vanguard.Willie.Willie_Pete"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Willie Pete"
+  ],
+  "power_short_helps": [
+    "DoT(Fire)"
+  ]
+}

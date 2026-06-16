@@ -1,0 +1,31 @@
+{
+  "key": "Pool.Fitness",
+  "display_name": "Fitness",
+  "help": "You become a pillar of fitness, and can receive a bonus to your basic physical attributes. These abilities are always on and do not cost any Endurance.",
+  "short_help": "Fitness",
+  "icon": "fitness_set.ico",
+  "powers": [
+    "Pool.Fitness.Quick",
+    "Pool.Fitness.Hurdle",
+    "Pool.Fitness.Health",
+    "Pool.Fitness.Stamina"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Swift",
+    "Hurdle",
+    "Health",
+    "Stamina"
+  ],
+  "power_short_helps": [
+    "Auto: Self +SPD",
+    "Auto: Self +Leap",
+    "Auto: Self +Regeneration, Res(Sleep)",
+    "Auto: Self +Recovery"
+  ]
+}

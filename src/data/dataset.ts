@@ -129,7 +129,7 @@ export interface InherentRules {
 // DATASET INTERFACE
 // ============================================
 
-export type DatasetId = 'homecoming' | 'rebirth';
+export type DatasetId = 'homecoming' | 'rebirth' | 'thunderspy';
 
 export interface Dataset {
   id: DatasetId;

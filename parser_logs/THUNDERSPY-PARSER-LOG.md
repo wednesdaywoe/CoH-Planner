@@ -18,7 +18,25 @@ fixed, move it to the top of the RESOLVED section with the fix details.
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-*(none open)*
+## ⚠️ `export_entities` (VillainDef.bin) overruns record boundary on Thunderspy — 2026-06-16
+
+**Symptom.** `python3 -m bin_crawler.export_entities --assets-dir <tspy>` crashes:
+`ValueError: Read of 4 bytes at offset 465012 would exceed record boundary` in
+`_parse_level_sub` → `read_string_array` (the per-level `display_names`), via
+`_parse_entity_parse7` ([_entities.py:152](../tools/bin-crawler/bin_crawler/parser/_entities.py)).
+Zero entity JSONs written.
+
+**Likely cause.** Same family as the other Thunderspy gaps: `VillainDef.bin` uses the
+older i23-era record schema, so the Parse7 entity layout reads one-or-more fields that
+Thunderspy doesn't have (or in a different order), shifting the cursor until a
+length-prefixed `read_string` runs off the end of the `levels` sub-record. Needs a
+Thunderspy entity layout variant (probe field-by-field like the powers/classes work).
+
+**Impact / workaround (deferred).** Entities feed `convert-pet-entities.cjs` →
+`pet-entities.ts` (Lore/MM/pseudo-pet ability data). Rebirth shipped its dataset with an
+**empty `PET_ENTITIES` placeholder** initially (see `datasets/rebirth/index.ts` history),
+so Thunderspy can do the same: ship with `petEntities: {}` and fix the entity parser
+later. Player power math is unaffected; only summoned-pet detail panels are.
 
 > ---RESOLVED ---
 

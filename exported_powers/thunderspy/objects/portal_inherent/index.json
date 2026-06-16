@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Portal_Inherent",
+  "display_name": "Portal Inherent",
+  "help": "Object",
+  "short_help": "Object",
+  "icon": "portal_inherent_set.ico",
+  "powers": [
+    "Objects.Portal_Inherent.Resistance"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Resistance"
+  ],
+  "power_short_helps": [
+    "Resistance"
+  ]
+}

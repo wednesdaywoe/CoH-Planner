@@ -1,0 +1,19 @@
+{
+  "key": "Rikti.Rikti_Rifle",
+  "display_name": "Rikti_Rifle",
+  "help": "Rikti",
+  "short_help": "Rikti",
+  "icon": "rikti_rifle_set.ico",
+  "powers": [
+    "Rikti.Rikti_Rifle.Rikti_Rifle"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Rikti Rifle"
+  ],
+  "power_short_helps": [
+    "Disorient"
+  ]
+}

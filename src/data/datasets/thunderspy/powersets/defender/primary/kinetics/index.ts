@@ -1,0 +1,42 @@
+/**
+ * Kinetics Powerset
+ * You are a master at manipulating and transferring Kinetic energy. You can manipulate the potential energy found in objects to aid your allies or weaken your foes.
+ *
+ * Archetype: defender
+ * Category: primary
+ * Source: defender_buff/kinetics
+ */
+
+import type { Powerset } from '@/types';
+
+import { Transfusion as Transfusion } from './transfusion';
+import { Repel as Repel } from './repel';
+import { SiphonPower as SiphonPower } from './siphon-power';
+import { SiphonSpeed as SiphonSpeed } from './siphon-speed';
+import { IncreaseDensity as IncreaseDensity } from './increase-density';
+import { SpeedBoost as SpeedBoost } from './speed-boost';
+import { Transference as Transference } from './transference';
+import { InertialReduction as InertialReduction } from './inertial-reduction';
+import { KineticTransfer as KineticTransfer } from './kinetic-transfer';
+
+export const powerset: Powerset = {
+  id: 'defender/kinetics',
+  name: 'Kinetics',
+  description: 'You are a master at manipulating and transferring Kinetic energy. You can manipulate the potential energy found in objects to aid your allies or weaken your foes.',
+  icon: 'kinetics_set.ico',
+  archetype: 'defender',
+  category: 'primary',
+  powers: [
+    Transfusion,
+    Repel,
+    SiphonPower,
+    SiphonSpeed,
+    IncreaseDensity,
+    SpeedBoost,
+    Transference,
+    InertialReduction,
+    KineticTransfer,
+  ],
+};
+
+export default powerset;

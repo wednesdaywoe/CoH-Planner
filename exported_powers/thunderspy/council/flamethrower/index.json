@@ -1,0 +1,19 @@
+{
+  "key": "Council.Flamethrower",
+  "display_name": "Flamethrower",
+  "help": "Council",
+  "short_help": "Council",
+  "icon": "flamethrower_set.ico",
+  "powers": [
+    "Council.Flamethrower.Flamethrower"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Flamethrower"
+  ],
+  "power_short_helps": [
+    "Moderate DoT(Fire)"
+  ]
+}

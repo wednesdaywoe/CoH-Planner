@@ -1,0 +1,19 @@
+{
+  "key": "Rikti.UXB_Boom",
+  "display_name": "UXB_Boom",
+  "help": "Warburg",
+  "short_help": "Warburg",
+  "icon": "uxb_boom_set.ico",
+  "powers": [
+    "Rikti.UXB_Boom.Nuke"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Nuclear Blast"
+  ],
+  "power_short_helps": [
+    "Ranged AoE, Extreme DoT(Energy), Foe -End, -Recovery"
+  ]
+}

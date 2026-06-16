@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Generic_Recovery_Boost_All",
+  "display_name": "Recovery",
+  "help": "Object",
+  "short_help": "Object",
+  "icon": "generic_recovery_boost_all_set.ico",
+  "powers": [
+    "Objects.Generic_Recovery_Boost_All.Vitality"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Vitality"
+  ],
+  "power_short_helps": [
+    "+Recovery"
+  ]
+}

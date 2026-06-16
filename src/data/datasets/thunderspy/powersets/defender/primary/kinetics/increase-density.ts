@@ -1,0 +1,16 @@
+/**
+ * Increase Density — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff kinetics
+ */
+import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IncreaseDensity as base } from '@/data/datasets/thunderspy/generated/powersets/defender/primary/kinetics/increase-density';
+import { overrides } from '@/data/datasets/thunderspy/overrides/powersets/defender/primary/kinetics/increase-density';
+
+export const IncreaseDensity: Power = withOverrides(base, overrides);
