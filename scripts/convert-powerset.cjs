@@ -723,6 +723,52 @@ function extractQuickSnipeData(powerJson) {
 }
 
 /**
+ * Assassin's Strike (every Stalker primary's AS) delivers all its damage through
+ * a redirect whose targets gate damage on `kMeter` (Hide state): Hidden
+ * (`kMeter >= .9`) does the big "Assassination" hit, not-hidden (`kMeter < .9`)
+ * the normal hit. `collectTemplatesDeep` deliberately skips `kMeter` groups (the
+ * Stalker hidden-state bonus), so the normal path extracts NO damage at all —
+ * AS reads as 0 damage everywhere.
+ *
+ * Pull the NOT-HIDDEN branch as the base damage: that's the sustained hit, and
+ * the Hidden guaranteed-crit is layered on at calc time by the assassination AT
+ * mechanic — exactly like the `InherentDamage` entries the damage calc filters
+ * out (damage.ts: "Stalker assassinations … added separately"). Returns a
+ * ScaledDamageEntry[] or null when this isn't an AS-pattern (kMeter redirect).
+ *
+ * Scoped to the kMeter-redirect shape, so inline-kMeter powers (Arachnos
+ * Soldiers' attacks have no redirect) are untouched.
+ */
+function extractAssassinStrikeDamage(powerJson) {
+  if (!Array.isArray(powerJson.redirect)) return null;
+  if (!powerJson.redirect.some(r => (r.condition_expression || '').includes('kMeter'))) return null;
+  const stealth = powerJson.redirect.find(r => r.condition_expression === 'Always');
+  if (!stealth) return null;
+  const stealthPath = resolveRedirectPath(stealth.name);
+  if (!fs.existsSync(stealthPath)) return null;
+  const stealthJson = JSON.parse(fs.readFileSync(stealthPath, 'utf-8'));
+
+  // Collect templates under the NOT-HIDDEN (kMeter < .9) branch only.
+  const notHidden = [];
+  const walk = (effects, branch) => {
+    for (const e of effects || []) {
+      if (e.is_pvp === 'PVP_ONLY') continue;
+      let b = branch;
+      const req = e.requires_expression || '';
+      if (req.includes('kMeter')) {
+        if (req.includes('>=') || /> 0(\b|\s)/.test(req)) b = 'hidden';
+        else if (req.includes('<')) b = 'nothidden';
+      }
+      if (b === 'nothidden' && Array.isArray(e.templates)) notHidden.push(...e.templates);
+      walk(e.child_effects, b);
+    }
+  };
+  walk(stealthJson.effects, null);
+  if (notHidden.length === 0) return null;
+  return extractDamage(notHidden);
+}
+
+/**
  * A snipe's BASE (not-in-combat) timing lives on its Normal redirect target, not
  * on the redirect shell. The shell's `activation_time` mirrors the Quick anim
  * (~1.67s), so reading it makes the slotted snipe look instant even when slow.
@@ -4607,6 +4653,12 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     // would wrongly strip Remote Bomb's genuine base Fire damage as an FE bonus.
     if (!usedInfoRedirect) damage = _filterFieryEmbraceBonus(damage, powerJson);
     if (damage) power.damage = damage;
+    // Assassin's Strike: damage is kMeter-branched in the redirect (skipped
+    // above), so the normal path finds none. Pull the not-hidden base directly.
+    if (!power.damage) {
+      const asDamage = extractAssassinStrikeDamage(powerJson);
+      if (asDamage) power.damage = asDamage;
+    }
 
     const effects = extractEffects(allTemplates, powerJson.name);
 
