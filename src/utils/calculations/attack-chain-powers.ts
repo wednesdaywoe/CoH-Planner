@@ -19,7 +19,8 @@ import {
 import { calcThreeTier, convertGlobalBonusesToAspects } from '@/components/info/powerDisplayUtils';
 import { calculateSlottedProcDamagePerCast } from './power-proc-damage';
 import { atMechanicMultiplier, type AtMechanicContext } from './power-at-mechanics';
-import type { ChainPower, ChainForm, ChainPowerType, EnduranceParams, FormTrigger } from './attack-chain';
+import { applyQuickSnipe } from '@/utils/quick-snipe';
+import type { ChainPower, ChainDoT, ChainForm, ChainPowerType, EnduranceParams, FormTrigger } from './attack-chain';
 
 type CalcResult = ReturnType<typeof calculateCharacterTotals>;
 type GlobalBonuses = CalcResult['globalBonuses'];
@@ -140,6 +141,16 @@ function selfBuffWindow(power: SelectedPower): number {
   return resolveEffectDuration(e, present, [e.buffDuration]);
 }
 
+/** Window (seconds) during which this power's ToHit buff is active — Build Up,
+ *  Aim, Soul Drain. Gated specifically on a ToHit buff (not the broader
+ *  self-buff set) so a recharge-only buff like Hasten doesn't wrongly mark a
+ *  snipe fast. 0 when the power grants no ToHit buff. */
+function toHitBuffWindow(power: SelectedPower): number {
+  const e = power.effects;
+  if (!e || (e.tohitBuff == null && e.tohitBuffUnenhanced == null)) return 0;
+  return selfBuffWindow(power);
+}
+
 /** Foe-debuff keys (target-facing) that warrant a duration "window" on the
  *  timeline. Deliberately a CURATED subset of the effect-registry's
  *  `category: 'debuff'` entries — not all of them qualify: `enduranceCrash` is a
@@ -224,64 +235,62 @@ export function buildChainPowers(
     const cast = calculateArcanaTime(powerCastTime(power));
     const endCost = calcThreeTier('endurance', baseEnd, enh, globalForCalc).final;
 
-    // Direct + DoT damage, fully enhanced + global +damage (which already folds
-    // in additive strength buffs like Brute Fury / Defender Vigilance). The
-    // multiplicative AT mechanics (crit/scourge/containment) are applied below.
-    const hasDamage = !!power.damage || !!power.effects?.damage;
-    const dmg = hasDamage
-      ? calculatePowerDamage(
-          power,
-          { level: build.level, archetypeId, primaryName: powersetName, primaryCategory: category },
-          { damage: enh.damage || 0 },
-          globalForCalc.damage ?? 0,
-          0,
-        )
-      : null;
-
-    // Pure-DoT powers (Shadow Maul, Gloom, Disintegrate) carry the PER-TICK
-    // value in `final` (the calc copies dotDamage.base into base), so there's
-    // no separate direct hit and the real damage is the DoT total. Mirror
-    // DamageBlock's pure-DoT detection so a tick isn't double-counted.
-    const dotData = dmg?.dotDamage ?? null;
-    const isPureDot = dotData ? Math.abs((dmg?.base ?? 0) - dotData.base) <= 0.001 : false;
-    const directHit = isPureDot ? 0 : (dmg?.final ?? 0);
-    const dotTotal = dotData ? dotData.final * dotData.ticks : 0;
-
-    // In-cast vs after-cast DoT. A DoT whose duration fits inside the cast
-    // animation ticks DURING the swing — only Shadow Maul-style flurries — so
-    // fold it into the hit, draw no trailing marks, and never truncate it. A
-    // DoT that outlasts the animation lingers AFTER the cast (Midnight Grasp,
-    // Gloom, Disintegrate, the fire-blast burns) — draw trailing marks and let
-    // them truncate at the loop boundary. Verified against in-game DoT timing.
-    const rawCast = powerCastTime(power);
-    const dotInCast = !!dotData && dotData.duration > 0 && dotData.duration <= rawCast + 0.05;
-
-    // Expected slotted-proc damage per cast — the same helper the DamageBlock
-    // "+proc" annotation uses, so the chain DPS matches the power tooltip.
-    // Proc chance keys off base + LOCAL recharge, never global.
-    const radius = powerRadius(power);
-    const procDmg = calculateSlottedProcDamagePerCast({
-      slots: power.slots,
-      baseRecharge,
-      castTime: rawCast,
-      radius,
-      arcDegrees: radius > 0 ? (arcToDegrees(powerArc(power)) || 360) : 360,
-      rechargeEnh: enh.recharge || 0,
-      buildLevel: build.level,
-    });
-
     // AT hit-time multiplier (crit / scourge / containment / assassination /
     // opportunity) — applies to base damage + DoT, NOT procs. Single-sourced
     // with the InfoPanel via resolveAtMechanic. 1.0 when no mechanic is active.
     const mechMult = atMechanicMultiplier(powersetId, mechCtx);
 
-    // Trailing marks only for after-cast DoT; in-cast DoT is already in `damage`.
-    const dot = dotData && !dotInCast
-      ? { ticks: dotData.ticks, period: dotData.tickRate, perTick: dotData.final * mechMult }
-      : null;
-    // Always-counted damage = (hit + in-cast DoT) × AT mult + procs. After-cast
-    // DoT ticks (already × mult) are added per-tick by the chain math.
-    const damage = mechMult * (directHit + (dotInCast ? dotTotal : 0)) + procDmg;
+    // Derive a form's chain damage (direct + in-cast DoT × AT mult + procs) and
+    // its after-cast DoT. Run for the base power, and again for a snipe's
+    // In-Combat fast variant — which has BOTH lower damage and a shorter cast
+    // (→ different proc chance), so the fast form's numbers must be recomputed,
+    // not scaled from the slow form's.
+    const deriveDamage = (p: SelectedPower): { damage: number; dot: ChainDoT | null } => {
+      const hasDamage = !!p.damage || !!p.effects?.damage;
+      const dmg = hasDamage
+        ? calculatePowerDamage(
+            p,
+            { level: build.level, archetypeId, primaryName: powersetName, primaryCategory: category },
+            { damage: enh.damage || 0 },
+            globalForCalc.damage ?? 0,
+            0,
+          )
+        : null;
+      // Pure-DoT powers carry the per-tick value in `final`; mirror DamageBlock's
+      // detection so a tick isn't double-counted.
+      const dotData = dmg?.dotDamage ?? null;
+      const isPureDot = dotData ? Math.abs((dmg?.base ?? 0) - dotData.base) <= 0.001 : false;
+      const directHit = isPureDot ? 0 : (dmg?.final ?? 0);
+      const dotTotal = dotData ? dotData.final * dotData.ticks : 0;
+      // A DoT that fits inside the animation ticks during the swing (fold into
+      // the hit); one that outlasts it lingers after the cast (trailing marks).
+      const rawCastP = powerCastTime(p);
+      const dotInCast = !!dotData && dotData.duration > 0 && dotData.duration <= rawCastP + 0.05;
+      // Slotted-proc damage keys off base + LOCAL recharge and the cast time, so
+      // a shorter (fast-snipe) cast yields a different PPM chance.
+      const radiusP = powerRadius(p);
+      const procDmg = calculateSlottedProcDamagePerCast({
+        slots: p.slots,
+        baseRecharge,
+        castTime: rawCastP,
+        radius: radiusP,
+        arcDegrees: radiusP > 0 ? (arcToDegrees(powerArc(p)) || 360) : 360,
+        rechargeEnh: enh.recharge || 0,
+        buildLevel: build.level,
+      });
+      const dot = dotData && !dotInCast
+        ? { ticks: dotData.ticks, period: dotData.tickRate, perTick: dotData.final * mechMult }
+        : null;
+      const damage = mechMult * (directHit + (dotInCast ? dotTotal : 0)) + procDmg;
+      return { damage, dot };
+    };
+
+    const { damage, dot } = deriveDamage(power);
+    // Snipe In-Combat (fast) form: applyQuickSnipe swaps in the reduced-damage,
+    // shorter-cast variant; the chain auto-uses it when the build meets the
+    // fast-snipe ToHit threshold or a ToHit-buff window is active (replayChain).
+    const fastPower = power.quickSnipe ? applyQuickSnipe(power, true) : null;
+    const fastSnipe = fastPower ? deriveDamage(fastPower) : null;
     // Self-buff (Build Up / Aim / Soul Drain / Follow Up / Power Siphon) and foe
     // debuff (Touch of Fear −ToHit, −Res/−Def attacks) windows. Both ride on
     // damaging attacks too — Soul Drain & Follow Up deal damage AND self-buff —
@@ -307,9 +316,11 @@ export function buildChainPowers(
       build.level,
     );
 
-    // Alternate cast forms (e.g. fast Energy Transfer). The form reuses the
-    // base's enhanced damage/endurance and only overrides the animation time.
-    const forms: ChainForm[] | undefined = POWER_FORMS[power.internalName]?.map((s) => ({
+    // Alternate cast forms. Energy Transfer's fast cast comes from POWER_FORMS
+    // (reuses the base damage, overrides only the animation). Snipes add an
+    // In-Combat fast form synthesized from quickSnipe — its own reduced damage
+    // and ~1.67s cast — gated on the ToHit fast-snipe rule.
+    const forms: ChainForm[] = (POWER_FORMS[power.internalName] ?? []).map((s) => ({
       id: s.id,
       label: s.label,
       kind: s.kind,
@@ -319,7 +330,22 @@ export function buildChainPowers(
       dot,
       trigger: s.trigger,
     }));
+    if (fastPower && fastSnipe) {
+      forms.push({
+        id: 'fast',
+        label: 'Fast Snipe',
+        kind: 'fast',
+        cast: calculateArcanaTime(powerCastTime(fastPower)),
+        damage: fastSnipe.damage,
+        endCost,
+        dot: fastSnipe.dot,
+        trigger: { type: 'tohit', threshold: 22 },
+      });
+    }
     const grants = CHARGE_GRANTS[power.internalName];
+    // Window (seconds) during which this power's ToHit buff makes a snipe fast
+    // (Build Up / Aim / Soul Drain) — NOT a recharge-only buff like Hasten.
+    const tohitWin = toHitBuffWindow(power);
 
     return {
       id: `${bucket}:${power.internalName}`,
@@ -333,8 +359,9 @@ export function buildChainPowers(
       damage,
       dot,
       effectWindow,
-      ...(forms && { forms }),
+      ...(forms.length ? { forms } : {}),
       ...(grants && { grants }),
+      ...(tohitWin ? { tohitWindow: tohitWin } : {}),
     } satisfies ChainPower;
   });
 }

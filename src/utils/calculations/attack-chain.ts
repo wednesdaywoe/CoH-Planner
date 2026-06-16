@@ -84,6 +84,10 @@ export interface ChainPower {
   /** Resource (charge) this power grants when cast, e.g. Total Focus → the
    *  `energy_focus` that lets a later Energy Transfer fire its fast form. */
   grants?: string;
+  /** Window (seconds) this power's ToHit buff stays active — Build Up / Aim /
+   *  Soul Drain. A snipe cast inside it fires its fast form (the fast-snipe
+   *  ≥22% ToHit rule). undefined = no ToHit buff. */
+  tohitWindow?: number;
 }
 
 /** A scheduled cast: `pi` indexes into the ChainPower[] passed alongside. */
@@ -286,23 +290,33 @@ export function removeLastActivation(activations: Activation[], pi: number): Act
  * sequence index so a single bar can be removed (filter the sequence by `seq`).
  * Deterministic: same sequence + recharge ⇒ identical layout.
  */
+/** Build-global context the form rules evaluate against (timeline-independent
+ *  state). Position/charge state is derived from the activations themselves. */
+export interface FormContext {
+  /** Permanent ToHit buff (% points) from always-on sources — Tactics, Kismet,
+   *  global / set bonuses. A snipe fires its fast form whenever this meets the
+   *  form's threshold, regardless of timeline position. */
+  permanentToHit?: number;
+}
+
 export function replayChain(
   powers: ChainPower[],
   sequence: number[],
   globalRechargePct: number,
+  formCtx: FormContext = {},
 ): Activation[] {
   const acts: Activation[] = [];
   // Consumable charges accumulated along the rotation (in pick order, which is
-  // the user's intended cast order). Slice 1: Total Focus grants `energy_focus`,
-  // which the next Energy Transfer spends to fire its fast form. Tracked as a
-  // plain counter — charge expiry/stack caps are a later refinement.
+  // the user's intended cast order). Total Focus grants `energy_focus`, which
+  // the next Energy Transfer spends. Tracked as a plain counter — charge
+  // expiry / stack caps are a later refinement.
   const charges: Record<string, number> = {};
   sequence.forEach((pi, seq) => {
     if (pi < 0 || pi >= powers.length) return;
     const p = powers[pi];
     const start = findSlot(powers, acts, pi, globalRechargePct);
     // Auto-pick the first alternate form whose trigger is satisfiable now and
-    // consume what it requires. Only `charge` is wired in Slice 1.
+    // consume what it requires.
     let formId: string | undefined;
     let cast = p.cast;
     for (const f of p.forms ?? []) {
@@ -311,6 +325,22 @@ export function replayChain(
         formId = f.id;
         cast = f.cast;
         break;
+      }
+      if (f.trigger.type === 'tohit') {
+        // Fast snipe: permanent ToHit meets the threshold, OR this cast lands
+        // inside an earlier ToHit-buff window (Build Up / Aim) on the timeline.
+        const permanent = (formCtx.permanentToHit ?? 0) >= f.trigger.threshold;
+        const inWindow =
+          !permanent &&
+          acts.some((a) => {
+            const w = powers[a.pi].tohitWindow;
+            return w != null && start >= a.start - EPS && start <= a.start + w + EPS;
+          });
+        if (permanent || inWindow) {
+          formId = f.id;
+          cast = f.cast;
+          break;
+        }
       }
     }
     acts.push({ pi, start, end: start + cast, seq, formId });

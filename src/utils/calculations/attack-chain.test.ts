@@ -269,3 +269,50 @@ describe('cast forms (charge trigger — fast Energy Transfer)', () => {
     expect(ets.map((a) => a.formId)).toEqual(['fast', undefined]);
   });
 });
+
+describe('cast forms (tohit trigger — fast snipe)', () => {
+  // Snipe: slow base (3.67s) + fast form (1.67s) gated on ≥22% ToHit.
+  const snipe = mk({
+    id: 'SNIPE',
+    cast: 3.67,
+    baseRecharge: 12,
+    damage: 100,
+    forms: [
+      {
+        id: 'fast',
+        label: 'Fast Snipe',
+        kind: 'fast',
+        cast: 1.67,
+        damage: 60,
+        endCost: 1,
+        dot: null,
+        trigger: { type: 'tohit', threshold: 22 },
+      },
+    ],
+  });
+  // Build Up grants a 10s ToHit window; Hasten is recharge-only (no window).
+  const buildUp = mk({ id: 'BU', cast: 1, baseRecharge: 90, damage: 0, type: 'buff', tohitWindow: 10 });
+  const hasten = mk({ id: 'HAS', cast: 1, baseRecharge: 90, damage: 0, type: 'buff' });
+
+  it('uses the slow form with no permanent ToHit and no buff window', () => {
+    const acts = replayChain([snipe], [0], 0);
+    expect(acts[0].formId).toBeUndefined();
+    expect(acts[0].end - acts[0].start).toBeCloseTo(3.67, 5);
+  });
+
+  it('fires fast when permanent ToHit meets the threshold', () => {
+    const acts = replayChain([snipe], [0], 0, { permanentToHit: 24 });
+    expect(acts[0].formId).toBe('fast');
+    expect(acts[0].end - acts[0].start).toBeCloseTo(1.67, 5);
+  });
+
+  it('fires fast inside a Build Up ToHit window (no permanent ToHit)', () => {
+    const acts = replayChain([buildUp, snipe], [0, 1], 0, { permanentToHit: 0 });
+    expect(acts.find((a) => a.pi === 1)!.formId).toBe('fast');
+  });
+
+  it('a recharge-only buff (Hasten) does NOT make a snipe fast', () => {
+    const acts = replayChain([hasten, snipe], [0, 1], 0, { permanentToHit: 0 });
+    expect(acts.find((a) => a.pi === 1)!.formId).toBeUndefined();
+  });
+});
