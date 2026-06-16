@@ -293,7 +293,14 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
     const isStalker = archetypeId === 'stalker';
     const isStalkerPower = isStalkerAttackPower(powerSet);
-    const assassinationBonus = calculateAssassinationDamageBonus(effectiveHidden, stalkerTeamSize);
+    // Assassin's Strike carries a data-driven from-Hide multiplier (bigger than a
+    // normal crit). When hidden it replaces the generic +100%; mid-combat it's
+    // ignored and the Assassin's Focus crit chance applies.
+    const assassinationBonus = calculateAssassinationDamageBonus(
+      effectiveHidden,
+      stalkerTeamSize,
+      basePower?.fromHideBonus
+    );
     const showAssassination = isStalker && isStalkerPower && stalkerCritActive;
 
     const isController = archetypeId === 'controller';
@@ -312,7 +319,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     // here would double-count against the Final.
     const finalColumnHeader = showScourge ? 'w/ Scourge'
       : showCriticalHits ? 'w/ Crit'
-      : showAssassination ? (effectiveHidden ? 'w/ Crit' : 'w/ Assassin')
+      : showAssassination ? (effectiveHidden ? (basePower?.fromHideBonus != null ? 'w/ Assassinate' : 'w/ Crit') : 'w/ Assassin')
       : showContainment ? 'w/ Contain'
       : showOpportunityCrit ? 'w/ Crit'
       : 'Final';
@@ -329,7 +336,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     const applyInherentBonus = (damage: number) => {
       if (showScourge) return calculateScourgeDamage(damage);
       if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
-      if (showAssassination) return calculateAssassinationDamage(damage, effectiveHidden, stalkerTeamSize);
+      if (showAssassination) return calculateAssassinationDamage(damage, effectiveHidden, stalkerTeamSize, basePower?.fromHideBonus);
       if (showContainment) return calculateContainmentDamage(damage, true);
       if (showOpportunityCrit) return calculateOpportunityCritDamage(damage);
       return damage;

@@ -316,3 +316,50 @@ describe('cast forms (tohit trigger — fast snipe)', () => {
     expect(acts.find((a) => a.pi === 1)!.formId).toBeUndefined();
   });
 });
+
+describe('cast forms (hidden trigger — Assassin\'s Strike)', () => {
+  // AS: fast mid-combat base (1.0s) + slow from-Hide form (3.0s, ×3.17 damage),
+  // legal only as the opener or immediately after Placate.
+  const as = mk({
+    id: 'AS',
+    cast: 1.0,
+    baseRecharge: 8,
+    damage: 100,
+    forms: [
+      {
+        id: 'hidden',
+        label: 'From Hide',
+        kind: 'slow',
+        cast: 3.0,
+        damage: 317,
+        endCost: 1,
+        dot: null,
+        trigger: { type: 'hidden' },
+      },
+    ],
+  });
+  const placate = mk({ id: 'PLAC', cast: 1, baseRecharge: 20, damage: 0, type: 'utility', grants: 'hidden' });
+  const filler = mk({ id: 'FILL', cast: 1, baseRecharge: 1, damage: 10 });
+
+  it('fires the slow from-Hide form as the rotation opener', () => {
+    const acts = replayChain([as, filler], [0, 1], 0);
+    expect(acts[0].formId).toBe('hidden');
+    expect(acts[0].end - acts[0].start).toBeCloseTo(3.0, 5);
+  });
+
+  it('uses the fast mid-combat base form mid-rotation (not after Placate)', () => {
+    // filler opens, so AS is mid-combat → base form.
+    const acts = replayChain([as, filler], [1, 0], 0);
+    expect(acts.find((a) => a.pi === 0)!.formId).toBeUndefined();
+  });
+
+  it('fires from-Hide when cast immediately after Placate', () => {
+    const acts = replayChain([as, placate, filler], [2, 1, 0], 0); // filler, Placate, AS
+    expect(acts.find((a) => a.pi === 0)!.formId).toBe('hidden');
+  });
+
+  it('does NOT fire from-Hide when an attack intervenes after Placate', () => {
+    const acts = replayChain([as, placate, filler], [1, 2, 0], 0); // Placate, filler, AS
+    expect(acts.find((a) => a.pi === 0)!.formId).toBeUndefined();
+  });
+});

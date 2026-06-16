@@ -50,6 +50,7 @@ export const AssassinsPsiBlade: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "fromHideBonus": 1.8461538461538463,
   "effects": {
     "stealth": {
       "stealthPvE": {

@@ -51,6 +51,8 @@ export const AssassinsResonance: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "fromHideBonus": 2.4,
+  "midCombatCast": 1.77,
   "effects": {
     "stealth": {
       "stealthPvE": {

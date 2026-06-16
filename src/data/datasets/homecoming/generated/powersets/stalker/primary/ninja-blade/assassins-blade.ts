@@ -59,5 +59,7 @@ export const AssassinsBlade: Power = {
       "scale": 2.169,
       "table": "Melee_PvPDamage"
     }
-  ]
+  ],
+  "fromHideBonus": 2.0797101449275366,
+  "midCombatCast": 1.67
 };

@@ -26,9 +26,10 @@ export interface ChainDoT {
 }
 
 /** When an alternate form of a power is legal. The chain auto-picks the form
- *  whose trigger is satisfiable at a given cast. Slice 1 implements `charge`
- *  (Energy Transfer's fast cast, gated on an Energy Focus from Total Focus);
- *  `tohit` (fast snipe) and `hidden` (Assassin's Strike opener) are reserved. */
+ *  whose trigger is satisfiable at a given cast: `charge` (Energy Transfer's
+ *  fast cast, gated on an Energy Focus from Total Focus), `tohit` (fast snipe,
+ *  permanent ToHit ≥ threshold or inside a Build Up/Aim window), `hidden`
+ *  (Assassin's Strike's slow from-Hide form — opener or immediately post-Placate). */
 export type FormTrigger =
   | { type: 'charge'; resource: string }
   | { type: 'tohit'; threshold: number }
@@ -311,6 +312,9 @@ export function replayChain(
   // the next Energy Transfer spends. Tracked as a plain counter — charge
   // expiry / stack caps are a later refinement.
   const charges: Record<string, number> = {};
+  // The immediately-preceding power in PICK order (not time order) — drives the
+  // "AS only right after Placate" rule. null at the rotation opener.
+  let prevPi: number | null = null;
   sequence.forEach((pi, seq) => {
     if (pi < 0 || pi >= powers.length) return;
     const p = powers[pi];
@@ -342,10 +346,23 @@ export function replayChain(
           break;
         }
       }
+      if (f.trigger.type === 'hidden') {
+        // Assassin's Strike from-Hide: legal only as the rotation opener or
+        // immediately after a Placate (which re-Hides you). Anywhere else AS
+        // uses its fast mid-combat base form.
+        const isOpener = prevPi === null;
+        const afterPlacate = prevPi !== null && powers[prevPi].grants === 'hidden';
+        if (isOpener || afterPlacate) {
+          formId = f.id;
+          cast = f.cast;
+          break;
+        }
+      }
     }
     acts.push({ pi, start, end: start + cast, seq, formId });
     if (p.grants) charges[p.grants] = (charges[p.grants] ?? 0) + 1;
     acts.sort((a, b) => a.start - b.start);
+    prevPi = pi;
   });
   return acts;
 }

@@ -25,4 +25,19 @@ describe("Assassin's Strike base damage (kMeter-branched redirect)", () => {
   it('AS damage extraction generalizes across Stalker sets', () => {
     expect(melee(AssassinsBlades).length).toBeGreaterThan(0);
   });
+
+  /**
+   * From-Hide multiplier: the Hidden redirect branch's guaranteed "Assassination"
+   * hit is bigger than a normal crit (+100%). fromHideBonus captures the real
+   * per-power multiplier, validated in-game: Energy Melee = 6.0 InherentDamage
+   * over a 2.76 base = +217.4%; the broad-sword family logs ≈ +208%. Applied to
+   * the displayed base it reconstructs the exact from-Hide total.
+   */
+  it('Energy Melee AS carries the data-driven from-Hide bonus (+217%)', () => {
+    expect(AssassinsStrike.fromHideBonus).toBeCloseTo(2.1739, 3);
+  });
+
+  it('from-Hide bonus generalizes across Stalker sets (well above a normal crit)', () => {
+    expect(AssassinsBlades.fromHideBonus).toBeGreaterThan(1.0);
+  });
 });

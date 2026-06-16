@@ -822,9 +822,21 @@ export function calculateAssassinationCritChance(isHidden: boolean, teammateCoun
  * Calculate average damage bonus from Assassination
  * @param isHidden - Whether attacking from Hide
  * @param teammateCount - Number of nearby teammates
- * @returns Average damage bonus as decimal (crit chance × 100% extra damage)
+ * @param fromHideBonus - Optional data-driven from-Hide multiplier (Assassin's
+ *   Strike). When attacking from Hide, AS delivers a guaranteed "Assassination"
+ *   hit that is bigger than a normal crit (+208–240% depending on set). When
+ *   provided and hidden, it REPLACES the generic +100% crit so the two don't
+ *   double-count. Ignored mid-combat (the Assassin's Focus crit chance applies).
+ * @returns Average damage bonus as decimal
  */
-export function calculateAssassinationDamageBonus(isHidden: boolean, teammateCount: number): number {
+export function calculateAssassinationDamageBonus(
+  isHidden: boolean,
+  teammateCount: number,
+  fromHideBonus?: number
+): number {
+  if (isHidden && fromHideBonus != null) {
+    return fromHideBonus;
+  }
   const critChance = calculateAssassinationCritChance(isHidden, teammateCount);
   // Since crits do double damage (100% extra), average bonus = critChance × 100%
   return critChance;
@@ -835,14 +847,16 @@ export function calculateAssassinationDamageBonus(isHidden: boolean, teammateCou
  * @param baseDamage - The damage after enhancements and buffs
  * @param isHidden - Whether attacking from Hide
  * @param teammateCount - Number of nearby teammates
+ * @param fromHideBonus - Optional data-driven from-Hide multiplier (see above)
  * @returns Damage with average Assassination bonus applied
  */
 export function calculateAssassinationDamage(
   baseDamage: number,
   isHidden: boolean,
-  teammateCount: number
+  teammateCount: number,
+  fromHideBonus?: number
 ): number {
-  const avgBonus = calculateAssassinationDamageBonus(isHidden, teammateCount);
+  const avgBonus = calculateAssassinationDamageBonus(isHidden, teammateCount, fromHideBonus);
   return baseDamage * (1 + avgBonus);
 }
 

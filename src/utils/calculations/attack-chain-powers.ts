@@ -71,8 +71,10 @@ const POWER_FORMS: Record<string, FormSpec[]> = {
     { id: 'fast', label: 'Energy Focus', kind: 'fast', castTime: 1.0, trigger: { type: 'charge', resource: 'energy_focus' } },
   ],
 };
-/** internalName → the consumable charge the power grants when cast. */
-const CHARGE_GRANTS: Record<string, string> = { Total_Focus: 'energy_focus' };
+/** internalName → the consumable charge the power grants when cast. Placate
+ *  re-Hides you, so it grants `hidden` — the marker the chain checks to let an
+ *  immediately-following Assassin's Strike fire its slow from-Hide form. */
+const CHARGE_GRANTS: Record<string, string> = { Total_Focus: 'energy_focus', Placate: 'hidden' };
 
 /** Click powers (attacks, click buffs, click controls) from every powerset.
  *  Toggles/autos/passives can't sit in an attack chain, so they're excluded. */
@@ -232,20 +234,36 @@ export function buildChainPowers(
 
     const baseRecharge = powerBaseRecharge(power);
     const baseEnd = powerEndCost(power);
-    const cast = calculateArcanaTime(powerCastTime(power));
     const endCost = calcThreeTier('endurance', baseEnd, enh, globalForCalc).final;
 
     // AT hit-time multiplier (crit / scourge / containment / assassination /
     // opportunity) — applies to base damage + DoT, NOT procs. Single-sourced
     // with the InfoPanel via resolveAtMechanic. 1.0 when no mechanic is active.
-    const mechMult = atMechanicMultiplier(powersetId, mechCtx);
+    const mechMult = atMechanicMultiplier(powersetId, mechCtx, power.fromHideBonus);
+
+    // Assassin's Strike models from-Hide POSITIONALLY (opener / post-Placate)
+    // via a slow `hidden` form, not the global hidden toggle. So its base is the
+    // fast mid-combat Quick cast with the mid-combat multiplier (the global
+    // toggle is ignored for AS to avoid double-counting), and the from-Hide hit
+    // becomes an alternate form below. Only HC's two-redirect AS carries
+    // midCombatCast; Rebirth's single-form AS falls through to the normal path.
+    const isAS = power.fromHideBonus != null && power.midCombatCast != null;
+    const asMidPower: SelectedPower | null = isAS
+      ? { ...power, stats: { ...power.stats, castTime: power.midCombatCast, interruptTime: undefined } }
+      : null;
+    const basePower = asMidPower ?? power;
+    const baseMult = isAS
+      ? atMechanicMultiplier(powersetId, { ...mechCtx, effectiveHidden: false })
+      : mechMult;
+    const cast = calculateArcanaTime(powerCastTime(basePower));
 
     // Derive a form's chain damage (direct + in-cast DoT × AT mult + procs) and
     // its after-cast DoT. Run for the base power, and again for a snipe's
     // In-Combat fast variant — which has BOTH lower damage and a shorter cast
     // (→ different proc chance), so the fast form's numbers must be recomputed,
-    // not scaled from the slow form's.
-    const deriveDamage = (p: SelectedPower): { damage: number; dot: ChainDoT | null } => {
+    // not scaled from the slow form's. `mult` defaults to the base power's AT
+    // multiplier; a form (AS from-Hide) can pass its own.
+    const deriveDamage = (p: SelectedPower, mult: number = baseMult): { damage: number; dot: ChainDoT | null } => {
       const hasDamage = !!p.damage || !!p.effects?.damage;
       const dmg = hasDamage
         ? calculatePowerDamage(
@@ -279,13 +297,13 @@ export function buildChainPowers(
         buildLevel: build.level,
       });
       const dot = dotData && !dotInCast
-        ? { ticks: dotData.ticks, period: dotData.tickRate, perTick: dotData.final * mechMult }
+        ? { ticks: dotData.ticks, period: dotData.tickRate, perTick: dotData.final * mult }
         : null;
-      const damage = mechMult * (directHit + (dotInCast ? dotTotal : 0)) + procDmg;
+      const damage = mult * (directHit + (dotInCast ? dotTotal : 0)) + procDmg;
       return { damage, dot };
     };
 
-    const { damage, dot } = deriveDamage(power);
+    const { damage, dot } = deriveDamage(basePower);
     // Snipe In-Combat (fast) form: applyQuickSnipe swaps in the reduced-damage,
     // shorter-cast variant; the chain auto-uses it when the build meets the
     // fast-snipe ToHit threshold or a ToHit-buff window is active (replayChain).
@@ -340,6 +358,23 @@ export function buildChainPowers(
         endCost,
         dot: fastSnipe.dot,
         trigger: { type: 'tohit', threshold: 22 },
+      });
+    }
+    if (isAS) {
+      // From-Hide form: the slow interruptible animation (the original base
+      // castTime) delivering the guaranteed Assassination hit (mid-combat base ×
+      // (1 + fromHideBonus), procs excluded). Legal as the rotation opener or
+      // immediately after Placate (replayChain enforces the position).
+      const hidden = deriveDamage(power, 1 + (power.fromHideBonus ?? 0));
+      forms.push({
+        id: 'hidden',
+        label: 'From Hide',
+        kind: 'slow',
+        cast: calculateArcanaTime(powerCastTime(power)),
+        damage: hidden.damage,
+        endCost,
+        dot: hidden.dot,
+        trigger: { type: 'hidden' },
       });
     }
     const grants = CHARGE_GRANTS[power.internalName];

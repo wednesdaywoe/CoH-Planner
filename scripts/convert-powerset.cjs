@@ -733,23 +733,53 @@ function extractQuickSnipeData(powerJson) {
  * Pull the NOT-HIDDEN branch as the base damage: that's the sustained hit, and
  * the Hidden guaranteed-crit is layered on at calc time by the assassination AT
  * mechanic — exactly like the `InherentDamage` entries the damage calc filters
- * out (damage.ts: "Stalker assassinations … added separately"). Returns a
- * ScaledDamageEntry[] or null when this isn't an AS-pattern (kMeter redirect).
+ * out (damage.ts: "Stalker assassinations … added separately").
  *
- * Scoped to the kMeter-redirect shape, so inline-kMeter powers (Arachnos
- * Soldiers' attacks have no redirect) are untouched.
+ * Also derive the from-Hide bonus. The Hidden branch carries its own visible
+ * Melee damage PLUS a much larger `Melee_InherentDamage` entry (the
+ * "Assassination" hit). The generic assassination mechanic only models a normal
+ * crit (+100%); the real from-Hide multiplier is bigger and per-power. Express
+ * it as a ratio over the displayed (not-hidden) base:
+ *   fromHideBonus = (hiddenVisible + hiddenInherent) / notHiddenVisible − 1
+ * The ratio is enhancement-invariant (both sides scale by the same AT-scale ×
+ * (1+enh)), and applying it to the displayed base reconstructs the exact from-
+ * Hide total — the not-hidden base cancels, so the lower hidden visible split is
+ * absorbed into the bonus. PvE tables only (the planner is PvE-focused).
+ *
+ * Returns `{ damage: ScaledDamageEntry[], fromHideBonus: number|null }`, or null
+ * when this isn't an AS-pattern (kMeter redirect). Scoped to the kMeter-redirect
+ * shape, so inline-kMeter powers (Arachnos Soldiers' attacks have no redirect)
+ * are untouched.
  */
 function extractAssassinStrikeDamage(powerJson) {
-  if (!Array.isArray(powerJson.redirect)) return null;
-  if (!powerJson.redirect.some(r => (r.condition_expression || '').includes('kMeter'))) return null;
-  const stealth = powerJson.redirect.find(r => r.condition_expression === 'Always');
-  if (!stealth) return null;
-  const stealthPath = resolveRedirectPath(stealth.name);
-  if (!fs.existsSync(stealthPath)) return null;
-  const stealthJson = JSON.parse(fs.readFileSync(stealthPath, 'utf-8'));
+  // Two data shapes hold the kMeter (Hide) branches:
+  //   1. Homecoming — a `kMeter` redirect to a *_Stealth target that carries
+  //      both branches (walk that target's effects).
+  //   2. Rebirth — no redirect; the branches are inline on the power itself.
+  // Shape 2 is gated on the Assassin's Strike name so unrelated inline-kMeter
+  // powers (Arachnos/critter attacks) are untouched.
+  let sourceEffects = null;
+  const hasKMeterRedirect = Array.isArray(powerJson.redirect) &&
+    powerJson.redirect.some(r => (r.condition_expression || '').includes('kMeter'));
+  if (hasKMeterRedirect) {
+    const stealth = powerJson.redirect.find(r => r.condition_expression === 'Always');
+    if (!stealth) return null;
+    const stealthPath = resolveRedirectPath(stealth.name);
+    if (!fs.existsSync(stealthPath)) return null;
+    sourceEffects = JSON.parse(fs.readFileSync(stealthPath, 'utf-8')).effects;
+  } else if (/^assassins?_/i.test(powerJson.name || '')) {
+    sourceEffects = powerJson.effects;
+  } else {
+    return null;
+  }
 
-  // Collect templates under the NOT-HIDDEN (kMeter < .9) branch only.
+  // Split templates into three buckets by their kMeter gate:
+  //   always   — ungated, applies in both states (some sets keep the base here)
+  //   notHidden — kMeter < .9 (the mid-combat hit)
+  //   hidden    — kMeter >= .9 (the from-Hide "Assassination" hit)
+  const always = [];
   const notHidden = [];
+  const hidden = [];
   const walk = (effects, branch) => {
     for (const e of effects || []) {
       if (e.is_pvp === 'PVP_ONLY') continue;
@@ -759,13 +789,53 @@ function extractAssassinStrikeDamage(powerJson) {
         if (req.includes('>=') || /> 0(\b|\s)/.test(req)) b = 'hidden';
         else if (req.includes('<')) b = 'nothidden';
       }
-      if (b === 'nothidden' && Array.isArray(e.templates)) notHidden.push(...e.templates);
+      if (Array.isArray(e.templates)) {
+        if (b === 'hidden') hidden.push(...e.templates);
+        else if (b === 'nothidden') notHidden.push(...e.templates);
+        else always.push(...e.templates);
+      }
       walk(e.child_effects, b);
     }
   };
-  walk(stealthJson.effects, null);
-  if (notHidden.length === 0) return null;
-  return extractDamage(notHidden);
+  walk(sourceEffects, null);
+
+  // Base (mid-combat) damage = the not-hidden branch, when present. Some sets
+  // (e.g. Sonic Melee) keep the base ungated and surface it via the normal
+  // path instead — there the caller already has power.damage, and we only add
+  // the from-Hide bonus below.
+  const damage = notHidden.length > 0 ? extractDamage(notHidden) : null;
+
+  // Derive the from-Hide bonus from the branches' PvE damage scales:
+  //   notHiddenTotal = visible(always) + visible(notHidden)
+  //   fromHideTotal  = visible(always) + visible(hidden) + inherent(hidden)
+  //   bonus          = fromHideTotal / notHiddenTotal − 1
+  // The always branch is shared across states; the not-hidden InherentDamage
+  // (a chance-based mid-combat crit) is excluded, while the hidden branch's
+  // InherentDamage (the guaranteed Assassination hit) is included. The ratio is
+  // enhancement-invariant. PvE tables only.
+  const pveDamage = (templates) => {
+    const d = extractDamage(templates) || [];
+    return (Array.isArray(d) ? d : [d]).filter((e) => e && !/pvp/i.test(e.table || ''));
+  };
+  const sumVisible = (d) => d.filter((e) => !/inherentdamage/i.test(e.table || ''))
+    .reduce((s, e) => s + (e.scale || 0), 0);
+  const sumInherent = (d) => d.filter((e) => /inherentdamage/i.test(e.table || ''))
+    .reduce((s, e) => s + (e.scale || 0), 0);
+
+  const alwaysVisible = sumVisible(pveDamage(always));
+  const notHiddenVisible = sumVisible(pveDamage(notHidden));
+  const hiddenPve = pveDamage(hidden);
+  const hiddenTotal = sumVisible(hiddenPve) + sumInherent(hiddenPve);
+
+  const notHiddenTotal = alwaysVisible + notHiddenVisible;
+  const fromHideTotal = alwaysVisible + hiddenTotal;
+
+  let fromHideBonus = null;
+  if (notHiddenTotal > 0 && fromHideTotal > notHiddenTotal) {
+    fromHideBonus = fromHideTotal / notHiddenTotal - 1;
+  }
+  if (!damage && fromHideBonus == null) return null;
+  return { damage, fromHideBonus };
 }
 
 /**
@@ -792,6 +862,28 @@ function extractSnipeBaseTiming(powerJson) {
   if (normalJson.activation_time != null) out.castTime = normalJson.activation_time;
   if (normalJson.interrupt_time) out.interruptTime = normalJson.interrupt_time;
   return Object.keys(out).length ? out : null;
+}
+
+/**
+ * Assassin's Strike's displayed (base) cast is its slow, interruptible from-Hide
+ * animation (~3s + 2s interrupt — the iconic alpha strike). But fired mid-combat
+ * it uses a much faster Quick animation (the `kMeter < .9` redirect target,
+ * ~0.67–1.77s depending on set). Pull that Quick activation so the attack-chain
+ * builder can default AS to its fast mid-combat form and reserve the slow form
+ * for the from-Hide opener / post-Placate. Returns the Quick cast (seconds) or
+ * null when this isn't a two-redirect AS (e.g. Rebirth's single-form AS).
+ */
+function extractAssassinStrikeFastCast(powerJson) {
+  if (!Array.isArray(powerJson.redirect)) return null;
+  const quick = powerJson.redirect.find((r) => {
+    const cond = r.condition_expression || '';
+    return cond.includes('kMeter') && cond.includes('<');
+  });
+  if (!quick) return null;
+  const quickPath = resolveRedirectPath(quick.name);
+  if (!fs.existsSync(quickPath)) return null;
+  const quickJson = JSON.parse(fs.readFileSync(quickPath, 'utf-8'));
+  return quickJson.activation_time != null ? quickJson.activation_time : null;
 }
 
 /**
@@ -4655,9 +4747,23 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     if (damage) power.damage = damage;
     // Assassin's Strike: damage is kMeter-branched in the redirect (skipped
     // above), so the normal path finds none. Pull the not-hidden base directly.
-    if (!power.damage) {
-      const asDamage = extractAssassinStrikeDamage(powerJson);
-      if (asDamage) power.damage = asDamage;
+    // Assassin's Strike: pull the not-hidden base when the kMeter branch was
+    // skipped (energy-melee shape) AND the data-driven from-Hide multiplier
+    // (which replaces the generic +100% crit from Hide). Some sets surface the
+    // base via the normal path (sonic-melee shape) yet still need the bonus, so
+    // run this regardless of whether power.damage is already set — it's a no-op
+    // for anything that isn't a kMeter-redirect AS.
+    {
+      const as = extractAssassinStrikeDamage(powerJson);
+      if (as) {
+        if (!power.damage && as.damage) power.damage = as.damage;
+        if (as.fromHideBonus != null) power.fromHideBonus = as.fromHideBonus;
+        // The fast mid-combat (Quick) cast — the attack-chain builder uses it as
+        // the default form, with the slow base cast reserved for the from-Hide
+        // (opener / post-Placate) form. Only present on the HC two-redirect AS.
+        const fastCast = extractAssassinStrikeFastCast(powerJson);
+        if (fastCast != null) power.midCombatCast = fastCast;
+      }
     }
 
     const effects = extractEffects(allTemplates, powerJson.name);

@@ -43,6 +43,7 @@ export const AssassinsImpaler: Power = {
     "scale": 2.5,
     "table": "Melee_Damage"
   },
+  "fromHideBonus": 1.7999999999999998,
   "effects": {
     "stealth": {
       "stealthPvE": {

@@ -579,18 +579,22 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
             <div className="flex flex-wrap gap-1.5">
               {palette.map(({ p, i }) => {
                 const rel = maxMetric > 0 ? metricVal(p) / maxMetric : 0;
-                // Powers that carry a special chain mechanic: an alternate "fast"
-                // form (snipes, Energy Transfer) or a charge that enables one
-                // (Total Focus). Flag them so the build/spend pieces stand out;
-                // the hint is trigger-aware (ToHit vs charge).
-                const fastForm = p.forms?.find((f) => f.kind === 'fast') ?? p.forms?.[0];
-                const special = fastForm
-                  ? fastForm.trigger.type === 'tohit'
-                    ? `Has a fast form — auto-fires with ≥${fastForm.trigger.threshold}% ToHit (Build Up / Aim / Tactics)`
-                    : `Has a ${fastForm.label} fast form — auto-fires when its charge is available`
-                  : p.grants
-                    ? `Grants ${p.grants.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — enables a fast form later in the chain`
-                    : null;
+                // Powers that carry a special chain mechanic: an alternate cast
+                // form (snipes, Energy Transfer, Assassin's Strike from-Hide) or
+                // a charge that enables one (Total Focus, Placate). Flag them so
+                // the build/spend pieces stand out; the hint is trigger-aware.
+                const specialForm = p.forms?.find((f) => f.kind === 'fast') ?? p.forms?.[0];
+                const special = specialForm
+                  ? specialForm.trigger.type === 'tohit'
+                    ? `Has a fast form — auto-fires with ≥${specialForm.trigger.threshold}% ToHit (Build Up / Aim / Tactics)`
+                    : specialForm.trigger.type === 'hidden'
+                      ? `Has a slow from-Hide form — auto-fires as the opener or right after Placate`
+                      : `Has a ${specialForm.label} fast form — auto-fires when its charge is available`
+                  : p.grants === 'hidden'
+                    ? `Re-Hides you — lets the next Assassin's Strike use its from-Hide form`
+                    : p.grants
+                      ? `Grants ${p.grants.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — enables a fast form later in the chain`
+                      : null;
                 return (
                   <button
                     key={p.id}

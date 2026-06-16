@@ -52,6 +52,7 @@ export const AssassinsCorruption: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "fromHideBonus": 1.1538461538461542,
   "effects": {
     "stealth": {
       "stealthPvE": {

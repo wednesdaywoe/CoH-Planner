@@ -672,6 +672,23 @@ export interface Power {
     damage: ScaledDamageEntry | ScaledDamageEntry[];
   };
   /**
+   * Assassin's Strike from-Hide damage multiplier, expressed as a bonus over the
+   * displayed (not-hidden) base — e.g. 2.174 = +217%. Replaces the generic
+   * assassination crit (+100%) when AS is fired from Hide. Derived from the
+   * Hidden redirect branch (visible Melee + Assassination InherentDamage) by
+   * `extractAssassinStrikeDamage`; the ratio is enhancement-invariant so it
+   * applies directly to the enhanced base damage. PvE.
+   */
+  fromHideBonus?: number;
+  /**
+   * Assassin's Strike's fast mid-combat (Quick) cast time in seconds. The base
+   * `stats.castTime` is the slow interruptible from-Hide animation (~3s); fired
+   * mid-combat AS is much faster (~0.67–1.77s by set). The attack-chain builder
+   * defaults AS to this fast form and reserves the slow base cast for the
+   * from-Hide form (opener / post-Placate). Absent on single-form AS (Rebirth).
+   */
+  midCombatCast?: number;
+  /**
    * State-gated bonus effects. Each entry corresponds to a Mechanic Adjuster
    * toggle in the InfoPanel — when active, its `damage` and `effects` add on
    * top of the power's base. Surfaces what the converter's

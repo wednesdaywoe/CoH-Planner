@@ -47,4 +47,27 @@ describe('resolveAtMechanic', () => {
   it('atMechanicMultiplier is 1.0 when nothing applies', () => {
     expect(atMechanicMultiplier('scrapper/dark-melee', base)).toBe(1);
   });
+
+  describe('Stalker Assassination', () => {
+    const stalker = { ...base, archetypeId: 'stalker', stalkerCritActive: true };
+
+    it('mid-combat (not hidden) uses the Assassin’s Focus crit chance, ignoring fromHideBonus', () => {
+      // 0 teammates → 10% base crit chance → +10% avg. The per-power
+      // fromHideBonus does NOT apply mid-combat.
+      const m = resolveAtMechanic('stalker/energy-melee', stalker, 2.174);
+      expect(m?.kind).toBe('assassination');
+      expect(m!.multiplier).toBeCloseTo(1.1, 3);
+    });
+
+    it('from Hide WITHOUT data uses the generic guaranteed crit (+100%)', () => {
+      const m = resolveAtMechanic('stalker/energy-melee', { ...stalker, effectiveHidden: true });
+      expect(m!.multiplier).toBeCloseTo(2.0, 3);
+    });
+
+    it('from Hide WITH data uses the from-Hide multiplier instead of +100%', () => {
+      // Energy Melee AS: +217.4% → ×3.174, not a normal ×2 crit.
+      const m = resolveAtMechanic('stalker/energy-melee', { ...stalker, effectiveHidden: true }, 2.174);
+      expect(m!.multiplier).toBeCloseTo(3.174, 3);
+    });
+  });
 });

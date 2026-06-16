@@ -50,6 +50,7 @@ export const AssassinsStrike: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "fromHideBonus": 1.7999999999999998,
   "effects": {
     "stealth": {
       "stealthPvE": {

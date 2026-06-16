@@ -54,6 +54,7 @@ export interface ResolvedAtMechanic {
 export function resolveAtMechanic(
   powersetId: string,
   ctx: AtMechanicContext,
+  fromHideBonus?: number,
 ): ResolvedAtMechanic | null {
   const at = ctx.archetypeId;
   if (at === 'corruptor' && isCorruptorAttackPower(powersetId) && ctx.scourgeActive)
@@ -61,7 +62,9 @@ export function resolveAtMechanic(
   if (at === 'scrapper' && isScrapperAttackPower(powersetId) && ctx.criticalHitsActive)
     return { kind: 'crit', multiplier: calculateCriticalHitDamage(1, 'higher') };
   if (at === 'stalker' && isStalkerAttackPower(powersetId) && ctx.stalkerCritActive)
-    return { kind: 'assassination', multiplier: calculateAssassinationDamage(1, ctx.effectiveHidden, ctx.stalkerTeamSize) };
+    // fromHideBonus is per-power (Assassin's Strike): when hidden it replaces the
+    // generic +100% crit with the real Assassination multiplier (+208–240%).
+    return { kind: 'assassination', multiplier: calculateAssassinationDamage(1, ctx.effectiveHidden, ctx.stalkerTeamSize, fromHideBonus) };
   if (at === 'controller' && isControllerPower(powersetId) && ctx.containmentActive)
     return { kind: 'containment', multiplier: calculateContainmentDamage(1, true) };
   if (at === 'sentinel' && isSentinelAttackPower(powersetId) && ctx.sentinelCritActive)
@@ -70,6 +73,6 @@ export function resolveAtMechanic(
 }
 
 /** Convenience: the multiplier (1 when no mechanic is active). */
-export function atMechanicMultiplier(powersetId: string, ctx: AtMechanicContext): number {
-  return resolveAtMechanic(powersetId, ctx)?.multiplier ?? 1;
+export function atMechanicMultiplier(powersetId: string, ctx: AtMechanicContext, fromHideBonus?: number): number {
+  return resolveAtMechanic(powersetId, ctx, fromHideBonus)?.multiplier ?? 1;
 }
