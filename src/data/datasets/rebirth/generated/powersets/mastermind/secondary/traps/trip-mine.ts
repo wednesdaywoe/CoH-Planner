@@ -22,7 +22,8 @@ export const TripMine: Power = {
     "accuracy": 1,
     "recharge": 20,
     "endurance": 16.25,
-    "castTime": 5
+    "castTime": 5,
+    "interruptTime": 4
   },
   "allowedEnhancements": [
     "EnduranceReduction",

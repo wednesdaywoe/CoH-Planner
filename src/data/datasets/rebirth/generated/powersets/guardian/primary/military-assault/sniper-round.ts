@@ -23,7 +23,8 @@ export const SniperRound: Power = {
     "range": 150,
     "recharge": 20,
     "endurance": 18.51,
-    "castTime": 3.67
+    "castTime": 3.67,
+    "interruptTime": 3
   },
   "allowedEnhancements": [
     "Interrupt",

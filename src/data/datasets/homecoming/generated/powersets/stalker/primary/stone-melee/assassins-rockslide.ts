@@ -23,7 +23,8 @@ export const AssassinsRockslide: Power = {
     "range": 7,
     "recharge": 15,
     "endurance": 14.352,
-    "castTime": 3.17
+    "castTime": 3.17,
+    "interruptTime": 2
   },
   "allowedEnhancements": [
     "Interrupt",

@@ -23,7 +23,8 @@ export const SniperRifle: Power = {
     "range": 150,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 1.17
+    "castTime": 3.67,
+    "interruptTime": 3
   },
   "allowedEnhancements": [
     "Interrupt",

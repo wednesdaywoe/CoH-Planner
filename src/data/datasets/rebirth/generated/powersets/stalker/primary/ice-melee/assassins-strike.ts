@@ -23,7 +23,8 @@ export const AssassinsStrike: Power = {
     "range": 7,
     "recharge": 15,
     "endurance": 14.352,
-    "castTime": 3.27
+    "castTime": 3.27,
+    "interruptTime": 2
   },
   "allowedEnhancements": [
     "EnduranceReduction",

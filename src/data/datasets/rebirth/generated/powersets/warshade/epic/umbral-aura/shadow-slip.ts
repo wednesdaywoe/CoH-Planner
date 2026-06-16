@@ -25,6 +25,7 @@ export const ShadowSlip: Power = {
     "recharge": 60,
     "endurance": 15,
     "castTime": 3.93,
+    "interruptTime": 2,
     "maxTargets": 16
   },
   "allowedEnhancements": [

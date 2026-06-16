@@ -23,7 +23,8 @@ export const AssassinsFrenzy: Power = {
     "range": 7,
     "recharge": 15,
     "endurance": 14.35,
-    "castTime": 3
+    "castTime": 3,
+    "interruptTime": 2
   },
   "allowedEnhancements": [
     "Interrupt",

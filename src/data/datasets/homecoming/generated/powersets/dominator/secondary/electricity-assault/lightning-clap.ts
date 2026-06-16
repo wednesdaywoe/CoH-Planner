@@ -23,7 +23,8 @@ export const LightningClap: Power = {
     "range": 150,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 1.33
+    "castTime": 3.33,
+    "interruptTime": 2
   },
   "allowedEnhancements": [
     "EnduranceModification",

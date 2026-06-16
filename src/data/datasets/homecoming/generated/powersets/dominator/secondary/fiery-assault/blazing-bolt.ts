@@ -23,7 +23,8 @@ export const BlazingBolt: Power = {
     "range": 150,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 1.67
+    "castTime": 3.67,
+    "interruptTime": 2
   },
   "allowedEnhancements": [
     "Interrupt",

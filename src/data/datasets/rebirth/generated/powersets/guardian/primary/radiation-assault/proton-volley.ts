@@ -25,6 +25,7 @@ export const ProtonVolley: Power = {
     "recharge": 20,
     "endurance": 18.512,
     "castTime": 4.33,
+    "interruptTime": 3,
     "maxTargets": 5
   },
   "allowedEnhancements": [

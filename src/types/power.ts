@@ -569,8 +569,13 @@ export interface PowerStats {
   endurance?: number;
   /** Toggle tick interval in seconds (default 0.5). End/s = endurance / activatePeriod */
   activatePeriod?: number;
-  /** Cast/activation time in seconds */
+  /** Cast/activation time in seconds. For snipes this is the Normal (not-in-
+   *  combat) variant's full interruptible cast — the In-Combat fast form lives
+   *  on `quickSnipe`. */
   castTime?: number;
+  /** Interruptible channel time in seconds (snipes), already folded into
+   *  `castTime`. Enhanceable by Interrupt Reduction; 0/absent otherwise. */
+  interruptTime?: number;
   /** Max targets for AoE */
   maxTargets?: number;
   /** Arc for cone powers */

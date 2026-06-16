@@ -22,7 +22,8 @@ export const ShadowSlipping: Power = {
     "accuracy": 1,
     "recharge": 300,
     "endurance": 26,
-    "castTime": 12
+    "castTime": 12,
+    "interruptTime": 10
   },
   "allowedEnhancements": [],
   "maxSlots": 0,

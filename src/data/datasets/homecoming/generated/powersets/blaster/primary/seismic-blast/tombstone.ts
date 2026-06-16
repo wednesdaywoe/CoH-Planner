@@ -23,7 +23,8 @@ export const Tombstone: Power = {
     "range": 150,
     "recharge": 12,
     "endurance": 14.352,
-    "castTime": 1.67
+    "castTime": 3.67,
+    "interruptTime": 2
   },
   "allowedEnhancements": [
     "Interrupt",

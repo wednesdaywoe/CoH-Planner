@@ -723,6 +723,32 @@ function extractQuickSnipeData(powerJson) {
 }
 
 /**
+ * A snipe's BASE (not-in-combat) timing lives on its Normal redirect target, not
+ * on the redirect shell. The shell's `activation_time` mirrors the Quick anim
+ * (~1.67s), so reading it makes the slotted snipe look instant even when slow.
+ * The Normal variant carries the real interruptible cast (Ranged Shot: 3.67s
+ * activation, 2.0s interrupt). Returns `{ castTime, interruptTime }` from the
+ * Normal target, or null when this isn't a two-redirect snipe.
+ */
+function extractSnipeBaseTiming(powerJson) {
+  if (!powerJson.redirect || powerJson.redirect.length < 2) return null;
+  const isQuick = (r) => {
+    const cond = r.condition_expression || '';
+    return cond.includes('kEngaged') || cond.includes('Experienced_Marksman');
+  };
+  if (!powerJson.redirect.some(isQuick)) return null; // not a snipe pattern
+  const normal = powerJson.redirect.find((r) => !isQuick(r));
+  if (!normal) return null;
+  const normalPath = resolveRedirectPath(normal.name);
+  if (!fs.existsSync(normalPath)) return null;
+  const normalJson = JSON.parse(fs.readFileSync(normalPath, 'utf-8'));
+  const out = {};
+  if (normalJson.activation_time != null) out.castTime = normalJson.activation_time;
+  if (normalJson.interrupt_time) out.interruptTime = normalJson.interrupt_time;
+  return Object.keys(out).length ? out : null;
+}
+
+/**
  * Collect templates from a power's redirect chain.
  * Follows the "Always" condition redirect and any Execute_Power references within,
  * filtering out dead-state conditionals.
@@ -4392,6 +4418,10 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     recharge: powerJson.recharge_time,
     endurance: powerJson.endurance_cost,
     castTime: powerJson.activation_time,
+    // Interruptible channel (Trip Mine, Rest, Aid Self, rez powers, and the
+    // single-form snipes on servers that bake it onto the base power rather
+    // than a Normal redirect). 0 for the vast majority; dropped below when 0.
+    interruptTime: powerJson.interrupt_time,
     activatePeriod: powerJson.activate_period,
     maxTargets: powerJson.max_targets_hit,
   };
@@ -4683,7 +4713,16 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // Pull the Quick variant's damage and cast stats into power.quickSnipe so
   // the In-Combat toggle can swap in the fast-snipe values at display time.
   const quickSnipe = extractQuickSnipeData(powerJson);
-  if (quickSnipe) power.quickSnipe = quickSnipe;
+  if (quickSnipe) {
+    power.quickSnipe = quickSnipe;
+    // The slotted snipe's base cast/interrupt is the Normal (charged) variant's,
+    // not the redirect shell's (which mirrors the Quick anim). Source it so a
+    // not-in-combat snipe shows its true interruptible cast (~3.67s) instead of
+    // looking instant — the In-Combat toggle then swaps in quickSnipe's 1.67s.
+    const base = extractSnipeBaseTiming(powerJson);
+    if (base?.castTime != null) power.stats.castTime = base.castTime;
+    if (base?.interruptTime != null) power.stats.interruptTime = base.interruptTime;
+  }
 
   // Requirements
   if (powerJson.requires) {

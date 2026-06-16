@@ -23,7 +23,8 @@ export const Zapp: Power = {
     "range": 150,
     "recharge": 12,
     "endurance": 14.352,
-    "castTime": 1.33
+    "castTime": 3.33,
+    "interruptTime": 2
   },
   "allowedEnhancements": [
     "EnduranceModification",

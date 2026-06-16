@@ -20,7 +20,9 @@ export function applyQuickSnipe<T extends Power>(power: T, combatMode: boolean):
   const qs = power.quickSnipe;
   return {
     ...power,
-    stats: power.stats ? { ...power.stats, ...qs.stats } : power.stats,
+    // The fast (in-combat) snipe has no interruptible channel, so clear the base
+    // form's interruptTime when swapping — otherwise it carries over stale.
+    stats: power.stats ? { ...power.stats, ...qs.stats, interruptTime: undefined } : power.stats,
     damage: qs.damage,
     // Epic-pool powers store cast/range/accuracy in `effects` rather than `stats`.
     effects: power.effects

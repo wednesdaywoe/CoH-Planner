@@ -23,7 +23,8 @@ export const PsionicLance: Power = {
     "range": 175,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 4
+    "castTime": 4,
+    "interruptTime": 3
   },
   "allowedEnhancements": [
     "Interrupt",

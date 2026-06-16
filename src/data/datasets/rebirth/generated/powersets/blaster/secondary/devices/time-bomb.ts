@@ -22,7 +22,8 @@ export const TimeBomb: Power = {
     "accuracy": 1,
     "recharge": 360,
     "endurance": 26,
-    "castTime": 9
+    "castTime": 9,
+    "interruptTime": 8
   },
   "allowedEnhancements": [
     "EnduranceReduction",

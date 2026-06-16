@@ -25,6 +25,7 @@ export const AssassinsCorruption: Power = {
     "recharge": 15,
     "endurance": 14.352,
     "castTime": 3,
+    "interruptTime": 2,
     "maxTargets": 5
   },
   "allowedEnhancements": [

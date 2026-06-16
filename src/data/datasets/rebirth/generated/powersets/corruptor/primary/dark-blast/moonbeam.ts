@@ -23,7 +23,8 @@ export const Moonbeam: Power = {
     "range": 175,
     "recharge": 12,
     "endurance": 14.352,
-    "castTime": 4.33
+    "castTime": 4.33,
+    "interruptTime": 3
   },
   "allowedEnhancements": [
     "Interrupt",

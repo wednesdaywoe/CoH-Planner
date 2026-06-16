@@ -23,7 +23,8 @@ export const KineticLance: Power = {
     "range": 150,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 4.67
+    "castTime": 4.67,
+    "interruptTime": 3
   },
   "allowedEnhancements": [
     "Interrupt",

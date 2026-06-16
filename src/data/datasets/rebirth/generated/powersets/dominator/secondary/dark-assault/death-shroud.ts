@@ -23,7 +23,8 @@ export const DeathShroud: Power = {
     "range": 175,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 4.33
+    "castTime": 4.33,
+    "interruptTime": 3
   },
   "allowedEnhancements": [
     "Interrupt",
