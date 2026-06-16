@@ -438,6 +438,16 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     [formRedirectedPower, combatMode],
   );
 
+  // Assassin's Strike fires its slow interruptible animation from Hide (the
+  // displayed base cast) but a much faster Quick animation mid-combat. Mirror
+  // the from-Hide toggle that already drives its damage so the cast time matches
+  // the state: not hidden → the fast mid-combat cast (uninterruptible).
+  const formAdjustedPower = useMemo(() => {
+    const p = snipeAdjustedPower;
+    if (!p || p.midCombatCast == null || effectiveHidden) return p;
+    return { ...p, stats: { ...p.stats, castTime: p.midCombatCast, interruptTime: undefined } };
+  }, [snipeAdjustedPower, effectiveHidden]);
+
   // Layer active Mechanic Adjuster contributions on top of the snipe-
   // adjusted power so damage / effects display reflect toggle state
   // (drowning bonus, Disintegrating, Bio Armor adaptation, etc.).
@@ -447,7 +457,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
   const globalAdjusters = useUIStore((s) => s.globalAdjusters);
   const conditionalMerge = useMemo(() => {
-    if (!snipeAdjustedPower) return { power: snipeAdjustedPower, extraInstances: {} };
+    if (!formAdjustedPower) return { power: formAdjustedPower, extraInstances: {} };
     // Overlay the build's `activeSubPower`-derived stance state so the merge
     // reflects the selected Bio Armor adaptation / Staff form (build-scoped),
     // matching the dashboard calc. activeSubPower wins over stale UI toggles.
@@ -460,14 +470,14 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     addStance(build.epicPool?.powers);
     const effectiveGlobalAdjusters = { ...globalAdjusters, ...stanceAdjusterOverrides(stancePowers) };
     const active = selectActiveConditionals(
-      snipeAdjustedPower,
+      formAdjustedPower,
       mechanicAdjusters,
       effectiveGlobalAdjusters,
       { dominationActive },
     );
-    if (active.length === 0) return { power: snipeAdjustedPower, extraInstances: {} };
-    return applyActiveConditionals(snipeAdjustedPower, active);
-  }, [snipeAdjustedPower, mechanicAdjusters, globalAdjusters, dominationActive, build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
+    if (active.length === 0) return { power: formAdjustedPower, extraInstances: {} };
+    return applyActiveConditionals(formAdjustedPower, active);
+  }, [formAdjustedPower, mechanicAdjusters, globalAdjusters, dominationActive, build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
   const effectivePower = conditionalMerge.power;
   const extraInstances = conditionalMerge.extraInstances;
 
@@ -680,12 +690,13 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       sentinelCritActive,
       effectiveHidden,
       stalkerTeamSize,
-    });
+    }, effectivePower?.fromHideBonus);
     if (!mech) return null;
 
     const header = mech.kind === 'scourge' ? 'w/ Scourge'
       : mech.kind === 'crit' ? 'w/ Crit'
-      : mech.kind === 'assassination' ? (effectiveHidden ? 'w/ Crit' : 'w/ Assassin')
+      : mech.kind === 'assassination'
+        ? (effectiveHidden ? (effectivePower?.fromHideBonus != null ? 'w/ Assassinate' : 'w/ Crit') : 'w/ Assassin')
       : mech.kind === 'containment' ? 'w/ Contain'
       : 'w/ Crit'; // opportunity
 
@@ -696,7 +707,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       showContainment: mech.kind === 'containment',
     };
   }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive,
-      criticalHitsActive, effectiveHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive]);
+      criticalHitsActive, effectiveHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive,
+      effectivePower?.fromHideBonus]);
 
   // Proc-only damage contributions for non-damaging powers. Powers like
   // Infrigidate, Siphon Speed, etc. carry no base damage but commonly host
@@ -1213,7 +1225,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
           {/* Assassination (Stalker) */}
           {archetypeId === 'stalker' && isStalkerAttackPower(powerSet) && (() => {
-            const currentBonus = calculateAssassinationDamageBonus(effectiveHidden, stalkerTeamSize);
+            const currentBonus = calculateAssassinationDamageBonus(effectiveHidden, stalkerTeamSize, effectivePower?.fromHideBonus);
             return (
               <div className={`text-xs rounded px-2 py-1.5 border ${
                 effectiveHidden
@@ -1234,7 +1246,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 </div>
                 <div className="mt-1 text-[11px]">
                   {effectiveHidden ? (
-                    <span className="text-sk-magenta/70 font-medium">100% critical from Hide — +100% avg damage on opening attack</span>
+                    <span className="text-sk-magenta/70 font-medium">
+                      {effectivePower?.fromHideBonus != null
+                        ? `Assassination from Hide — +${(currentBonus * 100).toFixed(0)}% damage on opening attack`
+                        : '100% critical from Hide — +100% avg damage on opening attack'}
+                    </span>
                   ) : (
                     <span className="text-sk-magenta/70">+{(currentBonus * 100).toFixed(0)}% avg from Assassination</span>
                   )}

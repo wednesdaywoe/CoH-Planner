@@ -379,7 +379,14 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   if (basePower.stats?.recharge) extraEffects.recharge = basePower.stats.recharge;
   if (basePower.stats?.accuracy) extraEffects.accuracy = basePower.stats.accuracy;
   if (basePower.stats?.range) extraEffects.range = basePower.stats.range;
-  if (basePower.stats?.castTime) extraEffects.castTime = basePower.stats.castTime;
+  // Assassin's Strike: fast Quick animation mid-combat, slow interruptible cast
+  // from Hide. Mirror the from-Hide toggle (which drives its damage) so cast
+  // time matches the state — not hidden → the fast mid-combat cast.
+  if (basePower.stats?.castTime) {
+    extraEffects.castTime = basePower.midCombatCast != null && !effectiveHidden
+      ? basePower.midCombatCast
+      : basePower.stats.castTime;
+  }
   // AoE stats
   if (basePower.stats?.radius) extraEffects.radius = basePower.stats.radius;
   if (basePower.stats?.arc) extraEffects.arc = basePower.stats.arc <= 2 * Math.PI ? basePower.stats.arc * (180 / Math.PI) : basePower.stats.arc;
@@ -948,7 +955,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         if (!calculatedDamage) return null;
 
         const assassinationInfo = getAssassinationInfo();
-        const currentBonus = calculateAssassinationDamageBonus(effectiveHidden, stalkerTeamSize);
+        const currentBonus = calculateAssassinationDamageBonus(effectiveHidden, stalkerTeamSize, basePower?.fromHideBonus);
         const critChance = effectiveHidden ? 1.0 : assassinationInfo.baseCritChance + (stalkerTeamSize * assassinationInfo.critChancePerTeammate);
 
         return (
@@ -976,10 +983,12 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                 <>
                   <div className="flex justify-between">
                     <span className="text-slate-300">From Hide:</span>
-                    <span className="text-sk-magenta/70 font-medium">100% critical chance</span>
+                    <span className="text-sk-magenta/70 font-medium">
+                      {basePower?.fromHideBonus != null ? 'guaranteed Assassination' : '100% critical chance'}
+                    </span>
                   </div>
                   <div className="text-[10px] text-sk-magenta/60 mt-0.5">
-                    +100% avg damage (guaranteed double damage)
+                    +{(currentBonus * 100).toFixed(0)}% {basePower?.fromHideBonus != null ? 'damage (Assassin’s Strike)' : 'avg damage (guaranteed double damage)'}
                   </div>
                 </>
               ) : (
