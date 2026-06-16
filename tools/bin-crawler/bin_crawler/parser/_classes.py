@@ -20,7 +20,12 @@ from ._dataclasses import ClassRecord
 
 
 def _find_icon_offset(data, rec_start, rec_len, strtab_base):
-    """Scan record for the first .tga string reference (icon field)."""
+    """Scan record for the first icon string reference (icon field).
+
+    Most archetype icons end in ".tga", but some (e.g. Thunderspy's Primalist:
+    "archetypeicon_primalist.texture") use ".texture". Accept either so the
+    category fields immediately after the icon are located correctly.
+    """
     limit = min(200, rec_len)
     for off in range(8, limit, 4):
         raw = struct.unpack_from("<I", data, rec_start + off)[0]
@@ -33,7 +38,7 @@ def _find_icon_offset(data, rec_start, rec_len, strtab_base):
         while end < len(data) and data[end] != 0:
             end += 1
         s = bytes(data[str_abs:end]).decode("ascii", errors="replace")
-        if s.endswith(".tga"):
+        if s.endswith(".tga") or s.endswith(".texture"):
             return off
     return None
 

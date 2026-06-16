@@ -52,6 +52,12 @@ PLAYER_CATEGORIES = {
     # Kheldians
     'Peacebringer_Defensive', 'Peacebringer_Offensive',
     'Warshade_Defensive', 'Warshade_Offensive',
+    # Thunderspy Primalist — a custom Kheldian-style form-shifter AT. HC/Rebirth
+    # have no equivalent (these categories simply won't exist in those datasets).
+    # Primary 'Feral_Might', secondary 'Primal_Gifts'; the Hunter/Prowler/Primal
+    # form attack variants + per-attack lifesteal redirects live in
+    # 'Primalist_Misc' (listed below with the Lore/NPC pet categories).
+    'Feral_Might', 'Primal_Gifts',
     # VEATs
     'Arachnos_Soldiers', 'Widow_Training', 'Teamwork',
     # VEAT Soldier secondaries: Training_and_Gadgets, Crab_Spider_Training,
