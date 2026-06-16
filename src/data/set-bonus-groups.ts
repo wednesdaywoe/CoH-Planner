@@ -129,3 +129,18 @@ export const PROC_BREAKDOWN_KEY_TO_GROUP_KEY: Record<string, string> = {
   debuffResistRecharge: 'debuffresistrecharge',
   protKnockback: 'kbprotection',
 };
+
+/**
+ * Resolve a dashboard `breakdown` map key (a global stat key like `mezResist`,
+ * `maxHP`, `resFire`) to its human-readable Set Bonus Totals label. Tries the
+ * direct key, then the case-normalized form (the breakdown uses camelCase global
+ * keys; STAT_GROUP_INFO keys are a mix of camelCase — `resFire`, `defMelee` —
+ * and all-lowercase — `mezresist`, `maxhp`). Falls back to the raw key rather
+ * than dropping it. Used by the Rule-of-5 ring tooltip to name *which* capped
+ * bonus a power contributes — often a hidden bundled component (a resistance set
+ * silently carrying "Mez Resistance").
+ */
+export function statKeyToLabel(breakdownKey: string): string {
+  const normalized = breakdownKey.toLowerCase().replace(/[^a-z]/g, '');
+  return STAT_GROUP_INFO[breakdownKey]?.label ?? STAT_GROUP_INFO[normalized]?.label ?? breakdownKey;
+}

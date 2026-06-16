@@ -8,7 +8,7 @@
 import { useState, useCallback } from 'react';
 import type { Enhancement, SelectedPower } from '@/types';
 import { resolvePath } from '@/utils/paths';
-import { useIsTouchDevice, useOffendingPowerNames } from '@/hooks';
+import { useIsTouchDevice, useOffendingPowerReasons } from '@/hooks';
 import { Tooltip } from '@/components/ui';
 import { TouchableSlot } from './TouchableSlot';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
@@ -124,8 +124,18 @@ export function PowerRow({
   // Bonus Cap Alert: powers contributing a Rule-of-5-rejected bonus get a
   // warning ring so users can see *which* powers to retune. Empty set when the
   // alert is disabled, so this is a no-op then.
-  const offendingPowers = useOffendingPowerNames();
-  const isOverCap = offendingPowers.has(name);
+  const offendingReasons = useOffendingPowerReasons();
+  const cappedReasons = offendingReasons.get(name);
+  const isOverCap = !!cappedReasons?.length;
+  // Tooltip for the warning ring: name the exact capped bonus(es) — often a
+  // hidden component bundled into a differently-named set bonus (e.g. a
+  // resistance set silently carrying Mez Resistance) — and reassure that the
+  // power's other set bonuses still count.
+  const overCapTitle = cappedReasons?.length
+    ? `Rule of 5 — over the cap and not counting:\n${cappedReasons
+        .map((r) => `• ${r.label} ${r.display}`)
+        .join('\n')}\nThis power's other set bonuses still apply. Swap one of the sets sharing this bonus to recover the wasted slot.`
+    : undefined;
   const slotSize = SLOT_SIZE_MAP[size];
   const ghostSize = GHOST_SIZE_MAP[size];
   const iconClass = ICON_CLASS_MAP[size];
@@ -433,6 +443,7 @@ export function PowerRow({
     return (
       <div
         className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass} ${overCapClass}`}
+        title={overCapTitle}
         onMouseEnter={hoverHandler}
         onMouseLeave={leaveHandler}
         data-info-hover="power"
@@ -467,6 +478,7 @@ export function PowerRow({
   return (
     <div
       className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass} ${overCapClass}`}
+      title={overCapTitle}
       onMouseEnter={hoverHandler}
       onMouseLeave={leaveHandler}
       data-info-hover="power"

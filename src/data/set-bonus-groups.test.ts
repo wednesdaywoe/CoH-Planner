@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY } from './set-bonus-groups';
+import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY, statKeyToLabel } from './set-bonus-groups';
 import { STAT_NAME_MAP } from '@/utils/calculations/set-bonuses';
 
 /**
@@ -51,5 +51,29 @@ describe('Set bonus group coverage', () => {
     const groupKey = PROC_BREAKDOWN_KEY_TO_GROUP_KEY.recharge;
     expect(groupKey).toBe('recharge');
     expect(STAT_GROUP_INFO[groupKey]).toEqual({ group: 'General', label: 'Recharge' });
+  });
+});
+
+/**
+ * statKeyToLabel resolves dashboard breakdown keys (camelCase global keys) to
+ * the Set Bonus Totals label — the crux of the Rule-of-5 ring tooltip naming
+ * *which* bonus is capped. The breakdown and the grouping table disagree on
+ * casing for some stats (mezResist↔mezresist, maxHP↔maxhp), so both forms must
+ * resolve. The mez case is the one the user-reported confusion hinges on.
+ */
+describe('statKeyToLabel (Rule-of-5 ring tooltip)', () => {
+  it('resolves the hidden bundled Mez Resistance component users get tripped up by', () => {
+    expect(statKeyToLabel('mezResist')).toBe('Mez Resistance');
+  });
+
+  it('resolves both camelCase-global and already-lowercase breakdown keys', () => {
+    expect(statKeyToLabel('maxHP')).toBe('Max HP');
+    expect(statKeyToLabel('toHit')).toBe('ToHit');
+    expect(statKeyToLabel('resFire')).toBe(STAT_GROUP_INFO.resFire.label);
+    expect(statKeyToLabel('defMelee')).toBe('Melee');
+  });
+
+  it('falls back to the raw key rather than dropping an unknown stat', () => {
+    expect(statKeyToLabel('someFutureStat')).toBe('someFutureStat');
   });
 });

@@ -16,6 +16,7 @@ export {
   useActiveSetBonuses,
   useBonusTracking,
   useOffendingPowerNames,
+  useOffendingPowerReasons,
   convertToLegacyStats,
 } from './useCalculatedStats';
 

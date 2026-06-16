@@ -12,6 +12,8 @@
 import { useMemo } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getIOSet } from '@/data';
+import { statKeyToLabel } from '@/data/set-bonus-groups';
+import { formatBonusValue } from '@/utils/set-bonus-format';
 import type { SetBonus } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
 import type { BonusTracking } from '@/utils/calculations';
@@ -383,23 +385,37 @@ export function useBonusTracking(): BonusTracking {
   return result.bonusTracking;
 }
 
+/** A specific Rule-of-5-capped bonus a power contributes — the human-readable
+ *  stat label and its value, pre-formatted for display (e.g. "Mez Resistance",
+ *  "+10%"). Drives the orange-ring tooltip so the user can see *which* bonus is
+ *  over the cap — often a hidden component bundled into a differently-named set
+ *  bonus (a resistance set silently carrying Mez Resistance, etc.). */
+export interface CappedBonusReason {
+  label: string;
+  /** Pre-formatted value with sign + unit, e.g. "+10%". */
+  display: string;
+}
+
 /**
- * Set of `power.name` values that contribute to *any* (stat, value) bucket
- * that's hit the Rule of 5 — including the 5 accepted sources, not just the
- * rejected 6th+. Highlighting only the rejected source would imply that
- * removing that specific power is the fix, but the 6 powers are
- * interchangeable: any of them being unslotted resolves the cap. Returns an
- * empty set when Bonus Cap Alert is disabled so callers can ungate without
- * an extra branch.
+ * Map of `power.name` → the distinct Rule-of-5-capped bonuses it contributes.
+ * A power is "offending" if it feeds *any* (stat, value) bucket that's hit the
+ * cap — including the 5 accepted sources, not just the rejected 6th+, since the
+ * powers in a full bucket are interchangeable (unslotting any one resolves it).
+ *
+ * The reasons name the specific capped stat + value so the orange-ring tooltip
+ * can explain *why* a power is flagged — crucial when the culprit is a hidden
+ * component (e.g. the "+10% Mez Resistance (All)" silently bundled into a
+ * resistance set bonus), which the user would never spot by checking the
+ * headline stat. Empty map when Bonus Cap Alert is disabled.
  */
-export function useOffendingPowerNames(): Set<string> {
+export function useOffendingPowerReasons(): Map<string, CappedBonusReason[]> {
   const enabled = useUIStore((s) => s.ruleOf5AlertEnabled);
   const { breakdown } = useCharacterCalculation();
 
   return useMemo(() => {
-    const offending = new Set<string>();
-    if (!enabled) return offending;
-    for (const stat of breakdown.values()) {
+    const reasons = new Map<string, CappedBonusReason[]>();
+    if (!enabled) return reasons;
+    for (const [statKey, stat] of breakdown.entries()) {
       // Group this stat's sources by value (the Rule of 5 fires per
       // (stat, value) bucket). If any source in a bucket is capped, every
       // power in that bucket is part of the issue.
@@ -412,17 +428,35 @@ export function useOffendingPowerNames(): Set<string> {
           entry.powerNames.push(source.powerName);
           if (source.capped) entry.capped = true;
         } else {
-          byValue.set(key, {
-            capped: !!source.capped,
-            powerNames: [source.powerName],
-          });
+          byValue.set(key, { capped: !!source.capped, powerNames: [source.powerName] });
         }
       }
-      for (const entry of byValue.values()) {
+      for (const [valueKey, entry] of byValue.entries()) {
         if (!entry.capped) continue;
-        for (const name of entry.powerNames) offending.add(name);
+        const reason: CappedBonusReason = {
+          label: statKeyToLabel(statKey),
+          display: `+${formatBonusValue(Number(valueKey))}%`,
+        };
+        for (const name of entry.powerNames) {
+          const list = reasons.get(name);
+          if (list) {
+            if (!list.some((r) => r.label === reason.label && r.display === reason.display)) list.push(reason);
+          } else {
+            reasons.set(name, [reason]);
+          }
+        }
       }
     }
-    return offending;
+    return reasons;
   }, [breakdown, enabled]);
+}
+
+/**
+ * Set of `power.name` values that contribute to any Rule-of-5-capped bucket.
+ * Thin wrapper over {@link useOffendingPowerReasons} for callers that only need
+ * membership (the ring on/off decision).
+ */
+export function useOffendingPowerNames(): Set<string> {
+  const reasons = useOffendingPowerReasons();
+  return useMemo(() => new Set(reasons.keys()), [reasons]);
 }
