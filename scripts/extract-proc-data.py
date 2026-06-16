@@ -16,6 +16,7 @@ Usage:
 """
 from __future__ import annotations
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -28,7 +29,7 @@ from bin_crawler.parser._boostsets import parse_boostsets
 from bin_crawler.parser._powers import parse_powers, PowerRecord
 from bin_crawler.parser._classes import parse_classes
 
-HC_ASSETS = r'G:/Homecoming/assets/live'
+HC_ASSETS = os.environ.get('COH_HC_ASSETS', r'G:/Homecoming/assets/live')
 PROC_DATA_TS = PROJECT_ROOT / 'src' / 'data' / 'proc-data.ts'
 GEN_DIR = PROJECT_ROOT / 'src' / 'data' / 'generated'
 OUT_GLOBALS = GEN_DIR / 'proc-globals.generated.ts'

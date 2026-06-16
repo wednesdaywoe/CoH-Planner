@@ -38,8 +38,13 @@ from bin_crawler.parser._boostsets import parse_boostsets, EC_CATEGORY_TO_PLANNE
 from bin_crawler.parser._powers import parse_powers, PowerRecord
 from bin_crawler.parser._messages import load_messages
 
-REBIRTH_ASSETS = r'G:/Thunderspy Gaming/Sweet Tea/rebirth'
-HC_ASSETS = r'G:/Homecoming/assets/live'
+# Asset (.pigg) read paths default to the Windows install locations, but can be
+# overridden per machine via env vars (e.g. on Linux where the drive letters
+# don't exist). Only the *read* path is overridden — the canonical Windows path
+# is still recorded in each generated file's `Source:` header (cfg['pigg'] below)
+# so committed output stays byte-identical across machines for the CI regen-diff.
+REBIRTH_ASSETS = os.environ.get('COH_REBIRTH_ASSETS', r'G:/Thunderspy Gaming/Sweet Tea/rebirth')
+HC_ASSETS = os.environ.get('COH_HC_ASSETS', r'G:/Homecoming/assets/live')
 OUTPUT_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'rebirth' / 'io-sets-raw.ts'
 HC_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'homecoming' / 'io-sets-raw.ts'
 

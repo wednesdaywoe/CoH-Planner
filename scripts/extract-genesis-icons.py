@@ -25,7 +25,7 @@ sys.path.insert(0, str(ROOT / "tools" / "pigg-wrangler"))
 from pigg_wrangler.pigg import PiggArchive  # noqa: E402
 from pigg_wrangler.texture import texture_to_png  # noqa: E402
 
-DEFAULT_ASSETS = r"G:/Thunderspy Gaming/Sweet Tea"
+DEFAULT_ASSETS = os.environ.get("COH_THUNDERSPY_ASSETS", r"G:/Thunderspy Gaming/Sweet Tea")
 OUT_DIR = ROOT / "public" / "img" / "powers"
 
 TREES = ["Data", "Fate", "Socket", "Verdict"]
