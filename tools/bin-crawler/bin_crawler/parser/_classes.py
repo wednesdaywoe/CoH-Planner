@@ -294,9 +294,19 @@ def _parse_classes_parse6(r: Parse6BinReader) -> list[ClassRecord]:
 # forum (Scrapper 500%). NB: there is a second, STALE copy of the cap elsewhere
 # in the HC record (pre-2020 values) — do NOT read that one. Per-server: Rebirth
 # kept the older Tanker 400% / Brute 775%.
+#   thunderspy (Thunderspy): 50-entry level tables (level cap 50, no Incarnate),
+#     but Parse7-framed (string-table offsets, not Parse6 inline strings). Its
+#     CharacterAttributes member order is the older/leaner i23-era schema, so the
+#     deltas differ from BOTH parse7 (105-entry) and parse6 (50-entry inline).
+#     Derived empirically from Class_Blaster (hit_points anchor at rec-offset
+#     4780) and VERIFIED across all 15 Thunderspy classes against canonical CoH
+#     values — the distinctive ones confirm the layout: Brute dmg_cap 7.75 (775%),
+#     Tanker res_cap 0.90 / dmg_cap 4.0 (400%), Kheldian res_cap 0.85, threat
+#     ladder Tanker/Brute 4 · Scrapper 3 · Stalker/MM/EAT 2 · others 1.
 _ATTRIB_LAYOUT = {
     "parse7": {"count": 105, "cap_delta": 44656, "res_value_delta": 112744, "threat_delta": -4040, "dmg_cap_delta": 74872},
     "parse6": {"count": 50,  "cap_delta": 15472, "res_value_delta": 46420, "threat_delta": -4004, "dmg_cap_delta": 30944},
+    "thunderspy": {"count": 50, "cap_delta": 15268, "res_value_delta": 45808, "threat_delta": -3968, "dmg_cap_delta": 30536},
 }
 _PLAYER_LEVELS = 50             # planner uses levels 1-50
 
@@ -411,8 +421,15 @@ def parse_classes(bin_path_or_data) -> list[ClassRecord]:
         if tables_off is not None:
             named_tables = _parse_named_tables(data, rec_start, tables_off, strtab_base)
 
-        # Per-archetype attribute curves/caps (HP, HP-cap, resistance cap)
+        # Per-archetype attribute curves/caps (HP, HP-cap, resistance cap).
+        # Both HC and Thunderspy are Parse7-framed; they differ only in level-
+        # table length (HC 105 incl. Incarnate, Thunderspy 50). Try the HC layout
+        # first — its 105-entry anchor never matches Thunderspy's 50-entry curves
+        # — then fall back to the Thunderspy layout. (Rebirth uses the separate
+        # Parse6 path above, so it never reaches here.)
         attribs = _extract_attribs(data, rec_start, rec_len, _ATTRIB_LAYOUT["parse7"])
+        if not attribs:
+            attribs = _extract_attribs(data, rec_start, rec_len, _ATTRIB_LAYOUT["thunderspy"])
 
         records.append(ClassRecord(
             name=name,

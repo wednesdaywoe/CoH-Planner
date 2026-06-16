@@ -146,7 +146,7 @@ None are blocking, but worth tracking:
 - **Mez template durations** come via `scale × table_lookup`, not a direct field. This matches how the planner derives mez durations for HC, so end-to-end calculations should work.
 - **Blaster Melee_Damage == Ranged_Damage** in Thunderspy (HC differentiates them slightly). May be an older table-sharing convention; not investigated.
 - **Negative damage modifier values** (-10.25 for Blaster Ranged_Damage at level 1) match HC's sign convention. The downstream consumer is expected to negate when computing actual damage.
-- **Class attribs (HP/caps) don't parse** for any Thunderspy class — `_extract_attribs` only knows the parse7 105-level layout; Thunderspy uses 50-level tables. Named modifier tables (the ones power math needs) parse fine. See the "New limitation" note under the Thunderspy-exclusive content section. Not yet fixed.
+- ~~**Class attribs (HP/caps) don't parse** for any Thunderspy class~~ — ✅ FIXED 2026-06-16 via `_ATTRIB_LAYOUT["thunderspy"]` (parse7 framing + 50-level deltas) with a self-detecting fallback. All 15 ATs extract HP/caps/threat/dmg-cap. See the resolved note above and [parser_logs/THUNDERSPY-PARSER-LOG.md](parser_logs/THUNDERSPY-PARSER-LOG.md).
 
 ## Thunderspy-exclusive content (discovered 2026-06-16)
 
@@ -189,9 +189,9 @@ The original support pass treated Thunderspy as an old i23-era Homecoming and on
 2. **Export** — ✅ DONE (2026-06-16). Added `Feral_Might`, `Primal_Gifts` to `PLAYER_CATEGORIES` (`Primalist_Misc` already present). All custom powersets in standard ATs export under their existing (already-included) categories — verified. Full export now: **8,532 player powers across 58 category dirs** (was 8,506 / 56; +26 = Feral_Might 14 + Primal_Gift 12).
 3. **App** — ⏳ NOT STARTED. Thunderspy is **not yet a selectable dataset** (`src/data/datasets/` has only `homecoming`/`rebirth`). Wire Thunderspy in, then model Primalist as a form-shifter AT (reuse the Kheldian form machinery for Hunter/Prowler/Primal forms and the per-attack heal redirects).
 
-### New limitation found: Thunderspy class attribs (HP/caps) don't parse
+### Thunderspy class attribs (HP/caps) — ✅ FIXED (2026-06-16)
 
-All 15 Thunderspy classes parse with **empty `attribs`** (hit_points / hp_cap / resistance_cap / damage_cap / base_threat). Cause: `_extract_attribs` only knows the parse7 layout (`_ATTRIB_LAYOUT["parse7"]`, 105-entry level tables incl. Incarnate), but Thunderspy uses 50-entry level tables (level cap 50, like parse6) inside a parse7 frame — so `_find_hit_points_offset` (which anchors on a count==105 array) never matches. This is **dataset-wide, not Primalist-specific**, and predates this work. The **named modifier tables parse fine** (94 tables; these drive damage/buff scaling), so power math is unaffected — only the AT-frame HP/cap curves are missing. Fix would need a Thunderspy attrib layout (parse7 framing + 50-level deltas), derived & CI-guarded like the existing parse7/parse6 layouts.
+Previously all 15 Thunderspy classes parsed with **empty `attribs`** because `_extract_attribs` only knew the parse7 layout (105-entry level tables incl. Incarnate), while Thunderspy uses 50-entry tables inside a parse7 frame. **Fixed** by adding `_ATTRIB_LAYOUT["thunderspy"]` (count 50, cap_delta 15268, res_value_delta 45808, threat_delta −3968, dmg_cap_delta 30536) and a self-detecting fallback in `parse_classes` (try parse7 → fall back to thunderspy when empty; HC's 105-anchor never matches Thunderspy's 50-curves, and Rebirth uses the Parse6 path). All 15 ATs now extract HP/caps/threat/dmg-cap matching canonical CoH values (Brute 7.75/0.90, Tanker 4.0/0.90, Kheldian 0.85; Primalist baseHP 1285, maxHP 2249, res 0.75, threat 1, dmgCap 4.0). No HC/Rebirth regression (`archetype-stats.test.ts` 60/60). Full write-up in [parser_logs/THUNDERSPY-PARSER-LOG.md](parser_logs/THUNDERSPY-PARSER-LOG.md). TODO at app-integration time: add a Thunderspy archetype-stats test mirroring the HC one.
 
 ## How to add more sources later
 

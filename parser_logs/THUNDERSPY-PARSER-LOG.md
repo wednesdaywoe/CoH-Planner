@@ -1,0 +1,113 @@
+# Thunderspy Parser Log
+
+Running log of bugs and gaps specific to the **Thunderspy** dataset in the binary
+parser → JSON conversion pipeline (`tools/bin-crawler/` + `scripts/convert-*.cjs`),
+with diagnoses and recommended fixes. Newest entries at top. When an open issue is
+fixed, move it to the top of the RESOLVED section with the fix details.
+
+> **Before you make any edits** read [GAME-DATA-PRINCIPLES.md](../GAME-DATA-PRINCIPLES.md).
+> General (non-Thunderspy) findings live in [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md);
+> the broader Thunderspy support narrative is in
+> [THUNDERSPY SUPPORT PROGRESS.md](../THUNDERSPY%20SUPPORT%20PROGRESS.md).
+
+> **Format orientation:** Thunderspy is **Parse7-framed** (CrypticS magic, string
+> table, u4 string offsets — same framing as Homecoming) but uses a **Parse6-derived
+> record schema** with **50-level modifier tables** (level cap 50, no Incarnate). It
+> predates HC's schema additions and Rebirth's enum extensions, so it sits in its own
+> corner of the format space. Source: `…/Thunderspy Gaming/Sweet Tea/tspy/bin.pigg`.
+
+> --- NEW ISSUES / UNRESOLVED ---
+
+*(none open)*
+
+> ---RESOLVED ---
+
+## ✅ Class `attribs` (HP / caps / threat) did not parse for ANY Thunderspy class — 2026-06-16
+
+**Symptom.** Every Thunderspy class (`parse_classes` on `classes.bin`) returned an
+**empty `attribs` block** — no `hit_points` curve, `hp_cap` curve, `resistance_cap`,
+`damage_cap`, or `base_threat`. The per-AT **named modifier tables parsed fine** (94
+tables for Primalist incl. `Melee_Damage` etc.), so this was *only* the AT "frame" stats,
+not power-scaling data.
+
+**Root cause.** `_extract_attribs` was dispatched with `_ATTRIB_LAYOUT["parse7"]`
+([_classes.py](../tools/bin-crawler/bin_crawler/parser/_classes.py)) for any Parse7-framed
+file, and that layout assumes **105-entry** level curves (50 levels + combat/Incarnate
+extension). Thunderspy uses **50-entry** curves. So `_find_hit_points_offset` anchored on
+a `count == 105` array, never matched Thunderspy's 50-entry hit_points array → returned
+`None` → `attribs = {}`. The `parse6` layout *does* use `count == 50`, but its byte-deltas
+are calibrated for Parse6 **inline pascal strings**; Thunderspy uses Parse7 **string-table
+offsets**, and its older/leaner i23-era CharacterAttributes member order differs again — so
+neither existing layout fit.
+
+**Fix (applied 2026-06-16).** Added a third layout `_ATTRIB_LAYOUT["thunderspy"]`
+(`count` 50, `cap_delta` 15268, `res_value_delta` 45808, `threat_delta` −3968,
+`dmg_cap_delta` 30536), derived empirically by anchoring on `Class_Blaster`'s hit_points
+curve (rec-offset 4780) and measuring deltas to the hp_cap curve, resistance-cap float,
+base-threat scalar, and first StrengthMax damage curve. `parse_classes` (Parse7 path) now
+tries the HC layout first and **falls back** to the Thunderspy layout when it yields `{}`
+— self-detecting, because HC's 105-entry anchor never matches Thunderspy's 50-entry curves
+(and vice-versa), and Rebirth uses the separate Parse6 path so never reaches here.
+
+**De-risk / verification.** All 15 Thunderspy classes now extract attribs; values match
+canonical CoH stats, with the distinctive ones confirming the deltas are right:
+
+| AT | baseHP (L50) | maxHP (L50) | resCap | threat | dmgCap |
+|---|---|---|---|---|---|
+| Blaster | 1204.8 | 1606.3 | 0.75 | 1 | 5.0 |
+| Tanker | 1874.1 | 3534.0 | **0.90** | 4 | **4.0** |
+| Brute | 1499.3 | 3212.7 | **0.90** | 4 | **7.75** |
+| Peacebringer/Warshade | 1070.9 | 2409.5 | **0.85** | 2 | 4.45 |
+| Mastermind | 803.2 | 1606.3 | 0.75 | 2 | 4.0 |
+| **Primalist** | **1285.1** | **2248.9** | **0.75** | **1** | **4.0** |
+
+(Brute 775% / Tanker 400% damage caps and Kheldian 85% resistance cap are server-specific
+non-default values — matching them is strong evidence the deltas are correct.) **No
+regression:** HC still resolves via the parse7 layout (HC Brute dmgCap 7.0 / Tanker 5.0 —
+distinct from Thunderspy's older 7.75 / 4.0, proving the fallback does NOT trigger for HC);
+`src/data/archetype-stats.test.ts` passes 60/60; Rebirth (Parse6 path) unchanged.
+Verified the values survive into JSON via `export_classes` (Primalist's `tables` entry
+carries the full block). **TODO when wiring the app dataset:** add a Thunderspy
+archetype-stats test mirroring the HC one.
+
+## ✅ `Class_Primalist` parsed with empty primary/secondary/pool categories — 2026-06-16
+
+**Symptom.** Thunderspy's custom **Primalist** archetype (`Class_Primalist`, the 15th
+class in `classes.bin` = 14 standard + Primalist) parsed with **empty** `primary_category`
+/ `secondary_category` / `pool_category`, while every other class (including the Kheldian
+EATs) parsed fine. This silently hid Primalist from the planner — and the export's
+`PLAYER_CATEGORIES` filter compounded it by dropping the orphaned `Feral_Might` /
+`Primal_Gifts` categories (only `Primalist_Misc` leaked through, because it had been
+parked in the Lore/NPC pet-category list).
+
+**Root cause.** `_find_icon_offset` only matched icon strings ending in **`.tga`**.
+Primalist's icon is **`archetypeicon_primalist.texture`** (ends in `.texture`). With no
+`.tga` match the function returned `None`, so the entire category-detection block — which
+correctly reads the three categories at `icon_off + 4 / +8 / +12` — was skipped. The
+category data was present and correctly placed all along; only the icon *anchor* failed.
+(Warshade works because its icon is `archetypeicon_Warshade.tga`.)
+
+Raw Primalist record (Parse7, string-offset fields):
+```
++76 'archetypeicon_primalist.texture'   <- icon (.texture, not .tga)
++80 'Feral_Might'                        <- primary
++84 'Primal_Gifts'                       <- secondary
++88 'Pool'                               <- pool
+```
+
+**Fix (applied 2026-06-16).** `_find_icon_offset`
+([_classes.py](../tools/bin-crawler/bin_crawler/parser/_classes.py)) now accepts a
+`.texture` extension in addition to `.tga`. Primalist now resolves
+`Feral_Might` / `Primal_Gifts` / `Pool`. **De-risk:** re-parsed all three datasets —
+15 Thunderspy + 15 Homecoming + 15 Rebirth classes still parse with **no** empty
+categories (no regression; the change only adds a previously-unmatched extension).
+
+**Export follow-through (applied 2026-06-16).** Added `Feral_Might` and `Primal_Gifts`
+to `PLAYER_CATEGORIES` in
+[export_powers.py](../tools/bin-crawler/bin_crawler/export_powers.py) (`Primalist_Misc`
+already present). Full Thunderspy export verified: **8,532 player powers / 1,906
+powersets / 58 categories** (was 8,506 / 56 — the +26 powers are exactly Feral_Might's 14
++ Primal_Gift's 12). Primalist is a Kheldian-style form-shifter (primary `Feral_Might`
+with Hunter/Prowler form toggles; secondary `Primal_Gift`; form-attack variants + per-hit
+lifesteal redirects in `Primalist_Misc`). The class `attribs` are still empty — that's a
+separate, dataset-wide issue tracked in NEW ISSUES above.

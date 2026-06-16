@@ -10,6 +10,12 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 > tail/condition fields that Parse7 decodes). Rebirth findings still get their detailed
 > write-up *here*; that doc links back to them.
 
+> **Thunderspy-specific gaps** are logged in [THUNDERSPY-PARSER-LOG.md](THUNDERSPY-PARSER-LOG.md)
+> (Parse7 framing + Parse6-derived 50-level schema; home of the custom **Primalist** AT).
+> Resolved there: `Class_Primalist` empty-categories (`.texture` icon anchor) + export
+> filter; class `attribs` (HP/caps/threat/dmg-cap) via a new Parse7+50-level layout. No
+> Thunderspy issues currently open.
+
 >Agent note: One small flag for your separate task: when you pick up the parser work, the verification tooling I built is at c:\tmp\ (oracle-verify.mjs, override-audit.mjs, etc.) — handy if you end up retiring the Discharge overrides after the parser fix, to confirm the audit goes 9 → 7.
 
 > --- NEW ISSUES / UNRESOLVED ---
