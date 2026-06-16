@@ -577,6 +577,14 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
             <div className="flex flex-wrap gap-1.5">
               {palette.map(({ p, i }) => {
                 const rel = maxMetric > 0 ? metricVal(p) / maxMetric : 0;
+                // Powers that carry a special chain mechanic: an alternate "fast"
+                // form (Energy Transfer) or a charge that enables one (Total
+                // Focus). Flag them so the rotation's build/spend pieces stand out.
+                const special = p.forms?.length
+                  ? `Has a ${p.forms[0].label} fast form — auto-fires when its charge is available`
+                  : p.grants
+                    ? `Grants ${p.grants.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} — enables a fast form later in the chain`
+                    : null;
                 return (
                   <button
                     key={p.id}
@@ -586,9 +594,11 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                       borderLeftWidth: 2,
                       borderLeftColor: barFill(p.type, rel),
                       background: chipBg(p.type, rel),
+                      ...(special && { boxShadow: 'inset 0 0 0 1px rgba(255,224,138,0.55)' }),
                     }}
-                    title={`${p.name} · cast ${fmt(p.cast, 2)}s · rech ${fmt(p.baseRecharge, 1)}s · ${fmt(metricVal(p), powerMetric === 'damage' ? 0 : 1)} ${METRIC_LABEL[powerMetric]}`}
+                    title={`${p.name} · cast ${fmt(p.cast, 2)}s · rech ${fmt(p.baseRecharge, 1)}s · ${fmt(metricVal(p), powerMetric === 'damage' ? 0 : 1)} ${METRIC_LABEL[powerMetric]}${special ? `\n⚡ ${special}` : ''}`}
                   >
+                    {special && <span style={{ color: '#FFE08A', fontSize: 10, lineHeight: 1 }}>⚡</span>}
                     <span>{p.name}</span>
                     <span className="text-[10px] text-gray-500">{fmt(p.cast, 2)}s</span>
                   </button>
@@ -690,7 +700,12 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                       <div style={{ position: 'relative', height: LANE_H, width: displayW, flexShrink: 0 }}>
                         {mine.map((act, mi) => {
                           const x = act.start * px;
-                          const w = Math.max(p.cast * px, 6);
+                          // An alternate form (e.g. fast Energy Transfer) shortens
+                          // the animation — the bar width must follow the form's
+                          // cast, not the base, or a fast cast would render long.
+                          const form = act.formId ? p.forms?.find((f) => f.id === act.formId) : undefined;
+                          const effCast = form?.cast ?? p.cast;
+                          const w = Math.max(effCast * px, 6);
                           // Recharge overshoot ("waiting"): from when this
                           // cast's recharge completes (or its animation ends, if
                           // it recharges mid-cast) until the next cast of this
@@ -763,7 +778,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                               {/* after-cast DoT ticks */}
                               {p.dot &&
                                 Array.from({ length: p.dot.ticks }).map((_, t) => {
-                                  const tickT = act.start + p.cast + (t + 1) * p.dot!.period;
+                                  const tickT = act.start + effCast + (t + 1) * p.dot!.period;
                                   const inWin = tickT <= cycleSec;
                                   return (
                                     <div
@@ -808,8 +823,28 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                     zIndex: 3,
                                   }),
                                 }}
-                                title={`${p.name} @ ${fmt(act.start, 2)}s — drag to reorder`}
+                                title={`${p.name}${form ? ` · ${form.label} (${fmt(effCast, 2)}s)` : ''} @ ${fmt(act.start, 2)}s — drag to reorder`}
                               >
+                                {/* Active-form badge (e.g. ⚡ fast Energy Transfer).
+                                    Marks casts the engine upgraded to an alternate
+                                    form so the shortened bar isn't mistaken for a
+                                    different power. */}
+                                {form && (
+                                  <span
+                                    style={{
+                                      position: 'absolute',
+                                      left: 2,
+                                      top: 1,
+                                      fontSize: 9,
+                                      lineHeight: 1,
+                                      color: '#FFE08A',
+                                      pointerEvents: 'none',
+                                      zIndex: 3,
+                                    }}
+                                  >
+                                    ⚡
+                                  </span>
+                                )}
                                 {/* Larger transparent hit target around a small
                                     visible dot — forgiving to click, especially
                                     on narrow (fast-cast) bars. */}

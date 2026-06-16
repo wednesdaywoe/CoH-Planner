@@ -25,6 +25,31 @@ export interface ChainDoT {
   perTick: number;
 }
 
+/** When an alternate form of a power is legal. The chain auto-picks the form
+ *  whose trigger is satisfiable at a given cast. Slice 1 implements `charge`
+ *  (Energy Transfer's fast cast, gated on an Energy Focus from Total Focus);
+ *  `tohit` (fast snipe) and `hidden` (Assassin's Strike opener) are reserved. */
+export type FormTrigger =
+  | { type: 'charge'; resource: string }
+  | { type: 'tohit'; threshold: number }
+  | { type: 'hidden' }
+  | { type: 'manual' };
+
+/** An alternate form of a ChainPower (e.g. fast Energy Transfer). Carries the
+ *  same already-enhanced fields as the base power so the calc can read either
+ *  via {@link effectiveCast} et al. */
+export interface ChainForm {
+  id: string;
+  label: string;
+  kind: 'fast' | 'slow';
+  /** ArcanaTime for this form's animation. */
+  cast: number;
+  damage: number;
+  endCost: number;
+  dot?: ChainDoT | null;
+  trigger: FormTrigger;
+}
+
 /** One power available to the chain, with values already enhanced for the build. */
 export interface ChainPower {
   id: string;
@@ -53,6 +78,12 @@ export interface ChainPower {
    *  debuff expires so you can time a refresh rather than recast on cooldown.
    *  undefined = neither. Durations are flat (not enhanceable). */
   effectWindow?: { kind: 'buff' | 'debuff'; duration: number };
+  /** Alternate cast forms (fast/slow), if any. The flat fields above are the
+   *  default form; a form overrides cast/damage/endCost for casts that use it. */
+  forms?: ChainForm[];
+  /** Resource (charge) this power grants when cast, e.g. Total Focus → the
+   *  `energy_focus` that lets a later Energy Transfer fire its fast form. */
+  grants?: string;
 }
 
 /** A scheduled cast: `pi` indexes into the ChainPower[] passed alongside. */
@@ -62,6 +93,9 @@ export interface Activation {
   end: number;
   /** index into the pick-order sequence (for per-bar removal). */
   seq?: number;
+  /** Which alternate form this cast uses ({@link ChainForm.id}); undefined =
+   *  the power's default/base form. */
+  formId?: string;
 }
 
 export interface EnduranceParams {
@@ -147,6 +181,22 @@ export type PowerMetric = 'damage' | 'dpa' | 'dps';
 /** Effective recharge after enhancement + (build + what-if) global recharge. */
 export function effectiveRecharge(p: ChainPower, globalRechargePct: number): number {
   return p.baseRecharge / (1 + p.rechargeEnh + globalRechargePct / 100);
+}
+
+/** Per-cast effective stats: the activation's chosen form, else the base power.
+ *  Both shapes carry cast/damage/endCost/dot, so callers read uniformly.
+ *  Recharge is NOT form-specific — every form shares the power's one cooldown
+ *  lane (fast and slow Energy Transfer share the same 10s recharge). */
+export function effectiveStats(
+  powers: ChainPower[],
+  act: Activation,
+): { cast: number; damage: number; endCost: number; dot?: ChainDoT | null } {
+  const p = powers[act.pi];
+  if (act.formId) {
+    const f = p.forms?.find((x) => x.id === act.formId);
+    if (f) return { cast: f.cast, damage: f.damage, endCost: f.endCost, dot: f.dot };
+  }
+  return { cast: p.cast, damage: p.damage, endCost: p.endCost, dot: p.dot };
 }
 
 /** Per-cast nominal damage (direct hit + every DoT tick). */
@@ -242,10 +292,29 @@ export function replayChain(
   globalRechargePct: number,
 ): Activation[] {
   const acts: Activation[] = [];
+  // Consumable charges accumulated along the rotation (in pick order, which is
+  // the user's intended cast order). Slice 1: Total Focus grants `energy_focus`,
+  // which the next Energy Transfer spends to fire its fast form. Tracked as a
+  // plain counter — charge expiry/stack caps are a later refinement.
+  const charges: Record<string, number> = {};
   sequence.forEach((pi, seq) => {
     if (pi < 0 || pi >= powers.length) return;
+    const p = powers[pi];
     const start = findSlot(powers, acts, pi, globalRechargePct);
-    acts.push({ pi, start, end: start + powers[pi].cast, seq });
+    // Auto-pick the first alternate form whose trigger is satisfiable now and
+    // consume what it requires. Only `charge` is wired in Slice 1.
+    let formId: string | undefined;
+    let cast = p.cast;
+    for (const f of p.forms ?? []) {
+      if (f.trigger.type === 'charge' && (charges[f.trigger.resource] ?? 0) > 0) {
+        charges[f.trigger.resource] -= 1;
+        formId = f.id;
+        cast = f.cast;
+        break;
+      }
+    }
+    acts.push({ pi, start, end: start + cast, seq, formId });
+    if (p.grants) charges[p.grants] = (charges[p.grants] ?? 0) + 1;
     acts.sort((a, b) => a.start - b.start);
   });
   return acts;
@@ -268,12 +337,13 @@ function calcDeadGaps(activations: Activation[], cycleSec: number): DeadGap[] {
  * ticks are only counted if they fall before the loop closes (matching how a
  * looping rotation truncates trailing ticks — the mockup's convention).
  */
-function activationDamage(p: ChainPower, act: Activation, cycleSec: number): number {
-  let dmg = p.damage;
-  if (p.dot) {
-    for (let t = 1; t <= p.dot.ticks; t++) {
-      const tickT = act.start + p.cast + t * p.dot.period;
-      if (tickT <= cycleSec + EPS) dmg += p.dot.perTick;
+function activationDamage(powers: ChainPower[], act: Activation, cycleSec: number): number {
+  const e = effectiveStats(powers, act);
+  let dmg = e.damage;
+  if (e.dot) {
+    for (let t = 1; t <= e.dot.ticks; t++) {
+      const tickT = act.start + e.cast + t * e.dot.period;
+      if (tickT <= cycleSec + EPS) dmg += e.dot.perTick;
     }
   }
   return dmg;
@@ -291,7 +361,7 @@ function simulateEndurance(
   end: EnduranceParams,
 ): EnduranceResult {
   const netPassive = end.recoveryPerSec - end.togglePerSec;
-  const attackPerCycle = activations.reduce((s, a) => s + powers[a.pi].endCost, 0);
+  const attackPerCycle = activations.reduce((s, a) => s + effectiveStats(powers, a).endCost, 0);
   const gainPerCycle = activations.reduce((s, a) => s + (powers[a.pi].endGain ?? 0), 0);
   const attackPerSec = cycleSec > 0 ? attackPerCycle / cycleSec : 0;
   const perLoopDelta = netPassive * cycleSec - attackPerCycle + gainPerCycle;
@@ -301,7 +371,7 @@ function simulateEndurance(
   // recovery power like Dark Consumption is a refill spike).
   const events = [...activations]
     .sort((a, b) => a.start - b.start)
-    .map((a) => ({ t: a.start, cost: powers[a.pi].endCost - (powers[a.pi].endGain ?? 0) }));
+    .map((a) => ({ t: a.start, cost: effectiveStats(powers, a).endCost - (powers[a.pi].endGain ?? 0) }));
 
   // Walk the CLAMPED track from a full bar and read sustainability from IT, not
   // from perLoopDelta: a burst recovery power (Dark Consumption) that overfills
@@ -405,11 +475,10 @@ export function computeChain(
   // Times each power is cast this loop — drives the compactness utilization.
   const castCount = new Map<number, number>();
   for (const a of activations) {
-    const p = powers[a.pi];
-    const d = activationDamage(p, a, cycleSec);
+    const d = activationDamage(powers, a, cycleSec);
     totalDamage += d;
     if (d > maxDamage) maxDamage = d;
-    endPerCycle += p.endCost;
+    endPerCycle += effectiveStats(powers, a).endCost;
     castCount.set(a.pi, (castCount.get(a.pi) ?? 0) + 1);
   }
 

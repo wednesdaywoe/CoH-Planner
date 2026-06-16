@@ -224,3 +224,48 @@ describe('per-bar removal via sequence', () => {
     expect(acts2).toHaveLength(2);
   });
 });
+
+describe('cast forms (charge trigger — fast Energy Transfer)', () => {
+  // TF grants `energy_focus`; ET upgrades to its fast form (cast 1 vs base 2.67)
+  // by spending one. Damage is identical between forms — only the cast differs.
+  const tf = mk({ id: 'TF', cast: 2, baseRecharge: 1, damage: 5, grants: 'energy_focus' });
+  const et = mk({
+    id: 'ET',
+    cast: 2.67,
+    baseRecharge: 1,
+    damage: 100,
+    forms: [
+      {
+        id: 'fast',
+        label: 'Energy Focus',
+        kind: 'fast',
+        cast: 1,
+        damage: 100,
+        endCost: 1,
+        dot: null,
+        trigger: { type: 'charge', resource: 'energy_focus' },
+      },
+    ],
+  });
+  const powers = [tf, et];
+
+  it('uses the base (slow) form with no preceding grantor', () => {
+    const acts = replayChain([et], [0], 0);
+    expect(acts[0].formId).toBeUndefined();
+    expect(acts[0].end - acts[0].start).toBeCloseTo(2.67, 5); // slow animation
+  });
+
+  it('upgrades to the fast form after Total Focus, consuming the charge', () => {
+    const acts = replayChain(powers, [0, 1], 0);
+    const etAct = acts.find((a) => a.pi === 1)!;
+    expect(etAct.formId).toBe('fast');
+    expect(etAct.end - etAct.start).toBeCloseTo(1, 5); // shortened cast
+  });
+
+  it('powers exactly one fast ET per Energy Focus', () => {
+    // TF, ET, ET → first ET fast (spends the charge), second falls back to slow.
+    const acts = replayChain(powers, [0, 1, 1], 0);
+    const ets = acts.filter((a) => a.pi === 1).sort((a, b) => a.start - b.start);
+    expect(ets.map((a) => a.formId)).toEqual(['fast', undefined]);
+  });
+});

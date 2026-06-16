@@ -19,7 +19,7 @@ import {
 import { calcThreeTier, convertGlobalBonusesToAspects } from '@/components/info/powerDisplayUtils';
 import { calculateSlottedProcDamagePerCast } from './power-proc-damage';
 import { atMechanicMultiplier, type AtMechanicContext } from './power-at-mechanics';
-import type { ChainPower, ChainPowerType, EnduranceParams } from './attack-chain';
+import type { ChainPower, ChainForm, ChainPowerType, EnduranceParams, FormTrigger } from './attack-chain';
 
 type CalcResult = ReturnType<typeof calculateCharacterTotals>;
 type GlobalBonuses = CalcResult['globalBonuses'];
@@ -43,6 +43,35 @@ const powerBaseRecharge = (p: SelectedPower): number => p.stats?.recharge ?? p.e
 const powerEndCost = (p: SelectedPower): number => p.stats?.endurance ?? p.effects?.enduranceCost ?? 0;
 const powerRadius = (p: SelectedPower): number => p.stats?.radius ?? p.effects?.radius ?? 0;
 const powerArc = (p: SelectedPower): number | undefined => p.stats?.arc ?? p.effects?.arc;
+
+/**
+ * Powers with an alternate "build/spend" cast form in the chain, keyed by
+ * internalName. Slice 1: Energy Transfer's Energy-Focus fast cast — the only
+ * divergence from the base power is the animation time (1.0s vs the base
+ * 2.67s); damage and endurance match, so the form spec carries just `castTime`.
+ * The fast form is gated on an `energy_focus` charge that Total Focus grants
+ * (see CHARGE_GRANTS). Sourced from the redirect data
+ * (exported_powers/redirects/energy_melee/energy_transfer_fast.json).
+ *
+ * This table lives at the chain layer for now; once the converter extracts
+ * redirect forms it migrates onto the Power data. Reserved triggers (`tohit`
+ * for fast snipes, `hidden` for Assassin's Strike) plug in here too.
+ */
+interface FormSpec {
+  id: string;
+  label: string;
+  kind: 'fast' | 'slow';
+  /** Overrides the base cast time (seconds, pre-ArcanaTime); omit to inherit. */
+  castTime?: number;
+  trigger: FormTrigger;
+}
+const POWER_FORMS: Record<string, FormSpec[]> = {
+  Energy_Transfer: [
+    { id: 'fast', label: 'Energy Focus', kind: 'fast', castTime: 1.0, trigger: { type: 'charge', resource: 'energy_focus' } },
+  ],
+};
+/** internalName → the consumable charge the power grants when cast. */
+const CHARGE_GRANTS: Record<string, string> = { Total_Focus: 'energy_focus' };
 
 /** Click powers (attacks, click buffs, click controls) from every powerset.
  *  Toggles/autos/passives can't sit in an attack chain, so they're excluded. */
@@ -278,6 +307,20 @@ export function buildChainPowers(
       build.level,
     );
 
+    // Alternate cast forms (e.g. fast Energy Transfer). The form reuses the
+    // base's enhanced damage/endurance and only overrides the animation time.
+    const forms: ChainForm[] | undefined = POWER_FORMS[power.internalName]?.map((s) => ({
+      id: s.id,
+      label: s.label,
+      kind: s.kind,
+      cast: s.castTime != null ? calculateArcanaTime(s.castTime) : cast,
+      damage,
+      endCost,
+      dot,
+      trigger: s.trigger,
+    }));
+    const grants = CHARGE_GRANTS[power.internalName];
+
     return {
       id: `${bucket}:${power.internalName}`,
       name: power.name,
@@ -290,6 +333,8 @@ export function buildChainPowers(
       damage,
       dot,
       effectWindow,
+      ...(forms && { forms }),
+      ...(grants && { grants }),
     } satisfies ChainPower;
   });
 }
