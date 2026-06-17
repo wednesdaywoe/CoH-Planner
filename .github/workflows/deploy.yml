@@ -34,6 +34,10 @@ jobs:
       - name: Build
         run: npm run build
         env:
+          # The 3-dataset bundle (HC + Rebirth + Thunderspy) exceeds Node's
+          # default ~2GB heap during `vite build` — raise it (runners have 16GB).
+          # Without this the build OOMs and the Pages deploy silently skips.
+          NODE_OPTIONS: --max-old-space-size=6144
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
           VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}
