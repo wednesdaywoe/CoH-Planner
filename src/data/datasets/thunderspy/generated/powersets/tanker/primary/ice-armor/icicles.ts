@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Icicles: Power = {
   "name": "Icicles",
   "internalName": "Icicles",
-  "available": 0,
+  "available": 11,
   "description": "While active, you form sharp icicles on your body that continuously cut all foes that attempt to enter melee range while also Slowing the attack rate of all nearby foes, as well as their movement speed and damage. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Toggle: Foe PBAoE, Minor DoT(Lethal), -Recharge, -Speed, -DMG",
   "icon": "icearmor_icicles.png",

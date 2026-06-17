@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CobraStrike: Power = {
   "name": "Cobra Strike",
   "internalName": "Cobra_Strike",
-  "available": 0,
+  "available": 11,
   "description": "Using intense martial arts focus, you can perform a Cobra Strike that deals minor damage, but has a great chance of Disorienting your target. Damage: Medium, Recharge: Medium",
   "shortHelp": "Melee, Medium DMG(Smashing), Foe Disorient",
   "icon": "martialarts_cobrastrike.png",
@@ -39,7 +39,7 @@ export const CobraStrike: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.96,
     "table": "Melee_Damage"
   },
@@ -57,7 +57,7 @@ export const CobraStrike: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 1.96,
         "table": "Melee_Damage"
       }

@@ -39,7 +39,7 @@ export const Subdue: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 1.32,
     "table": "Ranged_Damage"
   },

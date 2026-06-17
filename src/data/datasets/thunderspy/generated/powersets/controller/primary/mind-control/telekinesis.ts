@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Telekinesis: Power = {
   "name": "Telekinesis",
   "internalName": "Telekinesis",
-  "available": 0,
+  "available": 25,
   "description": "Lifts a foe, and any nearby foes, off the ground and repels them.  The targets are helpless, unable to take action, and will continue to hover away, picking up any passing targets, as long as you keep this power active. Keeping up this level of concentration costs a lot of Endurance. Recharge: Slow",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe Hold, Repel",
   "icon": "mentalcontrol_telekinesis.png",

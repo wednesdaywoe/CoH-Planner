@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FRTPsychicWail: Power = {
   "name": "Psychic Wail",
   "internalName": "FRT_Psychic_Wail",
-  "available": 0,
+  "available": 31,
   "description": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes. Those that survive will have a severely reduced attack rate and may be left Disoriented. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE , Extreme DMG(Psionic), Foe Disorient -Recharge",
   "icon": "fortunatatraining_psychicwail.png",
@@ -39,7 +39,7 @@ export const FRTPsychicWail: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 4,
     "table": "Ranged_Damage"
   },

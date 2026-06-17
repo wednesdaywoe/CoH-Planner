@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SuspensionBubble: Power = {
   "name": "Suspension Bubble",
   "internalName": "Suspension_Bubble",
-  "available": 0,
+  "available": 31,
   "description": "Creates a large bubble which lifts enemies into the air and may knock them down. Choosing this power locks out Force Bubble Recharge: Slow",
   "shortHelp": "Toggle: PBAoE Foe +Fly, -Fly Speed, Knockdown",
   "icon": "forcefield_forcebubble.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Pendulum: Power = {
   "name": "Pendulum",
   "internalName": "Pendulum",
-  "available": 0,
+  "available": 31,
   "description": "This attack swings your Battle Axe in an arc directly in front of you. Foes struck by this attack are dealt heavy damage, and may be knocked down. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_pendulum.png",
@@ -41,7 +41,7 @@ export const Pendulum: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.9,
     "table": "Melee_Damage"
   }

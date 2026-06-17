@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Revive: Power = {
   "name": "Revive",
   "internalName": "Revive",
-  "available": 0,
+  "available": 34,
   "description": "Should you fall in battle, you can Revive yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds.  You will also have 15 seconds of immunity to most damage.  Recharge: Very Long",
   "shortHelp": "Self Rez",
   "icon": "regeneration_revive.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BeyondTheVeilAlive: Power = {
   "name": "Beyond The Veil",
   "internalName": "Beyond_The_Veil_Alive",
-  "available": 0,
+  "available": 37,
   "description": "Your Mastery of skirting the edges of life and death enable you to defy death for a short time, rendering you untouchable while boosting your recovery. Using this power while defeated will revive you. Recharge: Very Long",
   "shortHelp": "Self Untouchable, +Recovery",
   "icon": "spectralaura10.png",

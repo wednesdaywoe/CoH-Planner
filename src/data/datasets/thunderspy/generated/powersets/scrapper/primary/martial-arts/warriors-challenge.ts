@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WarriorsChallenge: Power = {
   "name": "Warriors Challenge",
   "internalName": "Warriors_Challenge",
-  "available": 0,
+  "available": 11,
   "description": "Challenges a foe to attack you. Useful to pull a villain off an ally who finds themselves in over their head. A To Hit check required to Taunt enemy players, but is not needed against critter targets. Recharge: Fast",
   "shortHelp": "Ranged, Foe Taunt",
   "icon": "martialarts_warrior%27schallenge.png",

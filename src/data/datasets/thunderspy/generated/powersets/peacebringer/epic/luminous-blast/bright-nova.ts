@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BrightNova: Power = {
   "name": "Bright Nova",
   "internalName": "Bright_Nova",
-  "available": 0,
+  "available": 5,
   "description": "Kheldians are masters of energy and matter.  A Peacebringer can transform into a flying energy beast known as a Bright Nova.  When you choose this power, you will have access to 4 very powerful ranged attacks that can only be used while in this form. You will not be able to use any other powers while in Bright Nova form. Bright Nova can fly, has increased Accuracy, and improved Endurance Recovery, but has no defense.  Recharge: Fast",
   "shortHelp": "Toggle: Shapeshift, Special",
   "icon": "luminousblast_brightnova.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ScrambleThoughts: Power = {
   "name": "Scramble Thoughts",
   "internalName": "Scramble_Thoughts",
-  "available": 0,
+  "available": 17,
   "description": "Painfully scrambles the synapses of a targeted foe, leaving them dramatically Disoriented for a short duration. Deals a little Psionic Damage. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged, Minor DMG(Psionic), Foe Disorient",
   "icon": "psychicblast_scramblethoughts.png",
@@ -39,7 +39,7 @@ export const ScrambleThoughts: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.25,
     "table": "Ranged_Damage"
   },
@@ -57,7 +57,7 @@ export const ScrambleThoughts: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Psionic",
         "scale": 0.25,
         "table": "Ranged_Damage"
       }

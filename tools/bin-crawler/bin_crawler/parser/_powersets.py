@@ -171,9 +171,16 @@ def _parse_parse6(sub: BinReader) -> PowersetRecord:
     sub.read_string_array()         # specialize_requires
     powers = sub.read_string_array()
 
-    # Parse6 tail: empty vestigial available + real available + 5 more arrays + terminal
-    sub.read_u4_array()             # vestigial available (always empty)
-    available = sub.read_u4_array()  # real available (count == len(powers))
+    # Tail available-level arrays. Two arrangements seen, distinguished by the
+    # first u4_array:
+    #   Rebirth (true Parse6):  [empty vestigial][real available][...]
+    #   Thunderspy (Parse7 frame, Parse6 schema): [real available][zeros][...]
+    # i.e. Thunderspy has no empty-vestigial prefix — its first array IS the
+    # real per-power available levels (e.g. [0,0,1,5,7,11,17,25,31]). Reading
+    # blindly as "skip first, take second" gave Thunderspy the all-zeros second
+    # array → every power showed as level 1. Pick by the empty-first marker.
+    first = sub.read_u4_array()
+    available = sub.read_u4_array() if len(first) == 0 else first
 
     # Validate
     if len(available) != len(powers):

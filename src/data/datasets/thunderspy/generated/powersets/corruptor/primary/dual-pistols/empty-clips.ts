@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EmptyClips: Power = {
   "name": "Empty Clips",
   "internalName": "Empty_Clips",
-  "available": 0,
+  "available": 1,
   "description": "You empty the clips of both your pistols in an arc of suppression fire. This attack can blast multiple foes in the affected cone area, and has a small chance of knocking some foes down.  Affected targets will have their defense reduced slightly as well if Standard Ammo is equipped. Damage: Moderate, Recharge: Moderate  NOTE: Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.  Additionally, changing your ammunition type will also change the secondary effect of this attack from Knock down to a minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded, a minor damage over time effect if 'Incendiary Ammo' is loaded, or a -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "Ranged (Cone), Moderate DMG(Lethal/Special), Foe -Defense, Knockdown/Special",
   "icon": "dualpistols_emptyclips.png",
@@ -48,7 +48,7 @@ export const EmptyClips: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.13,
       "table": "Ranged_Damage",
       "duration": 1.6
@@ -67,7 +67,7 @@ export const EmptyClips: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.26,
         "table": "Ranged_Damage",
         "duration": 1.6

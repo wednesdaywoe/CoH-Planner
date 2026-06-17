@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EquipMercenary: Power = {
   "name": "Equip Mercenary",
   "internalName": "Equip_Mercenary",
-  "available": 0,
+  "available": 5,
   "description": "Equiping your Mercenary Henchmen with more advanced munitions and weaponry has become easier than ever as advanced training in logistics shows that your Henchmen arrive to the scene already equiped to handle the threat.  This auto-power permanently bestows new weapons and abilities to all Mercenary Henchman. The powers gained are unique and dependent upon the type of Mercenary Henchman.  This power only works on your Mercenary Henchmen and you can only Equip your Mercenary Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Equip Mercenary Henchman",
   "icon": "paramilitary_equipsoldier.png",

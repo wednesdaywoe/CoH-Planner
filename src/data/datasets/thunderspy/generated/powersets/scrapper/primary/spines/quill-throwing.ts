@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const QuillThrowing: Power = {
   "name": "Throw Spines",
   "internalName": "Quill_Throwing",
-  "available": 0,
+  "available": 1,
   "description": "You can throw dozens of Spines in a wide cone in front of you, impaling foes caught within the range. Spine throwing deals moderate damage, and poisons any targets it hits. Spine poison deals additional Toxic damage and Slows affected foes.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_quillthrowing.png",
@@ -43,12 +43,12 @@ export const QuillThrowing: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 1.09,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 4.1

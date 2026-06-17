@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Reckoning: Power = {
   "name": "Reckoning",
   "internalName": "Reckoning",
-  "available": 0,
+  "available": 9,
   "description": "You fire a focused blast of Radiant light at a foe that can do large damage or restore friends back to health. Unholy foes such as demons, undead, and ghosts take additional damage. Damage: High Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Fire) or High heal ",
   "icon": "luminousblast_gleamingblast.png",
@@ -39,12 +39,12 @@ export const Reckoning: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 2.28,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1.06,
       "table": "Ranged_Damage"
     }

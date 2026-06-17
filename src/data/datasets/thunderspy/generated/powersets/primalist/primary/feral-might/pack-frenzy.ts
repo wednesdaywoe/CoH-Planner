@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PackFrenzy: Power = {
   "name": "Pack Frenzy",
   "internalName": "Pack_Frenzy",
-  "available": 0,
+  "available": 7,
   "description": "You let out a primal howl driving your team mates into a frenzy boosting their damage moderately for a short time. If in Primal Form you'll also boost your team's chance to hit. However, if you're in Hunter or Prowler form you'll instead boost their recharge rate. This power grants 10 Primal Energy upon use. Recharge: Very Long",
   "shortHelp": "PBAoE, Allies +DMG, +To Hit, +10 Primal Energy",
   "icon": "feralmight_packfrenzy.png",

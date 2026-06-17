@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HailofBullets: Power = {
   "name": "Hail of Bullets",
   "internalName": "Hail_of_Bullets",
-  "available": 0,
+  "available": 37,
   "description": "You fire a hail of bullets at all enemies around you dealing Extreme lethal damage.  Enemies that are struck have a chance to be knocked down.  Having Standard Rounds will dramatically increase this chance to knockdown your foes.  If you hit at least one target you will gain a moderate melee, ranged and AoE Defense bonus for a brief period.  Damage: Extreme, Recharge: Very Long  NOTE: Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.  Additionally, changing your ammunition type will also change the secondary effect of this attack from a guaranteed knockdown effect to a minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded, a minor damage over time effect if 'Incendiary Ammo' is loaded, or a -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "PBAoE, Superior DMG(Lethal/Special), Self +Def(Melee, Ranged, AoE), Foe Knockdown/Special",
   "icon": "dualpistols_hailofbullets.png",
@@ -40,7 +40,7 @@ export const HailofBullets: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.227,
     "table": "Ranged_Damage",
     "duration": 3.5

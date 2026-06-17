@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ShadowField: Power = {
   "name": "Shadow Field",
   "internalName": "Shadow_Field",
-  "available": 0,
+  "available": 25,
   "description": "You blanket a targeted area in darkness immediately holding foes within the field. Any foe who enters this area will have their chance to hit reduced and has a chance to be held for a short period of time. Recharge: Very Slow",
   "shortHelp": "Target (Location AoE), Foe Hold, -To Hit",
   "icon": "darknesscontrol_shadowfield.png",

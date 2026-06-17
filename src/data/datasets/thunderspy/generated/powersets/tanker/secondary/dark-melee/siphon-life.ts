@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SiphonLife: Power = {
   "name": "Siphon Life",
   "internalName": "Siphon_Life",
-  "available": 0,
+  "available": 15,
   "description": "You tap the power of the Netherworld and create a life transferring conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes Siphoned in this manner have their chance to hit reduced. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Negative), Foe -To Hit, Self +HP",
   "icon": "shadowfighting_siphonlife.png",
@@ -46,7 +46,7 @@ export const SiphonLife: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 1.96,
     "table": "Melee_Damage"
   }

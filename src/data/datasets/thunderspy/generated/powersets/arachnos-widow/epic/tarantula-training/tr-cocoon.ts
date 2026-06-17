@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TRCocoon: Power = {
   "name": "Cocoon",
   "internalName": "TR_Cocoon",
-  "available": 0,
+  "available": 25,
   "description": "Launch a web cocoon from your Tarantula exoskeleton. Encases enemies in webs which slow and can hold foes. Requires Tarantula form to use. Recharge: Long",
   "shortHelp": "Ranged, DoT(Smashing), Foe Hold, -Recharge, -Fly, -Jump, Slow",
   "icon": "tarantulatraining_cocoon.png",

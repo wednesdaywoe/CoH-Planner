@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TimeLord: Power = {
   "name": "Stable Time Loop",
   "internalName": "Time_Lord",
-  "available": 0,
+  "available": 37,
   "description": "As a true time lord, you can create stable time loops to your benefit. By manipulating the time stream in such a way, you may summon an entity capable of assisting you. This entity possesses various time powers of their own, making them a formidable opponent indeed. Recharge: Very Long",
   "shortHelp": "Summon Pet",
   "icon": "timemanipulation_timelord.png",

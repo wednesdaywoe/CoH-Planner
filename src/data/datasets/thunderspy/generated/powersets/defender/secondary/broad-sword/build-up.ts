@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BuildUp: Power = {
   "name": "Aim",
   "internalName": "Build_Up",
-  "available": 0,
+  "available": 19,
   "description": "Greatly increases your chance to hit with attacks for a few seconds. Slightly increases damage. Recharge: Long",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "sword_buildup.png",

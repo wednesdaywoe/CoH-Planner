@@ -43,7 +43,7 @@ export const RadioactiveSmash: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.37,
     "table": "Melee_Damage"
   },
@@ -54,7 +54,7 @@ export const RadioactiveSmash: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Energy",
         "scale": 2.339861,
         "table": "Melee_Damage"
       }

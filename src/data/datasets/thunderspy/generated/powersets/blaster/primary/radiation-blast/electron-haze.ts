@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ElectronHaze: Power = {
   "name": "Electron Haze",
   "internalName": "Electron_Haze",
-  "available": 0,
+  "available": 1,
   "description": "A short range conical blast of free electrons. This attack can bypass some of a target's defenses and reduce the target's Defense. It can also knock some targets down. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Close, Moderate Cone DMG(Energy/Toxic), Foe -DEF, Knockback",
   "icon": "radiationburst_electronhaze.png",
@@ -45,7 +45,7 @@ export const ElectronHaze: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.945,
     "table": "Ranged_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Parry: Power = {
   "name": "Divine Avalanche",
   "internalName": "Parry",
-  "available": 0,
+  "available": 7,
   "description": "You can use your katana to parry incoming melee attacks and then quickly return the favor. Divine Avalanche does minor damage, but every successful hit will increase your Defense against melee and lethal attacks for a short while. Damage: Minor, Recharge: Fast",
   "shortHelp": "Melee, Minor DMG(Lethal), Self +DEF (Melee, Lethal)",
   "icon": "katana_parry.png",
@@ -40,7 +40,7 @@ export const Parry: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.84,
     "table": "Melee_Damage"
   }

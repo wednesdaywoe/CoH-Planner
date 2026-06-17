@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Breathless: Power = {
   "name": "Breathless",
   "internalName": "Breathless",
-  "available": 0,
+  "available": 1,
   "description": "You release all available Pressure to create a localized high pressure sphere at a location of your choosing. This high pressure crushes foes continually while they remain within the sphere, causing lethal damage over time. Affected foes will be immobilized and suffer from a reduced attack speed. In normal combat, affected foes will also suffer reduced damage potential, while in PvP, affected foes will suffer from increased endurance cost of their powers. The damage done increases in proportion to the amount of Pressure released when using this power.  Also, Breathless can reduce the damage potential of all targets, in PvE or PvP, if used at the lowest levels of  Pressure accumulation. Damage: Variable, Recharge: Moderate",
   "shortHelp": "Ranged (Targeted AoE), Minor DMG (Lethal), Immobilize (Foe), -DMG(Foe, All), +EndCost(Foe, PvP), Consumes Pressure",
   "icon": "windcontrol_breathless.png",

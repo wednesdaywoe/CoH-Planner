@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FlashFreeze: Power = {
   "name": "Flash Freeze",
   "internalName": "Flash_Freeze",
-  "available": 0,
+  "available": 25,
   "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Minor DMG(Cold/Lethal), Foe Sleep",
   "icon": "iceformation_flashfreeze.png",
@@ -43,7 +43,7 @@ export const FlashFreeze: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.1,
     "table": "Ranged_Damage"
   },

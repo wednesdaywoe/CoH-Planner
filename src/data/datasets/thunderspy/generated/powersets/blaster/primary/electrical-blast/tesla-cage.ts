@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TeslaCage: Power = {
   "name": "Tesla Cage",
   "internalName": "Tesla_Cage",
-  "available": 0,
+  "available": 11,
   "description": "Tesla Cage confines the target in an electrical prison. The target is overwhelmed by the electrical charge and is left helpless and can be attacked. The target is drained of some Endurance and some of that Endurance may be transferred back to you. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
   "icon": "electricalbolt_telsacage.png",
@@ -41,7 +41,7 @@ export const TeslaCage: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.15,
     "table": "Ranged_Damage"
   }

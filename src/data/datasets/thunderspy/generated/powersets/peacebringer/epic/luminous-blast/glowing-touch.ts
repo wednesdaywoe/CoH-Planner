@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GlowingTouch: Power = {
   "name": "Glowing Touch",
   "internalName": "Glowing_Touch",
-  "available": 0,
+  "available": 25,
   "description": "Heals a single targeted ally at moderate range. You cannot use this power to heal yourself. Recharge: Fast",
   "shortHelp": "Ally Heal",
   "icon": "luminousblast_glowingtouch.png",

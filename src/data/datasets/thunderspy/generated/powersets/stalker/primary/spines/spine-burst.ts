@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SpineBurst: Power = {
   "name": "Spine Burst",
   "internalName": "Spine_Burst",
-  "available": 0,
+  "available": 31,
   "description": "You can fling dozens of Spines in all directions. These Spines only travel a short distance, but they can deal moderate lethal damage and poison any target close to you. Spine poison deals additional Toxic damage and Slows affected foes. If executed while hidden, all affected targets have a chance to be hit with a Critical Hit for extra damage. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_flingquills.png",
@@ -39,7 +39,7 @@ export const SpineBurst: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.424,
     "table": "Melee_Damage"
   },
@@ -57,7 +57,7 @@ export const SpineBurst: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 1.424,
         "table": "Melee_Damage"
       }

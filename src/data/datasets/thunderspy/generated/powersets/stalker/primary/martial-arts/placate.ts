@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Placate: Power = {
   "name": "Dragon's Tail",
   "internalName": "Placate",
-  "available": 0,
+  "available": 17,
   "description": "This low spinning kick deals slightly more damage than Thunder Kick, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smash), Foe Knockback",
   "icon": "martialarts_monkeysweep.png",
@@ -39,7 +39,7 @@ export const Placate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.9,
     "table": "Melee_Damage"
   },
@@ -50,7 +50,7 @@ export const Placate: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 0.9,
         "table": "Melee_Damage"
       }

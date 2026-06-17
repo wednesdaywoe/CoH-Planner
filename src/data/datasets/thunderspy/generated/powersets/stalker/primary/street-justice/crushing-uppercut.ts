@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CrushingUppercut: Power = {
   "name": "Crushing Uppercut",
   "internalName": "Crushing_Uppercut",
-  "available": 0,
+  "available": 31,
   "description": "You perform a jaw breaking Crushing Uppercut on your target inflicting Extreme Smashing damage and knocking them into the air.  Crushing Uppercut will leave the target disoriented for a short time.  Crushing Uppercut is a Finisher and will set your Combo Level to 0.  It will deal additional damage and have a longer disorient duration dependent upon the current Combo level. At Combo Level 3, Crushing Uppercut will have its disorient effect upgraded to a Hold effect. Critical damage is unaffected by your Combo Level.  Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG (Smash), Foe Knock Up, Disorient, Finisher",
   "icon": "brawling_crushinguppercut.png",
@@ -59,9 +59,9 @@ export const CrushingUppercut: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {
@@ -72,11 +72,6 @@ export const CrushingUppercut: Power = {
         {
           "type": "Special",
           "scale": 3.5616,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 3.18,
           "table": "Melee_Damage"
         }
       ],
@@ -105,6 +100,17 @@ export const CrushingUppercut: Power = {
           "scale": 10.5,
           "table": "Melee_Stun"
         }
+      }
+    },
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 3.18,
+        "table": "Melee_Damage"
       }
     }
   ]

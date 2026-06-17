@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerPush: Power = {
   "name": "Explosive Blast",
   "internalName": "Power_Push",
-  "available": 0,
+  "available": 9,
   "description": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target. Explosive Blast may knock targets backwards. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe Knockback",
   "icon": "primalforcesmasterydominator_explosiveblast.png",
@@ -41,7 +41,7 @@ export const PowerPush: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.3,
     "table": "Ranged_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Stun: Power = {
   "name": "Stun",
   "internalName": "Stun",
-  "available": 0,
+  "available": 25,
   "description": "By focusing your internal energy on your fists, you can turn them into personal tasers. This Stun attack deals minor smashing and energy damage, but has the best chance to Disorient a target. Damage: Minor, Recharge: Slow",
   "shortHelp": "Melee, Minor DMG(Smash/Energy), Foe Disorient",
   "icon": "powerpunch_stun.png",
@@ -38,7 +38,7 @@ export const Stun: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.15,
     "table": "Melee_Damage"
   },
@@ -56,7 +56,7 @@ export const Stun: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 0.25,
         "table": "Melee_Damage"
       }

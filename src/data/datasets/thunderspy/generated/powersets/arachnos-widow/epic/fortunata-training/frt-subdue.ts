@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FRTSubdue: Power = {
   "name": "Subdue",
   "internalName": "FRT_Subdue",
-  "available": 0,
+  "available": 1,
   "description": "Subdue deals moderate Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Immobilize",
   "icon": "fortunatatraining_subdue.png",
@@ -39,7 +39,7 @@ export const FRTSubdue: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 1.72795,
     "table": "Ranged_Damage"
   },

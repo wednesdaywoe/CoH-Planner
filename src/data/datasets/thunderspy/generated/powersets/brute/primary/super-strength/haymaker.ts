@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Haymaker: Power = {
   "name": "Haymaker",
   "internalName": "Haymaker",
-  "available": 0,
+  "available": 1,
   "description": "A slow but devastating attack, the Haymaker has a great chance of knocking your opponent down. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smashing), Knockback",
   "icon": "superstrength_haymaker.png",
@@ -40,7 +40,7 @@ export const Haymaker: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.96,
     "table": "Melee_Damage"
   }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Aim: Power = {
   "name": "Ignite",
   "internalName": "Aim",
-  "available": 0,
+  "available": 11,
   "description": "Sprays a targeted location with accelerant from your flamethrower, igniting the location. Any foes that pass through the flames will be burned. Great for blocking doorways and small passages. Damage: Moderate(DoT), Recharge: Fast",
   "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Fire)",
   "icon": "assaultweapons_arflamethrowerignite.png",

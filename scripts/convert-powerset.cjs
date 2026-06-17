@@ -2272,6 +2272,20 @@ function _classifyConditionalGate(req, powersetKey) {
       side: modeMatch[2].toLowerCase(),
     };
   }
+  // Bare self-referential power-presence: `<side>.ownPower?` with NO dotted
+  // power name in front (the dotted form is handled above and already returned).
+  // This means "the <side> is already under the effect of THIS power" — the
+  // repeat-hit / stacking condition Thunderspy leans on heavily (Pale Blade's
+  // Fester DoT-on-already-Festering, combo follow-ups, etc.). HC/Rebirth almost
+  // never use the bare form, so this is effectively a Thunderspy refinement.
+  // A meaningful label beats the opaque "Conditional" so the toggle is findable.
+  const bareOwn = req.match(/\b(target|source)\.ownPower(?:Num)?\?/i);
+  if (bareOwn) {
+    const side = bareOwn[1].toLowerCase();
+    return side === 'target'
+      ? { id: 'target-affected', label: 'Target Already Affected', side: 'target' }
+      : { id: 'self-affected', label: 'Already Affected', side: 'source' };
+  }
   // Generic catch-all for any remaining positive gate so we don't drop data —
   // label it 'Conditional' and let downstream curation rename if needed.
   return { id: 'conditional', label: 'Conditional', side: null };
@@ -4525,6 +4539,37 @@ const ALLOWED_ENHANCEMENT_OVERRIDES = {
 /**
  * Convert a single power file
  */
+// Thunderspy stores all damage under a single generic `Damage` attrib, so
+// extractDamage types it as `Special`; the real element lives only in the
+// power's shortHelp (e.g. "Ranged, Minor DMG(Fire)", "DMG(Energy/Smash)").
+// These helpers recover the primary element from the shortHelp and re-type the
+// generic-Special damage entries. Multi-type powers (Energy/Smash) collapse to
+// the primary (first) element since the binary carries no per-component type.
+const _DMG_TYPE_MAP = {
+  smash: 'Smashing', smashing: 'Smashing', lethal: 'Lethal', fire: 'Fire',
+  cold: 'Cold', energy: 'Energy', negative: 'Negative', 'negative energy': 'Negative',
+  psionic: 'Psionic', toxic: 'Toxic', special: 'Special',
+};
+
+function _damageTypeFromShortHelp(shortHelp) {
+  if (!shortHelp) return null;
+  const m = shortHelp.match(/DMG\(([^)]+)\)/i);
+  if (!m) return null;
+  const first = m[1].split(/[/,]/)[0].trim().toLowerCase();
+  return _DMG_TYPE_MAP[first] || null;
+}
+
+/** Re-type generic `Special` damage entries to the shortHelp's primary element.
+ *  No-op when the element can't be resolved or is itself Special. Pure helper —
+ *  callers gate on dataset (Thunderspy) so HC/Rebirth real-Special damage is
+ *  never touched. */
+function applyThunderspyDamageType(damage, shortHelp) {
+  const t = _damageTypeFromShortHelp(shortHelp);
+  if (!t || t === 'Special' || !damage) return damage;
+  const fix = (e) => (e && e.type === 'Special' ? { ...e, type: t } : e);
+  return Array.isArray(damage) ? damage.map(fix) : fix(damage);
+}
+
 function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // Map target type to valid TypeScript type (or undefined if unknown)
   const rawTargetType = powerJson.target_type;
@@ -4920,6 +4965,15 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     power.mechanicType = 'parentMechanic';
   }
 
+  // Thunderspy: recover the real damage element from the shortHelp (the binary
+  // only carries a generic `Damage` attrib → extractDamage typed it `Special`).
+  if (datasetId === 'thunderspy') {
+    if (power.damage) power.damage = applyThunderspyDamageType(power.damage, power.shortHelp);
+    for (const ce of power.conditionalEffects || []) {
+      if (ce.damage) ce.damage = applyThunderspyDamageType(ce.damage, power.shortHelp);
+    }
+  }
+
   return power;
 }
 
@@ -5164,6 +5218,7 @@ export default powerset;
 // Export for reuse by other scripts (e.g., audit-powerset-effects.cjs,
 // migrate-to-layered.cjs)
 module.exports = {
+  applyThunderspyDamageType,
   extractEffects,
   extractDamage,
   inferAllowedSetCategories,

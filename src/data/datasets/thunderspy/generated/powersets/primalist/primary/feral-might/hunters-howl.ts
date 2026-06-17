@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HuntersHowl: Power = {
   "name": "Hunter's Howl",
   "internalName": "Hunters_Howl",
-  "available": 0,
+  "available": -1,
   "description": "While in Hunter Form you can use this power to unleash an unnerving howl to significantly weaken the attack speed, movement speed and chance to hit of nearby foes for a short time. This power's potency varies depending on the amount of Primal Energy the user has. Hunter's Howl drains all of the user's Primal Energy. This power is automatically awarded when Hunter Form is purchased. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe -Recharge, -To Hit, Requires Hunter Form, -All Primal Energy",
   "icon": "feralmight_huntershowl.png",

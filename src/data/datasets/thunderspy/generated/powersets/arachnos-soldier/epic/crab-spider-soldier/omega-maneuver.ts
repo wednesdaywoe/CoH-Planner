@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const OmegaManeuver: Power = {
   "name": "Omega Maneuver",
   "internalName": "Omega_Maneuver",
-  "available": 0,
+  "available": 31,
   "description": "You may use the Arachnos Teleportation system to summon an Omega Bomb in the midst of your enemies.  The Omega Bomb immediately sends out a short range psionic signal and hypnotic light display to draw the attention of those nearby, causing them to approach the device.  Then it detonates, causing massive damage to all enemies in a wide radius. Damage: Superior Recharge: Long",
   "shortHelp": "Summon Omega Bomb: Ranged (Location Targeted AoE), Superior DMG (Smashing/Energy), Foe Disorient",
   "icon": "crabspider_omegamaneuver.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SaltCrystals: Power = {
   "name": "Salt Crystals",
   "internalName": "Salt_Crystals",
-  "available": 0,
+  "available": 7,
   "description": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free. Recharge: Slow",
   "shortHelp": "PBAoE, Foe Sleep, -DEF",
   "icon": "earthgrasp_saltpillars.png",

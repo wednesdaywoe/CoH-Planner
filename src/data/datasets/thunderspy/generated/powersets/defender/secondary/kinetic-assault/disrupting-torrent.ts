@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DisruptingTorrent: Power = {
   "name": "Disrupting Torrent",
   "internalName": "Disrupting_Torrent",
-  "available": 0,
+  "available": 9,
   "description": "You form the potential energies around you into a cone of surging energy that crashes into the foes in front of you. This torrent causes moderate smashing and energy damage on impact, and has a chance to knock affected targets down. Affected targets will also have their regeneration rate reduced slightly. Disrupting Torrent's knockdown chance, damage and regeneration debuff scale with the number of consumed stacks.  If used when you have 5 stacks of Impulse, this power consumes all impulse stacks and has a chance to immediately refresh Coalescence.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG (Smashing/Energy), Foe Knockdown, -Regen, Self -Impulse",
   "icon": "kineticassault_disruptingtorrent.png",
@@ -48,9 +48,9 @@ export const DisruptingTorrent: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Special",

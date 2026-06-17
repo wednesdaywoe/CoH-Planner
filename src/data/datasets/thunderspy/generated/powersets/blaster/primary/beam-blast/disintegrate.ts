@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Disintegrate: Power = {
   "name": "Disintegrate",
   "internalName": "Disintegrate",
-  "available": 0,
+  "available": 5,
   "description": "You fire a stream of energy at your foe which causes them to slowly disintegrate and suffer High Energy damage over time. Secondary foes near the primary target will also suffer from disintegration for less damage. Even after the damage over time effect wears off the target will have their regeneration rate reduced and suffer from the Disintegration effect for an additional period of time. Using Beam Blast powers on targets affected by Disintegrate will inflict additional effects. Additionally if Single Shot, Charged Shot, Lancer Shot and Penetrating Ray are used on a target suffering from Disintegrating, they have a chance to cause this effect to spread to up 3 nearby targets that aren't already suffering from Disintegrating. Targets affected by this Disintegrate Spread will also suffer some Minor Energy damage over time. Damage: High, Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE): High DoT(Energy), Foe -Regen, Special",
   "icon": "beamrifle_disintegrate.png",

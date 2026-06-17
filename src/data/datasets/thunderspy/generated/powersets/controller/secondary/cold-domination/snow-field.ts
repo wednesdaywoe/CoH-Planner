@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SnowField: Power = {
   "name": "Snow Field",
   "internalName": "Snow_Field",
-  "available": 0,
+  "available": 3,
   "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of all nearby foes. The torrent winds of the Snow Storm are enough to bring down flying foes. Recharge: Slow. Choosing this power locks out Snow Storm",
   "shortHelp": "Toggle: PBAoE, Foe -Speed, -Recharge, -Fly",
   "icon": "colddomination_snowstorm.png",

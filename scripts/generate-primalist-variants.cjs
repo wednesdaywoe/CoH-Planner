@@ -20,7 +20,7 @@
 const fs = require('fs');
 const path = require('path');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
-const { extractEffects, extractDamage, normalizeIconPath, collectAllTemplates, EFFECT_AREA_MAP } = require('./convert-powerset.cjs');
+const { extractEffects, extractDamage, normalizeIconPath, collectAllTemplates, EFFECT_AREA_MAP, applyThunderspyDamageType } = require('./convert-powerset.cjs');
 
 const datasetId = parseDatasetArg();
 const RAW_DATA_BASE = path.join(__dirname, '../exported_powers');
@@ -66,7 +66,7 @@ function load() {
       if (raw.max_targets_hit != null && raw.max_targets_hit > 0) stats.maxTargets = raw.max_targets_hit;
 
       const templates = collectAllTemplates(raw.effects || []);
-      const damage = extractDamage(templates);
+      const damage = applyThunderspyDamageType(extractDamage(templates), raw.display_short_help);
       const effects = extractEffects(templates);
 
       variants[internalName] = {

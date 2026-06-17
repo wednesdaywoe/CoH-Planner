@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LingeringRadiation: Power = {
   "name": "Lingering Radiation",
   "internalName": "Lingering_Radiation",
-  "available": 0,
+  "available": 19,
   "description": "You can emit Lingering Radiation that reduces the attack rate, movement speed, and Regeneration rate of the target, and all nearby foes. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe -Speed, -Recharge, -Regen",
   "icon": "radiationpoisoning_lingeringradiation.png",

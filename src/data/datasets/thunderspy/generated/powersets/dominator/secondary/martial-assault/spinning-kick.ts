@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SpinningKick: Power = {
   "name": "Eagles Claw",
   "internalName": "Spinning_Kick",
-  "available": 0,
+  "available": 27,
   "description": "You can perform a devastating kick that can severely Disorient most opponents. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Smash), Foe Disorient",
   "icon": "brawling_lowkick.png",
@@ -38,7 +38,7 @@ export const SpinningKick: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 2.92,
     "table": "Melee_Damage"
   },

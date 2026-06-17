@@ -40,12 +40,12 @@ export const BSBash: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 0.7,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 2.1

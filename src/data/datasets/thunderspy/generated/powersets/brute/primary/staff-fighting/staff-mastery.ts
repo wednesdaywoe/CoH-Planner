@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const StaffMastery: Power = {
   "name": "Build Up",
   "internalName": "Staff_Mastery",
-  "available": 0,
+  "available": 7,
   "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.  Recharge: Long",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "stafffighting_buildup.png",

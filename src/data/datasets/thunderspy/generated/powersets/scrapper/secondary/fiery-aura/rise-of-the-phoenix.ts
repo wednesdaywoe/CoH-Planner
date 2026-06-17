@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RiseofthePhoenix: Power = {
   "name": "Rise of the Phoenix",
   "internalName": "Rise_of_the_Phoenix",
-  "available": 0,
+  "available": 37,
   "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.  Recharge: Very Long",
   "shortHelp": "Self Rez, Special",
   "icon": "flamingshield_riseofthephoenix.png",

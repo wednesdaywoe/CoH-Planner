@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Swoop: Power = {
   "name": "Swoop",
   "internalName": "Swoop",
-  "available": 0,
+  "available": 19,
   "description": "A Swoop of your Battle Axe deals a superior amount of damage, and can send your target flying upwards. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Lethal), Foe Knockup",
   "icon": "battleaxe_swoop.png",
@@ -42,7 +42,7 @@ export const Swoop: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 2.28,
     "table": "Melee_Damage"
   },

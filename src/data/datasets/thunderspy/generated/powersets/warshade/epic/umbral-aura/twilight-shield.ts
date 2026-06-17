@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TwilightShield: Power = {
   "name": "Twilight Shield",
   "internalName": "Twilight_Shield",
-  "available": 0,
+  "available": 15,
   "description": "When you toggle on Twilight Shield, you become highly resistant to Energy and Negative Energy damage. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Energy, Negative)",
   "icon": "umbralaura_twilightshield.png",

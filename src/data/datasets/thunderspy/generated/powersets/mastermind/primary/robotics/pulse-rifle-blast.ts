@@ -37,7 +37,7 @@ export const PulseRifleBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.32,
     "table": "Ranged_Damage"
   }

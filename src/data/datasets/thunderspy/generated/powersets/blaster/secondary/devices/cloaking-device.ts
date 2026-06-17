@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CloakingDevice: Power = {
   "name": "Field Operative",
   "internalName": "Cloaking_Device",
-  "available": 0,
+  "available": 19,
   "description": "Through a mixture of combat training and highly sophisticated devices you are considered a Field Operative.  You use a LCD body coating to become partially invisible. While concealed you can only be seen at very close range. If you attack while concealed, you will be discovered. Even if discovered, you are hard to see but will retain some of your Defense bonus to all attacks. Unlike some stealth powers, Field Operative has no movement penalty.   This power's stealth component will not work with any other form of Concealment power such as Shadow Fall or Steamy Mist.  In addition to being stealthy, your training also allows you to regenerate health and recovery endurance at an accelerated rate while this power is active.  However, only half of this regeneration bonus is enhanceable.  Recharge: Slow",
   "shortHelp": "Toggle: Self Stealth, +DEF(All), +Special, +Regeneration, +Recovery",
   "icon": "gadgets_cloak.png",

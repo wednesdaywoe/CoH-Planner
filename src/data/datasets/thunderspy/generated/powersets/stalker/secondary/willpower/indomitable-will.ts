@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IndomitableWill: Power = {
   "name": "Indomitable Will",
   "internalName": "Indomitable_Will",
-  "available": 0,
+  "available": 15,
   "description": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusions, Knockback and Hold effects. Indomitable Will also grants a moderate defense to Psionic based attacks. Recharge: Fast",
   "shortHelp": "Toggle: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Knockback). DEF(Psionics)",
   "icon": "willpower_indomitablewill.png",

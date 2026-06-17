@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IceArrow: Power = {
   "name": "Ice Arrow",
   "internalName": "Ice_Arrow",
-  "available": 0,
+  "available": 9,
   "description": "This arrow can freeze a single foe in a block of ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be Held, but all affected targets will be Slowed. Recharge: Moderate",
   "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge",
   "icon": "trickarrow_hold.png",

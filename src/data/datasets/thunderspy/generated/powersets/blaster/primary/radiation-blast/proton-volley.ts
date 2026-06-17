@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ProtonVolley: Power = {
   "name": "Proton Volley",
   "internalName": "Proton_Volley",
-  "available": 0,
+  "available": 25,
   "description": "Hurls a volley of alpha particles over an extremely long range. Proton Volley can bypass some of a target's defenses and reduce the target's Defense. This is a sniper attack, and is best fired from a distance as it can be interrupted. Affected enemies have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. Damage: Superior, Recharge: Slow",
   "shortHelp": "Sniper, Superior DMG(Energy), Foe -DEF",
   "icon": "radiationburst_protonvolley.png",

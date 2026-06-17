@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ExecutionersShot: Power = {
   "name": "Executioner's Shot",
   "internalName": "Executioners_Shot",
-  "available": 0,
+  "available": 7,
   "description": "Executioner's Shot is a deadly ranged attack.  Foes struck by this attack will suffer lethal damage and will likely be knocked back by the impact of this attack.  Targets struck by Executioner's Shot while no special ammunition is equipped will have their defenses reduced for a short time.  Damage: High, Recharge: Slow  NOTE: Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.  Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to a minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded, a minor damage over time effect if 'Incendiary Ammo' is loaded, or a -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "High DMG(Lethal/Special), Foe -Defense, Knockback/Special",
   "icon": "dualpistols_executionersshot.png",
@@ -45,7 +45,7 @@ export const ExecutionersShot: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 1.06,
       "table": "Ranged_Damage"
     },

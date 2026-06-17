@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Terrify: Power = {
   "name": "Terrify",
   "internalName": "Terrify",
-  "available": 0,
+  "available": 7,
   "description": "This power Terrifies foes within a cone area in front of you, causing them to tremble in Fear uncontrollably. The effect is so frightening and overwhelming, that the target takes real damage from the physiological response to this Psionic attack. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Minor DMG(Psionic), Foe Fear(Special)",
   "icon": "mentalcontrol_terrify.png",
@@ -45,7 +45,7 @@ export const Terrify: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 1,
     "table": "Ranged_Damage"
   },

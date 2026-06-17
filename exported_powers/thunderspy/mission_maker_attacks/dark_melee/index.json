@@ -17,12 +17,12 @@
   "available_level": [
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    1,
+    7,
+    17,
+    25,
+    31
   ],
   "power_display_names": [
     "Shadow Punch",

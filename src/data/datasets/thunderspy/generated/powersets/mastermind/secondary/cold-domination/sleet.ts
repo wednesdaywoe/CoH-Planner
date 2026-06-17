@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Sleet: Power = {
   "name": "Sleet",
   "internalName": "Sleet",
-  "available": 0,
+  "available": 34,
   "description": "Summons a Sleet Storm at a targeted location. Sleet deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm. Damage: Minor(DoT), Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF, -Res (All), Knockdown",
   "icon": "colddomination_sleet.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const VisionsOfTheEnd: Power = {
   "name": "Visions Of The End",
   "internalName": "Visions_Of_The_End",
-  "available": 0,
+  "available": 9,
   "description": "You cause your enemies to be subjected to visions of their untimely demise, fearing targets in an area around you. While this power is active you also gain an aura that causes fear to targets near you and your attacks gain the ability to inflict additional fear when striking a foe. Recharge: long",
   "shortHelp": "Click: PBAoE Foe Fear, Foe Fear Proc",
   "icon": "spectralaura5.png",

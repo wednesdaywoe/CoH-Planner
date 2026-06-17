@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const OffensiveAdaptation: Power = {
   "name": "Offensive Adaptation",
   "internalName": "Offensive_Adaptation",
-  "available": 0,
+  "available": -1,
   "description": "Adapt your Organic Armor in order to decastate your enemies. This Adaptation is focused on punishing enemies with little regard to safety.",
   "shortHelp": "Toggle: Bio Armor Offensive Mode",
   "icon": "bioorganicarmor_offensiveadaptation.png",

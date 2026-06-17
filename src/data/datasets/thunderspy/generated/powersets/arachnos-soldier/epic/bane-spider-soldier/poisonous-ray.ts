@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PoisonousRay: Power = {
   "name": "Poisonous Ray",
   "internalName": "Poisonous_Ray",
-  "available": 0,
+  "available": 11,
   "description": "You fire a Poisonous Ray from your mace causing damage over time as reducing the target's defense.  Damage: Moderate Recharge: Moderate",
   "shortHelp": "Ranged,  Moderate DoT(Toxic), -DEF",
   "icon": "banespider_poisonousray.png",

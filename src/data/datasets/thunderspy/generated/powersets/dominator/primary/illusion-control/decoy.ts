@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Decoy: Power = {
   "name": "Phantom Army",
   "internalName": "Decoy",
-  "available": 0,
+  "available": 17,
   "description": "You can fabricate Phantom decoys around a targeted foe. These Phantoms are not real, and are indestructible. Their attacks are similar to Spectral Wounds. Though they deal damage, it is illusory and will heal if the victim survives long enough. Phantoms are short lived and cannot be buffed or healed. Recharge: Very Long",
   "shortHelp": "Summon Decoys: Ranged Minor DMG(Energy/Special)",
   "icon": "illusions_phantomarmy.png",

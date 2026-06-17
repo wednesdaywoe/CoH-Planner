@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BuildUp: Power = {
   "name": "Blood Thirst",
   "internalName": "Build_Up",
-  "available": 0,
+  "available": 7,
   "description": "Greatly boosts your attacks for a few seconds. This power lasts longer than normal Build Ups and grants all your attacks Life Steal.",
   "shortHelp": "Self +ToHit, +DMG (All), Special",
   "icon": "savagemelee_bloodthirst.png",

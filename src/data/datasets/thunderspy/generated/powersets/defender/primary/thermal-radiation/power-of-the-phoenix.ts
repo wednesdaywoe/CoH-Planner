@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerofthePhoenix: Power = {
   "name": "Power of the Phoenix",
   "internalName": "Power_of_the_Phoenix",
-  "available": 0,
+  "available": 7,
   "description": "Revives a fallen ally. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. Your ally will revive with most of their Hit Points and Endurance.  They will also be invulnerable for a brief time, as well as protected from XPDebt for 90 seconds.  Recharge: Very Long",
   "shortHelp": "Ally Rez, Special",
   "icon": "thermalradiation_phoenix.png",

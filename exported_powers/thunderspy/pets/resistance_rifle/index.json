@@ -12,10 +12,10 @@
     "Pets.Resistance_Rifle.Resistances"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0,
+    9,
+    9,
+    24,
+    14,
     0
   ],
   "power_display_names": [

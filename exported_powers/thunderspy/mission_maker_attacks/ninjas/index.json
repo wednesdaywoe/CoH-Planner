@@ -16,11 +16,11 @@
   "available_level": [
     0,
     0,
-    0,
-    0,
-    0,
-    0,
-    0
+    1,
+    7,
+    11,
+    25,
+    17
   ],
   "power_display_names": [
     "Snap Shot",

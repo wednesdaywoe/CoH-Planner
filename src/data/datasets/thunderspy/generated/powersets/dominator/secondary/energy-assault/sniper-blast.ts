@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SniperBlast: Power = {
   "name": "Sniper Blast",
   "internalName": "Sniper_Blast",
-  "available": 0,
+  "available": 34,
   "description": "A focused blast that can travel great distances with high Accuracy. This is a sniper attack, and is best fired from a distance, as it can be interrupted.  If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Energy/Smash), Foe Knockback",
   "icon": "energyassault_sniperblaster.png",
@@ -42,7 +42,7 @@ export const SniperBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.9968,
     "table": "Ranged_Damage"
   },

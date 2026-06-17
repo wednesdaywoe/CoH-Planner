@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DualWield: Power = {
   "name": "Dual Wield",
   "internalName": "Dual_Wield",
-  "available": 0,
+  "available": 1,
   "description": "Fires both pistols at once at a time target. Firing both pistols at once is slower than a single shot, but deals more damage, and the target may get knocked down by the force of the impact. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Lethal), Foe Knockback",
   "icon": "thugs_targetedrangedheavydmg.png",
@@ -39,7 +39,7 @@ export const DualWield: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.98,
     "table": "Ranged_Damage",
     "duration": 0.3

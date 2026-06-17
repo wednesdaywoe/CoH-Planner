@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Dehydrate: Power = {
   "name": "Dehydrate",
   "internalName": "Dehydrate",
-  "available": 0,
+  "available": 11,
   "description": "You rapidly dehydrate your target, causing Moderate Cold and Smashing damage, reducing their movement speed and defense as well as causing a measure of Cold damage over time. You are then healed over time for a moderate amount of health.  Dehydrate grants 1 stack of Tidal Power if you have 2 or less.  Dehydrate will consume all stacks of Tidal Power if you have 3, but the power's heal over time effect is increased by 50%.  NOTE: This power will grant a regeneration buff in PvP zones instead of a heal over time.  Damage: Moderate, Light DoT, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Cold/Smash), Foe -Speed, -Defense, Light DoT(Cold), Self +Heal Over Time, +/- Tidal Power",
   "icon": "waterblast_dehydrate.png",
@@ -46,12 +46,12 @@ export const Dehydrate: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Cold",
       "scale": 0.25,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Cold",
       "scale": 0.1488,
       "table": "Ranged_Damage",
       "duration": 4.1

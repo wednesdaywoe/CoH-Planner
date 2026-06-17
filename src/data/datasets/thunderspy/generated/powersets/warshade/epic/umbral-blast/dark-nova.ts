@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DarkNova: Power = {
   "name": "Dark Nova",
   "internalName": "Dark_Nova",
-  "available": 0,
+  "available": 5,
   "description": "Kheldians are masters of energy and matter.  A Warshade can transform into a flying energy beast known as a Dark Nova.  When you choose this power, you will have access to 4 very powerful ranged attacks that can only be used while in this form, These powers cannot be enhanced but have values as if they were enhanced. Dark Nova can fly, has an increased chance to hit and improved Endurance Recovery but has no defense.  Recharge: Fast",
   "shortHelp": "Toggle: Shapeshift, Special",
   "icon": "umbralblast_darknova.png",

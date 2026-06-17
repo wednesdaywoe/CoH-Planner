@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Special1: Power = {
   "name": "Vengeful Slice",
   "internalName": "Special_1",
-  "available": 0,
+  "available": 27,
   "description": "Unleashes a series of strong attacks on your foe, dealing high lethal damage and knocking them down. This power is needed for the Attack Vitals combination attack. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Lethal), Knockdown",
   "icon": "dualblades_special1.png",
@@ -42,7 +42,7 @@ export const Special1: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.41,
     "table": "Melee_Damage"
   }

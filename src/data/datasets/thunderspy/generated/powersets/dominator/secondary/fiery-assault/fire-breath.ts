@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FireBreath: Power = {
   "name": "Fire Ball",
   "internalName": "Fire_Breath",
-  "available": 0,
+  "available": 9,
   "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
   "icon": "fireblast_fireball.png",
@@ -40,12 +40,12 @@ export const FireBreath: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.3,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 2.1

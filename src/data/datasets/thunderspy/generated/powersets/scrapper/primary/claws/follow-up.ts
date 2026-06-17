@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FollowUp: Power = {
   "name": "Follow Up",
   "internalName": "Follow_Up",
-  "available": 0,
+  "available": 7,
   "description": "You are constantly looking for vulnerabilities in your foes' stances and positioning. Whenever you attack, you have a chance to gain a moderate +Damage bonus for a short duration. Additionally, the friction from your claws strikes causes them to do a small amount of fire damage.",
   "shortHelp": "Self +To Hit, +Fire Damage on all attacks, Chance for +DMG(All)",
   "icon": "claws_feint.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Burn: Power = {
   "name": "Burn",
   "internalName": "Burn",
-  "available": 0,
+  "available": 17,
   "description": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Location (PBAoE), Moderate DoT(Fire), Self Res(Immobilize)",
   "icon": "flamingshield_burn.png",

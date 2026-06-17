@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EfficientAdaptation: Power = {
   "name": "Efficient Adaptation",
   "internalName": "Efficient_Adaptation",
-  "available": 0,
+  "available": -1,
   "description": "Adapt your Organic Armor in order to more fluidly fight. This Adaptation is focused on energy efficiency and speed.",
   "shortHelp": "Toggle: Bio Armor Efficient Mode",
   "icon": "bioorganicarmor_efficientadaptation.png",

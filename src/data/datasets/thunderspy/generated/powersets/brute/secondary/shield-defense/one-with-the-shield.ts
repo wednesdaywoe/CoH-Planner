@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const OnewiththeShield: Power = {
   "name": "One with the Shield",
   "internalName": "One_with_the_Shield",
-  "available": 0,
+  "available": 37,
   "description": "When you activate this power, you gain strong resistance against most types of damage and also to Disorient, Immobilization, Hold, Knockback, Repel and Sleep effects. One with the Shield costs little Endurance to activate and increases your recovery and maximum hit points for its duration, but when it wears off you are left exhausted, and substantially drained of Endurance. This crash can be avoided if you have trained Unrelenting from the Presence pool. Note that One with the Shield is unaffected by Attack Rate changes. Recharge: Very Long",
   "shortHelp": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG but Psi), +Recovery, +Max HP",
   "icon": "shielddefense_onewiththeshield.png",

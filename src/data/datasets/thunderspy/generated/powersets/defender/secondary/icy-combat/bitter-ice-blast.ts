@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BitterIceBlast: Power = {
   "name": "Bitter Ice Blast",
   "internalName": "Bitter_Ice_Blast",
-  "available": 0,
+  "available": 9,
   "description": "A slower yet more powerful version of Ice Blast, Bitter Ice Blast deals much more damage and can also reduce your enemy's chance to hit. Like other Ice Blast powers, Bitter Ice Blast can Slow a target's movement and attack speed. Damage: Superior, Recharge: Slow",
   "shortHelp": "Ranged, Superior DMG(Cold/Smash), Foe -Recharge, -SPD, -To Hit",
   "icon": "iceblast_bitterfrostblast.png",
@@ -42,7 +42,7 @@ export const BitterIceBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 1,
     "table": "Ranged_Damage"
   },

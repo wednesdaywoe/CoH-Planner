@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const NWMaskPresence: Power = {
   "name": "Mask Presence",
   "internalName": "NW_Mask_Presence",
-  "available": 0,
+  "available": 15,
   "description": "Mask Presence makes you almost impossible to detect. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. Like most stealth powers, Mask Presence cannot be used at the same time as other Concealment powers.",
   "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
   "icon": "widowteamwork_maskpresence.png",

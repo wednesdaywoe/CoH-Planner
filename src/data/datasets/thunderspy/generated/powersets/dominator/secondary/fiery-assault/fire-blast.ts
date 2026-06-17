@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FireBlast: Power = {
   "name": "Fire Blast",
   "internalName": "Fire_Blast",
-  "available": 0,
+  "available": 3,
   "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage. Damage: High, Recharge: Fast",
   "shortHelp": "Ranged, High DMG(Fire)",
   "icon": "fireassault_fireblast.png",
@@ -38,12 +38,12 @@ export const FireBlast: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1.64,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.2,
       "table": "Ranged_Damage",
       "duration": 2.1

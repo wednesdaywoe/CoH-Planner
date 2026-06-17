@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Roots: Power = {
   "name": "Roots",
   "internalName": "Roots",
-  "available": 0,
+  "available": 1,
   "description": "Immobilizes a group of foes by entangling their feet in a twisted mass of thorny Roots.  Roots is slower and does less damage than Entangle, but it can capture multiple foes in one attack. Like Entangle, Roots can immobilize flying targets, if they are near the ground when attacked. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Smashing, Lethal), Foe Immobilize",
   "icon": "plantcontrol_roots.png",

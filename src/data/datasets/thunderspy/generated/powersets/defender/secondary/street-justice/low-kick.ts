@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LowKick: Power = {
   "name": "Shin Breaker",
   "internalName": "Low_Kick",
-  "available": 0,
+  "available": 34,
   "description": "You execute a quick but powerful kick targeting your foe's leg in an attempt to cripple their movement. Shin Breaker deals Superior Smashing damage and moderately reduces your target's movement speed and defense for a short time. Shin Breaker is a Combo Builder and adds 1 Combo Level.  Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG (Smashing), Foe -Speed, -Defense, Combo Builder",
   "icon": "brawling_lowkick.png",

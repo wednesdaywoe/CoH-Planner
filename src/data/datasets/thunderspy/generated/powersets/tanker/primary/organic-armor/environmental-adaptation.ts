@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnvironmentalAdaptation: Power = {
   "name": "Environmental Modification",
   "internalName": "Environmental_Adaptation",
-  "available": 0,
+  "available": 1,
   "description": "Environmental Modification grants you some measure of defense against non-physical damage types. While Defensive Adaptation is active, these defenses are transformed into resistances. While Offensive Adaptation is active, this power slightly increases your ToHit.",
   "shortHelp": "Self Toggle, +Res(Hold, Knockdown, Immobilize), +Def(Energy, Negative, Fire, Cold, Psionic), +Special",
   "icon": "bioorganicarmor_environmentalmodification.png",

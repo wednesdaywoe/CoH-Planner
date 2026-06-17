@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SkySplitter: Power = {
   "name": "Sky Splitter",
   "internalName": "Sky_Splitter",
-  "available": 0,
+  "available": 31,
   "description": "You leap into the air and hammer your foe with an overhead bash from your staff.  Sky Splitter deals Extreme Smashing damage, will knock the target into the air and will briefly disorient your target.  While a form is active, this power will build one level of Perfection if the user has two or less levels, if the user has three levels of Perfection it will consume them and gain some benefit.  3 Levels of Perfection of Body will cause additional smashing damage and grant the user a bonus to damage resistance a short time.  3 Levels of Perfection of Mind will cause additional psionic damage and boost the user's chance to hit for a short time.  3 Levels of Perfection of Soul will cause additional energy damage and increase the user's regeneration and recovery rate briefly.  Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Smash), Foe Knock Up, Disorient, -Fly, Consumes Perfection",
   "icon": "stafffighting_skysplitter.png",
@@ -42,7 +42,7 @@ export const SkySplitter: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.38,
     "table": "Melee_Damage",
     "duration": 1.9
@@ -56,23 +56,23 @@ export const SkySplitter: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Smashing",
           "scale": 0.828,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Smashing",
           "scale": 0.828,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Smashing",
           "scale": 0.828,
           "table": "Melee_Damage"
         }

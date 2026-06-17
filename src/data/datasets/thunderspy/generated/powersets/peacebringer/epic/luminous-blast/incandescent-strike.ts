@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IncandescentStrike: Power = {
   "name": "Incandescent Strike",
   "internalName": "Incandescent_Strike",
-  "available": 0,
+  "available": 17,
   "description": "Incandescent Strike is an absolutely devastating melee attack that focuses all of the Kheldian's energy and strength into a single massive blow. This slow but incredibly devastating attack can knock out most opponents, leaving them Held. Incandescent Strike can also bring down fliers, Knock Down foes, and reduce their Defense. Damage: Extreme, Recharge: Long",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe -DEF, -Fly, Hold",
   "icon": "luminousblast_incandescentstrike.png",
@@ -43,7 +43,7 @@ export const IncandescentStrike: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.56,
     "table": "Melee_Damage"
   },

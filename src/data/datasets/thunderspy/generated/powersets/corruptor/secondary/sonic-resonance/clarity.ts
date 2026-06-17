@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Clarity: Power = {
   "name": "Clarity",
   "internalName": "Clarity",
-  "available": 0,
+  "available": 34,
   "description": "By bouncing a carefully pitched sound wave off an ally's ear drum, you can free them from any Disorient, Hold, Sleep, Confusion, Fear, or Immobilize effects, and leave them resistant to such effects for a good while. Protection will improve with multiple applications and as you advance in level. Clarity also provides your ally enhanced perception. Recharge: Fast",
   "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Terrorize, Confusion), +Perception",
   "icon": "sonicdebuff_dispel.png",

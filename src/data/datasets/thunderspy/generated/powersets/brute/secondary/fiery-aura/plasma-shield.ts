@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PlasmaShield: Power = {
   "name": "Plasma Shield",
   "internalName": "Plasma_Shield",
-  "available": 0,
+  "available": 15,
   "description": "While this power is active, you are surrounded by pure plasma. The Plasma Shield gives you resistance to Energy, Negative Energy, and Fire damage.  Plasma Shield also gives your protection from Sleep and Hold effects. Recharge: Very Fast",
   "shortHelp": "Toggle: Self +Res(Energy, Negative, Fire, Hold, Sleep)",
   "icon": "flamingshield_plasmasheild.png",

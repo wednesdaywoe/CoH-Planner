@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Meltdown: Power = {
   "name": "Meltdown",
   "internalName": "Meltdown",
-  "available": 0,
+  "available": 37,
   "description": "After building up a dangerous amount of radiation you release it to both shield and empower yourself. While active you will gain a good amount of damage resistance to all types of damage, recover endurance more quickly and deal more damage for a short time. When this power wears off you will lose a small amount endurance. Recharge: Very Long",
   "shortHelp": "Self, +Res(All), +Recovery, +DMG(All)",
   "icon": "radiationarmor_meltdown.png",

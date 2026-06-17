@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PhantasmalPhase: Power = {
   "name": "Spectral Shroud",
   "internalName": "Phantasmal_Phase",
-  "available": 0,
+  "available": 3,
   "description": "You shroud yourself in spectral forces which may intercept some of your foes attacks while also allowing you to pass through most entities. While the shroud is active you are protected from Sleep, Fear, Hold and Disorient attacks. Recharge: Fast",
   "shortHelp": "Toggle: Self+ Absorb, Self+ Intangible, Self +Res(Immobilize, Sleep, Hold, Disorient, Fear, Confuse, Knock)",
   "icon": "spectralaura4.png",

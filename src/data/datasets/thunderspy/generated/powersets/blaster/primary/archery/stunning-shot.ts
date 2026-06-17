@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const StunningShot: Power = {
   "name": "Stunning Shot",
   "internalName": "Stunning_Shot",
-  "available": 0,
+  "available": 11,
   "description": "You fire a blunt, weighted arrow at your target's chest. The Stunning Shot has a good chance of stunning your foe. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged Disorient, Minor DMG(Smashing)",
   "icon": "archery_stunarrow.png",
@@ -39,7 +39,7 @@ export const StunningShot: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.25,
     "table": "Ranged_Damage"
   },

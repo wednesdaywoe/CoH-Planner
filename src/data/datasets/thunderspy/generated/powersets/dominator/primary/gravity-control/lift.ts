@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Lift: Power = {
   "name": "Lift",
   "internalName": "Lift",
-  "available": 0,
+  "available": 1,
   "description": "Negates the gravity around a single target. Lift violently sends an enemy straight into the air, then slams them to the ground for Smashing damage. This power can bring flying foes to the ground, and can deal bonus damage when used against targets held by Gravity Distortion. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Smash), Foe Knock Up",
   "icon": "gravitycontrol_lift.png",
@@ -41,7 +41,7 @@ export const Lift: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.32,
     "table": "Ranged_Damage"
   },
@@ -58,7 +58,7 @@ export const Lift: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 0.33,
         "table": "Ranged_Damage"
       }

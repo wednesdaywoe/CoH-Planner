@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const UmbralTorrent: Power = {
   "name": "Umbral Torrent",
   "internalName": "Umbral_Torrent",
-  "available": 0,
+  "available": 5,
   "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals Moderate Negative Energy damage and sends foes flying and reduces their chance to hit. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Smashing), Foe -To Hit, Knockback",
   "icon": "darkcast_torrent.png",
@@ -45,7 +45,7 @@ export const UmbralTorrent: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.2,
     "table": "Ranged_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Suppression: Power = {
   "name": "Suppression",
   "internalName": "Suppression",
-  "available": 0,
+  "available": 7,
   "description": "Your Longfang Channelgun may also fire long bursts of energy, causing moderate damage in an large cone in front of you.  Damage: Moderate Recharge: Medium",
   "shortHelp": "Ranged Cone, Moderate DoT (Energy), Foe -DEF",
   "icon": "crabspider_suppression.png",

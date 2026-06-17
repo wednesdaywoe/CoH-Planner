@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Subdue: Power = {
   "name": "Subdue",
   "internalName": "Subdue",
-  "available": 0,
+  "available": 37,
   "description": "Subdue deals high Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Psionic), Foe Immobilize",
   "icon": "psionicassault_subdue.png",
@@ -39,7 +39,7 @@ export const Subdue: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 2.28,
     "table": "Ranged_Damage"
   },

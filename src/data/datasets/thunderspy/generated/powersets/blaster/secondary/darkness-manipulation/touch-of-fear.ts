@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TouchofFear: Power = {
   "name": "Touch of the Beyond",
   "internalName": "Touch_of_Fear",
-  "available": 0,
+  "available": 19,
   "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit.  Additionally, drawing upon this connection to the Netherworld causes you to rapidly regenerate health and recover endurance for a short time.  Recharge: Moderate",
   "shortHelp": "Fear, Foe -To Hit, Self +Regeneration, +Recovery",
   "icon": "darknessmanipulation_touchoffear.png",

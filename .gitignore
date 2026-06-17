@@ -49,6 +49,10 @@ texture_library/
 raw_data_homecoming-20251209_7415/
 MidsReborn-master/
 texture_library2/
+# Thunderspy Mids' Reborn DB reference drop (44MB binaries + icon dumps).
+# Reference asset only — useful icons are already extracted into
+# public/img/powers/ via scripts/extract-thunderspy-icons.py. Not app data.
+Thunderspy/
 Mids MXD files/
 dump/
 docs/

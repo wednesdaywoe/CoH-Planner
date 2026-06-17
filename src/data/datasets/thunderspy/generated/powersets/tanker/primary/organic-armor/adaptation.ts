@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Adaptation: Power = {
   "name": "Evolving Armor",
   "internalName": "Adaptation",
-  "available": 0,
+  "available": 11,
   "description": "Evolving Armor infests nearby enemies, lowering their resistance to damage, simultaneously increasing your own. While Efficient Adaptation is active, this power grants a minor increase to Regeneration and Recovery for each nearby target, as well as a small increase to Recharge. While Defensive Adaptation is active, this power grants additional damage resistance per target. While Offensive Adaptation is active, this power further decreases enemy damage resistance.",
   "shortHelp": "Self Toggle, +Res(All), Foe -Res(All), Taunt, +Special",
   "icon": "bioorganicarmor_evolution.png",

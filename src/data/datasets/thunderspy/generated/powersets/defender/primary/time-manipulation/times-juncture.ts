@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TimesJuncture: Power = {
   "name": "Time's Juncture",
   "internalName": "Times_Juncture",
-  "available": 0,
+  "available": 1,
   "description": "You create a time dilation field around you causing enemies who get too close to be slowed to a crawl, their movement speed, damage and chance to hit will be decreased substantially.  Enemies affected by Delayed have these affects increased.  Recharge: Slow",
   "shortHelp": "Toggle: PBAoE Foe (-Damage, -Speed, -To Hit)",
   "icon": "timemanipulation_timesjuncture.png",

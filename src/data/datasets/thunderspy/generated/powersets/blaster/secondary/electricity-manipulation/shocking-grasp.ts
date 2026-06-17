@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ShockingGrasp: Power = {
   "name": "Shocking Grasp",
   "internalName": "Shocking_Grasp",
-  "available": 0,
+  "available": 37,
   "description": "Shocking Grasp causes the target to be overcome with a violent electrical charge. The seized target is left writhing in agony and is unable to defend themselves. Shocking Grasp also drains a significant amount of Endurance from the target and may return a portion of it to you. Damage: High(DoT), Recharge: Slow",
   "shortHelp": "Melee, High DoT(Energy), Target Hold, -End",
   "icon": "electricitymanipulation_shockinggrasp.png",

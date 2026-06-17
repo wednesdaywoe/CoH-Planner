@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LivingShadows: Power = {
   "name": "Living Shadows",
   "internalName": "Living_Shadows",
-  "available": 0,
+  "available": 1,
   "description": "You extend and animate your own shadow causing it to entangle all foes within a long cone pattern in front of you, rendering all affected foes immobilized. Damage: Minor(DoT), Recharge: Moderate",
   "shortHelp": "Ranged (Cone), Minor DoT(Negative), Foe Immobilize, -To Hit, -Fly",
   "icon": "darknesscontrol_livingshadows.png",

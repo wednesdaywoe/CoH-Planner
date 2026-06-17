@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Hoarfrost: Power = {
   "name": "Hoarfrost",
   "internalName": "Hoarfrost",
-  "available": 0,
+  "available": 15,
   "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, For a short time you will gain a small absorption shield every few seconds and gain a powerful regeneration buff. Recharge: Very Long",
   "shortHelp": "Click: Self +Absorb, +Regeneration",
   "icon": "icearmor_hoarfrost.png",

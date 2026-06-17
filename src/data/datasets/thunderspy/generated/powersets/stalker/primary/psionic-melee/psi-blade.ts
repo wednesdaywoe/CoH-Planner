@@ -36,29 +36,33 @@ export const PsiBlade: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.285,
     "table": "Melee_Damage"
   },
   "conditionalEffects": [
     {
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.2285,
+        "table": "Melee_Damage",
+        "duration": 3.1
+      }
+    },
+    {
       "id": "conditional",
       "label": "Conditional",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 1.14,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.2285,
-          "table": "Melee_Damage",
-          "duration": 3.1
-        }
-      ]
+      "damage": {
+        "type": "Psionic",
+        "scale": 1.14,
+        "table": "Melee_Damage"
+      }
     }
   ]
 };

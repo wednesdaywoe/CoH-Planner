@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GlacialArmor: Power = {
   "name": "Glacial Armor",
   "internalName": "Glacial_Armor",
-  "available": 0,
+  "available": 3,
   "description": "When you activate this power you cover yourself in Glacial ice. The crystalline matrix of the armor has refracting properties that make Energy and Negative Energy attacks less likely to land, and acts as a lens to increase your Perception to see hidden foes. The bitter cold of Glacial Armor also reduces Cold damage and also you to resist Defense DeBuffs. Recharge: Very Fast",
   "shortHelp": "Toggle: Self +DEF(Energy, Negative), Res (Cold, DeBuff DEF), +Perception",
   "icon": "icearmor_glacialarmor.png",

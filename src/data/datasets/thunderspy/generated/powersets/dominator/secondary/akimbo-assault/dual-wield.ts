@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DualWield: Power = {
   "name": "Dual Wield",
   "internalName": "Dual_Wield",
-  "available": 0,
+  "available": 3,
   "description": "Dual Wield fires both pistols in rapid succession at its desired target.  This power is slower than Pistols, but deals more damage, and the target may get knocked back by the force of the impact. Damage: Moderate, Recharge: Moderate  NOTE: Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.  Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to a minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded, a minor damage over time effect if 'Incendiary Ammo' is loaded, or a -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "Ranged, Moderate DMG(Lethal/Special), Foe Knockback/Special",
   "icon": "dualpistols_dualwield.png",
@@ -42,7 +42,7 @@ export const DualWield: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.82,
       "table": "Ranged_Damage"
     },

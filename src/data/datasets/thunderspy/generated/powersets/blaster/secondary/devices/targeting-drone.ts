@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TargetingDrone: Power = {
   "name": "Targeting Drone",
   "internalName": "Targeting_Drone",
-  "available": 0,
+  "available": 9,
   "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit and increase your perception, allowing you to better see stealthy foes. Targeting Drone also grants you resistance to powers that debuff your chance to hit. While in use, any sniper rifle shots you make will do additional damage. This is a toggle power and must be activated and deactivated manually. Like all toggle powers, the Targeting Drone costs endurance while active. Recharge: Slow",
   "shortHelp": "Toggle: Self +To Hit, +Perception, Res(DeBuff To Hit)",
   "icon": "gadgets_targetingdrone.png",

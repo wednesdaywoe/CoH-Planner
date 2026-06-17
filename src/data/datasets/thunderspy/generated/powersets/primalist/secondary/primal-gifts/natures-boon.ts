@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const NaturesBoon: Power = {
   "name": "Nature's Embrace",
   "internalName": "Natures_Boon",
-  "available": 0,
+  "available": 13,
   "description": "Nature's Embrace protects the Primalist's mind from the harmful effects of Sleep, Hold, Disorient, Knockback and Immobilize. Additionally, while active this power grants the user a measure of protection against Toxic, Psionic and Cold damage. Recharge: Fast",
   "shortHelp": "Toggle: +Res(Sleep, Hold, Disorient, Knockback, Immobilize, Toxic, Psionic, Cold)",
   "icon": "primalgifts_naturesboon.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ShadowDweller: Power = {
   "name": "Shadow Dweller",
   "internalName": "Shadow_Dweller",
-  "available": 0,
+  "available": 15,
   "description": "You are a true Shadow Dweller of the Netherworld.  Your affinity for the shadows grants you an inherent bonus to all Defense, as well as an increased Perception and a resistance to Immobilization.  Your Perception bonus and resistance to Immobilization improves over level.  Shadow Dweller is an Auto power.  It is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +DEF(All), +Res(Immobilize), +Perception",
   "icon": "darkarmor_selfbuffdefense.png",

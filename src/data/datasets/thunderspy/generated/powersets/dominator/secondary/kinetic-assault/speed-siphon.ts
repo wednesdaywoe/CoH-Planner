@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SpeedSiphon: Power = {
   "name": "Velocity Siphon",
   "internalName": "Speed_Siphon",
-  "available": 0,
+  "available": 34,
   "description": "You siphon speed from foes close to you, Slowing their movement and damaging them while boosting your own movement. Recharge: Fast",
   "shortHelp": "Toggle PBAoE, Foe Light DMG (Energy), -Speed, Self +Speed",
   "icon": "kineticassault_repulsion.png",

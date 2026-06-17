@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnergyTransfer: Power = {
   "name": "Energy Transfer",
   "internalName": "Energy_Transfer",
-  "available": 0,
+  "available": 31,
   "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme smashing and energy damage. Energy Transfer has a good chance of Disorienting the target. Unlike other Stalker primary attack powers, Energy Transfer cannot land a Critical hit.  However, if this attack is executed successfully while Hidden, you can avoid the Hit Point loss to yourself and deal a massive blow with no penalty. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient, Self -HP",
   "icon": "powerpunch_energytransfer.png",
@@ -38,7 +38,7 @@ export const EnergyTransfer: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.37,
     "table": "Melee_Damage"
   },
@@ -56,7 +56,7 @@ export const EnergyTransfer: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Energy",
         "scale": 3,
         "table": "Melee_Damage"
       }

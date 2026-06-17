@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const MeltArmor: Power = {
   "name": "Melt Armor",
   "internalName": "Melt_Armor",
-  "available": 0,
+  "available": 31,
   "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
   "icon": "thermalradiation_meltarmor.png",

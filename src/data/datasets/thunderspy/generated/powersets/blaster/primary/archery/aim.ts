@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Aim: Power = {
   "name": "Aim",
   "internalName": "Aim",
-  "available": 0,
+  "available": 17,
   "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage. Recharge: Long",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "archery_aim.png",

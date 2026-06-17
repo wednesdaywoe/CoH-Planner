@@ -43,7 +43,7 @@ export const MentalBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 1.64,
     "table": "Ranged_Damage"
   }

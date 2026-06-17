@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HardLife: Power = {
   "name": "It's A Hard Life",
   "internalName": "Hard_Life",
-  "available": 0,
+  "available": 15,
   "description": "Sometimes you just need a little pick-me-up. Whatever's in these needles you're carrying around really gives you an edge. Increases damage by 50 percent for a time, also increases ToHit by 10 percent, and recharge speed by 30 percent.",
   "shortHelp": "Self, +To Hit, +Recharge, +Damage",
   "icon": "dualpistols_swapammo.png",

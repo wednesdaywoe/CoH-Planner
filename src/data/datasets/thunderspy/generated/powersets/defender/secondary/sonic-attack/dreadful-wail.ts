@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DreadfulWail: Power = {
   "name": "Dreadful Wail",
   "internalName": "Dreadful_Wail",
-  "available": 0,
+  "available": 37,
   "description": "Your Dreadful Wail is so strong that most foes will be defeated by being subjected to it. Dreadful Wail deals Extreme Smashing and Energy damage to all nearby foes in addition to reducing their defense and disorienting them for a good while.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Energy/Smash), Foe Disorient, -Res(All)",
   "icon": "sonicblast_massivedamage.png",
@@ -39,7 +39,7 @@ export const DreadfulWail: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 2,
     "table": "Ranged_Damage"
   },

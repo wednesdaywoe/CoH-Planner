@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WhirlingAxe: Power = {
   "name": "Whirling Axe",
   "internalName": "Whirling_Axe",
-  "available": 0,
+  "available": 17,
   "description": "You spin your Battle Axe in a huge arc, attacking all nearby foes. This attack deals moderate damage to any foe it hits, and can knock them down. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_whirlingaxe.png",
@@ -39,7 +39,7 @@ export const WhirlingAxe: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1,
     "table": "Melee_Damage"
   }

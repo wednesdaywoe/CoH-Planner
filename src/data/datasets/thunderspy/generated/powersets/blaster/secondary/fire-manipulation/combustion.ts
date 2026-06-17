@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Combustion: Power = {
   "name": "Combustion",
   "internalName": "Combustion",
-  "available": 0,
+  "available": 3,
   "description": "Your mastery of fire allows you to violently raise the temperature around yourself in an attempt to spontaneously combust any nearby foes and set them ablaze, dealing damage over time. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Melee (AoE), Moderate DoT(Fire)",
   "icon": "firemanipulation_combustion.png",

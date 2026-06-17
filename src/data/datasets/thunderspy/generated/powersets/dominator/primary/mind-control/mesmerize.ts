@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Mesmerize: Power = {
   "name": "Mesmerize",
   "internalName": "Mesmerize",
-  "available": 0,
+  "available": 1,
   "description": "Mesmerize painfully assails a target with psychic energy, rendering him unconscious. The target will remain asleep for some time, but will awaken if attacked. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Sleep",
   "icon": "mentalcontrol_hypnotize.png",
@@ -39,7 +39,7 @@ export const Mesmerize: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 1,
     "table": "Ranged_Damage"
   },

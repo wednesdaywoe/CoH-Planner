@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Buckshot: Power = {
   "name": "Buckshot",
   "internalName": "Buckshot",
-  "available": 0,
+  "available": 1,
   "description": "Good at close range. Fires a cone of Buckshot pellets and can knock some foes down. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged (Cone), Moderate DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_shotgunbuckshot.png",
@@ -42,7 +42,7 @@ export const Buckshot: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.91,
     "table": "Ranged_Damage"
   },
@@ -59,7 +59,7 @@ export const Buckshot: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.91,
         "table": "Ranged_Damage"
       }

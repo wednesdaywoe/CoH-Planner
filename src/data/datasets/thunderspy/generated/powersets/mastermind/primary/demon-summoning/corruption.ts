@@ -38,12 +38,12 @@ export const Corruption: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1.32,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.15,
       "table": "Ranged_Damage",
       "duration": 3.1

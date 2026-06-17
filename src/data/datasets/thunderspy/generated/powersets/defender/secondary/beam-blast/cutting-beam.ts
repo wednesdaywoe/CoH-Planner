@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CuttingBeam: Power = {
   "name": "Cutting Beam",
   "internalName": "Cutting_Beam",
-  "available": 0,
+  "available": 3,
   "description": "You fire a constant stream of energy and sweep it in a broad arc blasting all foes in a wide cone in front of you. Cutting beam deals Moderate Energy damage and reduces the targets' Defense. This power will cause Minor Energy damage over time if the target is suffering from the Disintegrating effect. Damage: Moderate, Recharge: Long",
   "shortHelp": "Ranged (Cone): Moderate DMG(Energy), Foe -Def(All), Special",
   "icon": "beamrifle_cuttingbeam.png",
@@ -43,7 +43,7 @@ export const CuttingBeam: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.919,
     "table": "Ranged_Damage"
   }

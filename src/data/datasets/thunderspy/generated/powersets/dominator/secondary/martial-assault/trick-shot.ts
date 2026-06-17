@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TrickShot: Power = {
   "name": "Trick Shot",
   "internalName": "Trick_Shot",
-  "available": 0,
+  "available": 3,
   "description": "You take careful aim and bounce a thrown shuriken between multiple targets.  Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Chain Moderate DMG (Lethal)",
   "icon": "martialassault_trickshot.png",

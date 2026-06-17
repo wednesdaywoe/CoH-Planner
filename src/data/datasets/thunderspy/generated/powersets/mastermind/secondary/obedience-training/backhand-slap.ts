@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BackhandSlap: Power = {
   "name": "Punish",
   "internalName": "Backhand_Slap",
-  "available": 0,
+  "available": 27,
   "description": "You Punish nearby enemies for their audacity, dealing Smashing and Psionic damage and reduce their ToHit.",
   "shortHelp": "PBAoE Smash/Psi Damage, -Tohit",
   "icon": "obediencetraining_backhandslap.png",

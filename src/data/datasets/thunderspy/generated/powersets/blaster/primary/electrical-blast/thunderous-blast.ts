@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ThunderousBlast: Power = {
   "name": "Thunderous Blast",
   "internalName": "Thunderous_Blast",
-  "available": 0,
+  "available": 31,
   "description": "You hurl a tremendously powerful bolt of lightning at a target, devastating all nearby foes. Thunderous Blast deals extreme Energy and Smashing damage and drains a lot of Endurance from nearby foes. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Extreme DMG(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_thunderouseblast.png",
@@ -40,7 +40,7 @@ export const ThunderousBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1,
     "table": "Ranged_Damage"
   }

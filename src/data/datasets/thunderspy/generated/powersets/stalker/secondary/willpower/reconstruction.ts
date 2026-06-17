@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Reconstruction: Power = {
   "name": "Reconstruction",
   "internalName": "Reconstruction",
-  "available": 0,
+  "available": 9,
   "description": "Through perfect control of your body, you can concentrate for a few moments and heal yourself. The effects of Reconstruction also leaves you resistant to Toxic damage for a while. Recharge: Long",
   "shortHelp": "Self Heal, Res(Toxic)",
   "icon": "willpower_reconstruction.png",

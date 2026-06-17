@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Hypothermia: Power = {
   "name": "Hypothermia",
   "internalName": "Hypothermia",
-  "available": 0,
+  "available": 25,
   "description": "You hurl a ball of ice cold water at your foe which explodes upon impact. The target and all nearby foes will have their movement speed dramatically reduced and periodically be put to sleep. This power has a small chance to place the Drowning effect on its targets. Hypothermia's slow effect is empowered and has a greater chance to put a foe to sleep if it is suffering from Drowning.  Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Sleep, -Speed",
   "icon": "watercontrol_hypothermia.png",
@@ -55,8 +55,8 @@ export const Hypothermia: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
+      "id": "target-affected",
+      "label": "Target Already Affected",
       "scope": "per-power",
       "defaultActive": false,
       "effects": {

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SteamSpray: Power = {
   "name": "Steam Spray",
   "internalName": "Steam_Spray",
-  "available": 0,
+  "available": 27,
   "description": "You spray scalding hot steam in a cone in front of you badly burning affected targets. Steam Spray causes Moderate Fire damage, Minor Fire damage over time and reduces the target's Defense slightly. Steam Spray grants 1 stack of Tidal Power. Damage: High, Recharge: Long",
   "shortHelp": "Ranged (Cone), High DMG(Fire), Foe -Defense, Minor DoT(Fire), Self +Tidal Power",
   "icon": "waterblast_steamspray.png",
@@ -44,13 +44,13 @@ export const SteamSpray: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.835,
       "table": "Ranged_Damage",
       "duration": 0.6
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 3.1

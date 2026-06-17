@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SoothingAura: Power = {
   "name": "Suppress Pain",
   "internalName": "Soothing_Aura",
-  "available": 0,
+  "available": 19,
   "description": "While this power is active all nearby allies will have their regeneration rate increased dramatically.  Recharge: Fast.",
   "shortHelp": "Toggle: PBAoE, Ally +Regeneration",
   "icon": "paindomination_soothingaura.png",

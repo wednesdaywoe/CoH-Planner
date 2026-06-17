@@ -47,7 +47,7 @@ export const HydroBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.37,
     "table": "Ranged_Damage"
   }

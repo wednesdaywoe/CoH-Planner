@@ -228,9 +228,26 @@ Primalist is a Kheldian-style form-shifter: its six Feral Might attacks (+ Prima
 
 Phase F exposed that **no Thunderspy attack had any damage** in the converted data (0 of 3,104 power files). Cause: Thunderspy stores damage with a single **generic `Damage` attrib** (the element — Fire/Smashing/… — lives only in the shortHelp like `DMG(Fire)`), whereas HC/Rebirth use per-type attribs; `extractDamage`/`isDamageTypeAttrib` (`convert-powerset.cjs`) only recognised the typed attribs and dropped the generic one. Fixed by mapping the bare `damage` attrib to a typeless `Special` damage entry (correct scale/table magnitude). HC/Rebirth never use a bare `damage` attrib, so their output is unchanged. After regen: **1,276 power files now carry damage**. **Follow-up:** refine the `Special` label to the real element by parsing the power's shortHelp `DMG(...)` — magnitude is already correct; only the type label is generic.
 
+### Custom-powerset audit + Tarantula branch fix (2026-06-16)
+
+Investigated a report that custom powersets were "ignored / didn't extract." Findings:
+- **Nothing is dropped.** Per-category counts match 1:1 between `exported_powers/thunderspy/<cat>` and the converted tree; no display-name collisions; every custom set has powers. The converter folder-names powersets by **display name**, so customs appear under their in-game names (which can read as "missing"): Sacred Armor→**Nature Armor**, Organic Armor→Organic Armor, Hobo Melee→**Hard Life**, Bio Armor (bio_organic_armor), Telekinetic Assault→**Psychokinetic Assault**, Dual Pistols→**Akimbo Assault**, Holy Light→**Radiant Blast**, etc.
+- **One real gap, fixed:** Thunderspy's custom **Tarantula** Widow branch (`tarantula-training` + `tarantula-teamwork`) was converted on disk but unrostered, because `generate-archetypes.cjs` reused HC's verbatim VEAT branches (Night Widow / Fortunata only). Added `'tarantula'` to `ArchetypeBranchId` and a Thunderspy-specific branch injection in the generator. The branch picker is generic, so it now surfaces. (Arachnos Soldier matches HC — no custom soldier sets.)
+
+### Custom icons — 83 backfilled from tspy piggs (2026-06-16)
+
+Of 1,844 distinct icons referenced by Thunderspy powers, 272 were missing from `public/img/powers/` (broken images on custom powers — looked like bad extraction but the data was fine). New **`scripts/extract-thunderspy-icons.py`** indexes the icon `.texture` files across all tspy `.pigg` archives, finds the referenced-but-missing ones, and converts each to a 32×32 RGBA PNG (DDS/JPEG → PIL). **83 extracted** (the high-value customs: Obedience Training, Spectral Aura/Melee, Knights, Pale Blade, Tarantula, custom assault/control sets) — verified as real icons, 0 failures. Re-run with `python3 scripts/extract-thunderspy-icons.py [--assets-dir <…/tspy>]` (env `THUNDERSPY_ASSETS_DIR`).
+
+**189 still missing** (not in the tspy piggs): mostly Lore-pet / NPC-group (`banishedpantheon_*`, `tsoo_*`, `talonsofvengeance_*`, …), enhancement (`e_icon_*`), generic temp/pseudo-pet, and archetype icons (`archetypeicon_*.tga/.texture`). Most NPC/standard ones are sourceable from the **HC** texture piggs (`…/Homecoming/assets/live`); archetype icons are handled on a separate asset path. Lower priority — these are redirect/Lore/temp powers, not the player's own custom sets.
+
+### Reference asset: `Thunderspy/` (Mids' Reborn DB export)
+
+A community Mids' Reborn database export (`.mhd` files incl. the 26 MB `I12.mhd`, `EnhDB.mhd`, `Recipe.mhd`, `Salvage.mhd`) plus icon folders. Useful as an **authoritative cross-check** for rosters/branches/IO-sets and as an icon source. Our bin extraction (live game data) remains the primary source; Mids is secondary corroboration.
+
 ### Remaining
 
-1. **Damage element-type refinement** (above): `Special` → Fire/Smashing/etc. from shortHelp. Magnitudes correct; cosmetic/resistance-grouping only.
+1. **Custom icon backfill** (272 missing): from `Thunderspy/Images` (quick, partial) or Thunderspy texture piggs (complete, authoritative).
+2. **Damage element-type refinement** (above): `Special` → Fire/Smashing/etc. from shortHelp. Magnitudes correct; cosmetic/resistance-grouping only.
 2. **IO sets** (`io-sets-raw.ts`): re-exports HC as a first-pass; real extraction needs `extract-rebirth-io-sets-v2.py` ported to Thunderspy (212 sets in `boostsets.bin`).
 3. **Entities parser fix** so `pet-entities.ts` can be populated (parser-log open issue). Until then summoned-pet detail panels are empty.
 4. **regen-all**: Thunderspy isn't in `regen-all.cjs`'s default list (its `convert-pet-entities`/`generate-kheldian-variants` steps need entities / a form-variants file). Regen its generated layer manually per-converter; note the new `generate-primalist-variants.cjs` and `generate-archetypes.cjs` steps.

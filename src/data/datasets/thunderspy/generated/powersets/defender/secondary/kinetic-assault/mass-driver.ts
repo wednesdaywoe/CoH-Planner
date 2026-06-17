@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const MassDriver: Power = {
   "name": "Mass Driver",
   "internalName": "Mass_Driver",
-  "available": 0,
+  "available": 37,
   "description": "You form the potential energies around you into a concentrated mass aimed at a single target. This causes superior smashing and energy damage on impact and reduces the target's movement and recharge speed. The force of the impact causes light lethal damage over time.  If you have less than 5 stacks of Impulse, Mass Driver will award 2 Impulse.  If you have 5 stacks of Impulse this power will deal additional damage and reduce the target's smashing, lethal and energy resistance moderately for a short time and this power will also have a small chance to recharge Coalescence.  Damage: Superior, Recharge: Slow",
   "shortHelp": "Ranged, Superior DMG (Smashing/Energy), Foe Light DoT (Lethal), -Speed, -Recharge, Self +/- Impulse",
   "icon": "kineticassault_massdriver.png",
@@ -46,9 +46,9 @@ export const MassDriver: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

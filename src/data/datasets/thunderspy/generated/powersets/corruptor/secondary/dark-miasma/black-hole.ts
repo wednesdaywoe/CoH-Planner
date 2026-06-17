@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BlackHole: Power = {
   "name": "Black Hole",
   "internalName": "Black_Hole",
-  "available": 0,
+  "available": 34,
   "description": "Opens up a Black Hole to the Netherworld that temporarily pulls in all foes within its grasp. The victims become phase shifted and are completely intangible. They are hard to see, and cannot affect or be affected by those in normal space. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe Intangible",
   "icon": "darkmiasma_blackhole.png",

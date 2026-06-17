@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Hide: Power = {
   "name": "Umbral Fade",
   "internalName": "Hide",
-  "available": 0,
+  "available": 19,
   "description": "You create a burst of darkness to distract and placate your foes so they can no longer find or target you, Affected foes will also suffer from reduced chance to hit.  Recharge: Slow",
   "shortHelp": "Click: PBAoE, Foe Placate, -To Hit",
   "icon": "spectralaura7.png",

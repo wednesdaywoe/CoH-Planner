@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TemporalHealing: Power = {
   "name": "Temporal Ablation",
   "internalName": "Temporal_Healing",
-  "available": 0,
+  "available": 19,
   "description": "You manipulate time to distribute damage inflicted upon you across alternate timelines, reducing your injuries. Temporal Ablation will immediately absorb damage as it's inflicted.  Additionally, you will gain some resistance to slow effects.  If you are affected by the Accelerated effect, you absorb even more damage from this power.  Recharge: Low",
   "shortHelp": "Self Toggle, +Absorb, +Recovery, +Res(Slow)",
   "icon": "timemanipulation_temporalhealing.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Longfang: Power = {
   "name": "Longfang",
   "internalName": "Longfang",
-  "available": 0,
+  "available": 1,
   "description": "Your Longfang Channelgun may also fire short bursts, causing greater damage. This attack also reduces your foe's defense.  Damage: High Recharge: Medium",
   "shortHelp": "Ranged, High DMG(Lethal/Toxic), Foe -DEF",
   "icon": "crabspider_longfang.png",
@@ -40,7 +40,7 @@ export const Longfang: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.382,
     "table": "Ranged_Damage",
     "duration": 0.7

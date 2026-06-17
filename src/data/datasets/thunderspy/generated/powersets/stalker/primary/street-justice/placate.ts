@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Placate: Power = {
   "name": "Rib Cracker",
   "internalName": "Placate",
-  "available": 0,
+  "available": 11,
   "description": "You deftly strike your foe in a very vulnerable location. Rib Cracker deals Moderate Damage but reduces your foe's Damage and Resistance moderately for a short time. Rib Cracker is a Combo Builder and adds 1 Combo Level. Damage: Moderate, Recharge: Fast.",
   "shortHelp": "Melee, Moderate DMG (Smash), Foe -Res (All), -Dmg, Combo Builder",
   "icon": "brawling_throatstrike.png",

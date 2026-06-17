@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GreaterPsiBlade: Power = {
   "name": "Greater Psi Blade",
   "internalName": "Greater_Psi_Blade",
-  "available": 0,
+  "available": 25,
   "description": "You focus and create a more powerful Psi Blade projection before slashing at your foe to deal superior Psionic and Lethal damage. The affected foe will have their recharge reduced moderately and be left held for a short time. Greater Psi Blade will cause additional damage and cause this power's hold to last for a longer duration if you have Insight. Using this power removes Insight. Damage: Superior, Recharge: Long",
   "shortHelp": "Melee, Superior DMG(Psionic/Lethal), Foe -Rech, Hold; Self -Insight",
   "icon": "psionicmelee_greaterpsiblade.png",
@@ -38,7 +38,7 @@ export const GreaterPsiBlade: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.69,
     "table": "Melee_Damage"
   },
@@ -51,28 +51,32 @@ export const GreaterPsiBlade: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 2.6925,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 1.34625,
-          "table": "Melee_Damage"
-        }
-      ],
+      "damage": {
+        "type": "Psionic",
+        "scale": 1.34625,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "stun": {
           "mag": 1,
           "scale": 12,
           "table": "Melee_Stun"
         }
+      }
+    },
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 2.6925,
+        "table": "Melee_Damage"
       }
     }
   ]

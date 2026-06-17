@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Judgement: Power = {
   "name": "Judgement",
   "internalName": "Judgement",
-  "available": 0,
+  "available": 37,
   "description": "You release a tremendous wave of Radiant light dealing massive damage to all nearby foes and healing friends. Unholy foes such as demons, undead, and ghosts take additional damage. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Ranged, Extreme DMG(Fire), High Heal",
   "icon": "luminousblast_dawnstrike.png",
@@ -38,12 +38,12 @@ export const Judgement: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 3,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1.5,
       "table": "Ranged_Damage"
     }

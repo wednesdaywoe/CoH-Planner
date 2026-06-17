@@ -321,7 +321,8 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     // migration and don't carry this field; default to Homecoming so
     // legacy builds keep loading the same data they were authored
     // against.
-    serverId: (slim.serverId === 'rebirth' ? 'rebirth' : 'homecoming') as Build['serverId'],
+    serverId: (slim.serverId === 'rebirth' || slim.serverId === 'thunderspy'
+      ? slim.serverId : 'homecoming') as Build['serverId'],
     archetype: archetypeSelection,
     level: slim.level ?? 50,
     progressionMode: slim.progressionMode ?? 'auto',

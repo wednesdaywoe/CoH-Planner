@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SolarFlare: Power = {
   "name": "Solar Flare",
   "internalName": "Solar_Flare",
-  "available": 0,
+  "available": 25,
   "description": "You channel the might of your Kheldian energy into the very Earth itself.  The ground erupts and cracks with luminous energy, blasting all nearby foes, knocking them back and reducing their Defense. Damage: High, Recharge: Slow",
   "shortHelp": "PBAoE Melee, High DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_solarflare.png",
@@ -42,7 +42,7 @@ export const SolarFlare: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.42,
     "table": "Melee_Damage"
   },

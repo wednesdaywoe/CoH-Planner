@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PrimalWard: Power = {
   "name": "Primal Ward",
   "internalName": "Primal_Ward",
-  "available": 0,
+  "available": 9,
   "description": "While this power is active, the user will gain good resistance to Energy, Negative Energy and Fire damage, minor resistance to Cold as well as gaining some protection from Endurance Drain effects. Recharge: Fast",
   "shortHelp": "Toggle: +Res(Energy, Negative, Fire, Cold, Endurance Drain)",
   "icon": "primalgifts_primalward.png",

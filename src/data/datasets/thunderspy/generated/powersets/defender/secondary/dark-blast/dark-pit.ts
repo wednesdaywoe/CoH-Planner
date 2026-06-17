@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DarkPit: Power = {
   "name": "Dark Pit",
   "internalName": "Dark_Pit",
-  "available": 0,
+  "available": 15,
   "description": "Envelops a targeted foe and any nearby enemies in a pit of Negative Energy. The attack deals no damage, but Disorients all affected foes for a good while. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe Disorient",
   "icon": "darkcast_darkpit.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Hide: Power = {
   "name": "Quick Recovery",
   "internalName": "Hide",
-  "available": 0,
+  "available": 9,
   "description": "You recover Endurance at a faster rate than normal. This power is always on.",
   "shortHelp": "Auto: Self +Recovery",
   "icon": "regeneration_quickrecovery.png",

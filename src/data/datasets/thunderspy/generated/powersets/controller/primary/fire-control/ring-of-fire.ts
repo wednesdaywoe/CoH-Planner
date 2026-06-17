@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RingofFire: Power = {
   "name": "Ring of Fire",
   "internalName": "Ring_of_Fire",
-  "available": 0,
+  "available": 5,
   "description": "Immobilizes your target in a Ring of Fire, dealing Fire damage over time. More resilient foes may require multiple Fire Rings to Immobilize. Targets close enough to the main target take half damage. This power does not benefit from containment Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DoT(Fire), Foe Immobilize",
   "icon": "firetrap_ringoffire.png",

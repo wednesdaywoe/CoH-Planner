@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DrowningPool: Power = {
   "name": "Drowning Pool",
   "internalName": "Drowning_Pool",
-  "available": 0,
+  "available": 31,
   "description": "You surround your foes in a Drowning Pool which leaves each of them enveloped in a watery sphere that renders them held and reduces their defense. This power has a high chance to place the Drowning effect on its target. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold, -Def",
   "icon": "watercontrol_drowningpool.png",

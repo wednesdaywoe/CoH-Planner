@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ThickHide: Power = {
   "name": "Thick Hide",
   "internalName": "Thick_Hide",
-  "available": 0,
+  "available": 1,
   "description": "While this power is active you gain good resistance to Lethal, Smashing and Cold damage as well as moderate resistance to slow effects. Thick Hide may be active in all 3 forms. Recharge: Fast",
   "shortHelp": "Toggle: +Res(Lethal, Smashing, Cold, Slow)",
   "icon": "primalgifts_thickhide.png",

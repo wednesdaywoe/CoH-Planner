@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HailofBullets: Power = {
   "name": "Bullet Storm",
   "internalName": "Hail_of_Bullets",
-  "available": 0,
+  "available": 19,
   "description": "You fire a storm of bullets at all enemies around you dealing lethal damage.  Enemies that are struck have a chance to be knocked down.  Having Standard Rounds will dramatically increase this chance to knockdown your foes.  If you hit at least one target you will gain a minor melee, ranged and AoE Defense bonus for a brief period.  Damage: Moderate, Recharge: Long  NOTE: Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.  Additionally, changing your ammunition type will also change the secondary effect of this attack from a guaranteed knockdown effect to a minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded, a minor damage over time effect if 'Incendiary Ammo' is loaded, or a -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "PBAoE, Moderate DMG(Lethal/Special), Self +Def(Melee, Ranged, AoE), Foe Knockdown/Special",
   "icon": "domdphailofbullets.png",
@@ -42,7 +42,7 @@ export const HailofBullets: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.059,
       "table": "Melee_Damage",
       "duration": 3.5

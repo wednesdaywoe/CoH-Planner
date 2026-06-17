@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SpiritSunder: Power = {
   "name": "Spirit Sunder",
   "internalName": "Spirit_Sunder",
-  "available": 0,
+  "available": 31,
   "description": "You Sunder the spirit from one of your foes to create a life transferring conduit between them and yourself. This will transfer Hit Points from your enemy to yourself. Foes Siphoned in this manner will summon a spectral essence to do your bidding. the spirit is only loosely bound to your control and will eventually move on to the next world.  Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Negative/Psionic), Foe Fear, Self +HP, Summon Spirits",
   "icon": "spectralmelee9.png",
@@ -41,7 +41,7 @@ export const SpiritSunder: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 1.6,
     "table": "Melee_Damage"
   },
@@ -59,7 +59,7 @@ export const SpiritSunder: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Negative",
         "scale": 3.18,
         "table": "Melee_Damage"
       }

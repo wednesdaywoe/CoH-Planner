@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HeadSplitter: Power = {
   "name": "Head Splitter",
   "internalName": "Head_Splitter",
-  "available": 0,
+  "available": 31,
   "description": "You perform a devastating Head Splitter attack that deals a massive amount of damage and can even knock a foe down to the ground and reduce it's Defense. This attack has an exceptionally good critical hit capability, better than other Broadsword attacks, that can sometimes deal double damage. The power of this attack can actually extend a short distance through multiple foes. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Lethal), Foe Knockback, -DEF",
   "icon": "sword_headsplitter.png",
@@ -44,7 +44,7 @@ export const HeadSplitter: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 2.6,
     "table": "Melee_Damage"
   },
@@ -55,7 +55,7 @@ export const HeadSplitter: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 2.6,
         "table": "Melee_Damage"
       }

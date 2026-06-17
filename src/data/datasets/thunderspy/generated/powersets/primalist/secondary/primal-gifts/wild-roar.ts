@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WildRoar: Power = {
   "name": "Wild Roar",
   "internalName": "Wild_Roar",
-  "available": 0,
+  "available": 23,
   "description": "This power requires the user to have Hunter or Prowler Form active. When used the Primalist will let out a deafening roar that terrifies nearby foes and reduces their defenses greatly. In Hunter Form the defense debuff effect will be more powerful. While in Prowler form the Terrorize effect will be more powerful. Wild Roar requires 10 Primal Energy. Recharge: Very Long",
   "shortHelp": "PBAoE Special, Requires Hunter Form or Prowler Form",
   "icon": "primalgifts_wildroar.png",

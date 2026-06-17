@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const NightFall: Power = {
   "name": "Night Fall",
   "internalName": "Night_Fall",
-  "available": 0,
+  "available": 19,
   "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe -To Hit",
   "icon": "darkcast_nightfall.png",
@@ -43,7 +43,7 @@ export const NightFall: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.11,
     "table": "Ranged_Damage",
     "duration": 2.8

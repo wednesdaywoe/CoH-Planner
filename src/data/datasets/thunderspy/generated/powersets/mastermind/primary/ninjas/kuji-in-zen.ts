@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const KujiInZen: Power = {
   "name": "Kuji In Zen",
   "internalName": "Kuji_In_Zen",
-  "available": 0,
+  "available": 31,
   "description": "Kuji In Zen will automatically and permanently bestow the most advanced techniques and powers to all of your Ninja Henchman. The Enlightened Ninja will gain new abilities, powers and weapons. The powers gained are unique and dependent upon the type of Ninja Henchman that is Enlightened. This power only works on your Ninja Henchmen and you can only Enlighten your Ninja Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Enlighten Ninja Henchman",
   "icon": "ninjas_upgradeequipment.png",

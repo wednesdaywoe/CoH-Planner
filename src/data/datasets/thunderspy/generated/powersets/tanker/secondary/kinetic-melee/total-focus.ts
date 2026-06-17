@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TotalFocus: Power = {
   "name": "Concentrated Strike",
   "internalName": "Total_Focus",
-  "available": 0,
+  "available": 37,
   "description": "Concentrated Strike is a slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Concentrated Strike, its recharge time is very long.  Damage: Extreme, Recharge: Long",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient",
   "icon": "kineticattack_totalfocus.png",
@@ -42,7 +42,7 @@ export const TotalFocus: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1,
     "table": "Melee_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Pounce: Power = {
   "name": "Pounce",
   "internalName": "Pounce",
-  "available": 0,
+  "available": -1,
   "description": "While in Prowler form you can use Pounce to land a devastating attack to deal Superior Lethal damage and stunning even the toughest foe very briefly. The target will also bleed for a short time causing damage over time. If you are hidden with Primalist's Cloak when you execute this attack you have a 100% chance to deal additional damage, inflict a longer duration stun and a more powerful damage over time effect.  Pounce builds 1 Primal Energy, but will build 2 if the user attacks while concealed from Primalist's Cloak. Damage: Special, Recharge: Long",
   "shortHelp": "Melee, Special DMG(Lethal), Foe Stun, Moderate DoT(Lethal), Requires Prowler Form",
   "icon": "feralmight_pounce.png",
@@ -39,12 +39,12 @@ export const Pounce: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 2.76,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 4.1
@@ -65,12 +65,12 @@ export const Pounce: Power = {
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Lethal",
           "scale": 1.38,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Lethal",
           "scale": 0.2,
           "table": "Melee_Damage",
           "duration": 4.1

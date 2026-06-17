@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SporeCloud: Power = {
   "name": "Spore Cloud",
   "internalName": "Spore_Cloud",
-  "available": 0,
+  "available": 9,
   "description": "You create a large cloud of toxic spores around your targeted foe. The target and all nearby foes will have their damage output, chance to hit and regeneration rate reduced. Recharge: Long",
   "shortHelp": "Toggle (Targeted AoE), Foe -Dmg(All), -To Hit, -Regen",
   "icon": "natureaffinity_sporecloud.png",

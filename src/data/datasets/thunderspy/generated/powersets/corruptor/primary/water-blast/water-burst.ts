@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WaterBurst: Power = {
   "name": "Water Burst",
   "internalName": "Water_Burst",
-  "available": 0,
+  "available": 1,
   "description": "You cause water to violently explode from beneath your target's feet blasting all foes nearby with freezing cold water. Affected targets will suffer Moderate Cold and Smashing damage, have their movement speed reduced and may be knocked down by the force of the blast. Water Burst consumes all Tidal Power. It will deal additional cold damage and have a greater chance to knockdown for each stack of Tidal Power. If you have 3 stacks of Tidal Power Water Burst will have a 100% chance to knock the targets into the air. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Cold/Smash), Foe -Speed, Knockdown, Self -Tidal Power",
   "icon": "waterblast_waterburst.png",
@@ -43,7 +43,7 @@ export const WaterBurst: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.225,
     "table": "Ranged_Damage"
   },
@@ -54,7 +54,7 @@ export const WaterBurst: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Cold",
         "scale": 0.9,
         "table": "Ranged_Damage"
       }
@@ -65,7 +65,7 @@ export const WaterBurst: Power = {
       "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Cold",
         "scale": 0.045,
         "table": "Ranged_Damage"
       },
@@ -77,7 +77,7 @@ export const WaterBurst: Power = {
       "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Cold",
         "scale": 0.108,
         "table": "Ranged_Damage"
       },
@@ -89,7 +89,7 @@ export const WaterBurst: Power = {
       "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Cold",
         "scale": 0.225,
         "table": "Ranged_Damage"
       },

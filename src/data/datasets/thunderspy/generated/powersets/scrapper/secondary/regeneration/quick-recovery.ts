@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const QuickRecovery: Power = {
   "name": "Quick Recovery",
   "internalName": "Quick_Recovery",
-  "available": 0,
+  "available": 3,
   "description": "You recover Endurance at a faster rate than normal. This power is always on.",
   "shortHelp": "Auto: Self +Recovery",
   "icon": "regeneration_quickrecovery.png",

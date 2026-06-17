@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Microburst: Power = {
   "name": "Microburst",
   "internalName": "Microburst",
-  "available": 0,
+  "available": 17,
   "description": "You release all available Pressure to create an extremely powerful blast of air that descends from the skies and spreads out over a large radius. Any foes caught within the burst are immediately stunned by the force of the wind and suffer smashing damage.Flying foes are knocked out of the sky, while all foes suffer reduced movement speed that lingers for some time. The damage done increases in proportion to the amount of Pressure released when using this power.  Also, Microburst can reduce your target's defenses at the when the highest levels of Pressure are released. Damage: Variable, Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Minor DMG(Smashing), Stun(Foe), -Speed(Foe, All), -Fly(Foe), -Rech(Foe), Chance for -DEF(Foe, All), Consumes Pressure",
   "icon": "windcontrol_microburst.png",
@@ -46,7 +46,7 @@ export const Microburst: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.2,
     "table": "Ranged_Damage"
   },

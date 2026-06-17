@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerBlast: Power = {
   "name": "Power Blast",
   "internalName": "Power_Blast",
-  "available": 0,
+  "available": 3,
   "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock them back. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Energy/Smash), Foe Knockback",
   "icon": "energyassault_powerblast.png",
@@ -39,7 +39,7 @@ export const PowerBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.588,
     "table": "Ranged_Damage"
   },

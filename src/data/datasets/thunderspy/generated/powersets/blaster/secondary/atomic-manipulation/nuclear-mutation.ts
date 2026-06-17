@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const NuclearMutation: Power = {
   "name": "Half-life",
   "internalName": "Nuclear_Mutation",
-  "available": 0,
+  "available": 37,
   "description": "Using your inner radiation, you can revive yourself and and Mutate into a killing machine. After reviving you gain increased damage, chance to hit, Endurance recovery, and attack speed and are protected from XP Debt for 90 seconds. Recharge: Long",
   "shortHelp": "Close, Ally Rez, Special",
   "icon": "radiationpoisoning_mutation.png",

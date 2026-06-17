@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EMPArrow: Power = {
   "name": "EMP Arrow",
   "internalName": "EMP_Arrow",
-  "available": 0,
+  "available": 37,
   "description": "This arrow can unleash a massive pulse of electromagnetic energy on impact. This EMP can affect machines, and is even powerful enough to affect synaptic brain patterns. It will incapacitate all foes in its radius. Additionally, most machines and robots will take moderate high damage. However, this power uses a lot of Endurance and leaves you unable to recover Endurance for a while. Recharge: Very Long",
   "shortHelp": "AoE, Foe Hold, Special vs. Robots, Self -Recovery",
   "icon": "trickarrow_stun.png",

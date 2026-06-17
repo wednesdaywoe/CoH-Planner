@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Evolution: Power = {
   "name": "Adaptation",
   "internalName": "Evolution",
-  "available": 0,
+  "available": 9,
   "description": "Adaptation grants access to three Adaptation styles; Efficient, Defensive, and Offensive.",
   "shortHelp": "Gain Efficient, Defensive and Offensive Adaptations",
   "icon": "bioorganicarmor_adaptation.png",

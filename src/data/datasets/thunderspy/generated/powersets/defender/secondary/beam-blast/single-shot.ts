@@ -39,7 +39,7 @@ export const SingleShot: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1,
     "table": "Ranged_Damage"
   }

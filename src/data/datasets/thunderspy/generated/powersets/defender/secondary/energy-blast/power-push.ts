@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerPush: Power = {
   "name": "Power Push",
   "internalName": "Power_Push",
-  "available": 0,
+  "available": 27,
   "description": "This ranged attack deals little damage, but sends the target flying for a great distance. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged Minor DMG(Energy/Smash), Foe High Knockback",
   "icon": "powerblast_powerpush.png",
@@ -39,7 +39,7 @@ export const PowerPush: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.12,
     "table": "Ranged_Damage"
   },

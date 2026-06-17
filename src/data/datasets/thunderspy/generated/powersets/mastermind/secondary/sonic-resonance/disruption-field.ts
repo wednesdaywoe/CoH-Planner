@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DisruptionField: Power = {
   "name": "Disruption Field",
   "internalName": "Disruption_Field",
-  "available": 0,
+  "available": 9,
   "description": "You create a powerful sonic resonance around an ally, repelling and weakening the Damage Resistance of all nearby foes. Choosing this power locks out Disruption Aura Recharge: Moderate",
   "shortHelp": "Toggle Ranged (Target Ally AoE): Foe Knockdown, Foe -Res",
   "icon": "sonicdebuff_teamknockback.png",

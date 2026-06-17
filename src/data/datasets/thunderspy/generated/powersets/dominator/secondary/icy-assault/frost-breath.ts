@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FrostBreath: Power = {
   "name": "Frost Breath",
   "internalName": "Frost_Breath",
-  "available": 0,
+  "available": 9,
   "description": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Close (Cone), Moderate DoT(Cold), Foe -Recharge, -SPD",
   "icon": "iceassault_frost.png",

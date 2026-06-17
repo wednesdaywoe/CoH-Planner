@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HunterForm: Power = {
   "name": "Hunter Form",
   "internalName": "Hunter_Form",
-  "available": 0,
+  "available": 5,
   "description": "By activating this toggle, you will shapeshift into the mighty Hunter. This wolf-like creature attacks its foes with tooth and nail. While in this form you will be focused on delivering powerful debuff effects onto foes you strike with your melee attacks as well as area of effect debuffs that affect all nearby foes. You'll also benefit from an increase to movement and jumping speed. Hunter Form costs no endurance and cannot be slotted. However, it grants the user the Hunter's Howl power. This powerful debuff consumes the user's Primal Energy to deliver a powerful debuff to nearby foes. It can be slotted as normal. While shapeshifted you will have limited access to Pool Powers. Recharge: Fast",
   "shortHelp": "Toggle, Hunter Form",
   "icon": "feralmight_hunterform.png",

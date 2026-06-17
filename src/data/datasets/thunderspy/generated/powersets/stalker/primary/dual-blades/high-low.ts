@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HighLow: Power = {
   "name": "One Thousand Cuts",
   "internalName": "High_Low",
-  "available": 0,
+  "available": 31,
   "description": "Unleashes a flurry of attacks on all foes in a cone in front of you, dealing moderate lethal damage to each foe hit. This power is the finishing move for the Weaken combination attack. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), Foe Knockback",
   "icon": "dualblades_highlow.png",
@@ -41,7 +41,7 @@ export const HighLow: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.151,
     "table": "Melee_Damage",
     "duration": 2.05
@@ -52,19 +52,23 @@ export const HighLow: Power = {
       "label": "Conditional",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 2.21,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.27,
-          "table": "Melee_Damage",
-          "duration": 3.1
-        }
-      ]
+      "damage": {
+        "type": "Lethal",
+        "scale": 2.21,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.27,
+        "table": "Melee_Damage",
+        "duration": 3.1
+      }
     }
   ]
 };

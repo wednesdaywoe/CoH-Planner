@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ShatterArmor: Power = {
   "name": "Rend Armor",
   "internalName": "Shatter_Armor",
-  "available": 0,
+  "available": 27,
   "description": "You batter your enemy with your mighty weapon dealing Extreme Smashing damage and reducing their resistance to damage as well as their defense to all types of attacks for a short time. Damage: Extreme, Recharge: Long",
   "shortHelp": "Melee, Extreme DMG(Smashing), Foe -Def(All), -Res(All)",
   "icon": "titanweapons_shatterarmor.png",

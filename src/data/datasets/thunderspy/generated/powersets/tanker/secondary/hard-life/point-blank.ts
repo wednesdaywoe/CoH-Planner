@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PointBlank: Power = {
   "name": "Point Blank",
   "internalName": "Point_Blank",
-  "available": 0,
+  "available": 34,
   "description": "The blast from a shotgun is devastating at close range. Deals extreme damage to a target in melee range. High chance of knocking the target back.",
   "shortHelp": "Melee, Lethal DMG",
   "icon": "dualpistols_executionersshot.png",

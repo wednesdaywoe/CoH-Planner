@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DispersionBubble: Power = {
   "name": "Dispersion Bubble",
   "internalName": "Dispersion_Bubble",
-  "available": 0,
+  "available": 11,
   "description": "Creates a large bubble which protects all allies inside. While active, the Dispersion Bubble gives all allies within increased Defense against all attack types. The Dispersion Bubble also protects allies from Immobilization, Disorient, and Hold effects. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Team +Res(Hold, Immobilize, Disorient) +DEF(All)",
   "icon": "forcefield_dispersionbubble.png",

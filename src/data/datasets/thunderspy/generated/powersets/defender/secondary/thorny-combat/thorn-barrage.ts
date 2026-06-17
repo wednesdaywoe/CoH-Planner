@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ThornBarrage: Power = {
   "name": "Thorn Barrage",
   "internalName": "Thorn_Barrage",
-  "available": 0,
+  "available": 34,
   "description": "A devastating attack, Thorn Barrage unleashes your Thorns at high velocity causing severe damage at range.  The impact of this attack can knock most foes on their back. Thorn poison deals additional Toxic damage and can reduce your foes Defense. Damage: High, Recharge: Slow",
   "shortHelp": "High DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_thornbarrage.png",
@@ -40,13 +40,13 @@ export const ThornBarrage: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.53,
       "table": "Ranged_Damage",
       "duration": 1.75
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 3.1

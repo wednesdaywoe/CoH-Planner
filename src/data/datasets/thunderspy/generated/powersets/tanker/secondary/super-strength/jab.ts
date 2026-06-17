@@ -42,7 +42,7 @@ export const Jab: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1,
     "table": "Melee_Damage"
   },

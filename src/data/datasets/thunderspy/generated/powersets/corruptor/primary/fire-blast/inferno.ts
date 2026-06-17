@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Inferno: Power = {
   "name": "Inferno",
   "internalName": "Inferno",
-  "available": 0,
+  "available": 31,
   "description": "Unleashes a massive fiery explosion to devastate all nearby enemies and set them ablaze. Inferno deals Extreme Fire damage to all nearby foes and inflicts Moderate Fire damage over time.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Fire/Smash), Foe Moderate DoT(Fire)",
   "icon": "fireblast_inferno.png",
@@ -38,12 +38,12 @@ export const Inferno: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.3,
       "table": "Ranged_Damage",
       "duration": 8.1
@@ -56,7 +56,7 @@ export const Inferno: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Fire",
         "scale": 2,
         "table": "Ranged_Damage"
       }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Radiance: Power = {
   "name": "Radiance",
   "internalName": "Radiance",
-  "available": 0,
+  "available": 19,
   "description": "You channel your light inwards, increasing damage and chance to hit. The blessing continues for 30 seconds, giving you a lingering damage and chance to hit after the initial burst fades. Recharge: Slow",
   "shortHelp": "Self, +Dmg, +Tohit)",
   "icon": "luminousblast_buildup.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HavokPunch: Power = {
   "name": "Havoc Punch",
   "internalName": "Havok_Punch",
-  "available": 0,
+  "available": 9,
   "description": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with a greater damage. Havoc Punch can may knock down targets, drain some Endurance from your target, or even overload their synapses, leaving them writhing for a moment.  A portion of the drained Endurance may be given back to you.  Disturbing an overloaded target will disperse the electrical charge and release them. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash/Energy), Foe Sleep, -End, Knock back",
   "icon": "electricitymanipulation_havokpunch.png",
@@ -43,12 +43,12 @@ export const HavokPunch: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 0.78,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 1.82,
       "table": "Melee_Damage"
     }

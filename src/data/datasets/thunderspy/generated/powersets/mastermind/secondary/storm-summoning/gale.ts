@@ -42,7 +42,7 @@ export const Gale: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.1,
     "table": "Ranged_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GeneticContamination: Power = {
   "name": "Genetic Contamination",
   "internalName": "Genetic_Contamination",
-  "available": 0,
+  "available": 25,
   "description": "You're capable of breaking down the genetic material of your foes with a powerful toxin that is produced by your Organic Armor. Nearby foes afflicted by Genetic Contamination will deal reduced damage and receive Toxic damage over time. While Defensive Adaptation is active, enemies deal even less damage. While Offensive Adaptation is active, the Toxic damage over time will ramp up at the cost of your resistances.",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Toxic), -Damage(All)",
   "icon": "bioorganicarmor_geneticcontamination.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HeatExhaustion: Power = {
   "name": "Heat Exhaustion",
   "internalName": "Heat_Exhaustion",
-  "available": 0,
+  "available": 34,
   "description": "Overwhelm a single foe with waves of exhausting heat. The initial effect will drain the target of some Endurance, but the heat is so overwhelming that the affected target will be weakened.  Their Damage output, Endurance Recovery and Hit Point Regeneration will all be reduced. Recharge: Long",
   "shortHelp": "Ranged Foe -DMG, -END, -Recovery, -Regeneration",
   "icon": "thermalradiation_heatexhaustion.png",

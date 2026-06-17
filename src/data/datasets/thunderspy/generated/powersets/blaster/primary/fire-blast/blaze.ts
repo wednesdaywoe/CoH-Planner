@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Blaze: Power = {
   "name": "Blaze",
   "internalName": "Blaze",
-  "available": 0,
+  "available": 7,
   "description": "A devastating flame attack. Damage: High, Recharge: Slow",
   "shortHelp": "High DMG(Fire)",
   "icon": "fireblast_blaze.png",
@@ -38,12 +38,12 @@ export const Blaze: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 2.12,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.225,
       "table": "Ranged_Damage",
       "duration": 4.1

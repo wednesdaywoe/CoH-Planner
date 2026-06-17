@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Earthquake: Power = {
   "name": "Earthquake",
   "internalName": "Earthquake",
-  "available": 0,
+  "available": 17,
   "description": "Generates a powerful, localized Earthquake. Most foes that pass through the location will fall down. The violent shaking also reduces their chance to hit and Defense. Recharge: Slow",
   "shortHelp": "Ranged (Location AoE), Foe Knockback, -DEF, -To Hit",
   "icon": "earthgrasp_earthquake.png",

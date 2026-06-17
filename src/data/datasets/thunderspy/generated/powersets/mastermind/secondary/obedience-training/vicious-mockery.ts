@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ViciousMockery: Power = {
   "name": "Vicious Mockery",
   "internalName": "Vicious_Mockery",
-  "available": 0,
+  "available": 1,
   "description": "You berate your foes and your Vicious Mockery sweeps them off their feet.",
   "shortHelp": "Melee Cone Foe Knockdown",
   "icon": "obediencetraining_viciousmockery.png",

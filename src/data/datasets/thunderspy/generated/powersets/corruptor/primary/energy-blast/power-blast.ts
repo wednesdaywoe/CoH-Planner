@@ -39,7 +39,7 @@ export const PowerBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.492,
     "table": "Ranged_Damage"
   },
@@ -56,7 +56,7 @@ export const PowerBlast: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Energy",
         "scale": 1.64,
         "table": "Ranged_Damage"
       }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Geomancy: Power = {
   "name": "Geomancy",
   "internalName": "Geomancy",
-  "available": 0,
+  "available": 11,
   "description": "Geomancy is the purest expression of primal power, enabling you to interface with the ground nearby. While Geomancy is active, you gain bonus resists for each target in the area, in addition to resistance to immobilize, knockback, knockup, and repel.",
   "shortHelp": "Self +Res (Immobilize, Knockback, Knockup, Repel)",
   "icon": "natureaffinity_wildgrowth.png",

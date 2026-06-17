@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HallucinogenicSpray: Power = {
   "name": "Hallucinogenic Spray",
   "internalName": "Hallucinogenic_Spray",
-  "available": 0,
+  "available": 19,
   "description": "You can spray a cone of hallucinogenic gas that induces fear into any nearby foes.  Affected targets may choke on the gas as their movement and attack rate are severely reduced. Choosing this power locks out Neurotoxic Breath Recharge: Slow",
   "shortHelp": "Ranged (Cone), Foe Fear, -SPD, -Recharge",
   "icon": "poison_neurotoxicbreath.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RepulsionField: Power = {
   "name": "Repulsion Field",
   "internalName": "Repulsion_Field",
-  "available": 0,
+  "available": 27,
   "description": "This Toggle power creates a field that violently repels nearby foes. Each villain that is repelled costs you additional Endurance. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE Knockback",
   "icon": "forcefield_repulsionfield.png",

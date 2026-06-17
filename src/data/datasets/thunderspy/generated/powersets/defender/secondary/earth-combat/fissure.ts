@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Fissure: Power = {
   "name": "Fissure",
   "internalName": "Fissure",
-  "available": 0,
+  "available": 3,
   "description": "This powerful stomp can crack the earth itself, damaging a nearby targeted foe and any foes around it.  This Fissure can only affect foes on the ground, dealing moderate smashing damage and possibly throwing them into the air or disorienting them.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Close (Targeted AoE), Moderate DMG(Smash), Foe Knockback, Disorient",
   "icon": "earthassault_fissure.png",
@@ -43,7 +43,7 @@ export const Fissure: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.17,
     "table": "Ranged_Damage"
   },

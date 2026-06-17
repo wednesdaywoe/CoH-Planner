@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Blizzard: Power = {
   "name": "Blizzard",
   "internalName": "Blizzard",
-  "available": 0,
+  "available": 31,
   "description": "You can conjure a Blizzard that inflicts Extreme Cold and Lethal damage over time and can Slow the attack rate of all your opponents in a large area, reducing their chance to hit and possibly knocking them back.  Damage: Extreme(DoT), Recharge: Very Long",
   "shortHelp": "Ranged (Location AoE), Extreme DoT(Cold), Foe -To Hit, -SPD, -Recharge, Knockback",
   "icon": "iceblast_blizzard.png",

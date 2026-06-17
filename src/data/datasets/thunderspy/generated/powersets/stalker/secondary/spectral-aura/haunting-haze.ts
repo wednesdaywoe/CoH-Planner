@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HauntingHaze: Power = {
   "name": "Haunting Haze",
   "internalName": "Haunting_Haze",
-  "available": 0,
+  "available": 27,
   "description": "You're able to cause a fracture in the barrier between life and death in an area around you, this haze causes foes to have reduced perception radius and be slowed by the chilling forces of death. Feared targets within the area suffer from reduced damage and resistances. Recharge: Moderate",
   "shortHelp": "Toggle: PBAoE Foe -Perception, Slow, -Damage(Special), -Resistance(Special)",
   "icon": "spectralaura8.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Flay: Power = {
   "name": "Flay",
   "internalName": "Flay",
-  "available": 0,
+  "available": 1,
   "description": "Your sacred swords tear into your enemies, harming them for minor Lethal and Toxic damage. Enemies afflicted with Fester will bleed, taking additional Lethal damage over time. Applies Flay to the user, an effect that is used by other powers.",
   "shortHelp": "Lethal dmg, Toxic dmg",
   "icon": "paleblade_flay.png",
@@ -47,23 +47,27 @@ export const Flay: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
+      "id": "target-affected",
+      "label": "Target Already Affected",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 0.1,
-          "table": "Melee_Damage",
-          "duration": 3
-        },
-        {
-          "type": "Special",
-          "scale": 0.2,
-          "table": "Melee_Damage"
-        }
-      ]
+      "damage": {
+        "type": "Special",
+        "scale": 0.1,
+        "table": "Melee_Damage",
+        "duration": 3
+      }
+    },
+    {
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.2,
+        "table": "Melee_Damage"
+      }
     }
   ],
   "requires": "Tanker_Defense.Shield_Defense !"

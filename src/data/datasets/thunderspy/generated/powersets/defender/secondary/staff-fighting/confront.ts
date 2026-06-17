@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Confront: Power = {
   "name": "Feint",
   "internalName": "Confront",
-  "available": 0,
+  "available": 15,
   "description": "Allows you to trick foes to no longer attack you while granting you defense to area of effect attacks.  If you attack a Placated Foe, he will be able to attack you back. Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Placate, Self +DEF(AoE)",
   "icon": "stafffighting_placate.png",

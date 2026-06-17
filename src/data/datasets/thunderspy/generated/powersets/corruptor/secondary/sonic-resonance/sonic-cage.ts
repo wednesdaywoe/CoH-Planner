@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SonicCage: Power = {
   "name": "Sonic Cage",
   "internalName": "Sonic_Cage",
-  "available": 0,
+  "available": 27,
   "description": "Encases the target in an impenetrable field of sonic waves. The target cannot attack or be attacked.  Recharge: Moderate",
   "shortHelp": "Ranged, Foe Capture (Special)",
   "icon": "sonicdebuff_hold.png",

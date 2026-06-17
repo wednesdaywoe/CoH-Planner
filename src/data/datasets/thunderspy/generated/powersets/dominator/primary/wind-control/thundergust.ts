@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Thundergust: Power = {
   "name": "Thundergust",
   "internalName": "Thundergust",
-  "available": 0,
+  "available": 7,
   "description": "You unleash a powerful gust of wind in the direction of your foes. This gust has enough force to deal minor smashing damage to your foes and knock them to the ground. The debris blown at your opponent temporarily blinds them, reducing their chance to hit. This power builds Pressure. Damage: Minor, Recharge: Very Long",
   "shortHelp": "Ranged (Cone), Minor DMG(Smashing), Knockdown(Foe), -ToHit(Foe), Pressure Builder (Self)",
   "icon": "windcontrol_thundergust.png",
@@ -43,7 +43,7 @@ export const Thundergust: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.24,
     "table": "Ranged_Damage"
   }

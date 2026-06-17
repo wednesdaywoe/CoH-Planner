@@ -37,7 +37,7 @@ export const SnapShot: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.68,
     "table": "Ranged_Damage"
   },
@@ -48,7 +48,7 @@ export const SnapShot: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.68,
         "table": "Ranged_Damage"
       }

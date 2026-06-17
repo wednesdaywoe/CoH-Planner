@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CrushingField: Power = {
   "name": "Crushing Field",
   "internalName": "Crushing_Field",
-  "available": 0,
+  "available": 7,
   "description": "Creates a large gravitational field strong enough to Immobilize multiple foes. Crushing Field can also bring down flying entities. Slower and less damaging than Crush, but can capture multiple targets. Crushing Field deals Smashing damage over time and can Slow the movement of targets that escape its grasp. Damage: Minor(DoT), Recharge: Moderate",
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Smash), Foe Immobilize, -Fly",
   "icon": "gravitycontrol_crushingfield.png",

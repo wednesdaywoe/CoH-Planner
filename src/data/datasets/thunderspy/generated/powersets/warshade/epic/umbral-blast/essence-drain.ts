@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EssenceDrain: Power = {
   "name": "Essence Drain",
   "internalName": "Essence_Drain",
-  "available": 0,
+  "available": 7,
   "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to you. Foes drained in this manner have their attack rate and movement speed reduced. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Melee, Moderate DMG(Negative), Foe -Recharge, -SPD; Self +HP",
   "icon": "umbralblast_essencedrain.png",
@@ -41,7 +41,7 @@ export const EssenceDrain: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 1,
     "table": "Melee_Damage"
   }

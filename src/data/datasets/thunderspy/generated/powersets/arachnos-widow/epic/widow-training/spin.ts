@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Spin: Power = {
   "name": "Spin",
   "internalName": "Spin",
-  "available": 0,
+  "available": 11,
   "description": "Spin does moderate lethal damage to all foes within an 8' radius of you, then poisons them.  The poison does toxic damage over time and slows their recovery rate and movement speed.  NOTE: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.  Damage: Moderate Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG (Lethal/Toxic), DoT(Toxic), -Regeneration, -Recharge, -SPD.",
   "icon": "widowtraining_spin.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Forge: Power = {
   "name": "Forge",
   "internalName": "Forge",
-  "available": 0,
+  "available": 27,
   "description": "Forge a single ally target into a killing machine.  Forge immensely enhances a single ally's Damage and chance to hit.  Recharge: Long",
   "shortHelp": "Ally +DMG, +To Hit",
   "icon": "thermalradiation_forge.png",

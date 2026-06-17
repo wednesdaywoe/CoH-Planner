@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TotalDomination: Power = {
   "name": "Total Domination",
   "internalName": "Total_Domination",
-  "available": 0,
+  "available": 31,
   "description": "Tears at the mind of a target foe and those near them. Dominate renders all affected foes helpless, lost in their own minds and unable to defend themselves. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "mentalcontrol_freeze.png",

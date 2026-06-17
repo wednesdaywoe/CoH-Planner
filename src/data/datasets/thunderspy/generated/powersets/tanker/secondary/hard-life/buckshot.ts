@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Buckshot: Power = {
   "name": "Buckshot",
   "internalName": "Buckshot",
-  "available": 0,
+  "available": 3,
   "description": "The tried and true standard of shotguns. Buckshot peppers a wide area with lead. May knock targets down.",
   "shortHelp": "Ranged, Lethal DMG",
   "icon": "dualpistols_emptyclips.png",

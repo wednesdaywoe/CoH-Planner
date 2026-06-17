@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DullPain: Power = {
   "name": "Dull Pain",
   "internalName": "Dull_Pain",
-  "available": 0,
+  "available": 9,
   "description": "Using ancient techniques, you can make yourself more resilient to pain. Thus, you can take more damage before being defeated. When you activate this power you will increase your maximum Hit Points for a couple of minutes. Recharge: Very Long",
   "shortHelp": "Self +Max HP",
   "icon": "regeneration_dullpain.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SeekerDrones: Power = {
   "name": "Seeker Drones",
   "internalName": "Seeker_Drones",
-  "available": 0,
+  "available": 19,
   "description": "You create two Seeker Drones. These Seeker Drones will follow you until they detect an enemy and then they will zero in on their targets and detonate on impact. The small explosive flash of energy does only minor damage, but the concussion can weaken foes.  Affected targets will have reduced Damage, chance to hit and Perception and may even be Disoriented for a short while.  You can only ever have Two Seeker Drones out at one time and they can be destroyed by your foes. Recharge: Long",
   "shortHelp": "Summon Seekers: Ranged Disorient, -DMG, -To Hit, -Perception, Low DMG(Energy)",
   "icon": "traps_droppedaoedebuffdamage.png",

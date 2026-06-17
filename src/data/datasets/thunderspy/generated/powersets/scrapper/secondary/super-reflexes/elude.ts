@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Elude: Power = {
   "name": "Elude",
   "internalName": "Elude",
-  "available": 0,
+  "available": 37,
   "description": "You can improve your reflexes, making yourself so quick you can Elude almost any attack, be it ranged, melee, or area effect. Your running speed, jumping height, and Endurance Recovery are also increased. Elude also grants you high resistance to Defense DeBuffs. In addition you will gain a very large amount of damage absorption, effectively turning attacks that do manage to connect to become glancing blows.  Recharge: Very Long",
   "shortHelp": "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Absorb",
   "icon": "superreflexes_elude.png",

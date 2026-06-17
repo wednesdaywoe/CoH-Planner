@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LightningStorm: Power = {
   "name": "Lightning Storm",
   "internalName": "Lightning_Storm",
-  "available": 0,
+  "available": 31,
   "description": "You can create a massive Lightning Storm that will strike any foe that approaches you. Lightning from this storm can knock down and damage all nearby foes, and can even instill panic. Lightning bolts will continue to fall as long as the storm remains. Recharge: Long",
   "shortHelp": "Create Storm: Ranged, High DMG(Energy), Foe -End",
   "icon": "stormsummoning_lightningstorm.png",

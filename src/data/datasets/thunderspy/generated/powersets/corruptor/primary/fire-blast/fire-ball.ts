@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FireBall: Power = {
   "name": "Fire Ball",
   "internalName": "Fire_Ball",
-  "available": 0,
+  "available": 1,
   "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
   "icon": "fireblast_fireball.png",
@@ -40,12 +40,12 @@ export const FireBall: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.2,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.15,
       "table": "Ranged_Damage",
       "duration": 2.1
@@ -58,7 +58,7 @@ export const FireBall: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Fire",
         "scale": 0.9,
         "table": "Ranged_Damage"
       }

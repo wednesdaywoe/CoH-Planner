@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnergyCloak: Power = {
   "name": "Energy Cloak",
   "internalName": "Energy_Cloak",
-  "available": 0,
+  "available": 34,
   "description": "The Energy Cloak bends light around you so you become partially invisible. While Cloaked you can only be seen at very close range. If you attack while Cloaked, you will be discovered. Even if discovered, you still maintain a Defense bonus to all attacks. Unlike some stealth powers, the Energy Cloak has no movement penalty.   The Energy Cloak will not work with any other form of Concealment powers.  Recharge: Slow",
   "shortHelp": "Toggle: Self Stealth, +DEF",
   "icon": "energyaura_cloak.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Clobber: Power = {
   "name": "Clobber",
   "internalName": "Clobber",
-  "available": 0,
+  "available": 37,
   "description": "You Clobber your foe with a massive swing of your mace.  This attack deals exceptional damage and can leave most opponents disoriented for a period of time. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Smashing), Disorient",
   "icon": "mace_clobber.png",
@@ -38,7 +38,7 @@ export const Clobber: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 2.92,
     "table": "Melee_Damage"
   },

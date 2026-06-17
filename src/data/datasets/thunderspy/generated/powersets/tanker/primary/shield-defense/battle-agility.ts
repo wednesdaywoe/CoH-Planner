@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BattleAgility: Power = {
   "name": "Active Defense",
   "internalName": "Battle_Agility",
-  "available": 0,
+  "available": 5,
   "description": "When you activate this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Repel, Knockback, Hold and Defense Debuff effects for a short duration.  Recharge: Very Long",
   "shortHelp": "Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback, Defense Debuff)",
   "icon": "shielddefense_battleagility.png",

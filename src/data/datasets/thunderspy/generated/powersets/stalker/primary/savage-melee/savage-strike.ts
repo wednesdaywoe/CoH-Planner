@@ -36,7 +36,7 @@ export const SavageStrike: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.68,
     "table": "Melee_Damage"
   },
@@ -47,7 +47,7 @@ export const SavageStrike: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.68,
         "table": "Melee_Damage"
       }

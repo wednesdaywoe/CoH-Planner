@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Thaw: Power = {
   "name": "Thaw",
   "internalName": "Thaw",
-  "available": 0,
+  "available": 19,
   "description": "Warms an ally and frees him from any Disorient, Hold, Sleep, Slow, Confuse, Fear and Immobilize effects and leaves them resistant to such effects for a good while. Thaw also grants the target some resistance to Cold damage. Some of the effects of this power will improve with Multiple applications and as you advance in level. Recharge: Fast",
   "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Cold, Slow)",
   "icon": "thermalradiation_thaw.png",

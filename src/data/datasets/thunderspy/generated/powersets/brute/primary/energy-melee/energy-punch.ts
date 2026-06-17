@@ -40,7 +40,7 @@ export const EnergyPunch: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.3,
     "table": "Melee_Damage"
   },

@@ -37,7 +37,7 @@ export const PsionicDart: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.84,
     "table": "Ranged_Damage"
   }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RallyTheMilitia: Power = {
   "name": "Rally The Militia",
   "internalName": "Rally_The_Militia",
-  "available": 0,
+  "available": 17,
   "description": "You rally the militia calling forth the local town militia and inspiring those around you.  Increasing both you and your henchmen defenses and regeneration.  Recharge: Very Long",
   "shortHelp": "PBAoE,Self, Pets +Defense, +Regeneration",
   "icon": "knights_rallythemilitia.png",

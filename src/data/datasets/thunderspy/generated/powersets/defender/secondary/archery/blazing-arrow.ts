@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BlazingArrow: Power = {
   "name": "Blazing Arrow",
   "internalName": "Blazing_Arrow",
-  "available": 0,
+  "available": 9,
   "description": "You fire a Blazing Arrow at your foe, dealing some Lethal damage and causing them to catch on fire and burn. Damage: High, Recharge: Slow",
   "shortHelp": "Ranged, High DMG(Lethal), Minor DoT(Fire)",
   "icon": "archery_flamingarrow.png",
@@ -38,12 +38,12 @@ export const BlazingArrow: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 1.96,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.125,
       "table": "Ranged_Damage",
       "duration": 4.12

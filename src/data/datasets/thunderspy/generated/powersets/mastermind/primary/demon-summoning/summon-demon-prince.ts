@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SummonDemonPrince: Power = {
   "name": "Summon Demon Prince",
   "internalName": "Summon_Demon_Prince",
-  "available": 0,
+  "available": 25,
   "description": "Summons forth a foul Demon Prince from the deepest reaches of the Abyss. The Demon Prince is mighty among its kind and is a master of cold powers. It serves the conjuror only so that it may wreak havoc upon the material plane.�The Demon has some defense versus lethal, smashing, fire and cold attacks. You may only have 1 Demon Prince under your control at any given time. If you attempt to summon another Demon Prince the power will fail. Recharge: Very Long",
   "shortHelp": "Summon Demon Prince",
   "icon": "demonsummoning_summondemonprince.png",

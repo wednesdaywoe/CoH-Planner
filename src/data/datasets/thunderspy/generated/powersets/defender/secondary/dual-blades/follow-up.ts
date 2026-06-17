@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FollowUp: Power = {
   "name": "Blinding Feint",
   "internalName": "Follow_Up",
-  "available": 0,
+  "available": 19,
   "description": "You perform a feint attack that deals light damage. After this attack hits, it gives you a large bonus to your chance to hit and damage for a brief time. This power is the finishing move in the Empower combination attack. Damage: Light, Recharge: Slow",
   "shortHelp": "Melee, Light DMG(Lethal), Self +DMG, +To Hit",
   "icon": "dualblades_followup.png",
@@ -38,7 +38,7 @@ export const FollowUp: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.8,
     "table": "Melee_Damage"
   }

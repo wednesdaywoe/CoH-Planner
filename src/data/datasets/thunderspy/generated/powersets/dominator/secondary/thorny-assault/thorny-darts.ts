@@ -41,12 +41,12 @@ export const ThornyDarts: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.84,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.05,
       "table": "Ranged_Damage",
       "duration": 3.1

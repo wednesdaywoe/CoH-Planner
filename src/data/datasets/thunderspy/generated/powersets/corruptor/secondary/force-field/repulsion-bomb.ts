@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RepulsionBomb: Power = {
   "name": "Repulsion Bomb",
   "internalName": "Repulsion_Bomb",
-  "available": 0,
+  "available": 34,
   "description": "A powerful Repulsion Bomb is hurled at your foes dealing a moderate amount of damage and knocking them off of their feet. Foes struck by Repulsion Bomb have a good chance to become disoriented.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash), Foe Knockdown, Disorient",
   "icon": "forcefield_repulsionbomb.png",
@@ -43,7 +43,7 @@ export const RepulsionBomb: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1,
     "table": "Ranged_Damage"
   },
@@ -61,7 +61,7 @@ export const RepulsionBomb: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 1,
         "table": "Ranged_Damage"
       }

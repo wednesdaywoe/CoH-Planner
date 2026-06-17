@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FRTDominate: Power = {
   "name": "Dominate",
   "internalName": "FRT_Dominate",
-  "available": 0,
+  "available": 11,
   "description": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in his own mind and unable to defend himself. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Hold",
   "icon": "fortunatatraining_dominate.png",
@@ -39,7 +39,7 @@ export const FRTDominate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 1.387692,
     "table": "Ranged_Damage"
   },

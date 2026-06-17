@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const StormKick: Power = {
   "name": "Spinning Kick",
   "internalName": "Storm_Kick",
-  "available": 0,
+  "available": 1,
   "description": "You perform a high spinning reverse roundhouse kick, smashing anything in front of you with devastating force.  You can activate this ability at any time, no matter what you have targeted; it will strike enemies directly in front of your character, rather than enemies near your target.  Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee Cone, Moderate DMG(Smash), Knockdown",
   "icon": "spinningkickma.png",
@@ -40,7 +40,7 @@ export const StormKick: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.4,
     "table": "Melee_Damage"
   }

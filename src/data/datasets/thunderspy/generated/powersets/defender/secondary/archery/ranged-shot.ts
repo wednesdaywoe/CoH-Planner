@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RangedShot: Power = {
   "name": "Ranged Shot",
   "internalName": "Ranged_Shot",
-  "available": 0,
+  "available": 34,
   "description": "A long range shot that blasts your foes. Like most sniper attacks, this power has a bonus to Accuracy, but is best fired from a distance as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Lethal)",
   "icon": "archery_sniperarrow.png",
@@ -40,7 +40,7 @@ export const RangedShot: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 2.76,
     "table": "Ranged_Damage"
   }

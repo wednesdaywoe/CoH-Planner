@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DNASiphon: Power = {
   "name": "DNA Siphon",
   "internalName": "DNA_Siphon",
-  "available": 0,
+  "available": 27,
   "description": "DNA Siphon drains the cellular material of nearby enemies, inflicting them with minor Lethal damage and some Toxic damage over time. This grants you some Health and Endurance for each enemy struck. While Efficient Adaptation is active, this power grants a small haste boost for each nearby target and will trigger off of defeated enemies. While Defensive Adaptation is active, this power grants a minor HoT for each target struck. While Offensive Adaptation is active, this power grants an increase to damage and a decrease to defense for each target struck.",
   "shortHelp": "Click, PBAoE Minor DMG(Lethal/Toxic) Foe -Regen, Taunt, Self +HP, +End, +Special",
   "icon": "bioorganicarmor_dnasiphon.png",
@@ -47,7 +47,7 @@ export const DNASiphon: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.2,
         "table": "Melee_Damage"
       }

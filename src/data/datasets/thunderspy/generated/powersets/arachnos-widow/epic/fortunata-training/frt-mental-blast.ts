@@ -37,7 +37,7 @@ export const FRTMentalBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 1.053628,
     "table": "Ranged_Damage"
   }

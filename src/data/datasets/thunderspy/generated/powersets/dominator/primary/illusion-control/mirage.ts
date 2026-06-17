@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Mirage: Power = {
   "name": "Mass Hysteria",
   "internalName": "Mirage",
-  "available": 0,
+  "available": 11,
   "description": "You blanket a targeted area in deceptive illusions immediately confusing foes within the area. Any foe who enters this area will have their chance to hit reduced and has a chance to be confused for a short period of time. Recharge: Very Slow",
   "shortHelp": "Target (Location AoE), Foe Confuse, -To Hit",
   "icon": "illusionmirage.png",

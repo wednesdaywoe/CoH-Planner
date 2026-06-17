@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WhirlingSword: Power = {
   "name": "The Lotus Drops",
   "internalName": "Whirling_Sword",
-  "available": 0,
+  "available": 27,
   "description": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), Foe -Def",
   "icon": "katana_whirlingsword.png",
@@ -41,12 +41,12 @@ export const WhirlingSword: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 1,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.12,
       "table": "Melee_Damage",
       "duration": 2.1

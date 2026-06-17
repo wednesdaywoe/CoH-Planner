@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EaglesClaw: Power = {
   "name": "Eagles Claw",
   "internalName": "Eagles_Claw",
-  "available": 0,
+  "available": 37,
   "description": "You can perform a devastating kick that can severely Disorient most opponents. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Smash), Foe Disorient",
   "icon": "martialarts_eaglesclaw.png",
@@ -42,7 +42,7 @@ export const EaglesClaw: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 2.92,
     "table": "Melee_Damage"
   },

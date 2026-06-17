@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PrimalistsCloak: Power = {
   "name": "Primalist's Cloak",
   "internalName": "Primalists_Cloak",
-  "available": 0,
+  "available": 19,
   "description": "While active Primalist's Cloak significantly boosts your defense to area of effect attacks allowing the Primalist to be less likely to be struck by stray splash damage.  Half of this large area of effective defense boost is suppressed when you exit stealth.  Additionally, you will gain a measure of stealth and a moderate amount of resistance to defense debuffs. While in Prowler Form you will have significantly improved stealth and have a 50% chance to land a critical hit while concealed by Primalist's Cloak. Recharge: Long",
   "shortHelp": "Toggle, Stealth, +Def(AoE), +Res(Defense Debuffs)",
   "icon": "primalgifts_primalistscloak.png",

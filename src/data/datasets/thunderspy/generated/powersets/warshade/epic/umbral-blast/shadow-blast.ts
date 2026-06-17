@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ShadowBlast: Power = {
   "name": "Shadow Blast",
   "internalName": "Shadow_Blast",
-  "available": 0,
+  "available": 5,
   "description": "A much more powerful, yet slower version of Shadow Bolt. Shadow Blast sends focused negative Nictus energy at a foe.  This attack can knock down foes and will leave the target's attack rate and movement speed slowed. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
   "icon": "umbralblast_shadowblast.png",
@@ -41,7 +41,7 @@ export const ShadowBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 1.64,
     "table": "Ranged_Damage"
   },

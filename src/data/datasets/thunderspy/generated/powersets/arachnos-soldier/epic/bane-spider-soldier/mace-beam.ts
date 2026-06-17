@@ -39,7 +39,7 @@ export const MaceBeam: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.5,
     "table": "Ranged_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CrushingBlast: Power = {
   "name": "Crushing Blast",
   "internalName": "Crushing_Blast",
-  "available": 0,
+  "available": 3,
   "description": "You form the potential energies around you into a concentrated blast of surging energy aimed at a single target. This causes high smashing and energy damage on contact and reduces the target's movement and recharge speed slightly. The force of the impact can cause some lethal damage over time.  Crushing Blast awards 1 stack of Impulse.  Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG (Smashing/Energy), Foe Minor DoT (Lethal), -Speed, -Recharge, Self +Impulse",
   "icon": "kineticassault_crushingblast.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Bayonet: Power = {
   "name": "Bayonet",
   "internalName": "Bayonet",
-  "available": 0,
+  "available": 11,
   "description": "Your weapon includes a bayonet attachment which you can use to stab at your enemies for lethal damage as well as causing them to bleed losing health over time. NOTE: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.  Damage: Moderate, Recharge: Medium",
   "shortHelp": "Melee, Moderate DMG(Lethal/Toxic), DoT(Lethal)",
   "icon": "arachnossoldier_bayonet.png",
@@ -38,12 +38,12 @@ export const Bayonet: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 1.008,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.12,
       "table": "Melee_Damage",
       "duration": 5.1

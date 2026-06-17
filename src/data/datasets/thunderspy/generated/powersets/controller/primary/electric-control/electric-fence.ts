@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ElectricFence: Power = {
   "name": "Electric Fence",
   "internalName": "Electric_Fence",
-  "available": 0,
+  "available": 25,
   "description": "Surrounds and Immobilizes a single target in an Electric Fence. Deals some damage over time and slowly drains some Endurance. Useful for keeping villains at bay and bringing down fliers. Targets close enough to the main target take half damage. This power does not benefit from containment Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DoT(Energy), Foe Immobilize, -End, -Fly, -Knockback",
   "icon": "electriccontrol_electricfence.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const MasterfulThrow: Power = {
   "name": "Masterful Throw",
   "internalName": "Masterful_Throw",
-  "available": 0,
+  "available": 37,
   "description": "You take careful aim and let loose an extremely accurate, extremely forceful blade. Damage: High, Recharge: Slow",
   "shortHelp": "Ranged, High DMG(Lethal), Chance for DoT (Lethal)",
   "icon": "martialassault_masterfulthrow.png",
@@ -40,12 +40,12 @@ export const MasterfulThrow: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 2.6,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 10

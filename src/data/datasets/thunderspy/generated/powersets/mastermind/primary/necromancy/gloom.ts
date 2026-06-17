@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Gloom: Power = {
   "name": "Gloom",
   "internalName": "Gloom",
-  "available": 0,
+  "available": 1,
   "description": "Gloom slowly drains a target of life, while reducing their chance to hit Slower than Dark Blast, but deals more damage over time. Damage: High(DoT), Recharge: Moderate",
   "shortHelp": "Ranged, High DoT(Negative), Foe -To Hit",
   "icon": "necromancy_gloom.png",

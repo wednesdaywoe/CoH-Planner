@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Evasion: Power = {
   "name": "Quick Recovery",
   "internalName": "Evasion",
-  "available": 0,
+  "available": 34,
   "description": "You recover Endurance at a faster rate than normal. This power is always on.",
   "shortHelp": "Auto: Self +Recovery",
   "icon": "srrecovery.png",

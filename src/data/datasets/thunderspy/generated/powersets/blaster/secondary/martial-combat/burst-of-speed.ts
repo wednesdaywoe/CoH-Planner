@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BurstofSpeed: Power = {
   "name": "Burst of Speed",
   "internalName": "Burst_of_Speed",
-  "available": 0,
+  "available": 9,
   "description": "Channeling physical Ki inwards, you move more quickly than can be seen for an instant, allowing you to move instantly to a targeted location and strike at targets within melee range.  You can use this Burst of Speed up to 3 times within 10 seconds of activating it initially.  Attacking at such high speed is dangerous to the user, as well - for each enemy you strike, you take minor damage.",
   "shortHelp": "Location AoE Moderate DMG (Smash), Self Teleport",
   "icon": "martialmanipulation_burstofspeed.png",

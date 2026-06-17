@@ -38,7 +38,7 @@ export const IceSword: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.6,
     "table": "Melee_Damage"
   }

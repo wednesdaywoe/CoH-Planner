@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Frost: Power = {
   "name": "Frost",
   "internalName": "Frost",
-  "available": 0,
+  "available": 3,
   "description": "You create a short cone of Frost in front of you that can deal some damage and Slow a foe's speed, due to their uncontrollable shivering. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Close (Cone), Moderate DoT(Cold), Foe -Recharge, -SPD",
   "icon": "icyonslaught_frost.png",

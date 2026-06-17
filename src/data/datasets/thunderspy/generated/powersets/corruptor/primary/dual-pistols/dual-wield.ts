@@ -42,7 +42,7 @@ export const DualWield: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.82,
       "table": "Ranged_Damage"
     },
@@ -59,7 +59,7 @@ export const DualWield: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 1.32,
         "table": "Ranged_Damage"
       }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WetIce: Power = {
   "name": "Wet Ice",
   "internalName": "Wet_Ice",
-  "available": 0,
+  "available": 9,
   "description": "When you activate this power, you cover yourself in a thick coating of slick, melting ice. This makes you slippery, leaving you nearly immune to Disorient, Immobilization, Hold, Sleep, Slow and Knockback effects. This power also adds a slight increase to your defense to all attacks except Psionics. Wet Ice also reduces Cold damage and grants you resistance to Defense DeBuffs. Recharge: Very Fast",
   "shortHelp": "Toggle: Self, +DEF(All but Psionics), +Res(Cold, Disorient, Immobilize, Hold, Sleep, Slow, Knockback, DeBuff DEF)",
   "icon": "icearmor_wetice.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TRVenomBolt: Power = {
   "name": "Venom Bolt",
   "internalName": "TR_Venom_Bolt",
-  "available": 0,
+  "available": 1,
   "description": "You launch a potent toxin from your Tarantula exoskeleton. Deals Energy damage and Toxic damage over time. Reduces the regeneration speed of the affected target. Requires Tarantula form to use. Recharge: Fast",
   "shortHelp": "Ranged: Light Energy, DoT(Toxic), Foe -Regen",
   "icon": "tarantulatraining_venombolt.png",

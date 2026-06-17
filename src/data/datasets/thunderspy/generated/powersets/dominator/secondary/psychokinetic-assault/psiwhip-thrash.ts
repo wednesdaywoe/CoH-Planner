@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PsiWhipThrash: Power = {
   "name": "Psi-Whip Thrash",
   "internalName": "PsiWhip_Thrash",
-  "available": 0,
+  "available": 9,
   "description": "You manifest your whip and make an impressive sweep causing moderate damage to enemies within a wide cone and also manifesting swords for each target hit. Targets that are struck may be knocked down. This Attack does not need a target to activate. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Short Ranged (Cone), Moderate DMG(Psi/Energy), Knockdown",
   "icon": "awakened_psionicslash.png",

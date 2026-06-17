@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TacticalTrainingLeadership: Power = {
   "name": "Tactical Training: Offensive",
   "internalName": "Tactical_Training:_Leadership",
-  "available": 0,
+  "available": 1,
   "description": "While this power is active, you and your nearby teammates deal more damage and have an increased chance to hit. Your advanced Tactics also increase your Perception so you can detect Stealthy foes.",
   "shortHelp": "Toggle: PBAoE, Team +DMG, +To Hit, +Perception",
   "icon": "teamwork_tacticaltrainingleadership.png",

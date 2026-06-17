@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Eviscerate: Power = {
   "name": "Eviscerate",
   "internalName": "Eviscerate",
-  "available": 0,
+  "available": 25,
   "description": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you. This attack has an exceptionally good critical hit capability, better than other Claw attacks, that can sometimes deal double damage. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), +Special",
   "icon": "claws_evicerate.png",
@@ -39,7 +39,7 @@ export const Eviscerate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.99,
     "table": "Melee_Damage"
   }

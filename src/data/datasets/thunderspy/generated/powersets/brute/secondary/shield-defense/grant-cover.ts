@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GrantCover: Power = {
   "name": "Grant Cover",
   "internalName": "Grant_Cover",
-  "available": 0,
+  "available": 27,
   "description": "You are able to use your shield to defend nearby allies.  Any teammates who remain nearby gain a bonus to their defense.  (NOTE: The defense bonus from this power is only applied to nearby team mates, but not yourself.)  Additionally, while this power is active, the user and his team mates  will gain some resistance to defense and recharge rate debuffs. Recharge: Slow",
   "shortHelp": "PBAoE, Team (but not self) +DEF(All but Psionic), Team +RES(Defense Debuff, Recharge Debuff)",
   "icon": "shielddefense_grantcover.png",

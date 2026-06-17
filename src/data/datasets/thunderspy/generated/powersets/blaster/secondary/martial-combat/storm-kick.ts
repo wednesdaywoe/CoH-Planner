@@ -38,7 +38,7 @@ export const StormKick: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.32,
     "table": "Melee_Damage"
   },

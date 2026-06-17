@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ChokingCloud: Power = {
   "name": "Choking Cloud",
   "internalName": "Choking_Cloud",
-  "available": 0,
+  "available": 27,
   "description": "While active, you generate toxic radioactive gas around yourself. Any nearby foes may be overcome by the gas, leaving them choking and helpless. Recharge: Long",
   "shortHelp": "Toggle: PBAoE, Foe Hold",
   "icon": "radiationpoisoning_chokingcloud.png",

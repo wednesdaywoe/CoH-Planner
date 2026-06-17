@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RadiantStrike: Power = {
   "name": "Radiant Strike",
   "internalName": "Radiant_Strike",
-  "available": 0,
+  "available": 5,
   "description": "The Radiant Strike is a slow melee attack, but makes up for it with superior damage. Radiant Strike releases Kheldian light on impact, which can Knock Back foes, bring down fliers, and reduce a target's Defense. This power can be used in Dwarf Form. Damage: Superior, Recharge: Moderate",
   "shortHelp": "Melee, Superior DMG(Smash/Energy), Foe -DEF, Knockback, -Fly",
   "icon": "luminousblast_radiantstrike.png",
@@ -41,7 +41,7 @@ export const RadiantStrike: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1,
     "table": "Melee_Damage"
   }

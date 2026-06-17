@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RagingTempest: Power = {
   "name": "Entangling Aura",
   "internalName": "Raging_Tempest",
-  "available": 0,
+  "available": 27,
   "description": "While this power is active there is a high chance that entangling vines will grasp nearby foes and render them held for a short time.   Recharge: Fast.",
   "shortHelp": "Toggle, Foe Hold",
   "icon": "natureaffinity_ragingtempest.png",

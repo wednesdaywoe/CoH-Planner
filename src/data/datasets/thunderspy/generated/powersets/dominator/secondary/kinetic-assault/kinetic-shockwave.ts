@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const KineticShockwave: Power = {
   "name": "Kinetic Shockwave",
   "internalName": "Kinetic_Shockwave",
-  "available": 0,
+  "available": 19,
   "description": "You form the potential energies around you into shockwave that erupts from your body and strikes nearby enemies. This shockwave causes moderate smashing and energy damage on impact and reduces the damage of affected foes. The force of the impact may knock affected targets down. Kinetic Shockwave's knockdown chance and damage scale with the number of consumed stacks.  If used when you have 5 stacks of Impulse, this power will consume all stacks of Impulse, has a chance to stun nearby foes, and has a chance to also immediately refresh Coalescence.  Damage: Moderate, Recharge: Long",
   "shortHelp": "PBAoE, Moderate DMG (Smashing), Foe Knockdown, -DMG, Self -Impulse",
   "icon": "kineticassault_kineticshockwave.png",
@@ -47,9 +47,9 @@ export const KineticShockwave: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Special",

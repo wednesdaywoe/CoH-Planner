@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DarkServant: Power = {
   "name": "Dark Servant",
   "internalName": "Dark_Servant",
-  "available": 0,
+  "available": 37,
   "description": "Summons a Dark Servant to your aid. The Dark Servant possesses an assortment of dark powers to weaken your foes. The summoned entity is not a willing servant, and it is only your power that binds it in this realm.  The Dark Servant can be buffed and healed. Recharge: Very Long",
   "shortHelp": "Summon Dark Servant: Ranged Debuff Special",
   "icon": "darkmiasma_darkservant.png",

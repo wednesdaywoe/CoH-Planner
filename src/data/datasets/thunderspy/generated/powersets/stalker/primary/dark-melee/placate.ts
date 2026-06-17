@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Placate: Power = {
   "name": "Dark Consumption",
   "internalName": "Placate",
-  "available": 0,
+  "available": 11,
   "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance. Damage: Moderate, Recharge: Very Long",
   "shortHelp": "PBAoE Moderate DMG(Negative), Self +End",
   "icon": "shadowfighting_darkconsumption.png",
@@ -38,7 +38,7 @@ export const Placate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.848,
     "table": "Melee_Damage"
   },
@@ -49,7 +49,7 @@ export const Placate: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Negative",
         "scale": 0.848,
         "table": "Melee_Damage"
       }

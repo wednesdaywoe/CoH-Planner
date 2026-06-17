@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ParalyticPoison: Power = {
   "name": "Paralytic Poison",
   "internalName": "Paralytic_Poison",
-  "available": 0,
+  "available": 9,
   "description": "This Paralytic Poison viciously attacks a foe's nervous system and can leave an affected target completely Held and defenseless. Recharge: Slow",
   "shortHelp": "Ranged Hold",
   "icon": "poison_paralytic.png",

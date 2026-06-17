@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HealingFlames: Power = {
   "name": "Healing Flames",
   "internalName": "Healing_Flames",
-  "available": 0,
+  "available": 3,
   "description": "You can concentrate for a few moments to heal yourself. The power of the flames can also protect you from Toxic Damage for a while. Recharge: Long",
   "shortHelp": "Self Heal, +Res(Toxic)",
   "icon": "flamingshield_healingflames.png",

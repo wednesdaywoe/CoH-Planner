@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PressOn: Power = {
   "name": "Press On",
   "internalName": "Press_On",
-  "available": 0,
+  "available": 37,
   "description": "You demand your fallen allies and henchmen Press On, forcing them back on their feet through sheer force of will and they fight even harder in your name. After a minute, however, even your charisma cannot force them to continue any further and they breath their last. Note: This power grants XP Debt protection if used on players.",
   "shortHelp": "Ally And Pet Temp Resurrect",
   "icon": "obediencetraining_presson.png",

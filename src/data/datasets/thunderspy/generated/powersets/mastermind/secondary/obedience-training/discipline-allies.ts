@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DisciplineAllies: Power = {
   "name": "Discipline Allies",
   "internalName": "Discipline_Allies",
-  "available": 0,
+  "available": 9,
   "description": "You enhance the discipline of your allies to keep them in the fight longer. Their maximum hit points are increased for a long time. Additionally, allies in a pinch will gain considerable regeneration for a moderate duration.",
   "shortHelp": "Ally +Max HP, Emergency Regen",
   "icon": "obediencetraining_disciplineallies.png",

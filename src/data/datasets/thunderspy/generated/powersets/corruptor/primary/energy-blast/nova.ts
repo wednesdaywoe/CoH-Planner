@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Nova: Power = {
   "name": "Nova",
   "internalName": "Nova",
-  "available": 0,
+  "available": 31,
   "description": "You can explode in a tremendous blast of energy, sending nearby foes flying. The Nova deals extreme Energy and Smashing damage to all nearby foes. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_novablast.png",
@@ -39,7 +39,7 @@ export const Nova: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.2,
     "table": "Ranged_Damage"
   },
@@ -56,7 +56,7 @@ export const Nova: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Energy",
         "scale": 2,
         "table": "Ranged_Damage"
       }

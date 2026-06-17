@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const UpgradeEquipment: Power = {
   "name": "Upgrade Equipment",
   "internalName": "Upgrade_Equipment",
-  "available": 0,
+  "available": 31,
   "description": "Permanently Upgrade the most advanced ammo, weapons and training to all of your Thug Henchman. The Upgraded Thug will gain new powers, weapons and abilities. The powers gained are unique and dependent upon the type of Thug Henchman that is Upgraded. This power only works on your Thug Henchmen and you can only Upgrade the Equipment of your Thug Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Upgrade Thug Henchman",
   "icon": "thugs_upgradeequipment.png",

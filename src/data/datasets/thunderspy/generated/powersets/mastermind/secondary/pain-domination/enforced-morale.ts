@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnforcedMorale: Power = {
   "name": "Enforced Morale",
   "internalName": "Enforced_Morale",
-  "available": 0,
+  "available": 9,
   "description": "Enforced Morale frees allies from any Disorient, Hold, Sleep, Fear, Confuse, Immobilize and effects and leaves them resistant to such effects and knockback for a good while. Enforced Morale also grants the target clearer Perception to see hidden foes, and a minor recharge and movement speed boost. Enforced Morale will cause some pain to all targets, friend or foe. Recharge: Moderate",
   "shortHelp": "PBAoE Damage(self, friend, foe), Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse, Knockback), +Perception, +Recharge, +Speed",
   "icon": "paindomination_enforcedmorale.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Serum: Power = {
   "name": "Serum",
   "internalName": "Serum",
-  "available": 0,
+  "available": 19,
   "description": "You can activate this power to increase your maximum Hit Points for a short time. Recharge: Very Long",
   "shortHelp": "Self Heal, +Max HP",
   "icon": "crabspidertraining_serum.png",

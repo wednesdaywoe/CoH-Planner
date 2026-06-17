@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PhotonGrenade: Power = {
   "name": "Photon Grenade",
   "internalName": "Photon_Grenade",
-  "available": 0,
+  "available": 7,
   "description": "Launches an Energy Grenade at long range from your Pulse Rifle. The energy from this explosion can Disorient some targets in the affected area. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Energy/Smash), Disorient",
   "icon": "robotics_laserriflestungrenade.png",
@@ -41,7 +41,7 @@ export const PhotonGrenade: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.3,
     "table": "Ranged_Damage"
   },

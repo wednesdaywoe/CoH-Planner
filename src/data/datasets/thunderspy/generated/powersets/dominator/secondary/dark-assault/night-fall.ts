@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const NightFall: Power = {
   "name": "Dark Obliteration",
   "internalName": "Night_Fall",
-  "available": 0,
+  "available": 9,
   "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ACC",
   "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -42,7 +42,7 @@ export const NightFall: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 1,
     "table": "Ranged_Damage"
   }

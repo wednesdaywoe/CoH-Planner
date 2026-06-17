@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ExplosiveArrow: Power = {
   "name": "Explosive Arrow",
   "internalName": "Explosive_Arrow",
-  "available": 0,
+  "available": 5,
   "description": "You fire a grenade-tipped arrow at long range. This explosion affects all within the blast radius, and can knock them back. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal/Smash), Knockback",
   "icon": "archery_explodingarrow.png",
@@ -41,7 +41,7 @@ export const ExplosiveArrow: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.3,
     "table": "Ranged_Damage"
   },
@@ -58,7 +58,7 @@ export const ExplosiveArrow: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.9,
         "table": "Ranged_Damage"
       }

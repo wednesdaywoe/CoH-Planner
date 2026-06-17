@@ -38,7 +38,7 @@ export const LightOpening: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.42,
     "table": "Melee_Damage",
     "duration": 0.5

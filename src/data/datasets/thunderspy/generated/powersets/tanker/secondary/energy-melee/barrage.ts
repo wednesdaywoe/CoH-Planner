@@ -42,7 +42,7 @@ export const Barrage: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.198,
     "table": "Melee_Damage",
     "duration": 0.3

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SweepingCross: Power = {
   "name": "Sweeping Cross",
   "internalName": "Sweeping_Cross",
-  "available": 0,
+  "available": 1,
   "description": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. Sweeping Cross deals High Smashing damage and can disorient foes. Sweeping Cross is a Finisher and sets your current Combo Level to 0.  It will deal additional damage and have a greater chance to disorient dependent upon the current Combo Level. At Combo Level 3, Sweeping Cross will also have a chance to knock down the affected targets. Critical damage is unaffected by your Combo Level. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee (Cone), High DMG (Smash), Foe Disorient, Finisher",
   "icon": "brawling_sweepingcross.png",
@@ -54,9 +54,9 @@ export const SweepingCross: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {
@@ -67,11 +67,6 @@ export const SweepingCross: Power = {
         {
           "type": "Special",
           "scale": 1.68,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 1.5,
           "table": "Melee_Damage"
         }
       ],
@@ -100,6 +95,17 @@ export const SweepingCross: Power = {
           "scale": 6,
           "table": "Melee_Stun"
         }
+      }
+    },
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.5,
+        "table": "Melee_Damage"
       }
     }
   ]

@@ -40,7 +40,7 @@ export const GleamingBolt: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.6,
     "table": "Ranged_Damage"
   }

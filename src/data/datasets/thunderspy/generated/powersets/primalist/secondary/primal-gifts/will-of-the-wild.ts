@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WilloftheWild: Power = {
   "name": "Will of the Wild",
   "internalName": "Will_of_the_Wild",
-  "available": 0,
+  "available": 37,
   "description": "You can channel the raw power of nature into your body for a brief time making you nearly indestructible. When activated you will gain a substantial increase to your damage resistance and a large increase to your regeneration rate. If in Primal Form you will receive a bonus to any healing you cause for the duration. In Hunter and Primal Form you will receive a bonus to damage. Note that Will of the Wild is unaffected by Attack Rate changes. Recharge: Very Long",
   "shortHelp": "Self, +Res(All), +Regen, +Special",
   "icon": "primalgifts_willofthewild.png",

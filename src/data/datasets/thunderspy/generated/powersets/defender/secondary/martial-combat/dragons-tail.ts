@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DragonsTail: Power = {
   "name": "Dragon's Tail",
   "internalName": "Dragons_Tail",
-  "available": 0,
+  "available": 19,
   "description": "This low spinning kick deals slightly more damage than Thunder Kick, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smash), Foe Knockdown",
   "icon": "martialmanipulation_dragonstail.png",
@@ -39,7 +39,7 @@ export const DragonsTail: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.1,
     "table": "Melee_Damage"
   }

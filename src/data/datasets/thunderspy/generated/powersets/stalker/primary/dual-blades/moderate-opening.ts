@@ -36,7 +36,7 @@ export const ModerateOpening: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.3867,
     "table": "Melee_Damage",
     "duration": 1
@@ -48,7 +48,7 @@ export const ModerateOpening: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.84,
         "table": "Melee_Damage"
       }

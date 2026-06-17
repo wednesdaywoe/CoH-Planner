@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DevastatingBlow: Power = {
   "name": "Devastating Blow",
   "internalName": "Devastating_Blow",
-  "available": 0,
+  "available": 34,
   "description": "You hammer your foe with a brutal smashing attack charged with a lethal dose of radiation. Your target will suffer Extreme Energy and Smashing damage, will have its defense reduced and will be disoriented for a short time. Affected enemies will be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. Damage: Extreme, Recharge: Long",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe -Def, Disorient, Special",
   "icon": "radiationmelee_devastatingblow.png",
@@ -45,7 +45,7 @@ export const DevastatingBlow: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.77,
     "table": "Melee_Damage"
   },

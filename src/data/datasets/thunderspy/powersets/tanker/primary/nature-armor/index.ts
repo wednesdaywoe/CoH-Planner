@@ -11,6 +11,8 @@ import type { Powerset } from '@/types';
 
 import { Grace as Grace } from './grace';
 import { WildArmor as WildArmor } from './wild-armor';
+import { GeomancyRootBonus as GeomancyRootBonus } from './geomancy-root-bonus';
+import { GuidingLightRootBonus as GuidingLightRootBonus } from './guiding-light-root-bonus';
 import { GuidingLight as GuidingLight } from './guiding-light';
 import { Allseer as Allseer } from './allseer';
 import { LashingLife as LashingLife } from './lashing-life';
@@ -18,8 +20,6 @@ import { Geomancy as Geomancy } from './geomancy';
 import { TremblingEarth as TremblingEarth } from './trembling-earth';
 import { PrimalForce as PrimalForce } from './primal-force';
 import { OneWithAll as OneWithAll } from './one-with-all';
-import { GeomancyRootBonus as GeomancyRootBonus } from './geomancy-root-bonus';
-import { GuidingLightRootBonus as GuidingLightRootBonus } from './guiding-light-root-bonus';
 
 export const powerset: Powerset = {
   id: 'tanker/nature-armor',
@@ -31,6 +31,8 @@ export const powerset: Powerset = {
   powers: [
     Grace,
     WildArmor,
+    GeomancyRootBonus,
+    GuidingLightRootBonus,
     GuidingLight,
     Allseer,
     LashingLife,
@@ -38,8 +40,6 @@ export const powerset: Powerset = {
     TremblingEarth,
     PrimalForce,
     OneWithAll,
-    GeomancyRootBonus,
-    GuidingLightRootBonus,
   ],
 };
 

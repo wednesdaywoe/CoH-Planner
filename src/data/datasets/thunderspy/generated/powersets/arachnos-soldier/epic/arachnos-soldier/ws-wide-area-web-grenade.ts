@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WSWideAreaWebGrenade: Power = {
   "name": "Wide Area Web Grenade",
   "internalName": "WS_Wide_Area_Web_Grenade",
-  "available": 0,
+  "available": 5,
   "description": "Launches a Grenade at long range from under the barrel of your Assault rifle. It explodes into a field of sticky webs which slow and can immobilize all foes within its radius. Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Immobilize, -Fly, -Recharge",
   "icon": "arachnossoldier_wideareawebgrenade.png",

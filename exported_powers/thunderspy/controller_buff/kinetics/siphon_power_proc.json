@@ -85,6 +85,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Controller_Buff.Kinetics"
 }

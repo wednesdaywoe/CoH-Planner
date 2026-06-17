@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IdentifyWeakness: Power = {
   "name": "Identify Weakness",
   "internalName": "Identify_Weakness",
-  "available": 0,
+  "available": 15,
   "description": "Your trained eye allows you to easily spot where enemies are lacking or exposed and punish them for it. Their attacks weaken, their resistance to your attacks weaken, and their regeneration is reduced.",
   "shortHelp": "-Res (All), -DMG (All), -Regen",
   "icon": "obediencetraining_identifyweakness.png",

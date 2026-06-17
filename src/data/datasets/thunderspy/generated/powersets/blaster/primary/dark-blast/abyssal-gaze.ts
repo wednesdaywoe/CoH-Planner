@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const AbyssalGaze: Power = {
   "name": "Abyssal Gaze",
   "internalName": "Abyssal_Gaze",
-  "available": 0,
+  "available": 11,
   "description": "You gaze into your foe's eyes giving them a glimpse into the terrifying netherworld rendering them held, reducing their chance to hit and dealing High Negative Energy damage over the next couple of seconds. Damage: High Recharge: Slow",
   "shortHelp": "Ranged, High DoT(Negative), Foe Hold, -To Hit",
   "icon": "darkcast_abyssalgaze.png",

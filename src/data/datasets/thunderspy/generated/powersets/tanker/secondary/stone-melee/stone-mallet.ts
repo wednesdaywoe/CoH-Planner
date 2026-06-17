@@ -42,7 +42,7 @@ export const StoneMallet: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.64,
     "table": "Melee_Damage"
   }

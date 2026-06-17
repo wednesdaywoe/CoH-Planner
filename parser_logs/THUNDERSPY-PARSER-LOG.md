@@ -18,27 +18,6 @@ fixed, move it to the top of the RESOLVED section with the fix details.
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-## ⚠️ Damage element type is generic `Special` (Thunderspy uses a single `Damage` attrib) — 2026-06-16
-
-**Context.** Thunderspy effect templates store damage with one generic `Damage`
-attrib + a `Melee_Damage`/`Ranged_Damage` table + scale; the specific element
-(Fire / Smashing / …) is NOT in the binary attrib — it appears only in the
-power's `display_short_help` (e.g. `Minor DMG(Fire)`). HC/Rebirth instead use
-per-element attribs (Smashing, Fire, …).
-
-**Current state (acceptable).** `extractDamage`/`isDamageTypeAttrib`
-([convert-powerset.cjs](../scripts/convert-powerset.cjs)) now map the bare
-`damage` attrib to a typeless **`Special`** damage entry, so the **magnitude**
-(scale × table) is correct and present on all attacks (1,276 power files after
-the 2026-06-16 fix; previously 0). This was the dataset-wide "no damage on any
-Thunderspy attack" bug surfaced during Primalist form work.
-
-**Follow-up (cosmetic / resistance-grouping only).** Refine the `Special` label
-to the real element by parsing `DMG\(([^)]+)\)` out of the power's shortHelp at
-conversion time. Threading shortHelp into `extractDamage` touches ~11 call
-sites, so deferred. Damage totals are already correct; only the per-element
-breakdown (and type-specific resistance) is affected.
-
 ## ⚠️ `export_entities` (VillainDef.bin) overruns record boundary on Thunderspy — 2026-06-16
 
 **Symptom.** `python3 -m bin_crawler.export_entities --assets-dir <tspy>` crashes:
@@ -60,6 +39,58 @@ so Thunderspy can do the same: ship with `petEntities: {}` and fix the entity pa
 later. Player power math is unaffected; only summoned-pet detail panels are.
 
 > ---RESOLVED ---
+
+## ✅ Damage element type was generic `Special` (Thunderspy uses a single `Damage` attrib) — 2026-06-16
+
+**Context.** Thunderspy effect templates store damage with one generic `Damage`
+attrib + table + scale; the element (Fire/Smashing/…) is NOT in the attrib —
+it's only in `display_short_help` (e.g. `Minor DMG(Fire)`, `DMG(Energy/Smash)`).
+First pass mapped the generic attrib to type **`Special`** (correct magnitude,
+wrong label).
+
+**Fix (2026-06-16).** `applyThunderspyDamageType(damage, shortHelp)` in
+[convert-powerset.cjs](../scripts/convert-powerset.cjs) parses the primary element
+from the shortHelp `DMG(...)` and re-types `Special` damage entries; applied in
+`convertPower` (gated `datasetId === 'thunderspy'`, covers base + conditional
+damage) and `generate-primalist-variants.cjs`. Result: realistic distribution —
+Lethal 457, Smashing 346, Energy 205, Fire 140, Psionic 110, Negative 87, Cold
+73 (Special dropped from ~everything to 424). Fire Blast now reads **Fire**.
+HC/Rebirth never use a bare `damage` attrib, so they're untouched.
+
+**Known limits (left as Special by design):** multi-type powers collapse to the
+**primary** element (`Energy/Toxic` → Energy — the binary carries no per-component
+type, so secondary elements like Toxic don't surface); powers whose shortHelp has
+no `DMG(...)` (e.g. Pale Wind = "Repel, Fester" — element only in prose) stay
+Special; pet-summon powers have no direct damage entry (damage lives on the pet);
+genuine `DMG(Special)`/`DMG(All)`. Damage magnitudes were always correct — this
+only refines the element label.
+
+## ✅ Every Thunderspy power showed as level 1 (per-power `available` levels all 0) — 2026-06-16
+
+**Symptom.** In the planner, every Thunderspy powerset had all its powers
+selectable at level 1 — no level progression. The exported powerset
+`available_level` arrays were all zeros (`[0,0,0,…]`); HC/Rebirth have real
+curves like `[0,0,1,5,7,11,17,25,31]`.
+
+**Root cause.** `_parse_parse6` ([_powersets.py](../tools/bin-crawler/bin_crawler/parser/_powersets.py))
+hard-coded Rebirth's tail arrangement — `[empty vestigial available][real
+available][…]` — reading the *first* u4_array as throwaway and the *second* as
+the real levels. Thunderspy (Parse7 frame, Parse6 schema) has **no empty
+vestigial prefix**: its *first* tail array IS the real available curve, and the
+second is an all-zeros array. So the parser discarded the real levels and used
+the zeros → every power available at level 1. Confirmed by dumping the raw
+record: `array[0]=[0,0,1,5,7,11,17,25,31]` (real), `array[1]=[0,0,0,…]` (zeros).
+
+**Fix (applied 2026-06-16).** Read the first tail array; if it's empty use the
+next (Rebirth), otherwise the first array IS the real available (Thunderspy):
+`first = read_u4_array(); available = read_u4_array() if len(first)==0 else first`.
+Verified: Thunderspy Fire_Blast now `[0,0,1,5,7,11,17,25,31]` (matches Rebirth);
+Rebirth unchanged (its empty-first path still taken); converted powers carry the
+right `available` levels; tsc + 535 tests green. (Also improved the conditional-
+gate label for Thunderspy's bare `<side>.ownPower?` self-reference gates —
+"Target Already Affected" / "Already Affected" instead of opaque "Conditional"
+— so Pale Blade's Fester/Plaguebearer conditional damage is findable in the
+InfoPanel's Mechanic Adjusters.)
 
 ## ✅ Class `attribs` (HP / caps / threat) did not parse for ANY Thunderspy class — 2026-06-16
 

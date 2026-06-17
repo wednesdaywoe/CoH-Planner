@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SuppressiveFire: Power = {
   "name": "Suppressive Fire",
   "internalName": "Suppressive_Fire",
-  "available": 0,
+  "available": 17,
   "description": "Suppressive Fire allows the user to quickly stun their target for a short time and deal a very minor amount of Lethal damage. Damage: Minor, Recharge: Moderate  NOTE: Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.  Additionally, changing your ammunition type will also change the secondary effect of this attack from Disorient effect to a Hold effect if 'Cryo Ammo', 'Incendiary Ammo' or 'Chemical Ammo' are loaded.",
   "shortHelp": "Ranged, Minor DMG(Lethal/Special), Foe Disorient/Special",
   "icon": "dualpistols_suppressivefire.png",
@@ -42,7 +42,7 @@ export const SuppressiveFire: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.05,
       "table": "Ranged_Damage"
     },
@@ -59,7 +59,7 @@ export const SuppressiveFire: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.1,
         "table": "Ranged_Damage"
       }

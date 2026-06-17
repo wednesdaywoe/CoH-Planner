@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ParalyzingBlast: Power = {
   "name": "Paralyzing Blast",
   "internalName": "Paralyzing_Blast",
-  "available": 0,
+  "available": 31,
   "description": "Summoning a large amount of energy, you can completely paralyze a group of foes in cages of electricity for a short time.  These foes may be drained of some endurance as well.  Recharge: Very Long",
   "shortHelp": "Ranged AoE, Foe Hold, -End",
   "icon": "electriccontrol_paralyzingblast.png",

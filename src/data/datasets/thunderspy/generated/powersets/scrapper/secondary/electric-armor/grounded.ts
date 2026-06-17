@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Grounded: Power = {
   "name": "Grounded",
   "internalName": "Grounded",
-  "available": 0,
+  "available": 15,
   "description": "You are Grounded and naturally very resistant to Energy and Negative Energy damage. You also have added resistance to Endurance Drain effects. Additionally, Grounded provides Immobilize and Knockback protection, but only applies when you are near the ground. This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (Energy, Negative, End Drain, Immobilize, KB)",
   "icon": "electricarmor_selfresistenergies.png",

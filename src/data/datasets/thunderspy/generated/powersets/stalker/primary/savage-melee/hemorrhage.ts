@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Hemorrhage: Power = {
   "name": "Hemorrhage",
   "internalName": "Hemorrhage",
-  "available": 0,
+  "available": 17,
   "description": "You viciously tear at your foe causing a light amount of lethal damage. Additionally, the target will suffer from lethal damage over time. Hemorrhage consumes all stacks of Blood Frenzy. This power's damage over time effect will scale with the number of stacks of Blood Frenzy. Using this power with 5 stacks of Blood Frenzy causes you to become Exhausted for a short time, but the duration of Hemorrhage's damage over time effect is increased. While exhausted you cannot gain Blood Frenzy. Damage: High, Special DoT, Recharge: Slow",
   "shortHelp": "Melee, Light DMG(Lethal), Foe Special DoT(Lethal), -Blood Frenzy",
   "icon": "savagemelee_hemorrhage.png",
@@ -36,35 +36,41 @@ export const Hemorrhage: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.81,
     "table": "Melee_Damage"
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Lethal",
           "scale": 1.11,
           "table": "Melee_Damage",
           "duration": 4.1
         },
         {
-          "type": "Special",
+          "type": "Lethal",
           "scale": 1.35,
           "table": "Melee_Damage",
           "duration": 5.1
-        },
-        {
-          "type": "Special",
-          "scale": 1,
-          "table": "Melee_Damage"
         }
       ]
+    },
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Lethal",
+        "scale": 1,
+        "table": "Melee_Damage"
+      }
     }
   ]
 };

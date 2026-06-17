@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Placate: Power = {
   "name": "Irradiating Aura",
   "internalName": "Placate",
-  "available": 0,
+  "available": 17,
   "description": "While active you will scorch the earth beneath you leaving toxic clouds of radioactive gas in your wake. Foes that enter these clouds will suffer Minor Toxic damage, have their defense reduced and also have a tiny chance of being Contaminated. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. This power does not benefit from Proc invention enhancements. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Toggle, Minor DoT(Toxic) Patch, Foe -Def, Special",
   "icon": "radiationmelee_irradiatedground.png",

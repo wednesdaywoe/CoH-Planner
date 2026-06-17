@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Transference: Power = {
   "name": "Transference",
   "internalName": "Transference",
-  "available": 0,
+  "available": 27,
   "description": "Transference drains an enemy of some of their Endurance and transfers that Endurance to all allies near the affected foe. You can use Transference to recover Endurance for yourself as well as your allies. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Target -End, Team +Recovery, Special",
   "icon": "kineticboost_transferance.png",

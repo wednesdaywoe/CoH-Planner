@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SoulAbsorption: Power = {
   "name": "Soul Absorption",
   "internalName": "Soul_Absorption",
-  "available": 0,
+  "available": 27,
   "description": "You drain the essence of both nearby conscious and defeated foes to cause you and your allies to regenerate and recovery much more quickly. The more defeated foes affected, the more powerful the regeneration and recovery effect will be. Recharge: Very Slow.",
   "shortHelp": "PBAoE Team +Regen, +Recovery, Foe -To Hit",
   "icon": "darknessaffinity_soulabsorption.png",

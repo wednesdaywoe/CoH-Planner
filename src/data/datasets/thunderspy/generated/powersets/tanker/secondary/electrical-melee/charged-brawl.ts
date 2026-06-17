@@ -44,7 +44,7 @@ export const ChargedBrawl: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.252,
     "table": "Melee_Damage"
   },

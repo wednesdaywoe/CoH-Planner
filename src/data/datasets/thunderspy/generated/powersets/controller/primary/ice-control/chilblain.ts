@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Chilblain: Power = {
   "name": "Chilblain",
   "internalName": "Chilblain",
-  "available": 0,
+  "available": 5,
   "description": "Immobilizes your target in an icy trap, dealing some Cold damage over time as well as slightly slowing the target's attack and movement speed. Targets close enough to the main target take half damage. This power does not benefit from containment Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate Damage (Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "iceblast_iceblast.png",

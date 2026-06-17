@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PsiBladeSlam: Power = {
   "name": "Psi-Blade Slam",
   "internalName": "PsiBlade_Slam",
-  "available": 0,
+  "available": 27,
   "description": "You perform a devastating slam with your manifested sword that deals a massive amount of damage and can even knock a foe down to the ground. The power of this attack can actually extend a short distance through multiple foes. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, High DMG(Psionic/energy)",
   "icon": "awakened_psionicthrash.png",
@@ -40,7 +40,7 @@ export const PsiBladeSlam: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.91,
     "table": "Melee_Damage"
   }

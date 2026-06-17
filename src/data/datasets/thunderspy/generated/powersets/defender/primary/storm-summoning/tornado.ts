@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Tornado: Power = {
   "name": "Tornado",
   "internalName": "Tornado",
-  "available": 0,
+  "available": 25,
   "description": "Conjures up a funnel cloud at a targeted location. The Tornado will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Tornado is a menacing sight, and can even cause panic among your foes. Recharge: Long",
   "shortHelp": "Summon Tornado: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
   "icon": "stormsummoning_tornado.png",

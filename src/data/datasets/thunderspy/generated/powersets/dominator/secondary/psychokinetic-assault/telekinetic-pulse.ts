@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TelekineticPulse: Power = {
   "name": "Psychokinetic Pulse",
   "internalName": "Telekinetic_Pulse",
-  "available": 0,
+  "available": 34,
   "description": "While active, you pulse out waves of Psychokinetic force, slowing the movement speed of all nearby foes, as well as having a chance to knock them down. Recharge: Very Fast",
   "shortHelp": "Toggle PBAoE, Minor DMG(Psionic/Energy), Slow, Chance for knock up",
   "icon": "awakened_masslevitate.png",
@@ -44,7 +44,7 @@ export const TelekineticPulse: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.055,
     "table": "Ranged_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SerpentsReach: Power = {
   "name": "Serpent's Reach",
   "internalName": "Serpents_Reach",
-  "available": 0,
+  "available": 27,
   "description": "You fully extend your staff and release a burst of energy to lash out at a distant target and deal High Smashing damage with a good chance to knock your target down.  While a form is active, this power will build one level of Perfection.  Damage: High, Recharge: Long",
   "shortHelp": "Ranged, High Dmg(Smash), Foe Knockdown",
   "icon": "stafffighting_serpentsreach.png",
@@ -43,7 +43,7 @@ export const SerpentsReach: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.8,
     "table": "Melee_Damage"
   }

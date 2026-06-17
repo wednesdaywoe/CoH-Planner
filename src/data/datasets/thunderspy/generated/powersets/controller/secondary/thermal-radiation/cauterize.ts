@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Cauterize: Power = {
   "name": "Cauterize",
   "internalName": "Cauterize",
-  "available": 0,
+  "available": 3,
   "description": "Heals a single targeted ally by cauterizing their wounds. You cannot use this power to heal yourself. Recharge: Fast",
   "shortHelp": "Ally Heal",
   "icon": "thermalradiation_cauterize.png",

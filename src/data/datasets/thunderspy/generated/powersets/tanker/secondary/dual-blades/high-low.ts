@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HighLow: Power = {
   "name": "One Thousand Cuts",
   "internalName": "High_Low",
-  "available": 0,
+  "available": 37,
   "description": "Unleashes a flurry of attacks on all foes in a cone in front of you, dealing moderate lethal damage to each foe hit. This power is the opening move for the Sweep combination attack. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), Foe Knockback",
   "icon": "dualblades_highlow.png",
@@ -43,7 +43,7 @@ export const HighLow: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.151,
     "table": "Melee_Damage",
     "duration": 2.05

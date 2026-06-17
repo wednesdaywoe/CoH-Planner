@@ -46,7 +46,7 @@ export const NeutrinoBolt: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.7,
     "table": "Ranged_Damage"
   }

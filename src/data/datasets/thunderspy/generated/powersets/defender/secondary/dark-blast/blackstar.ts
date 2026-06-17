@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Blackstar: Power = {
   "name": "Blackstar",
   "internalName": "Blackstar",
-  "available": 0,
+  "available": 37,
   "description": "You can unleash a devastating blast of Negative Energy around yourself, dealing massive Negative Energy and Smashing damage and severely reducing affected foes' chance to hit.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Negative/Smash), Foe -To Hit",
   "icon": "darkcast_blackstar.png",
@@ -40,7 +40,7 @@ export const Blackstar: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 1.23,
     "table": "Ranged_Damage"
   }

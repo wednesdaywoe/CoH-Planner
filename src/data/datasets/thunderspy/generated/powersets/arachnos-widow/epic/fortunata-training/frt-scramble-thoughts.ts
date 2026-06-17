@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FRTScrambleThoughts: Power = {
   "name": "Scramble Thoughts",
   "internalName": "FRT_Scramble_Thoughts",
-  "available": 0,
+  "available": 17,
   "description": "Painfully scrambles the synapses of a targeted foe, leaving him dramatically Disoriented for a short duration. Deals a little Psionic Damage. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged, Minor DMG(Psionic), Foe Disorient",
   "icon": "fortunatatraining_scramblethoughts.png",
@@ -38,7 +38,7 @@ export const FRTScrambleThoughts: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.25,
     "table": "Ranged_Damage"
   },

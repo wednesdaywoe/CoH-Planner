@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Amplify: Power = {
   "name": "Amplify",
   "internalName": "Amplify",
-  "available": 0,
+  "available": 19,
   "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage. Recharge: Long",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "sonicblast_aim.png",

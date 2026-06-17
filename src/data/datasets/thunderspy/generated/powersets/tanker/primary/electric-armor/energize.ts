@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Energize: Power = {
   "name": "Energize",
   "internalName": "Energize",
-  "available": 0,
+  "available": 11,
   "description": "You can channel a tremendous amount of electricity through your body for a short period of time.  Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time.",
   "shortHelp": "Self Endurance Discount, Heal, +Regen",
   "icon": "electricarmor_energize.png",

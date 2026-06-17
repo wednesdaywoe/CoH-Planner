@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Glacier: Power = {
   "name": "Glacier",
   "internalName": "Glacier",
-  "available": 0,
+  "available": 31,
   "description": "You can freeze all foes around yourself in blocks of Glacial ice. The targets are frozen solid, helpless, and can be attacked. Even after the victims emerge, they remain chilled and their attack and movement speed is Slowed for a while. This power can only be cast near the ground. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Hold, -Recharge, -SPD",
   "icon": "iceformation_glacier.png",

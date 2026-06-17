@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SharePain: Power = {
   "name": "Share Pain",
   "internalName": "Share_Pain",
-  "available": 0,
+  "available": 3,
   "description": "Share Pain links you with your target causing damage over time to both you and your target, ally or foe, in either case the user gains a damage and To Hit Buff. Foes suffer from a damage debuff. Allies gain a damage and To Hit buff as long as they are taking damage, if an ally goes under half of their total health the damage and buffs pause. This power can kill the user and foes. Powerful foes will not take damage from this power.",
   "shortHelp": "Self DoT(Special), +DMG, +To Hit, Ally DoT(Special), +DMG, +To Hit, Foe DoT(Special), -DMG",
   "icon": "paindomination_sharepain.png",

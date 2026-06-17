@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Propel: Power = {
   "name": "Propel",
   "internalName": "Propel",
-  "available": 0,
+  "available": 5,
   "description": "You can open a gravitational rift and retrieve a heavy object, then Propel it at your foes for Smashing Damage.  This power can deal bonus damage when used against targets held by Gravity Distortion.  This attack's force is so strong that it can knockback additional nearby enemies.  Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Smash), Foe Knockback",
   "icon": "gravitycontrol_propel.png",
@@ -41,7 +41,7 @@ export const Propel: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.96,
     "table": "Ranged_Damage"
   },
@@ -58,7 +58,7 @@ export const Propel: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 0.49,
         "table": "Ranged_Damage"
       }

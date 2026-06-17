@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ExplosiveBlast: Power = {
   "name": "Explosive Blast",
   "internalName": "Explosive_Blast",
-  "available": 0,
+  "available": 5,
   "description": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target. Explosive Blast may knock targets backwards. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe Knockback",
   "icon": "powerblast_explosion.png",
@@ -41,7 +41,7 @@ export const ExplosiveBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.27,
     "table": "Ranged_Damage"
   },
@@ -58,7 +58,7 @@ export const ExplosiveBlast: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 0.9,
         "table": "Ranged_Damage"
       }

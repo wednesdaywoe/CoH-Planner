@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TacticalUpgrade: Power = {
   "name": "Tactical Upgrade",
   "internalName": "Tactical_Upgrade",
-  "available": 0,
+  "available": 31,
   "description": "As a Veteran Mastermind, You have instilled into your Mercenary Outfit the importance of being prepared. Your Mercenary Team will now Deploy with the most advanced tactical weapons and gear automatically. The Tactically Upgraded Mercenaries will gain powers, weapons and munitions. The powers gained are unique and dependent upon the type of Mercenary Henchman that is Upgraded. This power only works on your Mercenary Henchmen and you can only Upgrade your Mercenary Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Upgrade Mercenary Henchman",
   "icon": "paramilitary_tacticalupgrade.png",

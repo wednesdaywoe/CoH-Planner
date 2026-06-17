@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Adaptation: Power = {
   "name": "Resurgence",
   "internalName": "Adaptation",
-  "available": 0,
+  "available": 34,
   "description": "Should you fall in battle, you can Revive yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds.  Additionally, for 90 seconds, your damage and chance to hit will be improved, then for another 45 seconds, your damage and chance to hit will be diminished.  You will also have 15 seconds of immunity to most damage. Recharge: Very Long",
   "shortHelp": "Self Rez, Special",
   "icon": "willpower_resurgence.png",

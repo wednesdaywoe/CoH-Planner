@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ThunderStrike: Power = {
   "name": "Ball Lightning",
   "internalName": "Thunder_Strike",
-  "available": 0,
+  "available": 9,
   "description": "Hurls a highly charged ball of lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
   "icon": "electricalbolt_balllightning.png",

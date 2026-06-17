@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Convalesce: Power = {
   "name": "Convalesce",
   "internalName": "Convalesce",
-  "available": 0,
+  "available": 15,
   "description": "Your weakened link to the world of the living allows you to instantly recover from wounds. Activing this power near a feared target drains their energy while restoring yours. Recharge: Long",
   "shortHelp": "Click: Self Heal, +End(Special) Foe -End(Special)",
   "icon": "spectralaura6.png",

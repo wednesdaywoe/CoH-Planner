@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ElixirofLife: Power = {
   "name": "Elixir of Life",
   "internalName": "Elixir_of_Life",
-  "available": 0,
+  "available": 34,
   "description": "With this Elixir, you can revive a fallen ally and turn him into a killing machine. The revived target has increased damage, chance to hit, Endurance recovery, and attack speed, and gains a resistance to Toxic damage. A brew of this sort is not without its side effects. The revived target will soon become very sick and severely weak after about 90 seconds. All effects of the Elixir will eventually wear off. Elixir of Life can only be used on Players.  Recharge: Very Long",
   "shortHelp": "Close, Ally Rez, Special",
   "icon": "poison_elixiroflife.png",

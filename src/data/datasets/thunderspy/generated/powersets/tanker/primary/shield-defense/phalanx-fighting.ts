@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PhalanxFighting: Power = {
   "name": "Phalanx Fighting",
   "internalName": "Phalanx_Fighting",
-  "available": 0,
+  "available": 11,
   "description": "Fighting very near your allies allows you to deflect attacks much easier.  You will gain a small bonus to your melee, ranged and area of effect defense.  This bonus grows for each ally near you.  This power is always on and costs no endurance.",
   "shortHelp": "Auto: Self Special +DEF(Melee, Ranged, AoE)",
   "icon": "shielddefense_phalanxfighting.png",

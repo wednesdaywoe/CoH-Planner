@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IceSword: Power = {
   "name": "Ice Sword",
   "internalName": "Ice_Sword",
-  "available": 0,
+  "available": 3,
   "description": "You create a blade of solid ice that deals higher damage then Frozen Fists. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee, Moderate DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "icemanipulation_icesword.png",
@@ -38,7 +38,7 @@ export const IceSword: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.588,
     "table": "Melee_Damage"
   }

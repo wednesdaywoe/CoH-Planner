@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Snakeshot: Power = {
   "name": "Venom Shell",
   "internalName": "Snakeshot",
-  "available": 0,
+  "available": 27,
   "description": "Fire a special concoction of Chemical ammunition at your foes. Enemies afflicted with Venom Shell will take Toxic damage over time. Using Dragon's Breath or Cryo Shell on a foe afflicted with Venom Shell will deal bonus Toxic damage over time.",
   "shortHelp": "Ranged, Toxic DoT",
   "icon": "dualpistols_chemicalammo.png",

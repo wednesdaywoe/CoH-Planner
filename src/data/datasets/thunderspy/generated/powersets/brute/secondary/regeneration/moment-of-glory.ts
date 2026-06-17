@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const MomentofGlory: Power = {
   "name": "Moment of Glory",
   "internalName": "Moment_of_Glory",
-  "available": 0,
+  "available": 37,
   "description": "When you activate this power, you gain Resistance and Defense to all damage types except Psionics, recover Endurance more quickly, and are highly resistant to Knock Back, Sleep, Disorient, Immobilization, and Hold effects. Recharge: Very Long",
   "shortHelp": "Self +Res(All DMG but Psionics, Knock Back, Repel, Stun, Hold, Sleep, Immobilize), +DEF(All DMG but Psionics), +Recovery",
   "icon": "regeneration_momentofglory.png",

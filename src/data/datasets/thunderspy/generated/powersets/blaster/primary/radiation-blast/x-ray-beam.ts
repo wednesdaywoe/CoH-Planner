@@ -46,7 +46,7 @@ export const XRayBeam: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.148,
     "table": "Ranged_Damage"
   }

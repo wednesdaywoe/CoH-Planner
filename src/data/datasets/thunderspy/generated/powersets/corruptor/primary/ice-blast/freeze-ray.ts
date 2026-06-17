@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FreezeRay: Power = {
   "name": "Freeze Ray",
   "internalName": "Freeze_Ray",
-  "available": 0,
+  "available": 11,
   "description": "Although this power deals very little damage, the Freeze Ray encases your foe in a block of ice, holding him helpless in place for a while. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged, Minor DMG(Cold), Foe Hold",
   "icon": "iceblast_freezeray.png",
@@ -39,7 +39,7 @@ export const FreezeRay: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.1,
     "table": "Ranged_Damage"
   },
@@ -57,7 +57,7 @@ export const FreezeRay: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Cold",
         "scale": 0.1,
         "table": "Ranged_Damage"
       }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CarrionCreepers: Power = {
   "name": "Carrion Creepers",
   "internalName": "Carrion_Creepers",
-  "available": 0,
+  "available": 25,
   "description": "You can create a Creeper patch at a targeted location.  The patch will snag foes, slowing their movement, and preventing them from jumping or flying. Additionally, a Creeper Vine will burst from under each live and defeated foe in the area and start attacking your enemies. Creeper Vines do minimal damage, but they can knock down your enemies and its poisonous thorns can slow your foes. Any foes that are defeated in the Creeper patch will also produce a growth of Entangle Roots that will Immobilize any enemies near the defeated foe. Recharge: Very Long",
   "shortHelp": "Summon Creepers, Ranged (Location AoE), Target -Speed, -Fly, -Jump,",
   "icon": "plantcontrol_carrioncreeper.png",

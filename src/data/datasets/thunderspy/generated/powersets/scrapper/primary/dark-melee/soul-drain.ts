@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SoulDrain: Power = {
   "name": "Soul Drain",
   "internalName": "Soul_Drain",
-  "available": 0,
+  "available": 25,
   "description": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit. Damage: Moderate, Recharge: Very Long",
   "shortHelp": "PBAoE Moderate DMG(Negative), Self +DMG, +To Hit",
   "icon": "shadowfighting_stealpower.png",
@@ -39,7 +39,7 @@ export const SoulDrain: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 1,
     "table": "Melee_Damage"
   }

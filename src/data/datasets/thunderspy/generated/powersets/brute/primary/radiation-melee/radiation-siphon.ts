@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RadiationSiphon: Power = {
   "name": "Radiation Siphon",
   "internalName": "Radiation_Siphon",
-  "available": 0,
+  "available": 7,
   "description": "You pummel your foe with a deadly smashing attack dealing High Energy and Smashing damage and reducing their defense. Hitting Contaminated targets will also heal you for a large amount of health over 3 seconds and remove the Contaminated effect from the target. However, uncontaminated targets have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. Damage: High Moderate, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
   "icon": "radiationmelee_radiationsiphon.png",
@@ -46,7 +46,7 @@ export const RadiationSiphon: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.49,
     "table": "Melee_Damage"
   }

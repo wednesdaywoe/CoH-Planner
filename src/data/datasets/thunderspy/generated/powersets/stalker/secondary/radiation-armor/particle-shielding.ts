@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ParticleShielding: Power = {
   "name": "Particle Shielding",
   "internalName": "Particle_Shielding",
-  "available": 0,
+  "available": 27,
   "description": "You channel a tremendous amount of radiation into a barrier around you. For a short time you will gain a small absorption shield every few seconds and gain a powerful regeneration buff. Recharge: Very Long",
   "shortHelp": "Self, +Absorb, +Regeneration",
   "icon": "radiationarmor_particleshielding.png",

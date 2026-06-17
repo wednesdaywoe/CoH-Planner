@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FalloutShelter: Power = {
   "name": "Fallout Shelter",
   "internalName": "Fallout_Shelter",
-  "available": 0,
+  "available": 9,
   "description": "While active you are protected from hold, sleep, immobilize, stun and knockdown effects. Additionally Fallout Shelter grants you minor resistance to toxic and psionic damage as well as a measure of resistance against slow effects. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Hold, Sleep, Immobilize, Stun, Knockdown, Toxic, Psi, Slow)",
   "icon": "radiationarmor_falloutshelter.png",

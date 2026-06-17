@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PsychicWail: Power = {
   "name": "Psychic Wail",
   "internalName": "Psychic_Wail",
-  "available": 0,
+  "available": 31,
   "description": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes which deals Extreme Psionic damage. Those that survive will have a severely reduced attack rate and may be left Disoriented.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Psionic), Foe Disorient -Recharge",
   "icon": "psychicblast_psychicwail.png",
@@ -39,7 +39,7 @@ export const PsychicWail: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 4,
     "table": "Ranged_Damage"
   },
@@ -57,7 +57,7 @@ export const PsychicWail: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Psionic",
         "scale": 2,
         "table": "Ranged_Damage"
       }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Cremate: Power = {
   "name": "Cremate",
   "internalName": "Cremate",
-  "available": 0,
+  "available": 1,
   "description": "A slow but devastating attack.  Cremate clobbers your foe with a massive 2 handed fiery smash that leaves your foe set on fire. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash/Fire)",
   "icon": "fieryfray_scorch.png",
@@ -37,12 +37,12 @@ export const Cremate: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 0.64,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 3.1

@@ -38,7 +38,7 @@ export const Barrage: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.198,
     "table": "Melee_Damage",
     "duration": 0.3
@@ -57,7 +57,7 @@ export const Barrage: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 1.32,
         "table": "Melee_Damage"
       }

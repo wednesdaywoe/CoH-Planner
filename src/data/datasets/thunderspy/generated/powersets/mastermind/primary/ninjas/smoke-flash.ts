@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SmokeFlash: Power = {
   "name": "Smoke Flash",
   "internalName": "Smoke_Flash",
-  "available": 0,
+  "available": 17,
   "description": "You can command one of your Ninja Henchmen to throw down a Smoke Bomb. The Smoke Flash will allow the Ninja to Placate his nearby foes, and thus unable to target the Ninja.  The Smoke Flash also makes the Ninja stealthy and Hidden for about 10 seconds, enabling him to perform Critical hits with his next few attacks. You can only use this power on a Ninja Henchmen. Recharge: Slow",
   "shortHelp": "Hide Ninja",
   "icon": "ninjas_kujikiri.png",

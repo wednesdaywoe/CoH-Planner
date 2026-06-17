@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EncroachingNightmare: Power = {
   "name": "Encroaching Nightmare",
   "internalName": "Encroaching_Nightmare",
-  "available": 0,
+  "available": 17,
   "description": "You release a burst of spectral energy to foes around you, dealing moderate Negative energy damage as spirits immobilize and fear affected foes. Damage: Moderate, Recharge: Long",
   "shortHelp": "PBAoE, Moderate DMG(Negative/Psionic), Foe Fear",
   "icon": "spectralmelee7.png",
@@ -41,7 +41,7 @@ export const EncroachingNightmare: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.71,
     "table": "Melee_Damage"
   },
@@ -64,7 +64,7 @@ export const EncroachingNightmare: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Negative",
         "scale": 1.42,
         "table": "Melee_Damage"
       }

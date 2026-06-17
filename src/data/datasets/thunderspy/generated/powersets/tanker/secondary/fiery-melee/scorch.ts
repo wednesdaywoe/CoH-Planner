@@ -41,12 +41,12 @@ export const Scorch: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.84,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 2.1

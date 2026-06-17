@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SlowedResponse: Power = {
   "name": "Slowed Response",
   "internalName": "Slowed_Response",
-  "available": 0,
+  "available": 25,
   "description": "You manipulate time around a targeted foe causing their reflexes to become slowed and sluggish.  This causes them to have decreased defense and damage resistance.  A target affected by Time Crawl will suffer from a more powerful effect.  Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe -Defense, -Resistance",
   "icon": "timemanipulation_slowedresponse.png",

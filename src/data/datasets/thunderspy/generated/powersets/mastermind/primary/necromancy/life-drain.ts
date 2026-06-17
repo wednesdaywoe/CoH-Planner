@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LifeDrain: Power = {
   "name": "Life Drain",
   "internalName": "Life_Drain",
-  "available": 0,
+  "available": 7,
   "description": "You can tap the power of the Netherworld to steal some life from foes and reduce their chance to hit.  Some of that stolen life is transferred to you in the form of Hit Points. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged AoE, Moderate DMG(Negative), Target -To Hit, Self +HP",
   "icon": "necromancy_lifedrain.png",
@@ -43,7 +43,7 @@ export const LifeDrain: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.898462,
     "table": "Ranged_Damage"
   }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Haunt: Power = {
   "name": "Haunt",
   "internalName": "Haunt",
-  "available": 0,
+  "available": 17,
   "description": "You summon a pair of Shades from the Netherworld to harass your target foe.  Shades deal moderate damage and they terrorize their victims. Recharge: Very Long",
   "shortHelp": "Foe Targeted, Summon Shades",
   "icon": "darknesscontrol_haunt.png",

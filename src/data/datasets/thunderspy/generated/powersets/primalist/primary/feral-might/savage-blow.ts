@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SavageBlow: Power = {
   "name": "Savage Blow",
   "internalName": "Savage_Blow",
-  "available": 0,
+  "available": 31,
   "description": "Before delivering an absolutely punishing blow you concentrate and channel the forces of nature into your strike to cause Extreme damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a moderate amount of health. In Hunter form you'll deal lethal damage and significantly reduce the target's damage. In Prowler form you'll deal lethal damage, cause moderate lethal damage over time and stun the target. This power builds 2 primal energy. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Special), Special",
   "icon": "feralmight_savageblow.png",

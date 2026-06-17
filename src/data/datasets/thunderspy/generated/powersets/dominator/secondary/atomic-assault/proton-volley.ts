@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ProtonVolley: Power = {
   "name": "Proton Burst",
   "internalName": "Proton_Volley",
-  "available": 0,
+  "available": 37,
   "description": "Hurls a volley of alpha particles over along range. The attack is devastating and can leave most targets Disoriented and with reduced Defense. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Energy/Toxic), Foe Disorient, -DEF",
   "icon": "radiationburst_cosmicburst.png",
@@ -41,7 +41,7 @@ export const ProtonVolley: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.49,
     "table": "Ranged_Damage",
     "duration": 1.6

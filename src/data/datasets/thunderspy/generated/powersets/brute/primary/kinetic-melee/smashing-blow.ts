@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SmashingBlow: Power = {
   "name": "Smashing Blow",
   "internalName": "Smashing_Blow",
-  "available": 0,
+  "available": 1,
   "description": "Smashing Blow is a slow attack, but makes up for it with a good amount of damage. Has a greater chance to stun than body blow. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash/Energy), Foe Disorient",
   "icon": "kineticattack_smashingblow.png",
@@ -40,7 +40,7 @@ export const SmashingBlow: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1,
     "table": "Melee_Damage"
   },

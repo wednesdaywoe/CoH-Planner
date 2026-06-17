@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Shred: Power = {
   "name": "Shred",
   "internalName": "Shred",
-  "available": 0,
+  "available": 1,
   "description": "You rapidly slash at your foes several times causing a moderate amount of damage to all enemies in front of you and reduce their defense. Shred also causes minor lethal damage over time. This power consumes all stacks of Blood Frenzy and will deal slightly more damage per stack. Additionally, Shred has a 20% chance to immediately recharge itself for each stack of Blood Frenzy. Using this power with 5 stacks of Blood Frenzy causes you to become Exhausted for a short time. While exhausted you cannot gain Blood Frenzy. Damage: Moderate, Minor DoT, Recharge: Moderate",
   "shortHelp": "Melee (Cone), Moderate DMG(Lethal), Foe Minor DoT(Lethal), -Def(All), Self -Blood Frenzy +Special",
   "icon": "savagemelee_shred.png",
@@ -44,7 +44,7 @@ export const Shred: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1,
     "table": "Melee_Damage"
   }

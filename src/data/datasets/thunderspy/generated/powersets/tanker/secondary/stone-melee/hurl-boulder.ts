@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HurlBoulder: Power = {
   "name": "Hurl Boulder",
   "internalName": "Hurl_Boulder",
-  "available": 0,
+  "available": 27,
   "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals high damage, and can knock foes back and even drop them out of the air if they are flying. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Smash), Foe Knockback, -Fly",
   "icon": "stonemelee_hurlboulder.png",
@@ -43,7 +43,7 @@ export const HurlBoulder: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.64,
     "table": "Melee_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CombatReadiness: Power = {
   "name": "Combat Readiness",
   "internalName": "Combat_Readiness",
-  "available": 0,
+  "available": 19,
   "description": "Activating this power will increase your chance to hit and the amount of damage you deal for a short amount of time as well as setting your current Combo Level to 3. Recharge: Long",
   "shortHelp": "Self, +DMG, +To Hit, Special",
   "icon": "brawling_combatreadiness.png",

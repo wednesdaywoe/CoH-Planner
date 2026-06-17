@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FRTAim: Power = {
   "name": "Aim",
   "internalName": "FRT_Aim",
-  "available": 0,
+  "available": 5,
   "description": "Greatly increases your chance to hit with attacks for a few seconds. Slightly increases damage. Recharge: Long",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "fortunatatraining_aim.png",

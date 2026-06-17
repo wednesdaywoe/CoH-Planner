@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Impale: Power = {
   "name": "Impale",
   "internalName": "Impale",
-  "available": 0,
+  "available": 3,
   "description": "You can throw a small cluster of large Thorns at a targeted foe. These Thorns carry a large amount of the toxin. In addition to dealing Toxic damage, a successful attack can slow a target, preventing Running, Jumping or Flying.  Most foes will likely be completely Immobilized, unable to run. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Lethal), DoT(Toxic), Immobilize, -DEF, -SPD, -Fly, -Jump",
   "icon": "thornyassault_impale.png",
@@ -44,7 +44,7 @@ export const Impale: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.64,
     "table": "Ranged_Damage"
   },

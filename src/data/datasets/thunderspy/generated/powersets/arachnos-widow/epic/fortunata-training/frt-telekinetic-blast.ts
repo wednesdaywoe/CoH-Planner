@@ -39,7 +39,7 @@ export const FRTTelekineticBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.528,
     "table": "Ranged_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ArcticAir: Power = {
   "name": "Arctic Air",
   "internalName": "Arctic_Air",
-  "available": 0,
+  "available": 5,
   "description": "While this power is active, you are surrounded in a fog of Arctic Air that dramatically slows the attack and movement speed of nearby foes.  The chill of Arctic Air is so bitter that many foes are forced to flee, albeit very slowly, from the immediate area. Others may attack their own allies, as the fog from the Arctic Air is thick and can cause much confusion.  The cold air can also reduce the stealth capability of affected foes. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Foe Confuse(Special), -SPD, -Recharge, -Stealth",
   "icon": "iceformation_articair.png",

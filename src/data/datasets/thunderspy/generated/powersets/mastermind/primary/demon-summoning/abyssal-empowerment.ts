@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const AbyssalEmpowerment: Power = {
   "name": "Abyssal Empowerment",
   "internalName": "Abyssal_Empowerment",
-  "available": 0,
+  "available": 31,
   "description": "Abyssal Empowerment will permanently unseal the most powerful powers in your Demon Henchmen's infernal repertoire. The Empowered Demons will gain new abilities and powers. The powers gained are unique and dependent upon the type of Demon Henchman that is Empowered. Abyssal Empowerment only works on your Demon Henchmen and you can only Empower your Demon Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Empower Demon Henchman",
   "icon": "demonsummoning_abyssalempowerment.png",

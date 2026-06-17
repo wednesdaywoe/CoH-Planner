@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LifegivingSpores: Power = {
   "name": "Lifegiving Spores",
   "internalName": "Lifegiving_Spores",
-  "available": 0,
+  "available": 7,
   "description": "When activating this power you cause all allies at a selected location to recover a small amount of health and endurance every few seconds as long as they remain within the Lifegiving Spores. Choosing this power locks out Living Spores Recharge: Very Fast",
   "shortHelp": "Toggle (Location AoE), PBAoE +Minor Heal Over Time, +Endurance",
   "icon": "natureaffinity_lifegivingspores.png",

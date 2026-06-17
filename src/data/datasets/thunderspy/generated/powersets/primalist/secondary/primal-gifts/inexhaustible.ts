@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Inexhaustible: Power = {
   "name": "Primal Essence",
   "internalName": "Inexhaustible",
-  "available": 0,
+  "available": 21,
   "description": "The Primalist is truly inexhaustible and recovers endurance at an increased rate. This power is always active.",
   "shortHelp": "Auto: Self +Recovery, Self +Res(Endurance Drain, Slow)",
   "icon": "primalgifts_inexhaustible.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnergyProtection: Power = {
   "name": "Disrupt",
   "internalName": "Energy_Protection",
-  "available": 0,
+  "available": 27,
   "description": "This Toggle power creates a field that periodically sends out waves of intense energy that overload nearby enemy senses leaving them briefly stunned.  Disrupt drains a small amount of endurance for each foe it attempts to stun.  Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Foe Disorient",
   "icon": "energyaura_disrupt.png",

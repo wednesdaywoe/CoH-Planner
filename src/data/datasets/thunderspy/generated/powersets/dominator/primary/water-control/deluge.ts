@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Deluge: Power = {
   "name": "Deluge",
   "internalName": "Deluge",
-  "available": 0,
+  "available": 5,
   "description": "You cause a torrent of water to crush your foe causing High Cold and Smashing damage knocking them off their feet and reducing their movement speed. This power has a small chance to place the Drowning effect on its target. Deluge deals additional damage over time and has improved movement speed reduction against foes suffering from Drowning. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Cold/Smash), Foe Knockdown, -Speed",
   "icon": "watercontrol_deluge.png",
@@ -43,7 +43,7 @@ export const Deluge: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.33,
     "table": "Ranged_Damage"
   }

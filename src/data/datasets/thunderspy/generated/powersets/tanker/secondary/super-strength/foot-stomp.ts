@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FootStomp: Power = {
   "name": "Foot Stomp",
   "internalName": "Foot_Stomp",
-  "available": 0,
+  "available": 37,
   "description": "Using your superior leg strength, you can Stomp your foot to the ground, quaking the earth itself. This is a localized attack against everything in melee range. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smash), Knockback",
   "icon": "superstrength_footstomp.png",
@@ -41,7 +41,7 @@ export const FootStomp: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.42,
     "table": "Melee_Damage"
   }

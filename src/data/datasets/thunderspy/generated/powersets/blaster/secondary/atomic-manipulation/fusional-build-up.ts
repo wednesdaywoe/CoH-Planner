@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FusionalBuildUp: Power = {
   "name": "Fission",
   "internalName": "Fusional_Build_Up",
-  "available": 0,
+  "available": 9,
   "description": "Fission Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit. And also causes your next few attacks to have a 100% chance to inflict Contaminated on your enemies. Recharge: Very Long",
   "shortHelp": "Self +DMG, +To Hit, Special",
   "icon": "radiationmelee_buildup.png",

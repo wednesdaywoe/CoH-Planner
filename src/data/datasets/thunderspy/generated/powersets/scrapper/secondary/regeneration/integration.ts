@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Integration: Power = {
   "name": "Integration",
   "internalName": "Integration",
-  "available": 0,
+  "available": 15,
   "description": "You can Integrate your mind and body, making you resistant to Knockback, Disorient, Hold, Sleep, and Immobilization effects, as well as increase your regeneration rate, for as long as you can keep this toggle power active. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize), +Regeneration",
   "icon": "regeneration_integration.png",

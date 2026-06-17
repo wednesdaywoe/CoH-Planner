@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HeavyMallet: Power = {
   "name": "Heavy Mallet",
   "internalName": "Heavy_Mallet",
-  "available": 0,
+  "available": 19,
   "description": "A more impressive form of Stone Mallet, the Heavy Mallet deals more damage, but is slower to swing. It has a greater chance of knocking down opponents. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Smash), Knockback",
   "icon": "earthassault_heavymallet.png",
@@ -38,7 +38,7 @@ export const HeavyMallet: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 2.28,
     "table": "Melee_Damage"
   }

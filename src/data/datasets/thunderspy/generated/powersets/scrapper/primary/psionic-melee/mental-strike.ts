@@ -36,18 +36,18 @@ export const MentalStrike: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.21,
     "table": "Melee_Damage"
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Psionic",
         "scale": 0.084,
         "table": "Melee_Damage",
         "duration": 3.1

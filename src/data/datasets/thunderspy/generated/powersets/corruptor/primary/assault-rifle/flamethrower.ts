@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Flamethrower: Power = {
   "name": "Flamethrower",
   "internalName": "Flamethrower",
-  "available": 0,
+  "available": 17,
   "description": "Spews forth a cone of flames from underneath the barrel of your assault rifle, setting foes on fire. Very accurate and very deadly at medium range. Damage: Extreme(DoT) Recharge: Slow",
   "shortHelp": "Ranged (Cone), Extreme DoT(Fire)",
   "icon": "assaultweapons_arflamethrower.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TidalForces: Power = {
   "name": "Tidal Forces",
   "internalName": "Tidal_Forces",
-  "available": 0,
+  "available": 17,
   "description": "You draw tidal energies into yourself thus boosting your chance to hit significantly, slightly boosting your damage and granting yourself +3 Tidal Power. Recharge: Very Long",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "waterblast_tidalforces.png",

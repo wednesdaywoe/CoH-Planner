@@ -38,12 +38,12 @@ export const PsiWhipLash: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Psionic",
       "scale": 0.5,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Psionic",
       "scale": 0.5,
       "table": "Ranged_Damage"
     }

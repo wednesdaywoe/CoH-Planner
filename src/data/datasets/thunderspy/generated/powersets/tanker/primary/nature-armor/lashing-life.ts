@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LashingLife: Power = {
   "name": "Lashing Life",
   "internalName": "Lashing_Life",
-  "available": 0,
+  "available": 7,
   "description": "You conjure a storm of vines to impede and thrash your enemies. Those caught in the vines will take Lethal damage as long as they're in the vines, and their defense will be reduced.",
   "shortHelp": "Toggle PBAoE Lethal DoT, Foe -Def (All)",
   "icon": "natureaffinity_ragingtempest.png",

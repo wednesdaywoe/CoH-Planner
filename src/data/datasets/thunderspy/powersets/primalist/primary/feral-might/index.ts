@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
+import { HuntersHowl as HuntersHowl } from './hunters-howl';
+import { Pounce as Pounce } from './pounce';
 import { FeralBlow as FeralBlow } from './feral-blow';
 import { ViciousStrike as ViciousStrike } from './vicious-strike';
 import { BrutalSwipe as BrutalSwipe } from './brutal-swipe';
 import { HunterForm as HunterForm } from './hunter-form';
-import { HuntersHowl as HuntersHowl } from './hunters-howl';
 import { PackFrenzy as PackFrenzy } from './pack-frenzy';
 import { CalloftheWild as CalloftheWild } from './call-of-the-wild';
 import { PrimalStrike as PrimalStrike } from './primal-strike';
 import { ProwlerForm as ProwlerForm } from './prowler-form';
-import { Pounce as Pounce } from './pounce';
 import { NaturesBoon as NaturesBoon } from './natures-boon';
 import { PrimalGuile as PrimalGuile } from './primal-guile';
 import { Upheaval as Upheaval } from './upheaval';
@@ -32,16 +32,16 @@ export const powerset: Powerset = {
   archetype: 'primalist',
   category: 'primary',
   powers: [
+    HuntersHowl,
+    Pounce,
     FeralBlow,
     ViciousStrike,
     BrutalSwipe,
     HunterForm,
-    HuntersHowl,
     PackFrenzy,
     CalloftheWild,
     PrimalStrike,
     ProwlerForm,
-    Pounce,
     NaturesBoon,
     PrimalGuile,
     Upheaval,

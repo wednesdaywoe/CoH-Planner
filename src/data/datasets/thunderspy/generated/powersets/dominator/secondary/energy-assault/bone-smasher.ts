@@ -38,7 +38,7 @@ export const BoneSmasher: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.6,
     "table": "Melee_Damage"
   },

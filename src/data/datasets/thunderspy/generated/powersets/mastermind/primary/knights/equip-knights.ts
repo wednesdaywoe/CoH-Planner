@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EquipKnights: Power = {
   "name": "Equip Knights",
   "internalName": "Equip_Knights",
-  "available": 0,
+  "available": 5,
   "description": "Equip your knight Henchmen with better arms and armor This power permanently bestows new weapons and abilities to all of your Henchman. The powers gained are unique and dependent upon the type of Henchman.  This power only works on your Henchmen and you can only Equip your Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Equip Knight Henchman",
   "icon": "knights_equip_knights.png",

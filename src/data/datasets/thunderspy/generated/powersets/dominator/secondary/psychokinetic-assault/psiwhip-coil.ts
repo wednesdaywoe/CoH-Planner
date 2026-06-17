@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PsiWhipCoil: Power = {
   "name": "Psi-Whip Coil",
   "internalName": "PsiWhip_Coil",
-  "available": 0,
+  "available": 37,
   "description": "You coil your manifested whip around your target dealing high damage and holding them. Damage: High(DoT), Recharge: Slow",
   "shortHelp": "Ranged, Superior DMG(Psionic/Energy), Foe Hold,",
   "icon": "awakened_psioniccut.png",
@@ -39,7 +39,7 @@ export const PsiWhipCoil: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.1625,
     "table": "Ranged_Damage",
     "duration": 2

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IcePatch: Power = {
   "name": "Ice Patch",
   "internalName": "Ice_Patch",
-  "available": 0,
+  "available": 19,
   "description": "You emanate a patch of ice around you, which causes foes that step onto it to slip and fall down. This effect lasts until the ice melts. You must be near the ground to activate this power. Recharge: Slow",
   "shortHelp": "Location (PBAoE), Foe Knockdown",
   "icon": "icemanipulation_icepatch.png",

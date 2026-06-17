@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EMPulse: Power = {
   "name": "EM Pulse",
   "internalName": "EM_Pulse",
-  "available": 0,
+  "available": 37,
   "description": "You can unleash a massive pulse of electromagnetic energy. This EMP can affect machines, and is even powerful enough to affect synaptic brain patterns.  It will drain the Endurance, and HP Regeneration of all affected targets and leave them incapacitate and Held for a long while. Additionally, most machines and robots will take moderate high damage. However, this power uses a lot of Endurance and leaves you unable to recover Endurance for a while. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Hold, -END, -Regen, Special vs. Robots; Self -Recovery",
   "icon": "radiationpoisoning_emppulse.png",

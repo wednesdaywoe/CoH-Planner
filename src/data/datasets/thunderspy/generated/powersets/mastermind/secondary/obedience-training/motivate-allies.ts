@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const MotivateAllies: Power = {
   "name": "Motivate Allies",
   "internalName": "Motivate_Allies",
-  "available": 0,
+  "available": 19,
   "description": "You find new and excruciating ways to motivate your allies, dealing Psionic damage to them and increasing their damage and ToHit. This power does not work on allies with less than half their health.",
   "shortHelp": "PBAOE Ally Psi DMG, +DMG, +ToHit",
   "icon": "obediencetraining_motivateallies.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PrimalGuile: Power = {
   "name": "Primal Guile",
   "internalName": "Primal_Guile",
-  "available": 0,
+  "available": 25,
   "description": "This power allows you to become less of a threat for a moment by placating nearby foes preventing them from being able to attack you for a short time. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Placate",
   "icon": "feralmight_primalguile.png",

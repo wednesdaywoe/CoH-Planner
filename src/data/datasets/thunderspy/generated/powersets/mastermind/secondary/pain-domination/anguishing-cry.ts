@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const AnguishingCry: Power = {
   "name": "Anguishing Cry",
   "internalName": "Anguishing_Cry",
-  "available": 0,
+  "available": 27,
   "description": "You let out an Anguishing Cry causing a small amount of damage to yourself and and all nearby targets, ally or foe, foes also have their resistance to damage and defense reduced for a short time.",
   "shortHelp": "PBAoE Damage(self, friend, foe), Foe -RES(All), -DEF(All)",
   "icon": "paindomination_anguishingcry.png",

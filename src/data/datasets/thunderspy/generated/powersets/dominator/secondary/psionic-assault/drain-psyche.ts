@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DrainPsyche: Power = {
   "name": "Drain Psyche",
   "internalName": "Drain_Psyche",
-  "available": 0,
+  "available": 15,
   "description": "You Drain the Psyche of nearby foes, thus weakening their Hit Point Regeneration and Endurance Recovery and boosting your own. Recharge: Very Long",
   "shortHelp": "PBAoE Foe -Regen, -Recovery; Self +Regen, +Recovery",
   "icon": "psionicassault_psychicsiphon.png",

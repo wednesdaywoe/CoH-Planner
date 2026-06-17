@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnergyTorrent: Power = {
   "name": "Energy Torrent",
   "internalName": "Energy_Torrent",
-  "available": 0,
+  "available": 3,
   "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
   "icon": "powerblast_energytorrent.png",
@@ -42,7 +42,7 @@ export const EnergyTorrent: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.288,
     "table": "Ranged_Damage"
   },

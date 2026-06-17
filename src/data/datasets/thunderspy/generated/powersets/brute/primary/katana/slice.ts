@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Slice: Power = {
   "name": "Flashing Steel",
   "internalName": "Slice",
-  "available": 0,
+  "available": 1,
   "description": "You swing your katana in a wide arc in front of you, slicing multiple foes. This attack can reduce a target's Defense, making them easier to hit. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee (Cone), Moderate DMG(Lethal), Foe -Def",
   "icon": "katana_slice.png",
@@ -44,7 +44,7 @@ export const Slice: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.99,
     "table": "Melee_Damage"
   }

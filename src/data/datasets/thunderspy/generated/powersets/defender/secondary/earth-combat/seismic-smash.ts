@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SeismicSmash: Power = {
   "name": "Seismic Smash",
   "internalName": "Seismic_Smash",
-  "available": 0,
+  "available": 37,
   "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Smash), Foe Hold",
   "icon": "earthassault_seismicsmash.png",
@@ -38,7 +38,7 @@ export const SeismicSmash: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 3.56,
     "table": "Melee_Damage"
   },

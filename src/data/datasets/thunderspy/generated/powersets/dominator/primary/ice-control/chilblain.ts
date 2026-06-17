@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Chilblain: Power = {
   "name": "Snow Storm",
   "internalName": "Chilblain",
-  "available": 0,
+  "available": 17,
   "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes, some may be Immobilized. The torrent winds of the Snow Storm are enough to bring down flying foes.",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe Immmobilize (Chance), -Recharge, -SPD, -Fly",
   "icon": "stormsummoning_snowstorm.png",

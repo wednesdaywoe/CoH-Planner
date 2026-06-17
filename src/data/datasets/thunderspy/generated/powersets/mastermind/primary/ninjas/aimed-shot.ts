@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const AimedShot: Power = {
   "name": "Aimed Shot",
   "internalName": "Aimed_Shot",
-  "available": 0,
+  "available": 1,
   "description": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Lethal)",
   "icon": "ninjas_standardshot.png",
@@ -37,7 +37,7 @@ export const AimedShot: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.96,
     "table": "Ranged_Damage"
   }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SonicHaven: Power = {
   "name": "Sonic Haven",
   "internalName": "Sonic_Haven",
-  "available": 0,
+  "available": 1,
   "description": "You encase yourself and nearby allies in a protective barrier that will absorb a moderate amount of damage.  Recharge: Very Long",
   "shortHelp": "PBAoE, Team +Absorb",
   "icon": "sonicdebuff_protectelements.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Placate: Power = {
   "name": "Psi Blade Sweep",
   "internalName": "Placate",
-  "available": 0,
+  "available": 11,
   "description": "You project a Psi Blade and swing it in a broad arc hitting all foes within a wide cone in front of you for high Psionic and Lethal damage. Foes struck by this power have their recharge reduced and have chance to become disoriented for a short time. Psi Blade Sweep has a high chance of granting you Insight. While you have Insight, Psi Blade Sweep will deal additional minor psionic damage over time and has a greater chance to disorient foes. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee (Cone), High DMG(Psionic/Lethal), Foe Disorient, -Rech; Self +Insight",
   "icon": "psionicmelee_psibladesweep.png",
@@ -41,7 +41,7 @@ export const Placate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.36,
     "table": "Melee_Damage"
   },
@@ -54,29 +54,33 @@ export const Placate: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 0.236,
-          "table": "Melee_Damage",
-          "duration": 3.1
-        },
-        {
-          "type": "Special",
-          "scale": 1.42,
-          "table": "Melee_Damage"
-        }
-      ],
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.236,
+        "table": "Melee_Damage",
+        "duration": 3.1
+      },
       "effects": {
         "stun": {
           "mag": 0.5,
           "scale": 5,
           "table": "Melee_Stun"
         }
+      }
+    },
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Psionic",
+        "scale": 1.42,
+        "table": "Melee_Damage"
       }
     }
   ]

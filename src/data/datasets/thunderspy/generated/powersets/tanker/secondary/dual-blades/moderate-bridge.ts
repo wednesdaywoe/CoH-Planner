@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ModerateBridge: Power = {
   "name": "Ablating Strike",
   "internalName": "Moderate_Bridge",
-  "available": 0,
+  "available": 3,
   "description": "You Slash at your foe with your blades, dealing a good amount of lethal damage. This attack can reduce a target's Defense, making him easier to hit. This power is needed for the Empower and Weaken combination attacks, and is the beginning of the Attack Vitals combination attack. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Lethal), Foe -DEF",
   "icon": "dualblades_moderatebridge.png",
@@ -43,7 +43,7 @@ export const ModerateBridge: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.66,
     "table": "Melee_Damage",
     "duration": 0.6

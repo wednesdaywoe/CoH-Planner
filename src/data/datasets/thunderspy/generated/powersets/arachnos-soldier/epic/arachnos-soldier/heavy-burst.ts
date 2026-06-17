@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HeavyBurst: Power = {
   "name": "Heavy Burst",
   "internalName": "Heavy_Burst",
-  "available": 0,
+  "available": 7,
   "description": "Fires a Heavy Burst of rounds at foes in a long cone in front of the user. Can also reduce the targets' defense. Damage: Moderate(DoT) Recharge: Medium",
   "shortHelp": "Ranged Cone, Moderate DMG(Lethal/Toxic), Foe -DEF",
   "icon": "arachnossoldier_heavyburst.png",
@@ -43,7 +43,7 @@ export const HeavyBurst: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.109,
     "table": "Ranged_Damage",
     "duration": 2

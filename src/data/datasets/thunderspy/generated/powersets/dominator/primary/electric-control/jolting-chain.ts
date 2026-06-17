@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const JoltingChain: Power = {
   "name": "Jolting Chain",
   "internalName": "Jolting_Chain",
-  "available": 0,
+  "available": 5,
   "description": "You can send a bolt of electricity through multiple opponents, causing a muscle spasm and dealing minor damage.  Each foe is knocked down, and the electric charge can fork several times, jumping to several opponents rapidly.  Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged Chain AoE, Minor DMG(Energy), Foe Knockdown, -End",
   "icon": "electriccontrol_joltingchain.png",
@@ -41,7 +41,7 @@ export const JoltingChain: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.3,
     "table": "Ranged_Damage"
   }

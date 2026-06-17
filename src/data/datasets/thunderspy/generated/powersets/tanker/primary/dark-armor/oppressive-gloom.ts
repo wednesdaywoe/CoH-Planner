@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const OppressiveGloom: Power = {
   "name": "Oppressive Gloom",
   "internalName": "Oppressive_Gloom",
-  "available": 0,
+  "available": 25,
   "description": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use. Recharge: Moderate",
   "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
   "icon": "darkarmor_oppressivegloom.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IceBlast: Power = {
   "name": "Ice Blast",
   "internalName": "Ice_Blast",
-  "available": 0,
+  "available": 3,
   "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
   "icon": "iceassault_iceblast.png",
@@ -39,7 +39,7 @@ export const IceBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.492,
     "table": "Ranged_Damage"
   }

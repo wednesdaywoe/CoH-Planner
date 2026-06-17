@@ -38,12 +38,12 @@ export const Strike: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.76,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.3,
       "table": "Melee_Damage"
     }
@@ -55,7 +55,7 @@ export const Strike: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 1.08,
         "table": "Melee_Damage"
       }

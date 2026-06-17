@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RefractionShield: Power = {
   "name": "Detention Field",
   "internalName": "Refraction_Shield",
-  "available": 0,
+  "available": 27,
   "description": "Encases a targeted foe in a Detention Force Field. The captured target cannot be harmed, is Immobilized, and cannot attack or aid their allies. The target can, however, use powers on themselves. Recharge: Slow",
   "shortHelp": "Ranged, Foe Capture (Special)",
   "icon": "forcefield_refractionshield.png",

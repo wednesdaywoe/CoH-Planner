@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ChronoShift: Power = {
   "name": "Chrono Shift",
   "internalName": "Chrono_Shift",
-  "available": 0,
+  "available": 37,
   "description": "You cause nearby allies to act more quickly by allowing them to slip through the time stream seamlessly.  Chrono Shift will greatly increase the Recharge Speed of nearby allies for the duration of the power, additionally for a short while the flow of time will constantly undo a portion of your allies' wounds causing them to periodically recover health.  An ally affected by Temporal Selection will recover additional health from Chrono Shift.  Chrono Shift will apply a regeneration bonus instead of heal over time for a short while if the user is in a PvP zone.  Recharge: Very Long",
   "shortHelp": "PBAoE, Team +Recharge, Moderate Healing over Time",
   "icon": "timemanipulation_chronoshift.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FireSword: Power = {
   "name": "Fire Sword",
   "internalName": "Fire_Sword",
-  "available": 0,
+  "available": 9,
   "description": "Through concentration, you can create a Sword of Fire that sets foes ablaze. Successful attacks from the Fire Sword will ignite your target, dealing damage over time. Choosing this power locks out Blaze Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee, Moderate DMG(Fire/Lethal)",
   "icon": "fieryfray_firesword.png",
@@ -38,12 +38,12 @@ export const FireSword: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.684,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.15,
       "table": "Melee_Damage",
       "duration": 2.1

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TotalFocus: Power = {
   "name": "Total Focus",
   "internalName": "Total_Focus",
-  "available": 0,
+  "available": 27,
   "description": "Total Focus is complete mastery over Energy Melee. This melee attack is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. Damage: Extreme, Recharge: Long",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient",
   "icon": "energyassault_totalfocus.png",
@@ -38,7 +38,7 @@ export const TotalFocus: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.164,
     "table": "Melee_Damage"
   },

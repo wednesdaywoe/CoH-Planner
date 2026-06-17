@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Manifest: Power = {
   "name": "Manifest",
   "internalName": "Manifest",
-  "available": 0,
+  "available": 15,
   "description": "You manifest several Psychokinetic swords while boosting your damage and the secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes and more, are all improved. These effects last a short while, and only the next couple of attacks will be boosted. Recharge: Long",
   "shortHelp": "Summon Psychokinetic Swords, Self +Special, +Dmg, +Tohit",
   "icon": "awakened_psychicbattery.png",

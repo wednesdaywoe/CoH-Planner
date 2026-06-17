@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EaglesClaw: Power = {
   "name": "Eagles Claw",
   "internalName": "Eagles_Claw",
-  "available": 0,
+  "available": 31,
   "description": "You can perform a devastating kick that can severely Disorient most opponents. Eagle's Claw has an exceptionally good critical hit capability, better than other Martial Arts attacks, that can sometimes deal double damage. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Smash), Foe Minor Disorient, +Special",
   "icon": "martialarts_eaglesclaw.png",
@@ -38,7 +38,7 @@ export const EaglesClaw: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 2.92,
     "table": "Melee_Damage"
   },

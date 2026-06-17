@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DarkRegeneration: Power = {
   "name": "Dark Regeneration",
   "internalName": "Dark_Regeneration",
-  "available": 0,
+  "available": 7,
   "description": "You can tap the dark essence of the Netherworld to drain a small amount of life from all enemies nearby, thus healing yourself. The more foes affected, the more you will be healed. Damage: Minor, Recharge: Slow",
   "shortHelp": "PBAoE Minor DMG(Negative), Self +HP",
   "icon": "darkarmor_darkregeneration.png",
@@ -42,7 +42,7 @@ export const DarkRegeneration: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.2,
     "table": "Melee_Damage"
   }

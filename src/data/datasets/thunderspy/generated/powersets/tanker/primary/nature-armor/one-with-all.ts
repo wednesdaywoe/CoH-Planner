@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const OneWithAll: Power = {
   "name": "One With All",
   "internalName": "One_With_All",
-  "available": 0,
+  "available": 31,
   "description": "By drawing in lifeforce surrounding you, you are able to withstand tremendous amounts of harm. Nearby enemies are subjected to a blast of heat and are horribly burned, while allies in the area are healed. Power increases for each entity in the blast zone.",
   "shortHelp": "Self +Res (All), PBAoE Fire DMG, PBAoE Team Heal",
   "icon": "natureaffinity_wildbastion.png",

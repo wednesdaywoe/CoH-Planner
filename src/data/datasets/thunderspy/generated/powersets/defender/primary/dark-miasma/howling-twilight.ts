@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HowlingTwilight: Power = {
   "name": "Howling Twilight",
   "internalName": "Howling_Twilight",
-  "available": 0,
+  "available": 5,
   "description": "Activating this power channels the power of the Netherworld to weaken your foes, in an attempt to revive all nearby fallen allies. You must stand near your defeated allies to revive them, then select a foe. The selected foe and all nearby foes will be Slowed, Disoriented, have their Regeneration rate reduced and drained of some life. Revived allies will have full Hit Points and Endurance and will be protected from XP Debt for 90 seconds. Recharge: Very Long",
   "shortHelp": "Ranged (AoE), Minor DMG(Negative), Target Slow, -Recharge, -Regen, Disorient, Ally Rez",
   "icon": "darkmiasma_howlingtwilight.png",
@@ -42,7 +42,7 @@ export const HowlingTwilight: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.25,
     "table": "Ranged_Damage"
   }

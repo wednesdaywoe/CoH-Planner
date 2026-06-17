@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RepulsingTorrent: Power = {
   "name": "Repulsing Torrent",
   "internalName": "Repulsing_Torrent",
-  "available": 0,
+  "available": 7,
   "description": "Repulsing Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
   "icon": "kineticattack_repulsingtorrent.png",
@@ -42,7 +42,7 @@ export const RepulsingTorrent: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.825,
     "table": "Melee_Damage"
   },

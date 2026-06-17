@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GravityWell: Power = {
   "name": "Gravity Well",
   "internalName": "Gravity_Well",
-  "available": 0,
+  "available": 17,
   "description": "Mastery over the forces of gravity and dark matter allows you to capture a single foe and crush them in a Gravity Well.  The target is Held helpless, while he is crushed by the massive gravimetric forces. The target's attack rate and movement speed are also slowed, even if they resists the Hold effect. This power can be used in Dwarf Form. Damage: Superior(DoT), Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Negative), Foe Hold -Recharge, -SPD",
   "icon": "umbralblast_gravitywell.png",
@@ -40,7 +40,7 @@ export const GravityWell: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 1.56,
     "table": "Melee_Damage"
   },

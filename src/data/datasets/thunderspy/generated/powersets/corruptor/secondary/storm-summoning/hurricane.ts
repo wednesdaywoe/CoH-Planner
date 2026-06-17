@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Hurricane: Power = {
   "name": "Hurricane",
   "internalName": "Hurricane",
-  "available": 0,
+  "available": 19,
   "description": "You can summon a Hurricane. The wind and rain from this massive storm reduce the range and chance to hit of nearby foes. The massive winds of this storm continuously force foes away from you. Choosing this power locks out Typhoon Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Foe -Range, -To Hit, Repel, Knockback",
   "icon": "stormsummoning_hurricane.png",

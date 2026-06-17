@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Upheaval: Power = {
   "name": "Upheaval",
   "internalName": "Upheaval",
-  "available": 0,
+  "available": 25,
   "description": "You channel the forces of nature and release them shattering the earth beneath you sending shards of stone and debris out at nearby foes causing high damage and potentially knocking them down. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a large amount of health. In Hunter form you'll deal lethal damage and reduce the targets' resistance slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. Upheaval will deal high damage if the user has no Primal Energy, however it will deal additional damage for each charge of Primal Energies the user owns. Upheaval consumes all Primal Energies. Damage: Special, Recharge: Long",
   "shortHelp": "PBAoE, Special DMG, Foe Knockdown, -All Primal Energy",
   "icon": "feralmight_upheaval.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CallHawk: Power = {
   "name": "Call Hawk",
   "internalName": "Call_Hawk",
-  "available": 0,
+  "available": 1,
   "description": "You call forth a hawk ally to swoop in and viciously peck at your target causing High Lethal damage. The attack often catches foes off their guard and can knock them down as well as reducing their chance to hit. This power has a good chance at granting your pets a stack of Pack Mentality.  Damage: High, Recharge: Fast",
   "shortHelp": "Ranged, High DMG (Lethal), Foe -To Hit, Knockdown, -Fly",
   "icon": "beastmastery_callhawk.png",

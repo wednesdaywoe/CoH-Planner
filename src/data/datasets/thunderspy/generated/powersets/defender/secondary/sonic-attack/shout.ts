@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Shout: Power = {
   "name": "Shout",
   "internalName": "Shout",
-  "available": 0,
+  "available": 9,
   "description": "You blast your foe with a tremendous Shout, damaging them and reducing their Damage Resistance. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, Heavy DMG(Smashing/Energy), Foe -Res(All)",
   "icon": "sonicblast_heavy.png",
@@ -37,7 +37,7 @@ export const Shout: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.06,
     "table": "Ranged_Damage"
   }

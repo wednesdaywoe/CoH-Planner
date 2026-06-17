@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Consume: Power = {
   "name": "Consume",
   "internalName": "Consume",
-  "available": 0,
+  "available": 27,
   "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage. Damage: Minor, Recharge: Very Long",
   "shortHelp": "PBAoE Minor DMG(Fire), Self +End",
   "icon": "fireassault_consume.png",

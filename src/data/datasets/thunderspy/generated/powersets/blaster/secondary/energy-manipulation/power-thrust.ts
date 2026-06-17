@@ -44,7 +44,7 @@ export const PowerThrust: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.24,
     "table": "Melee_Damage"
   },

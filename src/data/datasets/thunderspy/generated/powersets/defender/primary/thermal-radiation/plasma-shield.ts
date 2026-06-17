@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PlasmaShield: Power = {
   "name": "Plasma Shield",
   "internalName": "Plasma_Shield",
-  "available": 0,
+  "available": 5,
   "description": "Envelope an ally in pure plasma. The Plasma Shield gives your ally resistance to Energy, Negative Energy, and Fire damage. You cannot stack multiple Plasma Shields on the same target, however the shield can be improved by another ally using the same power. Can also be used in conjunction with your Fire Shield. You cannot use this power on yourself. Recharge: Very Fast",
   "shortHelp": "Ranged, Ally +Res(Energy, Negative, Fire)",
   "icon": "thermalradiation_plasmashield.png",

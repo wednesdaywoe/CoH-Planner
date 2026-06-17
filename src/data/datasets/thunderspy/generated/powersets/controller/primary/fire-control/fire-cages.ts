@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FireCages: Power = {
   "name": "Fire Cages",
   "internalName": "Fire_Cages",
-  "available": 0,
+  "available": 1,
   "description": "Immobilizes a group of foes in Fire Cages, dealing Fire damage over time. More resilient foes may require multiple Fire Cages to Immobilize. Fire Cages is slower and less damaging than Ring of Fire, but can capture multiple targets. Damage: Minor(DoT), Recharge: Moderate",
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Fire), Foe Immobilize",
   "icon": "firetrap_firecage.png",

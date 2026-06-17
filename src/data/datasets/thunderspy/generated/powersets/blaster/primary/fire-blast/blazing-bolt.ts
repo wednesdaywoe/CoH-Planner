@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BlazingBolt: Power = {
   "name": "Blazing Bolt",
   "internalName": "Blazing_Bolt",
-  "available": 0,
+  "available": 25,
   "description": "A long range beam of fire that blasts your foes. Like most sniper attacks, this power has a bonus to Accuracy, but is best fired from a distance as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Fire)",
   "icon": "fireblast_blazingbolt.png",

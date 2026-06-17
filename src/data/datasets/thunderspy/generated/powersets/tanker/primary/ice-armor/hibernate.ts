@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Hibernate: Power = {
   "name": "Hibernate",
   "internalName": "Hibernate",
-  "available": 0,
+  "available": 25,
   "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power. you cannot Hibernate for more than 30 seconds while in a PvP zone and will be locked out from hibernating again for 60 seconds. If you activate this power while in the air, you will fall. Recharge: Long",
   "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
   "icon": "icearmor_hybernate.png",

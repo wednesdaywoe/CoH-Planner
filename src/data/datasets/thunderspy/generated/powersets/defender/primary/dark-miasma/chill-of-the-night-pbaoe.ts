@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ChillofthenightPBAoE: Power = {
   "name": "Chill of the Night",
   "internalName": "Chill_of_the_night_PBAoE",
-  "available": 0,
+  "available": 1,
   "description": "While active, you channel Negative Energy in an area around you which decreases the damage potential and chance to hit of all foes nearby, as long as you keep the power active. Choosing this Power locks out Darkest Night. Recharge: Moderate",
   "shortHelp": "Toggle: PBAoE, Foe -DMG -To Hit",
   "icon": "darkmiasma_chillofthenight.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RainofFire: Power = {
   "name": "Rain of Fire",
   "internalName": "Rain_of_Fire",
-  "available": 0,
+  "available": 27,
   "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area. Choosing this power locks out Fire Sword Circle Damage: Minor(DoT), Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Fire), -SPD",
   "icon": "fireblast_rainoffire.png",

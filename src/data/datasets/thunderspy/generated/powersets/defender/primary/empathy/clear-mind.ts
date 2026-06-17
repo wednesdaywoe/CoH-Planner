@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ClearMind: Power = {
   "name": "Clear Mind",
   "internalName": "Clear_Mind",
-  "available": 0,
+  "available": 5,
   "description": "Frees an ally from any Disorient, Hold, Sleep, Fear, Confuse and Immobilize effects and leaves them resistant to such effects for a good while. Also, grants target clearer Perception to see hidden foes. Protection will improve with Multiple applications and as you advance in level. Recharge: Fast",
   "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception",
   "icon": "empathy_mindwall.png",

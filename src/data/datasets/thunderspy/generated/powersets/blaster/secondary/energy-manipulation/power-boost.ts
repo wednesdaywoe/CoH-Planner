@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerBoost: Power = {
   "name": "Power Boost",
   "internalName": "Power_Boost",
-  "available": 0,
+  "available": 27,
   "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. Recharge: Long",
   "shortHelp": "Self +Special",
   "icon": "energymanipulation_powerboost.png",

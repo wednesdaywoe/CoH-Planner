@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const QuantumFlight: Power = {
   "name": "Quantum Flight",
   "internalName": "Quantum_Flight",
-  "available": 0,
+  "available": 27,
   "description": "You shift your quantum matrix and become more energy than matter. No longer bound by the laws of normal physics, you become intangible to other entities and can fly at high speeds.  However, after 30 seconds the phase out effect will wear off.  30 seconds later, if this power is still active the user will become phased out once again.  Quantum Flight offers greater flight speed and some stealth, but costs more endurance.",
   "shortHelp": "Toggle: Self Fly, Intangible",
   "icon": "luminousaura_quantumflight.png",

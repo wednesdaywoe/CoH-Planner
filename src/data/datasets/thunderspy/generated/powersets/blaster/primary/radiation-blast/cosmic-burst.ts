@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CosmicBurst: Power = {
   "name": "Cosmic Burst",
   "internalName": "Cosmic_Burst",
-  "available": 0,
+  "available": 7,
   "description": "Cosmic Burst smashes the target with cosmic particles. The attack is devastating and can leave most targets Disoriented and with reduced Defense. Affected enemies have a moderate chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Extreme DMG(Energy/Toxic), Foe Disorient, -DEF, Special",
   "icon": "radiationburst_cosmicburst.png",
@@ -42,7 +42,7 @@ export const CosmicBurst: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.484,
     "table": "Ranged_Damage"
   },

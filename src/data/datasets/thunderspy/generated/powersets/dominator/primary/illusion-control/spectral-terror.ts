@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SpectralTerror: Power = {
   "name": "Spectral Terror",
   "internalName": "Spectral_Terror",
-  "available": 0,
+  "available": 7,
   "description": "You can create an illusion of unspeakable Terror. The manifestation is so horrible that it causes most foes to tremble helplessly in terror. The Spectral Terror may also Terrify individual foes. Recharge: Slow",
   "shortHelp": "Summon Terror: Ranged Fear/Immobilize",
   "icon": "illusions_spectralterror.png",

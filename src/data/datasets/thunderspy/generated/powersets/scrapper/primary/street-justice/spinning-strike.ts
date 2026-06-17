@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SpinningStrike: Power = {
   "name": "Spinning Strike",
   "internalName": "Spinning_Strike",
-  "available": 0,
+  "available": 17,
   "description": "You execute a spinning attack that first strikes with your fist and finally your heel hitting your foe and all enemies immediately nearby. Spinning Strike deals Heavy Smashing damage and has a high chance to knockdown foes. Spinning Strike is a Finisher and sets  your current Combo Level to 0.  It will deal additional damage and have a greater chance to knockdown dependent upon the current Combo Level. At Combo Level 3, Spinning Strike also has a moderate chance to briefly inflict Terrorize in nearby foes. Critical damage is unaffected by your Combo Level.  Damage: High, Recharge: Slow",
   "shortHelp": "Melee (Targeted AoE), Heavy DMG (Smash), Foe Knockdown, Finisher",
   "icon": "brawling_spinningstrike.png",
@@ -46,9 +46,9 @@ export const SpinningStrike: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

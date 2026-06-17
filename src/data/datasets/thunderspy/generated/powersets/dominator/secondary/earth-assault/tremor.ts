@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Tremor: Power = {
   "name": "Tremor",
   "internalName": "Tremor",
-  "available": 0,
+  "available": 9,
   "description": "You can cause a localized earthquake immediately around you. This will deal moderate damage to every foe in melee range, while knocking them back. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE,  Moderate DMG(Smash), Knockback",
   "icon": "earthassault_tremor.png",
@@ -39,7 +39,7 @@ export const Tremor: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1,
     "table": "Melee_Damage"
   }

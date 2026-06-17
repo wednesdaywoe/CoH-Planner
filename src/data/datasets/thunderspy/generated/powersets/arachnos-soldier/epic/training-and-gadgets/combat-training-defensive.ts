@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CombatTrainingDefensive: Power = {
   "name": "Combat Training: Evasive",
   "internalName": "Combat_Training:_Defensive",
-  "available": 0,
+  "available": 1,
   "description": "Your training allows you to focus your will, allowing you to move faster than normal to more easily evade ranged attacks as well as resist slow effects. This power is always on and permanently increases your ranged defense, attack rate, and movement speed.",
   "shortHelp": "Auto: Self +DEF(Ranged) +Recharge, +SPD, Res (Slow)",
   "icon": "trainingandgadgets_combattrainingdefensive.png",

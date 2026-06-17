@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BuildUp: Power = {
   "name": "Power Build Up",
   "internalName": "Build_Up",
-  "available": 0,
+  "available": 15,
   "description": "Your mastery of power and energy allows you to greatly increase the damage you deal for a few seconds, as well as slightly increasing your accuracy. Additionally, Power Build Up greatly boosts the secondary effects of your powers. Your power effects like heals, defense buffs, endurance drains, disorients, holds, immobilizes, knockbacks and more, are all improved.",
   "shortHelp": "Self +Damage, +Accuracy, +Special",
   "icon": "electricalassault_buildup.png",

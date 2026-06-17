@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Shiver: Power = {
   "name": "Shiver",
   "internalName": "Shiver",
-  "available": 0,
+  "available": 11,
   "description": "You can blast forth a wide cone of chilling air that dramatically lowers the temperature of nearby foes inducing hyopthermia and Disorienting them while also Slowing their movement and attack rate. Recharge: Slow",
   "shortHelp": "Ranged (Cone), Foe Disorient, -SPD, -Recharge",
   "icon": "iceformation_shiver.png",

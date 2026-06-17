@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Birdshot: Power = {
   "name": "Cryoshot",
   "internalName": "Birdshot",
-  "available": 0,
+  "available": 9,
   "description": "Fire a special concoction of Cryo ammunition at your foes. Enemies afflicted with Cryo Shell will have reduced movement and multiple applications may immobilize them. Using Dragon's Breath on a foe afflicted with Cryo Shell will deal bonus damage. Using Venom Shell on a foe afflicted with Cryo Shell will deal additional Toxic damage over time.",
   "shortHelp": "Ranged Taunt(cone), Slow, Immobilize",
   "icon": "dualpistols_cryoammo.png",

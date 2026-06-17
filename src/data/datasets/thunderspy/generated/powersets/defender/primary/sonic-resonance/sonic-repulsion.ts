@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SonicRepulsion: Power = {
   "name": "Sonic Soothe",
   "internalName": "Sonic_Repulsion",
-  "available": 0,
+  "available": 11,
   "description": "While this power is active all nearby allies will have their regeneration rate increased dramatically.  Recharge: Fast.",
   "shortHelp": "Toggle PBAoE: Ally +Regeneration",
   "icon": "sonicdebuff_teamdebuffdamres.png",

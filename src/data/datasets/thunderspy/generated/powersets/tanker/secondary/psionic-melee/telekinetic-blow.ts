@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TelekineticBlow: Power = {
   "name": "Telekinetic Blow",
   "internalName": "Telekinetic_Blow",
-  "available": 0,
+  "available": 3,
   "description": "You project telekinetic energy around your fist before delivering a shattering uppercut to your foe dealing high Psionic and Smashing damage and sending them flying into the air. Telekinetic Blow has a high chance of granting you Insight. While you have Insight, Telekinetic Blow will deal additional minor psionic damage over time. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Psionic/Smash), Foe Knock Up, Self +Insight",
   "icon": "psionicmelee_telekineticblow.png",
@@ -42,7 +42,7 @@ export const TelekineticBlow: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.45,
     "table": "Melee_Damage"
   },
@@ -54,12 +54,12 @@ export const TelekineticBlow: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Psionic",
         "scale": 0.18,
         "table": "Melee_Damage",
         "duration": 3.1

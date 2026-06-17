@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const OrbitingDeath: Power = {
   "name": "Orbiting Death",
   "internalName": "Orbiting_Death",
-  "available": 0,
+  "available": 3,
   "description": "You surround yourself with orbiting particles and dark matter that will continually cause Negative Energy damage to any nearby foes. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Toggle: PBAoE Minor DoT(Negative)",
   "icon": "umbralaura_orbitingdeath.png",

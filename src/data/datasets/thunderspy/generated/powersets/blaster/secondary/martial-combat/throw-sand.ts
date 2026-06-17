@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ThrowSand: Power = {
   "name": "Throw Sand",
   "internalName": "Throw_Sand",
-  "available": 0,
+  "available": 34,
   "description": "You grab some nearby debris and fling it towards a nearby foe, obstructing their vision and dazing them. Recharge: Long",
   "shortHelp": "Ranged (Cone), Foe Stun, -Perception",
   "icon": "martialmanipulations_throwsand.png",

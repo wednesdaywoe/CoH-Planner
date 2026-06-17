@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CrackWhip: Power = {
   "name": "Crack Whip",
   "internalName": "Crack_Whip",
-  "available": 0,
+  "available": 7,
   "description": "You channel hellfire into your whip and make an impressive sweep causing high fire damage to enemies within a wide cone and also cause some toxic damage over time. Whip Crack has a larger range than most melee cones. Targets that are struck will also have their resistance to damage reduced for a short time, may suffer toxic damage over time and may be knocked down. Damage: High, Recharge: Slow",
   "shortHelp": "Short Ranged (Cone), High DMG(Fire), Foe -Res, Knockdown, DoT(Toxic)",
   "icon": "demonsummoning_crackwhip.png",
@@ -42,12 +42,12 @@ export const CrackWhip: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1.13,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.222,
       "table": "Melee_Damage",
       "duration": 1.05

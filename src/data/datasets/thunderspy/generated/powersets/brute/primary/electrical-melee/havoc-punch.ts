@@ -42,7 +42,7 @@ export const HavocPunch: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.396,
     "table": "Melee_Damage"
   },

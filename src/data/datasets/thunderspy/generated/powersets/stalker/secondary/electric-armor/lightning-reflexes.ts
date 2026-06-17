@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LightningReflexes: Power = {
   "name": "Lightning Reflexes",
   "internalName": "Lightning_Reflexes",
-  "available": 0,
+  "available": 19,
   "description": "Your Lightning Reflexes allow you to move faster than normal, as well as resist slow effects. This power is always on and permanently increases your attack rate and movement speed.",
   "shortHelp": "Auto: Self +Recharge, +SPD, Res (Slow)",
   "icon": "electricarmor_selfbuffrunspeed.png",

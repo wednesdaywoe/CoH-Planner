@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GreaterIceSword: Power = {
   "name": "Ice Slash",
   "internalName": "Greater_Ice_Sword",
-  "available": 0,
+  "available": 9,
   "description": "Ice Slash allows the user to create a blade of solid ice and strike a foe for high damage.  Being hit by Ice Slash will Slow a foes' attack and movement speed, due to the intense chill. Damage: High, Recharge: Slow",
   "shortHelp": "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "iceassault_iceswordcleave.png",
@@ -34,7 +34,7 @@ export const GreaterIceSword: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.96,
     "table": "Melee_Damage"
   },

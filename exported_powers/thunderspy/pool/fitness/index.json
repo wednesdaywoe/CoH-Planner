@@ -11,10 +11,10 @@
     "Pool.Fitness.Stamina"
   ],
   "available_level": [
-    0,
-    0,
-    0,
-    0
+    5,
+    5,
+    13,
+    19
   ],
   "power_display_names": [
     "Swift",

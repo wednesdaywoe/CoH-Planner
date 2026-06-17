@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const KnockoutBlow: Power = {
   "name": "Knockout Blow",
   "internalName": "Knockout_Blow",
-  "available": 0,
+  "available": 19,
   "description": "You can perform a Knockout Blow on your opponent. This punch does extreme damage, and has a great chance of Holding your target. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Smash), Foe Hold",
   "icon": "superstrength_knockoutblow.png",
@@ -44,7 +44,7 @@ export const KnockoutBlow: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 3.56,
     "table": "Melee_Damage"
   },

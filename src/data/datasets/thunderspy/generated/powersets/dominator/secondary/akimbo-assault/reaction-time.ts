@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Reactiontime: Power = {
   "name": "Reaction Time",
   "internalName": "Reaction_time",
-  "available": 0,
+  "available": 34,
   "description": "You attune yourself to the world around you, moving with preternatural speed.  All enemies nearby move slowly and have reduced recharge. When Reaction Time is deactivated, you gain a burst of speed for a short duration, increasing your own move speed.",
   "shortHelp": "Toggle (PBAoE), Foe –Rech, - Move, Special",
   "icon": "domdpreactiontime.png",

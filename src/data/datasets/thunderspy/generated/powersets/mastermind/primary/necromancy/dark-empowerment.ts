@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DarkEmpowerment: Power = {
   "name": "Dark Empowerment",
   "internalName": "Dark_Empowerment",
-  "available": 0,
+  "available": 31,
   "description": "Complete understanding of Dark Magics and the Ley lines of this world have enhanced your summoning prowess beyond imgained. Dark Empowerment will now automatically and permanently bestow the most powerful and darkest new powers and abilities to all of your Undead Henchman. The Empowered Undead will gain new abilities and powers. The powers gained are unique and dependent upon the type of Undead Henchman that is Empowered. Dark Empowerment only works on your Undead Henchmen and you can only Empower your Undead Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Empower Undead Henchman",
   "icon": "necromancy_darkempowerment.png",

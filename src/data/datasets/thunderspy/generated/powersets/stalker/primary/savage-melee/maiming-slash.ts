@@ -38,7 +38,7 @@ export const MaimingSlash: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.16,
     "table": "Melee_Damage"
   },
@@ -49,7 +49,7 @@ export const MaimingSlash: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 1.16,
         "table": "Melee_Damage"
       }

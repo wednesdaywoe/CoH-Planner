@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const AtomicBlast: Power = {
   "name": "Atomic Blast",
   "internalName": "Atomic_Blast",
-  "available": 0,
+  "available": 31,
   "description": "This attack taps most of your stored energy to deal a devastating Atomic Blast which deals Extreme Energy and Smashing damage.  Any foes left standing will have their Defense greatly reduced and may be left helplessly choking on toxic vapors. Affected enemies will be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Energy/Toxic), Foe Hold, -DEF, Special",
   "icon": "radiationburst_atomicblast.png",
@@ -40,7 +40,7 @@ export const AtomicBlast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 2.8,
     "table": "Ranged_Damage"
   },

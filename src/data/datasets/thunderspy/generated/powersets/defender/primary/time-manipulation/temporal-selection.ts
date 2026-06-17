@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TemporalSelection: Power = {
   "name": "Temporal Selection",
   "internalName": "Temporal_Selection",
-  "available": 0,
+  "available": 5,
   "description": "You distort time around an ally, selecting a period of time where their abilities are at their highest.  Their damage, attack rate and regeneration rates are dramatically increased for a brief period.  This power places the Accelerated effect on the target.  While this is in effect, the target has any healing and healing over time effects from Temporal Mending or Chrono Shift significantly increased.  Recharge: Very Long",
   "shortHelp": "Ally +Damage, +Recharge, +Regeneration",
   "icon": "timemanipulation_temporalselection.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ChillingEmbrace: Power = {
   "name": "Icy Bastion",
   "internalName": "Chilling_Embrace",
-  "available": 0,
+  "available": 31,
   "description": "You channel an intense cold through yourself, doing so will significantly boost your resistance to all types of damage (except psionics), your resistance to status effects, and your regeneration and recovery rates for a very brief period.  Recharge: Very Long",
   "shortHelp": "Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery",
   "icon": "icearmor_hybernate.png",

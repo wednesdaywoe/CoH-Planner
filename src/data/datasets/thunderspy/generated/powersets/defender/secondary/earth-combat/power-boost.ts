@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerBoost: Power = {
   "name": "Aim",
   "internalName": "Power_Boost",
-  "available": 0,
+  "available": 15,
   "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage. Recharge: Long",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "earthassault_powerboost.png",

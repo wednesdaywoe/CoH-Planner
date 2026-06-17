@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TimeBomb: Power = {
   "name": "Time Bomb",
   "internalName": "Time_Bomb",
-  "available": 0,
+  "available": 34,
   "description": "You can place a Time Bomb on the ground. The Time Bomb will detonate 15 seconds after being placed, resulting in a massive explosion that can devastate all nearby foes and send them flying. The Time Bomb is small, and almost impossible to detect. However, it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Bomb will still detonate. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
   "icon": "gadgets_timebomb.png",

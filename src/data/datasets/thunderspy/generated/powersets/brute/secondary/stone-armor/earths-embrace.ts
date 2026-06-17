@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EarthsEmbrace: Power = {
   "name": "Earth's Embrace",
   "internalName": "Earths_Embrace",
-  "available": 0,
+  "available": 3,
   "description": "You are so connected to the Earth, you can draw upon its power to add to your own health. Activating this power increases your maximum Hit Points, and grants you resistance to Toxic Damage. Recharge: Very Long",
   "shortHelp": "Self +HP, Res(Toxic)",
   "icon": "stonearmor_earthsembrace.png",

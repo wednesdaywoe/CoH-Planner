@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const InertialReduction: Power = {
   "name": "Inertial Reduction",
   "internalName": "Inertial_Reduction",
-  "available": 0,
+  "available": 34,
   "description": "You can reduce your Inertia, along with that of all nearby allies. The affected heroes can then jump incredible distances for a while. Recharge: Long",
   "shortHelp": "PBAoE, Allies +Jump",
   "icon": "kineticboost_initialreductions.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WhirlingSlice: Power = {
   "name": "Whirling Smash",
   "internalName": "Whirling_Slice",
-  "available": 0,
+  "available": 25,
   "description": "You perform a powerful Whirling Smash that deals Moderate Smashing damage, and can knock an opponent down.  Additionally, Whirling Smash can cause the target to suffer a small amount of Lethal damage over time.  NOTE: Whirling Smash requires Momentum in order to be activated.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smashing), Foe Minor DoT(Lethal), Knockdown, Requires Momentum",
   "icon": "titanweapons_whirlingslice.png",
@@ -41,7 +41,7 @@ export const WhirlingSlice: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.15,
     "table": "Melee_Damage"
   }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RendFlesh: Power = {
   "name": "Rend Flesh",
   "internalName": "Rend_Flesh",
-  "available": 0,
+  "available": 3,
   "description": "You violently tear into your enemy with your deadly blades to deal high Lethal damage. Consumes Lash and Flay to deal bonus Toxic damage.",
   "shortHelp": "Lethal dmg, Toxic dmg",
   "icon": "paleblade_rendflesh.png",
@@ -47,9 +47,9 @@ export const RendFlesh: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

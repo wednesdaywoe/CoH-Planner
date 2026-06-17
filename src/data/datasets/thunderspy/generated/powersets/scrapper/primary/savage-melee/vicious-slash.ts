@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ViciousSlash: Power = {
   "name": "Vicious Slash",
   "internalName": "Vicious_Slash",
-  "available": 0,
+  "available": 5,
   "description": "You tear at your foe with both hands dealing high lethal damage and causing minor lethal damage over time. Foes struck by this attack have a high chance to be knocked down. Vicious Slash grants 2 stacks of Blood Frenzy.  Damage: High, Minor DoT, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Lethal), Foe Minor DoT(Lethal), Knockdown, Self +2 Blood Frenzy",
   "icon": "savagemelee_viciousslash.png",
@@ -38,7 +38,7 @@ export const ViciousSlash: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.8,
     "table": "Melee_Damage"
   }

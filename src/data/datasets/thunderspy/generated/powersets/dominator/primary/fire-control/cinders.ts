@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Cinders: Power = {
   "name": "Cinders",
   "internalName": "Cinders",
-  "available": 0,
+  "available": 31,
   "description": "Incapacitates foes around the caster by whirling Cinders around them. The targets are left helpless, choking on the soot. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Hold",
   "icon": "firetrap_cinders.png",

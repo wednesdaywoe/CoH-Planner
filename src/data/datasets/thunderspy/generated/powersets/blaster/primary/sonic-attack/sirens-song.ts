@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SirensSong: Power = {
   "name": "Sirens Song",
   "internalName": "Sirens_Song",
-  "available": 0,
+  "available": 17,
   "description": "You send forth a subsonic pulse which causes your foes to fall unconscious and take some minor damage. Your foes will remain unconscious for a good while, but will waken if disturbed. Damage: Minor, Recharge: Long",
   "shortHelp": "Ranged (Cone), Minor DMG(Energy), Foe Sleep",
   "icon": "sonicblast_sleep.png",
@@ -42,7 +42,7 @@ export const SirensSong: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.5,
     "table": "Ranged_Damage"
   },

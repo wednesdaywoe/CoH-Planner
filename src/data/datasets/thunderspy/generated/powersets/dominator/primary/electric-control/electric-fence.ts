@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ElectricFence: Power = {
   "name": "Synaptic Surge",
   "internalName": "Electric_Fence",
-  "available": 0,
+  "available": 25,
   "description": "The Recovery Aura dramatically increases the Endurance recovery rate of all nearby heroes for a limited time. Emitting this Aura costs you a lot of Endurance, and it takes a long time to recharge. Recharge: Very Long",
   "shortHelp": "PBAoE, Ally +Recovery",
   "icon": "electricarmor_selfbuffrecovery.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TRPlasmaCannon: Power = {
   "name": "Plasma Cannon",
   "internalName": "TR_Plasma_Cannon",
-  "available": 0,
+  "available": 5,
   "description": "Launch an orb of plasma from a cannon installed in your exoskeleton. Deals Fire damage over time and weakens the Resistance of affected targets. Requires Tarantula form to use. Recharge: Moderate",
   "shortHelp": "Ranged(Targeted AoE), DoT(Fire), -Res(All)",
   "icon": "tarantulatraining_plasmacannon.png",

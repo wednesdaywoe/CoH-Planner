@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LightningClap: Power = {
   "name": "Thunder Strike",
   "internalName": "Lightning_Clap",
-  "available": 0,
+  "available": 11,
   "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave as well as have some endurance drained. Damage: High, Recharge: Slow",
   "shortHelp": "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback, -End",
   "icon": "electricmelee_targetedaoeheavydmg.png",
@@ -43,12 +43,12 @@ export const LightningClap: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 0.588,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 1.455,
       "table": "Melee_Damage"
     }
@@ -68,12 +68,12 @@ export const LightningClap: Power = {
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Smashing",
           "scale": 0.588,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Smashing",
           "scale": 1.372,
           "table": "Melee_Damage"
         }

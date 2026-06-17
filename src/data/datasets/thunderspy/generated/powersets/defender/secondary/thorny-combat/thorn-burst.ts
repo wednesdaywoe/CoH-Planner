@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ThornBurst: Power = {
   "name": "Thorn Burst",
   "internalName": "Thorn_Burst",
-  "available": 0,
+  "available": 15,
   "description": "You can explode dozens of Thorns in all directions around you. These Thorns only travel a short distance, but they can deal moderate damage and poison any target close to you. Toxic damage from the thorns can reduce the Defense of affected foes. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_thornburst.png",
@@ -41,12 +41,12 @@ export const ThornBurst: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.95,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 3.1

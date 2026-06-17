@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Moonbeam: Power = {
   "name": "Engulfing Darkness",
   "internalName": "Moonbeam",
-  "available": 0,
+  "available": 19,
   "description": "You release a burst of negative energy to foes around you dealing moderate Negative Energy damage, reducing their chance to hit and sapping their health over time.  Damage: Moderate, Recharge: Long",
   "shortHelp": "PBAoE, Moderate DMG(Negative), Foe -To Hit, Minor DoT(Negative)",
   "icon": "darknessassault_deathshroud.png",
@@ -40,7 +40,7 @@ export const Moonbeam: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 1,
     "table": "Melee_Damage"
   }

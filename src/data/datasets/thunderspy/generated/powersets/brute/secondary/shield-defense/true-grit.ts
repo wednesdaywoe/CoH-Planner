@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TrueGrit: Power = {
   "name": "True Grit",
   "internalName": "True_Grit",
-  "available": 0,
+  "available": 3,
   "description": "Your intense training has left you tougher than even the hardiest of heroes.  You gain additional hit points and resistance to fire, cold, energy, negative energy and toxic damage sources.  This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res (Cold, Energy, Fire, Negative Energy, Toxic), +MaxHealth",
   "icon": "shielddefense_truegrit.png",

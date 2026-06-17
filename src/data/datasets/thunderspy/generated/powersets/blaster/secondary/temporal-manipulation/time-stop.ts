@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TimeStop: Power = {
   "name": "Time Stop",
   "internalName": "Time_Stop",
-  "available": 0,
+  "available": 15,
   "description": "You trap your target within the flow of time causing them to be held helpless.  Even those resistant to the effects of Time Stop's hold will still have their regeneration rate and healing effects reduced for a brief period.  Targets affected by the Delayed effect will suffer from a more powerful hold, however its benefits are brief. Like most Temporal Manipulation attacks, manipulating time like this increases your movement speed and attack rate briefly.  Recharge: Long",
   "shortHelp": "Ranged Hold, Foe -Regen, -Heal",
   "icon": "timemanipulation_timestop.png",

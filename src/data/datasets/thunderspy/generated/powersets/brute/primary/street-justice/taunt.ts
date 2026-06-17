@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Taunt: Power = {
   "name": "Taunt",
   "internalName": "Taunt",
-  "available": 0,
+  "available": 11,
   "description": "Taunt foes to attack you. Useful to pull enemies off allies and keep them attacking you to raise your Fury. A To-Hit check is required to Taunt enemy players, but is not needed against critter targets. Recharge: Fast",
   "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
   "icon": "brawling_taunt.png",

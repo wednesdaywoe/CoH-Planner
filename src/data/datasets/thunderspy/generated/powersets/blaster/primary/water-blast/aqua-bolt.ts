@@ -46,7 +46,7 @@ export const AquaBolt: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.21,
     "table": "Ranged_Damage"
   }

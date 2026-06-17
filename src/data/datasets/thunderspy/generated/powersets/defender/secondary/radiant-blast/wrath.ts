@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Wrath: Power = {
   "name": "Wrath",
   "internalName": "Wrath",
-  "available": 0,
+  "available": 15,
   "description": "You hurl a large blast of Radiant light that explodes on impact, damaging all foes near the target and healing friends for moderate damage. Unholy foes such as demons, undead, and ghosts take additional damage. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged AoE, Moderate DMG(Fire), Moderate heal",
   "icon": "luminousblast_luminousdetonation.png",
@@ -41,12 +41,12 @@ export const Wrath: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.5,
       "table": "Ranged_Damage"
     }

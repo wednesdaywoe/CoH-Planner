@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Purify: Power = {
   "name": "Purify",
   "internalName": "Purify",
-  "available": 0,
+  "available": 3,
   "description": "You send Radiant light to multiple targets within a cone area in front of the you, dealing Fire damage to each foe it strikes and healing each friend. Unholy foes such as demons, undead, and ghosts take additional damage. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Short Ranged (Cone), Moderate DMG(Fire), Moderate heal",
   "icon": "luminousblast_protonscatter.png",
@@ -41,12 +41,12 @@ export const Purify: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.5,
       "table": "Melee_Damage"
     }

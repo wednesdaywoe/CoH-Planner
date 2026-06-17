@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RegenerationAura: Power = {
   "name": "Revitalization Aura",
   "internalName": "Regeneration_Aura",
-  "available": 0,
+  "available": 34,
   "description": "The Revitalization Aura dramatically increases the healing and recovery rate of all nearby allies for a limited time.",
   "shortHelp": "PBAoE, Ally +Regeneration +Recovery",
   "icon": "empathy_revitalizationaura.png",

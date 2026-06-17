@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PetrifyingGaze: Power = {
   "name": "Petrifying Gaze",
   "internalName": "Petrifying_Gaze",
-  "available": 0,
+  "available": 17,
   "description": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless. Recharge: Slow",
   "shortHelp": "Ranged Hold",
   "icon": "darkmiasma_petrifyinggaze.png",

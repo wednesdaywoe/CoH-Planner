@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PrimalForce: Power = {
   "name": "Primal Force",
   "internalName": "Primal_Force",
-  "available": 0,
+  "available": 25,
   "description": "Enemies nearby are subject to your control of natural forces, forcing them to the ground.",
   "shortHelp": "Toggle PBAoE Foe -Jump, -Fly, -Range",
   "icon": "natureaffinity_corrosivesap.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ChainInduction: Power = {
   "name": "Chain Induction",
   "internalName": "Chain_Induction",
-  "available": 0,
+  "available": 17,
   "description": "This Electric Melee attack deals moderate Smashing and Energy damage and may drain some of the targets Endurance. However, this attack also induces an unstable electric charge that may jump to another enemy target.  The charge will jump to the closest enemy in range that has not been previously hit, until it inevitably dissipates. Enhancements and Fury will boost the effectiveness of the initial attack as well as the jumping charge. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Melee, Moderate DMG(Smash/Energy), Foe -End +Special",
   "icon": "electricmelee_targetedchaininduction.png",
@@ -40,7 +40,7 @@ export const ChainInduction: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.396,
     "table": "Melee_Damage"
   }

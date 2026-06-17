@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerSink: Power = {
   "name": "Power Sink",
   "internalName": "Power_Sink",
-  "available": 0,
+  "available": 34,
   "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance. Recharge: Long",
   "shortHelp": "PBAoE, Self +End, Foe -End",
   "icon": "electricitymanipulation_powersink.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FRTTotalDomination: Power = {
   "name": "Total Domination",
   "internalName": "FRT_Total_Domination",
-  "available": 0,
+  "available": 25,
   "description": "Tears at the mind of a target foe and those near him. Total Domination renders all affected foes helpless, lost in their own minds and unable to defend themselves. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "fortunatatraining_totaldomination.png",

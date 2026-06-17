@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const M30Grenade: Power = {
   "name": "M30 Grenade",
   "internalName": "M30_Grenade",
-  "available": 0,
+  "available": 7,
   "description": "Launches a Grenade at long range from beneath the barrel of your Assault Rifle. This explosion affects all within the blast radius, and can knock them back. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal/Smash), Knockback",
   "icon": "assaultweapons_arm30grenade.png",
@@ -41,7 +41,7 @@ export const M30Grenade: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.3,
     "table": "Ranged_Damage"
   },
@@ -58,7 +58,7 @@ export const M30Grenade: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.9,
         "table": "Ranged_Damage"
       }

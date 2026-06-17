@@ -576,15 +576,17 @@ function BuildIdentityPopover() {
   ];
 
   const handleServerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newId = e.target.value as 'homecoming' | 'rebirth';
+    const newId = e.target.value as DatasetId;
     if (newId === build.serverId) return;
+
+    const serverLabel = SERVER_OPTIONS.find((o) => o.value === newId)?.label ?? newId;
 
     // Switching datasets invalidates every powerset/power reference in the
     // current build. The minimum-viable UX (per MULTI_DATASET_PLAN.md) is
     // warn-and-clear; cross-server inference mapping is future work.
     const hasPicks = !!build.archetype.id || !!build.primary.id || !!build.secondary.id;
     if (hasPicks && !window.confirm(
-      `Switching to ${newId === 'rebirth' ? 'Rebirth' : 'Homecoming'} will reset your current build. Continue?`,
+      `Switching to ${serverLabel} will reset your current build. Continue?`,
     )) {
       return;
     }
@@ -601,7 +603,6 @@ function BuildIdentityPopover() {
     // a fresh chunk graph (powersets + IO sets + AT tables). Drop a
     // full-screen overlay so the user gets immediate feedback that
     // something's happening — survives until the new page paints over it.
-    const serverLabel = newId === 'rebirth' ? 'Rebirth' : 'Homecoming';
     const overlay = document.createElement('div');
     overlay.setAttribute('role', 'status');
     overlay.setAttribute('aria-live', 'polite');

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Disembowel: Power = {
   "name": "Disembowel",
   "internalName": "Disembowel",
-  "available": 0,
+  "available": 25,
   "description": "You perform a powerful Disemboweling maneuver that deals a great amount of damage, and can knock a target up into the air. This attack can reduce a target's Defense, making him easier to hit. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Lethal), Knockup, Foe -DEF",
   "icon": "sword_disembowel.png",
@@ -41,7 +41,7 @@ export const Disembowel: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.96,
     "table": "Melee_Damage"
   },

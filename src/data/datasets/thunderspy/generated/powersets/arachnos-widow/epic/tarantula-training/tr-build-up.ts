@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TRBuildUp: Power = {
   "name": "Aim",
   "internalName": "TR_Build_Up",
-  "available": 0,
+  "available": 7,
   "description": "Greatly increases your chance to hit with attacks for a few seconds. Slightly increases damage. Requires Tarantula form to use. Recharge: Long",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "tarantulatraining_buildup.png",

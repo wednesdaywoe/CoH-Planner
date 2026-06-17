@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BoostRange: Power = {
   "name": "Boost Range",
   "internalName": "Boost_Range",
-  "available": 0,
+  "available": 34,
   "description": "You can boost your powers to increase the range of your next few attacks. Recharge: Long",
   "shortHelp": "Self Range Increase",
   "icon": "timemanipulation_chronoshift.png",

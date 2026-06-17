@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CrowdControl: Power = {
   "name": "Crowd Control",
   "internalName": "Crowd_Control",
-  "available": 0,
+  "available": 27,
   "description": "You swing your mace in a wide arc in front of you. This attack strikes all foes within melee range, deals them serious damage, and knocks them down. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Melee (Cone), Moderate DMG(Smashing), Knockback",
   "icon": "mace_crowdcontrol.png",
@@ -41,7 +41,7 @@ export const CrowdControl: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.61,
     "table": "Melee_Damage"
   }

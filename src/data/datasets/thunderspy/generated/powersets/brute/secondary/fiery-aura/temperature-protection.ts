@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TemperatureProtection: Power = {
   "name": "Temperature Protection",
   "internalName": "Temperature_Protection",
-  "available": 0,
+  "available": 9,
   "description": "Temperature Protection gives you strong resistance to Fire damage, some resistance to Cold damage as well as some resistance to slow effects.  This power is always on and costs no Endurance.",
   "shortHelp": "Auto: Self +Res(Fire, Cold, Slow)",
   "icon": "flamingshield_temperatureprotection.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DisruptionAura: Power = {
   "name": "Disruption Aura",
   "internalName": "Disruption_Aura",
-  "available": 0,
+  "available": 5,
   "description": "You create a powerful sonic resonance around yourself, repelling and weakening the Damage Resistance of all nearby foes. Choosing this power locks out Disruption Field Recharge: Moderate",
   "shortHelp": "Toggle PBAoE: Foe Knockdown, Foe -Res",
   "icon": "sonicdebuff_teamknockback.png",

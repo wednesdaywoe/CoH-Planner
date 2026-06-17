@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GlueArrow: Power = {
   "name": "Glue Arrow",
   "internalName": "Glue_Arrow",
-  "available": 0,
+  "available": 1,
   "description": "This arrow carries a cartridge of intensely sticky glue, which explodes on impact. The glue slows the movement and attack rates of any foes in the area. Recharge: Very Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe -Speed, -Recharge",
   "icon": "trickarrow_slow.png",

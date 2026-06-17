@@ -595,6 +595,6 @@
       ]
     }
   ],
-  "available_level": 0,
+  "available_level": 4294967295,
   "powerset": "Feral_Might.Feral_Might"
 }

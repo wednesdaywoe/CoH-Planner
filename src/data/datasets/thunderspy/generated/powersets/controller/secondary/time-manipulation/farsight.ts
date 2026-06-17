@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Farsight: Power = {
   "name": "Farsight",
   "internalName": "Farsight",
-  "available": 0,
+  "available": 27,
   "description": "You give your allies a brief glimpse of the future and what is to come.  This provides you and your team a moderate increase to your chance to hit and defense for a short period of time.   Recharge: Very Long",
   "shortHelp": "PBAoE Team, +To-Hit, +Defense(All), +Perception",
   "icon": "timemanipulation_farsight.png",

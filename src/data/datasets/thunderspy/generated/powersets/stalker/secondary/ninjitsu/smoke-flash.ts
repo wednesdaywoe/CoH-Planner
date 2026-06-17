@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SmokeFlash: Power = {
   "name": "Smoke Flash",
   "internalName": "Smoke_Flash",
-  "available": 0,
+  "available": 19,
   "description": "You throw a smoke bomb at your feet.  The resulting flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. Combined with Hide, Smoke Flash is the perfect distraction to get out of a bad situation. Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Placate",
   "icon": "ninjitsu_smokeflash.png",

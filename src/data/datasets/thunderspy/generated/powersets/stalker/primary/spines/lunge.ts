@@ -38,7 +38,7 @@ export const Lunge: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.32,
     "table": "Melee_Damage"
   },
@@ -56,7 +56,7 @@ export const Lunge: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 1.32,
         "table": "Melee_Damage"
       }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WillDomination: Power = {
   "name": "Will Domination",
   "internalName": "Will_Domination",
-  "available": 0,
+  "available": 7,
   "description": "This powerful attack deals Psionic damage, and is so painful it usually renders its target unconscious. The victim is asleep, and will wake if disturbed. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Sleep",
   "icon": "psychicblast_willdomination.png",
@@ -39,7 +39,7 @@ export const WillDomination: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 1.24,
     "table": "Ranged_Damage"
   },

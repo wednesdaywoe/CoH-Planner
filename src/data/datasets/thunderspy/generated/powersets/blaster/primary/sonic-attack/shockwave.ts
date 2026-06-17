@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Shockwave: Power = {
   "name": "Shockwave",
   "internalName": "Shockwave",
-  "available": 0,
+  "available": 5,
   "description": "You can call forth a tremendous Shockwave that can knock down foes and deal some Smashing damage in a wide cone area. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged (Cone), Minor DMG(Smashing/Energy), Foe Knockback, -Res(All)",
   "icon": "sonicblast_knockback.png",
@@ -42,7 +42,7 @@ export const Shockwave: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.32,
     "table": "Ranged_Damage"
   },

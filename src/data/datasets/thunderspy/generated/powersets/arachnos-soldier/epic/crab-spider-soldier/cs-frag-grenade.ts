@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CSFragGrenade: Power = {
   "name": "Frag Grenade",
   "internalName": "CS_Frag_Grenade",
-  "available": 0,
+  "available": 17,
   "description": "Launches an M30 Grenade at long range from an arm of your backpack. The explosion from this grenade affects all within the blast and can knock them back. Note: If you take this power, you cannot take the Wolf Spider version. Damage: Moderate Recharge: Medium",
   "shortHelp": "Ranged(Targeted AoE), Moderate DMG (Toxic/Smash), Foe Knockback",
   "icon": "crabspider_fraggrenade.png",

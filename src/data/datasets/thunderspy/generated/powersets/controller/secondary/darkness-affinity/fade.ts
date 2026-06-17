@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Fade: Power = {
   "name": "Fade",
   "internalName": "Fade",
-  "available": 0,
+  "available": 19,
   "description": "You partially bring yourself and all nearby allies into the Netherworld vastly increasing their Defense to all attacks and resistance to lethal, smashing, negative energy and psionic damage for a very short period of time as well as dramatically increasing their resistance to Defense Debuffs. This power is best used to help counter a dangerous situation. Recharge: Very Slow",
   "shortHelp": "PBAoE Ally, +Defense(All), +Res(Defense Debuffs, Lethal, Smash, Negative, Psionic)",
   "icon": "darknessaffinity_fade.png",

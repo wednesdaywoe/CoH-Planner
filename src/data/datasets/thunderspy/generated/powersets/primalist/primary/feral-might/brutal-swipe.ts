@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BrutalSwipe: Power = {
   "name": "Brutal Swipe",
   "internalName": "Brutal_Swipe",
-  "available": 0,
+  "available": 1,
   "description": "You lash out at nearby foes in a single broad strike hitting up to 5 enemies in a cone in front of you. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a fair amount of health. In Hunter form you'll deal lethal damage and reduce the targets' defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a good chance to stun. Brutal Swipe builds 1 Primal Energy. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee Cone, High DMG(Special), Special",
   "icon": "feralmight_brutalswipe.png",

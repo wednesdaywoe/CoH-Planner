@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Benumb: Power = {
   "name": "Benumb",
   "internalName": "Benumb",
-  "available": 0,
+  "available": 27,
   "description": "Numbs a single target to its very core.  Benumb reduces the target's core body temperature, dramatically weakening them.  A Benumbed target's Damage and Regeneration Rate are greatly reduced.  Additionally, the affected target's secondary power effects are all weakened. The target's powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all weakened.  Recharge: Long",
   "shortHelp": "Ranged Foe -DMG, -END, -Regeneration, -Special",
   "icon": "colddomination_benumb.png",

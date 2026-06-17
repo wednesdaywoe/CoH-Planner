@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnvironmentalAdaptation: Power = {
   "name": "Environmental Modification",
   "internalName": "Environmental_Adaptation",
-  "available": 0,
+  "available": 1,
   "description": "Your body can spontaneously adapt to its surroundings and your mind has learned to shield itself from harmful effects by constant exposure to these dangers. While active you gain moderate defense to Fire, Cold, Energy and Negative Energy damage, and a small amount of defense to Psionic damage. Additionally you are protected against hold, knockdown and immobilize effects.  While Defensive Adaptation is active you gain a minor amount of Lethal, Smashing, Fire, Cold, Energy, Negative Energy and Psionic defense, as well as a minor amount of maximum hit points. If Offensive Adaptation is active you'll gain a moderate To Hit bonus. These special bonuses are unenhanceable. Recharge: Fast",
   "shortHelp": "Self Toggle, +Res(Hold, Knockdown, Immobilize), +Def(Energy, Negative, Fire, Cold, Psionic), +Special",
   "icon": "bioorganicarmor_environmentalmodification.png",

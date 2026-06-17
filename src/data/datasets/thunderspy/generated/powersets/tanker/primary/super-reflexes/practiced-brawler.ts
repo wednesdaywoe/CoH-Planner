@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PracticedBrawler: Power = {
   "name": "Practiced Brawler",
   "internalName": "Practiced_Brawler",
-  "available": 0,
+  "available": 5,
   "description": "Your training has allowed you to become a Practiced Brawler, tuning you into a perfect fighting machine. You increase your regeneration rate, in addition You gain a resistance to Knockback, Disorient, Hold, Sleep, and Immobilization powers for a moderate duration. Recharge: Very Long",
   "shortHelp": "Click: Self +Regen, +Res(Knockback, Disorient, Hold, Sleep, Immobilize)",
   "icon": "superreflexes_practicedbrawler.png",

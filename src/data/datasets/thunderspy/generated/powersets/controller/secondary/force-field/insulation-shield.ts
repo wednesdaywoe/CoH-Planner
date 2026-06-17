@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const InsulationShield: Power = {
   "name": "Insulation Shield",
   "internalName": "Insulation_Shield",
-  "available": 0,
+  "available": 9,
   "description": "Dramatically protects an ally from Fire, Cold, Energy, Negative Energy, Ranged and AoE attacks for a limited time. The Insulation also protects the target from Endurance Draining effects. You cannot stack multiple Insulation Shields on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Deflection Shield. You cannot use this power on yourself. Recharge: Very Fast",
   "shortHelp": "Ranged, Ally +DEF(Fire, Cold, Energy, Negative, Ranged, AoE), Res (End Drain)",
   "icon": "forcefield_insulationshield.png",

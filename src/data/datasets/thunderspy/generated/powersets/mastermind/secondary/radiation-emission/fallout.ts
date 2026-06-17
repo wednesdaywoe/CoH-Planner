@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Fallout: Power = {
   "name": "Fallout",
   "internalName": "Fallout",
-  "available": 0,
+  "available": 34,
   "description": "You can activate this power on a Henchman sacrifice them and extract the energy from their body to deal a massive amount of Energy damage to any nearby foes. All affected foes are extremely weakened by the Fallout, and their Accuracy, Defense, Damage and Damage Resistance is severely reduced.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Sacrifice Henchman, PBAoE, Extreme DMG(Energy), Foe -To Hit, -DEF, -DMG, -Res(All)",
   "icon": "radiationpoisoning_fallout.png",

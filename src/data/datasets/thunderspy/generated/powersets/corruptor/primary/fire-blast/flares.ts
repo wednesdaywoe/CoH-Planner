@@ -38,12 +38,12 @@ export const Flares: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.71,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.3,
       "table": "Ranged_Damage"
     }
@@ -55,7 +55,7 @@ export const Flares: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Fire",
         "scale": 0.71,
         "table": "Ranged_Damage"
       }

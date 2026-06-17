@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PenumbralShield: Power = {
   "name": "Penumbral Shield",
   "internalName": "Penumbral_Shield",
-  "available": 0,
+  "available": 9,
   "description": "When you toggle on Penumbral Shield, you become highly resistant to Fire, Cold, and Toxic damage. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Fire, Cold, Toxic)",
   "icon": "umbralaura_penumbralshield.png",

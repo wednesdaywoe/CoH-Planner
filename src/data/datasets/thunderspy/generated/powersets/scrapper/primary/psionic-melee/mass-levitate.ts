@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const MassLevitate: Power = {
   "name": "Mass Levitate",
   "internalName": "Mass_Levitate",
-  "available": 0,
+  "available": 31,
   "description": "You build up a large amount of telekinetic energy and release it causing nearby foes to be flung into the air. Affected foes will suffer high Smashing damage. If the caster has Insight when this power is used Mass Levitate will also cause a moderate amount of Psionic damage over time. Damage: High, Recharge: Long",
   "shortHelp": "PBAoE, High DMG(Smash), Foe Knock Up, +Insight",
   "icon": "psionicmelee_masslevitate.png",
@@ -39,7 +39,7 @@ export const MassLevitate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.42,
     "table": "Melee_Damage"
   },
@@ -51,12 +51,12 @@ export const MassLevitate: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 0.142,
         "table": "Melee_Damage",
         "duration": 3.1

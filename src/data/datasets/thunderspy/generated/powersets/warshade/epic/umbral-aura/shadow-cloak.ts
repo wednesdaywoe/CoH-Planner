@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ShadowCloak: Power = {
   "name": "Shadow Cloak",
   "internalName": "Shadow_Cloak",
-  "available": 0,
+  "available": 13,
   "description": "You surround yourself with shadowy particles that bend the light around you, making you difficult to spot at a distance. You can be seen only at close range, or if you attack a target. Even if seen, the Shadow Cloak grants you a bonus to Defense and some protection from Immobilization. Shadow Cloak also allows you to see things in a new light, allowing you to better see stealthy foes. This power can be used in both Nova and Dwarf Forms.  Recharge: Slow",
   "shortHelp": "Toggle: Self Stealth, +DEF, +Perception, Res (Immobilize)",
   "icon": "umbralaura_shadowcloak.png",

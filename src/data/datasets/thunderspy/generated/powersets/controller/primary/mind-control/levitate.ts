@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Levitate: Power = {
   "name": "Levitate",
   "internalName": "Levitate",
-  "available": 0,
+  "available": 5,
   "description": "You can send a single target violently into the air, then slam them to the ground for Smashing damage. This power can bring flying foes to the ground. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Smash)",
   "icon": "mentalcontrol_levitate.png",
@@ -41,7 +41,7 @@ export const Levitate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.32,
     "table": "Ranged_Damage"
   },

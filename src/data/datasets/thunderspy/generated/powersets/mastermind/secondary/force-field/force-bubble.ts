@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ForceBubble: Power = {
   "name": "Force Bubble",
   "internalName": "Force_Bubble",
-  "available": 0,
+  "available": 37,
   "description": "Creates a large bubble which protects all allies inside. While active, this power keeps all foes at bay, protecting all allies inside from melee or short ranged attacks. More powerful foes may be able to penetrate the Force Bubble, buy may slip and get knocked down and forced back if they try. Recharge: Slow",
   "shortHelp": "Toggle: PBAoE Foe Repel, Knockdown",
   "icon": "forcefield_forcebubble.png",

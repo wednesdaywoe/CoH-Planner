@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DistortionField: Power = {
   "name": "Distortion Field",
   "internalName": "Distortion_Field",
-  "available": 0,
+  "available": 15,
   "description": "You can choose an area to slow the flow of time down to a crawl. Enemies who enter the field will have their attack rate and speed slowed dramatically. In addition, affected enemies might become held as they are frozen in time. Targets affected by Time Crawl will have the chance to be held increased. Recharge: Very Long",
   "shortHelp": "Ranged (Location AoE), Foe(-Recharge, -Speed), Chance for Hold",
   "icon": "timemanipulation_distortionfield.png",

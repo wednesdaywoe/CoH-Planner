@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Frostwork: Power = {
   "name": "Frostwork",
   "internalName": "Frostwork",
-  "available": 0,
+  "available": 15,
   "description": "Covers an ally in a thick layer of Frost. The frost can absorb the impact from enemy attacks, effectively increasing your ally's maximum Hit Points for a short time. Frostwork also grants your ally resistance to Toxic Damage. Recharge: Very Long",
   "shortHelp": "Target +Max HP, Res(Toxic)",
   "icon": "colddomination_frostwork.png",

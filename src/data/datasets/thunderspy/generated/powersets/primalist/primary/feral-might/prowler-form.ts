@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ProwlerForm: Power = {
   "name": "Prowler Form",
   "internalName": "Prowler_Form",
-  "available": 0,
+  "available": 17,
   "description": "By activating this toggle, you will shapeshift into the deadly Prowler. This panther-like creature attacks its foes vicious claw and bite attacks. While in this form you will be focused on dealing tremendous damage, stunning and terrorizing foes. Hunter Form costs no endurance and cannot be slotted. However, it grants the user the Pounce power. Pounce is an attack power that benefits from stealth granted by Primalist's Cloak. This power can be slotted as normal. While shapeshifted you will have limited access to Pool Powers. Recharge: Fast",
   "shortHelp": "Toggle, Prowler Form",
   "icon": "feralmight_prowlerform.png",

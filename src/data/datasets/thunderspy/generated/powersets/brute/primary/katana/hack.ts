@@ -41,7 +41,7 @@ export const Hack: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.16,
     "table": "Melee_Damage"
   },

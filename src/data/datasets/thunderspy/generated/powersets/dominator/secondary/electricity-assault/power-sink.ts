@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerSink: Power = {
   "name": "Thunder Strike",
   "internalName": "Power_Sink",
-  "available": 0,
+  "available": 27,
   "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave. Damage: High, Recharge: Slow",
   "shortHelp": "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback",
   "icon": "electricalassault_thunderstrike.png",
@@ -43,12 +43,12 @@ export const PowerSink: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 1.455,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 1.455,
       "table": "Melee_Damage"
     }

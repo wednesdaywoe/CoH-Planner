@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GuidingLight: Power = {
   "name": "Radiating Light",
   "internalName": "Guiding_Light",
-  "available": 0,
+  "available": 1,
   "description": "Stored sunlight surges through you, mending your wounds and those of your friends.",
   "shortHelp": "PBAoE Team Heal",
   "icon": "natureaffinity_lifegivingspores.png",

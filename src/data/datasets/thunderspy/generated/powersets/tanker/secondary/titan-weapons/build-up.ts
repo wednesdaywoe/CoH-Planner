@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BuildUp: Power = {
   "name": "Build Momentum",
   "internalName": "Build_Up",
-  "available": 0,
+  "available": 19,
   "description": "Grants you momentum, moderately increases the amount of damage you deal for a few seconds and slightly increases your chance to hit.  Build Momentum grants you Momentum for 10 seconds and it replaces any remaining Momentum you may still have.  Recharge: Long",
   "shortHelp": "Self +DMG, +To Hit, +Momentum",
   "icon": "titanweapons_buildup.png",

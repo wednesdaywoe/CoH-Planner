@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Moonbeam: Power = {
   "name": "Moonbeam",
   "internalName": "Moonbeam",
-  "available": 0,
+  "available": 25,
   "description": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit. This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Negative), Target -To Hit",
   "icon": "darkcast_moonbeam.png",

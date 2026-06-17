@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Rage: Power = {
   "name": "Rage",
   "internalName": "Rage",
-  "available": 0,
+  "available": 17,
   "description": "A Rage comes over you, sending you into a berserker fury. While Raging, your damage and chance to hit is dramatically increased. However, while your Rage lasts you tire more easily. Recharge: Very Long",
   "shortHelp": "Self +DMG, +To Hit, -Max End.",
   "icon": "superstrength_rage.png",

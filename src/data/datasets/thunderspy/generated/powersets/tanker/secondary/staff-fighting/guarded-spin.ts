@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GuardedSpin: Power = {
   "name": "Guarded Spin",
   "internalName": "Guarded_Spin",
-  "available": 0,
+  "available": 3,
   "description": "You spin your staff like a propeller in front of you  dealing Light Smashing damage to enemies in your frontal arc and deflecting any incoming attacks, thus boosting your Melee and Lethal defense briefly.   While a form is active, this power will build one level of Perfection.  Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee (Cone), Moderate DMG (Smash), Self +Def(Melee, Lethal)",
   "icon": "stafffighting_guardedspin.png",

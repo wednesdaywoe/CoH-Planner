@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EquipThugs: Power = {
   "name": "Equip Thugs",
   "internalName": "Equip_Thugs",
-  "available": 0,
+  "available": 5,
   "description": "Equip your Thug Henchmen with better ammo, weapons and training.  This power permanently bestows new weapons and abilities to all of your Thug Henchman. The powers gained are unique and dependent upon the type of Thug Henchman.  This power only works on your Thug Henchmen and you can only Equip your Thug Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Equip Thug Henchman",
   "icon": "thugs_equipthugs.png",

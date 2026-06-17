@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GrippingTerror: Power = {
   "name": "Gripping Terror",
   "internalName": "Gripping_Terror",
-  "available": 0,
+  "available": 1,
   "description": "You unleash a wave of spectral teror upon your targets, dealing Negative energy damage as restless spirits immobilize and fear affected foes. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee (Cone), Moderate DMG(Negative/Psionic), Foe Immobilize, Fear",
   "icon": "spectralmelee3.png",
@@ -43,7 +43,7 @@ export const GrippingTerror: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.75,
     "table": "Melee_Damage"
   },
@@ -66,7 +66,7 @@ export const GrippingTerror: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Negative",
         "scale": 1.5,
         "table": "Melee_Damage"
       }

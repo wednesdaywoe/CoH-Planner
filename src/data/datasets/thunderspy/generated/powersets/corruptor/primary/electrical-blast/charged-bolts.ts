@@ -39,7 +39,7 @@ export const ChargedBolts: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1,
     "table": "Ranged_Damage"
   },
@@ -50,7 +50,7 @@ export const ChargedBolts: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Energy",
         "scale": 1,
         "table": "Ranged_Damage"
       }

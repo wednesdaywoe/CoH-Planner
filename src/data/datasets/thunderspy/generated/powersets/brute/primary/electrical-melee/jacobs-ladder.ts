@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const JacobsLadder: Power = {
   "name": "Jacobs Ladder",
   "internalName": "Jacobs_Ladder",
-  "available": 0,
+  "available": 1,
   "description": "You are able to generate a strong current between your arms and snap a powerful bolt of electricity in an arc in front of you.  This melee attack can electrocute all foes within the arc dealing High energy damage.  Jacobs Ladder can drain some Endurance from your target and may overload their synapses, leaving him writhing for a moment. Disturbing an overloaded target will disperse the electrical charge and release him. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee (Cone), High DMG(Energy), Foe Sleep, -End",
   "icon": "electricmelee_conemoderatedmg.png",
@@ -45,7 +45,7 @@ export const JacobsLadder: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.5,
     "table": "Melee_Damage"
   },

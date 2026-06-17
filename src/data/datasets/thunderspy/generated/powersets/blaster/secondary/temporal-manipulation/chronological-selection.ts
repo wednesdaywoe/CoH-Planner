@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ChronologicalSelection: Power = {
   "name": "Chronos",
   "internalName": "Chronological_Selection",
-  "available": 0,
+  "available": 9,
   "description": "You distort time around you, selecting a period of time where your abilities are at your highest. Your damage and chance to hit are dramatically increased for a brief period.  This power places the Accelerated effect on you. Recharge: Very Long",
   "shortHelp": "Self +Damage, +ToHit",
   "icon": "timemanipulation_chronologicalselection.png",

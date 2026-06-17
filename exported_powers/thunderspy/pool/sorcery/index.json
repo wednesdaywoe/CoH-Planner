@@ -15,10 +15,10 @@
   "available_level": [
     0,
     0,
-    0,
-    0,
-    0,
-    0
+    3,
+    4294967295,
+    13,
+    19
   ],
   "power_display_names": [
     "Spirit Ward",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnergeticStrike: Power = {
   "name": "Energetic Strike",
   "internalName": "Energetic_Strike",
-  "available": 0,
+  "available": 27,
   "description": "You form the potential energies around you into a massive surge of force that empowers your fists to deliver a devastating blow to a single target. This blow causes extreme smashing and energy damage on impact and will reduce the target's damage.  The force from this power's impact is so great that it is likely to disorient most foes. Energetic Strike awards 2 stacks of Impulse and and its damage debuff and damage scale with the number of consumed stacks.  If used when you have 5 stacks of Impulse, this power's stun effect will last longer and Energetic Strike has a chance to immediately refresh Coalescence.  Damage: Extreme, Recharge: Long",
   "shortHelp": "Melee, Extreme DMG (Smashing/Energy), Foe Disorient, -DMG, Self -Impulse",
   "icon": "kineticassault_energeticstrike.png",
@@ -44,9 +44,9 @@ export const EnergeticStrike: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Special",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Placate: Power = {
   "name": "Innocuous Strikes",
   "internalName": "Placate",
-  "available": 0,
+  "available": 25,
   "description": "You repeatedly batter your foes' feet and legs with a flurry of sweeps of your staff.  This attack deals Moderate Smashing damage to all foes within its cone.  All affected targets will have their movement speed reduced, with a chance of being immobilized briefly.  While a form is active, this power will build one level of Perfection. Damage: High, Recharge: Long",
   "shortHelp": "Melee Cone, High DMG(Smash), Foe Immobilize, -Speed",
   "icon": "stafffighting_innocuousstrikes.png",
@@ -42,7 +42,7 @@ export const Placate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.332,
     "table": "Melee_Damage",
     "duration": 1.7
@@ -61,7 +61,7 @@ export const Placate: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 1.66,
         "table": "Melee_Damage"
       }

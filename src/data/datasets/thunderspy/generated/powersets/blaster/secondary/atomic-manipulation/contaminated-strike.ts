@@ -39,7 +39,7 @@ export const ContaminatedStrike: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.21,
     "table": "Melee_Damage"
   }

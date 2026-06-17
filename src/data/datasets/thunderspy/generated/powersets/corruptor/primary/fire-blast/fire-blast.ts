@@ -38,12 +38,12 @@ export const FireBlast: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.15,
       "table": "Ranged_Damage",
       "duration": 3.1
@@ -56,7 +56,7 @@ export const FireBlast: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Fire",
         "scale": 1,
         "table": "Ranged_Damage"
       }

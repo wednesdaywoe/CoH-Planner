@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WillOfArachnae: Power = {
   "name": "Intravenous Serum",
   "internalName": "Will_Of_Arachnae",
-  "available": 0,
+  "available": 34,
   "description": "You inject a serum directly into your bloodstream, boosting your maximum health and healing you. Requires Tarantula form to use. Recharge: Long",
   "shortHelp": "Self Heal, Self +Max HP",
   "icon": "crabspidertraining_serum.png",

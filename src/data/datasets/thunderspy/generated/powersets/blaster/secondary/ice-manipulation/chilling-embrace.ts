@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ChillingEmbrace: Power = {
   "name": "Frigid Protection",
   "internalName": "Chilling_Embrace",
-  "available": 0,
+  "available": 9,
   "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their movement speed and damage.  The air around your body becomes so cold that attacks deflect off of it, granting you absorption, while your body becomes extremely energy efficient, granting you bonus Recovery.  Recharge: Very Fast",
   "shortHelp": "Toggle: PBAoE, Foe -Recharge, -Speed, -DMG, Self +Absorb over Time, +Recovery",
   "icon": "icemanipulation_chillingembrace.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CalloftheWild: Power = {
   "name": "Call of the Wild",
   "internalName": "Call_of_the_Wild",
-  "available": 0,
+  "available": 11,
   "description": "You call 2 wolves to your side to aid you in combat. These wolves will bite and shred your foe. These summoned wolves will only remain with you for a short time before returning to the wild. Recharge: Very Long",
   "shortHelp": "Summon Wolves",
   "icon": "feralmight_callofthewild.png",

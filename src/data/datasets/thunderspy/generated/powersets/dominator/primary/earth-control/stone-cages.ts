@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const StoneCages: Power = {
   "name": "Stone Cages",
   "internalName": "Stone_Cages",
-  "available": 0,
+  "available": 1,
   "description": "Immobilizes a group of foes within earthy formations and deals some Smashing damage over time. Slower and less damaging than Stone Prison, but can capture multiple targets. Stone Cages can also reduce a target's Defense. Damage: Minor(DoT), Recharge: Moderate",
   "shortHelp": "Ranged AoE, Minor DMG(Smash), Foe Immobilize, -Fly, -DEF",
   "icon": "earthgrasp_stonecages.png",
@@ -41,7 +41,7 @@ export const StoneCages: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.1,
     "table": "Ranged_Damage",
     "duration": 5.2

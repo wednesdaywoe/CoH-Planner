@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerSiphon: Power = {
   "name": "Power Siphon",
   "internalName": "Power_Siphon",
-  "available": 0,
+  "available": 19,
   "description": "Power Siphon adds a small bonus to hit and modifies your other Kinetic Attack powers, so they are now capable of draining the strength of your enemies and adding that strength to you. This effect will stack up to 5 times. Recharge: Very Long",
   "shortHelp": "Self: +To Hit, +Special",
   "icon": "kineticattack_powersiphon.png",

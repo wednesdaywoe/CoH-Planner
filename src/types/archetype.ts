@@ -79,7 +79,9 @@ export type ArchetypeBranchId =
   | 'bane-spider'
   | 'crab-spider'
   | 'night-widow'
-  | 'fortunata';
+  | 'fortunata'
+  // Thunderspy-only — custom third Widow branch
+  | 'tarantula';
 
 // ============================================
 // ARCHETYPE DEFINITION

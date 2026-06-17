@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GravityDistortionField: Power = {
   "name": "Gravity Distortion Field",
   "internalName": "Gravity_Distortion_Field",
-  "available": 0,
+  "available": 31,
   "description": "Creates a large, intensely misshapen Gravity Distortion Field that encompasses several foes, rendering them unable to take any action. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",
   "icon": "gravitycontrol_gravitydistortionfield.png",

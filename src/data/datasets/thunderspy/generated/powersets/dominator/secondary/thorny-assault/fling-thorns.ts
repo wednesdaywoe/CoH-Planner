@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FlingThorns: Power = {
   "name": "Fling Thorns",
   "internalName": "Fling_Thorns",
-  "available": 0,
+  "available": 9,
   "description": "You can throw dozens of Thorns in a wide cone in front of you, impaling foes caught within the area. These Thorns deals moderate damage, and poisons any targets it hits. Thorn poison deals additional Toxic damage and can reduce your foes' Defense.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Lethal), DoT(Toxic) -DEF",
   "icon": "thornyassault_flingthorns.png",
@@ -44,12 +44,12 @@ export const FlingThorns: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 1,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 4.1

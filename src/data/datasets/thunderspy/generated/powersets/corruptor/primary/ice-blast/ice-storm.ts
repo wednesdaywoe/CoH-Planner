@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IceStorm: Power = {
   "name": "Ice Storm",
   "internalName": "Ice_Storm",
-  "available": 0,
+  "available": 5,
   "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets' movement and attack speed. Damage: Minor(DoT), Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Minor DoT(Cold, Lethal), Foe -Recharge, -SPD",
   "icon": "iceblast_freezingrain.png",

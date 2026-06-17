@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SoulTransfer: Power = {
   "name": "Soul Transfer",
   "internalName": "Soul_Transfer",
-  "available": 0,
+  "available": 37,
   "description": "Should you fall in battle, you can perform a Soul Transfer, sucking the life force of all foes around you to bring yourself back from the brink of death. The more foes nearby, the more life is restored to you. Drained foes are left Disoriented. The dark effects of this Soul Transfer will actually leave you invulnerable for a brief time, and protected from XP Debt for 60 seconds. There must be at least one foe nearby to fuel the Transfer and revive yourself. Damage: Moderate, Recharge: Very Long",
   "shortHelp": "Self Rez, Special",
   "icon": "darkarmor_soultransfer.png",

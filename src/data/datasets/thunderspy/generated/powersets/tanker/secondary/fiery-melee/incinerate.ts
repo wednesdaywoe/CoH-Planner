@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Incinerate: Power = {
   "name": "Incinerate",
   "internalName": "Incinerate",
-  "available": 0,
+  "available": 34,
   "description": "Intense concentration can allow you to Incinerate an opponent. This will set your foe ablaze, dealing damage over time. Damage: High(DoT), Recharge: Slow",
   "shortHelp": "Melee, High DoT(Fire)",
   "icon": "fieryfray_incinerate.png",

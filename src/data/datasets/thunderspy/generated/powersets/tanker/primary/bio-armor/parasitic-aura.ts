@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ParasiticAura: Power = {
   "name": "Parasitic Aura",
   "internalName": "Parasitic_Aura",
-  "available": 0,
+  "available": 31,
   "description": "You release a cloud of parasites around you that draw out your enemies' genetic material. These parasites dramatically increase your survivability by gaining damage absorption while boosting your regeneration and recovery rate for a short time. Affected foes will be infected and deal reduced damage for a short while.  While Efficient Adaptation is active, this power will grant additional regeneration and recovery per target hit.  While Defensive Adaptation is active, this power will grant a small amount of additional damage absorption and increase the effectiveness of this power's damage debuff. Recharge: Very Long",
   "shortHelp": "PBAoE, Self +Absorb, +Regeneration, +Recovery, Foe -DMG",
   "icon": "bioorganicarmor_parasiticaura.png",

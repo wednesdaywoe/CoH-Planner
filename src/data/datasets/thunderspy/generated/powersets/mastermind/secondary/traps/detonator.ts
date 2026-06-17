@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Detonator: Power = {
   "name": "Detonator",
   "internalName": "Detonator",
-  "available": 0,
+  "available": 34,
   "description": "A good Mastermind  always plans ahead, but a great one knows when to make a strategic sacrifice.  You have equipped all your Henchmen with explosives.  When the time is right, select a Henchman and set off the Detonator. Undead and Robots are easily rigged and will blow up instantly, devastating nearby enemies.  Ninjas, Soldiers and other free thinking Henchmen will try to place the explosive on the ground and get away.  But you know... the fuse is short.  Recharge: Very Long",
   "shortHelp": "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_aoemassivedamage.png",

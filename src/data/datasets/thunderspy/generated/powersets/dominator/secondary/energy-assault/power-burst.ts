@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerBurst: Power = {
   "name": "Power Burst",
   "internalName": "Power_Burst",
-  "available": 0,
+  "available": 37,
   "description": "A devastating attack that can knock your target off their feet. Damage: Superior, Recharge: Slow",
   "shortHelp": "Superior DMG(Energy/Smash), Foe Knockback",
   "icon": "energyassault_powerburst.png",
@@ -39,7 +39,7 @@ export const PowerBurst: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.78,
     "table": "Ranged_Damage"
   },

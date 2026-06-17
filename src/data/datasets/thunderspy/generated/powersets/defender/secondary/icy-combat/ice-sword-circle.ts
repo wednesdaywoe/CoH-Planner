@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IceSwordCircle: Power = {
   "name": "Ice Sword Circle",
   "internalName": "Ice_Sword_Circle",
-  "available": 0,
+  "available": 3,
   "description": "Mastery of your Ice Sword has enabled you to make an attack on every foe within melee distance. This will slash and chill your enemies, dealing moderate damage and slowing all affected targets' movement and attack speed. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "iceassault_iceswordcircle.png",
@@ -35,7 +35,7 @@ export const IceSwordCircle: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.684,
     "table": "Melee_Damage"
   },

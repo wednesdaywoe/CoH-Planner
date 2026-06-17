@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TelekineticThrust: Power = {
   "name": "Telekinetic Thrust",
   "internalName": "Telekinetic_Thrust",
-  "available": 0,
+  "available": 3,
   "description": "A focused attack of intense mental power that violently sends a nearby foe flying. Deals minimal damage, but can be very effective. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Melee, Minor DMG(Psionic/Smash), Foe Knockback",
   "icon": "psionicassault_telekineticthrust.png",
@@ -38,7 +38,7 @@ export const TelekineticThrust: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.4,
     "table": "Melee_Damage"
   },

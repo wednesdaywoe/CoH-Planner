@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const NWPsychicScream: Power = {
   "name": "Psychic Scream",
   "internalName": "NW_Psychic_Scream",
-  "available": 0,
+  "available": 31,
   "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Psionic), Foe -Recharge",
   "icon": "nightwidowtraining_psychicscream.png",
@@ -40,7 +40,7 @@ export const NWPsychicScream: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 1.217935,
     "table": "Ranged_Damage"
   }

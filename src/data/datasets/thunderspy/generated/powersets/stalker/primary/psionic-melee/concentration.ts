@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Concentration: Power = {
   "name": "Concentration",
   "internalName": "Concentration",
-  "available": 0,
+  "available": 7,
   "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit. Recharge: Long",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "psionicmelee_concentration.png",

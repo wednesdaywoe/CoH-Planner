@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Entangle: Power = {
   "name": "Entangle",
   "internalName": "Entangle",
-  "available": 0,
+  "available": 5,
   "description": "Immobilizes your target by Entangling their feet in a twisted mass of thorny roots.  The roots do smashing and lethal damage to the target over time. More resilient foes may require multiple applications to Immobilize. Entangle can immobilize flying targets, if they are near the ground when attacked. Targets close enough to the main target take half damage. This power does not benefit from containment Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate Damage (Smashing, Lethal), Foe Immobilize",
   "icon": "plantcontrol_entangle.png",

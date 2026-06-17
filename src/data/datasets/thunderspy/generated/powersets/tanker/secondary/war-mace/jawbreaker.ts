@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Jawbreaker: Power = {
   "name": "Jawbreaker",
   "internalName": "Jawbreaker",
-  "available": 0,
+  "available": 3,
   "description": "This upward swing attempts to shatter your opponent's jaw, and has a chance to send him flying upwards into the air. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Smash), Knockup",
   "icon": "mace_jawbreaker.png",
@@ -42,7 +42,7 @@ export const Jawbreaker: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.96,
     "table": "Melee_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ThunderClap: Power = {
   "name": "Thunder Clap",
   "internalName": "Thunder_Clap",
-  "available": 0,
+  "available": 17,
   "description": "You can call forth a tremendous Thunder Clap that will Disorient most foes in a large area around you. Recharge: Slow",
   "shortHelp": "PBAoE, Foe Disorient",
   "icon": "stormsummoning_thunderclap.png",

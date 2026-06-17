@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TurbulentAura: Power = {
   "name": "Turbulent Aura",
   "internalName": "Turbulent_Aura",
-  "available": 0,
+  "available": 1,
   "description": "You create a barrier of rapidly flowing water around you causing foes that enter the aura to suffer minor cold damage and have a chance to be knocked down while inside it.  The caster will also heal for a small amount of health for each Drowning foe within the aura.  Turbulent Aura has a small chance to inflict Drowning on targets. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Toggle, Minor DMG(Cold) Foe -Knockdown",
   "icon": "watercontrol_turbulentaura.png",

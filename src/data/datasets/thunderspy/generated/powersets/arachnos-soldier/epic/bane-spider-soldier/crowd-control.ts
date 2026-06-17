@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CrowdControl: Power = {
   "name": "Crowd Control",
   "internalName": "Crowd_Control",
-  "available": 0,
+  "available": 31,
   "description": "You swing your mace in a wide arc in front of you. This attack strikes all foes within melee range, deals them serious damage and minor Toxic damage over time, and knocks them down.  NOTE: This power may deal critical damage if used after a successful Placate or while the user is hidden with the Bane Spider Cloaking Device.  Damage: High Recharge: Moderate",
   "shortHelp": "Melee (Cone), High DMG(Smash/Toxic), Minor DoT(Toxic), Foe Knockback",
   "icon": "banespider_crowdcontrol.png",
@@ -43,12 +43,12 @@ export const CrowdControl: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 1.127,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Smashing",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 4.1

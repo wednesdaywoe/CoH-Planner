@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const MineralArmor: Power = {
   "name": "Minerals",
   "internalName": "Mineral_Armor",
-  "available": 0,
+  "available": 25,
   "description": "Activating this power summons several rare earth rock Minerals to orbit around you.  These Minerals can disperse thought patterns and make Psionic attacks less likely to hit. They also bring clarity of the mind and increase your Perception to see hidden foes, and grant resistance to Confusion. Cannot be active at the same time as Granite Armor. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Psionic), Res(Confuse), +Perception",
   "icon": "stonearmor_mineralcrust.png",

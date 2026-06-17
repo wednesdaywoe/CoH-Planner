@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CallKnight: Power = {
   "name": "Call Knight",
   "internalName": "Call_Knight",
-  "available": 0,
+  "available": 25,
   "description": "A inspiring leader dedicated to the defense of their land and people. A weapon master embodying honor and virtue.",
   "shortHelp": "Summon Knight",
   "icon": "knights_callknight.png",

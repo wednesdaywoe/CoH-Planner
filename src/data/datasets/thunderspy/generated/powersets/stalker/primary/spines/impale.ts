@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Impale: Power = {
   "name": "Impale",
   "internalName": "Impale",
-  "available": 0,
+  "available": 11,
   "description": "You can throw a single large Spine at a targeted foe. This Spine does only moderate lethal damage, but carries a large amount of the Spine toxin. A successful attack can completely Immobilize most foes, as well as Slowing them and dealing Toxic poison damage. Impale can also bring down flying entities. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Lethal), DoT(Toxic), Immobilize, -Recharge, -Fly",
   "icon": "quills_impale.png",
@@ -41,7 +41,7 @@ export const Impale: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.64,
     "table": "Melee_Damage"
   },
@@ -59,7 +59,7 @@ export const Impale: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 1.64,
         "table": "Melee_Damage"
       }

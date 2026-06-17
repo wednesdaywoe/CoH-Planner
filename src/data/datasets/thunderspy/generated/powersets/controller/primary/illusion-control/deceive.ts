@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Deceive: Power = {
   "name": "Deceive",
   "internalName": "Deceive",
-  "available": 0,
+  "available": 1,
   "description": "You can Deceive an enemy into believing their friends are not who they appear to be. If successful, the enemy will ignore you and attack their own allies. If you Deceive someone before they have noticed you, your presence will continue to be masked. You will not receive any Experience Points for foes defeated by a Deceived enemy. Recharge: Moderate",
   "shortHelp": "Ranged, Foe Confuse",
   "icon": "illusions_decieve.png",

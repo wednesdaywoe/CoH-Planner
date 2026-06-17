@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TripMine: Power = {
   "name": "Trip Mine",
   "internalName": "Trip_Mine",
-  "available": 0,
+  "available": 34,
   "description": "You can place a Trip Mine on the ground. Any foes that pass near the Trip Mine will cause it to explode, severely damaging all nearby foes and sending them flying. The Trip Mine is almost impossible to detect, but it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Trip Mine will detonate. Setting a mine is delicate work, and if you are interrupted, you will fail. Damage: Superior, Recharge: Slow",
   "shortHelp": "Place Mine: PBAoE, Superior DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_droppedaoedamage.png",

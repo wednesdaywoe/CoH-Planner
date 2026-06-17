@@ -38,7 +38,7 @@ export const PreciseStrike: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.32,
     "table": "Melee_Damage"
   },
@@ -56,7 +56,7 @@ export const PreciseStrike: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 1.32,
         "table": "Melee_Damage"
       }

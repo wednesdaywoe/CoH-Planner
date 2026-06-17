@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const NeutronBomb: Power = {
   "name": "Neutron Bomb",
   "internalName": "Neutron_Bomb",
-  "available": 0,
+  "available": 27,
   "description": "This devastating attack lobs an explosive sphere of deadly radiation, damaging the target and all nearby foes. Neutron Bomb can bypass some of a target's defenses and reduce the target's Defense. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Energy), Foe -DEF",
   "icon": "radiationburst_radiationblast.png",
@@ -42,7 +42,7 @@ export const NeutronBomb: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.63,
     "table": "Ranged_Damage"
   }

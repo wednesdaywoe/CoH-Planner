@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const MidnightGrasp: Power = {
   "name": "Midnight Grasp",
   "internalName": "Midnight_Grasp",
-  "available": 0,
+  "available": 31,
   "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force. Damage: Superior(DoT), Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
   "icon": "shadowfighting_midnightgrasp.png",
@@ -44,12 +44,12 @@ export const MidnightGrasp: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Negative",
       "scale": 2.74,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Negative",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 3.1

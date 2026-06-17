@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FireSwordCircle: Power = {
   "name": "Fire Sword Circle",
   "internalName": "Fire_Sword_Circle",
-  "available": 0,
+  "available": 27,
   "description": "Mastery of your Fire Sword has enabled you to make an attack on every foe within melee distance. This will slash and burn your enemies, dealing minor damage and setting them ablaze. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Fire/Lethal)",
   "icon": "fieryfray_fireswordcircle.png",
@@ -40,12 +40,12 @@ export const FireSwordCircle: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.775,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 3.1

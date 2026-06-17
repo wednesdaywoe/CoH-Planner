@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PsionicLance: Power = {
   "name": "Psionic Lance",
   "internalName": "Psionic_Lance",
-  "available": 0,
+  "available": 25,
   "description": "This extremely long range Psionic attack has a bonus to Accuracy, and can Slow a target's attack rate. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Psionic), Target -Recharge",
   "icon": "psychicblast_psioniclance.png",

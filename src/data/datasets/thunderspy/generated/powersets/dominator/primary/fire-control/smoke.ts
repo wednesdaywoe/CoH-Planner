@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Smoke: Power = {
   "name": "Smoke",
   "internalName": "Smoke",
-  "available": 0,
+  "available": 5,
   "description": "Covers all foes near your target in clouds of Smoke. Your enemies are so blinded that they can hardly see a thing. Most foes will not be able to see past normal melee range, although some may have better perception. If the affected targets are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe -Perception, -To Hit",
   "icon": "firetrap_smoke.png",

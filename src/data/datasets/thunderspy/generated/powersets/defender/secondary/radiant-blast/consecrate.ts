@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Consecrate: Power = {
   "name": "Consecrate",
   "internalName": "Consecrate",
-  "available": 0,
+  "available": 27,
   "description": "You channel the might of your light into the very surface you stand. The ground erupts and cracks with Radiant energy, burning all nearby foes and healing friends. Unholy foes such as demons, undead, and ghosts take additional damage. Damage: High, Recharge: Slow",
   "shortHelp": "PBAoE, High DMG(Fire), Moderate heal",
   "icon": "luminousblast_solarflare.png",
@@ -38,12 +38,12 @@ export const Consecrate: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1.42,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.71,
       "table": "Ranged_Damage"
     }

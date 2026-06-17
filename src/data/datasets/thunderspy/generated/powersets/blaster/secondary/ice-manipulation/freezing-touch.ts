@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FreezingTouch: Power = {
   "name": "Freezing Touch",
   "internalName": "Freezing_Touch",
-  "available": 0,
+  "available": 34,
   "description": "This Freezing Touch will encase a single foe in a block of ice. This will deal minor damage as well as freezing them in their tracks, leaving them cold and helpless. Damage: Minor, Recharge: Slow",
   "shortHelp": "Melee, Minor DMG(Cold), Foe Hold",
   "icon": "icemanipulation_freezingtouch.png",
@@ -38,7 +38,7 @@ export const FreezingTouch: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.19,
     "table": "Melee_Damage",
     "duration": 5.1

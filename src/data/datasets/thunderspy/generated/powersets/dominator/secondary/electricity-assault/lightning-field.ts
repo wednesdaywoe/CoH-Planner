@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LightningField: Power = {
   "name": "Lightning Bolt",
   "internalName": "Lightning_Field",
-  "available": 0,
+  "available": 3,
   "description": "You can send a large blast of electrical energy at a foe, dealing high damage and draining some Endurance. Some of this Endurance may transfer back to you. Lightning Bolt deals more damage than Charged Bolts, but recharges more slowly. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Energy), Foe -End",
   "icon": "electricalassault_lightningbolt.png",
@@ -39,7 +39,7 @@ export const LightningField: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.64,
     "table": "Ranged_Damage"
   }

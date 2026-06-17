@@ -36,8 +36,8 @@ export const FetidPresence: Power = {
   "maxSlots": 6,
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
+      "id": "target-affected",
+      "label": "Target Already Affected",
       "scope": "per-power",
       "defaultActive": false,
       "damage": [

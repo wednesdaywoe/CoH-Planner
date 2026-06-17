@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FlingQuills: Power = {
   "name": "Spine Burst",
   "internalName": "Fling_Quills",
-  "available": 0,
+  "available": 31,
   "description": "You can fling dozens of Spines in all directions. These Spines only travel a short distance, but they can deal moderate damage and poison any target close to you. Spine poison deals additional Toxic damage and Slows affected foes. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
   "icon": "quills_flingquills.png",
@@ -40,12 +40,12 @@ export const FlingQuills: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 1.424,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 3.1

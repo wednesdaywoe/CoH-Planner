@@ -41,7 +41,7 @@ export const BlockofIce: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 1,
     "table": "Ranged_Damage"
   },

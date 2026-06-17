@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ExplosiveShuriken: Power = {
   "name": "Explosive Shuriken",
   "internalName": "Explosive_Shuriken",
-  "available": 0,
+  "available": 9,
   "description": "You rig a shuriken with a powerful explosive, then send it flying towards your enemies.  Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
   "icon": "martialassault_explosiveshuriken.png",
@@ -39,7 +39,7 @@ export const ExplosiveShuriken: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 0.912,
     "table": "Ranged_Damage"
   }

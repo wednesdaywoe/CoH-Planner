@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Rejuvenate: Power = {
   "name": "Rejuvenate",
   "internalName": "Rejuvenate",
-  "available": 0,
+  "available": 3,
   "description": "This power will heal the caster, however its special effects vary depending on form. While in Primal Form the caster will heal nearby allies for a small amount and cause them to recover additional health over time. While in Hunter or Prowler form the user will only heal themselves, but for a larger amount. They'll also receive a boost to recovery for a short time. Rejuvenate builds 3 Primal Energy. Recharge: Long",
   "shortHelp": "Self, Special Heal",
   "icon": "primalgifts_rejuvenate.png",

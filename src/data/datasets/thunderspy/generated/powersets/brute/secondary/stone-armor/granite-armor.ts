@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GraniteArmor: Power = {
   "name": "Granite Armor",
   "internalName": "Granite_Armor",
-  "available": 0,
+  "available": 37,
   "description": "When you activate this power, you are transformed into a massive bulk of unyielding Granite. Your incredible mass makes you almost completely invulnerable and resistant to most effects.  However, you also become quite heavy, cannot fly, your attack and movement speed are Slowed and you do less damage. Granite Armor also grants you high resistance to Defense DeBuffs.Cannot be active at the same time as other Armors in this set, Fly powers, Sprint, Super Speed, or Jump powers. Recharge: Slow",
   "shortHelp": "Self, +Res(All but Psionics), +DEF(All but Psionics), -SPD, -Recharge, -DMG",
   "icon": "stonearmor_granite.png",

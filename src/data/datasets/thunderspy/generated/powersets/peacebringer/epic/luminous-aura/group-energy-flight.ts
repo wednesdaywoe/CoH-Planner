@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GroupEnergyFlight: Power = {
   "name": "Cosmic Burn",
   "internalName": "Group_Energy_Flight",
-  "available": 0,
+  "available": 15,
   "description": "The unbridled light of the Peacebringer can be dangerous at close range, causing damage to nearby foes. This power can be used in both Nova and Dwarf Forms. While in Dwarf form this power applies a taunt effect.",
   "shortHelp": "Toggle PBAoE Energy DMG",
   "icon": "luminousaura_groupenergyflight.png",

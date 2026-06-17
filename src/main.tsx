@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import * as Sentry from '@sentry/react'
 import './index.css'
 import App from './App'
-import { loadDataset } from '@/data/dataset'
+import { loadDataset, type DatasetId } from '@/data/dataset'
 
 // Register window.cohDebug for calculation debug logging + fallback warnings
 import '@/utils/calc-debug'
@@ -126,15 +126,18 @@ if ('launchQueue' in window) {
 //   2. Pre-peek at the persisted Zustand store so the saved build's
 //      dataset loads first and we don't flash the wrong one.
 //   3. Default to Homecoming.
-function bootServerId(): 'homecoming' | 'rebirth' {
+function bootServerId(): DatasetId {
+  const KNOWN: readonly DatasetId[] = ['homecoming', 'rebirth', 'thunderspy'];
+  const isKnown = (v: unknown): v is DatasetId =>
+    typeof v === 'string' && (KNOWN as readonly string[]).includes(v);
   try {
     const param = new URLSearchParams(window.location.search).get('serverId');
-    if (param === 'rebirth' || param === 'homecoming') return param;
+    if (isKnown(param)) return param;
     const raw = localStorage.getItem('coh-planner-build');
     if (!raw) return 'homecoming';
     const parsed = JSON.parse(raw);
     const id = parsed?.state?.build?.serverId;
-    return id === 'rebirth' ? 'rebirth' : 'homecoming';
+    return isKnown(id) ? id : 'homecoming';
   } catch {
     return 'homecoming';
   }

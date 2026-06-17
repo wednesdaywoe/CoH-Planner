@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Telekineticblast: Power = {
   "name": "Telekinetic Blast",
   "internalName": "Telekinetic_blast",
-  "available": 0,
+  "available": 9,
   "description": "You can use Telekinesis to Blast a targeted foe with the power of your mind. This attack deals Smashing and Psionic damage, and can knock your opponent back. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Smash/Psionic), Foe Knockback",
   "icon": "psychicblast_telekineticblast.png",
@@ -39,7 +39,7 @@ export const Telekineticblast: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1,
     "table": "Ranged_Damage"
   },

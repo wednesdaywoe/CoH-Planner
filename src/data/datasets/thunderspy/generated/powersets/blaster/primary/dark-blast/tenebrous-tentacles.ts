@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TenebrousTentacles: Power = {
   "name": "Tenebrous Tentacles",
   "internalName": "Tenebrous_Tentacles",
-  "available": 0,
+  "available": 1,
   "description": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their chance to hit. Damage: Moderate(DoT)Recharge: Slow",
   "shortHelp": "Ranged (Cone), Moderate DMG(Negative/Smash), Foe Immobilize, -To Hit",
   "icon": "darkcast_tenebroustentacles.png",
@@ -45,7 +45,7 @@ export const TenebrousTentacles: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.07235,
     "table": "Ranged_Damage",
     "duration": 7.1

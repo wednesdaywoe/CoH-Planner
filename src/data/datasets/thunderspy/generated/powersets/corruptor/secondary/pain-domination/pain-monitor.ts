@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PainMonitor: Power = {
   "name": "Cruelty",
   "internalName": "Pain_Monitor",
-  "available": 0,
+  "available": -1,
   "description": "Whenever a nearby friend or foe takes damage their pain empowers you, causing you to do increased damage for a short time.",
   "shortHelp": "Self +DMG(Special)",
   "icon": "paindomination_sharepain.png",
@@ -25,6 +25,5 @@ export const PainMonitor: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "requires": "Corruptor_Buff.Pain_Domination.Soothe Corruptor_Buff.Pain_Domination.Nullify_Pain ||",
-  "mechanicType": "parentMechanic"
+  "requires": "Corruptor_Buff.Pain_Domination.Soothe Corruptor_Buff.Pain_Domination.Nullify_Pain ||"
 };

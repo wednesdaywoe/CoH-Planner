@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Quickness: Power = {
   "name": "Quickness",
   "internalName": "Quickness",
-  "available": 0,
+  "available": 11,
   "description": "Your Quick reflexes allow you to move faster than normal, as well as resist slow effects. This power is always on and permanently increases your attack rate and movement speed.",
   "shortHelp": "Auto: Self +Recharge, +SPD, Res (Slow),",
   "icon": "superreflexes_quickness.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HotFeet: Power = {
   "name": "Hot Feet",
   "internalName": "Hot_Feet",
-  "available": 0,
+  "available": 7,
   "description": "While active, you heat the earth in a large area around yourself. Enemy movement is Slowed as they attempt to flee the immediate area. All foes in the affected area may suffer some damage over time.  You cannot fly and must be near the ground to use this power. Damage: Minor(DoT), Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Fire), Foe -SPD",
   "icon": "firetrap_hotfeet.png",

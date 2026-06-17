@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HandClap: Power = {
   "name": "Hand Clap",
   "internalName": "Hand_Clap",
-  "available": 0,
+  "available": 15,
   "description": "You can clap your hands together with such force that you create a deafening shockwave. This shockwave can knock back nearby foes, and they have a chance to become Disoriented due to the shock to the inner ear. Hand Clap deals no damage. Recharge: Slow",
   "shortHelp": "PBAoE, Foe Disorient, Knockback",
   "icon": "superstrength_handclap.png",

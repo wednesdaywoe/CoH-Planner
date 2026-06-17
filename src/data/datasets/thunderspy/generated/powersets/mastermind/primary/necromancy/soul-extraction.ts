@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SoulExtraction: Power = {
   "name": "Soul Extraction",
   "internalName": "Soul_Extraction",
-  "available": 0,
+  "available": 17,
   "description": "Advanced forays into dark magic has imbued your aura, you are able extract the soul from defeated enemies and summon a zombie into the realm of existence to do your bidding. Unlike your other Henchman, the extracted Soul is only loosely bound to it's zombie husk and will eventually move on to the next world leaving the rotted souless corpse behind. The Re-Animated is able to gain new powers with Enchanted Undead or Dark Empowerment. Recharge: Very Long",
   "shortHelp": "Summon Zombie Horde (Special)",
   "icon": "necromancy_soulextraction.png",

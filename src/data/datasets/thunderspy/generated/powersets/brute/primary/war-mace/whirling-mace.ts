@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WhirlingMace: Power = {
   "name": "Whirling Mace",
   "internalName": "Whirling_Mace",
-  "available": 0,
+  "available": 17,
   "description": "You swing your mace in a circle all around you, attacking everyone in melee range. Your Whirling Mace deals moderate damage, and has a chance to Disorient every foe you hit. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smashing), Minor Disorient",
   "icon": "mace_whirlingmace.png",
@@ -41,7 +41,7 @@ export const WhirlingMace: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.12,
     "table": "Melee_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TremblingEarth: Power = {
   "name": "Trembling Earth",
   "internalName": "Trembling_Earth",
-  "available": 0,
+  "available": 17,
   "description": "You control the ground beneath your feet, drawing up heat and causing foes to lose their balance. Deals medium fire damage to all in its wake and lowers their resistance. Can only be cast while on the ground.",
   "shortHelp": "PBAoE Fire DMG, Foe -Res (All)",
   "icon": "natureaffinity_overgrowth.png",

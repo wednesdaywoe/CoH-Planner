@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TranquilizerDart: Power = {
   "name": "Slug",
   "internalName": "Tranquilizer_Dart",
-  "available": 0,
+  "available": 5,
   "description": "Fires a single Slug at a targeted foe. Firing a single Slug is slower than firing a Burst, but deals more damage, is longer range, will knock down and disorient foes. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Lethal), Foe Knockback, Disorient",
   "icon": "assaultweapons_shotgunbeanbag.png",
@@ -41,7 +41,7 @@ export const TranquilizerDart: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 2.28,
     "table": "Ranged_Damage"
   },

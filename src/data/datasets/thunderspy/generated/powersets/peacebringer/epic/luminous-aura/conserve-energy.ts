@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ConserveEnergy: Power = {
   "name": "Energize",
   "internalName": "Conserve_Energy",
-  "available": 0,
+  "available": 23,
   "description": "You can channel a tremendous amount of energy through your body for a short period of time.  Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration dramatically for a short time. This power can be used in Dwarf Form.  Recharge: Very Long",
   "shortHelp": "Self Endurance Discount, Heal, +Regen",
   "icon": "luminousaura_conserveenergy.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Slice: Power = {
   "name": "Slice",
   "internalName": "Slice",
-  "available": 0,
+  "available": 1,
   "description": "You Slice your sword in a wide arc, attacking all enemies in front of you. Slice does less damage than Hack but can hit multiple foes and reduce their defense. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee (Cone), Moderate DMG(Lethal), Foe -DEF",
   "icon": "sword_slice.png",
@@ -42,7 +42,7 @@ export const Slice: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.23,
     "table": "Melee_Damage"
   }

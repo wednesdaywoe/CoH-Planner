@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Riptide: Power = {
   "name": "Riptide",
   "internalName": "Riptide",
-  "available": 0,
+  "available": 17,
   "description": "You create a whirlpool under a targeted foe, nearby foes are repeatedly force moved to that target's location and will suffer minor cold damage over time . This power has a small chance to place the Drowning effect on its targets. Tougher targets are less likely to be affected by Riptide's pull.  Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Cold), Foe Forced Movement",
   "icon": "watercontrol_riptide.png",

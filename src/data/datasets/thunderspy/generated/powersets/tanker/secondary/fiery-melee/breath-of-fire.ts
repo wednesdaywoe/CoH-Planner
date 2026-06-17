@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BreathofFire: Power = {
   "name": "Breath of Fire",
   "internalName": "Breath_of_Fire",
-  "available": 0,
+  "available": 15,
   "description": "This allows you to spew forth fire from your mouth, burning all foes within its narrow cone. This is a very accurate attack that can deal good damage at a close range. Damage: Moderate(DoT), Recharge: Slow",
   "shortHelp": "Close (Cone) Moderate DoT(Fire)",
   "icon": "fieryfray_breathingfire.png",

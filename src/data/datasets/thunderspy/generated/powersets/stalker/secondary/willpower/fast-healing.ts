@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FastHealing: Power = {
   "name": "Fast Healing",
   "internalName": "Fast_Healing",
-  "available": 0,
+  "available": 3,
   "description": "You heal Hit Points at a faster rate than normal. This power is always on.",
   "shortHelp": "Auto: Self +Regeneration",
   "icon": "willpower_fasthealing.png",

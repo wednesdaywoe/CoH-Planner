@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Aim: Power = {
   "name": "Power Build Up",
   "internalName": "Aim",
-  "available": 0,
+  "available": 15,
   "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage. Recharge: Long",
   "shortHelp": "Self +To Hit, +DMG",
   "icon": "thornyassault_aim.png",

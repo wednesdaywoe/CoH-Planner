@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RainofArrows: Power = {
   "name": "Rain of Arrows",
   "internalName": "Rain_of_Arrows",
-  "available": 0,
+  "available": 31,
   "description": "You unleash a Rain of Arrows on a targeted location, damaging foes within a large area. Damage: Extreme (DoT), Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Extreme DoT(Lethal)",
   "icon": "archery_rainofarrows.png",

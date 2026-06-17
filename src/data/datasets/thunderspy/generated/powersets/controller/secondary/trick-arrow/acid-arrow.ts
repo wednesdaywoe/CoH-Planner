@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const AcidArrow: Power = {
   "name": "Acid Arrow",
   "internalName": "Acid_Arrow",
-  "available": 0,
+  "available": 19,
   "description": "This arrow explodes in a small shower of acid on impact. This acid eats through armor, causing damage over time. It reduces the target's Defense as well as their Damage Resistance.  Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged AoE Minor DoT(Toxic), Foe -Res(All), -DEF",
   "icon": "trickarrow_debuffdefense.png",

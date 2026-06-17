@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IntimidatingPresence: Power = {
   "name": "Intimidating Presence",
   "internalName": "Intimidating_Presence",
-  "available": 0,
+  "available": 34,
   "description": "Your Intimidating Presence petrifies your enemies. Foes closest to you will be stricken with terror, while those further away will merely be unable to flee.",
   "shortHelp": "Melee Cone Foe Fear, Immobilize",
   "icon": "obediencetraining_intimidatingpresence.png",

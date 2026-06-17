@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Frostbite: Power = {
   "name": "Frostbite",
   "internalName": "Frostbite",
-  "available": 0,
+  "available": 1,
   "description": "Immobilizes a group of foes in icy traps. Deals minimal Cold damage over time and slightly Slows the targets. Slower and less damaging than Chilblain, but can capture multiple targets. More resilient foes may only be Slowed. Damage: Minor(DoT), Recharge: Moderate",
   "shortHelp": "Ranged (Targeted AoE), Minor DoT(Cold), Foe Immobilize, -SPD, -Recharge",
   "icon": "iceformation_frostbite.png",

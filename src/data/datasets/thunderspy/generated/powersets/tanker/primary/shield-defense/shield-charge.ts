@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ShieldCharge: Power = {
   "name": "Shield Charge",
   "internalName": "Shield_Charge",
-  "available": 0,
+  "available": 25,
   "description": "You can throw all of your might behind your shield and charge through ranks of foes in the blink of an eye.  Using this power allows you to teleport to a selected area to deal significant smashing damage to all foes near the location you teleport to, most foes that are struck by your Shield Charge will be knocked down.  Damage: Superior, Recharge: Very Long.",
   "shortHelp": "PBAoE Superior DMG(Smashing), Foe Knockdown; Self Teleport",
   "icon": "shielddefense_shieldcharge.png",

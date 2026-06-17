@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TRClawShred: Power = {
   "name": "Shred",
   "internalName": "TR_Claw_Shred",
-  "available": 0,
+  "available": 11,
   "description": "Slash at your targets with your set of Tarantula legs. Deals Lethal and Toxic damage and weakens a target's defense and regeneration speed. Requires Tarantula form to use. Recharge: Moderate",
   "shortHelp": "Melee Cone, Heavy Damage(Lethal/Toxic), Foe -Def, Foe -Regen",
   "icon": "tarantulatraining_shred.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const MightyShockwave: Power = {
   "name": "Mighty Shockwave",
   "internalName": "Mighty_Shockwave",
-  "available": 0,
+  "available": 15,
   "description": "You can clap your hands together with such force that you create a shockwave. This shockwave can damage foes in a short wide cone in front of you, dealing moderate smashing damage and potentially knocking targets down. Choosing this power locks out Hand clap. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged Cone, Moderate DMG(Psionic/Smash), Foe Knockdown",
   "icon": "mightyshockwave.png",
@@ -42,7 +42,7 @@ export const MightyShockwave: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.876923,
     "table": "Melee_Damage"
   },

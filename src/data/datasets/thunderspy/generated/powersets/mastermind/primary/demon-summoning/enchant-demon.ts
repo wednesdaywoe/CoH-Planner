@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnchantDemon: Power = {
   "name": "Enchant Demon",
   "internalName": "Enchant_Demon",
-  "available": 0,
+  "available": 5,
   "description": "Enchant Demon will permanently bestow new powers and abilities to all of your Demon Henchman. The powers gained are unique and dependent upon the type of Demon Henchman that is Enchanted. Enchant Demon only works on your Demon Henchmen and you can only Enchant your Demon Henchmen once with this power. Recharge: Fast. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Enchant Demon Henchman",
   "icon": "demonsummoning_enchantdemon.png",

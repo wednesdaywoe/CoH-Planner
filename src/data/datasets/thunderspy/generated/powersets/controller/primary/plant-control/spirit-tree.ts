@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SpiritTree: Power = {
   "name": "Spirit Tree",
   "internalName": "Spirit_Tree",
-  "available": 0,
+  "available": 17,
   "description": "You can tap into the elusive and powerful energy of the World Tree and extract a Spirit Tree at a targeted location. The Sprit Tree is immobile, but possesses incredible regenerative powers. The Regeneration Rate of you, or your allies, will be greatly increased as long as you are near the Spirit Tree.  Recharge: Very Long",
   "shortHelp": "Place Tree: PBAoE +Regen",
   "icon": "plantcontrol_spirittree.png",

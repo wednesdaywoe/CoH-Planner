@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WorldofPain: Power = {
   "name": "World of Pain",
   "internalName": "World_of_Pain",
-  "available": 0,
+  "available": 15,
   "description": "When this power is activated the user and all nearby targets, ally or foe, will take a small amount of damage, team members will gain a moderate damage increase as psionic damage, resistance, To Hit bonus, and will be protected from Placate effects.",
   "shortHelp": "PBAoE Damage(self, friend, foe), Team +To Hit, +Psionic DMG, +RES(All DMG, Placate)",
   "icon": "paindomination_worldofpain.png",

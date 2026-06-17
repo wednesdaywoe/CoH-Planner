@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EyeoftheStorm: Power = {
   "name": "Eye of the Storm",
   "internalName": "Eye_of_the_Storm",
-  "available": 0,
+  "available": 5,
   "description": "With a lightning fast series of spins of your staff you strike at all nearby foes dealing moderate damage with a chance of knocking foes down.  While a form is active, this power will build one level of Perfection if the user has two or less levels, if the user has three levels of Perfection it will consume them and gain some benefit.  3 Levels of Perfection of Body will cause additional smashing damage and reduce damage resistance slightly for a short time.  3 Levels of Perfection of Mind will cause additional psionic damage and reduce attack and movement speed for a short time.  3 Levels of Perfection of Soul will cause additional energy damage and reduce defense for a short time.  Critical Hit damage isn't enhanced by levels of Perfection.  Damage: Moderate, Recharge: Long",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smash), Foe Knockdown, Consumes Perfection",
   "icon": "stafffighting_eyeofthestorm.png",
@@ -39,30 +39,30 @@ export const EyeoftheStorm: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.205,
     "table": "Melee_Damage",
     "duration": 2.3
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Smashing",
           "scale": 0.246,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Smashing",
           "scale": 0.246,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Smashing",
           "scale": 0.246,
           "table": "Melee_Damage"
         }

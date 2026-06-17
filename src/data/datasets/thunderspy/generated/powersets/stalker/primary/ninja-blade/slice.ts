@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Slice: Power = {
   "name": "Flashing Steel",
   "internalName": "Slice",
-  "available": 0,
+  "available": 1,
   "description": "You swing your Ninja Blade in a wide arc in front of you, slicing multiple foes with lethal damage. This attack can reduce a target's Defense, making them easier to hit. If executed while hidden, all affected targets have a chance to be hit with a Critical for extra damage.  Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Melee (Cone), Moderate DMG(Lethal), Foe -Def",
   "icon": "katana_slice.png",
@@ -42,7 +42,7 @@ export const Slice: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.99,
     "table": "Melee_Damage"
   },
@@ -53,7 +53,7 @@ export const Slice: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.99,
         "table": "Melee_Damage"
       }

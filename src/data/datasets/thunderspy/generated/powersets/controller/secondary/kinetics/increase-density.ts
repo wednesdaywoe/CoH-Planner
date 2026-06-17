@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const IncreaseDensity: Power = {
   "name": "Increase Density",
   "internalName": "Increase_Density",
-  "available": 0,
+  "available": 15,
   "description": "Increases an ally's mass, freeing them from any Disorient, Immobilization, or Hold effects and leaving them resistant to such effects for a while. Increase Density also protects the target from Knockback, Repel and enemy Teleportation, as well as Smashing and Energy damage. Because the target grows more dense, their movement speed is Slowed. Although the Damage Resistance and slowing effect will not stack with multiple applications, the rest of the effects of Increase Density will. You recieve only half the values of the damage resistance. Recharge: Fast",
   "shortHelp": "PBAoE, Ally +Res (Smashing, Energy, Hold, Immobilize, Disorient, Knockback, Repel, Teleport)",
   "icon": "kineticboost_increasedensity.png",

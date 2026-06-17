@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Eviscerate: Power = {
   "name": "Eviscerate",
   "internalName": "Eviscerate",
-  "available": 0,
+  "available": 25,
   "description": "You spin and slash violently at the foe in front of you. This attack deals exceptional damage, and has a high chance of landing a critical hit even while not hidden. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Lethal), +Special",
   "icon": "claws_stalkereviscerate.png",
@@ -39,7 +39,7 @@ export const Eviscerate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.99,
     "table": "Melee_Damage"
   },
@@ -51,12 +51,12 @@ export const Eviscerate: Power = {
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Lethal",
           "scale": 1.99,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Lethal",
           "scale": 1.99,
           "table": "Melee_Damage"
         }

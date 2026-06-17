@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LuminousDetonation: Power = {
   "name": "Luminous Detonation",
   "internalName": "Luminous_Detonation",
-  "available": 0,
+  "available": 11,
   "description": "You hurl a large blast of Kheldian energy that violently explodes on impact, damaging all foes near the target, and reducing their Defense. Some affected targets may get knocked back. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Energy), Foe -DEF, Knockback",
   "icon": "luminousblast_luminousdetonation.png",
@@ -44,7 +44,7 @@ export const LuminousDetonation: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.9,
     "table": "Ranged_Damage"
   },

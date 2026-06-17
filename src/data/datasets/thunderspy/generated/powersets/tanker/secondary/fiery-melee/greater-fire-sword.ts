@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GreaterFireSword: Power = {
   "name": "Greater Fire Sword",
   "internalName": "Greater_Fire_Sword",
-  "available": 0,
+  "available": 37,
   "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Fire/Lethal)",
   "icon": "fieryfray_greaterfiresword.png",
@@ -41,12 +41,12 @@ export const GreaterFireSword: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 0.2,
       "table": "Melee_Damage",
       "duration": 4.1

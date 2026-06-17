@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Spin: Power = {
   "name": "Spin",
   "internalName": "Spin",
-  "available": 0,
+  "available": 5,
   "description": "You spin around in a circle, attacking everyone within melee range with a Strike attack. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal)",
   "icon": "claws_spinningclawsattack.png",
@@ -37,7 +37,7 @@ export const Spin: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.58,
     "table": "Melee_Damage"
   }

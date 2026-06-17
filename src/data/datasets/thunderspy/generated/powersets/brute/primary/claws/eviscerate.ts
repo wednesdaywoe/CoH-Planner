@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Eviscerate: Power = {
   "name": "Eviscerate",
   "internalName": "Eviscerate",
-  "available": 0,
+  "available": 25,
   "description": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal), Foe -DEF",
   "icon": "claws_evicerate.png",
@@ -41,7 +41,7 @@ export const Eviscerate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 2.302727,
     "table": "Melee_Damage"
   }

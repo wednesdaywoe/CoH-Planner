@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Quasar: Power = {
   "name": "Quasar",
   "internalName": "Quasar",
-  "available": 0,
+  "available": 31,
   "description": "You can explode in a tremendous blast of Negative Energy, sending nearby foes flying. The Quasar deals massive damage to all nearby foes. Affected foes will be knocked down and their attack rate and movement speed will be slowed.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "PBAoE, Extreme DMG(Negative), Foe -Recharge, -SPD, Knockback",
   "icon": "umbralblast_quasar.png",
@@ -41,7 +41,7 @@ export const Quasar: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 4,
     "table": "Ranged_Damage"
   },

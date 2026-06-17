@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Special2: Power = {
   "name": "Sweeping Strike",
   "internalName": "Special_2",
-  "available": 0,
+  "available": 34,
   "description": "You make a sweeping strike with your blades, hitting all foes in a cone in front of you and dealing moderate lethal damage to each. This power is the finishing move for the Attack Vitals combination attack. Damage: Superior, Recharge: Moderate",
   "shortHelp": "Melee (Cone), Superior DMG(Lethal)",
   "icon": "dualblades_special2.png",
@@ -41,18 +41,18 @@ export const Special2: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.7,
     "table": "Melee_Damage"
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.27,
         "table": "Melee_Damage",
         "duration": 3.1

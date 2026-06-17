@@ -36,7 +36,7 @@ export const Swipe: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.24,
     "table": "Melee_Damage"
   }

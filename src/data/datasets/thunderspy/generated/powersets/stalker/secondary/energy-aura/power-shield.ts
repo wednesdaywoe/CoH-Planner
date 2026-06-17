@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerShield: Power = {
   "name": "Power Shield",
   "internalName": "Power_Shield",
-  "available": 0,
+  "available": 3,
   "description": "This Power Shield creates a Electro-Magnetic shield around you that can deflect non-physical attacks.  Your Defense to Fire, Cold, Energy and Negative Energy attacks is increased as these attacks are reflected or refracted off the shield. Power Shield also grants you good resistance to Defense Debuffs. Power Shield also adds Psionic Defense and an Elusivity defense bonus to Fire, Cold, Energy and Psionic Attacks in PVP zones.  Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Fire, Cold, Energy, Negative), Res(DeBuff DEF)",
   "icon": "energyaura_powershield.png",

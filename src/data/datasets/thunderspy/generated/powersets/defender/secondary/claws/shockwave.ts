@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Shockwave: Power = {
   "name": "Shockwave",
   "internalName": "Shockwave",
-  "available": 0,
+  "available": 34,
   "description": "Projects a Shockwave of focused power that can travel a short distance. Shockwave travels in a wide arc in front of you dealing moderate damage and, possibly knocking back foes. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Melee (Cone), Moderate DMG(Lethal), Foe Knockback",
   "icon": "claws_wave.png",
@@ -42,7 +42,7 @@ export const Shockwave: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.13,
     "table": "Melee_Damage"
   },

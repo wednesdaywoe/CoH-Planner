@@ -692,6 +692,12 @@ export const ARCHETYPES: ArchetypeRegistry = {
     primarySets: ['arachnos-widow/widow-training'],
     secondarySets: ['arachnos-widow/teamwork'],
     branches: {
+      tarantula: {
+        name: 'Tarantula',
+        level: 24,
+        primarySet: 'arachnos-widow/tarantula-training',
+        secondarySet: 'arachnos-widow/tarantula-teamwork',
+      },
       'night-widow': {
         name: 'Night Widow',
         level: 24,

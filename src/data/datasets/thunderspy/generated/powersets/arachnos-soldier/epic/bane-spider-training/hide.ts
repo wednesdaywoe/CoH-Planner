@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Hide: Power = {
   "name": "Cloaking Device",
   "internalName": "Hide",
-  "available": 0,
+  "available": 15,
   "description": "Cloaking Device makes you almost impossible to detect. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. Like most stealth powers, Cloaking Device cannot be used at the same time as other Concealment powers.",
   "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
   "icon": "banespidertraining_cloakingdevice.png",

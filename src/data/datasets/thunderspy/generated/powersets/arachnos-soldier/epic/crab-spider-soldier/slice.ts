@@ -39,7 +39,7 @@ export const Slice: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.7,
     "table": "Melee_Damage"
   }

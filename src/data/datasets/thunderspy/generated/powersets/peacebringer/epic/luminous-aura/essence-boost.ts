@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EssenceBoost: Power = {
   "name": "Essence Boost",
   "internalName": "Essence_Boost",
-  "available": 0,
+  "available": 3,
   "description": "You can activate this power to increase your maximum Hit Points for a short time. Essence Boost also grants you resistance to Toxic Damage. Recharge: Very Long",
   "shortHelp": "Self Heal, +Max HP, Res (Toxic)",
   "icon": "luminousaura_essenceboost.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PulseRifleBurst: Power = {
   "name": "Pulse Rifle Burst",
   "internalName": "Pulse_Rifle_Burst",
-  "available": 0,
+  "available": 1,
   "description": "This high powered laser pulse from your Pulse Rifle takes more energy to fire, but causes much more damage than a standard pulse and has a very good chance to send your foes flying. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, High DMG(Energy), Foe Knockdown",
   "icon": "robotics_laserrifleblast.png",
@@ -39,7 +39,7 @@ export const PulseRifleBurst: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.96,
     "table": "Ranged_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FearsomeStare: Power = {
   "name": "Fearsome Stare",
   "internalName": "Fearsome_Stare",
-  "available": 0,
+  "available": 11,
   "description": "Instills tremendous Fear within a cone area in front of you, causing all affected targets to tremble in Terror uncontrollably. Recharge: Slow",
   "shortHelp": "Ranged (Cone), Foe Fear, -To Hit",
   "icon": "darkmiasma_fearsomeaura.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TouchofFear: Power = {
   "name": "Touch of Fear",
   "internalName": "Touch_of_Fear",
-  "available": 0,
+  "available": 5,
   "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit. Recharge: Moderate",
   "shortHelp": "Melee Fear, Foe -To Hit",
   "icon": "shadowfighting_touchoffear.png",

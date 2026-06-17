@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ConduitofPain: Power = {
   "name": "Conduit of Pain",
   "internalName": "Conduit_of_Pain",
-  "available": 0,
+  "available": 34,
   "description": "You revive a fallen ally and briefly empower both them and yourself, increasing damage output, recovery rate, attack rate and chance to hit. This power will not heal or revive pets. Recharge: Very Long.",
   "shortHelp": "Ally Rez, +DMG, +Recharge, +To Hit. Self +DMG, +Recharge, +To Hit",
   "icon": "paindomination_conduitofpain.png",

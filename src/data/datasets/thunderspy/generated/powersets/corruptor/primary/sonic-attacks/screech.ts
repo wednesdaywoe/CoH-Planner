@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Screech: Power = {
   "name": "Screech",
   "internalName": "Screech",
-  "available": 0,
+  "available": 25,
   "description": "By bursting forth with this hypersonic Screech, you can disorient a target. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged, Minor DMG(Smashing/Energy), Foe Disorient, -Res(All)",
   "icon": "sonicblast_stun.png",
@@ -39,7 +39,7 @@ export const Screech: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.1,
     "table": "Ranged_Damage"
   },
@@ -57,7 +57,7 @@ export const Screech: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 0.2,
         "table": "Ranged_Damage"
       }

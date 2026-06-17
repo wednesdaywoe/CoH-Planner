@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Zapp: Power = {
   "name": "Zapp",
   "internalName": "Zapp",
-  "available": 0,
+  "available": 7,
   "description": "A focused electrical blast that deals high damage and drains Endurance, Some of the Endurance you drain may transfer back to you.",
   "shortHelp": "Ranged, High DMG(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_zapp.png",
@@ -41,7 +41,7 @@ export const Zapp: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 2.28,
     "table": "Ranged_Damage"
   }

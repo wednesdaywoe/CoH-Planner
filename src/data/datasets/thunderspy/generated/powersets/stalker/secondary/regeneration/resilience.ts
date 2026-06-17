@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Resilience: Power = {
   "name": "Resilience",
   "internalName": "Resilience",
-  "available": 0,
+  "available": 19,
   "description": "You are more Resilient. This power allows you to build up a resistance to Disorientation effects. You tend not to get Disoriented, and if you do, it wears off quickly. This resistance to Disorientation gets stronger as you go up in level. Resilience also grants some resistance to all types of damage. This power is always on.",
   "shortHelp": "Auto: Self +Res(Disorient, All DMG)",
   "icon": "regeneration_resiststun.png",

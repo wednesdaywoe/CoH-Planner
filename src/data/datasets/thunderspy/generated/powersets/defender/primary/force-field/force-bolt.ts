@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ForceBolt: Power = {
   "name": "Force Bolt",
   "internalName": "Force_Bolt",
-  "available": 0,
+  "available": 1,
   "description": "Discharges a bolt of force that knocks down foes and deals some Smashing Damage. Damage: Minor, Recharge: Fast",
   "shortHelp": "Ranged, Minor DMG(Smash), Foe Knockback",
   "icon": "forcefield_forcebolt.png",
@@ -40,7 +40,7 @@ export const ForceBolt: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1,
     "table": "Ranged_Damage"
   },

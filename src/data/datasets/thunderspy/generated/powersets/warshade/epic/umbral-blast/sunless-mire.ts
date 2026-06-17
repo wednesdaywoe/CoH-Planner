@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SunlessMire: Power = {
   "name": "Sunless Mire",
   "internalName": "Sunless_Mire",
-  "available": 0,
+  "available": 11,
   "description": "Sunless Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit. This power can be used in Nova Form. Damage: Moderate, Recharge: Very Long",
   "shortHelp": "PBAoE, Moderate DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +To Hit",
   "icon": "umbralblast_sunlessmire.png",
@@ -41,7 +41,7 @@ export const SunlessMire: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 1,
     "table": "Melee_Damage"
   }

@@ -45,7 +45,7 @@ export const PowerBolt: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.3,
     "table": "Ranged_Damage"
   },

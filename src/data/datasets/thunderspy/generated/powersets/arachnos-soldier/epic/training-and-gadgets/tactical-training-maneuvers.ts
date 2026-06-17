@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TacticalTrainingManeuvers: Power = {
   "name": "Tactical Training: Defensive",
   "internalName": "Tactical_Training:_Maneuvers",
-  "available": 0,
+  "available": 9,
   "description": "A good leader knows how to protect his team. While active, this power increases the Defense of yourself and all nearby teammates to all attacks as well as granting resistance to Confuse, Fear, Taunt and Placate.",
   "shortHelp": "PBAoE, Team +DEF(All) Res(Confuse, Fear, Taunt, Placate)",
   "icon": "trainingandgadgets_tacticaltrainingmaneuvers.png",

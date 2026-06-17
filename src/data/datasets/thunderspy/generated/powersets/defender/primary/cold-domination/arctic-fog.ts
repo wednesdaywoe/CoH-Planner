@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ArcticFog: Power = {
   "name": "Arctic Fog",
   "internalName": "Arctic_Fog",
-  "available": 0,
+  "available": 11,
   "description": "Your mastery of Cold allows you to hide yourself and all nearby allies within thick Arctic Fog. Arctic Fog makes you and your allies harder to see and increases your Defense to area effect, melee and ranged attacks. You cannot use any other Concealment type powers while using Arctic Fog.  Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Team Stealth, +DEF, +Res(Slow)",
   "icon": "colddomination_arcticfog.png",

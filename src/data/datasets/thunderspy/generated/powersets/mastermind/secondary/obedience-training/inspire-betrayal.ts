@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const InspireBetrayal: Power = {
   "name": "Inspire Betrayal",
   "internalName": "Inspire_Betrayal",
-  "available": 0,
+  "available": 3,
   "description": "You can inspire betrayal in your enemies, by conniving word, threat, promise, or something more, and make them fight for you. Of course, it won't be long before they come to regret their betrayal...",
   "shortHelp": "Foe Confuse",
   "icon": "obediencetraining_inspirebetrayal.png",

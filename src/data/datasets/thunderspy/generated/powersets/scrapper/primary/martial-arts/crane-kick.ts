@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CraneKick: Power = {
   "name": "Crane Kick",
   "internalName": "Crane_Kick",
-  "available": 0,
+  "available": 25,
   "description": "You can perform a slow, high damage kick that will likely knock your target back. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash), Knockback",
   "icon": "martialarts_cranekick.png",
@@ -41,7 +41,7 @@ export const CraneKick: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 2.28,
     "table": "Melee_Damage"
   },

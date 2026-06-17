@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PsiWhipCrack: Power = {
   "name": "Psi-Whip Crack",
   "internalName": "PsiWhip_Crack",
-  "available": 0,
+  "available": 3,
   "description": "You manifest your whip and Lash out at your foe dealing moderate damage and also manifesting a Psychokinetic sword. Lash has has a chance to knockdown your target. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Psionic/energy)",
   "icon": "awakened_mentalblast.png",
@@ -39,7 +39,7 @@ export const PsiWhipCrack: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.82,
     "table": "Ranged_Damage"
   },

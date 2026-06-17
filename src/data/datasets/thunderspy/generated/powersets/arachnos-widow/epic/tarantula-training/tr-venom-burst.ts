@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TRVenomBurst: Power = {
   "name": "Venom Burst",
   "internalName": "TR_Venom_Burst",
-  "available": 0,
+  "available": 31,
   "description": "Launch a cloud of concentrated toxin from your exoskeleton. Deals Energy damage and Toxic damage over time and reduces the regeneration of the affected targets. Requires Tarantula form to use. Recharge: Very Long",
   "shortHelp": "Ranged(Targeted AoE), Heavy Energy, Extreme DoT(Toxic), Foe -Regen",
   "icon": "tarantulatraining_venomburst.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const NeurotoxicBreath: Power = {
   "name": "Neurotoxic Breath",
   "internalName": "Neurotoxic_Breath",
-  "available": 0,
+  "available": 19,
   "description": "You can breath a cone of Neurotoxin gas that quickly start to anesthetize any nearby foes.  Affected targets may choke on the gas as their movement and attack rate are severely reduced. Choosing this power locks out Hallucinogenic Spray Recharge: Slow",
   "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
   "icon": "poison_neurotoxicbreath.png",

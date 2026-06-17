@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BulletRain: Power = {
   "name": "Bullet Rain",
   "internalName": "Bullet_Rain",
-  "available": 0,
+  "available": 5,
   "description": "You fire your pistols faster than the human eye can follow, causing your bullet trajectory to arc, dealing moderate Lethal damage and possibly knocking your foes back.  Damage: Moderate, Recharge: Slow  NOTE: Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.  Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to a minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded, a minor damage over time effect if 'Incendiary Ammo' is loaded, or a -damage effect if 'Chemical Ammo' is loaded.",
   "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal/Special), Knockback/Special",
   "icon": "dualpistols_explosiveclip.png",
@@ -44,7 +44,7 @@ export const BulletRain: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.1665,
       "table": "Ranged_Damage",
       "duration": 1.1
@@ -63,7 +63,7 @@ export const BulletRain: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.333,
         "table": "Ranged_Damage",
         "duration": 1.1

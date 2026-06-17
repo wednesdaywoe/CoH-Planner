@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GreaterIceSword: Power = {
   "name": "Greater Ice Sword",
   "internalName": "Greater_Ice_Sword",
-  "available": 0,
+  "available": 34,
   "description": "Your mastery of Ice allows you to create an enhanced blade of solid ice that deals above average damage. Being hit by the Greater Ice Sword will Slow a villain's attack and movement speed, due to the intense chill. Damage: High, Recharge: Slow",
   "shortHelp": "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
   "icon": "icyonslaught_greatericesword.png",
@@ -42,7 +42,7 @@ export const GreaterIceSword: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.588,
     "table": "Melee_Damage"
   }

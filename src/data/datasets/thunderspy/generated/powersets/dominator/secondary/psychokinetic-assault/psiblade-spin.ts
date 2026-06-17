@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PsiBladeSpin: Power = {
   "name": "Psi-Blade Spin",
   "internalName": "PsiBlade_Spin",
-  "available": 0,
+  "available": 19,
   "description": "You perform a spin with your manifested sword, dealing moderate damage to all nearby targets, each target hit spawns a Psychokinetic sword.  Damage: Moderate, Recharge: Long",
   "shortHelp": "PBAoE, Moderate DMG(Psionic/Energy)",
   "icon": "awakened_psychiclash.png",
@@ -37,7 +37,7 @@ export const PsiBladeSpin: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.5,
     "table": "Melee_Damage"
   }

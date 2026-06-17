@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Taser: Power = {
   "name": "Taser",
   "internalName": "Taser",
-  "available": 0,
+  "available": 3,
   "description": "The Taser is basically a stun-gun. This small device releases a high-voltage, low-amperage electrical charge that can Disorient most opponents with minimal damage. The Taser has a very short range. Damage: Minor, Recharge: Slow",
   "shortHelp": "Melee, Foe Disorient",
   "icon": "gadgets_taser.png",

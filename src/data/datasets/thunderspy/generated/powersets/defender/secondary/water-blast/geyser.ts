@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Geyser: Power = {
   "name": "Geyser",
   "internalName": "Geyser",
-  "available": 0,
+  "available": 37,
   "description": "You cause the earth to erupt beneath your target's feet as a Geyser of scalding hot water burns your foes and tosses them violently into the air. Geyser causes High Fire and Smashing damage before causing High Fire damage over time as well as reducing their movement speed. Geyser consumes all Tidal Power. Both the initial damage and damage over time portions of this power will be increased and have a scaling chance to disorient for each stack of Tidal Power. If you have 3 stacks of Tidal Power Water Burst will have a 100% chance to disorient affected targets. Damage: High & High DoT, Recharge: Very Slow",
   "shortHelp": "Ranged (Targeted AoE), High DMG(Fire/Smash), Foe High DoT(Fire), -Speed, Knock Up, Disorient, Self -Tidal Power",
   "icon": "waterblast_geyser.png",
@@ -45,7 +45,7 @@ export const Geyser: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 0.5,
     "table": "Ranged_Damage"
   },
@@ -57,12 +57,12 @@ export const Geyser: Power = {
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Fire",
           "scale": 0.1,
           "table": "Ranged_Damage"
         },
         {
-          "type": "Special",
+          "type": "Fire",
           "scale": 0.143182,
           "table": "Ranged_Damage",
           "duration": 5.1
@@ -84,12 +84,12 @@ export const Geyser: Power = {
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Fire",
           "scale": 0.24,
           "table": "Ranged_Damage"
         },
         {
-          "type": "Special",
+          "type": "Fire",
           "scale": 0.152727,
           "table": "Ranged_Damage",
           "duration": 5.1
@@ -111,12 +111,12 @@ export const Geyser: Power = {
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Fire",
           "scale": 0.5,
           "table": "Ranged_Damage"
         },
         {
-          "type": "Special",
+          "type": "Fire",
           "scale": 0.170455,
           "table": "Ranged_Damage",
           "duration": 5.1
@@ -137,7 +137,7 @@ export const Geyser: Power = {
       "scope": "global",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Fire",
         "scale": 0.136364,
         "table": "Ranged_Damage",
         "duration": 5.1

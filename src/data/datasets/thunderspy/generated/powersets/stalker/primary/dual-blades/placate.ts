@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Placate: Power = {
   "name": "Typhoon's Edge",
   "internalName": "Placate",
-  "available": 0,
+  "available": 11,
   "description": "You spin around in a circle, attacking everyone within melee range with a striking attack. This attack is the finishing move in both the Weaken and Sweep combination attacks. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Lethal)",
   "icon": "dualblades_aoebridge.png",
@@ -37,7 +37,7 @@ export const Placate: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.57,
     "table": "Melee_Damage",
     "duration": 0.6
@@ -48,18 +48,22 @@ export const Placate: Power = {
       "label": "Conditional",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 1.14,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.57,
-          "table": "Melee_Damage"
-        }
-      ]
+      "damage": {
+        "type": "Lethal",
+        "scale": 1.14,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.57,
+        "table": "Melee_Damage"
+      }
     }
   ]
 };

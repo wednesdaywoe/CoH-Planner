@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const CrystalArmor: Power = {
   "name": "Crystal Armor",
   "internalName": "Crystal_Armor",
-  "available": 0,
+  "available": 17,
   "description": "While this power is active, your skin becomes encrusted in various quartz crystals. Crystal Armor makes Energy and Negative Energy attacks less likely to hit. This power also grants you resistance to Defense DeBuffs. Cannot be active at the same time as Granite Armor. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Energy, Negative), Res(DeBuff DEF)",
   "icon": "stonearmor_crystalarmor.png",

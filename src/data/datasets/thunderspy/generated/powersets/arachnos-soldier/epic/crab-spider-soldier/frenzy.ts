@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Frenzy: Power = {
   "name": "Frenzy",
   "internalName": "Frenzy",
-  "available": 0,
+  "available": 25,
   "description": "You can energize and lash out with your arms, causing both lethal and energy damage to all foes surrounding you.  This attack also weakens the Defense of those struck.  Damage: Heavy Recharge: Moderate",
   "shortHelp": "Melee PBAoE, Heavy DMG (Lethal/Energy), Foe -DEF",
   "icon": "crabspider_frenzy.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HeightenedSenses: Power = {
   "name": "Heightened Senses",
   "internalName": "Heightened_Senses",
-  "available": 0,
+  "available": 27,
   "description": "You become more aware of your environment and its hazards while this power is activated. This will increase your Defense versus environmental damage as long as it is active. Your Heightened Senses also allow you to perceive stealthy foes and resist Defense DeBuffs. Recharge: Fast",
   "shortHelp": "Toggle: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative Energy), +Per",
   "icon": "willpower_heightenedsenses.png",

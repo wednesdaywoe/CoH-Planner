@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ShadowyBinds: Power = {
   "name": "Spirit Host",
   "internalName": "Shadowy_Binds",
-  "available": 0,
+  "available": 31,
   "description": "You periodically summon Shades from the Netherworld to harass nearby foes. Shades deal moderate damage and terrorize their victims. Recharge: Long",
   "shortHelp": "Toggle: Summon Shades",
   "icon": "darknesscontrol_spirithost.png",

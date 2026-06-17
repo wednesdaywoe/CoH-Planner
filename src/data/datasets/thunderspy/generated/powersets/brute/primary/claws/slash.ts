@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Slash: Power = {
   "name": "Slash",
   "internalName": "Slash",
-  "available": 0,
+  "available": 1,
   "description": "You Slash at your foe with your claws, dealing a good amount of lethal damage, but with a longer recharge rate than Swipe or Strike . This attack can reduce a target's Defense, making him easier to hit. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Melee, Moderate DMG(Lethal), Foe -DEF",
   "icon": "claws_slash.png",
@@ -41,7 +41,7 @@ export const Slash: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.74,
     "table": "Melee_Damage"
   }

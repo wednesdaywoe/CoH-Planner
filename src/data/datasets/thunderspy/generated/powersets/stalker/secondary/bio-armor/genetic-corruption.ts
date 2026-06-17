@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GeneticCorruption: Power = {
   "name": "Genetic Corruption",
   "internalName": "Genetic_Corruption",
-  "available": 0,
+  "available": 27,
   "description": "Your Bio Armor is capable of corrupting the genetic code of nearby foes, reducing the damage they deal. Lesser foes may be put to sleep for a short time.  While Efficiency Adaptation is active, this power grants a moderate bonus to Regeneration.  While Defensive Adaptation is active you gain a minor bonus to all types of damage resistance and increase the potency of this power's damage debuff.  If Offensive Adaptation is active enemies are more likely to fall asleep.  These special bonuses are unenhanceable.  Recharge: Fast",
   "shortHelp": "Toggle: PBAoE, Foe Sleep, -Damage(All), Self +Special",
   "icon": "bioorganicarmor_geneticcorruption.png",

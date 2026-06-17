@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const InstantHealing: Power = {
   "name": "Instant Healing",
   "internalName": "Instant_Healing",
-  "available": 0,
+  "available": 27,
   "description": "When you activate this power, you can regenerate your health at an astounding rate. This boost to your Regeneration Rate lasts about a minute and takes a long time to recharge once used. Recharge: Very Long",
   "shortHelp": "Click: Self +Regeneration",
   "icon": "regeneration_instanthealing.png",

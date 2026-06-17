@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Repair: Power = {
   "name": "Repair",
   "internalName": "Repair",
-  "available": 0,
+  "available": 17,
   "description": "You can release a small swarm of nanites that can Repair your Robot Henchmen to full health and restores some of its Endurance.  This power only works on your Robot Henchmen. Recharge: Slow",
   "shortHelp": "Heal Robot",
   "icon": "robotics_repair.png",

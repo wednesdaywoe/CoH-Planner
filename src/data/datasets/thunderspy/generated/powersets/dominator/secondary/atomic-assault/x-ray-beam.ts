@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const XRayBeam: Power = {
   "name": "X-Ray Beam",
   "internalName": "X-Ray_Beam",
-  "available": 0,
+  "available": 3,
   "description": "You can emit a beam of X-Ray energy from your eyes, dealing moderate Energy damage. This attack can bypass some defenses and can reduce the target's Defense. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target. Damage: Moderate, Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Energy/Toxic), Foe -DEF",
   "icon": "radioactiveassault_xraybeam.png",
@@ -40,7 +40,7 @@ export const XRayBeam: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.148,
     "table": "Ranged_Damage"
   }

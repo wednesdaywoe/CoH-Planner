@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LightningClap: Power = {
   "name": "Zapp",
   "internalName": "Lightning_Clap",
-  "available": 0,
+  "available": 37,
   "description": "A focused electrical blast that deals high damage and drains Endurance, Some of the Endurance you drain may transfer back to you.",
   "shortHelp": "Ranged, High DMG(Energy), Foe -End, -Recovery",
   "icon": "electricalassault_zapp.png",
@@ -40,7 +40,7 @@ export const LightningClap: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 2.28,
     "table": "Ranged_Damage"
   }

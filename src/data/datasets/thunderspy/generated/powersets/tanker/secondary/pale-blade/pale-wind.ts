@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PaleWind: Power = {
   "name": "Pale Wind",
   "internalName": "Pale_Wind",
-  "available": 0,
+  "available": 15,
   "description": "You call upon the Pale Wind to punish your foes. Enemies caught in the wake of Pale Wind will always be inflicted with Fester. If an enemy is already Festering, he will instead take Toxic damage over time. Pale Wind deals additional Toxic damage over time while Plaguebearer is active.",
   "shortHelp": "Repel, Fester",
   "icon": "paleblade_palewind.png",
@@ -49,24 +49,28 @@ export const PaleWind: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
+      "id": "target-affected",
+      "label": "Target Already Affected",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 0.1,
-          "table": "Melee_Damage",
-          "duration": 6
-        },
-        {
-          "type": "Special",
-          "scale": 0.1,
-          "table": "Melee_Damage",
-          "duration": 6
-        }
-      ]
+      "damage": {
+        "type": "Special",
+        "scale": 0.1,
+        "table": "Melee_Damage",
+        "duration": 6
+      }
+    },
+    {
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.1,
+        "table": "Melee_Damage",
+        "duration": 6
+      }
     }
   ]
 };

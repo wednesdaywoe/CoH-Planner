@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Consume: Power = {
   "name": "Consume",
   "internalName": "Consume",
-  "available": 0,
+  "available": 27,
   "description": "You can Consume some fuel from your nearby enemies to recover Endurance. Damage: Minor, Recharge: Very Long",
   "shortHelp": "PBAoE, Minor DMG(Fire), Self +End",
   "icon": "firemanipulation_consume.png",
@@ -39,7 +39,7 @@ export const Consume: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 0.4,
     "table": "Melee_Damage"
   }

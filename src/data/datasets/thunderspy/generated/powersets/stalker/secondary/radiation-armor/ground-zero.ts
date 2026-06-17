@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GroundZero: Power = {
   "name": "Ground Zero",
   "internalName": "Ground_Zero",
-  "available": 0,
+  "available": 34,
   "description": "You release a mixture of radiation into the area.  Nearby foes will be barraged with harmful radiation and will suffer Moderate Energy damage immediately, followed by moderate toxic damage over time.  Affected foes will also have their defense reduced.  Nearby allies will be healed for a moderate amount and will recover health over time.  This power can affect a total of 30 targets.  This includes both friends and foes.  Ground Zero has no effect on the caster, only nearby allies and enemies.  Damage: Moderate, Moderate DoT, Recharge: Very Long",
   "shortHelp": "PBAoE, Foe Moderate DMG(Energy), Moderate DoT(Toxic), -DEF(All), Ally +HP, +Heal over time",
   "icon": "radiationarmor_groundzero.png",
@@ -42,7 +42,7 @@ export const GroundZero: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1,
     "table": "Melee_Damage"
   }

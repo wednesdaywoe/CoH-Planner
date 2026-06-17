@@ -113,10 +113,24 @@ for (const at of STANDARD) {
   emitted.push(at);
 }
 
-// Kheldians + VEATs — keep HC's verbatim rosters/branches.
+// Kheldians + VEATs — keep HC's verbatim rosters/branches, except inject any
+// dataset-specific custom branches whose sets exist on disk but HC doesn't list.
+const veatSetExists = (at, set) => fs.existsSync(path.join(PS_DIR, at, 'epic', set));
 for (const at of [...KHELDIAN, ...VEAT]) {
   if (!hasStats(at) || !hasDir(at)) continue;
-  blocks.push(emitBlock(at, hcBody(at)));
+  let body = hcBody(at);
+  // Thunderspy adds a third Widow branch, Tarantula (tarantula-training +
+  // tarantula-teamwork), alongside Night Widow / Fortunata. HC has no such
+  // branch, so inject it into the branches block when its sets are present.
+  if (datasetId === 'thunderspy' && at === 'arachnos-widow'
+      && veatSetExists(at, 'tarantula-training') && veatSetExists(at, 'tarantula-teamwork')) {
+    const tarantula = `branches: {\n      tarantula: {\n` +
+      `        name: 'Tarantula',\n        level: 24,\n` +
+      `        primarySet: 'arachnos-widow/tarantula-training',\n` +
+      `        secondarySet: 'arachnos-widow/tarantula-teamwork',\n      },`;
+    body = body.replace(/branches: \{/, tarantula);
+  }
+  blocks.push(emitBlock(at, body));
   emitted.push(at);
 }
 

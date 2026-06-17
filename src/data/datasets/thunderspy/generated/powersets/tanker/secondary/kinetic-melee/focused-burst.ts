@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FocusedBurst: Power = {
   "name": "Focused Burst",
   "internalName": "Focused_Burst",
-  "available": 0,
+  "available": 34,
   "description": "Projects a burst of focused power over a short distance.  Focused Burst deals high damage and can possibly knock down your foe. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Smash/Energy), Foe Knockdown",
   "icon": "kineticattack_focusedburst.png",
@@ -43,7 +43,7 @@ export const FocusedBurst: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 1.23,
     "table": "Melee_Damage"
   }

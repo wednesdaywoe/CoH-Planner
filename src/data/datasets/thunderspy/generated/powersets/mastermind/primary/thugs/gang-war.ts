@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GangWar: Power = {
   "name": "Gang War",
   "internalName": "Gang_War",
-  "available": 0,
+  "available": 17,
   "description": "Calls a gang of 10 or so Thug Posse to come to your aid for a brief while. Posse are not like your true Henchman.  They cannot be given direct commands, nor will they appear in your pet window. You must select an enemy target to attack first before calling these Thugs. Posse are many, but they are very weak, and are only equipped with the most basic weapons. Although they will follow you, they are not as loyal as your Henchmen, and they will only stick around for a few minutes before taking off. Recharge: Very Long",
   "shortHelp": "Summon Posse",
   "icon": "thugs_targetedsummonmob.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Fusion: Power = {
   "name": "Fusion",
   "internalName": "Fusion",
-  "available": 0,
+  "available": 19,
   "description": "Fusion boosts your damage and chance to hit moderately and also causes your next few attacks to have a 100% chance to inflict Contaminated on your enemies. Recharge: Very Long",
   "shortHelp": "Self +DMG, +To Hit, Special",
   "icon": "radiationmelee_buildup.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Flashfire: Power = {
   "name": "Flashfire",
   "internalName": "Flashfire",
-  "available": 0,
+  "available": 11,
   "description": "You can bring forth a Flashfire to Disorient a group of foes and deal some damage over time. Target must be on the ground to activate Flashfire. Damage: Minor(DoT), Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Minor DMG(Fire), Foe Disorient",
   "icon": "firetrap_flashfire.png",
@@ -41,7 +41,7 @@ export const Flashfire: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Fire",
     "scale": 0.06,
     "table": "Ranged_Damage",
     "duration": 4

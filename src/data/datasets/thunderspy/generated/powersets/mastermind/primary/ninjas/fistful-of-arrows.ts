@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FistfulofArrows: Power = {
   "name": "Fistful of Arrows",
   "internalName": "Fistful_of_Arrows",
-  "available": 0,
+  "available": 7,
   "description": "You fire a fistful of arrows at foes in a cone in front of you. Good at close range. Damage: Moderate, Recharge: Moderate",
   "shortHelp": "Ranged (Cone), Moderate DMG(Lethal)",
   "icon": "ninjas_fistfullarrows.png",
@@ -40,7 +40,7 @@ export const FistfulofArrows: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.055556,
     "table": "Ranged_Damage"
   }

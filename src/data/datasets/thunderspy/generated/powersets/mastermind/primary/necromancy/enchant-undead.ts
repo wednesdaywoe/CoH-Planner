@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnchantUndead: Power = {
   "name": "Enchant Undead",
   "internalName": "Enchant_Undead",
-  "available": 0,
+  "available": 5,
   "description": "Due to your advanced studies into the dark magic and Necromancy, Enchant Undead will automatically and permanently bestow new powers and abilities to all of your Undead Henchman. The powers gained are unique and dependent upon the type of Undead Henchman that is Enchanted. Enchant Undead only works on your Undead Henchmen and you can only Enchant your Undead Henchmen once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Enchant Undead Henchman",
   "icon": "necromancy_enchantundead.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EaglesClaw: Power = {
   "name": "Eagles Claw",
   "internalName": "Eagles_Claw",
-  "available": 0,
+  "available": 31,
   "description": "You can perform a devastating smashing damage kick that can severely Disorient most opponents. Eagle's Claw has an exceptionally good critical hit capability.  In addition to the normal Critical from attacking while Hidden, there is also a small chance you may land a Critical hit even if you are not Hidden. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Smashing), Foe Minor Disorient, +Special",
   "icon": "martialarts_eaglesclaw.png",
@@ -38,7 +38,7 @@ export const EaglesClaw: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 2.92,
     "table": "Melee_Damage"
   },
@@ -57,12 +57,12 @@ export const EaglesClaw: Power = {
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Smashing",
           "scale": 2.92,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Smashing",
           "scale": 2.92,
           "table": "Melee_Damage"
         }

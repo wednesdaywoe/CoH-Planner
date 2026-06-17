@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const WhirlingHands: Power = {
   "name": "Whirling Hands",
   "internalName": "Whirling_Hands",
-  "available": 0,
+  "available": 7,
   "description": "By focusing your energy into the muscles in your arms, you can launch a dizzying flurry of attacks against every foe in melee range. Some foes may be hit hard enough to be Disoriented as well. Damage: Moderate, Recharge: Slow",
   "shortHelp": "PBAoE Melee, Moderate DMG(Smash/Energy)",
   "icon": "powerpunch_flurry.png",
@@ -41,7 +41,7 @@ export const WhirlingHands: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.3,
     "table": "Melee_Damage"
   },

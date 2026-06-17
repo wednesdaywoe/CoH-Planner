@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const TidalWave: Power = {
   "name": "Tidal Wave",
   "internalName": "Tidal_Wave",
-  "available": 0,
+  "available": 11,
   "description": "You blast foes in front of you with a violent torrent of water knocking them back, disorienting them and dealing Light Cold and Smashing damage to them. This power has a small chance to place the Drowning effect on its targets. Tidal Wave deals additional damage and has improved disorient duration and movement slow potency on foes suffering from Drowning.  Damage: Light, Recharge: Very Long",
   "shortHelp": "Ranged (Cone), Light DMG(Cold/Smash), Foe Knockback, Disorient, -Speed",
   "icon": "watercontrol_tidalwave.png",
@@ -46,7 +46,7 @@ export const TidalWave: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 0.2,
     "table": "Ranged_Damage"
   },

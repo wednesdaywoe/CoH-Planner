@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const UpgradeRobot: Power = {
   "name": "Upgrade Robot",
   "internalName": "Upgrade_Robot",
-  "available": 0,
+  "available": 31,
   "description": "Upgrade Robot will permanently bestow the most powerful and high-tech gear and weaponry to all of your Robot Henchman. The Upgraded Robot will gain new abilities, powers and weapons. The powers gained are unique and dependent upon the type of Robot Henchmen that is Upgraded. This power only works on your Robot Henchmen and you can only Upgrade your Robot Henchman once with this power. (Slotting this power with damage enhancements does nothing, this power only accepts damage enhancements so you can slot the unique Invention Enhancements that buff pets here.)",
   "shortHelp": "Auto PBAoE: Upgrade Robot Henchman",
   "icon": "robotics_upgraderobot.png",

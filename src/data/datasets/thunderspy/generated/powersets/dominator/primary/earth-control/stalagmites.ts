@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Stalagmites: Power = {
   "name": "Stalagmites",
   "internalName": "Stalagmites",
-  "available": 0,
+  "available": 11,
   "description": "You can cause Stalagmites to erupt all around an enemy, damaging all nearby foes. The Stalagmites deal minimal Lethal damage, and can Disorient all affected targets for a good while, as well as reduce their Defense. You must be on the ground  to activate this power.  Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Minor DMG(Lethal), Foe Disorient, -DEF",
   "icon": "earthgrasp_stalagmites.png",
@@ -41,7 +41,7 @@ export const Stalagmites: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.25,
     "table": "Ranged_Damage"
   },

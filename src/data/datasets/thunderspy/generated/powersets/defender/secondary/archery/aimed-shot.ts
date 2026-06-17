@@ -37,7 +37,7 @@ export const AimedShot: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1,
     "table": "Ranged_Damage"
   }

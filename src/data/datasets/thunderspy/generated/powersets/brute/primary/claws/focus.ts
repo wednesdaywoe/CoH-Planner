@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Focus: Power = {
   "name": "Focus",
   "internalName": "Focus",
-  "available": 0,
+  "available": 17,
   "description": "Projects a burst of focused power over a short distance.  Focus deals high damage and can possibly knock down your foe. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Lethal), Knockback",
   "icon": "claws_focus.png",
@@ -41,7 +41,7 @@ export const Focus: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 2.0496,
     "table": "Melee_Damage"
   }

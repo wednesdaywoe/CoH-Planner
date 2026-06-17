@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LightningClap: Power = {
   "name": "Force of Thunder",
   "internalName": "Lightning_Clap",
-  "available": 0,
+  "available": 19,
   "description": "You can channel the raw force of a thunderbolt through you knocking enemies back and potentially disorienting them.  This electrical energy also causes you to regenerate health and recover endurance very quickly for a short time.  Recharge: Long",
   "shortHelp": "PBAoE, Foe Disorient, Knockback, Self +Regeneration, +Recovery",
   "icon": "electricitymanipulation_lightningclap.png",

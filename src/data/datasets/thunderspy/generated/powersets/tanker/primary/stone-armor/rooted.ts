@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Rooted: Power = {
   "name": "Rooted",
   "internalName": "Rooted",
-  "available": 0,
+  "available": 7,
   "description": "While this power is active, you merge with the Earth and draw forth its power to become resistant to Knockback, Sleep, Hold, Disorient and Endurance Drain effects, and increase your Hit Point Regeneration rate.  You must remain in close contact with the Earth, so you will move extremely slow and you cannot active Fly powers, Sprint, Super Speed, or Jump powers while this power is active. Rooted also grants you resistance to Defense DeBuffs. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Knockback, Sleep, Disorient, Hold, End Drain, DeBuff DEF), Self -SPD, +Regeneration",
   "icon": "stonearmor_rooted.png",

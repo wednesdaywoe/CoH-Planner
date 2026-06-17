@@ -38,7 +38,7 @@ export const BarbSwipe: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.84,
     "table": "Melee_Damage"
   },
@@ -56,7 +56,7 @@ export const BarbSwipe: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.84,
         "table": "Melee_Damage"
       }

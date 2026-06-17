@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Resurrect: Power = {
   "name": "Resurrect",
   "internalName": "Resurrect",
-  "available": 0,
+  "available": 19,
   "description": "Resurrects a fallen ally with full Hit Points and Endurance.  The Resurrected target is left protected from XP Debt for 90 seconds.  Recharge: Very Long",
   "shortHelp": "Ally Rez",
   "icon": "empathy_resurrect.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnergyDrain: Power = {
   "name": "Energy Drain",
   "internalName": "Energy_Drain",
-  "available": 0,
+  "available": 19,
   "description": "Energy Drain leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance and Defense. If there are no foes within range, you will not gain any Endurance or Defense. Recharge: Long",
   "shortHelp": "PBAoE, Self +End, +Def, Foe -End",
   "icon": "energyaura_drain.png",

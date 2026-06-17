@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SpeedBoost: Power = {
   "name": "Speed Boost",
   "internalName": "Speed_Boost",
-  "available": 0,
+  "available": 19,
   "description": "You can hasten your allies, greatly increasing their movement speed, attack rate, and Endurance recovery, they also gain resistance to Slow effects. You recieve only half the movement speend and endurance recovery values. Recharge: Very Fast",
   "shortHelp": "PBAoE, Ally +SPD, +Recharge, +Recovery, Res Slow",
   "icon": "kineticboost_speedboost.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const HeadSplitter: Power = {
   "name": "Golden Dragonfly",
   "internalName": "Head_Splitter",
-  "available": 0,
+  "available": 31,
   "description": "You perform a devastating Golden Dragonfly attack that deals a massive amount of lethal damage and can even knock a foe down to the ground and reduce their Defense. The power of this attack can actually extend a short distance through multiple foes. If executed while hidden, only some affected targets may be hit with a Critical, however, there is a chance you may land a Critical hit with Golden Dragonfly even if you are not Hidden.  Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Lethal), Foe Knockback, -DEF",
   "icon": "katana_headsplitter.png",
@@ -44,7 +44,7 @@ export const HeadSplitter: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 2.28,
     "table": "Melee_Damage"
   },
@@ -56,12 +56,12 @@ export const HeadSplitter: Power = {
       "defaultActive": false,
       "damage": [
         {
-          "type": "Special",
+          "type": "Lethal",
           "scale": 2.28,
           "table": "Melee_Damage"
         },
         {
-          "type": "Special",
+          "type": "Lethal",
           "scale": 2.28,
           "table": "Melee_Damage"
         }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Ripper: Power = {
   "name": "Ripper",
   "internalName": "Ripper",
-  "available": 0,
+  "available": 37,
   "description": "You can unleash a spectacular slashing maneuver that attacks all foes in a wide arc directly in front of you. Ripper deals massive damage and poisons multiple targets. It can even knock foes down. Thorn poison deals additional Toxic damage and can reduce your foes Defense. Damage: High, Recharge: Slow",
   "shortHelp": "Melee (Cone), High DMG(Lethal), DoT(Toxic) -DEF, Knockback, -SPD",
   "icon": "thornyassault_ripper.png",
@@ -44,7 +44,7 @@ export const Ripper: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.95,
     "table": "Melee_Damage"
   }

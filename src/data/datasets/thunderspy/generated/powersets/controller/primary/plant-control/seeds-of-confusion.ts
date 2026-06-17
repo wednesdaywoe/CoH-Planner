@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SeedsofConfusion: Power = {
   "name": "Seeds of Confusion",
   "internalName": "Seeds_of_Confusion",
-  "available": 0,
+  "available": 7,
   "description": "You throw a handful of seeds from a rare Baffle plant at your foes.  The seeds spread out in a wide cone and release a dusty chaff that contain a number of alkaloids and hallucinogenic compounds.  Foes that come into contact with these seeds become violently confused and will turn and attack each other, ignoring you and all your allies. You will not receive any Experience Points for foes defeated entirely by Confused enemies. Recharge: Very Long",
   "shortHelp": "Ranged (Cone), Foe Confuse",
   "icon": "plantcontrol_seedsconfusion.png",

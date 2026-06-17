@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Torrent: Power = {
   "name": "Torrent",
   "internalName": "Torrent",
-  "available": 0,
+  "available": 27,
   "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit. Damage: Minor, Recharge: Slow",
   "shortHelp": "Ranged (Cone), Minor DMG(Smashing), Foe -To Hit, Knockback",
   "icon": "darkcast_torrent.png",
@@ -45,7 +45,7 @@ export const Torrent: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.2,
     "table": "Ranged_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ChainFences: Power = {
   "name": "Chain Fences",
   "internalName": "Chain_Fences",
-  "available": 0,
+  "available": 1,
   "description": "You can immobilize multiple foes in a chain of electricity, dealing minor damage to all foes in range and draining some endurance.  This power also reduces Flight capacity in targets. Damage: Minor, Recharge: Moderate",
   "shortHelp": "Ranged AoE, Minor DMG(Energy), Foe Immobilize, -End, -Fly",
   "icon": "electriccontrol_chainfences.png",
@@ -43,7 +43,7 @@ export const ChainFences: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.3,
     "table": "Ranged_Damage"
   },

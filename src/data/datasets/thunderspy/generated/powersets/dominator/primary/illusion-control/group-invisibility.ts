@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GroupInvisibility: Power = {
   "name": "Group Invisibility",
   "internalName": "Group_Invisibility",
-  "available": 0,
+  "available": 25,
   "description": "Makes you and all teammates around you Invisible. While Invisible, you and your teammates are almost impossible to detect. Even if discovered, Group Invisibility grants a bonus to your Defense to all attacks, although you will lose some of your defense bonus if you attack. Recharge: Slow",
   "shortHelp": "PBAoE, Team Stealth, +DEF(All)",
   "icon": "illusions_giveinvisibility.png",

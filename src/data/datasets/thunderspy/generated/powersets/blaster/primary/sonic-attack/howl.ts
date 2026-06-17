@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Howl: Power = {
   "name": "Howl",
   "internalName": "Howl",
-  "available": 0,
+  "available": 1,
   "description": "A short range, but powerful sonic attack that can hit multiple enemies in an arc in front of you. Damage: Medium, Recharge: Slow",
   "shortHelp": "Ranged Cone, Medium DMG(Smashing/Energy), Foe -Res(All)",
   "icon": "sonicblast_cone.png",
@@ -40,7 +40,7 @@ export const Howl: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.405,
     "table": "Ranged_Damage"
   }

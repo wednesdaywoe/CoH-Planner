@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ArmLash: Power = {
   "name": "Arm Lash",
   "internalName": "Arm_Lash",
-  "available": 0,
+  "available": 11,
   "description": "The Crab Spider's backpack is capable of making rapid attacks with its many arms dealing heavy damage to foes within a short cone in front of the user.  Damage: Heavy Recharge: Medium",
   "shortHelp": "Melee Cone, Heavy DMG(Lethal/Toxic), Foe -DEF",
   "icon": "crabspider_armlash.png",
@@ -42,7 +42,7 @@ export const ArmLash: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.19,
     "table": "Melee_Damage"
   }

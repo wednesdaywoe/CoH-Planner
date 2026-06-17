@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnergyAbsorption: Power = {
   "name": "Energy Absorption",
   "internalName": "Energy_Absorption",
-  "available": 0,
+  "available": 27,
   "description": "Activating this power draws moisture directly from the bodies of all nearby foes, draining their Endurance while also slowing their movment speed and attack rage. Each foe you draw moisture from adds to your own Endurance as well as Defense to all attacks except psionics. The first foe you absorb grants the highest Defense bonus, and you can absorb up to 10 foes.  In addition to Defense, Energy Absorption also grants you resistance to Slow effects. If there are no foes within range, this power will fail. Recharge: Long",
   "shortHelp": "PBAoE, Self +End, +DEF(All but Psionics), Res (Slow), Foe -End, -Recharge, -Speed",
   "icon": "icearmor_energyabsorption.png",

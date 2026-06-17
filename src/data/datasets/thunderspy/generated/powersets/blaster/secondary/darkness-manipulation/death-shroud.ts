@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DeathShroud: Power = {
   "name": "Death Shroud",
   "internalName": "Death_Shroud",
-  "available": 0,
+  "available": 3,
   "description": "You become a focus point for the Netherworld, allowing its Negative Energy to seep from your body. This will continuously damage all foes in melee range. Damage: Minor(DoT), Recharge: Fast",
   "shortHelp": "Toggle: PBAoE Minor DoT(Negative)",
   "icon": "darknessmanipulation_deathshroud.png",

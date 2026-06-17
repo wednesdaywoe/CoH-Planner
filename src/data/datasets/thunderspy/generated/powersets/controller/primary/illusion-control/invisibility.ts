@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Invisibility: Power = {
   "name": "Superior Invisibility",
   "internalName": "Invisibility",
-  "available": 0,
+  "available": -1,
   "description": "You can bend light around yourself to become completely Invisible. While this power is active, you are all but impossible to detect. Recharge: Fast",
   "shortHelp": "Toggle: Self Stealth",
   "icon": "illusions_invisibility.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const NWSlash: Power = {
   "name": "Slash",
   "internalName": "NW_Slash",
-  "available": 0,
+  "available": 17,
   "description": "Slash does extreme lethal damage to your foe, then poisons them.  The poison does toxic damage over time and slows their recovery rate and movement speed.  NOTE: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.  Damage: Extreme Recharge: Slow",
   "shortHelp": "Extreme DMG (Lethal/Toxic), DoT(Toxic), -Regeneration, -Recharge, -SPD.",
   "icon": "nightwidowtraining_slash.png",

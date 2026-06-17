@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Hide: Power = {
   "name": "EMP",
   "internalName": "Hide",
-  "available": 0,
+  "available": 27,
   "description": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and placate your foes so they can no longer find or target you. Additionally, most machines and robots will take moderate high damage. Recharge: Long",
   "shortHelp": "PBAoE: Foe Placate, -End",
   "icon": "electrical_mastery_em_pulse.png",

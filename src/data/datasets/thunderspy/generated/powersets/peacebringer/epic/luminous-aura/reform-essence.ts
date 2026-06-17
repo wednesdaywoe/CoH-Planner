@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ReformEssence: Power = {
   "name": "Reform Essence",
   "internalName": "Reform_Essence",
-  "available": 0,
+  "available": 21,
   "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself. Recharge: Long",
   "shortHelp": "Self Heal",
   "icon": "luminousaura_reformessence.png",

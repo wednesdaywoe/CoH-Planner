@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Fallout: Power = {
   "name": "Fallout",
   "internalName": "Fallout",
-  "available": 0,
+  "available": 25,
   "description": "After an ally falls in battle, you can activate this power to extract the energy from their body to deal a massive amount of Energy damage to any nearby foes. All affected foes are extremely weakened by the Fallout, and their chance to hit, Defense, Damage and Damage Resistance is severely reduced.  Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Post-Defeat: PBAoE, Extreme DMG(Energy), Foe -To Hit, -DEF, -DMG, -Res(All)",
   "icon": "radiationpoisoning_fallout.png",

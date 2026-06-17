@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DeathShroud: Power = {
   "name": "Moon Beam",
   "internalName": "Death_Shroud",
-  "available": 0,
+  "available": 37,
   "description": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit. This is a sniper attack, and is best fired from a distance, as it can be interrupted.  If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Superior DMG(Negative), Target -To Hit",
   "icon": "darknessassault_moonbeam.png",
@@ -41,7 +41,7 @@ export const DeathShroud: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 2.28,
     "table": "Ranged_Damage"
   }

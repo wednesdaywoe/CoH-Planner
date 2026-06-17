@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PaleBlade: Power = {
   "name": "Pale Blade",
   "internalName": "Pale_Blade",
-  "available": 0,
+  "available": 34,
   "description": "The blade of the pale rider knows no peer, striking its target for strong Lethal damage. Pale Blade consumes Lash, Flay, and Rend Flesh in order to deal superior Toxic damage. If Plaguebearer is active, Pale Blade increases your damage slightly for a minute.",
   "shortHelp": "Lethal dmg, Toxic dmg",
   "icon": "paleblade_paleblade.png",
@@ -48,9 +48,9 @@ export const PaleBlade: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

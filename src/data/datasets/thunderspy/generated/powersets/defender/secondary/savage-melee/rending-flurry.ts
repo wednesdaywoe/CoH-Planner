@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const RendingFlurry: Power = {
   "name": "Rending Flurry",
   "internalName": "Rending_Flurry",
-  "available": 0,
+  "available": 19,
   "description": "You wildly slash at nearby foes to deal moderate lethal damage and cause minor lethal damage over time. This power consumes all Blood Frenzy and will deal additional damage per stack of Blood Frenzy consumed. If you have 5 stacks of Blood Frenzy while activating this power, its radius is greatly increased, but causes you to become Exhausted for a short time. While exhausted you cannot gain Blood Frenzy. Damage: Moderate, Minor DoT, Recharge: Long",
   "shortHelp": "PBAoE, Moderate DMG(Lethal), Foe Minor DoT(Lethal), -Blood Frenzy",
   "icon": "savagemelee_rendingflurry.png",

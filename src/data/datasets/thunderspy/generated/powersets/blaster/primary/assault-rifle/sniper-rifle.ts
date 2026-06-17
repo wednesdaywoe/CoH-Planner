@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SniperRifle: Power = {
   "name": "Sniper Rifle",
   "internalName": "Sniper_Rifle",
-  "available": 0,
+  "available": 25,
   "description": "Sniper Rifle is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. Like most sniper attacks, you must take your time to aim, so this attack can be interrupted. If used in conjunction with a targeting drone, the Sniper Rifle will do additional damage. If you have more than 97% To-Hit, this attack becomes instant-cast.  Damage: Extreme, Recharge: Slow",
   "shortHelp": "Sniper, Extreme DMG(Lethal), Foe Knockback",
   "icon": "assaultweapons_sniperrifle.png",

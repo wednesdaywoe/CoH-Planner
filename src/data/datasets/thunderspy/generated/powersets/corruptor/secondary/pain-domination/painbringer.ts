@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Painbringer: Power = {
   "name": "Painbringer",
   "internalName": "Painbringer",
-  "available": 0,
+  "available": 37,
   "description": "You transform an ally into an inexhaustible killing machine. Both you and your target will benefit from incredible health regeneration, endurance recovery and improved damage potential for a short time. If used on a foe this power will debuff their regeneration and damage potential.",
   "shortHelp": "Ally and Self, +Regeneration, +Recovery, +DMG. Foe -regeneration, -DMG.",
   "icon": "paindomination_painbringer.png",

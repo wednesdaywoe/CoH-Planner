@@ -36,7 +36,7 @@ export const ModerateOpening: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.3867,
     "table": "Melee_Damage",
     "duration": 1

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BitterFreezeRay: Power = {
   "name": "Bitter Freeze Ray",
   "internalName": "Bitter_Freeze_Ray",
-  "available": 0,
+  "available": 25,
   "description": "This power can Hold your opponent frozen solid in a block of ice. The victim can be attacked and will remain frozen and helpless. After the ice thaws, the victim emerges chilled and Slowed.  Bitter Freeze Ray deals medium damage. Damage: Moderate, Recharge: Slow",
   "shortHelp": "Ranged, Moderate DMG(Cold), Foe Hold",
   "icon": "iceblast_bitterfreezeray.png",
@@ -43,7 +43,7 @@ export const BitterFreezeRay: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Cold",
     "scale": 1.32,
     "table": "Ranged_Damage"
   },
@@ -66,7 +66,7 @@ export const BitterFreezeRay: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Cold",
         "scale": 1.32,
         "table": "Ranged_Damage"
       }

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PsychicShockwave: Power = {
   "name": "Telekinetic Shockwave",
   "internalName": "Psychic_Shockwave",
-  "available": 0,
+  "available": 19,
   "description": "Psychic Shockwave is a devastating Psionic attack that wracks the minds of all nearby foes. Affected foes may have a reduced attack rate and may be left Disoriented. Damage: Moderate Recharge: Slow",
   "shortHelp": "PBAoE, Moderate DMG(Psionic), Foe Disorient -Recharge",
   "icon": "psionicassault_psionicshockwave.png",
@@ -40,7 +40,7 @@ export const PsychicShockwave: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 0.55,
     "table": "Melee_Damage"
   },

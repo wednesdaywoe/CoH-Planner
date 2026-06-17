@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Fallout: Power = {
   "name": "Neutron Burst",
   "internalName": "Fallout",
-  "available": 0,
+  "available": 34,
   "description": "By unleashing a large amount of radiation you can completely paralyze a group of foes for a short time. Recharge: Long",
   "shortHelp": "Ranged (Targeted AoE): Foe Hold",
   "icon": "radiationpoisoning_fallout.png",

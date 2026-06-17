@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ReactionTime: Power = {
   "name": "Reaction Time",
   "internalName": "Reaction_Time",
-  "available": 0,
+  "available": 19,
   "description": "You attune yourself to the world around you, moving with preternatural speed.  All enemies nearby move slowly and have reduced recharge, and you can absorb small amounts of damage every 2 seconds.  When Reaction Time is deactivated, you gain a burst of speed for a short duration, increasing your own recharge and move speed.",
   "shortHelp": "Toggle (PBAoE), Self Absorb over Time, +Recovery, Foe –Rech, - Move, Special",
   "icon": "martialmanipulation_reactiontime.png",

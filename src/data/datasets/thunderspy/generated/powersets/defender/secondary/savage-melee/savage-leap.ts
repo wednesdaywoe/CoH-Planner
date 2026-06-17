@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SavageLeap: Power = {
   "name": "Savage Leap",
   "internalName": "Savage_Leap",
-  "available": 0,
+  "available": 37,
   "description": "You throw yourself at your distant foes while slashing and tearing wildly dealing superior lethal damage and causing your foes to suffer from additional minor lethal damage over time. Savage Leap build 3 stacks of Blood Frenzy. Damage: Superior, Minor DoT, Recharge: Long",
   "shortHelp": "PBAoE, Superior DMG(Lethal), Foe Minor DoT(Lethal), +3 Blood Frenzy, Self Teleport",
   "icon": "savagemelee_savageleap.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ProtonArmor: Power = {
   "name": "Proton Armor",
   "internalName": "Proton_Armor",
-  "available": 0,
+  "available": 3,
   "description": "When active, your body is encased in a shield-like radiation barrier that gives you good resistance to Energy and Fire damage and moderate resistance to Cold and Negative Energy attacks. Recharge: Fast",
   "shortHelp": "Toggle: Self, +Res(Energy, Fire, Cold and Negative)",
   "icon": "radiationarmor_protonarmor.png",

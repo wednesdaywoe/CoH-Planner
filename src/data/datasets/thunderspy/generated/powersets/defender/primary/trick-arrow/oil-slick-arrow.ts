@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const OilSlickArrow: Power = {
   "name": "Oil Slick Arrow",
   "internalName": "Oil_Slick_Arrow",
-  "available": 0,
+  "available": 25,
   "description": "On impact, this arrow creates an oil slick that Slows foes in the area and may cause them to slip and fall. The oil slick is very flammable and may burst into flames if fire is used near it. Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Knockdown, -Speed, -DEF, +Special",
   "icon": "trickarrow_knockdown.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PowerSurge: Power = {
   "name": "Power Surge",
   "internalName": "Power_Surge",
-  "available": 0,
+  "available": 31,
   "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics, as well as Disorient, Sleep, Hold, Immobilize, Knockback, End Drain, Recovery DeBuff, and enemy Teleportation. Your Endurance recovery is also increased.  As Power Surge wears off, the charge in your body explodes in a massive EMP pulse.  However, expending all this energy will leave you exhausted, and drained of almost all Health and Endurance. Recharge: Very Long",
   "shortHelp": "Self, +Res(Special)",
   "icon": "electricarmor_selfbuffdefense.png",

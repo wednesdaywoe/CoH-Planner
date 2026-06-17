@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const MassConfusion: Power = {
   "name": "Mass Confusion",
   "internalName": "Mass_Confusion",
-  "available": 0,
+  "available": 11,
   "description": "You can cause Mass Confusion within a group of foes, creating chaos. All affected foes within the area will turn and attack each other, ignoring all heroes. If you Confuse villains before they noticed you, your presence will continue to go unnoticed. You will not receive any Experience Points for foes defeated by Confused enemies. Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE), Foe Confuse",
   "icon": "mentalcontrol_confuse.png",

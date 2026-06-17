@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Slug: Power = {
   "name": "Slug",
   "internalName": "Slug",
-  "available": 0,
+  "available": 1,
   "description": "Fires a single Slug at a targeted foe. Firing a single Slug is slower than firing a Burst, but deals more damage, is longer range, and can knock down foes. Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Lethal), Foe Knockback",
   "icon": "paramilitary_assaultrifleslug.png",
@@ -39,7 +39,7 @@ export const Slug: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.96,
     "table": "Ranged_Damage"
   },

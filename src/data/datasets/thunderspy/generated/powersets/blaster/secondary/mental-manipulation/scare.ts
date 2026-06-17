@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Scare: Power = {
   "name": "Scare",
   "internalName": "Scare",
-  "available": 0,
+  "available": 34,
   "description": "You entwine a single foe within their deepest fears and cause them to helplessly tremble for a brief while.",
   "shortHelp": "Ranged, Foe Fear",
   "icon": "mentalcontrol_scare.png",

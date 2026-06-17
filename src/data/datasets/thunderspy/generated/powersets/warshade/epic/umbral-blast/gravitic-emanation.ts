@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const GraviticEmanation: Power = {
   "name": "Gravitic Emanation",
   "internalName": "Gravitic_Emanation",
-  "available": 0,
+  "available": 17,
   "description": "Gravitic Emanation sends bolts of dark Nictus energy to multiple targets within a cone area in front of the caster.  Gravitic Emanation deals only minor Negative Energy damage to each affected foe, but knocks them back, leaving them Disoriented and with reduced attack rate and movement speed. Damage: Minor. Recharge: Slow",
   "shortHelp": "Ranged (Cone), Minor DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",
   "icon": "umbralblast_graviticemanation.png",
@@ -46,7 +46,7 @@ export const GraviticEmanation: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.4,
     "table": "Ranged_Damage"
   },

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ParasiticAura: Power = {
   "name": "Parasitic Aura",
   "internalName": "Parasitic_Aura",
-  "available": 0,
+  "available": 31,
   "description": "By soaking in cellular material from enemies nearby, you reduce their offense and drastically improve your own resilience. You gain an Absorption shield and an increase to Regeneration and Recovery for each nearby foe, and reduce the damage of enemies in the area. While Efficient Adaptation is active, this power grants additional Regeneration and Recovery. While Defensive Adaptation is active, you receive additional Absorbtion and enemy damage is lowered further. While Offensive Adaptation is active, enemies nearby are inflicted with a long lasting minor Toxic damage over time effect.",
   "shortHelp": "PBAoE, Self +Absorb, +Regeneration, +Recovery, Foe -DMG",
   "icon": "bioorganicarmor_parasiticaura.png",

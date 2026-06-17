@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const StonePrison: Power = {
   "name": "Stone Prison",
   "internalName": "Stone_Prison",
-  "available": 0,
+  "available": 5,
   "description": "Immobilizes a single target within an earthy formation and deals some Smashing damage over time. Some more resilient foes may require multiple attacks to Immobilize. Stone Prison can also reduce a target's Defense. Damage: Moderate(DoT), Recharge: Fast",
   "shortHelp": "Ranged, Moderate DoT(Smash), Foe Immobilize, -DEF, -Fly",
   "icon": "earthgrasp_stoneprison.png",

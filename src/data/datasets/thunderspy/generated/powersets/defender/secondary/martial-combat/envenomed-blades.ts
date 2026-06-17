@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnvenomedBlades: Power = {
   "name": "Envenomed Blades",
   "internalName": "Envenomed_Blades",
-  "available": 0,
+  "available": 15,
   "description": "You add a toxic venom to all of your attacks for a moderate duration.  All damaging powers gain bonus Toxic damage. You also gain a moderate bonus to your chance to hit.  Recharge: Long",
   "shortHelp": "Self +Toxic Damage on all attacks, +ToHit",
   "icon": "martialassault_envenomedblades.png",

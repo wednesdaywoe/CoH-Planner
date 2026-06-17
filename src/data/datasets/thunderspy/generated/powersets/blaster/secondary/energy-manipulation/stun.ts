@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Stun: Power = {
   "name": "Stun",
   "internalName": "Stun",
-  "available": 0,
+  "available": 19,
   "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. Damage: Minor, Recharge: Slow",
   "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
   "icon": "energymanipulation_stun.png",
@@ -38,7 +38,7 @@ export const Stun: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 0.075,
     "table": "Melee_Damage"
   },

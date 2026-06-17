@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Bonfire: Power = {
   "name": "Bonfire",
   "internalName": "Bonfire",
-  "available": 0,
+  "available": 25,
   "description": "You can create a Bonfire that knocks back and burns any foes who try to pass through it. Recharge: Long",
   "shortHelp": "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
   "icon": "firetrap_bonfire.png",

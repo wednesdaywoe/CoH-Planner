@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Crush: Power = {
   "name": "Gravity Field",
   "internalName": "Crush",
-  "available": 0,
+  "available": 17,
   "description": "Creates a localized gravitational field that slows movement, prevents flight, and has a chance to knock up affected targets. Damage: Moderate(DoT), Recharge: Fast",
   "shortHelp": "Toggle: PBAoE, Moderate DoT(Smash), Foe Knock up, Movement slow, -Fly",
   "icon": "icyonslaught_icepatch.png",

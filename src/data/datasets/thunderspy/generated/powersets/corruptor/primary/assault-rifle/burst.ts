@@ -40,7 +40,7 @@ export const Burst: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.546667,
     "table": "Ranged_Damage",
     "duration": 0.7
@@ -52,7 +52,7 @@ export const Burst: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Lethal",
         "scale": 0.546667,
         "table": "Ranged_Damage",
         "duration": 0.7

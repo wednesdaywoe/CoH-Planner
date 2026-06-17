@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FullAuto: Power = {
   "name": "Full Auto",
   "internalName": "Full_Auto",
-  "available": 0,
+  "available": 31,
   "description": "Opens up your assault rifle on Full Auto to lay down a massive spray of bullets at your target. Although very slow to reload, damage from this attack is massive, shredding all targets within the narrow cone of effect. There's a chance you may land a lucky shot for extra damage. Damage: Superior(DoT), Recharge: Slow",
   "shortHelp": "Ranged (Cone), Superior DMG(Lethal), +Special",
   "icon": "assaultweapons_arfullauto.png",
@@ -41,13 +41,13 @@ export const FullAuto: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 0.162,
       "table": "Ranged_Damage",
       "duration": 3.3
     },
     {
-      "type": "Special",
+      "type": "Lethal",
       "scale": 1,
       "table": "Ranged_Damage"
     }

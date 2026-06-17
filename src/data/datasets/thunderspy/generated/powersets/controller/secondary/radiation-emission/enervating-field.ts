@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnervatingField: Power = {
   "name": "Enervating Field",
   "internalName": "Enervating__Field",
-  "available": 0,
+  "available": 9,
   "description": "While this power is active, you irradiate a targeted foe, and all foes nearby, with a deadly dose of radiation. This radiation weakens exposed targets, decreasing the damage of their attacks.  It also significantly weakens their resistance, so they will take much more damage from other attacks. Recharge: Moderate",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG, -Res",
   "icon": "radiationpoisoning_enervatingfield.png",

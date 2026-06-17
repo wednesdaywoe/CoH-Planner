@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const StaticShield: Power = {
   "name": "Static Shield",
   "internalName": "Static_Shield",
-  "available": 0,
+  "available": 5,
   "description": "You can create a field of Static Electricity around your body.  This Static Shield protects you from Hold, Sleep, and Disorient effects as well as Endurance Drain, Recovery DeBuffs and enemy Teleportation. Static Shield can also help normalize your synaptic activity, granting you good resistance to Psionic Damage. Recharge: Fast",
   "shortHelp": "Toggle: Self +Res(Hold, Sleep, Disorient, End Drain, Recovery DeBuff, Psionic, Teleport)",
   "icon": "electricarmor_selfresistmez.png",

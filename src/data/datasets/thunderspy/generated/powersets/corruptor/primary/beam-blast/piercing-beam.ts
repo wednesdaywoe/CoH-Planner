@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PiercingBeam: Power = {
   "name": "Piercing Beam",
   "internalName": "Piercing_Beam",
-  "available": 0,
+  "available": 11,
   "description": "You release a supercharged beam in a narrow cone of energy that pierces through up to 3 enemies. Piercing Beam deals High Energy damage and briefly reduces their damage resistance. If a target struck by Piercing Beam is suffering from the Disintegrating effect it will immediately suffer additional damage. Damage: High, Recharge: Long",
   "shortHelp": "Ranged (Narrow Cone): High DMG(Energy), Foes -Res, Special",
   "icon": "beamrifle_piercingbeam.png",
@@ -40,7 +40,7 @@ export const PiercingBeam: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Energy",
     "scale": 1.84,
     "table": "Ranged_Damage"
   },
@@ -51,7 +51,7 @@ export const PiercingBeam: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Energy",
         "scale": 1.84,
         "table": "Ranged_Damage"
       }

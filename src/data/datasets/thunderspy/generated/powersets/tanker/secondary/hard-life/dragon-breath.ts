@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DragonBreath: Power = {
   "name": "Dragon's Breath",
   "internalName": "Dragon_Breath",
-  "available": 0,
+  "available": 19,
   "description": "Fire a special concoction of Incendiary ammunition at your foes. Enemies afflicted with Dragon's Breath will take Fire damage over time. Using Cryo Shell on a foe afflicted with Dragon's Breath will deal bonus damage. Using Venom Shell on a foe afflicted with Dragon's Breath will deal additional Toxic damage over time.",
   "shortHelp": "Ranged, Lethal DMG, Fire DoT",
   "icon": "dualpistols_incendiaryammo.png",

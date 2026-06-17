@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Allseer: Power = {
   "name": "Allseer",
   "internalName": "Allseer",
-  "available": 0,
+  "available": 5,
   "description": "Being in touch with the land has honed your senses to a preternatural degree. You gain some defense to all forms of attack, resistance to status effects, and have greatly improved perception. While grounded, your perception is increased further.",
   "shortHelp": "Toggle Self +Def (All), +Res (Confuse, Fear, Hold, Sleep) +Perception",
   "icon": "natureaffinity_sporecloud.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Hide: Power = {
   "name": "Beta Decay",
   "internalName": "Hide",
-  "available": 0,
+  "available": 19,
   "description": "While Beta Decay is active, nearby foes will have their chance to hit and defense decreased slightly and will be taunted. You will gain a recharge bonus per nearby target up to 10 targets. The first target grants the largest benefit. Recharge: Moderate",
   "shortHelp": "Toggle: Foe, Taunt, -To Hit, -Defense, Self +Recharge",
   "icon": "radiationarmor_betadecay.png",

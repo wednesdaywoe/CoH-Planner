@@ -38,12 +38,12 @@ export const Rebuke: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": 1,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Fire",
       "scale": -1,
       "table": "Ranged_Damage"
     }

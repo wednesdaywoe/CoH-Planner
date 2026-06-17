@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SiphonPower: Power = {
   "name": "Siphon Power",
   "internalName": "Siphon_Power",
-  "available": 0,
+  "available": 1,
   "description": "All Attacks: Chance for Foe -DMG, Team +DMG",
   "shortHelp": "All Attacks: Chance for Foe -DMG, Team +DMG",
   "icon": "kineticboost_siphonpower.png",

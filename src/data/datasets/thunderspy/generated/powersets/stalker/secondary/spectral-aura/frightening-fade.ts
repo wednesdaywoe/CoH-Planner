@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FrighteningFade: Power = {
   "name": "Frightening Fade",
   "internalName": "Frightening_Fade",
-  "available": 0,
+  "available": 19,
   "description": "You create a burst of spectral energy, causing spirits to distract and placate your foes so they can no longer find or target you.  Recharge: Slow",
   "shortHelp": "Click: PBAoE, Foe Placate, -To Hit",
   "icon": "spectralaura7.png",

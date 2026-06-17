@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Beheader: Power = {
   "name": "Gash",
   "internalName": "Beheader",
-  "available": 0,
+  "available": 3,
   "description": "Gashes your opponent with your Battle Axe dealing superior damage. This attack is very slow, but can deal a lot damage and knock the target down. Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee, Superior DMG(Lethal), Foe Knockdown",
   "icon": "battleaxe_beheader.png",
@@ -42,7 +42,7 @@ export const Beheader: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.96,
     "table": "Melee_Damage"
   }

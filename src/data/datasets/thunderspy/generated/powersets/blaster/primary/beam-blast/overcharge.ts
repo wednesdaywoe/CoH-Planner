@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Overcharge: Power = {
   "name": "Overcharge",
   "internalName": "Overcharge",
-  "available": 0,
+  "available": 31,
   "description": "You overcharge and release a massive blast of energy at a group of distant foes causing Extreme Energy damage, causing Minor Energy damage over time, reducing the defense of all affected foes and potentially stunning affected foes. If Overcharge strikes a target suffering from the Disintegrating effect they will be affected by a longer stun. Damage: Extreme, Recharge: Very Long",
   "shortHelp": "Ranged (Targeted AoE): Extreme DMG(Energy), Foe Minor DoT (Energy), -Def(All), Disorient, Special",
   "icon": "beamrifle_overcharge.png",
@@ -45,12 +45,12 @@ export const Overcharge: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Energy",
       "scale": 3,
       "table": "Ranged_Damage"
     },
     {
-      "type": "Special",
+      "type": "Energy",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 4.1

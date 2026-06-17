@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SweepingStrike: Power = {
   "name": "Titan Sweep",
   "internalName": "Sweeping_Strike",
-  "available": 0,
+  "available": 1,
   "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down. Damage: High, Recharge: Long",
   "shortHelp": "Melee (Cone), High DMG(Smashing), Foe Knockdown",
   "icon": "titanweapons_sweepingstrike.png",

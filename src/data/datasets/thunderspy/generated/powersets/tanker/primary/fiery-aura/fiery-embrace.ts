@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FieryEmbrace: Power = {
   "name": "Fiery Embrace",
   "internalName": "Fiery_Embrace",
-  "available": 0,
+  "available": 25,
   "description": "Significantly boosts the damage of all your Fire attacks for quite a while. Also increases the damage of all your other non-fire based attacks for a short while. Recharge: Very Long",
   "shortHelp": "Self +DMG",
   "icon": "flamingshield_fieryembrace.png",

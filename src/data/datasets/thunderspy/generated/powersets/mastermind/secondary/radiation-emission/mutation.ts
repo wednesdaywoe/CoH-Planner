@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Mutation: Power = {
   "name": "Mutation",
   "internalName": "Mutation",
-  "available": 0,
+  "available": 15,
   "description": "Using a concentrated burst of radiation, you can revive a fallen ally and Mutate them into a killing machine. The Mutated target has increased damage, chance to hit, Endurance recovery, and attack speed and is protected from XP Debt for 90 seconds. The entire experience is very taxing on your ally, and they will soon be severely weakened. All effects of the Mutation will eventually wear off. Recharge: Very Long",
   "shortHelp": "Close, Ally Rez, Special",
   "icon": "radiationpoisoning_mutation.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Burst: Power = {
   "name": "Burst",
   "internalName": "Burst",
-  "available": 0,
+  "available": 1,
   "description": "Quickly fires a Burst of rounds at a single target at long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense. Damage: Moderate(DoT), Recharge: Fast",
   "shortHelp": "Ranged, Moderate DMG(Lethal), Foe -DEF",
   "icon": "arachnossoldier_burst.png",
@@ -40,7 +40,7 @@ export const Burst: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 0.3826,
     "table": "Ranged_Damage",
     "duration": 0.7

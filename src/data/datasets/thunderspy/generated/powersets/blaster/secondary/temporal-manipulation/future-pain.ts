@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FuturePain: Power = {
   "name": "Be Gone",
   "internalName": "Future_Pain",
-  "available": 0,
+  "available": 27,
   "description": "With but a whim, you can banish your foe into their past or future and then back to the present. This process Disorients them and leaves them exposed to further assault. Recharge: Slow",
   "shortHelp": "Ranged, Single Target Teleport Foe",
   "icon": "timemanipulation_futurepain.png",

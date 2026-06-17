@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FocusChi: Power = {
   "name": "Focus Chi",
   "internalName": "Focus_Chi",
-  "available": 0,
+  "available": 5,
   "description": "Tapping into your inner Chi greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit. Recharge: Long",
   "shortHelp": "Self +DMG, +To Hit",
   "icon": "martialarts_focuschi.png",

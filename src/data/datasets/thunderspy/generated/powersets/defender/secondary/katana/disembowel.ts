@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Disembowel: Power = {
   "name": "Soaring Dragon",
   "internalName": "Disembowel",
-  "available": 0,
+  "available": 34,
   "description": "You perform a powerful Soaring Dragon maneuver that deals a great amount of damage, and can knock a target up into the air. This attack can reduce a target's Defense, making them easier to hit. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Lethal), Foe Knockup, -DEF",
   "icon": "katana_disembowel.png",
@@ -41,7 +41,7 @@ export const Disembowel: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.8,
     "table": "Melee_Damage"
   },

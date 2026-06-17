@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SporeBurst: Power = {
   "name": "Spore Burst",
   "internalName": "Spore_Burst",
-  "available": 0,
+  "available": 11,
   "description": "You hurl a large fungi pod at your foes.  This pod is full of Spores that burst on impact, engulfing the target and all those around them.  All affected targets may succumb to the narcotic effect of the Spores and will fall asleep. The targets will remain asleep for some time, but will awaken if attacked. Recharge: Slow",
   "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
   "icon": "plantcontrol_sporeburst.png",

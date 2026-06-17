@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const FollowThrough: Power = {
   "name": "Follow Through",
   "internalName": "Follow_Through",
-  "available": 0,
+  "available": 5,
   "description": "You Follow Through with a massive attack dealing Superior Smashing damage, knocking your opponent down and possibly stunning them.  Additionally, Follow Through can cause the target to suffer a small amount of Lethal damage over time.  NOTE: Follow Through requires Momentum in order to be activated.  Damage: Superior, Recharge: Long",
   "shortHelp": "Melee, Superior DMG(Smashing), Foe Minor DoT(Lethal), Knockdown, Stun, Requires Momentum",
   "icon": "titanweapons_followthrough.png",
@@ -40,7 +40,7 @@ export const FollowThrough: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 2.156,
     "table": "Melee_Damage"
   },

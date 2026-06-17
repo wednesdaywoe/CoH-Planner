@@ -38,7 +38,7 @@ export const HauntingBlow: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.66,
     "table": "Melee_Damage"
   },
@@ -56,7 +56,7 @@ export const HauntingBlow: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Negative",
         "scale": 1.32,
         "table": "Melee_Damage"
       }

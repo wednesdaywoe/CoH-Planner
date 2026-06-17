@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const DarkestNight: Power = {
   "name": "Darkest Night",
   "internalName": "Darkest_Night",
-  "available": 0,
+  "available": 1,
   "description": "While active, you channel Negative Energy onto a targeted foe. While Darkest Night is active the target, and all foes nearby, will have their chance to hit and Damage potential reduced as long as you keep the power active. Recharge: Moderate",
   "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG, -To Hit",
   "icon": "darkmiasma_darkestnight.png",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const PrimalHowl: Power = {
   "name": "Primal Howl",
   "internalName": "Primal_Howl",
-  "available": 0,
+  "available": 15,
   "description": "The Primalist lets out a Primal Howl with varying effects depending on their current form. In Primal Form, you will boost their recovery and regeneration significantly for a good while. In Hunter Form you will reduce the damage and damage resistance of nearby foes. Primal Howl builds 3 Primal Energy. Primal Howl may not be used in Prowler Form. Recharge: Very Long",
   "shortHelp": "PBAoE Special, Requires Primal or Hunter Form",
   "icon": "primalgifts_primalhowl.png",

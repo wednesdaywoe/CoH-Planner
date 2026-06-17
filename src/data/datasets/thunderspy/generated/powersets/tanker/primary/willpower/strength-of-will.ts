@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const StrengthofWill: Power = {
   "name": "Strength of Will",
   "internalName": "Strength_of_Will",
-  "available": 0,
+  "available": 31,
   "description": "When you activate this power, you not only become extremely resistant to most damage, but also to Disorient, Immobilization, Hold, Knockback, Repel and Sleep effects. Strength of Will costs little Endurance to activate and increases your recovery for its duration, but when it wears off you are left exhausted, and substantially drained of Endurance. This crash can be avoided by training Unrelenting from the Presence pool. Note that Strength of Will is unaffected by Attack Rate changes. Recharge: Very Long",
   "shortHelp": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG), +Recovery",
   "icon": "willpower_strengthofwill.png",

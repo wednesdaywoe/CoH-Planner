@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const AdrenalinBoost: Power = {
   "name": "Adrenalin Boost",
   "internalName": "Adrenalin_Boost",
-  "available": 0,
+  "available": 37,
   "description": "Dramatically increases an ally's Endurance Recovery, Hit Point Regeneration and attack rate for 90 seconds. Also grants the target high resistance to slow effects. Recharge: Very Long",
   "shortHelp": "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)",
   "icon": "empathy_adrenalinboost.png",

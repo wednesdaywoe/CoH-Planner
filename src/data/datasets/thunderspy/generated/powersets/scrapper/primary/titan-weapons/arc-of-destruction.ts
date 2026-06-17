@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ArcofDestruction: Power = {
   "name": "Arc of Destruction",
   "internalName": "Arc_of_Destruction",
-  "available": 0,
+  "available": 31,
   "description": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down.  Arc of Destruction may only be used while on the ground.  Damage: Superior, Recharge: Slow",
   "shortHelp": "Melee (Cone), Superior DMG(Smashing), Foe Knockback",
   "icon": "titanweapons_arcofdestruction.png",

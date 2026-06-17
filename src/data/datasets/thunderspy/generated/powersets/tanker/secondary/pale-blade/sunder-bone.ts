@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const SunderBone: Power = {
   "name": "Perdition",
   "internalName": "Sunder_Bone",
-  "available": 0,
+  "available": 37,
   "description": "Violently strike at your enemies without holding back, dealing high Lethal damage. Perdition consumes all nearby Pale Blade effects in order to deal extreme Toxic damage to all in its wake. If Plaguebearer is active, Perdition deals superior Cold damage to the primary target but temporarily lowers your damage afterward.",
   "shortHelp": "Targeted AoE, Lethal dmg, Toxic dmg",
   "icon": "paleblade_sunderbone.png",
@@ -47,8 +47,8 @@ export const SunderBone: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
+      "id": "target-affected",
+      "label": "Target Already Affected",
       "scope": "per-power",
       "defaultActive": false,
       "damage": [
@@ -81,13 +81,19 @@ export const SunderBone: Power = {
           "type": "Special",
           "scale": 0.5,
           "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 2,
-          "table": "Melee_Damage"
         }
       ]
+    },
+    {
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 2,
+        "table": "Melee_Damage"
+      }
     }
   ]
 };

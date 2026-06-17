@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const EnergyTransfer: Power = {
   "name": "Energy Transfer",
   "internalName": "Energy_Transfer",
-  "available": 0,
+  "available": 34,
   "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. Damage: Extreme, Recharge: Slow",
   "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient, Self -HP",
   "icon": "powerpunch_energytransfer.png",
@@ -43,12 +43,12 @@ export const EnergyTransfer: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Special",
+      "type": "Energy",
       "scale": 1.37,
       "table": "Melee_Damage"
     },
     {
-      "type": "Special",
+      "type": "Energy",
       "scale": 3.75,
       "table": "Melee_Damage"
     }

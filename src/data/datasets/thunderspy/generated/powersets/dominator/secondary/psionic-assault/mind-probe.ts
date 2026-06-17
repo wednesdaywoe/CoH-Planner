@@ -36,7 +36,7 @@ export const MindProbe: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Psionic",
     "scale": 1.96,
     "table": "Melee_Damage"
   }

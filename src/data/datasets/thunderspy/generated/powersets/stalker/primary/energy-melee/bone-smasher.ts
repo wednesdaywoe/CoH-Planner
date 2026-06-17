@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BoneSmasher: Power = {
   "name": "Bone Smasher",
   "internalName": "Bone_Smasher",
-  "available": 0,
+  "available": 1,
   "description": "A Bone Smasher attack can be slow, but it compensates by dealing a good amount of smashing and energy damage and having a better chance to Disorient than Energy Punch. Damage: High, Recharge: Moderate",
   "shortHelp": "Melee, High DMG(Smash/Energy), Disorient",
   "icon": "powerpunch_bonesmasher.png",
@@ -38,7 +38,7 @@ export const BoneSmasher: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Smashing",
     "scale": 0.49,
     "table": "Melee_Damage"
   },
@@ -56,7 +56,7 @@ export const BoneSmasher: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Smashing",
         "scale": 1.64,
         "table": "Melee_Damage"
       }

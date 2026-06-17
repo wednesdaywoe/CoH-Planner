@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LightForm: Power = {
   "name": "Light Form",
   "internalName": "Light_Form",
-  "available": 0,
+  "available": 37,
   "description": "When you activate Light Form, you become pure Kheldian energy and are extremely resistant to most damage. You are also partially protected from some Disorient, Immobilization, Hold, Sleep, Knockback and Repel effects. Endurance recovery is also increased. Light Form costs little Endurance to activate, but when it wears off you are left exhausted, and drained of Hit Points and Endurance. Unrelenting from the Presence pool can be used to prevent this crash from occurring. Recharge: Very Long",
   "shortHelp": "Self, +Res(Disorient, Sleep, Hold, Immobilize, Knockback, Repel, All DMG but Psionics)",
   "icon": "luminousaura_lightform.png",

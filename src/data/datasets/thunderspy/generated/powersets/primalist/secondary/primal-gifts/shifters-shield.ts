@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ShiftersShield: Power = {
   "name": "Shifter's Shield",
   "internalName": "Shifters_Shield",
-  "available": 0,
+  "available": 27,
   "description": "Shifter's Shield may only be active while in Primal Form. When activated the caster and nearby allies will receive an absorption shield that will protect affected allies from a large amount of damage. Shifter's Shield requires 10 Primal Energy. Recharge: Very Long",
   "shortHelp": "PBAoE, +Absorb",
   "icon": "primalgifts_shiftersshield.png",

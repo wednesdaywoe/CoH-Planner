@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const BuildUp: Power = {
   "name": "Virulent",
   "internalName": "Build_Up",
-  "available": 0,
+  "available": 9,
   "description": "You unleash the plague, imbuing all of your strikes with the cold grip of death. Applies the Plaguebearer effect. All attacks landed while under the Plaguebearer effect will deal bonus Cold damage and apply Fester to the target. Fester causes enemies to move more slowly. Most powers have additional effects while Plaguebearer is active.",
   "shortHelp": "Self Plaguebearer",
   "icon": "paleblade_buildup.png",

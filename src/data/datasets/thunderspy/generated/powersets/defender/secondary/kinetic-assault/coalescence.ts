@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Coalescence: Power = {
   "name": "Coalescence",
   "internalName": "Coalescence",
-  "available": 0,
+  "available": 15,
   "description": "You form the potential energies around you into surge of power that adds energy damage to your attacks and increases chance to hit moderately for a short time.  Recharge: Very Long",
   "shortHelp": "Self, +Energy DMG, +To Hit",
   "icon": "kineticassault_coalescence.png",

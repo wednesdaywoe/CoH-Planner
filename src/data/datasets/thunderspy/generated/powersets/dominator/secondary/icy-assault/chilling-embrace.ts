@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const ChillingEmbrace: Power = {
   "name": "Chilling Embrace",
   "internalName": "Chilling_Embrace",
-  "available": 0,
+  "available": 34,
   "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their movement speed. Recharge: Very Fast",
   "shortHelp": "Toggle: PBAoE, Foe -Recharge, -Speed",
   "icon": "iceassault_chillingembrace.png",

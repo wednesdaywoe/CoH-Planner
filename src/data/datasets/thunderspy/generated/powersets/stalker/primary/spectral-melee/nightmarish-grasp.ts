@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const NightmarishGrasp: Power = {
   "name": "Nightmarish Grasp",
   "internalName": "Nightmarish_Grasp",
-  "available": 0,
+  "available": 25,
   "description": "You unleash ravenous spirits upon your foe, dealing negative energy damage as the spirits immobilize and fear them.  Damage: High, Recharge: Moderate",
   "shortHelp": "Ranged, High DMG(Negative/Psionic), Foe Immobilize, Fear",
   "icon": "spectralmelee8.png",
@@ -40,7 +40,7 @@ export const NightmarishGrasp: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Negative",
     "scale": 0.98,
     "table": "Melee_Damage"
   },
@@ -63,7 +63,7 @@ export const NightmarishGrasp: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
-        "type": "Special",
+        "type": "Negative",
         "scale": 1.96,
         "table": "Melee_Damage"
       }

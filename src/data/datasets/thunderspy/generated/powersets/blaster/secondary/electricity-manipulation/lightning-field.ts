@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const LightningField: Power = {
   "name": "Lightning Field",
   "internalName": "Lightning_Field",
-  "available": 0,
+  "available": 3,
   "description": "While active, you emit a storm of electricity that constantly damages all nearby foes. Damage: Minor(DoT), Recharge: Slow",
   "shortHelp": "Toggle: PBAoE, Minor DoT(Energy), Foe -End",
   "icon": "electricitymanipulation_lightningfield.png",

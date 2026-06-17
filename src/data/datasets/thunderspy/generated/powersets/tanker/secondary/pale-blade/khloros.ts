@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Khloros: Power = {
   "name": "Khloros",
   "internalName": "Khloros",
-  "available": 0,
+  "available": 27,
   "description": "A deadly whirl with the blade creates a pale breeze to afflict nearby targets. Enemies within 15 feet take medium Lethal and minor Toxic damage. If a target is affected by the poison of another Pale Blade attack, his poison is spread to up to 3 nearby foes. Khloros reduces enemy resists while the user is under the effects of Plaguebearer.",
   "shortHelp": "PBAoE, Lethal dmg, Toxic dmg, Spread Affliction",
   "icon": "paleblade_khloros.png",
@@ -46,9 +46,9 @@ export const Khloros: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "self-affected",
+      "label": "Already Affected",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Special",

@@ -11,7 +11,7 @@ import type { Power } from '@/types';
 export const Grenade: Power = {
   "name": "Frag 12",
   "internalName": "Grenade",
-  "available": 0,
+  "available": 37,
   "description": "Sort of like a slug, but it explodes on impact. Frag 12 deals high damage to the primary target and half that amount to everyone nearby. May knock enemies back.",
   "shortHelp": "Ranged, Lethal DMG",
   "icon": "dualpistols_explosiveclip.png",

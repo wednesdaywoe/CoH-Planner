@@ -37,7 +37,7 @@ export const Pistols: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Special",
+    "type": "Lethal",
     "scale": 1.32,
     "table": "Ranged_Damage"
   }

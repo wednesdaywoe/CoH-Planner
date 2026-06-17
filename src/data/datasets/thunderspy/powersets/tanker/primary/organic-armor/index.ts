@@ -9,13 +9,13 @@
 
 import type { Powerset } from '@/types';
 
+import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
+import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
+import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { Inexhaustible as Inexhaustible } from './inexhaustible';
 import { EnvironmentalAdaptation as EnvironmentalAdaptation } from './environmental-adaptation';
 import { Evolution as Evolution } from './evolution';
-import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
-import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
-import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
 import { Adaptation as Adaptation } from './adaptation';
 import { DNASiphon as DNASiphon } from './dna-siphon';
@@ -30,13 +30,13 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'primary',
   powers: [
+    EfficientAdaptation,
+    DefensiveAdaptation,
+    OffensiveAdaptation,
     HardenedCarapace,
     Inexhaustible,
     EnvironmentalAdaptation,
     Evolution,
-    EfficientAdaptation,
-    DefensiveAdaptation,
-    OffensiveAdaptation,
     AblativeCarapace,
     Adaptation,
     DNASiphon,
