@@ -5,6 +5,9 @@ parser → JSON conversion pipeline (`tools/bin-crawler/` + `scripts/convert-*.c
 with diagnoses and recommended fixes. Newest entries at top. When an open issue is
 fixed, move it to the top of the RESOLVED section with the fix details.
 
+> **Remaining follow-ups** (enhancements/IO sets, pets/entities, minor icons) are
+> tracked in [THUNDERSPY_TODO.md](THUNDERSPY_TODO.md).
+
 > **Before you make any edits** read [GAME-DATA-PRINCIPLES.md](../GAME-DATA-PRINCIPLES.md).
 > General (non-Thunderspy) findings live in [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md);
 > the broader Thunderspy support narrative is in

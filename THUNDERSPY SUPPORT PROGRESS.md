@@ -246,6 +246,8 @@ A community Mids' Reborn database export (`.mhd` files incl. the 26 MB `I12.mhd`
 
 ### Remaining
 
+> Consolidated, actionable list: [parser_logs/THUNDERSPY_TODO.md](parser_logs/THUNDERSPY_TODO.md). Top two: **IO sets** (replace the HC stand-in) and **pets/entities** (fix the entity parser).
+
 1. **Custom icon backfill** (272 missing): from `Thunderspy/Images` (quick, partial) or Thunderspy texture piggs (complete, authoritative).
 2. **Damage element-type refinement** (above): `Special` → Fire/Smashing/etc. from shortHelp. Magnitudes correct; cosmetic/resistance-grouping only.
 2. **IO sets** (`io-sets-raw.ts`): re-exports HC as a first-pass; real extraction needs `extract-rebirth-io-sets-v2.py` ported to Thunderspy (212 sets in `boostsets.bin`).
